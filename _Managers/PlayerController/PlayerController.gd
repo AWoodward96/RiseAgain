@@ -25,8 +25,6 @@ var tileHalfSize
 var trackingMovementOrigin
 
 var selectedUnit : UnitInstance
-var targetingData : TargetingData
-var currentTarget : Tile
 var selectedAbility : AbilityInstance
 
 # UIs
@@ -143,4 +141,4 @@ func OnActionSelected(_ability : AbilityInstance):
 	else:
 		# attempt to execute the ability
 		selectedAbility = _ability
-		selectedAbility.ExecuteAbility(selectedUnit, currentMap)
+		selectedAbility.PollTargets()

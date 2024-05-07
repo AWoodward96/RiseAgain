@@ -22,8 +22,7 @@ func _ready():
 
 func Initialize(_map : Map, _currentTile : Tile):
 	map = _map
-	map.playercontroller.OnTileChanged.connect(OnTileChanged)
-	OnTileChanged(_currentTile)
+	InspectUI.Initialize(_map.playercontroller)
 	ContextUI.ActionSelected.connect(OnAbilitySelected)
 
 func PlayTurnStart(_allegiance : GameSettings.TeamID):
@@ -43,12 +42,12 @@ func PlayTurnStart(_allegiance : GameSettings.TeamID):
 
 	TurnStartAnimComplete.emit()
 
-func OnTileChanged(_tile : Tile):
-	if _tile != null && _tile.Occupant != null:
-		InspectUI.visible = true
-		InspectUI.Update(_tile.Occupant)
-	else:
-		InspectUI.set_visible(false)
+#func OnTileChanged(_tile : Tile):
+	#if _tile != null && _tile.Occupant != null:
+		#InspectUI.visible = true
+		#InspectUI.Update(_tile.Occupant)
+	#else:
+		#InspectUI.set_visible(false)
 
 func HideInspectUI():
 	InspectUI.visible = false

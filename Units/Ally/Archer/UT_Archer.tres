@@ -12,32 +12,32 @@
 [ext_resource type="PackedScene" uid="uid://bdslgjv74suwb" path="res://Units/Ally/Archer/VIS_Archer.tscn" id="8_hvc7e"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://Units/Ally/Archer/archer.png" id="9_f2y67"]
 
-[sub_resource type="Resource" id="Resource_bev53"]
+[sub_resource type="Resource" id="Resource_1bnh6"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_pviyy"]
+[sub_resource type="Resource" id="Resource_bmgc5"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("3_e1gbq")
 Value = 14
 
-[sub_resource type="Resource" id="Resource_cn0ra"]
+[sub_resource type="Resource" id="Resource_mrxn4"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("4_ry5o0")
 Value = 7
 
-[sub_resource type="Resource" id="Resource_54bje"]
+[sub_resource type="Resource" id="Resource_67o71"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("5_5fnpr")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_0aaqr"]
+[sub_resource type="Resource" id="Resource_wv8kw"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("6_skiv5")
 Value = 7
 
-[sub_resource type="Resource" id="Resource_xpao0"]
+[sub_resource type="Resource" id="Resource_3mgqj"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("7_ysc31")
 Value = 6
@@ -45,7 +45,7 @@ Value = 6
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_bev53"), SubResource("Resource_pviyy"), SubResource("Resource_cn0ra"), SubResource("Resource_54bje"), SubResource("Resource_0aaqr"), SubResource("Resource_xpao0")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_1bnh6"), SubResource("Resource_bmgc5"), SubResource("Resource_mrxn4"), SubResource("Resource_67o71"), SubResource("Resource_wv8kw"), SubResource("Resource_3mgqj")])
 Abilities = Array[PackedScene]([ExtResource("1_oqrvp")])
 DebugName = "archer"
 loc_DisplayName = "unit_archer_name"

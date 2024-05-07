@@ -2,16 +2,13 @@ extends PlayerControllerState
 class_name TargetingControllerState
 
 var TargetData
-var currentTarget :
-	get:
-		return ctrl.currentTarget
-	set(_val):
-		ctrl.currentTarget = _val
+var currentTarget
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 
-	if data is TargetingData:
+	currentGrid.ShowActions()
+	if data is SkillTargetingData:
 		TargetData = data
 		currentTarget = TargetData.TilesInRange[0]
 		ctrl.ForceReticlePosition(currentTarget.Position)
@@ -22,7 +19,7 @@ func UpdateInput(_delta):
 		return
 
 	match TargetData.Type:
-		TargetingData.TargetingType.Simple:
+		SkillTargetingData.TargetingType.Simple:
 			# Simple is simple. The Initial Targets section of the struct should have all the units already
 			if TargetData.TilesInRange[0].Occupant == null:
 				reticle.visible = false
@@ -31,9 +28,9 @@ func UpdateInput(_delta):
 				ctrl.combatHUD.ShowNoTargets(false)
 				StandartTargetingInput(_delta)
 			pass
-		TargetingData.TargetingType.ShapedFree:
+		SkillTargetingData.TargetingType.ShapedFree:
 			pass
-		TargetingData.TargetingType.ShapedDirectional:
+		SkillTargetingData.TargetingType.ShapedDirectional:
 			pass
 
 	if InputManager.selectDown:

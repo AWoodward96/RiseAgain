@@ -1,5 +1,5 @@
-extends Resource
-class_name DamageContext
+extends Node2D
+class_name SkillDamageData
 
 enum ModificationType { None, Additive, Multiplicative, Divisitive }
 
@@ -14,12 +14,12 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 
 func DoMod(_val, _mod, _modType : ModificationType):
 	match _modType:
-		DamageContext.ModificationType.None:
+		ModificationType.None:
 			pass
-		DamageContext.ModificationType.Additive:
+		ModificationType.Additive:
 			_val += _mod
-		DamageContext.ModificationType.Multiplicative:
+		ModificationType.Multiplicative:
 			_val *= _mod
-		DamageContext.ModificationType.Divisitive:
+		ModificationType.Divisitive:
 			_val /= _mod
 	return _val

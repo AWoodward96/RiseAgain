@@ -5,6 +5,8 @@ var currentlySelectedUnit : UnitInstance
 var currentTurn = GameSettings.TeamID
 
 var combatHud
+var unitTurnStack : Array[UnitInstance]
+var currentUnitsTurn : UnitInstance
 
 var IsAllyTurn : bool :
 	get :
@@ -58,6 +60,10 @@ func StartTurn(_turn : GameSettings.TeamID):
 	if _turn == GameSettings.TeamID.ALLY:
 		controller.EnterSelectionState()
 
+	if _turn != GameSettings.TeamID.ALLY:
+		unitTurnStack = map.GetUnitsOnTeam(_turn)
+
+	currentUnitsTurn = null
 	ActivateAll()
 
 func ActivateAll():
@@ -107,18 +113,14 @@ func UpdateEnemyTurn(_delta):
 	if !map.teams.has(GameSettings.TeamID.ENEMY):
 		return
 
-	var currentUnits = map.teams[GameSettings.TeamID.ENEMY]
-
-	for unit in currentUnits:
-		if unit == null:
-			continue
-
-		if unit.AI == null:
-			unit.EndTurn()
-
-		if unit.Activated:
-			unit.AI.RunTurn(map, unit)
-	pass
+	if currentUnitsTurn == null:
+		currentUnitsTurn = unitTurnStack.pop_front()
+		if currentUnitsTurn != null:
+			currentUnitsTurn.AI.StartTurn(map, currentUnitsTurn)
+	else:
+		currentUnitsTurn.AI.RunTurn()
+		if !currentUnitsTurn.Activated && currentUnitsTurn.IsStackFree:
+			currentUnitsTurn = null
 
 func UpdateNeutralTurn(_delta):
 	pass

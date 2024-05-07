@@ -4,6 +4,7 @@ class_name CombatControllerState
 var abilityContext : AbilityContext
 var unitsToTakeDamage : Array[UnitInstance]
 var tempTimer : Timer
+var waitForAnimToFinish : bool
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
@@ -11,41 +12,61 @@ func _Enter(_ctrl : PlayerController, data):
 	# clear all of the actions in the grid now that a target's been selected
 	currentGrid.ClearActions()
 
+	waitForAnimToFinish = false
 	abilityContext = data
 
 	# Ability context at this point should have targets
-	if abilityContext.target == null:
+	if abilityContext.targetTiles.size() == 0:
 		push_error("Controller in CombatControllerState without a target. Going back to SelectionState")
 		ctrl.EnterSelectionState()
 		return
 
 	unitsToTakeDamage.clear()
-	if abilityContext.target is Array:
-		# I need to check if this 'if' statement works, but for now, each target here will be taking damage
-		for u in abilityContext.target:
-			unitsToTakeDamage.append(u)
-	elif abilityContext.target is UnitInstance:
-		# if it's a single target, append the array
-		unitsToTakeDamage.append(abilityContext.target)
 
-	# Create a timer to help track these combat events
-	if tempTimer == null:
-		tempTimer = Timer.new()
-		tempTimer.name = "CombatCutsceneTimer"
-		ctrl.add_child(tempTimer)
-		tempTimer.timeout.connect(WarmUpDone)
-		tempTimer.wait_time = Juice.combatSequenceWarmupTimer
-		tempTimer.start()
+	# The target tiles is an array so loop through that and append the units to take damage
+	for tile in abilityContext.targetTiles:
+		if tile.Occupant != null:
+			unitsToTakeDamage.append(tile.Occupant)
 
-	# Okay now that we have all the data, show all of the units' health bars and hide all uis
-	if abilityContext.source != null:
-		# The source actually isn't necessary
-		# The DamageContext has a value that can be used to deal flat damage to units
-		abilityContext.source.ShowHealthBar(true)
 
-	for units in unitsToTakeDamage:
-		units.ShowHealthBar(true)
+func _Execute(_delta):
+	var goodToExecute = true
+	for u in unitsToTakeDamage:
+		if u == null:
+			continue
 
+		if !u.IsStackFree:
+			goodToExecute = false
+
+	if abilityContext.source != null && !abilityContext.source.IsStackFree:
+		goodToExecute = false
+
+	if goodToExecute && !waitForAnimToFinish:
+		waitForAnimToFinish = true
+		if abilityContext.source != null:
+			abilityContext.source.QueueAttackSequence(abilityContext.originTile.Position * currentGrid.CellSize)
+
+		for u in unitsToTakeDamage:
+			u.TakeDamage(abilityContext.damageContext, abilityContext.source)
+			u.QueueDefenseSequence(abilityContext.source.position)
+
+
+	if waitForAnimToFinish:
+		var finished = true
+		if abilityContext.source != null && !abilityContext.source.IsStackFree:
+			finished = false
+
+		for u in unitsToTakeDamage:
+			if u == null:
+				continue
+
+			if !u.IsStackFree:
+				finished = false
+
+		if finished:
+			ctrl.EnterSelectionState()
+			ctrl.OnCombatSequenceComplete.emit()
+	pass
 
 func WarmUpDone():
 	tempTimer.timeout.disconnect(WarmUpDone)
@@ -55,7 +76,7 @@ func WarmUpDone():
 
 	if abilityContext.source != null:
 		# TODO: This will need to be expanded. Some abilities target a speicic tile, or multiple units
-		abilityContext.source.PlayAttackSequence(unitsToTakeDamage[0].position)
+		abilityContext.source.QueueAttackSequence(unitsToTakeDamage[0].position)
 
 func AttackDone():
 	tempTimer.timeout.disconnect(AttackDone)
@@ -67,9 +88,7 @@ func AttackDone():
 	for u in unitsToTakeDamage:
 		if abilityContext.source != null:
 			u.TakeDamage(abilityContext.damageContext, abilityContext.source)
-			u.PlayDefenseSequence(abilityContext.source.position)
-
-		# TODO : The actual damage call
+			u.QueueDefenseSequence(abilityContext.source.position)
 
 func Cooloff():
 	# For now, we're hiding the health bars in cool off

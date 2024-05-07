@@ -9,7 +9,6 @@ class_name AITargetClosest
 
 @export_flags("ALLY", "ENEMY", "NEUTRAL") var TargetingFlags : int = 0
 @export var RememberTarget : bool
-@export var TEMP_Range : Vector2i
 
 var targetUnit : UnitInstance
 
@@ -18,10 +17,10 @@ var grid : Grid
 var pathfinding  : AStarGrid2D
 var selectedTile : Tile
 var selectedPath
-var withinRange
 
+var ability : AbilityInstance
 
-func RunTurn(_map : Map, _unit : UnitInstance):
+func StartTurn(_map : Map, _unit : UnitInstance):
 	map = _map
 	grid = _map.grid
 	pathfinding = map.grid.Pathfinding
@@ -29,20 +28,26 @@ func RunTurn(_map : Map, _unit : UnitInstance):
 
 	selectedTile = null
 	selectedPath = null
-	withinRange = false
+
+	# STEP ZERO:
+	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
+	GetAbility()
+	if ability == null:
+		unit.QueueEndTurn()
+		return
 
 	# STEP ONE:
 	# Figure out which unit we'll be targeting this turn
 	targetUnit = map.GetClosestUnitToUnit(unit, TargetingFlags)
 	if targetUnit == null:
-		unit.EndTurn()
+		unit.QueueEndTurn()
 		return
 
 	# STEP TWO:
 	# Now that we know who we're targeting select a tile thats in range to try and move to
 	var actionableTiles = GetActionableTiles()
 	if actionableTiles == null || actionableTiles.size() == 0:
-		unit.EndTurn()
+		unit.QueueEndTurn()
 		return
 
 	# EARLY EXIT NOTICE:
@@ -59,14 +64,12 @@ func RunTurn(_map : Map, _unit : UnitInstance):
 
 	# This shouldn't happen, but if there are no tiles or paths, then just end turn
 	if selectedTile == null || selectedPath == null:
-		unit.EndTurn()
+		unit.QueueEndTurn()
 		return
 
 	# STEP FOUR:
 	# Truncate down the paths that we just set based on how much movement this current Unit has
 	var currentMovement = unit.GetUnitMovement()
-	if selectedPath.size() < currentMovement:
-		withinRange = true
 	selectedPath = selectedPath.slice(0, currentMovement)
 	selectedTile = grid.GetTile(selectedPath[selectedPath.size() - 1] / grid.CellSize)
 
@@ -78,7 +81,7 @@ func RunTurn(_map : Map, _unit : UnitInstance):
 
 
 func GetActionableTiles():
-	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, TEMP_Range)
+	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, ability.GetRange())
 	tilesWithinRange = tilesWithinRange.filter(func(tile) : return tile.Occupant == null || (tile.Occupant == unit))
 	tilesWithinRange = tilesWithinRange.filter(func(tile) : return !tile.IsWall)
 	return tilesWithinRange
@@ -92,19 +95,28 @@ func FilterTilesByPath(_actionableTiles : Array[Tile]):
 			selectedPath = path
 			lowest = path.size()
 
-func TryCombat():
+func GetAbility():
 	if unit.Abilities.size() == 0:
-		unit.EndTurn()
+		return
 
-	if !withinRange:
-		unit.EndTurn()
+	ability = unit.Abilities[0]
 
-	# default to the first ability
-	var ability = unit.Abilities[0]
-	if !ability.active:
-		print("EXECUTING ABILITY")
-		var context = AbilityContext.new()
-		context.Construct(map, unit, ability)
-		context.target = targetUnit
-		ability.ExecuteAbility(unit, map, context)
+func TryCombat():
+	if targetUnit == null:
+		unit.QueueEndTurn()
+		return
+
+	if !ability.IsWithinRange(selectedTile.Position, targetUnit.GridPosition):
+		unit.QueueEndTurn()
+		return
+
+	## default to the first ability
+	#var ability = unit.Abilities[0]
+	#if !ability.active:
+	#print("EXECUTING ABILITY")
+	var context = AbilityContext.new()
+	context.Construct(map, unit, ability)
+	context.originTile = targetUnit.CurrentTile
+	context.targetTiles.append(targetUnit.CurrentTile)
+	ability.ExecuteAbility(context)
 

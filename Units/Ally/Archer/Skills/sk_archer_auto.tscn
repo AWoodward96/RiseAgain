@@ -1,31 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmpm0oirhe7ny"]
+[gd_scene load_steps=6 format=3 uid="uid://bmpm0oirhe7ny"]
 
 [ext_resource type="Script" path="res://Skills/Scripts/AbilityInstance.gd" id="1_xy5fy"]
-[ext_resource type="Script" path="res://Skills/Scripts/AATargetingSimple.gd" id="2_yepoe"]
+[ext_resource type="Script" path="res://Skills/SkillTargetingComponent.gd" id="2_y5eoy"]
+[ext_resource type="Script" path="res://Skills/SkillDamageComponent.gd" id="3_jotfy"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://Units/Stats/STAT_Attack.tres" id="3_otq3u"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://Units/Stats/STAT_Defense.tres" id="4_buhux"]
-[ext_resource type="Script" path="res://Skills/Scripts/DamageContext.gd" id="5_pom4a"]
-[ext_resource type="Script" path="res://Skills/Scripts/AAPerformCombat.gd" id="6_15x2m"]
 
-[sub_resource type="Resource" id="Resource_exv8q"]
-script = ExtResource("2_yepoe")
-AbilityRange = Vector2i(1, 2)
-
-[sub_resource type="Resource" id="Resource_qx21u"]
-script = ExtResource("5_pom4a")
-FlatValue = 0.0
-AgressiveStat = ExtResource("3_otq3u")
-AgressiveModType = 0
-AgressiveMod = 0.0
-DefensiveStat = ExtResource("4_buhux")
-DefensiveModType = 0
-DefensiveMod = 0.0
-
-[sub_resource type="Resource" id="Resource_hgdcy"]
-script = ExtResource("6_15x2m")
-Context = SubResource("Resource_qx21u")
-
-[node name="SK_ArcherAuto" type="Node2D"]
+[node name="SK_ArcherAuto" type="Node2D" node_paths=PackedStringArray("TargetingData", "DamageData")]
 script = ExtResource("1_xy5fy")
 loc_displayName = "Shoot"
-AbilityStack = Array[Resource("res://Skills/Scripts/AbilityActionBase.gd")]([SubResource("Resource_exv8q"), SubResource("Resource_hgdcy")])
+TargetingData = NodePath("TargetingComponent")
+DamageData = NodePath("DamageComponent")
+
+[node name="TargetingComponent" type="Node2D" parent="."]
+script = ExtResource("2_y5eoy")
+TargetRange = Vector2i(1, 2)
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("3_jotfy")
+AgressiveStat = ExtResource("3_otq3u")
+DefensiveStat = ExtResource("4_buhux")

@@ -109,14 +109,6 @@ func OnUnitDeath(_unitInstance : UnitInstance):
 	if indexOf >= 0:
 		teams[_unitInstance.UnitAllegiance].remove_at(indexOf)
 
-		#var hasUnitLeftOnTeam = false
-		#for unit in teams[_unitInstance.UnitAllegiance]:
-			#if unit != null && unit.currentHealth > 0:
-				#hasUnitLeftOnTeam = true
-#
-		#if !hasUnitLeftOnTeam:
-			#teams.erase(_unitInstance.UnitAllegiance)
-
 		if teams[_unitInstance.UnitAllegiance].size() == 0:
 			teams.erase(_unitInstance.UnitAllegiance)
 

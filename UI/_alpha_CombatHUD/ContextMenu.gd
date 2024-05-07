@@ -18,13 +18,13 @@ func Initialize(_unit : UnitInstance):
 		entry.pressed.connect(OnAbilityButton.bind(a))
 		entryParent.add_child(entry)
 		createdButtons.append(entry)
-	
+
 	for i in createdButtons.size():
 		entryParent.move_child(createdButtons[i], i)
-		
+
 	entryParent.move_child(waitButton, createdButtons.size() + 1)
 	entryParent.get_child(0).grab_focus()
-	
+
 func OnWaitButton():
 	ActionSelected.emit(null)
 	pass

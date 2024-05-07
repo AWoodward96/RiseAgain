@@ -1,14 +1,14 @@
 @tool
 extends SpawnerBase
 
-@export var UnitTemplate : UnitTemplate :
+@export var UnitToSpawn : UnitTemplate :
 	set(value):
-		UnitTemplate = value
-		name = PREFIX + UnitTemplate.DebugName
+		UnitToSpawn = value
+		name = PREFIX + UnitToSpawn.DebugName
 
 func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 	if UnitTemplate == null || !Enabled:
 		return
 
-	var unit = _map.InitializeUnit(UnitTemplate, Position, Allegiance)
+	var unit = _map.InitializeUnit(UnitToSpawn, Position, Allegiance)
 	unit.SetAI(AIBehavior)
