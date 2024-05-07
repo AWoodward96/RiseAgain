@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UnitSettings" load_steps=8 format=3 uid="uid://b4u6518tnwvj6"]
+
+[ext_resource type="Script" path="res://_Managers/Utils/UnitSettings.gd" id="1_a2dt2"]
+[ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://Units/Ally/Archer/UT_Archer.tres" id="1_fb7ip"]
+[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://Units/Ally/DarkMage/UT_DarkMage.tres" id="2_3wj7i"]
+[ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://Units/Ally/ElementalMage/UT_ElementalMage.tres" id="3_784br"]
+[ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://Units/Ally/LightMage/UT_LightMage.tres" id="4_qg1gr"]
+[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://Units/Ally/Mercenary/UT_Mercenary.tres" id="5_ms0k5"]
+[ext_resource type="PackedScene" uid="uid://ri0c7iffkrao" path="res://Units/UnitInstance.tscn" id="6_tjdwd"]
+
+[resource]
+script = ExtResource("1_a2dt2")
+UnitInstancePrefab = ExtResource("6_tjdwd")
+AllyUnitManifest = Array[Resource("res://Units/Scripts/UnitTemplate.gd")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5")])

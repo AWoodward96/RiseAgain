@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu01ssna4s0la"]
+
+[ext_resource type="Script" path="res://Skills/Scripts/AbilityInstance.gd" id="1_c67rm"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://Units/Stats/STAT_Attack.tres" id="2_w87ad"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://Units/Stats/STAT_Defense.tres" id="3_4d5cx"]
+[ext_resource type="Script" path="res://Skills/Scripts/DamageContext.gd" id="4_nvja7"]
+[ext_resource type="Script" path="res://Skills/Scripts/AAPerformCombat.gd" id="5_llod8"]
+
+[sub_resource type="Resource" id="Resource_i42y6"]
+script = ExtResource("4_nvja7")
+FlatValue = 0.0
+AgressiveStat = ExtResource("2_w87ad")
+AgressiveModType = 0
+AgressiveMod = 0.0
+DefensiveStat = ExtResource("3_4d5cx")
+DefensiveModType = 0
+DefensiveMod = 0.0
+
+[sub_resource type="Resource" id="Resource_70npr"]
+script = ExtResource("5_llod8")
+Context = SubResource("Resource_i42y6")
+
+[node name="Claw" type="Node2D"]
+script = ExtResource("1_c67rm")
+loc_displayName = "Claw"
+AbilityStack = Array[Resource("res://Skills/Scripts/AbilityActionBase.gd")]([SubResource("Resource_70npr")])

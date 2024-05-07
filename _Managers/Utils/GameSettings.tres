@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GameSettings" load_steps=8 format=3 uid="uid://bwy7m4cuq5x0f"]
+
+[ext_resource type="Script" path="res://Units/Stats/Scripts/DerivedStatDef.gd" id="1_d0crg"]
+[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://Units/Stats/STAT_Health.tres" id="1_g1xjk"]
+[ext_resource type="PackedScene" uid="uid://cjghdlg16u8ih" path="res://_Managers/PlayerController/player_controller.tscn" id="1_m2f4k"]
+[ext_resource type="Script" path="res://_Managers/Utils/GameSettings.gd" id="1_wj702"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://Units/Stats/STAT_Vitality.tres" id="3_buqcn"]
+[ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://Units/Stats/STAT_Movement.tres" id="9_fg4p8"]
+
+[sub_resource type="Resource" id="Resource_qy6mm"]
+script = ExtResource("1_d0crg")
+ParentStat = ExtResource("3_buqcn")
+Ratio = 1.5
+Template = ExtResource("1_g1xjk")
+Value = 0
+
+[resource]
+script = ExtResource("1_wj702")
+PlayerControllerPrefab = ExtResource("1_m2f4k")
+DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])
+MovementStat = ExtResource("9_fg4p8")
+HealthStat = ExtResource("1_g1xjk")
+CharacterTileMovemementSpeed = 500.0

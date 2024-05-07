@@ -1,0 +1,246 @@
+{
+	"categories": [
+		{
+			"uuid": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "39f315b3-0340-4b8b-be93-a0c21bdd0e80",
+			"title": "Todo",
+			"tasks": [
+				"977fd6e6-3446-47d4-ac7a-824bb9b6153f",
+				"5d48eb77-0ba5-4888-ab7f-c02c92a582b0"
+			]
+		},
+		{
+			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
+			"title": "Done",
+			"tasks": [
+				"4168dbfe-f520-426d-8ccf-159aa127c732",
+				"0cde6c1b-d8f6-4331-bdb2-f25c87d8b74d",
+				"2386035e-4d73-40bb-a8c1-e1c20ad15b8b",
+				"4c43e337-d087-4dea-a6cf-aad9ddabdae5",
+				"53ae6ffc-93e7-4a70-b916-1e70fe27d1d5",
+				"afc48b0a-6be8-44c7-8053-2afb9c7d6163",
+				"bce15d79-cae4-4e3e-987f-32eb465e245f",
+				"3900d287-c227-4e86-be97-c785145999f4",
+				"f496c03e-4b7f-4c54-b178-ade4106d3cd9",
+				"fcc95563-5413-494d-8bb7-e4c31f23f923",
+				"36d39154-4ef9-4175-b585-f2fda4e64eb9",
+				"f61df68d-3d0e-4680-814f-959727587f76",
+				"71b74ca9-9cd8-44bd-a80a-a05921bfdc03"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "4168dbfe-f520-426d-8ccf-159aa127c732",
+			"title": "Make Units",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Define Unit Templates",
+					"done": true
+				},
+				{
+					"details": "Make Unit Instance",
+					"done": true
+				},
+				{
+					"details": "Import a bunch of Images",
+					"done": true
+				},
+				{
+					"details": "Set up a couple of Unit Templates and Unit Instances",
+					"done": true
+				},
+				{
+					"details": "Go into map and force a spawn",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "2386035e-4d73-40bb-a8c1-e1c20ad15b8b",
+			"title": "Set up Spawning",
+			"description": "Set up player spawning",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Set up a unit manifest",
+					"done": true
+				},
+				{
+					"details": "make a ui to select a loadout for a map",
+					"done": true
+				},
+				{
+					"details": "spawn units",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "0cde6c1b-d8f6-4331-bdb2-f25c87d8b74d",
+			"title": "Make a shader that inverts what you're hovering over",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "afc48b0a-6be8-44c7-8053-2afb9c7d6163",
+			"title": "Clean up editor code you don't need",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "f496c03e-4b7f-4c54-b178-ade4106d3cd9",
+			"title": "Color Allies and Enemies",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "4c43e337-d087-4dea-a6cf-aad9ddabdae5",
+			"title": "Make Campaign Definition",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "53ae6ffc-93e7-4a70-b916-1e70fe27d1d5",
+			"title": "Make Stat Definitions",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "977fd6e6-3446-47d4-ac7a-824bb9b6153f",
+			"title": "Set up initialization through Main Scene",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Need Campaign Definition",
+					"done": false
+				},
+				{
+					"details": "Actually, figure out what the difference is going to be between standalone and campaign definitino",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "bce15d79-cae4-4e3e-987f-32eb465e245f",
+			"title": "The Resource reference error might be caused by loading the file and erroring out halfway through modification.",
+			"description": "The Resource reference error that I keep getting when importing data might be caused by loading the template object and then the code erroring out halfway through modification.\nLook for a way to protect against that, either by not modifying until we KNOW we're good, or by try catching your way through it",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "3900d287-c227-4e86-be97-c785145999f4",
+			"title": "Set Up Movement",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "f61df68d-3d0e-4680-814f-959727587f76",
+			"title": "Set Up Attack",
+			"description": "Will probably need a baseline Ability System definition in order to do targeting",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Define Ability System",
+					"done": true
+				},
+				{
+					"details": "Set Up Targeting System",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "fcc95563-5413-494d-8bb7-e4c31f23f923",
+			"title": "DefineTurns",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "71b74ca9-9cd8-44bd-a80a-a05921bfdc03",
+			"title": "Add a UI that shows Unit health",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Create Combat HUD",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "36d39154-4ef9-4175-b585-f2fda4e64eb9",
+			"title": "Set Up baseline Unit AI",
+			"description": "Currently, Enemies never end their turn because they have no AI. For now, Set up the baseline AI system so that we can at least end the Enemy's turns and go back to the Players",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Define Enemy AI Tempalte",
+					"done": true
+				},
+				{
+					"details": "Add Enemy AI section to CombatState",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "5d48eb77-0ba5-4888-ab7f-c02c92a582b0",
+			"title": "Redo Ability System",
+			"description": "So the really huge modular approach to abilities isn't working as I want it to. The ability stack is difficult to work with predictably, and I'm ending up writing a lot of shared code anyway. The system is already node based, there's no need for it to be this undefined. A modular component based system would be better off long term for these abilities.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Remake Ability System without a stack",
+					"done": false
+				},
+				{
+					"details": "Add a damage component",
+					"done": false
+				},
+				{
+					"details": "Add targeting components",
+					"done": false
+				},
+				{
+					"details": "Rewrite target selection code",
+					"done": false
+				}
+			]
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"39f315b3-0340-4b8b-be93-a0c21bdd0e80"
+			],
+			[
+				"99536e58-5f56-4042-aa53-40b017f895d4"
+			],
+			[
+				"0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25"
+			]
+		]
+	}
+}

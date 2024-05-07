@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://cls83uyoykivy"]
+
+[ext_resource type="Script" path="res://_Managers/GameManager.gd" id="1_4phlr"]
+[ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://_Managers/Utils/GameSettings.tres" id="2_e6gc7"]
+[ext_resource type="Resource" uid="uid://b4u6518tnwvj6" path="res://_Managers/Utils/UnitSettings.tres" id="3_d1hgw"]
+[ext_resource type="PackedScene" uid="uid://wsk41q52641b" path="res://UI/_alpha_UnitSelection/_alpha_unit_selection.tscn" id="4_eahy8"]
+[ext_resource type="PackedScene" uid="uid://cmfxqfg6s24dv" path="res://UI/_alpha_FormationUI/_alpha_formation_ui.tscn" id="5_3uh1p"]
+[ext_resource type="PackedScene" uid="uid://cepwbmuwjb32l" path="res://UI/_alpha_CombatHUD/_alpha_combat_hud.tscn" id="6_mnhix"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_4phlr")
+GameSettings = ExtResource("2_e6gc7")
+UnitSettings = ExtResource("3_d1hgw")
+AlphaUnitSelection = ExtResource("4_eahy8")
+AlphaFormationUI = ExtResource("5_3uh1p")
+CombatHUDUI = ExtResource("6_mnhix")

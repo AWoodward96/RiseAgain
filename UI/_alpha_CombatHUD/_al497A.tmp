@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cepwbmuwjb32l"]
+
+[ext_resource type="Script" path="res://UI/_alpha_CombatHUD/CombatHUD.gd" id="1_y5s67"]
+[ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://UI/_alpha_CombatHUD/turn_ui_ally.tscn" id="2_3qmod"]
+[ext_resource type="PackedScene" uid="uid://c8waiobn8d83h" path="res://UI/_alpha_CombatHUD/turn_ui_enemy.tscn" id="3_jh3v2"]
+
+[node name="CombatHUD" type="CanvasLayer"]
+script = ExtResource("1_y5s67")
+
+[node name="Full" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TurnUI_Ally" parent="CenterLeft" instance=ExtResource("2_3qmod")]
+layout_mode = 1
+
+[node name="TurnUI_Enemy" parent="CenterLeft" instance=ExtResource("3_jh3v2")]
+visible = false
+layout_mode = 1

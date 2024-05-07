@@ -1,0 +1,196 @@
+[gd_scene load_steps=10 format=3 uid="uid://cepwbmuwjb32l"]
+
+[ext_resource type="Script" path="res://UI/_alpha_CombatHUD/CombatHUD.gd" id="1_y5s67"]
+[ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://UI/_alpha_CombatHUD/turn_ui_ally.tscn" id="2_3qmod"]
+[ext_resource type="PackedScene" uid="uid://c8waiobn8d83h" path="res://UI/_alpha_CombatHUD/turn_ui_enemy.tscn" id="3_jh3v2"]
+[ext_resource type="PackedScene" uid="uid://8a67pehymjsr" path="res://UI/_alpha_CombatHUD/turn_ui_neutral.tscn" id="4_bedqt"]
+[ext_resource type="Script" path="res://UI/_alpha_CombatHUD/InspectPanel.gd" id="5_axeds"]
+[ext_resource type="Script" path="res://UI/_alpha_CombatHUD/ContextMenu.gd" id="6_ch5j8"]
+[ext_resource type="PackedScene" uid="uid://bkefu6kqmmks0" path="res://UI/_alpha_CombatHUD/context_ability_entry.tscn" id="9_42cyu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
+bg_color = Color(0, 0.713726, 0.439216, 1)
+
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "NoTargets")]
+script = ExtResource("1_y5s67")
+AllyTurnBanner = ExtResource("2_3qmod")
+EnemyTurnBanner = ExtResource("3_jh3v2")
+NeutralTurnBanner = ExtResource("4_bedqt")
+InspectUI = NodePath("BottomLeft/InspectUI")
+ContextUI = NodePath("ContextMenu")
+NoTargets = NodePath("TopCenter/NoTargets")
+
+[node name="Full" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 64.0
+offset_bottom = 64.0
+
+[node name="TopRight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -254.0
+offset_top = 64.0
+offset_right = -254.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
+[node name="CenterLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel")]
+anchors_preset = 0
+offset_top = -128.0
+offset_right = 256.0
+script = ExtResource("5_axeds")
+icon = NodePath("Icon")
+healthbar = NodePath("Health")
+healthText = NodePath("HealthText")
+namelabel = NodePath("UnitName")
+
+[node name="BG" type="ColorRect" parent="BottomLeft/InspectUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[node name="Icon" type="TextureRect" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 78.0
+offset_bottom = 79.0
+texture = SubResource("PlaceholderTexture2D_aihfj")
+expand_mode = 1
+
+[node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 148.0
+offset_bottom = 61.0
+text = "Health:"
+
+[node name="HealthText" type="Label" parent="BottomLeft/InspectUI"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 155.0
+offset_top = 39.0
+offset_right = 198.0
+offset_bottom = 62.0
+text = "25/25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="BottomLeft/InspectUI"]
+custom_minimum_size = Vector2(132, 27)
+layout_mode = 2
+offset_left = 89.0
+offset_top = 62.0
+offset_right = 221.0
+offset_bottom = 89.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
+max_value = 1.0
+show_percentage = false
+
+[node name="UnitName" type="Label" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 17.0
+offset_right = 246.0
+offset_bottom = 40.0
+text = "[UnitName]"
+
+[node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("waitButton", "entryParent")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("6_ch5j8")
+entryPrefab = ExtResource("9_42cyu")
+waitButton = NodePath("VBoxContainer/Wait")
+entryParent = NodePath("VBoxContainer")
+
+[node name="ColorRect" type="ColorRect" parent="ContextMenu"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+color = Color(0.529412, 0.529412, 0.529412, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="Wait" type="Button" parent="ContextMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Wait"
+
+[node name="TopCenter" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = -21.0
+grow_horizontal = 2
+
+[node name="NoTargets" type="Control" parent="TopCenter"]
+anchors_preset = 0
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="TopCenter/NoTargets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[node name="Label" type="Label" parent="TopCenter/NoTargets"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -11.5
+offset_right = 68.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "No Targets Found"
+
+[connection signal="pressed" from="ContextMenu/VBoxContainer/Wait" to="ContextMenu" method="OnWaitButton"]

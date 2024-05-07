@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkefu6kqmmks0"]
+
+[ext_resource type="Script" path="res://UI/_alpha_CombatHUD/ContextAbilityEntry.gd" id="1_d1317"]
+[ext_resource type="Texture2D" uid="uid://b5x51xfnbjnh7" path="res://UI/ui_ability_icon_placeholder.png" id="2_61fil"]
+
+[node name="ContextAbilityEntry" type="Button"]
+modulate = Color(0.164706, 0.607843, 0.588235, 1)
+custom_minimum_size = Vector2(0, 32)
+text = "test"
+script = ExtResource("1_d1317")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+offset_left = -1.0
+offset_right = 15.0
+offset_bottom = 32.0
+texture = ExtResource("2_61fil")

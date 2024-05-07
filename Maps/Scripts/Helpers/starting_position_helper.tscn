@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bptpxhjiocgis"]
+
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://Assets/s_ui.png" id="1_8yvnp"]
+[ext_resource type="Script" path="res://Maps/StartingPositionHelper.gd" id="2_ya8r1"]
+
+[node name="StartingPositionHelper" type="Sprite2D"]
+position = Vector2(448, 320)
+texture = ExtResource("1_8yvnp")
+centered = false
+hframes = 4
+vframes = 4
+script = ExtResource("2_ya8r1")
+Position = Vector2i(7, 5)

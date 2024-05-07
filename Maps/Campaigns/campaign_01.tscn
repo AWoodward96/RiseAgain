@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyq5ckgj34tlt"]
+
+[ext_resource type="Script" path="res://CampaignTemplate.gd" id="1_sknwm"]
+[ext_resource type="Script" path="res://Maps/Campaigns/CampaignNode.gd" id="2_notdy"]
+
+[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("Origin")]
+script = ExtResource("1_sknwm")
+Origin = NodePath("")
+
+[node name="LedgerRoot" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="LedgerRoot"]
+script = ExtResource("2_notdy")
+
+[node name="CurrentMap" type="Node2D" parent="."]
+unique_name_in_owner = true

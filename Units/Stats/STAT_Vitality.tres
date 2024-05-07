@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://bttm2g5ehq3oo"]
+
+[ext_resource type="Texture2D" uid="uid://bhv3qp8pv3e18" path="res://Units/Stats/icon_vitality.png" id="1_a24uw"]
+[ext_resource type="Script" path="res://Units/Stats/Scripts/StatTemplate.gd" id="1_xmv3t"]
+
+[resource]
+script = ExtResource("1_xmv3t")
+loc_displayName = "stat_vitality"
+loc_description = "stat_vitality_desc"
+loc_icon = ExtResource("1_a24uw")
