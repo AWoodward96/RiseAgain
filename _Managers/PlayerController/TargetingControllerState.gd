@@ -3,15 +3,21 @@ class_name TargetingControllerState
 
 var TargetData
 var currentTarget
+var abilityInstance
+var source
 
-func _Enter(_ctrl : PlayerController, data):
-	super(_ctrl, data)
+func _Enter(_ctrl : PlayerController, abilityData):
+	super(_ctrl, abilityData)
 
 	currentGrid.ShowActions()
-	if data is SkillTargetingData:
-		TargetData = data
+	if abilityData is AbilityInstance:
+		abilityInstance = abilityData
+		TargetData = abilityData.TargetingData
 		currentTarget = TargetData.TilesInRange[0]
+		source = abilityData.ownerUnit
 		ctrl.ForceReticlePosition(currentTarget.Position)
+
+		ShowDamagePreview()
 
 
 func UpdateInput(_delta):
@@ -37,8 +43,13 @@ func UpdateInput(_delta):
 		ctrl.OnTileSelected.emit(currentTarget)
 
 	if InputManager.cancelDown:
+		ClearDamagePreview()
 		ctrl.selectedAbility.CancelAbility()
 		ctrl.EnterContextMenuState()
+
+func _Exit():
+	ClearDamagePreview()
+	pass
 
 func StandartTargetingInput(_delta):
 	# Goes through InitialTargets
@@ -64,8 +75,19 @@ func StandartTargetingInput(_delta):
 		if curIndex < 0:
 			curIndex = filteredList.size() - 1
 
+	ClearDamagePreview()
 	currentTarget = filteredList[curIndex]
+	ShowDamagePreview()
+
 	ctrl.ForceReticlePosition(currentTarget.Position)
+
+func ClearDamagePreview():
+	if currentTarget != null && currentTarget.Occupant != null:
+		currentTarget.Occupant.HideDamagePreview()
+
+func ShowDamagePreview():
+	if currentTarget != null && currentTarget.Occupant != null:
+		currentTarget.Occupant.ShowDamagePreview(source, abilityInstance.DamageData)
 
 func ToString():
 	return "TargetingControllerState"

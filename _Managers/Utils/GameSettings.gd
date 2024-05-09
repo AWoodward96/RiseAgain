@@ -13,3 +13,5 @@ enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 
 @export var CharacterTileMovemementSpeed : float = 100
 
+func DamageCalculation(_atk, _def):
+	return (_atk * 1.5) - _def

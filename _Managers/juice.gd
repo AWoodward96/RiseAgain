@@ -1,7 +1,6 @@
 extends Node2D
 
-@export var HealthBarLerpSpeed = 4
-
+@export var damagePopup : PackedScene
 
 @export_category("Combat Settings")
 @export var combatSequenceWarmupTimer = 0.5
@@ -11,3 +10,16 @@ extends Node2D
 @export var combatSequenceDefenseOffset = 1
 @export var combatSequenceReturnToOriginLerp = 4
 @export var combatSequenceResetDistance = 0.1
+@export var combatSequenceTickDuration = 0.5
+
+
+@export_category("Damage Preview Settings")
+@export var damagePreviewDelayTime = 0.5
+@export var damagePreviewTickDuration = 0.5
+
+
+func CreateDamagePopup(_damageVal, _tile : Tile):
+	var popup = damagePopup.instantiate()
+	popup.SetValue(_damageVal)
+	popup.global_position = _tile.GlobalPosition
+	add_child(popup)

@@ -8,9 +8,9 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	controller = _ctrl
 	pass
 
-func Exit():  
+func Exit():
 	pass
-	
+
 func Update(_delta):
 	pass
 

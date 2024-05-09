@@ -1,11 +1,12 @@
 extends CanvasLayer
 class_name CombatHUD
 
-signal TurnStartAnimComplete
+signal BannerAnimComplete
 
 @export var AllyTurnBanner : PackedScene
 @export var EnemyTurnBanner : PackedScene
 @export var NeutralTurnBanner : PackedScene
+@export var VictoryBanner : PackedScene
 @export var InspectUI : InspectPanel
 @export var ContextUI : ContextMenu
 @export var NoTargets : Control
@@ -15,6 +16,7 @@ signal TurnStartAnimComplete
 @onready var top_right_anchor = $TopRight
 
 var map
+var ctrl : PlayerController
 
 func _ready():
 	ContextUI.visible = false
@@ -24,6 +26,7 @@ func Initialize(_map : Map, _currentTile : Tile):
 	map = _map
 	InspectUI.Initialize(_map.playercontroller)
 	ContextUI.ActionSelected.connect(OnAbilitySelected)
+	ctrl = map.playercontroller
 
 func PlayTurnStart(_allegiance : GameSettings.TeamID):
 	var scene
@@ -40,14 +43,14 @@ func PlayTurnStart(_allegiance : GameSettings.TeamID):
 
 	await createdElement.AnimationComplete
 
-	TurnStartAnimComplete.emit()
+	BannerAnimComplete.emit()
 
-#func OnTileChanged(_tile : Tile):
-	#if _tile != null && _tile.Occupant != null:
-		#InspectUI.visible = true
-		#InspectUI.Update(_tile.Occupant)
-	#else:
-		#InspectUI.set_visible(false)
+func PlayVictoryBanner():
+	var createdElement = VictoryBanner.instantiate()
+	center_left_anchor.add_child(createdElement)
+	await createdElement.AnimationComplete
+
+	BannerAnimComplete.emit()
 
 func HideInspectUI():
 	InspectUI.visible = false

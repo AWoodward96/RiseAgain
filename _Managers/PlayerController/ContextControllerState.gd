@@ -26,3 +26,6 @@ func _Exit():
 
 func ToString():
 	return "ContextControllerState"
+
+func ShowInspectUI():
+	return false

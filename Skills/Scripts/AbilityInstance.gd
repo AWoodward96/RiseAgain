@@ -32,7 +32,7 @@ func _process(_delta):
 
 # This does the damage and effects for the ability
 func ExecuteAbility(_optionalContext : AbilityContext = null):
-	var context = _optionalContext
+	context = _optionalContext
 	if context == null:
 		context = AbilityContext.new()
 		context.Construct(map, ownerUnit, self)
@@ -63,7 +63,7 @@ func PollTargets():
 		return
 
 	TargetingData.GetTilesInRange(ownerUnit, map.grid)
-	playerController.EnterTargetingState(TargetingData)
+	playerController.EnterTargetingState(self)
 	if !playerController.OnTileSelected.is_connected(OnTargetTileSelected):
 		playerController.OnTileSelected.connect(OnTargetTileSelected)
 	pass

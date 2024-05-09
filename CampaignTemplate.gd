@@ -1,25 +1,25 @@
 extends Node2D
 class_name CampaignTemplate
 
-const RNGMAX = 1000000
-@export var Origin : CampaignNode
+@export var ledger_root  : Node2D
 @export var AutoProceed : bool # When true, there is no campaign selection, we just go to the next node at index 0 depending on the ledger
-
-@onready var current_map_parent = %CurrentMap
-@onready var ledger_root = $LedgerRoot
+@export var current_map_parent : Node2D
 
 var campaignLedger : Array[int]
 var currentNode : CampaignNode
+var currentMap : Map
 
 var CampaignRng : RandomNumberGenerator
 var CampaignSeed : int
 
+var CurrentMap
+
 func StartCampaign():
 	var cachedRng = RandomNumberGenerator.new()
-	CampaignSeed = cachedRng.randi_range(0, RNGMAX)
-	CampaignRng.new()
+	CampaignSeed = cachedRng.randi()
+	CampaignRng = RandomNumberGenerator.new()
 	CampaignRng.seed = CampaignSeed
-	
+
 	campaignLedger.clear()
 	currentNode = ledger_root.get_child(0)
 	if currentNode != null && AutoProceed:
@@ -30,8 +30,23 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 	var map = _campaignNode.MapPrefab.instantiate() as Map
 	if map == null:
 		return
-	
-	var MapRNG = CampaignRng.randi(0, RNGMAX)
-	map.InitializeFromCampaign(MapRNG)
+
+	GameManager.HideLoadingScreen()
+	currentMap = map
+	var MapRNG = CampaignRng.randi()
+	currentMap.InitializeFromCampaign(self, MapRNG)
 	current_map_parent.add_child(map)
 	campaignLedger.append(_index)
+
+func MapComplete():
+	var walkedNode = ledger_root
+	for i in campaignLedger:
+		walkedNode = walkedNode.get_child(i)
+
+	# TODO: Figure out how to carry over units from one map to another
+	var nextMap
+	if AutoProceed:
+		nextMap = walkedNode.get_child(0)
+		if nextMap != null:
+			currentMap.queue_free()
+			StartMap(nextMap, 0)

@@ -2,17 +2,22 @@ extends Node2D
 class_name Map
 
 enum MAPSTATE { PreMap, Combat, PostMap }
+
+@export_category("Meta Data")
 @export var GridSize = Vector2i(22 , 15)
 @export var CameraStart : Vector2
 @export var TileSize = 64
+@export var WinCondition : MapWinCondition
+@export var tilemap : TileMap
 
 
-@onready var tilemap : TileMap = $Tilemap
-@onready var squadParent = $Squads
-@onready var StartingPositionsParent : Node2D = %StartingPositions
-@onready var SpawnersParent : Node2D = %Spawners
+@export_category("Parents")
+@export var squadParent : Node2D
+@export var StartingPositionsParent : Node2D
+@export var SpawnersParent : Node2D
 
 var MapState : MapStateBase
+var CurrentCampaign : CampaignTemplate
 
 var teams = {}
 var playercontroller : PlayerController
@@ -33,9 +38,14 @@ func _process(_delta):
 	if MapState != null:
 		MapState.Update(_delta)
 
-func InitializeFromCampaign(_rngSeed : int):
+	if WinCondition != null && MapState is CombatState:
+		if WinCondition.CheckWincon(self):
+			ChangeMapState(VictoryState.new())
+
+func InitializeFromCampaign(_campaign : CampaignTemplate, _rngSeed : int):
 	rng = RandomNumberGenerator.new()
 	rng.seed = _rngSeed
+	CurrentCampaign = _campaign
 
 	# TODO: Figure out where this actually deviates
 	InitializeStandalone()
@@ -112,10 +122,11 @@ func OnUnitDeath(_unitInstance : UnitInstance):
 		if teams[_unitInstance.UnitAllegiance].size() == 0:
 			teams.erase(_unitInstance.UnitAllegiance)
 
+	_unitInstance.CurrentTile.Occupant = null
 	_unitInstance.queue_free()
 
 func GetUnitsOnTeam(_teamBitMask : int):
-	var returnUnits : Array[UnitInstance]
+	var returnUnits : Array[UnitInstance] = []
 	for keyPair in teams:
 		if keyPair & _teamBitMask:
 			for units in teams[keyPair]:
@@ -134,18 +145,3 @@ func GetClosestUnitToUnit(_currentUnit : UnitInstance, _targetTeam : int):
 			maxDistance = path.size()
 			targetUnit = unit
 	return targetUnit
-
-
-#func _input(event):
-	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		#var mousePos = get_global_mouse_position()
-		#var tile_pos = tilemap.local_to_map(mousePos)
-		#OnTileClicked(tile_pos)
-
-
-#func OnTileClicked(a_tilePosition : Vector2i) :
-#
-	#if grid.Pathfinding.is_in_bounds(a_tilePosition.x, a_tilePosition.y) :
-		#print_debug("Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
-	#else :
-		#print_debug("Click was not in pathfinding bounds")

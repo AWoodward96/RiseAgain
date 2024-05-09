@@ -12,32 +12,32 @@
 [ext_resource type="PackedScene" uid="uid://bdslgjv74suwb" path="res://Units/Ally/Archer/VIS_Archer.tscn" id="8_hvc7e"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://Units/Ally/Archer/archer.png" id="9_f2y67"]
 
-[sub_resource type="Resource" id="Resource_1bnh6"]
+[sub_resource type="Resource" id="Resource_o4qry"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_bmgc5"]
+[sub_resource type="Resource" id="Resource_y0a5u"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("3_e1gbq")
 Value = 14
 
-[sub_resource type="Resource" id="Resource_mrxn4"]
+[sub_resource type="Resource" id="Resource_gfigx"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("4_ry5o0")
 Value = 7
 
-[sub_resource type="Resource" id="Resource_67o71"]
+[sub_resource type="Resource" id="Resource_1clcc"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("5_5fnpr")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_wv8kw"]
+[sub_resource type="Resource" id="Resource_giayu"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("6_skiv5")
 Value = 7
 
-[sub_resource type="Resource" id="Resource_3mgqj"]
+[sub_resource type="Resource" id="Resource_xcsiu"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("7_ysc31")
 Value = 6
@@ -45,9 +45,9 @@ Value = 6
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_1bnh6"), SubResource("Resource_bmgc5"), SubResource("Resource_mrxn4"), SubResource("Resource_67o71"), SubResource("Resource_wv8kw"), SubResource("Resource_3mgqj")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_o4qry"), SubResource("Resource_y0a5u"), SubResource("Resource_gfigx"), SubResource("Resource_1clcc"), SubResource("Resource_giayu"), SubResource("Resource_xcsiu")])
 Abilities = Array[PackedScene]([ExtResource("1_oqrvp")])
-DebugName = "archer"
+DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"
 loc_Description = "unit_archer_desc"
 icon = ExtResource("9_f2y67")

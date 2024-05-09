@@ -49,3 +49,6 @@ func EndMovementTracker():
 
 func ToString():
 	return "UnitMoveControllerState"
+
+func ShowInspectUI():
+	return false

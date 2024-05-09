@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyq5ckgj34tlt"]
+[gd_scene load_steps=5 format=3 uid="uid://cyq5ckgj34tlt"]
 
 [ext_resource type="Script" path="res://CampaignTemplate.gd" id="1_sknwm"]
 [ext_resource type="Script" path="res://Maps/Campaigns/CampaignNode.gd" id="2_notdy"]
+[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://Maps/c_0_map_01.tscn" id="3_hg4yy"]
+[ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://Maps/c_0_map_02.tscn" id="4_7jjce"]
 
-[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("Origin")]
+[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent")]
 script = ExtResource("1_sknwm")
-Origin = NodePath("")
+ledger_root = NodePath("LedgerRoot")
+AutoProceed = true
+current_map_parent = NodePath("CurrentMap")
 
 [node name="LedgerRoot" type="Node2D" parent="."]
 
 [node name="0" type="Node2D" parent="LedgerRoot"]
 script = ExtResource("2_notdy")
+MapPrefab = ExtResource("3_hg4yy")
+
+[node name="1" type="Node2D" parent="LedgerRoot/0"]
+script = ExtResource("2_notdy")
+MapPrefab = ExtResource("4_7jjce")
 
 [node name="CurrentMap" type="Node2D" parent="."]
 unique_name_in_owner = true

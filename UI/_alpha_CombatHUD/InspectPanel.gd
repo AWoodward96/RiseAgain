@@ -22,5 +22,12 @@ func Update(_unit : UnitInstance):
 	healthbar.value = _unit.currentHealth / _unit.maxHealth
 
 func _process(_delta):
-	if ctrl != null && ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null:
-		Update(ctrl.CurrentTile.Occupant)
+	if ctrl != null:
+		if ctrl.ControllerState.ShowInspectUI():
+			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null:
+				visible = true
+				Update(ctrl.CurrentTile.Occupant)
+			else:
+				visible = false
+		else:
+			visible = false

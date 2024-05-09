@@ -11,6 +11,8 @@ func _Enter(_ctrl : PlayerController, data):
 
 	# clear all of the actions in the grid now that a target's been selected
 	currentGrid.ClearActions()
+	ctrl.reticle.visible = false
+	ctrl.BlockMovementInput = true
 
 	waitForAnimToFinish = false
 	abilityContext = data
@@ -28,88 +30,50 @@ func _Enter(_ctrl : PlayerController, data):
 		if tile.Occupant != null:
 			unitsToTakeDamage.append(tile.Occupant)
 
+	if abilityContext.source != null:
+		# If the ability has a source, then the source is in charge of setting off the sequence
+		abilityContext.source.QueueAttackSequence(abilityContext.originTile.Position * currentGrid.CellSize, abilityContext, unitsToTakeDamage)
+	else:
+		# if the ability has no source, then the targets all take damage on their own
+		for u in unitsToTakeDamage:
+			u.QueueDefenseSequence(abilityContext.originTile.Position * currentGrid.CellSize, abilityContext.damageContext, abilityContext.source)
 
 func _Execute(_delta):
-	var goodToExecute = true
+	if abilityContext.source != null:
+		# If abillity has a source, wait until the source's stack is clear
+		if abilityContext.source.IsStackFree && DamagedUnitsClear():
+			CombatComplete()
+	else:
+		if DamagedUnitsClear():
+			CombatComplete()
+	pass
+
+func DamagedUnitsClear():
+	var r = true
 	for u in unitsToTakeDamage:
 		if u == null:
 			continue
-
 		if !u.IsStackFree:
-			goodToExecute = false
+			r = false
 
-	if abilityContext.source != null && !abilityContext.source.IsStackFree:
-		goodToExecute = false
+	return r
 
-	if goodToExecute && !waitForAnimToFinish:
-		waitForAnimToFinish = true
-		if abilityContext.source != null:
-			abilityContext.source.QueueAttackSequence(abilityContext.originTile.Position * currentGrid.CellSize)
-
-		for u in unitsToTakeDamage:
-			u.TakeDamage(abilityContext.damageContext, abilityContext.source)
-			u.QueueDefenseSequence(abilityContext.source.position)
-
-
-	if waitForAnimToFinish:
-		var finished = true
-		if abilityContext.source != null && !abilityContext.source.IsStackFree:
-			finished = false
-
-		for u in unitsToTakeDamage:
-			if u == null:
-				continue
-
-			if !u.IsStackFree:
-				finished = false
-
-		if finished:
-			ctrl.EnterSelectionState()
-			ctrl.OnCombatSequenceComplete.emit()
-	pass
-
-func WarmUpDone():
-	tempTimer.timeout.disconnect(WarmUpDone)
-	tempTimer.timeout.connect(AttackDone)
-	tempTimer.wait_time = Juice.combatSequenceTimeBetweenAttackAndDefense
-	tempTimer.start()
-
-	if abilityContext.source != null:
-		# TODO: This will need to be expanded. Some abilities target a speicic tile, or multiple units
-		abilityContext.source.QueueAttackSequence(unitsToTakeDamage[0].position)
-
-func AttackDone():
-	tempTimer.timeout.disconnect(AttackDone)
-
-	tempTimer.timeout.connect(Cooloff)
-	tempTimer.wait_time = Juice.combatSequenceCooloffTimer
-	tempTimer.start()
-
-	for u in unitsToTakeDamage:
-		if abilityContext.source != null:
-			u.TakeDamage(abilityContext.damageContext, abilityContext.source)
-			u.QueueDefenseSequence(abilityContext.source.position)
-
-func Cooloff():
-	# For now, we're hiding the health bars in cool off
-	# This will most likely want to be handled by the Unit instance's own health bars
-	for units in unitsToTakeDamage:
-		if units != null:
-			units.ShowHealthBar(false)
-
+func CombatComplete():
+	await ctrl.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout
 	if abilityContext.source != null:
 		abilityContext.source.ShowHealthBar(false)
 
-	# the sequence should be done, go back to selection state
-	# This might not want to be automatic, but we'll see
+	for u in unitsToTakeDamage:
+		if u == null:
+			continue
+		u.ShowHealthBar(false)
+
 	ctrl.EnterSelectionState()
 	ctrl.OnCombatSequenceComplete.emit()
 
-func _Exit():
-	super()
-	if tempTimer != null:
-		tempTimer.queue_free()
-		tempTimer = null
-
 func ToString():
 	return "CombatControllerState"
+
+
+func ShowInspectUI():
+	return false

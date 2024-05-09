@@ -2,12 +2,19 @@ extends UnitActionBase
 class_name UnitDefendAction
 
 var SourcePosition : Vector2
+var tween : Tween
+
+var Context : SkillDamageData
+var Source : UnitInstance
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	var dst = (position - SourcePosition).normalized()
 	dst = dst * (Juice.combatSequenceDefenseOffset * map.TileSize)
 	position += dst
+
+	_unit.TakeDamage(Context, Source)
+
 
 func _Execute(_unit : UnitInstance, delta):
 	# We should be off center now, move back towards your grid position
@@ -17,3 +24,4 @@ func _Execute(_unit : UnitInstance, delta):
 		position = desired
 		return true
 	return false
+

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=11 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://UI/_alpha_CombatHUD/CombatHUD.gd" id="1_y5s67"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://UI/_alpha_CombatHUD/turn_ui_ally.tscn" id="2_3qmod"]
 [ext_resource type="PackedScene" uid="uid://c8waiobn8d83h" path="res://UI/_alpha_CombatHUD/turn_ui_enemy.tscn" id="3_jh3v2"]
 [ext_resource type="PackedScene" uid="uid://8a67pehymjsr" path="res://UI/_alpha_CombatHUD/turn_ui_neutral.tscn" id="4_bedqt"]
+[ext_resource type="PackedScene" uid="uid://bx0ahfyy2rnc3" path="res://UI/_alpha_CombatHUD/victory_banner.tscn" id="5_0iw7i"]
 [ext_resource type="Script" path="res://UI/_alpha_CombatHUD/InspectPanel.gd" id="5_axeds"]
 [ext_resource type="Script" path="res://UI/_alpha_CombatHUD/ContextMenu.gd" id="6_ch5j8"]
 [ext_resource type="PackedScene" uid="uid://bkefu6kqmmks0" path="res://UI/_alpha_CombatHUD/context_ability_entry.tscn" id="9_42cyu"]
@@ -18,6 +19,7 @@ script = ExtResource("1_y5s67")
 AllyTurnBanner = ExtResource("2_3qmod")
 EnemyTurnBanner = ExtResource("3_jh3v2")
 NeutralTurnBanner = ExtResource("4_bedqt")
+VictoryBanner = ExtResource("5_0iw7i")
 InspectUI = NodePath("BottomLeft/InspectUI")
 ContextUI = NodePath("ContextMenu")
 NoTargets = NodePath("TopCenter/NoTargets")

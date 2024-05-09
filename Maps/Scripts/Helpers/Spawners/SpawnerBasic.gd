@@ -4,7 +4,8 @@ extends SpawnerBase
 @export var UnitToSpawn : UnitTemplate :
 	set(value):
 		UnitToSpawn = value
-		name = PREFIX + UnitToSpawn.DebugName
+		if value != null:
+			name = PREFIX + UnitToSpawn.DebugName
 
 func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 	if UnitTemplate == null || !Enabled:

@@ -4,9 +4,12 @@ class_name UnitInstance
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
 @export var itemsParent : Node2D
+
 @onready var health_bar = %HealthBar
 @onready var hp_val = %"HP Val"
 @onready var health_bar_parent = %HealthBarParent
+
+@onready var damage_indicator: Node2D = $DamageIndicator
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
@@ -28,13 +31,15 @@ var visual
 var map : Map
 var currentHealth
 
+var takeDamageTween : Tween
+
 var maxHealth :
 	get:
 		return currentStats[GameManager.GameSettings.HealthStat]
 
 var healthPerc :
 	get:
-		return currentHealth / maxHealth
+		return currentHealth as float / maxHealth
 
 var IsStackFree:
 	get:
@@ -52,12 +57,15 @@ var Activated : bool :
 
 func _ready():
 	ShowHealthBar(false)
+	HideDamagePreview()
+	damage_indicator.Initialize(self)
 
 func Initialize(_unitTemplate : UnitTemplate, _map: Map, _gridLocation : Vector2i, _allegiance : GameSettings.TeamID) :
 	GridPosition = _gridLocation
 	Template = _unitTemplate
 	UnitAllegiance = _allegiance
 	map = _map
+
 
 	CreateVisual()
 	CreateAbilities()
@@ -85,13 +93,6 @@ func _physics_process(delta):
 	if CurrentAction != null:
 		if CurrentAction._Execute(self, delta):
 			PopAction()
-	#match AIState:
-		#CharacterAIState.Moving:
-			#pass
-		#CharacterAIState.Attacking:
-			#ReturnToGridPosition(delta)
-		#CharacterAIState.Defending:
-			#ReturnToGridPosition(delta)
 	pass
 
 func ReturnToGridPosition(delta):
@@ -101,9 +102,6 @@ func ReturnToGridPosition(delta):
 	if position.distance_squared_to(desired) < (Juice.combatSequenceReturnToOriginLerp * Juice.combatSequenceReturnToOriginLerp):
 		position = desired
 
-func _process(_delta):
-	if health_bar_parent.visible:
-		health_bar.value = lerp(health_bar.value, currentHealth, Juice.HealthBarLerpSpeed)
 
 func InitializeStats():
 	for stat in Template.BaseStats:
@@ -111,7 +109,7 @@ func InitializeStats():
 
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
 		if currentStats.has(derivedStatDef.ParentStat):
-			currentStats[derivedStatDef.Template] = currentStats[derivedStatDef.ParentStat] * derivedStatDef.Ratio
+			currentStats[derivedStatDef.Template] = floori(currentStats[derivedStatDef.ParentStat] * derivedStatDef.Ratio)
 
 	currentHealth = currentStats[GameManager.GameSettings.HealthStat]
 
@@ -167,7 +165,26 @@ func QueueEndTurn():
 func EndTurn():
 	Activated = false
 
-func TakeDamage(_context : SkillDamageData, _source):
+func TakeDamage(_context : SkillDamageData, _source, _instantaneous : bool = false):
+	var damage = CalculateDamage(_context, _source)
+
+	Juice.CreateDamagePopup(damage, CurrentTile)
+
+	if !_instantaneous:
+		ShowHealthBar(true)
+		takeDamageTween = get_tree().create_tween()
+		takeDamageTween.tween_method(UpdateHealthBarTween, currentHealth, currentHealth - damage, Juice.combatSequenceTickDuration)
+		takeDamageTween.tween_callback(DamageTweenComplete.bind(damage))
+	else:
+		DamageTweenComplete(damage)
+	pass
+
+func DamageTweenComplete(_damage):
+	currentHealth -= _damage
+	health_bar.value = healthPerc
+	CheckDeath()
+
+func CalculateDamage(_context : SkillDamageData, _source):
 	var damage
 	var defensiveStatValue = _context.DoMod(currentStats[_context.DefensiveStat], _context.DefensiveMod, _context.DefensiveModType)
 
@@ -175,38 +192,53 @@ func TakeDamage(_context : SkillDamageData, _source):
 	if sourceAsUnit != null:
 		# If Source is not equal to null, then the damage will be based on that units agressive stat
 		var agressiveStatValue = _context.DoMod(sourceAsUnit.currentStats[_context.AgressiveStat], _context.AgressiveMod, _context.AgressiveModType)
-		damage = DamageCalculation(agressiveStatValue, defensiveStatValue)
+		damage =  GameManager.GameSettings.DamageCalculation(agressiveStatValue, defensiveStatValue)
 	else:
 		# If Source is null, then damage will be based on _context's FlatValue property, which is unaffected by modifiers
-		damage = DamageCalculation(_context.FlatValue, defensiveStatValue)
+		damage = GameManager.GameSettings.DamageCalculation(_context.FlatValue, defensiveStatValue)
 		pass
-
-	currentHealth -= damage
-	CheckDeath()
-	pass
+	return damage
 
 func CheckDeath():
 	if currentHealth <= 0:
 		map.OnUnitDeath(self)
 
-func DamageCalculation(_atk, _def):
-	return (_atk * 1.5) - _def
+func UpdateHealthBarTween(value):
+	hp_val.text = str("%02d/%02d" % [max(value, 0), maxHealth])
+	health_bar.value = max(value as float, 0) / maxHealth as float
+	pass
 
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible
 	if _visible:
 		hp_val.text = str(currentHealth)
-		health_bar.value = currentHealth / maxHealth
+		health_bar.value = healthPerc
 
-func QueueAttackSequence(_destination : Vector2):
+func QueueAttackSequence(_destination : Vector2, _context : AbilityContext, _unitsToTakeDamage : Array[UnitInstance]):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
+	attackAction.Context = _context
+	attackAction.UnitsToTakeDamage = _unitsToTakeDamage
 	ActionStack.append(attackAction)
 	if CurrentAction == null:
 		PopAction()
-func QueueDefenseSequence(_damageSourcePosition : Vector2):
+
+func QueueDefenseSequence(_damageSourcePosition : Vector2, _damageContext : SkillDamageData, _source : UnitInstance):
 	var defendAction = UnitDefendAction.new()
 	defendAction.SourcePosition = _damageSourcePosition
+	defendAction.Context = _damageContext
+	defendAction.Source = _source
 	ActionStack.append(defendAction)
 	if CurrentAction == null:
 		PopAction()
+
+
+func ShowDamagePreview(_source : UnitInstance, _damageData : SkillDamageData):
+	damage_indicator.visible = true
+	damage_indicator.PreviewDamage(_damageData, _source)
+	pass
+
+func HideDamagePreview():
+	damage_indicator.visible = false
+	damage_indicator.PreviewCanceled()
+	pass

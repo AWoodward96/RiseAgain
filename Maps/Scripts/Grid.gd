@@ -38,6 +38,7 @@ func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
 			var index = y * Width + x
 			GridArr[index] = Tile.new()
 			GridArr[index].Position = Vector2i(x,y)
+			GridArr[index].GlobalPosition = Vector2(x * CellSize, y *CellSize)
 			var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
 			if data:
 				if data.get_collision_polygons_count(0) > 0 :

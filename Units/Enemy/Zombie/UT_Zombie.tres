@@ -12,32 +12,32 @@
 [ext_resource type="PackedScene" uid="uid://k3c8cr27ke30" path="res://Units/Enemy/Zombie/VIS_Zombie.tscn" id="8_s1fg8"]
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://Units/Enemy/Zombie/zombie.png" id="9_go1ao"]
 
-[sub_resource type="Resource" id="Resource_gauu3"]
+[sub_resource type="Resource" id="Resource_d7upl"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("1_ggk7c")
-Value = 5
+Value = 6
 
-[sub_resource type="Resource" id="Resource_m4y6w"]
+[sub_resource type="Resource" id="Resource_h3v8x"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("3_tiv5t")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_nq20u"]
+[sub_resource type="Resource" id="Resource_0p854"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("4_sod5c")
-Value = 5
+Value = 7
 
-[sub_resource type="Resource" id="Resource_qr4fp"]
+[sub_resource type="Resource" id="Resource_xcd0u"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("5_hdrp8")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_4seqt"]
+[sub_resource type="Resource" id="Resource_psot5"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("6_wmulv")
 Value = 5
 
-[sub_resource type="Resource" id="Resource_3egys"]
+[sub_resource type="Resource" id="Resource_4e3ru"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("7_vt4dr")
 Value = 6
@@ -45,9 +45,9 @@ Value = 6
 [resource]
 script = ExtResource("1_i4cy5")
 VisualPrefab = ExtResource("8_s1fg8")
-BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_gauu3"), SubResource("Resource_m4y6w"), SubResource("Resource_nq20u"), SubResource("Resource_qr4fp"), SubResource("Resource_4seqt"), SubResource("Resource_3egys")])
+BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_d7upl"), SubResource("Resource_h3v8x"), SubResource("Resource_0p854"), SubResource("Resource_xcd0u"), SubResource("Resource_psot5"), SubResource("Resource_4e3ru")])
 Abilities = Array[PackedScene]([ExtResource("1_v6b3q")])
-DebugName = ""
+DebugName = "Zombie"
 loc_DisplayName = "unit_zombie_name"
 loc_Description = "unit_zombie_desc"
 icon = ExtResource("9_go1ao")

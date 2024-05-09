@@ -74,3 +74,6 @@ func ConvertGlobalPositionToGridPosition():
 
 func ToString():
 	return "PlayerControllerState_Base"
+
+func ShowInspectUI():
+	return true

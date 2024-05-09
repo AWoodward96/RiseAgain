@@ -7,6 +7,7 @@ var currentTurn = GameSettings.TeamID
 var combatHud
 var unitTurnStack : Array[UnitInstance]
 var currentUnitsTurn : UnitInstance
+var turnBannerOpen : bool
 
 var IsAllyTurn : bool :
 	get :
@@ -22,7 +23,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	ActivateAll()
 
 func Update(_delta):
-	if controller.BlockMovementInput:
+	if turnBannerOpen:
 		return
 
 	match currentTurn:
@@ -54,8 +55,10 @@ func StartTurn(_turn : GameSettings.TeamID):
 
 	controller.BlockMovementInput = true
 	combatHud.PlayTurnStart(_turn)
-	await combatHud.TurnStartAnimComplete
+	turnBannerOpen = true
+	await combatHud.BannerAnimComplete
 	controller.BlockMovementInput = false
+	turnBannerOpen = false
 
 	if _turn == GameSettings.TeamID.ALLY:
 		controller.EnterSelectionState()

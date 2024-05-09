@@ -11,8 +11,7 @@
 			"uuid": "39f315b3-0340-4b8b-be93-a0c21bdd0e80",
 			"title": "Todo",
 			"tasks": [
-				"977fd6e6-3446-47d4-ac7a-824bb9b6153f",
-				"5d48eb77-0ba5-4888-ab7f-c02c92a582b0"
+				"977fd6e6-3446-47d4-ac7a-824bb9b6153f"
 			]
 		},
 		{
@@ -30,6 +29,8 @@
 				"4c43e337-d087-4dea-a6cf-aad9ddabdae5",
 				"53ae6ffc-93e7-4a70-b916-1e70fe27d1d5",
 				"afc48b0a-6be8-44c7-8053-2afb9c7d6163",
+				"6115c3d3-3f19-4bbc-9fbf-9514ecddc244",
+				"5d48eb77-0ba5-4888-ab7f-c02c92a582b0",
 				"bce15d79-cae4-4e3e-987f-32eb465e245f",
 				"3900d287-c227-4e86-be97-c785145999f4",
 				"f496c03e-4b7f-4c54-b178-ade4106d3cd9",
@@ -213,19 +214,43 @@
 			"steps": [
 				{
 					"details": "Remake Ability System without a stack",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Add a damage component",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Add targeting components",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Rewrite target selection code",
-					"done": false
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "6115c3d3-3f19-4bbc-9fbf-9514ecddc244",
+			"title": "Update Attack / Defense Sequence",
+			"description": "The seqence is overly complicated. Defending users have their own AI state, when they don't need it. Attackers should tell all defenders they're being attacked, and then a pre-attack sequence should play, damage should be dealt, hp values should go down, and THEN the unit should die. It shouldn't happen all at once.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Attackers Tell Defenders what's happening",
+					"done": true
+				},
+				{
+					"details": "Make damage dealt particle",
+					"done": true
+				},
+				{
+					"details": "Make defenders wait until hp bar hits 0 to die",
+					"done": true
+				},
+				{
+					"details": "Make disolve effect for dead units",
+					"done": true
 				}
 			]
 		}

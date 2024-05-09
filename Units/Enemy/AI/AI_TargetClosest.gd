@@ -54,6 +54,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# IF WE'RE ALREADY STANDING ON AN ACTIONABLE TILE, JUST STAY THERE, NO PATHFINDING NECESSARY
 	for option in actionableTiles:
 		if option.Occupant == unit:
+			selectedTile = unit.CurrentTile
 			TryCombat()
 			return
 

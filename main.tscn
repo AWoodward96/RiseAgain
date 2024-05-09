@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://c76vc288ovh8q"]
+[gd_scene load_steps=3 format=3 uid="uid://c76vc288ovh8q"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_q6lq6"]
+[ext_resource type="PackedScene" uid="uid://cyq5ckgj34tlt" path="res://Maps/Campaigns/campaign_01.tscn" id="2_aqk6j"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_q6lq6")
+DEBUG_Campaign = ExtResource("2_aqk6j")

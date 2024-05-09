@@ -12,32 +12,32 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://Units/Stats/STAT_Movement.tres" id="7_im2w5"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://Units/Enemy/WolfPup/wolf_cub.png" id="9_g5fak"]
 
-[sub_resource type="Resource" id="Resource_gauu3"]
+[sub_resource type="Resource" id="Resource_wkg3e"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("1_uma5a")
 Value = 5
 
-[sub_resource type="Resource" id="Resource_m4y6w"]
+[sub_resource type="Resource" id="Resource_ogobv"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("3_3eixl")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_nq20u"]
+[sub_resource type="Resource" id="Resource_wngq8"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("4_7icxw")
 Value = 5
 
-[sub_resource type="Resource" id="Resource_qr4fp"]
+[sub_resource type="Resource" id="Resource_ivbou"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("5_jasgv")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_4seqt"]
+[sub_resource type="Resource" id="Resource_xbd4m"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("6_trrxd")
 Value = 5
 
-[sub_resource type="Resource" id="Resource_3egys"]
+[sub_resource type="Resource" id="Resource_03eho"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("7_im2w5")
 Value = 6
@@ -45,9 +45,9 @@ Value = 6
 [resource]
 script = ExtResource("1_pk4jk")
 VisualPrefab = ExtResource("1_2ldp6")
-BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_gauu3"), SubResource("Resource_m4y6w"), SubResource("Resource_nq20u"), SubResource("Resource_qr4fp"), SubResource("Resource_4seqt"), SubResource("Resource_3egys")])
+BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_wkg3e"), SubResource("Resource_ogobv"), SubResource("Resource_wngq8"), SubResource("Resource_ivbou"), SubResource("Resource_xbd4m"), SubResource("Resource_03eho")])
 Abilities = Array[PackedScene]([ExtResource("1_xpx7t")])
-DebugName = ""
+DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"
 loc_Description = "unit_wolfpup_desc"
 icon = ExtResource("9_g5fak")

@@ -1,5 +1,6 @@
 class_name Tile
 
+var GlobalPosition
 var Position
 var IsWall
 
