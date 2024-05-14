@@ -12,32 +12,32 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://Units/Stats/STAT_Movement.tres" id="7_im2w5"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://Units/Enemy/WolfPup/wolf_cub.png" id="9_g5fak"]
 
-[sub_resource type="Resource" id="Resource_wkg3e"]
+[sub_resource type="Resource" id="Resource_4vd7f"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("1_uma5a")
-Value = 5
+Value = 6
 
-[sub_resource type="Resource" id="Resource_ogobv"]
+[sub_resource type="Resource" id="Resource_o8y7m"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("3_3eixl")
-Value = 10
+Value = 6
 
-[sub_resource type="Resource" id="Resource_wngq8"]
+[sub_resource type="Resource" id="Resource_7hew3"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("4_7icxw")
-Value = 5
+Value = 8
 
-[sub_resource type="Resource" id="Resource_ivbou"]
+[sub_resource type="Resource" id="Resource_gy622"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("5_jasgv")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_xbd4m"]
+[sub_resource type="Resource" id="Resource_3ckk6"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("6_trrxd")
-Value = 5
+Value = 8
 
-[sub_resource type="Resource" id="Resource_03eho"]
+[sub_resource type="Resource" id="Resource_63f8m"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("7_im2w5")
 Value = 6
@@ -45,7 +45,7 @@ Value = 6
 [resource]
 script = ExtResource("1_pk4jk")
 VisualPrefab = ExtResource("1_2ldp6")
-BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_wkg3e"), SubResource("Resource_ogobv"), SubResource("Resource_wngq8"), SubResource("Resource_ivbou"), SubResource("Resource_xbd4m"), SubResource("Resource_03eho")])
+BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_4vd7f"), SubResource("Resource_o8y7m"), SubResource("Resource_7hew3"), SubResource("Resource_gy622"), SubResource("Resource_3ckk6"), SubResource("Resource_63f8m")])
 Abilities = Array[PackedScene]([ExtResource("1_xpx7t")])
 DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"

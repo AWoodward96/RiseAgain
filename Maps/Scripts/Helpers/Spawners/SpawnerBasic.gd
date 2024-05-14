@@ -12,4 +12,4 @@ func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 		return
 
 	var unit = _map.InitializeUnit(UnitToSpawn, Position, Allegiance)
-	unit.SetAI(AIBehavior)
+	unit.SetAI(AIBehavior, AggroBehavior)

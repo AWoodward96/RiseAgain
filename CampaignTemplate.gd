@@ -12,13 +12,17 @@ var currentMap : Map
 var CampaignRng : RandomNumberGenerator
 var CampaignSeed : int
 
+var CurrentRoster : Array[UnitTemplate]
+
 var CurrentMap
 
-func StartCampaign():
+func StartCampaign(_roster : Array[UnitTemplate]):
 	var cachedRng = RandomNumberGenerator.new()
 	CampaignSeed = cachedRng.randi()
 	CampaignRng = RandomNumberGenerator.new()
 	CampaignRng.seed = CampaignSeed
+
+	CurrentRoster = _roster
 
 	campaignLedger.clear()
 	currentNode = ledger_root.get_child(0)
@@ -34,7 +38,19 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 	GameManager.HideLoadingScreen()
 	currentMap = map
 	var MapRNG = CampaignRng.randi()
-	currentMap.InitializeFromCampaign(self, MapRNG)
+
+
+	currentMap.PreInitialize()
+	if CurrentRoster.size() == 0:
+		var ui = GameManager.AlphaUnitSelection.instantiate()
+		ui.Initialize(currentMap.startingPositions.size())
+		ui.OnRosterSelected.connect(OnRosterSelected)
+		add_child(ui)
+
+		#waits until that UI is closed, when the squad is all selected
+		await ui.OnRosterSelected
+
+	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNG)
 	current_map_parent.add_child(map)
 	campaignLedger.append(_index)
 
@@ -50,3 +66,6 @@ func MapComplete():
 		if nextMap != null:
 			currentMap.queue_free()
 			StartMap(nextMap, 0)
+
+func OnRosterSelected(_roster : Array[UnitTemplate]):
+	CurrentRoster = _roster

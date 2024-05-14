@@ -30,9 +30,23 @@ var startingPositions : Array[Vector2i]
 var spawners : Array[SpawnerBase]
 
 func _ready():
+	PreInitialize()
 	if get_parent() == get_tree().root:
 		# I'm running the show by myself, so initialize a squad
 		InitializeStandalone()
+
+func PreInitialize():
+	startingPositions.clear()
+	for c in StartingPositionsParent.get_children():
+		var helper = c as StartingPositionsHelper
+		if helper != null:
+			startingPositions.append(helper.Position)
+
+	spawners.clear()
+	for s in SpawnersParent.get_children():
+		var spawner = s as SpawnerBase
+		if spawner != null:
+			spawners.append(spawner)
 
 func _process(_delta):
 	if MapState != null:
@@ -42,20 +56,22 @@ func _process(_delta):
 		if WinCondition.CheckWincon(self):
 			ChangeMapState(VictoryState.new())
 
-func InitializeFromCampaign(_campaign : CampaignTemplate, _rngSeed : int):
+func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitTemplate], _rngSeed : int):
 	rng = RandomNumberGenerator.new()
 	rng.seed = _rngSeed
 	CurrentCampaign = _campaign
 
-	# TODO: Figure out where this actually deviates
-	InitializeStandalone()
+	InitializeGrid()
+	OnRosterSelected(_roster)
+	InitializePlayerController()
+	ChangeMapState(PreMapState.new())
 
 func InitializeStandalone():
 	# make the grid first so that we know where the starting positions are
 	InitializeGrid()
 
 	var ui = GameManager.AlphaUnitSelection.instantiate()
-	ui.Initialize(self)
+	ui.Initialize(startingPositions.size())
 	ui.OnRosterSelected.connect(OnRosterSelected)
 	add_child(ui)
 
@@ -91,21 +107,11 @@ func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettings.Te
 		teams[_allegiance].append(_unitInstance)
 
 
+
 func InitializeGrid():
 	grid = Grid.new()
 	grid.Init(GridSize.x, GridSize.y, tilemap, TileSize)
 
-	startingPositions.clear()
-	for c in StartingPositionsParent.get_children():
-		var helper = c as StartingPositionsHelper
-		if helper != null:
-			startingPositions.append(helper.Position)
-
-	spawners.clear()
-	for s in SpawnersParent.get_children():
-		var spawner = s as SpawnerBase
-		if spawner != null:
-			spawners.append(spawner)
 
 func ChangeMapState(_newState : MapStateBase):
 	if MapState != null:

@@ -117,9 +117,16 @@ func UpdateEnemyTurn(_delta):
 		return
 
 	if currentUnitsTurn == null:
-		currentUnitsTurn = unitTurnStack.pop_front()
+		currentUnitsTurn = unitTurnStack.pop_front() as UnitInstance
 		if currentUnitsTurn != null:
-			currentUnitsTurn.AI.StartTurn(map, currentUnitsTurn)
+			if !currentUnitsTurn.IsAggrod:
+				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
+			
+			if currentUnitsTurn.IsAggrod:
+				currentUnitsTurn.AI.StartTurn(map, currentUnitsTurn)
+			else:
+				currentUnitsTurn.QueueEndTurn()
+				currentUnitsTurn = null
 	else:
 		currentUnitsTurn.AI.RunTurn()
 		if !currentUnitsTurn.Activated && currentUnitsTurn.IsStackFree:

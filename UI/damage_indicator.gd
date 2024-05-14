@@ -25,7 +25,7 @@ func PreviewDamage(_damageContext : SkillDamageData, _sourceUnit : UnitInstance,
 	damageBeingDealt = myUnit.CalculateDamage(_damageContext, _sourceUnit)
 	damage_being_dealt.text = str(damageBeingDealt)
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	resultingHP = myUnit.currentHealth - damageBeingDealt
+	resultingHP = clamp(myUnit.currentHealth - damageBeingDealt, 0, myUnit.maxHealth)
 
 	death_indicator.visible = resultingHP <= 0
 

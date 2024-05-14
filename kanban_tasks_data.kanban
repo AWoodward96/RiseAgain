@@ -11,13 +11,18 @@
 			"uuid": "39f315b3-0340-4b8b-be93-a0c21bdd0e80",
 			"title": "Todo",
 			"tasks": [
-				"977fd6e6-3446-47d4-ac7a-824bb9b6153f"
+				"977fd6e6-3446-47d4-ac7a-824bb9b6153f",
+				"2d79f9a5-b236-46a5-859f-d7b08488624c",
+				"e03726f4-2ee9-4082-990f-9b270d004000",
+				"0fb93970-23ff-4853-a7f0-c0abfad4f99a"
 			]
 		},
 		{
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"d98202a3-8315-40ce-a9a5-5b4b4df24b08"
+			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
@@ -28,6 +33,8 @@
 				"2386035e-4d73-40bb-a8c1-e1c20ad15b8b",
 				"4c43e337-d087-4dea-a6cf-aad9ddabdae5",
 				"53ae6ffc-93e7-4a70-b916-1e70fe27d1d5",
+				"cf989439-9735-4c55-8d13-918f5462b82f",
+				"6bb2589f-9a76-4e72-b9be-6f8006582c09",
 				"afc48b0a-6be8-44c7-8053-2afb9c7d6163",
 				"6115c3d3-3f19-4bbc-9fbf-9514ecddc244",
 				"5d48eb77-0ba5-4888-ab7f-c02c92a582b0",
@@ -253,6 +260,55 @@
 					"done": true
 				}
 			]
+		},
+		{
+			"uuid": "6bb2589f-9a76-4e72-b9be-6f8006582c09",
+			"title": "Contiguous Squads",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "d98202a3-8315-40ce-a9a5-5b4b4df24b08",
+			"title": "Third Map",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "5e8077a6-047c-40bd-99f7-db95343e23f8",
+			"title": "Campaign Selection UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "cf989439-9735-4c55-8d13-918f5462b82f",
+			"title": "Write Aggro Code",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2d79f9a5-b236-46a5-859f-d7b08488624c",
+			"title": "Camera should focus on Enemies during their turn",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "e03726f4-2ee9-4082-990f-9b270d004000",
+			"title": "Players shouldn't be able to do anything during Enemies turn",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "0fb93970-23ff-4853-a7f0-c0abfad4f99a",
+			"title": "InspectUI should switch sides when blocking important data",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
 		}
 	],
 	"layout": {

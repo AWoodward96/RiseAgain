@@ -7,4 +7,4 @@ func _ready():
 		var campaign = DEBUG_Campaign.instantiate() as CampaignTemplate
 		if campaign != null:
 			add_child(campaign)
-			campaign.StartCampaign()
+			campaign.StartCampaign([])

@@ -12,32 +12,32 @@
 [ext_resource type="PackedScene" uid="uid://k3c8cr27ke30" path="res://Units/Enemy/Zombie/VIS_Zombie.tscn" id="8_s1fg8"]
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://Units/Enemy/Zombie/zombie.png" id="9_go1ao"]
 
-[sub_resource type="Resource" id="Resource_d7upl"]
+[sub_resource type="Resource" id="Resource_15ptp"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("1_ggk7c")
-Value = 6
+Value = 8
 
-[sub_resource type="Resource" id="Resource_h3v8x"]
+[sub_resource type="Resource" id="Resource_hu5ou"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("3_tiv5t")
-Value = 10
+Value = 6
 
-[sub_resource type="Resource" id="Resource_0p854"]
+[sub_resource type="Resource" id="Resource_537xi"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("4_sod5c")
-Value = 7
+Value = 8
 
-[sub_resource type="Resource" id="Resource_xcd0u"]
+[sub_resource type="Resource" id="Resource_whdck"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("5_hdrp8")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_psot5"]
+[sub_resource type="Resource" id="Resource_tqqdx"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("6_wmulv")
-Value = 5
+Value = 8
 
-[sub_resource type="Resource" id="Resource_4e3ru"]
+[sub_resource type="Resource" id="Resource_dhsoq"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("7_vt4dr")
 Value = 6
@@ -45,7 +45,7 @@ Value = 6
 [resource]
 script = ExtResource("1_i4cy5")
 VisualPrefab = ExtResource("8_s1fg8")
-BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_d7upl"), SubResource("Resource_h3v8x"), SubResource("Resource_0p854"), SubResource("Resource_xcd0u"), SubResource("Resource_psot5"), SubResource("Resource_4e3ru")])
+BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_15ptp"), SubResource("Resource_hu5ou"), SubResource("Resource_537xi"), SubResource("Resource_whdck"), SubResource("Resource_tqqdx"), SubResource("Resource_dhsoq")])
 Abilities = Array[PackedScene]([ExtResource("1_v6b3q")])
 DebugName = "Zombie"
 loc_DisplayName = "unit_zombie_name"

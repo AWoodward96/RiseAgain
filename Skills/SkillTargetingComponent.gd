@@ -26,9 +26,16 @@ func GetAdditionalTileTargets(_tile : Tile):
 
 func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
 	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
+
+	if Type == TargetingType.Simple:
+		options = FilterByTargettingFlags(options)
+
 	options.sort_custom(OrderTargets)
 	TilesInRange = options
 	pass
+
+func FilterByTargettingFlags(_options : Array[Tile]):
+	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && o.Occupant.UnitAllegiance & TargetingFlags))
 
 # Orders the Tiles based on if they're currently occupied by another unit
 func OrderTargets(a : Tile, b : Tile):

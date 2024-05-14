@@ -47,6 +47,8 @@ var IsStackFree:
 
 
 var AI # Only used by units initialized via a spawner
+var AggroType # Only used by units initialized via a spawner
+var IsAggrod
 
 var Activated : bool :
 	set(_value):
@@ -74,8 +76,14 @@ func Initialize(_unitTemplate : UnitTemplate, _map: Map, _gridLocation : Vector2
 	# has to be after CreateVisual
 	Activated = true
 
-func SetAI(_ai : AIBehaviorBase):
+func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
+	IsAggrod = false
+	
+	if _aggro == null:
+		AggroType = AlwaysAggro.new()
+	else:
+		AggroType = _aggro
 
 func CreateVisual():
 	# we want a clean child, so remove anything that this might have used
@@ -181,7 +189,13 @@ func TakeDamage(_context : SkillDamageData, _source, _instantaneous : bool = fal
 
 func DamageTweenComplete(_damage):
 	currentHealth -= _damage
+	currentHealth = clamp(currentHealth, 0, maxHealth)
 	health_bar.value = healthPerc
+	
+	# For AI enemies, check if this damage would aggro them
+	if _damage > 0 && AggroType is AggroOnDamage:
+		IsAggrod = true
+		
 	CheckDeath()
 
 func CalculateDamage(_context : SkillDamageData, _source):
@@ -204,8 +218,8 @@ func CheckDeath():
 		map.OnUnitDeath(self)
 
 func UpdateHealthBarTween(value):
-	hp_val.text = str("%02d/%02d" % [max(value, 0), maxHealth])
-	health_bar.value = max(value as float, 0) / maxHealth as float
+	hp_val.text = str("%02d/%02d" % [clamp(value, 0, maxHealth), maxHealth])
+	health_bar.value = clampf(value, 0, maxHealth) / maxHealth as float
 	pass
 
 func ShowHealthBar(_visible : bool):
@@ -242,3 +256,20 @@ func HideDamagePreview():
 	damage_indicator.visible = false
 	damage_indicator.PreviewCanceled()
 	pass
+
+func GetEffectiveAttackRange():
+	if Abilities.size() == 0:
+		return Vector2i(0,0)
+	
+	# Default range should start at 1 1 and go up from there
+	var range = Vector2i(1, 1)
+	for a in Abilities:
+		if a == null:
+			continue
+		
+		var abilityRange = a.GetRange()
+		if abilityRange != Vector2i(0,0):
+			if range.y < abilityRange.y:
+				range.y = abilityRange.y
+	
+	return range

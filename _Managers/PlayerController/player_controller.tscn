@@ -44,9 +44,11 @@ _data = {
 "idle": SubResource("Animation_umss5")
 }
 
-[node name="PlayerController" type="Node2D"]
+[node name="PlayerController" type="Node2D" node_paths=PackedStringArray("camera", "reticle")]
 script = ExtResource("1_4ta57")
 viewportTilePadding = 3
+camera = NodePath("MainCamera")
+reticle = NodePath("Reticle")
 
 [node name="Reticle" type="Node2D" parent="."]
 unique_name_in_owner = true

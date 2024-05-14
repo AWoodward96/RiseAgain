@@ -13,8 +13,8 @@ var unitSettings : UnitSettings
 var workingSquad : Array[UnitTemplate]
 var maxSquadSize = 100 #defaulting to 100. If initialized by a map, this is set
 
-func Initialize(_map : Map):
-	maxSquadSize = _map.startingPositions.size()
+func Initialize(_maxSquadSize : int):
+	maxSquadSize = _maxSquadSize
 
 func _ready():
 	unitSettings = GameManager.UnitSettings
@@ -33,7 +33,7 @@ func CreateUnitEntries():
 		entry.OnUnitSelected.connect(OnUnitEntrySelected.bind(unit))
 		unitEntryParent.add_child(entry)
 		createdUnitEntries.append(entry)
-	
+
 	if createdUnitEntries.size() > 0:
 		createdUnitEntries[0].grab_focus()
 
@@ -41,7 +41,7 @@ func CreateUnitEntries():
 func UpdateSquadList():
 	for entry in squadEntryParent.get_children():
 		entry.queue_free()
-	
+
 	for unit in workingSquad:
 		var entry = SquadEntryPrefab.instantiate()
 		entry.Initialize(unit)

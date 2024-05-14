@@ -4,6 +4,8 @@ class_name GameSettings
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 
+@export var CampaignManifest : Array[PackedScene]
+
 @export var PlayerControllerPrefab : PackedScene
 @export var DerivedStatDefinitions : Array[DerivedStatDef]
 

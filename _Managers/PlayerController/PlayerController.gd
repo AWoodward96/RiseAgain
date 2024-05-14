@@ -6,8 +6,9 @@ signal OnTileSelected(_tile)
 signal OnCombatSequenceComplete()
 
 @export var viewportTilePadding = 2
-@onready var camera = $%MainCamera
-@onready var reticle = %Reticle
+@export var camera : Camera2D
+@export var reticle : Node2D
+
 @onready var movement_tracker : Line2D = %MovementTracker
 
 var ControllerState : PlayerControllerState
@@ -138,6 +139,7 @@ func OnActionSelected(_ability : AbilityInstance):
 		ForceReticlePosition(selectedUnit.GridPosition)
 		selectedUnit.EndTurn()
 		ClearSelectionData()
+		EnterSelectionState()
 	else:
 		# attempt to execute the ability
 		selectedAbility = _ability

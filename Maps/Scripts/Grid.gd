@@ -67,10 +67,11 @@ func RefreshGridForTurn(_allegience : GameSettings.TeamID):
 				else:
 					Pathfinding.set_point_weight_scale(Vector2i(x,y), 2)
 
-func ShowUnitActions(_unit : UnitInstance, _defaultrange : Vector2i = Vector2i(1,2)):
+func ShowUnitActions(_unit : UnitInstance):
 	ClearActions()
 	var movement = GetCharacterMovementOptions(_unit)
-	GetCharacterAttackOptions(_unit, movement, _defaultrange)
+	var unitRange = _unit.GetEffectiveAttackRange()
+	GetCharacterAttackOptions(_unit, movement, unitRange)
 	ShowActions()
 
 

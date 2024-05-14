@@ -16,7 +16,7 @@ var targetUnit : UnitInstance
 var grid : Grid
 var pathfinding  : AStarGrid2D
 var selectedTile : Tile
-var selectedPath
+var selectedPath : PackedVector2Array
 
 var ability : AbilityInstance
 
@@ -27,7 +27,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	unit = _unit
 
 	selectedTile = null
-	selectedPath = null
+	selectedPath.clear()
 
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
@@ -64,7 +64,9 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	FilterTilesByPath(actionableTiles)
 
 	# This shouldn't happen, but if there are no tiles or paths, then just end turn
-	if selectedTile == null || selectedPath == null:
+	if selectedTile == null || selectedPath.size() == 0:
+		push_error("Enemy has no selected tile, or no selected path. Ending turn by default.")
+		print("Tile: ", selectedTile, " -- Path: ", selectedPath)
 		unit.QueueEndTurn()
 		return
 
@@ -91,9 +93,10 @@ func FilterTilesByPath(_actionableTiles : Array[Tile]):
 	var lowest = 1000000
 	for t in _actionableTiles:
 		var path = pathfinding.get_point_path(unit.GridPosition, t.Position)
-		if path.size() < lowest:
+		if path.size() < lowest && path.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
 			selectedTile = t
 			selectedPath = path
+			selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
 			lowest = path.size()
 
 func GetAbility():

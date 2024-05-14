@@ -8,6 +8,7 @@ const PREFIX = "Spawn_"
 @export var Enabled : bool = true
 @export var Allegiance : GameSettings.TeamID = GameSettings.TeamID.ENEMY
 @export var AIBehavior : AIBehaviorBase
+@export var AggroBehavior : AlwaysAggro
 
 func SpawnEnemy(_map: Map, _rng : RandomNumberGenerator):
 	if !Enabled:
