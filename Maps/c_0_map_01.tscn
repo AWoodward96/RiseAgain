@@ -94,7 +94,6 @@ vframes = 4
 frame = 2
 script = ExtResource("8_d0di7")
 UnitToSpawn = ExtResource("9_p3uu5")
-Enabled = false
 AIBehavior = SubResource("Resource_l01f8")
 Position = Vector2i(6, 7)
 map = NodePath("../..")

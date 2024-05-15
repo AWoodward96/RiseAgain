@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://oxwcsghwa4k3"]
+[gd_scene load_steps=20 format=3 uid="uid://oxwcsghwa4k3"]
 
 [ext_resource type="Script" path="res://Maps/Scripts/Map.gd" id="1_vx1gh"]
 [ext_resource type="Script" path="res://Maps/Scripts/WinConRoute.gd" id="2_4inf2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_ax251"]
 [ext_resource type="Script" path="res://Units/Enemy/AI/AI_TargetClosest.gd" id="9_cb4kw"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://Units/Enemy/Zombie/UT_Zombie.tres" id="10_x5p22"]
+[ext_resource type="Script" path="res://Units/Enemy/AI/AggroRange.gd" id="10_xk6ob"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_4inf2")
@@ -19,15 +20,39 @@ script = ExtResource("9_cb4kw")
 TargetingFlags = 1
 RememberTarget = false
 
+[sub_resource type="Resource" id="Resource_18shu"]
+script = ExtResource("10_xk6ob")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_yh0au"]
+script = ExtResource("10_xk6ob")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
 [sub_resource type="Resource" id="Resource_na15r"]
 script = ExtResource("9_cb4kw")
 TargetingFlags = 1
 RememberTarget = false
 
+[sub_resource type="Resource" id="Resource_7jrpa"]
+script = ExtResource("10_xk6ob")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
 [sub_resource type="Resource" id="Resource_8jhg3"]
 script = ExtResource("9_cb4kw")
 TargetingFlags = 1
 RememberTarget = true
+
+[sub_resource type="Resource" id="Resource_o8bys"]
+script = ExtResource("10_xk6ob")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
 
 [node name="C0_Map02" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_vx1gh")
@@ -122,7 +147,7 @@ Position = Vector2i(23, 3)
 map = NodePath("../..")
 
 [node name="Spawn_Wolf Pup4" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
-position = Vector2(1344, 576)
+position = Vector2(1088, 448)
 texture = ExtResource("6_fj6ad")
 centered = false
 hframes = 4
@@ -131,7 +156,8 @@ frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
 AIBehavior = SubResource("Resource_l01f8")
-Position = Vector2i(21, 9)
+AggroBehavior = SubResource("Resource_18shu")
+Position = Vector2i(17, 7)
 map = NodePath("../..")
 
 [node name="Spawn_Wolf Pup5" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
@@ -144,6 +170,7 @@ frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
 AIBehavior = SubResource("Resource_l01f8")
+AggroBehavior = SubResource("Resource_yh0au")
 Position = Vector2i(16, 8)
 map = NodePath("../..")
 
@@ -157,6 +184,7 @@ frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
 AIBehavior = SubResource("Resource_na15r")
+AggroBehavior = SubResource("Resource_7jrpa")
 Position = Vector2i(13, 2)
 map = NodePath("../..")
 
@@ -170,6 +198,7 @@ frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
 AIBehavior = SubResource("Resource_8jhg3")
+AggroBehavior = SubResource("Resource_o8bys")
 Position = Vector2i(11, 2)
 map = NodePath("../..")
 

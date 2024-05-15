@@ -15,21 +15,21 @@ func Check(_self : UnitInstance, _map : Map) -> bool:
 	var range = _self.GetUnitMovement() + _self.GetEffectiveAttackRange().y
 	if RangeOverride != 0:
 		range = RangeOverride
-	
+
 	var allUnits = _map.GetUnitsOnTeam(TargetingFlags)
 	for u in allUnits:
 		if u == null || u.CurrentTile == null:
 			continue
-		
+
 		# Remember to use this helper method because otherwise, the U might be a wall depending on whose turn it is
 		var path = grid.GetPathBetweenTwoUnits(_self, u)
 		if path.size() == 0:
 			continue
-		
+
 		# Path.Size - 1, because GetPathBetweenTwoUnits includes the origin, IE, selfs currentTile
 		if path.size() - 1 <= range:
 			return true
-		
-	
+
+
 	return false
 

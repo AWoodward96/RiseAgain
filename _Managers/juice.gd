@@ -2,6 +2,10 @@ extends Node2D
 
 @export var damagePopup : PackedScene
 
+@export_category("Camera Settings")
+@export var cameraMoveSpeed = 10
+
+
 @export_category("Combat Settings")
 @export var combatSequenceWarmupTimer = 0.5
 @export var combatSequenceTimeBetweenAttackAndDefense = 0.2

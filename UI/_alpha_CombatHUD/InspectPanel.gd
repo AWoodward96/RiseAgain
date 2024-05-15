@@ -29,5 +29,7 @@ func _process(_delta):
 				Update(ctrl.CurrentTile.Occupant)
 			else:
 				visible = false
+
+
 		else:
 			visible = false

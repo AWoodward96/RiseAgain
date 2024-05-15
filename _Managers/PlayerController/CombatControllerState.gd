@@ -68,7 +68,15 @@ func CombatComplete():
 			continue
 		u.ShowHealthBar(false)
 
-	ctrl.EnterSelectionState()
+	var mapState = currentMap.MapState as CombatState
+	if mapState != null:
+		if mapState.currentTurn == GameSettings.TeamID.ALLY:
+			ctrl.EnterSelectionState()
+		else:
+			ctrl.EnterOffTurnState()
+	else:
+		ctrl.EnterSelectionState()
+
 	ctrl.OnCombatSequenceComplete.emit()
 
 func ToString():

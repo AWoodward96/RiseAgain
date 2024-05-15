@@ -65,6 +65,7 @@ func StartTurn(_turn : GameSettings.TeamID):
 
 	if _turn != GameSettings.TeamID.ALLY:
 		unitTurnStack = map.GetUnitsOnTeam(_turn)
+		controller.EnterOffTurnState()
 
 	currentUnitsTurn = null
 	ActivateAll()
@@ -90,22 +91,6 @@ func IsTurnOver():
 
 	return turnOver
 
-func OnTileSelected(_tile : Tile):
-	super(_tile)
-
-	if _tile.Occupant != null :
-		if currentlySelectedUnit == null:
-			currentlySelectedUnit = _tile.Occupant
-
-			map.grid.ShowUnitActions(currentlySelectedUnit)
-			if currentlySelectedUnit.UnitAllegiance == GameSettings.TeamID.ALLY && IsAllyTurn:
-				controller.StartMovementTracker(currentlySelectedUnit.GridPosition)
-	else:
-		if currentlySelectedUnit != null && currentlySelectedUnit.UnitAllegiance == GameSettings.TeamID.ALLY && _tile.CanMove:
-			var path = map.grid.Pathfinding.get_point_path(currentlySelectedUnit.GridPosition, _tile.Position)
-			currentlySelectedUnit.MoveCharacterToNode(path, _tile)
-
-		ClearTileSelection()
 
 func ClearTileSelection():
 	currentlySelectedUnit = null
@@ -121,7 +106,7 @@ func UpdateEnemyTurn(_delta):
 		if currentUnitsTurn != null:
 			if !currentUnitsTurn.IsAggrod:
 				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
-			
+
 			if currentUnitsTurn.IsAggrod:
 				currentUnitsTurn.AI.StartTurn(map, currentUnitsTurn)
 			else:

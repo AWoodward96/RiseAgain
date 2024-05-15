@@ -13,6 +13,3 @@ func Exit():
 
 func Update(_delta):
 	pass
-
-func OnTileSelected(_tile : Tile):
-	pass

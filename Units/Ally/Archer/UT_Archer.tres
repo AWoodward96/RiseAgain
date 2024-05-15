@@ -12,32 +12,32 @@
 [ext_resource type="PackedScene" uid="uid://bdslgjv74suwb" path="res://Units/Ally/Archer/VIS_Archer.tscn" id="8_hvc7e"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://Units/Ally/Archer/archer.png" id="9_f2y67"]
 
-[sub_resource type="Resource" id="Resource_mf2cv"]
+[sub_resource type="Resource" id="Resource_kbdxx"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_rdrhg"]
+[sub_resource type="Resource" id="Resource_iq0q8"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("3_e1gbq")
 Value = 14
 
-[sub_resource type="Resource" id="Resource_fgrif"]
+[sub_resource type="Resource" id="Resource_14l6b"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("4_ry5o0")
 Value = 9
 
-[sub_resource type="Resource" id="Resource_rb1bl"]
+[sub_resource type="Resource" id="Resource_kbgrn"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("5_5fnpr")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_tg341"]
+[sub_resource type="Resource" id="Resource_irbqd"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("6_skiv5")
 Value = 9
 
-[sub_resource type="Resource" id="Resource_x5g02"]
+[sub_resource type="Resource" id="Resource_jerbf"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("7_ysc31")
 Value = 6
@@ -45,7 +45,7 @@ Value = 6
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_mf2cv"), SubResource("Resource_rdrhg"), SubResource("Resource_fgrif"), SubResource("Resource_rb1bl"), SubResource("Resource_tg341"), SubResource("Resource_x5g02")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_kbdxx"), SubResource("Resource_iq0q8"), SubResource("Resource_14l6b"), SubResource("Resource_kbgrn"), SubResource("Resource_irbqd"), SubResource("Resource_jerbf")])
 Abilities = Array[PackedScene]([ExtResource("1_oqrvp")])
 DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"

@@ -12,32 +12,32 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://Units/Stats/STAT_Movement.tres" id="7_im2w5"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://Units/Enemy/WolfPup/wolf_cub.png" id="9_g5fak"]
 
-[sub_resource type="Resource" id="Resource_4vd7f"]
+[sub_resource type="Resource" id="Resource_tka8l"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("1_uma5a")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_o8y7m"]
+[sub_resource type="Resource" id="Resource_6aqr6"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("3_3eixl")
-Value = 6
+Value = 10
 
-[sub_resource type="Resource" id="Resource_7hew3"]
+[sub_resource type="Resource" id="Resource_e2nu7"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("4_7icxw")
-Value = 8
+Value = 10
 
-[sub_resource type="Resource" id="Resource_gy622"]
+[sub_resource type="Resource" id="Resource_3orty"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("5_jasgv")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_3ckk6"]
+[sub_resource type="Resource" id="Resource_jib4j"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("6_trrxd")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_63f8m"]
+[sub_resource type="Resource" id="Resource_tfiuk"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("7_im2w5")
 Value = 6
@@ -45,7 +45,7 @@ Value = 6
 [resource]
 script = ExtResource("1_pk4jk")
 VisualPrefab = ExtResource("1_2ldp6")
-BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_4vd7f"), SubResource("Resource_o8y7m"), SubResource("Resource_7hew3"), SubResource("Resource_gy622"), SubResource("Resource_3ckk6"), SubResource("Resource_63f8m")])
+BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_tka8l"), SubResource("Resource_6aqr6"), SubResource("Resource_e2nu7"), SubResource("Resource_3orty"), SubResource("Resource_jib4j"), SubResource("Resource_tfiuk")])
 Abilities = Array[PackedScene]([ExtResource("1_xpx7t")])
 DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"

@@ -14,7 +14,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
 bg_color = Color(0, 0.713726, 0.439216, 1)
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "NoTargets")]
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "NoTargets", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_y5s67")
 AllyTurnBanner = ExtResource("2_3qmod")
 EnemyTurnBanner = ExtResource("3_jh3v2")
@@ -23,6 +23,8 @@ VictoryBanner = ExtResource("5_0iw7i")
 InspectUI = NodePath("BottomLeft/InspectUI")
 ContextUI = NodePath("ContextMenu")
 NoTargets = NodePath("TopCenter/NoTargets")
+bottom_left_anchor = NodePath("BottomLeft")
+bottom_right_anchor = NodePath("BottomRight")
 
 [node name="Full" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -56,6 +58,16 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BottomRight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="BottomLeft" type="Control" parent="."]
 layout_mode = 3

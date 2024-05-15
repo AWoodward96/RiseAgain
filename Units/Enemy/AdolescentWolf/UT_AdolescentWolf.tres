@@ -12,32 +12,32 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://Units/Stats/STAT_Movement.tres" id="8_mven1"]
 [ext_resource type="PackedScene" uid="uid://btg88g5hje3a3" path="res://Units/Enemy/AdolescentWolf/VIS_AdolescentWolf.tscn" id="9_ctp86"]
 
-[sub_resource type="Resource" id="Resource_mpq1g"]
+[sub_resource type="Resource" id="Resource_4puqb"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("2_n5q5a")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_mygh4"]
+[sub_resource type="Resource" id="Resource_43ocs"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("4_uhkmf")
-Value = 8
+Value = 12
 
-[sub_resource type="Resource" id="Resource_d5735"]
+[sub_resource type="Resource" id="Resource_1nrru"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("5_7sjbl")
-Value = 8
+Value = 10
 
-[sub_resource type="Resource" id="Resource_6oqt3"]
+[sub_resource type="Resource" id="Resource_gwxmw"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("6_vk4tj")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_irlr2"]
+[sub_resource type="Resource" id="Resource_5yg1i"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("7_3d0wk")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_6jdsq"]
+[sub_resource type="Resource" id="Resource_1db8r"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("8_mven1")
 Value = 6
@@ -45,7 +45,7 @@ Value = 6
 [resource]
 script = ExtResource("1_qm2y0")
 VisualPrefab = ExtResource("9_ctp86")
-BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_mpq1g"), SubResource("Resource_mygh4"), SubResource("Resource_d5735"), SubResource("Resource_6oqt3"), SubResource("Resource_irlr2"), SubResource("Resource_6jdsq")])
+BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_4puqb"), SubResource("Resource_43ocs"), SubResource("Resource_1nrru"), SubResource("Resource_gwxmw"), SubResource("Resource_5yg1i"), SubResource("Resource_1db8r")])
 Abilities = Array[PackedScene]([ExtResource("1_toien")])
 DebugName = "AdolescentWolf"
 loc_DisplayName = "unit_adolescentwolf_name"

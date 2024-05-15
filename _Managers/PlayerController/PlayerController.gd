@@ -28,6 +28,8 @@ var trackingMovementOrigin
 var selectedUnit : UnitInstance
 var selectedAbility : AbilityInstance
 
+var desiredCameraPosition : Vector2 = Vector2(0,0)
+
 # UIs
 var formationUI
 var combatHUD : CombatHUD
@@ -42,6 +44,8 @@ func Initialize(_map: Map):
 func _process(_delta):
 	if ControllerState != null :
 		ControllerState._Execute(_delta)
+
+	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
 
 func ChangeControllerState(a_newState : PlayerControllerState, optionalData):
 	if ControllerState != null:
@@ -63,7 +67,10 @@ func UpdateCameraBounds():
 	camera.limit_bottom = mapTotalSize.y
 
 func UpdateCameraPosition():
-	var cameraPos = camera.global_position
+	if !is_inside_tree():
+		return
+
+	var cameraPos = desiredCameraPosition
 	var viewportHalf = get_viewport_rect().size / 2
 	viewportHalf -= Vector2(tileSize, tileSize) * viewportTilePadding
 
@@ -84,7 +91,10 @@ func UpdateCameraPosition():
 		# extra -1 tilesize because of indexing
 		move.y += reticle.global_position.y - (bottomright.y - tileSize)
 
-	camera.global_position += move
+	desiredCameraPosition += move
+
+func IsReticleInLeftHalfOfViewport():
+	return reticle.global_position.x < desiredCameraPosition.x
 
 func ForceReticlePosition(_gridPosition : Vector2i):
 	reticle.global_position = _gridPosition * tileSize
@@ -93,6 +103,7 @@ func ForceReticlePosition(_gridPosition : Vector2i):
 
 func ForceCameraPosition(_gridPosition : Vector2):
 	camera.global_position = _gridPosition * tileSize
+	desiredCameraPosition = _gridPosition * tileSize
 	UpdateCameraPosition()
 
 func ClearSelectionData():
@@ -115,6 +126,9 @@ func EnterUnitMovementState():
 	# Update the combat hud's inspector
 	if combatHUD != null:
 		combatHUD.HideInspectUI()
+
+func EnterOffTurnState():
+	ChangeControllerState(OffTurnControllerState.new(), null)
 
 func EnterContextMenuState():
 	ChangeControllerState(ContextControllerState.new(), null)
