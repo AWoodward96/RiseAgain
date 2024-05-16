@@ -5,10 +5,10 @@ class_name AbilityInstance
 @export var loc_displayDesc : String
 @export var AutoEndTurn = true
 @export var TargetingData : SkillTargetingData
-@export var DamageData : SkillDamageData
+@export var SkillDamageData : DamageData
 
 var persisted_dictionary = {}
-var context : AbilityContext
+var context : CombatLog
 var ownerUnit : UnitInstance
 var map : Map
 var selectedTileForExecution : Tile
@@ -21,6 +21,12 @@ var playerController : PlayerController :
 var active = false
 
 func _ready():
+	if TargetingData == null:
+		TargetingData = get_node_or_null("TargetingComponent") as SkillTargetingData
+
+	if SkillDamageData == null:
+		SkillDamageData = get_node_or_null("DamageComponent") as DamageData
+
 	pass
 
 func Initialize(_unitOwner : UnitInstance, _map : Map):
@@ -31,10 +37,10 @@ func _process(_delta):
 	pass
 
 # This does the damage and effects for the ability
-func ExecuteAbility(_optionalContext : AbilityContext = null):
+func ExecuteAbility(_optionalContext : CombatLog = null):
 	context = _optionalContext
 	if context == null:
-		context = AbilityContext.new()
+		context = CombatLog.new()
 		context.Construct(map, ownerUnit, self)
 
 	if context.targetTiles != null:
@@ -45,7 +51,7 @@ func ExecuteAbility(_optionalContext : AbilityContext = null):
 	if context.originTile == null:
 		context.originTile = selectedTileForExecution
 
-	context.damageContext = DamageData
+	context.damageContext = SkillDamageData
 
 	if !playerController.OnCombatSequenceComplete.is_connected(OnAbilityExecutionComplete):
 		playerController.OnCombatSequenceComplete.connect(OnAbilityExecutionComplete)

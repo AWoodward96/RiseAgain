@@ -5,6 +5,9 @@ extends Node2D
 
 var inputDown : Array[bool] = [false, false, false, false]
 var inputHeld : Array[bool] = [false, false, false, false]
+var inputVertical : bool
+var inputHorizontal: bool
+
 var inputAnyDown : bool
 var inputAnyHeld : bool
 var inputHeldTimer : float
@@ -29,7 +32,7 @@ func UpdateInputArrays(_delta):
 	inputAnyHeld = false
 	inputDown = [false, false, false, false]
 	inputHeld = [false, false, false, false]
-	
+
 	if Input.is_action_pressed("up") : inputHeld[0] = true
 	if Input.is_action_pressed("right") : inputHeld[1] = true
 	if Input.is_action_pressed("down") : inputHeld[2] = true
@@ -38,20 +41,21 @@ func UpdateInputArrays(_delta):
 	if Input.is_action_just_pressed("right"): inputDown[1] = true
 	if Input.is_action_just_pressed("down"): inputDown[2] = true
 	if Input.is_action_just_pressed("left"): inputDown[3] = true
-	
-	
+
+	inputVertical = inputHeld[0] || inputHeld[2]
+	inputHorizontal = inputHeld[1] || inputHeld[3]
 	inputAnyDown = inputDown.any(func(v) : return v)
 	inputAnyHeld = inputHeld.any(func(v) : return v)
-	
+
 	if inputAnyHeld :
 		inputHeldTimer += _delta
 	else:
 		inputHeldTimer = 0
 
-func UpdateSelectAndCancel(_delta): 
+func UpdateSelectAndCancel(_delta):
 	selectHeld = Input.is_action_pressed("select")
 	selectDown = Input.is_action_just_pressed("select")
-	
+
 	cancelHeld = Input.is_action_pressed("cancel")
 	cancelDown = Input.is_action_just_pressed("cancel")
 

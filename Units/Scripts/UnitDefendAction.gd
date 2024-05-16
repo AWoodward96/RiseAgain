@@ -4,7 +4,7 @@ class_name UnitDefendAction
 var SourcePosition : Vector2
 var tween : Tween
 
-var Context : SkillDamageData
+var Context : CombatLog
 var Source : UnitInstance
 
 func _Enter(_unit : UnitInstance, _map : Map):
@@ -13,7 +13,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	dst = dst * (Juice.combatSequenceDefenseOffset * map.TileSize)
 	position += dst
 
-	_unit.TakeDamage(Context, Source)
+	_unit.DoCombat(Context, Source)
 
 
 func _Execute(_unit : UnitInstance, delta):

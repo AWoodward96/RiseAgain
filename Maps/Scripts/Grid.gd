@@ -51,21 +51,30 @@ func RefreshGridForTurn(_allegience : GameSettings.TeamID):
 		for y in Height:
 			var index = y * Width + x
 			var currentTile = GridArr[index]
-			var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
+			RefreshTilesCollision(currentTile, _allegience)
 
-			# set the solid point to false for now. Will update to true depending on the circumstance
-			Pathfinding.set_point_solid(Vector2i(x,y), false)
-			Pathfinding.set_point_weight_scale(Vector2i(x,y), 1)
-			if data:
-				if data.get_collision_polygons_count(0) > 0 :
-					currentTile.IsWall = true
-					Pathfinding.set_point_solid(Vector2i(x,y), true)
+func RefreshTilesCollision(_tile : Tile, _allegience : GameSettings.TeamID):
+	if _tile == null:
+		return
 
-			if currentTile.Occupant != null:
-				if currentTile.Occupant.UnitAllegiance != _allegience:
-					Pathfinding.set_point_solid(Vector2i(x,y), true)
-				else:
-					Pathfinding.set_point_weight_scale(Vector2i(x,y), 2)
+	var x = _tile.Position.x
+	var y = _tile.Position.y
+	var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
+
+	Pathfinding.set_point_solid(Vector2i(x,y), false)
+	Pathfinding.set_point_weight_scale(Vector2i(x,y), 1)
+	if data:
+		if data.get_collision_polygons_count(0) > 0 :
+			_tile.IsWall = true
+			Pathfinding.set_point_solid(Vector2i(x,y), true)
+
+	if _tile.Occupant != null:
+		if _tile.Occupant.UnitAllegiance != _allegience:
+			Pathfinding.set_point_solid(Vector2i(x,y), true)
+		else:
+			Pathfinding.set_point_weight_scale(Vector2i(x,y), 2)
+
+
 
 func ShowUnitActions(_unit : UnitInstance):
 	ClearActions()

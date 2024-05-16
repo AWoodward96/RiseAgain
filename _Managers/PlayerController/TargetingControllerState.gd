@@ -87,7 +87,7 @@ func ClearDamagePreview():
 
 func ShowDamagePreview():
 	if currentTarget != null && currentTarget.Occupant != null:
-		currentTarget.Occupant.ShowDamagePreview(source, abilityInstance.DamageData)
+		currentTarget.Occupant.ShowDamagePreview(source, abilityInstance.SkillDamageData)
 
 func ToString():
 	return "TargetingControllerState"

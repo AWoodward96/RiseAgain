@@ -27,3 +27,10 @@ func CreateDamagePopup(_damageVal, _tile : Tile):
 	popup.SetValue(_damageVal)
 	popup.global_position = _tile.GlobalPosition
 	add_child(popup)
+
+func CreateMissPopup(_tile : Tile):
+	var popup = damagePopup.instantiate()
+	popup.SetMiss()
+	popup.global_position = _tile.GlobalPosition
+	add_child(popup)
+	pass

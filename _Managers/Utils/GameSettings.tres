@@ -22,4 +22,5 @@ PlayerControllerPrefab = ExtResource("1_m2f4k")
 DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])
 MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")
+UniversalMissChance = 0.8
 CharacterTileMovemementSpeed = 500.0

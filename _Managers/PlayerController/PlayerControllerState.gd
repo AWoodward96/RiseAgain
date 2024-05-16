@@ -1,10 +1,10 @@
 class_name PlayerControllerState
 
-
 var ctrl : PlayerController
 var currentMap : Map
 var currentGrid : Grid
 var reticle
+var movementThisFrame : Vector2 = Vector2.ZERO
 
 var lastMoveTimer = 0
 
@@ -37,21 +37,21 @@ func UpdateInput(_delta):
 	# if you hold a directional button, move in that direction, and then after a certain amount of time
 	#	start auto-moving in that direction really fast
 	var tileSize = ctrl.tileSize
-	var move = Vector2.ZERO
+	movementThisFrame = Vector2.ZERO
 	if InputManager.inputHeldTimer < InputManager.inputHeldThreshold:
-		if InputManager.inputDown[0] : move.y -= 1
-		if InputManager.inputDown[1] : move.x += 1
-		if InputManager.inputDown[2] : move.y += 1
-		if InputManager.inputDown[3] : move.x -= 1
-		reticle.global_position += move * tileSize
+		if InputManager.inputDown[0] : movementThisFrame.y -= 1
+		if InputManager.inputDown[1] : movementThisFrame.x += 1
+		if InputManager.inputDown[2] : movementThisFrame.y += 1
+		if InputManager.inputDown[3] : movementThisFrame.x -= 1
+		reticle.global_position += movementThisFrame * tileSize
 	else:
-		if InputManager.inputHeld[0] : move.y -= 1
-		if InputManager.inputHeld[1] : move.x += 1
-		if InputManager.inputHeld[2] : move.y += 1
-		if InputManager.inputHeld[3] : move.x -= 1
+		if InputManager.inputHeld[0] : movementThisFrame.y -= 1
+		if InputManager.inputHeld[1] : movementThisFrame.x += 1
+		if InputManager.inputHeld[2] : movementThisFrame.y += 1
+		if InputManager.inputHeld[3] : movementThisFrame.x -= 1
 
 		if lastMoveTimer > InputManager.inputHeldMoveTick:
-			reticle.global_position += move * tileSize
+			reticle.global_position += movementThisFrame * tileSize
 			lastMoveTimer = 0
 
 		lastMoveTimer += _delta
@@ -62,7 +62,7 @@ func UpdateInput(_delta):
 	if reticle.global_position.x > mapTotalSizeMinusOne.x : reticle.global_position.x = mapTotalSizeMinusOne.x
 	if reticle.global_position.y > mapTotalSizeMinusOne.y : reticle.global_position.y = mapTotalSizeMinusOne.y
 
-	var didMove = move != Vector2.ZERO
+	var didMove = movementThisFrame != Vector2.ZERO
 	if didMove:
 		ctrl.CurrentTile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
 		ctrl.OnTileChanged.emit(ctrl.CurrentTile)

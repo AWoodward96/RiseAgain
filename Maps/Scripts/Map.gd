@@ -21,6 +21,7 @@ var CurrentCampaign : CampaignTemplate
 
 var teams = {}
 var playercontroller : PlayerController
+var currentTurn = GameSettings.TeamID
 
 var rng : RandomNumberGenerator
 var grid : Grid
@@ -28,6 +29,8 @@ var turnCount : int
 var formationSelected = false
 var startingPositions : Array[Vector2i]
 var spawners : Array[SpawnerBase]
+
+var combatLedger
 
 func _ready():
 	PreInitialize()
@@ -67,6 +70,9 @@ func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitTe
 	ChangeMapState(PreMapState.new())
 
 func InitializeStandalone():
+	# the campaign should initialize this
+	rng = RandomNumberGenerator.new()
+
 	# make the grid first so that we know where the starting positions are
 	InitializeGrid()
 
@@ -128,8 +134,12 @@ func OnUnitDeath(_unitInstance : UnitInstance):
 		if teams[_unitInstance.UnitAllegiance].size() == 0:
 			teams.erase(_unitInstance.UnitAllegiance)
 
-	_unitInstance.CurrentTile.Occupant = null
+	# Collect the reference before hand
+	var tile = _unitInstance.CurrentTile
+	tile.Occupant = null
 	_unitInstance.queue_free()
+
+	grid.RefreshTilesCollision(tile, currentTurn)
 
 func GetUnitsOnTeam(_teamBitMask : int):
 	var returnUnits : Array[UnitInstance] = []
@@ -147,7 +157,22 @@ func GetClosestUnitToUnit(_currentUnit : UnitInstance, _targetTeam : int):
 	var targetUnit
 	for unit in allUnitsAbleToBeTargeted:
 		var path = grid.GetPathBetweenTwoUnits(_currentUnit, unit)
-		if path.size() < maxDistance:
+		if path.size() < maxDistance && path.size() != 0: # Check against 0, because 0 means you can't path there
 			maxDistance = path.size()
 			targetUnit = unit
 	return targetUnit
+
+
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var mousePos = get_global_mouse_position()
+		var tile_pos = tilemap.local_to_map(mousePos)
+		OnTileClicked(tile_pos)
+
+
+func OnTileClicked(a_tilePosition : Vector2i) :
+	if grid.Pathfinding.is_in_bounds(a_tilePosition.x, a_tilePosition.y) :
+		print_debug("Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
+	else :
+		print_debug("Click was not in pathfinding bounds")

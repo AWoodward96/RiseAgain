@@ -1,7 +1,7 @@
 extends PlayerControllerState
 class_name CombatControllerState
 
-var abilityContext : AbilityContext
+var combatData : CombatLog
 var unitsToTakeDamage : Array[UnitInstance]
 var tempTimer : Timer
 var waitForAnimToFinish : bool
@@ -15,10 +15,10 @@ func _Enter(_ctrl : PlayerController, data):
 	ctrl.BlockMovementInput = true
 
 	waitForAnimToFinish = false
-	abilityContext = data
+	combatData = data
 
 	# Ability context at this point should have targets
-	if abilityContext.targetTiles.size() == 0:
+	if combatData.targetTiles.size() == 0:
 		push_error("Controller in CombatControllerState without a target. Going back to SelectionState")
 		ctrl.EnterSelectionState()
 		return
@@ -26,22 +26,24 @@ func _Enter(_ctrl : PlayerController, data):
 	unitsToTakeDamage.clear()
 
 	# The target tiles is an array so loop through that and append the units to take damage
-	for tile in abilityContext.targetTiles:
+	for tile in combatData.targetTiles:
 		if tile.Occupant != null:
 			unitsToTakeDamage.append(tile.Occupant)
 
-	if abilityContext.source != null:
+	if combatData.source != null:
 		# If the ability has a source, then the source is in charge of setting off the sequence
-		abilityContext.source.QueueAttackSequence(abilityContext.originTile.Position * currentGrid.CellSize, abilityContext, unitsToTakeDamage)
+		ctrl.ForceReticlePosition(combatData.originTile.Position)
+		combatData.source.QueueAttackSequence(combatData.originTile.Position * currentGrid.CellSize, combatData, unitsToTakeDamage)
 	else:
 		# if the ability has no source, then the targets all take damage on their own
 		for u in unitsToTakeDamage:
-			u.QueueDefenseSequence(abilityContext.originTile.Position * currentGrid.CellSize, abilityContext.damageContext, abilityContext.source)
+			u.QueueDefenseSequence(combatData.originTile.Position * currentGrid.CellSize, combatData, combatData.source)
 
 func _Execute(_delta):
-	if abilityContext.source != null:
+	ctrl.UpdateCameraPosition()
+	if combatData.source != null:
 		# If abillity has a source, wait until the source's stack is clear
-		if abilityContext.source.IsStackFree && DamagedUnitsClear():
+		if combatData.source.IsStackFree && DamagedUnitsClear():
 			CombatComplete()
 	else:
 		if DamagedUnitsClear():
@@ -60,22 +62,18 @@ func DamagedUnitsClear():
 
 func CombatComplete():
 	await ctrl.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout
-	if abilityContext.source != null:
-		abilityContext.source.ShowHealthBar(false)
+	if combatData.source != null:
+		combatData.source.ShowHealthBar(false)
 
 	for u in unitsToTakeDamage:
 		if u == null:
 			continue
 		u.ShowHealthBar(false)
 
-	var mapState = currentMap.MapState as CombatState
-	if mapState != null:
-		if mapState.currentTurn == GameSettings.TeamID.ALLY:
-			ctrl.EnterSelectionState()
-		else:
-			ctrl.EnterOffTurnState()
-	else:
+	if currentMap.currentTurn == GameSettings.TeamID.ALLY:
 		ctrl.EnterSelectionState()
+	else:
+		ctrl.EnterOffTurnState()
 
 	ctrl.OnCombatSequenceComplete.emit()
 

@@ -2,16 +2,16 @@ extends MapStateBase
 class_name CombatState
 
 var currentlySelectedUnit : UnitInstance
-var currentTurn = GameSettings.TeamID
 
 var combatHud
 var unitTurnStack : Array[UnitInstance]
 var currentUnitsTurn : UnitInstance
 var turnBannerOpen : bool
 
+
 var IsAllyTurn : bool :
 	get :
-		return currentTurn == GameSettings.TeamID.ALLY
+		return map.currentTurn == GameSettings.TeamID.ALLY
 
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map, _ctrl)
@@ -26,7 +26,7 @@ func Update(_delta):
 	if turnBannerOpen:
 		return
 
-	match currentTurn:
+	match map.currentTurn:
 		GameSettings.TeamID.ALLY:
 			# Do nothing, let the player do their thing
 			pass
@@ -38,7 +38,7 @@ func Update(_delta):
 	if IsTurnOver():
 		var nextTurn
 		# TODO: Figure out the best way to determine whose turn it is up next
-		match currentTurn:
+		match map.currentTurn:
 			GameSettings.TeamID.ALLY:
 				#if map.teams.has(GameSettings.TeamID.ENEMY) && map.teams[GameSettings.TeamID.ENEMY].size() > 0:
 				nextTurn = GameSettings.TeamID.ENEMY
@@ -50,8 +50,8 @@ func Update(_delta):
 		StartTurn(nextTurn)
 
 func StartTurn(_turn : GameSettings.TeamID):
-	currentTurn = _turn
-	map.grid.RefreshGridForTurn(currentTurn)
+	map.currentTurn = _turn
+	map.grid.RefreshGridForTurn(map.currentTurn)
 
 	controller.BlockMovementInput = true
 	combatHud.PlayTurnStart(_turn)
@@ -79,10 +79,10 @@ func ActivateAll():
 
 func IsTurnOver():
 	var turnOver = true
-	if !map.teams.has(currentTurn):
+	if !map.teams.has(map.currentTurn):
 		return turnOver
 
-	var currentUnits = map.teams[currentTurn]
+	var currentUnits = map.teams[map.currentTurn]
 	for unit in currentUnits:
 		if unit == null:
 			continue
@@ -108,7 +108,12 @@ func UpdateEnemyTurn(_delta):
 				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
 
 			if currentUnitsTurn.IsAggrod:
-				currentUnitsTurn.AI.StartTurn(map, currentUnitsTurn)
+				if currentUnitsTurn.AI == null:
+					push_error("Unit: ", currentUnitsTurn, " - Has No AI. Defaulting to EndTurn, but this needs to be fixed")
+					currentUnitsTurn.QueueEndTurn()
+					currentUnitsTurn = null
+				else:
+					currentUnitsTurn.AI.StartTurn(map, currentUnitsTurn)
 			else:
 				currentUnitsTurn.QueueEndTurn()
 				currentUnitsTurn = null

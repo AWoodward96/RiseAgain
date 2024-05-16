@@ -13,8 +13,7 @@ func _Execute(_delta):
 	super(_delta)
 
 	if InputManager.selectDown:
-		var mapState = currentMap.MapState as CombatState
-		var isAllyTurn = mapState.currentTurn == GameSettings.TeamID.ALLY
+		var isAllyTurn = currentMap.currentTurn == GameSettings.TeamID.ALLY
 
 		var tile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
 		if tile.Occupant != null :

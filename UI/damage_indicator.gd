@@ -18,7 +18,7 @@ var previewHPTween : Tween
 func Initialize(_unit : UnitInstance):
 	myUnit = _unit
 
-func PreviewDamage(_damageContext : SkillDamageData, _sourceUnit : UnitInstance, ):
+func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, ):
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 

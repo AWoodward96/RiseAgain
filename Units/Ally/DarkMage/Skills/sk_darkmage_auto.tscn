@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Skills/Scripts/AbilityInstance.gd" id="1_t4ki0"]
 [ext_resource type="Script" path="res://Skills/SkillTargetingComponent.gd" id="2_bw1eb"]
-[ext_resource type="Script" path="res://Skills/SkillDamageComponent.gd" id="3_0ktgm"]
+[ext_resource type="Script" path="res://Skills/DamageData.gd" id="3_0ktgm"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://Units/Stats/STAT_SpAttack.tres" id="4_7l1f1"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://Units/Stats/STAT_SpDefense.tres" id="5_aclmr"]
 

@@ -74,7 +74,22 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# Truncate down the paths that we just set based on how much movement this current Unit has
 	var currentMovement = unit.GetUnitMovement()
 	selectedPath = selectedPath.slice(0, currentMovement)
-	selectedTile = grid.GetTile(selectedPath[selectedPath.size() - 1] / grid.CellSize)
+
+	var indexedSize = selectedPath.size() - 1
+	selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
+
+	if selectedTile.Occupant != null:
+		while selectedTile.Occupant != null:
+			# Well shit now we're in trouble
+			# walk backwards from the current index
+			indexedSize -= 1
+			if indexedSize < 0:
+				# if we've hit 0, then there are a whole bunch of units all in the way of this unit, so just end turn
+				unit.QueueEndTurn()
+				return
+
+			selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
+			selectedPath.remove_at(selectedPath.size() - 1)
 
 	# STEP FIVE:
 	# MOVE
@@ -82,6 +97,9 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	TryCombat()
 	pass
 
+func ValidateOverlappingPaths(currentMovement):
+
+	pass
 
 func GetActionableTiles():
 	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, ability.GetRange())
@@ -91,10 +109,10 @@ func GetActionableTiles():
 
 func FilterTilesByPath(_actionableTiles : Array[Tile]):
 	var lowest = 1000000
-	for t in _actionableTiles:
-		var path = pathfinding.get_point_path(unit.GridPosition, t.Position)
+	for tile in _actionableTiles:
+		var path = pathfinding.get_point_path(unit.GridPosition, tile.Position)
 		if path.size() < lowest && path.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
-			selectedTile = t
+			selectedTile = tile
 			selectedPath = path
 			selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
 			lowest = path.size()
@@ -118,7 +136,7 @@ func TryCombat():
 	#var ability = unit.Abilities[0]
 	#if !ability.active:
 	#print("EXECUTING ABILITY")
-	var context = AbilityContext.new()
+	var context = CombatLog.new()
 	context.Construct(map, unit, ability)
 	context.originTile = targetUnit.CurrentTile
 	context.targetTiles.append(targetUnit.CurrentTile)

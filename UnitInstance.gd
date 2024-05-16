@@ -35,7 +35,7 @@ var takeDamageTween : Tween
 
 var maxHealth :
 	get:
-		return currentStats[GameManager.GameSettings.HealthStat]
+		return currentStats[GameManager.GameSettings.HealthStat] as float
 
 var healthPerc :
 	get:
@@ -173,18 +173,27 @@ func QueueEndTurn():
 func EndTurn():
 	Activated = false
 
-func TakeDamage(_context : SkillDamageData, _source, _instantaneous : bool = false):
-	var damage = CalculateDamage(_context, _source)
+func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
+	# Here we calculate if we hit or missed before sending damage
+	# it's seperate from TakeDamage because sometimes the Units will want to take damage outside of combat
+	_context.CalculateMiss(map.rng)
+	var damage = CalculateDamage(_context.damageContext, _source)
 
-	Juice.CreateDamagePopup(damage, CurrentTile)
+	if _context.miss:
+		Juice.CreateMissPopup(_context.originTile)
+	else:
+		TakeDamage(damage, _source, _instantaneous)
+
+func TakeDamage(_damage, _source, _instantaneous : bool = false):
+	Juice.CreateDamagePopup(_damage, CurrentTile)
 
 	if !_instantaneous:
 		ShowHealthBar(true)
 		takeDamageTween = get_tree().create_tween()
-		takeDamageTween.tween_method(UpdateHealthBarTween, currentHealth, currentHealth - damage, Juice.combatSequenceTickDuration)
-		takeDamageTween.tween_callback(DamageTweenComplete.bind(damage))
+		takeDamageTween.tween_method(UpdateHealthBarTween, currentHealth, currentHealth - _damage, Juice.combatSequenceTickDuration)
+		takeDamageTween.tween_callback(DamageTweenComplete.bind(_damage))
 	else:
-		DamageTweenComplete(damage)
+		DamageTweenComplete(_damage)
 	pass
 
 func DamageTweenComplete(_damage):
@@ -198,7 +207,7 @@ func DamageTweenComplete(_damage):
 
 	CheckDeath()
 
-func CalculateDamage(_context : SkillDamageData, _source):
+func CalculateDamage(_context : DamageData, _source):
 	var damage
 	var defensiveStatValue = _context.DoMod(currentStats[_context.DefensiveStat], _context.DefensiveMod, _context.DefensiveModType)
 
@@ -228,7 +237,7 @@ func ShowHealthBar(_visible : bool):
 		hp_val.text = str(currentHealth)
 		health_bar.value = healthPerc
 
-func QueueAttackSequence(_destination : Vector2, _context : AbilityContext, _unitsToTakeDamage : Array[UnitInstance]):
+func QueueAttackSequence(_destination : Vector2, _context : CombatLog, _unitsToTakeDamage : Array[UnitInstance]):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
 	attackAction.Context = _context
@@ -237,17 +246,17 @@ func QueueAttackSequence(_destination : Vector2, _context : AbilityContext, _uni
 	if CurrentAction == null:
 		PopAction()
 
-func QueueDefenseSequence(_damageSourcePosition : Vector2, _damageContext : SkillDamageData, _source : UnitInstance):
+func QueueDefenseSequence(_damageSourcePosition : Vector2, _context : CombatLog, _source : UnitInstance):
 	var defendAction = UnitDefendAction.new()
 	defendAction.SourcePosition = _damageSourcePosition
-	defendAction.Context = _damageContext
+	defendAction.Context = _context
 	defendAction.Source = _source
 	ActionStack.append(defendAction)
 	if CurrentAction == null:
 		PopAction()
 
 
-func ShowDamagePreview(_source : UnitInstance, _damageData : SkillDamageData):
+func ShowDamagePreview(_source : UnitInstance, _damageData : DamageData):
 	damage_indicator.visible = true
 	damage_indicator.PreviewDamage(_damageData, _source)
 	pass

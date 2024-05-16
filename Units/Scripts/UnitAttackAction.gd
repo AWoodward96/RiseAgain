@@ -2,7 +2,7 @@ extends UnitActionBase
 class_name UnitAttackAction
 
 var TargetPosition : Vector2
-var Context : AbilityContext
+var Context : CombatLog
 var UnitsToTakeDamage : Array[UnitInstance]
 var TimerLock : bool
 
@@ -16,7 +16,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
 	for u in UnitsToTakeDamage:
-		u.QueueDefenseSequence(_unit.position, Context.damageContext, _unit)
+		u.QueueDefenseSequence(_unit.position, Context, _unit)
 
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)

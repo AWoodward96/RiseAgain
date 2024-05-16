@@ -12,6 +12,7 @@ enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate
 
+@export var UniversalMissChance = 0.8
 
 @export var CharacterTileMovemementSpeed : float = 100
 

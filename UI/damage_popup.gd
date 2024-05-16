@@ -4,3 +4,6 @@ extends Node2D
 
 func SetValue(_val):
 	damage_val.text = str("-", _val)
+
+func SetMiss():
+	damage_val.text = "Miss!!"
