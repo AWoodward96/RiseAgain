@@ -2,11 +2,13 @@ extends PlayerControllerState
 class_name UnitMoveControllerState
 
 var walkedPath : PackedVector2Array
+var prevTile : Tile
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 
 	walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)
+	prevTile = ctrl.CurrentTile
 	StartMovementTracker(selectedUnit.GridPosition)
 	currentGrid.ShowUnitActions(selectedUnit)
 	UpdateTracker()
@@ -42,7 +44,7 @@ func UpdateTracker():
 				if walkedPath.size() > 1 && walkedPath[walkedPath.size() - 2] == ctrl.CurrentTile.GlobalPosition:
 					walkedPath.remove_at(walkedPath.size() - 1)
 				else:
-					if movementThisFrame.length() <= 1:
+					if movementThisFrame.length() <= 1 && prevTile.CanMove:
 						walkedPath.append(ctrl.CurrentTile.GlobalPosition)
 					else:
 						walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)
@@ -51,6 +53,8 @@ func UpdateTracker():
 			for p in walkedPath:
 				# Halfsize because otherwise the line's in the top left corner of the tile
 				ctrl.movement_tracker.add_point(p + Vector2(ctrl.tileHalfSize, ctrl.tileHalfSize))
+	prevTile = ctrl.CurrentTile
+
 
 func StartMovementTracker(_origin : Vector2i):
 	ctrl.movement_tracker.visible = true

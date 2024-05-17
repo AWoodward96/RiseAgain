@@ -123,7 +123,8 @@ func GetCharacterMovementOptions(_unit : UnitInstance) :
 				if Pathfinding.is_in_bounds(neighborLocation.x, neighborLocation.y) :
 					var neighborIndex = neighborLocation.y * Width + neighborLocation.x
 					if (!GridArr[neighborIndex].CanMove && !GridArr[neighborIndex].IsWall) :
-						if(GridArr[neighborIndex].Occupant == null) :
+						var occupant = GridArr[neighborIndex].Occupant
+						if (occupant== null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
 							workingList.append(GridArr[neighborIndex])
 
 		frontier = workingList.duplicate(true)

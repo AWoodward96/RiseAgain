@@ -14,6 +14,9 @@ func _Execute(_delta):
 	# do normal movement
 	super(_delta)
 
+	if ctrl.BlockMovementInput:
+		return
+
 	# Input Selection in this scenario is specifically for formation selection
 	# The Formation UI will handle the movement of the units here, so don't worry about any handling of input
 	if InputManager.selectDown:

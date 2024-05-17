@@ -173,6 +173,12 @@ func QueueEndTurn():
 func EndTurn():
 	Activated = false
 
+func QueueTurnStartDelay():
+	var delay = UnitDelayAction.new()
+	ActionStack.append(delay)
+	if CurrentAction == null:
+		PopAction()
+
 func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
 	# Here we calculate if we hit or missed before sending damage
 	# it's seperate from TakeDamage because sometimes the Units will want to take damage outside of combat

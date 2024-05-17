@@ -20,11 +20,12 @@ var selectedPath : PackedVector2Array
 
 var ability : AbilityInstance
 
+var pathfindingOptions : Array[PathfindingOption]
+
 func StartTurn(_map : Map, _unit : UnitInstance):
-	map = _map
+	super(_map, _unit)
 	grid = _map.grid
 	pathfinding = map.grid.Pathfinding
-	unit = _unit
 
 	selectedTile = null
 	selectedPath.clear()
@@ -38,41 +39,73 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 	# STEP ONE:
 	# Figure out which unit we'll be targeting this turn
-	targetUnit = map.GetClosestUnitToUnit(unit, TargetingFlags)
-	if targetUnit == null:
+	# This will involve getting a path to each unit, which is necessary
+	GetAllValidPaths()
+	if pathfindingOptions.size() == 0:
 		unit.QueueEndTurn()
 		return
 
 	# STEP TWO:
-	# Now that we know who we're targeting select a tile thats in range to try and move to
-	var actionableTiles = GetActionableTiles()
-	if actionableTiles == null || actionableTiles.size() == 0:
-		unit.QueueEndTurn()
-		return
+	# Now that we have all available paths to all available Units,
+	# Start with the closest, and loop through to see what's the best choice
+	for option in pathfindingOptions:
+		targetUnit = option.Unit
+		if targetUnit == null:
+			continue
 
-	# EARLY EXIT NOTICE:
-	# IF WE'RE ALREADY STANDING ON AN ACTIONABLE TILE, JUST STAY THERE, NO PATHFINDING NECESSARY
-	for option in actionableTiles:
-		if option.Occupant == unit:
-			selectedTile = unit.CurrentTile
-			TryCombat()
-			return
+		# STEP THREE:
+		# Now we break out. If this unit is far away, then their movement will not need to be that informed. Just move closer to the target
+		# Remember, this list is sorted by distance, so if there is a closer unit to target, it would have been hit by now
+		var unitMovement = unit.GetUnitMovement()
+		var effectiveRange = unit.GetEffectiveAttackRange()
+		if option.PathSize > unitMovement + effectiveRange.y:
+			# CASE 1:
+			# The unit is too far from their target, and should simply move closer
+			selectedPath = option.Path
+			TruncatePathBasedOnMovement(unitMovement)
+			break # break out and go to execution
+		else:
+			# CASE 2:
+			# We are within striking distance of our target based on the pathfinding distance and the effective range of this unit.
+			var actionableTiles = GetActionableTiles()
+			if actionableTiles == null || actionableTiles.size() == 0:
+				unit.QueueEndTurn()
+				return
 
-	# STEP THREE:
-	# Now filter down by however much movement we need to actually get to those actionable tiles
-	# This method should take all actionable tiles, and return the one that is easiest to get to
-	FilterTilesByPath(actionableTiles)
+			# EARLY EXIT NOTICE:
+			# IF WE'RE ALREADY STANDING ON AN ACTIONABLE TILE, JUST STAY THERE, NO PATHFINDING NECESSARY
+			for actionTile in actionableTiles:
+				if actionTile.Occupant == unit:
+					selectedTile = unit.CurrentTile
+					TryCombat()
+					return
 
-	# This shouldn't happen, but if there are no tiles or paths, then just end turn
-	if selectedTile == null || selectedPath.size() == 0:
+			# STEP THREE:
+			# Now filter down by however much movement we need to actually get to those actionable tiles
+			# This method should take all actionable tiles, and return the one that is easiest to get to
+			FilterTilesByPath(actionableTiles)
+
+			# At this point we should have a valid path and a valid tile so
+			if selectedTile != null && selectedPath.size() > 0:
+				break
+			else:
+				print("First Selected Option is not good enough, going to other options")
+
+
+	if selectedTile == null || selectedPath == null || selectedPath.size() ==0:
 		push_error("Enemy has no selected tile, or no selected path. Ending turn by default.")
 		print("Tile: ", selectedTile, " -- Path: ", selectedPath)
 		unit.QueueEndTurn()
 		return
 
-	# STEP FOUR:
-	# Truncate down the paths that we just set based on how much movement this current Unit has
-	var currentMovement = unit.GetUnitMovement()
+	# STEP FIVE:
+	# MOVE
+	unit.MoveCharacterToNode(selectedPath, selectedTile)
+	TryCombat()
+	pass
+
+# Needs SelectedPath to be set before calling
+func TruncatePathBasedOnMovement(currentMovement):
 	selectedPath = selectedPath.slice(0, currentMovement)
 
 	var indexedSize = selectedPath.size() - 1
@@ -91,15 +124,21 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 			selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
 			selectedPath.remove_at(selectedPath.size() - 1)
 
-	# STEP FIVE:
-	# MOVE
-	unit.MoveCharacterToNode(selectedPath, selectedTile)
-	TryCombat()
-	pass
 
-func ValidateOverlappingPaths(currentMovement):
+func GetAllValidPaths():
+	pathfindingOptions.clear()
 
-	pass
+	var allUnitsAbleToBeTargeted = map.GetUnitsOnTeam(TargetingFlags)
+	for potentialUnit in allUnitsAbleToBeTargeted:
+		var path = grid.GetPathBetweenTwoUnits(unit, potentialUnit)
+		if path.size() != 0: # Check against 0, because 0 means you can't path there
+			var op = PathfindingOption.new()
+			path.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
+			op.Unit = potentialUnit
+			op.Path = path
+			pathfindingOptions.append(op)
+
+	pathfindingOptions.sort_custom(func(x,y) : return x.PathSize < y.PathSize)
 
 func GetActionableTiles():
 	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, ability.GetRange())

@@ -17,10 +17,7 @@
 		{
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "Doing",
-			"tasks": [
-				"92bad09a-322a-49cb-897d-7450c99f4650",
-				"90655bdd-1a6d-4ad8-b727-495d99b93c2e"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
@@ -29,6 +26,10 @@
 				"4168dbfe-f520-426d-8ccf-159aa127c732",
 				"0cde6c1b-d8f6-4331-bdb2-f25c87d8b74d",
 				"2d79f9a5-b236-46a5-859f-d7b08488624c",
+				"564e9f02-a82e-4004-95f2-468c01922517",
+				"90655bdd-1a6d-4ad8-b727-495d99b93c2e",
+				"c0c6ccde-307d-4c50-b87b-3bd173b1b18b",
+				"92bad09a-322a-49cb-897d-7450c99f4650",
 				"2386035e-4d73-40bb-a8c1-e1c20ad15b8b",
 				"e03726f4-2ee9-4082-990f-9b270d004000",
 				"ccdb6463-6565-4fff-b933-d466459e80cb",
@@ -347,6 +348,20 @@
 			"uuid": "92bad09a-322a-49cb-897d-7450c99f4650",
 			"title": "Add Miss Variable",
 			"description": "Add a bool, that when on, every attack has an 80% chance to hit. See how that impacts the game",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "564e9f02-a82e-4004-95f2-468c01922517",
+			"title": "BUG: Fix the weird input blip at the start of the players turn",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "c0c6ccde-307d-4c50-b87b-3bd173b1b18b",
+			"title": "BUG: Add a quick delay at the start of each Enemies turn so that the camera can focus properly",
+			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

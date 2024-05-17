@@ -16,7 +16,7 @@ var IsAllyTurn : bool :
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map, _ctrl)
 
-	combatHud = controller.EnterSelectionState()
+	combatHud = controller.CreateCombatHUD()
 	controller.ClearSelectionData()
 
 	StartTurn(GameSettings.TeamID.ALLY)

@@ -16,6 +16,7 @@ extends Node2D
 @export var combatSequenceResetDistance = 0.1
 @export var combatSequenceTickDuration = 0.5
 
+@export var enemyTurnWarmup = 0.5
 
 @export_category("Damage Preview Settings")
 @export var damagePreviewDelayTime = 0.5

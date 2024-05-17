@@ -87,15 +87,18 @@ func InitializeStandalone():
 	InitializePlayerController()
 	ChangeMapState(PreMapState.new())
 
+
 func OnRosterSelected(_roster : Array[UnitTemplate]):
 	for i in range(0, _roster.size()):
 		if i < startingPositions.size():
 			InitializeUnit(_roster[i], startingPositions[i], GameSettings.TeamID.ALLY)
 
+
 func InitializePlayerController():
 	playercontroller = GameManager.GameSettings.PlayerControllerPrefab.instantiate()
 	add_child(playercontroller)
 	playercontroller.Initialize(self)
+
 
 func InitializeUnit(_unitTemplate : UnitTemplate, _position : Vector2i, _allegiance : GameSettings.TeamID):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
@@ -105,13 +108,13 @@ func InitializeUnit(_unitTemplate : UnitTemplate, _position : Vector2i, _allegia
 	AddUnitToRoster(unitInstance, _allegiance)
 	return unitInstance
 
+
 func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettings.TeamID):
 	if teams.has(_allegiance):
 		teams[_allegiance].append(_unitInstance)
 	else:
 		teams[_allegiance] = [] as Array[UnitInstance]
 		teams[_allegiance].append(_unitInstance)
-
 
 
 func InitializeGrid():
@@ -161,7 +164,6 @@ func GetClosestUnitToUnit(_currentUnit : UnitInstance, _targetTeam : int):
 			maxDistance = path.size()
 			targetUnit = unit
 	return targetUnit
-
 
 
 func _input(event):
