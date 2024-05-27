@@ -9,6 +9,8 @@ signal BannerAnimComplete
 @export var VictoryBanner : PackedScene
 @export var InspectUI : InspectPanel
 @export var ContextUI : ContextMenu
+@export var DmgPreviewUI : DamagePreviewUI
+@export var itemSelectUI : ItemSelectionUI
 @export var NoTargets : Control
 
 @export_category("Anchors")
@@ -26,13 +28,20 @@ var reticleSide
 func _ready():
 	ContextUI.visible = false
 	NoTargets.visible = false
+	itemSelectUI.visible = false
 
 func Initialize(_map : Map, _currentTile : Tile):
+	await self.ready
+
 	map = _map
-	InspectUI.Initialize(_map.playercontroller)
-	ContextUI.ActionSelected.connect(OnAbilitySelected)
 	ctrl = map.playercontroller
+
+	InspectUI.Initialize(_map.playercontroller)
+
+	# Bind those ContextUI signals
+	ContextUI.OnAnyActionSelected.connect(OnAnyActionSelected)
 	ctrl.OnTileChanged.connect(OnTileChanged)
+
 	# Do this now that we have a map ref
 	UpdateInspectUISide()
 
@@ -65,32 +74,51 @@ func HideInspectUI():
 func ShowContext(_unit : UnitInstance):
 	ContextUI.visible = true
 	ContextUI.global_position = top_right_anchor.global_position
-	ContextUI.Initialize(_unit)
+	ContextUI.Initialize()
 	pass
 
 func HideContext():
-	ContextUI.Clear()
 	ContextUI.visible = false
 
-func OnAbilitySelected(_ability : AbilityInstance):
+func OnAnyActionSelected():
 	HideContext()
 
 func ShowNoTargets(_show : bool):
 	NoTargets.visible = _show
+
+func ShowItemSelectionUI(_unit : UnitInstance):
+	itemSelectUI.visible = true
+	itemSelectUI.Initialize(_unit)
+
+func ClearItemSelectionUI():
+	itemSelectUI.visible = false
+
+func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : Item, _defender : UnitInstance):
+	DmgPreviewUI.visible = true
+	DmgPreviewUI.ShowPreviewDamage(_attacker, _weapon, _defender)
+
+func ClearDamagePreviewUI():
+	DmgPreviewUI.visible = false
 
 func UpdateInspectUISide():
 	# update the InspectUI based on where the reticle is so that it's not in the way
 	var newside = ctrl.IsReticleInLeftHalfOfViewport()
 	if newside != reticleSide:
 		InspectUI.get_parent().remove_child(InspectUI)
+		DmgPreviewUI.get_parent().remove_child(DmgPreviewUI)
+
 		# If side is true, the Reticle is on the left side of the screen, so to help visibility, the UI should be moved to the RIGHT
 		if reticleSide:
 			bottom_left_anchor.add_child(InspectUI)
 			InspectUI.position = Vector2(0, -InspectUI.size.y)
+
+			top_left_anchor.add_child(DmgPreviewUI)
 		else:
 			# If side is false, the Reticle is on the right side of the screen, so to help visibility, the UI should be move to the LEFT
 			bottom_right_anchor.add_child(InspectUI)
 			InspectUI.position = Vector2(-InspectUI.size.x, -InspectUI.size.y)
+
+			top_right_anchor.add_child(DmgPreviewUI)
 
 	reticleSide = newside
 

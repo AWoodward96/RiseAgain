@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://c6udc3lnsi3i8"]
+
+[ext_resource type="Texture2D" uid="uid://ccrj4k8wra2rt" path="res://Units/Stats/icon_luck.png" id="1_lptgu"]
+[ext_resource type="Script" path="res://Units/Stats/Scripts/StatTemplate.gd" id="2_4kl3s"]
+
+[resource]
+script = ExtResource("2_4kl3s")
+bst_weight = 1
+loc_displayName = "stat_luck"
+loc_description = "stat_luck_desc"
+loc_icon = ExtResource("1_lptgu")

@@ -24,4 +24,4 @@ func GetAnimString(_suffix : String):
 		GameSettings.TeamID.NEUTRAL:
 			animStr = "Neutral"
 
-	return "Unit" + animStr + "/" + _suffix
+	return "Unit" + animStr + "Library/" + _suffix

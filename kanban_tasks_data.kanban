@@ -11,314 +11,41 @@
 			"uuid": "39f315b3-0340-4b8b-be93-a0c21bdd0e80",
 			"title": "Todo",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f"
+				"03e18191-548c-4e16-aac3-787401d9675f",
+				"5da4adea-da09-4b9f-803b-13078f8c3319",
+				"67b3b4e5-903b-4227-b386-6db63a3432b4",
+				"3347f50e-7d81-48da-afb7-3610bea789d1",
+				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
+				"4dddcb94-d778-46ed-a185-7a9699b75187",
+				"68acfcb5-e91d-4453-bfe7-1dcb0d8c7662",
+				"6bbe5a1a-c20c-4811-9d1e-36f45165b2c2"
 			]
 		},
 		{
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"c83449d3-e1bb-43dc-b616-124ffb6b0606"
+			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Done",
 			"tasks": [
-				"4168dbfe-f520-426d-8ccf-159aa127c732",
-				"0cde6c1b-d8f6-4331-bdb2-f25c87d8b74d",
-				"2d79f9a5-b236-46a5-859f-d7b08488624c",
-				"564e9f02-a82e-4004-95f2-468c01922517",
-				"90655bdd-1a6d-4ad8-b727-495d99b93c2e",
-				"c0c6ccde-307d-4c50-b87b-3bd173b1b18b",
-				"92bad09a-322a-49cb-897d-7450c99f4650",
-				"2386035e-4d73-40bb-a8c1-e1c20ad15b8b",
-				"e03726f4-2ee9-4082-990f-9b270d004000",
-				"ccdb6463-6565-4fff-b933-d466459e80cb",
-				"4c43e337-d087-4dea-a6cf-aad9ddabdae5",
-				"241f84c5-1801-4c4d-9120-af3a608cc6af",
-				"977fd6e6-3446-47d4-ac7a-824bb9b6153f",
-				"0fb93970-23ff-4853-a7f0-c0abfad4f99a",
-				"53ae6ffc-93e7-4a70-b916-1e70fe27d1d5",
-				"d98202a3-8315-40ce-a9a5-5b4b4df24b08",
-				"cf989439-9735-4c55-8d13-918f5462b82f",
-				"6bb2589f-9a76-4e72-b9be-6f8006582c09",
-				"afc48b0a-6be8-44c7-8053-2afb9c7d6163",
-				"6115c3d3-3f19-4bbc-9fbf-9514ecddc244",
-				"5d48eb77-0ba5-4888-ab7f-c02c92a582b0",
-				"bce15d79-cae4-4e3e-987f-32eb465e245f",
-				"3900d287-c227-4e86-be97-c785145999f4",
-				"f496c03e-4b7f-4c54-b178-ade4106d3cd9",
-				"fcc95563-5413-494d-8bb7-e4c31f23f923",
-				"36d39154-4ef9-4175-b585-f2fda4e64eb9",
-				"f61df68d-3d0e-4680-814f-959727587f76",
-				"71b74ca9-9cd8-44bd-a80a-a05921bfdc03"
+				"79cc24a9-e377-4cf7-9f5e-058b591346c9",
+				"843b39dd-2bdc-49a1-a526-48aec932ab7d",
+				"77103f04-7d82-4bf1-b08a-0bc462b97f6c",
+				"937b13ef-9718-4732-9c51-d9b368367773",
+				"3cee5fb7-6806-450b-8f76-b0096c011a59",
+				"25ce1782-1bd2-4dd8-a7c3-3e04acd74094",
+				"bae7de96-5c2f-48a9-82dd-92b48c909b9a"
 			]
 		}
 	],
 	"tasks": [
 		{
-			"uuid": "4168dbfe-f520-426d-8ccf-159aa127c732",
-			"title": "Make Units",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Define Unit Templates",
-					"done": true
-				},
-				{
-					"details": "Make Unit Instance",
-					"done": true
-				},
-				{
-					"details": "Import a bunch of Images",
-					"done": true
-				},
-				{
-					"details": "Set up a couple of Unit Templates and Unit Instances",
-					"done": true
-				},
-				{
-					"details": "Go into map and force a spawn",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "2386035e-4d73-40bb-a8c1-e1c20ad15b8b",
-			"title": "Set up Spawning",
-			"description": "Set up player spawning",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Set up a unit manifest",
-					"done": true
-				},
-				{
-					"details": "make a ui to select a loadout for a map",
-					"done": true
-				},
-				{
-					"details": "spawn units",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "0cde6c1b-d8f6-4331-bdb2-f25c87d8b74d",
-			"title": "Make a shader that inverts what you're hovering over",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "afc48b0a-6be8-44c7-8053-2afb9c7d6163",
-			"title": "Clean up editor code you don't need",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "f496c03e-4b7f-4c54-b178-ade4106d3cd9",
-			"title": "Color Allies and Enemies",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "4c43e337-d087-4dea-a6cf-aad9ddabdae5",
-			"title": "Make Campaign Definition",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "53ae6ffc-93e7-4a70-b916-1e70fe27d1d5",
-			"title": "Make Stat Definitions",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "977fd6e6-3446-47d4-ac7a-824bb9b6153f",
-			"title": "Set up initialization through Main Scene",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Need Campaign Definition",
-					"done": false
-				},
-				{
-					"details": "Actually, figure out what the difference is going to be between standalone and campaign definitino",
-					"done": false
-				}
-			]
-		},
-		{
-			"uuid": "bce15d79-cae4-4e3e-987f-32eb465e245f",
-			"title": "The Resource reference error might be caused by loading the file and erroring out halfway through modification.",
-			"description": "The Resource reference error that I keep getting when importing data might be caused by loading the template object and then the code erroring out halfway through modification.\nLook for a way to protect against that, either by not modifying until we KNOW we're good, or by try catching your way through it",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "3900d287-c227-4e86-be97-c785145999f4",
-			"title": "Set Up Movement",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "f61df68d-3d0e-4680-814f-959727587f76",
-			"title": "Set Up Attack",
-			"description": "Will probably need a baseline Ability System definition in order to do targeting",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Define Ability System",
-					"done": true
-				},
-				{
-					"details": "Set Up Targeting System",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "fcc95563-5413-494d-8bb7-e4c31f23f923",
-			"title": "DefineTurns",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "71b74ca9-9cd8-44bd-a80a-a05921bfdc03",
-			"title": "Add a UI that shows Unit health",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Create Combat HUD",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "36d39154-4ef9-4175-b585-f2fda4e64eb9",
-			"title": "Set Up baseline Unit AI",
-			"description": "Currently, Enemies never end their turn because they have no AI. For now, Set up the baseline AI system so that we can at least end the Enemy's turns and go back to the Players",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Define Enemy AI Tempalte",
-					"done": true
-				},
-				{
-					"details": "Add Enemy AI section to CombatState",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "5d48eb77-0ba5-4888-ab7f-c02c92a582b0",
-			"title": "Redo Ability System",
-			"description": "So the really huge modular approach to abilities isn't working as I want it to. The ability stack is difficult to work with predictably, and I'm ending up writing a lot of shared code anyway. The system is already node based, there's no need for it to be this undefined. A modular component based system would be better off long term for these abilities.",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Remake Ability System without a stack",
-					"done": true
-				},
-				{
-					"details": "Add a damage component",
-					"done": true
-				},
-				{
-					"details": "Add targeting components",
-					"done": true
-				},
-				{
-					"details": "Rewrite target selection code",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "6115c3d3-3f19-4bbc-9fbf-9514ecddc244",
-			"title": "Update Attack / Defense Sequence",
-			"description": "The seqence is overly complicated. Defending users have their own AI state, when they don't need it. Attackers should tell all defenders they're being attacked, and then a pre-attack sequence should play, damage should be dealt, hp values should go down, and THEN the unit should die. It shouldn't happen all at once.",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Attackers Tell Defenders what's happening",
-					"done": true
-				},
-				{
-					"details": "Make damage dealt particle",
-					"done": true
-				},
-				{
-					"details": "Make defenders wait until hp bar hits 0 to die",
-					"done": true
-				},
-				{
-					"details": "Make disolve effect for dead units",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "6bb2589f-9a76-4e72-b9be-6f8006582c09",
-			"title": "Contiguous Squads",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "d98202a3-8315-40ce-a9a5-5b4b4df24b08",
-			"title": "Third Map",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "5e8077a6-047c-40bd-99f7-db95343e23f8",
 			"title": "Campaign Selection UI",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "cf989439-9735-4c55-8d13-918f5462b82f",
-			"title": "Write Aggro Code",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "2d79f9a5-b236-46a5-859f-d7b08488624c",
-			"title": "Camera should focus on Enemies during their turn",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "e03726f4-2ee9-4082-990f-9b270d004000",
-			"title": "Players shouldn't be able to do anything during Enemies turn",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "0fb93970-23ff-4853-a7f0-c0abfad4f99a",
-			"title": "InspectUI should switch sides when blocking important data",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "90655bdd-1a6d-4ad8-b727-495d99b93c2e",
-			"title": "BUG: Dead Units are still marked as collision",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
@@ -331,37 +58,120 @@
 			"steps": []
 		},
 		{
-			"uuid": "ccdb6463-6565-4fff-b933-d466459e80cb",
-			"title": "BUG: InspectUI's health bar is int flooring",
+			"uuid": "843b39dd-2bdc-49a1-a526-48aec932ab7d",
+			"title": "Rework Abilitys As Items",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Create Item Definition",
+					"done": true
+				},
+				{
+					"details": "Create Items for Units",
+					"done": true
+				},
+				{
+					"details": "Define Current Item",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "79cc24a9-e377-4cf7-9f5e-058b591346c9",
+			"title": "Define Unit Inventorys",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
 		{
-			"uuid": "241f84c5-1801-4c4d-9120-af3a608cc6af",
-			"title": "BUG: On map three, a zombie and a wolf got stacked on top of each other. Can't tell if that has to do with maybe a unit dying on that tile",
+			"uuid": "77103f04-7d82-4bf1-b08a-0bc462b97f6c",
+			"title": "Rework Combat Preview",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
 		{
-			"uuid": "92bad09a-322a-49cb-897d-7450c99f4650",
-			"title": "Add Miss Variable",
-			"description": "Add a bool, that when on, every attack has an 80% chance to hit. See how that impacts the game",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "564e9f02-a82e-4004-95f2-468c01922517",
-			"title": "BUG: Fix the weird input blip at the start of the players turn",
+			"uuid": "5da4adea-da09-4b9f-803b-13078f8c3319",
+			"title": "Unit Inspect UI",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
 		{
-			"uuid": "c0c6ccde-307d-4c50-b87b-3bd173b1b18b",
-			"title": "BUG: Add a quick delay at the start of each Enemies turn so that the camera can focus properly",
+			"uuid": "c83449d3-e1bb-43dc-b616-124ffb6b0606",
+			"title": "Unit Inventory UI",
 			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "67b3b4e5-903b-4227-b386-6db63a3432b4",
+			"title": "Roster Inspect UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "3347f50e-7d81-48da-afb7-3610bea789d1",
+			"title": "Global Context UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "bae7de96-5c2f-48a9-82dd-92b48c909b9a",
+			"title": "Implement Defense actions",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "937b13ef-9718-4732-9c51-d9b368367773",
+			"title": "Change target selection flow to include item selection",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "9dd612ed-3b0e-4436-83e2-8c6411e67fff",
+			"title": "Create Unit Persistence to pass between rounds",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "4dddcb94-d778-46ed-a185-7a9699b75187",
+			"title": "Make Item information importable",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "3cee5fb7-6806-450b-8f76-b0096c011a59",
+			"title": "Write base-level item definitions in spreadsheet",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "68acfcb5-e91d-4453-bfe7-1dcb0d8c7662",
+			"title": "Update Targeting Flags in the SkillTargetingData",
+			"description": "Items should be able to be used by both enemies and allies, IE I should only have to create one Iron Bow, and both Enemy units and Ally Units should be able to use them. This means that the SkillTargetingData TargetingFlags is outdated and should be updated to support this",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "25ce1782-1bd2-4dd8-a7c3-3e04acd74094",
+			"title": "Equipping an item moves it to the top of the inventory stack",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
+			"title": "Seriously rethink how spawners are going to work long term",
+			"description": "Whenever I move anything in the project, refrences to resources break everywhere. When I moved the AI and Aggro scripts into their own folder, all of the Spawners broke because they could no longer find a reference to the script anymore. On a better game engine this would be handled automatically, unfortunately I went with the free option so now I have to fix this.\nIf every map in the game breaks because I feel like moving a single script, then the game will never be done.",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

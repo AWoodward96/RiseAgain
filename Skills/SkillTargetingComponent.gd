@@ -24,7 +24,8 @@ func GetAdditionalTileTargets(_tile : Tile):
 
 	return [_tile]
 
-func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
+func GetAndShowTilesInRange(_unit : UnitInstance, _grid : Grid):
+	_grid.ClearActions()
 	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
 	if Type == TargetingType.Simple:
@@ -32,6 +33,8 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
 
 	options.sort_custom(OrderTargets)
 	TilesInRange = options
+
+	_grid.ShowActions()
 	pass
 
 func FilterByTargettingFlags(_options : Array[Tile]):

@@ -1,0 +1,37 @@
+[gd_scene load_steps=10 format=3 uid="uid://dst18brjn8280"]
+
+[ext_resource type="Script" path="res://Skills/Scripts/Item.gd" id="1_ti8gv"]
+[ext_resource type="Texture2D" uid="uid://dmyopb48dgn5h" path="res://Items/Icons/generic_phys_ranged.png" id="2_uac3h"]
+[ext_resource type="Script" path="res://Items/ItemStatComponent.gd" id="3_qld8s"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://Units/Stats/STAT_Attack.tres" id="4_bi1hv"]
+[ext_resource type="Script" path="res://Units/Stats/Scripts/StatDef.gd" id="5_cxjjw"]
+[ext_resource type="Script" path="res://Skills/DamageData.gd" id="6_oqafb"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://Units/Stats/STAT_Defense.tres" id="7_q3vgc"]
+[ext_resource type="Script" path="res://Skills/SkillTargetingComponent.gd" id="8_ps5gv"]
+
+[sub_resource type="Resource" id="Resource_kdt0t"]
+script = ExtResource("5_cxjjw")
+Template = ExtResource("4_bi1hv")
+Value = 6
+
+[node name="GenericPhysRanged" type="Node2D" node_paths=PackedStringArray("TargetingData", "SkillDamageData", "StatData")]
+script = ExtResource("1_ti8gv")
+loc_displayName = "TEMP PHYS RANGED"
+icon = ExtResource("2_uac3h")
+TargetingData = NodePath("SkillTargetingData")
+SkillDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_qld8s")
+BaseAccuracy = 75
+GrantedStats = Array[ExtResource("5_cxjjw")]([SubResource("Resource_kdt0t")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_oqafb")
+AgressiveStat = ExtResource("4_bi1hv")
+DefensiveStat = ExtResource("7_q3vgc")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("8_ps5gv")
+TargetRange = Vector2i(2, 2)

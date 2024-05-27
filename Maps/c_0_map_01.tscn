@@ -8,38 +8,38 @@
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://Assets/s_ui.png" id="5_i1tox"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://Units/Enemy/Zombie/UT_Zombie.tres" id="7_uxi7b"]
 [ext_resource type="Script" path="res://Maps/Scripts/Helpers/Spawners/SpawnerBasic.gd" id="8_d0di7"]
-[ext_resource type="Script" path="res://Units/Enemy/AI/AI_TargetClosest.gd" id="8_qy7si"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://Units/Enemy/WolfPup/UT_WolfPup.tres" id="9_p3uu5"]
-[ext_resource type="Script" path="res://Units/Enemy/AI/AggroRange.gd" id="10_stge5"]
+[ext_resource type="Script" path="res://Units/AI/Scripts/AI_TargetClosest.gd" id="9_x6d6n"]
+[ext_resource type="Script" path="res://Units/AI/Scripts/AggroRange.gd" id="11_ntd8v"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_flgth")
 
-[sub_resource type="Resource" id="Resource_l01f8"]
-script = ExtResource("8_qy7si")
+[sub_resource type="Resource" id="Resource_ewpee"]
+script = ExtResource("9_x6d6n")
 TargetingFlags = 1
 RememberTarget = false
 
-[sub_resource type="Resource" id="Resource_na15r"]
-script = ExtResource("8_qy7si")
+[sub_resource type="Resource" id="Resource_7tyns"]
+script = ExtResource("9_x6d6n")
 TargetingFlags = 1
 RememberTarget = false
 
-[sub_resource type="Resource" id="Resource_qjf5g"]
-script = ExtResource("10_stge5")
+[sub_resource type="Resource" id="Resource_dwgyn"]
+script = ExtResource("11_ntd8v")
 TargetingFlags = 1
-RangeOverride = 7
+RangeOverride = 0
 DamageAggros = true
 
-[sub_resource type="Resource" id="Resource_8jhg3"]
-script = ExtResource("8_qy7si")
+[sub_resource type="Resource" id="Resource_fm88h"]
+script = ExtResource("9_x6d6n")
 TargetingFlags = 1
-RememberTarget = true
+RememberTarget = false
 
-[sub_resource type="Resource" id="Resource_j17wk"]
-script = ExtResource("10_stge5")
+[sub_resource type="Resource" id="Resource_hkjcv"]
+script = ExtResource("11_ntd8v")
 TargetingFlags = 1
-RangeOverride = 7
+RangeOverride = 0
 DamageAggros = true
 
 [node name="C0_Map01" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
@@ -84,7 +84,7 @@ map = NodePath("../..")
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
 position = Vector2(384, 448)
 texture = ExtResource("5_i1tox")
 centered = false
@@ -93,11 +93,10 @@ vframes = 4
 frame = 2
 script = ExtResource("8_d0di7")
 UnitToSpawn = ExtResource("9_p3uu5")
-AIBehavior = SubResource("Resource_l01f8")
 Position = Vector2i(6, 7)
-map = NodePath("../..")
+AIBehavior = SubResource("Resource_ewpee")
 
-[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
 position = Vector2(896, 192)
 texture = ExtResource("5_i1tox")
 centered = false
@@ -106,13 +105,12 @@ vframes = 4
 frame = 2
 script = ExtResource("8_d0di7")
 UnitToSpawn = ExtResource("7_uxi7b")
-AIBehavior = SubResource("Resource_na15r")
-AggroBehavior = SubResource("Resource_qjf5g")
 Position = Vector2i(14, 3)
-map = NodePath("../..")
+AIBehavior = SubResource("Resource_7tyns")
+AggroBehavior = SubResource("Resource_dwgyn")
 
-[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
-position = Vector2(512, 128)
+[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
+position = Vector2(576, 128)
 texture = ExtResource("5_i1tox")
 centered = false
 hframes = 4
@@ -120,10 +118,9 @@ vframes = 4
 frame = 2
 script = ExtResource("8_d0di7")
 UnitToSpawn = ExtResource("7_uxi7b")
-AIBehavior = SubResource("Resource_8jhg3")
-AggroBehavior = SubResource("Resource_j17wk")
-Position = Vector2i(8, 2)
-map = NodePath("../..")
+Position = Vector2i(9, 2)
+AIBehavior = SubResource("Resource_fm88h")
+AggroBehavior = SubResource("Resource_hkjcv")
 
 [node name="Variants" type="Node2D" parent="."]
 

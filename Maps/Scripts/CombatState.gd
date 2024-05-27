@@ -75,7 +75,7 @@ func ActivateAll():
 		# 'team' in this scenario is an ENUM, so check against map.teams[team]
 		for unit in map.teams[team] :
 			if unit != null:
-				unit.Activate()
+				unit.Activate(map.currentTurn)
 
 func IsTurnOver():
 	var turnOver = true

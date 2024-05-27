@@ -6,6 +6,7 @@ var unitsToTakeDamage : Array[UnitInstance]
 var tempTimer : Timer
 var waitForAnimToFinish : bool
 
+# Data being passed is of type CombatLog
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 
@@ -32,12 +33,13 @@ func _Enter(_ctrl : PlayerController, data):
 
 	if combatData.source != null:
 		# If the ability has a source, then the source is in charge of setting off the sequence
-		ctrl.ForceReticlePosition(combatData.originTile.Position)
-		combatData.source.QueueAttackSequence(combatData.originTile.Position * currentGrid.CellSize, combatData, unitsToTakeDamage)
+		ctrl.ForceReticlePosition(combatData.executionTile.Position)
+		combatData.source.QueueAttackSequence(combatData.executionTile.Position * currentGrid.CellSize, combatData, unitsToTakeDamage)
+
 	else:
 		# if the ability has no source, then the targets all take damage on their own
 		for u in unitsToTakeDamage:
-			u.QueueDefenseSequence(combatData.originTile.Position * currentGrid.CellSize, combatData, combatData.source)
+			u.QueueDefenseSequence(combatData.executionTile.Position * currentGrid.CellSize, combatData, combatData.source)
 
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()

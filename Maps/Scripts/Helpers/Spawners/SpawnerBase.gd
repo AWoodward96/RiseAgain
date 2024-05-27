@@ -1,10 +1,10 @@
-@tool
-extends MapHelper
+extends Node2D
 class_name SpawnerBase
 
 const PREFIX = "Spawn_"
 
 @export var DebugName : String
+@export var Position: Vector2i
 @export var Enabled : bool = true
 @export var Allegiance : GameSettings.TeamID = GameSettings.TeamID.ENEMY
 @export var AIBehavior : AIBehaviorBase

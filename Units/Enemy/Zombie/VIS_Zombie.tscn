@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Units/UnitVisual.gd" id="1_s1ywh"]
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://Units/Enemy/Zombie/zombie.png" id="2_cbuph"]
-[ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://Units/Enemy/Animations/UnitEnemyLibrary.res" id="3_klhbh"]
+[ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://Units/Animations/UnitEnemyLibrary.res" id="3_klhbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
@@ -18,7 +18,7 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"UnitEnemy": ExtResource("3_klhbh")
+"UnitEnemyLibrary": ExtResource("3_klhbh")
 }
 autoplay = "Unactivated"
 

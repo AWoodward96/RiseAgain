@@ -1,5 +1,5 @@
 extends Button
 
-func Initialize(_ability : AbilityInstance):
-	text = _ability.loc_displayName
+func Initialize(_item : Item):
+	text = _item.loc_displayName
 	pass

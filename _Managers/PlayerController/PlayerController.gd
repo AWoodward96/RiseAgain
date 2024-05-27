@@ -26,7 +26,7 @@ var tileHalfSize
 var trackingMovementOrigin
 
 var selectedUnit : UnitInstance
-var selectedAbility : AbilityInstance
+var selectedItem : Item
 
 var desiredCameraPosition : Vector2 = Vector2(0,0)
 
@@ -139,22 +139,40 @@ func EnterTargetingState(_targetData):
 func EnterCombatState(_combatData):
 	ChangeControllerState(CombatControllerState.new(), _combatData)
 
+func EnterItemSelectionState():
+	ChangeControllerState(ItemSelectControllerState.new(), null)
+
 func CreateCombatHUD():
 	if combatHUD == null:
 		combatHUD = GameManager.CombatHUDUI.instantiate() as CombatHUD
 		combatHUD.Initialize(currentMap, CurrentTile)
 		add_child(combatHUD)
-		combatHUD.ContextUI.ActionSelected.connect(OnActionSelected)
+
+		combatHUD.ContextUI.OnWait.connect(OnWait)
+		combatHUD.ContextUI.OnDefend.connect(OnDefend)
+		combatHUD.ContextUI.OnAttack.connect(OnAttack)
+
+		combatHUD.itemSelectUI.OnItemSelectedForCombat.connect(OnItemSelectedForCombat)
+
 	return combatHUD
 
-func OnActionSelected(_ability : AbilityInstance):
-	if _ability == null:
-		reticle.visible = true
-		ForceReticlePosition(selectedUnit.GridPosition)
-		selectedUnit.EndTurn()
-		ClearSelectionData()
-		EnterSelectionState()
-	else:
-		# attempt to execute the ability
-		selectedAbility = _ability
-		selectedAbility.PollTargets()
+func OnWait():
+	reticle.visible = true
+	ForceReticlePosition(selectedUnit.GridPosition)
+	selectedUnit.EndTurn()
+	ClearSelectionData()
+	EnterSelectionState()
+
+
+func OnDefend():
+	selectedUnit.Defend()
+	OnWait()
+
+func OnAttack():
+	EnterItemSelectionState()
+
+func OnItemSelectedForCombat(_item : Item):
+	if _item != null:
+		selectedItem = _item
+		selectedUnit.EquipItem(selectedItem)
+		selectedItem.PollTargets()

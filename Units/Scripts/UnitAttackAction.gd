@@ -17,6 +17,31 @@ func _Enter(_unit : UnitInstance, _map : Map):
 
 	for u in UnitsToTakeDamage:
 		u.QueueDefenseSequence(_unit.position, Context, _unit)
+		if Context.canRetaliate && u.IsDefending:
+			if u.EquippedItem == null:
+				continue
+
+			if u.EquippedItem.SkillDamageData == null:
+				continue
+
+			var range = u.EquippedItem.GetRange()
+			var combatRange = Context.item.GetRange()
+			if range == Vector2i.ZERO:
+				continue
+
+			var combatDistance = Context.grid.GetManhattanDistance(Context.sourceCombatTile.Position ,u.GridPosition)
+			# so basically, if the weapon this unit is holding, has a max range
+			if range.x <= combatDistance && range.y >= combatDistance:
+				# okay at this point retaliation is possible
+				# oh boy time to make a brand new combat data
+				var newData = CombatLog.new()
+				newData.Construct(Context.map, u, u.EquippedItem, u.CurrentTile, _unit.CurrentTile)
+				newData.targetTiles.append(_unit.CurrentTile)
+				# turn off retaliation or else these units will be fighting forever
+				newData.canRetaliate = false
+
+				u.QueueAttackSequence(_unit.global_position, newData, [_unit])
+				pass
 
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)
@@ -25,7 +50,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	TimerLock = true
 
 func _Execute(_unit : UnitInstance, delta):
-	return ReturnToCenter(_unit, delta) && DamagedEnemiesClear() && TimerLock
+	return ReturnToCenter(_unit, delta) && TimerLock
 
 func ReturnToCenter(_unit, delta):
 	var desired = _unit.GridPosition * map.TileSize

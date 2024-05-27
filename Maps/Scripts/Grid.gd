@@ -184,8 +184,10 @@ func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile],
 
 				var position = n.Position as Vector2 + Vector2(x,y)
 				if(Pathfinding.is_in_bounds(position.x, position.y)):
-					var dst = position.distance_to(n.Position as Vector2)
-					if(dst >= a_attackRange.x && dst <= a_attackRange.y) :
+					#var dst = position.distance_to(n.Position as Vector2)
+					var dst = position - (n.Position as Vector2)
+					var riseOverRun = abs(dst.x) + abs(dst.y)
+					if (riseOverRun >= a_attackRange.x && riseOverRun <= a_attackRange.y) :
 						GridArr[position.y * Width + position.x].CanAttack = true
 						returnArr.append(GridArr[position.y * Width + position.x])
 	return returnArr
@@ -221,3 +223,8 @@ func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitI
 		Pathfinding.set_point_solid(_destinationUnit.GridPosition, true)
 
 	return path
+
+func GetManhattanDistance(_gridPosition1 : Vector2i, _gridPosition2 : Vector2i):
+	var x = abs(_gridPosition1.x - _gridPosition2.x)
+	var y = abs(_gridPosition1.y - _gridPosition2.y)
+	return x + y

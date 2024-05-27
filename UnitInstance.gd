@@ -10,13 +10,21 @@ class_name UnitInstance
 @onready var health_bar_parent = %HealthBarParent
 
 @onready var damage_indicator: Node2D = $DamageIndicator
+@onready var defend_icon: Sprite2D = %DefendIcon
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
 var Template : UnitTemplate
 var UnitVisual : UnitVisual
 var UnitAllegiance : GameSettings.TeamID
-var Abilities : Array[AbilityInstance]
+var Inventory : Array[Item]
+var EquippedItem : Item
+
+var IsDefending : bool = false :
+	set(value):
+		if defend_icon != null:
+			defend_icon.visible = value
+		IsDefending = value
 
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
@@ -61,6 +69,7 @@ func _ready():
 	ShowHealthBar(false)
 	HideDamagePreview()
 	damage_indicator.Initialize(self)
+	defend_icon.visible = false
 
 func Initialize(_unitTemplate : UnitTemplate, _map: Map, _gridLocation : Vector2i, _allegiance : GameSettings.TeamID) :
 	GridPosition = _gridLocation
@@ -68,9 +77,8 @@ func Initialize(_unitTemplate : UnitTemplate, _map: Map, _gridLocation : Vector2
 	UnitAllegiance = _allegiance
 	map = _map
 
-
 	CreateVisual()
-	CreateAbilities()
+	CreateItems()
 	InitializeStats()
 
 	# has to be after CreateVisual
@@ -121,13 +129,26 @@ func InitializeStats():
 
 	currentHealth = currentStats[GameManager.GameSettings.HealthStat]
 
-func CreateAbilities():
-	for ability in Template.Abilities:
-		var abilityEntry = ability.instantiate() as AbilityInstance
-		abilityEntry.Initialize(self, map)
-		abilityParent.add_child(abilityEntry)
-		Abilities.append(abilityEntry)
+func CreateItems():
+	# TODO: Figure out how to initialize from save data, so that Item information persists between levels
+	for item in Template.StartingItems:
+		var itemInstance = item.instantiate() as Item
+		itemInstance.Initialize(self, map)
+		itemsParent.add_child(itemInstance)
+		Inventory.append(itemInstance)
 
+	if Inventory.size() > 0:
+		EquipItem(Inventory[0])
+
+func EquipItem(_item : Item):
+	var index = Inventory.find(_item)
+	if index != -1:
+		EquippedItem = _item
+
+		# move up the equipped weapon to slot 0 of the inventory
+		var invAt0 = Inventory[0]
+		Inventory[0] = _item
+		Inventory[index] = invAt0
 
 func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :
 	if _route == null || _route.size() == 0:
@@ -155,14 +176,21 @@ func PopAction():
 func GetUnitMovement():
 	return currentStats[GameManager.GameSettings.MovementStat]
 
-func Activate():
+func Activate(_currentTurn : GameSettings.TeamID):
 	# Turns on this unit to let them take their turn
 	Activated = true
 	CurrentAction = null
 	ActionStack.clear()
 
+	# defending doesn't drop off until it's your turn again
+	if _currentTurn == UnitAllegiance:
+		IsDefending = false
+
 	# for 'canceling' movement
 	TurnStartTile = CurrentTile
+
+func Defend():
+	IsDefending = true
 
 func QueueEndTurn():
 	var endTurn = UnitEndTurnAction.new()
@@ -182,11 +210,13 @@ func QueueTurnStartDelay():
 func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
 	# Here we calculate if we hit or missed before sending damage
 	# it's seperate from TakeDamage because sometimes the Units will want to take damage outside of combat
-	_context.CalculateMiss(map.rng)
+	var hitRate =  GameManager.GameSettings.HitRateCalculation(_context.source, _context.item, self)
+
+	_context.CalculateMiss(map.rng, hitRate)
 	var damage = CalculateDamage(_context.damageContext, _source)
 
 	if _context.miss:
-		Juice.CreateMissPopup(_context.originTile)
+		Juice.CreateMissPopup(_context.executionTile)
 	else:
 		TakeDamage(damage, _source, _instantaneous)
 
@@ -215,18 +245,32 @@ func DamageTweenComplete(_damage):
 
 func CalculateDamage(_context : DamageData, _source):
 	var damage
-	var defensiveStatValue = _context.DoMod(currentStats[_context.DefensiveStat], _context.DefensiveMod, _context.DefensiveModType)
+	var defense = GetWorkingStat(_context.DefensiveStat)
+	var defensiveStatValue = _context.DoMod(defense, _context.DefensiveMod, _context.DefensiveModType)
 
 	var sourceAsUnit = _source as UnitInstance
 	if sourceAsUnit != null:
 		# If Source is not equal to null, then the damage will be based on that units agressive stat
-		var agressiveStatValue = _context.DoMod(sourceAsUnit.currentStats[_context.AgressiveStat], _context.AgressiveMod, _context.AgressiveModType)
+		var attack = sourceAsUnit.GetWorkingStat(_context.AgressiveStat)
+		var agressiveStatValue = _context.DoMod(attack, _context.AgressiveMod, _context.AgressiveModType)
+
 		damage =  GameManager.GameSettings.DamageCalculation(agressiveStatValue, defensiveStatValue)
 	else:
 		# If Source is null, then damage will be based on _context's FlatValue property, which is unaffected by modifiers
 		damage = GameManager.GameSettings.DamageCalculation(_context.FlatValue, defensiveStatValue)
 		pass
 	return damage
+
+func GetWorkingStat(_statTemplate : StatTemplate):
+	# start with the base
+	var current = currentStats[_statTemplate]
+
+	if EquippedItem != null && EquippedItem.StatData != null:
+		for statDef in EquippedItem.StatData.GrantedStats:
+			if statDef.Template == _statTemplate:
+				current += statDef.Value
+
+	return current
 
 func CheckDeath():
 	if currentHealth <= 0:
@@ -273,18 +317,18 @@ func HideDamagePreview():
 	pass
 
 func GetEffectiveAttackRange():
-	if Abilities.size() == 0:
+	if Inventory.size() == 0:
 		return Vector2i(0,0)
 
 	# Default range should start at 1 1 and go up from there
 	var range = Vector2i(1, 1)
-	for a in Abilities:
-		if a == null:
+	for item in Inventory:
+		if item == null:
 			continue
 
-		var abilityRange = a.GetRange()
-		if abilityRange != Vector2i(0,0):
-			if range.y < abilityRange.y:
-				range.y = abilityRange.y
+		var itemRange = item.GetRange()
+		if itemRange != Vector2i(0,0):
+			if range.y < itemRange.y:
+				range.y = itemRange.y
 
 	return range

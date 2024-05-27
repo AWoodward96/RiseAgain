@@ -5,6 +5,7 @@ class_name UnitTemplate
 @export var VisualPrefab : PackedScene
 @export var BaseStats : Array[StatDef]
 
+@export var StartingItems : Array[PackedScene]
 @export var Abilities : Array[PackedScene]
 #@export var BaseClass : ClassTemplate
 

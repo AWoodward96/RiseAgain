@@ -7,7 +7,7 @@ class_name AITargetClosest
 # A more threatening, more interesting AI, would be SmartTargetClosest, where it'd prioritize units it could actually damage
 # ---------------------------------------
 
-@export_flags("ALLY", "ENEMY", "NEUTRAL") var TargetingFlags : int = 0
+@export_flags("ALLY", "ENEMY", "NEUTRAL") var TargetingFlags : int = 1
 @export var RememberTarget : bool
 
 var targetUnit : UnitInstance
@@ -18,7 +18,7 @@ var pathfinding  : AStarGrid2D
 var selectedTile : Tile
 var selectedPath : PackedVector2Array
 
-var ability : AbilityInstance
+var item : Item
 
 var pathfindingOptions : Array[PathfindingOption]
 
@@ -33,7 +33,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
 	GetAbility()
-	if ability == null:
+	if item == null:
 		unit.QueueEndTurn()
 		return
 
@@ -141,7 +141,7 @@ func GetAllValidPaths():
 	pathfindingOptions.sort_custom(func(x,y) : return x.PathSize < y.PathSize)
 
 func GetActionableTiles():
-	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, ability.GetRange())
+	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, item.GetRange())
 	tilesWithinRange = tilesWithinRange.filter(func(tile) : return tile.Occupant == null || (tile.Occupant == unit))
 	tilesWithinRange = tilesWithinRange.filter(func(tile) : return !tile.IsWall)
 	return tilesWithinRange
@@ -157,27 +157,23 @@ func FilterTilesByPath(_actionableTiles : Array[Tile]):
 			lowest = path.size()
 
 func GetAbility():
-	if unit.Abilities.size() == 0:
+	if unit.Inventory.size() == 0:
 		return
 
-	ability = unit.Abilities[0]
+	item = unit.EquippedItem
 
 func TryCombat():
 	if targetUnit == null:
 		unit.QueueEndTurn()
 		return
 
-	if !ability.IsWithinRange(selectedTile.Position, targetUnit.GridPosition):
+	if !item.IsWithinRange(selectedTile.Position, targetUnit.GridPosition):
 		unit.QueueEndTurn()
 		return
 
 	## default to the first ability
-	#var ability = unit.Abilities[0]
-	#if !ability.active:
-	#print("EXECUTING ABILITY")
 	var context = CombatLog.new()
-	context.Construct(map, unit, ability)
-	context.originTile = targetUnit.CurrentTile
+	context.Construct(map, unit, item, selectedTile, targetUnit.CurrentTile)
 	context.targetTiles.append(targetUnit.CurrentTile)
-	ability.ExecuteAbility(context)
+	item.ExecuteCombat(context)
 

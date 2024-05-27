@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://Assets/s_ui.png" id="6_fj6ad"]
 [ext_resource type="Script" path="res://Maps/Scripts/Helpers/Spawners/SpawnerBasic.gd" id="7_4f2q2"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_ax251"]
-[ext_resource type="Script" path="res://Units/Enemy/AI/AI_TargetClosest.gd" id="9_cb4kw"]
+[ext_resource type="Script" path="res://Units/AI/Scripts/AI_TargetClosest.gd" id="9_cb4kw"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://Units/Enemy/Zombie/UT_Zombie.tres" id="10_x5p22"]
-[ext_resource type="Script" path="res://Units/Enemy/AI/AggroRange.gd" id="10_xk6ob"]
+[ext_resource type="Script" path="res://Units/AI/Scripts/AggroRange.gd" id="10_xk6ob"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_4inf2")
@@ -106,7 +106,7 @@ map = NodePath("../..")
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
 position = Vector2(384, 448)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -115,11 +115,10 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
-AIBehavior = SubResource("Resource_l01f8")
 Position = Vector2i(6, 7)
-map = NodePath("../..")
+AIBehavior = SubResource("Resource_l01f8")
 
-[node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners"]
 position = Vector2(192, 192)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -128,11 +127,10 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
-AIBehavior = SubResource("Resource_l01f8")
 Position = Vector2i(3, 3)
-map = NodePath("../..")
+AIBehavior = SubResource("Resource_l01f8")
 
-[node name="Spawn_Wolf Pup3" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Wolf Pup3" type="Sprite2D" parent="Spawners"]
 position = Vector2(1472, 192)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -141,11 +139,10 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
-AIBehavior = SubResource("Resource_l01f8")
 Position = Vector2i(23, 3)
-map = NodePath("../..")
+AIBehavior = SubResource("Resource_l01f8")
 
-[node name="Spawn_Wolf Pup4" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Wolf Pup4" type="Sprite2D" parent="Spawners"]
 position = Vector2(1088, 448)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -154,12 +151,11 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
+Position = Vector2i(17, 7)
 AIBehavior = SubResource("Resource_l01f8")
 AggroBehavior = SubResource("Resource_18shu")
-Position = Vector2i(17, 7)
-map = NodePath("../..")
 
-[node name="Spawn_Wolf Pup5" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Wolf Pup5" type="Sprite2D" parent="Spawners"]
 position = Vector2(1024, 512)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -168,12 +164,11 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
+Position = Vector2i(16, 8)
 AIBehavior = SubResource("Resource_l01f8")
 AggroBehavior = SubResource("Resource_yh0au")
-Position = Vector2i(16, 8)
-map = NodePath("../..")
 
-[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 128)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -182,12 +177,11 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
+Position = Vector2i(13, 2)
 AIBehavior = SubResource("Resource_na15r")
 AggroBehavior = SubResource("Resource_7jrpa")
-Position = Vector2i(13, 2)
-map = NodePath("../..")
 
-[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners" node_paths=PackedStringArray("map")]
+[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
 position = Vector2(704, 128)
 texture = ExtResource("6_fj6ad")
 centered = false
@@ -196,10 +190,9 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
+Position = Vector2i(11, 2)
 AIBehavior = SubResource("Resource_8jhg3")
 AggroBehavior = SubResource("Resource_o8bys")
-Position = Vector2i(11, 2)
-map = NodePath("../..")
 
 [node name="Variants" type="Node2D" parent="."]
 

@@ -23,6 +23,7 @@ func UpdateInput(_delta):
 func _Exit():
 	ctrl.combatHUD.HideContext()
 	reticle.visible = true
+	ctrl.BlockMovementInput = false
 
 func ToString():
 	return "ContextControllerState"

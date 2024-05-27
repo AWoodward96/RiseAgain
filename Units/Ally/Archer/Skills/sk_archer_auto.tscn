@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmpm0oirhe7ny"]
 
-[ext_resource type="Script" path="res://Skills/Scripts/AbilityInstance.gd" id="1_xy5fy"]
+[ext_resource type="Script" path="res://Skills/Scripts/Item.gd" id="1_xy5fy"]
 [ext_resource type="Script" path="res://Skills/SkillTargetingComponent.gd" id="2_y5eoy"]
 [ext_resource type="Script" path="res://Skills/DamageData.gd" id="3_5omta"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://Units/Stats/STAT_Attack.tres" id="3_otq3u"]

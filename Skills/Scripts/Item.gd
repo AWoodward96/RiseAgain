@@ -1,13 +1,14 @@
 extends Node2D
-class_name AbilityInstance
+class_name Item
 
 @export var loc_displayName : String
 @export var loc_displayDesc : String
-@export var AutoEndTurn = true
+@export var icon : Texture2D
+
 @export var TargetingData : SkillTargetingData
 @export var SkillDamageData : DamageData
+@export var StatData : ItemStatComponent
 
-var persisted_dictionary = {}
 var context : CombatLog
 var ownerUnit : UnitInstance
 var map : Map
@@ -18,7 +19,6 @@ var playerController : PlayerController :
 	get:
 		return map.playercontroller
 
-var active = false
 
 func _ready():
 	if TargetingData == null:
@@ -27,34 +27,39 @@ func _ready():
 	if SkillDamageData == null:
 		SkillDamageData = get_node_or_null("DamageComponent") as DamageData
 
+	if StatData == null:
+		StatData = get_node_or_null("StatComponent") as ItemStatComponent
+
 	pass
+
 
 func Initialize(_unitOwner : UnitInstance, _map : Map):
 	ownerUnit = _unitOwner
 	map = _map
 
-func _process(_delta):
-	pass
-
 # This does the damage and effects for the ability
-func ExecuteAbility(_optionalContext : CombatLog = null):
+func ExecuteCombat(_optionalContext : CombatLog = null):
+	# Either take the combat context passed in, or create a new one
 	context = _optionalContext
 	if context == null:
 		context = CombatLog.new()
-		context.Construct(map, ownerUnit, self)
+		context.Construct(map, ownerUnit, self, ownerUnit.CurrentTile, selectedTileForExecution)
 
+	# ensure the context has this item ref
+	if context.item == null:
+		context.item = self
+
+	# If there are no targeted tiles, take the ones that might have been cached by this script
 	if context.targetTiles != null:
 		context.targetTiles.append_array(cachedTargets)
 	else:
 		context.targetTiles = cachedTargets
 
-	if context.originTile == null:
-		context.originTile = selectedTileForExecution
-
+	# The damage data is based on the damage component
 	context.damageContext = SkillDamageData
 
-	if !playerController.OnCombatSequenceComplete.is_connected(OnAbilityExecutionComplete):
-		playerController.OnCombatSequenceComplete.connect(OnAbilityExecutionComplete)
+	if !playerController.OnCombatSequenceComplete.is_connected(OnCombatExecutionComplete):
+		playerController.OnCombatSequenceComplete.connect(OnCombatExecutionComplete)
 
 	playerController.EnterCombatState(context)
 	pass
@@ -65,18 +70,24 @@ func PollTargets():
 
 	# if there's no targeting data, just yolo and execute the damn thing
 	if TargetingData == null:
-		ExecuteAbility()
+		ExecuteCombat()
 		return
 
-	TargetingData.GetTilesInRange(ownerUnit, map.grid)
+	TargetingData.GetAndShowTilesInRange(ownerUnit, map.grid)
 	playerController.EnterTargetingState(self)
 	if !playerController.OnTileSelected.is_connected(OnTargetTileSelected):
 		playerController.OnTileSelected.connect(OnTargetTileSelected)
 	pass
 
-func OnAbilityExecutionComplete():
-	if playerController.OnCombatSequenceComplete.is_connected(OnAbilityExecutionComplete):
-		playerController.OnCombatSequenceComplete.disconnect(OnAbilityExecutionComplete)
+func ShowRangePreview():
+	if TargetingData == null:
+		return
+
+	TargetingData.GetAndShowTilesInRange(ownerUnit, map.grid)
+
+func OnCombatExecutionComplete():
+	if playerController.OnCombatSequenceComplete.is_connected(OnCombatExecutionComplete):
+		playerController.OnCombatSequenceComplete.disconnect(OnCombatExecutionComplete)
 
 	ownerUnit.QueueEndTurn()
 
@@ -87,7 +98,7 @@ func OnTargetTileSelected(_tile : Tile):
 	selectedTileForExecution = _tile
 	cachedTargets.clear()
 	cachedTargets.append_array(TargetingData.GetAdditionalTileTargets(_tile))
-	ExecuteAbility()
+	ExecuteCombat()
 	pass
 
 func CancelAbility():
@@ -99,6 +110,14 @@ func GetRange():
 	if TargetingData != null:
 		return TargetingData.TargetRange
 	return Vector2i(0, 0)
+
+func GetAccuracy():
+	if StatData != null:
+		return StatData.BaseAccuracy
+
+	# Not quite sure if this is the right value to default to.
+	# Healing should always be 100% accurate and might not have StatData, so we'll see
+	return 100
 
 func IsWithinRange(_currentPosition : Vector2, _target : Vector2):
 	if TargetingData == null:

@@ -44,7 +44,7 @@ func UpdateTracker():
 				if walkedPath.size() > 1 && walkedPath[walkedPath.size() - 2] == ctrl.CurrentTile.GlobalPosition:
 					walkedPath.remove_at(walkedPath.size() - 1)
 				else:
-					if movementThisFrame.length() <= 1 && prevTile.CanMove:
+					if movementThisFrame.length() <= 1 && prevTile.CanMove && !walkedPath.has(ctrl.CurrentTile.GlobalPosition):
 						walkedPath.append(ctrl.CurrentTile.GlobalPosition)
 					else:
 						walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)

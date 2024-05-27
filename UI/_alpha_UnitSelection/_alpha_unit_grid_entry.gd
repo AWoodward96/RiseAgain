@@ -11,7 +11,7 @@ var UnitTemplate : UnitTemplate
 func Initialize(_unitTemplate : UnitTemplate):
 	UnitTemplate = _unitTemplate
 	UnitIcon.texture = UnitTemplate.icon
-	
+
 	# TODO: Setup a baseline localization sheet for UI
 	UnitName.text = UnitTemplate.DebugName
 

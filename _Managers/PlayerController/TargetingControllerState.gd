@@ -3,18 +3,19 @@ class_name TargetingControllerState
 
 var TargetData
 var currentTarget
-var abilityInstance
+var currentItem
 var source
 
-func _Enter(_ctrl : PlayerController, abilityData):
-	super(_ctrl, abilityData)
+func _Enter(_ctrl : PlayerController, ItemData):
+	super(_ctrl, ItemData)
 
-	currentGrid.ShowActions()
-	if abilityData is AbilityInstance:
-		abilityInstance = abilityData
-		TargetData = abilityData.TargetingData
+	# Grid should already be showing the actionable tiles from the Item Selection state
+	# That information should be passed here for our selection
+	if ItemData is Item:
+		currentItem = ItemData
+		TargetData = ItemData.TargetingData
 		currentTarget = TargetData.TilesInRange[0]
-		source = abilityData.ownerUnit
+		source = ItemData.ownerUnit
 		ctrl.ForceReticlePosition(currentTarget.Position)
 
 		ShowDamagePreview()
@@ -39,13 +40,14 @@ func UpdateInput(_delta):
 		SkillTargetingData.TargetingType.ShapedDirectional:
 			pass
 
-	if InputManager.selectDown:
+	if InputManager.selectDown && currentTarget.Occupant != null:
 		ctrl.OnTileSelected.emit(currentTarget)
 
 	if InputManager.cancelDown:
 		ClearDamagePreview()
-		ctrl.selectedAbility.CancelAbility()
-		ctrl.EnterContextMenuState()
+		ctrl.selectedItem.CancelAbility()
+		#ctrl.EnterContextMenuState()
+		ctrl.EnterItemSelectionState()
 
 func _Exit():
 	ClearDamagePreview()
@@ -84,10 +86,19 @@ func StandartTargetingInput(_delta):
 func ClearDamagePreview():
 	if currentTarget != null && currentTarget.Occupant != null:
 		currentTarget.Occupant.HideDamagePreview()
+		ctrl.combatHUD.ClearDamagePreviewUI()
 
 func ShowDamagePreview():
 	if currentTarget != null && currentTarget.Occupant != null:
-		currentTarget.Occupant.ShowDamagePreview(source, abilityInstance.SkillDamageData)
+		# Show the damage preview physically on the unit
+		# this section is slated for removal if it is deemed to be unnecessary
+		currentTarget.Occupant.ShowDamagePreview(source, currentItem.SkillDamageData)
+
+		# Ping the CombatHUD to show the damage preview
+		ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTarget.Occupant)
 
 func ToString():
 	return "TargetingControllerState"
+
+func ShowInspectUI():
+	return false
