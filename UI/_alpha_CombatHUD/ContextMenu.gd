@@ -4,6 +4,7 @@ class_name ContextMenu
 signal OnDefend()
 signal OnAttack()
 signal OnWait()
+signal OnInventory()
 signal OnAnyActionSelected()
 
 @export var entryParent : Control
@@ -27,3 +28,7 @@ func OnDefendButton():
 	OnAnyActionSelected.emit()
 	pass
 
+func OnInventoryButton():
+	OnInventory.emit()
+	OnAnyActionSelected.emit()
+	pass

@@ -5,6 +5,7 @@ extends Node2D
 @export var AlphaUnitSelection : PackedScene
 @export var AlphaFormationUI : PackedScene
 @export var CombatHUDUI : PackedScene
+@export var UnitInventoryUI : PackedScene
 
 @export var LoadingScreenPrefab : PackedScene
 

@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 class_name EntryList
 
 # should be an array of whatever entries we're creating

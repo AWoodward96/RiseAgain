@@ -28,6 +28,8 @@ var trackingMovementOrigin
 var selectedUnit : UnitInstance
 var selectedItem : Item
 
+var unitInventoryOpen : bool
+
 var desiredCameraPosition : Vector2 = Vector2(0,0)
 
 # UIs
@@ -151,6 +153,7 @@ func CreateCombatHUD():
 		combatHUD.ContextUI.OnWait.connect(OnWait)
 		combatHUD.ContextUI.OnDefend.connect(OnDefend)
 		combatHUD.ContextUI.OnAttack.connect(OnAttack)
+		combatHUD.ContextUI.OnInventory.connect(OnInventory)
 
 		combatHUD.itemSelectUI.OnItemSelectedForCombat.connect(OnItemSelectedForCombat)
 
@@ -163,6 +166,13 @@ func OnWait():
 	ClearSelectionData()
 	EnterSelectionState()
 
+func OnInventory():
+	if selectedUnit != null:
+		var ui = GameManager.UnitInventoryUI.instantiate()
+		add_child(ui)
+		ui.Initialize(selectedUnit)
+		unitInventoryOpen = true
+	pass
 
 func OnDefend():
 	selectedUnit.Defend()

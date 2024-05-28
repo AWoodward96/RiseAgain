@@ -11,6 +11,12 @@ func _Enter(_ctrl : PlayerController, data):
 func UpdateInput(_delta):
 	# don't accept inputs here
 	if InputManager.cancelDown:
+		if ctrl.unitInventoryOpen:
+			ctrl.unitInventoryOpen = false
+			currentGrid.ClearActions()
+			ctrl.combatHUD.ShowContext(selectedUnit)
+			return
+
 		selectedUnit.StopCharacterMovement()
 
 		# Done in this order, so that the Reticle is where the unit was hovering before cancel was called

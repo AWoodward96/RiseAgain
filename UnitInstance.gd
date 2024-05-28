@@ -150,6 +150,13 @@ func EquipItem(_item : Item):
 		Inventory[0] = _item
 		Inventory[index] = invAt0
 
+func TrashItem(_item : Item):
+	var index = Inventory.find(_item)
+	if index != -1:
+		itemsParent.remove_child(_item)
+		Inventory.remove_at(index)
+
+
 func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :
 	if _route == null || _route.size() == 0:
 		return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=19 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://UI/_alpha_CombatHUD/CombatHUD.gd" id="1_y5s67"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://UI/_alpha_CombatHUD/turn_ui_ally.tscn" id="2_3qmod"]
@@ -11,8 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://Items/Icons/generic_melee.png" id="6_ctkha"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://UI/Fonts/ClassicShit.ttf" id="7_ip3jk"]
 [ext_resource type="Script" path="res://UI/_alpha_CombatHUD/ItemSelectionUI.gd" id="12_loqkl"]
-[ext_resource type="PackedScene" uid="uid://gyr3j78vaevw" path="res://UI/_alpha_CombatHUD/inventory_item_entry.tscn" id="12_mcecf"]
-[ext_resource type="Script" path="res://UI/_alpha_CombatHUD/EntryList.gd" id="14_fck3y"]
+[ext_resource type="PackedScene" uid="uid://b2kf5pjs88d6t" path="res://UI/UnitInventory/unit_inventory_panel.tscn" id="12_vxq1p"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
 
@@ -30,9 +29,6 @@ bg_color = Color(0.129558, 0.129559, 0.129558, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfkil"]
 bg_color = Color(0.568973, 0.568973, 0.568973, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ps06i"]
-bg_color = Color(0.419813, 0.419813, 0.419813, 1)
 
 [node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "DmgPreviewUI", "itemSelectUI", "NoTargets", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_y5s67")
@@ -412,6 +408,16 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
 theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
 text = "Defend"
 
+[node name="Inventory" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_ip3jk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
+text = "Inventory"
+
 [node name="Wait" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -457,7 +463,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "No Targets Found"
 
-[node name="ItemSelection" type="Control" parent="."]
+[node name="ItemSelection" type="Control" parent="." node_paths=PackedStringArray("InventoryPanel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -465,7 +471,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_loqkl")
-inventoryEntryPrefab = ExtResource("12_mcecf")
+InventoryPanel = NodePath("UnitInventory")
 
 [node name="UnitInfo" type="Control" parent="ItemSelection"]
 anchors_preset = 0
@@ -474,83 +480,10 @@ offset_top = 100.0
 offset_right = 140.0
 offset_bottom = 140.0
 
-[node name="UnitInventory" type="Control" parent="ItemSelection"]
+[node name="UnitInventory" parent="ItemSelection" instance=ExtResource("12_vxq1p")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -359.0
-offset_top = 97.0
-offset_right = -359.0
-offset_bottom = 97.0
-grow_horizontal = 0
-
-[node name="InventoryMarginContainer" type="MarginContainer" parent="ItemSelection/UnitInventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 276.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 10
-
-[node name="ItemDesc" type="VBoxContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="InventoryItemParent" type="VBoxContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/PanelContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("14_fck3y")
-
-[node name="ItemDescription" type="Control" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc"]
-custom_minimum_size = Vector2(256, 64)
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/ItemDescription"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ps06i")
-
-[node name="MarginContainer" type="MarginContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="ItemDescTitle" type="Label" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_ip3jk")
-text = "Description:"
-
-[node name="ItemDescLabel" type="Label" parent="ItemSelection/UnitInventory/InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_ip3jk")
-theme_override_font_sizes/font_size = 12
-text = "text"
 
 [connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Attack" to="ContextMenu" method="OnAttackButton"]
 [connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Defend" to="ContextMenu" method="OnDefendButton"]
+[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Inventory" to="ContextMenu" method="OnInventoryButton"]
 [connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Wait" to="ContextMenu" method="OnWaitButton"]

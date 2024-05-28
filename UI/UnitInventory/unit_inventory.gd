@@ -1,0 +1,71 @@
+extends CanvasLayer
+
+@export var unit_inventory_panel : UnitInventoryPanel
+@export var unit_stat_block : UnitInfoBlock
+@export var inventory_context_parent: Control
+
+@onready var equip_button: Button = %EquipButton
+@onready var use_button: Button = %UseButton
+@onready var trash_button: Button = %TrashButton
+
+var currentUnit : UnitInstance
+var selectedItem : Item
+
+func Initialize(_unitInstance : UnitInstance):
+	currentUnit = _unitInstance
+	inventory_context_parent.visible = false
+	Refresh()
+
+
+func Refresh():
+	if unit_inventory_panel != null:
+		unit_inventory_panel.Initialize(currentUnit)
+		if !unit_inventory_panel.ItemSelected.is_connected(OnItemSelected):
+			unit_inventory_panel.ItemSelected.connect(OnItemSelected)
+
+	if unit_stat_block != null:
+		unit_stat_block.Initialize(currentUnit)
+
+func _process(_delta: float):
+	if InputManager.cancelDown:
+		queue_free()
+
+func OnItemSelected(_item : Item):
+	selectedItem = _item
+	inventory_context_parent.visible = true
+
+	if _item.TargetingData != null:
+		equip_button.visible = true
+		equip_button.grab_focus()
+		use_button.visible = false
+	else:
+		use_button.visible = true
+		equip_button.visible = false
+		use_button.grab_focus()
+
+
+	var entry = unit_inventory_panel.GetEntry(currentUnit.Inventory.find(_item))
+	if entry != null:
+		entry.ForceShowFocused()
+	pass
+
+func OnEquipButton():
+	currentUnit.EquipItem(selectedItem)
+	OnActionTaken()
+	pass
+
+func OnUseButton():
+	# TODO: Implement consumables
+	OnActionTaken()
+	pass
+
+func OnTrashButton():
+	currentUnit.TrashItem(selectedItem)
+	OnActionTaken()
+	pass
+
+
+func OnActionTaken():
+	inventory_context_parent.visible = false
+	Refresh()
+	selectedItem = null

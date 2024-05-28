@@ -31,3 +31,6 @@ func OnFocusEntered():
 func OnFocusExited():
 	selected = false
 	selected_parent.visible = false
+
+func ForceShowFocused():
+	selected_parent.visible = true
