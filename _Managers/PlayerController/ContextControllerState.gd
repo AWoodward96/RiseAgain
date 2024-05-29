@@ -12,9 +12,6 @@ func UpdateInput(_delta):
 	# don't accept inputs here
 	if InputManager.cancelDown:
 		if ctrl.unitInventoryOpen:
-			ctrl.unitInventoryOpen = false
-			currentGrid.ClearActions()
-			ctrl.combatHUD.ShowContext(selectedUnit)
 			return
 
 		selectedUnit.StopCharacterMovement()

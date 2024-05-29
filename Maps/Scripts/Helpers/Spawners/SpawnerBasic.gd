@@ -11,5 +11,6 @@ func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 	if UnitTemplate == null || !Enabled:
 		return
 
-	var unit = _map.InitializeUnit(UnitToSpawn, Position, Allegiance)
+	var unit = _map.CreateUnit(UnitToSpawn)
+	_map.InitializeUnit(unit, Position, Allegiance)
 	unit.SetAI(AIBehavior, AggroBehavior)

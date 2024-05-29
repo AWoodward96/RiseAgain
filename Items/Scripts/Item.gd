@@ -8,11 +8,15 @@ class_name Item
 @export var TargetingData : SkillTargetingData
 @export var SkillDamageData : DamageData
 @export var StatData : ItemStatComponent
+@export var HealData : HealComponent
+
+@export var UsageLimit : int = -1
 
 var context : CombatLog
 var ownerUnit : UnitInstance
 var map : Map
 var selectedTileForExecution : Tile
+var uses = 1
 
 var cachedTargets : Array[Tile]
 var playerController : PlayerController :
@@ -21,21 +25,33 @@ var playerController : PlayerController :
 
 
 func _ready():
-	if TargetingData == null:
-		TargetingData = get_node_or_null("TargetingComponent") as SkillTargetingData
-
-	if SkillDamageData == null:
-		SkillDamageData = get_node_or_null("DamageComponent") as DamageData
-
-	if StatData == null:
-		StatData = get_node_or_null("StatComponent") as ItemStatComponent
-
+	GetComponents()
 	pass
-
 
 func Initialize(_unitOwner : UnitInstance, _map : Map):
 	ownerUnit = _unitOwner
 	map = _map
+
+	uses = UsageLimit
+	GetComponents()
+
+func SetMap(_map : Map):
+	map = _map
+
+func GetComponents():
+	var children = get_children()
+	for child in children:
+		if TargetingData == null && child is SkillTargetingData:
+			TargetingData = child as SkillTargetingData
+
+		if SkillDamageData == null && child is DamageData:
+			SkillDamageData = child as DamageData
+
+		if StatData == null && child is ItemStatComponent:
+			StatData = child as ItemStatComponent
+
+		if HealData == null && child is HealComponent:
+			HealData = child as HealComponent
 
 # This does the damage and effects for the ability
 func ExecuteCombat(_optionalContext : CombatLog = null):
@@ -80,7 +96,11 @@ func PollTargets():
 	pass
 
 func ShowRangePreview():
+	if map == null:
+		return
+
 	if TargetingData == null:
+		map.grid.ClearActions()
 		return
 
 	TargetingData.GetAndShowTilesInRange(ownerUnit, map.grid)
@@ -125,3 +145,28 @@ func IsWithinRange(_currentPosition : Vector2, _target : Vector2):
 
 	var dst = (_target - _currentPosition).length()
 	return dst >= TargetingData.TargetRange.x && dst <= TargetingData.TargetRange.y
+
+func OnUse():
+	# It's a bit unclear how this will actually work, but for now use items are just
+	# healing items. They're applied to yourself, and nothing else
+
+	# for now, assume that the owner of this item is also the target of this item
+	if HealData != null:
+		# Okay then this is a heal, pass the heal amount to ourselfs
+		ownerUnit.QueueHealAction(HealData, ownerUnit)
+		ownerUnit.QueueEndTurn()
+		playerController.EnterUnitStackClearState(ownerUnit)
+
+		if UsageLimit != -1:
+			uses -= 1
+			if uses <= 0:
+				ownerUnit.TrashItem(self)
+
+	pass
+
+
+func ToJSON():
+	return {
+		"Item" : scene_file_path,
+		"uses" : uses
+	}

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxsbqsbuoijxi"]
+
+[ext_resource type="Script" path="res://Items/Scripts/Item.gd" id="1_jgjxu"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://Items/Icons/gauze.png" id="2_p1uni"]
+[ext_resource type="Script" path="res://Items/Scripts/HealComponent.gd" id="9_jnvur"]
+
+[node name="Gauze" type="Node2D"]
+script = ExtResource("1_jgjxu")
+loc_displayName = "Gauze"
+icon = ExtResource("2_p1uni")
+UsageLimit = 3
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("9_jnvur")
+FlatValue = 10

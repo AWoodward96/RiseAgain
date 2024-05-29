@@ -21,6 +21,7 @@ offset_left = -896.0
 offset_top = 64.0
 offset_right = -896.0
 offset_bottom = 64.0
+HideConsumables = false
 
 [node name="InventoryContext" type="Control" parent="."]
 unique_name_in_owner = true

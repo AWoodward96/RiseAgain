@@ -59,13 +59,17 @@ func _process(_delta):
 		if WinCondition.CheckWincon(self):
 			ChangeMapState(VictoryState.new())
 
-func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitTemplate], _rngSeed : int):
+func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitInstance], _rngSeed : int):
 	rng = RandomNumberGenerator.new()
 	rng.seed = _rngSeed
 	CurrentCampaign = _campaign
 
 	InitializeGrid()
-	OnRosterSelected(_roster)
+
+	for i in range(0, _roster.size()):
+		if i < startingPositions.size():
+			InitializeUnit(_roster[i], startingPositions[i], GameSettings.TeamID.ALLY)
+
 	InitializePlayerController()
 	ChangeMapState(PreMapState.new())
 
@@ -78,7 +82,7 @@ func InitializeStandalone():
 
 	var ui = GameManager.AlphaUnitSelection.instantiate()
 	ui.Initialize(startingPositions.size())
-	ui.OnRosterSelected.connect(OnRosterSelected)
+	ui.OnRosterSelected.connect(OnRosterTemplatesSelected)
 	add_child(ui)
 
 	#waits until that UI is closed, when the squad is all selected
@@ -87,11 +91,12 @@ func InitializeStandalone():
 	InitializePlayerController()
 	ChangeMapState(PreMapState.new())
 
-
-func OnRosterSelected(_roster : Array[UnitTemplate]):
+# only used by the roster selection ui. In normal campaign initialization, the UnitInstances should already be created
+func OnRosterTemplatesSelected(_roster : Array[UnitTemplate]):
 	for i in range(0, _roster.size()):
 		if i < startingPositions.size():
-			InitializeUnit(_roster[i], startingPositions[i], GameSettings.TeamID.ALLY)
+			var unit = CreateUnit(_roster[i])
+			InitializeUnit(unit, startingPositions[i], GameSettings.TeamID.ALLY)
 
 
 func InitializePlayerController():
@@ -99,14 +104,15 @@ func InitializePlayerController():
 	add_child(playercontroller)
 	playercontroller.Initialize(self)
 
-
-func InitializeUnit(_unitTemplate : UnitTemplate, _position : Vector2i, _allegiance : GameSettings.TeamID):
+func CreateUnit(_unitTemplate : UnitTemplate):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
-	unitInstance.Initialize(_unitTemplate, self, _position, _allegiance)
-	squadParent.add_child(unitInstance)
-	grid.SetUnitGridPosition(unitInstance, _position, true)
-	AddUnitToRoster(unitInstance, _allegiance)
+	unitInstance.Initialize(_unitTemplate)
 	return unitInstance
+
+func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettings.TeamID):
+	_unitInstance.AddToMap(self, _position, _allegiance)
+	grid.SetUnitGridPosition(_unitInstance, _position, true)
+	AddUnitToRoster(_unitInstance, _allegiance)
 
 
 func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettings.TeamID):

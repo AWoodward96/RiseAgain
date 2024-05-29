@@ -23,9 +23,9 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "itemsParent")]
 script = ExtResource("1_8f2nx")
-visualParent = NodePath("Abilities")
-abilityParent = NodePath(".")
-itemsParent = NodePath("Visual")
+visualParent = NodePath("Visual")
+abilityParent = NodePath("Abilities")
+itemsParent = NodePath("Items")
 
 [node name="Visual" type="Node2D" parent="."]
 

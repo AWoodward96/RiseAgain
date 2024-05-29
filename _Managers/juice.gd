@@ -22,10 +22,15 @@ extends Node2D
 @export var damagePreviewDelayTime = 0.5
 @export var damagePreviewTickDuration = 0.5
 
+func CreateHealPopup(_healVal, _tile : Tile):
+	var popup = damagePopup.instantiate()
+	popup.SetHealValue(_healVal)
+	popup.global_position = _tile.GlobalPosition
+	add_child(popup)
 
 func CreateDamagePopup(_damageVal, _tile : Tile):
 	var popup = damagePopup.instantiate()
-	popup.SetValue(_damageVal)
+	popup.SetDamageValue(_damageVal)
 	popup.global_position = _tile.GlobalPosition
 	add_child(popup)
 

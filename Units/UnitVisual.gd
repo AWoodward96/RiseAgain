@@ -7,7 +7,6 @@ var MyUnit : UnitInstance
 func Initialize(_unit : UnitInstance) :
 	MyUnit = _unit
 
-
 func SetActivated(_activated : bool):
 	if _activated:
 		AnimationCTRL.play(GetAnimString("Activated"))

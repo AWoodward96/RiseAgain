@@ -234,6 +234,7 @@ frame = 2
 script = ExtResource("7_v83kv")
 UnitToSpawn = ExtResource("11_yje15")
 Position = Vector2i(10, 10)
+Allegiance = 1
 
 [node name="Variants" type="Node2D" parent="."]
 

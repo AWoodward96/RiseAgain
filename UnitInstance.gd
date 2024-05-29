@@ -56,7 +56,7 @@ var IsStackFree:
 
 var AI # Only used by units initialized via a spawner
 var AggroType # Only used by units initialized via a spawner
-var IsAggrod
+var IsAggrod : bool = false
 
 var Activated : bool :
 	set(_value):
@@ -71,18 +71,30 @@ func _ready():
 	damage_indicator.Initialize(self)
 	defend_icon.visible = false
 
-func Initialize(_unitTemplate : UnitTemplate, _map: Map, _gridLocation : Vector2i, _allegiance : GameSettings.TeamID) :
-	GridPosition = _gridLocation
+func Initialize(_unitTemplate : UnitTemplate) :
 	Template = _unitTemplate
-	UnitAllegiance = _allegiance
-	map = _map
 
-	CreateVisual()
 	CreateItems()
 	InitializeStats()
 
+
+func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettings.TeamID):
+	GridPosition = _gridLocation
+	map = _map
+	UnitAllegiance = _allegiance
+
+	var parent = get_parent()
+	if parent != null:
+		parent.remove_child(self)
+	map.squadParent.add_child(self)
+
+	for i in Inventory:
+		i.SetMap(map)
+
+	CreateVisual()
 	# has to be after CreateVisual
 	Activated = true
+
 
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
@@ -214,6 +226,13 @@ func QueueTurnStartDelay():
 	if CurrentAction == null:
 		PopAction()
 
+func DoHeal(_healData : HealComponent, _source : UnitInstance):
+	var healAmount = _healData.FlatValue
+	if _healData.ScalingStat != null && _source != null:
+		healAmount += _healData.DoMod(_source.GetWorkingStat(_healData.ScalingStat))
+
+	ModifyHealth(healAmount, _source)
+
 func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
 	# Here we calculate if we hit or missed before sending damage
 	# it's seperate from TakeDamage because sometimes the Units will want to take damage outside of combat
@@ -225,33 +244,36 @@ func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
 	if _context.miss:
 		Juice.CreateMissPopup(_context.executionTile)
 	else:
-		TakeDamage(damage, _source, _instantaneous)
+		ModifyHealth(-damage, _source, _instantaneous)
 
-func TakeDamage(_damage, _source, _instantaneous : bool = false):
-	Juice.CreateDamagePopup(_damage, CurrentTile)
+func ModifyHealth(_netHealthChange, _source, _instantaneous : bool = false):
+	if _netHealthChange < 0:
+		Juice.CreateDamagePopup(_netHealthChange, CurrentTile)
+	else:
+		Juice.CreateHealPopup(_netHealthChange, CurrentTile)
 
 	if !_instantaneous:
 		ShowHealthBar(true)
 		takeDamageTween = get_tree().create_tween()
-		takeDamageTween.tween_method(UpdateHealthBarTween, currentHealth, currentHealth - _damage, Juice.combatSequenceTickDuration)
-		takeDamageTween.tween_callback(DamageTweenComplete.bind(_damage))
+		takeDamageTween.tween_method(UpdateHealthBarTween, currentHealth, currentHealth + _netHealthChange, Juice.combatSequenceTickDuration)
+		takeDamageTween.tween_callback(OnModifyHealthTweenComplete.bind(_netHealthChange))
 	else:
-		DamageTweenComplete(_damage)
+		OnModifyHealthTweenComplete(_netHealthChange)
 	pass
 
-func DamageTweenComplete(_damage):
-	currentHealth -= _damage
+func OnModifyHealthTweenComplete(_healthNetChange):
+	currentHealth += _healthNetChange
 	currentHealth = clamp(currentHealth, 0, maxHealth)
 	health_bar.value = healthPerc
 
 	# For AI enemies, check if this damage would aggro them
-	if _damage > 0 && AggroType is AggroOnDamage:
+	if _healthNetChange < 0 && AggroType is AggroOnDamage:
 		IsAggrod = true
 
 	CheckDeath()
 
 func CalculateDamage(_context : DamageData, _source):
-	var damage
+	var damage = _context.FlatValue
 	var defense = GetWorkingStat(_context.DefensiveStat)
 	var defensiveStatValue = _context.DoMod(defense, _context.DefensiveMod, _context.DefensiveModType)
 
@@ -261,16 +283,18 @@ func CalculateDamage(_context : DamageData, _source):
 		var attack = sourceAsUnit.GetWorkingStat(_context.AgressiveStat)
 		var agressiveStatValue = _context.DoMod(attack, _context.AgressiveMod, _context.AgressiveModType)
 
-		damage =  GameManager.GameSettings.DamageCalculation(agressiveStatValue, defensiveStatValue)
+		damage += GameManager.GameSettings.DamageCalculation(agressiveStatValue, defensiveStatValue)
 	else:
 		# If Source is null, then damage will be based on _context's FlatValue property, which is unaffected by modifiers
-		damage = GameManager.GameSettings.DamageCalculation(_context.FlatValue, defensiveStatValue)
+		damage += GameManager.GameSettings.DamageCalculation(_context.FlatValue, defensiveStatValue)
 		pass
 	return damage
 
 func GetWorkingStat(_statTemplate : StatTemplate):
 	# start with the base
-	var current = currentStats[_statTemplate]
+	var current = 0
+	if currentStats.has(_statTemplate):
+		current = currentStats[_statTemplate]
 
 	if EquippedItem != null && EquippedItem.StatData != null:
 		for statDef in EquippedItem.StatData.GrantedStats:
@@ -312,6 +336,14 @@ func QueueDefenseSequence(_damageSourcePosition : Vector2, _context : CombatLog,
 	if CurrentAction == null:
 		PopAction()
 
+func QueueHealAction(_healData : HealComponent, _target : UnitInstance):
+	var healAction = UnitHealAction.new()
+	healAction.targetUnit = _target
+	healAction.healData = _healData
+	ActionStack.append(healAction)
+	if CurrentAction == null:
+		PopAction()
+	pass
 
 func ShowDamagePreview(_source : UnitInstance, _damageData : DamageData):
 	damage_indicator.visible = true
@@ -339,3 +371,18 @@ func GetEffectiveAttackRange():
 				range.y = itemRange.y
 
 	return range
+
+
+func ToJSON():
+	var inventoryJSON = []
+	for item in Inventory:
+		inventoryJSON.append(item.ToJSON())
+
+	return {
+		"Template" : Template.resource_path,
+		"currentHealth" : currentHealth,
+		"GridPosition_x" : GridPosition.x,
+		"GridPosition_y" : GridPosition.y,
+		"IsAggrod" : IsAggrod,
+		"Inventory" : inventoryJSON
+	}

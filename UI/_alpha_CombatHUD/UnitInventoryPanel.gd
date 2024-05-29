@@ -16,7 +16,7 @@ func Initialize(_unitInstance : UnitInstance):
 	currentUnit = _unitInstance
 	inventory_item_parent.ClearEntries()
 	for item in currentUnit.Inventory:
-		if item == null || item.TargetingData == null:
+		if item == null || (item.TargetingData == null && HideConsumables):
 			continue
 
 		var e = inventory_item_parent.CreateEntry(inventoryEntryPrefab)

@@ -144,6 +144,9 @@ func EnterCombatState(_combatData):
 func EnterItemSelectionState():
 	ChangeControllerState(ItemSelectControllerState.new(), null)
 
+func EnterUnitStackClearState(_unitInstance : UnitInstance):
+	ChangeControllerState(UnitStackClearControllerState.new(), _unitInstance)
+
 func CreateCombatHUD():
 	if combatHUD == null:
 		combatHUD = GameManager.CombatHUDUI.instantiate() as CombatHUD
@@ -171,8 +174,17 @@ func OnInventory():
 		var ui = GameManager.UnitInventoryUI.instantiate()
 		add_child(ui)
 		ui.Initialize(selectedUnit)
+
+		if !ui.OnClose.is_connected(OnInventoryClose):
+			ui.OnClose.connect(OnInventoryClose)
 		unitInventoryOpen = true
 	pass
+
+func OnInventoryClose():
+	unitInventoryOpen = false
+	currentGrid.ClearActions()
+	combatHUD.ShowContext(selectedUnit)
+
 
 func OnDefend():
 	selectedUnit.Defend()

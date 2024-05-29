@@ -6,11 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://Maps/c_0_map_02.tscn" id="4_7jjce"]
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://Maps/c_0_map_03.tscn" id="5_n38cb"]
 
-[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent")]
+[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent", "UnitHoldingArea")]
 script = ExtResource("1_sknwm")
 ledger_root = NodePath("LedgerRoot")
 AutoProceed = true
 current_map_parent = NodePath("CurrentMap")
+UnitHoldingArea = NodePath("UnitHoldingArea")
 
 [node name="LedgerRoot" type="Node2D" parent="."]
 
@@ -28,3 +29,5 @@ MapPrefab = ExtResource("5_n38cb")
 
 [node name="CurrentMap" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="UnitHoldingArea" type="Node2D" parent="."]
