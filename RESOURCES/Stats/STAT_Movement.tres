@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://bugaw08fdqrks"]
+
+[ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="1_flris"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="1_fyxtl"]
+
+[resource]
+script = ExtResource("1_fyxtl")
+bst_weight = 3
+loc_displayName = "stat_movement"
+loc_description = "stat_movement_desc"
+loc_icon = ExtResource("1_flris")

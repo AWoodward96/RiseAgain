@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbialq4cw38re"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Managers/juice.gd" id="1_41id7"]
+[ext_resource type="PackedScene" uid="uid://cnv8h0l0c4s6d" path="res://RESOURCES/Juice/damage_popup.tscn" id="2_g4ic6"]
+
+[node name="Juice" type="Node2D"]
+script = ExtResource("1_41id7")
+damagePopup = ExtResource("2_g4ic6")
+combatSequenceCooloffTimer = 0.6

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs0nm4n8i48as"]
+
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_squad_entry.gd" id="1_krd5a"]
+
+[node name="_alpha_SquadEntry" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+expand_mode = 1
+script = ExtResource("1_krd5a")

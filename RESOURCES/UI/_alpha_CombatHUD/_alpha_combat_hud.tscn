@@ -1,0 +1,489 @@
+[gd_scene load_steps=19 format=3 uid="uid://cepwbmuwjb32l"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
+[ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
+[ext_resource type="PackedScene" uid="uid://c8waiobn8d83h" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_enemy.tscn" id="3_7liuy"]
+[ext_resource type="PackedScene" uid="uid://8a67pehymjsr" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_neutral.tscn" id="4_yq0hc"]
+[ext_resource type="PackedScene" uid="uid://bx0ahfyy2rnc3" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_victory.tscn" id="5_k07rk"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/DamagePreviewUI.gd" id="6_rywjh"]
+[ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Items/generic_melee.png" id="7_o5pds"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_rdfo2"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/InspectPanel.gd" id="9_tccg0"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ContextMenu.gd" id="10_xkp7e"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ItemSelectionUI.gd" id="11_2uhpl"]
+[ext_resource type="PackedScene" uid="uid://b2kf5pjs88d6t" path="res://RESOURCES/UI/UnitInventory/unit_inventory_panel.tscn" id="12_um2vj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
+bg_color = Color(0, 0.713726, 0.439216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2i5r"]
+bg_color = Color(0.329158, 0.329158, 0.329158, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bhwv"]
+bg_color = Color(0.303233, 0.303233, 0.303233, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1m5j"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfkil"]
+bg_color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "DmgPreviewUI", "itemSelectUI", "NoTargets", "bottom_left_anchor", "bottom_right_anchor")]
+script = ExtResource("1_dux2t")
+AllyTurnBanner = ExtResource("2_wonth")
+EnemyTurnBanner = ExtResource("3_7liuy")
+NeutralTurnBanner = ExtResource("4_yq0hc")
+VictoryBanner = ExtResource("5_k07rk")
+InspectUI = NodePath("BottomLeft/InspectUI")
+ContextUI = NodePath("ContextMenu")
+DmgPreviewUI = NodePath("TopLeft/DamagePreviewUI")
+itemSelectUI = NodePath("ItemSelection")
+NoTargets = NodePath("TopCenter/NoTargets")
+bottom_left_anchor = NodePath("BottomLeft")
+bottom_right_anchor = NodePath("BottomRight")
+
+[node name="Full" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.074
+anchor_top = 0.1
+anchor_right = 0.074
+anchor_bottom = 0.1
+offset_left = -7.04
+offset_right = -7.04
+
+[node name="DamagePreviewUI" type="Control" parent="TopLeft"]
+visible = false
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 256.0
+script = ExtResource("6_rywjh")
+
+[node name="ColorRect" type="ColorRect" parent="TopLeft/DamagePreviewUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.597176, 0.597176, 0.597176, 1)
+
+[node name="defender_bg_extra" type="ColorRect" parent="TopLeft/DamagePreviewUI"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 49.0
+offset_right = 176.0
+offset_bottom = 209.0
+color = Color(0.592157, 0.337255, 0.317647, 1)
+
+[node name="attacker_bg_extra" type="ColorRect" parent="TopLeft/DamagePreviewUI"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 58.0
+offset_bottom = 185.0
+color = Color(0.3186, 0.513103, 0.59, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopLeft/DamagePreviewUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttackerWeaponInfo" type="MarginContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 37)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+
+[node name="bg" type="ColorRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo"]
+layout_mode = 2
+color = Color(0.317647, 0.513726, 0.588235, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo"]
+layout_mode = 2
+
+[node name="AttackerWeaponIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_o5pds")
+expand_mode = 1
+
+[node name="AttackerName" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_rdfo2")
+text = "Archer Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageInfo" type="MarginContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="AttackerInfo" type="VBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AtkHealth" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "###"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AtkDmg" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "###"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AtkHit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "###"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AtkCrit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="UIInfo" type="VBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="UIHealth" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIDmg" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
+layout_mode = 2
+text = "Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIHit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
+layout_mode = 2
+text = "Hit %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UICrit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
+layout_mode = 2
+text = "Crit %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenderInfo" type="VBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DefHealth" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "###"
+vertical_alignment = 1
+
+[node name="DefDmg" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "###"
+vertical_alignment = 1
+
+[node name="DefHit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "###"
+vertical_alignment = 1
+
+[node name="DefCrit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+vertical_alignment = 1
+
+[node name="DefenderWeaponInfo" type="MarginContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 37)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+
+[node name="bg" type="ColorRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo"]
+layout_mode = 2
+color = Color(0.592196, 0.339118, 0.317143, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo"]
+layout_mode = 2
+
+[node name="DefenderName" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_rdfo2")
+text = "Archer Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenderWeaponIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_o5pds")
+expand_mode = 1
+
+[node name="TopRight" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.902
+anchor_top = 0.1
+anchor_right = 0.902
+anchor_bottom = 0.1
+offset_left = -159.92
+offset_right = -159.92
+grow_horizontal = 0
+
+[node name="CenterLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomRight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="BottomLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel")]
+anchors_preset = 0
+offset_top = -128.0
+offset_right = 256.0
+script = ExtResource("9_tccg0")
+icon = NodePath("Icon")
+healthbar = NodePath("Health")
+healthText = NodePath("HealthText")
+namelabel = NodePath("UnitName")
+
+[node name="BG" type="ColorRect" parent="BottomLeft/InspectUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[node name="Icon" type="TextureRect" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 78.0
+offset_bottom = 79.0
+texture = SubResource("PlaceholderTexture2D_aihfj")
+expand_mode = 1
+
+[node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 148.0
+offset_bottom = 61.0
+text = "Health:"
+
+[node name="HealthText" type="Label" parent="BottomLeft/InspectUI"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 155.0
+offset_top = 39.0
+offset_right = 198.0
+offset_bottom = 62.0
+text = "25/25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="BottomLeft/InspectUI"]
+custom_minimum_size = Vector2(132, 27)
+layout_mode = 2
+offset_left = 89.0
+offset_top = 62.0
+offset_right = 221.0
+offset_bottom = 89.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
+max_value = 1.0
+show_percentage = false
+
+[node name="UnitName" type="Label" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 17.0
+offset_right = 246.0
+offset_bottom = 40.0
+text = "[UnitName]"
+
+[node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("10_xkp7e")
+entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="ContextMenu"]
+layout_mode = 0
+offset_right = 192.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Attack" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rdfo2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
+text = "Attack"
+
+[node name="Defend" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rdfo2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
+text = "Defend"
+
+[node name="Inventory" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rdfo2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
+text = "Inventory"
+
+[node name="Wait" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rdfo2")
+text = "Wait"
+
+[node name="TopCenter" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = -21.0
+grow_horizontal = 2
+
+[node name="NoTargets" type="Control" parent="TopCenter"]
+anchors_preset = 0
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="TopCenter/NoTargets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[node name="Label" type="Label" parent="TopCenter/NoTargets"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -11.5
+offset_right = 68.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "No Targets Found"
+
+[node name="ItemSelection" type="Control" parent="." node_paths=PackedStringArray("InventoryPanel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_2uhpl")
+InventoryPanel = NodePath("UnitInventory")
+
+[node name="UnitInfo" type="Control" parent="ItemSelection"]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 140.0
+offset_bottom = 140.0
+
+[node name="UnitInventory" parent="ItemSelection" instance=ExtResource("12_um2vj")]
+layout_mode = 1
+
+[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Attack" to="ContextMenu" method="OnAttackButton"]
+[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Defend" to="ContextMenu" method="OnDefendButton"]
+[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Inventory" to="ContextMenu" method="OnInventoryButton"]
+[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Wait" to="ContextMenu" method="OnWaitButton"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyq5ckgj34tlt"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_e5c8l"]
+[ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignNode.gd" id="2_f8ouy"]
+[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_01.tscn" id="3_gff2l"]
+[ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_02.tscn" id="4_4t7dt"]
+[ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_03.tscn" id="5_tqnkq"]
+
+[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent", "UnitHoldingArea")]
+script = ExtResource("1_e5c8l")
+ledger_root = NodePath("LedgerRoot")
+AutoProceed = true
+current_map_parent = NodePath("CurrentMap")
+UnitHoldingArea = NodePath("UnitHoldingArea")
+
+[node name="LedgerRoot" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="LedgerRoot"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("3_gff2l")
+
+[node name="1" type="Node2D" parent="LedgerRoot/0"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("4_4t7dt")
+
+[node name="2" type="Node2D" parent="LedgerRoot/0/1"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("5_tqnkq")
+
+[node name="CurrentMap" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="UnitHoldingArea" type="Node2D" parent="."]

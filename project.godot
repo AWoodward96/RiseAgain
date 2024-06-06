@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RiseAgain_Proto01"
-run/main_scene="res://main.tscn"
+run/main_scene="res://SCENES/main.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="RiseAgain"
 config/features=PackedStringArray("4.2", "Forward Plus")
@@ -19,9 +19,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://_Managers/GameManager.tscn"
-InputManager="*res://_Managers/InputManager.gd"
-Juice="*res://_Managers/juice.tscn"
+GameManager="*res://RESOURCES/Managers/GameManager.tscn"
+InputManager="*res://SCRIPTS/Managers/InputManager.gd"
+Juice="*res://RESOURCES/Managers/juice.tscn"
 
 [debug]
 

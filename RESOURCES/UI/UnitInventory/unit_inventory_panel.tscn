@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2kf5pjs88d6t"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/UnitInventoryPanel.gd" id="1_356nh"]
+[ext_resource type="PackedScene" uid="uid://gyr3j78vaevw" path="res://RESOURCES/UI/UnitInventory/inventory_item_entry.tscn" id="2_eaosv"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="2_wlmds"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_ldxpr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ps06i"]
+bg_color = Color(0.419813, 0.419813, 0.419813, 1)
+
+[node name="UnitInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -359.0
+offset_top = 97.0
+offset_right = -359.0
+offset_bottom = 97.0
+grow_horizontal = 0
+script = ExtResource("1_356nh")
+inventoryEntryPrefab = ExtResource("2_eaosv")
+HideConsumables = true
+
+[node name="InventoryMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 276.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="ItemDesc" type="VBoxContainer" parent="InventoryMarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryMarginContainer/ItemDesc"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryMarginContainer/ItemDesc/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="InventoryItemParent" type="VBoxContainer" parent="InventoryMarginContainer/ItemDesc/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_wlmds")
+
+[node name="ItemDescription" type="Control" parent="InventoryMarginContainer/ItemDesc"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryMarginContainer/ItemDesc/ItemDescription"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ps06i")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ItemDescTitle" type="Label" parent="InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ldxpr")
+text = "Description:"
+
+[node name="ItemDescLabel" type="Label" parent="InventoryMarginContainer/ItemDesc/ItemDescription/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ldxpr")
+theme_override_font_sizes/font_size = 12
+text = "text"

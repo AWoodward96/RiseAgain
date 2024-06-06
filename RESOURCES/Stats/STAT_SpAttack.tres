@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://v308g3xph4e"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="1_a5q0v"]
+[ext_resource type="Texture2D" uid="uid://blsup1p6n562r" path="res://ART/Icons/Stats/icon_spattack.png" id="1_i360b"]
+
+[resource]
+script = ExtResource("1_a5q0v")
+loc_displayName = "stat_spattack"
+loc_description = "stat_spattack_desc"
+loc_icon = ExtResource("1_i360b")

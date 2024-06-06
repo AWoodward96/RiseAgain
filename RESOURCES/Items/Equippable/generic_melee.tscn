@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvhsjuldac6fy"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_dluhc"]
+[ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Items/generic_melee.png" id="2_hkdvu"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_sg8h5"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_moi8l"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_enol7"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_moiwv"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_tvx88"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_nds0x"]
+
+[sub_resource type="Resource" id="Resource_kdt0t"]
+script = ExtResource("5_enol7")
+Template = ExtResource("4_moi8l")
+Value = 5
+
+[node name="GenericMelee" type="Node2D" node_paths=PackedStringArray("TargetingData", "SkillDamageData", "StatData")]
+script = ExtResource("1_dluhc")
+loc_displayName = "TEMP MELEE"
+icon = ExtResource("2_hkdvu")
+TargetingData = NodePath("SkillTargetingData")
+SkillDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_sg8h5")
+BaseAccuracy = 80
+GrantedStats = Array[ExtResource("5_enol7")]([SubResource("Resource_kdt0t")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_moiwv")
+AgressiveStat = ExtResource("4_moi8l")
+DefensiveStat = ExtResource("7_tvx88")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("8_nds0x")

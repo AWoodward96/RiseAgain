@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://wsk41q52641b"]
+
+[ext_resource type="PackedScene" uid="uid://c67gru2ubp5ke" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.tscn" id="1_2u64n"]
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.gd" id="1_jtsas"]
+[ext_resource type="PackedScene" uid="uid://cs0nm4n8i48as" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_squad_entry.tscn" id="2_5swuv"]
+
+[node name="UnitSelection" type="CanvasLayer" node_paths=PackedStringArray("ReadyButton")]
+script = ExtResource("1_jtsas")
+UnitEntryPrefab = ExtResource("1_2u64n")
+SquadEntryPrefab = ExtResource("2_5swuv")
+ReadyButton = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButtons/ReadyButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="UnitSelectionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "(ALPHA) Unit Selection"
+
+[node name="UnitGridParent" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="UnitEntryParent" type="GridContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/UnitGridParent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(624.15, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+columns = 4
+
+[node name="TeamPreview" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer"]
+layout_mode = 2
+text = "Current Units:"
+
+[node name="SquadEntryParent" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="_alpha_SquadEntry" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer/SquadEntryParent" instance=ExtResource("2_5swuv")]
+layout_mode = 2
+
+[node name="StartButtons" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReadyButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButtons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Start"

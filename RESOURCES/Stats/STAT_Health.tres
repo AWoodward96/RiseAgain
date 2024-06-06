@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://dislbvxswtkbd"]
+
+[ext_resource type="Texture2D" uid="uid://bupyl1751agep" path="res://ART/Icons/Stats/icon_health.png" id="1_b2vk1"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_8pi1u"]
+
+[resource]
+script = ExtResource("2_8pi1u")
+bst_weight = 1
+loc_displayName = "stat_health"
+loc_description = "stat_health_desc"
+loc_icon = ExtResource("1_b2vk1")

@@ -62,7 +62,8 @@
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f"
+				"03e18191-548c-4e16-aac3-787401d9675f",
+				"2aec9ada-af7b-4b1e-a532-74ee72b14cf9"
 			]
 		}
 	],
@@ -228,6 +229,13 @@
 			"title": "Short Term Proto Finishing",
 			"description": "I want to get the project into a state where I can build branches off of the repo and generally have a decent time developing variations of the game.\nAt its core, the game should be units going through maps, acquiring items (either new weapons, or stat buffs), and fighting enemies. I have 90% of that, but I don't have the randomness associated with acquiring new items, nor do I have the stat buffs that I think will make this game more interesting.\n\nSo here's the breakdown of what I want to accomplish here in the next 2 weeks:\n\n- Create stat mod system so that I can have consumable items that buff stats\n- Create those actual items\n- Create reward selection step at the end of the map\n\t- For now, have items auto-consume\n\t- But also, give a low % chance of adding another unit\n- Finish the rest of the maps\n\t- Create all of the enemies required for those\n- Rebalance the stats\n\t- Change Enemies to be more like undead in sacred stones\n\t\t- Give them a generic 'Claw' and 'Bite' weapons that all have high might (high attack strength, like 7)\n\t\t- Then, nuke all of their stats\n\t- Remove the baseline-10 stat design.\n\t\t- Experiment with lowering all of the stats across the board and only buffing specific stats in order to give specific units defining traits\n\t\t- Like the mercenary should have hp and damage\n\t\t- The archer only has range\n\t\t- The dark mage has defense and damage\n\t\t- etc etc",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2aec9ada-af7b-4b1e-a532-74ee72b14cf9",
+			"title": "You can select Units after their deactivated, effectively creating an infinite turn",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],
