@@ -2,8 +2,10 @@ extends Node2D
 class_name SkillTargetingData
 
 enum TargetingType { Simple, ShapedFree, ShapedDirectional }
+enum TargetingTeamFlag { AllyTeam, EnemyTeam, All }
 
-@export_flags("ALLY", "ENEMY", "NEUTRAL") var TargetingFlags : int = 2
+@export var TeamTargeting : TargetingTeamFlag = TargetingTeamFlag.EnemyTeam
+
 # x = min, y = max
 @export var TargetRange : Vector2i = Vector2i(1, 1)
 var TilesInRange : Array[Tile]
@@ -29,7 +31,7 @@ func GetAndShowTilesInRange(_unit : UnitInstance, _grid : Grid):
 	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
 	if Type == TargetingType.Simple:
-		options = FilterByTargettingFlags(options)
+		options = FilterByTargettingFlags(_unit, options)
 
 	options.sort_custom(OrderTargets)
 	TilesInRange = options
@@ -37,8 +39,8 @@ func GetAndShowTilesInRange(_unit : UnitInstance, _grid : Grid):
 	_grid.ShowActions()
 	pass
 
-func FilterByTargettingFlags(_options : Array[Tile]):
-	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && o.Occupant.UnitAllegiance & TargetingFlags))
+func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
+	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && (o.Occupant.UnitAllegiance == _unit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (o.Occupant.UnitAllegiance != _unit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All))
 
 # Orders the Tiles based on if they're currently occupied by another unit
 func OrderTargets(a : Tile, b : Tile):
