@@ -19,10 +19,11 @@ func _Execute(_delta):
 		if tile.Occupant != null :
 			selectedUnit = tile.Occupant
 
-			if selectedUnit.UnitAllegiance == GameSettings.TeamID.ALLY && isAllyTurn:
-				ctrl.EnterUnitMovementState()
-			else:
-				currentGrid.ShowUnitActions(tile.Occupant)
+			if selectedUnit.Activated:
+				if selectedUnit.UnitAllegiance == GameSettings.TeamID.ALLY && isAllyTurn:
+					ctrl.EnterUnitMovementState()
+				else:
+					currentGrid.ShowUnitActions(tile.Occupant)
 
 	if InputManager.cancelDown:
 		currentGrid.ClearActions()

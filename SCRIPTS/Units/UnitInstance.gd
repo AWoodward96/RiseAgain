@@ -34,8 +34,11 @@ var ActionStack : Array[UnitActionBase]
 var CurrentAction : UnitActionBase
 var TurnStartTile : Tile # The tile that this Unit Started their turn on
 
-var currentStats = {}
-var visual
+var baseStats = {}			#Stats determined by the template object and out-of-run-progression
+var statModifiers = {}		#Stats determined by in-run progression. These are NOT temporary, and shouldn't be removed
+var temporaryStats = {}		#Stats determined by buffs, debuffs, or other TEMPORARY changes on the battlefield. This gets cleared at the end of a map!
+
+var visual : UnitVisual # could be made generic, but probably not for now
 var map : Map
 var currentHealth
 
@@ -43,7 +46,7 @@ var takeDamageTween : Tween
 
 var maxHealth :
 	get:
-		return currentStats[GameManager.GameSettings.HealthStat] as float
+		return GetWorkingStat(GameManager.GameSettings.HealthStat) as float
 
 var healthPerc :
 	get:
@@ -95,6 +98,8 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettings.Te
 	# has to be after CreateVisual
 	Activated = true
 
+func OnMapComplete():
+	temporaryStats.clear()
 
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
@@ -133,13 +138,15 @@ func ReturnToGridPosition(delta):
 
 func InitializeStats():
 	for stat in Template.BaseStats:
-		currentStats[stat.Template] = stat.Value
+		baseStats[stat.Template] = stat.Value
 
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
-		if currentStats.has(derivedStatDef.ParentStat):
-			currentStats[derivedStatDef.Template] = floori(currentStats[derivedStatDef.ParentStat] * derivedStatDef.Ratio)
+		if baseStats.has(derivedStatDef.ParentStat):
+			baseStats[derivedStatDef.Template] = floori(baseStats[derivedStatDef.ParentStat] * derivedStatDef.Ratio)
 
-	currentHealth = currentStats[GameManager.GameSettings.HealthStat]
+	# Remember: Vitality != Health. Health = Vitality * ~1.5, a value which can change for balancing
+	currentHealth = baseStats[GameManager.GameSettings.HealthStat]
+
 
 func CreateItems():
 	# TODO: Figure out how to initialize from save data, so that Item information persists between levels
@@ -193,7 +200,7 @@ func PopAction():
 		CurrentAction._Enter(self, map)
 
 func GetUnitMovement():
-	return currentStats[GameManager.GameSettings.MovementStat]
+	return baseStats[GameManager.GameSettings.MovementStat]
 
 func Activate(_currentTurn : GameSettings.TeamID):
 	# Turns on this unit to let them take their turn
@@ -290,11 +297,18 @@ func CalculateDamage(_context : DamageData, _source):
 		pass
 	return damage
 
+### The function you want to call when you want to know the Final state that the Unit is working with
 func GetWorkingStat(_statTemplate : StatTemplate):
 	# start with the base
 	var current = 0
-	if currentStats.has(_statTemplate):
-		current = currentStats[_statTemplate]
+	if baseStats.has(_statTemplate):
+		current = baseStats[_statTemplate]
+
+	if statModifiers.has(_statTemplate):
+		current += statModifiers[_statTemplate]
+
+	if temporaryStats.has(_statTemplate):
+		current += temporaryStats[_statTemplate]
 
 	if EquippedItem != null && EquippedItem.StatData != null:
 		for statDef in EquippedItem.StatData.GrantedStats:
@@ -302,6 +316,12 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 				current += statDef.Value
 
 	return current
+
+func ApplyStatModifier(_statDef : StatDef):
+	if statModifiers.has(_statDef.Template) && !(_statDef is DerivedStatDef):
+		statModifiers[_statDef.Template] += _statDef.Value
+	else:
+		statModifiers[_statDef.Template] = _statDef.Value
 
 func CheckDeath():
 	if currentHealth <= 0:

@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://RESOURCES/Managers/GameManager.tscn"
 InputManager="*res://SCRIPTS/Managers/InputManager.gd"
-Juice="*res://RESOURCES/Managers/juice.tscn"
+Juice="*res://RESOURCES/Managers/Juice.tscn"
 
 [debug]
 

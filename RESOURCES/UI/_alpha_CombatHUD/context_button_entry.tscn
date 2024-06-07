@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7850ynb8vsrl"]
+
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_fdhr2"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2i5r"]
+bg_color = Color(0.329158, 0.329158, 0.329158, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bhwv"]
+bg_color = Color(0.303233, 0.303233, 0.303233, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1m5j"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfkil"]
+bg_color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="ContextButtonEntry" type="Button"]
+custom_minimum_size = Vector2(0, 32)
+theme_override_fonts/font = ExtResource("1_fdhr2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
+text = "Attack"
+script = ExtResource("2_0colu")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=16 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -9,26 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Items/generic_melee.png" id="7_o5pds"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_rdfo2"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/InspectPanel.gd" id="9_tccg0"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ContextMenu.gd" id="10_xkp7e"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextMenu.gd" id="10_5gr1e"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ItemSelectionUI.gd" id="11_2uhpl"]
+[ext_resource type="PackedScene" uid="uid://b7850ynb8vsrl" path="res://RESOURCES/UI/_alpha_CombatHUD/context_button_entry.tscn" id="11_aar1f"]
 [ext_resource type="PackedScene" uid="uid://b2kf5pjs88d6t" path="res://RESOURCES/UI/UnitInventory/unit_inventory_panel.tscn" id="12_um2vj"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
 bg_color = Color(0, 0.713726, 0.439216, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2i5r"]
-bg_color = Color(0.329158, 0.329158, 0.329158, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bhwv"]
-bg_color = Color(0.303233, 0.303233, 0.303233, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1m5j"]
-bg_color = Color(0.129558, 0.129559, 0.129558, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfkil"]
-bg_color = Color(0.568973, 0.568973, 0.568973, 1)
 
 [node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "DmgPreviewUI", "itemSelectUI", "NoTargets", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_dux2t")
@@ -371,8 +360,9 @@ text = "[UnitName]"
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
-script = ExtResource("10_xkp7e")
+script = ExtResource("10_5gr1e")
 entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
+entryPrefab = ExtResource("11_aar1f")
 
 [node name="PanelContainer" type="PanelContainer" parent="ContextMenu"]
 layout_mode = 0
@@ -387,42 +377,6 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer"]
 layout_mode = 2
-
-[node name="Attack" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rdfo2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
-theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
-text = "Attack"
-
-[node name="Defend" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rdfo2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
-theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
-text = "Defend"
-
-[node name="Inventory" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rdfo2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
-theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
-text = "Inventory"
-
-[node name="Wait" type="Button" parent="ContextMenu/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rdfo2")
-text = "Wait"
 
 [node name="TopCenter" type="Control" parent="."]
 layout_mode = 3
@@ -482,8 +436,3 @@ offset_bottom = 140.0
 
 [node name="UnitInventory" parent="ItemSelection" instance=ExtResource("12_um2vj")]
 layout_mode = 1
-
-[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Attack" to="ContextMenu" method="OnAttackButton"]
-[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Defend" to="ContextMenu" method="OnDefendButton"]
-[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Inventory" to="ContextMenu" method="OnInventoryButton"]
-[connection signal="pressed" from="ContextMenu/PanelContainer/MarginContainer/VBoxContainer/Wait" to="ContextMenu" method="OnWaitButton"]

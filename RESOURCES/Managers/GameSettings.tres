@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_g1xjk"]
 [ext_resource type="PackedScene" uid="uid://cyq5ckgj34tlt" path="res://RESOURCES/Maps/_alpha_Campaign00/campaign_01.tscn" id="1_ir5fq"]
-[ext_resource type="PackedScene" uid="uid://cjghdlg16u8ih" path="res://RESOURCES/Managers/player_controller.tscn" id="1_m2f4k"]
 [ext_resource type="Script" path="res://SCRIPTS/Managers/GameSettings.gd" id="1_wj702"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_buqcn"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="5_ymlgt"]
+[ext_resource type="PackedScene" uid="uid://cjghdlg16u8ih" path="res://RESOURCES/Managers/PlayerController.tscn" id="7_77hq5"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_bxyws"]
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="9_fg4p8"]
 
@@ -20,7 +20,7 @@ Value = 0
 [resource]
 script = ExtResource("1_wj702")
 CampaignManifest = Array[PackedScene]([ExtResource("1_ir5fq")])
-PlayerControllerPrefab = ExtResource("1_m2f4k")
+PlayerControllerPrefab = ExtResource("7_77hq5")
 DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])
 MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")

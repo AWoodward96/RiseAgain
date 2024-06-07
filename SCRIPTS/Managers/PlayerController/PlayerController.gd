@@ -153,10 +153,15 @@ func CreateCombatHUD():
 		combatHUD.Initialize(currentMap, CurrentTile)
 		add_child(combatHUD)
 
-		combatHUD.ContextUI.OnWait.connect(OnWait)
-		combatHUD.ContextUI.OnDefend.connect(OnDefend)
-		combatHUD.ContextUI.OnAttack.connect(OnAttack)
-		combatHUD.ContextUI.OnInventory.connect(OnInventory)
+		combatHUD.ContextUI.AddButton("Attack", OnAttack)
+		combatHUD.ContextUI.AddButton("Defend", OnDefend)
+		combatHUD.ContextUI.AddButton("Inventory", OnInventory)
+		combatHUD.ContextUI.AddButton("Wait", OnWait)
+		combatHUD.ContextUI.SelectFirst()
+		#combatHUD.ContextUI.OnWait.connect(OnWait)
+		#combatHUD.ContextUI.OnDefend.connect(OnDefend)
+		#combatHUD.ContextUI.OnAttack.connect(OnAttack)
+		#combatHUD.ContextUI.OnInventory.connect(OnInventory)
 
 		combatHUD.itemSelectUI.OnItemSelectedForCombat.connect(OnItemSelectedForCombat)
 

@@ -9,6 +9,7 @@ class_name Item
 @export var SkillDamageData : DamageData
 @export var StatData : ItemStatComponent
 @export var HealData : HealComponent
+@export var StatConsumableData : StatConsumableComponent
 
 @export var UsageLimit : int = -1
 
@@ -52,6 +53,9 @@ func GetComponents():
 
 		if HealData == null && child is HealComponent:
 			HealData = child as HealComponent
+
+		if StatConsumableData == null && child is StatConsumableComponent:
+			StatConsumableData = child as StatConsumableComponent
 
 # This does the damage and effects for the ability
 func ExecuteCombat(_optionalContext : CombatLog = null):
@@ -149,19 +153,28 @@ func IsWithinRange(_currentPosition : Vector2, _target : Vector2):
 func OnUse():
 	# It's a bit unclear how this will actually work, but for now use items are just
 	# healing items. They're applied to yourself, and nothing else
-
+	var isUsed = false
 	# for now, assume that the owner of this item is also the target of this item
 	if HealData != null:
 		# Okay then this is a heal, pass the heal amount to ourselfs
 		ownerUnit.QueueHealAction(HealData, ownerUnit)
+		isUsed = true
+
+
+	if StatConsumableData != null:
+		for statDef in StatConsumableData.StatsToGrant:
+			ownerUnit.ApplyStatModifier(statDef)
+			isUsed = true
+
+
+	if UsageLimit != -1 && isUsed:
+		uses -= 1
+		if uses <= 0:
+			ownerUnit.TrashItem(self)
+
+	if isUsed:
 		ownerUnit.QueueEndTurn()
 		playerController.EnterUnitStackClearState(ownerUnit)
-
-		if UsageLimit != -1:
-			uses -= 1
-			if uses <= 0:
-				ownerUnit.TrashItem(self)
-
 	pass
 
 

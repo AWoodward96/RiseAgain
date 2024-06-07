@@ -31,15 +31,18 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"3347f50e-7d81-48da-afb7-3610bea789d1"
+				"0b2408a6-7d90-47d1-a292-230431692e32",
+				"620f2c4a-d101-4940-8596-4a0c535256d5",
+				"3a6392c7-4805-44e9-80f7-df7281ca65e6",
+				"b523ecdc-630e-48cc-bac6-49a90ce24722"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"0b2408a6-7d90-47d1-a292-230431692e32",
-				"4dddcb94-d778-46ed-a185-7a9699b75187"
+				"4dddcb94-d778-46ed-a185-7a9699b75187",
+				"ad7801f0-2153-4c24-b5f1-87930c865264"
 			]
 		},
 		{
@@ -50,20 +53,23 @@
 				"843b39dd-2bdc-49a1-a526-48aec932ab7d",
 				"77103f04-7d82-4bf1-b08a-0bc462b97f6c",
 				"937b13ef-9718-4732-9c51-d9b368367773",
+				"dc105425-32e2-4a5f-94df-49095ef2533b",
 				"3cee5fb7-6806-450b-8f76-b0096c011a59",
+				"2aec9ada-af7b-4b1e-a532-74ee72b14cf9",
 				"25ce1782-1bd2-4dd8-a7c3-3e04acd74094",
 				"bae7de96-5c2f-48a9-82dd-92b48c909b9a",
 				"c83449d3-e1bb-43dc-b616-124ffb6b0606",
 				"7c071b09-5dfe-48dc-a999-d385a4f82ba0",
-				"68acfcb5-e91d-4453-bfe7-1dcb0d8c7662"
+				"68acfcb5-e91d-4453-bfe7-1dcb0d8c7662",
+				"0d326661-a3bb-4d2e-a37f-8ab727baafb0",
+				"3347f50e-7d81-48da-afb7-3610bea789d1"
 			]
 		},
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f",
-				"2aec9ada-af7b-4b1e-a532-74ee72b14cf9"
+				"03e18191-548c-4e16-aac3-787401d9675f"
 			]
 		}
 	],
@@ -236,6 +242,53 @@
 			"title": "You can select Units after their deactivated, effectively creating an infinite turn",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "0d326661-a3bb-4d2e-a37f-8ab727baafb0",
+			"title": "Make Consumable Items",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "For stat buffs I mean",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "dc105425-32e2-4a5f-94df-49095ef2533b",
+			"title": "Make Loot Tables",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "ad7801f0-2153-4c24-b5f1-87930c865264",
+			"title": "Make End-Of-Map Rewards UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "620f2c4a-d101-4940-8596-4a0c535256d5",
+			"title": "Rebalance Stats",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "3a6392c7-4805-44e9-80f7-df7281ca65e6",
+			"title": "Finish Campaign",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "b523ecdc-630e-48cc-bac6-49a90ce24722",
+			"title": "Update Unit Import Process",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

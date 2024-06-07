@@ -78,6 +78,7 @@ func MapComplete():
 
 	RemoveEmptyRosterEntries()
 	for unit in CurrentRoster:
+		unit.OnMapComplete()
 		var parent = unit.get_parent()
 		if parent != null:
 			parent.remove_child(unit)

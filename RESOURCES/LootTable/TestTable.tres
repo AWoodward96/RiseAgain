@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=10 format=3 uid="uid://bpblqf04ov8ff"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="1_0d31h"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="1_adeen"]
+[ext_resource type="PackedScene" uid="uid://bxsbqsbuoijxi" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="1_lddkt"]
+[ext_resource type="PackedScene" uid="uid://biskleljvg5rb" path="res://RESOURCES/Items/Consumable/whetstone_t1.tscn" id="3_pyxrj"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/NestedLootTableEntry.gd" id="4_3w6au"]
+[ext_resource type="Resource" uid="uid://dy2q6g2v74m0f" path="res://RESOURCES/LootTable/OtherTable.tres" id="4_jgq01"]
+
+[sub_resource type="Resource" id="Resource_3i1a4"]
+script = ExtResource("1_adeen")
+ItemPrefab = ExtResource("1_lddkt")
+Weight = 3.0
+AccumulatedWeight = 3.0
+
+[sub_resource type="Resource" id="Resource_6qxas"]
+script = ExtResource("1_adeen")
+ItemPrefab = ExtResource("3_pyxrj")
+Weight = 1.0
+AccumulatedWeight = 4.0
+
+[sub_resource type="Resource" id="Resource_emjft"]
+script = ExtResource("4_3w6au")
+Table = ExtResource("4_jgq01")
+Weight = 3.0
+AccumulatedWeight = 7.0
+
+[resource]
+script = ExtResource("1_0d31h")
+Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_3i1a4"), SubResource("Resource_6qxas"), SubResource("Resource_emjft")])
+WeightSum = 7.0

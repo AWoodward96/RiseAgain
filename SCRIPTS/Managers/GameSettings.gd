@@ -35,7 +35,7 @@ func HitChance(_attacker : UnitInstance, _weapon : Item):
 
 	# Equation is:
 	# WeaponAcc + (Skill * 2) + (Luck / 2)
-	return (weaponAccuracy + (_attacker.currentStats[SkillStat] * 2.0) + (_attacker.currentStats[LuckStat] / 2.0)) / 100.0
+	return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0)) / 100.0
 
 func AvoidChance(_defender : UnitInstance):
 	if _defender == null:
@@ -43,4 +43,4 @@ func AvoidChance(_defender : UnitInstance):
 
 	# Equation is:
 	# (Skill * 2) + (Luck)
-	return ((_defender.currentStats[SkillStat] * 2) + _defender.currentStats[LuckStat]) / 100.0
+	return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat)) / 100.0
