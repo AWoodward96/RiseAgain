@@ -4,12 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Items/gauze.png" id="2_p1uni"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="9_jnvur"]
 
-[node name="Gauze" type="Node2D"]
+[node name="gauze" type="Node2D" node_paths=PackedStringArray("HealData")]
 script = ExtResource("1_jgjxu")
-loc_displayName = "Gauze"
+internalName = "gauze"
+loc_displayName = "gauze_name"
+loc_displayDesc = "gauze_desc"
 icon = ExtResource("2_p1uni")
-UsageLimit = 3
+HealData = NodePath("HealComponent")
+UsageLimit = 3.0
 
 [node name="HealComponent" type="Node2D" parent="."]
 script = ExtResource("9_jnvur")
-FlatValue = 10
+FlatValue = 10.0

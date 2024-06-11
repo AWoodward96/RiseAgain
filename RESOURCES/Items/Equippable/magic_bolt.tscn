@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://l6niqhm2it68"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_yekf2"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_uce2a"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_j8h7c"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="4_e6rx8"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_lfpmp"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_pc3eb"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_lhpqm"]
+
+[sub_resource type="Resource" id="Resource_4qcro"]
+script = ExtResource("4_e6rx8")
+Template = ExtResource("3_j8h7c")
+Value = 5
+
+[node name="magic_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
+script = ExtResource("1_yekf2")
+internalName = "magic_bolt"
+loc_displayName = "magic_bolt_name"
+loc_displayDesc = "magic_bolt_desc"
+TargetingData = NodePath("TargetingData")
+ItemDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("2_uce2a")
+BaseAccuracy = 80.0
+GrantedStats = Array[ExtResource("4_e6rx8")]([SubResource("Resource_4qcro")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("5_lfpmp")
+AgressiveStat = ExtResource("3_j8h7c")
+DefensiveStat = ExtResource("6_pc3eb")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("7_lhpqm")
+TargetRange = Vector2i(1, 2)

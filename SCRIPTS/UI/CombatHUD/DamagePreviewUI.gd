@@ -18,7 +18,7 @@ class_name DamagePreviewUI
 @onready var def_crit: Label = %DefCrit
 
 func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defendingUnit : UnitInstance):
-	var damageDataFromWeapon = _weaponUsed.SkillDamageData
+	var damageDataFromWeapon = _weaponUsed.ItemDamageData
 	if damageDataFromWeapon == null:
 		push_error("Attempting to show preview damage for weapon with no damage information on it. This is a bug.")
 		return

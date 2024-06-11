@@ -14,12 +14,11 @@ script = ExtResource("5_o2hpc")
 Template = ExtResource("4_afipa")
 Value = 5
 
-[node name="GenericMagRanged" type="Node2D" node_paths=PackedStringArray("TargetingData", "SkillDamageData", "StatData")]
+[node name="GenericMagRanged" type="Node2D" node_paths=PackedStringArray("TargetingData", "StatData")]
 script = ExtResource("1_1nito")
 loc_displayName = "TEMP MAG RANGED"
 icon = ExtResource("2_ebcsi")
 TargetingData = NodePath("SkillTargetingData")
-SkillDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
@@ -34,5 +33,4 @@ DefensiveStat = ExtResource("7_rsgqm")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("8_ooa6t")
-TeamTargeting = 1
 TargetRange = Vector2i(1, 2)

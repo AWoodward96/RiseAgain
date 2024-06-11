@@ -41,8 +41,7 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"4dddcb94-d778-46ed-a185-7a9699b75187",
-				"ad7801f0-2153-4c24-b5f1-87930c865264"
+				"4dddcb94-d778-46ed-a185-7a9699b75187"
 			]
 		},
 		{
@@ -54,6 +53,7 @@
 				"77103f04-7d82-4bf1-b08a-0bc462b97f6c",
 				"937b13ef-9718-4732-9c51-d9b368367773",
 				"dc105425-32e2-4a5f-94df-49095ef2533b",
+				"ad7801f0-2153-4c24-b5f1-87930c865264",
 				"3cee5fb7-6806-450b-8f76-b0096c011a59",
 				"2aec9ada-af7b-4b1e-a532-74ee72b14cf9",
 				"25ce1782-1bd2-4dd8-a7c3-3e04acd74094",
@@ -69,7 +69,8 @@
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f"
+				"03e18191-548c-4e16-aac3-787401d9675f",
+				"3d76c379-4fa5-49dc-b69b-2c333b9b0c6c"
 			]
 		}
 	],
@@ -289,6 +290,13 @@
 			"title": "Update Unit Import Process",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "3d76c379-4fa5-49dc-b69b-2c333b9b0c6c",
+			"title": "BUG: Allied units aren't doing the unactivated animation",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],

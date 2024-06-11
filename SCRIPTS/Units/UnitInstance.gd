@@ -114,8 +114,9 @@ func CreateVisual():
 	# we want a clean child, so remove anything that this might have used
 	var children = visualParent.get_children()
 	for n in children:
-		remove_child(n)
-		n.queue_free()
+		if n.get_parent() == self:
+			remove_child(n)
+			n.queue_free()
 
 	visual = Template.VisualPrefab.instantiate()
 	visualParent.add_child(visual)
@@ -151,10 +152,7 @@ func InitializeStats():
 func CreateItems():
 	# TODO: Figure out how to initialize from save data, so that Item information persists between levels
 	for item in Template.StartingItems:
-		var itemInstance = item.instantiate() as Item
-		itemInstance.Initialize(self, map)
-		itemsParent.add_child(itemInstance)
-		Inventory.append(itemInstance)
+		GiveItem(item)
 
 	if Inventory.size() > 0:
 		EquipItem(Inventory[0])
@@ -174,6 +172,12 @@ func TrashItem(_item : Item):
 	if index != -1:
 		itemsParent.remove_child(_item)
 		Inventory.remove_at(index)
+
+func GiveItem(_item : PackedScene):
+	var itemInstance = _item.instantiate() as Item
+	itemInstance.Initialize(self, map)
+	itemsParent.add_child(itemInstance)
+	Inventory.append(itemInstance)
 
 
 func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :

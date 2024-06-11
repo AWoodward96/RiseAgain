@@ -14,9 +14,10 @@ enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 @export var SkillStat : StatTemplate
 @export var LuckStat : StatTemplate
 
-@export var UniversalMissChance = 0.8
+@export var NumberOfRewardsInPostMap = 3
 
 @export var CharacterTileMovemementSpeed : float = 100
+
 
 func DamageCalculation(_atk, _def):
 	return floori(max(_atk - _def, 0))

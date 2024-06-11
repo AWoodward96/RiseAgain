@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://7krnno1cgacm"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/RewardsUI/rewards_ui.gd" id="1_tlyfs"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="2_cfyr5"]
+[ext_resource type="PackedScene" uid="uid://bp3uneidg4i4w" path="res://RESOURCES/UI/RewardsUI/reward_entry_panel_large.tscn" id="3_hnd4w"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Items/gauze.png" id="4_s0p5i"]
+[ext_resource type="PackedScene" uid="uid://c67gru2ubp5ke" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.tscn" id="5_xk76y"]
+
+[node name="RewardsUI" type="CanvasLayer" node_paths=PackedStringArray("rewardParent", "giveItemParent", "giveItemEntryList")]
+script = ExtResource("1_tlyfs")
+rewardEntryPrefab = ExtResource("3_hnd4w")
+rewardParent = NodePath("PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/EntryParent")
+giveItemParent = NodePath("GiveThisParent")
+giveItemEntryPrefab = ExtResource("5_xk76y")
+giveItemEntryList = NodePath("GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/GridParent/GridContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="EntryParent" type="HBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("2_cfyr5")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select A Reward"
+horizontal_alignment = 1
+
+[node name="GiveThisParent" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 64
+
+[node name="ColorRect" type="ColorRect" parent="GiveThisParent"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="GiveThisParent"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GiveThisParent/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GiveThisParent/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GiveThisToWhoParent" type="HBoxContainer" parent="GiveThisParent/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GiveThisIcon" type="TextureRect" parent="GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/GiveThisToWhoParent"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_s0p5i")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/GiveThisToWhoParent"]
+layout_mode = 2
+text = "Give This To Who?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridParent" type="HBoxContainer" parent="GiveThisParent/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/GridParent"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+script = ExtResource("2_cfyr5")

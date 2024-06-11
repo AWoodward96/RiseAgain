@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=25 format=3 uid="uid://buh5fj1fbm8oa"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=22 format=3 uid="uid://buh5fj1fbm8oa"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_vkbtp"]
@@ -12,47 +12,44 @@
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="9_f2y67"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_qwdht"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
-[ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/generic_phys_ranged.tscn" id="10_wyp1h"]
-[ext_resource type="PackedScene" uid="uid://cdthlxtgkleke" path="res://RESOURCES/Items/Equippable/generic_mag_ranged.tscn" id="11_3jni2"]
-[ext_resource type="PackedScene" uid="uid://bxsbqsbuoijxi" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="12_ndlfp"]
-[ext_resource type="PackedScene" uid="uid://biskleljvg5rb" path="res://RESOURCES/Items/Consumable/whetstone_t1.tscn" id="13_b1vgt"]
+[ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/iron_bow.tscn" id="10_wyp1h"]
 
-[sub_resource type="Resource" id="Resource_517x8"]
+[sub_resource type="Resource" id="Resource_7g8dn"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_j450x"]
+[sub_resource type="Resource" id="Resource_le7sk"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("3_e1gbq")
 Value = 14
 
-[sub_resource type="Resource" id="Resource_rf8tg"]
+[sub_resource type="Resource" id="Resource_q6xsq"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("4_ry5o0")
 Value = 9
 
-[sub_resource type="Resource" id="Resource_1trnc"]
+[sub_resource type="Resource" id="Resource_q5ry0"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("5_5fnpr")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_p4f5j"]
+[sub_resource type="Resource" id="Resource_ebhna"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("6_skiv5")
 Value = 9
 
-[sub_resource type="Resource" id="Resource_hkgug"]
+[sub_resource type="Resource" id="Resource_s14c8"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("7_ysc31")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_krodv"]
+[sub_resource type="Resource" id="Resource_v2448"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("9_qwdht")
 Value = 12
 
-[sub_resource type="Resource" id="Resource_y7sjc"]
+[sub_resource type="Resource" id="Resource_ojii6"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("10_gfhek")
 Value = 5
@@ -60,8 +57,8 @@ Value = 5
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_517x8"), SubResource("Resource_j450x"), SubResource("Resource_rf8tg"), SubResource("Resource_1trnc"), SubResource("Resource_p4f5j"), SubResource("Resource_hkgug"), SubResource("Resource_krodv"), SubResource("Resource_y7sjc")])
-StartingItems = Array[PackedScene]([ExtResource("10_wyp1h"), ExtResource("11_3jni2"), ExtResource("12_ndlfp"), ExtResource("13_b1vgt")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_7g8dn"), SubResource("Resource_le7sk"), SubResource("Resource_q6xsq"), SubResource("Resource_q5ry0"), SubResource("Resource_ebhna"), SubResource("Resource_s14c8"), SubResource("Resource_v2448"), SubResource("Resource_ojii6")])
+StartingItems = Array[PackedScene]([ExtResource("10_wyp1h")])
 Abilities = Array[PackedScene]([])
 DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"

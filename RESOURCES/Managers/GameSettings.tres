@@ -26,5 +26,5 @@ MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")
 SkillStat = ExtResource("8_bxyws")
 LuckStat = ExtResource("5_ymlgt")
-UniversalMissChance = 0.8
+NumberOfRewardsInPostMap = 3
 CharacterTileMovemementSpeed = 500.0

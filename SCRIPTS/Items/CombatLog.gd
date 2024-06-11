@@ -28,8 +28,8 @@ func Construct(_map : Map, _unit : UnitInstance, _item : Item, _sourceTile : Til
 	sourceCombatTile = _sourceTile
 	executionTile = _executionTile
 
-	if item.SkillDamageData != null:
-		damageContext = item.SkillDamageData
+	if item.ItemDamageData != null:
+		damageContext = item.ItemDamageData
 
 
 func CalculateMiss(_rng : RandomNumberGenerator, _missThreshold : float):

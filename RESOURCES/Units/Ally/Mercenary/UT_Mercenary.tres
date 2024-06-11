@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=22 format=3 uid="uid://ub3y41eeets8"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://ub3y41eeets8"]
 
 [ext_resource type="PackedScene" uid="uid://t7o5840ctb3j" path="res://RESOURCES/Units/Ally/Mercenary/VIS_Mercenary.tscn" id="1_7knpf"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_apt4s"]
@@ -11,45 +11,46 @@
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_kk3vr"]
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_tft3w"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_cvxbv"]
+[ext_resource type="PackedScene" uid="uid://bgx6d3l4solfh" path="res://RESOURCES/Items/Equippable/iron_sword.tscn" id="10_cpq7i"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_rvsvh"]
-[ext_resource type="PackedScene" uid="uid://bvhsjuldac6fy" path="res://RESOURCES/Items/Equippable/generic_melee.tscn" id="10_w4rac"]
+[ext_resource type="PackedScene" uid="uid://bxsbqsbuoijxi" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="11_a0a1w"]
 
-[sub_resource type="Resource" id="Resource_1qxrl"]
+[sub_resource type="Resource" id="Resource_ki4pr"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("1_apt4s")
 Value = 13
 
-[sub_resource type="Resource" id="Resource_fukrt"]
+[sub_resource type="Resource" id="Resource_k0toq"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("3_o5w5m")
 Value = 11
 
-[sub_resource type="Resource" id="Resource_mmb1g"]
+[sub_resource type="Resource" id="Resource_rp440"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("4_cwen3")
 Value = 11
 
-[sub_resource type="Resource" id="Resource_k2jk1"]
+[sub_resource type="Resource" id="Resource_gr4fe"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("5_ctgt6")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_6m4pm"]
+[sub_resource type="Resource" id="Resource_y0c7f"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("6_kk3vr")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_r750o"]
+[sub_resource type="Resource" id="Resource_piiie"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("7_tft3w")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_u624c"]
+[sub_resource type="Resource" id="Resource_84l1r"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("9_cvxbv")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_wka4u"]
+[sub_resource type="Resource" id="Resource_cde06"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("10_rvsvh")
 Value = 6
@@ -57,8 +58,8 @@ Value = 6
 [resource]
 script = ExtResource("3_jfj4c")
 VisualPrefab = ExtResource("1_7knpf")
-BaseStats = Array[ExtResource("2_7td1i")]([SubResource("Resource_1qxrl"), SubResource("Resource_fukrt"), SubResource("Resource_mmb1g"), SubResource("Resource_k2jk1"), SubResource("Resource_6m4pm"), SubResource("Resource_r750o"), SubResource("Resource_u624c"), SubResource("Resource_wka4u")])
-StartingItems = Array[PackedScene]([ExtResource("10_w4rac")])
+BaseStats = Array[ExtResource("2_7td1i")]([SubResource("Resource_ki4pr"), SubResource("Resource_k0toq"), SubResource("Resource_rp440"), SubResource("Resource_gr4fe"), SubResource("Resource_y0c7f"), SubResource("Resource_piiie"), SubResource("Resource_84l1r"), SubResource("Resource_cde06")])
+StartingItems = Array[PackedScene]([ExtResource("10_cpq7i"), ExtResource("11_a0a1w")])
 Abilities = Array[PackedScene]([])
 DebugName = "Mercenary"
 loc_DisplayName = "unit_mercenary_name"

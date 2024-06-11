@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp3uneidg4i4w"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/RewardsUI/RewardEntryPanel.gd" id="1_2t6b5"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_e5l3l"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Items/gauze.png" id="3_qtk21"]
+
+[node name="RewardEntryPanel_Large" type="Button" node_paths=PackedStringArray("rewardType", "rewardIcon", "rewardName", "rewardDesc")]
+custom_minimum_size = Vector2(256, 256)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.44, 0.44, 0.44, 1)
+script = ExtResource("1_2t6b5")
+rewardType = NodePath("MarginContainer/Contents/RewardType")
+rewardIcon = NodePath("MarginContainer/Contents/IconParent/Icon")
+rewardName = NodePath("MarginContainer/Contents/RewardName")
+rewardDesc = NodePath("MarginContainer/Contents/RewardDesc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Contents" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RewardType" type="Label" parent="MarginContainer/Contents"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_e5l3l")
+theme_override_font_sizes/font_size = 16
+text = "Type: Item"
+horizontal_alignment = 1
+
+[node name="IconParent" type="HBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/Contents/IconParent"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("3_qtk21")
+expand_mode = 1
+
+[node name="RewardName" type="Label" parent="MarginContainer/Contents"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_e5l3l")
+theme_override_font_sizes/font_size = 32
+text = "Gauze"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="RewardDesc" type="Label" parent="MarginContainer/Contents"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_e5l3l")
+theme_override_font_sizes/font_size = 16
+text = "This is a description of the item you'll be recieving"
+autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="OnEntryPressed"]

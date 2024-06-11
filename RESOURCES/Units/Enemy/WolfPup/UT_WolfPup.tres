@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ds4w7ttanxhhg" path="res://RESOURCES/Units/Enemy/WolfPup/VIS_WolfPup.tscn" id="1_2ldp6"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_pk4jk"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_uma5a"]
-[ext_resource type="PackedScene" uid="uid://bvhsjuldac6fy" path="res://RESOURCES/Items/Equippable/generic_melee.tscn" id="1_xpx7t"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ndbtr"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_3eixl"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_7icxw"]
@@ -12,44 +11,45 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_im2w5"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_bcdml"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://ART/Icons/Units/wolf_cub.png" id="9_g5fak"]
+[ext_resource type="PackedScene" uid="uid://dfba7mgp0ddhu" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_jv3g6"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_v1ox2"]
 
-[sub_resource type="Resource" id="Resource_0jb3x"]
+[sub_resource type="Resource" id="Resource_0imy1"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("1_uma5a")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_stj1u"]
+[sub_resource type="Resource" id="Resource_ln26j"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("3_3eixl")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_3cwoa"]
+[sub_resource type="Resource" id="Resource_bttdm"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("4_7icxw")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_83cs3"]
+[sub_resource type="Resource" id="Resource_0t5vn"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("5_jasgv")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_gfnll"]
+[sub_resource type="Resource" id="Resource_jvf5f"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("6_trrxd")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_t78fv"]
+[sub_resource type="Resource" id="Resource_rhokv"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("7_im2w5")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_f1vkr"]
+[sub_resource type="Resource" id="Resource_6urpg"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("9_bcdml")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_yy1cf"]
+[sub_resource type="Resource" id="Resource_t1w8u"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("10_v1ox2")
 Value = 1
@@ -57,8 +57,8 @@ Value = 1
 [resource]
 script = ExtResource("1_pk4jk")
 VisualPrefab = ExtResource("1_2ldp6")
-BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_0jb3x"), SubResource("Resource_stj1u"), SubResource("Resource_3cwoa"), SubResource("Resource_83cs3"), SubResource("Resource_gfnll"), SubResource("Resource_t78fv"), SubResource("Resource_f1vkr"), SubResource("Resource_yy1cf")])
-StartingItems = Array[PackedScene]([ExtResource("1_xpx7t")])
+BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_0imy1"), SubResource("Resource_ln26j"), SubResource("Resource_bttdm"), SubResource("Resource_0t5vn"), SubResource("Resource_jvf5f"), SubResource("Resource_rhokv"), SubResource("Resource_6urpg"), SubResource("Resource_t1w8u")])
+StartingItems = Array[PackedScene]([ExtResource("10_jv3g6")])
 Abilities = Array[PackedScene]([])
 DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"

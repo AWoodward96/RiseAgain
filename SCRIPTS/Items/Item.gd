@@ -1,12 +1,13 @@
 extends Node2D
 class_name Item
 
+@export var internalName : String
 @export var loc_displayName : String
 @export var loc_displayDesc : String
 @export var icon : Texture2D
 
 @export var TargetingData : SkillTargetingData
-@export var SkillDamageData : DamageData
+@export var ItemDamageData : DamageData
 @export var StatData : ItemStatComponent
 @export var HealData : HealComponent
 @export var StatConsumableData : StatConsumableComponent
@@ -45,8 +46,8 @@ func GetComponents():
 		if TargetingData == null && child is SkillTargetingData:
 			TargetingData = child as SkillTargetingData
 
-		if SkillDamageData == null && child is DamageData:
-			SkillDamageData = child as DamageData
+		if ItemDamageData == null && child is DamageData:
+			ItemDamageData = child as DamageData
 
 		if StatData == null && child is ItemStatComponent:
 			StatData = child as ItemStatComponent
@@ -76,7 +77,7 @@ func ExecuteCombat(_optionalContext : CombatLog = null):
 		context.targetTiles = cachedTargets
 
 	# The damage data is based on the damage component
-	context.damageContext = SkillDamageData
+	context.damageContext = ItemDamageData
 
 	if !playerController.OnCombatSequenceComplete.is_connected(OnCombatExecutionComplete):
 		playerController.OnCombatSequenceComplete.connect(OnCombatExecutionComplete)

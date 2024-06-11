@@ -92,7 +92,7 @@ func ShowDamagePreview():
 	if currentTarget != null && currentTarget.Occupant != null:
 		# Show the damage preview physically on the unit
 		# this section is slated for removal if it is deemed to be unnecessary
-		currentTarget.Occupant.ShowDamagePreview(source, currentItem.SkillDamageData)
+		currentTarget.Occupant.ShowDamagePreview(source, currentItem.ItemDamageData)
 
 		# Ping the CombatHUD to show the damage preview
 		ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTarget.Occupant)

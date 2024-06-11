@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cls83uyoykivy"]
+[gd_scene load_steps=10 format=3 uid="uid://cls83uyoykivy"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
 [ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cepwbmuwjb32l" path="res://RESOURCES/UI/_alpha_CombatHUD/_alpha_combat_hud.tscn" id="6_mnhix"]
 [ext_resource type="PackedScene" uid="uid://po4nfl4dmthc" path="res://RESOURCES/UI/loading_screen.tscn" id="7_5jmon"]
 [ext_resource type="PackedScene" uid="uid://56crg8gqnbdg" path="res://RESOURCES/UI/UnitInventory/unit_inventory.tscn" id="7_7mea8"]
+[ext_resource type="PackedScene" uid="uid://7krnno1cgacm" path="res://RESOURCES/UI/RewardsUI/rewards_ui.tscn" id="8_c4jow"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_4phlr")
@@ -17,4 +18,5 @@ AlphaUnitSelection = ExtResource("4_eahy8")
 AlphaFormationUI = ExtResource("5_3uh1p")
 CombatHUDUI = ExtResource("6_mnhix")
 UnitInventoryUI = ExtResource("7_7mea8")
+MapRewardUI = ExtResource("8_c4jow")
 LoadingScreenPrefab = ExtResource("7_5jmon")

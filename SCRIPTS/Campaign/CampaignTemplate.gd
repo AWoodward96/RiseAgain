@@ -1,10 +1,12 @@
 extends Node2D
 class_name CampaignTemplate
 
+
 @export var ledger_root  : Node2D
 @export var AutoProceed : bool # When true, there is no campaign selection, we just go to the next node at index 0 depending on the ledger
 @export var current_map_parent : Node2D
 @export var UnitHoldingArea : Node2D
+@export var MapRewardTable : LootTable # The loot table that the map will default to if not overwritten by the node itself
 
 var PersistData : CampaignPersistData
 
@@ -66,16 +68,14 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 
 func CreateSquadInstance():
 	for unit in RosterTemplates:
-		var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
-		unitInstance.Initialize(unit)
-		CurrentRoster.append(unitInstance)
-		UnitHoldingArea.add_child(unitInstance)
+		AddUnitToRoster(unit)
 
 func MapComplete():
 	var walkedNode = ledger_root
 	for i in campaignLedger:
 		walkedNode = walkedNode.get_child(i)
 
+	# Persist the current roster between maps
 	RemoveEmptyRosterEntries()
 	for unit in CurrentRoster:
 		unit.OnMapComplete()
@@ -85,7 +85,6 @@ func MapComplete():
 
 		UnitHoldingArea.add_child(unit)
 
-	# TODO: Figure out how to carry over units from one map to another
 	var nextMap
 	if AutoProceed:
 		nextMap = walkedNode.get_child(0)
@@ -100,6 +99,17 @@ func RemoveEmptyRosterEntries():
 			CurrentRoster.remove_at(i)
 		i -= 1
 
+func GetMapRewardTable():
+	if currentNode != null && currentNode.RewardOverride != null:
+		return currentNode.RewardOverride
+
+	return MapRewardTable
 
 func OnRosterSelected(_roster : Array[UnitTemplate]):
 	RosterTemplates = _roster
+
+func AddUnitToRoster(_unitTemplate : UnitTemplate):
+	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
+	unitInstance.Initialize(_unitTemplate)
+	CurrentRoster.append(unitInstance)
+	UnitHoldingArea.add_child(unitInstance)

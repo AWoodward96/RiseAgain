@@ -1,10 +1,6 @@
 extends Control
 class_name ContextMenu
 
-#signal OnDefend()
-#signal OnAttack()
-#signal OnWait()
-#signal OnInventory()
 signal OnAnyActionSelected()
 
 @export var entryParent : Control
@@ -26,23 +22,3 @@ func AddButton(_text : String, _callback : Callable):
 
 func AnyButtonPressed():
 	OnAnyActionSelected.emit()
-
-#func OnWaitButton():
-	#OnWait.emit()
-	#OnAnyActionSelected.emit()
-	#pass
-#
-#func OnAttackButton():
-	#OnAttack.emit()
-	#OnAnyActionSelected.emit()
-	#pass
-#
-#func OnDefendButton():
-	#OnDefend.emit()
-	#OnAnyActionSelected.emit()
-	#pass
-#
-#func OnInventoryButton():
-	#OnInventory.emit()
-	#OnAnyActionSelected.emit()
-	#pass

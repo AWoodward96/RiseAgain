@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgx6d3l4solfh"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_pcnrm"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_amxbv"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_n4fsy"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="4_iuedx"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_1aifl"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_suno4"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_fi2ot"]
+
+[sub_resource type="Resource" id="Resource_f43ir"]
+script = ExtResource("4_iuedx")
+Template = ExtResource("3_n4fsy")
+Value = 5
+
+[node name="iron_sword" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
+script = ExtResource("1_pcnrm")
+internalName = "iron_sword"
+loc_displayName = "iron_sword_name"
+loc_displayDesc = "iron_sword_desc"
+TargetingData = NodePath("TargetingData")
+ItemDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("2_amxbv")
+BaseAccuracy = 80.0
+GrantedStats = Array[ExtResource("4_iuedx")]([SubResource("Resource_f43ir")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("5_1aifl")
+AgressiveStat = ExtResource("3_n4fsy")
+DefensiveStat = ExtResource("6_suno4")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("7_fi2ot")

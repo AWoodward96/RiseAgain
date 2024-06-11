@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://dst18brjn8280"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_17al1"]
+[ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Items/iron_bow.png" id="2_6802n"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_bkhqc"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_y0xkv"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_ud8wj"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_nthw7"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_t8dq3"]
+
+[node name="iron_bow" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
+script = ExtResource("1_17al1")
+internalName = "iron_bow"
+loc_displayName = "iron_bow_name"
+loc_displayDesc = "iron_bow_desc"
+icon = ExtResource("2_6802n")
+TargetingData = NodePath("SkillTargetingData")
+ItemDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_bkhqc")
+BaseAccuracy = 75.0
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_ud8wj")
+AgressiveStat = ExtResource("4_y0xkv")
+DefensiveStat = ExtResource("7_nthw7")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("8_t8dq3")
+TargetRange = Vector2i(2, 2)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cdthlxtgkleke" path="res://RESOURCES/Items/Equippable/generic_mag_ranged.tscn" id="1_pibpi"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="2_575eu"]
-[ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/generic_phys_ranged.tscn" id="3_pwx5i"]
+[ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/iron_bow.tscn" id="3_pwx5i"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="5_wh4to"]
 
 [sub_resource type="Resource" id="Resource_3i1a4"]

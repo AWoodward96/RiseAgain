@@ -21,11 +21,10 @@ func _Enter(_unit : UnitInstance, _map : Map):
 			if u.EquippedItem == null:
 				continue
 
-			if u.EquippedItem.SkillDamageData == null:
+			if u.EquippedItem.ItemDamageData == null:
 				continue
 
 			var range = u.EquippedItem.GetRange()
-			var combatRange = Context.item.GetRange()
 			if range == Vector2i.ZERO:
 				continue
 

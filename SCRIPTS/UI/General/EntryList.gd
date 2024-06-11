@@ -27,6 +27,11 @@ func GetEntry(_index : int):
 		return createdEntries[_index]
 	return null
 
+func FocusFirst():
+	if createdEntries is Array && createdEntries != null && createdEntries.size() > 0:
+		createdEntries[0].grab_focus()
+
+
 #func SetSelected(_index : int):
 	#if selectedIndex != -1:
 		#createdEntries[selectedIndex].SetSelected(false)

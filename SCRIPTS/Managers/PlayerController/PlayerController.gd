@@ -147,6 +147,9 @@ func EnterItemSelectionState():
 func EnterUnitStackClearState(_unitInstance : UnitInstance):
 	ChangeControllerState(UnitStackClearControllerState.new(), _unitInstance)
 
+func EnterVictoryState():
+	ChangeControllerState(VictoryControllerState.new(), null)
+
 func CreateCombatHUD():
 	if combatHUD == null:
 		combatHUD = GameManager.CombatHUDUI.instantiate() as CombatHUD
@@ -158,10 +161,6 @@ func CreateCombatHUD():
 		combatHUD.ContextUI.AddButton("Inventory", OnInventory)
 		combatHUD.ContextUI.AddButton("Wait", OnWait)
 		combatHUD.ContextUI.SelectFirst()
-		#combatHUD.ContextUI.OnWait.connect(OnWait)
-		#combatHUD.ContextUI.OnDefend.connect(OnDefend)
-		#combatHUD.ContextUI.OnAttack.connect(OnAttack)
-		#combatHUD.ContextUI.OnInventory.connect(OnInventory)
 
 		combatHUD.itemSelectUI.OnItemSelectedForCombat.connect(OnItemSelectedForCombat)
 

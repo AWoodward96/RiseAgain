@@ -22,7 +22,7 @@ func Initialize(_item : Item):
 	item_usage.visible = _item.uses >= 0
 	item_usage.text = str(_item.uses)
 
-func _process(delta: float):
+func _process(_delta: float):
 	if selected && InputManager.selectDown:
 		OnItemSelected.emit()
 
