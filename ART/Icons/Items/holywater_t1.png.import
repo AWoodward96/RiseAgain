@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvowbij7bann8"
-path="res://.godot/imported/generic_mag_ranged.png-c1353e5280110bd44b7bc3de5acaa8e4.ctex"
+uid="uid://cc3t70rtmwmym"
+path="res://.godot/imported/holywater_t1.png-02ef2d08d37014b9edaa24f5e1ac9eef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Items/generic_mag_ranged.png"
-dest_files=["res://.godot/imported/generic_mag_ranged.png-c1353e5280110bd44b7bc3de5acaa8e4.ctex"]
+source_file="res://ART/Icons/Items/holywater_t1.png"
+dest_files=["res://.godot/imported/holywater_t1.png-02ef2d08d37014b9edaa24f5e1ac9eef.ctex"]
 
 [params]
 

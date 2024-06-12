@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://chgnhjn68yv41"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_auk6k"]
+[ext_resource type="Texture2D" uid="uid://bvowbij7bann8" path="res://ART/Icons/Items/mana_bolt.png" id="2_sck7k"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_aqi1q"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_ev71y"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_82x5q"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_3cgcw"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="7_5cugg"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_lg6pv"]
+
+[sub_resource type="Resource" id="Resource_it8a3"]
+script = ExtResource("5_82x5q")
+Template = ExtResource("4_ev71y")
+Value = 5
+
+[node name="mana_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
+script = ExtResource("1_auk6k")
+internalName = "mana_bolt"
+loc_displayName = "item_mana_bolt_name"
+loc_displayDesc = "item_mana_bolt_desc"
+icon = ExtResource("2_sck7k")
+TargetingData = NodePath("TargetingData")
+ItemDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_aqi1q")
+BaseAccuracy = 90
+GrantedStats = Array[ExtResource("5_82x5q")]([SubResource("Resource_it8a3")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_3cgcw")
+AgressiveStat = ExtResource("4_ev71y")
+DefensiveStat = ExtResource("7_5cugg")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("8_lg6pv")
+TargetRange = Vector2i(1, 2)

@@ -106,7 +106,6 @@ frame = 2
 script = ExtResource("7_2ek70")
 UnitToSpawn = ExtResource("10_41f2o")
 Position = Vector2i(14, 3)
-Enabled = false
 AIBehavior = SubResource("Resource_7tyns")
 AggroBehavior = SubResource("Resource_dwgyn")
 
@@ -120,7 +119,6 @@ frame = 2
 script = ExtResource("7_2ek70")
 UnitToSpawn = ExtResource("10_41f2o")
 Position = Vector2i(9, 2)
-Enabled = false
 AIBehavior = SubResource("Resource_fm88h")
 AggroBehavior = SubResource("Resource_hkjcv")
 

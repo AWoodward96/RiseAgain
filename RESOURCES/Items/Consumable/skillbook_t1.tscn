@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7wykm68dvlre"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_txydk"]
+[ext_resource type="Texture2D" uid="uid://b8ijhtyw1jdib" path="res://ART/Icons/Items/skillbook_t1.png" id="2_5sff6"]
+
+[node name="skillbook_t1" type="Node2D"]
+script = ExtResource("1_txydk")
+internalName = "skillbook_t1"
+loc_displayName = "item_skillbook_t1_name"
+loc_displayDesc = "item_skillbook_t1_desc"
+icon = ExtResource("2_5sff6")
+UsageLimit = 1

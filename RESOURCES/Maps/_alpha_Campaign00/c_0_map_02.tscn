@@ -56,7 +56,7 @@ DamageAggros = true
 
 [node name="C0_Map02" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_vx1gh")
-GridSize = Vector2i(25, 10)
+GridSize = Vector2i(18, 10)
 WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
 squadParent = NodePath("Squads")
@@ -64,7 +64,7 @@ StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
 
 [node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
-points = PackedVector2Array(0, 0, 1600, 0, 1600, 640, 0, 640, 0, 0)
+points = PackedVector2Array(0, 0, 1152, 0, 1152, 640, 0, 640, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
 script = ExtResource("3_5yv00")
@@ -130,20 +130,8 @@ UnitToSpawn = ExtResource("8_ax251")
 Position = Vector2i(3, 3)
 AIBehavior = SubResource("Resource_l01f8")
 
-[node name="Spawn_Wolf Pup3" type="Sprite2D" parent="Spawners"]
-position = Vector2(1472, 192)
-texture = ExtResource("6_fj6ad")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("8_ax251")
-Position = Vector2i(23, 3)
-AIBehavior = SubResource("Resource_l01f8")
-
 [node name="Spawn_Wolf Pup4" type="Sprite2D" parent="Spawners"]
-position = Vector2(1088, 448)
+position = Vector2(960, 448)
 texture = ExtResource("6_fj6ad")
 centered = false
 hframes = 4
@@ -151,12 +139,12 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
-Position = Vector2i(17, 7)
+Position = Vector2i(15, 7)
 AIBehavior = SubResource("Resource_l01f8")
 AggroBehavior = SubResource("Resource_18shu")
 
 [node name="Spawn_Wolf Pup5" type="Sprite2D" parent="Spawners"]
-position = Vector2(1024, 512)
+position = Vector2(896, 512)
 texture = ExtResource("6_fj6ad")
 centered = false
 hframes = 4
@@ -164,7 +152,7 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("8_ax251")
-Position = Vector2i(16, 8)
+Position = Vector2i(14, 8)
 AIBehavior = SubResource("Resource_l01f8")
 AggroBehavior = SubResource("Resource_yh0au")
 

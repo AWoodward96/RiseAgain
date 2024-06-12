@@ -7,8 +7,8 @@
 [node name="gauze" type="Node2D" node_paths=PackedStringArray("HealData")]
 script = ExtResource("1_jgjxu")
 internalName = "gauze"
-loc_displayName = "gauze_name"
-loc_displayDesc = "gauze_desc"
+loc_displayName = "item_gauze_name"
+loc_displayDesc = "item_gauze_desc"
 icon = ExtResource("2_p1uni")
 HealData = NodePath("HealComponent")
 UsageLimit = 3.0

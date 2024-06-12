@@ -1,0 +1,38 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct2nmmor2ta5a"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_cal8j"]
+[ext_resource type="Texture2D" uid="uid://dgyufpx5a6ka3" path="res://ART/Icons/Items/steel_bow.png" id="2_tu0mj"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_t6gdh"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_ydbij"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_bewrp"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_jsy7w"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_ijos8"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_xkm8v"]
+
+[sub_resource type="Resource" id="Resource_t426a"]
+script = ExtResource("5_bewrp")
+Template = ExtResource("4_ydbij")
+Value = 5
+
+[node name="steel_bow" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
+script = ExtResource("1_cal8j")
+internalName = "steel_bow"
+loc_displayName = "item_steel_bow_name"
+loc_displayDesc = "item_steel_bow_desc"
+icon = ExtResource("2_tu0mj")
+TargetingData = NodePath("TargetingData")
+ItemDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_t6gdh")
+BaseAccuracy = 85
+GrantedStats = Array[ExtResource("5_bewrp")]([SubResource("Resource_t426a")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_jsy7w")
+AgressiveStat = ExtResource("4_ydbij")
+DefensiveStat = ExtResource("7_ijos8")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("8_xkm8v")

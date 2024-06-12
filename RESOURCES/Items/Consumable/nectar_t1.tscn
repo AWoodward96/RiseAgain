@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmkw8oyk03jit"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_fp3ko"]
+[ext_resource type="Texture2D" uid="uid://bcxc5ddtntqme" path="res://ART/Icons/Items/nectar_t1.png" id="2_ngjb7"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_wpywr"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="4_3u0tr"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_26n6f"]
+
+[sub_resource type="Resource" id="Resource_o3bfq"]
+script = ExtResource("5_26n6f")
+Template = ExtResource("4_3u0tr")
+Value = 4
+
+[node name="nectar_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
+script = ExtResource("1_fp3ko")
+internalName = "nectar_t1"
+loc_displayName = "item_nectar_t1_name"
+loc_displayDesc = "item_nectar_t1_desc"
+icon = ExtResource("2_ngjb7")
+StatConsumableData = NodePath("StatConsumableComponent")
+UsageLimit = 1
+
+[node name="StatConsumableComponent" type="Node2D" parent="."]
+script = ExtResource("3_wpywr")
+StatsToGrant = Array[ExtResource("5_26n6f")]([SubResource("Resource_o3bfq")])

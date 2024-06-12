@@ -11,8 +11,8 @@
 [node name="iron_bow" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
 script = ExtResource("1_17al1")
 internalName = "iron_bow"
-loc_displayName = "iron_bow_name"
-loc_displayDesc = "iron_bow_desc"
+loc_displayName = "item_iron_bow_name"
+loc_displayDesc = "item_iron_bow_desc"
 icon = ExtResource("2_6802n")
 TargetingData = NodePath("SkillTargetingData")
 ItemDamageData = NodePath("DamageComponent")
@@ -20,7 +20,7 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("3_bkhqc")
-BaseAccuracy = 75.0
+BaseAccuracy = 85.0
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("6_ud8wj")

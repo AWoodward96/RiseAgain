@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfba7mgp0ddhu"]
+[gd_scene load_steps=10 format=3 uid="uid://dfba7mgp0ddhu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_cw0r4"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_4owtj"]
+[ext_resource type="Texture2D" uid="uid://ci67qx2wt4fay" path="res://ART/Icons/Items/wolf_tooth.png" id="2_wxyba"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_olmah"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="4_tsgbl"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_q8pqc"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_7pm30"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_81734"]
 
-[sub_resource type="Resource" id="Resource_6c88l"]
+[sub_resource type="Resource" id="Resource_qcxar"]
 script = ExtResource("4_tsgbl")
 Template = ExtResource("3_olmah")
 Value = 5
@@ -16,16 +17,17 @@ Value = 5
 [node name="wolf_tooth" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
 script = ExtResource("1_cw0r4")
 internalName = "wolf_tooth"
-loc_displayName = "wolf_tooth_name"
-loc_displayDesc = "wolf_tooth_desc"
+loc_displayName = "item_wolf_tooth_name"
+loc_displayDesc = "item_wolf_tooth_desc"
+icon = ExtResource("2_wxyba")
 TargetingData = NodePath("TargetingData")
 ItemDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_4owtj")
-BaseAccuracy = 80.0
-GrantedStats = Array[ExtResource("4_tsgbl")]([SubResource("Resource_6c88l")])
+BaseAccuracy = 90.0
+GrantedStats = Array[ExtResource("4_tsgbl")]([SubResource("Resource_qcxar")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_q8pqc")
