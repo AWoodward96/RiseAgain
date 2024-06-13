@@ -31,8 +31,8 @@ func InitializeAsItem(_itemRewardEntry : ItemRewardEntry):
 		return
 
 	rewardIcon.texture = itemToBeRewarded.icon
-	rewardName.text = itemToBeRewarded.loc_displayName
-	rewardDesc.text = itemToBeRewarded.loc_displayDesc
+	rewardName.text = tr(itemToBeRewarded.loc_displayName)
+	rewardDesc.text = tr(itemToBeRewarded.loc_displayDesc)
 
 func InitializeAsUnit(_unitRewardEntry : SpecificUnitRewardEntry):
 	rewardType.text = "Type: Unit"
@@ -42,8 +42,8 @@ func InitializeAsUnit(_unitRewardEntry : SpecificUnitRewardEntry):
 		return
 
 	rewardIcon.texture = unitToBeRewarded.icon
-	rewardName.text = unitToBeRewarded.loc_DisplayName
-	rewardDesc.text = unitToBeRewarded.loc_Description
+	rewardName.text = tr(unitToBeRewarded.loc_DisplayName)
+	rewardDesc.text = tr(unitToBeRewarded.loc_Description)
 
 func OnEntryPressed():
 	OnRewardSelected.emit(reward)

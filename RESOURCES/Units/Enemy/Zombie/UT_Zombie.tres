@@ -14,42 +14,42 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_beeyc"]
 [ext_resource type="PackedScene" uid="uid://fcfwenmnlyec" path="res://RESOURCES/Items/Equippable/zombie_claw.tscn" id="10_yjv2h"]
 
-[sub_resource type="Resource" id="Resource_r2xkf"]
+[sub_resource type="Resource" id="Resource_glxo5"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("1_ggk7c")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_l0rib"]
+[sub_resource type="Resource" id="Resource_d8die"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("3_tiv5t")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_uhk5r"]
+[sub_resource type="Resource" id="Resource_e1mlo"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("4_sod5c")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_qppxi"]
+[sub_resource type="Resource" id="Resource_i55s5"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("5_hdrp8")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_2114d"]
+[sub_resource type="Resource" id="Resource_0uw4k"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("6_wmulv")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_ximvq"]
+[sub_resource type="Resource" id="Resource_o7il3"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("7_vt4dr")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_5yjee"]
+[sub_resource type="Resource" id="Resource_05ww0"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("9_kmu6s")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_v6jbc"]
+[sub_resource type="Resource" id="Resource_ynfeh"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("10_beeyc")
 Value = 0
@@ -57,7 +57,7 @@ Value = 0
 [resource]
 script = ExtResource("1_i4cy5")
 VisualPrefab = ExtResource("8_s1fg8")
-BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_r2xkf"), SubResource("Resource_l0rib"), SubResource("Resource_uhk5r"), SubResource("Resource_qppxi"), SubResource("Resource_2114d"), SubResource("Resource_ximvq"), SubResource("Resource_5yjee"), SubResource("Resource_v6jbc")])
+BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_glxo5"), SubResource("Resource_d8die"), SubResource("Resource_e1mlo"), SubResource("Resource_i55s5"), SubResource("Resource_0uw4k"), SubResource("Resource_o7il3"), SubResource("Resource_05ww0"), SubResource("Resource_ynfeh")])
 StartingItems = Array[PackedScene]([ExtResource("10_yjv2h")])
 Abilities = Array[PackedScene]([])
 DebugName = "Zombie"

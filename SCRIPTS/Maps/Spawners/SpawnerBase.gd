@@ -9,7 +9,6 @@ const NodeSize : int = 64
 @export var Position: Vector2i :
 	set(value):
 		Position = value
-		print("should update")
 		position = Position * NodeSize
 
 

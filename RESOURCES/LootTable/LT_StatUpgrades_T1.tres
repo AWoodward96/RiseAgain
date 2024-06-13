@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=15 format=3 uid="uid://xnen5vhxjagq"]
+
+[ext_resource type="PackedScene" uid="uid://dg1rol3bhxe5v" path="res://RESOURCES/Items/Consumable/ktome_t1.tscn" id="1_w5eu1"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="2_cg8sm"]
+[ext_resource type="PackedScene" uid="uid://dmkw8oyk03jit" path="res://RESOURCES/Items/Consumable/nectar_t1.tscn" id="3_qdalx"]
+[ext_resource type="PackedScene" uid="uid://cu2iotlrkoomc" path="res://RESOURCES/Items/Consumable/polish_t1.tscn" id="4_bglpx"]
+[ext_resource type="PackedScene" uid="uid://47cv85tt0nu4" path="res://RESOURCES/Items/Consumable/holywater_t1.tscn" id="5_3fkmt"]
+[ext_resource type="PackedScene" uid="uid://b7wykm68dvlre" path="res://RESOURCES/Items/Consumable/skillbook_t1.tscn" id="6_2cepu"]
+[ext_resource type="PackedScene" uid="uid://biskleljvg5rb" path="res://RESOURCES/Items/Consumable/whetstone_t1.tscn" id="7_qccxx"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="8_w8g6q"]
+
+[sub_resource type="Resource" id="Resource_p24xs"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("1_w5eu1")
+Weight = 1.0
+AccumulatedWeight = 1.0
+
+[sub_resource type="Resource" id="Resource_yjf15"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("3_qdalx")
+Weight = 1.0
+AccumulatedWeight = 2.0
+
+[sub_resource type="Resource" id="Resource_ge8cu"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("4_bglpx")
+Weight = 1.0
+AccumulatedWeight = 3.0
+
+[sub_resource type="Resource" id="Resource_cio65"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("5_3fkmt")
+Weight = 1.0
+AccumulatedWeight = 4.0
+
+[sub_resource type="Resource" id="Resource_nr064"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("6_2cepu")
+Weight = 1.0
+AccumulatedWeight = 5.0
+
+[sub_resource type="Resource" id="Resource_8q1h8"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("7_qccxx")
+Weight = 1.0
+AccumulatedWeight = 6.0
+
+[resource]
+resource_name = "LT_StatUpgrades_T1"
+script = ExtResource("8_w8g6q")
+Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_p24xs"), SubResource("Resource_yjf15"), SubResource("Resource_ge8cu"), SubResource("Resource_cio65"), SubResource("Resource_nr064"), SubResource("Resource_8q1h8")])
+WeightSum = 6.0

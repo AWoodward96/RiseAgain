@@ -14,42 +14,42 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
 [ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/iron_bow.tscn" id="10_wyp1h"]
 
-[sub_resource type="Resource" id="Resource_atvfl"]
+[sub_resource type="Resource" id="Resource_3t01m"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_o0kne"]
+[sub_resource type="Resource" id="Resource_of7u0"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("3_e1gbq")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_cnd0s"]
+[sub_resource type="Resource" id="Resource_l56pj"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("4_ry5o0")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_ymrqr"]
+[sub_resource type="Resource" id="Resource_x2up0"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("5_5fnpr")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_r3rui"]
+[sub_resource type="Resource" id="Resource_6odlr"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("6_skiv5")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_ne57w"]
+[sub_resource type="Resource" id="Resource_q25v6"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("7_ysc31")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_rq0dk"]
+[sub_resource type="Resource" id="Resource_jvyn3"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("9_qwdht")
-Value = 6
+Value = 8
 
-[sub_resource type="Resource" id="Resource_56gyk"]
+[sub_resource type="Resource" id="Resource_1vqmc"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("10_gfhek")
 Value = 5
@@ -57,7 +57,7 @@ Value = 5
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_atvfl"), SubResource("Resource_o0kne"), SubResource("Resource_cnd0s"), SubResource("Resource_ymrqr"), SubResource("Resource_r3rui"), SubResource("Resource_ne57w"), SubResource("Resource_rq0dk"), SubResource("Resource_56gyk")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_3t01m"), SubResource("Resource_of7u0"), SubResource("Resource_l56pj"), SubResource("Resource_x2up0"), SubResource("Resource_6odlr"), SubResource("Resource_q25v6"), SubResource("Resource_jvyn3"), SubResource("Resource_1vqmc")])
 StartingItems = Array[PackedScene]([ExtResource("10_wyp1h")])
 Abilities = Array[PackedScene]([])
 DebugName = "Archer"

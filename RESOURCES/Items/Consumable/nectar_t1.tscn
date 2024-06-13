@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="4_3u0tr"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_26n6f"]
 
-[sub_resource type="Resource" id="Resource_o3bfq"]
+[sub_resource type="Resource" id="Resource_ofuxa"]
 script = ExtResource("5_26n6f")
 Template = ExtResource("4_3u0tr")
 Value = 4
@@ -18,8 +18,8 @@ loc_displayName = "item_nectar_t1_name"
 loc_displayDesc = "item_nectar_t1_desc"
 icon = ExtResource("2_ngjb7")
 StatConsumableData = NodePath("StatConsumableComponent")
-UsageLimit = 1
+UsageLimit = 1.0
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_wpywr")
-StatsToGrant = Array[ExtResource("5_26n6f")]([SubResource("Resource_o3bfq")])
+StatsToGrant = Array[ExtResource("5_26n6f")]([SubResource("Resource_ofuxa")])

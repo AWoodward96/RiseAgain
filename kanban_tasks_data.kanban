@@ -31,15 +31,16 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"0b2408a6-7d90-47d1-a292-230431692e32",
-				"620f2c4a-d101-4940-8596-4a0c535256d5",
-				"3a6392c7-4805-44e9-80f7-df7281ca65e6"
+				"0b2408a6-7d90-47d1-a292-230431692e32"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"5403091d-90ff-4bba-8d8b-f65c6ab3f6b6",
+				"3a6392c7-4805-44e9-80f7-df7281ca65e6"
+			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -48,6 +49,7 @@
 				"79cc24a9-e377-4cf7-9f5e-058b591346c9",
 				"843b39dd-2bdc-49a1-a526-48aec932ab7d",
 				"b523ecdc-630e-48cc-bac6-49a90ce24722",
+				"620f2c4a-d101-4940-8596-4a0c535256d5",
 				"4dddcb94-d778-46ed-a185-7a9699b75187",
 				"77103f04-7d82-4bf1-b08a-0bc462b97f6c",
 				"937b13ef-9718-4732-9c51-d9b368367773",
@@ -296,6 +298,13 @@
 			"title": "BUG: Allied units aren't doing the unactivated animation",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "5403091d-90ff-4bba-8d8b-f65c6ab3f6b6",
+			"title": "Make a Heal or Staff Action",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

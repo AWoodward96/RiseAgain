@@ -9,4 +9,4 @@ internalName = "skillbook_t1"
 loc_displayName = "item_skillbook_t1_name"
 loc_displayDesc = "item_skillbook_t1_desc"
 icon = ExtResource("2_5sff6")
-UsageLimit = 1
+UsageLimit = 1.0

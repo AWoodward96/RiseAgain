@@ -25,10 +25,12 @@ func Initialize(_unitInstance : UnitInstance):
 
 	var firstEntry = inventory_item_parent.GetEntry(0)
 	if firstEntry != null:
+		item_desc_label.text = tr(firstEntry.currentItem.loc_displayDesc)
 		firstEntry.grab_focus()
 
 func OnItemSelected(_item : Item):
 	if _item != null:
+		item_desc_label.text = tr(_item.loc_displayDesc)
 		ItemSelected.emit(_item)
 
 func GetEntry(_index : int):

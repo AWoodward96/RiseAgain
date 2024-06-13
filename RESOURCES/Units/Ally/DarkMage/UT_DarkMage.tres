@@ -14,42 +14,42 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_et1sy"]
 [ext_resource type="PackedScene" uid="uid://chgnhjn68yv41" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="10_gsf1h"]
 
-[sub_resource type="Resource" id="Resource_t3wht"]
+[sub_resource type="Resource" id="Resource_gxofu"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("1_hwv2o")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_gwl3u"]
+[sub_resource type="Resource" id="Resource_gyyb4"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("3_5j8w0")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_evk0j"]
+[sub_resource type="Resource" id="Resource_5d6s7"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("4_nnvcw")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_hyd50"]
+[sub_resource type="Resource" id="Resource_ym8cj"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("5_ik5lt")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_2qemg"]
+[sub_resource type="Resource" id="Resource_sqtf7"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("6_dm6oy")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_ml7lu"]
+[sub_resource type="Resource" id="Resource_27182"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("7_3bh5k")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_s2xaj"]
+[sub_resource type="Resource" id="Resource_r1pf5"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("9_o3bll")
 Value = 5
 
-[sub_resource type="Resource" id="Resource_dj50w"]
+[sub_resource type="Resource" id="Resource_g867l"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("10_et1sy")
 Value = 5
@@ -57,7 +57,7 @@ Value = 5
 [resource]
 script = ExtResource("1_1f83v")
 VisualPrefab = ExtResource("1_fdsu3")
-BaseStats = Array[ExtResource("2_k1gfy")]([SubResource("Resource_t3wht"), SubResource("Resource_gwl3u"), SubResource("Resource_evk0j"), SubResource("Resource_hyd50"), SubResource("Resource_2qemg"), SubResource("Resource_ml7lu"), SubResource("Resource_s2xaj"), SubResource("Resource_dj50w")])
+BaseStats = Array[ExtResource("2_k1gfy")]([SubResource("Resource_gxofu"), SubResource("Resource_gyyb4"), SubResource("Resource_5d6s7"), SubResource("Resource_ym8cj"), SubResource("Resource_sqtf7"), SubResource("Resource_27182"), SubResource("Resource_r1pf5"), SubResource("Resource_g867l")])
 StartingItems = Array[PackedScene]([ExtResource("10_gsf1h")])
 Abilities = Array[PackedScene]([])
 DebugName = "DarkMage"

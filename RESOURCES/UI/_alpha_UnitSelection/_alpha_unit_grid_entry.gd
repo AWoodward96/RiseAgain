@@ -6,14 +6,14 @@ signal OnUnitSelected
 @export var UnitIcon : TextureRect
 @export var UnitName : Label
 
-var UnitTemplate : UnitTemplate
+var unitTemplate : UnitTemplate
 
 func Initialize(_unitTemplate : UnitTemplate):
-	UnitTemplate = _unitTemplate
-	UnitIcon.texture = UnitTemplate.icon
+	unitTemplate = _unitTemplate
+	UnitIcon.texture = unitTemplate.icon
 
 	# TODO: Setup a baseline localization sheet for UI
-	UnitName.text = UnitTemplate.DebugName
+	UnitName.text = tr(unitTemplate.loc_DisplayName)
 
 func _ready():
 	gui_input.connect(OnGUI)

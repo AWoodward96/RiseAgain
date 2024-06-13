@@ -28,17 +28,6 @@ func RollTable(rng : RandomNumberGenerator, _numberOfRewards : int, _duplicatePr
 			return rewardArray
 	return rewardArray
 
-func ReCalcWeightSum():
-	WeightSum = 0
-	for e in Table:
-		if e == null:
-			continue
-
-		WeightSum += e.Weight
-		e.AccumulatedWeight = WeightSum
-
-	# HACK: I should NOT be doing this here, but BOY is it nice that I can. Consider.... removing this...
-	ResourceSaver.save(self, resource_path)
 
 func Roll(rng : RandomNumberGenerator):
 	if rng == null:

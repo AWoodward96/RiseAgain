@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=9 format=3 uid="uid://dsafb0qrhogjm"]
+
+[ext_resource type="PackedScene" uid="uid://c2d3mlv3mlavy" path="res://RESOURCES/Items/Equippable/steel_sword.tscn" id="1_8tbs1"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="2_ylde8"]
+[ext_resource type="PackedScene" uid="uid://ct2nmmor2ta5a" path="res://RESOURCES/Items/Equippable/steel_bow.tscn" id="3_d5vr4"]
+[ext_resource type="PackedScene" uid="uid://l6niqhm2it68" path="res://RESOURCES/Items/Equippable/magic_bolt.tscn" id="4_fjv86"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="5_viryb"]
+
+[sub_resource type="Resource" id="Resource_m0eoy"]
+script = ExtResource("2_ylde8")
+ItemPrefab = ExtResource("1_8tbs1")
+Weight = 1.0
+AccumulatedWeight = 1.0
+
+[sub_resource type="Resource" id="Resource_8c84g"]
+script = ExtResource("2_ylde8")
+ItemPrefab = ExtResource("3_d5vr4")
+Weight = 1.0
+AccumulatedWeight = 2.0
+
+[sub_resource type="Resource" id="Resource_akkiy"]
+script = ExtResource("2_ylde8")
+ItemPrefab = ExtResource("4_fjv86")
+Weight = 1.0
+AccumulatedWeight = 3.0
+
+[resource]
+resource_name = "LT_Steel_Weapons"
+script = ExtResource("5_viryb")
+Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_m0eoy"), SubResource("Resource_8c84g"), SubResource("Resource_akkiy")])
+WeightSum = 3.0

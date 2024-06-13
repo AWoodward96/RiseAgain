@@ -9,6 +9,7 @@ signal OnRewardSelected(_reward : LootTableEntry, _unit : UnitInstance)
 @export var giveItemParent : Control
 @export var giveItemEntryPrefab : PackedScene
 @export var giveItemEntryList : EntryList
+@export var giveItemIcon : TextureRect
 
 var campaign : CampaignTemplate
 var workingSelectedReward : LootTableEntry
@@ -52,6 +53,14 @@ func OnEntrySelected(_reward : LootTableEntry):
 func ShowGiveItemUI():
 	giveItemParent.visible = true
 	giveItemEntryList.ClearEntries()
+
+	if workingSelectedReward is ItemRewardEntry:
+		var itemToBeRewarded = (workingSelectedReward as ItemRewardEntry).ItemPrefab.instantiate() as Item
+		if itemToBeRewarded == null:
+			push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
+			return
+		giveItemIcon.texture = itemToBeRewarded.icon
+
 	for unit in campaign.CurrentRoster:
 		var entry = giveItemEntryList.CreateEntry(giveItemEntryPrefab)
 		entry.Initialize(unit.Template)

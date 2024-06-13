@@ -47,7 +47,7 @@ expand_mode = 1
 [node name="RewardName" type="Label" parent="MarginContainer/Contents"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_e5l3l")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Gauze"
 horizontal_alignment = 1
 clip_text = true

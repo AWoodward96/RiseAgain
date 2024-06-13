@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Items/gauze.png" id="4_s0p5i"]
 [ext_resource type="PackedScene" uid="uid://c67gru2ubp5ke" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.tscn" id="5_xk76y"]
 
-[node name="RewardsUI" type="CanvasLayer" node_paths=PackedStringArray("rewardParent", "giveItemParent", "giveItemEntryList")]
+[node name="RewardsUI" type="CanvasLayer" node_paths=PackedStringArray("rewardParent", "giveItemParent", "giveItemEntryList", "giveItemIcon")]
 script = ExtResource("1_tlyfs")
 rewardEntryPrefab = ExtResource("3_hnd4w")
 rewardParent = NodePath("PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/EntryParent")
 giveItemParent = NodePath("GiveThisParent")
 giveItemEntryPrefab = ExtResource("5_xk76y")
 giveItemEntryList = NodePath("GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/GridParent/GridContainer")
+giveItemIcon = NodePath("GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/GiveThisToWhoParent/GiveThisIcon")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

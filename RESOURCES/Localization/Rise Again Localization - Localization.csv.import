@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bbcfp5fd065be"
+
+[deps]
+
+files=["res://RESOURCES/Localization/Rise Again Localization - Localization.Category.translation", "res://RESOURCES/Localization/Rise Again Localization - Localization.en.translation", "res://RESOURCES/Localization/Rise Again Localization - Localization.es.translation"]
+
+source_file="res://RESOURCES/Localization/Rise Again Localization - Localization.csv"
+dest_files=["res://RESOURCES/Localization/Rise Again Localization - Localization.Category.translation", "res://RESOURCES/Localization/Rise Again Localization - Localization.en.translation", "res://RESOURCES/Localization/Rise Again Localization - Localization.es.translation"]
+
+[params]
+
+compress=true
+delimiter=0

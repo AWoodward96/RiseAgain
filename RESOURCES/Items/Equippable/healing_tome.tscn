@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://j6lthpe25vnl"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_vviug"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_ttkby"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="3_56tiw"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_wfbck"]
+
+[node name="healing_tome" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
+script = ExtResource("1_vviug")
+internalName = "healing_tome"
+loc_displayName = "item_healing_tome_name"
+loc_displayDesc = "item_healing_tome_desc"
+TargetingData = NodePath("TargetingData")
+HealData = NodePath("HealComponent")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("2_ttkby")
+TeamTargeting = 0
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("3_56tiw")
+FlatValue = 6
+ScalingStat = ExtResource("4_wfbck")
+ScalingModType = 2
+ScalingMod = 0.5
