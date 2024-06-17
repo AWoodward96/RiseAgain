@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dmn5mbio3opjl"]
+[gd_scene load_steps=37 format=3 uid="uid://dmn5mbio3opjl"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_6ileq"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_ffhbr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_m28ey"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_rauwn"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_TargetClosest.gd" id="9_b7bdo"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="9_pk6wh"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="10_4bdg2"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="11_rfa17"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="12_r41fw"]
@@ -17,9 +18,13 @@
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_ffhbr")
 
+[sub_resource type="Resource" id="Resource_gx3ma"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_7loej"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 0
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_gx3ma")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_0m3f4"]
@@ -28,41 +33,61 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
+[sub_resource type="Resource" id="Resource_gvjjo"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_7xblp"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 1
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_gvjjo")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_5lyd1"]
 script = ExtResource("11_rfa17")
 
+[sub_resource type="Resource" id="Resource_6n52v"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_42clw"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 1
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_6n52v")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_4vnm5"]
 script = ExtResource("11_rfa17")
 
+[sub_resource type="Resource" id="Resource_vyuug"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_2fvt2"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 1
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_vyuug")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_hde7t"]
 script = ExtResource("11_rfa17")
 
+[sub_resource type="Resource" id="Resource_m33g8"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_gt2en"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 1
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_m33g8")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_ul3o1"]
 script = ExtResource("11_rfa17")
 
+[sub_resource type="Resource" id="Resource_hl8wo"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_6tylq"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 1
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_hl8wo")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_cjidy"]
@@ -71,9 +96,13 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
+[sub_resource type="Resource" id="Resource_gnldv"]
+script = ExtResource("9_pk6wh")
+Team = 1
+
 [sub_resource type="Resource" id="Resource_prcs6"]
 script = ExtResource("9_b7bdo")
-TargetingFlags = 1
+Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_gnldv")])
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_kbdrf"]

@@ -11,45 +11,45 @@
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_5xmr1"]
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_bnwjs"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_0k8gf"]
-[ext_resource type="PackedScene" uid="uid://chgnhjn68yv41" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="10_0tgu0"]
+[ext_resource type="PackedScene" uid="uid://chgnhjn68yv41" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="10_moxpa"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_te031"]
 
-[sub_resource type="Resource" id="Resource_5buot"]
+[sub_resource type="Resource" id="Resource_jhgfy"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("1_f24q4")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_c75c5"]
+[sub_resource type="Resource" id="Resource_nluym"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("3_grtee")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_bgvht"]
+[sub_resource type="Resource" id="Resource_2fj23"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("4_urf7l")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_dqi34"]
+[sub_resource type="Resource" id="Resource_xbmcy"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("5_thm0u")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_wrfes"]
+[sub_resource type="Resource" id="Resource_x241e"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("6_5xmr1")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_jl3df"]
+[sub_resource type="Resource" id="Resource_qmi62"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("7_bnwjs")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_08xaa"]
+[sub_resource type="Resource" id="Resource_0elty"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("9_0k8gf")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_r1wvu"]
+[sub_resource type="Resource" id="Resource_kl168"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("10_te031")
 Value = 7
@@ -57,9 +57,10 @@ Value = 7
 [resource]
 script = ExtResource("3_rke14")
 VisualPrefab = ExtResource("1_f24il")
-BaseStats = Array[ExtResource("2_dbc0j")]([SubResource("Resource_5buot"), SubResource("Resource_c75c5"), SubResource("Resource_bgvht"), SubResource("Resource_dqi34"), SubResource("Resource_wrfes"), SubResource("Resource_jl3df"), SubResource("Resource_08xaa"), SubResource("Resource_r1wvu")])
-StartingItems = Array[PackedScene]([ExtResource("10_0tgu0")])
+BaseStats = Array[ExtResource("2_dbc0j")]([SubResource("Resource_jhgfy"), SubResource("Resource_nluym"), SubResource("Resource_2fj23"), SubResource("Resource_xbmcy"), SubResource("Resource_x241e"), SubResource("Resource_qmi62"), SubResource("Resource_0elty"), SubResource("Resource_kl168")])
+StartingItems = Array[PackedScene]([ExtResource("10_moxpa")])
 Abilities = Array[PackedScene]([])
+Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "ElementalMage"
 loc_DisplayName = "unit_elementalmage_name"
 loc_Description = "unit_elementalmage_desc"

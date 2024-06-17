@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=22 format=3 uid="uid://7mx1nucm5v"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://7mx1nucm5v"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_ggk7c"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_i4cy5"]
@@ -12,44 +12,45 @@
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://ART/Icons/Units/zombie.png" id="9_go1ao"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_kmu6s"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_beeyc"]
-[ext_resource type="PackedScene" uid="uid://fcfwenmnlyec" path="res://RESOURCES/Items/Equippable/zombie_claw.tscn" id="10_yjv2h"]
+[ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_x76nx"]
+[ext_resource type="PackedScene" uid="uid://fcfwenmnlyec" path="res://RESOURCES/Items/Equippable/zombie_claw.tscn" id="10_y6j75"]
 
-[sub_resource type="Resource" id="Resource_glxo5"]
+[sub_resource type="Resource" id="Resource_et0oe"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("1_ggk7c")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_d8die"]
+[sub_resource type="Resource" id="Resource_u8mvh"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("3_tiv5t")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_e1mlo"]
+[sub_resource type="Resource" id="Resource_yktaa"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("4_sod5c")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_i55s5"]
+[sub_resource type="Resource" id="Resource_55p0g"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("5_hdrp8")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_0uw4k"]
+[sub_resource type="Resource" id="Resource_ro0u8"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("6_wmulv")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_o7il3"]
+[sub_resource type="Resource" id="Resource_hw3fb"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("7_vt4dr")
-Value = 6
+Value = 5
 
-[sub_resource type="Resource" id="Resource_05ww0"]
+[sub_resource type="Resource" id="Resource_7o7rf"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("9_kmu6s")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_ynfeh"]
+[sub_resource type="Resource" id="Resource_hup7u"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("10_beeyc")
 Value = 0
@@ -57,9 +58,10 @@ Value = 0
 [resource]
 script = ExtResource("1_i4cy5")
 VisualPrefab = ExtResource("8_s1fg8")
-BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_glxo5"), SubResource("Resource_d8die"), SubResource("Resource_e1mlo"), SubResource("Resource_i55s5"), SubResource("Resource_0uw4k"), SubResource("Resource_o7il3"), SubResource("Resource_05ww0"), SubResource("Resource_ynfeh")])
-StartingItems = Array[PackedScene]([ExtResource("10_yjv2h")])
+BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_et0oe"), SubResource("Resource_u8mvh"), SubResource("Resource_yktaa"), SubResource("Resource_55p0g"), SubResource("Resource_ro0u8"), SubResource("Resource_hw3fb"), SubResource("Resource_7o7rf"), SubResource("Resource_hup7u")])
+StartingItems = Array[PackedScene]([ExtResource("10_y6j75")])
 Abilities = Array[PackedScene]([])
+Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_x76nx")])
 DebugName = "Zombie"
 loc_DisplayName = "unit_zombie_name"
 loc_Description = "unit_zombie_desc"

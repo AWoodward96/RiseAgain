@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b362cldejqkxn"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_ssn08"]
+[ext_resource type="Texture2D" uid="uid://ddew6qrlip5o6" path="res://ART/Icons/Units/wolf.png" id="2_pwxou"]
+[ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_3lbek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
+size = Vector2(64, 64)
+
+[node name="AdultWolf" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+script = ExtResource("1_ssn08")
+AnimationCTRL = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.290196, 0.211765, 1)
+texture = ExtResource("2_pwxou")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"UnitEnemyLibrary": ExtResource("3_3lbek")
+}
+autoplay = "Unactivated"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_4m7bv")

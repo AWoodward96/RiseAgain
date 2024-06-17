@@ -19,7 +19,7 @@ TeamTargeting = 0
 
 [node name="HealComponent" type="Node2D" parent="."]
 script = ExtResource("3_56tiw")
-FlatValue = 6
+FlatValue = 6.0
 ScalingStat = ExtResource("4_wfbck")
 ScalingModType = 2
 ScalingMod = 0.5

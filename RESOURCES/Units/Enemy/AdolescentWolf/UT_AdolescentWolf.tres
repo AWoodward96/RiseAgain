@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=22 format=3 uid="uid://druuu3tv4re06"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://druuu3tv4re06"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_qm2y0"]
 [ext_resource type="Texture2D" uid="uid://c2kg7bpf1mqb0" path="res://ART/Icons/Units/adolescent_wolf.png" id="1_rc3xi"]
@@ -11,45 +11,46 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="8_mven1"]
 [ext_resource type="PackedScene" uid="uid://btg88g5hje3a3" path="res://RESOURCES/Units/Enemy/AdolescentWolf/VIS_AdolescentWolf.tscn" id="9_ctp86"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_ls0fi"]
-[ext_resource type="PackedScene" uid="uid://dfba7mgp0ddhu" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_vxv70"]
+[ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_fydjx"]
+[ext_resource type="PackedScene" uid="uid://dfba7mgp0ddhu" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_r738f"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_vyxpi"]
 
-[sub_resource type="Resource" id="Resource_bs4ng"]
+[sub_resource type="Resource" id="Resource_550hk"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("2_n5q5a")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_sog3m"]
+[sub_resource type="Resource" id="Resource_xfyd0"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("4_uhkmf")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_mh8bg"]
+[sub_resource type="Resource" id="Resource_rt5wx"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("5_7sjbl")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_6uac7"]
+[sub_resource type="Resource" id="Resource_wnbnc"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("6_vk4tj")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_sdxw7"]
+[sub_resource type="Resource" id="Resource_kdn74"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("7_3d0wk")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_wcm3b"]
+[sub_resource type="Resource" id="Resource_scgho"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("8_mven1")
-Value = 6
+Value = 5
 
-[sub_resource type="Resource" id="Resource_fol4v"]
+[sub_resource type="Resource" id="Resource_gf2uw"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("9_ls0fi")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_ax6bb"]
+[sub_resource type="Resource" id="Resource_l0rbw"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("10_vyxpi")
 Value = 2
@@ -57,9 +58,10 @@ Value = 2
 [resource]
 script = ExtResource("1_qm2y0")
 VisualPrefab = ExtResource("9_ctp86")
-BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_bs4ng"), SubResource("Resource_sog3m"), SubResource("Resource_mh8bg"), SubResource("Resource_6uac7"), SubResource("Resource_sdxw7"), SubResource("Resource_wcm3b"), SubResource("Resource_fol4v"), SubResource("Resource_ax6bb")])
-StartingItems = Array[PackedScene]([ExtResource("10_vxv70")])
+BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_550hk"), SubResource("Resource_xfyd0"), SubResource("Resource_rt5wx"), SubResource("Resource_wnbnc"), SubResource("Resource_kdn74"), SubResource("Resource_scgho"), SubResource("Resource_gf2uw"), SubResource("Resource_l0rbw")])
+StartingItems = Array[PackedScene]([ExtResource("10_r738f")])
 Abilities = Array[PackedScene]([])
+Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_fydjx")])
 DebugName = "AdolescentWolf"
 loc_DisplayName = "unit_adolescentwolf_name"
 loc_Description = "unit_adolescentwolf_desc"

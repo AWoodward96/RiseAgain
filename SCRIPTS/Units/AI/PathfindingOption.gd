@@ -9,3 +9,5 @@ var PathSize :
 			return 0
 
 		return Path.size()
+
+var FlagIndex : int

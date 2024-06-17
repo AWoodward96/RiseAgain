@@ -7,7 +7,8 @@ class_name AITargetClosest
 # A more threatening, more interesting AI, would be SmartTargetClosest, where it'd prioritize units it could actually damage
 # ---------------------------------------
 
-@export_flags("ALLY", "ENEMY", "NEUTRAL") var TargetingFlags : int = 1
+@export var Flags : Array[AITargetingFlag]
+@export var IsPriorityFlag : bool # If true, then Flags at index 0 take priority over Flags at 1
 @export var RememberTarget : bool
 
 var targetUnit : UnitInstance
@@ -32,7 +33,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
-	GetAbility()
+	GetEquippedItem()
 	if item == null:
 		unit.QueueEndTurn()
 		return
@@ -61,8 +62,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		if option.PathSize > unitMovement + effectiveRange.y:
 			# CASE 1:
 			# The unit is too far from their target, and should simply move closer
-			selectedPath = option.Path
-			TruncatePathBasedOnMovement(unitMovement)
+			TruncatePathBasedOnMovement(option.Path, unitMovement)
 			break # break out and go to execution
 		else:
 			# CASE 2:
@@ -104,9 +104,10 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	TryCombat()
 	pass
 
-# Needs SelectedPath to be set before calling
-func TruncatePathBasedOnMovement(currentMovement):
-	selectedPath = selectedPath.slice(0, currentMovement)
+# Cuts down the path to the units movement, and takes into account occupied tiles so that this unit doesn't move on top of another unit
+func TruncatePathBasedOnMovement(_path, _currentMovement):
+	selectedPath = _path
+	selectedPath = selectedPath.slice(0, _currentMovement)
 
 	var indexedSize = selectedPath.size() - 1
 	selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
@@ -128,17 +129,45 @@ func TruncatePathBasedOnMovement(currentMovement):
 func GetAllValidPaths():
 	pathfindingOptions.clear()
 
-	var allUnitsAbleToBeTargeted = map.GetUnitsOnTeam(TargetingFlags)
-	for potentialUnit in allUnitsAbleToBeTargeted:
+	var allUnitsAbleToBeTargeted : Array[UnitInstance]
+
+	# This parallel index is used to track FlagIndex in the PathfindingOption
+	var parallelIndex : Array[int]
+	var index = 0
+	for targetingFlags in Flags:
+		var units = map.GetUnitsOnTeam(targetingFlags.Team)
+		if targetingFlags.Descriptor != null:
+			units = units.filter(func(x) : return x.Template.Descriptors.find(targetingFlags.Descriptor) != -1)
+
+		allUnitsAbleToBeTargeted.append_array(units)
+
+		var ar : Array[int]
+		ar.resize(units.size())
+		ar.fill(index)
+		parallelIndex.append_array(ar)
+
+		index += 1
+
+	for i in range(0, allUnitsAbleToBeTargeted.size()):
+		var potentialUnit = allUnitsAbleToBeTargeted[i]
 		var path = grid.GetPathBetweenTwoUnits(unit, potentialUnit)
 		if path.size() != 0: # Check against 0, because 0 means you can't path there
 			var op = PathfindingOption.new()
 			path.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
 			op.Unit = potentialUnit
 			op.Path = path
+			op.FlagIndex = parallelIndex[i]
+
 			pathfindingOptions.append(op)
 
-	pathfindingOptions.sort_custom(func(x,y) : return x.PathSize < y.PathSize)
+	pathfindingOptions.sort_custom(SortPathfindingOptions)
+
+func SortPathfindingOptions(path1 : PathfindingOption, path2 : PathfindingOption):
+	if IsPriorityFlag:
+		if path1.FlagIndex != path2.FlagIndex:
+			return path1.FlagIndex < path2.FlagIndex
+
+	return path1.PathSize < path2.PathSize
 
 func GetActionableTiles():
 	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, item.GetRange())
@@ -156,7 +185,7 @@ func FilterTilesByPath(_actionableTiles : Array[Tile]):
 			selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
 			lowest = path.size()
 
-func GetAbility():
+func GetEquippedItem():
 	if unit.Inventory.size() == 0:
 		return
 

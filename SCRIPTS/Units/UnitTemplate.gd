@@ -7,6 +7,7 @@ class_name UnitTemplate
 
 @export var StartingItems : Array[PackedScene]
 @export var Abilities : Array[PackedScene]
+@export var Descriptors : Array[DescriptorTemplate]
 #@export var BaseClass : ClassTemplate
 
 @export_group("Meta Data")

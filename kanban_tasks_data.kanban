@@ -71,7 +71,8 @@
 			"title": "Bug",
 			"tasks": [
 				"03e18191-548c-4e16-aac3-787401d9675f",
-				"3d76c379-4fa5-49dc-b69b-2c333b9b0c6c"
+				"3d76c379-4fa5-49dc-b69b-2c333b9b0c6c",
+				"e0899ea5-1a6e-4136-9457-0afaa0c54bc5"
 			]
 		}
 	],
@@ -305,6 +306,13 @@
 			"title": "Make a Heal or Staff Action",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "e0899ea5-1a6e-4136-9457-0afaa0c54bc5",
+			"title": "BUG: Fix camera not zooming on the enemies properly on their turn start ",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=3 format=3 uid="uid://3feglb2uqixw"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_2suo4"]
+[ext_resource type="Texture2D" uid="uid://srsldwrfmqtr" path="res://ART/Icons/Descriptors/undead_icon.png" id="1_jcqkj"]
+
+[resource]
+script = ExtResource("1_2suo4")
+icon = ExtResource("1_jcqkj")
+loc_name = "des_undead_name"
+loc_description = "des_undead_desc"

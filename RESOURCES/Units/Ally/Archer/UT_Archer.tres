@@ -11,45 +11,45 @@
 [ext_resource type="PackedScene" uid="uid://bdslgjv74suwb" path="res://RESOURCES/Units/Ally/Archer/VIS_Archer.tscn" id="8_hvc7e"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="9_f2y67"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_qwdht"]
+[ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/iron_bow.tscn" id="10_7k5co"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
-[ext_resource type="PackedScene" uid="uid://dst18brjn8280" path="res://RESOURCES/Items/Equippable/iron_bow.tscn" id="10_wyp1h"]
 
-[sub_resource type="Resource" id="Resource_3t01m"]
+[sub_resource type="Resource" id="Resource_7fs2g"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_of7u0"]
+[sub_resource type="Resource" id="Resource_teb8d"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("3_e1gbq")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_l56pj"]
+[sub_resource type="Resource" id="Resource_n8aqq"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("4_ry5o0")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_x2up0"]
+[sub_resource type="Resource" id="Resource_cyicx"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("5_5fnpr")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_6odlr"]
+[sub_resource type="Resource" id="Resource_pb1ul"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("6_skiv5")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_q25v6"]
+[sub_resource type="Resource" id="Resource_murdx"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("7_ysc31")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_jvyn3"]
+[sub_resource type="Resource" id="Resource_2r8vo"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("9_qwdht")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_1vqmc"]
+[sub_resource type="Resource" id="Resource_upu3g"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("10_gfhek")
 Value = 5
@@ -57,9 +57,10 @@ Value = 5
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_3t01m"), SubResource("Resource_of7u0"), SubResource("Resource_l56pj"), SubResource("Resource_x2up0"), SubResource("Resource_6odlr"), SubResource("Resource_q25v6"), SubResource("Resource_jvyn3"), SubResource("Resource_1vqmc")])
-StartingItems = Array[PackedScene]([ExtResource("10_wyp1h")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_7fs2g"), SubResource("Resource_teb8d"), SubResource("Resource_n8aqq"), SubResource("Resource_cyicx"), SubResource("Resource_pb1ul"), SubResource("Resource_murdx"), SubResource("Resource_2r8vo"), SubResource("Resource_upu3g")])
+StartingItems = Array[PackedScene]([ExtResource("10_7k5co")])
 Abilities = Array[PackedScene]([])
+Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"
 loc_Description = "unit_archer_desc"

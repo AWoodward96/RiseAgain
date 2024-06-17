@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_yas78"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_o6qg2"]
 
-[sub_resource type="Resource" id="Resource_o0ebj"]
+[sub_resource type="Resource" id="Resource_sjmru"]
 script = ExtResource("5_o6qg2")
 Template = ExtResource("4_yas78")
 Value = 2
@@ -22,4 +22,4 @@ UsageLimit = 1.0
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_caekq")
-StatsToGrant = Array[ExtResource("5_o6qg2")]([SubResource("Resource_o0ebj")])
+StatsToGrant = Array[ExtResource("5_o6qg2")]([SubResource("Resource_sjmru")])

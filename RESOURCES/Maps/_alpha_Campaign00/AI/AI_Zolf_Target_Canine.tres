@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AITargetClosest" load_steps=6 format=3 uid="uid://cxr5y6clktnni"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="1_2amd1"]
+[ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="1_ovbds"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_TargetClosest.gd" id="2_jjc36"]
+
+[sub_resource type="Resource" id="Resource_5ynsj"]
+script = ExtResource("1_2amd1")
+Team = 2
+Descriptor = ExtResource("1_ovbds")
+
+[sub_resource type="Resource" id="Resource_khvw8"]
+script = ExtResource("1_2amd1")
+Team = 1
+
+[resource]
+script = ExtResource("2_jjc36")
+Flags = Array[ExtResource("1_2amd1")]([SubResource("Resource_5ynsj"), SubResource("Resource_khvw8")])
+IsPriorityFlag = true
+RememberTarget = false

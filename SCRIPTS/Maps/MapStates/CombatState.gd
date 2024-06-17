@@ -102,7 +102,11 @@ func UpdateEnemyTurn(_delta):
 		return
 
 	if currentUnitsTurn == null:
-		currentUnitsTurn = unitTurnStack.pop_front() as UnitInstance
+		var pop = unitTurnStack.pop_front()
+		if pop == null:
+			return
+
+		currentUnitsTurn = pop as UnitInstance
 		if currentUnitsTurn != null:
 			if !currentUnitsTurn.IsAggrod:
 				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)

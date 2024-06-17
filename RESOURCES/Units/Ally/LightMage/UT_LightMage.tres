@@ -12,44 +12,44 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_3gkvo"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_8tssi"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_61ylm"]
-[ext_resource type="PackedScene" uid="uid://j6lthpe25vnl" path="res://RESOURCES/Items/Equippable/healing_tome.tscn" id="10_q3sku"]
+[ext_resource type="PackedScene" uid="uid://j6lthpe25vnl" path="res://RESOURCES/Items/Equippable/healing_tome.tscn" id="10_g8be2"]
 
-[sub_resource type="Resource" id="Resource_64rvk"]
+[sub_resource type="Resource" id="Resource_nukta"]
 script = ExtResource("2_043p3")
 Template = ExtResource("1_julpp")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_bu8m3"]
+[sub_resource type="Resource" id="Resource_yq01p"]
 script = ExtResource("2_043p3")
 Template = ExtResource("3_qtcos")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_tipec"]
+[sub_resource type="Resource" id="Resource_5adi4"]
 script = ExtResource("2_043p3")
 Template = ExtResource("4_171sc")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_df0x6"]
+[sub_resource type="Resource" id="Resource_squqq"]
 script = ExtResource("2_043p3")
 Template = ExtResource("5_ys3kw")
 Value = 5
 
-[sub_resource type="Resource" id="Resource_0g0hm"]
+[sub_resource type="Resource" id="Resource_u7nfx"]
 script = ExtResource("2_043p3")
 Template = ExtResource("6_ht3tj")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_7d1rs"]
+[sub_resource type="Resource" id="Resource_r16w2"]
 script = ExtResource("2_043p3")
 Template = ExtResource("7_3gkvo")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_n1777"]
+[sub_resource type="Resource" id="Resource_il7hq"]
 script = ExtResource("2_043p3")
 Template = ExtResource("9_8tssi")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_wlrry"]
+[sub_resource type="Resource" id="Resource_4jnt7"]
 script = ExtResource("2_043p3")
 Template = ExtResource("10_61ylm")
 Value = 5
@@ -57,9 +57,10 @@ Value = 5
 [resource]
 script = ExtResource("3_0b4is")
 VisualPrefab = ExtResource("1_jpsjm")
-BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_64rvk"), SubResource("Resource_bu8m3"), SubResource("Resource_tipec"), SubResource("Resource_df0x6"), SubResource("Resource_0g0hm"), SubResource("Resource_7d1rs"), SubResource("Resource_n1777"), SubResource("Resource_wlrry")])
-StartingItems = Array[PackedScene]([ExtResource("10_q3sku")])
+BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_nukta"), SubResource("Resource_yq01p"), SubResource("Resource_5adi4"), SubResource("Resource_squqq"), SubResource("Resource_u7nfx"), SubResource("Resource_r16w2"), SubResource("Resource_il7hq"), SubResource("Resource_4jnt7")])
+StartingItems = Array[PackedScene]([ExtResource("10_g8be2")])
 Abilities = Array[PackedScene]([])
+Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "LightMage"
 loc_DisplayName = "unit_lightmage_name"
 loc_Description = "unit_lightmage_desc"
