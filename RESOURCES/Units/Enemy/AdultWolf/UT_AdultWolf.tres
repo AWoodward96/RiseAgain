@@ -10,56 +10,56 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_wy2px"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_yrhgg"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_b7vio"]
-[ext_resource type="PackedScene" uid="uid://dfba7mgp0ddhu" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_binhx"]
+[ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_binhx"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_t5n5y"]
 [ext_resource type="PackedScene" uid="uid://b362cldejqkxn" path="res://RESOURCES/Units/Enemy/AdultWolf/VIS_AdultWolf.tscn" id="12_6etwq"]
 [ext_resource type="Texture2D" uid="uid://ddew6qrlip5o6" path="res://ART/Icons/Units/wolf.png" id="13_xcn8w"]
 
-[sub_resource type="Resource" id="Resource_lwte0"]
+[sub_resource type="Resource" id="Resource_apk37"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("1_5h2gd")
-Value = 9
-
-[sub_resource type="Resource" id="Resource_tbpby"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("3_o4gdo")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_4kvtn"]
+[sub_resource type="Resource" id="Resource_qxlnn"]
+script = ExtResource("2_7jtpq")
+Template = ExtResource("3_o4gdo")
+Value = 5
+
+[sub_resource type="Resource" id="Resource_32854"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("4_xtf7a")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_p5odk"]
+[sub_resource type="Resource" id="Resource_ndxg0"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("5_kphwc")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_bu181"]
+[sub_resource type="Resource" id="Resource_2mvh6"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("6_kjdlt")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_w2grq"]
+[sub_resource type="Resource" id="Resource_20k2n"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("7_bd5pf")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_alal8"]
+[sub_resource type="Resource" id="Resource_bgiiv"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("8_wy2px")
-Value = 9
+Value = 3
 
-[sub_resource type="Resource" id="Resource_eua5s"]
+[sub_resource type="Resource" id="Resource_d606u"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("9_yrhgg")
-Value = 2
+Value = 0
 
 [resource]
 resource_name = "UT_AdultWolf"
 script = ExtResource("10_t5n5y")
 VisualPrefab = ExtResource("12_6etwq")
-BaseStats = Array[ExtResource("2_7jtpq")]([SubResource("Resource_lwte0"), SubResource("Resource_tbpby"), SubResource("Resource_4kvtn"), SubResource("Resource_p5odk"), SubResource("Resource_bu181"), SubResource("Resource_w2grq"), SubResource("Resource_alal8"), SubResource("Resource_eua5s")])
+BaseStats = Array[ExtResource("2_7jtpq")]([SubResource("Resource_apk37"), SubResource("Resource_qxlnn"), SubResource("Resource_32854"), SubResource("Resource_ndxg0"), SubResource("Resource_2mvh6"), SubResource("Resource_20k2n"), SubResource("Resource_bgiiv"), SubResource("Resource_d606u")])
 StartingItems = Array[PackedScene]([ExtResource("10_binhx")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_b7vio")])

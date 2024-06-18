@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7wykm68dvlre"]
+[gd_scene load_steps=3 format=3 uid="uid://cyj7myy0hwsqy"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_txydk"]
 [ext_resource type="Texture2D" uid="uid://b8ijhtyw1jdib" path="res://ART/Icons/Items/skillbook_t1.png" id="2_5sff6"]

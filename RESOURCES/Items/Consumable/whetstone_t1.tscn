@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://biskleljvg5rb"]
+[gd_scene load_steps=7 format=3 uid="uid://bgnnm5cfmf664"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_agn71"]
 [ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/whetstone_t1.png" id="2_0l20q"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_mx0ga"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_8ff5h"]
 
-[sub_resource type="Resource" id="Resource_w686c"]
+[sub_resource type="Resource" id="Resource_rrf7t"]
 script = ExtResource("5_8ff5h")
 Template = ExtResource("4_mx0ga")
 Value = 2
@@ -22,4 +22,4 @@ UsageLimit = 1.0
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_yi1k6")
-StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_w686c")])
+StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_rrf7t")])

@@ -23,7 +23,7 @@ signal BannerAnimComplete
 
 var map
 var ctrl : PlayerController
-var reticleSide
+var reticleSide = true # defaults to true, because that's where it's actually starting - on the left side
 
 func _ready():
 	ContextUI.visible = false

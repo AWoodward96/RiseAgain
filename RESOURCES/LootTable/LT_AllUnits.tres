@@ -8,31 +8,31 @@
 [ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="6_kcbml"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
 
-[sub_resource type="Resource" id="Resource_1u7k0"]
+[sub_resource type="Resource" id="Resource_udyiq"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("1_4v6xu")
 Weight = 1.0
 AccumulatedWeight = 1.0
 
-[sub_resource type="Resource" id="Resource_mu2ok"]
+[sub_resource type="Resource" id="Resource_jkr0p"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("3_vuepv")
 Weight = 1.0
 AccumulatedWeight = 2.0
 
-[sub_resource type="Resource" id="Resource_vjkb1"]
+[sub_resource type="Resource" id="Resource_wr4vw"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("4_x450q")
 Weight = 1.0
 AccumulatedWeight = 3.0
 
-[sub_resource type="Resource" id="Resource_3ywxt"]
+[sub_resource type="Resource" id="Resource_lld5g"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("5_f3hp4")
 Weight = 1.0
 AccumulatedWeight = 4.0
 
-[sub_resource type="Resource" id="Resource_at6s3"]
+[sub_resource type="Resource" id="Resource_atxpe"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("6_kcbml")
 Weight = 1.0
@@ -41,5 +41,5 @@ AccumulatedWeight = 5.0
 [resource]
 resource_name = "LT_AllUnits"
 script = ExtResource("7_n3dlo")
-Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_1u7k0"), SubResource("Resource_mu2ok"), SubResource("Resource_vjkb1"), SubResource("Resource_3ywxt"), SubResource("Resource_at6s3")])
+Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_udyiq"), SubResource("Resource_jkr0p"), SubResource("Resource_wr4vw"), SubResource("Resource_lld5g"), SubResource("Resource_atxpe")])
 WeightSum = 5.0

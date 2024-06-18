@@ -62,6 +62,9 @@ func ShowGiveItemUI():
 		giveItemIcon.texture = itemToBeRewarded.icon
 
 	for unit in campaign.CurrentRoster:
+		if unit == null:
+			continue
+
 		var entry = giveItemEntryList.CreateEntry(giveItemEntryPrefab)
 		entry.Initialize(unit.Template)
 		entry.OnUnitSelected.connect(OnUnitSelectedForItem.bind(unit))

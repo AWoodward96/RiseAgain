@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://2pfghhe6mjmc"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=22 format=3 uid="uid://2pfghhe6mjmc"]
 
 [ext_resource type="PackedScene" uid="uid://dcs78xo7fpefo" path="res://RESOURCES/Units/Ally/LightMage/VIS_LightMage.tscn" id="1_jpsjm"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_julpp"]
@@ -12,54 +12,53 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_3gkvo"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_8tssi"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_61ylm"]
-[ext_resource type="PackedScene" uid="uid://j6lthpe25vnl" path="res://RESOURCES/Items/Equippable/healing_tome.tscn" id="10_g8be2"]
-[ext_resource type="PackedScene" uid="uid://bxsbqsbuoijxi" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="11_plt8m"]
+[ext_resource type="PackedScene" uid="uid://dgtng3hy3kia5" path="res://RESOURCES/Items/Equippable/healing_tome.tscn" id="10_g8be2"]
 
-[sub_resource type="Resource" id="Resource_nukta"]
+[sub_resource type="Resource" id="Resource_iatba"]
 script = ExtResource("2_043p3")
 Template = ExtResource("1_julpp")
-Value = 8
+Value = 3
 
-[sub_resource type="Resource" id="Resource_yq01p"]
+[sub_resource type="Resource" id="Resource_mumx3"]
 script = ExtResource("2_043p3")
 Template = ExtResource("3_qtcos")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_5adi4"]
+[sub_resource type="Resource" id="Resource_dy3ms"]
 script = ExtResource("2_043p3")
 Template = ExtResource("4_171sc")
-Value = 2
+Value = 0
 
-[sub_resource type="Resource" id="Resource_squqq"]
+[sub_resource type="Resource" id="Resource_i72ol"]
 script = ExtResource("2_043p3")
 Template = ExtResource("5_ys3kw")
-Value = 5
+Value = 1
 
-[sub_resource type="Resource" id="Resource_u7nfx"]
+[sub_resource type="Resource" id="Resource_dvluv"]
 script = ExtResource("2_043p3")
 Template = ExtResource("6_ht3tj")
-Value = 3
+Value = 2
 
-[sub_resource type="Resource" id="Resource_r16w2"]
+[sub_resource type="Resource" id="Resource_5fhho"]
 script = ExtResource("2_043p3")
 Template = ExtResource("7_3gkvo")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_il7hq"]
+[sub_resource type="Resource" id="Resource_qnii7"]
 script = ExtResource("2_043p3")
 Template = ExtResource("9_8tssi")
-Value = 4
+Value = 1
 
-[sub_resource type="Resource" id="Resource_4jnt7"]
+[sub_resource type="Resource" id="Resource_i83dq"]
 script = ExtResource("2_043p3")
 Template = ExtResource("10_61ylm")
-Value = 5
+Value = 0
 
 [resource]
 script = ExtResource("3_0b4is")
 VisualPrefab = ExtResource("1_jpsjm")
-BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_nukta"), SubResource("Resource_yq01p"), SubResource("Resource_5adi4"), SubResource("Resource_squqq"), SubResource("Resource_u7nfx"), SubResource("Resource_r16w2"), SubResource("Resource_il7hq"), SubResource("Resource_4jnt7")])
-StartingItems = Array[PackedScene]([ExtResource("10_g8be2"), ExtResource("11_plt8m")])
+BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_iatba"), SubResource("Resource_mumx3"), SubResource("Resource_dy3ms"), SubResource("Resource_i72ol"), SubResource("Resource_dvluv"), SubResource("Resource_5fhho"), SubResource("Resource_qnii7"), SubResource("Resource_i83dq")])
+StartingItems = Array[PackedScene]([ExtResource("10_g8be2")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "LightMage"

@@ -11,46 +11,46 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_yygrd"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_1wq3p"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_411ei"]
-[ext_resource type="PackedScene" uid="uid://bn3ijfgumlf87" path="res://RESOURCES/Items/Equippable/dark_pact.tscn" id="11_hktnb"]
+[ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Items/Equippable/dark_pact.tscn" id="11_hktnb"]
 [ext_resource type="PackedScene" uid="uid://ctnbgmoyj5gin" path="res://RESOURCES/Units/Enemy/CorpseChimera/VIS_CorpseChimera.tscn" id="11_pdfes"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="12_hhtjf"]
 
-[sub_resource type="Resource" id="Resource_yr7lg"]
+[sub_resource type="Resource" id="Resource_f2p4d"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("1_6ahb0")
 Value = 10
 
-[sub_resource type="Resource" id="Resource_76k8s"]
+[sub_resource type="Resource" id="Resource_5nas8"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("3_tog8l")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_7u3wn"]
+[sub_resource type="Resource" id="Resource_8eigo"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("4_ntgrw")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_hyh72"]
+[sub_resource type="Resource" id="Resource_p25qb"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("5_r8yan")
-Value = 6
+Value = 3
 
-[sub_resource type="Resource" id="Resource_6efb5"]
+[sub_resource type="Resource" id="Resource_804dq"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("6_wqq0f")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_xbd33"]
+[sub_resource type="Resource" id="Resource_mioxr"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("7_qjxfw")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_pwode"]
+[sub_resource type="Resource" id="Resource_2p41m"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("8_bv8mq")
 Value = 6
 
-[sub_resource type="Resource" id="Resource_j214x"]
+[sub_resource type="Resource" id="Resource_sf5ao"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("9_yygrd")
 Value = 0
@@ -59,7 +59,7 @@ Value = 0
 resource_name = "UT_CorpseChimera"
 script = ExtResource("10_411ei")
 VisualPrefab = ExtResource("11_pdfes")
-BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_yr7lg"), SubResource("Resource_76k8s"), SubResource("Resource_7u3wn"), SubResource("Resource_hyh72"), SubResource("Resource_6efb5"), SubResource("Resource_xbd33"), SubResource("Resource_pwode"), SubResource("Resource_j214x")])
+BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_f2p4d"), SubResource("Resource_5nas8"), SubResource("Resource_8eigo"), SubResource("Resource_p25qb"), SubResource("Resource_804dq"), SubResource("Resource_mioxr"), SubResource("Resource_2p41m"), SubResource("Resource_sf5ao")])
 StartingItems = Array[PackedScene]([ExtResource("11_hktnb")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_1wq3p")])
