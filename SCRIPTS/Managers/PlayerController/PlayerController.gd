@@ -32,6 +32,8 @@ var unitInventoryOpen : bool
 
 var desiredCameraPosition : Vector2 = Vector2(0,0)
 
+var lastItemFilter
+
 # UIs
 var formationUI
 var combatHUD : CombatHUD
@@ -141,8 +143,9 @@ func EnterTargetingState(_targetData):
 func EnterCombatState(_combatData):
 	ChangeControllerState(CombatControllerState.new(), _combatData)
 
-func EnterItemSelectionState():
-	ChangeControllerState(ItemSelectControllerState.new(), null)
+func EnterItemSelectionState(_filterForInventory):
+	lastItemFilter = _filterForInventory
+	ChangeControllerState(ItemSelectControllerState.new(), _filterForInventory)
 
 func EnterUnitStackClearState(_unitInstance : UnitInstance):
 	ChangeControllerState(UnitStackClearControllerState.new(), _unitInstance)
@@ -156,15 +159,21 @@ func CreateCombatHUD():
 		combatHUD.Initialize(currentMap, CurrentTile)
 		add_child(combatHUD)
 
-		combatHUD.ContextUI.AddButton("Attack", OnAttack)
-		combatHUD.ContextUI.AddButton("Defend", OnDefend)
-		combatHUD.ContextUI.AddButton("Inventory", OnInventory)
-		combatHUD.ContextUI.AddButton("Wait", OnWait)
-		combatHUD.ContextUI.SelectFirst()
-
 		combatHUD.itemSelectUI.OnItemSelectedForCombat.connect(OnItemSelectedForCombat)
 
 	return combatHUD
+
+func UpdateContextUI():
+	combatHUD.ContextUI.Clear()
+
+	if CanAttack(selectedUnit):
+		combatHUD.ContextUI.AddButton("Attack", OnAttack)
+	if CanHeal(selectedUnit):
+		combatHUD.ContextUI.AddButton("Heal", OnHeal)
+	combatHUD.ContextUI.AddButton("Defend", OnDefend)
+	combatHUD.ContextUI.AddButton("Inventory", OnInventory)
+	combatHUD.ContextUI.AddButton("Wait", OnWait)
+	combatHUD.ContextUI.SelectFirst()
 
 func OnWait():
 	reticle.visible = true
@@ -194,8 +203,23 @@ func OnDefend():
 	selectedUnit.Defend()
 	OnWait()
 
+func CanAttack(_unit : UnitInstance):
+	if _unit == null:
+		return false
+
+	return _unit.HasDamageItem()
+
 func OnAttack():
-	EnterItemSelectionState()
+	EnterItemSelectionState(UnitInventoryPanel.Filter_DamageableItemsOnly)
+
+func CanHeal(_unit : UnitInstance):
+	if _unit == null:
+		return false
+
+	return _unit.HasHealItem(false)
+
+func OnHeal():
+	EnterItemSelectionState(UnitInventoryPanel.Filter_HealingTargetedItems)
 
 func OnItemSelectedForCombat(_item : Item):
 	if _item != null:

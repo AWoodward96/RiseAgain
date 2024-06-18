@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://hwqrstkn4a22"]
+[gd_scene load_steps=31 format=3 uid="uid://hwqrstkn4a22"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_bwyvd"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_anclv"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="15_on2wx"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="15_sp5x3"]
 [ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="16_8bjlc"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="17_1l1oh"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_anclv")
@@ -70,6 +71,12 @@ RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_anryn"]
 script = ExtResource("15_on2wx")
+
+[sub_resource type="Resource" id="Resource_7woa4"]
+script = ExtResource("17_1l1oh")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
 
 [node name="C0_Map04" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_bwyvd")
@@ -157,6 +164,7 @@ frame = 2
 script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("13_ie6yv")
 Position = Vector2i(17, 4)
+Enabled = false
 AIBehavior = SubResource("Resource_g6y1m")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -224,6 +232,32 @@ UnitToSpawn = ExtResource("16_8bjlc")
 Position = Vector2i(15, 8)
 AIBehavior = SubResource("Resource_awrm6")
 AggroBehavior = SubResource("Resource_anryn")
+
+[node name="Spawn_AdultZolf3" type="Sprite2D" parent="Spawners"]
+position = Vector2(192, 192)
+texture = ExtResource("6_at13p")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_t6ox0")
+UnitToSpawn = ExtResource("16_8bjlc")
+Position = Vector2i(3, 3)
+AIBehavior = SubResource("Resource_awrm6")
+AggroBehavior = SubResource("Resource_7woa4")
+
+[node name="Spawn_AdultZolf4" type="Sprite2D" parent="Spawners"]
+position = Vector2(192, 320)
+texture = ExtResource("6_at13p")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_t6ox0")
+UnitToSpawn = ExtResource("16_8bjlc")
+Position = Vector2i(3, 5)
+AIBehavior = SubResource("Resource_awrm6")
+AggroBehavior = SubResource("Resource_7woa4")
 
 [node name="Spawn_Zolf3" type="Sprite2D" parent="Spawners"]
 position = Vector2(512, 192)

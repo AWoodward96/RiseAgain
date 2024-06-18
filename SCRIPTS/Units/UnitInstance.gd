@@ -15,7 +15,7 @@ class_name UnitInstance
 var GridPosition : Vector2i
 var CurrentTile : Tile
 var Template : UnitTemplate
-var UnitVisual : UnitVisual
+var visual : UnitVisual # could be made generic, but probably not for now
 var UnitAllegiance : GameSettings.TeamID
 var Inventory : Array[Item]
 var EquippedItem : Item
@@ -38,7 +38,6 @@ var baseStats = {}			#Stats determined by the template object and out-of-run-pro
 var statModifiers = {}		#Stats determined by in-run progression. These are NOT temporary, and shouldn't be removed
 var temporaryStats = {}		#Stats determined by buffs, debuffs, or other TEMPORARY changes on the battlefield. This gets cleared at the end of a map!
 
-var visual : UnitVisual # could be made generic, but probably not for now
 var map : Map
 var currentHealth
 
@@ -95,10 +94,13 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettings.Te
 		i.SetMap(map)
 
 	CreateVisual()
+
 	# has to be after CreateVisual
 	Activated = true
 
 func OnMapComplete():
+	ShowHealthBar(false)
+	IsDefending = false
 	temporaryStats.clear()
 
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
@@ -114,11 +116,12 @@ func CreateVisual():
 	# we want a clean child, so remove anything that this might have used
 	var children = visualParent.get_children()
 	for n in children:
-		if n.get_parent() == self:
-			remove_child(n)
-			n.queue_free()
+		var parent = n.get_parent()
+		if parent != null:
+			parent.remove_child(n)
+		n.queue_free()
 
-	visual = Template.VisualPrefab.instantiate()
+	visual = Template.VisualPrefab.instantiate() as UnitVisual
 	visualParent.add_child(visual)
 	visual.Initialize(self)
 
@@ -229,6 +232,7 @@ func QueueEndTurn():
 		PopAction()
 
 func EndTurn():
+	ShowHealthBar(false)
 	Activated = false
 
 func QueueTurnStartDelay():
@@ -241,7 +245,7 @@ func DoHeal(_healData : HealComponent, _source : UnitInstance):
 	var healAmount = _healData.FlatValue
 	if _healData.ScalingStat != null && _source != null:
 		healAmount += _healData.DoMod(_source.GetWorkingStat(_healData.ScalingStat))
-
+	healAmount = floori(healAmount)
 	ModifyHealth(healAmount, _source)
 
 func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
@@ -300,6 +304,9 @@ func CalculateDamage(_context : DamageData, _source):
 		damage += GameManager.GameSettings.DamageCalculation(_context.FlatValue, defensiveStatValue)
 		pass
 	return damage
+
+func CalculateHeal(_healData : HealComponent, _source):
+	pass
 
 ### The function you want to call when you want to know the Final state that the Unit is working with
 func GetWorkingStat(_statTemplate : StatTemplate):
@@ -374,6 +381,10 @@ func ShowDamagePreview(_source : UnitInstance, _damageData : DamageData):
 	damage_indicator.PreviewDamage(_damageData, _source)
 	pass
 
+func ShowHealPreview(_source : UnitInstance, _healData : HealComponent):
+	damage_indicator.visible = true
+	damage_indicator.PreviewHeal(_healData, _source)
+
 func HideDamagePreview():
 	damage_indicator.visible = false
 	damage_indicator.PreviewCanceled()
@@ -396,6 +407,17 @@ func GetEffectiveAttackRange():
 
 	return range
 
+func HasDamageItem():
+	for i in Inventory:
+		if i.IsDamage():
+			return true
+	return false
+
+func HasHealItem(_includingConsumables : bool):
+	for i in Inventory:
+		if i.IsHeal(_includingConsumables):
+			return true
+	return false
 
 func ToJSON():
 	var inventoryJSON = []

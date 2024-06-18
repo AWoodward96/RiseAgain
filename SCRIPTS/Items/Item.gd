@@ -123,7 +123,16 @@ func OnTargetTileSelected(_tile : Tile):
 	selectedTileForExecution = _tile
 	cachedTargets.clear()
 	cachedTargets.append_array(TargetingData.GetAdditionalTileTargets(_tile))
-	ExecuteCombat()
+
+	if IsDamage():
+		ExecuteCombat()
+	elif IsHeal(false):
+		for targetedTiles in cachedTargets:
+			if targetedTiles.Occupant != null && TargetingData.OnCorrectTeam(ownerUnit, targetedTiles.Occupant):
+				ownerUnit.QueueHealAction(HealData, targetedTiles.Occupant)
+		map.grid.ClearActions()
+		ownerUnit.QueueEndTurn()
+		playerController.EnterUnitStackClearState(ownerUnit)
 	pass
 
 func CancelAbility():
@@ -178,6 +187,15 @@ func OnUse():
 		playerController.EnterUnitStackClearState(ownerUnit)
 	pass
 
+
+func IsHeal(_includingConsumables : bool):
+	if _includingConsumables:
+		return HealData != null && ItemDamageData == null
+	else:
+		return HealData != null && ItemDamageData == null && TargetingData != null
+
+func IsDamage():
+	return ItemDamageData != null && TargetingData != null
 
 func ToJSON():
 	return {

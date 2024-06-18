@@ -40,10 +40,17 @@ func GetAndShowTilesInRange(_unit : UnitInstance, _grid : Grid):
 	pass
 
 func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
-	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && (o.Occupant.UnitAllegiance == _unit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (o.Occupant.UnitAllegiance != _unit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All))
+	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant)))
+
+func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
+	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All
 
 # Orders the Tiles based on if they're currently occupied by another unit
-func OrderTargets(a : Tile, b : Tile):
+static func OrderTargets(a : Tile, b : Tile):
+	# Yeah this needs to be here for some reason. If the list contains only 1 Tile, then it'll throw an error without this check
+	if a == b:
+		return false
+
 	if a.Occupant == null && b.Occupant == null:
 		return true
 
@@ -57,4 +64,4 @@ func OrderTargets(a : Tile, b : Tile):
 		var bHealth = (b.Occupant.currentHealth / b.Occupant.maxHealth)
 		return aHealth < bHealth
 
-	return true
+	return false

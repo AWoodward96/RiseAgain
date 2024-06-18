@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=22 format=3 uid="uid://2pfghhe6mjmc"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://2pfghhe6mjmc"]
 
 [ext_resource type="PackedScene" uid="uid://dcs78xo7fpefo" path="res://RESOURCES/Units/Ally/LightMage/VIS_LightMage.tscn" id="1_jpsjm"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_julpp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_8tssi"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_61ylm"]
 [ext_resource type="PackedScene" uid="uid://j6lthpe25vnl" path="res://RESOURCES/Items/Equippable/healing_tome.tscn" id="10_g8be2"]
+[ext_resource type="PackedScene" uid="uid://bxsbqsbuoijxi" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="11_plt8m"]
 
 [sub_resource type="Resource" id="Resource_nukta"]
 script = ExtResource("2_043p3")
@@ -58,7 +59,7 @@ Value = 5
 script = ExtResource("3_0b4is")
 VisualPrefab = ExtResource("1_jpsjm")
 BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_nukta"), SubResource("Resource_yq01p"), SubResource("Resource_5adi4"), SubResource("Resource_squqq"), SubResource("Resource_u7nfx"), SubResource("Resource_r16w2"), SubResource("Resource_il7hq"), SubResource("Resource_4jnt7")])
-StartingItems = Array[PackedScene]([ExtResource("10_g8be2")])
+StartingItems = Array[PackedScene]([ExtResource("10_g8be2"), ExtResource("11_plt8m")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "LightMage"

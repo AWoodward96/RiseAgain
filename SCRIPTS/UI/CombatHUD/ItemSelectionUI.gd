@@ -7,9 +7,9 @@ signal OnItemSelectedForCombat(_item : Item)
 var currentUnit : UnitInstance
 
 
-func Initialize(_unit : UnitInstance):
+func Initialize(_unit : UnitInstance, _inventoryFilter):
 	currentUnit = _unit
-	InventoryPanel.Initialize(currentUnit)
+	InventoryPanel.Initialize(currentUnit, _inventoryFilter)
 
 	if !InventoryPanel.ItemSelected.is_connected(OnItemSelected):
 		InventoryPanel.ItemSelected.connect(OnItemSelected)

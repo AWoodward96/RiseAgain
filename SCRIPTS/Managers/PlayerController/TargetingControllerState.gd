@@ -18,8 +18,7 @@ func _Enter(_ctrl : PlayerController, ItemData):
 		source = ItemData.ownerUnit
 		ctrl.ForceReticlePosition(currentTarget.Position)
 
-		ShowDamagePreview()
-
+		ShowPreview()
 
 func UpdateInput(_delta):
 	if TargetData == null:
@@ -44,13 +43,13 @@ func UpdateInput(_delta):
 		ctrl.OnTileSelected.emit(currentTarget)
 
 	if InputManager.cancelDown:
-		ClearDamagePreview()
+		ClearPreview()
 		ctrl.selectedItem.CancelAbility()
 		#ctrl.EnterContextMenuState()
-		ctrl.EnterItemSelectionState()
+		ctrl.EnterItemSelectionState(ctrl.lastItemFilter)
 
 func _Exit():
-	ClearDamagePreview()
+	ClearPreview()
 	pass
 
 func StandartTargetingInput(_delta):
@@ -77,16 +76,22 @@ func StandartTargetingInput(_delta):
 		if curIndex < 0:
 			curIndex = filteredList.size() - 1
 
-	ClearDamagePreview()
+	ClearPreview()
 	currentTarget = filteredList[curIndex]
-	ShowDamagePreview()
+	ShowPreview()
 
 	ctrl.ForceReticlePosition(currentTarget.Position)
 
-func ClearDamagePreview():
+func ClearPreview():
 	if currentTarget != null && currentTarget.Occupant != null:
 		currentTarget.Occupant.HideDamagePreview()
 		ctrl.combatHUD.ClearDamagePreviewUI()
+
+func ShowPreview():
+	if currentItem.IsDamage():
+		ShowDamagePreview()
+	elif currentItem.IsHeal(false):
+		ShowHealPreview()
 
 func ShowDamagePreview():
 	if currentTarget != null && currentTarget.Occupant != null:
@@ -96,6 +101,12 @@ func ShowDamagePreview():
 
 		# Ping the CombatHUD to show the damage preview
 		ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTarget.Occupant)
+
+func ShowHealPreview():
+	if currentTarget != null && currentTarget.Occupant != null:
+		# Show the damage preview physically on the unit
+		# this section is slated for removal if it is deemed to be unnecessary
+		currentTarget.Occupant.ShowHealPreview(source, currentItem.HealData)
 
 func ToString():
 	return "TargetingControllerState"

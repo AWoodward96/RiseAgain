@@ -4,7 +4,7 @@ class_name ItemSelectControllerState
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
-	ctrl.combatHUD.ShowItemSelectionUI(ctrl.selectedUnit)
+	ctrl.combatHUD.ShowItemSelectionUI(ctrl.selectedUnit, data)
 	ctrl.reticle.visible = false
 	ctrl.BlockMovementInput = true
 

@@ -21,7 +21,7 @@ func Initialize(_unitInstance : UnitInstance):
 
 func Refresh():
 	if unit_inventory_panel != null:
-		unit_inventory_panel.Initialize(currentUnit)
+		unit_inventory_panel.Initialize(currentUnit, null)
 		if !unit_inventory_panel.ItemSelected.is_connected(OnItemSelected):
 			unit_inventory_panel.ItemSelected.connect(OnItemSelected)
 

@@ -50,7 +50,10 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 	currentMap = map
 	var MapRNG = CampaignRng.randi()
 
+	# preinitialize collects up the spawners and the starting positions for usage
 	currentMap.PreInitialize()
+
+	# If there is no Roster, pull up the selection UI to force one. This should not occur in normal gameplay tbh
 	if CurrentRoster.size() == 0:
 		var ui = GameManager.AlphaUnitSelection.instantiate()
 		ui.Initialize(currentMap.startingPositions.size())

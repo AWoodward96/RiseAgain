@@ -4,6 +4,8 @@ class_name ContextControllerState
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 	reticle.visible = false
+
+	ctrl.UpdateContextUI()
 	ctrl.combatHUD.ShowNoTargets(false)
 	ctrl.combatHUD.ShowContext(selectedUnit)
 	currentGrid.ClearActions()
@@ -27,6 +29,7 @@ func _Exit():
 	ctrl.combatHUD.HideContext()
 	reticle.visible = true
 	ctrl.BlockMovementInput = false
+
 
 func ToString():
 	return "ContextControllerState"

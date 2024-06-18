@@ -11,7 +11,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	delay = false
 	await _map.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
-	_unit.DoHeal(healData, targetUnit)
+	targetUnit.DoHeal(healData, _unit)
 
 	await _map.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout
 	delay = true

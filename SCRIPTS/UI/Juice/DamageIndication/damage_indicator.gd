@@ -18,7 +18,7 @@ var previewHPTween : Tween
 func Initialize(_unit : UnitInstance):
 	myUnit = _unit
 
-func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, ):
+func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance):
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 
@@ -29,10 +29,29 @@ func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, ):
 
 	death_indicator.visible = resultingHP <= 0
 
+
+	CreateTween()
+	pass
+
+func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance):
+	currentHP = myUnit.currentHealth
+	maxHealth = myUnit.maxHealth
+	death_indicator.visible = false
+
+	var healAmount = _healData.FlatValue
+	if _healData.ScalingStat != null && _sourceUnit != null:
+		healAmount += _healData.DoMod(_sourceUnit.GetWorkingStat(_healData.ScalingStat))
+	healAmount = floori(healAmount)
+
+	damage_being_dealt.text = str(healAmount)
+	resultingHP = clamp(myUnit.currentHealth + healAmount, 0, myUnit.maxHealth)
+	CreateTween()
+	pass
+
+func CreateTween():
 	previewHPTween = get_tree().create_tween()
 	previewHPTween.tween_method(UpdatePreviewLabel, currentHP, resultingHP, Juice.damagePreviewTickDuration).set_delay(Juice.damagePreviewDelayTime)
 
-	pass
 
 func UpdatePreviewLabel(value : int):
 	hp_listener.text = str("%02d/%02d" % [max(value, 0), maxHealth])

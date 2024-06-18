@@ -10,6 +10,11 @@ signal OnAnyActionSelected()
 func Initialize():
 	SelectFirst()
 
+func Clear():
+	for n in entryParent.get_children():
+		entryParent.remove_child(n)
+		n.queue_free()
+
 func SelectFirst():
 	entryParent.get_child(0).grab_focus()
 

@@ -86,9 +86,9 @@ func OnAnyActionSelected():
 func ShowNoTargets(_show : bool):
 	NoTargets.visible = _show
 
-func ShowItemSelectionUI(_unit : UnitInstance):
+func ShowItemSelectionUI(_unit : UnitInstance, _inventoryFilter):
 	itemSelectUI.visible = true
-	itemSelectUI.Initialize(_unit)
+	itemSelectUI.Initialize(_unit, _inventoryFilter)
 
 func ClearItemSelectionUI():
 	itemSelectUI.visible = false

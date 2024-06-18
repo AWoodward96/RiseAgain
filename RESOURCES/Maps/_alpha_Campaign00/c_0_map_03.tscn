@@ -25,6 +25,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_7loej"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_gx3ma")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_0m3f4"]
@@ -40,6 +41,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_7xblp"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_gvjjo")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_5lyd1"]
@@ -52,6 +54,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_42clw"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_6n52v")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_4vnm5"]
@@ -64,6 +67,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_2fvt2"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_vyuug")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_hde7t"]
@@ -76,6 +80,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_gt2en"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_m33g8")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_ul3o1"]
@@ -88,6 +93,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_6tylq"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_hl8wo")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_cjidy"]
@@ -103,6 +109,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_prcs6"]
 script = ExtResource("9_b7bdo")
 Flags = Array[ExtResource("9_pk6wh")]([SubResource("Resource_gnldv")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_kbdrf"]

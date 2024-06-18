@@ -12,12 +12,16 @@ signal ItemSelected(_item : Item)
 var currentUnit : UnitInstance
 
 
-func Initialize(_unitInstance : UnitInstance):
+func Initialize(_unitInstance : UnitInstance, a_filter):
 	currentUnit = _unitInstance
 	inventory_item_parent.ClearEntries()
 	for item in currentUnit.Inventory:
 		if item == null || (item.TargetingData == null && HideConsumables):
 			continue
+
+		if a_filter != null:
+			if !a_filter.call(item):
+				continue
 
 		var e = inventory_item_parent.CreateEntry(inventoryEntryPrefab)
 		e.Initialize(item)
@@ -35,3 +39,13 @@ func OnItemSelected(_item : Item):
 
 func GetEntry(_index : int):
 	return inventory_item_parent.GetEntry(_index)
+
+
+static func Filter_DamageableItemsOnly(_item : Item):
+	return _item.IsDamage()
+
+static func Filter_HealingTargetedItems(_item : Item):
+	return _item.IsHeal(false)
+
+static func Filter_AnyHealingItems(_item : Item):
+	return _item.IsHeal(true)

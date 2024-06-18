@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyq5ckgj34tlt"]
+[gd_scene load_steps=10 format=3 uid="uid://cyq5ckgj34tlt"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_e5c8l"]
 [ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignNode.gd" id="2_f8ouy"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_01.tscn" id="3_gff2l"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_02.tscn" id="4_4t7dt"]
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_03.tscn" id="5_tqnkq"]
+[ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_04.tscn" id="7_ly3f1"]
+[ext_resource type="PackedScene" uid="uid://b1edodfhgyr3p" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_05.tscn" id="8_8wabd"]
+[ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_06.tscn" id="9_bc5aj"]
 
 [node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent", "UnitHoldingArea")]
 script = ExtResource("1_e5c8l")
@@ -28,6 +31,18 @@ MapPrefab = ExtResource("4_4t7dt")
 [node name="2" type="Node2D" parent="LedgerRoot/0/1"]
 script = ExtResource("2_f8ouy")
 MapPrefab = ExtResource("5_tqnkq")
+
+[node name="3" type="Node2D" parent="LedgerRoot/0/1/2"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("7_ly3f1")
+
+[node name="4" type="Node2D" parent="LedgerRoot/0/1/2/3"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("8_8wabd")
+
+[node name="5" type="Node2D" parent="LedgerRoot/0/1/2/3/4"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("9_bc5aj")
 
 [node name="CurrentMap" type="Node2D" parent="."]
 unique_name_in_owner = true
