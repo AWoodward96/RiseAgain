@@ -23,7 +23,9 @@ signal BannerAnimComplete
 
 var map
 var ctrl : PlayerController
-var reticleSide = true # defaults to true, because that's where it's actually starting - on the left side
+var lastReticleSide = -1 	# -1 : The reticle is unknown and needs to be updated
+							#  0 : The reticle is on the right side, so the UI should be on the left
+							#  1 : The reticle is on the left side, so the UI should be on the right
 
 func _ready():
 	ContextUI.visible = false
@@ -102,25 +104,27 @@ func ClearDamagePreviewUI():
 
 func UpdateInspectUISide():
 	# update the InspectUI based on where the reticle is so that it's not in the way
-	var newside = ctrl.IsReticleInLeftHalfOfViewport()
-	if newside != reticleSide:
+	var side = ctrl.IsReticleInLeftHalfOfViewport()
+	var newside = (side if 1 else 0) as int
+	if newside != lastReticleSide:
 		InspectUI.get_parent().remove_child(InspectUI)
 		DmgPreviewUI.get_parent().remove_child(DmgPreviewUI)
 
-		# If side is true, the Reticle is on the left side of the screen, so to help visibility, the UI should be moved to the RIGHT
-		if reticleSide:
-			bottom_left_anchor.add_child(InspectUI)
-			InspectUI.position = Vector2(0, -InspectUI.size.y)
-
-			top_left_anchor.add_child(DmgPreviewUI)
-		else:
-			# If side is false, the Reticle is on the right side of the screen, so to help visibility, the UI should be move to the LEFT
+		# If side is (1) true, the Reticle is on the left side of the screen, so to help visibility, the UI should be moved to the RIGHT
+		if newside == 1:
 			bottom_right_anchor.add_child(InspectUI)
 			InspectUI.position = Vector2(-InspectUI.size.x, -InspectUI.size.y)
 
 			top_right_anchor.add_child(DmgPreviewUI)
 
-	reticleSide = newside
+		elif newside == 0:
+			# If side is (0) false, the Reticle is on the right side of the screen, so to help visibility, the UI should be move to the LEFT
+			bottom_left_anchor.add_child(InspectUI)
+			InspectUI.position = Vector2(0, -InspectUI.size.y)
+
+			top_left_anchor.add_child(DmgPreviewUI)
+
+	lastReticleSide = newside
 
 func OnTileChanged(_tile : Tile):
 	UpdateInspectUISide()

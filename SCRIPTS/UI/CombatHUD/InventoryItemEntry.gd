@@ -19,8 +19,8 @@ func Initialize(_item : Item):
 	item_icon.texture = _item.icon
 	item_name.text = _item.loc_displayName
 
-	item_usage.visible = _item.uses >= 0
-	item_usage.text = str(_item.uses)
+	item_usage.visible = _item.currentUsages >= 0
+	item_usage.text = str(_item.currentUsages)
 
 func _process(_delta: float):
 	if selected && InputManager.selectDown:

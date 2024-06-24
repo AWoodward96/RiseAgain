@@ -14,11 +14,9 @@ class_name Item
 
 @export var UsageLimit : int = -1
 
-var context : CombatLog
 var ownerUnit : UnitInstance
 var map : Map
-var selectedTileForExecution : Tile
-var uses = 1
+var currentUsages = 1
 
 var cachedTargets : Array[Tile]
 var playerController : PlayerController :
@@ -34,7 +32,7 @@ func Initialize(_unitOwner : UnitInstance, _map : Map):
 	ownerUnit = _unitOwner
 	map = _map
 
-	uses = UsageLimit
+	currentUsages = UsageLimit
 	GetComponents()
 
 func SetMap(_map : Map):
@@ -58,48 +56,6 @@ func GetComponents():
 		if StatConsumableData == null && child is StatConsumableComponent:
 			StatConsumableData = child as StatConsumableComponent
 
-# This does the damage and effects for the ability
-func ExecuteCombat(_optionalContext : CombatLog = null):
-	# Either take the combat context passed in, or create a new one
-	context = _optionalContext
-	if context == null:
-		context = CombatLog.new()
-		context.Construct(map, ownerUnit, self, ownerUnit.CurrentTile, selectedTileForExecution)
-
-	# ensure the context has this item ref
-	if context.item == null:
-		context.item = self
-
-	# If there are no targeted tiles, take the ones that might have been cached by this script
-	if context.targetTiles != null:
-		context.targetTiles.append_array(cachedTargets)
-	else:
-		context.targetTiles = cachedTargets
-
-	# The damage data is based on the damage component
-	context.damageContext = ItemDamageData
-
-	if !playerController.OnCombatSequenceComplete.is_connected(OnCombatExecutionComplete):
-		playerController.OnCombatSequenceComplete.connect(OnCombatExecutionComplete)
-
-	playerController.EnterCombatState(context)
-	pass
-
-func PollTargets():
-	if playerController == null:
-		return
-
-	# if there's no targeting data, just yolo and execute the damn thing
-	if TargetingData == null:
-		ExecuteCombat()
-		return
-
-	TargetingData.GetAndShowTilesInRange(ownerUnit, map.grid)
-	playerController.EnterTargetingState(self)
-	if !playerController.OnTileSelected.is_connected(OnTargetTileSelected):
-		playerController.OnTileSelected.connect(OnTargetTileSelected)
-	pass
-
 func ShowRangePreview():
 	if map == null:
 		return
@@ -108,37 +64,11 @@ func ShowRangePreview():
 		map.grid.ClearActions()
 		return
 
-	TargetingData.GetAndShowTilesInRange(ownerUnit, map.grid)
+	var availableTargets = TargetingData.GetTilesInRange(ownerUnit, map.grid)
+	for t in availableTargets:
+		t.CanAttack = true
 
-func OnCombatExecutionComplete():
-	if playerController.OnCombatSequenceComplete.is_connected(OnCombatExecutionComplete):
-		playerController.OnCombatSequenceComplete.disconnect(OnCombatExecutionComplete)
-
-	ownerUnit.QueueEndTurn()
-
-func OnTargetTileSelected(_tile : Tile):
-	if playerController.OnTileSelected.is_connected(OnTargetTileSelected):
-		playerController.OnTileSelected.disconnect(OnTargetTileSelected)
-
-	selectedTileForExecution = _tile
-	cachedTargets.clear()
-	cachedTargets.append_array(TargetingData.GetAdditionalTileTargets(_tile))
-
-	if IsDamage():
-		ExecuteCombat()
-	elif IsHeal(false):
-		for targetedTiles in cachedTargets:
-			if targetedTiles.Occupant != null && TargetingData.OnCorrectTeam(ownerUnit, targetedTiles.Occupant):
-				ownerUnit.QueueHealAction(HealData, targetedTiles.Occupant)
-		map.grid.ClearActions()
-		ownerUnit.QueueEndTurn()
-		playerController.EnterUnitStackClearState(ownerUnit)
-	pass
-
-func CancelAbility():
-	if playerController.OnTileSelected.is_connected(OnTargetTileSelected):
-		playerController.OnTileSelected.disconnect(OnTargetTileSelected)
-	cachedTargets.clear()
+	map.grid.ShowActions()
 
 func GetRange():
 	if TargetingData != null:
@@ -167,7 +97,8 @@ func OnUse():
 	# for now, assume that the owner of this item is also the target of this item
 	if HealData != null:
 		# Okay then this is a heal, pass the heal amount to ourselfs
-		ownerUnit.QueueHealAction(HealData, ownerUnit)
+		var targets : Array[UnitInstance] = [ownerUnit]
+		ownerUnit.QueueHealAction(HealData, targets)
 		isUsed = true
 
 
@@ -178,8 +109,8 @@ func OnUse():
 
 
 	if UsageLimit != -1 && isUsed:
-		uses -= 1
-		if uses <= 0:
+		currentUsages -= 1
+		if currentUsages <= 0:
 			ownerUnit.TrashItem(self)
 
 	if isUsed:
@@ -200,5 +131,5 @@ func IsDamage():
 func ToJSON():
 	return {
 		"Item" : scene_file_path,
-		"uses" : uses
+		"currentUsages" : currentUsages
 	}

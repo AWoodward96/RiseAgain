@@ -4,7 +4,7 @@ class_name UnitDefendAction
 var SourcePosition : Vector2
 var tween : Tween
 
-var Context : CombatLog
+var Context : ActionLog
 var Source : UnitInstance
 
 func _Enter(_unit : UnitInstance, _map : Map):

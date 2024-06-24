@@ -181,6 +181,6 @@ func _input(event):
 
 func OnTileClicked(a_tilePosition : Vector2i) :
 	if grid.Pathfinding.is_in_bounds(a_tilePosition.x, a_tilePosition.y) :
-		print_debug("Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
+		print_debug("Tile Position(", a_tilePosition.x, ",", a_tilePosition.y, ") - Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
 	else :
 		print_debug("Click was not in pathfinding bounds")

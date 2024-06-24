@@ -2,7 +2,7 @@ extends UnitActionBase
 class_name UnitAttackAction
 
 var TargetPosition : Vector2
-var Context : CombatLog
+var Context : ActionLog
 var UnitsToTakeDamage : Array[UnitInstance]
 var TimerLock : bool
 
@@ -28,14 +28,13 @@ func _Enter(_unit : UnitInstance, _map : Map):
 			if range == Vector2i.ZERO:
 				continue
 
-			var combatDistance = Context.grid.GetManhattanDistance(Context.sourceCombatTile.Position ,u.GridPosition)
+			var combatDistance = unit.map.grid.GetManhattanDistance(Context.sourceTile.Position ,u.GridPosition)
 			# so basically, if the weapon this unit is holding, has a max range
 			if range.x <= combatDistance && range.y >= combatDistance:
 				# okay at this point retaliation is possible
 				# oh boy time to make a brand new combat data
-				var newData = CombatLog.new()
-				newData.Construct(Context.map, u, u.EquippedItem, u.CurrentTile, _unit.CurrentTile)
-				newData.targetTiles.append(_unit.CurrentTile)
+				var newData = ActionLog.Construct(u, u.EquippedItem)
+				newData.affectedTiles.append(_unit.CurrentTile)
 				# turn off retaliation or else these units will be fighting forever
 				newData.canRetaliate = false
 

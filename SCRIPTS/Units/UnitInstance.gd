@@ -248,16 +248,16 @@ func DoHeal(_healData : HealComponent, _source : UnitInstance):
 	healAmount = floori(healAmount)
 	ModifyHealth(healAmount, _source)
 
-func DoCombat(_context : CombatLog, _source, _instantaneous : bool = false):
+func DoCombat(_context : ActionLog, _source, _instantaneous : bool = false):
 	# Here we calculate if we hit or missed before sending damage
 	# it's seperate from TakeDamage because sometimes the Units will want to take damage outside of combat
 	var hitRate =  GameManager.GameSettings.HitRateCalculation(_context.source, _context.item, self)
 
 	_context.CalculateMiss(map.rng, hitRate)
-	var damage = CalculateDamage(_context.damageContext, _source)
+	var damage = CalculateDamage(_context.damageData, _source)
 
 	if _context.miss:
-		Juice.CreateMissPopup(_context.executionTile)
+		Juice.CreateMissPopup(CurrentTile)
 	else:
 		ModifyHealth(-damage, _source, _instantaneous)
 
@@ -349,7 +349,7 @@ func ShowHealthBar(_visible : bool):
 		hp_val.text = str(currentHealth)
 		health_bar.value = healthPerc
 
-func QueueAttackSequence(_destination : Vector2, _context : CombatLog, _unitsToTakeDamage : Array[UnitInstance]):
+func QueueAttackSequence(_destination : Vector2, _context : ActionLog, _unitsToTakeDamage : Array[UnitInstance]):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
 	attackAction.Context = _context
@@ -358,7 +358,7 @@ func QueueAttackSequence(_destination : Vector2, _context : CombatLog, _unitsToT
 	if CurrentAction == null:
 		PopAction()
 
-func QueueDefenseSequence(_damageSourcePosition : Vector2, _context : CombatLog, _source : UnitInstance):
+func QueueDefenseSequence(_damageSourcePosition : Vector2, _context : ActionLog, _source : UnitInstance):
 	var defendAction = UnitDefendAction.new()
 	defendAction.SourcePosition = _damageSourcePosition
 	defendAction.Context = _context
@@ -367,9 +367,9 @@ func QueueDefenseSequence(_damageSourcePosition : Vector2, _context : CombatLog,
 	if CurrentAction == null:
 		PopAction()
 
-func QueueHealAction(_healData : HealComponent, _target : UnitInstance):
+func QueueHealAction(_healData : HealComponent, _targets : Array[UnitInstance]):
 	var healAction = UnitHealAction.new()
-	healAction.targetUnit = _target
+	healAction.targetUnits = _targets
 	healAction.healData = _healData
 	ActionStack.append(healAction)
 	if CurrentAction == null:
@@ -418,6 +418,7 @@ func HasHealItem(_includingConsumables : bool):
 		if i.IsHeal(_includingConsumables):
 			return true
 	return false
+
 
 func ToJSON():
 	var inventoryJSON = []

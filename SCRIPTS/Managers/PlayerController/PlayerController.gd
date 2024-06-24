@@ -33,6 +33,7 @@ var unitInventoryOpen : bool
 var desiredCameraPosition : Vector2 = Vector2(0,0)
 
 var lastItemFilter
+var totalMapSize
 
 # UIs
 var formationUI
@@ -63,12 +64,12 @@ func ConvertGlobalPositionToGridPosition():
 	return reticle.global_position / tileSize
 
 func UpdateCameraBounds():
-	var mapTotalSize = currentMap.GridSize * tileSize
+	totalMapSize = currentMap.GridSize * tileSize
 
 	camera.limit_left = 0
-	camera.limit_right = mapTotalSize.x
+	camera.limit_right = totalMapSize.x
 	camera.limit_top = 0
-	camera.limit_bottom = mapTotalSize.y
+	camera.limit_bottom = totalMapSize.y
 
 func UpdateCameraPosition():
 	if !is_inside_tree():
@@ -95,12 +96,17 @@ func UpdateCameraPosition():
 		# extra -1 tilesize because of indexing
 		move.y += reticle.global_position.y - (bottomright.y - tileSize)
 
+
 	desiredCameraPosition += move
+	desiredCameraPosition.x = clamp(desiredCameraPosition.x, 0 + viewportHalf.x, totalMapSize.x - viewportHalf.x)
+	desiredCameraPosition.y = clamp(desiredCameraPosition.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
 
 func IsReticleInLeftHalfOfViewport():
+
 	return reticle.global_position.x < desiredCameraPosition.x
 
 func ForceReticlePosition(_gridPosition : Vector2i):
+
 	reticle.global_position = _gridPosition * tileSize
 	UpdateCameraPosition()
 	OnTileChanged.emit(CurrentTile)
@@ -137,11 +143,8 @@ func EnterOffTurnState():
 func EnterContextMenuState():
 	ChangeControllerState(ContextControllerState.new(), null)
 
-func EnterTargetingState(_targetData):
-	ChangeControllerState(TargetingControllerState.new(), _targetData)
-
-func EnterCombatState(_combatData):
-	ChangeControllerState(CombatControllerState.new(), _combatData)
+func EnterTargetingState(_itemOrAbility):
+	ChangeControllerState(TargetingControllerState.new(), _itemOrAbility)
 
 func EnterItemSelectionState(_filterForInventory):
 	lastItemFilter = _filterForInventory
@@ -152,6 +155,9 @@ func EnterUnitStackClearState(_unitInstance : UnitInstance):
 
 func EnterVictoryState():
 	ChangeControllerState(VictoryControllerState.new(), null)
+
+func EnterActionExecutionState(_log):
+	ChangeControllerState(ActionExecutionState.new(), _log)
 
 func CreateCombatHUD():
 	if combatHUD == null:
@@ -225,4 +231,4 @@ func OnItemSelectedForCombat(_item : Item):
 	if _item != null:
 		selectedItem = _item
 		selectedUnit.EquipItem(selectedItem)
-		selectedItem.PollTargets()
+		EnterTargetingState(selectedItem)

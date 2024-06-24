@@ -1,33 +1,39 @@
 extends PlayerControllerState
 class_name TargetingControllerState
 
-var TargetData
-var currentTarget
-var currentItem
+var targetingData : SkillTargetingData
 var source
 
-func _Enter(_ctrl : PlayerController, ItemData):
-	super(_ctrl, ItemData)
+var log : ActionLog
+var currentItem : Item
+var currentTargetTile : Tile
+
+func _Enter(_ctrl : PlayerController, ItemOrAbility):
+	super(_ctrl, ItemOrAbility)
 
 	# Grid should already be showing the actionable tiles from the Item Selection state
 	# That information should be passed here for our selection
-	if ItemData is Item:
-		currentItem = ItemData
-		TargetData = ItemData.TargetingData
-		currentTarget = TargetData.TilesInRange[0]
-		source = ItemData.ownerUnit
-		ctrl.ForceReticlePosition(currentTarget.Position)
+	if ItemOrAbility is Item:
+		currentItem = ItemOrAbility as Item
+		targetingData = currentItem.TargetingData
+		source = ItemOrAbility.ownerUnit
 
+		log = ActionLog.Construct(source, currentItem)
+		log.availableTiles = targetingData.GetTilesInRange(source, currentGrid)
+		currentTargetTile = log.availableTiles[0]
+		ctrl.ForceReticlePosition(currentTargetTile.Position)
+
+		ShowAvailableTilesOnGrid()
 		ShowPreview()
 
 func UpdateInput(_delta):
-	if TargetData == null:
+	if targetingData == null:
 		return
 
-	match TargetData.Type:
+	match targetingData.Type:
 		SkillTargetingData.TargetingType.Simple:
 			# Simple is simple. The Initial Targets section of the struct should have all the units already
-			if TargetData.TilesInRange[0].Occupant == null:
+			if log.availableTiles[0].Occupant == null:
 				reticle.visible = false
 				ctrl.combatHUD.ShowNoTargets(true)
 			else:
@@ -39,13 +45,17 @@ func UpdateInput(_delta):
 		SkillTargetingData.TargetingType.ShapedDirectional:
 			pass
 
-	if InputManager.selectDown && currentTarget.Occupant != null:
-		ctrl.OnTileSelected.emit(currentTarget)
+	if InputManager.selectDown && currentTargetTile.Occupant != null:
+		log.actionOriginTile = currentTargetTile
+		log.affectedTiles = targetingData.GetAdditionalTileTargets(currentTargetTile)
+		if currentItem != null:
+			log.damageData = currentItem.ItemDamageData
+
+		ctrl.EnterActionExecutionState(log)
+		ctrl.OnTileSelected.emit(currentTargetTile)
 
 	if InputManager.cancelDown:
 		ClearPreview()
-		ctrl.selectedItem.CancelAbility()
-		#ctrl.EnterContextMenuState()
 		ctrl.EnterItemSelectionState(ctrl.lastItemFilter)
 
 func _Exit():
@@ -58,14 +68,14 @@ func StandartTargetingInput(_delta):
 		return
 
 	var filteredList = []
-	for t in TargetData.TilesInRange:
+	for t in log.availableTiles:
 		if t.Occupant != null:
 			filteredList.append(t)
 
 	if filteredList.size() == 0:
 		return
 
-	var curIndex = filteredList.find(currentTarget, 0)
+	var curIndex = filteredList.find(currentTargetTile, 0)
 	if InputManager.inputDown[0] || InputManager.inputDown[1]:
 		curIndex += 1
 		if curIndex >= filteredList.size():
@@ -77,14 +87,14 @@ func StandartTargetingInput(_delta):
 			curIndex = filteredList.size() - 1
 
 	ClearPreview()
-	currentTarget = filteredList[curIndex]
+	currentTargetTile = filteredList[curIndex]
 	ShowPreview()
 
-	ctrl.ForceReticlePosition(currentTarget.Position)
+	ctrl.ForceReticlePosition(currentTargetTile.Position)
 
 func ClearPreview():
-	if currentTarget != null && currentTarget.Occupant != null:
-		currentTarget.Occupant.HideDamagePreview()
+	if currentTargetTile != null && currentTargetTile.Occupant != null:
+		currentTargetTile.Occupant.HideDamagePreview()
 		ctrl.combatHUD.ClearDamagePreviewUI()
 
 func ShowPreview():
@@ -94,19 +104,26 @@ func ShowPreview():
 		ShowHealPreview()
 
 func ShowDamagePreview():
-	if currentTarget != null && currentTarget.Occupant != null:
+	if currentTargetTile != null && currentTargetTile.Occupant != null:
 		# Show the damage preview physically on the unit
 		# this section is slated for removal if it is deemed to be unnecessary
-		currentTarget.Occupant.ShowDamagePreview(source, currentItem.ItemDamageData)
+		currentTargetTile.Occupant.ShowDamagePreview(source, currentItem.ItemDamageData)
 
 		# Ping the CombatHUD to show the damage preview
-		ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTarget.Occupant)
+		ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTargetTile.Occupant)
 
 func ShowHealPreview():
-	if currentTarget != null && currentTarget.Occupant != null:
+	if currentTargetTile != null && currentTargetTile.Occupant != null:
 		# Show the damage preview physically on the unit
 		# this section is slated for removal if it is deemed to be unnecessary
-		currentTarget.Occupant.ShowHealPreview(source, currentItem.HealData)
+		currentTargetTile.Occupant.ShowHealPreview(source, currentItem.HealData)
+
+func ShowAvailableTilesOnGrid():
+	currentGrid.ClearActions()
+	for tile in log.availableTiles:
+		tile.CanAttack = true
+
+	currentGrid.ShowActions()
 
 func ToString():
 	return "TargetingControllerState"

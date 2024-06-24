@@ -60,13 +60,14 @@ func StartTurn(_turn : GameSettings.TeamID):
 	controller.BlockMovementInput = false
 	turnBannerOpen = false
 
+	unitTurnStack = map.GetUnitsOnTeam(_turn)
 	if _turn == GameSettings.TeamID.ALLY:
 		controller.EnterSelectionState()
 
 	if _turn != GameSettings.TeamID.ALLY:
-		unitTurnStack = map.GetUnitsOnTeam(_turn)
 		controller.EnterOffTurnState()
 
+	controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
 	currentUnitsTurn = null
 	ActivateAll()
 
@@ -82,12 +83,20 @@ func IsTurnOver():
 	if !map.teams.has(map.currentTurn):
 		return turnOver
 
-	var currentUnits = map.teams[map.currentTurn]
-	for unit in currentUnits:
-		if unit == null:
-			continue
-		if unit.Activated:
-			turnOver = false
+	var allUnits = map.teams[map.currentTurn]
+	for team in map.teams:
+		var isCurrent = map.currentTurn == team
+		for unit in map.teams[team]:
+			if unit == null:
+				continue
+
+			# don't end the turn if there is a unit on the current turns team that is activated
+			if isCurrent && unit.Activated:
+				turnOver = false
+
+			# also don't end the turn if there is a unit with something on its stack
+			if !unit.IsStackFree:
+				turnOver = false
 
 	return turnOver
 

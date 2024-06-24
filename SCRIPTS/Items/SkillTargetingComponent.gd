@@ -8,7 +8,6 @@ enum TargetingTeamFlag { AllyTeam, EnemyTeam, All }
 
 # x = min, y = max
 @export var TargetRange : Vector2i = Vector2i(1, 1)
-var TilesInRange : Array[Tile]
 @export var Type : TargetingType
 
 # TODO: Implement a way to do shaped targeting
@@ -16,28 +15,25 @@ var TilesInRange : Array[Tile]
 
 
 func GetAdditionalTileTargets(_tile : Tile):
-	#match Type:
-		#TargetingType.Simple:
-			#return [_tile]
-		#TargetingType.ShapedFree:
-			#return _tile
-		#TargetingType.ShapedDirectional:
-			#return _tile
+	var addtionalTargetedTiles : Array[Tile]
+	match Type:
+		TargetingType.Simple:
+			addtionalTargetedTiles.append(_tile)
+		TargetingType.ShapedFree:
+			pass
+		TargetingType.ShapedDirectional:
+			pass
 
-	return [_tile]
+	return addtionalTargetedTiles
 
-func GetAndShowTilesInRange(_unit : UnitInstance, _grid : Grid):
-	_grid.ClearActions()
+func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
 	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
 	if Type == TargetingType.Simple:
 		options = FilterByTargettingFlags(_unit, options)
 
 	options.sort_custom(OrderTargets)
-	TilesInRange = options
-
-	_grid.ShowActions()
-	pass
+	return options
 
 func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant)))

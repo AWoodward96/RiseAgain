@@ -174,7 +174,6 @@ func GetTile(_pos : Vector2i):
 
 
 func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], a_attackRange : Vector2i) :
-	#var attackRange = _unit.Template.AttackRange
 	var returnArr : Array[Tile] = []
 	for n in _workingList :
 		for x in range(-a_attackRange.y, a_attackRange.y + 1) :

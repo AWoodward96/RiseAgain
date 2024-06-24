@@ -201,8 +201,13 @@ func TryCombat():
 		return
 
 	## default to the first ability
-	var context = CombatLog.new()
-	context.Construct(map, unit, item, selectedTile, targetUnit.CurrentTile)
-	context.targetTiles.append(targetUnit.CurrentTile)
-	item.ExecuteCombat(context)
+	if item != null && item.ItemDamageData != null:
+		var log = ActionLog.Construct(unit, item)
+		log.actionOriginTile = targetUnit.CurrentTile # This is the target we're attacking, so the origin is here
+		log.sourceTile = selectedTile	# Remember, we're pathfinding to this tile so the source has to be from here
+		log.affectedTiles.append(targetUnit.CurrentTile)
+		log.damageData = item.ItemDamageData
+		map.playercontroller.EnterActionExecutionState(log)
+	else:
+		push_error("Unit is attempting to TryCombat with TargetClosest AI, without an Item that does damage")
 
