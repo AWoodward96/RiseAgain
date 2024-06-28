@@ -1,7 +1,8 @@
-extends AbilityStep
+extends ActionStep
 class_name DealDamageStep
 
-@export var useDefendAction : bool
+@export var useAttackAction : bool = true
+@export var useDefendAction : bool = true
 @export var damageDataOverride : DamageDataResource
 
 
@@ -26,6 +27,12 @@ func Enter(_actionLog : ActionLog):
 
 			damageResult.Ability_CalculateResult(ability, damageData)
 			log.actionResults.append(damageResult)
-			source.QueueAttackSequence(target.global_position, log)
-			target.QueueDefenseSequence(source.global_position, damageResult)
+
+			if useAttackAction:
+				source.QueueAttackSequence(target.global_position, log)
+
+			if useDefendAction:
+				target.QueueDefenseSequence(source.global_position, damageResult)
+			else:
+				target.DoCombat(damageResult)
 		pass

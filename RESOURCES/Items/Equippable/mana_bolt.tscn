@@ -36,4 +36,3 @@ DefensiveStat = ExtResource("7_5cugg")
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("8_lg6pv")
 TargetRange = Vector2i(1, 2)
-Type = 1

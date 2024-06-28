@@ -11,15 +11,23 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 @export var DefensiveModType : ModificationType
 @export var DefensiveMod : float
 
+@export_category("Drain")
 
-func DoMod(_val, _mod, _modType : ModificationType):
+
+@export var DamageAffectsUsersHealth : bool = false
+
+# Can be positive OR negative depending on if this heals or hurts the user of this ability
+@export var DamageToHealthRatio : float = 0.5
+
+
+func DoMod(_val, _mod, _modType : DamageData.ModificationType):
 	match _modType:
-		ModificationType.None:
+		DamageData.ModificationType.None:
 			pass
-		ModificationType.Additive:
+		DamageData.ModificationType.Additive:
 			_val += _mod
-		ModificationType.Multiplicative:
-			_val *= _mod
-		ModificationType.Divisitive:
-			_val /= _mod
+		DamageData.ModificationType.Multiplicative:
+			_val = floori(_val * _mod)
+		DamageData.ModificationType.Divisitive:
+			_val = floori(_val / _mod)
 	return _val

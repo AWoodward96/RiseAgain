@@ -10,6 +10,13 @@ class_name DamageDataResource
 @export var DefensiveMod : float
 
 
+@export_category("Drain")
+
+@export var DamageAffectsUsersHealth : bool = false
+# Can be positive OR negative depending on if this heals or hurts the user of this ability
+@export var DamageToHealthRatio : float = 0.5
+
+
 func DoMod(_val, _mod, _modType : DamageData.ModificationType):
 	match _modType:
 		DamageData.ModificationType.None:
@@ -17,7 +24,7 @@ func DoMod(_val, _mod, _modType : DamageData.ModificationType):
 		DamageData.ModificationType.Additive:
 			_val += _mod
 		DamageData.ModificationType.Multiplicative:
-			_val *= _mod
+			_val = floori(_val * _mod)
 		DamageData.ModificationType.Divisitive:
-			_val /= _mod
+			_val = floori(_val / _mod)
 	return _val

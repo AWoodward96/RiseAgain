@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=31 format=3 uid="uid://buh5fj1fbm8oa"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://buh5fj1fbm8oa"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
+[ext_resource type="PackedScene" uid="uid://b5ge0dn8wtstb" path="res://RESOURCES/Ability/ART_doubleshot.tscn" id="1_mrx5a"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_vkbtp"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pkkgr"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_e1gbq"]
@@ -101,7 +102,7 @@ VisualPrefab = ExtResource("8_hvc7e")
 BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_yoyw8"), SubResource("Resource_vvt6p"), SubResource("Resource_nwtxq"), SubResource("Resource_1buui"), SubResource("Resource_53bxk"), SubResource("Resource_ea3uv"), SubResource("Resource_1cnl2"), SubResource("Resource_shn85"), SubResource("Resource_n43fn")])
 StatGrowths = Array[ExtResource("2_pkkgr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 StartingItems = Array[PackedScene]([ExtResource("10_7k5co")])
-Abilities = Array[PackedScene]([])
+Abilities = Array[PackedScene]([ExtResource("1_mrx5a")])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=31 format=3 uid="uid://2pfghhe6mjmc"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://2pfghhe6mjmc"]
 
+[ext_resource type="PackedScene" uid="uid://466imq0pty1v" path="res://RESOURCES/Ability/ART_heal.tscn" id="1_dfj6t"]
 [ext_resource type="PackedScene" uid="uid://dcs78xo7fpefo" path="res://RESOURCES/Units/Ally/LightMage/VIS_LightMage.tscn" id="1_jpsjm"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_julpp"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_043p3"]
@@ -12,8 +13,8 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_3gkvo"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_8tssi"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_61ylm"]
-[ext_resource type="PackedScene" uid="uid://dgtng3hy3kia5" path="res://RESOURCES/Items/Equippable/healing_tome.tscn" id="10_g8be2"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_qg2uc"]
+[ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="12_hgg78"]
 
 [sub_resource type="Resource" id="Resource_bsid8"]
 script = ExtResource("2_043p3")
@@ -100,8 +101,8 @@ script = ExtResource("3_0b4is")
 VisualPrefab = ExtResource("1_jpsjm")
 BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_bsid8"), SubResource("Resource_ym0ui"), SubResource("Resource_p5w7m"), SubResource("Resource_ea67d"), SubResource("Resource_vn017"), SubResource("Resource_o741j"), SubResource("Resource_2wwtx"), SubResource("Resource_6t32p"), SubResource("Resource_y2efe")])
 StatGrowths = Array[ExtResource("2_043p3")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
-StartingItems = Array[PackedScene]([ExtResource("10_g8be2")])
-Abilities = Array[PackedScene]([])
+StartingItems = Array[PackedScene]([ExtResource("12_hgg78")])
+Abilities = Array[PackedScene]([ExtResource("1_dfj6t")])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
 DebugName = "LightMage"
 loc_DisplayName = "unit_lightmage_name"

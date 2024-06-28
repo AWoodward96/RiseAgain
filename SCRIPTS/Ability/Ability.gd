@@ -4,7 +4,7 @@ class_name Ability
 signal AbilityActionComplete
 
 @export var focusCost : int = 1
-@export var executionStack : Array[AbilityStep]
+@export var executionStack : Array[ActionStep]
 @export var autoEndTurn : bool = true
 @export var damageGrantsFocus : bool = false
 

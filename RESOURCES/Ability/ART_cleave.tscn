@@ -1,0 +1,40 @@
+[gd_scene load_steps=11 format=3 uid="uid://b38f8bah8gh6y"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_3n530"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="2_u8sro"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_nycen"]
+[ext_resource type="Texture2D" uid="uid://uh2xgg4i7bc" path="res://ART/Icons/Ability/cleave.png" id="4_nntet"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_h4q68"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_ilbbx"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_0f5o6"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_pn77o"]
+
+[sub_resource type="Resource" id="Resource_aullh"]
+script = ExtResource("2_u8sro")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_5cjq5"]
+script = ExtResource("3_nycen")
+
+[node name="ART_Cleave" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_3n530")
+focusCost = 4
+executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_aullh"), SubResource("Resource_5cjq5")])
+internalName = "Cleave"
+loc_displayName = "loc_cleave"
+loc_displayDesc = "loc_cleave_desc"
+icon = ExtResource("4_nntet")
+TargetingData = NodePath("SkillTargetingData")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("5_h4q68")
+Type = 1
+shapedTiles = Array[Vector2i]([Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, -1), Vector2i(2, -1)])
+
+[node name="DamageData" type="Node2D" parent="."]
+script = ExtResource("6_ilbbx")
+AgressiveStat = ExtResource("7_0f5o6")
+AgressiveModType = 2
+AgressiveMod = 1.5
+DefensiveStat = ExtResource("8_pn77o")

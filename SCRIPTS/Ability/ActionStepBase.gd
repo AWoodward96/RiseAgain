@@ -1,5 +1,5 @@
 extends Resource
-class_name AbilityStep
+class_name ActionStep
 
 var source
 var log : ActionLog

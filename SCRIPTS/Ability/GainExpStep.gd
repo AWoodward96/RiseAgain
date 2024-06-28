@@ -1,4 +1,4 @@
-extends AbilityStep
+extends ActionStep
 class_name GainExpStep
 
 func Enter(_actionLog : ActionLog):

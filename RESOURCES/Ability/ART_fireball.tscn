@@ -11,6 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_nobtd"]
 script = ExtResource("2_ym1lk")
+useAttackAction = true
 useDefendAction = true
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
@@ -19,7 +20,7 @@ script = ExtResource("3_tw6ek")
 [node name="ART_Fireball" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_826b6")
 focusCost = 2
-executionStack = Array[Resource("res://SCRIPTS/Ability/AbilityStepBase.gd")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
+executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
 internalName = "Fireball"
 loc_displayName = "loc_fireball"
 loc_displayDesc = "loc_fireball_desc"

@@ -50,6 +50,7 @@ func _Enter(_ctrl : PlayerController, data):
 				ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 				source.QueueAttackSequence(log.actionOriginTile.Position * currentGrid.CellSize, log)
 
+
 			# Then, queue up the defense sequence for everything being hit
 			for result in log.actionResults:
 				result.Target.QueueDefenseSequence(log.sourceTile.Position * currentGrid.CellSize, result)
@@ -90,6 +91,8 @@ func CheckForRetaliation(_result : ActionResult):
 			newData.affectedTiles.append(log.source.CurrentTile)
 			# turn off retaliation or else these units will be fighting forever
 			newData.canRetaliate = false
+			newData.item = retaliationItem
+
 
 			var retaliationResult = ActionResult.new()
 			retaliationResult.Source = defendingUnit

@@ -4,6 +4,7 @@ var Source : UnitInstance
 var Target : UnitInstance
 
 var HealthDelta : int
+var SourceHealthDelta : int
 var FocusDelta : int
 var ExpGain : int
 var Kill : bool
@@ -19,6 +20,9 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 		var hitRate = GameManager.GameSettings.HitRateCalculation(Source, _item, Target)
 		CalculateMiss(_rng, hitRate)
 		HealthDelta = -Target.CalculateDamage(_item.UsableDamageData, Source)
+
+		CalculateSourceHealthDelta(_item.UsableDamageData)
+
 		Kill = !Miss && (Target.currentHealth + HealthDelta <= 0)
 	elif _item.IsHeal(false):
 		# Healing items can't miss
@@ -31,6 +35,9 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 func Ability_CalculateResult(_ability : Ability, _damageData):
 	if _ability.IsDamage():
 		HealthDelta = -Target.CalculateDamage(_damageData, Source)
+
+		CalculateSourceHealthDelta(_ability.UsableDamageData)
+
 		Kill = (Target.currentHealth + HealthDelta <= 0)
 	elif _ability.IsHeal(false):
 		# Healing items can't miss
@@ -40,6 +47,9 @@ func Ability_CalculateResult(_ability : Ability, _damageData):
 	if _ability.damageGrantsFocus:
 		CalculateFocusDelta()
 
+func CalculateSourceHealthDelta(_damageData : DamageData):
+	if _damageData.DamageAffectsUsersHealth:
+		SourceHealthDelta = floori(HealthDelta * _damageData.DamageToHealthRatio)
 
 func CalculateFocusDelta():
 	if !Miss:

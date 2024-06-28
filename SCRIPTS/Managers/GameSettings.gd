@@ -3,6 +3,7 @@ class_name GameSettingsTemplate
 
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
+enum Direction { Right, Down, Left, Up }
 
 @export var CampaignManifest : Array[PackedScene]
 

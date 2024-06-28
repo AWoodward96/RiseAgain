@@ -17,14 +17,19 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
 	var focusDelta = 0
+	var sourceHealthDelta = 0
 	for result in Log.actionResults:
 		if result.Target == null:
 			continue
 		focusDelta += result.FocusDelta
+		sourceHealthDelta += result.SourceHealthDelta
 
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)
 	_unit.position += dst
+
+	if sourceHealthDelta != 0:
+		unit.ModifyHealth(sourceHealthDelta)
 
 	unit.ModifyFocus(focusDelta)
 	TimerLock = true
