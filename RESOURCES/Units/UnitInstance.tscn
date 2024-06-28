@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=10 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_ea6il"]
+[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6je4"]
@@ -26,6 +28,7 @@ script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
 itemsParent = NodePath("Items")
+focusSlotPrefab = ExtResource("4_kfodt")
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -73,6 +76,21 @@ text = "25/30"
 label_settings = SubResource("LabelSettings_lypks")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FocusContainer" type="MarginContainer" parent="HealthBarParent"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 16.0
+offset_right = 72.0
+offset_bottom = 24.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="FocusBarParent" type="HBoxContainer" parent="HealthBarParent/FocusContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("4_lg50f")
 
 [node name="DefendIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true

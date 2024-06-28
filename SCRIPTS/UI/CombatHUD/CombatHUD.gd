@@ -47,14 +47,14 @@ func Initialize(_map : Map, _currentTile : Tile):
 	# Do this now that we have a map ref
 	UpdateInspectUISide()
 
-func PlayTurnStart(_allegiance : GameSettings.TeamID):
+func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 	var scene
 	match _allegiance:
-		GameSettings.TeamID.ALLY:
+		GameSettingsTemplate.TeamID.ALLY:
 			scene = AllyTurnBanner
-		GameSettings.TeamID.ENEMY:
+		GameSettingsTemplate.TeamID.ENEMY:
 			scene = EnemyTurnBanner
-		GameSettings.TeamID.NEUTRAL:
+		GameSettingsTemplate.TeamID.NEUTRAL:
 			scene = NeutralTurnBanner
 
 	var createdElement = scene.instantiate()

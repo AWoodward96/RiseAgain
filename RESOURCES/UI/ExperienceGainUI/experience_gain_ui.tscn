@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxolfuwxyja2v"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/ExperienceGainUI/experience_gain_ui.gd" id="1_hieq5"]
+[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/UnitInventory/stat_block_entry.tscn" id="2_1xx7x"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_odcso"]
+
+[node name="ExperienceGainUI" type="CanvasLayer"]
+script = ExtResource("1_hieq5")
+statBlockEntryPrefab = ExtResource("2_1xx7x")
+
+[node name="ExperienceProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = 155.0
+offset_right = 180.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+value = 100.0
+
+[node name="LevelUpParent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -20.0
+offset_right = 130.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelUpParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUpParent/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpParent/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Level:"
+
+[node name="CurrentLevelLabel" type="Label" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "$NUM$"
+
+[node name="StatEntryParent" type="GridContainer" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+script = ExtResource("3_odcso")

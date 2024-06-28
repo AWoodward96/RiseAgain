@@ -201,13 +201,15 @@ func TryCombat():
 		return
 
 	## default to the first ability
-	if item != null && item.ItemDamageData != null:
+	if item != null && item.UsableDamageData != null:
 		var log = ActionLog.Construct(unit, item)
 		log.actionOriginTile = targetUnit.CurrentTile # This is the target we're attacking, so the origin is here
 		log.sourceTile = selectedTile	# Remember, we're pathfinding to this tile so the source has to be from here
 		log.affectedTiles.append(targetUnit.CurrentTile)
-		log.damageData = item.ItemDamageData
-		map.playercontroller.EnterActionExecutionState(log)
+		log.damageData = item.UsableDamageData
+
+		# The unit still needs to get to their destination first, so queue it up as a sequence
+		unit.QueueDelayedCombatAction(log)
 	else:
 		push_error("Unit is attempting to TryCombat with TargetClosest AI, without an Item that does damage")
 

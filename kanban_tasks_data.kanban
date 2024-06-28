@@ -31,52 +31,35 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d"
+				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d",
+				"f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
+				"a19eee9c-c6ce-41f4-bac6-d2772eab3403"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"e0899ea5-1a6e-4136-9457-0afaa0c54bc5"
+				"9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1"
 			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
 			"title": "Done",
 			"tasks": [
-				"79cc24a9-e377-4cf7-9f5e-058b591346c9",
-				"843b39dd-2bdc-49a1-a526-48aec932ab7d",
-				"620f2c4a-d101-4940-8596-4a0c535256d5",
-				"0b2408a6-7d90-47d1-a292-230431692e32",
-				"1a77a977-ac89-45b9-955b-6417179e04bb",
-				"f7cea0cf-4237-495c-844a-4bc49532488d",
-				"b523ecdc-630e-48cc-bac6-49a90ce24722",
-				"3a6392c7-4805-44e9-80f7-df7281ca65e6",
-				"5403091d-90ff-4bba-8d8b-f65c6ab3f6b6",
-				"3d76c379-4fa5-49dc-b69b-2c333b9b0c6c",
-				"1a060118-3dfc-4484-ac6a-d43b6688d087",
-				"4dddcb94-d778-46ed-a185-7a9699b75187",
-				"77103f04-7d82-4bf1-b08a-0bc462b97f6c",
-				"937b13ef-9718-4732-9c51-d9b368367773",
-				"dc105425-32e2-4a5f-94df-49095ef2533b",
-				"ad7801f0-2153-4c24-b5f1-87930c865264",
-				"3cee5fb7-6806-450b-8f76-b0096c011a59",
-				"2aec9ada-af7b-4b1e-a532-74ee72b14cf9",
-				"25ce1782-1bd2-4dd8-a7c3-3e04acd74094",
-				"bae7de96-5c2f-48a9-82dd-92b48c909b9a",
-				"c83449d3-e1bb-43dc-b616-124ffb6b0606",
-				"7c071b09-5dfe-48dc-a999-d385a4f82ba0",
-				"68acfcb5-e91d-4453-bfe7-1dcb0d8c7662",
-				"0d326661-a3bb-4d2e-a37f-8ab727baafb0",
-				"3347f50e-7d81-48da-afb7-3610bea789d1"
+				"c522e9e5-a53d-4b28-97fe-5b160086558f",
+				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
+				"7af6f4a1-4344-4a93-8712-b673c2df1150",
+				"2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
+				"20f6b037-583a-449d-b665-5b653ad80f2c"
 			]
 		},
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f"
+				"03e18191-548c-4e16-aac3-787401d9675f",
+				"fa49ca5b-f21d-4292-adb9-5a8a0aa2d183"
 			]
 		}
 	],
@@ -96,40 +79,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "843b39dd-2bdc-49a1-a526-48aec932ab7d",
-			"title": "Rework Abilitys As Items",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Create Item Definition",
-					"done": true
-				},
-				{
-					"details": "Create Items for Units",
-					"done": true
-				},
-				{
-					"details": "Define Current Item",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "79cc24a9-e377-4cf7-9f5e-058b591346c9",
-			"title": "Define Unit Inventorys",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "77103f04-7d82-4bf1-b08a-0bc462b97f6c",
-			"title": "Rework Combat Preview",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "5da4adea-da09-4b9f-803b-13078f8c3319",
 			"title": "Unit Inspect UI",
 			"description": "",
@@ -137,38 +86,10 @@
 			"steps": []
 		},
 		{
-			"uuid": "c83449d3-e1bb-43dc-b616-124ffb6b0606",
-			"title": "Unit Inventory UI",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "67b3b4e5-903b-4227-b386-6db63a3432b4",
 			"title": "Roster Inspect UI",
 			"description": "",
 			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": []
-		},
-		{
-			"uuid": "3347f50e-7d81-48da-afb7-3610bea789d1",
-			"title": "Global Context UI",
-			"description": "Rework the Context UI to be able to be used for Global Context UI as well. All it does is ferry back Action callbacks, and it's essentially the same ui, so make the whole thing modular. Make the buttons created on show and pass the intialization in with it",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "bae7de96-5c2f-48a9-82dd-92b48c909b9a",
-			"title": "Implement Defense actions",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "937b13ef-9718-4732-9c51-d9b368367773",
-			"title": "Change target selection flow to include item selection",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
 		{
@@ -196,134 +117,10 @@
 			]
 		},
 		{
-			"uuid": "4dddcb94-d778-46ed-a185-7a9699b75187",
-			"title": "Make Item information importable",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "3cee5fb7-6806-450b-8f76-b0096c011a59",
-			"title": "Write base-level item definitions in spreadsheet",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "68acfcb5-e91d-4453-bfe7-1dcb0d8c7662",
-			"title": "Update Targeting Flags in the SkillTargetingData",
-			"description": "Items should be able to be used by both enemies and allies, IE I should only have to create one Iron Bow, and both Enemy units and Ally Units should be able to use them. This means that the SkillTargetingData TargetingFlags is outdated and should be updated to support this",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "25ce1782-1bd2-4dd8-a7c3-3e04acd74094",
-			"title": "Equipping an item moves it to the top of the inventory stack",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
 			"title": "Seriously rethink how spawners are going to work long term",
 			"description": "Whenever I move anything in the project, refrences to resources break everywhere. When I moved the AI and Aggro scripts into their own folder, all of the Spawners broke because they could no longer find a reference to the script anymore. On a better game engine this would be handled automatically, unfortunately I went with the free option so now I have to fix this.\nIf every map in the game breaks because I feel like moving a single script, then the game will never be done.",
 			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": []
-		},
-		{
-			"uuid": "7c071b09-5dfe-48dc-a999-d385a4f82ba0",
-			"title": "Usable Items",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "0b2408a6-7d90-47d1-a292-230431692e32",
-			"title": "Short Term Proto Finishing",
-			"description": "I want to get the project into a state where I can build branches off of the repo and generally have a decent time developing variations of the game.\nAt its core, the game should be units going through maps, acquiring items (either new weapons, or stat buffs), and fighting enemies. I have 90% of that, but I don't have the randomness associated with acquiring new items, nor do I have the stat buffs that I think will make this game more interesting.\n\nSo here's the breakdown of what I want to accomplish here in the next 2 weeks:\n\n- Create stat mod system so that I can have consumable items that buff stats\n- Create those actual items\n- Create reward selection step at the end of the map\n\t- For now, have items auto-consume\n\t- But also, give a low % chance of adding another unit\n- Finish the rest of the maps\n\t- Create all of the enemies required for those\n- Rebalance the stats\n\t- Change Enemies to be more like undead in sacred stones\n\t\t- Give them a generic 'Claw' and 'Bite' weapons that all have high might (high attack strength, like 7)\n\t\t- Then, nuke all of their stats\n\t- Remove the baseline-10 stat design.\n\t\t- Experiment with lowering all of the stats across the board and only buffing specific stats in order to give specific units defining traits\n\t\t- Like the mercenary should have hp and damage\n\t\t- The archer only has range\n\t\t- The dark mage has defense and damage\n\t\t- etc etc",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "2aec9ada-af7b-4b1e-a532-74ee72b14cf9",
-			"title": "You can select Units after their deactivated, effectively creating an infinite turn",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "0d326661-a3bb-4d2e-a37f-8ab727baafb0",
-			"title": "Make Consumable Items",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "For stat buffs I mean",
-					"done": false
-				}
-			]
-		},
-		{
-			"uuid": "dc105425-32e2-4a5f-94df-49095ef2533b",
-			"title": "Make Loot Tables",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "ad7801f0-2153-4c24-b5f1-87930c865264",
-			"title": "Make End-Of-Map Rewards UI",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "620f2c4a-d101-4940-8596-4a0c535256d5",
-			"title": "Rebalance Stats",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "3a6392c7-4805-44e9-80f7-df7281ca65e6",
-			"title": "Finish Campaign",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "b523ecdc-630e-48cc-bac6-49a90ce24722",
-			"title": "Update Unit Import Process",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "3d76c379-4fa5-49dc-b69b-2c333b9b0c6c",
-			"title": "BUG: Allied units aren't doing the unactivated animation",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "5403091d-90ff-4bba-8d8b-f65c6ab3f6b6",
-			"title": "Make a Heal or Staff Action",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "e0899ea5-1a6e-4136-9457-0afaa0c54bc5",
-			"title": "BUG: Fix camera not zooming on the enemies properly on their turn start ",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "1a77a977-ac89-45b9-955b-6417179e04bb",
-			"title": "BUG: Units have their health bars on between levels",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		},
 		{
@@ -334,17 +131,87 @@
 			"steps": []
 		},
 		{
-			"uuid": "f7cea0cf-4237-495c-844a-4bc49532488d",
-			"title": "BUG: 3 Range works for the tiles, but doesn't work for the actual targeting for some reason",
+			"uuid": "c522e9e5-a53d-4b28-97fe-5b160086558f",
+			"title": "Build Experience System w/ Import Func",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
+			"title": "Create Experience Gain UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "7af6f4a1-4344-4a93-8712-b673c2df1150",
+			"title": "Create Level Up UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
+			"title": "Implement Level Up Functionality",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "20f6b037-583a-449d-b665-5b653ad80f2c",
+			"title": "Create Focus System",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
+			"title": "Create Ability System",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "a19eee9c-c6ce-41f4-bac6-d2772eab3403",
+			"title": "Make Abilities",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Archer Ability",
+					"done": false
+				},
+				{
+					"details": "Dark Mage Ability",
+					"done": false
+				},
+				{
+					"details": "Elemental Mage Ability",
+					"done": false
+				},
+				{
+					"details": "Light Mage Ability",
+					"done": false
+				},
+				{
+					"details": "Mercenary Ability",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "fa49ca5b-f21d-4292-adb9-5a8a0aa2d183",
+			"title": "BIG: Defending units can counterattack more than once",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		},
 		{
-			"uuid": "1a060118-3dfc-4484-ac6a-d43b6688d087",
-			"title": "BUG: Fix ui not floating correctly on map 5",
+			"uuid": "9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
+			"title": "Take defending out of the game, and let everyone fight back. See how it affects the gameplay",
 			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

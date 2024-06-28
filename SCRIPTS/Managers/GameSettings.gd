@@ -1,5 +1,5 @@
 extends Resource
-class_name GameSettings
+class_name GameSettingsTemplate
 
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
@@ -9,11 +9,16 @@ enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 @export var PlayerControllerPrefab : PackedScene
 @export var DerivedStatDefinitions : Array[DerivedStatDef]
 
+@export var UIDisplayedStats : Array[StatTemplate]
+@export var LevelUpStats : Array[StatTemplate]
+
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate
 @export var SkillStat : StatTemplate
 @export var LuckStat : StatTemplate
+@export var MindStat : StatTemplate
 
+@export var InitializeUnitsWithMaxFocus : bool = false
 @export var NumberOfRewardsInPostMap = 3
 
 @export var CharacterTileMovemementSpeed : float = 100
@@ -24,6 +29,18 @@ func DamageCalculation(_atk, _def):
 
 func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : Item, _defender : UnitInstance):
 	return HitChance(_attacker, _attackerWeapon) - AvoidChance(_defender)
+
+func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
+	# TODO: Increase or decrease the exp gained from damaging a foe based on some metric
+	return 10 + _healAmount
+
+func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
+	# TODO: Increase or decrease the exp gained from damaging a foe based on some metric
+	return 10 + _damageDealt
+
+func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
+	# TODO: Increase or decrease the exp gained from killing a foe based on some metric
+	return 30 + _damageDealt
 
 func HitChance(_attacker : UnitInstance, _weapon : Item):
 	if _attacker == null:

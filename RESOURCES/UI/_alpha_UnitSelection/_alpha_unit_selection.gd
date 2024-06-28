@@ -9,7 +9,7 @@ signal OnRosterSelected(_squad : Array[UnitTemplate])
 @onready var squadEntryParent = %SquadEntryParent
 
 var createdUnitEntries : Array[Control]
-var unitSettings : UnitSettings
+var unitSettings : UnitSettingsTemplate
 var workingSquad : Array[UnitTemplate]
 var maxSquadSize = 100 #defaulting to 100. If initialized by a map, this is set
 

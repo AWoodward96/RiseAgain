@@ -3,6 +3,8 @@ extends Node2D
 @export var inputHeldThreshold = 0.5
 @export var inputHeldMoveTick = 0.06
 
+signal selectDownCallback
+
 var inputDown : Array[bool] = [false, false, false, false]
 var inputHeld : Array[bool] = [false, false, false, false]
 var inputVertical : bool
@@ -55,6 +57,9 @@ func UpdateInputArrays(_delta):
 func UpdateSelectAndCancel(_delta):
 	selectHeld = Input.is_action_pressed("select")
 	selectDown = Input.is_action_just_pressed("select")
+
+	if selectDown:
+		selectDownCallback.emit()
 
 	cancelHeld = Input.is_action_pressed("cancel")
 	cancelDown = Input.is_action_just_pressed("cancel")

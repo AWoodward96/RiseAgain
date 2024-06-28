@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=18 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -10,7 +10,9 @@
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_rdfo2"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/InspectPanel.gd" id="9_tccg0"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextMenu.gd" id="10_5gr1e"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="10_fkj7h"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ItemSelectionUI.gd" id="11_2uhpl"]
+[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="11_8mf6d"]
 [ext_resource type="PackedScene" uid="uid://b7850ynb8vsrl" path="res://RESOURCES/UI/_alpha_CombatHUD/context_button_entry.tscn" id="11_aar1f"]
 [ext_resource type="PackedScene" uid="uid://b2kf5pjs88d6t" path="res://RESOURCES/UI/UnitInventory/unit_inventory_panel.tscn" id="12_um2vj"]
 
@@ -299,6 +301,7 @@ icon = NodePath("Icon")
 healthbar = NodePath("Health")
 healthText = NodePath("HealthText")
 namelabel = NodePath("UnitName")
+focusSlotPrefab = ExtResource("11_8mf6d")
 
 [node name="BG" type="ColorRect" parent="BottomLeft/InspectUI"]
 layout_mode = 1
@@ -355,6 +358,21 @@ offset_top = 17.0
 offset_right = 246.0
 offset_bottom = 40.0
 text = "[UnitName]"
+
+[node name="FocusContainer" type="MarginContainer" parent="BottomLeft/InspectUI"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 89.0
+offset_right = 220.0
+offset_bottom = 102.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="FocusBarParent" type="HBoxContainer" parent="BottomLeft/InspectUI/FocusContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("10_fkj7h")
 
 [node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
 layout_mode = 3
@@ -418,6 +436,7 @@ grow_vertical = 2
 text = "No Targets Found"
 
 [node name="ItemSelection" type="Control" parent="." node_paths=PackedStringArray("InventoryPanel")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

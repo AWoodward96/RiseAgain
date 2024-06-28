@@ -15,5 +15,5 @@ func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 	_map.InitializeUnit(unit, Position, Allegiance)
 	unit.SetAI(AIBehavior, AggroBehavior)
 
-	if _map.CurrentCampaign != null && Allegiance == GameSettings.TeamID.ALLY:
+	if _map.CurrentCampaign != null && Allegiance == GameSettingsTemplate.TeamID.ALLY:
 		_map.CurrentCampaign.CurrentRoster.append(unit)

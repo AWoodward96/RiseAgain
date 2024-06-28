@@ -32,9 +32,6 @@ func StartCampaign(_roster : Array[UnitTemplate]):
 	if PersistData == null:
 		PersistData = CampaignPersistData.new()
 
-	#PersistData.Construct(CurrentRoster)
-
-
 	campaignLedger.clear()
 	currentNode = ledger_root.get_child(0)
 	if currentNode != null && AutoProceed:
@@ -111,8 +108,8 @@ func GetMapRewardTable():
 func OnRosterSelected(_roster : Array[UnitTemplate]):
 	RosterTemplates = _roster
 
-func AddUnitToRoster(_unitTemplate : UnitTemplate):
+func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 1):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
-	unitInstance.Initialize(_unitTemplate)
+	unitInstance.Initialize(_unitTemplate, _levelOverride)
 	CurrentRoster.append(unitInstance)
 	UnitHoldingArea.add_child(unitInstance)

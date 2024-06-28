@@ -4,6 +4,7 @@ class_name UnitTemplate
 @export_group("Unit Info")
 @export var VisualPrefab : PackedScene
 @export var BaseStats : Array[StatDef]
+@export var StatGrowths : Array[StatDef]
 
 @export var StartingItems : Array[PackedScene]
 @export var Abilities : Array[PackedScene]

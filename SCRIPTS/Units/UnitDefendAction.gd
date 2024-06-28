@@ -4,24 +4,33 @@ class_name UnitDefendAction
 var SourcePosition : Vector2
 var tween : Tween
 
-var Context : ActionLog
-var Source : UnitInstance
+var TimerLock : bool
+var Result : ActionResult
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
+
+	TimerLock = false
+	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
+
 	var dst = (position - SourcePosition).normalized()
 	dst = dst * (Juice.combatSequenceDefenseOffset * map.TileSize)
 	position += dst
 
-	_unit.DoCombat(Context, Source)
+	TimerLock = true
+
+	_unit.DoCombat(Result)
 
 
 func _Execute(_unit : UnitInstance, delta):
-	# We should be off center now, move back towards your grid position
+	return ReturnToCenter(_unit, delta) && TimerLock
+
+func ReturnToCenter(_unit, delta):
 	var desired = _unit.GridPosition * map.TileSize
+	# We should be off center now, move back towards your grid position
 	position = lerp(position, (GridPosition * map.TileSize) as Vector2, Juice.combatSequenceReturnToOriginLerp * delta)
 	if position.distance_squared_to(desired) < (Juice.combatSequenceReturnToOriginLerp * Juice.combatSequenceReturnToOriginLerp):
 		position = desired
 		return true
-	return false
 
+	return false

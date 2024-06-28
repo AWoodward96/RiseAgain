@@ -2,7 +2,7 @@ extends MapWinCondition
 class_name WinConRoute
 
 func CheckWincon(_map : Map):
-	var enemies = _map.GetUnitsOnTeam(GameSettings.TeamID.ENEMY)
+	var enemies = _map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY)
 	if enemies.size() == 0:
 		return true
 

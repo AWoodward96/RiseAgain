@@ -2,7 +2,7 @@ extends UnitActionBase
 class_name UnitHealAction
 
 var delay
-var healData : HealComponent
+var Log : ActionLog
 var targetUnits : Array[UnitInstance]
 
 func _Enter(_unit : UnitInstance, _map : Map):
@@ -11,8 +11,8 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	delay = false
 	await _map.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
-	for units in targetUnits:
-		units.DoHeal(healData, _unit)
+	for results in Log.actionResults:
+		results.Target.DoHeal(results)
 
 	await _map.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout
 	delay = true

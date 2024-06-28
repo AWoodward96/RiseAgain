@@ -21,7 +21,7 @@ var CurrentCampaign : CampaignTemplate
 
 var teams = {}
 var playercontroller : PlayerController
-var currentTurn = GameSettings.TeamID
+var currentTurn = GameSettingsTemplate.TeamID
 
 var rng : RandomNumberGenerator
 var grid : Grid
@@ -57,7 +57,9 @@ func _process(_delta):
 
 	if WinCondition != null && MapState is CombatState:
 		if WinCondition.CheckWincon(self):
-			ChangeMapState(VictoryState.new())
+			# Wait for everything to resolve first
+			if GlobalStackClear():
+				ChangeMapState(VictoryState.new())
 
 func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitInstance], _rngSeed : int):
 	rng = RandomNumberGenerator.new()
@@ -68,10 +70,22 @@ func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitIn
 
 	for i in range(0, _roster.size()):
 		if i < startingPositions.size():
-			InitializeUnit(_roster[i], startingPositions[i], GameSettings.TeamID.ALLY)
+			InitializeUnit(_roster[i], startingPositions[i], GameSettingsTemplate.TeamID.ALLY)
 
 	InitializePlayerController()
 	ChangeMapState(PreMapState.new())
+
+func GlobalStackClear():
+	var stackFree = true
+	for team in teams:
+		for unit in teams[team]:
+			if unit == null:
+				continue
+
+			# also don't end the turn if there is a unit with something on its stack
+			if !unit.IsStackFree:
+				stackFree = false
+	return stackFree && !(playercontroller.ControllerState is ActionExecutionState)
 
 func InitializeStandalone():
 	# the campaign should initialize this
@@ -96,7 +110,7 @@ func OnRosterTemplatesSelected(_roster : Array[UnitTemplate]):
 	for i in range(0, _roster.size()):
 		if i < startingPositions.size():
 			var unit = CreateUnit(_roster[i])
-			InitializeUnit(unit, startingPositions[i], GameSettings.TeamID.ALLY)
+			InitializeUnit(unit, startingPositions[i], GameSettingsTemplate.TeamID.ALLY)
 
 
 func InitializePlayerController():
@@ -109,13 +123,13 @@ func CreateUnit(_unitTemplate : UnitTemplate):
 	unitInstance.Initialize(_unitTemplate)
 	return unitInstance
 
-func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettings.TeamID):
+func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID):
 	_unitInstance.AddToMap(self, _position, _allegiance)
 	grid.SetUnitGridPosition(_unitInstance, _position, true)
 	AddUnitToRoster(_unitInstance, _allegiance)
 
 
-func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettings.TeamID):
+func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettingsTemplate.TeamID):
 	if teams.has(_allegiance):
 		teams[_allegiance].append(_unitInstance)
 	else:

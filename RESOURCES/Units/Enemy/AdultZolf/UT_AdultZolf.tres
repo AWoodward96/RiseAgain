@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://dt5vofrnbdu6c"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://dt5vofrnbdu6c"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_mcvtx"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_q7r3r"]
@@ -10,56 +10,98 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_sg14y"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_32op3"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_prv8l"]
+[ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_qqtut"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_sunqo"]
 [ext_resource type="PackedScene" uid="uid://drja2u27ujrp0" path="res://RESOURCES/Units/Enemy/AdultZolf/VIS_AdultZolf.tscn" id="11_aots3"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="11_uh82h"]
 [ext_resource type="Texture2D" uid="uid://i63qlruqqjwh" path="res://ART/Icons/Units/zolf_mother.png" id="12_1g4sd"]
 
-[sub_resource type="Resource" id="Resource_dos70"]
+[sub_resource type="Resource" id="Resource_j66t5"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("1_mcvtx")
-Value = 12
+Value = 12.0
 
-[sub_resource type="Resource" id="Resource_sfmol"]
+[sub_resource type="Resource" id="Resource_2cbmj"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("3_mw331")
-Value = 5
+Value = 5.0
 
-[sub_resource type="Resource" id="Resource_47o5f"]
+[sub_resource type="Resource" id="Resource_sijwk"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("4_e82vl")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_18xec"]
+[sub_resource type="Resource" id="Resource_nxj41"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("5_umueu")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_0n00m"]
+[sub_resource type="Resource" id="Resource_y0wwv"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("6_fhcln")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_08wko"]
+[sub_resource type="Resource" id="Resource_cci3d"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("7_r7601")
-Value = 6
+Value = 6.0
 
-[sub_resource type="Resource" id="Resource_85puy"]
+[sub_resource type="Resource" id="Resource_hmwst"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("8_sg14y")
-Value = 5
+Value = 5.0
 
-[sub_resource type="Resource" id="Resource_itmro"]
+[sub_resource type="Resource" id="Resource_dvkmf"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("9_32op3")
 Value = 0
+
+[sub_resource type="Resource" id="Resource_fv520"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("10_qqtut")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_priqb"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("1_mcvtx")
+Value = 80.0
+
+[sub_resource type="Resource" id="Resource_v87sc"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("3_mw331")
+Value = 40.0
+
+[sub_resource type="Resource" id="Resource_yuwwe"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("4_e82vl")
+Value = 15.0
+
+[sub_resource type="Resource" id="Resource_8vfo8"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("5_umueu")
+Value = 15.0
+
+[sub_resource type="Resource" id="Resource_jjuk8"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("6_fhcln")
+Value = 30.0
+
+[sub_resource type="Resource" id="Resource_eeey2"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("8_sg14y")
+Value = 40.0
+
+[sub_resource type="Resource" id="Resource_5dfvo"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("9_32op3")
+Value = 10.0
 
 [resource]
 resource_name = "UT_AdultZolf"
 script = ExtResource("10_prv8l")
 VisualPrefab = ExtResource("11_aots3")
-BaseStats = Array[ExtResource("2_q7r3r")]([SubResource("Resource_dos70"), SubResource("Resource_sfmol"), SubResource("Resource_47o5f"), SubResource("Resource_18xec"), SubResource("Resource_0n00m"), SubResource("Resource_08wko"), SubResource("Resource_85puy"), SubResource("Resource_itmro")])
+BaseStats = Array[ExtResource("2_q7r3r")]([SubResource("Resource_j66t5"), SubResource("Resource_2cbmj"), SubResource("Resource_sijwk"), SubResource("Resource_nxj41"), SubResource("Resource_y0wwv"), SubResource("Resource_cci3d"), SubResource("Resource_hmwst"), SubResource("Resource_dvkmf"), SubResource("Resource_fv520")])
+StatGrowths = Array[ExtResource("2_q7r3r")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 StartingItems = Array[PackedScene]([ExtResource("11_uh82h")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_sunqo")])

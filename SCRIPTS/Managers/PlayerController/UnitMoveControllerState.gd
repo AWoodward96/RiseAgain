@@ -21,7 +21,7 @@ func _Execute(_delta):
 
 	if InputManager.selectDown:
 		var tile = currentGrid.GetTile(ctrl.ConvertGlobalPositionToGridPosition())
-		if selectedUnit != null && selectedUnit.UnitAllegiance == GameSettings.TeamID.ALLY && tile.CanMove:
+		if selectedUnit != null && selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == selectedUnit):
 			selectedUnit.MoveCharacterToNode(walkedPath, tile)
 			EndMovementTracker()
 			ctrl.EnterContextMenuState()

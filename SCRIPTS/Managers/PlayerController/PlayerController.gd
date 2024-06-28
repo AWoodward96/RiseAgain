@@ -172,13 +172,18 @@ func CreateCombatHUD():
 func UpdateContextUI():
 	combatHUD.ContextUI.Clear()
 
+
 	if CanAttack(selectedUnit):
-		combatHUD.ContextUI.AddButton("Attack", OnAttack)
+		combatHUD.ContextUI.AddButton("Attack", true, OnAttack)
 	if CanHeal(selectedUnit):
-		combatHUD.ContextUI.AddButton("Heal", OnHeal)
-	combatHUD.ContextUI.AddButton("Defend", OnDefend)
-	combatHUD.ContextUI.AddButton("Inventory", OnInventory)
-	combatHUD.ContextUI.AddButton("Wait", OnWait)
+		combatHUD.ContextUI.AddButton("Heal", true, OnHeal)
+
+	for ability in selectedUnit.Abilities:
+		combatHUD.ContextUI.AddButton(ability.loc_displayName, selectedUnit.currentFocus >= ability.focusCost, OnAbility.bind(ability))
+
+	combatHUD.ContextUI.AddButton("Defend", true, OnDefend)
+	combatHUD.ContextUI.AddButton("Inventory", true, OnInventory)
+	combatHUD.ContextUI.AddButton("Wait", true, OnWait)
 	combatHUD.ContextUI.SelectFirst()
 
 func OnWait():
@@ -217,6 +222,9 @@ func CanAttack(_unit : UnitInstance):
 
 func OnAttack():
 	EnterItemSelectionState(UnitInventoryPanel.Filter_DamageableItemsOnly)
+
+func OnAbility(_ability : Ability):
+	EnterTargetingState(_ability)
 
 func CanHeal(_unit : UnitInstance):
 	if _unit == null:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=23 format=3 uid="uid://ba7d8xyuy5mgm"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://ba7d8xyuy5mgm"]
 
 [ext_resource type="PackedScene" uid="uid://ds4w7ttanxhhg" path="res://RESOURCES/Units/Enemy/WolfPup/VIS_WolfPup.tscn" id="1_2ldp6"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_pk4jk"]
@@ -11,54 +11,96 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_im2w5"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_bcdml"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://ART/Icons/Units/wolf_cub.png" id="9_g5fak"]
+[ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_3pr6l"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_ioa71"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_v1ox2"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="11_y2fh1"]
 
-[sub_resource type="Resource" id="Resource_ait0k"]
+[sub_resource type="Resource" id="Resource_ckqos"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("1_uma5a")
-Value = 2
+Value = 2.0
 
-[sub_resource type="Resource" id="Resource_k43kl"]
+[sub_resource type="Resource" id="Resource_l8ew5"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("3_3eixl")
-Value = 2
+Value = 2.0
 
-[sub_resource type="Resource" id="Resource_kqm50"]
+[sub_resource type="Resource" id="Resource_0sg4x"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("4_7icxw")
-Value = 1
+Value = 1.0
 
-[sub_resource type="Resource" id="Resource_5hd5s"]
+[sub_resource type="Resource" id="Resource_2k2yt"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("5_jasgv")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_kow3c"]
+[sub_resource type="Resource" id="Resource_k8354"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("6_trrxd")
-Value = 1
+Value = 1.0
 
-[sub_resource type="Resource" id="Resource_f2k5w"]
+[sub_resource type="Resource" id="Resource_seakt"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("7_im2w5")
-Value = 5
+Value = 5.0
 
-[sub_resource type="Resource" id="Resource_bj07e"]
+[sub_resource type="Resource" id="Resource_i536u"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("9_bcdml")
-Value = 1
+Value = 1.0
 
-[sub_resource type="Resource" id="Resource_3l2rg"]
+[sub_resource type="Resource" id="Resource_1ht2i"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("10_v1ox2")
 Value = 0
 
+[sub_resource type="Resource" id="Resource_asq6f"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("10_3pr6l")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_priqb"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("1_uma5a")
+Value = 70.0
+
+[sub_resource type="Resource" id="Resource_v87sc"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("3_3eixl")
+Value = 30.0
+
+[sub_resource type="Resource" id="Resource_yuwwe"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("4_7icxw")
+Value = 15.0
+
+[sub_resource type="Resource" id="Resource_8vfo8"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("5_jasgv")
+Value = 15.0
+
+[sub_resource type="Resource" id="Resource_jjuk8"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("6_trrxd")
+Value = 15.0
+
+[sub_resource type="Resource" id="Resource_eeey2"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("9_bcdml")
+Value = 40.0
+
+[sub_resource type="Resource" id="Resource_5dfvo"]
+script = ExtResource("2_ndbtr")
+Template = ExtResource("10_v1ox2")
+Value = 10.0
+
 [resource]
 script = ExtResource("1_pk4jk")
 VisualPrefab = ExtResource("1_2ldp6")
-BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_ait0k"), SubResource("Resource_k43kl"), SubResource("Resource_kqm50"), SubResource("Resource_5hd5s"), SubResource("Resource_kow3c"), SubResource("Resource_f2k5w"), SubResource("Resource_bj07e"), SubResource("Resource_3l2rg")])
+BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_ckqos"), SubResource("Resource_l8ew5"), SubResource("Resource_0sg4x"), SubResource("Resource_2k2yt"), SubResource("Resource_k8354"), SubResource("Resource_seakt"), SubResource("Resource_i536u"), SubResource("Resource_1ht2i"), SubResource("Resource_asq6f")])
+StatGrowths = Array[ExtResource("2_ndbtr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 StartingItems = Array[PackedScene]([ExtResource("11_y2fh1")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_ioa71")])

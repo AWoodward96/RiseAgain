@@ -3,7 +3,8 @@ class_name Grid
 const ACTIONOPTIONSLAYER = 1
 const UITILEATLAS = 2
 const ATTACKTILE = Vector2i(2,0)
-const MOVETILE = Vector2i(1,0)
+const RANGETILE = Vector2i(1,0)
+const MOVETILE = Vector2i(0,0)
 const NEIGHBORS = [Vector2i(-1,0), Vector2i(1,0), Vector2i(0,1), Vector2i(0,-1)]
 
 var GridArr : Array[Tile]
@@ -46,14 +47,14 @@ func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
 					Pathfinding.set_point_solid(Vector2i(x,y), true)
 
 
-func RefreshGridForTurn(_allegience : GameSettings.TeamID):
+func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID):
 	for x in Width:
 		for y in Height:
 			var index = y * Width + x
 			var currentTile = GridArr[index]
 			RefreshTilesCollision(currentTile, _allegience)
 
-func RefreshTilesCollision(_tile : Tile, _allegience : GameSettings.TeamID):
+func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.TeamID):
 	if _tile == null:
 		return
 
@@ -88,6 +89,7 @@ func ClearActions() :
 	for n in GridArr:
 		n.CanMove = false
 		n.CanAttack = false
+		n.InRange = false
 
 	Tilemap.clear_layer(ACTIONOPTIONSLAYER)
 
@@ -95,6 +97,9 @@ func ShowActions() :
 	for n in GridArr :
 		if n.Occupant != null :
 			continue
+
+		if n.InRange :
+			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, RANGETILE)
 
 		if n.CanMove :
 			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, MOVETILE)
@@ -170,7 +175,10 @@ func GetGridArrIndex(_pos : Vector2i):
 	return _pos.y * Width + _pos.x
 
 func GetTile(_pos : Vector2i):
-	return GridArr[GetGridArrIndex(_pos)]
+	var index = GetGridArrIndex(_pos)
+	if index < 0 || index >= GridArr.size():
+		return null
+	return GridArr[index]
 
 
 func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], a_attackRange : Vector2i) :

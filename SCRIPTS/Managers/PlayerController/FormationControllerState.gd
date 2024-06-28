@@ -23,7 +23,7 @@ func _Execute(_delta):
 		var tile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
 		if selectedUnit == null:
 			if tile.Occupant != null:
-				if tile.Occupant.UnitAllegiance == GameSettings.TeamID.ALLY:
+				if tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
 					selectedUnit = tile.Occupant
 					formationUI.ShowSwapWithPanel(true)
 					currentGrid.ClearActions()
@@ -32,7 +32,7 @@ func _Execute(_delta):
 			else:
 				currentGrid.ClearActions()
 		else:
-			if tile.Occupant != null && tile.Occupant.UnitAllegiance == GameSettings.TeamID.ALLY:
+			if tile.Occupant != null && tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
 				currentGrid.SwapUnitPositions(selectedUnit, tile.Occupant)
 			elif currentMap.startingPositions.has(tile.Position):
 				currentGrid.SetUnitGridPosition(selectedUnit, tile.Position, true)

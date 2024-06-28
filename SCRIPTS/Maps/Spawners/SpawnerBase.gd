@@ -13,7 +13,7 @@ const NodeSize : int = 64
 
 
 @export var Enabled : bool = true
-@export var Allegiance : GameSettings.TeamID = GameSettings.TeamID.ENEMY
+@export var Allegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY
 @export var AIBehavior : AIBehaviorBase
 @export var AggroBehavior : AlwaysAggro
 

@@ -16,11 +16,11 @@ func SetActivated(_activated : bool):
 func GetAnimString(_suffix : String):
 	var animStr = ""
 	match(MyUnit.UnitAllegiance):
-		GameSettings.TeamID.ALLY:
+		GameSettingsTemplate.TeamID.ALLY:
 			animStr = "Ally"
-		GameSettings.TeamID.ENEMY:
+		GameSettingsTemplate.TeamID.ENEMY:
 			animStr = "Enemy"
-		GameSettings.TeamID.NEUTRAL:
+		GameSettingsTemplate.TeamID.NEUTRAL:
 			animStr = "Neutral"
 
 	return "Unit" + animStr + "Library/" + _suffix

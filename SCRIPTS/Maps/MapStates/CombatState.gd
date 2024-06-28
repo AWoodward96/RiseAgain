@@ -11,7 +11,7 @@ var turnBannerOpen : bool
 
 var IsAllyTurn : bool :
 	get :
-		return map.currentTurn == GameSettings.TeamID.ALLY
+		return map.currentTurn == GameSettingsTemplate.TeamID.ALLY
 
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map, _ctrl)
@@ -19,7 +19,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	combatHud = controller.CreateCombatHUD()
 	controller.ClearSelectionData()
 
-	StartTurn(GameSettings.TeamID.ALLY)
+	StartTurn(GameSettingsTemplate.TeamID.ALLY)
 	ActivateAll()
 
 func Update(_delta):
@@ -27,29 +27,29 @@ func Update(_delta):
 		return
 
 	match map.currentTurn:
-		GameSettings.TeamID.ALLY:
+		GameSettingsTemplate.TeamID.ALLY:
 			# Do nothing, let the player do their thing
 			pass
-		GameSettings.TeamID.ENEMY:
+		GameSettingsTemplate.TeamID.ENEMY:
 			UpdateEnemyTurn(_delta)
-		GameSettings.TeamID.NEUTRAL:
+		GameSettingsTemplate.TeamID.NEUTRAL:
 			UpdateNeutralTurn(_delta)
 
 	if IsTurnOver():
 		var nextTurn
 		# TODO: Figure out the best way to determine whose turn it is up next
 		match map.currentTurn:
-			GameSettings.TeamID.ALLY:
+			GameSettingsTemplate.TeamID.ALLY:
 				#if map.teams.has(GameSettings.TeamID.ENEMY) && map.teams[GameSettings.TeamID.ENEMY].size() > 0:
-				nextTurn = GameSettings.TeamID.ENEMY
-			GameSettings.TeamID.ENEMY:
-				nextTurn = GameSettings.TeamID.ALLY
+				nextTurn = GameSettingsTemplate.TeamID.ENEMY
+			GameSettingsTemplate.TeamID.ENEMY:
+				nextTurn = GameSettingsTemplate.TeamID.ALLY
 			# TODO: Neutral turns
-			GameSettings.TeamID.NEUTRAL:
-				nextTurn = GameSettings.TeamID.ALLY
+			GameSettingsTemplate.TeamID.NEUTRAL:
+				nextTurn = GameSettingsTemplate.TeamID.ALLY
 		StartTurn(nextTurn)
 
-func StartTurn(_turn : GameSettings.TeamID):
+func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	map.currentTurn = _turn
 	map.grid.RefreshGridForTurn(map.currentTurn)
 
@@ -61,13 +61,14 @@ func StartTurn(_turn : GameSettings.TeamID):
 	turnBannerOpen = false
 
 	unitTurnStack = map.GetUnitsOnTeam(_turn)
-	if _turn == GameSettings.TeamID.ALLY:
+	if _turn == GameSettingsTemplate.TeamID.ALLY:
 		controller.EnterSelectionState()
 
-	if _turn != GameSettings.TeamID.ALLY:
+	if _turn != GameSettingsTemplate.TeamID.ALLY:
 		controller.EnterOffTurnState()
 
-	controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
+	if unitTurnStack.size() > 0:
+		controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
 	currentUnitsTurn = null
 	ActivateAll()
 
@@ -80,10 +81,6 @@ func ActivateAll():
 
 func IsTurnOver():
 	var turnOver = true
-	if !map.teams.has(map.currentTurn):
-		return turnOver
-
-	var allUnits = map.teams[map.currentTurn]
 	for team in map.teams:
 		var isCurrent = map.currentTurn == team
 		for unit in map.teams[team]:
@@ -98,7 +95,7 @@ func IsTurnOver():
 			if !unit.IsStackFree:
 				turnOver = false
 
-	return turnOver
+	return turnOver && !(map.playercontroller.ControllerState is ActionExecutionState) # If we're still in action execution then we need to wait for it to resolve
 
 
 func ClearTileSelection():
@@ -107,10 +104,14 @@ func ClearTileSelection():
 	controller.EndMovementTracker()
 
 func UpdateEnemyTurn(_delta):
-	if !map.teams.has(GameSettings.TeamID.ENEMY):
+	if !map.teams.has(GameSettingsTemplate.TeamID.ENEMY):
 		return
 
 	if currentUnitsTurn == null:
+		# Wait for the stack to be clear before starting the next turn
+		if !map.GlobalStackClear():
+			return
+
 		var pop = unitTurnStack.pop_front()
 		if pop == null:
 			return

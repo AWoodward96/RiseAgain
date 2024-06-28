@@ -7,3 +7,4 @@
 script = ExtResource("1_41id7")
 damagePopup = ExtResource("2_g4ic6")
 combatSequenceCooloffTimer = 0.6
+combatSequenceDefenseOffset = 0.5

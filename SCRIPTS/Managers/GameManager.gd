@@ -1,12 +1,13 @@
 extends Node2D
 
-@export var GameSettings : GameSettings
-@export var UnitSettings : UnitSettings
+@export var GameSettings : GameSettingsTemplate
+@export var UnitSettings : UnitSettingsTemplate
 @export var AlphaUnitSelection : PackedScene
 @export var AlphaFormationUI : PackedScene
 @export var CombatHUDUI : PackedScene
 @export var UnitInventoryUI : PackedScene
 @export var MapRewardUI : PackedScene
+@export var ExperienceUI : PackedScene
 
 @export var LoadingScreenPrefab : PackedScene
 

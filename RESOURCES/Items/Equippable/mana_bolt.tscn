@@ -14,14 +14,13 @@ script = ExtResource("5_82x5q")
 Template = ExtResource("4_ev71y")
 Value = 4
 
-[node name="mana_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "ItemDamageData", "StatData")]
+[node name="mana_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "StatData")]
 script = ExtResource("1_auk6k")
 internalName = "mana_bolt"
 loc_displayName = "item_mana_bolt_name"
 loc_displayDesc = "item_mana_bolt_desc"
 icon = ExtResource("2_sck7k")
 TargetingData = NodePath("TargetingData")
-ItemDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
@@ -37,3 +36,4 @@ DefensiveStat = ExtResource("7_5cugg")
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("8_lg6pv")
 TargetRange = Vector2i(1, 2)
+Type = 1

@@ -3,9 +3,11 @@ class_name ActionExecutionState
 
 var log : ActionLog
 var source
-var unitsAffected : Array[UnitInstance]
 var tempTimer : Timer
-var waitForAnimToFinish : bool
+var waitForActionToFinish : bool
+var waitForPostActionToFinish : bool
+
+var waitForAbilityToFinish : bool
 
 # Data being passed is of type ActionLog and can be an ItemLog or a AbilityLog
 func _Enter(_ctrl : PlayerController, data):
@@ -16,9 +18,9 @@ func _Enter(_ctrl : PlayerController, data):
 	ctrl.reticle.visible = false
 	ctrl.BlockMovementInput = true
 
-	waitForAnimToFinish = false
 	log = data
 	source = log.source
+	waitForActionToFinish = true
 
 	# Ability context at this point should have targets
 	if log.affectedTiles.size() == 0:
@@ -26,62 +28,127 @@ func _Enter(_ctrl : PlayerController, data):
 		ctrl.EnterSelectionState()
 		return
 
-	unitsAffected.clear()
-
+	log.actionResults.clear()
 	# The target tiles is an array so loop through that and append the units to take damage
 	for tile in log.affectedTiles:
 		if tile.Occupant != null:
-			unitsAffected.append(tile.Occupant)
+			var actionResult = ActionResult.new()
+			actionResult.Source = log.source
+			actionResult.Target = tile.Occupant
+			log.actionResults.append(actionResult)
 
 	if log.item != null:
+		# calculate the damage and the miss chance right here
+		for results in log.actionResults:
+			results.Item_CalculateResult(currentMap.rng, log.item)
+
 		var item = log.item
 		if item.IsDamage():
 			# This is an item or ability that does damage, and should queue up the attack sequences
 			if source != null:
 				# If the ability has a source, then the source is in charge of setting off the sequence
 				ctrl.ForceReticlePosition(log.actionOriginTile.Position)
-				source.QueueAttackSequence(log.actionOriginTile.Position * currentGrid.CellSize, log, unitsAffected)
-			else:
-				# if the ability has no source, then the targets all take damage on their own
-				for u in unitsAffected:
-					u.QueueDefenseSequence(log.actionOriginTile.Position * currentGrid.CellSize, log, source)
+				source.QueueAttackSequence(log.actionOriginTile.Position * currentGrid.CellSize, log)
+
+			# Then, queue up the defense sequence for everything being hit
+			for result in log.actionResults:
+				result.Target.QueueDefenseSequence(log.sourceTile.Position * currentGrid.CellSize, result)
+				CheckForRetaliation(result)
+
+			#CheckForRetaliation()
 		elif item.IsHeal(false):
-			source.QueueHealAction(item.HealData, unitsAffected)
+			source.QueueHealAction(log)
+
+	if log.ability != null:
+		log.ability.AbilityActionComplete.connect(PostActionComplete)
+		log.abilityStackIndex = -1
+
+
+func CheckForRetaliation(_result : ActionResult):
+	if log.source == null:
+		return
+
+	var defendingUnit = _result.Target
+	if log.canRetaliate && defendingUnit.IsDefending:
+		if defendingUnit.EquippedItem == null:
+			return
+
+		var retaliationItem = defendingUnit.EquippedItem
+		if retaliationItem.UsableDamageData == null:
+			return
+
+		var range = defendingUnit.EquippedItem.GetRange()
+		if range == Vector2i.ZERO:
+			return
+
+		var combatDistance = defendingUnit.map.grid.GetManhattanDistance(log.sourceTile.Position, defendingUnit.GridPosition)
+		# so basically, if the weapon this unit is holding, has a max range
+		if range.x <= combatDistance && range.y >= combatDistance:
+			# okay at this point retaliation is possible
+			# oh boy time to make a brand new combat data
+			var newData = ActionLog.Construct(defendingUnit, defendingUnit.EquippedItem)
+			newData.affectedTiles.append(log.source.CurrentTile)
+			# turn off retaliation or else these units will be fighting forever
+			newData.canRetaliate = false
+
+			var retaliationResult = ActionResult.new()
+			retaliationResult.Source = defendingUnit
+			retaliationResult.Target = log.source
+			retaliationResult.Item_CalculateResult(defendingUnit.map.rng, retaliationItem)
+
+			newData.actionResults.append(retaliationResult)
+			log.responseResults.append(retaliationResult)
+
+			defendingUnit.QueueAttackSequence(log.source.global_position, newData)
+			log.source.QueueDefenseSequence(defendingUnit.global_position, retaliationResult)
+			pass
 
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()
-	if source != null:
-		# If abillity has a source, wait until the source's stack is clear
-		if source.IsStackFree && AffectedUnitsClear():
-			ActionComplete()
-	else:
-		if AffectedUnitsClear():
-			ActionComplete()
+
+	if log.item != null:
+		if waitForActionToFinish:
+			if ((source != null && source.IsStackFree) || source == null) && AffectedUnitsClear():
+				ActionComplete()
+
+		if waitForPostActionToFinish:
+			if ((source != null && source.IsStackFree) || source == null) && AffectedUnitsClear():
+				PostActionComplete()
+
+	if log.ability != null:
+		log.ability.TryExecute(log)
+
 	pass
+
 
 func AffectedUnitsClear():
 	var r = true
-	for u in unitsAffected:
-		if u == null:
+	for u in log.actionResults:
+		if u.Target == null:
 			continue
-		if !u.IsStackFree:
+
+		if !u.Target.IsStackFree:
 			r = false
+
 
 	return r
 
 func ActionComplete():
+	waitForActionToFinish = false
 	await ctrl.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout
+	waitForPostActionToFinish = true
+
+	log.QueueExpGains()
+
 	if source != null:
 		source.ShowHealthBar(false)
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 		log.source.QueueEndTurn()
 
-	for u in unitsAffected:
-		if u == null:
-			continue
-		u.ShowHealthBar(false)
 
-	if currentMap.currentTurn == GameSettings.TeamID.ALLY:
+func PostActionComplete():
+	waitForPostActionToFinish = false
+	if currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 		ctrl.EnterSelectionState()
 	else:
 		ctrl.EnterOffTurnState()
