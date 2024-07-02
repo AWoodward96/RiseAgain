@@ -179,7 +179,8 @@ func UpdateContextUI():
 		combatHUD.ContextUI.AddButton("Heal", true, OnHeal)
 
 	for ability in selectedUnit.Abilities:
-		combatHUD.ContextUI.AddButton(ability.loc_displayName, selectedUnit.currentFocus >= ability.focusCost, OnAbility.bind(ability))
+		if selectedUnit.Level >= ability.unlockLevel:
+			combatHUD.ContextUI.AddButton(ability.loc_displayName, selectedUnit.currentFocus >= ability.focusCost, OnAbility.bind(ability))
 
 	combatHUD.ContextUI.AddButton("Defend", true, OnDefend)
 	combatHUD.ContextUI.AddButton("Inventory", true, OnInventory)

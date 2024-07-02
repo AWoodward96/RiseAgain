@@ -175,6 +175,9 @@ func GetGridArrIndex(_pos : Vector2i):
 	return _pos.y * Width + _pos.x
 
 func GetTile(_pos : Vector2i):
+	if _pos.y < 0 || _pos.x < 0 || _pos.x >= Width || _pos.y >= Height:
+		return null
+
 	var index = GetGridArrIndex(_pos)
 	if index < 0 || index >= GridArr.size():
 		return null

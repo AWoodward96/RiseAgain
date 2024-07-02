@@ -1,5 +1,7 @@
 class_name ActionLog
 
+enum ActionType { Item, Ability }
+
 var source : UnitInstance
 var availableTiles : Array[Tile] # The working tiles that are available when you select targeting. Updated via the Item or Abilities PollTargets
 var actionOriginTile : Tile # The tile that this action is actually centered on. Sort of like the PlayerControllers CurrentTile
@@ -13,6 +15,7 @@ var actionResults : Array[ActionResult]
 # for units defending or responding to the initial attack
 var responseResults : Array[ActionResult]
 
+var actionType : ActionType
 var item : Item
 var ability : Ability
 var abilityStackIndex : int
@@ -26,8 +29,10 @@ static func Construct(_unitSource : UnitInstance, _itemOrAbility):
 	new.source = _unitSource
 	if _itemOrAbility is Item:
 		new.item = _itemOrAbility
+		new.actionType = ActionLog.ActionType.Item
 	elif _itemOrAbility is Ability:
 		new.ability = _itemOrAbility
+		new.actionType = ActionLog.ActionType.Ability
 	new.sourceTile = _unitSource.CurrentTile
 	new.damageData = _itemOrAbility.UsableDamageData
 	return new

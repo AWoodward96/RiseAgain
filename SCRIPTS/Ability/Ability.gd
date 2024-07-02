@@ -3,6 +3,8 @@ class_name Ability
 
 signal AbilityActionComplete
 
+
+@export var unlockLevel : int = 2
 @export var focusCost : int = 1
 @export var executionStack : Array[ActionStep]
 @export var autoEndTurn : bool = true

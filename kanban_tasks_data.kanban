@@ -31,17 +31,14 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d"
+				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d",
+				"801cb78a-6aaf-4399-87aa-18537f529d8b"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": [
-				"9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
-				"a19eee9c-c6ce-41f4-bac6-d2772eab3403",
-				"fb165e11-ee03-492e-96bc-731da392713c"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -52,7 +49,12 @@
 				"7af6f4a1-4344-4a93-8712-b673c2df1150",
 				"2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
 				"20f6b037-583a-449d-b665-5b653ad80f2c",
-				"f8a7b199-f6a8-4848-9463-1d1f6de1dc67"
+				"f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
+				"a19eee9c-c6ce-41f4-bac6-d2772eab3403",
+				"fb165e11-ee03-492e-96bc-731da392713c",
+				"cf692c99-b3c1-41a1-a537-0e9a0c04ceeb",
+				"9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
+				"2f3fbf88-5ce2-4a4d-88b1-106bccc3a102"
 			]
 		},
 		{
@@ -197,7 +199,7 @@
 				},
 				{
 					"details": "Mercenary Ability",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -218,6 +220,27 @@
 		{
 			"uuid": "fb165e11-ee03-492e-96bc-731da392713c",
 			"title": "Make directional targeting functional",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "801cb78a-6aaf-4399-87aa-18537f529d8b",
+			"title": "Change Stats to Stat Blocks",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "cf692c99-b3c1-41a1-a537-0e9a0c04ceeb",
+			"title": "Change the shaped targeting to their own resources",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2f3fbf88-5ce2-4a4d-88b1-106bccc3a102",
+			"title": "Make Abilities Locked and Unlockable",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

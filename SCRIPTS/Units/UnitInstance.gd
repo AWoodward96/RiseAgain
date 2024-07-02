@@ -214,6 +214,8 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 			if result <= workingValue:
 				statIncrease += 1
 
+			print("StatCheck: ", result, " <= ", workingValue, " resulted in a stat increase: ", statIncrease)
+
 			levelUpResult[growth.Template] = statIncrease
 			baseStats[growth.Template] += statIncrease
 	UpdateDerivedStats()

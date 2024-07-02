@@ -3,7 +3,7 @@ class_name GameSettingsTemplate
 
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
-enum Direction { Right, Down, Left, Up }
+enum Direction { Up, Right, Down, Left }
 
 @export var CampaignManifest : Array[PackedScene]
 
@@ -24,6 +24,16 @@ enum Direction { Right, Down, Left, Up }
 
 @export var CharacterTileMovemementSpeed : float = 100
 
+func GetDirectionVector(_dir : Direction):
+	match(_dir):
+		Direction.Up:
+			return Vector2i.UP
+		Direction.Left:
+			return Vector2i.LEFT
+		Direction.Right:
+			return Vector2i.RIGHT
+		Direction.Down:
+			return Vector2i.DOWN
 
 func DamageCalculation(_atk, _def):
 	return floori(max(_atk - _def, 0))
@@ -41,7 +51,7 @@ func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _targe
 
 func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
 	# TODO: Increase or decrease the exp gained from killing a foe based on some metric
-	return 30 + _damageDealt
+	return 130 + _damageDealt
 
 func HitChance(_attacker : UnitInstance, _weapon : Item):
 	if _attacker == null:

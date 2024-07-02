@@ -9,6 +9,10 @@ class_name DealDamageStep
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
 	var targeting = ability.TargetingData
+
+	if useAttackAction:
+		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log)
+
 	for tile in _actionLog.affectedTiles:
 		if tile.Occupant != null:
 			var target = tile.Occupant
@@ -27,9 +31,6 @@ func Enter(_actionLog : ActionLog):
 
 			damageResult.Ability_CalculateResult(ability, damageData)
 			log.actionResults.append(damageResult)
-
-			if useAttackAction:
-				source.QueueAttackSequence(target.global_position, log)
 
 			if useDefendAction:
 				target.QueueDefenseSequence(source.global_position, damageResult)

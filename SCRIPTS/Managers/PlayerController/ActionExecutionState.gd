@@ -50,7 +50,6 @@ func _Enter(_ctrl : PlayerController, data):
 				ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 				source.QueueAttackSequence(log.actionOriginTile.Position * currentGrid.CellSize, log)
 
-
 			# Then, queue up the defense sequence for everything being hit
 			for result in log.actionResults:
 				result.Target.QueueDefenseSequence(log.sourceTile.Position * currentGrid.CellSize, result)
@@ -70,7 +69,7 @@ func CheckForRetaliation(_result : ActionResult):
 		return
 
 	var defendingUnit = _result.Target
-	if log.canRetaliate && defendingUnit.IsDefending:
+	if log.canRetaliate && !_result.Kill: # && defendingUnit.IsDefending:
 		if defendingUnit.EquippedItem == null:
 			return
 
@@ -109,7 +108,7 @@ func CheckForRetaliation(_result : ActionResult):
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()
 
-	if log.item != null:
+	if log.actionType == ActionLog.ActionType.Item:
 		if waitForActionToFinish:
 			if ((source != null && source.IsStackFree) || source == null) && AffectedUnitsClear():
 				ActionComplete()
@@ -132,7 +131,6 @@ func AffectedUnitsClear():
 
 		if !u.Target.IsStackFree:
 			r = false
-
 
 	return r
 
