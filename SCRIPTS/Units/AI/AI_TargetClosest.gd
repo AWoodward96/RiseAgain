@@ -31,6 +31,9 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	selectedTile = null
 	selectedPath.clear()
 
+	var effectiveRange = unit.GetEffectiveAttackRange()
+	var unitMovement = unit.GetUnitMovement()
+
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
 	GetEquippedItem()
@@ -57,8 +60,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		# STEP THREE:
 		# Now we break out. If this unit is far away, then their movement will not need to be that informed. Just move closer to the target
 		# Remember, this list is sorted by distance, so if there is a closer unit to target, it would have been hit by now
-		var unitMovement = unit.GetUnitMovement()
-		var effectiveRange = unit.GetEffectiveAttackRange()
+
 		if option.PathSize > unitMovement + effectiveRange.y:
 			# CASE 1:
 			# The unit is too far from their target, and should simply move closer
@@ -92,11 +94,14 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 				print("First Selected Option is not good enough, going to other options")
 
 
-	if selectedTile == null || selectedPath == null || selectedPath.size() ==0:
+	if selectedTile == null || selectedPath == null || selectedPath.size() == 0:
 		push_error("Enemy has no selected tile, or no selected path. Ending turn by default.")
 		print("Tile: ", selectedTile, " -- Path: ", selectedPath)
 		unit.QueueEndTurn()
 		return
+
+	if selectedPath.size() > unitMovement:
+		TruncatePathBasedOnMovement(selectedPath, unitMovement)
 
 	# STEP FIVE:
 	# MOVE

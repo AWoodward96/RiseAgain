@@ -6,20 +6,20 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_mx0ga"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_8ff5h"]
 
-[sub_resource type="Resource" id="Resource_rrf7t"]
+[sub_resource type="Resource" id="Resource_mm8px"]
 script = ExtResource("5_8ff5h")
 Template = ExtResource("4_mx0ga")
 Value = 2
 
 [node name="whetstone_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
 script = ExtResource("1_agn71")
+UsageLimit = 1.0
 internalName = "whetstone_t1"
 loc_displayName = "item_whetstone_t1_name"
 loc_displayDesc = "item_whetstone_t1_desc"
 icon = ExtResource("2_0l20q")
 StatConsumableData = NodePath("StatConsumableComponent")
-UsageLimit = 1.0
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_yi1k6")
-StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_rrf7t")])
+StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_mm8px")])

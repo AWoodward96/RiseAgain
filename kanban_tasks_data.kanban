@@ -24,21 +24,22 @@
 				"67b3b4e5-903b-4227-b386-6db63a3432b4",
 				"5da4adea-da09-4b9f-803b-13078f8c3319",
 				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
-				"6bbe5a1a-c20c-4811-9d1e-36f45165b2c2"
+				"6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
+				"801cb78a-6aaf-4399-87aa-18537f529d8b",
+				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d"
 			]
 		},
 		{
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
-			"tasks": [
-				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d",
-				"801cb78a-6aaf-4399-87aa-18537f529d8b"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"9885093d-540a-4082-95d0-21690a89185c"
+			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -54,15 +55,18 @@
 				"fb165e11-ee03-492e-96bc-731da392713c",
 				"cf692c99-b3c1-41a1-a537-0e9a0c04ceeb",
 				"9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
-				"2f3fbf88-5ce2-4a4d-88b1-106bccc3a102"
+				"2f3fbf88-5ce2-4a4d-88b1-106bccc3a102",
+				"fa49ca5b-f21d-4292-adb9-5a8a0aa2d183",
+				"1d2aa347-7ae4-4662-9ce0-76dbcc9f6230",
+				"6adf1576-2b40-4c77-ac53-39156757ca3c",
+				"ec5f86e0-5833-4f41-91ef-f90764a61323"
 			]
 		},
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f",
-				"fa49ca5b-f21d-4292-adb9-5a8a0aa2d183"
+				"03e18191-548c-4e16-aac3-787401d9675f"
 			]
 		}
 	],
@@ -242,6 +246,34 @@
 			"uuid": "2f3fbf88-5ce2-4a4d-88b1-106bccc3a102",
 			"title": "Make Abilities Locked and Unlockable",
 			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "1d2aa347-7ae4-4662-9ce0-76dbcc9f6230",
+			"title": "BUG: Fix focus not being capped",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "6adf1576-2b40-4c77-ac53-39156757ca3c",
+			"title": "BUG: Fix HP bars not going away after action is completed",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "ec5f86e0-5833-4f41-91ef-f90764a61323",
+			"title": "BUG: Zombie took a marathon sprint around the entirity of map 4, just to hit my mercenary",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "9885093d-540a-4082-95d0-21690a89185c",
+			"title": "Level scaling needs to be looked at",
+			"description": "I managed tro get my Dark Mage to level 10 by map 5, and he has 31 hp and takes no fucking damage lmao\nMaybe also curb the dark mages armor scaling",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

@@ -7,11 +7,13 @@ extends SpawnerBase
 		if value != null:
 			name = PREFIX + UnitToSpawn.DebugName
 
+@export var UnitLevel : int = 0 # remember, this is indexed
+
 func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 	if UnitTemplate == null || !Enabled:
 		return
 
-	var unit = _map.CreateUnit(UnitToSpawn)
+	var unit = _map.CreateUnit(UnitToSpawn, UnitLevel)
 	_map.InitializeUnit(unit, Position, Allegiance)
 	unit.SetAI(AIBehavior, AggroBehavior)
 

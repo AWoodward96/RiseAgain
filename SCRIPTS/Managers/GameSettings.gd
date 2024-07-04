@@ -51,7 +51,7 @@ func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _targe
 
 func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
 	# TODO: Increase or decrease the exp gained from killing a foe based on some metric
-	return 130 + _damageDealt
+	return 30 + _damageDealt
 
 func HitChance(_attacker : UnitInstance, _weapon : Item):
 	if _attacker == null:

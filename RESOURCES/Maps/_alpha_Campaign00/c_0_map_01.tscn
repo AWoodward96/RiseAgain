@@ -23,6 +23,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_ewpee"]
 script = ExtResource("9_ry6k8")
 Flags = Array[ExtResource("9_esnrj")]([SubResource("Resource_m37ii")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_l4f3w"]
@@ -32,6 +33,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_7tyns"]
 script = ExtResource("9_ry6k8")
 Flags = Array[ExtResource("9_esnrj")]([SubResource("Resource_l4f3w")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_dwgyn"]
@@ -47,6 +49,7 @@ Team = 1
 [sub_resource type="Resource" id="Resource_fm88h"]
 script = ExtResource("9_ry6k8")
 Flags = Array[ExtResource("9_esnrj")]([SubResource("Resource_pdsuu")])
+IsPriorityFlag = false
 RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_hkjcv"]
@@ -131,6 +134,7 @@ vframes = 4
 frame = 2
 script = ExtResource("7_2ek70")
 UnitToSpawn = ExtResource("10_41f2o")
+UnitLevel = 3
 Position = Vector2i(9, 2)
 AIBehavior = SubResource("Resource_fm88h")
 AggroBehavior = SubResource("Resource_hkjcv")

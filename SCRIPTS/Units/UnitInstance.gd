@@ -83,17 +83,21 @@ func _ready():
 	damage_indicator.Initialize(self)
 	defend_icon.visible = false
 
-func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 1) :
+func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	Template = _unitTemplate
 
 	CreateItems()
 	CreateAbilities()
-	InitializeStats()
 	InitializeLevels(_levelOverride)
+	InitializeStats()
+	UpdateDerivedStats()
 
 func InitializeStats():
 	for stat in Template.BaseStats:
-		baseStats[stat.Template] = stat.Value
+		if baseStats.has(stat.Template):
+			baseStats[stat.Template] += stat.Value
+		else:
+			baseStats[stat.Template] = stat.Value
 
 	UpdateDerivedStats()
 
@@ -124,6 +128,7 @@ func InitializeLevels(_level : int):
 			baseStats[statDef.Template] += floori(growthPerc * _level)
 		else:
 			baseStats[statDef.Template] = floori(growthPerc * _level)
+	Level = _level
 	pass
 
 func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTemplate.TeamID):
@@ -258,7 +263,6 @@ func GiveItem(_item : PackedScene):
 	itemsParent.add_child(itemInstance)
 	Inventory.append(itemInstance)
 
-
 func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :
 	if _route == null || _route.size() == 0:
 		return
@@ -350,6 +354,7 @@ func ModifyHealth(_netHealthChange, _instantaneous : bool = false):
 
 func ModifyFocus(_netFocusChange):
 	currentFocus += _netFocusChange
+	currentFocus = clamp(currentFocus, 0, GetWorkingStat(GameManager.GameSettings.MindStat))
 	UpdateFocusUI()
 
 func OnModifyHealthTweenComplete(_healthNetChange):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=19 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -19,7 +19,10 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
-bg_color = Color(0, 0.713726, 0.439216, 1)
+bg_color = Color(3.36915e-07, 0.670276, 0.36946, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgwnx"]
+bg_color = Color(1, 0.872869, 0.485299, 1)
 
 [node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "ContextUI", "DmgPreviewUI", "itemSelectUI", "NoTargets", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_dux2t")
@@ -292,7 +295,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel")]
+[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel", "levelLabel", "expbar")]
 anchors_preset = 0
 offset_top = -128.0
 offset_right = 256.0
@@ -301,7 +304,10 @@ icon = NodePath("Icon")
 healthbar = NodePath("Health")
 healthText = NodePath("HealthText")
 namelabel = NodePath("UnitName")
+levelLabel = NodePath("Level")
+expbar = NodePath("EXP")
 focusSlotPrefab = ExtResource("11_8mf6d")
+levelLoc = "ui_level_num_short"
 
 [node name="BG" type="ColorRect" parent="BottomLeft/InspectUI"]
 layout_mode = 1
@@ -321,13 +327,24 @@ offset_bottom = 79.0
 texture = SubResource("PlaceholderTexture2D_aihfj")
 expand_mode = 1
 
+[node name="Level" type="Label" parent="BottomLeft/InspectUI"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 167.0
+offset_top = 1.0
+offset_right = 255.0
+offset_bottom = 24.0
+text = "LvL {NUM}"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 38.0
 offset_right = 148.0
 offset_bottom = 61.0
-text = "Health:"
+text = "ui_health"
 
 [node name="HealthText" type="Label" parent="BottomLeft/InspectUI"]
 custom_minimum_size = Vector2(25, 0)
@@ -349,6 +366,18 @@ offset_right = 221.0
 offset_bottom = 89.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
+show_percentage = false
+
+[node name="EXP" type="ProgressBar" parent="BottomLeft/InspectUI"]
+custom_minimum_size = Vector2(132, 10)
+layout_mode = 2
+offset_left = 89.0
+offset_top = 98.0
+offset_right = 221.0
+offset_bottom = 108.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
+step = 1.0
+value = 23.0
 show_percentage = false
 
 [node name="UnitName" type="Label" parent="BottomLeft/InspectUI"]

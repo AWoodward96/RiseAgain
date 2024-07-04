@@ -5,12 +5,20 @@ class_name InspectPanel
 @export var healthbar : ProgressBar
 @export var healthText : Label
 @export var namelabel : Label
+@export var levelLabel : Label
+@export var expbar : ProgressBar
 
 @export var focusSlotPrefab : PackedScene
+
+@export_category("Localization")
+@export var levelLoc : String
+
+
 @onready var focus_bar_parent: EntryList = %FocusBarParent
 
 var ctrl
 var currentUnit : UnitInstance
+
 
 func Initialize(_playercontroller : PlayerController):
 	ctrl = _playercontroller
@@ -26,6 +34,12 @@ func Update(_unit : UnitInstance):
 	icon.texture = template.icon
 	healthText.text = str(_unit.currentHealth) + "/" + str(_unit.maxHealth)
 	healthbar.value = _unit.currentHealth / _unit.maxHealth
+	expbar.value = _unit.Exp
+
+	# I don't know how fast this is, but w/e
+	var lvlStr = tr(levelLoc)
+	levelLabel.text = lvlStr.format({"NUM" : _unit.DisplayLevel })
+
 	UpdateFocusUI(forceUpdate)
 
 func UpdateFocusUI(_createNew : bool):

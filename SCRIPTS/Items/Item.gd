@@ -30,7 +30,11 @@ func OnUse():
 	if StatConsumableData != null:
 		for statDef in StatConsumableData.StatsToGrant:
 			ownerUnit.ApplyStatModifier(statDef)
-			isUsed = true
+
+			# TODO: Figure out how items should actually work. For now we're not counting these consumable
+			#		items as a turn-usage
+			isUsed = false
+			ownerUnit.TrashItem(self)
 
 
 	if UsageLimit != -1 && isUsed:

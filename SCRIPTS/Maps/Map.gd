@@ -118,9 +118,9 @@ func InitializePlayerController():
 	add_child(playercontroller)
 	playercontroller.Initialize(self)
 
-func CreateUnit(_unitTemplate : UnitTemplate):
+func CreateUnit(_unitTemplate : UnitTemplate, _levelOverride : int = 0):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
-	unitInstance.Initialize(_unitTemplate)
+	unitInstance.Initialize(_unitTemplate, _levelOverride)
 	return unitInstance
 
 func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID):

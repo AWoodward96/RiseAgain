@@ -23,8 +23,8 @@ script = ExtResource("1_3n530")
 focusCost = 4
 executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_aullh"), SubResource("Resource_5cjq5")])
 internalName = "Cleave"
-loc_displayName = "loc_cleave"
-loc_displayDesc = "loc_cleave_desc"
+loc_displayName = "art_cleave"
+loc_displayDesc = "art_cleave_desc"
 icon = ExtResource("4_nntet")
 TargetingData = NodePath("SkillTargetingData")
 

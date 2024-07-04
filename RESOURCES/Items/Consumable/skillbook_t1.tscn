@@ -5,8 +5,8 @@
 
 [node name="skillbook_t1" type="Node2D"]
 script = ExtResource("1_txydk")
+UsageLimit = 1.0
 internalName = "skillbook_t1"
 loc_displayName = "item_skillbook_t1_name"
 loc_displayDesc = "item_skillbook_t1_desc"
 icon = ExtResource("2_5sff6")
-UsageLimit = 1.0

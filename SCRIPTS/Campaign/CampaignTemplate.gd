@@ -108,7 +108,7 @@ func GetMapRewardTable():
 func OnRosterSelected(_roster : Array[UnitTemplate]):
 	RosterTemplates = _roster
 
-func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 1):
+func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 0):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
 	unitInstance.Initialize(_unitTemplate, _levelOverride)
 	CurrentRoster.append(unitInstance)

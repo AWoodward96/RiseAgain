@@ -138,16 +138,18 @@ func ActionComplete():
 	waitForActionToFinish = false
 	await ctrl.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout
 	waitForPostActionToFinish = true
-
 	log.QueueExpGains()
 
+func PostActionComplete():
 	if source != null:
 		source.ShowHealthBar(false)
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 		log.source.QueueEndTurn()
 
+	for r in log.actionResults:
+		if r.Target != null:
+			r.Target.ShowHealthBar(false)
 
-func PostActionComplete():
 	waitForPostActionToFinish = false
 	if currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 		ctrl.EnterSelectionState()
