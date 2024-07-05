@@ -13,10 +13,11 @@ var cachedTargetUnits : Array[UnitInstance]
 var shapedTargetingTiles : Array[Tile]
 var shapedDirection : int
 var shapedDirectionalDict : Dictionary
+var targetSelected : bool # To lock out double-attacks
 
 func _Enter(_ctrl : PlayerController, ItemOrAbility):
 	super(_ctrl, ItemOrAbility)
-
+	targetSelected = false
 	unitUsable = ItemOrAbility
 	# Grid should already be showing the actionable tiles from the Item Selection state
 	# That information should be passed here for our selection
@@ -76,18 +77,19 @@ func UpdateInput(_delta):
 			ShapedDirectionalTargetingInput(_delta)
 			pass
 
-	if InputManager.selectDown:
+	if InputManager.selectDown && !targetSelected:
 		var validSimple = currentTargetTile.Occupant != null && targetingData.Type == SkillTargetingData.TargetingType.Simple
 		var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
 		if validSimple || validShapedFree:
 			log.actionOriginTile = currentTargetTile
 			log.affectedTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, currentTargetTile)
-
+			targetSelected = true
 			# This will wait for the previous actions to be complete, and then do the stuff
 			source.QueueDelayedCombatAction(log)
 		elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
 			log.actionOriginTile = currentTargetTile
 			log.affectedTiles = shapedDirectionalDict[shapedDirection]
+			targetSelected = true
 			source.QueueDelayedCombatAction(log)
 			pass
 
