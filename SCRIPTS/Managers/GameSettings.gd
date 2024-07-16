@@ -51,7 +51,15 @@ func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _targe
 
 func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
 	# TODO: Increase or decrease the exp gained from killing a foe based on some metric
-	return 30 + _damageDealt
+	var X = 0
+	if _target != null && _source != null:
+		X = _target.Level - _source.Level
+
+	# Define variables A B and C
+	var A = 0.9 # Gradual growth
+	var B = 1.4	# Exponential slope, higher number = more exp based on level diff
+	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
+	return (A * (pow(B, X)) + C) * 20 + _damageDealt
 
 func HitChance(_attacker : UnitInstance, _weapon : Item):
 	if _attacker == null:
