@@ -15,14 +15,13 @@ enum TargetingTeamFlag { AllyTeam, EnemyTeam, All }
 
 
 func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
-	var addtionalTargetedTiles : Array[Tile]
+	var addtionalTargetedTiles : Array[TileTargetedData]
 	match Type:
 		TargetingType.Simple:
-			addtionalTargetedTiles.append(_tile)
+			addtionalTargetedTiles.append(_tile.AsTargetData())
 		TargetingType.ShapedFree:
 			if shapedTiles != null:
-				addtionalTargetedTiles.append_array(shapedTiles.GetTiles(_unit, _grid, _tile))
-
+				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, _grid, _tile))
 			addtionalTargetedTiles = FilterByTargettingFlags(_unit, addtionalTargetedTiles)
 			pass
 		TargetingType.ShapedDirectional:
@@ -30,14 +29,43 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 
 	return addtionalTargetedTiles
 
+func GetAffectedTiles(_unit : UnitInstance, _grid : Grid, _tile : Tile, _direction : int = -1):
+	var returnThis = GetAdditionalTileTargets(_unit, _grid, _tile)
+
+	return returnThis
+
 func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
 	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
-	options = FilterByTargettingFlags(_unit, options)
+	options = FilterTilesByTargettingFlags(_unit, options)
 
 	if options.size() > 1:
 		options.sort_custom(OrderTargets)
 	return options
+
+func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : int):
+	var arr : Array[TileTargetedData]
+	var unitOriginTile = _unit.CurrentTile
+	if shapedTiles == null:
+		return arr
+
+	for t in shapedTiles.GetCoords(_unit, _grid, unitOriginTile):
+		var tileData = TileTargetedData.new()
+		var pos = t.Position as Vector2
+		pos = pos.rotated(deg_to_rad(90 * _directionIndex))
+
+		# Take note of the bullshit you have to do here. Casting directly from a Vector2 to Vector2i ...
+		# ... somehow manages to lose values, even if the Vector2 is 100% a Vector2i ...
+		# ... the snapped method manages to make it so that it recognizes that 1 and -1 are in fact ints and not 0 value
+		var vector2i = Vector2i(pos.snapped(Vector2.ONE))
+		var relativePosition = unitOriginTile.Position + vector2i
+
+		var tile = _grid.GetTile(relativePosition)
+		if tile != null:
+			tileData.Tile = tile
+			tileData.AOEMultiplier = t.Multiplier
+			arr.append(tileData)
+	return arr
 
 func GetDirectionalAttackOptions(_unit : UnitInstance, _grid : Grid):
 	var dict = {}
@@ -85,8 +113,12 @@ func GetBestDirectionForDirectionalShaped(_dict : Dictionary):
 		targetCount = 0
 	return returnDir
 
-func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
+func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[TileTargetedData]):
+	return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant == null || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant)) || (o.Tile.Occupant == _unit && CanTargetSelf))
+
+func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant)) || (o.Occupant == _unit && CanTargetSelf))
+
 
 func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
 	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All

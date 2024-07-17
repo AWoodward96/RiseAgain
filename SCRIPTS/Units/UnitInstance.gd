@@ -41,6 +41,7 @@ var baseStats = {}			#Stats determined by the template object and out-of-run-pro
 var statModifiers = {}		#Stats determined by in-run progression. These are NOT temporary, and shouldn't be removed
 var temporaryStats = {}		#Stats determined by buffs, debuffs, or other TEMPORARY changes on the battlefield. This gets cleared at the end of a map!
 
+var facingDirection : int
 
 var DisplayLevel : int :
 	get: return Level + 1
@@ -135,6 +136,8 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 	GridPosition = _gridLocation
 	map = _map
 	UnitAllegiance = _allegiance
+
+	facingDirection = GameSettingsTemplate.CastDirectionEnumToInt(GameSettingsTemplate.Direction.Down)
 
 	var parent = get_parent()
 	if parent != null:
@@ -467,14 +470,14 @@ func QueueDelayedCombatAction(_log : ActionLog):
 	if CurrentAction == null:
 		PopAction()
 
-func ShowDamagePreview(_source : UnitInstance, _damageData : DamageData):
+func ShowDamagePreview(_source : UnitInstance, _damageData : DamageData, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true
-	damage_indicator.PreviewDamage(_damageData, _source)
+	damage_indicator.PreviewDamage(_damageData, _source, _targetedTileData)
 	pass
 
-func ShowHealPreview(_source : UnitInstance, _healData : HealComponent):
+func ShowHealPreview(_source : UnitInstance, _healData : HealComponent, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true
-	damage_indicator.PreviewHeal(_healData, _source)
+	damage_indicator.PreviewHeal(_healData, _source, _targetedTileData)
 
 func HideDamagePreview():
 	damage_indicator.visible = false

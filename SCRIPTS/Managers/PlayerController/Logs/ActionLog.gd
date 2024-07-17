@@ -8,7 +8,7 @@ var actionOriginTile : Tile # The tile that this action is actually centered on.
 							# It's the single tile that the Player selected during targeting
 
 var sourceTile : Tile		# Where this action is coming from. Is usually Source.CurrentTile, but might not be
-var affectedTiles : Array[Tile] # This is an array in case of aoe. Here are all of the tiles that were hit by this action. Could be one, could be many
+var affectedTiles : Array[TileTargetedData] # This is an array in case of aoe. Here are all of the tiles that were hit by this action. Could be one, could be many
 
 var actionResults : Array[ActionResult]
 

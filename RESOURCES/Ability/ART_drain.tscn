@@ -19,7 +19,8 @@ script = ExtResource("3_t8ilk")
 
 [node name="ART_drain" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_dc21f")
-focusCost = 2
+unlockLevel = 0
+focusCost = 0
 executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_dxbgi"), SubResource("Resource_5cjq5")])
 internalName = "drain"
 loc_displayName = "art_drain"
@@ -30,7 +31,7 @@ UsableDamageData = NodePath("DamageData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("5_i7j3j")
-TargetRange = Vector2i(1, 3)
+TargetRange = Vector2i(1, 2)
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("6_abdv2")

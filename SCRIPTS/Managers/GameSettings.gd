@@ -24,7 +24,7 @@ enum Direction { Up, Right, Down, Left }
 
 @export var CharacterTileMovemementSpeed : float = 100
 
-func GetDirectionVector(_dir : Direction):
+static func GetVectorFromDirection(_dir : Direction):
 	match(_dir):
 		Direction.Up:
 			return Vector2i.UP
@@ -34,6 +34,60 @@ func GetDirectionVector(_dir : Direction):
 			return Vector2i.RIGHT
 		Direction.Down:
 			return Vector2i.DOWN
+
+static func GetDirectionFromVector(_vector : Vector2i):
+	# If Godot had it's shit together, I could cast this enum to an Int, but currently every enum casts to 0, which is fucking stupid as shit
+	# So for now we're just gonna.... do this horrible bullshit I guess
+	match(_vector):
+		Vector2i.UP:
+			return Direction.Up
+		Vector2i.RIGHT:
+			return Direction.Right
+		Vector2i.DOWN:
+			return Direction.Down
+		Vector2i.LEFT:
+			return Direction.Left
+
+	return Direction.Down
+
+static func CastIntToDirectionEnum(_int : int):
+	# I want this to be on the record that this is fucking stupid as shit
+	match(_int):
+		0:
+			return Direction.Up
+		1:
+			return Direction.Right
+		2:
+			return Direction.Down
+		3:
+			return Direction.Left
+
+static func CastDirectionEnumToInt(_direction : Direction):
+	match(_direction):
+		Direction.Up:
+			return 0
+		Direction.Right:
+			return 1
+		Direction.Down:
+			return 2
+		Direction.Left:
+			return 3
+
+static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _preferredDirection : int = -1):
+	if _preferredDirection != -1:
+		var pos = _currentTile.Position + GetVectorFromDirection(_preferredDirection)
+		var tile = _currentGrid.GetTile(pos)
+		if tile != null:
+			return _preferredDirection
+
+	var neighbors = _currentGrid.GetAdjacentTiles(_currentTile)
+	for n in Grid.NEIGHBORS:
+		var pos = _currentTile.Position + n
+		var tile = _currentGrid.GetTile(pos)
+		if tile != null:
+			return GetDirectionFromVector(n)
+
+	return 2
 
 func DamageCalculation(_atk, _def):
 	return floori(max(_atk - _def, 0))

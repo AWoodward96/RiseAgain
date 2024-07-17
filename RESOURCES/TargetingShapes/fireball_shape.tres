@@ -1,22 +1,118 @@
-[gd_resource type="Resource" script_class="TargetingShapeLevel" load_steps=6 format=3 uid="uid://gxv2ghfwicf2"]
+[gd_resource type="Resource" script_class="TargetingShapeLevel" load_steps=26 format=3 uid="uid://gxv2ghfwicf2"]
 
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/LeveledTargetingShape.gd" id="1_8eyp2"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_x5wal"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShapeLevel.gd" id="2_f0uwk"]
+
+[sub_resource type="Resource" id="Resource_yiccj"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_hiplj"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(1, 0)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_rj33o"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(-1, 0)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_u4cnt"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, 1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_vitgh"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, -1)
+Multiplier = 0.66
 
 [sub_resource type="Resource" id="Resource_jxrsc"]
 script = ExtResource("1_8eyp2")
 LevelTheshold = 0
-TileCoordinates = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+TileCoordinates = Array[ExtResource("1_x5wal")]([SubResource("Resource_yiccj"), SubResource("Resource_hiplj"), SubResource("Resource_rj33o"), SubResource("Resource_u4cnt"), SubResource("Resource_vitgh")])
+
+[sub_resource type="Resource" id="Resource_qtxd0"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(1, 0)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_qk6kv"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(-1, 0)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_xgkim"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, 1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_rk866"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, -1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_mj83o"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, 0)
+Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_d8gfi"]
 script = ExtResource("1_8eyp2")
 LevelTheshold = 2
-TileCoordinates = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)])
+TileCoordinates = Array[ExtResource("1_x5wal")]([SubResource("Resource_qtxd0"), SubResource("Resource_qk6kv"), SubResource("Resource_xgkim"), SubResource("Resource_rk866"), SubResource("Resource_mj83o")])
+
+[sub_resource type="Resource" id="Resource_yborg"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_6dhsx"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(1, 0)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_y4n6n"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(-1, 0)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_vphai"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, 1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_hgt2x"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(0, -1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_ypd6v"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(1, -1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_dxu0m"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(1, 1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_j7cds"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(-1, -1)
+Multiplier = 0.66
+
+[sub_resource type="Resource" id="Resource_r6xiv"]
+script = ExtResource("1_x5wal")
+Position = Vector2i(-1, 1)
+Multiplier = 0.66
 
 [sub_resource type="Resource" id="Resource_hr0r4"]
 script = ExtResource("1_8eyp2")
 LevelTheshold = 4
-TileCoordinates = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1), Vector2i(0, 0), Vector2i(1, 1), Vector2i(-1, 1), Vector2i(-1, -1), Vector2i(1, -1)])
+TileCoordinates = Array[ExtResource("1_x5wal")]([SubResource("Resource_yborg"), SubResource("Resource_6dhsx"), SubResource("Resource_y4n6n"), SubResource("Resource_vphai"), SubResource("Resource_hgt2x"), SubResource("Resource_ypd6v"), SubResource("Resource_dxu0m"), SubResource("Resource_j7cds"), SubResource("Resource_r6xiv")])
 
 [resource]
 script = ExtResource("2_f0uwk")

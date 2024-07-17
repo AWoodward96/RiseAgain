@@ -3,20 +3,25 @@ class_name TargetingShapeLevel
 
 @export var leveledShapes : Array[LeveledTargetingShape]
 
-func GetTiles(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
+func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 	var res = GetShapeFromLevel(_unit)
 	if res == null:
 		return []
 
-	var returnTiles : Array[Tile]
+	var returnedTileData : Array[TileTargetedData]
 	for coord in res.TileCoordinates:
-		var newPos = _originTile.Position + coord
+		var tileData = TileTargetedData.new()
+		var newPos = _originTile.Position + coord.Position
 		var tile = _grid.GetTile(newPos)
 		if tile != null:
-			returnTiles.append(tile)
-	return returnTiles
+			tileData.Tile = tile
+			tileData.AOEMultiplier = coord.Multiplier
+			returnedTileData.append(tileData)
+
+	return returnedTileData
 
 func GetCoords(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
+	var vector2iArray : Array[Vector2i]
 	var res = GetShapeFromLevel(_unit)
 	if res == null:
 		return []

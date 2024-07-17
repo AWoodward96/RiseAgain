@@ -18,22 +18,21 @@ var previewHPTween : Tween
 func Initialize(_unit : UnitInstance):
 	myUnit = _unit
 
-func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance):
+func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, _targetedTileData : TileTargetedData):
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 
-	damageBeingDealt = myUnit.CalculateDamage(_damageContext, _sourceUnit)
+	damageBeingDealt = floori(-myUnit.CalculateDamage(_damageContext, _sourceUnit) * _targetedTileData.AOEMultiplier)
 	damage_being_dealt.text = str(damageBeingDealt)
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	resultingHP = clamp(myUnit.currentHealth - damageBeingDealt, 0, myUnit.maxHealth)
+	resultingHP = clamp(myUnit.currentHealth + damageBeingDealt, 0, myUnit.maxHealth)
 
 	death_indicator.visible = resultingHP <= 0
-
 
 	CreateTween()
 	pass
 
-func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance):
+func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance, _targetedTileData: TileTargetedData):
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 	death_indicator.visible = false
@@ -41,7 +40,7 @@ func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance):
 	var healAmount = _healData.FlatValue
 	if _healData.ScalingStat != null && _sourceUnit != null:
 		healAmount += _healData.DoMod(_sourceUnit.GetWorkingStat(_healData.ScalingStat))
-	healAmount = floori(healAmount)
+	healAmount = floori(healAmount * _targetedTileData.AOEMultiplier)
 
 	damage_being_dealt.text = str(healAmount)
 	resultingHP = clamp(myUnit.currentHealth + healAmount, 0, myUnit.maxHealth)
@@ -51,7 +50,6 @@ func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance):
 func CreateTween():
 	previewHPTween = get_tree().create_tween()
 	previewHPTween.tween_method(UpdatePreviewLabel, currentHP, resultingHP, Juice.damagePreviewTickDuration).set_delay(Juice.damagePreviewDelayTime)
-
 
 func UpdatePreviewLabel(value : int):
 	hp_listener.text = str("%02d/%02d" % [max(value, 0), maxHealth])

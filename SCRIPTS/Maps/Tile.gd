@@ -9,3 +9,7 @@ var CanMove: bool
 var InRange : bool
 var Occupant : UnitInstance
 
+func AsTargetData():
+	var target = TileTargetedData.new()
+	target.Tile = self
+	return target

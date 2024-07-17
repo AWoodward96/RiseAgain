@@ -17,7 +17,7 @@ class_name DamagePreviewUI
 @onready var def_hit: Label = %DefHit
 @onready var def_crit: Label = %DefCrit
 
-func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defendingUnit : UnitInstance):
+func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defendingUnit : UnitInstance, _targetData : TileTargetedData):
 	var damageDataFromWeapon = _weaponUsed.UsableDamageData
 	if damageDataFromWeapon == null:
 		push_error("Attempting to show preview damage for weapon with no damage information on it. This is a bug.")
@@ -36,7 +36,7 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 	agressiveVal = damageDataFromWeapon.DoMod(agressiveVal, damageDataFromWeapon.AgressiveMod, damageDataFromWeapon.AgressiveModType)
 	defenssiveVal = damageDataFromWeapon.DoMod(defenssiveVal, damageDataFromWeapon.DefensiveMod, damageDataFromWeapon.DefensiveModType)
 
-	var finalAttackingDamage = GameManager.GameSettings.DamageCalculation(agressiveVal, defenssiveVal)
+	var finalAttackingDamage = GameManager.GameSettings.DamageCalculation(agressiveVal, defenssiveVal) * _targetData.AOEMultiplier
 	var hitRateVal = GameManager.GameSettings.HitRateCalculation(_attackingUnit, _weaponUsed, _defendingUnit)
 
 	# update the UI information

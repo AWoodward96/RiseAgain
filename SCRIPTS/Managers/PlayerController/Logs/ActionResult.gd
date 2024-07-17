@@ -9,6 +9,9 @@ var FocusDelta : int
 var ExpGain : int
 var Kill : bool
 
+var TileTargetData : TileTargetedData
+
+
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
@@ -19,14 +22,15 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 		# Damage dealing items can miss
 		var hitRate = GameManager.GameSettings.HitRateCalculation(Source, _item, Target)
 		CalculateMiss(_rng, hitRate)
-		HealthDelta = -Target.CalculateDamage(_item.UsableDamageData, Source)
+		HealthDelta = floori(-Target.CalculateDamage(_item.UsableDamageData, Source) * TileTargetData.AOEMultiplier)
 
+		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_item.UsableDamageData)
 
 		Kill = !Miss && (Target.currentHealth + HealthDelta <= 0)
 	elif _item.IsHeal(false):
 		# Healing items can't miss
-		HealthDelta = Target.CalculateHeal(_item.HealData, Source)
+		HealthDelta = floori(Target.CalculateHeal(_item.HealData, Source) * TileTargetData.AOEMultiplier)
 
 	CalculateExpGain()
 	CalculateFocusDelta()
@@ -34,14 +38,15 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 
 func Ability_CalculateResult(_ability : Ability, _damageData):
 	if _ability.IsDamage():
-		HealthDelta = -Target.CalculateDamage(_damageData, Source)
+		HealthDelta = floori(-Target.CalculateDamage(_damageData, Source) * TileTargetData.AOEMultiplier)
 
+		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_ability.UsableDamageData)
 
 		Kill = (Target.currentHealth + HealthDelta <= 0)
 	elif _ability.IsHeal(false):
 		# Healing items can't miss
-		HealthDelta = Target.CalculateHeal(_ability.HealData, Source)
+		HealthDelta = floori(Target.CalculateHeal(_ability.HealData, Source) * TileTargetData.AOEMultiplier)
 
 	CalculateExpGain()
 	if _ability.damageGrantsFocus:

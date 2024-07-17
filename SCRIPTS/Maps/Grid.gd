@@ -5,7 +5,7 @@ const UITILEATLAS = 2
 const ATTACKTILE = Vector2i(2,0)
 const RANGETILE = Vector2i(1,0)
 const MOVETILE = Vector2i(0,0)
-const NEIGHBORS = [Vector2i(-1,0), Vector2i(1,0), Vector2i(0,1), Vector2i(0,-1)]
+const NEIGHBORS = [Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
 
 var GridArr : Array[Tile]
 var Width: int
@@ -183,6 +183,13 @@ func GetTile(_pos : Vector2i):
 		return null
 	return GridArr[index]
 
+func GetAdjacentTiles(_tile : Tile):
+	var arr : Array[Tile]
+	for n in NEIGHBORS:
+		var t = GetTile(_tile.Position + n)
+		if t != null:
+			arr.append(t)
+	return arr
 
 func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], a_attackRange : Vector2i) :
 	var returnArr : Array[Tile] = []

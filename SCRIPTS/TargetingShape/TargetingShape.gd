@@ -1,16 +1,19 @@
 extends TargetingShapeBase
 class_name TargetingShape
 
-@export var TileCoordinates : Array[Vector2i]
+@export var TileCoordinates : Array[Vector2iMult]
 
-func GetTiles(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
-	var returnTiles : Array[Tile]
+func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
+	var returnTileData : Array[Tile]
 	for coord in TileCoordinates:
-		var newPos = _originTile.Position + coord
+		var tileData = TileTargetedData.new()
+		var newPos = _originTile.Position + coord.Position
 		var tile = _grid.GetTile(newPos)
 		if tile != null:
-			returnTiles.append(tile)
-	return returnTiles
+			tileData.Tile = tile
+			tileData.AOEMultiplier = coord.Multiplier
+			returnTileData.append(tileData)
+	return returnTileData
 
 func GetCoords(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 	return TileCoordinates

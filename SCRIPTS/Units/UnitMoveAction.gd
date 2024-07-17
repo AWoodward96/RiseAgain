@@ -12,6 +12,10 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	if DestinationTile != null:
 		_map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, false)
 
+	if Route.size() > 1:
+		_unit.facingDirection = GameSettingsTemplate.CastDirectionEnumToInt(GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1] - Route[MovementIndex - 2]).normalized()))
+
+
 func _Execute(_unit : UnitInstance, _delta):
 	var speed = GameManager.GameSettings.CharacterTileMovemementSpeed
 	var destination = Route[MovementIndex]
@@ -25,5 +29,6 @@ func _Execute(_unit : UnitInstance, _delta):
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
 			_unit.position = Route[MovementIndex - 1]
+
 			return true
 	return false

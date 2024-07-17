@@ -30,11 +30,12 @@ func _Enter(_ctrl : PlayerController, data):
 
 	log.actionResults.clear()
 	# The target tiles is an array so loop through that and append the units to take damage
-	for tile in log.affectedTiles:
-		if tile.Occupant != null:
+	for tileData in log.affectedTiles:
+		if tileData.Tile.Occupant != null:
 			var actionResult = ActionResult.new()
 			actionResult.Source = log.source
-			actionResult.Target = tile.Occupant
+			actionResult.Target = tileData.Tile.Occupant
+			actionResult.TileTargetData = tileData
 			log.actionResults.append(actionResult)
 
 	if log.item != null:
@@ -96,6 +97,7 @@ func CheckForRetaliation(_result : ActionResult):
 			var retaliationResult = ActionResult.new()
 			retaliationResult.Source = defendingUnit
 			retaliationResult.Target = log.source
+			retaliationResult.TileTargetData = log.source.CurrentTile.AsTargetData()
 			retaliationResult.Item_CalculateResult(defendingUnit.map.rng, retaliationItem)
 
 			newData.actionResults.append(retaliationResult)
@@ -156,7 +158,7 @@ func PostActionComplete():
 	else:
 		ctrl.EnterOffTurnState()
 
-	if log.actionType == ActionLog.ActionType.Item:
+	if log.actionType == ActionLog.ActionType.Item && log.item != null:
 		log.item.TickUsage()
 
 	ctrl.OnCombatSequenceComplete.emit()
