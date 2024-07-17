@@ -156,6 +156,9 @@ func PostActionComplete():
 	else:
 		ctrl.EnterOffTurnState()
 
+	if log.actionType == ActionLog.ActionType.Item:
+		log.item.TickUsage()
+
 	ctrl.OnCombatSequenceComplete.emit()
 
 func ToString():

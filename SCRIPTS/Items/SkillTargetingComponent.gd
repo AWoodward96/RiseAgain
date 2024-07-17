@@ -35,7 +35,8 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
 
 	options = FilterByTargettingFlags(_unit, options)
 
-	options.sort_custom(OrderTargets)
+	if options.size() > 1:
+		options.sort_custom(OrderTargets)
 	return options
 
 func GetDirectionalAttackOptions(_unit : UnitInstance, _grid : Grid):

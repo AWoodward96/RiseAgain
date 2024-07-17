@@ -9,13 +9,14 @@
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_ijos8"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_xkm8v"]
 
-[sub_resource type="Resource" id="Resource_3nocc"]
+[sub_resource type="Resource" id="Resource_k4wc6"]
 script = ExtResource("5_bewrp")
 Template = ExtResource("4_ydbij")
 Value = 5
 
 [node name="steel_bow" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_cal8j")
+UsageLimit = 15.0
 internalName = "steel_bow"
 loc_displayName = "item_steel_bow_name"
 loc_displayDesc = "item_steel_bow_desc"
@@ -27,7 +28,7 @@ StatData = NodePath("StatComponent")
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("3_t6gdh")
 BaseAccuracy = 85.0
-GrantedStats = Array[ExtResource("5_bewrp")]([SubResource("Resource_3nocc")])
+GrantedStats = Array[ExtResource("5_bewrp")]([SubResource("Resource_k4wc6")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("6_jsy7w")

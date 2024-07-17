@@ -9,6 +9,14 @@ func Initialize(_unitOwner : UnitInstance, _map : Map):
 	super(_unitOwner, _map)
 	currentUsages = UsageLimit
 
+func OnCombat():
+	TickUsage()
+
+func TickUsage():
+	if UsageLimit != -1:
+		currentUsages -= 1
+		if currentUsages <= 0:
+			ownerUnit.TrashItem(self)
 
 func OnUse():
 	# It's a bit unclear how this will actually work, but for now use items are just
@@ -37,10 +45,8 @@ func OnUse():
 			ownerUnit.TrashItem(self)
 
 
-	if UsageLimit != -1 && isUsed:
-		currentUsages -= 1
-		if currentUsages <= 0:
-			ownerUnit.TrashItem(self)
+	if isUsed:
+		TickUsage()
 
 	if isUsed:
 		ownerUnit.QueueEndTurn()
