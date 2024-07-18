@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=21 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -14,7 +14,9 @@
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ItemSelectionUI.gd" id="11_2uhpl"]
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="11_8mf6d"]
 [ext_resource type="PackedScene" uid="uid://b7850ynb8vsrl" path="res://RESOURCES/UI/_alpha_CombatHUD/context_button_entry.tscn" id="11_aar1f"]
+[ext_resource type="PackedScene" uid="uid://qjl2gotelcsg" path="res://RESOURCES/UI/UnitInventory/stat_block_entry_small.tscn" id="12_826r7"]
 [ext_resource type="PackedScene" uid="uid://b2kf5pjs88d6t" path="res://RESOURCES/UI/UnitInventory/unit_inventory_panel.tscn" id="12_um2vj"]
+[ext_resource type="Texture2D" uid="uid://d0g2rta26msr7" path="res://ART/Icons/Items/magic_bolt.png" id="13_6rrfk"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
 
@@ -295,21 +297,32 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel", "levelLabel", "expbar")]
+[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel", "levelLabel", "expbar", "statEntryParent", "weaponIcon", "weaponName", "weaponEntryParent")]
 anchors_preset = 0
 offset_top = -128.0
-offset_right = 256.0
+offset_right = 261.0
 script = ExtResource("9_tccg0")
-icon = NodePath("Icon")
-healthbar = NodePath("Health")
-healthText = NodePath("HealthText")
-namelabel = NodePath("UnitName")
-levelLabel = NodePath("Level")
-expbar = NodePath("EXP")
+icon = NodePath("Main/Icon")
+healthbar = NodePath("Main/Health")
+healthText = NodePath("Main/HealthText")
+namelabel = NodePath("Main/UnitName")
+levelLabel = NodePath("Main/Level")
+expbar = NodePath("Main/EXP")
 focusSlotPrefab = ExtResource("11_8mf6d")
+statPrefab = ExtResource("12_826r7")
+statEntryParent = NodePath("Main/ImportantStats/GridContainer")
+weaponIcon = NodePath("Item/WeaponIcon")
+weaponName = NodePath("Item/Label")
+weaponEntryParent = NodePath("Item/ItemStat")
 levelLoc = "ui_level_num_short"
 
-[node name="BG" type="ColorRect" parent="BottomLeft/InspectUI"]
+[node name="Main" type="Control" parent="BottomLeft/InspectUI"]
+anchors_preset = 0
+offset_top = -34.0
+offset_right = 261.0
+offset_bottom = 94.0
+
+[node name="BG" type="ColorRect" parent="BottomLeft/InspectUI/Main"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -318,89 +331,150 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.447059, 0.447059, 0.447059, 1)
 
-[node name="Icon" type="TextureRect" parent="BottomLeft/InspectUI"]
+[node name="Icon" type="TextureRect" parent="BottomLeft/InspectUI/Main"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
-offset_right = 78.0
-offset_bottom = 79.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 70.0
 texture = SubResource("PlaceholderTexture2D_aihfj")
 expand_mode = 1
 
-[node name="Level" type="Label" parent="BottomLeft/InspectUI"]
+[node name="Level" type="Label" parent="BottomLeft/InspectUI/Main"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
-offset_left = 167.0
-offset_top = 1.0
+offset_left = 203.0
 offset_right = 255.0
-offset_bottom = 24.0
-text = "LvL {NUM}"
+offset_bottom = 23.0
+text = "{NUM}"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI"]
+[node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI/Main"]
+visible = false
 layout_mode = 0
 offset_left = 92.0
 offset_top = 38.0
-offset_right = 148.0
+offset_right = 164.0
 offset_bottom = 61.0
 text = "ui_health"
 
-[node name="HealthText" type="Label" parent="BottomLeft/InspectUI"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-offset_left = 155.0
-offset_top = 39.0
-offset_right = 198.0
-offset_bottom = 62.0
-text = "25/25"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Health" type="ProgressBar" parent="BottomLeft/InspectUI"]
+[node name="Health" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
 custom_minimum_size = Vector2(132, 27)
 layout_mode = 2
-offset_left = 89.0
-offset_top = 62.0
-offset_right = 221.0
-offset_bottom = 89.0
+offset_left = 73.0
+offset_top = 24.0
+offset_right = 253.0
+offset_bottom = 51.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
 show_percentage = false
 
-[node name="EXP" type="ProgressBar" parent="BottomLeft/InspectUI"]
+[node name="HealthText" type="Label" parent="BottomLeft/InspectUI/Main"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 144.0
+offset_top = 25.0
+offset_right = 187.0
+offset_bottom = 48.0
+text = "25/25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXP" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
 custom_minimum_size = Vector2(132, 10)
 layout_mode = 2
-offset_left = 89.0
-offset_top = 98.0
-offset_right = 221.0
-offset_bottom = 108.0
+offset_left = 74.0
+offset_top = 60.0
+offset_right = 253.0
+offset_bottom = 70.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
 step = 1.0
 value = 23.0
 show_percentage = false
 
-[node name="UnitName" type="Label" parent="BottomLeft/InspectUI"]
+[node name="UnitName" type="Label" parent="BottomLeft/InspectUI/Main"]
 layout_mode = 0
-offset_left = 91.0
-offset_top = 17.0
-offset_right = 246.0
-offset_bottom = 40.0
+offset_left = 73.0
+offset_right = 228.0
+offset_bottom = 23.0
 text = "[UnitName]"
 
-[node name="FocusContainer" type="MarginContainer" parent="BottomLeft/InspectUI"]
+[node name="FocusContainer" type="MarginContainer" parent="BottomLeft/InspectUI/Main"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 89.0
-offset_right = 220.0
-offset_bottom = 102.0
+offset_left = 74.0
+offset_top = 51.0
+offset_right = 253.0
+offset_bottom = 64.0
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="FocusBarParent" type="HBoxContainer" parent="BottomLeft/InspectUI/FocusContainer"]
+[node name="FocusBarParent" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/FocusContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
+script = ExtResource("10_fkj7h")
+
+[node name="ImportantStats" type="Control" parent="BottomLeft/InspectUI/Main"]
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 74.0
+offset_right = 252.0
+offset_bottom = 122.0
+
+[node name="GridContainer" type="GridContainer" parent="BottomLeft/InspectUI/Main/ImportantStats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 24
+columns = 4
+script = ExtResource("10_fkj7h")
+
+[node name="Item" type="Control" parent="BottomLeft/InspectUI"]
+anchors_preset = 0
+offset_top = 94.0
+offset_right = 261.0
+offset_bottom = 128.0
+
+[node name="ColorRect" type="ColorRect" parent="BottomLeft/InspectUI/Item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.25, 0.25, 1)
+
+[node name="WeaponIcon" type="TextureRect" parent="BottomLeft/InspectUI/Item"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 34.0
+offset_bottom = 33.0
+texture = ExtResource("13_6rrfk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BottomLeft/InspectUI/Item"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 5.0
+offset_right = 153.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 12
+text = "Weapon Name"
+vertical_alignment = 1
+
+[node name="ItemStat" type="HBoxContainer" parent="BottomLeft/InspectUI/Item"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 8.0
+offset_right = 261.0
+offset_bottom = 28.0
 script = ExtResource("10_fkj7h")
 
 [node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]

@@ -15,6 +15,10 @@ enum Direction { Up, Right, Down, Left }
 
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate
+@export var AttackStat : StatTemplate
+@export var DefenseStat : StatTemplate
+@export var SpAttackStat : StatTemplate
+@export var SpDefenseStat : StatTemplate
 @export var SkillStat : StatTemplate
 @export var LuckStat : StatTemplate
 @export var MindStat : StatTemplate

@@ -126,6 +126,7 @@ func UpdateInspectUISide():
 
 	lastReticleSide = newside
 
+
 func OnTileChanged(_tile : Tile):
 	if _tile.Occupant == null:
 		HideInspectUI()

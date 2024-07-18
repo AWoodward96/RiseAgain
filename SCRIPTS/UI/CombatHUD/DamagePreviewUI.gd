@@ -23,19 +23,9 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 		push_error("Attempting to show preview damage for weapon with no damage information on it. This is a bug.")
 		return
 
-	var aggressiveStat = damageDataFromWeapon.AgressiveStat
-	var defensiveStat = damageDataFromWeapon.DefensiveStat
-	if aggressiveStat == null || defensiveStat == null:
-		push_error("Attempting to show preview damage for weapon that does not define its agressive or defensive stats. This is a bug.")
-		return
-
 	# Do all the complicated calculations
-	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
-	var defenssiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
-
-	agressiveVal = damageDataFromWeapon.DoMod(agressiveVal, damageDataFromWeapon.AgressiveMod, damageDataFromWeapon.AgressiveModType)
-	defenssiveVal = damageDataFromWeapon.DoMod(defenssiveVal, damageDataFromWeapon.DefensiveMod, damageDataFromWeapon.DefensiveModType)
-
+	var agressiveVal = GetAggressiveValFromItem(_weaponUsed, _attackingUnit)
+	var defenssiveVal = GetDefensiveValFromItem(_weaponUsed, _defendingUnit)
 	var finalAttackingDamage = GameManager.GameSettings.DamageCalculation(agressiveVal, defenssiveVal) * _targetData.AOEMultiplier
 	var hitRateVal = GameManager.GameSettings.HitRateCalculation(_attackingUnit, _weaponUsed, _defendingUnit)
 
@@ -56,9 +46,47 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 		defender_weapon_icon.texture = _defendingUnit.EquippedItem.icon
 
 	def_health.text =  "%d" % _defendingUnit.currentHealth
-	if _defendingUnit.IsDefending:
-		pass
+
+
+	var range = _defendingUnit.EquippedItem.GetRange()
+	var combatDistance = _defendingUnit.map.grid.GetManhattanDistance(_attackingUnit.GridPosition, _defendingUnit.GridPosition)
+	# so basically, if the weapon this unit is holding, has a max range
+	if range.x <= combatDistance && range.y >= combatDistance:
+		agressiveVal = GetAggressiveValFromItem(_defendingUnit.EquippedItem, _defendingUnit)
+		defenssiveVal = GetDefensiveValFromItem(_defendingUnit.EquippedItem, _attackingUnit)
+
+		# NOTE: The AOE multiplier here.... should kinda never apply? This UI should only be used to show one on one combat
+		# I will need a more robust system to show actual aoe damage previews - but for now showing it directly on the unit is how I'm doing that
+		# The _targetDatta variable is passed through here as a formailty, but if it ever is not = 1 than this entire function will
+		# need to be rewritten to support it
+		finalAttackingDamage = GameManager.GameSettings.DamageCalculation(agressiveVal, defenssiveVal) * _targetData.AOEMultiplier
+		hitRateVal = GameManager.GameSettings.HitRateCalculation(_defendingUnit, _defendingUnit.EquippedItem, _attackingUnit)
+
+		def_dmg.text = "%d" % finalAttackingDamage
+		def_hit.text = "%d" % (hitRateVal * 100)
+		def_crit.text = "0"
+
 	else:
 		def_dmg.text = "--"
 		def_hit.text = "--"
 		def_crit.text = "--"
+
+func GetAggressiveValFromItem(_item : Item, _attackingUnit : UnitInstance):
+	if _item == null || _item.UsableDamageData == null:
+		return -1
+
+	var damageDataFromWeapon = _item.UsableDamageData
+	var aggressiveStat = damageDataFromWeapon.AgressiveStat
+	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
+	agressiveVal = damageDataFromWeapon.DoMod(agressiveVal,damageDataFromWeapon.AgressiveMod, damageDataFromWeapon.AgressiveModType)
+	return agressiveVal
+
+func GetDefensiveValFromItem(_itemBeingAttackedWith : Item, _defendingUnit : UnitInstance):
+	if _itemBeingAttackedWith == null || _itemBeingAttackedWith.UsableDamageData == null:
+		return -1
+
+	var damageDataFromWeapon = _itemBeingAttackedWith.UsableDamageData
+	var defensiveStat = damageDataFromWeapon.DefensiveStat
+	var defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
+	defensiveVal = damageDataFromWeapon.DoMod(defensiveVal, damageDataFromWeapon.DefensiveMod, damageDataFromWeapon.DefensiveModType)
+	return defensiveVal

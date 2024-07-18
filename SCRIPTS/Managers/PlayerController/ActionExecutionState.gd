@@ -88,10 +88,13 @@ func CheckForRetaliation(_result : ActionResult):
 			# okay at this point retaliation is possible
 			# oh boy time to make a brand new combat data
 			var newData = ActionLog.Construct(defendingUnit, defendingUnit.EquippedItem)
-			newData.affectedTiles.append(log.source.CurrentTile)
+			newData.affectedTiles.append(log.source.CurrentTile.AsTargetData())
 			# turn off retaliation or else these units will be fighting forever
 			newData.canRetaliate = false
 			newData.item = retaliationItem
+
+			# Tick the usage here because idk just do it
+			retaliationItem.OnCombat()
 
 
 			var retaliationResult = ActionResult.new()
@@ -159,7 +162,7 @@ func PostActionComplete():
 		ctrl.EnterOffTurnState()
 
 	if log.actionType == ActionLog.ActionType.Item && log.item != null:
-		log.item.TickUsage()
+		log.item.OnCombat()
 
 	ctrl.OnCombatSequenceComplete.emit()
 

@@ -44,7 +44,7 @@ Value = 0
 [sub_resource type="Resource" id="Resource_tbo4c"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("7_77j7g")
-Value = 6.0
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_oa5eh"]
 script = ExtResource("2_rbfec")

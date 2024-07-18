@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="4_3u0tr"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_26n6f"]
 
-[sub_resource type="Resource" id="Resource_fy3jn"]
+[sub_resource type="Resource" id="Resource_rrmlp"]
 script = ExtResource("5_26n6f")
 Template = ExtResource("4_3u0tr")
 Value = 4
@@ -22,4 +22,4 @@ StatConsumableData = NodePath("StatConsumableComponent")
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_wpywr")
-StatsToGrant = Array[ExtResource("5_26n6f")]([SubResource("Resource_fy3jn")])
+StatsToGrant = Array[ExtResource("5_26n6f")]([SubResource("Resource_rrmlp")])

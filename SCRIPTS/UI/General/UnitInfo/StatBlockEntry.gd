@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 
 
 @export var icon : TextureRect

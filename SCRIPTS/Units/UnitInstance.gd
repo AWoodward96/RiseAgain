@@ -1,6 +1,8 @@
 extends Node2D
 class_name UnitInstance
 
+signal OnStatUpdated
+
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
 @export var itemsParent : Node2D
@@ -227,6 +229,7 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 			levelUpResult[growth.Template] = statIncrease
 			baseStats[growth.Template] += statIncrease
 	UpdateDerivedStats()
+	OnStatUpdated.emit()
 	return levelUpResult
 
 func CreateItems():
@@ -253,6 +256,7 @@ func EquipItem(_item : Item):
 		var invAt0 = Inventory[0]
 		Inventory[0] = _item
 		Inventory[index] = invAt0
+	OnStatUpdated.emit()
 
 func TrashItem(_item : Item):
 	var index = Inventory.find(_item)
@@ -359,6 +363,7 @@ func ModifyFocus(_netFocusChange):
 	currentFocus += _netFocusChange
 	currentFocus = clamp(currentFocus, 0, GetWorkingStat(GameManager.GameSettings.MindStat))
 	UpdateFocusUI()
+	OnStatUpdated.emit()
 
 func OnModifyHealthTweenComplete(_healthNetChange):
 	currentHealth += _healthNetChange
@@ -423,6 +428,7 @@ func ApplyStatModifier(_statDef : StatDef):
 	else:
 		statModifiers[_statDef.Template] = _statDef.Value
 	UpdateDerivedStats()
+	OnStatUpdated.emit()
 
 func CheckDeath():
 	if currentHealth <= 0:
