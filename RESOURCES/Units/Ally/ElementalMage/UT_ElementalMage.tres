@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://dhofh2o4b8tg4"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://dhofh2o4b8tg4"]
 
 [ext_resource type="PackedScene" uid="uid://dmih52nttd88v" path="res://RESOURCES/Units/Ally/ElementalMage/VIS_ElementalMage.tscn" id="1_f24il"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_f24q4"]
 [ext_resource type="PackedScene" uid="uid://tqgdcty0bba5" path="res://RESOURCES/Ability/ART_fireball.tscn" id="1_j1du0"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_dbc0j"]
 [ext_resource type="Texture2D" uid="uid://bn2j7jkcgtx4u" path="res://ART/Icons/Units/elementalmage.png" id="2_fixur"]
+[ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="2_rsivk"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_grtee"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="3_rke14"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_urf7l"]
@@ -102,6 +103,7 @@ script = ExtResource("3_rke14")
 VisualPrefab = ExtResource("1_f24il")
 BaseStats = Array[ExtResource("2_dbc0j")]([SubResource("Resource_sb7fm"), SubResource("Resource_bi4rj"), SubResource("Resource_4pp1j"), SubResource("Resource_sqsso"), SubResource("Resource_fqx0d"), SubResource("Resource_o83du"), SubResource("Resource_02vtt"), SubResource("Resource_qbcu2"), SubResource("Resource_qm2ju")])
 StatGrowths = Array[ExtResource("2_dbc0j")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+Affinity = ExtResource("2_rsivk")
 StartingItems = Array[PackedScene]([ExtResource("10_moxpa"), ExtResource("13_gm5xe")])
 Abilities = Array[PackedScene]([ExtResource("1_j1du0")])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])

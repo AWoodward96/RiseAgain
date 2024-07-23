@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://druuu3tv4re06"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://druuu3tv4re06"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_qm2y0"]
 [ext_resource type="Texture2D" uid="uid://c2kg7bpf1mqb0" path="res://ART/Icons/Units/adolescent_wolf.png" id="1_rc3xi"]
+[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_tvwtq"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="2_n5q5a"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="3_pgxgp"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_uhkmf"]
@@ -101,6 +102,7 @@ script = ExtResource("1_qm2y0")
 VisualPrefab = ExtResource("9_ctp86")
 BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_drfyp"), SubResource("Resource_676dy"), SubResource("Resource_lslhn"), SubResource("Resource_iad1d"), SubResource("Resource_u60o3"), SubResource("Resource_sqpnh"), SubResource("Resource_gs6il"), SubResource("Resource_8msav"), SubResource("Resource_aarhc")])
 StatGrowths = Array[ExtResource("3_pgxgp")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+Affinity = ExtResource("1_tvwtq")
 StartingItems = Array[PackedScene]([ExtResource("10_r738f")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_fydjx")])

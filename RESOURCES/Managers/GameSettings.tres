@@ -41,3 +41,7 @@ MindStat = ExtResource("11_t1n24")
 InitializeUnitsWithMaxFocus = false
 NumberOfRewardsInPostMap = 3
 CharacterTileMovemementSpeed = 500.0
+StrongAffinityMultiplier = 1.5
+OpposedAffinityMultiplier = 1.25
+WeakAffinityMultiplier = 0.66
+AffinityAccuracyModifier = 10

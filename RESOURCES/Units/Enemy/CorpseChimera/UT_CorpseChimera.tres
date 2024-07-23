@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://crv54ls8tyldj"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://crv54ls8tyldj"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_6ahb0"]
+[ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_enqqm"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_gv3c6"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_tog8l"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_ntgrw"]
@@ -102,6 +103,7 @@ script = ExtResource("10_411ei")
 VisualPrefab = ExtResource("11_pdfes")
 BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubResource("Resource_wv3us"), SubResource("Resource_rnj5o"), SubResource("Resource_4aku7"), SubResource("Resource_xwjvg"), SubResource("Resource_hs78b"), SubResource("Resource_gptug"), SubResource("Resource_wf3lf"), SubResource("Resource_luif0")])
 StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+Affinity = ExtResource("1_enqqm")
 StartingItems = Array[PackedScene]([ExtResource("11_hktnb")])
 Abilities = Array[PackedScene]([])
 Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_1wq3p")])

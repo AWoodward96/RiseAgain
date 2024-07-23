@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitSettings" load_steps=8 format=3 uid="uid://b4u6518tnwvj6"]
+[gd_resource type="Resource" script_class="UnitSettingsTemplate" load_steps=8 format=3 uid="uid://b4u6518tnwvj6"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Managers/UnitSettings.gd" id="1_a2dt2"]
 [ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_fb7ip"]

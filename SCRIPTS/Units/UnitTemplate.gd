@@ -6,6 +6,8 @@ class_name UnitTemplate
 @export var BaseStats : Array[StatDef]
 @export var StatGrowths : Array[StatDef]
 
+@export var Affinity : AffinityTemplate
+
 @export var StartingItems : Array[PackedScene]
 @export var Abilities : Array[PackedScene]
 @export var Descriptors : Array[DescriptorTemplate]

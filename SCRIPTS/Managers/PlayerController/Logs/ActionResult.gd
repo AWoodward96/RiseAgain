@@ -22,7 +22,8 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 		# Damage dealing items can miss
 		var hitRate = GameManager.GameSettings.HitRateCalculation(Source, _item, Target)
 		CalculateMiss(_rng, hitRate)
-		HealthDelta = floori(-Target.CalculateDamage(_item.UsableDamageData, Source) * TileTargetData.AOEMultiplier)
+
+		HealthDelta = -GameManager.GameSettings.UnitDamageCalculation(Source, Target, _item.UsableDamageData, TileTargetData.AOEMultiplier)
 
 		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_item.UsableDamageData)
@@ -30,7 +31,7 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 		Kill = !Miss && (Target.currentHealth + HealthDelta <= 0)
 	elif _item.IsHeal(false):
 		# Healing items can't miss
-		HealthDelta = floori(Target.CalculateHeal(_item.HealData, Source) * TileTargetData.AOEMultiplier)
+		HealthDelta = GameManager.GameSettings.UnitHealCalculation(_item.HealData, Source, TileTargetData.AOEMultiplier)
 
 	CalculateExpGain()
 	CalculateFocusDelta()
@@ -38,7 +39,7 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 
 func Ability_CalculateResult(_ability : Ability, _damageData):
 	if _ability.IsDamage():
-		HealthDelta = floori(-Target.CalculateDamage(_damageData, Source) * TileTargetData.AOEMultiplier)
+		HealthDelta = -GameManager.GameSettings.UnitDamageCalculation(Source, Target, _damageData, TileTargetData.AOEMultiplier)
 
 		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_ability.UsableDamageData)
@@ -46,7 +47,7 @@ func Ability_CalculateResult(_ability : Ability, _damageData):
 		Kill = (Target.currentHealth + HealthDelta <= 0)
 	elif _ability.IsHeal(false):
 		# Healing items can't miss
-		HealthDelta = floori(Target.CalculateHeal(_ability.HealData, Source) * TileTargetData.AOEMultiplier)
+		HealthDelta = GameManager.GameSettings.UnitHealCalculation(_ability.HealData, Source, TileTargetData.AOEMultiplier)
 
 	CalculateExpGain()
 	if _ability.damageGrantsFocus:

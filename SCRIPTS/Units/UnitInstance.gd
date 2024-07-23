@@ -7,6 +7,7 @@ signal OnStatUpdated
 @export var abilityParent : Node2D
 @export var itemsParent : Node2D
 @export var focusSlotPrefab : PackedScene
+@export var affinityIcon: Sprite2D
 
 @onready var health_bar = %HealthBar
 @onready var hp_val = %"HP Val"
@@ -88,6 +89,9 @@ func _ready():
 
 func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	Template = _unitTemplate
+
+	if _unitTemplate.Affinity != null:
+		affinityIcon.texture = _unitTemplate.Affinity.loc_icon
 
 	CreateItems()
 	CreateAbilities()
@@ -376,31 +380,6 @@ func OnModifyHealthTweenComplete(_healthNetChange):
 
 	CheckDeath()
 
-# DamageData is not typed so that it can be eiter the DamageData or the DamageDataResourceWrapper
-func CalculateDamage(_damageData, _source):
-	var damage = _damageData.FlatValue
-	var defense = GetWorkingStat(_damageData.DefensiveStat)
-	var defensiveStatValue = _damageData.DoMod(defense, _damageData.DefensiveMod, _damageData.DefensiveModType)
-
-	var sourceAsUnit = _source as UnitInstance
-	if sourceAsUnit != null:
-		# If Source is not equal to null, then the damage will be based on that units agressive stat
-		var attack = sourceAsUnit.GetWorkingStat(_damageData.AgressiveStat)
-		var agressiveStatValue = _damageData.DoMod(attack, _damageData.AgressiveMod, _damageData.AgressiveModType)
-
-		damage += GameManager.GameSettings.DamageCalculation(agressiveStatValue, defensiveStatValue)
-	else:
-		# If Source is null, then damage will be based on _damageData's FlatValue property, which is unaffected by modifiers
-		damage += GameManager.GameSettings.DamageCalculation(_damageData.FlatValue, defensiveStatValue)
-		pass
-	return damage
-
-func CalculateHeal(_healData : HealComponent, _source):
-	var healAmount = _healData.FlatValue
-	if _healData.ScalingStat != null && _source != null:
-		healAmount += _healData.DoMod(_source.GetWorkingStat(_healData.ScalingStat))
-	healAmount = floori(healAmount)
-	return healAmount
 
 ### The function you want to call when you want to know the Final state that the Unit is working with
 func GetWorkingStat(_statTemplate : StatTemplate):

@@ -1,7 +1,6 @@
 extends Resource
 class_name GameSettingsTemplate
 
-
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 enum Direction { Up, Right, Down, Left }
 
@@ -27,6 +26,11 @@ enum Direction { Up, Right, Down, Left }
 @export var NumberOfRewardsInPostMap = 3
 
 @export var CharacterTileMovemementSpeed : float = 100
+
+@export var StrongAffinityMultiplier : float = 1.5
+@export var OpposedAffinityMultiplier : float = 1.25
+@export var WeakAffinityMultiplier : float = 0.66
+@export var AffinityAccuracyModifier : int = 10
 
 static func GetVectorFromDirection(_dir : Direction):
 	match(_dir):
@@ -93,11 +97,28 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 
 	return 2
 
-func DamageCalculation(_atk, _def):
-	return floori(max(_atk - _def, 0))
+func UnitDamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _aoeMultiplier : float = 1):
+	var aggressiveStat = _damageData.AgressiveStat
+	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
+	agressiveVal = _damageData.DoMod(agressiveVal, _damageData.AgressiveMod, _damageData.AgressiveModType)
+
+	var defensiveStat = _damageData.DefensiveStat
+	var defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
+	defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
+
+	var affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
+
+	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * _aoeMultiplier)
+
+func UnitHealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
+	var healAmount = _healData.FlatValue
+	if _healData.ScalingStat != null && _source != null:
+		healAmount += _healData.DoMod(_source.GetWorkingStat(_healData.ScalingStat))
+	healAmount = floori(healAmount * _aoeMultiplier)
+	return healAmount
 
 func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : Item, _defender : UnitInstance):
-	return HitChance(_attacker, _attackerWeapon) - AvoidChance(_defender)
+	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender)
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
 	# TODO: Increase or decrease the exp gained from damaging a foe based on some metric
@@ -119,7 +140,7 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
 	return (A * (pow(B, X)) + C) * 20 + _damageDealt
 
-func HitChance(_attacker : UnitInstance, _weapon : Item):
+func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : Item):
 	if _attacker == null:
 		push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
 		return 0
@@ -128,14 +149,18 @@ func HitChance(_attacker : UnitInstance, _weapon : Item):
 	if _weapon != null:
 		weaponAccuracy = _weapon.GetAccuracy()
 
+	var affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
+
 	# Equation is:
 	# WeaponAcc + (Skill * 2) + (Luck / 2)
-	return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0)) / 100.0
+	return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0) + affinityModifier) / 100.0
 
-func AvoidChance(_defender : UnitInstance):
+func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
 	if _defender == null:
 		return 0
 
+	var affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
+
 	# Equation is:
 	# (Skill * 2) + (Luck)
-	return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat)) / 100.0
+	return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat) + affinityModifier) / 100.0

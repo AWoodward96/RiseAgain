@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=11 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
+[ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6je4"]
 
@@ -23,12 +24,13 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "itemsParent")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "itemsParent", "affinityIcon")]
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
 itemsParent = NodePath("Items")
 focusSlotPrefab = ExtResource("4_kfodt")
+affinityIcon = NodePath("AffinityIcon")
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -94,7 +96,14 @@ script = ExtResource("4_lg50f")
 
 [node name="DefendIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0.298039, 1, 0.254902, 1)
 position = Vector2(53.5, 53.5)
 scale = Vector2(0.0410156, 0.0410156)
 texture = ExtResource("4_reqvg")
+
+[node name="AffinityIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(11, 11)
+scale = Vector2(0.0410156, 0.0410156)
+texture = ExtResource("7_vnfmn")

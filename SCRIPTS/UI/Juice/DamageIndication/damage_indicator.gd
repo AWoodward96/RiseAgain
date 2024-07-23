@@ -22,7 +22,7 @@ func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, _tar
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 
-	damageBeingDealt = floori(-myUnit.CalculateDamage(_damageContext, _sourceUnit) * _targetedTileData.AOEMultiplier)
+	damageBeingDealt = -GameManager.GameSettings.UnitDamageCalculation(_sourceUnit, myUnit, _damageContext, _targetedTileData.AOEMultiplier)
 	damage_being_dealt.text = str(damageBeingDealt)
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
 	resultingHP = clamp(myUnit.currentHealth + damageBeingDealt, 0, myUnit.maxHealth)
@@ -37,10 +37,7 @@ func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance, _targete
 	maxHealth = myUnit.maxHealth
 	death_indicator.visible = false
 
-	var healAmount = _healData.FlatValue
-	if _healData.ScalingStat != null && _sourceUnit != null:
-		healAmount += _healData.DoMod(_sourceUnit.GetWorkingStat(_healData.ScalingStat))
-	healAmount = floori(healAmount * _targetedTileData.AOEMultiplier)
+	var healAmount = GameManager.GameSettings.UnitHealCalculation(_healData, _sourceUnit, _targetedTileData.AOEMultiplier)
 
 	damage_being_dealt.text = str(healAmount)
 	resultingHP = clamp(myUnit.currentHealth + healAmount, 0, myUnit.maxHealth)
