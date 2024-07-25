@@ -7,7 +7,7 @@ func _Enter(_ctrl : PlayerController, data):
 
 	ctrl.UpdateContextUI()
 	ctrl.combatHUD.ShowNoTargets(false)
-	ctrl.combatHUD.ShowContext(selectedUnit)
+	ctrl.combatHUD.ShowContext()
 	currentGrid.ClearActions()
 
 func UpdateInput(_delta):

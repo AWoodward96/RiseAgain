@@ -50,6 +50,10 @@ func _process(_delta):
 	if ControllerState != null :
 		ControllerState._Execute(_delta)
 
+	if ControllerState.CanShowThreat():
+		if InputManager.infoDown:
+			currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
 
 func ChangeControllerState(a_newState : PlayerControllerState, optionalData):
@@ -159,6 +163,9 @@ func EnterVictoryState():
 func EnterActionExecutionState(_log):
 	ChangeControllerState(ActionExecutionState.new(), _log)
 
+func EnterGlobalContextState():
+	ChangeControllerState(GlobalContextControllerState.new(), null)
+
 func CreateCombatHUD():
 	if combatHUD == null:
 		combatHUD = GameManager.CombatHUDUI.instantiate() as CombatHUD
@@ -169,9 +176,13 @@ func CreateCombatHUD():
 
 	return combatHUD
 
+func UpdateGlobalContextUI():
+	combatHUD.ContextUI.Clear()
+	combatHUD.ContextUI.AddButton("End Turn", true, OnEndTurn)
+
+
 func UpdateContextUI():
 	combatHUD.ContextUI.Clear()
-
 
 	if CanAttack(selectedUnit):
 		combatHUD.ContextUI.AddButton("Attack", true, OnAttack)
@@ -205,11 +216,16 @@ func OnInventory():
 		unitInventoryOpen = true
 	pass
 
+func OnEndTurn():
+	var units = currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
+	for u in units:
+		if u.Activated && u.IsStackFree:
+			u.QueueEndTurn()
+
 func OnInventoryClose():
 	unitInventoryOpen = false
 	currentGrid.ClearActions()
-	combatHUD.ShowContext(selectedUnit)
-
+	combatHUD.ShowContext()
 
 func OnDefend():
 	selectedUnit.Defend()

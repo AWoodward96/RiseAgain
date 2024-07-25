@@ -13,9 +13,6 @@ class_name AITargetClosest
 
 var targetUnit : UnitInstance
 
-
-var grid : Grid
-var pathfinding  : AStarGrid2D
 var selectedTile : Tile
 var selectedPath : PackedVector2Array
 
@@ -25,8 +22,6 @@ var pathfindingOptions : Array[PathfindingOption]
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
-	grid = _map.grid
-	pathfinding = map.grid.Pathfinding
 
 	selectedTile = null
 	selectedPath.clear()

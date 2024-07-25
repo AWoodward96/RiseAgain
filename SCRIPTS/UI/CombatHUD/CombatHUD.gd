@@ -73,7 +73,7 @@ func PlayVictoryBanner():
 func HideInspectUI():
 	InspectUI.visible = false
 
-func ShowContext(_unit : UnitInstance):
+func ShowContext():
 	ContextUI.visible = true
 	ContextUI.global_position = top_right_anchor.global_position
 	ContextUI.Initialize()

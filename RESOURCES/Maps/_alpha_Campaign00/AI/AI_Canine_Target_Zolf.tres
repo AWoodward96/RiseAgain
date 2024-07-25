@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="AITargetClosest" load_steps=6 format=3 uid="uid://dcia5mwta8mpi"]
+[gd_resource type="Resource" script_class="AISmartTarget" load_steps=6 format=3 uid="uid://dcia5mwta8mpi"]
 
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="1_gdws1"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="2_uwqut"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_TargetClosest.gd" id="3_hx4ar"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_SmartTarget.gd" id="3_4p4kk"]
 
 [sub_resource type="Resource" id="Resource_0dfyh"]
 script = ExtResource("2_uwqut")
@@ -14,7 +14,5 @@ script = ExtResource("2_uwqut")
 Team = 1
 
 [resource]
-script = ExtResource("3_hx4ar")
+script = ExtResource("3_4p4kk")
 Flags = Array[ExtResource("2_uwqut")]([SubResource("Resource_0dfyh"), SubResource("Resource_dxkq5")])
-IsPriorityFlag = true
-RememberTarget = false

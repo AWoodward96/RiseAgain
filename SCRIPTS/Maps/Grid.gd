@@ -1,10 +1,14 @@
 class_name Grid
 
-const ACTIONOPTIONSLAYER = 1
+const THREATLAYER = 1
+const ACTIONOPTIONSLAYER = 2
 const UITILEATLAS = 2
 const ATTACKTILE = Vector2i(2,0)
 const RANGETILE = Vector2i(1,0)
 const MOVETILE = Vector2i(0,0)
+const THREATTILE_1 = Vector2i(0,1)
+const THREATTILE_2 = Vector2i(1,1)
+const THREATTILE_3 = Vector2i(2,1)
 const NEIGHBORS = [Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
 
 var GridArr : Array[Tile]
@@ -13,6 +17,7 @@ var Height: int
 var Pathfinding : AStarGrid2D
 var Tilemap : TileMap
 var CellSize : int
+var ShowingThreat : bool
 
 var StartingPositions : Array[Vector2i]
 
@@ -84,6 +89,46 @@ func ShowUnitActions(_unit : UnitInstance):
 	GetCharacterAttackOptions(_unit, movement, unitRange)
 	ShowActions()
 
+func ShowThreat(_show : bool, _units : Array[UnitInstance]):
+	Tilemap.clear_layer(THREATLAYER)
+	ShowingThreat = _show
+
+	if !ShowingThreat:
+		return
+
+	var workingList : Array[Tile]
+	for u in _units:
+		if u == null:
+			continue
+
+		var movement = GetCharacterMovementOptions(u, false)
+		movement = GetUniqueTiles(movement)
+
+		var unitRange = u.GetEffectiveAttackRange()
+		var threatRange = GetCharacterAttackOptions(u, movement, unitRange, false)
+		threatRange = GetUniqueTiles(threatRange)
+		workingList.append_array(threatRange)
+
+	for tile in workingList:
+		var numberOfAppearances = workingList.count(tile)
+		match numberOfAppearances:
+			0:
+				pass
+			1:
+				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_1)
+			2:
+				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_2)
+			_:
+				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_3)
+
+static func GetUniqueTiles(_array : Array[Tile]):
+	var returnMe : Array[Tile] = []
+
+	for tile in _array:
+		if !returnMe.has(tile):
+			returnMe.append(tile)
+
+	return returnMe
 
 func ClearActions() :
 	for n in GridArr:
@@ -110,7 +155,7 @@ func ShowActions() :
 
 
 
-func GetCharacterMovementOptions(_unit : UnitInstance) :
+func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true) :
 	var returnList : Array[Tile] = []
 	var frontier : Array[Tile] = []
 	var workingList : Array[Tile] = []
@@ -120,14 +165,15 @@ func GetCharacterMovementOptions(_unit : UnitInstance) :
 	var movement = _unit.GetUnitMovement()
 	for move in movement + 1: # +1 because for loops are not inclusive
 		for current in frontier :
-			current.CanMove = true
+			if _markTiles:
+				current.CanMove = true
 			returnList.append(current)
 
 			for neigh in NEIGHBORS:
 				var neighborLocation = current.Position + neigh
 				if Pathfinding.is_in_bounds(neighborLocation.x, neighborLocation.y) :
 					var neighborIndex = neighborLocation.y * Width + neighborLocation.x
-					if (!GridArr[neighborIndex].CanMove && !GridArr[neighborIndex].IsWall) :
+					if (!GridArr[neighborIndex].IsWall) :
 						var occupant = GridArr[neighborIndex].Occupant
 						if (occupant== null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
 							workingList.append(GridArr[neighborIndex])
@@ -191,21 +237,23 @@ func GetAdjacentTiles(_tile : Tile):
 			arr.append(t)
 	return arr
 
-func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], a_attackRange : Vector2i) :
+func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], _attackRange : Vector2i, _markTiles : bool = true) :
 	var returnArr : Array[Tile] = []
 	for n in _workingList :
-		for x in range(-a_attackRange.y, a_attackRange.y + 1) :
-			for y in range(-a_attackRange.y, a_attackRange.y + 1) :
+		for x in range(-_attackRange.y, _attackRange.y + 1) :
+			for y in range(-_attackRange.y, _attackRange.y + 1) :
 				if (x == 0 && y == 0) || (_unit.GridPosition == n.Position + Vector2i(x,y)) :
 					continue
 
 				var position = n.Position as Vector2 + Vector2(x,y)
-				if(Pathfinding.is_in_bounds(position.x, position.y)):
+				if (Pathfinding.is_in_bounds(position.x, position.y)):
 					#var dst = position.distance_to(n.Position as Vector2)
 					var dst = position - (n.Position as Vector2)
 					var riseOverRun = abs(dst.x) + abs(dst.y)
-					if (riseOverRun >= a_attackRange.x && riseOverRun <= a_attackRange.y) :
-						GridArr[position.y * Width + position.x].CanAttack = true
+					if (riseOverRun >= _attackRange.x && riseOverRun <= _attackRange.y) :
+						if _markTiles:
+							GridArr[position.y * Width + position.x].CanAttack = true
+
 						returnArr.append(GridArr[position.y * Width + position.x])
 	return returnArr
 

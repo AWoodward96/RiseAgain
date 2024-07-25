@@ -77,3 +77,6 @@ func ToString():
 
 func ShowInspectUI():
 	return true
+
+func CanShowThreat():
+	return true

@@ -24,6 +24,8 @@ func _Execute(_delta):
 					ctrl.EnterUnitMovementState()
 				else:
 					currentGrid.ShowUnitActions(tile.Occupant)
+		else:
+			ctrl.EnterGlobalContextState()
 
 	if InputManager.cancelDown:
 		currentGrid.ClearActions()

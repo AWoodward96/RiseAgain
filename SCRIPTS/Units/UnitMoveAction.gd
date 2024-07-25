@@ -11,6 +11,8 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	MovementVelocity = 0
 	if DestinationTile != null:
 		_map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, false)
+	else:
+		push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
 
 	if Route.size() > 1:
 		_unit.facingDirection = GameSettingsTemplate.CastDirectionEnumToInt(GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1] - Route[MovementIndex - 2]).normalized()))

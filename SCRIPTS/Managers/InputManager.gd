@@ -23,6 +23,9 @@ var cancelHeld : bool
 var startDown : bool
 var startHeld : bool
 
+var infoDown : bool
+var infoHeld : bool
+
 
 func _process(_delta):
 	UpdateInputArrays(_delta)
@@ -67,3 +70,6 @@ func UpdateSelectAndCancel(_delta):
 func UpdateStart(_delta):
 	startHeld = Input.is_action_pressed("start")
 	startDown = Input.is_action_just_pressed("start")
+
+	infoHeld = Input.is_action_pressed("info")
+	infoDown = Input.is_action_just_pressed("info")
