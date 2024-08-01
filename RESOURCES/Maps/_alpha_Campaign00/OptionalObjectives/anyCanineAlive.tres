@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ObjectiveReward" load_steps=8 format=3 uid="uid://da3o0kjhor1b0"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveUnitsLeftAlive.gd" id="1_0ysnn"]
+[ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="2_a2q3y"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="3_d11bw"]
+[ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="4_6fp1p"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="5_y8ri3"]
+
+[sub_resource type="Resource" id="Resource_gf163"]
+script = ExtResource("3_d11bw")
+Team = 4
+Descriptor = ExtResource("2_a2q3y")
+
+[sub_resource type="Resource" id="Resource_y6ybs"]
+script = ExtResource("1_0ysnn")
+targetingFlag = SubResource("Resource_gf163")
+number = 1
+
+[resource]
+script = ExtResource("5_y8ri3")
+loc_objectiveDescription = ""
+objective = SubResource("Resource_y6ybs")
+rewardTable = ExtResource("4_6fp1p")

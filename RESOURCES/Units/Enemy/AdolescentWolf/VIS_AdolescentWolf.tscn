@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://btg88g5hje3a3"]
+[gd_scene load_steps=6 format=3 uid="uid://btg88g5hje3a3"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_ut2ly"]
 [ext_resource type="Texture2D" uid="uid://c2kg7bpf1mqb0" path="res://ART/Icons/Units/adolescent_wolf.png" id="2_ibxe8"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_iq7tr"]
+[ext_resource type="AnimationLibrary" uid="uid://bj02d4u5cj7x7" path="res://ART/Animations/Units/UnitNeutralLibrary.res" id="4_kkvdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
@@ -19,7 +20,8 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"UnitEnemyLibrary": ExtResource("3_iq7tr")
+"UnitEnemyLibrary": ExtResource("3_iq7tr"),
+"UnitNeutralLibrary": ExtResource("4_kkvdj")
 }
 
 [node name="Area2D" type="Area2D" parent="."]

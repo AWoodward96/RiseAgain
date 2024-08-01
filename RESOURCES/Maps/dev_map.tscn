@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_hfwsr"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_hfwsr"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_j1gep"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_lvx7e"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_5aprs"]
@@ -59,8 +59,8 @@ script = ExtResource("11_owybn")
 [node name="C0_Map01" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_yneqe")
 GridSize = Vector2i(15, 10)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
+WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://hwqrstkn4a22"]
+[gd_scene load_steps=24 format=3 uid="uid://hwqrstkn4a22"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_bwyvd"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_anclv"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_rhj17"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_6iuoo"]
+[ext_resource type="Resource" uid="uid://da3o0kjhor1b0" path="res://RESOURCES/Maps/_alpha_Campaign00/OptionalObjectives/anyCanineAlive.tres" id="3_hcx6d"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_le553"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_oajjo"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_at13p"]
@@ -18,11 +19,11 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="17_1l1oh"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_anclv")
+script = ExtResource("2_rhj17")
 
 [sub_resource type="Resource" id="Resource_a6yb0"]
 script = ExtResource("17_1l1oh")
-TargetingFlags = 1
+TargetingFlags = 3
 RangeOverride = 0
 DamageAggros = true
 
@@ -48,8 +49,9 @@ DamageAggros = true
 script = ExtResource("1_bwyvd")
 GridSize = Vector2i(23, 14)
 CameraStart = Vector2(7, 3)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
+WinCondition = SubResource("Resource_vm3u1")
+OptionalObjectives = Array[Resource("res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd")]([ExtResource("3_hcx6d")])
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -122,6 +124,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("13_mjsbc")
 UnitLevel = 6
 Position = Vector2i(4, 2)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_a6yb0")
 
@@ -150,6 +153,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("13_mjsbc")
 UnitLevel = 6
 Position = Vector2i(10, 2)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_a6yb0")
 
@@ -164,6 +168,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("13_mjsbc")
 UnitLevel = 6
 Position = Vector2i(12, 2)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_a6yb0")
 
@@ -178,6 +183,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("13_mjsbc")
 UnitLevel = 6
 Position = Vector2i(19, 2)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_a6yb0")
 
@@ -192,6 +198,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("13_mjsbc")
 UnitLevel = 6
 Position = Vector2i(20, 3)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_a6yb0")
 
@@ -206,6 +213,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("14_methd")
 UnitLevel = 6
 Position = Vector2i(11, 7)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -220,6 +228,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("14_methd")
 UnitLevel = 6
 Position = Vector2i(10, 7)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -234,6 +243,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("14_methd")
 UnitLevel = 6
 Position = Vector2i(18, 4)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -360,6 +370,7 @@ script = ExtResource("7_t6ox0")
 UnitToSpawn = ExtResource("8_t3e7d")
 UnitLevel = 5
 Position = Vector2i(10, 5)
+Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_h56u6")
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://b1edodfhgyr3p"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_uoybh"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_20yfj"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_7epj0"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_pxm64"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_71qsi"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_fmu3y"]
@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://crv54ls8tyldj" path="res://RESOURCES/Units/Enemy/CorpseChimera/UT_CorpseChimera.tres" id="19_e4sxn"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_20yfj")
+script = ExtResource("2_7epj0")
 
 [sub_resource type="Resource" id="Resource_h56u6"]
 script = ExtResource("12_d2m7k")
@@ -55,8 +55,8 @@ DamageAggros = true
 script = ExtResource("1_uoybh")
 GridSize = Vector2i(21, 13)
 CameraStart = Vector2(7, 3)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
+WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -143,6 +143,7 @@ script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("8_ll2rp")
 UnitLevel = 5
 Position = Vector2i(18, 2)
+Allegiance = 4
 AIBehavior = ExtResource("9_ox083")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -157,6 +158,7 @@ script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("13_1e5rr")
 UnitLevel = 5
 Position = Vector2i(5, 11)
+Allegiance = 4
 AIBehavior = ExtResource("9_ox083")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -171,6 +173,7 @@ script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("13_1e5rr")
 UnitLevel = 5
 Position = Vector2i(3, 9)
+Allegiance = 4
 AIBehavior = ExtResource("9_ox083")
 AggroBehavior = SubResource("Resource_h56u6")
 

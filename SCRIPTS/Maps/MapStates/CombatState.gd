@@ -40,13 +40,15 @@ func Update(_delta):
 		# TODO: Figure out the best way to determine whose turn it is up next
 		match map.currentTurn:
 			GameSettingsTemplate.TeamID.ALLY:
-				#if map.teams.has(GameSettings.TeamID.ENEMY) && map.teams[GameSettings.TeamID.ENEMY].size() > 0:
-				nextTurn = GameSettingsTemplate.TeamID.ENEMY
+				if map.teams.has(GameSettingsTemplate.TeamID.NEUTRAL) && map.teams[GameSettingsTemplate.TeamID.NEUTRAL].size() > 0:
+					nextTurn = GameSettingsTemplate.TeamID.NEUTRAL
+				else:
+					nextTurn = GameSettingsTemplate.TeamID.ENEMY
 			GameSettingsTemplate.TeamID.ENEMY:
 				nextTurn = GameSettingsTemplate.TeamID.ALLY
 			# TODO: Neutral turns
 			GameSettingsTemplate.TeamID.NEUTRAL:
-				nextTurn = GameSettingsTemplate.TeamID.ALLY
+				nextTurn = GameSettingsTemplate.TeamID.ENEMY
 		StartTurn(nextTurn)
 
 func StartTurn(_turn : GameSettingsTemplate.TeamID):
@@ -103,10 +105,7 @@ func ClearTileSelection():
 	map.grid.ClearActions()
 	controller.EndMovementTracker()
 
-func UpdateEnemyTurn(_delta):
-	if !map.teams.has(GameSettingsTemplate.TeamID.ENEMY):
-		return
-
+func UpdateOffTurn(_delta):
 	if currentUnitsTurn == null:
 		# Wait for the stack to be clear before starting the next turn
 		if !map.GlobalStackClear():
@@ -136,5 +135,15 @@ func UpdateEnemyTurn(_delta):
 		if !currentUnitsTurn.Activated && currentUnitsTurn.IsStackFree:
 			currentUnitsTurn = null
 
+func UpdateEnemyTurn(_delta):
+	if !map.teams.has(GameSettingsTemplate.TeamID.ENEMY):
+		return
+
+	UpdateOffTurn(_delta)
+
+
 func UpdateNeutralTurn(_delta):
-	pass
+	if !map.teams.has(GameSettingsTemplate.TeamID.NEUTRAL):
+		return
+
+	UpdateOffTurn(_delta)

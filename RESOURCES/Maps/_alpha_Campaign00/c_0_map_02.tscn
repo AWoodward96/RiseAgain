@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://oxwcsghwa4k3"]
+[gd_scene load_steps=27 format=3 uid="uid://oxwcsghwa4k3"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_vx1gh"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_4inf2"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_ke2xc"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_5yv00"]
+[ext_resource type="Resource" uid="uid://8pqnjdx0myv4" path="res://RESOURCES/Maps/_alpha_Campaign00/OptionalObjectives/killPrizedBuck.tres" id="3_wmiq1"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_g0r0l"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_wvtxq"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_fj6ad"]
@@ -13,9 +14,11 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="10_xk6ob"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_y3nb1"]
 [ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="14_m1els"]
+[ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="14_sa0a2"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="15_lew10"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_4inf2")
+script = ExtResource("2_ke2xc")
 
 [sub_resource type="Resource" id="Resource_1u085"]
 script = ExtResource("10_xk6ob")
@@ -53,11 +56,19 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
+[sub_resource type="Resource" id="Resource_ceg4b"]
+script = ExtResource("15_lew10")
+positionToMoveTo = Vector2i(15, 3)
+
+[sub_resource type="Resource" id="Resource_hrfmh"]
+script = ExtResource("12_y3nb1")
+
 [node name="C0_Map02" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_vx1gh")
 GridSize = Vector2i(16, 10)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
+WinCondition = SubResource("Resource_vm3u1")
+OptionalObjectives = Array[Resource("res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd")]([ExtResource("3_wmiq1")])
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -145,7 +156,7 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
-UnitLevel = 2
+UnitLevel = 1
 Position = Vector2i(13, 7)
 AIBehavior = ExtResource("9_241cv")
 AggroBehavior = SubResource("Resource_vtkl2")
@@ -159,7 +170,7 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
-UnitLevel = 2
+UnitLevel = 1
 Position = Vector2i(13, 8)
 AIBehavior = ExtResource("9_241cv")
 AggroBehavior = SubResource("Resource_vtkl2")
@@ -201,7 +212,7 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
-UnitLevel = 2
+UnitLevel = 1
 Position = Vector2i(8, 3)
 AIBehavior = ExtResource("9_241cv")
 AggroBehavior = SubResource("Resource_7jrpa")
@@ -243,10 +254,23 @@ vframes = 4
 frame = 2
 script = ExtResource("7_4f2q2")
 UnitToSpawn = ExtResource("10_x5p22")
-UnitLevel = 2
+UnitLevel = 1
 Position = Vector2i(9, 3)
 AIBehavior = ExtResource("9_241cv")
 AggroBehavior = SubResource("Resource_o8bys")
+
+[node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
+position = Vector2(0, 192)
+texture = ExtResource("6_fj6ad")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_4f2q2")
+UnitToSpawn = ExtResource("14_sa0a2")
+Position = Vector2i(0, 3)
+AIBehavior = SubResource("Resource_ceg4b")
+AggroBehavior = SubResource("Resource_hrfmh")
 
 [node name="Variants" type="Node2D" parent="."]
 

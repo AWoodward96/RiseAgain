@@ -1,7 +1,7 @@
-extends MapWinCondition
-class_name WinConRoute
+extends MapObjective
+class_name Route
 
-func CheckWincon(_map : Map):
+func CheckObjective(_map : Map):
 	var enemies = _map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY)
 	if enemies.size() == 0:
 		return true

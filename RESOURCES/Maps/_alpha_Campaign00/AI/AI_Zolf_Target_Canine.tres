@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_5ynsj"]
 script = ExtResource("1_2amd1")
-Team = 2
+Team = 6
 Descriptor = ExtResource("1_ovbds")
 
 [sub_resource type="Resource" id="Resource_khvw8"]

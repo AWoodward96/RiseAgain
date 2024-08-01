@@ -30,6 +30,19 @@ func Enter(_map : Map, _ctrl : PlayerController):
 			rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
 			await rewardUI.OnRewardSelected
 
+		for optionalObjectives in map.OptionalObjectives:
+			if optionalObjectives.objective == null:
+				continue
+
+			if optionalObjectives.objective.CheckObjective(map):
+				var rewardArray = optionalObjectives.rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
+				rewardUI = GameManager.MapRewardUI.instantiate() as RewardsUI
+				map.add_child(rewardUI)
+
+				rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
+				await rewardUI.OnRewardSelected
+
+
 	await map.get_tree().create_timer(1).timeout
 
 	var signalCallback = GameManager.ShowLoadingScreen()

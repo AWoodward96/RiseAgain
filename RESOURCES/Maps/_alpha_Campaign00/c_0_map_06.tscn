@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://crsfuln75037q"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_darpl"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/WinCons/WinConRoute.gd" id="2_2j17b"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_ljdxe"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_inot6"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_j5ahy"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_mby31"]
@@ -22,8 +22,8 @@
 [ext_resource type="Resource" uid="uid://eyed7bxgka4g" path="res://RESOURCES/Units/Enemy/WildNecromancer/UT_WildNecromancer.tres" id="19_7ecbv"]
 [ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="20_7hdmx"]
 
-[sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_2j17b")
+[sub_resource type="Resource" id="Resource_5yfca"]
+script = ExtResource("2_ljdxe")
 
 [sub_resource type="Resource" id="Resource_ihni7"]
 script = ExtResource("10_l1q4g")
@@ -93,8 +93,8 @@ DamageAggros = true
 script = ExtResource("1_darpl")
 GridSize = Vector2i(17, 15)
 CameraStart = Vector2(7, 3)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
+WinCondition = SubResource("Resource_5yfca")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -209,6 +209,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("8_joda4")
 UnitLevel = 6
 Position = Vector2i(8, 2)
+Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -223,6 +224,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("15_g5vum")
 UnitLevel = 6
 Position = Vector2i(7, 1)
+Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -237,6 +239,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("15_g5vum")
 UnitLevel = 6
 Position = Vector2i(9, 1)
+Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -251,6 +254,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("13_biu8f")
 UnitLevel = 6
 Position = Vector2i(1, 1)
+Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
 
@@ -265,6 +269,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("13_biu8f")
 UnitLevel = 6
 Position = Vector2i(15, 1)
+Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
 

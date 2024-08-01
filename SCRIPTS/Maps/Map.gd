@@ -7,8 +7,11 @@ enum MAPSTATE { PreMap, Combat, PostMap }
 @export var GridSize = Vector2i(22 , 15)
 @export var CameraStart : Vector2
 @export var TileSize = 64
-@export var WinCondition : MapWinCondition
 @export var tilemap : TileMap
+
+@export_category("Objectives")
+@export var WinCondition : MapObjective
+@export var OptionalObjectives : Array[ObjectiveReward]
 
 
 @export_category("Parents")
@@ -20,6 +23,7 @@ var MapState : MapStateBase
 var CurrentCampaign : CampaignTemplate
 
 var teams = {}
+var unitsKilled = {}
 var playercontroller : PlayerController
 var currentTurn = GameSettingsTemplate.TeamID
 
@@ -56,7 +60,7 @@ func _process(_delta):
 		MapState.Update(_delta)
 
 	if WinCondition != null && MapState is CombatState:
-		if WinCondition.CheckWincon(self):
+		if WinCondition.CheckObjective(self):
 			# Wait for everything to resolve first
 			if GlobalStackClear():
 				ChangeMapState(VictoryState.new())
@@ -157,6 +161,15 @@ func OnUnitDeath(_unitInstance : UnitInstance):
 		if teams[_unitInstance.UnitAllegiance].size() == 0:
 			teams.erase(_unitInstance.UnitAllegiance)
 
+	if unitsKilled.has(_unitInstance.Template):
+		unitsKilled[_unitInstance.Template] += 1
+	else:
+		unitsKilled[_unitInstance.Template] = 1
+
+	RemoveUnitFromMap(_unitInstance)
+
+# This can be called outside of unit death for units that are escaping
+func RemoveUnitFromMap(_unitInstance : UnitInstance):
 	# Collect the reference before hand
 	var tile = _unitInstance.CurrentTile
 	tile.Occupant = null

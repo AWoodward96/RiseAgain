@@ -7,6 +7,9 @@ var unit : UnitInstance
 var grid : Grid
 var pathfinding  : AStarGrid2D
 
+var selectedPath : PackedVector2Array
+var selectedTile : Tile
+
 func StartTurn(_map : Map, _unit : UnitInstance):
 	unit = _unit
 	map = _map
@@ -18,3 +21,25 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 func RunTurn():
 	pass
+
+
+func TruncatePathBasedOnMovement(_path, _currentMovement):
+	selectedPath = _path
+	selectedPath = selectedPath.slice(0, _currentMovement)
+
+	var indexedSize = selectedPath.size() - 1
+	selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
+
+	if selectedTile.Occupant != null:
+		while selectedTile.Occupant != null:
+			# Well shit now we're in trouble
+			# walk backwards from the current index
+			indexedSize -= 1
+			if indexedSize < 0:
+				# if we've hit 0, then there are a whole bunch of units all in the way of this unit, so just end turn
+				#unit.QueueEndTurn()
+				return false
+
+			selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
+			selectedPath.remove_at(selectedPath.size() - 1)
+	return true

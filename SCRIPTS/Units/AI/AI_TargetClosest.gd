@@ -13,9 +13,6 @@ class_name AITargetClosest
 
 var targetUnit : UnitInstance
 
-var selectedTile : Tile
-var selectedPath : PackedVector2Array
-
 var item : Item
 
 var pathfindingOptions : Array[PathfindingOption]
@@ -59,7 +56,8 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		if option.PathSize > unitMovement + effectiveRange.y:
 			# CASE 1:
 			# The unit is too far from their target, and should simply move closer
-			TruncatePathBasedOnMovement(option.Path, unitMovement)
+			if !TruncatePathBasedOnMovement(option.Path, unitMovement):
+				unit.QueueEndTurn()
 			break # break out and go to execution
 		else:
 			# CASE 2:
@@ -96,34 +94,14 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		return
 
 	if selectedPath.size() > unitMovement:
-		TruncatePathBasedOnMovement(selectedPath, unitMovement)
+		if !TruncatePathBasedOnMovement(selectedPath, unitMovement):
+			unit.QueueEndTurn()
 
 	# STEP FIVE:
 	# MOVE
 	unit.MoveCharacterToNode(selectedPath, selectedTile)
 	TryCombat()
 	pass
-
-# Cuts down the path to the units movement, and takes into account occupied tiles so that this unit doesn't move on top of another unit
-func TruncatePathBasedOnMovement(_path, _currentMovement):
-	selectedPath = _path
-	selectedPath = selectedPath.slice(0, _currentMovement)
-
-	var indexedSize = selectedPath.size() - 1
-	selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
-
-	if selectedTile.Occupant != null:
-		while selectedTile.Occupant != null:
-			# Well shit now we're in trouble
-			# walk backwards from the current index
-			indexedSize -= 1
-			if indexedSize < 0:
-				# if we've hit 0, then there are a whole bunch of units all in the way of this unit, so just end turn
-				unit.QueueEndTurn()
-				return
-
-			selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
-			selectedPath.remove_at(selectedPath.size() - 1)
 
 
 func GetAllValidPaths():

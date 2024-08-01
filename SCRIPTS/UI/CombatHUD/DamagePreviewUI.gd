@@ -45,8 +45,10 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 
 	def_health.text =  "%d" % _defendingUnit.currentHealth
 
+	var range = Vector2i.ZERO
+	if _defendingUnit.EquippedItem != null:
+		range = _defendingUnit.EquippedItem.GetRange()
 
-	var range = _defendingUnit.EquippedItem.GetRange()
 	var combatDistance = _defendingUnit.map.grid.GetManhattanDistance(_attackingUnit.GridPosition, _defendingUnit.GridPosition)
 	# so basically, if the weapon this unit is holding, has a max range
 	if range.x <= combatDistance && range.y >= combatDistance && _defendingUnit.EquippedItem != null && _defendingUnit.EquippedItem.IsDamage():
