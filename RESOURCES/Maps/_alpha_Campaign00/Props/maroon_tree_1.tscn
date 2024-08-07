@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://rv2qy18nvwky"]
+
+[ext_resource type="Texture2D" uid="uid://cxs7ni7cplrak" path="res://ART/Environment/maroon_tree_trunk_2.png" id="1_gq3av"]
+[ext_resource type="Shader" path="res://ART/Shaders/tree_sway.gdshader" id="2_r23km"]
+[ext_resource type="Texture2D" uid="uid://c4xn2vhb1fga5" path="res://ART/Environment/tree_top_2.png" id="3_wvtqi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yq3xq"]
+noise_type = 2
+frequency = 0.0033
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yed8p"]
+noise = SubResource("FastNoiseLite_yq3xq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ena1l"]
+shader = ExtResource("2_r23km")
+shader_parameter/pixel_mode = true
+shader_parameter/pixel_amount = 64.0
+shader_parameter/distortion = 0.05
+shader_parameter/texture_noise_system = true
+shader_parameter/noise_speed = 0.01
+shader_parameter/noise_direction = -1
+shader_parameter/worley_noise_system = true
+shader_parameter/worley_cell_density = 64.0
+shader_parameter/worley_speed = 0.01
+shader_parameter/edge_and_mask = false
+shader_parameter/alpha_value = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_yed8p")
+
+[node name="MaroonTree1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gq3av")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ena1l")
+position = Vector2(0, -32)
+texture = ExtResource("3_wvtqi")

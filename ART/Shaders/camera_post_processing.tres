@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dvmdxgr0s40m5"]
+
+[ext_resource type="Shader" path="res://ART/Shaders/camera_post_processing.gdshader" id="1_i14d4"]
+
+[resource]
+shader = ExtResource("1_i14d4")
+shader_parameter/effectColor = Color(0.8084, 0.909293, 0.94, 1)

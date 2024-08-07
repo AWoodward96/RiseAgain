@@ -50,9 +50,9 @@ func _process(_delta):
 	if ControllerState != null :
 		ControllerState._Execute(_delta)
 
-	if ControllerState.CanShowThreat():
-		if InputManager.infoDown:
-			currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+		if ControllerState.CanShowThreat():
+			if InputManager.infoDown:
+				currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
 
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
 

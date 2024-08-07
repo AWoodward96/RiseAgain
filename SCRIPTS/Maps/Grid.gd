@@ -1,7 +1,9 @@
 class_name Grid
 
-const THREATLAYER = 1
-const ACTIONOPTIONSLAYER = 2
+const THREAT_LAYER_NAME = "Threat"
+const NAVIGATION_LAYER_NAME = "Navigation"
+const UI_LAYER_NAME = "UI"
+
 const UITILEATLAS = 2
 const ATTACKTILE = Vector2i(2,0)
 const RANGETILE = Vector2i(1,0)
@@ -21,6 +23,10 @@ var ShowingThreat : bool
 
 var StartingPositions : Array[Vector2i]
 
+var threatLayerIndex : int
+var navigationLayerIndex : int
+var uiLayerIndex : int
+
 
 func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
 	Width = _width
@@ -37,6 +43,7 @@ func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
 	Pathfinding.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	Pathfinding.update() # NOTE: calling update clears all solid data. DO NOT CALL THIS AGAIN
 
+	UpdateTilemapLayerInfo()
 	# no 2d arrays, cowabunga it is
 	GridArr.resize(Width*Height)
 	for x in Width:
@@ -45,11 +52,21 @@ func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
 			GridArr[index] = Tile.new()
 			GridArr[index].Position = Vector2i(x,y)
 			GridArr[index].GlobalPosition = Vector2(x * CellSize, y *CellSize)
-			var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
+			var data = Tilemap.get_cell_tile_data(navigationLayerIndex, Vector2i(x,y))
 			if data:
 				if data.get_collision_polygons_count(0) > 0 :
 					GridArr[index].IsWall = true
 					Pathfinding.set_point_solid(Vector2i(x,y), true)
+
+func UpdateTilemapLayerInfo():
+	for i in range(0, Tilemap.get_layers_count()):
+		var layerName = Tilemap.get_layer_name(i)
+		if layerName.begins_with(THREAT_LAYER_NAME):
+			threatLayerIndex = i
+		elif layerName.begins_with(UI_LAYER_NAME):
+			uiLayerIndex = i
+		elif layerName.begins_with(NAVIGATION_LAYER_NAME):
+			navigationLayerIndex = i
 
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID):
@@ -65,7 +82,7 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 
 	var x = _tile.Position.x
 	var y = _tile.Position.y
-	var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
+	var data = Tilemap.get_cell_tile_data(navigationLayerIndex, Vector2i(x,y))
 
 	Pathfinding.set_point_solid(Vector2i(x,y), false)
 	Pathfinding.set_point_weight_scale(Vector2i(x,y), 1)
@@ -90,7 +107,7 @@ func ShowUnitActions(_unit : UnitInstance):
 	ShowActions()
 
 func ShowThreat(_show : bool, _units : Array[UnitInstance]):
-	Tilemap.clear_layer(THREATLAYER)
+	Tilemap.clear_layer(threatLayerIndex)
 	ShowingThreat = _show
 
 	if !ShowingThreat:
@@ -115,11 +132,11 @@ func ShowThreat(_show : bool, _units : Array[UnitInstance]):
 			0:
 				pass
 			1:
-				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_1)
+				Tilemap.set_cell(threatLayerIndex, tile.Position, UITILEATLAS, THREATTILE_1)
 			2:
-				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_2)
+				Tilemap.set_cell(threatLayerIndex, tile.Position, UITILEATLAS, THREATTILE_2)
 			_:
-				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_3)
+				Tilemap.set_cell(threatLayerIndex, tile.Position, UITILEATLAS, THREATTILE_3)
 
 static func GetUniqueTiles(_array : Array[Tile]):
 	var returnMe : Array[Tile] = []
@@ -136,7 +153,7 @@ func ClearActions() :
 		n.CanAttack = false
 		n.InRange = false
 
-	Tilemap.clear_layer(ACTIONOPTIONSLAYER)
+	Tilemap.clear_layer(uiLayerIndex)
 
 func ShowActions() :
 	for n in GridArr :
@@ -144,14 +161,14 @@ func ShowActions() :
 			continue
 
 		if n.InRange :
-			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, RANGETILE)
+			Tilemap.set_cell(uiLayerIndex, n.Position, UITILEATLAS, RANGETILE)
 
 		if n.CanMove :
-			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, MOVETILE)
+			Tilemap.set_cell(uiLayerIndex, n.Position, UITILEATLAS, MOVETILE)
 			continue
 
 		if n.CanAttack :
-			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, ATTACKTILE)
+			Tilemap.set_cell(uiLayerIndex, n.Position, UITILEATLAS, ATTACKTILE)
 
 
 

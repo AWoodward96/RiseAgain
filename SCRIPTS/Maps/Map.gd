@@ -55,6 +55,7 @@ func PreInitialize():
 		if spawner != null:
 			spawners.append(spawner)
 
+
 func _process(_delta):
 	if MapState != null:
 		MapState.Update(_delta)

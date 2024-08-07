@@ -34,8 +34,8 @@ DamageAggros = true
 [node name="C0_Map01" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_rl342")
 GridSize = Vector2i(15, 10)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap = NodePath("Tilemap")
+WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")

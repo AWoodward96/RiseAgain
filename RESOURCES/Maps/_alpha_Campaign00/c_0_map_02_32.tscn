@@ -1,82 +1,82 @@
-[gd_scene load_steps=30 format=3 uid="uid://oxwcsghwa4k3"]
+[gd_scene load_steps=30 format=3 uid="uid://bcckrw7fagu2p"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_vx1gh"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_ke2xc"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_5yv00"]
-[ext_resource type="Resource" uid="uid://8pqnjdx0myv4" path="res://RESOURCES/Maps/_alpha_Campaign00/OptionalObjectives/killPrizedBuck.tres" id="3_wmiq1"]
-[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_g0r0l"]
-[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_wvtxq"]
-[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_fj6ad"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_4f2q2"]
-[ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_ax251"]
-[ext_resource type="Resource" uid="uid://eyed7bxgka4g" path="res://RESOURCES/Units/Enemy/WildNecromancer/UT_WildNecromancer.tres" id="9_3p7jn"]
-[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="9_241cv"]
-[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_x5p22"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="10_xk6ob"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_y3nb1"]
-[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="14_m1els"]
-[ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="14_sa0a2"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="15_lew10"]
-[ext_resource type="PackedScene" uid="uid://rv2qy18nvwky" path="res://RESOURCES/Maps/_alpha_Campaign00/Props/maroon_tree_1.tscn" id="18_8p1b7"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_8sdgt"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_wl7in"]
+[ext_resource type="Resource" uid="uid://8pqnjdx0myv4" path="res://RESOURCES/Maps/_alpha_Campaign00/OptionalObjectives/killPrizedBuck.tres" id="3_1d3m8"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="4_woypr"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="5_p2rlm"]
+[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="6_v4mev"]
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="7_p1lx8"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="8_rrtvb"]
+[ext_resource type="Resource" uid="uid://eyed7bxgka4g" path="res://RESOURCES/Units/Enemy/WildNecromancer/UT_WildNecromancer.tres" id="9_hc6i1"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="10_ho42w"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="11_acypm"]
+[ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="12_hdcih"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="13_tx1sy"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="14_8sywr"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="15_l3567"]
+[ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="16_1dfd7"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="17_76lbu"]
+[ext_resource type="PackedScene" uid="uid://rv2qy18nvwky" path="res://RESOURCES/Maps/_alpha_Campaign00/Props/maroon_tree_1.tscn" id="18_s5v01"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_ke2xc")
+script = ExtResource("2_wl7in")
 
 [sub_resource type="Resource" id="Resource_hon2m"]
-script = ExtResource("10_xk6ob")
+script = ExtResource("11_acypm")
 TargetingFlags = 1
 RangeOverride = 1
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_1u085"]
-script = ExtResource("10_xk6ob")
+script = ExtResource("11_acypm")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_jto7i"]
-script = ExtResource("10_xk6ob")
+script = ExtResource("11_acypm")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_vtkl2"]
-script = ExtResource("12_y3nb1")
+script = ExtResource("14_8sywr")
 
 [sub_resource type="Resource" id="Resource_3ghe4"]
-script = ExtResource("12_y3nb1")
+script = ExtResource("14_8sywr")
 
 [sub_resource type="Resource" id="Resource_hkppi"]
-script = ExtResource("10_xk6ob")
+script = ExtResource("11_acypm")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_7jrpa"]
-script = ExtResource("10_xk6ob")
+script = ExtResource("11_acypm")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_o8bys"]
-script = ExtResource("10_xk6ob")
+script = ExtResource("11_acypm")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_ceg4b"]
-script = ExtResource("15_lew10")
+script = ExtResource("17_76lbu")
 positionToMoveTo = Vector2i(15, 3)
 
 [sub_resource type="Resource" id="Resource_hrfmh"]
-script = ExtResource("12_y3nb1")
+script = ExtResource("14_8sywr")
 
 [node name="C0_Map02" type="Node2D" node_paths=PackedStringArray("tilemap", "squadParent", "StartingPositionsParent", "SpawnersParent")]
-script = ExtResource("1_vx1gh")
+script = ExtResource("1_8sdgt")
 GridSize = Vector2i(16, 10)
 tilemap = NodePath("Tilemap")
 WinCondition = SubResource("Resource_vm3u1")
-OptionalObjectives = Array[Resource("res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd")]([ExtResource("3_wmiq1")])
+OptionalObjectives = Array[Resource("res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd")]([ExtResource("3_1d3m8")])
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -85,11 +85,11 @@ SpawnersParent = NodePath("Spawners")
 points = PackedVector2Array(0, 0, 1024, 0, 1024, 640, 0, 640, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
-script = ExtResource("3_5yv00")
+script = ExtResource("4_woypr")
 map = NodePath("..")
 
 [node name="Tilemap" type="TileMap" parent="."]
-tile_set = ExtResource("4_g0r0l")
+tile_set = ExtResource("5_p2rlm")
 format = 2
 layer_0/name = "Terrain"
 layer_0/z_index = -5
@@ -117,22 +117,22 @@ layer_5/tile_data = PackedInt32Array()
 unique_name_in_owner = true
 visible = false
 
-[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_wvtxq")]
+[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("6_v4mev")]
 position = Vector2(192, 512)
 Position = Vector2i(3, 8)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_wvtxq")]
+[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("6_v4mev")]
 position = Vector2(256, 512)
 Position = Vector2i(4, 8)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_wvtxq")]
+[node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("6_v4mev")]
 position = Vector2(256, 576)
 Position = Vector2i(4, 9)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_wvtxq")]
+[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("6_v4mev")]
 position = Vector2(192, 576)
 Position = Vector2i(3, 9)
 map = NodePath("../..")
@@ -143,177 +143,177 @@ visible = false
 
 [node name="Spawn_WildNecromancer" type="Sprite2D" parent="Spawners"]
 position = Vector2(128, 192)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("9_3p7jn")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("9_hc6i1")
 UnitLevel = 2
 Position = Vector2i(2, 3)
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_hon2m")
 
 [node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
 position = Vector2(128, 192)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("8_ax251")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("12_hdcih")
 UnitLevel = 2
 Position = Vector2i(2, 3)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_1u085")
 
 [node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners"]
 position = Vector2(192, 192)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("8_ax251")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("12_hdcih")
 UnitLevel = 2
 Position = Vector2i(3, 3)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_jto7i")
 
 [node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 448)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("10_x5p22")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("13_tx1sy")
 UnitLevel = 1
 Position = Vector2i(13, 7)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_vtkl2")
 
 [node name="Spawn_Zombie6" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 512)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("10_x5p22")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("13_tx1sy")
 UnitLevel = 1
 Position = Vector2i(13, 8)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_vtkl2")
 
 [node name="Spawn_Wolf Pup6" type="Sprite2D" parent="Spawners"]
 position = Vector2(128, 64)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("8_ax251")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("12_hdcih")
 UnitLevel = 2
 Position = Vector2i(2, 1)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_3ghe4")
 
 [node name="Spawn_Wolf Pup7" type="Sprite2D" parent="Spawners"]
 position = Vector2(704, 64)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("8_ax251")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("12_hdcih")
 UnitLevel = 2
 Position = Vector2i(11, 1)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_hkppi")
 
 [node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
 position = Vector2(512, 192)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("10_x5p22")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("13_tx1sy")
 UnitLevel = 1
 Position = Vector2i(8, 3)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_7jrpa")
 
 [node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
 position = Vector2(768, 64)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("14_m1els")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("15_l3567")
 UnitLevel = 2
 Position = Vector2i(12, 1)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_7jrpa")
 
 [node name="Spawn_WolfPup2" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 64)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("8_ax251")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("12_hdcih")
 UnitLevel = 2
 Position = Vector2i(13, 1)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_7jrpa")
 
 [node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
 position = Vector2(576, 192)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("10_x5p22")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("13_tx1sy")
 UnitLevel = 1
 Position = Vector2i(9, 3)
 Enabled = false
-AIBehavior = ExtResource("9_241cv")
+AIBehavior = ExtResource("10_ho42w")
 AggroBehavior = SubResource("Resource_o8bys")
 
 [node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
 position = Vector2(0, 192)
-texture = ExtResource("6_fj6ad")
+texture = ExtResource("7_p1lx8")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_4f2q2")
-UnitToSpawn = ExtResource("14_sa0a2")
+script = ExtResource("8_rrtvb")
+UnitToSpawn = ExtResource("16_1dfd7")
 Position = Vector2i(0, 3)
 Enabled = false
 AIBehavior = SubResource("Resource_ceg4b")
@@ -323,56 +323,56 @@ AggroBehavior = SubResource("Resource_hrfmh")
 
 [node name="Squads" type="Node2D" parent="."]
 
-[node name="MaroonTree2" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree2" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(407, 673)
 
-[node name="MaroonTree3" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree3" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(542, 664)
 
-[node name="MaroonTree4" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree4" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(681, 690)
 
-[node name="MaroonTree5" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree5" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(827, 670)
 
-[node name="MaroonTree6" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree6" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(953, 694)
 
-[node name="MaroonTree7" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree7" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(35, -16)
 
-[node name="MaroonTree8" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree8" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(167, -70)
 
-[node name="MaroonTree9" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree9" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(232, -52)
 
-[node name="MaroonTree10" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree10" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(101, 12)
 
-[node name="MaroonTree15" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree15" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(550, -28)
 
-[node name="MaroonTree16" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree16" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(403, -36)
 
-[node name="MaroonTree17" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree17" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(939, -14)
 
-[node name="MaroonTree18" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree18" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(1003, 53)
 
-[node name="MaroonTree11" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree11" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(301, -10)
 
-[node name="MaroonTree12" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree12" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(364, 11)
 
-[node name="MaroonTree13" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree13" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(483, 8)
 
-[node name="MaroonTree14" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree14" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(614, 11)
 
-[node name="MaroonTree1" parent="." instance=ExtResource("18_8p1b7")]
+[node name="MaroonTree1" parent="." instance=ExtResource("18_s5v01")]
 position = Vector2(68, 648)
