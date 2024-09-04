@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=31 format=3 uid="uid://ban0gyynywtal"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://ban0gyynywtal"]
 
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_ydurd"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="2_pddbs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_np70f"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_tjfus"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_jaxs6"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_7xvlv"]
 [ext_resource type="PackedScene" uid="uid://d108irg1t3j5n" path="res://RESOURCES/Units/Other/PrizedBuck/VIS_PrizedBuck.tscn" id="12_umh1e"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_ywkkh"]
 [ext_resource type="Texture2D" uid="uid://olxft3bee4j4" path="res://ART/Icons/Units/prized_buck.png" id="13_tiupu"]
@@ -104,7 +105,7 @@ StatGrowths = Array[ExtResource("3_8jwmx")]([SubResource("Resource_kbkqe"), SubR
 Affinity = ExtResource("1_ydurd")
 StartingItems = Array[PackedScene]([])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
+Descriptors = Array[ExtResource("12_7xvlv")]([])
 DebugName = "PrizedBuck"
 loc_DisplayName = "unit_prizedbuck_name"
 loc_Description = "unit_prizedbuck_desc"

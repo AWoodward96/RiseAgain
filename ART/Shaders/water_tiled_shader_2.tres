@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ddk8f4f6egruj"]
+
+[ext_resource type="Shader" path="res://ART/Shaders/water_test.gdshader" id="1_5udm1"]
+
+[resource]
+shader = ExtResource("1_5udm1")
+shader_parameter/do_pixelization = true
+shader_parameter/pixelization_amount = 320.0
+shader_parameter/world_texture_size = Vector2(512, 512)
+shader_parameter/WATER_COL = Color(0.196078, 0.32549, 0.290196, 1)
+shader_parameter/WATER2_COL = Color(0.231373, 0.427451, 0.384314, 1)
+shader_parameter/FOAM_COL = Color(0.196078, 0.32549, 0.290196, 1)
+shader_parameter/distortion_speed = 5.0
+shader_parameter/tile = Vector2(48, 48)
+shader_parameter/wave_speed = 1.5

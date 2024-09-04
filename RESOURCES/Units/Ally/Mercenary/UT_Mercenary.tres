@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://ub3y41eeets8"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://ub3y41eeets8"]
 
 [ext_resource type="PackedScene" uid="uid://t7o5840ctb3j" path="res://RESOURCES/Units/Ally/Mercenary/VIS_Mercenary.tscn" id="1_7knpf"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_apt4s"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Items/Equippable/iron_sword.tscn" id="10_b6vys"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_rvsvh"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="11_abces"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_h6cm6"]
 
 [sub_resource type="Resource" id="Resource_08ret"]
 script = ExtResource("2_7td1i")
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_7td1i")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("2_tt2lv")
 StartingItems = Array[PackedScene]([ExtResource("10_b6vys"), ExtResource("11_abces")])
 Abilities = Array[PackedScene]([ExtResource("1_lht5j")])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
+Descriptors = Array[ExtResource("13_h6cm6")]([])
 DebugName = "Mercenary"
 loc_DisplayName = "unit_mercenary_name"
 loc_Description = "unit_mercenary_desc"

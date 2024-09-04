@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://2pfghhe6mjmc"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://2pfghhe6mjmc"]
 
 [ext_resource type="PackedScene" uid="uid://466imq0pty1v" path="res://RESOURCES/Ability/ART_heal.tscn" id="1_dfj6t"]
 [ext_resource type="PackedScene" uid="uid://dcs78xo7fpefo" path="res://RESOURCES/Units/Ally/LightMage/VIS_LightMage.tscn" id="1_jpsjm"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_61ylm"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_qg2uc"]
 [ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="12_hgg78"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_dt4jc"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="13_v88mn"]
 
 [sub_resource type="Resource" id="Resource_bsid8"]
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_043p3")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("2_verca")
 StartingItems = Array[PackedScene]([ExtResource("12_hgg78"), ExtResource("13_v88mn")])
 Abilities = Array[PackedScene]([ExtResource("1_dfj6t")])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
+Descriptors = Array[ExtResource("13_dt4jc")]([])
 DebugName = "LightMage"
 loc_DisplayName = "unit_lightmage_name"
 loc_Description = "unit_lightmage_desc"

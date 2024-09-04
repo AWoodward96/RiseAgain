@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://dhofh2o4b8tg4"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://dhofh2o4b8tg4"]
 
 [ext_resource type="PackedScene" uid="uid://dmih52nttd88v" path="res://RESOURCES/Units/Ally/ElementalMage/VIS_ElementalMage.tscn" id="1_f24il"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_f24q4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="10_moxpa"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_te031"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="13_gm5xe"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_nhkcp"]
 
 [sub_resource type="Resource" id="Resource_sb7fm"]
 script = ExtResource("2_dbc0j")
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_dbc0j")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("2_rsivk")
 StartingItems = Array[PackedScene]([ExtResource("10_moxpa"), ExtResource("13_gm5xe")])
 Abilities = Array[PackedScene]([ExtResource("1_j1du0")])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
+Descriptors = Array[ExtResource("13_nhkcp")]([])
 DebugName = "ElementalMage"
 loc_DisplayName = "unit_elementalmage_name"
 loc_Description = "unit_elementalmage_desc"

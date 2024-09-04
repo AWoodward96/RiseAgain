@@ -37,23 +37,34 @@
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": [
-				"9885093d-540a-4082-95d0-21690a89185c"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
 			"title": "Done",
 			"tasks": [
 				"c522e9e5-a53d-4b28-97fe-5b160086558f",
+				"0cf1abf8-580f-4cdd-9d88-dfa33cf831ae",
+				"cc83f861-7143-4066-9c9c-e2950111758d",
 				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
+				"cafbce6b-95f4-443c-8b14-fa940b258c86",
+				"a0ea6344-c89d-4d3f-8f87-788aadbda07f",
+				"61fb4e1c-75e6-4f35-b28a-5acdacdeadc6",
+				"d919894a-3677-4516-ba63-f4632f61f1ca",
+				"afab5603-edca-4599-9480-45f7c98d453a",
+				"cb99ee5d-61fd-48d2-a6a7-f9b6d3f6f2eb",
+				"2c6f4904-690a-405a-b85b-c635859e3f63",
+				"37ec009b-60a7-4bf5-960c-e673914aad8b",
 				"7af6f4a1-4344-4a93-8712-b673c2df1150",
+				"bfbe9237-9415-4413-85db-6bb8e4cdd574",
+				"dbac01e6-8bb8-4672-91e2-1c2126c06350",
 				"2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
 				"20f6b037-583a-449d-b665-5b653ad80f2c",
 				"f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
 				"a19eee9c-c6ce-41f4-bac6-d2772eab3403",
 				"fb165e11-ee03-492e-96bc-731da392713c",
 				"cf692c99-b3c1-41a1-a537-0e9a0c04ceeb",
+				"9885093d-540a-4082-95d0-21690a89185c",
 				"9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
 				"2f3fbf88-5ce2-4a4d-88b1-106bccc3a102",
 				"fa49ca5b-f21d-4292-adb9-5a8a0aa2d183",
@@ -274,6 +285,90 @@
 			"uuid": "9885093d-540a-4082-95d0-21690a89185c",
 			"title": "Level scaling needs to be looked at",
 			"description": "I managed tro get my Dark Mage to level 10 by map 5, and he has 31 hp and takes no fucking damage lmao\nMaybe also curb the dark mages armor scaling",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "dbac01e6-8bb8-4672-91e2-1c2126c06350",
+			"title": "Weapon Durability",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "bfbe9237-9415-4413-85db-6bb8e4cdd574",
+			"title": "AOE Damage Scaling",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "d919894a-3677-4516-ba63-f4632f61f1ca",
+			"title": "Map 06 Redux",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "afab5603-edca-4599-9480-45f7c98d453a",
+			"title": "Update DamagePreviewUI to have defenders fight-back value",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "37ec009b-60a7-4bf5-960c-e673914aad8b",
+			"title": "BUG: Life Drain can heal 7 hp when the target only had 3",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "2c6f4904-690a-405a-b85b-c635859e3f63",
+			"title": "BUG: Units weapons dont lose durability from counterattacks",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "61fb4e1c-75e6-4f35-b28a-5acdacdeadc6",
+			"title": "Enemy AI Rework",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "cb99ee5d-61fd-48d2-a6a7-f9b6d3f6f2eb",
+			"title": "Threat Zones",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "0cf1abf8-580f-4cdd-9d88-dfa33cf831ae",
+			"title": "Quick End Turn",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "cafbce6b-95f4-443c-8b14-fa940b258c86",
+			"title": "Neutral Turns",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "cc83f861-7143-4066-9c9c-e2950111758d",
+			"title": "Multiple Rewards per map",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "a0ea6344-c89d-4d3f-8f87-788aadbda07f",
+			"title": "Optional goals",
+			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

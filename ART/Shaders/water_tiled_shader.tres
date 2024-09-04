@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://7yw85gqcu8bo"]
+
+[ext_resource type="Shader" path="res://ART/Shaders/water_test_2.gdshader" id="1_u85t8"]
+
+[resource]
+shader = ExtResource("1_u85t8")
+shader_parameter/do_pixelization = true
+shader_parameter/pixelization_amount = 320.0
+shader_parameter/OCTAVE = 8
+shader_parameter/mulscale = 32.0
+shader_parameter/height = 0.6
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.1
+shader_parameter/timescale = 1.0
+shader_parameter/waterdeep = 0.3
+shader_parameter/color_1 = Color(0.196078, 0.32549, 0.290196, 1)
+shader_parameter/color_2 = Color(0.231373, 0.427451, 0.384314, 1)
+shader_parameter/foam_color = Color(0.231373, 0.427451, 0.384314, 1)

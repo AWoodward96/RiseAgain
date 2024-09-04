@@ -22,7 +22,11 @@ uniform float shift: hint_range(-1.0, 0.0) = -0.2;
 
 // Direction and speed of travel.
 uniform vec2 velocity = vec2(1.0, 1.0);
+varying vec2 WorldSpace;
 
+void vertex() {
+	WorldSpace = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+}
 
 float rand(vec2 uv) {
 	float amplitude = starting_amplitude;
@@ -37,7 +41,7 @@ float rand(vec2 uv) {
 }
 
 void fragment() {
-	 vec2 current_uv = SCREEN_UV;
+	 vec2 current_uv = WorldSpace / world_texture_size;
 	if (do_pixelization) {
         current_uv = round(current_uv * float(pixelization_amount)) / float(pixelization_amount);
     }

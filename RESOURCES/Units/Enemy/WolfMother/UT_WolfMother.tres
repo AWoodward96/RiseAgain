@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://qtltk2i8ar11"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://qtltk2i8ar11"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_813ky"]
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_xpmu0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_dbrfp"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_xh0v0"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_y1hu7"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_7vxn7"]
 [ext_resource type="PackedScene" uid="uid://dd0hi5md1y0q8" path="res://RESOURCES/Units/Enemy/WolfMother/VIS_WolfMother.tscn" id="12_f5ner"]
 [ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolf_mother.png" id="13_pbk78"]
 
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_ic2vg")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("1_xpmu0")
 StartingItems = Array[PackedScene]([ExtResource("10_2y5ka")])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_dbrfp")])
+Descriptors = Array[ExtResource("12_7vxn7")]([ExtResource("10_dbrfp")])
 DebugName = "WolfMother"
 loc_DisplayName = "unit_wolfmother_name"
 loc_Description = "unit_wolfmother_desc"

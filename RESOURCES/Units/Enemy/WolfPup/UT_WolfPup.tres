@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://ba7d8xyuy5mgm"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://ba7d8xyuy5mgm"]
 
 [ext_resource type="PackedScene" uid="uid://ds4w7ttanxhhg" path="res://RESOURCES/Units/Enemy/WolfPup/VIS_WolfPup.tscn" id="1_2ldp6"]
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_2mdvt"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_ioa71"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_v1ox2"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="11_y2fh1"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_01dn7"]
 
 [sub_resource type="Resource" id="Resource_ckqos"]
 script = ExtResource("2_ndbtr")
@@ -105,7 +106,7 @@ StatGrowths = Array[ExtResource("2_ndbtr")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("1_2mdvt")
 StartingItems = Array[PackedScene]([ExtResource("11_y2fh1")])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_ioa71")])
+Descriptors = Array[ExtResource("12_01dn7")]([ExtResource("10_ioa71")])
 DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"
 loc_Description = "unit_wolfpup_desc"

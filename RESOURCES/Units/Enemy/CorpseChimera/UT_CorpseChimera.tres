@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://crv54ls8tyldj"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://crv54ls8tyldj"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_6ahb0"]
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_enqqm"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_ktqur"]
 [ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Items/Equippable/dark_pact.tscn" id="11_hktnb"]
 [ext_resource type="PackedScene" uid="uid://ctnbgmoyj5gin" path="res://RESOURCES/Units/Enemy/CorpseChimera/VIS_CorpseChimera.tscn" id="11_pdfes"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_ed48o"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="12_hhtjf"]
 
 [sub_resource type="Resource" id="Resource_4m1aq"]
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("1_enqqm")
 StartingItems = Array[PackedScene]([ExtResource("11_hktnb")])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_1wq3p")])
+Descriptors = Array[ExtResource("12_ed48o")]([ExtResource("10_1wq3p")])
 DebugName = "CorpseChimera"
 loc_DisplayName = "unit_corpsechimera_name"
 loc_Description = "unit_corpsechimera_desc"
