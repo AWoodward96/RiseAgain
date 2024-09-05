@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://btjy0lp33oaqu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://btjy0lp33oaqu"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_5h2gd"]
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_xh3m4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_binhx"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_t5n5y"]
 [ext_resource type="PackedScene" uid="uid://b362cldejqkxn" path="res://RESOURCES/Units/Enemy/AdultWolf/VIS_AdultWolf.tscn" id="12_6etwq"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_57w4d"]
 [ext_resource type="Texture2D" uid="uid://ddew6qrlip5o6" path="res://ART/Icons/Units/wolf.png" id="13_xcn8w"]
 
 [sub_resource type="Resource" id="Resource_6ajq1"]
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_7jtpq")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("1_xh3m4")
 StartingItems = Array[PackedScene]([ExtResource("10_binhx")])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_b7vio")])
+Descriptors = Array[ExtResource("12_57w4d")]([ExtResource("10_b7vio")])
 DebugName = "AdultWolf"
 loc_DisplayName = "unit_adultwolf_name"
 loc_Description = "unit_adultwolf_desc"

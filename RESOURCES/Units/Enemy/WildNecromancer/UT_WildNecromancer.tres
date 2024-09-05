@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://eyed7bxgka4g"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://eyed7bxgka4g"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_2gkof"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_gd10w"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Items/Equippable/dark_pact.tscn" id="10_ilmjt"]
 [ext_resource type="PackedScene" uid="uid://cg83y8wvfexv6" path="res://RESOURCES/Units/Enemy/WildNecromancer/VIS_WildNecromancer.tscn" id="10_u3lpn"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="11_rpws3"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2oydv"]
 
 [sub_resource type="Resource" id="Resource_edhhe"]
 script = ExtResource("2_qy2cs")
@@ -105,7 +106,7 @@ StatGrowths = Array[ExtResource("2_qy2cs")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("1_2gkof")
 StartingItems = Array[PackedScene]([ExtResource("10_ilmjt")])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([])
+Descriptors = Array[ExtResource("12_2oydv")]([])
 DebugName = "WildNecromancer"
 loc_DisplayName = "unit_wildnecromancer_name"
 loc_Description = "unit_wildnecromancer_desc"

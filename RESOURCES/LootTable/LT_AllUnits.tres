@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=13 format=3 uid="uid://ckn2gmate3jr1"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=14 format=3 uid="uid://ckn2gmate3jr1"]
 
 [ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_4v6xu"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="2_eremd"]
 [ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/DarkMage/UT_DarkMage.tres" id="3_vuepv"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="4_x450q"]
@@ -41,5 +42,5 @@ AccumulatedWeight = 5.0
 [resource]
 resource_name = "LT_AllUnits"
 script = ExtResource("7_n3dlo")
-Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_udyiq"), SubResource("Resource_jkr0p"), SubResource("Resource_wr4vw"), SubResource("Resource_lld5g"), SubResource("Resource_atxpe")])
+Table = Array[ExtResource("1_05tkr")]([SubResource("Resource_udyiq"), SubResource("Resource_jkr0p"), SubResource("Resource_wr4vw"), SubResource("Resource_lld5g"), SubResource("Resource_atxpe")])
 WeightSum = 5.0

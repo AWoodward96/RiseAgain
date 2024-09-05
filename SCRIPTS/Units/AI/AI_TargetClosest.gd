@@ -190,4 +190,3 @@ func TryCombat():
 		unit.QueueDelayedCombatAction(log)
 	else:
 		push_error("Unit is attempting to TryCombat with TargetClosest AI, without an Item that does damage")
-

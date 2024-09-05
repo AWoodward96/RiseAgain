@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=9 format=3 uid="uid://dsafb0qrhogjm"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=10 format=3 uid="uid://dsafb0qrhogjm"]
 
 [ext_resource type="PackedScene" uid="uid://bhl2enqfwvt80" path="res://RESOURCES/Items/Equippable/steel_sword.tscn" id="1_8tbs1"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_8xysg"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="2_ylde8"]
 [ext_resource type="PackedScene" uid="uid://bnphn1vxuyakx" path="res://RESOURCES/Items/Equippable/steel_bow.tscn" id="3_d5vr4"]
 [ext_resource type="PackedScene" uid="uid://mbareux7y73r" path="res://RESOURCES/Items/Equippable/magic_bolt.tscn" id="4_fjv86"]
@@ -27,5 +28,5 @@ AccumulatedWeight = 3.0
 [resource]
 resource_name = "LT_Steel_Weapons"
 script = ExtResource("5_viryb")
-Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_2kq84"), SubResource("Resource_4tioh"), SubResource("Resource_ikpd5")])
+Table = Array[ExtResource("1_8xysg")]([SubResource("Resource_2kq84"), SubResource("Resource_4tioh"), SubResource("Resource_ikpd5")])
 WeightSum = 3.0

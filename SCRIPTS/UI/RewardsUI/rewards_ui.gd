@@ -74,4 +74,3 @@ func ShowGiveItemUI():
 
 func OnUnitSelectedForItem(_unit : UnitInstance):
 	OnRewardSelected.emit(workingSelectedReward, _unit)
-

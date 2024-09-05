@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=9 format=3 uid="uid://glpuxla0d30c"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=10 format=3 uid="uid://glpuxla0d30c"]
 
 [ext_resource type="Resource" uid="uid://dsafb0qrhogjm" path="res://RESOURCES/LootTable/LT_Steel_Weapons.tres" id="1_6flck"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_gdk7a"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/NestedLootTableEntry.gd" id="2_dqy40"]
 [ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="3_bkn66"]
 [ext_resource type="Resource" uid="uid://ckn2gmate3jr1" path="res://RESOURCES/LootTable/LT_AllUnits.tres" id="4_1srtq"]
@@ -27,5 +28,5 @@ AccumulatedWeight = 2.75
 [resource]
 resource_name = "LT_GlobalLoot_T1"
 script = ExtResource("4_ltjjo")
-Table = Array[Resource("res://SCRIPTS/Generic/LootTables/LootTableEntry.gd")]([SubResource("Resource_xdwq4"), SubResource("Resource_sgjil"), SubResource("Resource_dhdem")])
+Table = Array[ExtResource("1_gdk7a")]([SubResource("Resource_xdwq4"), SubResource("Resource_sgjil"), SubResource("Resource_dhdem")])
 WeightSum = 2.75

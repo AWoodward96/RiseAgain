@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://g6emosn4u7nk"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://g6emosn4u7nk"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_k71fh"]
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_wgq58"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_o4ikq"]
 [ext_resource type="PackedScene" uid="uid://s8ig8e0g2cno" path="res://RESOURCES/Units/Enemy/Zolf/VIS_Zolf.tscn" id="11_0q5uh"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="11_qw4ot"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_hyt3s"]
 [ext_resource type="Texture2D" uid="uid://5jbvq4xfelsy" path="res://ART/Icons/Units/zolf.png" id="12_mu6ce"]
 
 [sub_resource type="Resource" id="Resource_70iv8"]
@@ -106,7 +107,7 @@ StatGrowths = Array[ExtResource("2_rbfec")]([SubResource("Resource_priqb"), SubR
 Affinity = ExtResource("1_wgq58")
 StartingItems = Array[PackedScene]([ExtResource("11_qw4ot")])
 Abilities = Array[PackedScene]([])
-Descriptors = Array[Resource("res://SCRIPTS/UI/General/DescriptorTemplate.gd")]([ExtResource("10_fgbow")])
+Descriptors = Array[ExtResource("12_hyt3s")]([ExtResource("10_fgbow")])
 DebugName = "Zolf"
 loc_DisplayName = "unit_zolf_name"
 loc_Description = "unit_zolf_desc"

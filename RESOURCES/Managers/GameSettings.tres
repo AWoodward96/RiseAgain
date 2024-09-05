@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=16 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=17 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_g1xjk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="5_ymlgt"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_3kigw"]
 [ext_resource type="PackedScene" uid="uid://cjghdlg16u8ih" path="res://RESOURCES/Managers/PlayerController.tscn" id="7_77hq5"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="7_k5egf"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_tql1j"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_bxyws"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_qhahl"]
@@ -27,8 +28,8 @@ script = ExtResource("1_wj702")
 CampaignManifest = Array[PackedScene]([ExtResource("1_ir5fq")])
 PlayerControllerPrefab = ExtResource("7_77hq5")
 DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])
-UIDisplayedStats = Array[Resource("res://SCRIPTS/Stats/StatTemplate.gd")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("8_bxyws"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
-LevelUpStats = Array[Resource("res://SCRIPTS/Stats/StatTemplate.gd")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("8_bxyws"), ExtResource("5_ymlgt")])
+UIDisplayedStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("8_bxyws"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
+LevelUpStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("8_bxyws"), ExtResource("5_ymlgt")])
 MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")
 AttackStat = ExtResource("5_pvcaj")
