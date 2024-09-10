@@ -26,4 +26,3 @@ func TryExecute(_actionLog : ActionLog):
 				if autoEndTurn:
 					_actionLog.source.QueueEndTurn()
 				AbilityActionComplete.emit()
-

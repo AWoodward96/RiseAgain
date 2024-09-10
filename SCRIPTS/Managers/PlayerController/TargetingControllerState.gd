@@ -11,8 +11,9 @@ var unitUsable : UnitUsable
 var currentTargetTile : Tile
 var cachedTargetUnits : Array[UnitInstance]
 var shapedTargetingTiles : Array[TileTargetedData]
-var shapedDirection : int
+var shapedDirection : GameSettingsTemplate.Direction
 var targetSelected : bool # To lock out double-attacks
+var unitMovement : PackedVector2Array
 
 func _Enter(_ctrl : PlayerController, ItemOrAbility):
 	super(_ctrl, ItemOrAbility)
@@ -31,6 +32,7 @@ func _Enter(_ctrl : PlayerController, ItemOrAbility):
 
 		targetingData = ItemOrAbility.TargetingData
 		log = ActionLog.Construct(source, ItemOrAbility)
+		log.grid = currentGrid
 
 		match targetingData.Type:
 			SkillTargetingData.TargetingType.Simple:
@@ -85,23 +87,11 @@ func UpdateInput(_delta):
 			ShapedDirectionalTargetingInput(_delta)
 			pass
 
+	if unitUsable.MovementData != null:
+		UpdateMoveData(_delta)
+
 	if InputManager.selectDown && !targetSelected:
-		var validSimple = currentTargetTile.Occupant != null && targetingData.Type == SkillTargetingData.TargetingType.Simple
-		var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
-		if validSimple || validShapedFree:
-			log.actionOriginTile = currentTargetTile
-			log.affectedTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, currentTargetTile)
-			targetSelected = true
-			# This will wait for the previous actions to be complete, and then do the stuff
-			source.QueueDelayedCombatAction(log)
-		elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-			log.actionOriginTile = currentTargetTile
-
-			log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, shapedDirection)
-			targetSelected = true
-			source.QueueDelayedCombatAction(log)
-			pass
-
+		TileSelected()
 
 	if InputManager.cancelDown:
 		ClearPreview()
@@ -109,6 +99,29 @@ func UpdateInput(_delta):
 			ctrl.EnterItemSelectionState(ctrl.lastItemFilter)
 		else:
 			ctrl.EnterContextMenuState()
+
+func TileSelected():
+	if unitUsable.MovementData != null && unitMovement != null:
+		if unitMovement.size() == 0:
+			return
+		else:
+			log.moveSelf = true
+
+	var validSimple = currentTargetTile.Occupant != null && targetingData.Type == SkillTargetingData.TargetingType.Simple
+	var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
+	if validSimple || validShapedFree:
+		log.actionOriginTile = currentTargetTile
+		log.affectedTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, currentTargetTile)
+		targetSelected = true
+		# This will wait for the previous actions to be complete, and then do the stuff
+		source.QueueDelayedCombatAction(log)
+	elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+		log.actionOriginTile = currentTargetTile
+		log.actionDirection = shapedDirection
+		log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, shapedDirection)
+		targetSelected = true
+		source.QueueDelayedCombatAction(log)
+		pass
 
 func _Exit():
 	ClearPreview()
@@ -184,6 +197,21 @@ func ShapedFreeTargetingInput(_delta):
 	ShowPreview()
 	pass
 
+func UpdateMoveData(_delta):
+	unitMovement = unitUsable.MovementData.PreviewMove(currentGrid, source, currentTargetTile, shapedDirection)
+	if unitMovement.size() > 0:
+		ctrl.movement_tracker.visible = true
+		ctrl.movement_preview_sprite.visible = true
+
+		ctrl.movement_tracker.clear_points()
+		ctrl.movement_tracker.points = unitMovement
+		ctrl.movement_preview_sprite.texture = source.Template.icon
+		ctrl.movement_preview_sprite.position = unitMovement[unitMovement.size() - 1]
+	else:
+		ctrl.movement_tracker.visible = false
+		ctrl.movement_preview_sprite.visible = false
+	pass
+
 func ShapedDirectionalTargetingInput(_delta):
 	# only update when there's input
 	if !InputManager.inputAnyDown:
@@ -219,6 +247,8 @@ func ClearPreview():
 		currentTargetTile.Occupant.HideDamagePreview()
 		ctrl.combatHUD.ClearDamagePreviewUI()
 
+	ctrl.movement_preview_sprite.visible = false
+	ctrl.movement_tracker.visible = false
 	for u in cachedTargetUnits:
 		if u != null:
 			u.HideDamagePreview()

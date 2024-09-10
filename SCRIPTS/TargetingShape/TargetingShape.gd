@@ -4,7 +4,7 @@ class_name TargetingShape
 @export var TileCoordinates : Array[Vector2iMult]
 
 func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
-	var returnTileData : Array[Tile]
+	var returnTileData : Array[TileTargetedData]
 	for coord in TileCoordinates:
 		var tileData = TileTargetedData.new()
 		var newPos = _originTile.Position + coord.Position

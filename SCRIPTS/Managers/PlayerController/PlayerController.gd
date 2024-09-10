@@ -10,6 +10,7 @@ signal OnCombatSequenceComplete()
 @export var reticle : Node2D
 
 @onready var movement_tracker : Line2D = %MovementTracker
+@onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
 
 var ControllerState : PlayerControllerState
 

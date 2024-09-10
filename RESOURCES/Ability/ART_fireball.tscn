@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://tqgdcty0bba5"]
+[gd_scene load_steps=13 format=3 uid="uid://tqgdcty0bba5"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_826b6"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_078wy"]
 [ext_resource type="Texture2D" uid="uid://bty8oi4tn0t4j" path="res://ART/Icons/Ability/fireball.png" id="2_uccra"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="2_ym1lk"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_tw6ek"]
@@ -21,7 +22,7 @@ script = ExtResource("3_tw6ek")
 [node name="ART_Fireball" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_826b6")
 focusCost = 2
-executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_078wy")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
 internalName = "Fireball"
 loc_displayName = "art_fireball"
 loc_displayDesc = "art_fireball_desc"

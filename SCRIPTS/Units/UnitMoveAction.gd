@@ -15,7 +15,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
 
 	if Route.size() > 1:
-		_unit.facingDirection = GameSettingsTemplate.CastDirectionEnumToInt(GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1] - Route[MovementIndex - 2]).normalized()))
+		_unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1] - Route[MovementIndex - 2]).normalized())
 
 
 func _Execute(_unit : UnitInstance, _delta):

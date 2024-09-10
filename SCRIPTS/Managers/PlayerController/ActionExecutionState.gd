@@ -39,6 +39,10 @@ func _Enter(_ctrl : PlayerController, data):
 			log.actionResults.append(actionResult)
 
 	if log.item != null:
+		# If for some reason the item has movement --- god help you son
+		if log.moveSelf && log.item.MovementData != null:
+			log.item.MovementData.Move(currentGrid, source, log.actionOriginTile, log.actionDirection)
+
 		# calculate the damage and the miss chance right here
 		for results in log.actionResults:
 			results.Item_CalculateResult(currentMap.rng, log.item)

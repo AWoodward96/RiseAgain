@@ -9,7 +9,7 @@ func _Enter(_ctrl : PlayerController, data):
 
 	walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)
 	prevTile = ctrl.CurrentTile
-	StartMovementTracker(selectedUnit.GridPosition)
+	StartMovementTracker()
 	currentGrid.ShowUnitActions(selectedUnit)
 	UpdateTracker()
 
@@ -56,7 +56,7 @@ func UpdateTracker():
 	prevTile = ctrl.CurrentTile
 
 
-func StartMovementTracker(_origin : Vector2i):
+func StartMovementTracker():
 	ctrl.movement_tracker.visible = true
 	ctrl.movement_tracker.clear_points()
 

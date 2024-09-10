@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5ge0dn8wtstb"]
+[gd_scene load_steps=15 format=3 uid="uid://b5ge0dn8wtstb"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_5p40p"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="2_0e2jx"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_avuim"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DelayStep.gd" id="3_2djb2"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_ru3jp"]
 [ext_resource type="Texture2D" uid="uid://bahn7dncans8s" path="res://ART/Icons/Ability/doubleshot.png" id="4_uj3cs"]
@@ -29,7 +30,7 @@ script = ExtResource("3_ru3jp")
 
 [node name="ART_DoubleShot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_5p40p")
-executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_nobtd"), SubResource("Resource_a5h2l"), SubResource("Resource_wujkw"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_nobtd"), SubResource("Resource_a5h2l"), SubResource("Resource_wujkw"), SubResource("Resource_5cjq5")])
 internalName = "DoubleShot"
 loc_displayName = "art_doubleshot"
 loc_displayDesc = "art_doubleshot_desc"

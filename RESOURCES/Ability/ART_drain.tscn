@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnwracq246buh"]
+[gd_scene load_steps=12 format=3 uid="uid://dnwracq246buh"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_dc21f"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8qvs7"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="2_xcmx8"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_t8ilk"]
 [ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/drain.png" id="4_0dyo2"]
@@ -20,7 +21,7 @@ script = ExtResource("3_t8ilk")
 [node name="ART_drain" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_dc21f")
 focusCost = 2
-executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_dxbgi"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_8qvs7")]([SubResource("Resource_dxbgi"), SubResource("Resource_5cjq5")])
 internalName = "drain"
 loc_displayName = "art_drain"
 loc_displayDesc = "art_drain_desc"

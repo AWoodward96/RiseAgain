@@ -1,5 +1,5 @@
 extends MapObjective
-class_name Route
+class_name RouteObjective
 
 func CheckObjective(_map : Map):
 	var enemies = _map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY)

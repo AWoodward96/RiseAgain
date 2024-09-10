@@ -43,6 +43,18 @@ static func GetVectorFromDirection(_dir : Direction):
 		Direction.Down:
 			return Vector2i.DOWN
 
+# THIS RETURNS THE OPPOSITE VECTOR -- USE THE ABOVE METHOD FOR ACTUAL DIRECTION
+static func GetInverseVectorFromDirection(_dir : Direction):
+	match(_dir):
+		Direction.Up:
+			return Vector2i.DOWN
+		Direction.Left:
+			return Vector2i.RIGHT
+		Direction.Right:
+			return Vector2i.LEFT
+		Direction.Down:
+			return Vector2i.UP
+
 static func GetDirectionFromVector(_vector : Vector2i):
 	# If Godot had it's shit together, I could cast this enum to an Int, but currently every enum casts to 0, which is fucking stupid as shit
 	# So for now we're just gonna.... do this horrible bullshit I guess

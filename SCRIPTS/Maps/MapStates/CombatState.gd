@@ -46,7 +46,6 @@ func Update(_delta):
 					nextTurn = GameSettingsTemplate.TeamID.ENEMY
 			GameSettingsTemplate.TeamID.ENEMY:
 				nextTurn = GameSettingsTemplate.TeamID.ALLY
-			# TODO: Neutral turns
 			GameSettingsTemplate.TeamID.NEUTRAL:
 				nextTurn = GameSettingsTemplate.TeamID.ENEMY
 		StartTurn(nextTurn)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b38f8bah8gh6y"]
+[gd_scene load_steps=13 format=3 uid="uid://b38f8bah8gh6y"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_3n530"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ipi5c"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="2_u8sro"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_nycen"]
 [ext_resource type="Texture2D" uid="uid://uh2xgg4i7bc" path="res://ART/Icons/Ability/cleave.png" id="4_nntet"]
@@ -20,8 +21,9 @@ script = ExtResource("3_nycen")
 
 [node name="ART_Cleave" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_3n530")
-focusCost = 4
-executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_aullh"), SubResource("Resource_5cjq5")])
+unlockLevel = 0
+focusCost = 0
+executionStack = Array[ExtResource("2_ipi5c")]([SubResource("Resource_aullh"), SubResource("Resource_5cjq5")])
 internalName = "Cleave"
 loc_displayName = "art_cleave"
 loc_displayDesc = "art_cleave_desc"

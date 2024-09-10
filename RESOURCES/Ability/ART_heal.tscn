@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://466imq0pty1v"]
+[gd_scene load_steps=11 format=3 uid="uid://466imq0pty1v"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_0pwxb"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_lomh6"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/HealStep.gd" id="2_o8axf"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_ojt07"]
 [ext_resource type="Texture2D" uid="uid://dodlfksmqmyhh" path="res://ART/Icons/Ability/heal.png" id="4_l07h2"]
@@ -17,7 +18,7 @@ script = ExtResource("3_ojt07")
 [node name="ART_Heal" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_0pwxb")
 unlockLevel = 0
-executionStack = Array[Resource("res://SCRIPTS/Ability/ActionStepBase.gd")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_lomh6")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
 internalName = "Heal"
 loc_displayName = "art_heal"
 loc_displayDesc = "art_heal_desc"
