@@ -15,6 +15,7 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 @export var DamageAffectsUsersHealth : bool = false
 
 # Can be positive OR negative depending on if this heals or hurts the user of this ability
+# Negative heals, Positive hurts
 @export var DamageToHealthRatio : float = 0.5
 
 

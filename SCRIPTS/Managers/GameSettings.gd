@@ -4,8 +4,12 @@ class_name GameSettingsTemplate
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 enum Direction { Up, Right, Down, Left }
 
-@export var CampaignManifest : Array[PackedScene]
 
+@export_category("Campaign Data")
+@export var CampaignManifest : Array[PackedScene]
+@export var NumberOfRewardsInPostMap = 3
+
+@export_category("Unit Data")
 @export var PlayerControllerPrefab : PackedScene
 @export var DerivedStatDefinitions : Array[DerivedStatDef]
 
@@ -22,15 +26,21 @@ enum Direction { Up, Right, Down, Left }
 @export var LuckStat : StatTemplate
 @export var MindStat : StatTemplate
 
-@export var InitializeUnitsWithMaxFocus : bool = false
-@export var NumberOfRewardsInPostMap = 3
-
 @export var CharacterTileMovemementSpeed : float = 100
 
+@export_category("Ability Data")
+@export var InitializeUnitsWithMaxFocus : bool = false
+
+@export var FirstAbilityBreakpoint : int
+@export var SecondAbilityBreakpoint : int # NOTE: NOT CURRENTLY IMPLEMENTED
+
+
+@export_category("Affinity Data")
 @export var StrongAffinityMultiplier : float = 1.5
 @export var OpposedAffinityMultiplier : float = 1.25
 @export var WeakAffinityMultiplier : float = 0.66
 @export var AffinityAccuracyModifier : int = 10
+
 
 static func GetVectorFromDirection(_dir : Direction):
 	match(_dir):
@@ -135,7 +145,7 @@ func UnitHealCalculation(_healData : HealComponent, _source, _aoeMultiplier : fl
 	healAmount = floori(healAmount * _aoeMultiplier)
 	return healAmount
 
-func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : Item, _defender : UnitInstance):
+func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance):
 	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender)
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
@@ -158,7 +168,7 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
 	return (A * (pow(B, X)) + C) * 20 + _damageDealt
 
-func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : Item):
+func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):
 	if _attacker == null:
 		push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
 		return 0

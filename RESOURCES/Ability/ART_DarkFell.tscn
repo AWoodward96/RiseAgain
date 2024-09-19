@@ -56,7 +56,7 @@ focusCost = 4
 executionStack = Array[ExtResource("2_dykay")]([SubResource("Resource_0hubf"), SubResource("Resource_muj8o"), SubResource("Resource_fau0g"), SubResource("Resource_0uo1w")])
 internalName = "darkfell"
 loc_displayName = "art_darkfell"
-loc_displayDesc = "art_dark_felldesc"
+loc_displayDesc = "art_darkfell_desc"
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

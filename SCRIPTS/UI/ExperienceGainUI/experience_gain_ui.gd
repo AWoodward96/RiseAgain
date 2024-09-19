@@ -15,6 +15,7 @@ signal SequenceComplete
 
 var startingEXP
 var startingLevel
+var startingDisplayLevel
 var tweenEXPGain
 var statChanges
 var levelsGained
@@ -28,7 +29,8 @@ func Initialize(_experienceGained : int, _unit : UnitInstance, _root : Node2D, _
 	root = _root
 	currentUnit = _unit
 	startingEXP = _unit.Exp
-	startingLevel = _unit.DisplayLevel
+	startingLevel = _unit.Level
+	startingDisplayLevel = _unit.DisplayLevel
 	levelsGained = _unit.AddExperience(_experienceGained)
 	if levelsGained != 0:
 		statChanges = _unit.PerformLevelUp(_rng, levelsGained)
@@ -59,7 +61,7 @@ func ExpGainComplete(_netChange):
 func ShowLevelUpData():
 	level_up_parent.visible = true
 	experience_progress_bar.visible = false
-	current_level_label.text = str(startingLevel)
+	current_level_label.text = str(startingDisplayLevel)
 
 	for stats in GameManager.GameSettings.LevelUpStats:
 		var entry = stat_entry_parent.CreateEntry(statBlockEntryPrefab)
@@ -86,9 +88,17 @@ func ShowLevelUpData():
 
 	await InputManager.selectDownCallback
 
+	if startingLevel < GameManager.GameSettings.FirstAbilityBreakpoint && startingLevel + levelsGained >= GameManager.GameSettings.FirstAbilityBreakpoint:
+		var ui = SelectAbilityUI.Show(currentUnit, currentUnit.Template.Tier1Abilities)
+		ui.SelectionComplete.connect(AbilitySelected)
+		await ui.SelectionComplete
+
 	SequenceComplete.emit()
 	queue_free()
 	pass
+
+func AbilitySelected(_ability : PackedScene):
+	currentUnit.AddAbility(_ability)
 
 static func Show(_experienceGained : int, _unit :  UnitInstance, _root : Node2D, _rng : RandomNumberGenerator):
 	var ui = GameManager.ExperienceUI.instantiate() as ExperienceGainUI

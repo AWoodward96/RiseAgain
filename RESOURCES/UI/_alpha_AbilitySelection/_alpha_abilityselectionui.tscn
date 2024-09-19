@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://xl37svyevc7s"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
+[ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
+
+[node name="SelectAnAbilityUI" type="CanvasLayer" node_paths=PackedStringArray("entryParent")]
+script = ExtResource("1_gmyer")
+entryParent = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/AbilityEntryList")
+abilityEntryPrefab = ExtResource("3_rxhv0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 96
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "ui_select_an_ability"
+
+[node name="AbilityEntryList" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+script = ExtResource("1_3ktkx")

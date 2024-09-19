@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://co7lel8ngy6or"]
+
+[ext_resource type="Script" path="res://AbilityEntryUI.gd" id="1_opl86"]
+[ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/drain.png" id="2_bmu0w"]
+[ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="3_bwi8i"]
+[ext_resource type="Texture2D" uid="uid://x61rbwe8vybw" path="res://ART/Icons/range_icon.png" id="4_xkn6m"]
+[ext_resource type="Texture2D" uid="uid://bdl6ktf4ibcmo" path="res://ART/UI/arrow_icon.png" id="5_rxj5p"]
+
+[node name="AbilityEntry" type="PanelContainer" node_paths=PackedStringArray("SelectedParent", "abilityNameText", "abilityDescriptionText", "abilityIcon", "focusCostText", "rangeText")]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(256, 256)
+focus_mode = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_opl86")
+SelectedParent = NodePath("Panel/Select_Icon")
+abilityNameText = NodePath("Panel/VBoxContainer/TitleContainer/AbilityName")
+abilityDescriptionText = NodePath("Panel/VBoxContainer/AbilityDescription")
+abilityIcon = NodePath("Panel/VBoxContainer/TitleContainer/AbilityIcon")
+focusCostText = NodePath("Panel/VBoxContainer/Control/FocusCostParent/FocusCost")
+rangeText = NodePath("Panel/VBoxContainer/Control/RangeParent/HBoxContainer/RangeAmt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+
+[node name="TitleContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AbilityIcon" type="TextureRect" parent="Panel/VBoxContainer/TitleContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_bmu0w")
+expand_mode = 1
+
+[node name="AbilityName" type="Label" parent="Panel/VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "ability_name"
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="FocusCostParent" type="Control" parent="Panel/VBoxContainer/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 100.0
+offset_bottom = 16.0
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="FocusIcon" type="TextureRect" parent="Panel/VBoxContainer/Control/FocusCostParent"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 8.0
+offset_right = 40.0
+offset_bottom = 32.0
+texture = ExtResource("3_bwi8i")
+expand_mode = 1
+
+[node name="FocusCost" type="Label" parent="Panel/VBoxContainer/Control/FocusCostParent"]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 95.0
+offset_bottom = 27.0
+text = "{AMT}"
+
+[node name="RangeParent" type="Control" parent="Panel/VBoxContainer/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Control/RangeParent"]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 32.0
+
+[node name="RangeIcon" type="TextureRect" parent="Panel/VBoxContainer/Control/RangeParent/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_xkn6m")
+expand_mode = 1
+
+[node name="RangeAmt" type="Label" parent="Panel/VBoxContainer/Control/RangeParent/HBoxContainer"]
+layout_mode = 2
+text = "ui_range_amount"
+
+[node name="AbilityDescription" type="RichTextLabel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+fit_content = true
+
+[node name="Select_Icon" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 95.0
+offset_top = 238.0
+offset_right = 159.0
+offset_bottom = 302.0
+texture = ExtResource("5_rxj5p")

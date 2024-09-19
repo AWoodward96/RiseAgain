@@ -25,7 +25,7 @@ script = ExtResource("11_2xl3o")
 Descriptor = ExtResource("12_vswnk")
 Multiplier = 2.0
 
-[node name="ART_smite" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="ART_smite" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_fphlf")
 focusCost = 2
 executionStack = Array[ExtResource("2_qs2f3")]([SubResource("Resource_aullh"), SubResource("Resource_5cjq5")])
@@ -34,6 +34,7 @@ loc_displayName = "art_smite"
 loc_displayDesc = "art_smite_desc"
 icon = ExtResource("5_xstb4")
 TargetingData = NodePath("SkillTargetingData")
+UsableDamageData = NodePath("DamageData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("6_hroxl")

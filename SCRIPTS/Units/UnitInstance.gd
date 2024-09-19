@@ -99,10 +99,10 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 		affinityIcon.texture = _unitTemplate.Affinity.loc_icon
 
 	CreateItems()
-	CreateAbilities()
 	InitializeLevels(_levelOverride)
 	InitializeStats()
 	UpdateDerivedStats()
+	InitializeTier0Abilities()
 
 
 func InitializeStats():
@@ -143,6 +143,13 @@ func InitializeLevels(_level : int):
 			baseStats[statDef.Template] = floori(growthPerc * _level)
 	Level = _level
 	pass
+
+func InitializeTier0Abilities():
+	if Template == null:
+		return
+
+	for abilities in Template.Tier0Abilities:
+		AddAbility(abilities)
 
 func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 	CombatEffects.append(_combatEffectInstance)
@@ -276,12 +283,17 @@ func CreateItems():
 	if Inventory.size() > 0:
 		EquipItem(Inventory[0])
 
-func CreateAbilities():
-	for ability in Template.Abilities:
-		var abilityInstance = ability.instantiate() as Ability
-		abilityInstance.Initialize(self, map)
-		abilityParent.add_child(abilityInstance)
-		Abilities.append(abilityInstance)
+
+func AddAbility(_ability : PackedScene):
+	# We don't validate if the ability is on the template at all because maybe there might be an item that grants a
+	# general use ability to any unit
+	var abilityInstance = _ability.instantiate() as Ability
+	if abilityInstance == null:
+		return
+
+	abilityInstance.Initialize(self, map)
+	abilityParent.add_child(abilityInstance)
+	Abilities.append(abilityInstance)
 
 func EquipItem(_item : Item):
 	var index = Inventory.find(_item)

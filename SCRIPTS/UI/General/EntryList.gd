@@ -30,4 +30,3 @@ func GetEntry(_index : int):
 func FocusFirst():
 	if createdEntries is Array && createdEntries != null && createdEntries.size() > 0:
 		createdEntries[0].grab_focus()
-

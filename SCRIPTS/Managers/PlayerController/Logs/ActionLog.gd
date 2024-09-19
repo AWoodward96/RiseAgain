@@ -43,7 +43,9 @@ static func Construct(_unitSource : UnitInstance, _itemOrAbility):
 
 
 func QueueExpGains():
+	# Define a dictionary that is [UnitInstance]-[ExpGainedFromAction]
 	var expGains = {}
+
 	# Go through all the action results and hide the targets health bars. Also, if the source of the result is an ally, tally up their exp gain
 	for result in actionResults:
 		if result.Target != null:
@@ -65,5 +67,5 @@ func QueueExpGains():
 				expGains[result.Source] = result.ExpGain
 
 	# Now that we know the total exp gained, give it
-	for keypair in expGains:
-		keypair.QueueExpGain(expGains[keypair])
+	for unitInstance in expGains:
+		unitInstance.QueueExpGain(expGains[unitInstance])
