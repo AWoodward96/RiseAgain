@@ -47,4 +47,3 @@ func InitializeAsUnit(_unitRewardEntry : SpecificUnitRewardEntry):
 
 func OnEntryPressed():
 	OnRewardSelected.emit(reward)
-

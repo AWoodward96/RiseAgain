@@ -116,6 +116,11 @@ func UpdateOffTurn(_delta):
 
 		currentUnitsTurn = pop as UnitInstance
 		if currentUnitsTurn != null:
+			# If for some reason this unit is not activated then just go to the next unit
+			if !currentUnitsTurn.Activated:
+				currentUnitsTurn = null
+				return
+
 			if !currentUnitsTurn.IsAggrod:
 				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
 
@@ -130,6 +135,10 @@ func UpdateOffTurn(_delta):
 				currentUnitsTurn.QueueEndTurn()
 				currentUnitsTurn = null
 	else:
+		if !currentUnitsTurn.Activated:
+			currentUnitsTurn = null
+			return
+
 		currentUnitsTurn.AI.RunTurn()
 		if !currentUnitsTurn.Activated && currentUnitsTurn.IsStackFree:
 			currentUnitsTurn = null

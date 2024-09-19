@@ -12,13 +12,14 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 @export var DefensiveMod : float
 
 @export_category("Drain")
-
-
 @export var DamageAffectsUsersHealth : bool = false
 
 # Can be positive OR negative depending on if this heals or hurts the user of this ability
 @export var DamageToHealthRatio : float = 0.5
 
+
+@export_category("Vulnerability")
+@export var VulerableDescriptors : Array[DescriptorMultiplier]
 
 func DoMod(_val, _mod, _modType : DamageData.ModificationType):
 	match _modType:

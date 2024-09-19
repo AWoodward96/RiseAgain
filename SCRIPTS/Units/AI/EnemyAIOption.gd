@@ -97,7 +97,6 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
 		unitWillRetaliate = true
 
-	var tileData = tileToAttack.AsTargetData()
 	damageAmount = GameManager.GameSettings.UnitDamageCalculation(sourceUnit, targetUnit, unitUsable.UsableDamageData, 1)
 	canKill = targetUnit.currentHealth <= damageAmount
 	canDealDamage = damageAmount > 0 # This could cause some fuckyness with 'no damage' attacks but we'll see

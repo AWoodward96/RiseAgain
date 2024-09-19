@@ -6,7 +6,6 @@ class_name UnitsLeftAlive
 
 func CheckObjective(_map : Map):
 	var count = 0
-	var allUnits = _map.teams
 
 	var allUnitsOnTeam = _map.GetUnitsOnTeam(targetingFlag.Team)
 	if targetingFlag.Descriptor != null:

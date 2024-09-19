@@ -1,5 +1,5 @@
 extends Node2D
-class_name AbilityMovementData
+class_name AbilityMovementComponent
 
 # Three types of movement
 # TargetTile is just the tile that you targeted for the ability

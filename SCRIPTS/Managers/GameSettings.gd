@@ -100,7 +100,6 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 		if tile != null:
 			return _preferredDirection
 
-	var neighbors = _currentGrid.GetAdjacentTiles(_currentTile)
 	for n in Grid.NEIGHBORS:
 		var pos = _currentTile.Position + n
 		var tile = _currentGrid.GetTile(pos)
@@ -110,9 +109,10 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 	return 2
 
 func UnitDamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _aoeMultiplier : float = 1):
+	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
 	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
-	agressiveVal = _damageData.DoMod(agressiveVal, _damageData.AgressiveMod, _damageData.AgressiveModType)
+	agressiveVal = flatValue + _damageData.DoMod(agressiveVal, _damageData.AgressiveMod, _damageData.AgressiveModType)
 
 	var defensiveStat = _damageData.DefensiveStat
 	var defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
@@ -120,7 +120,13 @@ func UnitDamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitI
 
 	var affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
-	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * _aoeMultiplier)
+	var vulnerabilityMultiplier = 1
+	for descriptor in _damageData.VulerableDescriptors:
+		if _defendingUnit.Template.Descriptors.count(descriptor.Descriptor) > 0:
+			# For now, these things wont stack
+			vulnerabilityMultiplier *= descriptor.Multiplier
+
+	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * _aoeMultiplier * vulnerabilityMultiplier)
 
 func UnitHealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
 	var healAmount = _healData.FlatValue

@@ -6,5 +6,5 @@ func Enter(_actionLog : ActionLog):
 
 	_actionLog.QueueExpGains()
 
-func Execute():
+func Execute(_delta):
 	return log.source.IsStackFree

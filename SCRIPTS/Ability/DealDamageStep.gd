@@ -5,36 +5,49 @@ class_name DealDamageStep
 @export var useDefendAction : bool = true
 @export var damageDataOverride : DamageDataResource
 
+var cooloff : float
+var dealtDamage : bool
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
-	var targeting = ability.TargetingData
+	cooloff = 0
+	dealtDamage = false
+
+	for damageResult in log.actionResults:
+		dealtDamage = true
+		var damageData
+		if damageDataOverride != null:
+			damageData = damageDataOverride
+		else:
+			damageData = ability.UsableDamageData
+
+		damageResult.Ability_CalculateResult(ability, damageData)
+
+		if useDefendAction:
+			damageResult.Target.QueueDefenseSequence(source.global_position, damageResult)
+		else:
+			damageResult.Target.DoCombat(damageResult)
 
 	if useAttackAction:
 		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log)
+	pass
 
-	for tileData in _actionLog.affectedTiles:
-		if tileData.Tile.Occupant != null:
-			var target = tileData.Tile.Occupant
-			if targeting != null && !targeting.OnCorrectTeam(log.source, target):
-				continue
+func Execute(_delta):
+	# If we didn't deal damage - just go next
+	if !dealtDamage:
+		return true
 
-			var damageResult = ActionResult.new()
-			damageResult.Source = source
-			damageResult.Target = target
-			damageResult.TileTargetData = tileData
+	if log.source.IsStackFree:
+		cooloff += _delta
+		return cooloff > Juice.combatSequenceCooloffTimer
 
-			var damageData
-			if damageDataOverride != null:
-				damageData = damageDataOverride
-			else:
-				damageData = ability.UsableDamageData
+	return false
 
-			damageResult.Ability_CalculateResult(ability, damageData)
-			log.actionResults.append(damageResult)
+func GetDamageBeingDealt(_unitUsable : UnitUsable, _source: UnitInstance, _target : UnitInstance, _targetedTileData : TileTargetedData):
+	var damageData
+	if damageDataOverride != null:
+		damageData = damageDataOverride
+	else:
+		damageData = _unitUsable.UsableDamageData # Can't get Ability at this point bc it's set in _enter
 
-			if useDefendAction:
-				target.QueueDefenseSequence(source.global_position, damageResult)
-			else:
-				target.DoCombat(damageResult)
-		pass
+	return -GameManager.GameSettings.UnitDamageCalculation(_source, _target, damageData, _targetedTileData.AOEMultiplier)

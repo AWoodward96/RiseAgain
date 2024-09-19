@@ -267,20 +267,20 @@ func ShowDamagePreview():
 				# Show the damage preview physically on the unit
 				# this section is slated for removal if it is deemed to be unnecessary
 				var tempTargetData = currentTargetTile.AsTargetData()
-				currentTargetTile.Occupant.ShowDamagePreview(source, unitUsable.UsableDamageData, tempTargetData)
+				currentTargetTile.Occupant.ShowDamagePreview(source, unitUsable, tempTargetData)
 
 				# Ping the CombatHUD to show the damage preview
 				ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTargetTile.Occupant, tempTargetData)
 		SkillTargetingData.TargetingType.ShapedFree:
 			for target in shapedTargetingTiles:
 				if target != null && target.Tile.Occupant != null:
-					target.Tile.Occupant.ShowDamagePreview(source, unitUsable.UsableDamageData, target)
+					target.Tile.Occupant.ShowDamagePreview(source, unitUsable, target)
 					cachedTargetUnits.append(target.Tile.Occupant)
 		SkillTargetingData.TargetingType.ShapedDirectional:
 			var filteredTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
 			for target in filteredTiles:
 				if target != null && target.Tile.Occupant != null:
-					target.Tile.Occupant.ShowDamagePreview(source, unitUsable.UsableDamageData, target)
+					target.Tile.Occupant.ShowDamagePreview(source, unitUsable, target)
 					cachedTargetUnits.append(target.Tile.Occupant)
 			pass
 
@@ -290,7 +290,7 @@ func ShowHealPreview():
 			if currentTargetTile != null && currentTargetTile.Occupant != null:
 				# Show the damage preview physically on the unit
 				# this section is slated for removal if it is deemed to be unnecessary
-				currentTargetTile.Occupant.ShowHealPreview(source, unitUsable.HealData, currentTargetTile.AsTargetData())
+				currentTargetTile.Occupant.ShowHealPreview(source, unitUsable, currentTargetTile.AsTargetData())
 		SkillTargetingData.TargetingType.ShapedFree:
 			for target in shapedTargetingTiles:
 				if target != null && target.Occupant != null:

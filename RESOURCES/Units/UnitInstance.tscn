@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=13 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_ea6il"]
+[ext_resource type="Script" path="res://RESOURCES/Units/UnitHealthBar.gd" id="4_ae3kp"]
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
@@ -18,17 +19,27 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5801"]
+bg_color = Color(0.82, 0.82, 0.82, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [sub_resource type="LabelSettings" id="LabelSettings_lypks"]
 font = ExtResource("3_ea6il")
 font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "itemsParent", "affinityIcon")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon")]
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
+combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
+healthBar = NodePath("HealthBarParent")
 focusSlotPrefab = ExtResource("4_kfodt")
 affinityIcon = NodePath("AffinityIcon")
 
@@ -38,9 +49,11 @@ affinityIcon = NodePath("AffinityIcon")
 
 [node name="Items" type="Node2D" parent="."]
 
+[node name="Effects" type="Node2D" parent="."]
+
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
 
-[node name="HealthBarParent" type="Control" parent="."]
+[node name="HealthBarParent" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 16)
@@ -49,6 +62,12 @@ anchors_preset = 0
 offset_top = 70.0
 offset_right = 64.0
 offset_bottom = 86.0
+script = ExtResource("4_ae3kp")
+HealthBar = NodePath("HealthBar")
+ArmorBar = NodePath("ArmorBar")
+HealthText = NodePath("HP Val")
+FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
+FocusBarPrefab = ExtResource("4_kfodt")
 
 [node name="HealthBar" type="ProgressBar" parent="HealthBarParent"]
 unique_name_in_owner = true
@@ -61,6 +80,20 @@ theme_override_styles/background = SubResource("StyleBoxFlat_n6je4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yrop1")
 max_value = 1.0
 value = 1.0
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="HealthBarParent"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+offset_left = -8.0
+offset_right = 72.0
+offset_bottom = 16.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_f5801")
+max_value = 1.0
+value = 0.84
+fill_mode = 1
 show_percentage = false
 
 [node name="HP Val" type="Label" parent="HealthBarParent"]

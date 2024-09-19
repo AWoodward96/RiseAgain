@@ -11,7 +11,8 @@ class_name UnitUsable
 @export var StatData : ItemStatComponent
 @export var HealData : HealComponent
 @export var StatConsumableData : StatConsumableComponent
-@export var MovementData : AbilityMovementData
+@export var MovementData : AbilityMovementComponent
+@export var EffectData : CombatEffectComponent
 
 
 var ownerUnit : UnitInstance
@@ -95,5 +96,8 @@ func GetComponents():
 		if StatConsumableData == null && child is StatConsumableComponent:
 			StatConsumableData = child as StatConsumableComponent
 
-		if MovementData == null && child is AbilityMovementData:
-			MovementData = child as AbilityMovementData
+		if MovementData == null && child is AbilityMovementComponent:
+			MovementData = child as AbilityMovementComponent
+
+		if EffectData == null && child is CombatEffectComponent:
+			EffectData = child as CombatEffectComponent

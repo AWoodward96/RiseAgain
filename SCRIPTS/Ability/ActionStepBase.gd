@@ -18,5 +18,5 @@ func Enter(_actionLog : ActionLog):
 		push_error("Entering an Ability Step with a null Ability. Did you set the ability in the action log?")
 	pass
 
-func Execute():
+func Execute(_delta):
 	return true

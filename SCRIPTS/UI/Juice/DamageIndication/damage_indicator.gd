@@ -9,7 +9,7 @@ extends Node2D
 var currentHP	# Units current HP
 var previewedHP # The hp value visible to the player. Gets ticked down over the course of the preview
 var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
-var damageBeingDealt
+var damageBeingDealt : int
 var myUnit : UnitInstance
 var maxHealth
 
@@ -18,11 +18,23 @@ var previewHPTween : Tween
 func Initialize(_unit : UnitInstance):
 	myUnit = _unit
 
-func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, _targetedTileData : TileTargetedData):
+func PreviewDamage(_unitUsable : UnitUsable, _attackingUnit : UnitInstance, _targetedTileData : TileTargetedData):
+	var damageContext = _unitUsable.UsableDamageData
+
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 
-	damageBeingDealt = -GameManager.GameSettings.UnitDamageCalculation(_sourceUnit, myUnit, _damageContext, _targetedTileData.AOEMultiplier)
+	damageBeingDealt = 0
+	if _unitUsable is Ability:
+		var asAbility = _unitUsable as Ability
+		for step in asAbility.executionStack:
+			var asDamageStep = step as DealDamageStep
+			if asDamageStep != null:
+				damageBeingDealt += asDamageStep.GetDamageBeingDealt(_unitUsable, _attackingUnit, myUnit, _targetedTileData)
+	else:
+		damageBeingDealt = -GameManager.GameSettings.UnitDamageCalculation(_attackingUnit, myUnit, damageContext, _targetedTileData.AOEMultiplier)
+
+
 	damage_being_dealt.text = str(damageBeingDealt)
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
 	resultingHP = clamp(myUnit.currentHealth + damageBeingDealt, 0, myUnit.maxHealth)
@@ -32,12 +44,14 @@ func PreviewDamage(_damageContext : DamageData, _sourceUnit : UnitInstance, _tar
 	CreateTween()
 	pass
 
-func PreviewHeal(_healData : HealComponent, _sourceUnit : UnitInstance, _targetedTileData: TileTargetedData):
+func PreviewHeal(_unitUsable : UnitUsable, _sourceUnit : UnitInstance, _targetedTileData: TileTargetedData):
+	var healData = _unitUsable.HealData
+
 	currentHP = myUnit.currentHealth
 	maxHealth = myUnit.maxHealth
 	death_indicator.visible = false
 
-	var healAmount = GameManager.GameSettings.UnitHealCalculation(_healData, _sourceUnit, _targetedTileData.AOEMultiplier)
+	var healAmount = GameManager.GameSettings.UnitHealCalculation(healData, _sourceUnit, _targetedTileData.AOEMultiplier)
 
 	damage_being_dealt.text = str(healAmount)
 	resultingHP = clamp(myUnit.currentHealth + healAmount, 0, myUnit.maxHealth)
@@ -54,4 +68,3 @@ func UpdatePreviewLabel(value : int):
 func PreviewCanceled():
 	if previewHPTween != null:
 		previewHPTween.stop()
-

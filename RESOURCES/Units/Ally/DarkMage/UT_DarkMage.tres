@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://c0xfa5tbv14pu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://c0xfa5tbv14pu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_1f83v"]
 [ext_resource type="PackedScene" uid="uid://dnwracq246buh" path="res://RESOURCES/Ability/ART_drain.tscn" id="1_3tsxk"]
 [ext_resource type="PackedScene" uid="uid://6bk65s2t5t5u" path="res://RESOURCES/Units/Ally/DarkMage/VIS_DarkMage.tscn" id="1_fdsu3"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_hwv2o"]
 [ext_resource type="Texture2D" uid="uid://dk6whh2weqyxi" path="res://ART/Icons/Units/darkmage.png" id="2_6nllu"]
+[ext_resource type="PackedScene" uid="uid://b1y1fm3qowl1q" path="res://RESOURCES/Ability/ART_DarkFell.tscn" id="2_31h6l"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_k1gfy"]
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="2_y2xa7"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_5j8w0"]
@@ -47,7 +48,7 @@ Value = 0
 [sub_resource type="Resource" id="Resource_daox4"]
 script = ExtResource("2_k1gfy")
 Template = ExtResource("7_3bh5k")
-Value = 4.0
+Value = 5
 
 [sub_resource type="Resource" id="Resource_l2wqf"]
 script = ExtResource("2_k1gfy")
@@ -106,7 +107,9 @@ BaseStats = Array[ExtResource("2_k1gfy")]([SubResource("Resource_vqqm1"), SubRes
 StatGrowths = Array[ExtResource("2_k1gfy")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("2_y2xa7")
 StartingItems = Array[PackedScene]([ExtResource("10_gprm6"), ExtResource("13_ajl06")])
-Abilities = Array[PackedScene]([ExtResource("1_3tsxk")])
+Abilities = Array[PackedScene]([ExtResource("2_31h6l")])
+Tier0Abilities = Array[PackedScene]([])
+Tier1Abilities = Array[PackedScene]([ExtResource("1_3tsxk"), ExtResource("2_31h6l")])
 Descriptors = Array[ExtResource("13_2xmk4")]([])
 DebugName = "DarkMage"
 loc_DisplayName = "unit_darkmage_name"

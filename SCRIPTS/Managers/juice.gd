@@ -5,6 +5,8 @@ extends Node2D
 @export_category("Camera Settings")
 @export var cameraMoveSpeed = 10
 
+@export_category("Health Bar Settings")
+@export var HealthBarLossTime : float = 0.5
 
 @export_category("Combat Settings")
 @export var combatSequenceWarmupTimer = 0.5
@@ -14,7 +16,6 @@ extends Node2D
 @export var combatSequenceDefenseOffset : float = 1
 @export var combatSequenceReturnToOriginLerp = 4
 @export var combatSequenceResetDistance = 0.1
-@export var combatSequenceTickDuration = 0.5
 
 @export var enemyTurnWarmup = 0.5
 
@@ -31,6 +32,12 @@ func CreateHealPopup(_healVal, _tile : Tile):
 func CreateDamagePopup(_damageVal, _tile : Tile):
 	var popup = damagePopup.instantiate()
 	popup.SetDamageValue(_damageVal)
+	popup.global_position = _tile.GlobalPosition
+	add_child(popup)
+
+func CreateArmorPopup(_armorVal, _tile : Tile):
+	var popup = damagePopup.instantiate()
+	popup.SetArmorValue(_armorVal)
 	popup.global_position = _tile.GlobalPosition
 	add_child(popup)
 

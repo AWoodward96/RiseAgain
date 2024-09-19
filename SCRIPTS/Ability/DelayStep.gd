@@ -12,5 +12,5 @@ func Enter(_actionLog : ActionLog):
 	delay = true
 	pass
 
-func Execute():
+func Execute(_delta):
 	return delay

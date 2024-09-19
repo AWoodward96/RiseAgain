@@ -90,15 +90,19 @@ func ShowUnitActions(_unit : UnitInstance):
 	ShowActions()
 
 func ShowThreat(_show : bool, _units : Array[UnitInstance]):
-	Tilemap.clear_layer(THREATLAYER)
 	ShowingThreat = _show
 
 	if !ShowingThreat:
+		Tilemap.clear_layer(THREATLAYER)
 		return
 
+	RefreshThreat(_units)
+
+func RefreshThreat(_units : Array[UnitInstance]):
+	Tilemap.clear_layer(THREATLAYER)
 	var workingList : Array[Tile]
 	for u in _units:
-		if u == null:
+		if u == null || u.currentHealth <= 0:
 			continue
 
 		var movement = GetCharacterMovementOptions(u, false)

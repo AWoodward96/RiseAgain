@@ -3,6 +3,7 @@ class_name InspectPanel
 
 @export var icon : TextureRect
 @export var healthbar : ProgressBar
+@export var armorbar : ProgressBar
 @export var healthText : Label
 @export var namelabel : Label
 @export var levelLabel : Label
@@ -45,11 +46,19 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 
 
 	var template = _unit.Template
+	var armor = _unit.GetArmorAmount()
+
+	armorbar.visible = armor > 0
 	namelabel.text = template.loc_DisplayName
 	icon.texture = template.icon
 	healthText.text = str(_unit.currentHealth) + "/" + str(_unit.maxHealth)
+
 	healthbar.value = _unit.currentHealth / _unit.maxHealth
 	expbar.value = _unit.Exp
+	if armor > 0:
+		armorbar.value = armor as float / _unit.maxHealth
+		healthText.text += str(" + %02d" % armor)
+
 
 	# I don't know how fast this is, but w/e
 	var lvlStr = tr(levelLoc)

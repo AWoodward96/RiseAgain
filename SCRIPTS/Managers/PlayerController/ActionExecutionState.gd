@@ -31,12 +31,21 @@ func _Enter(_ctrl : PlayerController, data):
 	log.actionResults.clear()
 	# The target tiles is an array so loop through that and append the units to take damage
 	for tileData in log.affectedTiles:
-		if tileData.Tile.Occupant != null:
-			var actionResult = ActionResult.new()
-			actionResult.Source = log.source
-			actionResult.Target = tileData.Tile.Occupant
-			actionResult.TileTargetData = tileData
-			log.actionResults.append(actionResult)
+		var target = tileData.Tile.Occupant
+		if target == null:
+			continue
+
+		if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
+			continue
+
+		if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
+			continue
+
+		var actionResult = ActionResult.new()
+		actionResult.Source = log.source
+		actionResult.Target = tileData.Tile.Occupant
+		actionResult.TileTargetData = tileData
+		log.actionResults.append(actionResult)
 
 	if log.item != null:
 		# If for some reason the item has movement --- god help you son
@@ -127,7 +136,7 @@ func _Execute(_delta):
 				PostActionComplete()
 
 	if log.ability != null:
-		log.ability.TryExecute(log)
+		log.ability.TryExecute(log, _delta)
 
 	pass
 

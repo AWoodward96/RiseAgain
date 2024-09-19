@@ -3,7 +3,7 @@ class_name ActionResult
 var Source : UnitInstance
 var Target : UnitInstance
 
-var HealthDelta : int
+var HealthDelta : int		# The signed amount the Health of the Target should move. If being delt damage, this will be negative. If healing, this will be positive
 var SourceHealthDelta : int
 var FocusDelta : int
 var ExpGain : int

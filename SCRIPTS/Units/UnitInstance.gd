@@ -5,13 +5,16 @@ signal OnStatUpdated
 
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
+@export var combatEffectsParent : Node2D
 @export var itemsParent : Node2D
+@export var healthBar : UnitHealthBar
 @export var focusSlotPrefab : PackedScene
 @export var affinityIcon: Sprite2D
 
-@onready var health_bar = %HealthBar
+@onready var health_bar : ProgressBar = %HealthBar
 @onready var hp_val = %"HP Val"
 @onready var health_bar_parent = %HealthBarParent
+@onready var armor_bar: ProgressBar = %ArmorBar
 
 @onready var damage_indicator: Node2D = $DamageIndicator
 @onready var defend_icon: Sprite2D = %DefendIcon
@@ -21,9 +24,10 @@ var GridPosition : Vector2i
 var CurrentTile : Tile
 var Template : UnitTemplate
 var visual : UnitVisual # could be made generic, but probably not for now
-var UnitAllegiance : GameSettingsTemplate.TeamID
+var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 var Inventory : Array[Item]
 var Abilities : Array[Ability]
+var CombatEffects : Array[CombatEffectInstance]
 var EquippedItem : Item
 
 var IsDefending : bool = false :
@@ -83,6 +87,7 @@ var Activated : bool :
 
 func _ready():
 	ShowHealthBar(false)
+	healthBar.SetUnit(self)
 	HideDamagePreview()
 	damage_indicator.Initialize(self)
 	defend_icon.visible = false
@@ -98,6 +103,7 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	InitializeLevels(_levelOverride)
 	InitializeStats()
 	UpdateDerivedStats()
+
 
 func InitializeStats():
 	for stat in Template.BaseStats:
@@ -137,6 +143,32 @@ func InitializeLevels(_level : int):
 			baseStats[statDef.Template] = floori(growthPerc * _level)
 	Level = _level
 	pass
+
+func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
+	CombatEffects.append(_combatEffectInstance)
+	combatEffectsParent.add_child(_combatEffectInstance)
+	UpdateCombatEffects()
+	RefreshHealthBarVisuals()
+
+func TriggerTurnStartEffects():
+	for c in CombatEffects:
+		if c.IsExpired():
+			continue
+
+		c.OnTurnStart()
+		if c.TurnsRemaining != -1:
+			c.TurnsRemaining -= 1
+
+func UpdateCombatEffects():
+	var slatedForRemoval : Array[CombatEffectInstance]
+	for c in CombatEffects:
+		if c.IsExpired():
+			slatedForRemoval.append(c)
+
+	for remove in slatedForRemoval:
+		CombatEffects.remove_at(CombatEffects.find(remove))
+		combatEffectsParent.remove_child(remove)
+		remove.queue_free()
 
 func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTemplate.TeamID):
 	GridPosition = _gridLocation
@@ -306,9 +338,13 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	CurrentAction = null
 	ActionStack.clear()
 
-	# defending doesn't drop off until it's your turn again
+	# If it's your units turn
 	if _currentTurn == UnitAllegiance:
+		# defending doesn't drop off until it's your turn again
 		IsDefending = false
+
+		TriggerTurnStartEffects()
+		UpdateCombatEffects()
 
 	# for 'canceling' movement
 	TurnStartTile = CurrentTile
@@ -350,35 +386,84 @@ func DoCombat(_result : ActionResult, _instantaneous : bool = false):
 
 func ModifyHealth(_netHealthChange, _instantaneous : bool = false):
 	if _netHealthChange < 0:
-		Juice.CreateDamagePopup(_netHealthChange, CurrentTile)
+		# If this is a damage based change - armor should reduce the amount of damage taken
+		# Since healthChange would be negative here, healthChange
+		var armor = GetArmorAmount()
+		Juice.CreateDamagePopup(min(_netHealthChange + armor, 0), CurrentTile)
 	else:
 		Juice.CreateHealPopup(_netHealthChange, CurrentTile)
 
 	if !_instantaneous:
 		ShowHealthBar(true)
-		takeDamageTween = get_tree().create_tween()
-		takeDamageTween.tween_method(UpdateHealthBarTween, currentHealth, currentHealth + _netHealthChange, Juice.combatSequenceTickDuration)
-		takeDamageTween.tween_callback(OnModifyHealthTweenComplete.bind(_netHealthChange))
+		healthBar.ModifyHealthOverTime(_netHealthChange)
+
+		# NOTE:
+		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
+		# You'll need to wait for one to be finished before the other one starts
+		if !healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
+			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange))
+
 	else:
 		OnModifyHealthTweenComplete(_netHealthChange)
+	pass
+
+func UpdateHealthBarTween(value):
+	hp_val.text = str("%02d/%02d" % [clamp(value, 0, maxHealth), maxHealth])
+	health_bar.value = clampf(value, 0, maxHealth) / maxHealth as float
 	pass
 
 func ModifyFocus(_netFocusChange):
 	currentFocus += _netFocusChange
 	currentFocus = clamp(currentFocus, 0, GetWorkingStat(GameManager.GameSettings.MindStat))
-	UpdateFocusUI()
+	#UpdateFocusUI()
 	OnStatUpdated.emit()
 
-func OnModifyHealthTweenComplete(_healthNetChange):
-	currentHealth += _healthNetChange
-	currentHealth = clamp(currentHealth, 0, maxHealth)
-	health_bar.value = healthPerc
+func OnModifyHealthTweenComplete(_delta):
+	# you have to disconnect this because the nethealth change is a bound variable
+	if healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
+		healthBar.HealthBarTweenCallback.disconnect(OnModifyHealthTweenComplete)
+
+	var remainingDelta = _delta
+	var armor = GetArmorAmount()
+	if _delta < 0 && armor > 0:
+		var armorDamage = clamp(_delta, -armor, 0)
+		DealDamageToArmor(armorDamage)
+		remainingDelta -= armorDamage
+
+	currentHealth = clampi(currentHealth + remainingDelta, 0, maxHealth)
+	RefreshHealthBarVisuals()
 
 	# For AI enemies, check if this damage would aggro them
-	if _healthNetChange < 0 && AggroType is AggroOnDamage:
+	if _delta < 0 && AggroType is AggroOnDamage:
 		IsAggrod = true
 
 	CheckDeath()
+
+func DealDamageToArmor(_damage : int):
+	# Damage dealt to armor should always be signed - and therefore should always be negative
+	if _damage >= 0:
+		return
+
+	var remainingDamage = _damage
+	for effects in CombatEffects:
+		if effects is ArmorEffectInstance:
+			var delta = clamp(remainingDamage, -effects.ArmorValue, 0)
+			effects.ArmorValue += delta
+			remainingDamage -= delta # double negatives here
+
+	UpdateCombatEffects()
+	pass
+
+func RefreshHealthBarVisuals():
+	healthBar.Refresh()
+
+func GetArmorAmount():
+	var armor = 0
+	for effects in CombatEffects:
+		if effects is ArmorEffectInstance:
+			armor += effects.ArmorValue
+
+	return armor
 
 
 ### The function you want to call when you want to know the Final state that the Unit is working with
@@ -399,6 +484,12 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 			if statDef.Template == _statTemplate:
 				current += statDef.Value
 
+	for effect in CombatEffects:
+		if effect is StatChangeEffectInstance:
+			var statChange = (effect as StatChangeEffectInstance).GetEffect() as StatBuff
+			if statChange != null && statChange.Stat == _statTemplate:
+				current += statChange.Value
+
 	return current
 
 func ApplyStatModifier(_statDef : StatDef):
@@ -412,11 +503,6 @@ func ApplyStatModifier(_statDef : StatDef):
 func CheckDeath():
 	if currentHealth <= 0:
 		map.OnUnitDeath(self)
-
-func UpdateHealthBarTween(value):
-	hp_val.text = str("%02d/%02d" % [clamp(value, 0, maxHealth), maxHealth])
-	health_bar.value = clampf(value, 0, maxHealth) / maxHealth as float
-	pass
 
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible
@@ -455,14 +541,14 @@ func QueueDelayedCombatAction(_log : ActionLog):
 	if CurrentAction == null:
 		PopAction()
 
-func ShowDamagePreview(_source : UnitInstance, _damageData : DamageData, _targetedTileData : TileTargetedData):
+func ShowDamagePreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true
-	damage_indicator.PreviewDamage(_damageData, _source, _targetedTileData)
+	damage_indicator.PreviewDamage(_usable, _source, _targetedTileData)
 	pass
 
-func ShowHealPreview(_source : UnitInstance, _healData : HealComponent, _targetedTileData : TileTargetedData):
+func ShowHealPreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true
-	damage_indicator.PreviewHeal(_healData, _source, _targetedTileData)
+	damage_indicator.PreviewHeal(_usable, _source, _targetedTileData)
 
 func HideDamagePreview():
 	damage_indicator.visible = false
@@ -504,6 +590,7 @@ func UpdateFocusUI():
 	for fIndex in maxFocus:
 		var entry = focus_bar_parent.CreateEntry(focusSlotPrefab)
 		entry.Toggle(currentFocus >= (fIndex + 1)) # +1 because it's an index
+
 
 func ToJSON():
 	var inventoryJSON = []

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=22 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -22,6 +22,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
 bg_color = Color(3.36915e-07, 0.670276, 0.36946, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrmyv"]
+bg_color = Color(0.6497, 0.709775, 0.89, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgwnx"]
 bg_color = Color(1, 0.872869, 0.485299, 1)
@@ -297,13 +300,14 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "healthText", "namelabel", "levelLabel", "expbar", "statEntryParent", "weaponIcon", "weaponName", "weaponEntryParent")]
+[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "healthbar", "armorbar", "healthText", "namelabel", "levelLabel", "expbar", "statEntryParent", "weaponIcon", "weaponName", "weaponEntryParent")]
 anchors_preset = 0
 offset_top = -128.0
 offset_right = 261.0
 script = ExtResource("9_tccg0")
 icon = NodePath("Main/Icon")
 healthbar = NodePath("Main/Health")
+armorbar = NodePath("Main/Armor")
 healthText = NodePath("Main/HealthText")
 namelabel = NodePath("Main/UnitName")
 levelLabel = NodePath("Main/Level")
@@ -368,6 +372,19 @@ offset_right = 253.0
 offset_bottom = 51.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
+show_percentage = false
+
+[node name="Armor" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
+custom_minimum_size = Vector2(132, 27)
+layout_mode = 2
+offset_left = 73.0
+offset_top = 24.0
+offset_right = 253.0
+offset_bottom = 51.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
+max_value = 1.0
+value = 0.6
+fill_mode = 1
 show_percentage = false
 
 [node name="HealthText" type="Label" parent="BottomLeft/InspectUI/Main"]

@@ -182,6 +182,8 @@ func GetUnitsOnTeam(_teamBitMask : int):
 	for keyPair in teams:
 		if keyPair & _teamBitMask:
 			for units in teams[keyPair]:
+				if units == null:
+					continue
 				returnUnits.append(units)
 
 	return returnUnits
@@ -198,6 +200,9 @@ func GetClosestUnitToUnit(_currentUnit : UnitInstance, _targetTeam : int):
 			targetUnit = unit
 	return targetUnit
 
+func RefreshThreat():
+	if grid.ShowingThreat && playercontroller.ControllerState.CanShowThreat():
+		grid.RefreshThreat(GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
