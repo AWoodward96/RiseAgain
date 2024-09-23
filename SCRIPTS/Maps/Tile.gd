@@ -4,6 +4,9 @@ var GlobalPosition
 var Position
 var IsWall
 
+var Health : int = -1
+var Killbox : bool
+
 var CanAttack: bool
 var CanMove: bool
 var InRange : bool

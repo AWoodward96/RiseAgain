@@ -7,7 +7,12 @@ enum MAPSTATE { PreMap, Combat, PostMap }
 @export var GridSize = Vector2i(22 , 15)
 @export var CameraStart : Vector2
 @export var TileSize = 64
-@export var tilemap : TileMap
+
+@export_category("Layers")
+@export var tilemap_bg : TileMapLayer
+@export var tilemap_main : TileMapLayer
+@export var tilemap_threat : TileMapLayer
+@export var tilemap_UI : TileMapLayer
 
 @export_category("Objectives")
 @export var WinCondition : MapObjective
@@ -143,7 +148,7 @@ func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettingsTem
 
 func InitializeGrid():
 	grid = Grid.new()
-	grid.Init(GridSize.x, GridSize.y, tilemap, TileSize)
+	grid.Init(GridSize.x, GridSize.y, self, TileSize)
 
 
 func ChangeMapState(_newState : MapStateBase):
@@ -207,7 +212,7 @@ func RefreshThreat():
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mousePos = get_global_mouse_position()
-		var tile_pos = tilemap.local_to_map(mousePos)
+		var tile_pos = tilemap_main.local_to_map(mousePos)
 		OnTileClicked(tile_pos)
 
 

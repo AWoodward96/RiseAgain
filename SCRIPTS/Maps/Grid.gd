@@ -15,18 +15,18 @@ var GridArr : Array[Tile]
 var Width: int
 var Height: int
 var Pathfinding : AStarGrid2D
-var Tilemap : TileMap
+var map : Map
 var CellSize : int
 var ShowingThreat : bool
 
 var StartingPositions : Array[Vector2i]
 
 
-func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
+func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 	Width = _width
 	Height = _height
 	CellSize = _cell_size
-	Tilemap = _tilemap
+	map = _map
 
 	# pre-initialize the Pathfinding data
 	Pathfinding = AStarGrid2D.new()
@@ -45,12 +45,21 @@ func Init(_width : int, _height : int, _tilemap : TileMap, _cell_size : int):
 			GridArr[index] = Tile.new()
 			GridArr[index].Position = Vector2i(x,y)
 			GridArr[index].GlobalPosition = Vector2(x * CellSize, y *CellSize)
-			var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
-			if data:
-				if data.get_collision_polygons_count(0) > 0 :
-					GridArr[index].IsWall = true
-					Pathfinding.set_point_solid(Vector2i(x,y), true)
 
+			var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
+			if bg_data != null:
+				GridArr[index].Killbox = bg_data.get_custom_data("Killbox")
+
+			var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
+			if main_data:
+				if main_data.get_collision_polygons_count(0) > 0 :
+					GridArr[index].IsWall = true
+
+				var health = main_data.get_custom_data("Health")
+				if health > 0:
+					GridArr[index].Health = health
+
+			Pathfinding.set_point_solid(Vector2i(x,y), GridArr[index].Killbox || GridArr[index].IsWall)
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID):
 	for x in Width:
@@ -65,14 +74,19 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 
 	var x = _tile.Position.x
 	var y = _tile.Position.y
-	var data = Tilemap.get_cell_tile_data(0,Vector2i(x,y))
+	var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
+	var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 
 	Pathfinding.set_point_solid(Vector2i(x,y), false)
 	Pathfinding.set_point_weight_scale(Vector2i(x,y), 1)
-	if data:
-		if data.get_collision_polygons_count(0) > 0 :
+	if main_data:
+		if main_data.get_collision_polygons_count(0) > 0 :
 			_tile.IsWall = true
-			Pathfinding.set_point_solid(Vector2i(x,y), true)
+
+	if bg_data != null:
+		_tile.Killbox = bg_data.get_custom_data("Killbox")
+
+	Pathfinding.set_point_solid(Vector2i(x,y), _tile.IsWall || _tile.Killbox)
 
 	if _tile.Occupant != null:
 		if _tile.Occupant.UnitAllegiance != _allegience:
@@ -93,13 +107,13 @@ func ShowThreat(_show : bool, _units : Array[UnitInstance]):
 	ShowingThreat = _show
 
 	if !ShowingThreat:
-		Tilemap.clear_layer(THREATLAYER)
+		map.tilemap_threat.clear()
 		return
 
 	RefreshThreat(_units)
 
 func RefreshThreat(_units : Array[UnitInstance]):
-	Tilemap.clear_layer(THREATLAYER)
+	map.tilemap_threat.clear()
 	var workingList : Array[Tile]
 	for u in _units:
 		if u == null || u.currentHealth <= 0:
@@ -119,11 +133,11 @@ func RefreshThreat(_units : Array[UnitInstance]):
 			0:
 				pass
 			1:
-				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_1)
+				map.tilemap_threat.set_cell(tile.Position, UITILEATLAS, THREATTILE_1)
 			2:
-				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_2)
+				map.tilemap_threat.set_cell(tile.Position, UITILEATLAS, THREATTILE_2)
 			_:
-				Tilemap.set_cell(THREATLAYER, tile.Position, UITILEATLAS, THREATTILE_3)
+				map.tilemap_threat.set_cell(tile.Position, UITILEATLAS, THREATTILE_3)
 
 static func GetUniqueTiles(_array : Array[Tile]):
 	var returnMe : Array[Tile] = []
@@ -140,7 +154,7 @@ func ClearActions() :
 		n.CanAttack = false
 		n.InRange = false
 
-	Tilemap.clear_layer(ACTIONOPTIONSLAYER)
+	map.tilemap_UI.clear()
 
 func ShowActions() :
 	for n in GridArr :
@@ -148,14 +162,14 @@ func ShowActions() :
 			continue
 
 		if n.InRange :
-			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, RANGETILE)
+			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, RANGETILE)
 
 		if n.CanMove :
-			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, MOVETILE)
+			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, MOVETILE)
 			continue
 
 		if n.CanAttack :
-			Tilemap.set_cell(ACTIONOPTIONSLAYER, n.Position, UITILEATLAS, ATTACKTILE)
+			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, ATTACKTILE)
 
 
 
@@ -177,7 +191,7 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 				var neighborLocation = current.Position + neigh
 				if Pathfinding.is_in_bounds(neighborLocation.x, neighborLocation.y) :
 					var neighborIndex = neighborLocation.y * Width + neighborLocation.x
-					if (!GridArr[neighborIndex].IsWall) :
+					if !Pathfinding.is_point_solid(neighborLocation):
 						var occupant = GridArr[neighborIndex].Occupant
 						if (occupant== null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
 							workingList.append(GridArr[neighborIndex])
