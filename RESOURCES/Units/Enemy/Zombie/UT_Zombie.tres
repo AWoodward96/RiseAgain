@@ -105,7 +105,6 @@ BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_lvc3w"), SubRes
 StatGrowths = Array[ExtResource("2_6lvkj")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_6iv7s")
 StartingItems = Array[PackedScene]([ExtResource("10_y6j75")])
-Abilities = Array[PackedScene]([])
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_yhm8x")]([ExtResource("10_x76nx")])

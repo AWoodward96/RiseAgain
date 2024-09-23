@@ -20,6 +20,8 @@ signal OnCombatEffectsUpdated
 @onready var damage_indicator: Node2D = $DamageIndicator
 @onready var defend_icon: Sprite2D = %DefendIcon
 @onready var focus_bar_parent: EntryList = %FocusBarParent
+@onready var positive_afffinity: Sprite2D = %PositiveAfffinity
+@onready var negative_affinity: Sprite2D = %NegativeAffinity
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
@@ -605,6 +607,19 @@ func UpdateFocusUI():
 	for fIndex in maxFocus:
 		var entry = focus_bar_parent.CreateEntry(focusSlotPrefab)
 		entry.Toggle(currentFocus >= (fIndex + 1)) # +1 because it's an index
+
+func ShowAffinityRelation(_affinity : AffinityTemplate):
+	if _affinity == null:
+		positive_afffinity.visible = false
+		negative_affinity.visible = false
+		return
+
+	# Chat, I love bitwise ops
+	if _affinity.strongAgainst & Template.Affinity.affinity:
+		negative_affinity.visible = true
+
+	if Template.Affinity.strongAgainst & _affinity.affinity:
+		positive_afffinity.visible = true
 
 
 func ToJSON():

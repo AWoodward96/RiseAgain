@@ -1,8 +1,10 @@
 extends Control
 class_name DamagePreviewUI
 
-@onready var attacker_weapon_icon: TextureRect = %AttackerWeaponIcon
 @onready var attacker_name: Label = %AttackerName
+@onready var attacker_affinity_icon: TextureRect = %AttackerAffinityIcon
+@onready var attacker_advantage: TextureRect = %Attacker_Advantage
+@onready var attacker_disadvantage: TextureRect = %Attacker_Disadvantage
 
 @onready var atk_health: Label = %AtkHealth
 @onready var atk_dmg: Label = %AtkDmg
@@ -10,7 +12,9 @@ class_name DamagePreviewUI
 @onready var atk_crit: Label = %AtkCrit
 
 @onready var defender_name: Label = %DefenderName
-@onready var defender_weapon_icon: TextureRect = %DefenderWeaponIcon
+@onready var defender_affinity_icon: TextureRect = %DefenderAffinityIcon
+@onready var defender_advantage: TextureRect = %Defender_Advantage
+@onready var defender_disadvantage: TextureRect = %Defender_Disadvantage
 
 @onready var def_health: Label = %DefHealth
 @onready var def_dmg: Label = %DefDmg
@@ -29,7 +33,8 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 
 	# update the UI information
 	attacker_name.text = _attackingUnit.Template.loc_DisplayName
-	attacker_weapon_icon.texture = _weaponUsed.icon
+	attacker_affinity_icon.texture = _attackingUnit.Template.Affinity.loc_icon
+
 
 	atk_health.text = "%d" % _attackingUnit.currentHealth
 	atk_dmg.text =  "%d" % finalAttackingDamage
@@ -39,9 +44,7 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 	atk_crit.text = "0"
 
 	defender_name.text = _defendingUnit.Template.loc_DisplayName
-	defender_weapon_icon.visible = _defendingUnit.EquippedItem != null
-	if _defendingUnit.EquippedItem != null:
-		defender_weapon_icon.texture = _defendingUnit.EquippedItem.icon
+	defender_affinity_icon.texture = _defendingUnit.Template.Affinity.loc_icon
 
 	def_health.text =  "%d" % _defendingUnit.currentHealth
 
@@ -67,6 +70,23 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 		def_dmg.text = "--"
 		def_hit.text = "--"
 		def_crit.text = "--"
+
+	attacker_advantage.visible = false
+	defender_advantage.visible = false
+	attacker_disadvantage.visible = false
+	defender_disadvantage.visible = false
+	if _attackingUnit.Template != null && _defendingUnit.Template != null && _attackingUnit.Template.Affinity != null && _defendingUnit.Template.Affinity != null:
+		var attackAffinity = _attackingUnit.Template.Affinity
+		var defendAffinity = _defendingUnit.Template.Affinity
+
+		if defendAffinity.affinity & attackAffinity.strongAgainst:
+			defender_disadvantage.visible = true
+			attacker_advantage.visible = true
+
+		if attackAffinity.affinity & defendAffinity.strongAgainst:
+			defender_advantage.visible = true
+			attacker_disadvantage.visible = true
+
 
 func GetAggressiveValFromItem(_item : Item, _attackingUnit : UnitInstance):
 	if _item == null || _item.UsableDamageData == null:

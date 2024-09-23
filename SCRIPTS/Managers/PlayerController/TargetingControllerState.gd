@@ -62,6 +62,7 @@ func _Enter(_ctrl : PlayerController, ItemOrAbility):
 			currentTargetTile = log.availableTiles[0]
 		ctrl.ForceReticlePosition(currentTargetTile.Position)
 		ShowAvailableTilesOnGrid()
+		ShowAffinityRelations(source.Template.Affinity)
 		ShowPreview()
 
 
@@ -95,6 +96,7 @@ func UpdateInput(_delta):
 
 	if InputManager.cancelDown:
 		ClearPreview()
+		ShowAffinityRelations(null)
 		if currentItem != null:
 			ctrl.EnterItemSelectionState(ctrl.lastItemFilter)
 		else:
@@ -124,6 +126,7 @@ func TileSelected():
 		pass
 
 func _Exit():
+	ShowAffinityRelations(null)
 	ClearPreview()
 	pass
 
@@ -270,6 +273,9 @@ func ShowDamagePreview():
 				currentTargetTile.Occupant.ShowDamagePreview(source, unitUsable, tempTargetData)
 
 				# Ping the CombatHUD to show the damage preview
+				if currentTargetTile.Occupant != null && currentTargetTile.Occupant.Template != null && currentTargetTile.Occupant.Template.Affinity != null:
+					source.ShowAffinityRelation(currentTargetTile.Occupant.Template.Affinity)
+
 				ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTargetTile.Occupant, tempTargetData)
 		SkillTargetingData.TargetingType.ShapedFree:
 			for target in shapedTargetingTiles:
@@ -323,6 +329,14 @@ func ShowAvailableTilesOnGrid():
 
 
 	currentGrid.ShowActions()
+
+func ShowAffinityRelations(_affinityTemplate : AffinityTemplate):
+	if _affinityTemplate == null:
+		source.ShowAffinityRelation(null)
+
+	var enemyUnits = currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY)
+	for units in enemyUnits:
+		units.ShowAffinityRelation(_affinityTemplate)
 
 func ToString():
 	return "TargetingControllerState"

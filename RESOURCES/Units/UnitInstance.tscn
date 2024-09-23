@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=15 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
+[ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="9_v7dhr"]
+[ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="10_pwwos"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6je4"]
 
@@ -140,3 +142,16 @@ unique_name_in_owner = true
 position = Vector2(11, 11)
 scale = Vector2(0.0410156, 0.0410156)
 texture = ExtResource("7_vnfmn")
+
+[node name="PositiveAfffinity" type="Sprite2D" parent="AffinityIcon"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("9_v7dhr")
+
+[node name="NegativeAffinity" type="Sprite2D" parent="AffinityIcon"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -463.238)
+scale = Vector2(2, 2)
+texture = ExtResource("10_pwwos")

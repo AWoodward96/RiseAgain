@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=30 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bx0ahfyy2rnc3" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_victory.tscn" id="5_k07rk"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/DamagePreviewUI.gd" id="6_rywjh"]
 [ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Items/generic_melee.png" id="7_o5pds"]
+[ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="8_r73m2"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_rdfo2"]
+[ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="9_140k7"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/InspectPanel.gd" id="9_tccg0"]
 [ext_resource type="PackedScene" uid="uid://mrtikl2yemdi" path="res://SCRIPTS/UI/Units/ui_effect_icon.tscn" id="10_4ar5q"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextMenu.gd" id="10_5gr1e"]
@@ -153,11 +155,29 @@ color = Color(0.317647, 0.513726, 0.588235, 1)
 [node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo"]
 layout_mode = 2
 
-[node name="AttackerWeaponIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
+[node name="AttackerAffinityIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_o5pds")
+expand_mode = 1
+
+[node name="Attacker_Advantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer/AttackerAffinityIcon"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_r73m2")
+expand_mode = 1
+
+[node name="Attacker_Disadvantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer/AttackerAffinityIcon"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("9_140k7")
 expand_mode = 1
 
 [node name="AttackerName" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
@@ -296,11 +316,29 @@ text = "Archer Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DefenderWeaponIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer"]
+[node name="DefenderAffinityIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_o5pds")
+expand_mode = 1
+
+[node name="Defender_Advantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer/DefenderAffinityIcon"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_r73m2")
+expand_mode = 1
+
+[node name="Defender_Disadvantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer/DefenderAffinityIcon"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("9_140k7")
 expand_mode = 1
 
 [node name="TopRight" type="Control" parent="."]
