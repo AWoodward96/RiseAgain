@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://c67gru2ubp5ke"]
+[gd_scene load_steps=3 format=3 uid="uid://c67gru2ubp5ke"]
 
 [ext_resource type="Script" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.gd" id="1_rolom"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_6llwj"]
 
-[node name="_alpha_UnitGridEntry" type="PanelContainer" node_paths=PackedStringArray("SelectedParent", "UnitIcon", "UnitName")]
+[node name="_alpha_UnitGridEntry" type="PanelContainer" node_paths=PackedStringArray("SelectedParent", "UnitIcon", "UnitName", "UnitDescriptionText")]
 custom_minimum_size = Vector2(150, 100)
 focus_mode = 2
 script = ExtResource("1_rolom")
 SelectedParent = NodePath("SelectedRect")
 UnitIcon = NodePath("VBoxContainer/HBoxContainer/UnitIcon")
 UnitName = NodePath("VBoxContainer/HBoxContainer/UnitName")
+UnitDescriptionText = NodePath("VBoxContainer/UnitDescription")
 
 [node name="SelectedRect" type="ColorRect" parent="."]
 visible = false
@@ -28,4 +30,14 @@ expand_mode = 1
 
 [node name="UnitName" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6llwj")
+theme_override_font_sizes/font_size = 24
 text = "unit_name"
+
+[node name="UnitDescription" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_6llwj")
+theme_override_font_sizes/normal_font_size = 16
+text = "A crackshot baby"
+fit_content = true

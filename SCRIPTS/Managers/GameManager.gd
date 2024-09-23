@@ -2,6 +2,7 @@ extends Node2D
 
 @export var GameSettings : GameSettingsTemplate
 @export var UnitSettings : UnitSettingsTemplate
+@export var LocalizationSettings : LocSettings
 @export var AlphaUnitSelection : PackedScene
 @export var AlphaFormationUI : PackedScene
 @export var CombatHUDUI : PackedScene

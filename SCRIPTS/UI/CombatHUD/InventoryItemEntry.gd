@@ -31,7 +31,7 @@ func OnFocusEntered():
 	selected_parent.visible = true
 
 	# Item handles if the targeting data is null, so for consumables it should just clear the target selection
-	currentItem.ShowRangePreview()
+	currentItem.ShowRangePreview(false)
 
 func OnFocusExited():
 	selected = false

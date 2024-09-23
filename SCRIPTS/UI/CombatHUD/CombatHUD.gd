@@ -8,10 +8,16 @@ signal BannerAnimComplete
 @export var NeutralTurnBanner : PackedScene
 @export var VictoryBanner : PackedScene
 @export var InspectUI : InspectPanel
+@export var InspectEffectsUI : GridEntryList
 @export var ContextUI : ContextMenu
 @export var DmgPreviewUI : DamagePreviewUI
 @export var itemSelectUI : ItemSelectionUI
 @export var NoTargets : Control
+
+@export_category("Optional Objective")
+
+@export var OptionalObjectiveParent : Control
+@export var OptionalObjectiveText : Label
 
 @export_category("Anchors")
 @onready var center_left_anchor = $CenterLeft
@@ -21,7 +27,7 @@ signal BannerAnimComplete
 @export var bottom_right_anchor : Control
 
 
-var map
+var map : Map
 var ctrl : PlayerController
 var lastReticleSide = -1 	# -1 : The reticle is unknown and needs to be updated
 							#  0 : The reticle is on the right side, so the UI should be on the left
@@ -46,6 +52,7 @@ func Initialize(_map : Map, _currentTile : Tile):
 
 	# Do this now that we have a map ref
 	UpdateInspectUISide()
+	UpdateOptionalObjective()
 
 func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 	var scene
@@ -114,17 +121,30 @@ func UpdateInspectUISide():
 		if newside == 1:
 			bottom_right_anchor.add_child(InspectUI)
 			InspectUI.position = Vector2(-InspectUI.size.x, -InspectUI.size.y)
-
+			InspectEffectsUI.position = Vector2(-InspectEffectsUI.size.x, 0)
+			InspectEffectsUI.SetMirror(true)
 			top_right_anchor.add_child(DmgPreviewUI)
 
 		elif newside == 0:
 			# If side is (0) false, the Reticle is on the right side of the screen, so to help visibility, the UI should be move to the LEFT
 			bottom_left_anchor.add_child(InspectUI)
 			InspectUI.position = Vector2(0, -InspectUI.size.y)
+			InspectEffectsUI.position = Vector2(InspectUI.size.x, 0)
+			InspectEffectsUI.SetMirror(false)
 
 			top_left_anchor.add_child(DmgPreviewUI)
 
 	lastReticleSide = newside
+
+func UpdateOptionalObjective():
+	if map.OptionalObjectives.size() > 0:
+		OptionalObjectiveParent.visible = true
+
+		# For now only do the first one
+		var firstOptional = map.OptionalObjectives[0]
+		OptionalObjectiveText.text = tr(LocSettings.Optional_Objective_Block).format({"TEXT" : tr(firstOptional.loc_objectiveDescription)})
+	else:
+		OptionalObjectiveParent.visible = false
 
 
 func OnTileChanged(_tile : Tile):

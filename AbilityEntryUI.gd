@@ -43,8 +43,8 @@ func FormatAbilityDescription(_ability : Ability):
 		if _ability.UsableDamageData.VulerableDescriptors.size() != 0:
 			var count = 0
 			for multiplier in _ability.UsableDamageData.VulerableDescriptors:
-				dict["DMG_VULNERABLE_DESC_" + count] = tr(multiplier.Descriptor.loc_name)
-				dict["DMG_VULNERABLE_MULT_" + count] = multiplier.Multiplier
+				dict["DMG_VULNERABLE_DESC_" + str(count)] = tr(multiplier.Descriptor.loc_name)
+				dict["DMG_VULNERABLE_MULT_" + str(count)] = multiplier.Multiplier
 
 	# Get the heal-based data
 	if _ability.HealData != null:

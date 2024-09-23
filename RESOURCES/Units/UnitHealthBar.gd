@@ -7,6 +7,7 @@ class_name UnitHealthBar
 @export var HealthText : Label
 @export var FocusBarEntryList : EntryList
 @export var FocusBarPrefab : PackedScene
+@export var LevelLabel : Label
 
 var Unit : UnitInstance
 var UnitMaxHealth : int
@@ -99,8 +100,13 @@ func Refresh(_forceUpdate : bool = false):
 	var armor = Unit.GetArmorAmount()
 
 	ArmorBar.visible = armor > 0
-	HealthText.text = str(Unit.currentHealth) + "/" + str(Unit.maxHealth)
-	HealthBar.value = Unit.currentHealth / Unit.maxHealth
+
+	if HealthText != null: HealthText.text = str(Unit.currentHealth) + "/" + str(Unit.maxHealth)
+	if HealthBar != null: HealthBar.value = Unit.currentHealth / Unit.maxHealth
+
+	if LevelLabel != null:
+		var lvlStr = tr(LocSettings.Level_Num_Short)
+		LevelLabel.text = lvlStr.format({"NUM" : Unit.DisplayLevel })
 
 	if armor > 0:
 		ArmorBar.value = armor as float / Unit.maxHealth

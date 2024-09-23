@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgpijng0n124p"]
+[gd_scene load_steps=19 format=3 uid="uid://dgpijng0n124p"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_jr4ej"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
 [ext_resource type="Texture2D" uid="uid://uh2xgg4i7bc" path="res://ART/Icons/Ability/cleave.png" id="5_dd7nx"]
+[ext_resource type="Resource" uid="uid://w4pf17p2i0wg" path="res://RESOURCES/CombatEffects/CE_Armor_HeroicLeap.tres" id="5_octw8"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_mtb8i"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_ytfja"]
 [ext_resource type="Resource" uid="uid://c02lpgusbul1t" path="res://RESOURCES/TargetingShapes/heroicleap_shape.tres" id="7_n5ddh"]
@@ -13,8 +14,6 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="9_uyhs5"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_6323x"]
 [ext_resource type="Script" path="res://RESOURCES/Ability/AbilityMovementData.gd" id="11_anx3p"]
-[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="15_7pxpw"]
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="16_p2115"]
 
 [sub_resource type="Resource" id="Resource_p650e"]
 script = ExtResource("3_8kx7m")
@@ -25,27 +24,16 @@ script = ExtResource("3_jr4ej")
 useAttackAction = true
 useDefendAction = true
 
-[sub_resource type="Resource" id="Resource_5al6w"]
-script = ExtResource("16_p2115")
-UseDamageDealtAsValue = false
-UseSourceForStats = false
-FlatValue = 0.0
-RelativeStat = ExtResource("15_7pxpw")
-ModType = 2
-Mod = 0.2
-AffectedTargets = 0
-Turns = 1
-
 [sub_resource type="Resource" id="Resource_ttix8"]
 script = ExtResource("6_ytfja")
-CombatEffect = SubResource("Resource_5al6w")
+CombatEffect = ExtResource("5_octw8")
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_isldo")
 
 [node name="ART_HeroicLeap" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_a52ru")
-focusCost = 4
+focusCost = 3
 executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_aullh"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "Cleave"
 loc_displayName = "art_heroicleap"

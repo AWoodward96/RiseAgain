@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://mrtikl2yemdi"]
+
+[node name="UIEffectIcon" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+expand_mode = 1

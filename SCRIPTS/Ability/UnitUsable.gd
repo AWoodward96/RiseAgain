@@ -33,7 +33,7 @@ func Initialize(_unitOwner : UnitInstance, _map : Map):
 func SetMap(_map : Map):
 	map = _map
 
-func ShowRangePreview():
+func ShowRangePreview(_sorted : bool = true):
 	if map == null:
 		return
 
@@ -41,7 +41,7 @@ func ShowRangePreview():
 		map.grid.ClearActions()
 		return
 
-	var availableTargets = TargetingData.GetTilesInRange(ownerUnit, map.grid)
+	var availableTargets = TargetingData.GetTilesInRange(ownerUnit, map.grid, _sorted)
 	for t in availableTargets:
 		t.CanAttack = true
 

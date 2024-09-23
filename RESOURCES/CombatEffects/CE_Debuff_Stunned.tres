@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StunEffectTemplate" load_steps=3 format=3 uid="uid://b2s1f01511cjj"]
+
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StunEffectTemplate.gd" id="1_7547n"]
+[ext_resource type="Texture2D" uid="uid://df743vavq35y" path="res://ART/Icons/stunned_icion.png" id="1_fqt0v"]
+
+[resource]
+script = ExtResource("1_7547n")
+AffectedTargets = 1
+Turns = 1
+loc_name = "ce_stunned"
+loc_desc = "ce_stunned_desc"
+loc_icon = ExtResource("1_fqt0v")

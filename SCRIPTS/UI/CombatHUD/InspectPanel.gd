@@ -2,30 +2,28 @@ extends Control
 class_name InspectPanel
 
 @export var icon : TextureRect
-@export var healthbar : ProgressBar
-@export var armorbar : ProgressBar
-@export var healthText : Label
+@export var unitHealthBar : UnitHealthBar
 @export var namelabel : Label
-@export var levelLabel : Label
-@export var expbar : ProgressBar
-
-@export var focusSlotPrefab : PackedScene
 
 @export_category("Stat Stuff")
 
-@export var statPrefab : PackedScene
-@export var statEntryParent : EntryList
+@export var dmgIcon : TextureRect
+@export var dmgLabel : Label
+@export var defLabel : Label
+@export var spDefLabel : Label
+@export var moveLabel : Label
+
+
+@export_category("Combat Effects")
+
+@export var EffectsList : EntryList
+@export var EffectsIconPrefab : PackedScene
 
 @export_category("Weapon Stuff")
 
 @export var weaponIcon : TextureRect
 @export var weaponName : Label
 @export var weaponEntryParent : EntryList
-
-@export_category("Localization")
-@export var levelLoc : String
-
-@onready var focus_bar_parent: EntryList = %FocusBarParent
 
 var ctrl
 var currentUnit : UnitInstance
@@ -39,51 +37,33 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 		return
 
 	var forceUpdate = currentUnit != _unit || _forceUpdate
+
 	if currentUnit != null:
 		currentUnit.OnStatUpdated.disconnect(OnUnitStatUpdated)
-	currentUnit = _unit
-	currentUnit.OnStatUpdated.connect(OnUnitStatUpdated)
+		currentUnit.OnCombatEffectsUpdated.disconnect(OnUnitEffectsUpdated)
 
+	currentUnit = _unit
+
+	currentUnit.OnStatUpdated.connect(OnUnitStatUpdated)
+	currentUnit.OnCombatEffectsUpdated.connect(OnUnitEffectsUpdated)
 
 	var template = _unit.Template
-	var armor = _unit.GetArmorAmount()
-
-	armorbar.visible = armor > 0
-	namelabel.text = template.loc_DisplayName
 	icon.texture = template.icon
-	healthText.text = str(_unit.currentHealth) + "/" + str(_unit.maxHealth)
+	namelabel.text = template.loc_DisplayName
+	unitHealthBar.SetUnit(_unit)
+	unitHealthBar.Refresh()
 
-	healthbar.value = _unit.currentHealth / _unit.maxHealth
-	expbar.value = _unit.Exp
-	if armor > 0:
-		armorbar.value = armor as float / _unit.maxHealth
-		healthText.text += str(" + %02d" % armor)
-
-
-	# I don't know how fast this is, but w/e
-	var lvlStr = tr(levelLoc)
-	levelLabel.text = lvlStr.format({"NUM" : _unit.DisplayLevel })
-
-	UpdateFocusUI(forceUpdate)
 	if forceUpdate:
+		UpdateCombatEffectsUI()
 		UpdateStatsUI()
 		UpdateWeaponInfo()
-
 
 func OnUnitStatUpdated():
 	Update(currentUnit, true)
 
-func UpdateFocusUI(_createNew : bool):
-	var maxFocus = currentUnit.GetWorkingStat(GameManager.GameSettings.MindStat)
-	if _createNew:
-		focus_bar_parent.ClearEntries()
-		for fIndex in maxFocus:
-			var entry = focus_bar_parent.CreateEntry(focusSlotPrefab)
-			entry.Toggle(currentUnit.currentFocus >= (fIndex + 1)) # +1 because it's an index
-	else:
-		for fIndex in maxFocus:
-			var entry = focus_bar_parent.GetEntry(fIndex)
-			entry.Toggle(currentUnit.currentFocus >= (fIndex + 1)) # +1 because it's an index
+func OnUnitEffectsUpdated():
+	Update(currentUnit, true)
+
 
 func UpdateWeaponInfo():
 	var equippedItem = currentUnit.EquippedItem
@@ -92,34 +72,42 @@ func UpdateWeaponInfo():
 	weaponName.visible = hasItem
 	weaponEntryParent.visible = hasItem
 
-	weaponEntryParent.ClearEntries()
 	if hasItem:
-		weaponIcon.texture = currentUnit.EquippedItem.icon
-		weaponName.text = currentUnit.EquippedItem.loc_displayName
-		if equippedItem.StatData != null:
-			for stat in equippedItem.StatData.GrantedStats:
-				var entry = weaponEntryParent.CreateEntry(statPrefab)
-				entry.icon.texture = stat.Template.loc_icon
-				entry.statlabel.text = str(stat.Value)
-
-
-	pass
+		weaponIcon.texture = equippedItem.icon
+		weaponName.text = equippedItem.loc_displayName
 
 
 func UpdateStatsUI():
-	statEntryParent.ClearEntries()
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.AttackStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.DefenseStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.SkillStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.MindStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.SpAttackStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.SpDefenseStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.LuckStat)
-	UpdateStat(statEntryParent.CreateEntry(statPrefab), GameManager.GameSettings.MovementStat)
+	var equippedItem = currentUnit.EquippedItem
+	if equippedItem == null || (equippedItem != null && !equippedItem.IsDamage):
+		# If there's no equippied item - then just do whatever is the bigger number
+		var attack = currentUnit.GetWorkingStat(GameManager.GameSettings.AttackStat)
+		var spattack = currentUnit.GetWorkingStat(GameManager.GameSettings.SpAttackStat)
 
-func UpdateStat(_entry, _statTemplate : StatTemplate):
-	_entry.icon.texture = _statTemplate.loc_icon
-	_entry.statlabel.text = str(currentUnit.GetWorkingStat(_statTemplate))
+		if attack > spattack:
+			dmgIcon.texture = GameManager.GameSettings.AttackStat.loc_icon
+			dmgLabel.text = str(attack)
+		else:
+			dmgIcon.texture = GameManager.GameSettings.SpAttackStat.loc_icon
+			dmgLabel.text = str(spattack)
+	else:
+		var agressiveStat = equippedItem.UsableDamageData.AgressiveStat
+		dmgIcon.texture = agressiveStat.loc_icon
+		dmgLabel.text = str(currentUnit.GetWorkingStat(agressiveStat))
+
+	defLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.DefenseStat))
+	spDefLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.SpDefenseStat))
+	moveLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.MovementStat))
+
+func UpdateCombatEffectsUI():
+	EffectsList.ClearEntries()
+	for effect in currentUnit.CombatEffects:
+		var effectTemplate = effect.Template
+		var entry = EffectsList.CreateEntry(EffectsIconPrefab)
+		if entry != null && effectTemplate != null && effectTemplate.loc_icon != null:
+			entry.texture = effectTemplate.loc_icon
+		else:
+			entry.texture = GameManager.LocalizationSettings.Missing_CombatEffectIcon
 
 func _process(_delta):
 	if ctrl != null:

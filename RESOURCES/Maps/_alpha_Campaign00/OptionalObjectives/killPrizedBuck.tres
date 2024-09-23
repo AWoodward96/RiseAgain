@@ -12,6 +12,6 @@ number = 1
 
 [resource]
 script = ExtResource("4_7jsx2")
-loc_objectiveDescription = ""
+loc_objectiveDescription = "opoj_prized_buck"
 objective = SubResource("Resource_riyoq")
 rewardTable = ExtResource("3_cgnn5")

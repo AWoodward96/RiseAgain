@@ -1,15 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1y1fm3qowl1q"]
+[gd_scene load_steps=17 format=3 uid="uid://b1y1fm3qowl1q"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_pfgyy"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_dykay"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_lr3k0"]
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="4_j0uxo"]
+[ext_resource type="Resource" uid="uid://fv3aw7d7xp6f" path="res://RESOURCES/CombatEffects/CE_Debuff_Def_DarkFell.tres" id="4_ct5mp"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="4_t5etb"]
-[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_jme0i"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_stkw0"]
+[ext_resource type="Resource" uid="uid://5s51tjxqcu53" path="res://RESOURCES/CombatEffects/CE_Debuff_SpDef_DarkFell.tres" id="6_2h46j"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_8dw0v"]
 [ext_resource type="Resource" uid="uid://01880b8u05nm" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="7_5yu7j"]
-[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_dkp8g"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="8_vpnvx"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="9_hwo0f"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_yop6i"]
@@ -19,40 +18,20 @@ script = ExtResource("3_lr3k0")
 useAttackAction = true
 useDefendAction = true
 
-[sub_resource type="Resource" id="Resource_kfv3r"]
-script = ExtResource("4_j0uxo")
-Stat = ExtResource("10_yop6i")
-FlatValue = 4
-DerivedFromUnit = 0
-DerivedFromStat = ExtResource("5_jme0i")
-SignedPercentageValue = -0.25
-AffectedTargets = 1
-Turns = 2
-
 [sub_resource type="Resource" id="Resource_muj8o"]
 script = ExtResource("4_t5etb")
-CombatEffect = SubResource("Resource_kfv3r")
-
-[sub_resource type="Resource" id="Resource_08i3u"]
-script = ExtResource("4_j0uxo")
-Stat = ExtResource("8_dkp8g")
-FlatValue = 4
-DerivedFromUnit = 0
-DerivedFromStat = ExtResource("5_jme0i")
-SignedPercentageValue = -0.25
-AffectedTargets = 0
-Turns = 2
+CombatEffect = ExtResource("4_ct5mp")
 
 [sub_resource type="Resource" id="Resource_fau0g"]
 script = ExtResource("4_t5etb")
-CombatEffect = SubResource("Resource_08i3u")
+CombatEffect = ExtResource("6_2h46j")
 
 [sub_resource type="Resource" id="Resource_0uo1w"]
 script = ExtResource("5_stkw0")
 
 [node name="ART_darkfell" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_pfgyy")
-focusCost = 4
+focusCost = 3
 executionStack = Array[ExtResource("2_dykay")]([SubResource("Resource_0hubf"), SubResource("Resource_muj8o"), SubResource("Resource_fau0g"), SubResource("Resource_0uo1w")])
 internalName = "darkfell"
 loc_displayName = "art_darkfell"

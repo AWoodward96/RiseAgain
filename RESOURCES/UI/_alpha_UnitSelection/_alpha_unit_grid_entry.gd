@@ -5,6 +5,7 @@ signal OnUnitSelected
 @export var SelectedParent : Control
 @export var UnitIcon : TextureRect
 @export var UnitName : Label
+@export var UnitDescriptionText : RichTextLabel
 
 var unitTemplate : UnitTemplate
 
@@ -12,8 +13,8 @@ func Initialize(_unitTemplate : UnitTemplate):
 	unitTemplate = _unitTemplate
 	UnitIcon.texture = unitTemplate.icon
 
-	# TODO: Setup a baseline localization sheet for UI
 	UnitName.text = tr(unitTemplate.loc_DisplayName)
+	UnitDescriptionText.text = tr(unitTemplate.loc_Description)
 
 func _ready():
 	gui_input.connect(OnGUI)

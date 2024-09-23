@@ -2,6 +2,7 @@ extends Node2D
 class_name UnitInstance
 
 signal OnStatUpdated
+signal OnCombatEffectsUpdated
 
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
@@ -171,6 +172,8 @@ func UpdateCombatEffects():
 	for c in CombatEffects:
 		if c.IsExpired():
 			slatedForRemoval.append(c)
+
+	OnCombatEffectsUpdated.emit()
 
 	for remove in slatedForRemoval:
 		CombatEffects.remove_at(CombatEffects.find(remove))

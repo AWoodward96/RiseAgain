@@ -22,7 +22,6 @@
 			"title": "Backlog",
 			"tasks": [
 				"67b3b4e5-903b-4227-b386-6db63a3432b4",
-				"5da4adea-da09-4b9f-803b-13078f8c3319",
 				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
 				"6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
 				"801cb78a-6aaf-4399-87aa-18537f529d8b"
@@ -31,13 +30,17 @@
 		{
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
-			"tasks": []
+			"tasks": [
+				"9885093d-540a-4082-95d0-21690a89185c"
+			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"9885093d-540a-4082-95d0-21690a89185c"
+				"a9b040dc-b1a3-477d-95cf-45fa15894bca",
+				"5da4adea-da09-4b9f-803b-13078f8c3319",
+				"8cad8b9f-c2e6-4eaf-9db4-b23bfd1f3dcd"
 			]
 		},
 		{
@@ -280,6 +283,20 @@
 		{
 			"uuid": "3b7a1ca4-e5e3-4788-8e2b-f37bb3bbce2c",
 			"title": "POLISH: Let the damage popup numbers reflect armor damage and then actual damage",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "a9b040dc-b1a3-477d-95cf-45fa15894bca",
+			"title": "Make trees that can be cut down",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "8cad8b9f-c2e6-4eaf-9db4-b23bfd1f3dcd",
+			"title": "Show RoShamBo advantage",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

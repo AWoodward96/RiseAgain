@@ -94,8 +94,8 @@ Position = Vector2i(3, 3)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(192, 128)
-Position = Vector2i(3, 2)
+position = Vector2(768, 128)
+Position = Vector2i(12, 2)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
@@ -153,7 +153,7 @@ AIBehavior = ExtResource("12_owqys")
 AggroBehavior = SubResource("Resource_hkjcv")
 
 [node name="Spawn_WolfPup3" type="Sprite2D" parent="Spawners"]
-position = Vector2(64, 512)
+position = Vector2(768, 512)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -162,8 +162,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("8_yycfd")
 UnitLevel = 2
-Position = Vector2i(1, 8)
-Enabled = false
+Position = Vector2i(12, 8)
 AIBehavior = SubResource("Resource_s7hxt")
 AggroBehavior = SubResource("Resource_jhevl")
 

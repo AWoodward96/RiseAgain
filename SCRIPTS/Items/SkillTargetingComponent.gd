@@ -34,12 +34,12 @@ func GetAffectedTiles(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 	var returnThis = GetAdditionalTileTargets(_unit, _grid, _tile)
 	return returnThis
 
-func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
+func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
 	options = FilterTilesByTargettingFlags(_unit, options)
 
-	if options.size() > 1:
+	if options.size() > 1 && _sort:
 		options.sort_custom(OrderTargets)
 	return options
 
@@ -83,7 +83,7 @@ func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
 	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All
 
 # Orders the Tiles based on if they're currently occupied by another unit
-static func OrderTargets(a : Tile, b : Tile):
+static func OrderTargets(a : Tile, b : Tile) -> bool:
 	# Yeah this needs to be here for some reason. If the list contains only 1 Tile, then it'll throw an error without this check
 	if a == b:
 		return false

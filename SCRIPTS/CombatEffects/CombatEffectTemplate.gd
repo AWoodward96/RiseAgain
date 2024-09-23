@@ -8,6 +8,11 @@ enum EffectTargetType { Source, Targets, Both }
 @export var Turns : int = -1
 @export var ImmunityDescriptor : DescriptorTemplate
 
+@export_group("Localization")
+@export var loc_name : String
+@export var loc_desc : String
+@export var loc_icon : Texture2D
+
 
 func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _actionLog : ActionLog):
 	pass
