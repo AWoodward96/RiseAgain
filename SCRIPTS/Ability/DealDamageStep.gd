@@ -23,10 +23,11 @@ func Enter(_actionLog : ActionLog):
 
 		damageResult.Ability_CalculateResult(ability, damageData)
 
-		if useDefendAction:
-			damageResult.Target.QueueDefenseSequence(source.global_position, damageResult)
-		else:
-			damageResult.Target.DoCombat(damageResult)
+		if damageResult.Target != null:
+			if useDefendAction:
+				damageResult.Target.QueueDefenseSequence(source.global_position, damageResult)
+			else:
+				damageResult.Target.DoCombat(damageResult)
 
 	if useAttackAction:
 		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log)
@@ -50,4 +51,4 @@ func GetDamageBeingDealt(_unitUsable : UnitUsable, _source: UnitInstance, _targe
 	else:
 		damageData = _unitUsable.UsableDamageData # Can't get Ability at this point bc it's set in _enter
 
-	return -GameManager.GameSettings.UnitDamageCalculation(_source, _target, damageData, _targetedTileData.AOEMultiplier)
+	return -GameManager.GameSettings.DamageCalculation(_source, _target, damageData, _targetedTileData.AOEMultiplier)

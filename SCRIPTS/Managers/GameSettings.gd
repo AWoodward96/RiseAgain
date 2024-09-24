@@ -118,27 +118,33 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 
 	return 2
 
-func UnitDamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _aoeMultiplier : float = 1):
+func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _aoeMultiplier : float = 1):
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
 	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
 	agressiveVal = flatValue + _damageData.DoMod(agressiveVal, _damageData.AgressiveMod, _damageData.AgressiveModType)
 
 	var defensiveStat = _damageData.DefensiveStat
-	var defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
+
+	var defensiveVal = 0
+	if _defendingUnit != null:
+		defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
 	defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
 
-	var affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
+	var affinityMultiplier = 1
+	if _defendingUnit != null:
+		_attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
 	var vulnerabilityMultiplier = 1
-	for descriptor in _damageData.VulerableDescriptors:
-		if _defendingUnit.Template.Descriptors.count(descriptor.Descriptor) > 0:
-			# For now, these things wont stack
-			vulnerabilityMultiplier *= descriptor.Multiplier
+	if _defendingUnit != null:
+		for descriptor in _damageData.VulerableDescriptors:
+			if _defendingUnit.Template.Descriptors.count(descriptor.Descriptor) > 0:
+				# For now, these things wont stack
+				vulnerabilityMultiplier *= descriptor.Multiplier
 
 	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * _aoeMultiplier * vulnerabilityMultiplier)
 
-func UnitHealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
+func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
 	var healAmount = _healData.FlatValue
 	if _healData.ScalingStat != null && _source != null:
 		healAmount += _healData.DoMod(_source.GetWorkingStat(_healData.ScalingStat))

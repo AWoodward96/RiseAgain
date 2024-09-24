@@ -1,7 +1,7 @@
 class_name ActionResult
 
 var Source : UnitInstance
-var Target : UnitInstance
+var Target : UnitInstance # CAN BE NULL IN SCENARIOS WHERE WERE JUST HITTING A TILE
 
 var HealthDelta : int		# The signed amount the Health of the Target should move. If being delt damage, this will be negative. If healing, this will be positive
 var SourceHealthDelta : int
@@ -20,18 +20,24 @@ var Miss : bool = false
 func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 	if _item.IsDamage():
 		# Damage dealing items can miss
-		var hitRate = GameManager.GameSettings.HitRateCalculation(Source, _item, Target)
+		var hitRate = 100
+		if Target != null:
+			hitRate = GameManager.GameSettings.HitRateCalculation(Source, _item, Target)
+
 		CalculateMiss(_rng, hitRate)
 
-		HealthDelta = -GameManager.GameSettings.UnitDamageCalculation(Source, Target, _item.UsableDamageData, TileTargetData.AOEMultiplier)
+		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _item.UsableDamageData, TileTargetData.AOEMultiplier)
 
 		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_item.UsableDamageData)
 
-		Kill = !Miss && (Target.currentHealth + HealthDelta <= 0)
+
+		Kill = false
+		if Target != null:
+			Kill = !Miss && (Target.currentHealth + HealthDelta <= 0)
 	elif _item.IsHeal(false):
 		# Healing items can't miss
-		HealthDelta = GameManager.GameSettings.UnitHealCalculation(_item.HealData, Source, TileTargetData.AOEMultiplier)
+		HealthDelta = GameManager.GameSettings.HealCalculation(_item.HealData, Source, TileTargetData.AOEMultiplier)
 
 	CalculateExpGain()
 	CalculateFocusDelta()
@@ -39,15 +45,17 @@ func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
 
 func Ability_CalculateResult(_ability : Ability, _damageData):
 	if _ability.IsDamage():
-		HealthDelta = -GameManager.GameSettings.UnitDamageCalculation(Source, Target, _damageData, TileTargetData.AOEMultiplier)
+		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _damageData, TileTargetData.AOEMultiplier)
 
 		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_ability.UsableDamageData)
 
-		Kill = (Target.currentHealth + HealthDelta <= 0)
+		Kill = false
+		if Target != null:
+			Kill = (Target.currentHealth + HealthDelta <= 0)
 	elif _ability.IsHeal(false):
 		# Healing items can't miss
-		HealthDelta = GameManager.GameSettings.UnitHealCalculation(_ability.HealData, Source, TileTargetData.AOEMultiplier)
+		HealthDelta = GameManager.GameSettings.HealCalculation(_ability.HealData, Source, TileTargetData.AOEMultiplier)
 
 	CalculateExpGain()
 	if _ability.damageGrantsFocus:
@@ -58,7 +66,7 @@ func CalculateSourceHealthDelta(_damageData : DamageData):
 		SourceHealthDelta = min(floori(HealthDelta * _damageData.DamageToHealthRatio), Target.currentHealth)
 
 func CalculateFocusDelta():
-	if !Miss:
+	if !Miss && Target != null:
 		FocusDelta += 1
 
 	if Kill:
@@ -71,10 +79,13 @@ func CalculateExpGain():
 
 	if HealthDelta < 0: # Meaning it will deal damage
 		var HealthDeltaABS = abs(HealthDelta)
-		if Target.currentHealth <= HealthDeltaABS:
-			ExpGain = GameManager.GameSettings.ExpFromKillCalculation(HealthDeltaABS, Source, Target)
+		if Target != null:
+			if Target.currentHealth <= HealthDeltaABS:
+				ExpGain = GameManager.GameSettings.ExpFromKillCalculation(HealthDeltaABS, Source, Target)
+			else:
+				ExpGain = GameManager.GameSettings.ExpFromDamageCalculation(HealthDeltaABS, Source, Target)
 		else:
-			ExpGain = GameManager.GameSettings.ExpFromDamageCalculation(HealthDeltaABS, Source, Target)
+			ExpGain = 1
 	else:
 		# It's like a heal or something
 		ExpGain = GameManager.GameSettings.ExpFromHealCalculation(HealthDelta, Source, Target)

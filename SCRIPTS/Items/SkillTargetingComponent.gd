@@ -83,13 +83,14 @@ func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
 	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All
 
 # Orders the Tiles based on if they're currently occupied by another unit
-static func OrderTargets(a : Tile, b : Tile) -> bool:
+func OrderTargets(a : Tile, b : Tile) -> bool:
 	# Yeah this needs to be here for some reason. If the list contains only 1 Tile, then it'll throw an error without this check
-	if a == b:
+	if is_same(a, b):
 		return false
 
+	# Somehow the FALSE here is correct and doesn't throw errors so ya know what ever
 	if a.Occupant == null && b.Occupant == null:
-		return true
+		return false
 
 	if a.Occupant != null && b.Occupant == null:
 		return true

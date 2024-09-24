@@ -19,10 +19,11 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	var focusDelta = 0
 	var sourceHealthDelta = 0
 	for result in Log.actionResults:
-		if result.Target == null:
-			continue
 		focusDelta += result.FocusDelta
 		sourceHealthDelta += result.SourceHealthDelta
+
+		Log.grid.ModifyTileHealth(result.HealthDelta, result.TileTargetData.Tile)
+
 
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)

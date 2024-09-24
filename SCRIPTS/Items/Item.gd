@@ -29,7 +29,7 @@ func OnUse():
 		var result = ActionResult.new()
 		result.Target = ownerUnit
 		result.Source = ownerUnit
-		result.HealthDelta = GameManager.GameSettings.UnitHealCalculation(HealData, ownerUnit)
+		result.HealthDelta = GameManager.GameSettings.HealCalculation(HealData, ownerUnit)
 		log.actionResults.append(result)
 
 		ownerUnit.QueueHealAction(log)

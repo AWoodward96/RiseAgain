@@ -1,28 +1,27 @@
 extends Node2D
+class_name DamageIndicator
 
 @onready var death_indicator = $DeathIndicator
 @onready var damage_being_dealt = $DamageBeingDealt
 @onready var hp_listener = $HPListener
-@onready var hide_timer = $HideTimer
 
-
-var currentHP	# Units current HP
+var currentHP : int # Units current HP
+var maxHealth : int
 var previewedHP # The hp value visible to the player. Gets ticked down over the course of the preview
 var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
 var damageBeingDealt : int
-var myUnit : UnitInstance
-var maxHealth
 
 var previewHPTween : Tween
 
-func Initialize(_unit : UnitInstance):
-	myUnit = _unit
-
-func PreviewDamage(_unitUsable : UnitUsable, _attackingUnit : UnitInstance, _targetedTileData : TileTargetedData):
+func PreviewDamage(_unitUsable : UnitUsable, _attackingUnit : UnitInstance, _targetedTileData : TileTargetedData, _defendingUnit : UnitInstance, _currentHealth : int = -1, _maxHealth : int = -1):
 	var damageContext = _unitUsable.UsableDamageData
 
-	currentHP = myUnit.currentHealth
-	maxHealth = myUnit.maxHealth
+	if _defendingUnit != null:
+		currentHP = _defendingUnit.currentHealth
+		maxHealth = _defendingUnit.maxHealth
+	else:
+		currentHP = _currentHealth
+		maxHealth = _maxHealth
 
 	damageBeingDealt = 0
 	if _unitUsable is Ability:
@@ -30,31 +29,32 @@ func PreviewDamage(_unitUsable : UnitUsable, _attackingUnit : UnitInstance, _tar
 		for step in asAbility.executionStack:
 			var asDamageStep = step as DealDamageStep
 			if asDamageStep != null:
-				damageBeingDealt += asDamageStep.GetDamageBeingDealt(_unitUsable, _attackingUnit, myUnit, _targetedTileData)
+				damageBeingDealt += asDamageStep.GetDamageBeingDealt(_unitUsable, _attackingUnit, _defendingUnit, _targetedTileData)
 	else:
-		damageBeingDealt = -GameManager.GameSettings.UnitDamageCalculation(_attackingUnit, myUnit, damageContext, _targetedTileData.AOEMultiplier)
+		damageBeingDealt = -GameManager.GameSettings.DamageCalculation(_attackingUnit, _defendingUnit, damageContext, _targetedTileData.AOEMultiplier)
 
 
 	damage_being_dealt.text = str(damageBeingDealt)
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	resultingHP = clamp(myUnit.currentHealth + damageBeingDealt, 0, myUnit.maxHealth)
+	resultingHP = clamp(currentHP + damageBeingDealt, 0, maxHealth)
 
 	death_indicator.visible = resultingHP <= 0
 
 	CreateTween()
 	pass
 
-func PreviewHeal(_unitUsable : UnitUsable, _sourceUnit : UnitInstance, _targetedTileData: TileTargetedData):
+func PreviewHeal(_unitUsable : UnitUsable, _sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _targetedTileData: TileTargetedData):
+	# Currently I'm assuming you cannot 'Heal' tiles. So this only works with Units
 	var healData = _unitUsable.HealData
 
-	currentHP = myUnit.currentHealth
-	maxHealth = myUnit.maxHealth
+	currentHP = _affectedUnit.currentHealth
+	maxHealth = _affectedUnit.maxHealth
 	death_indicator.visible = false
 
-	var healAmount = GameManager.GameSettings.UnitHealCalculation(healData, _sourceUnit, _targetedTileData.AOEMultiplier)
+	var healAmount = GameManager.GameSettings.HealCalculation(healData, _sourceUnit, _targetedTileData.AOEMultiplier)
 
 	damage_being_dealt.text = str(healAmount)
-	resultingHP = clamp(myUnit.currentHealth + healAmount, 0, myUnit.maxHealth)
+	resultingHP = clamp(_affectedUnit.currentHealth + healAmount, 0, _affectedUnit.maxHealth)
 	CreateTween()
 	pass
 

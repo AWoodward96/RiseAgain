@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var damagePopup : PackedScene
+@export var damagePreview : PackedScene
 
 @export_category("Camera Settings")
 @export var cameraMoveSpeed = 10
@@ -47,3 +48,9 @@ func CreateMissPopup(_tile : Tile):
 	popup.global_position = _tile.GlobalPosition
 	add_child(popup)
 	pass
+
+func CreateDamageIndicator(_tile : Tile):
+	var indicator = damagePreview.instantiate()
+	indicator.global_position = _tile.GlobalPosition
+	add_child(indicator)
+	return indicator

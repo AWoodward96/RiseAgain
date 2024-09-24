@@ -34,5 +34,3 @@ theme_override_font_sizes/font_size = 16
 text = "01/23"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HideTimer" type="Timer" parent="."]

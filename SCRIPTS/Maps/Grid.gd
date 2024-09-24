@@ -58,6 +58,7 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 				var health = main_data.get_custom_data("Health")
 				if health > 0:
 					GridArr[index].Health = health
+					GridArr[index].MaxHealth = health
 
 			Pathfinding.set_point_solid(Vector2i(x,y), GridArr[index].Killbox || GridArr[index].IsWall)
 
@@ -78,6 +79,8 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 	var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 
 	Pathfinding.set_point_solid(Vector2i(x,y), false)
+	_tile.IsWall = false
+
 	Pathfinding.set_point_weight_scale(Vector2i(x,y), 1)
 	if main_data:
 		if main_data.get_collision_polygons_count(0) > 0 :
@@ -288,6 +291,22 @@ func GetTilesWithinRange(_origin : Vector2i, _range : Vector2i, _includeOrigin =
 				if dst >= _range.x && dst <= _range.y :
 					returnArr.append(GridArr[position.y * Width + position.x])
 	return returnArr
+
+func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : bool = true):
+	if _tile.MaxHealth <= 0:
+		return
+
+	_tile.Health += _healthDelta
+	if _showDamageNumbers:
+		Juice.CreateDamagePopup(_healthDelta, _tile)
+
+	if _tile.Health <= 0:
+		map.tilemap_main.set_cell(_tile.Position)
+		RefreshTilesCollision(_tile, map.currentTurn)
+
+		# We do it like this so that you can't retarget this tile anymore
+		_tile.MaxHealth = 0
+		_tile.Health = 0
 
 
 func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitInstance):

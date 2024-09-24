@@ -21,7 +21,7 @@ script = ExtResource("4_mapok")
 
 [node name="ART_BeamAttack" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_er7fc")
-focusCost = 3
+focusCost = 4
 executionStack = Array[ExtResource("2_a85nj")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
 internalName = "BeamAttack"
 loc_displayName = "art_beamattack"
@@ -39,4 +39,3 @@ DefensiveStat = ExtResource("8_t3o3t")
 script = ExtResource("9_1oo8k")
 Type = 2
 shapedTiles = ExtResource("10_8gc70")
-stopShapeOnWall = true

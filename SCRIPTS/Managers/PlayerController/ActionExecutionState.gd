@@ -32,18 +32,18 @@ func _Enter(_ctrl : PlayerController, data):
 	# The target tiles is an array so loop through that and append the units to take damage
 	for tileData in log.affectedTiles:
 		var target = tileData.Tile.Occupant
-		if target == null:
-			continue
 
-		if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
-			continue
+		if target != null:
+			# If we have a target - don't damage allies, only damage who they are supposed to hit
+			if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
+				continue
 
-		if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
-			continue
+			if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
+				continue
 
 		var actionResult = ActionResult.new()
 		actionResult.Source = log.source
-		actionResult.Target = tileData.Tile.Occupant
+		actionResult.Target = tileData.Tile.Occupant # COULD BE NULL - wE COULD JUST BE TARGETING THE TILE
 		actionResult.TileTargetData = tileData
 		log.actionResults.append(actionResult)
 
@@ -66,8 +66,9 @@ func _Enter(_ctrl : PlayerController, data):
 
 			# Then, queue up the defense sequence for everything being hit
 			for result in log.actionResults:
-				result.Target.QueueDefenseSequence(log.sourceTile.Position * currentGrid.CellSize, result)
-				CheckForRetaliation(result)
+				if result.Target != null:
+					result.Target.QueueDefenseSequence(log.sourceTile.Position * currentGrid.CellSize, result)
+					CheckForRetaliation(result)
 
 			#CheckForRetaliation()
 		elif item.IsHeal(false):

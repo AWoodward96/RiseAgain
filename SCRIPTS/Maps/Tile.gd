@@ -5,6 +5,7 @@ var Position
 var IsWall
 
 var Health : int = -1
+var MaxHealth : int = -1
 var Killbox : bool
 
 var CanAttack: bool

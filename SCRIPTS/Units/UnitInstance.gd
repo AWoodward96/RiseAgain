@@ -17,7 +17,7 @@ signal OnCombatEffectsUpdated
 @onready var health_bar_parent = %HealthBarParent
 @onready var armor_bar: ProgressBar = %ArmorBar
 
-@onready var damage_indicator: Node2D = $DamageIndicator
+@onready var damage_indicator: DamageIndicator = $DamageIndicator
 @onready var defend_icon: Sprite2D = %DefendIcon
 @onready var focus_bar_parent: EntryList = %FocusBarParent
 @onready var positive_afffinity: Sprite2D = %PositiveAfffinity
@@ -92,7 +92,6 @@ func _ready():
 	ShowHealthBar(false)
 	healthBar.SetUnit(self)
 	HideDamagePreview()
-	damage_indicator.Initialize(self)
 	defend_icon.visible = false
 
 func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
@@ -560,12 +559,12 @@ func QueueDelayedCombatAction(_log : ActionLog):
 
 func ShowDamagePreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true
-	damage_indicator.PreviewDamage(_usable, _source, _targetedTileData)
+	damage_indicator.PreviewDamage(_usable, _source, _targetedTileData, self)
 	pass
 
 func ShowHealPreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true
-	damage_indicator.PreviewHeal(_usable, _source, _targetedTileData)
+	damage_indicator.PreviewHeal(_usable, _source, self, _targetedTileData)
 
 func HideDamagePreview():
 	damage_indicator.visible = false

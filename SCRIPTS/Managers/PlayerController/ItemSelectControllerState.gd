@@ -19,3 +19,6 @@ func ShowInspectUI():
 
 func _Exit():
 	ctrl.combatHUD.ClearItemSelectionUI()
+
+func ToString():
+	return "ItemSelectControllerState"

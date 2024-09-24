@@ -215,9 +215,11 @@ func _input(event):
 		var tile_pos = tilemap_main.local_to_map(mousePos)
 		OnTileClicked(tile_pos)
 
-
 func OnTileClicked(a_tilePosition : Vector2i) :
 	if grid.Pathfinding.is_in_bounds(a_tilePosition.x, a_tilePosition.y) :
 		print_debug("Tile Position(", a_tilePosition.x, ",", a_tilePosition.y, ") - Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
+		var tile = grid.GetTile(a_tilePosition)
+		if tile != null:
+			grid.ModifyTileHealth(-100, tile)
 	else :
 		print_debug("Click was not in pathfinding bounds")
