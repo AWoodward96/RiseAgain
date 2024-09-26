@@ -40,6 +40,7 @@ enum Direction { Up, Right, Down, Left }
 @export var OpposedAffinityMultiplier : float = 1.25
 @export var WeakAffinityMultiplier : float = 0.66
 @export var AffinityAccuracyModifier : int = 10
+@export var AllAffinities : Array[AffinityTemplate]
 
 
 static func GetVectorFromDirection(_dir : Direction):
@@ -133,7 +134,7 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 
 	var affinityMultiplier = 1
 	if _defendingUnit != null:
-		_attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
+		affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
 	var vulnerabilityMultiplier = 1
 	if _defendingUnit != null:

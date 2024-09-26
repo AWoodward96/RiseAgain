@@ -180,7 +180,7 @@ func TryCombat():
 
 	## default to the first ability
 	if item != null && item.UsableDamageData != null:
-		var log = ActionLog.Construct(unit, item)
+		var log = ActionLog.Construct(map.grid, unit, item)
 		log.actionOriginTile = targetUnit.CurrentTile # This is the target we're attacking, so the origin is here
 		log.sourceTile = selectedTile	# Remember, we're pathfinding to this tile so the source has to be from here
 		log.affectedTiles.append(targetUnit.CurrentTile.AsTargetData())

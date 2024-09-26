@@ -1,5 +1,9 @@
-[gd_scene format=3 uid="uid://mrtikl2yemdi"]
+[gd_scene load_steps=2 format=3 uid="uid://mrtikl2yemdi"]
 
-[node name="UIEffectIcon" type="TextureRect"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/Units/ui_effect_icon.gd" id="1_owyau"]
+
+[node name="UIEffectIcon" type="TextureRect" node_paths=PackedStringArray("icon")]
 custom_minimum_size = Vector2(32, 32)
 expand_mode = 1
+script = ExtResource("1_owyau")
+icon = NodePath(".")

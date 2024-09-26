@@ -3,11 +3,22 @@ class_name UnitHealthBar
 
 @export var HealthBar : ProgressBar
 @export var ArmorBar : ProgressBar
-@export var ExperienceBar : ProgressBar
 @export var HealthText : Label
 @export var FocusBarEntryList : EntryList
 @export var FocusBarPrefab : PackedScene
+
+@export_category("Level and EXP")
+@export var ExperienceBar : ProgressBar
 @export var LevelLabel : Label
+@export var LevelLocalization : String
+@export var ExpLabel : Label
+@export var ExpLocalization : String
+
+
+@export_category("Combat Effects")
+
+@export var EffectsList : EntryList
+@export var EffectsIconPrefab : PackedScene
 
 var Unit : UnitInstance
 var UnitMaxHealth : int
@@ -23,8 +34,13 @@ var UpdateBarTween : Tween
 signal HealthBarTweenCallback
 
 func SetUnit(_unit : UnitInstance):
+	if Unit != null:
+		Unit.OnCombatEffectsUpdated.disconnect(RefreshCombatEffects)
 	Unit = _unit
+	Unit.OnCombatEffectsUpdated.connect(RefreshCombatEffects)
+
 	Refresh()
+	RefreshCombatEffects()
 
 func _process(delta: float):
 	if UpdateOverTime:
@@ -105,18 +121,42 @@ func Refresh(_forceUpdate : bool = false):
 	if HealthBar != null: HealthBar.value = Unit.currentHealth / Unit.maxHealth
 
 	if LevelLabel != null:
-		var lvlStr = tr(LocSettings.Level_Num_Short)
+		var lvlStr = tr(LevelLocalization)
 		LevelLabel.text = lvlStr.format({"NUM" : Unit.DisplayLevel })
 
 	if armor > 0:
 		ArmorBar.value = armor as float / Unit.maxHealth
 		HealthText.text += str(" + %02d" % armor)
 
+	if ExpLabel != null:
+		var madlibs = {"NUM" : Unit.Exp, "CUR" : Unit.Exp, "MAX" : str(100)}
+		ExpLabel.text = tr(ExpLocalization).format(madlibs)
+
 	if ExperienceBar != null:
 		ExperienceBar.value = Unit.Exp
 
 	UpdateFocusUI()
 	pass
+
+func RefreshCombatEffects():
+	if EffectsList == null:
+		return
+
+	EffectsList.ClearEntries()
+	for effect in Unit.CombatEffects:
+		var effectTemplate = effect.Template
+		var entry = EffectsList.CreateEntry(EffectsIconPrefab) as EffectEntry
+
+		var icon = GameManager.LocalizationSettings.Missing_CombatEffectIcon
+		var labeltext = GameManager.LocalizationSettings.Missing_CombatEffectName
+		if effectTemplate != null && effectTemplate.loc_icon != null:
+				icon = effectTemplate.loc_icon
+
+		if effectTemplate != null && effectTemplate.loc_name != "":
+			labeltext = tr(effectTemplate.loc_name)
+
+		if entry.icon != null: entry.icon.texture = icon
+		if entry.label != null: entry.label.text = labeltext
 
 func UpdateFocusUI():
 	var maxFocus = Unit.GetWorkingStat(GameManager.GameSettings.MindStat)

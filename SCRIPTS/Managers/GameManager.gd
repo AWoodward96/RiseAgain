@@ -10,6 +10,7 @@ extends Node2D
 @export var MapRewardUI : PackedScene
 @export var ExperienceUI : PackedScene
 @export var AbilitySelectionUI : PackedScene
+@export var UnitInspectionUI : PackedScene
 
 @export var LoadingScreenPrefab : PackedScene
 

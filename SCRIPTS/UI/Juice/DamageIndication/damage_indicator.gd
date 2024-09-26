@@ -53,6 +53,7 @@ func PreviewHeal(_unitUsable : UnitUsable, _sourceUnit : UnitInstance, _affected
 
 	var healAmount = GameManager.GameSettings.HealCalculation(healData, _sourceUnit, _targetedTileData.AOEMultiplier)
 
+	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
 	damage_being_dealt.text = str(healAmount)
 	resultingHP = clamp(_affectedUnit.currentHealth + healAmount, 0, _affectedUnit.maxHealth)
 	CreateTween()

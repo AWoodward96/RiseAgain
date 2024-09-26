@@ -62,7 +62,7 @@ func Ability_CalculateResult(_ability : Ability, _damageData):
 		CalculateFocusDelta()
 
 func CalculateSourceHealthDelta(_damageData : DamageData):
-	if _damageData.DamageAffectsUsersHealth:
+	if _damageData.DamageAffectsUsersHealth && Target != null:
 		SourceHealthDelta = min(floori(HealthDelta * _damageData.DamageToHealthRatio), Target.currentHealth)
 
 func CalculateFocusDelta():

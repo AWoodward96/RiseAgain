@@ -14,6 +14,8 @@ func Enter(_actionLog : ActionLog):
 
 	if CombatEffect.AffectedTargets == CombatEffect.EffectTargetType.Targets || CombatEffect.AffectedTargets == CombatEffect.EffectTargetType.Both:
 		for results in _actionLog.actionResults:
+			if results.Target == null:
+				continue
 			var effect = CombatEffectInstance.Create(source, results.Target, CombatEffect, _actionLog)
 			results.Target.AddCombatEffect(effect)
 

@@ -133,7 +133,6 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("8_yycfd")
 UnitLevel = 3
 Position = Vector2i(3, 4)
-Enabled = false
 AIBehavior = SubResource("Resource_drtnt")
 AggroBehavior = SubResource("Resource_oclll")
 
@@ -148,7 +147,6 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("8_yycfd")
 UnitLevel = 2
 Position = Vector2i(4, 4)
-Enabled = false
 AIBehavior = SubResource("Resource_1pang")
 AggroBehavior = SubResource("Resource_h7prp")
 

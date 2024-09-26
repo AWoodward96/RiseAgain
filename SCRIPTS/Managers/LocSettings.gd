@@ -10,3 +10,4 @@ static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 
 @export_category("Missing Info")
 @export var Missing_CombatEffectIcon : Texture2D
+@export var Missing_CombatEffectName : String

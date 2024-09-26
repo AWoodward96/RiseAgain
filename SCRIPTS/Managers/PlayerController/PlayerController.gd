@@ -39,6 +39,7 @@ var totalMapSize
 # UIs
 var formationUI
 var combatHUD : CombatHUD
+var inspectUI : UnitInspectUI
 
 func Initialize(_map: Map):
 	currentMap = _map
@@ -48,12 +49,23 @@ func Initialize(_map: Map):
 	UpdateCameraBounds()
 
 func _process(_delta):
-	if ControllerState != null :
+	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
+	if ControllerState != null && inspectUI == null:
 		ControllerState._Execute(_delta)
 
 	if ControllerState.CanShowThreat():
 		if InputManager.infoDown:
-			currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+			# ShowInspectUI() check is also reffering to the hanging ui element in the combat hud
+			# If this behavior needs to be split - then do that but for now it actually works out fine
+			if CurrentTile.Occupant != null && ControllerState.ShowInspectUI():
+				if inspectUI == null:
+					inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
+			else:
+				currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+
+	if InputManager.cancelDown && inspectUI != null:
+		inspectUI.queue_free()
+		inspectUI = null
 
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
 

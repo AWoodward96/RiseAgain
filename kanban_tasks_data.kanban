@@ -31,16 +31,14 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"9885093d-540a-4082-95d0-21690a89185c",
-				"a9b040dc-b1a3-477d-95cf-45fa15894bca",
-				"5da4adea-da09-4b9f-803b-13078f8c3319"
+				"27270daa-4a13-4cd4-aac7-cd2217c3b304"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"b00b7028-484d-4c06-96b9-d774c29150de"
+				"cfbec417-e205-448e-89cf-dad74ef59201"
 			]
 		},
 		{
@@ -49,9 +47,17 @@
 			"tasks": [
 				"c522e9e5-a53d-4b28-97fe-5b160086558f",
 				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
+				"56d288e7-8c62-447a-a8d5-090668c4a68e",
+				"66ddd42b-d9f6-485b-9df2-2720028fc06b",
+				"b00b7028-484d-4c06-96b9-d774c29150de",
+				"5da4adea-da09-4b9f-803b-13078f8c3319",
+				"9885093d-540a-4082-95d0-21690a89185c",
+				"55a2e245-7bf4-4d18-a1fd-87c8ca7c14e3",
+				"f27b346d-03e2-4129-8b4a-85eba6e5a59f",
 				"7af6f4a1-4344-4a93-8712-b673c2df1150",
 				"2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
 				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d",
+				"a9b040dc-b1a3-477d-95cf-45fa15894bca",
 				"8cad8b9f-c2e6-4eaf-9db4-b23bfd1f3dcd",
 				"20f6b037-583a-449d-b665-5b653ad80f2c",
 				"f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
@@ -70,7 +76,10 @@
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f"
+				"03e18191-548c-4e16-aac3-787401d9675f",
+				"6bc3ab55-8902-48f0-bcc6-b61462525047",
+				"a703b63d-1315-4950-bb02-f6dd6f4880ce",
+				"954cc5d6-845f-408e-b8c0-5dc5413b83b2"
 			]
 		}
 	],
@@ -94,7 +103,20 @@
 			"title": "Unit Inspect UI",
 			"description": "",
 			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": []
+			"steps": [
+				{
+					"details": "Move Affinities to Inventory section",
+					"done": true
+				},
+				{
+					"details": "Add Health - Focus - and EXP",
+					"done": true
+				},
+				{
+					"details": "Add icon for unit sprite over portrait",
+					"done": true
+				}
+			]
 		},
 		{
 			"uuid": "67b3b4e5-903b-4227-b386-6db63a3432b4",
@@ -305,6 +327,69 @@
 		{
 			"uuid": "b00b7028-484d-4c06-96b9-d774c29150de",
 			"title": "Bug: Focus UI can become outdated mid-combat",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "cfbec417-e205-448e-89cf-dad74ef59201",
+			"title": "Inspect Tree's to see their hp",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "66ddd42b-d9f6-485b-9df2-2720028fc06b",
+			"title": "Soul Cleave applies Debuff to Self for some reason?",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "56d288e7-8c62-447a-a8d5-090668c4a68e",
+			"title": "Beam Attack! costs 4 focus. The Elemental Mage only has 3",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "6bc3ab55-8902-48f0-bcc6-b61462525047",
+			"title": "Great Cleave not loading aggressive stat",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "f27b346d-03e2-4129-8b4a-85eba6e5a59f",
+			"title": "Leap costs 0",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "55a2e245-7bf4-4d18-a1fd-87c8ca7c14e3",
+			"title": "heroic leaps damage makes no sense. Somehow it's 5?",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "a703b63d-1315-4950-bb02-f6dd6f4880ce",
+			"title": "dark pact has no item name or icon",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "954cc5d6-845f-408e-b8c0-5dc5413b83b2",
+			"title": "give corpse chimera different items",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "27270daa-4a13-4cd4-aac7-cd2217c3b304",
+			"title": "Maybe look at nerfing affinity bonus damage",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

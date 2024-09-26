@@ -1,0 +1,357 @@
+[gd_scene load_steps=18 format=3 uid="uid://dn07slodp7juh"]
+
+[ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="1_17hjj"]
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_ui.gd" id="1_olrmn"]
+[ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="2_ccy33"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_jmhyu"]
+[ext_resource type="PackedScene" uid="uid://d055qo5032qd8" path="res://RESOURCES/UI/UnitInventory/stat_block_entry_large.tscn" id="3_sj6no"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="4_psqrf"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_vhggx"]
+[ext_resource type="Script" path="res://RESOURCES/Units/UnitHealthBar.gd" id="7_k3b1t"]
+[ext_resource type="PackedScene" uid="uid://bktnwekn25b70" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/affinity_entry.tscn" id="7_prn4o"]
+[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="8_bef1i"]
+[ext_resource type="PackedScene" uid="uid://crsd05m8xofxm" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_effects_entry.tscn" id="9_tejvk"]
+
+[sub_resource type="Gradient" id="Gradient_tvi38"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kv6a2"]
+gradient = SubResource("Gradient_tvi38")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8isjb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3b5q"]
+bg_color = Color(0.929412, 0.333333, 0.345098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i456a"]
+bg_color = Color(0.82, 0.82, 0.82, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s1uql"]
+font = ExtResource("3_jmhyu")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UnitInspectUI" type="CanvasLayer" node_paths=PackedStringArray("portrait", "nameText", "descriptionText", "classSprite", "affinityIcon", "unitHealthBar", "strongAgainstEntryList", "weakAgainstEntryList", "statBlockEntryList")]
+layer = 10
+script = ExtResource("1_olrmn")
+portrait = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/PortraitBG/Portrait")
+nameText = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/NameAndAffinity/Name")
+descriptionText = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/MarginContainer/Description")
+classSprite = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/NameAndAffinity/ClassSprite")
+affinityIcon = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/HBoxContainer/ThisUnitsAffinity")
+unitHealthBar = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent")
+affinityEntryPrefab = ExtResource("7_prn4o")
+strongAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer/StrongContainer")
+weakAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer/WeakContainer")
+statBlockEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer/VBoxContainer/GridContainer")
+statBlockEntry = ExtResource("3_sj6no")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.53, 0.34927, 0.2014, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel"]
+layout_mode = 2
+color = Color(0.08, 0.08, 0.08, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 2
+
+[node name="StatsAndName" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="PortraitBG" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_kv6a2")
+expand_mode = 1
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/PortraitBG"]
+custom_minimum_size = Vector2(224, 224)
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 240.0
+texture = ExtResource("1_17hjj")
+expand_mode = 1
+
+[node name="NameAndAffinity" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
+layout_mode = 2
+
+[node name="ClassSprite" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/NameAndAffinity"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_ccy33")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/NameAndAffinity"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmhyu")
+theme_override_font_sizes/font_size = 16
+text = "Karla of the Full Moon"
+
+[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "LevelLabel", "ExpLabel", "EffectsList")]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+script = ExtResource("7_k3b1t")
+HealthBar = NodePath("HealthBar")
+ArmorBar = NodePath("ArmorBar")
+HealthText = NodePath("HP Val")
+FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
+FocusBarPrefab = ExtResource("8_bef1i")
+LevelLabel = NodePath("../HBoxContainer/LevelNum")
+LevelLocalization = "ui_num"
+ExpLabel = NodePath("../HBoxContainer/ExpNum")
+ExpLocalization = "ui_current_max"
+EffectsList = NodePath("../CombatEffects")
+EffectsIconPrefab = ExtResource("9_tejvk")
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_8isjb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i3b5q")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+offset_left = -8.0
+offset_right = 72.0
+offset_bottom = 16.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_i456a")
+max_value = 1.0
+value = 0.84
+fill_mode = 1
+show_percentage = false
+
+[node name="HP Val" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -37.0
+offset_right = 40.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 301
+text = "25/30"
+label_settings = SubResource("LabelSettings_s1uql")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FocusContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="FocusBarParent" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent/FocusContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("5_vhggx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
+layout_mode = 2
+
+[node name="ExpLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Exp:"
+
+[node name="ExpNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "{NUM}"
+
+[node name="Space" type="Control" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HBoxContainer"]
+layout_mode = 2
+text = "Level:"
+
+[node name="LevelNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HBoxContainer"]
+layout_mode = 2
+text = "{NUM}"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Description" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/MarginContainer"]
+custom_minimum_size = Vector2(252, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_psqrf")
+theme_override_font_sizes/font_size = 16
+text = "Studier of holy arts, Light Mages can heal allies but have low agressive and defensive stats"
+autowrap_mode = 2
+
+[node name="CombatEffects" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
+layout_mode = 2
+columns = 2
+script = ExtResource("5_vhggx")
+
+[node name="Inventory" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
+layout_mode = 2
+text = "Inventory:"
+
+[node name="InventoryPanel" type="Panel" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="InventoryLabel2" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -11.5
+offset_right = 286.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Come back later, Items are due for a bit of a rework. You can check your units current inventory by selecting your Unit and selecting Inventory."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer"]
+layout_mode = 2
+
+[node name="AffinityLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_jmhyu")
+text = "Affinity:"
+
+[node name="ThisUnitsAffinity" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/HBoxContainer" instance=ExtResource("7_prn4o")]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AffinityContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+columns = 2
+
+[node name="StrongLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_jmhyu")
+text = "Strong Against:
+"
+
+[node name="StrongContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("5_vhggx")
+
+[node name="WeakLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmhyu")
+text = "Weak Against:"
+
+[node name="WeakContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
+layout_mode = 2
+script = ExtResource("5_vhggx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer"]
+layout_mode = 2
+color = Color(0.24, 0.24, 0.24, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StatsLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats:"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+script = ExtResource("5_vhggx")

@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_3b7ta")
+bst_weight = 1
 loc_displayName = "stat_defense"
+loc_displayName_short = "stat_defense_short"
 loc_description = "stat_defense_desc"
 loc_icon = ExtResource("1_44qf2")

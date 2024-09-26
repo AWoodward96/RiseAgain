@@ -17,21 +17,19 @@ class_name UnitUsable
 
 var ownerUnit : UnitInstance
 var map : Map
-var playerController : PlayerController :
-	get:
-		return map.playercontroller
+var playerController : PlayerController
 
 func _ready():
 	GetComponents()
 	pass
 
-func Initialize(_unitOwner : UnitInstance, _map : Map):
+func Initialize(_unitOwner : UnitInstance):
 	ownerUnit = _unitOwner
-	map = _map
 	GetComponents()
 
 func SetMap(_map : Map):
 	map = _map
+	playerController = map.playercontroller
 
 func ShowRangePreview(_sorted : bool = true):
 	if map == null:

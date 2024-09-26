@@ -28,8 +28,9 @@ var canRetaliate : bool = true
 
 var moveSelf : bool = false
 
-static func Construct(_unitSource : UnitInstance, _itemOrAbility):
+static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 	var new = ActionLog.new()
+	new.grid = _grid
 	new.source = _unitSource
 	if _itemOrAbility is Item:
 		new.item = _itemOrAbility

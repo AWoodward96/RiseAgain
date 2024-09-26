@@ -377,7 +377,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel", "EffectsList", "weaponIcon", "weaponName", "weaponEntryParent")]
+[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel", "weaponIcon", "weaponName", "weaponEntryParent")]
 anchors_preset = 0
 offset_top = -144.0
 offset_right = 261.0
@@ -390,24 +390,25 @@ dmgLabel = NodePath("Main/ImportantStats/Glance/Atk/AttackNum")
 defLabel = NodePath("Main/ImportantStats/Glance/Def/DefNum")
 spDefLabel = NodePath("Main/ImportantStats/Glance/Def2/SpDefNum")
 moveLabel = NodePath("Main/ImportantStats/Glance/Move/MoveNum")
-EffectsList = NodePath("EffectsGrid")
-EffectsIconPrefab = ExtResource("10_4ar5q")
 weaponIcon = NodePath("Main/Equipped/Weapon")
 weaponName = NodePath("Main/Equipped/WeaponName")
 weaponEntryParent = NodePath("Main/Equipped")
 
-[node name="Main" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "ExperienceBar", "HealthText", "FocusBarEntryList", "LevelLabel")]
+[node name="Main" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectsList")]
 anchors_preset = 0
 offset_right = 261.0
 offset_bottom = 144.0
 script = ExtResource("12_60paf")
 HealthBar = NodePath("Health")
 ArmorBar = NodePath("Armor")
-ExperienceBar = NodePath("EXP")
 HealthText = NodePath("HealthText")
 FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
 FocusBarPrefab = ExtResource("11_8mf6d")
+ExperienceBar = NodePath("EXP")
 LevelLabel = NodePath("Level")
+LevelLocalization = "ui_level_num_short"
+EffectsList = NodePath("../EffectsGrid")
+EffectsIconPrefab = ExtResource("10_4ar5q")
 
 [node name="BG" type="ColorRect" parent="BottomLeft/InspectUI/Main"]
 layout_mode = 1

@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/Units/focus_slot.gd" id="1_iuqte"]
 
-[node name="FocusSlot" type="MarginContainer"]
+[node name="FocusSlot" type="MarginContainer" node_paths=PackedStringArray("on_state", "off_state")]
 size_flags_horizontal = 3
 script = ExtResource("1_iuqte")
+on_state = NodePath("MarginContainer/OnState")
+off_state = NodePath("MarginContainer/OffState")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2

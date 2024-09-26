@@ -14,10 +14,6 @@ class_name InspectPanel
 @export var moveLabel : Label
 
 
-@export_category("Combat Effects")
-
-@export var EffectsList : EntryList
-@export var EffectsIconPrefab : PackedScene
 
 @export_category("Weapon Stuff")
 
@@ -54,7 +50,6 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 	unitHealthBar.Refresh()
 
 	if forceUpdate:
-		UpdateCombatEffectsUI()
 		UpdateStatsUI()
 		UpdateWeaponInfo()
 
@@ -63,7 +58,6 @@ func OnUnitStatUpdated():
 
 func OnUnitEffectsUpdated():
 	Update(currentUnit, true)
-
 
 func UpdateWeaponInfo():
 	var equippedItem = currentUnit.EquippedItem
@@ -99,15 +93,6 @@ func UpdateStatsUI():
 	spDefLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.SpDefenseStat))
 	moveLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.MovementStat))
 
-func UpdateCombatEffectsUI():
-	EffectsList.ClearEntries()
-	for effect in currentUnit.CombatEffects:
-		var effectTemplate = effect.Template
-		var entry = EffectsList.CreateEntry(EffectsIconPrefab)
-		if entry != null && effectTemplate != null && effectTemplate.loc_icon != null:
-			entry.texture = effectTemplate.loc_icon
-		else:
-			entry.texture = GameManager.LocalizationSettings.Missing_CombatEffectIcon
 
 func _process(_delta):
 	if ctrl != null:

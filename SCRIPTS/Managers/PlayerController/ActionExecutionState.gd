@@ -101,7 +101,7 @@ func CheckForRetaliation(_result : ActionResult):
 		if range.x <= combatDistance && range.y >= combatDistance:
 			# okay at this point retaliation is possible
 			# oh boy time to make a brand new combat data
-			var newData = ActionLog.Construct(defendingUnit, defendingUnit.EquippedItem)
+			var newData = ActionLog.Construct(currentGrid, defendingUnit, defendingUnit.EquippedItem)
 			newData.affectedTiles.append(log.source.CurrentTile.AsTargetData())
 			# turn off retaliation or else these units will be fighting forever
 			newData.canRetaliate = false

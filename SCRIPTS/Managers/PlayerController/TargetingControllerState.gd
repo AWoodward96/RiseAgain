@@ -33,8 +33,7 @@ func _Enter(_ctrl : PlayerController, ItemOrAbility):
 		source = ItemOrAbility.ownerUnit
 
 		targetingData = ItemOrAbility.TargetingData
-		log = ActionLog.Construct(source, ItemOrAbility)
-		log.grid = currentGrid
+		log = ActionLog.Construct(currentGrid, source, ItemOrAbility)
 
 		match targetingData.Type:
 			SkillTargetingData.TargetingType.Simple:
@@ -312,13 +311,13 @@ func ShowDamagePreview():
 					if currentTargetTile.Occupant != null && currentTargetTile.Occupant.Template != null && currentTargetTile.Occupant.Template.Affinity != null:
 						source.ShowAffinityRelation(currentTargetTile.Occupant.Template.Affinity)
 
-					ctrl.combatHUD.ShowDamagePreviewUI(source, source.EquippedItem, currentTargetTile.Occupant, tempTargetData)
+					ctrl.combatHUD.ShowDamagePreviewUI(source, unitUsable, currentTargetTile.Occupant, tempTargetData)
 				else:
 					# We are targeting a tile without an occupant
 					# create a new preview for the tile
 					var preview = Juice.CreateDamageIndicator(currentTargetTile) as DamageIndicator
 					createdTileDamagePreview.append(preview)
-					preview.PreviewDamage(source.EquippedItem, source, tempTargetData, null, currentTargetTile.Health, currentTargetTile.MaxHealth)
+					preview.PreviewDamage(unitUsable, source, tempTargetData, null, currentTargetTile.Health, currentTargetTile.MaxHealth)
 
 		SkillTargetingData.TargetingType.ShapedFree:
 			for targetTileData in shapedTargetingTiles:
@@ -329,7 +328,7 @@ func ShowDamagePreview():
 					elif targetTileData.Tile.MaxHealth > 0:
 						var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
 						createdTileDamagePreview.append(preview)
-						preview.PreviewDamage(source.EquippedItem, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
+						preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
 
 		SkillTargetingData.TargetingType.ShapedDirectional:
 			var filteredTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
@@ -340,7 +339,7 @@ func ShowDamagePreview():
 				elif targetTileData.Tile.MaxHealth > 0:
 					var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
 					createdTileDamagePreview.append(preview)
-					preview.PreviewDamage(source.EquippedItem, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
+					preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
 
 			pass
 

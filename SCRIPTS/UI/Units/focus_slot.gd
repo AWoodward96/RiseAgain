@@ -1,7 +1,7 @@
 extends MarginContainer
 
-@onready var on_state: ColorRect = $MarginContainer/OnState
-@onready var off_state: ColorRect = $MarginContainer/OffState
+@export var on_state: ColorRect
+@export var off_state: ColorRect
 
 
 func Toggle(_on : bool):

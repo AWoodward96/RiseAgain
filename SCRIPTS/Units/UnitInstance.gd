@@ -196,6 +196,9 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 	for i in Inventory:
 		i.SetMap(map)
 
+	for a in Abilities:
+		a.SetMap(map)
+
 	CreateVisual()
 
 	# has to be after CreateVisual
@@ -295,7 +298,7 @@ func AddAbility(_ability : PackedScene):
 	if abilityInstance == null:
 		return
 
-	abilityInstance.Initialize(self, map)
+	abilityInstance.Initialize(self)
 	abilityParent.add_child(abilityInstance)
 	Abilities.append(abilityInstance)
 
@@ -318,7 +321,7 @@ func TrashItem(_item : Item):
 
 func GiveItem(_item : PackedScene):
 	var itemInstance = _item.instantiate() as Item
-	itemInstance.Initialize(self, map)
+	itemInstance.Initialize(self)
 	itemsParent.add_child(itemInstance)
 	Inventory.append(itemInstance)
 
@@ -431,7 +434,8 @@ func UpdateHealthBarTween(value):
 func ModifyFocus(_netFocusChange):
 	currentFocus += _netFocusChange
 	currentFocus = clamp(currentFocus, 0, GetWorkingStat(GameManager.GameSettings.MindStat))
-	#UpdateFocusUI()
+
+	healthBar.UpdateFocusUI()
 	OnStatUpdated.emit()
 
 func OnModifyHealthTweenComplete(_delta):
