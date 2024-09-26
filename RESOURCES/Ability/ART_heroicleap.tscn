@@ -33,7 +33,7 @@ script = ExtResource("4_isldo")
 
 [node name="ART_HeroicLeap" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_a52ru")
-focusCost = 0
+focusCost = 3
 executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_aullh"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "Cleave"
 loc_displayName = "art_heroicleap"

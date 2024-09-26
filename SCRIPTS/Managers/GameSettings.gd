@@ -37,7 +37,7 @@ enum Direction { Up, Right, Down, Left }
 
 @export_category("Affinity Data")
 @export var StrongAffinityMultiplier : float = 1.5
-@export var OpposedAffinityMultiplier : float = 1.25
+#@export var OpposedAffinityMultiplier : float = 1.25
 @export var WeakAffinityMultiplier : float = 0.66
 @export var AffinityAccuracyModifier : int = 10
 @export var AllAffinities : Array[AffinityTemplate]
