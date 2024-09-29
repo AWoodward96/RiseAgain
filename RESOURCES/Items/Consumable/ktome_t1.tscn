@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://6644i1yes1rk"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_5gugn"]
-[ext_resource type="Texture2D" uid="uid://dskg55x1t4d4v" path="res://ART/Icons/Items/ktome_t1.png" id="2_2hxnf"]
+[ext_resource type="Texture2D" uid="uid://dskg55x1t4d4v" path="res://ART/Icons/Ability/Standard/ktome_t1.png" id="2_2hxnf"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_caekq"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_yas78"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_o6qg2"]

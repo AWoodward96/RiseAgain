@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1hq4h7k3ewlj"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_urn7q"]
-[ext_resource type="Texture2D" uid="uid://6ubbv8defryl" path="res://ART/Icons/Items/polish_t1.png" id="2_225x3"]
+[ext_resource type="Texture2D" uid="uid://6ubbv8defryl" path="res://ART/Icons/Ability/Standard/polish_t1.png" id="2_225x3"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_dkqmo"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_xcgj8"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_jhr1n"]

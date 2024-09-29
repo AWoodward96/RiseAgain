@@ -21,7 +21,7 @@ class_name DamagePreviewUI
 @onready var def_hit: Label = %DefHit
 @onready var def_crit: Label = %DefCrit
 
-func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defendingUnit : UnitInstance, _targetData : TileTargetedData):
+func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : UnitUsable, _defendingUnit : UnitInstance, _targetData : TileTargetedData):
 	var damageDataFromWeapon = _weaponUsed.UsableDamageData
 	if damageDataFromWeapon == null:
 		push_error("Attempting to show preview damage for weapon with no damage information on it. This is a bug.")
@@ -49,18 +49,18 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : Item, _defen
 	def_health.text =  "%d" % _defendingUnit.currentHealth
 
 	var range = Vector2i.ZERO
-	if _defendingUnit.EquippedItem != null:
-		range = _defendingUnit.EquippedItem.GetRange()
+	if _defendingUnit.EquippedWeapon != null:
+		range = _defendingUnit.EquippedWeapon.GetRange()
 
 	var combatDistance = _defendingUnit.map.grid.GetManhattanDistance(_attackingUnit.GridPosition, _defendingUnit.GridPosition)
 	# so basically, if the weapon this unit is holding, has a max range
-	if range.x <= combatDistance && range.y >= combatDistance && _defendingUnit.EquippedItem != null && _defendingUnit.EquippedItem.IsDamage():
+	if range.x <= combatDistance && range.y >= combatDistance && _defendingUnit.EquippedWeapon != null && _defendingUnit.EquippedWeapon.IsDamage():
 		# NOTE: The AOE multiplier here.... should kinda never apply? This UI should only be used to show one on one combat
 		# I will need a more robust system to show actual aoe damage previews - but for now showing it directly on the unit is how I'm doing that
 		# The _targetDatta variable is passed through here as a formailty, but if it ever is not = 1 than this entire function will
 		# need to be rewritten to support it
-		finalAttackingDamage = GameManager.GameSettings.DamageCalculation(_defendingUnit, _attackingUnit, _defendingUnit.EquippedItem.UsableDamageData)
-		hitRateVal = GameManager.GameSettings.HitRateCalculation(_defendingUnit, _defendingUnit.EquippedItem, _attackingUnit)
+		finalAttackingDamage = GameManager.GameSettings.DamageCalculation(_defendingUnit, _attackingUnit, _defendingUnit.EquippedWeapon.UsableDamageData)
+		hitRateVal = GameManager.GameSettings.HitRateCalculation(_defendingUnit, _defendingUnit.EquippedWeapon, _attackingUnit)
 
 		def_dmg.text = "%d" % finalAttackingDamage
 		def_hit.text = "%d" % (hitRateVal * 100)

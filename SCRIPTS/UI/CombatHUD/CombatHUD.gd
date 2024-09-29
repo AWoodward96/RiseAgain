@@ -102,7 +102,7 @@ func ShowItemSelectionUI(_unit : UnitInstance, _inventoryFilter):
 func ClearItemSelectionUI():
 	itemSelectUI.visible = false
 
-func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : Item, _defender : UnitInstance, _targetData : TileTargetedData):
+func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : UnitUsable, _defender : UnitInstance, _targetData : TileTargetedData):
 	DmgPreviewUI.visible = true
 	DmgPreviewUI.ShowPreviewDamage(_attacker, _weapon, _defender, _targetData)
 

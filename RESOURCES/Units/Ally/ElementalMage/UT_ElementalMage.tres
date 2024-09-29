@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dmih52nttd88v" path="res://RESOURCES/Units/Ally/ElementalMage/VIS_ElementalMage.tscn" id="1_f24il"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_f24q4"]
-[ext_resource type="PackedScene" uid="uid://cda7sx7yotn65" path="res://RESOURCES/Ability/ART_beamattack.tscn" id="1_p6k6o"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_dbc0j"]
 [ext_resource type="Texture2D" uid="uid://bn2j7jkcgtx4u" path="res://ART/Icons/Units/elementalmage.png" id="2_fixur"]
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="2_rsivk"]
@@ -14,11 +13,12 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_bnwjs"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_0k8gf"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_0vpda"]
-[ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Items/Equippable/mana_bolt.tscn" id="10_moxpa"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_te031"]
-[ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="13_gm5xe"]
+[ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Ability/Equippable/mana_bolt.tscn" id="13_0tfke"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_w741q"]
-[ext_resource type="PackedScene" uid="uid://tqgdcty0bba5" path="res://RESOURCES/Ability/ART_fireball.tscn" id="16_moodw"]
+[ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_xjuoy"]
+[ext_resource type="PackedScene" uid="uid://tqgdcty0bba5" path="res://RESOURCES/Ability/Standard/ART_fireball.tscn" id="15_lqnli"]
+[ext_resource type="PackedScene" uid="uid://cda7sx7yotn65" path="res://RESOURCES/Ability/Standard/ART_beamattack.tscn" id="16_a14no"]
 
 [sub_resource type="Resource" id="Resource_sb7fm"]
 script = ExtResource("2_dbc0j")
@@ -106,9 +106,11 @@ VisualPrefab = ExtResource("1_f24il")
 BaseStats = Array[ExtResource("2_dbc0j")]([SubResource("Resource_sb7fm"), SubResource("Resource_bi4rj"), SubResource("Resource_4pp1j"), SubResource("Resource_sqsso"), SubResource("Resource_fqx0d"), SubResource("Resource_o83du"), SubResource("Resource_02vtt"), SubResource("Resource_qbcu2"), SubResource("Resource_qm2ju")])
 StatGrowths = Array[ExtResource("2_dbc0j")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("2_rsivk")
-StartingItems = Array[PackedScene]([ExtResource("10_moxpa"), ExtResource("13_gm5xe")])
+StartingItems = Array[PackedScene]([ExtResource("13_0tfke"), ExtResource("14_xjuoy")])
+StartingEquippedWeapon = ExtResource("13_0tfke")
+StartingTactical = ExtResource("14_xjuoy")
 Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([ExtResource("16_moodw"), ExtResource("1_p6k6o")])
+Tier1Abilities = Array[PackedScene]([ExtResource("15_lqnli"), ExtResource("16_a14no")])
 Descriptors = Array[ExtResource("13_w741q")]([])
 DebugName = "ElementalMage"
 loc_DisplayName = "unit_elementalmage_name"

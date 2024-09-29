@@ -31,7 +31,7 @@ var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.A
 var Inventory : Array[Item]
 var Abilities : Array[Ability]
 var CombatEffects : Array[CombatEffectInstance]
-var EquippedItem : Item
+var EquippedWeapon : Ability
 
 var IsDefending : bool = false :
 	set(value):
@@ -101,6 +101,7 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 		affinityIcon.texture = _unitTemplate.Affinity.loc_icon
 
 	CreateItems()
+	CreateStartingAbilities()
 	InitializeLevels(_levelOverride)
 	InitializeStats()
 	UpdateDerivedStats()
@@ -284,11 +285,19 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 
 func CreateItems():
 	# TODO: Figure out how to initialize from save data, so that Item information persists between levels
-	for item in Template.StartingItems:
-		GiveItem(item)
+	pass
+	#for item in Template.StartingItems:
+		#GiveItem(item)
+#
+	#if Inventory.size() > 0:
+		#EquipItem(Inventory[0])
 
-	if Inventory.size() > 0:
-		EquipItem(Inventory[0])
+func CreateStartingAbilities():
+	if Template.StartingEquippedWeapon != null:
+		AddAbility(Template.StartingEquippedWeapon)
+
+	if Template.StartingTactical != null:
+		AddAbility(Template.StartingTactical)
 
 
 func AddAbility(_ability : PackedScene):
@@ -299,19 +308,31 @@ func AddAbility(_ability : PackedScene):
 		return
 
 	abilityInstance.Initialize(self)
+
+	if abilityInstance.type == Ability.AbilityType.Weapon:
+		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
+		for abl in Abilities:
+			if abl.type == Ability.AbilityType.Weapon:
+				abilityParent.remove_child(abl)
+				abl.queue_free()
+
+		EquippedWeapon = abilityInstance
+
 	abilityParent.add_child(abilityInstance)
 	Abilities.append(abilityInstance)
+	return abilityInstance
 
 func EquipItem(_item : Item):
-	var index = Inventory.find(_item)
-	if index != -1:
-		EquippedItem = _item
-
-		# move up the equipped weapon to slot 0 of the inventory
-		var invAt0 = Inventory[0]
-		Inventory[0] = _item
-		Inventory[index] = invAt0
-	OnStatUpdated.emit()
+	pass
+	#var index = Inventory.find(_item)
+	#if index != -1:
+		#EquippedItem = _item
+#
+		## move up the equipped weapon to slot 0 of the inventory
+		#var invAt0 = Inventory[0]
+		#Inventory[0] = _item
+		#Inventory[index] = invAt0
+	#OnStatUpdated.emit()
 
 func TrashItem(_item : Item):
 	var index = Inventory.find(_item)
@@ -499,8 +520,8 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 	if temporaryStats.has(_statTemplate):
 		current += temporaryStats[_statTemplate]
 
-	if EquippedItem != null && EquippedItem.StatData != null:
-		for statDef in EquippedItem.StatData.GrantedStats:
+	if EquippedWeapon != null && EquippedWeapon.StatData != null:
+		for statDef in EquippedWeapon.StatData.GrantedStats:
 			if statDef.Template == _statTemplate:
 				current += statDef.Value
 
@@ -576,21 +597,9 @@ func HideDamagePreview():
 	pass
 
 func GetEffectiveAttackRange():
-	if Inventory.size() == 0:
-		return Vector2i(0,0)
-
-	# Default range should start at 1 1 and go up from there
-	var range = Vector2i(1, 1)
-	for item in Inventory:
-		if item == null:
-			continue
-
-		var itemRange = item.GetRange()
-		if itemRange != Vector2i(0,0):
-			if range.y < itemRange.y:
-				range.y = itemRange.y
-
-	return range
+	if EquippedWeapon != null:
+		return EquippedWeapon.GetRange()
+	return Vector2i.ZERO
 
 func HasDamageItem():
 	for i in Inventory:

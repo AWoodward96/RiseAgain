@@ -13,10 +13,10 @@
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_1wq3p"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_411ei"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_ktqur"]
-[ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Items/Equippable/dark_pact.tscn" id="11_hktnb"]
 [ext_resource type="PackedScene" uid="uid://ctnbgmoyj5gin" path="res://RESOURCES/Units/Enemy/CorpseChimera/VIS_CorpseChimera.tscn" id="11_pdfes"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2nnof"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="12_hhtjf"]
+[ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Ability/Equippable/dark_pact.tscn" id="14_60la1"]
 
 [sub_resource type="Resource" id="Resource_4m1aq"]
 script = ExtResource("2_gv3c6")
@@ -105,7 +105,8 @@ VisualPrefab = ExtResource("11_pdfes")
 BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubResource("Resource_wv3us"), SubResource("Resource_rnj5o"), SubResource("Resource_4aku7"), SubResource("Resource_xwjvg"), SubResource("Resource_hs78b"), SubResource("Resource_gptug"), SubResource("Resource_wf3lf"), SubResource("Resource_luif0")])
 StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_enqqm")
-StartingItems = Array[PackedScene]([ExtResource("11_hktnb")])
+StartingItems = Array[PackedScene]([ExtResource("14_60la1")])
+StartingEquippedWeapon = ExtResource("14_60la1")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_2nnof")]([ExtResource("10_1wq3p")])

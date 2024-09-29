@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://k7p2s1qa26kq"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_j277k"]
-[ext_resource type="Texture2D" uid="uid://cc3t70rtmwmym" path="res://ART/Icons/Items/holywater_t1.png" id="2_s5f4i"]
+[ext_resource type="Texture2D" uid="uid://cc3t70rtmwmym" path="res://ART/Icons/Ability/Standard/holywater_t1.png" id="2_s5f4i"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_y81gp"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="4_0nnam"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_p2xb5"]

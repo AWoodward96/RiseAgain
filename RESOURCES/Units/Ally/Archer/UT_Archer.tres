@@ -1,11 +1,9 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://buh5fj1fbm8oa"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
-[ext_resource type="PackedScene" uid="uid://b5ge0dn8wtstb" path="res://RESOURCES/Ability/ART_doubleshot.tscn" id="1_mrx5a"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_vkbtp"]
 [ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Humanity_Affinity.tres" id="2_41as1"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pkkgr"]
-[ext_resource type="PackedScene" uid="uid://cowl7jp74hd6j" path="res://RESOURCES/Ability/ART_snareshot.tscn" id="2_vbulh"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_e1gbq"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_ry5o0"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_5fnpr"]
@@ -14,16 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://bdslgjv74suwb" path="res://RESOURCES/Units/Ally/Archer/VIS_Archer.tscn" id="8_hvc7e"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="9_f2y67"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_qwdht"]
-[ext_resource type="PackedScene" uid="uid://bd713bpwx5v37" path="res://RESOURCES/Items/Equippable/iron_bow.tscn" id="10_7k5co"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_my8s7"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_oca27"]
-[ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Items/Consumable/gauze.tscn" id="13_rx3rp"]
+[ext_resource type="PackedScene" uid="uid://bd713bpwx5v37" path="res://RESOURCES/Ability/Equippable/iron_bow.tscn" id="13_t0pje"]
+[ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_exkpg"]
+[ext_resource type="PackedScene" uid="uid://b5ge0dn8wtstb" path="res://RESOURCES/Ability/Standard/ART_doubleshot.tscn" id="15_q2efo"]
+[ext_resource type="PackedScene" uid="uid://cowl7jp74hd6j" path="res://RESOURCES/Ability/Standard/ART_snareshot.tscn" id="16_ryl5y"]
 
 [sub_resource type="Resource" id="Resource_yoyw8"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
-Value = 5.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_vvt6p"]
 script = ExtResource("2_pkkgr")
@@ -106,9 +106,11 @@ VisualPrefab = ExtResource("8_hvc7e")
 BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_yoyw8"), SubResource("Resource_vvt6p"), SubResource("Resource_nwtxq"), SubResource("Resource_1buui"), SubResource("Resource_53bxk"), SubResource("Resource_ea3uv"), SubResource("Resource_1cnl2"), SubResource("Resource_shn85"), SubResource("Resource_n43fn")])
 StatGrowths = Array[ExtResource("2_pkkgr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("2_41as1")
-StartingItems = Array[PackedScene]([ExtResource("10_7k5co"), ExtResource("13_rx3rp")])
+StartingItems = Array[PackedScene]([ExtResource("13_t0pje"), ExtResource("14_exkpg")])
+StartingEquippedWeapon = ExtResource("13_t0pje")
+StartingTactical = ExtResource("14_exkpg")
 Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([ExtResource("1_mrx5a"), ExtResource("2_vbulh")])
+Tier1Abilities = Array[PackedScene]([ExtResource("15_q2efo"), ExtResource("16_ryl5y")])
 Descriptors = Array[ExtResource("13_oca27")]([])
 DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"

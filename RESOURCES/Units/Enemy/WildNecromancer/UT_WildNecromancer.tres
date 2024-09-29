@@ -12,10 +12,10 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_x8qhl"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_6olnp"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_cje5r"]
-[ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Items/Equippable/dark_pact.tscn" id="10_ilmjt"]
 [ext_resource type="PackedScene" uid="uid://cg83y8wvfexv6" path="res://RESOURCES/Units/Enemy/WildNecromancer/VIS_WildNecromancer.tscn" id="10_u3lpn"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="11_rpws3"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2oydv"]
+[ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Ability/Equippable/dark_pact.tscn" id="13_ns4jt"]
 
 [sub_resource type="Resource" id="Resource_edhhe"]
 script = ExtResource("2_qy2cs")
@@ -104,7 +104,8 @@ VisualPrefab = ExtResource("10_u3lpn")
 BaseStats = Array[ExtResource("2_qy2cs")]([SubResource("Resource_edhhe"), SubResource("Resource_gopix"), SubResource("Resource_1nkwt"), SubResource("Resource_e8xmq"), SubResource("Resource_8gqf5"), SubResource("Resource_3dnqf"), SubResource("Resource_0jwdw"), SubResource("Resource_53c4k"), SubResource("Resource_bb3rq")])
 StatGrowths = Array[ExtResource("2_qy2cs")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_2gkof")
-StartingItems = Array[PackedScene]([ExtResource("10_ilmjt")])
+StartingItems = Array[PackedScene]([ExtResource("13_ns4jt")])
+StartingEquippedWeapon = ExtResource("13_ns4jt")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_2oydv")]([])

@@ -13,7 +13,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	selectedOption = null
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
-	var item = unit.EquippedItem
+	var item = unit.EquippedWeapon
 	if item == null || !item.IsDamage():
 		unit.QueueEndTurn()
 		return

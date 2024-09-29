@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dc5t03o0j6sfg"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_fp3ko"]
-[ext_resource type="Texture2D" uid="uid://bcxc5ddtntqme" path="res://ART/Icons/Items/nectar_t1.png" id="2_ngjb7"]
+[ext_resource type="Texture2D" uid="uid://bcxc5ddtntqme" path="res://ART/Icons/Ability/Standard/nectar_t1.png" id="2_ngjb7"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_wpywr"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="4_3u0tr"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_26n6f"]

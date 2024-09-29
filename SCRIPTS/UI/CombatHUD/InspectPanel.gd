@@ -60,7 +60,7 @@ func OnUnitEffectsUpdated():
 	Update(currentUnit, true)
 
 func UpdateWeaponInfo():
-	var equippedItem = currentUnit.EquippedItem
+	var equippedItem = currentUnit.EquippedWeapon
 	var hasItem = equippedItem != null
 	weaponIcon.visible = hasItem
 	weaponName.visible = hasItem
@@ -72,7 +72,7 @@ func UpdateWeaponInfo():
 
 
 func UpdateStatsUI():
-	var equippedItem = currentUnit.EquippedItem
+	var equippedItem = currentUnit.EquippedWeapon
 	if equippedItem == null || (equippedItem != null && !equippedItem.IsDamage):
 		# If there's no equippied item - then just do whatever is the bigger number
 		var attack = currentUnit.GetWorkingStat(GameManager.GameSettings.AttackStat)

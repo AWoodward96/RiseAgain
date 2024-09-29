@@ -19,12 +19,12 @@
 [sub_resource type="Resource" id="Resource_4qoj7"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("2_pddbs")
-Value = 6
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_5lj5l"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("4_cpiyu")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_5ny3n"]
 script = ExtResource("3_8jwmx")
@@ -44,12 +44,12 @@ Value = 0
 [sub_resource type="Resource" id="Resource_xmhvx"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("8_vlpei")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_8bnc5"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("9_np70f")
-Value = 5
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_21pee"]
 script = ExtResource("3_8jwmx")
@@ -64,37 +64,37 @@ Value = 0
 [sub_resource type="Resource" id="Resource_kbkqe"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("2_pddbs")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_vl7x0"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("4_cpiyu")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_5xhq3"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("5_qw7qt")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_t7uy2"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("6_50fwi")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_jof6e"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("7_cs0gm")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_sb22q"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("9_np70f")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_5lics"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("10_tjfus")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_PrizedBuck"

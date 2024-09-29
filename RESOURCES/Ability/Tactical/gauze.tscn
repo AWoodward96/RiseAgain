@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl6qxjh1aw8tj"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_3yni1"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_lu14u"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/HealStep.gd" id="3_y4ca7"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="4_4ievu"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="4_x0tmk"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_s22t7"]
+
+[sub_resource type="Resource" id="Resource_dml4r"]
+script = ExtResource("3_y4ca7")
+
+[node name="gauze" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
+script = ExtResource("1_3yni1")
+type = 2
+focusCost = 0
+limitedUsage = 3
+usageRestoredByCampfire = 3
+executionStack = Array[ExtResource("2_lu14u")]([SubResource("Resource_dml4r")])
+internalName = "gauze"
+loc_displayName = "tact_gauze_name"
+loc_displayDesc = "tact_gauze_desc"
+icon = ExtResource("4_4ievu")
+TargetingData = NodePath("SkillTargetingData")
+HealData = NodePath("HealComponent")
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("4_x0tmk")
+FlatValue = 10.0
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("5_s22t7")
+TeamTargeting = 3
+TargetRange = Vector2i(0, 0)
+Type = 3
+CanTargetSelf = true

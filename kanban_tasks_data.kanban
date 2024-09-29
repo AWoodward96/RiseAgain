@@ -32,7 +32,8 @@
 			"tasks": [
 				"a066870f-4069-43fa-b64a-a28d5e3ba634",
 				"f9fbaece-cb9d-49c0-a0e1-f9f7930a06d8",
-				"4f365f16-ea68-466b-a747-866899d8bb7a"
+				"4f365f16-ea68-466b-a747-866899d8bb7a",
+				"25c57aad-1b4f-4b19-8d92-ed0c423d9327"
 			]
 		},
 		{
@@ -40,7 +41,8 @@
 			"title": "Doing",
 			"tasks": [
 				"cfbec417-e205-448e-89cf-dad74ef59201",
-				"26ec4286-6898-4bb3-9de8-d72996f84a10"
+				"26ec4286-6898-4bb3-9de8-d72996f84a10",
+				"94dc1f54-071d-45da-a0dc-70e6a13ba229"
 			]
 		},
 		{
@@ -54,6 +56,7 @@
 				"27270daa-4a13-4cd4-aac7-cd2217c3b304",
 				"b00b7028-484d-4c06-96b9-d774c29150de",
 				"6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
+				"a703b63d-1315-4950-bb02-f6dd6f4880ce",
 				"5da4adea-da09-4b9f-803b-13078f8c3319",
 				"9885093d-540a-4082-95d0-21690a89185c",
 				"6bc3ab55-8902-48f0-bcc6-b61462525047",
@@ -82,7 +85,6 @@
 			"title": "Bug",
 			"tasks": [
 				"03e18191-548c-4e16-aac3-787401d9675f",
-				"a703b63d-1315-4950-bb02-f6dd6f4880ce",
 				"954cc5d6-845f-408e-b8c0-5dc5413b83b2"
 			]
 		}
@@ -435,6 +437,25 @@
 		{
 			"uuid": "4f365f16-ea68-466b-a747-866899d8bb7a",
 			"title": "Implement Prep-Phase team inspection and item moving",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "25c57aad-1b4f-4b19-8d92-ed0c423d9327",
+			"title": "Update Item Importer to become the new Ability importer",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Also make sure the importer actually still works",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "94dc1f54-071d-45da-a0dc-70e6a13ba229",
+			"title": "Clean up the Item Selection UI - delete it",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

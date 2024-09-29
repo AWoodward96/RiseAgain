@@ -36,7 +36,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map):
 	map = _map
 	sourceUnit = _source
 	targetUnit = _target
-	unitUsable = sourceUnit.EquippedItem
+	unitUsable = sourceUnit.EquippedWeapon
 
 	CheckIfMovementNeeded(sourceUnit.GridPosition)
 
@@ -93,7 +93,7 @@ func CheckIfMovementNeeded(_origin : Vector2i):
 func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	tileToMoveTo = _tileToMoveTo
 	tileToAttack = _tileToAttack
-	var targetUnitRange = targetUnit.EquippedItem.GetRange()
+	var targetUnitRange = targetUnit.EquippedWeapon.GetRange()
 	if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
 		unitWillRetaliate = true
 

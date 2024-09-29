@@ -1,0 +1,53 @@
+[gd_scene load_steps=15 format=3 uid="uid://bd713bpwx5v37"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_e7uld"]
+[ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="2_mc8hi"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_o41g3"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_3xfp2"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_d3nc7"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_721kl"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_bp5ky"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_k4k5r"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_md7lh"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_jr1tm"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_5alf8"]
+
+[sub_resource type="Resource" id="Resource_uwu6m"]
+script = ExtResource("3_d3nc7")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_vewy0"]
+script = ExtResource("4_721kl")
+
+[sub_resource type="Resource" id="Resource_onxis"]
+script = ExtResource("5_k4k5r")
+Template = ExtResource("4_bp5ky")
+Value = 3
+
+[node name="iron_bow" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_e7uld")
+type = 1
+focusCost = 0
+executionStack = Array[ExtResource("2_o41g3")]([SubResource("Resource_uwu6m"), SubResource("Resource_vewy0")])
+internalName = "iron_bow"
+loc_displayName = "weap_iron_bow_name"
+loc_displayDesc = "weap_iron_bow_desc"
+icon = ExtResource("2_mc8hi")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_3xfp2")
+BaseAccuracy = 85.0
+GrantedStats = Array[ExtResource("5_k4k5r")]([SubResource("Resource_onxis")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_md7lh")
+AgressiveStat = ExtResource("4_bp5ky")
+DefensiveStat = ExtResource("7_jr1tm")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("8_5alf8")
+TargetRange = Vector2i(2, 3)

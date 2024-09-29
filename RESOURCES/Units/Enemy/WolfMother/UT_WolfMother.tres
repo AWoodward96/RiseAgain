@@ -10,13 +10,13 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_h84la"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_jqs7t"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_ugwuk"]
-[ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Items/Equippable/wolf_tooth.tscn" id="10_2y5ka"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_dbrfp"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_xh0v0"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_y1hu7"]
 [ext_resource type="PackedScene" uid="uid://dd0hi5md1y0q8" path="res://RESOURCES/Units/Enemy/WolfMother/VIS_WolfMother.tscn" id="12_f5ner"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_yylga"]
 [ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolf_mother.png" id="13_pbk78"]
+[ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_pk1ms"]
 
 [sub_resource type="Resource" id="Resource_i7ud2"]
 script = ExtResource("2_ic2vg")
@@ -105,7 +105,8 @@ VisualPrefab = ExtResource("12_f5ner")
 BaseStats = Array[ExtResource("2_ic2vg")]([SubResource("Resource_i7ud2"), SubResource("Resource_4mlcp"), SubResource("Resource_uvcah"), SubResource("Resource_6n7qq"), SubResource("Resource_x0iqu"), SubResource("Resource_vhf22"), SubResource("Resource_s5wu2"), SubResource("Resource_85her"), SubResource("Resource_ih3yn")])
 StatGrowths = Array[ExtResource("2_ic2vg")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_xpmu0")
-StartingItems = Array[PackedScene]([ExtResource("10_2y5ka")])
+StartingItems = Array[PackedScene]([ExtResource("14_pk1ms")])
+StartingEquippedWeapon = ExtResource("14_pk1ms")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_yylga")]([ExtResource("10_dbrfp")])

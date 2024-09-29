@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://gyr3j78vaevw"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/InventoryItemEntry.gd" id="1_fncin"]
-[ext_resource type="Texture2D" uid="uid://bvowbij7bann8" path="res://ART/Icons/Items/mana_bolt.png" id="2_eefj8"]
+[ext_resource type="Texture2D" uid="uid://bvowbij7bann8" path="res://ART/Icons/Ability/Equippable/mana_bolt.png" id="2_eefj8"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_olfui"]
 
 [node name="InventoryItemEntry" type="Control"]

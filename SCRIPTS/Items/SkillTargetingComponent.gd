@@ -1,7 +1,7 @@
 extends Node2D
 class_name SkillTargetingData
 
-enum TargetingType { Simple, ShapedFree, ShapedDirectional }
+enum TargetingType { Simple, ShapedFree, ShapedDirectional, SelfOnly }
 enum TargetingTeamFlag { AllyTeam, EnemyTeam, All }
 
 @export var TeamTargeting : TargetingTeamFlag = TargetingTeamFlag.EnemyTeam
@@ -27,6 +27,9 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 			pass
 		TargetingType.ShapedDirectional:
 			pass
+		TargetingType.SelfOnly:
+			addtionalTargetedTiles = [_unit.CurrentTile.AsTargetData()]
+
 
 	return addtionalTargetedTiles
 
@@ -35,7 +38,11 @@ func GetAffectedTiles(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 	return returnThis
 
 func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
-	var options =  _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
+	var options : Array[Tile]
+	if Type == TargetingType.SelfOnly:
+		options = [_unit.CurrentTile]
+	else:
+		options = _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
 	options = FilterTilesByTargettingFlags(_unit, options)
 
@@ -80,6 +87,9 @@ func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 
 
 func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
+	if Type == TargetingType.SelfOnly:
+		return _thisUnit == _otherUnit
+
 	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All
 
 # Orders the Tiles based on if they're currently occupied by another unit

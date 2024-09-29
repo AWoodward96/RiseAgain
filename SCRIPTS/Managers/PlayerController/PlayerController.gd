@@ -27,7 +27,7 @@ var tileHalfSize
 var trackingMovementOrigin
 
 var selectedUnit : UnitInstance
-var selectedItem : Item
+var selectedItem : UnitUsable
 
 var unitInventoryOpen : bool
 
@@ -203,9 +203,14 @@ func UpdateContextUI():
 		combatHUD.ContextUI.AddButton("Heal", true, OnHeal)
 
 	for ability in selectedUnit.Abilities:
-		combatHUD.ContextUI.AddButton(ability.loc_displayName, selectedUnit.currentFocus >= ability.focusCost, OnAbility.bind(ability))
+		if ability.type != Ability.AbilityType.Weapon:
+			var label = tr(ability.loc_displayName)
+			if ability.limitedUsage != -1:
+				label += " - " + str(ability.remainingUsages)
 
-	#combatHUD.ContextUI.AddButton("Defend", true, OnDefend)
+			# Block if focus cost can't be met - or if the ability has a limited usage
+			combatHUD.ContextUI.AddButton(label, selectedUnit.currentFocus >= ability.focusCost && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0)), OnAbility.bind(ability))
+
 	combatHUD.ContextUI.AddButton("Inventory", true, OnInventory)
 	combatHUD.ContextUI.AddButton("Wait", true, OnWait)
 	combatHUD.ContextUI.SelectFirst()
@@ -247,10 +252,13 @@ func CanAttack(_unit : UnitInstance):
 	if _unit == null:
 		return false
 
-	return _unit.HasDamageItem()
+	return _unit.EquippedWeapon != null
 
 func OnAttack():
-	EnterItemSelectionState(UnitInventoryPanel.Filter_DamageableItemsOnly)
+	selectedItem = selectedUnit.EquippedWeapon
+	EnterTargetingState(selectedItem)
+
+	#EnterItemSelectionState(UnitInventoryPanel.Filter_DamageableItemsOnly)
 
 func OnAbility(_ability : Ability):
 	EnterTargetingState(_ability)

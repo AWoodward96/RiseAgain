@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/UI/RewardsUI/rewards_ui.gd" id="1_tlyfs"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="2_cfyr5"]
 [ext_resource type="PackedScene" uid="uid://bp3uneidg4i4w" path="res://RESOURCES/UI/RewardsUI/reward_entry_panel_large.tscn" id="3_hnd4w"]
-[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Items/gauze.png" id="4_s0p5i"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="4_s0p5i"]
 [ext_resource type="PackedScene" uid="uid://c67gru2ubp5ke" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.tscn" id="5_xk76y"]
 
 [node name="RewardsUI" type="CanvasLayer" node_paths=PackedStringArray("rewardParent", "giveItemParent", "giveItemEntryList", "giveItemIcon")]
