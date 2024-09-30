@@ -8,7 +8,6 @@ static var CurrentCampaign : CampaignTemplate
 @export var AlphaUnitSelection : PackedScene
 @export var AlphaFormationUI : PackedScene
 @export var CombatHUDUI : PackedScene
-@export var UnitInventoryUI : PackedScene
 @export var MapRewardUI : PackedScene
 @export var ExperienceUI : PackedScene
 @export var AbilitySelectionUI : PackedScene

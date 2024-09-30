@@ -1,8 +1,6 @@
 extends CanvasLayer
 class_name UnitInspectUI
 
-signal OnClose
-
 @export var portrait : TextureRect
 @export var nameText : Label
 @export var descriptionText : Label

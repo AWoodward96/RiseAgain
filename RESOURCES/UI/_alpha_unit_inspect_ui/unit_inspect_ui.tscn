@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_ui.gd" id="1_olrmn"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="2_ccy33"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_jmhyu"]
-[ext_resource type="PackedScene" uid="uid://d055qo5032qd8" path="res://RESOURCES/UI/UnitInventory/stat_block_entry_large.tscn" id="3_sj6no"]
+[ext_resource type="PackedScene" uid="uid://d055qo5032qd8" path="res://RESOURCES/UI/stat_block_entry_large.tscn" id="3_sj6no"]
 [ext_resource type="PackedScene" uid="uid://ci2yfcw0fc6pv" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/item_display_entry.tscn" id="4_fpfg1"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="4_psqrf"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_vhggx"]

@@ -42,10 +42,6 @@ func SetUnit(_unit : UnitInstance):
 	Refresh()
 	RefreshCombatEffects()
 
-func _process(delta: float):
-	if UpdateOverTime:
-		pass
-
 func ModifyHealthOverTime(_deltaHealthChange : int):
 	if Unit == null:
 		return

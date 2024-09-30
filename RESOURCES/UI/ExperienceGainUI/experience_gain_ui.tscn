@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxolfuwxyja2v"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/ExperienceGainUI/experience_gain_ui.gd" id="1_hieq5"]
-[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/UnitInventory/stat_block_entry.tscn" id="2_1xx7x"]
+[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="2_1xx7x"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_odcso"]
 
 [node name="ExperienceGainUI" type="CanvasLayer"]

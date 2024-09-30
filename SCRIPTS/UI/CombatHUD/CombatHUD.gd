@@ -11,7 +11,6 @@ signal BannerAnimComplete
 @export var InspectEffectsUI : GridEntryList
 @export var ContextUI : ContextMenu
 @export var DmgPreviewUI : DamagePreviewUI
-@export var itemSelectUI : ItemSelectionUI
 @export var NoTargets : Control
 
 @export_category("Optional Objective")
@@ -36,7 +35,6 @@ var lastReticleSide = -1 	# -1 : The reticle is unknown and needs to be updated
 func _ready():
 	ContextUI.visible = false
 	NoTargets.visible = false
-	itemSelectUI.visible = false
 
 func Initialize(_map : Map, _currentTile : Tile):
 	await self.ready
@@ -94,13 +92,6 @@ func OnAnyActionSelected():
 
 func ShowNoTargets(_show : bool):
 	NoTargets.visible = _show
-
-func ShowItemSelectionUI(_unit : UnitInstance, _inventoryFilter):
-	itemSelectUI.visible = true
-	itemSelectUI.Initialize(_unit, _inventoryFilter)
-
-func ClearItemSelectionUI():
-	itemSelectUI.visible = false
 
 func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : UnitUsable, _defender : UnitInstance, _targetData : TileTargetedData):
 	DmgPreviewUI.visible = true

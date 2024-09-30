@@ -2,8 +2,6 @@ extends Node2D
 class_name PlayerController
 
 signal OnTileChanged(_tile)
-signal OnTileSelected(_tile)
-signal OnCombatSequenceComplete()
 
 @export var viewportTilePadding = 2
 @export var camera : Camera2D
