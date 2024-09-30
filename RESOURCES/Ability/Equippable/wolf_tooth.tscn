@@ -30,6 +30,7 @@ script = ExtResource("1_7vw3g")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_8bvfg")]([SubResource("Resource_qgrug"), SubResource("Resource_6ubox")])
+damageGrantsFocus = true
 internalName = "wolf_tooth"
 loc_displayName = "weap_wolf_tooth_name"
 loc_displayDesc = "weap_wolf_tooth_desc"

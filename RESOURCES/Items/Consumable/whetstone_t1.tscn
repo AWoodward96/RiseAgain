@@ -11,15 +11,14 @@ script = ExtResource("5_8ff5h")
 Template = ExtResource("4_mx0ga")
 Value = 2
 
-[node name="whetstone_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
+[node name="whetstone_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_agn71")
-UsageLimit = 1.0
 internalName = "whetstone_t1"
 loc_displayName = "item_whetstone_t1_name"
 loc_displayDesc = "item_whetstone_t1_desc"
 icon = ExtResource("2_0l20q")
-StatConsumableData = NodePath("StatConsumableComponent")
+statData = NodePath("ItemEquipData")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
+[node name="ItemEquipData" type="Node2D" parent="."]
 script = ExtResource("3_yi1k6")
 StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_pr3df")])

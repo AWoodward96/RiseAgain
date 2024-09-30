@@ -15,6 +15,7 @@ enum Direction { Up, Right, Down, Left }
 
 @export var UIDisplayedStats : Array[StatTemplate]
 @export var LevelUpStats : Array[StatTemplate]
+@export var ItemSlotsPerUnit : int = 3
 
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate

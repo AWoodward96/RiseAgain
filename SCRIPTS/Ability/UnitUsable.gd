@@ -10,7 +10,6 @@ class_name UnitUsable
 @export var UsableDamageData : DamageData
 @export var StatData : ItemStatComponent
 @export var HealData : HealComponent
-@export var StatConsumableData : StatConsumableComponent
 @export var MovementData : AbilityMovementComponent
 @export var EffectData : CombatEffectComponent
 
@@ -66,11 +65,8 @@ func GetAccuracy():
 	# Healing should always be 100% accurate and might not have StatData, so we'll see
 	return 100
 
-func IsHeal(_includingConsumables : bool):
-	if _includingConsumables:
-		return HealData != null && UsableDamageData == null
-	else:
-		return HealData != null && UsableDamageData == null && TargetingData != null
+func IsHeal():
+	return HealData != null && UsableDamageData == null && TargetingData != null
 
 func IsDamage():
 	return UsableDamageData != null && TargetingData != null
@@ -90,9 +86,6 @@ func GetComponents():
 
 		if HealData == null && child is HealComponent:
 			HealData = child as HealComponent
-
-		if StatConsumableData == null && child is StatConsumableComponent:
-			StatConsumableData = child as StatConsumableComponent
 
 		if MovementData == null && child is AbilityMovementComponent:
 			MovementData = child as AbilityMovementComponent

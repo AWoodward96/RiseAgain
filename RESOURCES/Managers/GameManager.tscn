@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cls83uyoykivy"]
+[gd_scene load_steps=15 format=3 uid="uid://cls83uyoykivy"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
 [ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dxolfuwxyja2v" path="res://RESOURCES/UI/ExperienceGainUI/experience_gain_ui.tscn" id="9_s67l2"]
 [ext_resource type="PackedScene" uid="uid://xl37svyevc7s" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.tscn" id="10_rogan"]
 [ext_resource type="PackedScene" uid="uid://dn07slodp7juh" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_ui.tscn" id="12_bua6u"]
+[ext_resource type="PackedScene" uid="uid://gneoqi5t7opg" path="res://RESOURCES/UI/CSR_Menu/csr_menu.tscn" id="13_ryso4"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_4phlr")
@@ -27,4 +28,5 @@ MapRewardUI = ExtResource("8_c4jow")
 ExperienceUI = ExtResource("9_s67l2")
 AbilitySelectionUI = ExtResource("10_rogan")
 UnitInspectionUI = ExtResource("12_bua6u")
+CSRUI = ExtResource("13_ryso4")
 LoadingScreenPrefab = ExtResource("7_5jmon")

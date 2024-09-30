@@ -30,6 +30,7 @@ script = ExtResource("1_i5kxd")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_cpfex")]([SubResource("Resource_1nliv"), SubResource("Resource_bjjjv")])
+damageGrantsFocus = true
 internalName = "dark_pact"
 loc_displayName = "weap_dark_pact_name"
 loc_displayDesc = "weap_dark_pact_desc"

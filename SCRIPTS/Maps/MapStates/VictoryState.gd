@@ -65,7 +65,7 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 		if _unit == null:
 			push_error("Can't give reward to a null unit. Giving item to no one.")
 		else:
-			_unit.GiveItem(_lootRewardEntry.ItemPrefab)
+			_unit.EquipItem(0, _lootRewardEntry.ItemPrefab)
 
 	pass
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+static var CurrentCampaign : CampaignTemplate
+
 @export var GameSettings : GameSettingsTemplate
 @export var UnitSettings : UnitSettingsTemplate
 @export var LocalizationSettings : LocSettings
@@ -11,13 +13,23 @@ extends Node2D
 @export var ExperienceUI : PackedScene
 @export var AbilitySelectionUI : PackedScene
 @export var UnitInspectionUI : PackedScene
+@export var CSRUI : PackedScene
 
 @export var LoadingScreenPrefab : PackedScene
 
 var loadingScreen : LoadingScreen
+var csrUI : CSR
 
-func _ready():
-	return
+func _process(_delta: float):
+	if Input.is_action_just_pressed("cheat"):
+		if csrUI != null:
+			remove_child(csrUI)
+			csrUI.queue_free()
+			csrUI = null
+		else:
+			csrUI = CSR.ShowMenu()
+
+	pass
 
 func CreateLoadingScreen():
 	loadingScreen = LoadingScreenPrefab.instantiate() as LoadingScreen

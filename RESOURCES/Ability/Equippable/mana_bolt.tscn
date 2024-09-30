@@ -30,6 +30,7 @@ script = ExtResource("1_nhf15")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_ardhu")]([SubResource("Resource_d3am7"), SubResource("Resource_k0yij")])
+damageGrantsFocus = true
 internalName = "mana_bolt"
 loc_displayName = "weap_mana_bolt_name"
 loc_displayDesc = "weap_mana_bolt_desc"

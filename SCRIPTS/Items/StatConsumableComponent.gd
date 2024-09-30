@@ -1,4 +1,4 @@
 extends Node2D
-class_name StatConsumableComponent
+class_name HeldItemComponent
 
 @export var StatsToGrant : Array[StatDef]

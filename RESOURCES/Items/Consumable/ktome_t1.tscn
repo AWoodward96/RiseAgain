@@ -11,15 +11,14 @@ script = ExtResource("5_o6qg2")
 Template = ExtResource("4_yas78")
 Value = 2
 
-[node name="ktome_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
+[node name="ktome_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_5gugn")
-UsageLimit = 1.0
-internalName = "ktome_t1"
+internalName = "tome_of_knowledge"
 loc_displayName = "item_ktome_t1_name"
 loc_displayDesc = "item_ktome_t1_desc"
 icon = ExtResource("2_2hxnf")
-StatConsumableData = NodePath("StatConsumableComponent")
+statData = NodePath("HeldItemComponent")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
+[node name="HeldItemComponent" type="Node2D" parent="."]
 script = ExtResource("3_caekq")
 StatsToGrant = Array[ExtResource("5_o6qg2")]([SubResource("Resource_uk6vy")])

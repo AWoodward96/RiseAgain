@@ -11,15 +11,14 @@ script = ExtResource("5_26n6f")
 Template = ExtResource("4_3u0tr")
 Value = 4
 
-[node name="nectar_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
+[node name="nectar_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_fp3ko")
-UsageLimit = 1.0
-internalName = "nectar_t1"
+internalName = "golden_apple"
 loc_displayName = "item_nectar_t1_name"
 loc_displayDesc = "item_nectar_t1_desc"
 icon = ExtResource("2_ngjb7")
-StatConsumableData = NodePath("StatConsumableComponent")
+statData = NodePath("HeldItemComponent")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
+[node name="HeldItemComponent" type="Node2D" parent="."]
 script = ExtResource("3_wpywr")
 StatsToGrant = Array[ExtResource("5_26n6f")]([SubResource("Resource_rrmlp")])

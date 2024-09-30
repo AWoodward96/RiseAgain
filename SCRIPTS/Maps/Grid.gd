@@ -302,7 +302,7 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 
 	if _tile.Health <= 0:
 		map.tilemap_main.set_cell(_tile.Position)
-		RefreshTilesCollision(_tile, map.currentTurn)
+		RefreshTilesCollision(_tile, map.currentTurn as int)
 
 		# We do it like this so that you can't retarget this tile anymore
 		_tile.MaxHealth = 0

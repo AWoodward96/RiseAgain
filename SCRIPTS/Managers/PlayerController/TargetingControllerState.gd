@@ -298,7 +298,7 @@ func ClearPreview():
 func ShowPreview():
 	if unitUsable.IsDamage():
 		ShowDamagePreview()
-	elif unitUsable.IsHeal(false):
+	elif unitUsable.IsHeal():
 		ShowHealPreview()
 
 func ShowDamagePreview():

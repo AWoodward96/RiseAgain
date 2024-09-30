@@ -185,8 +185,6 @@ func CreateCombatHUD():
 		combatHUD.Initialize(currentMap, CurrentTile)
 		add_child(combatHUD)
 
-		combatHUD.itemSelectUI.OnItemSelectedForCombat.connect(OnItemSelectedForCombat)
-
 	return combatHUD
 
 func UpdateGlobalContextUI():
@@ -199,8 +197,6 @@ func UpdateContextUI():
 
 	if CanAttack(selectedUnit):
 		combatHUD.ContextUI.AddButton("Attack", true, OnAttack)
-	if CanHeal(selectedUnit):
-		combatHUD.ContextUI.AddButton("Heal", true, OnHeal)
 
 	for ability in selectedUnit.Abilities:
 		if ability.type != Ability.AbilityType.Weapon:
@@ -209,9 +205,11 @@ func UpdateContextUI():
 				label += " - " + str(ability.remainingUsages)
 
 			# Block if focus cost can't be met - or if the ability has a limited usage
-			combatHUD.ContextUI.AddButton(label, selectedUnit.currentFocus >= ability.focusCost && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0)), OnAbility.bind(ability))
+			var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
+			canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
 
-	combatHUD.ContextUI.AddButton("Inventory", true, OnInventory)
+			combatHUD.ContextUI.AddButton(label, canCast, OnAbility.bind(ability))
+
 	combatHUD.ContextUI.AddButton("Wait", true, OnWait)
 	combatHUD.ContextUI.SelectFirst()
 
@@ -258,22 +256,5 @@ func OnAttack():
 	selectedItem = selectedUnit.EquippedWeapon
 	EnterTargetingState(selectedItem)
 
-	#EnterItemSelectionState(UnitInventoryPanel.Filter_DamageableItemsOnly)
-
 func OnAbility(_ability : Ability):
 	EnterTargetingState(_ability)
-
-func CanHeal(_unit : UnitInstance):
-	if _unit == null:
-		return false
-
-	return _unit.HasHealItem(false)
-
-func OnHeal():
-	EnterItemSelectionState(UnitInventoryPanel.Filter_HealingTargetedItems)
-
-func OnItemSelectedForCombat(_item : Item):
-	if _item != null:
-		selectedItem = _item
-		selectedUnit.EquipItem(selectedItem)
-		EnterTargetingState(selectedItem)

@@ -30,6 +30,7 @@ script = ExtResource("1_0llaf")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_ntjbe")]([SubResource("Resource_1qgml"), SubResource("Resource_mqwq8")])
+damageGrantsFocus = true
 internalName = "zombie_claw"
 loc_displayName = "weap_zombie_claw_name"
 loc_displayDesc = "weap_zombie_claw_desc"

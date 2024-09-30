@@ -18,6 +18,10 @@ signal OnClose
 @export var statBlockEntry : PackedScene
 @export var statBlockLocalization : String = "ui_statblock_label_large"
 
+
+@export var itemSlotEntryList : EntryList
+@export var itemSlotEntry : PackedScene
+
 var unit : UnitInstance
 
 func Initialize(_unitInstance : UnitInstance):
@@ -48,6 +52,12 @@ func Refresh():
 		if affinityTemplate.strongAgainst & thisAffinity.affinity:
 			var newAddition = weakAgainstEntryList.CreateEntry(affinityEntryPrefab)
 			newAddition.texture = affinityTemplate.loc_icon
+
+	itemSlotEntryList.ClearEntries()
+	for item in unit.ItemSlots:
+		var entry = itemSlotEntryList.CreateEntry(itemSlotEntry)
+		entry.Refresh(item)
+
 
 	statBlockEntryList.ClearEntries()
 	var statsToBeDisplayed = GameManager.GameSettings.UIDisplayedStats

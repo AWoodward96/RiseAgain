@@ -30,6 +30,7 @@ script = ExtResource("1_8s5d7")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_mc5by")]([SubResource("Resource_nb053"), SubResource("Resource_32v2b")])
+damageGrantsFocus = true
 internalName = "steel_sword"
 loc_displayName = "weap_steel_sword_name"
 loc_displayDesc = "weap_steel_sword_desc"

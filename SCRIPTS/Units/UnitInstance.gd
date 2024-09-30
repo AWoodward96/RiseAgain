@@ -28,7 +28,7 @@ var CurrentTile : Tile
 var Template : UnitTemplate
 var visual : UnitVisual # could be made generic, but probably not for now
 var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
-var Inventory : Array[Item]
+var ItemSlots : Array[Item]
 var Abilities : Array[Ability]
 var CombatEffects : Array[CombatEffectInstance]
 var EquippedWeapon : Ability
@@ -100,7 +100,11 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	if _unitTemplate.Affinity != null:
 		affinityIcon.texture = _unitTemplate.Affinity.loc_icon
 
-	CreateItems()
+
+	if ItemSlots.size() == 0:
+		for s in GameManager.GameSettings.ItemSlotsPerUnit:
+			ItemSlots.append(null)
+
 	CreateStartingAbilities()
 	InitializeLevels(_levelOverride)
 	InitializeStats()
@@ -194,7 +198,10 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 		parent.remove_child(self)
 	map.squadParent.add_child(self)
 
-	for i in Inventory:
+	for i in ItemSlots:
+		if i == null:
+			continue
+
 		i.SetMap(map)
 
 	for a in Abilities:
@@ -255,7 +262,6 @@ func AddExperience(_expIncrease : int):
 
 	return levelIncrease
 
-
 func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 	print("Level Up!")
 	Level += _levelIncrease
@@ -283,14 +289,6 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 	OnStatUpdated.emit()
 	return levelUpResult
 
-func CreateItems():
-	# TODO: Figure out how to initialize from save data, so that Item information persists between levels
-	pass
-	#for item in Template.StartingItems:
-		#GiveItem(item)
-#
-	#if Inventory.size() > 0:
-		#EquipItem(Inventory[0])
 
 func CreateStartingAbilities():
 	if Template.StartingEquippedWeapon != null:
@@ -307,6 +305,11 @@ func AddAbility(_ability : PackedScene):
 	if abilityInstance == null:
 		return
 
+	# don't allow for duplicates
+	for abl in Abilities:
+		if abl == _ability:
+			return
+
 	abilityInstance.Initialize(self)
 
 	if abilityInstance.type == Ability.AbilityType.Weapon:
@@ -322,29 +325,48 @@ func AddAbility(_ability : PackedScene):
 	Abilities.append(abilityInstance)
 	return abilityInstance
 
-func EquipItem(_item : Item):
-	pass
-	#var index = Inventory.find(_item)
-	#if index != -1:
-		#EquippedItem = _item
-#
-		## move up the equipped weapon to slot 0 of the inventory
-		#var invAt0 = Inventory[0]
-		#Inventory[0] = _item
-		#Inventory[index] = invAt0
-	#OnStatUpdated.emit()
+# Equips an item to that slot
+# Returns true or false depending on if the item was properly equipped
+func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
+	if ItemSlots.size() == 0:
+		for s in GameManager.GameSettings.ItemSlotsPerUnit:
+			ItemSlots.append(null)
 
-func TrashItem(_item : Item):
-	var index = Inventory.find(_item)
-	if index != -1:
-		itemsParent.remove_child(_item)
-		Inventory.remove_at(index)
+	if _slotIndex < 0 || _slotIndex >= ItemSlots.size():
+		return false
 
-func GiveItem(_item : PackedScene):
-	var itemInstance = _item.instantiate() as Item
-	itemInstance.Initialize(self)
-	itemsParent.add_child(itemInstance)
-	Inventory.append(itemInstance)
+	# _Item can be a pacekd Scene or an Item itself
+	var item : Item
+	if _itemPrefabOrInstance is PackedScene:
+		item = _itemPrefabOrInstance.instantiate() as Item
+	elif _itemPrefabOrInstance is Item:
+		item = _itemPrefabOrInstance
+	else:
+		# I don't know wtf this is. Return false
+		return false
+
+	if ItemSlots[_slotIndex] == null:
+		if item != null:
+			itemsParent.add_child(item)
+		ItemSlots[_slotIndex] = item
+		OnStatUpdated.emit()
+		return true
+	else:
+		if item != null:
+			# try to put it in any slot
+			for i in range(0, GameManager.GameSettings.ItemSlotsPerUnit):
+				if ItemSlots[i] == null:
+					itemsParent.add_child(item)
+					ItemSlots[i] = item
+					OnStatUpdated.emit()
+					return true
+		else:
+			itemsParent.remove_child(ItemSlots[_slotIndex])
+			ItemSlots[_slotIndex] = item
+			OnStatUpdated.emit()
+			return true
+
+	return false
 
 func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :
 	if _route == null || _route.size() == 0:
@@ -506,7 +528,6 @@ func GetArmorAmount():
 
 	return armor
 
-
 ### The function you want to call when you want to know the Final state that the Unit is working with
 func GetWorkingStat(_statTemplate : StatTemplate):
 	# start with the base
@@ -524,6 +545,10 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 		for statDef in EquippedWeapon.StatData.GrantedStats:
 			if statDef.Template == _statTemplate:
 				current += statDef.Value
+
+	for item in ItemSlots:
+		if item != null:
+			current += item.GetStatDelta(_statTemplate)
 
 	for effect in CombatEffects:
 		if effect is StatChangeEffectInstance:
@@ -601,15 +626,15 @@ func GetEffectiveAttackRange():
 		return EquippedWeapon.GetRange()
 	return Vector2i.ZERO
 
-func HasDamageItem():
-	for i in Inventory:
+func HasDamageAbility():
+	for i in Abilities:
 		if i.IsDamage():
 			return true
 	return false
 
-func HasHealItem(_includingConsumables : bool):
-	for i in Inventory:
-		if i.IsHeal(_includingConsumables):
+func HasHealAbility():
+	for i in Abilities:
+		if i.IsHeal():
 			return true
 	return false
 
@@ -635,15 +660,11 @@ func ShowAffinityRelation(_affinity : AffinityTemplate):
 
 
 func ToJSON():
-	var inventoryJSON = []
-	for item in Inventory:
-		inventoryJSON.append(item.ToJSON())
 
 	return {
 		"Template" : Template.resource_path,
 		"currentHealth" : currentHealth,
 		"GridPosition_x" : GridPosition.x,
 		"GridPosition_y" : GridPosition.y,
-		"IsAggrod" : IsAggrod,
-		"Inventory" : inventoryJSON
+		"IsAggrod" : IsAggrod
 	}

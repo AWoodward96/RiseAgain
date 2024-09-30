@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci2yfcw0fc6pv"]
+
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/item_display_entry.gd" id="1_cfolw"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="2_8c5n5"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_w2me1"]
+
+[node name="InventorySlotEntry" type="Control" node_paths=PackedStringArray("emptyParent", "displayParent", "icon", "itemName", "itemDescription")]
+custom_minimum_size = Vector2(196, 196)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cfolw")
+emptyParent = NodePath("EmptySlotParent")
+displayParent = NodePath("FullSlotParent")
+icon = NodePath("FullSlotParent/VBoxContainer/HBoxContainer/Icon")
+itemName = NodePath("FullSlotParent/VBoxContainer/RewardName")
+itemDescription = NodePath("FullSlotParent/VBoxContainer/RewardDesc")
+
+[node name="EmptySlotParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EmptySlotParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1767, 0.207803, 0.31, 1)
+
+[node name="EmptyLabel" type="Label" parent="EmptySlotParent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_empty"
+
+[node name="FullSlotParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="FullSlotParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.49, 0.49, 0.49, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullSlotParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullSlotParent/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Icon" type="TextureRect" parent="FullSlotParent/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_8c5n5")
+expand_mode = 1
+
+[node name="RewardName" type="Label" parent="FullSlotParent/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_w2me1")
+theme_override_font_sizes/font_size = 24
+text = "Gauze"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="RewardDesc" type="Label" parent="FullSlotParent/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_w2me1")
+theme_override_font_sizes/font_size = 16
+text = "This is a description of the item you'll be recieving"
+autowrap_mode = 2

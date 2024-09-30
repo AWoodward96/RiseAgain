@@ -11,15 +11,14 @@ script = ExtResource("5_p2xb5")
 Template = ExtResource("4_0nnam")
 Value = 2
 
-[node name="holywater_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
+[node name="holywater_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_j277k")
-UsageLimit = 1.0
-internalName = "holywater_t1"
+internalName = "holy_water"
 loc_displayName = "item_holywater_t1_name"
 loc_displayDesc = "item_holywater_t1_desc"
 icon = ExtResource("2_s5f4i")
-StatConsumableData = NodePath("StatConsumableComponent")
+statData = NodePath("HeldItemComponent")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
+[node name="HeldItemComponent" type="Node2D" parent="."]
 script = ExtResource("3_y81gp")
 StatsToGrant = Array[ExtResource("5_p2xb5")]([SubResource("Resource_m44yr")])

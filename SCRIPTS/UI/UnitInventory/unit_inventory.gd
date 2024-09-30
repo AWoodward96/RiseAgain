@@ -18,7 +18,6 @@ func Initialize(_unitInstance : UnitInstance):
 	inventory_context_parent.visible = false
 	Refresh()
 
-
 func Refresh():
 	if unit_inventory_panel != null:
 		unit_inventory_panel.Initialize(currentUnit, null)
@@ -55,11 +54,6 @@ func OnItemSelected(_item : Item):
 	var entry = unit_inventory_panel.GetEntry(currentUnit.Inventory.find(_item))
 	if entry != null:
 		entry.ForceShowFocused()
-	pass
-
-func OnEquipButton():
-	currentUnit.EquipItem(selectedItem)
-	OnActionTaken()
 	pass
 
 func OnUseButton():

@@ -53,7 +53,7 @@ func Ability_CalculateResult(_ability : Ability, _damageData):
 		Kill = false
 		if Target != null:
 			Kill = (Target.currentHealth + HealthDelta <= 0)
-	elif _ability.IsHeal(false):
+	elif _ability.IsHeal():
 		# Healing items can't miss
 		HealthDelta = GameManager.GameSettings.HealCalculation(_ability.HealData, Source, TileTargetData.AOEMultiplier)
 

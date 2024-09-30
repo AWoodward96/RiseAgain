@@ -30,6 +30,7 @@ script = ExtResource("1_ebpsu")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_ylls6")]([SubResource("Resource_nc0iq"), SubResource("Resource_hdq0i")])
+damageGrantsFocus = true
 internalName = "magic_bolt"
 loc_displayName = "weap_magic_bolt_name"
 loc_displayDesc = "weap_magic_bolt_desc"

@@ -209,17 +209,18 @@ func RefreshThreat():
 	if grid.ShowingThreat && playercontroller.ControllerState.CanShowThreat():
 		grid.RefreshThreat(GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
 
-func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var mousePos = get_global_mouse_position()
-		var tile_pos = tilemap_main.local_to_map(mousePos)
-		OnTileClicked(tile_pos)
-
-func OnTileClicked(a_tilePosition : Vector2i) :
-	if grid.Pathfinding.is_in_bounds(a_tilePosition.x, a_tilePosition.y) :
-		print_debug("Tile Position(", a_tilePosition.x, ",", a_tilePosition.y, ") - Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
-		var tile = grid.GetTile(a_tilePosition)
-		if tile != null:
-			grid.ModifyTileHealth(-100, tile)
-	else :
-		print_debug("Click was not in pathfinding bounds")
+#func _input(event):
+	# this eats button inputs funnily enough, so the CSR menu wont work if this is commented in
+	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#var mousePos = get_global_mouse_position()
+		#var tile_pos = tilemap_main.local_to_map(mousePos)
+		#OnTileClicked(tile_pos)
+#
+#func OnTileClicked(a_tilePosition : Vector2i) :
+	#if grid.Pathfinding.is_in_bounds(a_tilePosition.x, a_tilePosition.y) :
+		#print_debug("Tile Position(", a_tilePosition.x, ",", a_tilePosition.y, ") - Is Solid ", grid.Pathfinding.is_point_solid(a_tilePosition))
+		#var tile = grid.GetTile(a_tilePosition)
+		#if tile != null:
+			#grid.ModifyTileHealth(-100, tile)
+	#else :
+		#print_debug("Click was not in pathfinding bounds")

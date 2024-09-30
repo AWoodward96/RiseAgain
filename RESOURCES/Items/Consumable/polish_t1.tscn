@@ -11,14 +11,13 @@ script = ExtResource("5_jhr1n")
 Template = ExtResource("4_xcgj8")
 Value = 2
 
-[node name="polish_t1" type="Node2D" node_paths=PackedStringArray("StatConsumableData")]
+[node name="polish_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_urn7q")
-UsageLimit = 1.0
-internalName = "polish_t1"
+internalName = "armor_polish"
 loc_displayName = "item_polish_t1_name"
 loc_displayDesc = "item_polish_t1_desc"
 icon = ExtResource("2_225x3")
-StatConsumableData = NodePath("StatConsumableComponent")
+statData = NodePath("StatConsumableComponent")
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_dkqmo")
