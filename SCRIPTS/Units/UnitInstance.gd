@@ -124,12 +124,10 @@ func InitializeStats():
 	# Remember: Vitality != Health. Health = Vitality * ~1.5, a value which can change for balancing
 	currentHealth = GetWorkingStat(GameManager.GameSettings.HealthStat)
 
-
 	if GameManager.GameSettings.InitializeUnitsWithMaxFocus:
 		currentFocus = GetWorkingStat(GameManager.GameSettings.MindStat)
 	else:
 		currentFocus = 0
-
 
 func UpdateDerivedStats():
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
@@ -349,6 +347,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		if item != null:
 			itemsParent.add_child(item)
 		ItemSlots[_slotIndex] = item
+		UpdateDerivedStats()
 		OnStatUpdated.emit()
 		return true
 	else:
@@ -358,11 +357,13 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 				if ItemSlots[i] == null:
 					itemsParent.add_child(item)
 					ItemSlots[i] = item
+					UpdateDerivedStats()
 					OnStatUpdated.emit()
 					return true
 		else:
 			itemsParent.remove_child(ItemSlots[_slotIndex])
 			ItemSlots[_slotIndex] = item
+			UpdateDerivedStats()
 			OnStatUpdated.emit()
 			return true
 
@@ -658,6 +659,11 @@ func ShowAffinityRelation(_affinity : AffinityTemplate):
 	if Template.Affinity.strongAgainst & _affinity.affinity:
 		positive_afffinity.visible = true
 
+func Rest():
+	for ability in Abilities:
+		ability.OnRest()
+
+	currentHealth = maxHealth
 
 func ToJSON():
 

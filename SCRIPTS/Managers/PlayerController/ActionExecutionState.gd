@@ -50,12 +50,19 @@ func _Enter(_ctrl : PlayerController, data):
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()
 
+
 	if log.ability != null:
 		log.ability.TryExecute(log, _delta)
 	else:
 		# log ability is null - is that because the target of this action is dead?
 		if log.source == null:
 			# okay then default to post action complete
+			# If the source of this ability is dead to a player fighting back, then that will be in the response results
+			for result in log.responseResults:
+				# Check this specific result. If the source is not null, then the source is not the source of this attack
+				# If the result is null, then that's refering to the now dead unit
+				if result.Source != null && result.Target == null:
+					result.Source.QueueExpGain(result.ExpGain)
 			PostActionComplete()
 	pass
 
@@ -89,7 +96,7 @@ func PostActionComplete():
 	if log.actionType == ActionLog.ActionType.Item && log.item != null:
 		log.item.OnCombat()
 
-	ctrl.OnCombatSequenceComplete.emit()
+	#ctrl.OnCombatSequenceComplete.emit()
 
 func ToString():
 	return "ActionExecutionState"

@@ -8,6 +8,7 @@ signal ScreenCleared
 var tween : Tween
 
 func ShowLoadingScreen(_fadeTime = 1.5, lambda = null):
+	Screen.visible = true
 	Screen.modulate.a = 0
 	tween = create_tween()
 	tween.tween_property(Screen, "modulate:a", 1, _fadeTime)
@@ -17,7 +18,7 @@ func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
 	Screen.modulate.a = 1
 	tween = create_tween()
 	tween.tween_property(Screen, "modulate:a", 0, _fadeTime)
-	tween.tween_callback(ObscureComplete.bind(lambda))
+	tween.tween_callback(ClearComplete.bind(lambda))
 
 
 func ObscureComplete(lambda):
@@ -27,6 +28,7 @@ func ObscureComplete(lambda):
 		lambda.call()
 
 func ClearComplete(lambda):
+	Screen.visible = false
 	ScreenCleared.emit()
 
 	if lambda != null:

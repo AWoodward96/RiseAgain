@@ -54,6 +54,10 @@ func CheckForRetaliation(_result : ActionResult):
 	if log.source == null:
 		return
 
+	if log.ability.type == Ability.AbilityType.Standard:
+		# This is a normal ability, and no retaliation is available
+		return
+
 	var defendingUnit = _result.Target
 	if log.canRetaliate && !_result.Kill:
 		if defendingUnit.EquippedWeapon == null:

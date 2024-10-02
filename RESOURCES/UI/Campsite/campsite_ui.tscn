@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnsp2jieynl7x"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
+[ext_resource type="Shader" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bl6de"]
+shader = ExtResource("1_dlrih")
+shader_parameter/outerRadius = 1.962
+shader_parameter/MainAlpha = 0.789
+
+[node name="CampsiteUI" type="CanvasLayer" node_paths=PackedStringArray("Vignette", "UIParent", "ViewButton", "InspectButton", "RestButton")]
+layer = 3
+script = ExtResource("1_d5tvi")
+Vignette = NodePath("Vignette")
+UIParent = NodePath("UI")
+ViewButton = NodePath("UI/VBoxContainer/View")
+InspectButton = NodePath("UI/VBoxContainer/Inspect")
+RestButton = NodePath("UI/VBoxContainer/Rest")
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bl6de")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -319.0
+offset_right = 196.0
+offset_bottom = 319.0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.486275)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="View" type="Button" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "View Campsite"
+
+[node name="Inspect" type="Button" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Inspect Team"
+
+[node name="Rest" type="Button" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Rest"
+
+[connection signal="pressed" from="UI/VBoxContainer/View" to="." method="btn_View"]
+[connection signal="pressed" from="UI/VBoxContainer/Inspect" to="." method="btn_Inspect"]
+[connection signal="pressed" from="UI/VBoxContainer/Rest" to="." method="btn_Rest"]

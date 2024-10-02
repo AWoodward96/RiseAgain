@@ -1,9 +1,14 @@
 extends Node2D
 class_name Map
 
+
+static var Current : Map
+
 enum MAPSTATE { PreMap, Combat, PostMap }
+enum MAPTYPE { Standard, Campsite, Event }
 
 @export_category("Meta Data")
+@export var mapType : MAPTYPE
 @export var GridSize = Vector2i(22 , 15)
 @export var CameraStart : Vector2
 @export var TileSize = 64
@@ -64,11 +69,12 @@ func _process(_delta):
 	if MapState != null:
 		MapState.Update(_delta)
 
-	if WinCondition != null && MapState is CombatState:
-		if WinCondition.CheckObjective(self):
-			# Wait for everything to resolve first
-			if GlobalStackClear():
-				ChangeMapState(VictoryState.new())
+	if mapType == MAPTYPE.Standard:
+		if WinCondition != null && MapState is CombatState:
+			if WinCondition.CheckObjective(self):
+				# Wait for everything to resolve first
+				if GlobalStackClear():
+					ChangeMapState(VictoryState.new())
 
 func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitInstance], _rngSeed : int):
 	rng = RandomNumberGenerator.new()
@@ -82,7 +88,14 @@ func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitIn
 			InitializeUnit(_roster[i], startingPositions[i], GameSettingsTemplate.TeamID.ALLY)
 
 	InitializePlayerController()
-	ChangeMapState(PreMapState.new())
+
+	match mapType:
+		MAPTYPE.Standard:
+			ChangeMapState(PreMapState.new())
+		MAPTYPE.Campsite:
+			ChangeMapState(CampsiteState.new())
+
+	Current = self
 
 func GlobalStackClear():
 	var stackFree = true
@@ -112,7 +125,14 @@ func InitializeStandalone():
 	await ui.OnRosterSelected
 
 	InitializePlayerController()
-	ChangeMapState(PreMapState.new())
+
+	match mapType:
+		MAPTYPE.Standard:
+			ChangeMapState(PreMapState.new())
+		MAPTYPE.Campsite:
+			ChangeMapState(CampsiteState.new())
+
+	Current = self
 
 # only used by the roster selection ui. In normal campaign initialization, the UnitInstances should already be created
 func OnRosterTemplatesSelected(_roster : Array[UnitTemplate]):
@@ -175,6 +195,10 @@ func OnUnitDeath(_unitInstance : UnitInstance):
 
 # This can be called outside of unit death for units that are escaping
 func RemoveUnitFromMap(_unitInstance : UnitInstance):
+	_unitInstance.visible = false
+
+	await _unitInstance.IsStackFree
+
 	# Collect the reference before hand
 	var tile = _unitInstance.CurrentTile
 	tile.Occupant = null

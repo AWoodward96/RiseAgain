@@ -72,5 +72,13 @@ func ShowGiveItemUI():
 	giveItemEntryList.FocusFirst()
 	pass
 
+func OnSendToConvoy():
+	# If we're here than the campaign kinda has to exist right?
+	var campaign = GameManager.CurrentCampaign
+	if campaign != null:
+		campaign.AddItemToConvoy(workingSelectedReward.ItemPrefab)
+		OnRewardSelected.emit(workingSelectedReward, null)
+	pass
+
 func OnUnitSelectedForItem(_unit : UnitInstance):
 	OnRewardSelected.emit(workingSelectedReward, _unit)

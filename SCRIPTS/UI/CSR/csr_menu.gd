@@ -8,11 +8,11 @@ func btnAllAbilitiesCost0():
 	AllAbilitiesCost0 = !AllAbilitiesCost0
 
 func btnUnlockAllAbilities():
-	var currentCampaign = GameManager.CurrentCampaign
-	if currentCampaign == null:
+	var map = Map.Current
+	if map == null:
 		return
 
-	var allAllies = currentCampaign.currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
+	var allAllies = map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
 	for unit in allAllies:
 		if unit == null:
 			continue

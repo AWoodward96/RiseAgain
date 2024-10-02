@@ -13,6 +13,7 @@ static var CurrentCampaign : CampaignTemplate
 @export var AbilitySelectionUI : PackedScene
 @export var UnitInspectionUI : PackedScene
 @export var CSRUI : PackedScene
+@export var CampsiteUIPrefab : PackedScene
 
 @export var LoadingScreenPrefab : PackedScene
 

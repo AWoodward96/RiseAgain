@@ -20,6 +20,9 @@ var CampaignSeed : int
 var CurrentRoster : Array[UnitInstance]
 var RosterTemplates : Array[UnitTemplate]
 
+var ConvoyParent : Node2D
+var Convoy : Array[Item]
+
 var CurrentMap
 
 func StartCampaign(_roster : Array[UnitTemplate]):
@@ -107,6 +110,31 @@ func GetMapRewardTable():
 
 func OnRosterSelected(_roster : Array[UnitTemplate]):
 	RosterTemplates = _roster
+
+func AddItemToConvoy(_item : Item):
+	if ConvoyParent == null:
+		# create a new one
+		ConvoyParent = Node2D.new()
+		ConvoyParent.name = "Convoy"
+		add_child(ConvoyParent)
+		ConvoyParent.visible = false # Should not be visible just in case there are visual effects on a prefab that might bleed through
+
+	ConvoyParent.add_child(_item)
+	Convoy.append(_item)
+
+func RemoveItemFromConvoy(_item : Item, _unitToGiveTo : UnitInstance, _slotIndex : int):
+	var index = Convoy.find(_item)
+	if index == -1:
+		return
+
+	if _unitToGiveTo == null || _slotIndex < 0 || _slotIndex >= GameManager.GameSettings.ItemSlotsPerUnit:
+		return
+
+	var item = Convoy[index]
+	Convoy.remove_at(index)
+	ConvoyParent.remove_child(item)
+	_unitToGiveTo.EquipItem(_slotIndex, item)
+
 
 func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 0):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance

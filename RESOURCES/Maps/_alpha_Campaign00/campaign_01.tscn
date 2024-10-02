@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyq5ckgj34tlt"]
+[gd_scene load_steps=11 format=3 uid="uid://cyq5ckgj34tlt"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_e5c8l"]
 [ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignNode.gd" id="2_f8ouy"]
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="2_w31g5"]
 [ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_01.tscn" id="3_gff2l"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_02.tscn" id="4_4t7dt"]
+[ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_campsite_01.tscn" id="4_h2iby"]
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_03.tscn" id="5_tqnkq"]
 [ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_04.tscn" id="7_ly3f1"]
 [ext_resource type="PackedScene" uid="uid://b1edodfhgyr3p" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_05.tscn" id="8_8wabd"]
@@ -32,15 +33,19 @@ MapPrefab = ExtResource("4_4t7dt")
 script = ExtResource("2_f8ouy")
 MapPrefab = ExtResource("5_tqnkq")
 
-[node name="3" type="Node2D" parent="LedgerRoot/0/1/2"]
+[node name="Campsite" type="Node2D" parent="LedgerRoot/0/1/2"]
+script = ExtResource("2_f8ouy")
+MapPrefab = ExtResource("4_h2iby")
+
+[node name="3" type="Node2D" parent="LedgerRoot/0/1/2/Campsite"]
 script = ExtResource("2_f8ouy")
 MapPrefab = ExtResource("7_ly3f1")
 
-[node name="4" type="Node2D" parent="LedgerRoot/0/1/2/3"]
+[node name="4" type="Node2D" parent="LedgerRoot/0/1/2/Campsite/3"]
 script = ExtResource("2_f8ouy")
 MapPrefab = ExtResource("8_8wabd")
 
-[node name="5" type="Node2D" parent="LedgerRoot/0/1/2/3/4"]
+[node name="5" type="Node2D" parent="LedgerRoot/0/1/2/Campsite/3/4"]
 script = ExtResource("2_f8ouy")
 MapPrefab = ExtResource("9_bc5aj")
 

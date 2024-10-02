@@ -140,6 +140,10 @@ func EnterFormationState():
 	ChangeControllerState(formationState, null)
 	return formationState.formationUI
 
+func EnterCampsiteState():
+	var campsiteState = CampsiteControllerState.new()
+	ChangeControllerState(campsiteState, null)
+
 func EnterSelectionState():
 	ChangeControllerState(SelectionControllerState.new(), null)
 	return CreateCombatHUD()

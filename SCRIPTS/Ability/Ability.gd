@@ -51,5 +51,10 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 					_actionLog.source.QueueEndTurn()
 				AbilityActionComplete.emit()
 
+func OnRest():
+	if limitedUsage != -1:
+		remainingUsages += usageRestoredByCampfire
+		remainingUsages = clampi(remainingUsages, 0, limitedUsage)
+
 func _to_string():
 	return self.name
