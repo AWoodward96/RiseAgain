@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_r6uyf"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/HealStep.gd" id="3_rx2dj"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_63mhg"]
-[ext_resource type="Texture2D" uid="uid://dodlfksmqmyhh" path="res://ART/Icons/Ability/Standard/heal.png" id="5_e6g1y"]
+[ext_resource type="Texture2D" uid="uid://bk3hhnq4ujca8" path="res://ART/Icons/Ability/Standard/lesserheal.png" id="5_niusa"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnb1s"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="7_70oey"]
 
@@ -16,13 +16,12 @@ script = ExtResource("4_63mhg")
 
 [node name="ART_LesserHeal" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
 script = ExtResource("1_jaewu")
-unlockLevel = 0
-focusCost = 2
+focusCost = 2.0
 executionStack = Array[ExtResource("2_r6uyf")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
-internalName = "Heal"
-loc_displayName = "art_lesserheal"
+internalName = "lesserheal"
+loc_displayName = "art_lesserheal_name"
 loc_displayDesc = "art_lesserheal_desc"
-icon = ExtResource("5_e6g1y")
+icon = ExtResource("5_niusa")
 TargetingData = NodePath("SkillTargetingData")
 HealData = NodePath("HealComponent")
 
@@ -32,4 +31,4 @@ TeamTargeting = 0
 
 [node name="HealComponent" type="Node2D" parent="."]
 script = ExtResource("7_70oey")
-FlatValue = 4
+FlatValue = 4.0

@@ -21,10 +21,10 @@ script = ExtResource("3_tw6ek")
 
 [node name="ART_Fireball" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_826b6")
-focusCost = 3
+focusCost = 3.0
 executionStack = Array[ExtResource("2_078wy")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
-internalName = "Fireball"
-loc_displayName = "art_fireball"
+internalName = "fireball"
+loc_displayName = "art_fireball_name"
 loc_displayDesc = "art_fireball_desc"
 icon = ExtResource("2_uccra")
 TargetingData = NodePath("SkillTargetingData")
@@ -35,9 +35,11 @@ script = ExtResource("3_yfy6k")
 FlatValue = 2.0
 AgressiveStat = ExtResource("6_gnowq")
 DefensiveStat = ExtResource("7_s6xja")
+DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("4_o4g0r")
 TargetRange = Vector2i(1, 3)
 Type = 1
+CanTargetSelf = true
 shapedTiles = ExtResource("9_3cftr")

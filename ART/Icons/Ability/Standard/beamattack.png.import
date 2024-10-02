@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci1f2neyucige"
-path="res://.godot/imported/whetstone_t1.png-ade2e433cc5898d9273d8c9b2716a237.ctex"
+uid="uid://dyxxey7f8swu8"
+path="res://.godot/imported/beamattack.png-717f3a56b6f6a396f96556d29ae5aee2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/whetstone_t1.png"
-dest_files=["res://.godot/imported/whetstone_t1.png-ade2e433cc5898d9273d8c9b2716a237.ctex"]
+source_file="res://ART/Icons/Ability/Standard/beamattack.png"
+dest_files=["res://.godot/imported/beamattack.png-717f3a56b6f6a396f96556d29ae5aee2.ctex"]
 
 [params]
 

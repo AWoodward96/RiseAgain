@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6at30swahnfc"
-path="res://.godot/imported/dark_pact_icon.png-eef1d6985417143e607d8647930f9ac6.ctex"
+uid="uid://ci1f2neyucige"
+path="res://.godot/imported/t1_whetstone.png-5bf1cdab6cf41090b9e9686867d8057f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Equippable/dark_pact_icon.png"
-dest_files=["res://.godot/imported/dark_pact_icon.png-eef1d6985417143e607d8647930f9ac6.ctex"]
+source_file="res://ART/Icons/Items/t1_whetstone.png"
+dest_files=["res://.godot/imported/t1_whetstone.png-5bf1cdab6cf41090b9e9686867d8057f.ctex"]
 
 [params]
 

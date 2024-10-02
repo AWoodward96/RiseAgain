@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ijhtyw1jdib"
-path="res://.godot/imported/skillbook_t1.png-43661ab5b6958145659ab97c94a24a5a.ctex"
+uid="uid://bn36kolmwh5xb"
+path="res://.godot/imported/torment.png-ce0430ab67bcbe24882bdf6b5a5411ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/skillbook_t1.png"
-dest_files=["res://.godot/imported/skillbook_t1.png-43661ab5b6958145659ab97c94a24a5a.ctex"]
+source_file="res://ART/Icons/Ability/Equippable/torment.png"
+dest_files=["res://.godot/imported/torment.png-ce0430ab67bcbe24882bdf6b5a5411ba.ctex"]
 
 [params]
 

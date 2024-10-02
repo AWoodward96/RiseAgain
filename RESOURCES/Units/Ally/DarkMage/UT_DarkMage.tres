@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Ability/Equippable/mana_bolt.tscn" id="13_kwso3"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_2cxh4"]
 [ext_resource type="PackedScene" uid="uid://dnwracq246buh" path="res://RESOURCES/Ability/Standard/ART_drain.tscn" id="15_ncmmk"]
-[ext_resource type="PackedScene" uid="uid://b1y1fm3qowl1q" path="res://RESOURCES/Ability/Standard/ART_DarkFell.tscn" id="16_guvff"]
+[ext_resource type="PackedScene" uid="uid://b1y1fm3qowl1q" path="res://RESOURCES/Ability/Standard/ART_darkfell.tscn" id="16_guvff"]
 
 [sub_resource type="Resource" id="Resource_vqqm1"]
 script = ExtResource("2_k1gfy")

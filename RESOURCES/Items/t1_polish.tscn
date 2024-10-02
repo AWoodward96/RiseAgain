@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1hq4h7k3ewlj"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_1tim0"]
+[ext_resource type="Texture2D" uid="uid://6ubbv8defryl" path="res://ART/Icons/Items/t1_polish.png" id="2_u3hcv"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_pj6r4"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="4_eiv3q"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_7wvan"]
+
+[sub_resource type="Resource" id="Resource_ily0w"]
+script = ExtResource("4_eiv3q")
+Template = ExtResource("5_7wvan")
+Value = 2
+
+[node name="polish_t1" type="Node2D" node_paths=PackedStringArray("statData")]
+script = ExtResource("1_1tim0")
+internalName = "t1_polish"
+loc_displayName = "item_t1_polish_name"
+loc_displayDesc = "item_t1_polish_desc"
+icon = ExtResource("2_u3hcv")
+statData = NodePath("StatConsumableComponent")
+
+[node name="StatConsumableComponent" type="Node2D" parent="."]
+script = ExtResource("3_pj6r4")
+StatsToGrant = Array[ExtResource("4_eiv3q")]([SubResource("Resource_ily0w")])

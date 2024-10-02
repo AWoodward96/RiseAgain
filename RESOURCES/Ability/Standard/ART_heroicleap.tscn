@@ -5,12 +5,12 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_8kx7m"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_jr4ej"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
-[ext_resource type="Texture2D" uid="uid://uh2xgg4i7bc" path="res://ART/Icons/Ability/Standard/cleave.png" id="5_dd7nx"]
 [ext_resource type="Resource" uid="uid://w4pf17p2i0wg" path="res://RESOURCES/CombatEffects/CE_Armor_HeroicLeap.tres" id="5_octw8"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_mtb8i"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_ytfja"]
 [ext_resource type="Resource" uid="uid://c02lpgusbul1t" path="res://RESOURCES/TargetingShapes/heroicleap_shape.tres" id="7_n5ddh"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="8_42ld6"]
+[ext_resource type="Texture2D" uid="uid://osmj6jxl88kl" path="res://ART/Icons/Ability/Standard/heroicleap.png" id="8_mw0ad"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="9_uyhs5"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_6323x"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_anx3p"]
@@ -33,12 +33,12 @@ script = ExtResource("4_isldo")
 
 [node name="ART_HeroicLeap" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_a52ru")
-focusCost = 3
+focusCost = 3.0
 executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_aullh"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
-internalName = "Cleave"
-loc_displayName = "art_heroicleap"
+internalName = "heroicleap"
+loc_displayName = "art_heroicleap_name"
 loc_displayDesc = "art_heroicleap_desc"
-icon = ExtResource("5_dd7nx")
+icon = ExtResource("8_mw0ad")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementData")

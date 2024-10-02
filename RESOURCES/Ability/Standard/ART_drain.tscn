@@ -20,10 +20,10 @@ script = ExtResource("3_t8ilk")
 
 [node name="ART_drain" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_dc21f")
-focusCost = 2
+focusCost = 2.0
 executionStack = Array[ExtResource("2_8qvs7")]([SubResource("Resource_dxbgi"), SubResource("Resource_5cjq5")])
 internalName = "drain"
-loc_displayName = "art_drain"
+loc_displayName = "art_drain_name"
 loc_displayDesc = "art_drain_desc"
 icon = ExtResource("4_0dyo2")
 TargetingData = NodePath("SkillTargetingData")

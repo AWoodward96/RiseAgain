@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6ubbv8defryl"
-path="res://.godot/imported/polish_t1.png-8721b8091a982ae2ccdb25f9cfec044a.ctex"
+uid="uid://c6at30swahnfc"
+path="res://.godot/imported/dark_pact.png-0fecc3cf03af6bf8a740a7522192171a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/polish_t1.png"
-dest_files=["res://.godot/imported/polish_t1.png-8721b8091a982ae2ccdb25f9cfec044a.ctex"]
+source_file="res://ART/Icons/Ability/Equippable/dark_pact.png"
+dest_files=["res://.godot/imported/dark_pact.png-0fecc3cf03af6bf8a740a7522192171a.ctex"]
 
 [params]
 

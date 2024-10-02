@@ -21,10 +21,10 @@ script = ExtResource("3_nycen")
 
 [node name="ART_Cleave" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_3n530")
-focusCost = 5
+focusCost = 5.0
 executionStack = Array[ExtResource("2_ipi5c")]([SubResource("Resource_aullh"), SubResource("Resource_5cjq5")])
-internalName = "Cleave"
-loc_displayName = "art_cleave"
+internalName = "cleave"
+loc_displayName = "art_cleave_name"
 loc_displayDesc = "art_cleave_desc"
 icon = ExtResource("4_nntet")
 TargetingData = NodePath("SkillTargetingData")
@@ -41,3 +41,4 @@ AgressiveStat = ExtResource("7_0f5o6")
 AgressiveModType = 2
 AgressiveMod = 1.5
 DefensiveStat = ExtResource("8_pn77o")
+DamageToHealthRatio = 0.0

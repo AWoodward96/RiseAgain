@@ -17,10 +17,9 @@ script = ExtResource("3_ojt07")
 
 [node name="ART_Heal" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
 script = ExtResource("1_0pwxb")
-unlockLevel = 0
 executionStack = Array[ExtResource("2_lomh6")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
-internalName = "Heal"
-loc_displayName = "art_heal"
+internalName = "heal"
+loc_displayName = "art_heal_name"
 loc_displayDesc = "art_heal_desc"
 icon = ExtResource("4_l07h2")
 TargetingData = NodePath("SkillTargetingData")

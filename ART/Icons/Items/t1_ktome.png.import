@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcxc5ddtntqme"
-path="res://.godot/imported/nectar_t1.png-cbb625c7f56c8aa9827d0969a7b778cd.ctex"
+uid="uid://dskg55x1t4d4v"
+path="res://.godot/imported/t1_ktome.png-75a0d8d2651ea8f1ed39be20707d6eea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/nectar_t1.png"
-dest_files=["res://.godot/imported/nectar_t1.png-cbb625c7f56c8aa9827d0969a7b778cd.ctex"]
+source_file="res://ART/Icons/Items/t1_ktome.png"
+dest_files=["res://.godot/imported/t1_ktome.png-75a0d8d2651ea8f1ed39be20707d6eea.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_a85nj"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_0xqj7"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_mapok"]
-[ext_resource type="Texture2D" uid="uid://bty8oi4tn0t4j" path="res://ART/Icons/Ability/Standard/fireball.png" id="5_cjwen"]
+[ext_resource type="Texture2D" uid="uid://dyxxey7f8swu8" path="res://ART/Icons/Ability/Standard/beamattack.png" id="5_72bqf"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_phafs"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_4onnr"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_t3o3t"]
@@ -21,12 +21,12 @@ script = ExtResource("4_mapok")
 
 [node name="ART_BeamAttack" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_er7fc")
-focusCost = 3
+focusCost = 3.0
 executionStack = Array[ExtResource("2_a85nj")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
-internalName = "BeamAttack"
-loc_displayName = "art_beamattack"
+internalName = "beamattack"
+loc_displayName = "art_beamattack_name"
 loc_displayDesc = "art_beamattack_desc"
-icon = ExtResource("5_cjwen")
+icon = ExtResource("5_72bqf")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
@@ -34,6 +34,7 @@ UsableDamageData = NodePath("DamageData")
 script = ExtResource("6_phafs")
 AgressiveStat = ExtResource("7_4onnr")
 DefensiveStat = ExtResource("8_t3o3t")
+DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("9_1oo8k")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bgnnm5cfmf664"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_agn71"]
-[ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Ability/Standard/whetstone_t1.png" id="2_0l20q"]
+[ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/t1_whetstone.png" id="2_0l20q"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_yi1k6"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_mx0ga"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_8ff5h"]
@@ -13,9 +13,9 @@ Value = 2
 
 [node name="whetstone_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_agn71")
-internalName = "whetstone_t1"
-loc_displayName = "item_whetstone_t1_name"
-loc_displayDesc = "item_whetstone_t1_desc"
+internalName = "t1_whetstone"
+loc_displayName = "item_t1_whetstone_name"
+loc_displayDesc = "item_t1_whetstone_desc"
 icon = ExtResource("2_0l20q")
 statData = NodePath("ItemEquipData")
 

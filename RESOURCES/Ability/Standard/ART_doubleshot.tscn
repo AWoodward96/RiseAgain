@@ -30,11 +30,10 @@ script = ExtResource("3_ru3jp")
 
 [node name="ART_DoubleShot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_5p40p")
-unlockLevel = 0
-focusCost = 0
+focusCost = 2.0
 executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_nobtd"), SubResource("Resource_a5h2l"), SubResource("Resource_wujkw"), SubResource("Resource_5cjq5")])
-internalName = "DoubleShot"
-loc_displayName = "art_doubleshot"
+internalName = "doubleshot"
+loc_displayName = "art_doubleshot_name"
 loc_displayDesc = "art_doubleshot_desc"
 icon = ExtResource("4_uj3cs")
 TargetingData = NodePath("SkillTargetingData")
@@ -44,6 +43,7 @@ UsableDamageData = NodePath("DamageData")
 script = ExtResource("5_fbic6")
 AgressiveStat = ExtResource("6_e48nk")
 DefensiveStat = ExtResource("7_c6kxc")
+DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("8_p4cl1")

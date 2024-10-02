@@ -15,7 +15,6 @@ var currentMap : Map
 func SetMap(_map : Map):
 	currentMap = _map
 
-
 func GetStatDelta(_statTemplate : StatTemplate):
 	var delta = 0
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dskg55x1t4d4v"
-path="res://.godot/imported/ktome_t1.png-1ef4db0383e3a5d6e631ccddf84f76e1.ctex"
+uid="uid://c3j3s2tiyd5dy"
+path="res://.godot/imported/smite.png-75eff70d62636f9ac3d6ec149d22a4f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/ktome_t1.png"
-dest_files=["res://.godot/imported/ktome_t1.png-1ef4db0383e3a5d6e631ccddf84f76e1.ctex"]
+source_file="res://ART/Icons/Ability/Standard/smite.png"
+dest_files=["res://.godot/imported/smite.png-75eff70d62636f9ac3d6ec149d22a4f2.ctex"]
 
 [params]
 
