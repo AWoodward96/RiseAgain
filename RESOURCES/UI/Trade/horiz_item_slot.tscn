@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://cucrwa6f3vsha"]
+
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/item_display_entry.gd" id="1_facu4"]
+[ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/t1_whetstone.png" id="2_ovmdu"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_wst6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_shwsr"]
+font = ExtResource("3_wst6f")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="HorezItemSlot" type="Control" node_paths=PackedStringArray("emptyParent", "displayParent", "icon", "itemName", "selectedParent")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 2
+script = ExtResource("1_facu4")
+emptyParent = NodePath("Empty")
+displayParent = NodePath("Full")
+icon = NodePath("Full/Icon")
+itemName = NodePath("Full/Name")
+selectedParent = NodePath("Selected")
+
+[node name="Full" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.33, 0.33, 0.33, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Full"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.79, 0.79, 0.79, 1)
+
+[node name="Icon" type="TextureRect" parent="Full"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 62.0
+offset_bottom = 53.0
+texture = ExtResource("2_ovmdu")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="Full"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 6.0
+offset_right = 297.0
+offset_bottom = 53.0
+text = "Item Name"
+label_settings = SubResource("LabelSettings_shwsr")
+vertical_alignment = 1
+
+[node name="Empty" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Empty"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.33, 0.33, 0.33, 1)
+
+[node name="Selected" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.966667, 1, 0, 0.227451)

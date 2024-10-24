@@ -333,15 +333,15 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 	if _slotIndex < 0 || _slotIndex >= ItemSlots.size():
 		return false
 
-	# _Item can be a pacekd Scene or an Item itself
+	# _Item can be a packed Scene or an Item itself
 	var item : Item
 	if _itemPrefabOrInstance is PackedScene:
 		item = _itemPrefabOrInstance.instantiate() as Item
 	elif _itemPrefabOrInstance is Item:
 		item = _itemPrefabOrInstance
 	else:
-		# I don't know wtf this is. Return false
-		return false
+		# If it's null then we're unequipping something from this slot
+		pass
 
 	if ItemSlots[_slotIndex] == null:
 		if item != null:
@@ -351,23 +351,12 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		OnStatUpdated.emit()
 		return true
 	else:
-		if item != null:
-			# try to put it in any slot
-			for i in range(0, GameManager.GameSettings.ItemSlotsPerUnit):
-				if ItemSlots[i] == null:
-					itemsParent.add_child(item)
-					ItemSlots[i] = item
-					UpdateDerivedStats()
-					OnStatUpdated.emit()
-					return true
-		else:
-			itemsParent.remove_child(ItemSlots[_slotIndex])
-			ItemSlots[_slotIndex] = item
-			UpdateDerivedStats()
-			OnStatUpdated.emit()
-			return true
+		itemsParent.remove_child(ItemSlots[_slotIndex])
+		ItemSlots[_slotIndex] = item
+		UpdateDerivedStats()
+		OnStatUpdated.emit()
+		return true
 
-	return false
 
 func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :
 	if _route == null || _route.size() == 0:
@@ -658,6 +647,13 @@ func ShowAffinityRelation(_affinity : AffinityTemplate):
 
 	if Template.Affinity.strongAgainst & _affinity.affinity:
 		positive_afffinity.visible = true
+
+# Checks all the item slots and sees if the unit has any item equipped
+func HasAnyItem():
+	for i in ItemSlots:
+		if i != null:
+			return true
+	return false
 
 func Rest():
 	for ability in Abilities:

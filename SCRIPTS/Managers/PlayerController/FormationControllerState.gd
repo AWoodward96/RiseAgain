@@ -7,6 +7,7 @@ var formationUI
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 	formationUI = GameManager.AlphaFormationUI.instantiate()
+	formationUI.Initialize(ctrl, currentMap)
 	ctrl.add_child(formationUI)
 	return formationUI
 
@@ -28,19 +29,24 @@ func _Execute(_delta):
 					formationUI.ShowSwapWithPanel(true)
 					currentGrid.ClearActions()
 				else:
+					selectedUnit = tile.Occupant
 					currentGrid.ShowUnitActions(tile.Occupant)
 			else:
 				currentGrid.ClearActions()
 		else:
-			if tile.Occupant != null && tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
-				currentGrid.SwapUnitPositions(selectedUnit, tile.Occupant)
-			elif currentMap.startingPositions.has(tile.Position):
-				currentGrid.SetUnitGridPosition(selectedUnit, tile.Position, true)
+			if selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+				if tile.Occupant != null && tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+					currentGrid.SwapUnitPositions(selectedUnit, tile.Occupant)
+				elif currentMap.startingPositions.has(tile.Position):
+					currentGrid.SetUnitGridPosition(selectedUnit, tile.Position, true)
 
-			selectedUnit = null
+			ctrl.ClearSelectionData()
 			formationUI.ShowSwapWithPanel(false)
 
 	if InputManager.cancelDown:
+		if selectedUnit == null:
+			formationUI.SetFormationMode(false)
+
 		ctrl.ClearSelectionData()
 		formationUI.ShowSwapWithPanel(false)
 

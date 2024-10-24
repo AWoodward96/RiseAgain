@@ -15,6 +15,7 @@ Descriptor = ExtResource("2_a2q3y")
 script = ExtResource("1_0ysnn")
 targetingFlag = SubResource("Resource_gf163")
 number = 1
+loc_description = ""
 
 [resource]
 script = ExtResource("5_y8ri3")

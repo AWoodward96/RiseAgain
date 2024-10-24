@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://gneoqi5t7opg"]
+[gd_scene load_steps=4 format=3 uid="uid://gneoqi5t7opg"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
+[ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="2_0the5"]
+[ext_resource type="PackedScene" uid="uid://k7p2s1qa26kq" path="res://RESOURCES/Items/t1_holywater.tscn" id="3_qgjbs"]
 
 [node name="CSR" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_508i1")
+SpecificItem = ExtResource("2_0the5")
+SpecificItem2 = ExtResource("3_qgjbs")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 3
@@ -32,5 +36,10 @@ text = "Add All Abilities"
 layout_mode = 2
 text = "Abilities Cost 0"
 
+[node name="GivePredefinedItem" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Give Predefined Item to Allies"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]

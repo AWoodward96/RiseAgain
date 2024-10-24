@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnsp2jieynl7x"]
+[gd_scene load_steps=7 format=3 uid="uid://cnsp2jieynl7x"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
 [ext_resource type="Shader" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
@@ -7,6 +7,12 @@
 shader = ExtResource("1_dlrih")
 shader_parameter/outerRadius = 1.962
 shader_parameter/MainAlpha = 0.789
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4tbk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwfut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0a7"]
 
 [node name="CampsiteUI" type="CanvasLayer" node_paths=PackedStringArray("Vignette", "UIParent", "ViewButton", "InspectButton", "RestButton")]
 layer = 3
@@ -58,16 +64,25 @@ grow_vertical = 2
 [node name="View" type="Button" parent="UI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+focus_next = NodePath("../Inspect")
+focus_previous = NodePath("../Rest")
+theme_override_styles/focus = SubResource("StyleBoxFlat_k4tbk")
 text = "View Campsite"
 
 [node name="Inspect" type="Button" parent="UI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+focus_next = NodePath("../Rest")
+focus_previous = NodePath("../View")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dwfut")
 text = "Inspect Team"
 
 [node name="Rest" type="Button" parent="UI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+focus_next = NodePath("../View")
+focus_previous = NodePath("../Inspect")
+theme_override_styles/focus = SubResource("StyleBoxFlat_or0a7")
 text = "Rest"
 
 [connection signal="pressed" from="UI/VBoxContainer/View" to="." method="btn_View"]

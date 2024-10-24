@@ -15,7 +15,7 @@ func _ready():
 
 
 func Initialize():
-	UIParent.visible = true
+	#UIParent.visible = true
 	ViewButton.disabled = false
 	InspectButton.disabled = false
 	RestButton.disabled = false

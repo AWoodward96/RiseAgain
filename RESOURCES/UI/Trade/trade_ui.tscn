@@ -1,0 +1,449 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbahoua1vgwbw"]
+
+[ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="1_mbt6g"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/Trade/trade_ui.gd" id="1_rrqi0"]
+[ext_resource type="PackedScene" uid="uid://cucrwa6f3vsha" path="res://RESOURCES/UI/Trade/horiz_item_slot.tscn" id="2_h0net"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_swnhn"]
+[ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="3_jqkfc"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_ufvat"]
+[ext_resource type="PackedScene" uid="uid://g5tjj4fkvdxp" path="res://RESOURCES/UI/GenericEntrys/unit_button_horiz.tscn" id="6_5cjft"]
+[ext_resource type="Texture2D" uid="uid://bmofmf8j51t2c" path="res://ART/Icons/wagon.png" id="8_4fotp"]
+[ext_resource type="Texture2D" uid="uid://cr2shx01wwgbb" path="res://ART/Icons/Ability/Equippable/iron_sword.png" id="8_xljgp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x1m75"]
+line_spacing = 32.0
+font = ExtResource("2_swnhn")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xnr4q"]
+font = ExtResource("3_jqkfc")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6a0b8"]
+font = ExtResource("2_swnhn")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e4hve"]
+font = ExtResource("2_swnhn")
+font_color = Color(0, 0, 0, 1)
+
+[node name="TradeUI" type="CanvasLayer" node_paths=PackedStringArray("unit2Parent", "unitSelectionParent", "unitSelectionEntryList", "convoyParent", "convoyNoItems", "convoyList", "moveWhereParent", "moveWhereIcon", "moveWhereLabel", "unit1Icon", "unit1Name", "unit1ItemEntryList", "unit2Icon", "unit2Name", "unit2ItemEntryList")]
+layer = 3
+script = ExtResource("1_rrqi0")
+unit2Parent = NodePath("MarginContainer/HBoxContainer/Unit2")
+unitSelectionParent = NodePath("MarginContainer/HBoxContainer/UnitSelection")
+itemSlotPrefab = ExtResource("2_h0net")
+unitSelectionEntryList = NodePath("MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units/ScrollContainer/UnitSelectionEntryList")
+unitEntryPrefab = ExtResource("6_5cjft")
+convoyParent = NodePath("MarginContainer/HBoxContainer/Convoy")
+convoyNoItems = NodePath("MarginContainer/HBoxContainer/Convoy/NoItems")
+convoyList = NodePath("MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy/ScrollContainer/UnitSelectionEntryList")
+moveWhereParent = NodePath("MoveWhere")
+moveWhereIcon = NodePath("MoveWhere/TextureRect")
+moveWhereLabel = NodePath("MoveWhere/Label")
+unit1Icon = NodePath("MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title/Unit1Icon")
+unit1Name = NodePath("MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title/Unit1Name")
+unit1ItemEntryList = NodePath("MarginContainer/HBoxContainer/Unit1/VBoxContainer/UnitInventorySlots/ItemEntryParent")
+unit2Icon = NodePath("MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title/Unit2Icon")
+unit2Name = NodePath("MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title/Unit2Name")
+unit2ItemEntryList = NodePath("MarginContainer/HBoxContainer/Unit2/VBoxContainer/UnitInventorySlots/ItemEntryParent")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.036, 0.0374, 0.12, 0.388235)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Unit1" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unit1Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 49.0
+offset_bottom = 50.0
+texture = ExtResource("1_mbt6g")
+expand_mode = 1
+
+[node name="Unit1Name" type="Label" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 11.0
+offset_right = 307.0
+offset_bottom = 50.0
+text = "Unit Name"
+label_settings = SubResource("LabelSettings_x1m75")
+vertical_alignment = 1
+
+[node name="UnitInventorySlots" type="Control" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemEntryParent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/UnitInventorySlots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("4_ufvat")
+
+[node name="Spacing" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Spacing"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Spacing"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "-->"
+label_settings = SubResource("LabelSettings_xnr4q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unit2" type="Control" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0.546, 0.546, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unit2Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 49.0
+offset_bottom = 50.0
+texture = ExtResource("1_mbt6g")
+expand_mode = 1
+
+[node name="Unit2Name" type="Label" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 11.0
+offset_right = 307.0
+offset_bottom = 50.0
+text = "Unit Name"
+label_settings = SubResource("LabelSettings_x1m75")
+vertical_alignment = 1
+
+[node name="UnitInventorySlots" type="Control" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemEntryParent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/UnitInventorySlots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("4_ufvat")
+
+[node name="Convoy" type="Control" parent="MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Convoy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.546, 0.6, 0.5964, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Convoy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unit2Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 49.0
+offset_bottom = 50.0
+texture = ExtResource("8_4fotp")
+expand_mode = 1
+
+[node name="Unit2Name" type="Label" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 11.0
+offset_right = 307.0
+offset_bottom = 50.0
+text = "Convoy"
+label_settings = SubResource("LabelSettings_x1m75")
+vertical_alignment = 1
+
+[node name="ItemsInConvoy" type="Control" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="UnitSelectionEntryList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("4_ufvat")
+
+[node name="NoItems" type="Label" parent="MarginContainer/HBoxContainer/Convoy"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 383.0
+text = "ui_no_items_in_convoy"
+label_settings = SubResource("LabelSettings_6a0b8")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="UnitSelection" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/UnitSelection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4812, 0.468, 0.6, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UnitSelection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.792, 0.74, 1, 1)
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 307.0
+offset_bottom = 50.0
+text = "ui_select_a_unit"
+label_settings = SubResource("LabelSettings_x1m75")
+vertical_alignment = 1
+
+[node name="Units" type="Control" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="UnitSelectionEntryList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("4_ufvat")
+
+[node name="MoveWhere" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 124.0
+offset_top = 512.0
+offset_right = 836.0
+offset_bottom = 576.0
+
+[node name="ColorRect" type="ColorRect" parent="MoveWhere"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 183.0
+offset_right = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MoveWhere"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 189.0
+offset_right = -165.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MoveWhere"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 8.0
+offset_right = 247.0
+offset_bottom = 48.0
+texture = ExtResource("8_xljgp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MoveWhere"]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 8.0
+offset_right = 532.0
+offset_bottom = 48.0
+text = "ui_move_item_where"
+label_settings = SubResource("LabelSettings_e4hve")
+vertical_alignment = 1

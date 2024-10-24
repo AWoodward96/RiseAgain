@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cls83uyoykivy"]
+[gd_scene load_steps=16 format=3 uid="uid://cls83uyoykivy"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
 [ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dn07slodp7juh" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_ui.tscn" id="12_bua6u"]
 [ext_resource type="PackedScene" uid="uid://gneoqi5t7opg" path="res://RESOURCES/UI/CSR_Menu/csr_menu.tscn" id="13_ryso4"]
 [ext_resource type="PackedScene" uid="uid://cnsp2jieynl7x" path="res://RESOURCES/UI/Campsite/campsite_ui.tscn" id="13_us848"]
+[ext_resource type="PackedScene" uid="uid://bbahoua1vgwbw" path="res://RESOURCES/UI/Trade/trade_ui.tscn" id="14_lh2p1"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_4phlr")
@@ -29,4 +30,5 @@ AbilitySelectionUI = ExtResource("10_rogan")
 UnitInspectionUI = ExtResource("12_bua6u")
 CSRUI = ExtResource("13_ryso4")
 CampsiteUIPrefab = ExtResource("13_us848")
+TradeUIPrefab = ExtResource("14_lh2p1")
 LoadingScreenPrefab = ExtResource("7_5jmon")

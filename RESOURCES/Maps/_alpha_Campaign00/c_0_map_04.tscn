@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_rhj17"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_5larn"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_6iuoo"]
-[ext_resource type="Resource" uid="uid://da3o0kjhor1b0" path="res://RESOURCES/Maps/_alpha_Campaign00/OptionalObjectives/anyCanineAlive.tres" id="3_hcx6d"]
+[ext_resource type="Resource" uid="uid://da3o0kjhor1b0" path="res://RESOURCES/Maps/OptionalObjectives/anyCanineAlive.tres" id="3_hcx6d"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_le553"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_oajjo"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_at13p"]

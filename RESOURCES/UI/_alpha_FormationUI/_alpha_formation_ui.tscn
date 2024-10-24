@@ -1,25 +1,103 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmfxqfg6s24dv"]
+[gd_scene load_steps=22 format=3 uid="uid://cmfxqfg6s24dv"]
 
 [ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.gd" id="1_o7qx3"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_1bnfi"]
+[ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="3_rwwlh"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/ManageItemsPanel.gd" id="3_v4vll"]
+[ext_resource type="PackedScene" uid="uid://g5tjj4fkvdxp" path="res://RESOURCES/UI/GenericEntrys/unit_button_horiz.tscn" id="4_05tf8"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_qenwm"]
+[ext_resource type="PackedScene" uid="uid://ci2yfcw0fc6pv" path="res://RESOURCES/UI/GenericEntrys/item_display_entry.tscn" id="5_673wa"]
+[ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="7_xe04i"]
+[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="8_kgvnq"]
 
-[node name="FormationUI" type="CanvasLayer" node_paths=PackedStringArray("MoveInfoPanelParent")]
+[sub_resource type="LabelSettings" id="LabelSettings_81x4u"]
+font = ExtResource("2_1bnfi")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy26t"]
+bg_color = Color(0.54, 0.5184, 0.432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u48vi"]
+bg_color = Color(0.54, 0.5184, 0.432, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_maj0y"]
+font = ExtResource("2_1bnfi")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1cf5"]
+font = ExtResource("2_1bnfi")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2q6jt"]
+font = ExtResource("2_1bnfi")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_gh7pe"]
+font = ExtResource("2_1bnfi")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2u5kn"]
+font = ExtResource("2_1bnfi")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwtwy"]
+font = ExtResource("2_1bnfi")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7joeg"]
+bg_color = Color(0.54, 0.5184, 0.432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmo8d"]
+bg_color = Color(0.54, 0.5184, 0.432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp2hr"]
+bg_color = Color(0.54, 0.5184, 0.432, 1)
+
+[node name="FormationUI" type="CanvasLayer" node_paths=PackedStringArray("MoveInfoPanelParent", "FormationParent", "MenuParent", "FormationButton", "ItemButton", "mapObjectiveText", "optionalObjectiveLabel", "optionalObjectiveText", "manageItemsPanel")]
 script = ExtResource("1_o7qx3")
-MoveInfoPanelParent = NodePath("MarginContainer/MoveWhere?")
+MoveInfoPanelParent = NodePath("Formation/MoveWhere?")
+FormationParent = NodePath("Formation")
+MenuParent = NodePath("Menu")
+FormationButton = NodePath("Menu/VBoxContainer/Formation")
+ItemButton = NodePath("Menu/VBoxContainer/Item")
+mapObjectiveText = NodePath("Menu/WinCon/Margin/VBoxContainer/WinconText")
+optionalObjectiveLabel = NodePath("Menu/WinCon/Margin/VBoxContainer/OpObjectiveLabel")
+optionalObjectiveText = NodePath("Menu/WinCon/Margin/VBoxContainer/OpObjectiveText")
+manageItemsPanel = NodePath("Items")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 45)
+offset_left = 760.0
+offset_top = 595.0
+offset_right = 960.0
+offset_bottom = 640.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 9.0
+offset_right = 151.0
+offset_bottom = 32.0
+text = "Enter to Start"
+
+[node name="Formation" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Panel" parent="MarginContainer"]
+[node name="Title" type="Panel" parent="Formation"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="LOC_SetFormation" type="Label" parent="MarginContainer/Title"]
+[node name="LOC_SetFormation" type="Label" parent="Formation/Title"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,13 +112,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Set Formation"
 
-[node name="MoveWhere?" type="Panel" parent="MarginContainer"]
+[node name="MoveWhere?" type="Panel" parent="Formation"]
 custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="MarginContainer/MoveWhere?"]
+[node name="Label" type="Label" parent="Formation/MoveWhere?"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -52,16 +130,318 @@ offset_bottom = 12.0
 grow_vertical = 2
 text = "Swap With?"
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 45)
+[node name="Menu" type="MarginContainer" parent="."]
+offset_right = 960.0
+offset_bottom = 640.0
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0.73, 0.73, 0.73, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Menu"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="MapTitle" type="Label" parent="Menu/MarginContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+text = "The Crimson Forest"
+label_settings = SubResource("LabelSettings_81x4u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="Formation" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1bnfi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_iy26t")
+text = "Formation"
+
+[node name="Item" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1bnfi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_u48vi")
+text = "Items"
+
+[node name="WinCon" type="ColorRect" parent="Menu"]
+custom_minimum_size = Vector2(320, 192)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_vertical = 0
+color = Color(0.21, 0.21, 0.21, 0.607843)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 9.0
-offset_right = 151.0
-offset_bottom = 32.0
-text = "Enter to Start"
+[node name="Margin" type="MarginContainer" parent="Menu/WinCon"]
+custom_minimum_size = Vector2(320, 192)
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 192.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/WinCon/Margin"]
+layout_mode = 2
+
+[node name="WinconLabel" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Win Condition:"
+label_settings = SubResource("LabelSettings_maj0y")
+
+[node name="WinconText" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+layout_mode = 2
+text = "wincontext"
+label_settings = SubResource("LabelSettings_i1cf5")
+horizontal_alignment = 2
+
+[node name="OpObjectiveLabel" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Optional Objective:"
+label_settings = SubResource("LabelSettings_2q6jt")
+
+[node name="OpObjectiveText" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+layout_mode = 2
+text = "opwincon"
+label_settings = SubResource("LabelSettings_gh7pe")
+horizontal_alignment = 2
+
+[node name="Items" type="Control" parent="." node_paths=PackedStringArray("selectedUnitIcon", "unitEntryList", "itemEntryList", "weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText", "tradeBtn", "craftBtn", "convoyBtn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_v4vll")
+selectedUnitIcon = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer/UnitIcon")
+unitEntryList = NodePath("HBoxContainer/UnitsPanel/Margin/UnitsEntryList")
+unitEntryPrefab = ExtResource("4_05tf8")
+itemEntryList = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/Items/ItemEntryList")
+itemEntryPrefab = ExtResource("5_673wa")
+weaponParent = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent")
+noWeaponParent = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/NoWeaponParent")
+weaponIcon = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/TextureRect")
+weaponNameText = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer/WeapName")
+weaponDescriptionText = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer/WeapDesc")
+statBlockEntry = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer2/StatBlockEntry")
+accuracyText = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer2/HBoxContainer/AccuracyNum")
+tradeBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/TradeBtn")
+craftBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/CraftBtn")
+convoyBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/ConvoyBtn")
+
+[node name="bg" type="ColorRect" parent="Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UnitsPanel" type="Control" parent="Items/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="unitsbg" type="ColorRect" parent="Items/HBoxContainer/UnitsPanel"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 256.0
+grow_vertical = 2
+color = Color(0.58, 0.58, 0.58, 1)
+
+[node name="Margin" type="MarginContainer" parent="Items/HBoxContainer/UnitsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+
+[node name="UnitsEntryList" type="VBoxContainer" parent="Items/HBoxContainer/UnitsPanel/Margin"]
+layout_mode = 2
+script = ExtResource("4_qenwm")
+
+[node name="ItemsPanel" type="Control" parent="Items/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemMargin" type="MarginContainer" parent="Items/HBoxContainer/ItemsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin"]
+layout_mode = 2
+
+[node name="space" type="Control" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="UnitIcon" type="TextureRect" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_rwwlh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "ui_equipped_weapon_label"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="WeaponParent" type="HBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_xe04i")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="WeapName" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "WeaponName"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="WeapDesc" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "WeaponDescription"
+label_settings = SubResource("LabelSettings_qwtwy")
+autowrap_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer2"]
+layout_mode = 2
+
+[node name="AccuracyLabel" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "ui_accuracy_label"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="AccuracyNum" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "{NUM}"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="StatBlockEntry" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponParent/VBoxContainer2" instance=ExtResource("8_kgvnq")]
+layout_mode = 2
+
+[node name="NoWeaponParent" type="HBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NoWeaponsText" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/NoWeaponParent"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ui_no_weapon_long"
+label_settings = SubResource("LabelSettings_2u5kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemsLabel" type="Label" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+layout_mode = 2
+text = "ui_items_label"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="Items" type="MarginContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="ItemEntryList" type="HBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/Items"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_qenwm")
+
+[node name="ButtonOptions" type="HBoxContainer" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TradeBtn" type="Button" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1bnfi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_7joeg")
+text = "ui_btn_trade"
+
+[node name="CraftBtn" type="Button" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1bnfi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_xmo8d")
+text = "ui_btn_craft"
+
+[node name="ConvoyBtn" type="Button" parent="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1bnfi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_kp2hr")
+text = "ui_btn_convoy"
+
+[connection signal="pressed" from="Menu/VBoxContainer/Formation" to="." method="OnFormationButton"]
+[connection signal="pressed" from="Menu/VBoxContainer/Item" to="." method="OnItemButton"]
+[connection signal="pressed" from="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/TradeBtn" to="Items" method="OnTradeButton"]
+[connection signal="pressed" from="Items/HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/ConvoyBtn" to="Items" method="OnConvoyButton"]

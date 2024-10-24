@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://b1wafu4c325v1"]
+[gd_scene load_steps=16 format=4 uid="uid://b1wafu4c325v1"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_rl342"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_tuabi"]
+[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_5weu5"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_ljp2f"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_idq0a"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_ifko6"]
@@ -12,9 +12,6 @@
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_41f2o"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="10_570dw"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="11_pkyll"]
-
-[sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_tuabi")
 
 [sub_resource type="Resource" id="Resource_bbkis"]
 script = ExtResource("10_570dw")
@@ -38,7 +35,7 @@ tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")
 tilemap_UI = NodePath("UI")
-WinCondition = SubResource("Resource_vm3u1")
+WinCondition = ExtResource("2_5weu5")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
