@@ -65,7 +65,17 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 		if _unit == null:
 			push_error("Can't give reward to a null unit. Item has been sent to convoy")
 		else:
-			_unit.EquipItem(0, _lootRewardEntry.ItemPrefab)
+			var counter = 0
+			var equipped = false
+			for slot in _unit.ItemSlots:
+				if slot == null:
+					_unit.EquipItem(counter, _lootRewardEntry.ItemPrefab)
+					equipped = true
+					break
+				counter += 1
+
+			if !equipped:
+				map.CurrentCampaign.AddItemToConvoy(_lootRewardEntry.ItemPrefab)
 
 	pass
 

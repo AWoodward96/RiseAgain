@@ -30,7 +30,6 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"4f365f16-ea68-466b-a747-866899d8bb7a",
 				"cfbec417-e205-448e-89cf-dad74ef59201",
 				"94dc1f54-071d-45da-a0dc-70e6a13ba229"
 			]
@@ -39,7 +38,8 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"26ec4286-6898-4bb3-9de8-d72996f84a10"
+				"26ec4286-6898-4bb3-9de8-d72996f84a10",
+				"4f4570a4-9462-472b-af6f-bd31fe41f5b2"
 			]
 		},
 		{
@@ -49,7 +49,9 @@
 				"c522e9e5-a53d-4b28-97fe-5b160086558f",
 				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
 				"25c57aad-1b4f-4b19-8d92-ed0c423d9327",
+				"4f365f16-ea68-466b-a747-866899d8bb7a",
 				"56d288e7-8c62-447a-a8d5-090668c4a68e",
+				"5a902444-9adc-43eb-80df-f7f4cd78ea64",
 				"f9fbaece-cb9d-49c0-a0e1-f9f7930a06d8",
 				"66ddd42b-d9f6-485b-9df2-2720028fc06b",
 				"096acb38-436e-447a-b02c-844bb84bbc37",
@@ -509,6 +511,20 @@
 			"title": "corpse chimera is responding to abilities",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "4f4570a4-9462-472b-af6f-bd31fe41f5b2",
+			"title": "Item Reward Screen Grant is deleting items",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "5a902444-9adc-43eb-80df-f7f4cd78ea64",
+			"title": "Item Reward Screen can't send to convoy",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

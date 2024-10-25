@@ -115,3 +115,5 @@ custom_minimum_size = Vector2(192, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Send to Convoy"
+
+[connection signal="pressed" from="GiveThisParent/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/SendToConvoy" to="." method="OnSendToConvoy"]

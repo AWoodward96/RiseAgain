@@ -164,9 +164,6 @@ func FilterTilesByPath(_actionableTiles : Array[Tile]):
 			lowest = path.size()
 
 func GetEquippedItem():
-	if unit.Inventory.size() == 0:
-		return
-
 	item = unit.EquippedItem
 
 func TryCombat():

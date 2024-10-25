@@ -345,6 +345,9 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 
 	if ItemSlots[_slotIndex] == null:
 		if item != null:
+			var parent = item.get_parent()
+			if parent != null:
+				parent.remove_child(item)
 			itemsParent.add_child(item)
 		ItemSlots[_slotIndex] = item
 		UpdateDerivedStats()
