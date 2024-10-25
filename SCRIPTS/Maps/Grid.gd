@@ -50,6 +50,11 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 			if bg_data != null:
 				GridArr[index].Killbox = bg_data.get_custom_data("Killbox")
 
+			if map.tilemap_water != null:
+				var water_data = map.tilemap_water.get_cell_tile_data(Vector2i(x,y))
+				if water_data != null:
+					GridArr[index].Killbox = GridArr[index].Killbox || water_data.get_custom_data("Killbox")
+
 			var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
 			if main_data:
 				if main_data.get_collision_polygons_count(0) > 0 :

@@ -15,6 +15,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 
 @export_category("Layers")
 @export var tilemap_bg : TileMapLayer
+@export var tilemap_water : TileMapLayer
 @export var tilemap_main : TileMapLayer
 @export var tilemap_threat : TileMapLayer
 @export var tilemap_UI : TileMapLayer
