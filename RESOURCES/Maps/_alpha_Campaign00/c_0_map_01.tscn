@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b1wafu4c325v1"]
+[gd_scene load_steps=19 format=4 uid="uid://b1wafu4c325v1"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_rl342"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_5weu5"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_idq0a"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_ifko6"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_06gip"]
+[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="6_ulrfn"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_2ek70"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_lfua5"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="9_b46gt"]
@@ -81,6 +82,7 @@ tile_set = ExtResource("4_idq0a")
 
 [node name="C0Map0Leafmap" type="Sprite2D" parent="."]
 z_index = -4
+material = ExtResource("6_ulrfn")
 position = Vector2(480, 320)
 scale = Vector2(2, 2)
 texture = ExtResource("14_gw4jh")

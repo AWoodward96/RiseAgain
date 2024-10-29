@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
 [ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
 [ext_resource type="Resource" uid="uid://b4u6518tnwvj6" path="res://RESOURCES/Managers/UnitSettings.tres" id="3_d1hgw"]
-[ext_resource type="Resource" path="res://RESOURCES/Managers/LocSettings.tres" id="4_4gcm7"]
+[ext_resource type="Resource" uid="uid://ctv538x46ffve" path="res://RESOURCES/Managers/LocSettings.tres" id="4_4gcm7"]
 [ext_resource type="PackedScene" uid="uid://wsk41q52641b" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.tscn" id="4_eahy8"]
 [ext_resource type="PackedScene" uid="uid://cmfxqfg6s24dv" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.tscn" id="5_3uh1p"]
 [ext_resource type="PackedScene" uid="uid://cepwbmuwjb32l" path="res://RESOURCES/UI/_alpha_CombatHUD/_alpha_combat_hud.tscn" id="6_mnhix"]

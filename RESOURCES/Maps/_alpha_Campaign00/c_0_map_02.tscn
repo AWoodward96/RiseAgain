@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://oxwcsghwa4k3"]
+[gd_scene load_steps=31 format=4 uid="uid://oxwcsghwa4k3"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_vx1gh"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_ke2xc"]
@@ -10,6 +10,7 @@
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_477g0"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_fj6ad"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_4f2q2"]
+[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_2irjl"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_ax251"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="9_241cv"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_x5p22"]
@@ -18,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="14_m1els"]
 [ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="14_sa0a2"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="15_lew10"]
+[ext_resource type="Texture2D" uid="uid://b455es5okh5je" path="res://ART/Environment/_alpha_set0/c_0_map_1_leafmap.png" id="19_bi3jo"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_ke2xc")
@@ -112,7 +114,7 @@ tile_set = ExtResource("6_477g0")
 z_index = -4
 use_parent_material = true
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAALAAMAAAANAAAAAAALAAQAAAANAAEAAAALAAUAAAANAAIAAAALAAYAAAANAAMAAAAMAAMAAAAOAAAAAAAMAAQAAAAOAAEAAAAMAAUAAAAOAAIAAAAMAAYAAAAOAAMAAAACAAIAAAALAAAAAAACAAMAAAALAAEAAAACAAQAAAALAAIAAAACAAUAAAALAAMAAAADAAIAAAAMAAAAAAADAAMAAAAMAAEAAAADAAQAAAAMAAIAAAADAAUAAAAMAAMAAAADAP//AAAEAAMAAAADAAAAAAAEAAQAAAADAAEAAAAEAAUAAAAEAP//AAAFAAMAAAAEAAAAAAAFAAQAAAAEAAEAAAAFAAUAAAAFAP//AAAGAAMAAAAFAAAAAAAGAAQAAAAFAAEAAAAGAAUAAAAGAP//AAAGAAMAAAAGAAAAAAAGAAQAAAAGAAEAAAAGAAUAAAAHAP//AAAFAAMAAAAHAAAAAAAFAAQAAAAHAAEAAAAFAAUAAAAIAP//AAAGAAMAAAAIAAAAAAAGAAQAAAAIAAEAAAAGAAUAAAAJAP//AAAHAAMAAAAJAAAAAAAHAAQAAAAJAAEAAAAHAAUAAAD/////AAAEAAMAAAD//wAAAAAEAAQAAAD//wEAAAAEAAUAAAAAAP//AAAFAAMAAAAAAAAAAAAFAAQAAAAAAAEAAAAFAAUAAAABAP//AAAGAAMAAAABAAAAAAAGAAQAAAABAAEAAAAGAAUAAAACAP//AAAHAAMAAAACAAAAAAAHAAQAAAACAAEAAAAHAAUAAAANAP//AAAEAAMAAAANAAAAAAAEAAQAAAANAAEAAAAEAAUAAAAOAP//AAAFAAMAAAAOAAAAAAAFAAQAAAAOAAEAAAAFAAUAAAAPAP//AAAGAAMAAAAPAAAAAAAGAAQAAAAPAAEAAAAGAAUAAAAQAP//AAAHAAMAAAAQAAAAAAAHAAQAAAAQAAEAAAAHAAUAAAA=")
+tile_map_data = PackedByteArray("AAALAAMAAAANAAAAAAALAAQAAAANAAEAAAALAAUAAAANAAIAAAALAAYAAAANAAMAAAAMAAMAAAAOAAAAAAAMAAQAAAAOAAEAAAAMAAUAAAAOAAIAAAAMAAYAAAAOAAMAAAACAAIAAAALAAAAAAACAAMAAAALAAEAAAACAAQAAAALAAIAAAACAAUAAAALAAMAAAADAAIAAAAMAAAAAAADAAMAAAAMAAEAAAADAAQAAAAMAAIAAAADAAUAAAAMAAMAAAAJAAEAAAAHAAUAAAD//wEAAAAEAAUAAAACAAEAAAAHAAUAAAANAAEAAAAEAAUAAAA=")
 tile_set = ExtResource("6_477g0")
 navigation_enabled = false
 
@@ -125,6 +127,13 @@ navigation_enabled = false
 z_index = -3
 use_parent_material = true
 tile_set = ExtResource("4_g0r0l")
+
+[node name="C0Map1Leafmap" type="Sprite2D" parent="."]
+z_index = 1
+material = ExtResource("8_2irjl")
+position = Vector2(512, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("19_bi3jo")
 
 [node name="StartingPositions" type="Node2D" parent="."]
 unique_name_in_owner = true
