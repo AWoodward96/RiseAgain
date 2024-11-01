@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_8fewi"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="9_kp2hq"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="10_70oxp"]
-[ext_resource type="Resource" uid="uid://5vofxxaxnmnx" path="res://RESOURCES/TargetingShapes/snareshot_shape.tres" id="13_fdn1p"]
+[ext_resource type="Resource" uid="uid://bmc51j5ko3j8a" path="res://RESOURCES/TargetingShapes/snareshot_shape.tres" id="13_fdn1p"]
 
 [sub_resource type="Resource" id="Resource_im4d4"]
 script = ExtResource("3_spvf0")

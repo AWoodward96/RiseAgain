@@ -49,6 +49,6 @@ func btnGiveSpecificItem():
 
 
 static func ShowMenu():
-	var csrMenu = GameManager.CSRUI.instantiate() as CSR
+	var csrMenu = UIManager.CSRUI.instantiate() as CSR
 	GameManager.add_child(csrMenu)
 	return csrMenu

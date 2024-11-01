@@ -24,7 +24,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 			var rewardArray = rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
 
 			# open the rewards ui
-			rewardUI = GameManager.MapRewardUI.instantiate() as RewardsUI
+			rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
 			map.add_child(rewardUI)
 
 			rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
@@ -36,7 +36,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 			if optionalObjectives.objective.CheckObjective(map):
 				var rewardArray = optionalObjectives.rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
-				rewardUI = GameManager.MapRewardUI.instantiate() as RewardsUI
+				rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
 				map.add_child(rewardUI)
 
 				rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)

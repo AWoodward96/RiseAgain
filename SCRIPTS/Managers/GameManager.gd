@@ -5,16 +5,6 @@ static var CurrentCampaign : CampaignTemplate
 @export var GameSettings : GameSettingsTemplate
 @export var UnitSettings : UnitSettingsTemplate
 @export var LocalizationSettings : LocSettings
-@export var AlphaUnitSelection : PackedScene
-@export var AlphaFormationUI : PackedScene
-@export var CombatHUDUI : PackedScene
-@export var MapRewardUI : PackedScene
-@export var ExperienceUI : PackedScene
-@export var AbilitySelectionUI : PackedScene
-@export var UnitInspectionUI : PackedScene
-@export var CSRUI : PackedScene
-@export var CampsiteUIPrefab : PackedScene
-@export var TradeUIPrefab : PackedScene
 
 @export var LoadingScreenPrefab : PackedScene
 
@@ -41,11 +31,11 @@ func ShowLoadingScreen(_fadeTime = 1.5, lambda = null):
 		CreateLoadingScreen()
 
 	loadingScreen.ShowLoadingScreen(_fadeTime, lambda)
-	return loadingScreen.ObscureComplete
+	return loadingScreen
 
 func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
 	if loadingScreen == null:
 		CreateLoadingScreen()
 
 	loadingScreen.HideLoadingScreen(_fadeTime, lambda)
-	return loadingScreen.ClearComplete
+	return loadingScreen

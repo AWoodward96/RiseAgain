@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_yk6el"]
 [ext_resource type="Texture2D" uid="uid://cinqp4oq3vxq4" path="res://ART/Icons/Ability/Standard/darkfell.png" id="8_ql0wb"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_ukfru"]
-[ext_resource type="Resource" uid="uid://01880b8u05nm" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="9_rqcwj"]
+[ext_resource type="Resource" uid="uid://c2dfr4ubq82wn" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="9_rqcwj"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="10_juudg"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="11_kl032"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="12_h5vw6"]

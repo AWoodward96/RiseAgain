@@ -183,7 +183,7 @@ func EnterGlobalContextState():
 
 func CreateCombatHUD():
 	if combatHUD == null:
-		combatHUD = GameManager.CombatHUDUI.instantiate() as CombatHUD
+		combatHUD = UIManager.CombatHUDUI.instantiate() as CombatHUD
 		combatHUD.Initialize(currentMap, CurrentTile)
 		add_child(combatHUD)
 
@@ -224,7 +224,7 @@ func OnWait():
 
 func OnInventory():
 	if selectedUnit != null:
-		var ui = GameManager.UnitInventoryUI.instantiate()
+		var ui = UIManager.UnitInventoryUI.instantiate()
 		add_child(ui)
 		ui.Initialize(selectedUnit)
 

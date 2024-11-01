@@ -36,7 +36,7 @@ func btn_Rest():
 	pass
 
 static func ShowUI():
-	var ui = GameManager.CampsiteUIPrefab.instantiate() as CampsiteUI
+	var ui = UIManager.CampsiteUIPrefab.instantiate() as CampsiteUI
 	ui.Initialize()
 	GameManager.add_child(ui)
 	return ui

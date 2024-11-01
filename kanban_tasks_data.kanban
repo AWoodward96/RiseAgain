@@ -30,16 +30,15 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"cfbec417-e205-448e-89cf-dad74ef59201",
-				"94dc1f54-071d-45da-a0dc-70e6a13ba229"
+				"cfbec417-e205-448e-89cf-dad74ef59201"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"26ec4286-6898-4bb3-9de8-d72996f84a10",
-				"4f4570a4-9462-472b-af6f-bd31fe41f5b2"
+				"c76b9987-237c-485e-ac4f-5877412707ad",
+				"556cdf90-bb21-491c-ab85-1d7690cf31ac"
 			]
 		},
 		{
@@ -47,7 +46,11 @@
 			"title": "Done",
 			"tasks": [
 				"c522e9e5-a53d-4b28-97fe-5b160086558f",
+				"1804c004-ba25-436b-801b-c661759ae86d",
 				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
+				"26ec4286-6898-4bb3-9de8-d72996f84a10",
+				"94dc1f54-071d-45da-a0dc-70e6a13ba229",
+				"4f4570a4-9462-472b-af6f-bd31fe41f5b2",
 				"25c57aad-1b4f-4b19-8d92-ed0c423d9327",
 				"4f365f16-ea68-466b-a747-866899d8bb7a",
 				"56d288e7-8c62-447a-a8d5-090668c4a68e",
@@ -526,6 +529,98 @@
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
+		},
+		{
+			"uuid": "1804c004-ba25-436b-801b-c661759ae86d",
+			"title": "New task",
+			"description": "Implement Feedback from Playtest",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": [
+				{
+					"details": "Update Inspect UI",
+					"done": true
+				},
+				{
+					"details": "Change format of Stat Block because -4 looks like minus 4",
+					"done": true
+				},
+				{
+					"details": "Make a popup after the campfire saying your party was healed",
+					"done": true
+				},
+				{
+					"details": "You can select a unit in a heazl animation and make them do stuff while in an action",
+					"done": true
+				},
+				{
+					"details": "Smite isn't importing the vulnerability",
+					"done": true
+				},
+				{
+					"details": "Map 4 is too big",
+					"done": true
+				},
+				{
+					"details": "Darken the distructable trees so that the walkable areas stand out more",
+					"done": true
+				},
+				{
+					"details": "lower the hp on the zolfs",
+					"done": true
+				},
+				{
+					"details": "Wild Mages icon is wrong",
+					"done": true
+				},
+				{
+					"details": "Corpse Chimera's ai is broken on the final map",
+					"done": true
+				},
+				{
+					"details": "3 Range Units can cheat their range",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "c76b9987-237c-485e-ac4f-5877412707ad",
+			"title": "Implement a final boss that you actually like",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Fix Corpse Chimera's AI",
+					"done": false
+				},
+				{
+					"details": "Fix 3 Range Unit Chjeating Their Range",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "556cdf90-bb21-491c-ab85-1d7690cf31ac",
+			"title": "Update Inspect UI",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "3 Tabs:",
+					"done": false
+				},
+				{
+					"details": "Stat Tab",
+					"done": false
+				},
+				{
+					"details": "Weapon, Tactical, Ability tab",
+					"done": false
+				},
+				{
+					"details": "Items Tab",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

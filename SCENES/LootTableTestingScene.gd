@@ -19,4 +19,3 @@ func OnRollPressed():
 		label.text = item.loc_displayName
 
 	parent.add_child(label)
-

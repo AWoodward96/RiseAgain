@@ -121,7 +121,7 @@ tile_set = ExtResource("4_r7n56")
 [node name="C0Map1Leafmap" type="Sprite2D" parent="."]
 z_index = 1
 material = ExtResource("6_ltjjg")
-position = Vector2(640, 480)
+position = Vector2(640, 448)
 scale = Vector2(2, 2)
 texture = ExtResource("7_vall8")
 
@@ -314,6 +314,8 @@ vframes = 4
 frame = 2
 script = ExtResource("15_r17li")
 UnitOptions = Array[ExtResource("16_cw5fi")]([ExtResource("17_gy0uw"), ExtResource("18_pvexf"), ExtResource("13_281be"), ExtResource("20_u7i5l"), ExtResource("21_cg015")])
+playerRosterDuplicateProtection = true
+UnitLevel = 1
 Position = Vector2i(10, 7)
 Allegiance = 1
 

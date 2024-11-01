@@ -66,7 +66,7 @@ func Refresh():
 		entry.statlabel.text = tr(statBlockLocalization).format({"TEXT": tr(stat.loc_displayName_short), "VALUE" : str(currentValue)})
 
 static func Show(_unitInstance : UnitInstance):
-	var ui = GameManager.UnitInspectionUI.instantiate()
+	var ui = UIManager.UnitInspectionUI.instantiate()
 	ui.Initialize(_unitInstance)
 	GameManager.add_child(ui)
 	return ui

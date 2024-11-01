@@ -23,12 +23,19 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	await campsite.OnRest
 
 
-	var signalCallback = GameManager.ShowLoadingScreen()
-	await signalCallback
+	var screen = GameManager.ShowLoadingScreen()
+	await screen.ScreenObscured
+
+	var restedUI = UIManager.CampsiteRestedPopupPrefab.instantiate()
+	UIManager.add_child(restedUI)
+
+	await restedUI.OnClose
 
 	var units = map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
 	for u in units:
 		u.Rest()
+
+
 
 	if map.CurrentCampaign != null:
 		map.CurrentCampaign.MapComplete()

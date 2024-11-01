@@ -117,7 +117,7 @@ func InitializeStandalone():
 	# make the grid first so that we know where the starting positions are
 	InitializeGrid()
 
-	var ui = GameManager.AlphaUnitSelection.instantiate()
+	var ui = UIManager.AlphaUnitSelection.instantiate()
 	ui.Initialize(startingPositions.size())
 	ui.OnRosterSelected.connect(OnRosterTemplatesSelected)
 	add_child(ui)

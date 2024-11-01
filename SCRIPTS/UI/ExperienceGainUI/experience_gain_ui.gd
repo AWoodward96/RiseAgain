@@ -101,7 +101,7 @@ func AbilitySelected(_ability : PackedScene):
 	currentUnit.AddAbility(_ability)
 
 static func Show(_experienceGained : int, _unit :  UnitInstance, _root : Node2D, _rng : RandomNumberGenerator):
-	var ui = GameManager.ExperienceUI.instantiate() as ExperienceGainUI
+	var ui = UIManager.ExperienceUI.instantiate() as ExperienceGainUI
 	_root.add_child(ui)
 	ui.Initialize(_experienceGained, _unit, _root, _rng)
 	return ui

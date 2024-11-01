@@ -3,16 +3,41 @@ extends SpawnerBase
 class_name SpawnerRandom
 
 @export var UnitOptions : Array[UnitTemplate]
-
+@export var playerRosterDuplicateProtection : bool = false
 @export var UnitLevel : int = 0 # remember, this is indexed
 
 func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 	if UnitTemplate == null || !Enabled:
 		return
 
-	var rand = _rng.randi_range(0, UnitOptions.size() - 1)
+	var selectedUnit : UnitTemplate
 
-	var unit = _map.CreateUnit(UnitOptions[rand], UnitLevel)
+	if playerRosterDuplicateProtection:
+		var infiniteProtection = 0
+		var currentCampaign = GameManager.CurrentCampaign
+		if currentCampaign == null:
+			var rand = _rng.randi_range(0, UnitOptions.size() - 1)
+			selectedUnit = UnitOptions[rand]
+		else:
+			var rand : int
+			while infiniteProtection < 100:
+				rand = _rng.randi_range(0, UnitOptions.size() - 1)
+				var valid = true
+				for u in currentCampaign.CurrentRoster:
+					if u.Template == UnitOptions[rand]:
+						valid = false
+						break
+
+				infiniteProtection += 1
+				if valid:
+					break
+
+			selectedUnit = UnitOptions[rand]
+	else:
+		var rand = _rng.randi_range(0, UnitOptions.size() - 1)
+		selectedUnit = UnitOptions[rand]
+
+	var unit = _map.CreateUnit(selectedUnit, UnitLevel)
 	_map.InitializeUnit(unit, Position, Allegiance)
 	unit.SetAI(AIBehavior, AggroBehavior)
 

@@ -27,7 +27,7 @@ func Enter(_actionLog : ActionLog):
 		else:
 			damageData = ability.UsableDamageData
 
-		damageResult.Ability_CalculateResult(ability, damageData)
+		damageResult.Ability_CalculateResult(Map.Current.rng, ability, damageData)
 
 		if damageResult.Target != null:
 			if useDefendAction:
@@ -86,7 +86,7 @@ func CheckForRetaliation(_result : ActionResult):
 			retaliationResult.Source = defendingUnit
 			retaliationResult.Target = log.source
 			retaliationResult.TileTargetData = log.source.CurrentTile.AsTargetData()
-			retaliationResult.Ability_CalculateResult(retaliationWeapon, retaliationWeapon.UsableDamageData)
+			retaliationResult.Ability_CalculateResult(Map.Current.rng, retaliationWeapon, retaliationWeapon.UsableDamageData)
 
 			newData.actionResults.append(retaliationResult)
 			log.responseResults.append(retaliationResult)

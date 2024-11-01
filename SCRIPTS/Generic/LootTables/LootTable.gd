@@ -15,6 +15,20 @@ func RollTable(rng : RandomNumberGenerator, _numberOfRewards : int, _duplicatePr
 	while rewardArray.size() < _numberOfRewards:
 		var reward = Roll(rng)
 		if _duplicateProtections:
+			# don't allow for the same units in the party
+			if reward is SpecificUnitRewardEntry:
+				var specificUnitRewardEntry = reward as SpecificUnitRewardEntry
+				var currentCampaign = GameManager.CurrentCampaign
+				var isUnique = true
+				if currentCampaign != null:
+					for u in currentCampaign.CurrentRoster:
+						if u.Template == specificUnitRewardEntry.Unit:
+							isUnique = false
+							break
+
+				if !isUnique:
+					continue
+
 			var index = rewardArray.find(reward)
 			if index == -1: # should be -1 if there is no duplicates
 				rewardArray.append(reward)

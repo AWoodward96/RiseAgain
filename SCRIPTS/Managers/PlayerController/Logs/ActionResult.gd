@@ -17,34 +17,17 @@ var MissAverage : float		# The average of missVals
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var Miss : bool = false
 
-func Item_CalculateResult(_rng : RandomNumberGenerator, _item : Item):
-	if _item.IsDamage():
-		# Damage dealing items can miss
-		var hitRate = 100
-		if Target != null:
-			hitRate = GameManager.GameSettings.HitRateCalculation(Source, _item, Target)
 
-		CalculateMiss(_rng, hitRate)
-
-		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _item.UsableDamageData, TileTargetData.AOEMultiplier)
-
-		# calculate if the source unit heals or is hurt by this attack
-		CalculateSourceHealthDelta(_item.UsableDamageData)
-
-
-		Kill = false
-		if Target != null:
-			Kill = !Miss && (Target.currentHealth + HealthDelta <= 0)
-	elif _item.IsHeal(false):
-		# Healing items can't miss
-		HealthDelta = GameManager.GameSettings.HealCalculation(_item.HealData, Source, TileTargetData.AOEMultiplier)
-
-	CalculateExpGain()
-	CalculateFocusDelta()
-	pass
-
-func Ability_CalculateResult(_ability : Ability, _damageData):
+func Ability_CalculateResult(_rng : RandomNumberGenerator, _ability : Ability, _damageData):
 	if _ability.IsDamage():
+		# Damage dealing with autoattacks can miss
+		if _ability.type == Ability.AbilityType.Weapon:
+			var hitRate = 100
+			if Target != null:
+				hitRate = GameManager.GameSettings.HitRateCalculation(Source, _ability, Target)
+
+			CalculateMiss(_rng, hitRate)
+
 		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _damageData, TileTargetData.AOEMultiplier)
 
 		# calculate if the source unit heals or is hurt by this attack

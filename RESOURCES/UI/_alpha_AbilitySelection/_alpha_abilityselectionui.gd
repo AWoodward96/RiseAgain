@@ -22,7 +22,7 @@ func OnAbilitySelected(_ability : PackedScene):
 	SelectionComplete.emit(_ability)
 
 static func Show(_root : Node2D, _abilities : Array[PackedScene]):
-	var ui = GameManager.AbilitySelectionUI.instantiate() as SelectAbilityUI
+	var ui = UIManager.AbilitySelectionUI.instantiate() as SelectAbilityUI
 	_root.add_child(ui)
 	ui.Initialize(_abilities)
 	return ui

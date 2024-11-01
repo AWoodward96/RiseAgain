@@ -18,7 +18,7 @@ var CampaignRng : RandomNumberGenerator
 var CampaignSeed : int
 
 var CurrentRoster : Array[UnitInstance]
-var RosterTemplates : Array[UnitTemplate]
+var StartingRosterTemplates : Array[UnitTemplate]
 
 var ConvoyParent : Node2D
 var Convoy : Array[Item]
@@ -31,7 +31,7 @@ func StartCampaign(_roster : Array[UnitTemplate]):
 	CampaignRng = RandomNumberGenerator.new()
 	CampaignRng.seed = CampaignSeed
 
-	RosterTemplates = _roster
+	StartingRosterTemplates = _roster
 	if PersistData == null:
 		PersistData = CampaignPersistData.new()
 
@@ -55,7 +55,7 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 
 	# If there is no Roster, pull up the selection UI to force one. This should not occur in normal gameplay tbh
 	if CurrentRoster.size() == 0:
-		var ui = GameManager.AlphaUnitSelection.instantiate()
+		var ui = UIManager.AlphaUnitSelection.instantiate()
 		ui.Initialize(currentMap.startingPositions.size())
 		ui.OnRosterSelected.connect(OnRosterSelected)
 		add_child(ui)
@@ -70,7 +70,7 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 	campaignLedger.append(_index)
 
 func CreateSquadInstance():
-	for unit in RosterTemplates:
+	for unit in StartingRosterTemplates:
 		AddUnitToRoster(unit)
 
 func MapComplete():
@@ -109,7 +109,7 @@ func GetMapRewardTable():
 	return MapRewardTable
 
 func OnRosterSelected(_roster : Array[UnitTemplate]):
-	RosterTemplates = _roster
+	StartingRosterTemplates = _roster
 
 func AddItemToConvoy(_item : Item):
 	if ConvoyParent == null:
