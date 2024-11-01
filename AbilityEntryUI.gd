@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 class_name AbilityEntryUI
 
 signal EntrySelected
@@ -10,24 +10,38 @@ signal EntrySelected
 @export var abilityIcon : TextureRect
 @export var focusCostText : Label
 @export var rangeText : Label
+@export var usageLeft : Label
+
 
 func Initialize(_packedScene : PackedScene):
 	var ability = _packedScene.instantiate() as Ability
+	Refresh(ability)
 
-	abilityNameText.text = ability.loc_displayName
+func Refresh(_ability : Ability):
+	if _ability == null:
+		return
 
-	var formatDict = FormatAbilityDescription(ability)
-	abilityDescriptionText.text = tr(ability.loc_displayDesc).format(formatDict)
+	abilityNameText.text = _ability.loc_displayName
+	abilityIcon.texture = _ability.icon
 
-	abilityIcon.texture = ability.icon
+	if abilityDescriptionText != null:
+		var formatDict = FormatAbilityDescription(_ability)
+		abilityDescriptionText.text = tr(_ability.loc_displayDesc).format(formatDict)
 
-	focusCostText.text = "{AMT}".format({"AMT" : ability.focusCost })
 
-	var range = ability.GetRange()
-	if ability.TargetingData != null && ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		rangeText.text = tr("ui_range_directional")
-	else:
-		rangeText.text = tr("ui_range_amount").format({"MIN" : range.x, "MAX" : range.y })
+	if focusCostText != null:
+		focusCostText.text = "{AMT}".format({"AMT" : _ability.focusCost })
+
+	if rangeText != null:
+		var range = _ability.GetRange()
+		if _ability.TargetingData != null && _ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+			rangeText.text = tr("ui_range_directional")
+		else:
+			rangeText.text = tr("ui_range_amount").format({"MIN" : range.x, "MAX" : range.y })
+
+	if usageLeft != null:
+		usageLeft.text = str(_ability.remainingUsages)
+
 
 func FormatAbilityDescription(_ability : Ability):
 	var dict = {}
@@ -48,7 +62,8 @@ func FormatAbilityDescription(_ability : Ability):
 
 	# Get the heal-based data
 	if _ability.HealData != null:
-		dict["HEAL_STAT"]= tr(_ability.HealData.ScalingStat.loc_displayName)
+		if _ability.HealData.ScalingStat != null:
+			dict["HEAL_STAT"]= tr(_ability.HealData.ScalingStat.loc_displayName)
 		dict["HEAL_MOD"] = _ability.HealData.ScalingMod * 100
 		dict["HEAL_FLAT"] = _ability.HealData.FlatValue
 

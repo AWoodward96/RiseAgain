@@ -82,7 +82,7 @@ func ShowLevelUpData():
 		var entry = stat_entry_parent.GetEntry(index)
 		entry.statIncreaseLabel.visible = true
 		entry.statIncreaseLabel.text = str("+", statChanges[increment])
-		entry.statlabel.text = str(currentUnit.GetWorkingStat(increment))
+		entry.statValue.text = str(currentUnit.GetWorkingStat(increment))
 		await root.get_tree().create_timer(statUpDelayTime).timeout
 
 

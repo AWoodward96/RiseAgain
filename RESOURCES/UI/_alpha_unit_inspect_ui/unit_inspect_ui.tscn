@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dn07slodp7juh"]
+[gd_scene load_steps=40 format=3 uid="uid://dn07slodp7juh"]
 
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="1_17hjj"]
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_ui.gd" id="1_olrmn"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/unit_inspect_ui.gd" id="1_olrmn"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="2_ccy33"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_jmhyu"]
-[ext_resource type="PackedScene" uid="uid://d055qo5032qd8" path="res://RESOURCES/UI/stat_block_entry_large.tscn" id="3_sj6no"]
 [ext_resource type="PackedScene" uid="uid://ci2yfcw0fc6pv" path="res://RESOURCES/UI/GenericEntrys/item_display_entry.tscn" id="4_fpfg1"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="4_psqrf"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_vhggx"]
@@ -12,6 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://bktnwekn25b70" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/affinity_entry.tscn" id="7_prn4o"]
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="8_bef1i"]
 [ext_resource type="PackedScene" uid="uid://crsd05m8xofxm" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_effects_entry.tscn" id="9_tejvk"]
+[ext_resource type="PackedScene" uid="uid://clcpfyfw63n4t" path="res://RESOURCES/UI/stat_block_entry_inspect.tscn" id="13_5rage"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/multipanel_controller.gd" id="13_sw8vr"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/UnitStatMultipanel.gd" id="14_j5l4w"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/UnitInventoryMultipanel.gd" id="16_2pavd"]
+[ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="17_igs1o"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/AbilitiesMultipanel.gd" id="17_kt1q6"]
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/WeaponPanelUI.gd" id="18_2q762"]
+[ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="19_76bpb"]
+[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="20_sy8c7"]
+[ext_resource type="Script" path="res://AbilityEntryUI.gd" id="21_5d6pf"]
+[ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="22_5kv6e"]
+[ext_resource type="Texture2D" uid="uid://x61rbwe8vybw" path="res://ART/Icons/range_icon.png" id="23_murkn"]
 
 [sub_resource type="Gradient" id="Gradient_tvi38"]
 
@@ -30,6 +41,8 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxp5j"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i456a"]
 bg_color = Color(0.82, 0.82, 0.82, 1)
 border_width_left = 2
@@ -37,6 +50,8 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_s1uql"]
 font = ExtResource("3_jmhyu")
@@ -44,22 +59,56 @@ font_size = 32
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInspectUI" type="CanvasLayer" node_paths=PackedStringArray("portrait", "nameText", "descriptionText", "classSprite", "affinityIcon", "unitHealthBar", "strongAgainstEntryList", "weakAgainstEntryList", "statBlockEntryList", "itemSlotEntryList")]
+[sub_resource type="LabelSettings" id="LabelSettings_hw2ym"]
+font = ExtResource("17_igs1o")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_qjsgv"]
+font = ExtResource("17_igs1o")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_831br"]
+font = ExtResource("3_jmhyu")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2u5kn"]
+font = ExtResource("4_psqrf")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwtwy"]
+font = ExtResource("4_psqrf")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3mhop"]
+font = ExtResource("17_igs1o")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_8mixy"]
+font = ExtResource("3_jmhyu")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d75mn"]
+font = ExtResource("3_jmhyu")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dkw7e"]
+font = ExtResource("3_jmhyu")
+font_color = Color(0, 0, 0, 1)
+
+[node name="UnitInspectUI" type="CanvasLayer" node_paths=PackedStringArray("portrait", "nameText", "descriptionText", "classSprite", "affinityIcon", "unitHealthBar", "strongAgainstEntryList", "weakAgainstEntryList")]
 layer = 10
 script = ExtResource("1_olrmn")
 portrait = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/PortraitBG/Portrait")
 nameText = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/NameAndAffinity/Name")
 descriptionText = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/MarginContainer/Description")
 classSprite = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/NameAndAffinity/ClassSprite")
-affinityIcon = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/HBoxContainer/ThisUnitsAffinity")
+affinityIcon = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/HBoxContainer/ThisUnitsAffinity")
 unitHealthBar = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent")
 affinityEntryPrefab = ExtResource("7_prn4o")
-strongAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer/StrongContainer")
-weakAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer/WeakContainer")
-statBlockEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer/VBoxContainer/GridContainer")
-statBlockEntry = ExtResource("3_sj6no")
-itemSlotEntryList = NodePath("MarginContainer/Panel/HBoxContainer/Inventory/InventoryPanel/InventorySlotEntryList")
-itemSlotEntry = ExtResource("4_fpfg1")
+strongAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/AffinityContainer/StrongContainer")
+weakAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/AffinityContainer/WeakContainer")
+metadata/_edit_vertical_guides_ = [-171.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -125,7 +174,7 @@ theme_override_fonts/font = ExtResource("3_jmhyu")
 theme_override_font_sizes/font_size = 16
 text = "Karla of the Full Moon"
 
-[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "LevelLabel", "ExpLabel", "EffectsList")]
+[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "LevelLabel", "ExpLabel")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 48)
@@ -140,8 +189,7 @@ LevelLabel = NodePath("../HBoxContainer/LevelNum")
 LevelLocalization = "ui_num"
 ExpLabel = NodePath("../HBoxContainer/ExpNum")
 ExpLocalization = "ui_current_max"
-EffectsList = NodePath("../CombatEffects")
-EffectsIconPrefab = ExtResource("9_tejvk")
+EffectsList = NodePath("")
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent"]
 unique_name_in_owner = true
@@ -161,12 +209,15 @@ show_percentage = false
 
 [node name="ArmorBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/HealthBarParent"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(80, 16)
-layout_mode = 2
-offset_left = -8.0
-offset_right = 72.0
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_sxp5j")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i456a")
 max_value = 1.0
 value = 0.84
@@ -253,24 +304,112 @@ theme_override_font_sizes/font_size = 16
 text = "Studier of holy arts, Light Mages can heal allies but have low agressive and defensive stats"
 autowrap_mode = 2
 
-[node name="CombatEffects" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
+[node name="Affinity" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName"]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity"]
+layout_mode = 2
+alignment = 2
+
+[node name="AffinityLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_jmhyu")
+text = "Affinity:"
+
+[node name="ThisUnitsAffinity" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/HBoxContainer" instance=ExtResource("7_prn4o")]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AffinityContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity"]
+layout_mode = 2
+size_flags_horizontal = 8
 columns = 2
+
+[node name="StrongLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/AffinityContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_jmhyu")
+text = "Strong Against:
+"
+
+[node name="StrongContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/AffinityContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 script = ExtResource("5_vhggx")
 
-[node name="Inventory" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer"]
+[node name="WeakLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/AffinityContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmhyu")
+text = "Weak Against:"
+
+[node name="WeakContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/StatsAndName/Affinity/AffinityContainer"]
+layout_mode = 2
+script = ExtResource("5_vhggx")
+
+[node name="MultipanelParent" type="Control" parent="MarginContainer/Panel/HBoxContainer" node_paths=PackedStringArray("controls")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("13_sw8vr")
+controls = [NodePath("StatMultipanel"), NodePath("InventoryMultipanel"), NodePath("AbilitiesMultipanel")]
+
+[node name="LeftBlink" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="RightBlink" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StatMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" node_paths=PackedStringArray("InspectUI", "statBlockEntryList", "effectsList", "noEffectsLabel")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+script = ExtResource("14_j5l4w")
+InspectUI = NodePath("../../../../..")
+statBlockEntryList = NodePath("VBox/MarginContainer/MarginContainer/VBoxContainer/StatGridContainer")
+statBlockEntry = ExtResource("13_5rage")
+effectsList = NodePath("VBox/CombatEffectsContainer/MarginContainer/CombatEffects")
+effectsIconPrefab = ExtResource("9_tejvk")
+noEffectsLabel = NodePath("VBox/CombatEffectsContainer/NoEffectsLabel")
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InventoryLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
+[node name="InventoryLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+visible = false
 layout_mode = 2
 text = "Items:"
 
-[node name="InventoryPanel" type="Panel" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
+[node name="InventoryPanel" type="Panel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+visible = false
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 
-[node name="InventorySlotEntryList" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/InventoryPanel"]
+[node name="InventorySlotEntryList" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/InventoryPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,74 +423,612 @@ grow_vertical = 2
 theme_override_constants/separation = 24
 script = ExtResource("5_vhggx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 64
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer"]
+[node name="StatsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="AffinityLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("3_jmhyu")
-text = "Affinity:"
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72, 0.47448, 0.2736, 1)
 
-[node name="ThisUnitsAffinity" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/HBoxContainer" instance=ExtResource("7_prn4o")]
-layout_mode = 2
-stretch_mode = 5
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_header_stats"
+label_settings = SubResource("LabelSettings_hw2ym")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="AffinityContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
 layout_mode = 2
-size_flags_horizontal = 8
-columns = 2
 
-[node name="StrongLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("3_jmhyu")
-text = "Strong Against:
-"
-
-[node name="StrongContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-script = ExtResource("5_vhggx")
-
-[node name="WeakLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_jmhyu")
-text = "Weak Against:"
-
-[node name="WeakContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/HBoxContainer/AffinityContainer"]
-layout_mode = 2
-script = ExtResource("5_vhggx")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer"]
 layout_mode = 2
 color = Color(0.24, 0.24, 0.24, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="StatsLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stats:"
-
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/Inventory/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="StatGridContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 script = ExtResource("5_vhggx")
+
+[node name="StatsHeader2" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4176, 0.48312, 0.72, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_header_active_effects"
+label_settings = SubResource("LabelSettings_qjsgv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CombatEffectsContainer" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CombatEffects" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+script = ExtResource("5_vhggx")
+
+[node name="NoEffectsLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_no_effects"
+label_settings = SubResource("LabelSettings_831br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" node_paths=PackedStringArray("InspectUI", "itemSlotEntryList")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+script = ExtResource("16_2pavd")
+InspectUI = NodePath("../../../../..")
+itemSlotEntryList = NodePath("VBox/InventoryPanel/InventorySlotEntryList")
+itemSlotEntry = ExtResource("4_fpfg1")
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/StatsHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.59, 0.348985, 0.2537, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/StatsHeader/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_header_inventory"
+label_settings = SubResource("LabelSettings_hw2ym")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="InventoryPanel" type="Panel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="InventorySlotEntryList" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 32.0
+offset_right = -17.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+script = ExtResource("5_vhggx")
+
+[node name="AbilitiesMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" node_paths=PackedStringArray("InspectUI", "WeaponPanel", "TacticalParent", "TacticalPanel", "AbilityParent", "AbilityPanel")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+script = ExtResource("17_kt1q6")
+InspectUI = NodePath("../../../../..")
+WeaponPanel = NodePath("VBox/Weapon/WeaponPanel")
+TacticalParent = NodePath("VBox/TacticalParent")
+TacticalPanel = NodePath("VBox/TacticalParent/Tactical/TacticalPanel")
+AbilityParent = NodePath("VBox/AbilityParent")
+AbilityPanel = NodePath("VBox/AbilityParent/Ability/AbilityPanel")
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WeaponsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/WeaponsHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.371405, 0.59, 0.2537, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/WeaponsHeader/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_header_weapons"
+label_settings = SubResource("LabelSettings_hw2ym")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+custom_minimum_size = Vector2(0, 122.14)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon" node_paths=PackedStringArray("weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+offset_top = 4.0
+offset_right = 604.0
+offset_bottom = 132.0
+script = ExtResource("18_2q762")
+weaponParent = NodePath("Weapon")
+noWeaponParent = NodePath("NoWeaponsText")
+weaponIcon = NodePath("Weapon/TextureRect")
+weaponNameText = NodePath("Weapon/VBoxContainer/WeapName")
+weaponDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
+statBlockEntry = NodePath("Weapon/VBoxContainer2/StatBlockEntry")
+accuracyText = NodePath("Weapon/VBoxContainer2/HBoxContainer/AccuracyNum")
+
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 72.0
+offset_bottom = 74.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_76bpb")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon"]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 15.0
+offset_right = 392.0
+offset_bottom = 107.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "WeaponName"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="WeapDesc" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "WeaponDescription"
+label_settings = SubResource("LabelSettings_qwtwy")
+autowrap_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon"]
+layout_mode = 2
+offset_left = 406.0
+offset_top = 13.0
+offset_right = 700.0
+offset_bottom = 102.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="AccuracyLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "ui_accuracy_label"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="AccuracyNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "{NUM}"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="StatBlockEntry" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2" instance=ExtResource("20_sy8c7")]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="NoWeaponsText" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "ui_no_weapon_long"
+label_settings = SubResource("LabelSettings_2u5kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TacticalParent" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+layout_mode = 2
+
+[node name="TacticalHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/TacticalHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.50563, 0.59, 0.4602, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/TacticalHeader/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_header_tactical"
+label_settings = SubResource("LabelSettings_3mhop")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Tactical" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TacticalPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical" node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "usageLeft")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+offset_right = 604.0
+offset_bottom = 128.0
+script = ExtResource("21_5d6pf")
+abilityNameText = NodePath("Weapon/VBoxContainer/WeapName")
+abilityDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
+abilityIcon = NodePath("Weapon/TextureRect")
+usageLeft = NodePath("Weapon/HBoxContainer/Num")
+
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 72.0
+offset_bottom = 74.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_76bpb")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon"]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 15.0
+offset_right = 392.0
+offset_bottom = 107.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "WeaponName"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="WeapDesc" type="RichTextLabel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_jmhyu")
+text = "Test"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon"]
+layout_mode = 0
+offset_left = 421.0
+offset_right = 603.0
+offset_bottom = 60.0
+
+[node name="UsesLeft" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/HBoxContainer"]
+layout_mode = 2
+text = "ui_uses_label"
+label_settings = SubResource("LabelSettings_8mixy")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/HBoxContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_8mixy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityParent" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+layout_mode = 2
+
+[node name="AbilityHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/AbilityHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.50563, 0.59, 0.4602, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/AbilityHeader/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_header_abilities"
+label_settings = SubResource("LabelSettings_3mhop")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Ability" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AbilityPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability" node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "focusCostText", "rangeText", "usageLeft")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+offset_right = 604.0
+offset_bottom = 128.0
+script = ExtResource("21_5d6pf")
+abilityNameText = NodePath("Weapon/VBoxContainer/WeapName")
+abilityDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
+abilityIcon = NodePath("Weapon/TextureRect")
+focusCostText = NodePath("Weapon/Control/FocusCostParent/FocusCost")
+rangeText = NodePath("Weapon/Control/RangeParent/HBoxContainer/RangeAmt")
+usageLeft = NodePath("")
+
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 72.0
+offset_bottom = 74.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_76bpb")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon"]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 15.0
+offset_right = 392.0
+offset_bottom = 107.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "WeaponName"
+label_settings = SubResource("LabelSettings_2u5kn")
+
+[node name="WeapDesc" type="RichTextLabel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/VBoxContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_jmhyu")
+text = "Test"
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 427.0
+offset_top = 4.0
+offset_right = 620.0
+offset_bottom = 102.0
+
+[node name="FocusCostParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -45.0
+offset_right = 174.0
+offset_bottom = -7.0
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="FocusIcon" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/FocusCostParent"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 8.0
+offset_right = 40.0
+offset_bottom = 32.0
+texture = ExtResource("22_5kv6e")
+expand_mode = 1
+
+[node name="FocusCost" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/FocusCostParent"]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 95.0
+offset_bottom = 27.0
+text = "{AMT}"
+label_settings = SubResource("LabelSettings_d75mn")
+
+[node name="RangeParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = 9.0
+offset_right = -25.0
+offset_bottom = 52.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 169.0
+offset_bottom = 26.0
+
+[node name="RangeIcon" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("23_murkn")
+expand_mode = 1
+
+[node name="RangeAmt" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent/HBoxContainer"]
+layout_mode = 2
+text = "ui_range_amount"
+label_settings = SubResource("LabelSettings_dkw7e")

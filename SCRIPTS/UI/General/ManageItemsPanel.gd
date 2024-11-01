@@ -9,15 +9,8 @@ signal OnClose
 @export var unitEntryPrefab : PackedScene
 @export var itemEntryList : EntryList
 @export var itemEntryPrefab : PackedScene
+@export var weaponPanel : WeaponPanelUI
 
-@export_category("Weapon Data")
-@export var weaponParent : Control
-@export var noWeaponParent : Control
-@export var weaponIcon : TextureRect
-@export var weaponNameText : Label
-@export var weaponDescriptionText : Label
-@export var statBlockEntry : Control
-@export var accuracyText : Label
 
 @export_category("Buttons")
 
@@ -116,23 +109,8 @@ func OnFocusChanged(_unit : UnitInstance, _entry):
 		var entry = itemEntryList.CreateEntry(itemEntryPrefab)
 		entry.Refresh(item)
 
-	weaponParent.visible = _unit.EquippedWeapon != null
-	noWeaponParent.visible = _unit.EquippedWeapon == null
-	var weap = _unit.EquippedWeapon
-	if weap != null:
-		weaponIcon.texture = weap.icon
-		weaponNameText.text = weap.loc_displayName
-		weaponDescriptionText.text = weap.loc_displayDesc
-		accuracyText.text = str(weap.GetAccuracy())
-		var statData = weap.StatData
-		if statData != null && statData.GrantedStats.size() > 0:
-			statBlockEntry.visible = true
-			var statDef = statData.GrantedStats[0]
-			if statDef != null:
-				statBlockEntry.icon.texture = statDef.Template.loc_icon
-				statBlockEntry.statlabel.text = str(statDef.Value)
-		else:
-			statBlockEntry.visible = false
+	if weaponPanel != null:
+		weaponPanel.Refresh(_unit.EquippedWeapon)
 	pass
 
 func OnTradeButton():

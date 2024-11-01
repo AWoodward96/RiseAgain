@@ -1,0 +1,41 @@
+extends Control
+class_name MultipanelController
+
+
+@export var controls : Array[MultipanelBase]
+@export var saveLastPanelIndex : bool = true
+
+var openPanelIndex : int = 0
+var lastOpenPanel : int = 0
+
+func _ready():
+	if saveLastPanelIndex:
+		ShowPanel(lastOpenPanel)
+	else:
+		ShowPanel(0)
+	pass
+
+
+func _process(delta: float):
+	if InputManager.inputDown[1]:
+		ShowPanel(openPanelIndex + 1)
+	if InputManager.inputDown[3]:
+		ShowPanel(openPanelIndex - 1)
+
+func ShowPanel(_index : int):
+	if controls.size() == 0:
+		return
+
+	# ensure that the index of this panel is correct
+	var workingIndex = _index
+	if workingIndex < 0:
+		workingIndex += controls.size()
+
+	if workingIndex >= controls.size():
+		workingIndex = workingIndex % controls.size()
+
+	openPanelIndex = workingIndex
+	for i in range(0,controls.size()):
+		var panel = controls[i]
+		panel.Show(i == openPanelIndex)
+		pass

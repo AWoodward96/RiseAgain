@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnsp2jieynl7x"]
+[gd_scene load_steps=8 format=3 uid="uid://cnsp2jieynl7x"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
 [ext_resource type="Shader" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
+[ext_resource type="PackedScene" uid="uid://cj14t2nuhup7j" path="res://RESOURCES/UI/_alpha_FormationUI/items_ui.tscn" id="3_hs3ra"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bl6de"]
 shader = ExtResource("1_dlrih")
@@ -14,7 +15,7 @@ shader_parameter/MainAlpha = 0.789
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0a7"]
 
-[node name="CampsiteUI" type="CanvasLayer" node_paths=PackedStringArray("Vignette", "UIParent", "ViewButton", "InspectButton", "RestButton")]
+[node name="CampsiteUI" type="CanvasLayer" node_paths=PackedStringArray("Vignette", "UIParent", "ViewButton", "InspectButton", "RestButton", "itemsPanel")]
 layer = 3
 script = ExtResource("1_d5tvi")
 Vignette = NodePath("Vignette")
@@ -22,6 +23,7 @@ UIParent = NodePath("UI")
 ViewButton = NodePath("UI/VBoxContainer/View")
 InspectButton = NodePath("UI/VBoxContainer/Inspect")
 RestButton = NodePath("UI/VBoxContainer/Rest")
+itemsPanel = NodePath("Items")
 
 [node name="Vignette" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_bl6de")
@@ -67,6 +69,7 @@ layout_mode = 2
 focus_next = NodePath("../Inspect")
 focus_previous = NodePath("../Rest")
 theme_override_styles/focus = SubResource("StyleBoxFlat_k4tbk")
+disabled = true
 text = "View Campsite"
 
 [node name="Inspect" type="Button" parent="UI/VBoxContainer"]
@@ -84,6 +87,9 @@ focus_next = NodePath("../View")
 focus_previous = NodePath("../Inspect")
 theme_override_styles/focus = SubResource("StyleBoxFlat_or0a7")
 text = "Rest"
+
+[node name="Items" parent="." instance=ExtResource("3_hs3ra")]
+visible = false
 
 [connection signal="pressed" from="UI/VBoxContainer/View" to="." method="btn_View"]
 [connection signal="pressed" from="UI/VBoxContainer/Inspect" to="." method="btn_Inspect"]

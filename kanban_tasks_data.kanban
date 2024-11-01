@@ -37,8 +37,7 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"c76b9987-237c-485e-ac4f-5877412707ad",
-				"556cdf90-bb21-491c-ab85-1d7690cf31ac"
+				"c76b9987-237c-485e-ac4f-5877412707ad"
 			]
 		},
 		{
@@ -47,6 +46,7 @@
 			"tasks": [
 				"c522e9e5-a53d-4b28-97fe-5b160086558f",
 				"1804c004-ba25-436b-801b-c661759ae86d",
+				"556cdf90-bb21-491c-ab85-1d7690cf31ac",
 				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
 				"26ec4286-6898-4bb3-9de8-d72996f84a10",
 				"94dc1f54-071d-45da-a0dc-70e6a13ba229",
@@ -606,19 +606,19 @@
 			"steps": [
 				{
 					"details": "3 Tabs:",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Stat Tab",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Weapon, Tactical, Ability tab",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Items Tab",
-					"done": false
+					"done": true
 				}
 			]
 		}

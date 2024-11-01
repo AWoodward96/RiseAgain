@@ -9,17 +9,18 @@ signal OnRest
 @export var InspectButton : Button
 @export var RestButton : Button
 
+@export var itemsPanel : ManageItemsPanel
 
 func _ready():
-	ViewButton.grab_focus()
+	RestButton.grab_focus()
 
 
 func Initialize():
 	#UIParent.visible = true
-	ViewButton.disabled = false
+	ViewButton.disabled = true
 	InspectButton.disabled = false
 	RestButton.disabled = false
-
+	itemsPanel.OnClose.connect(OnManageItemsClosed)
 	pass
 
 
@@ -27,7 +28,13 @@ func btn_View():
 	pass
 
 func btn_Inspect():
+	itemsPanel.visible = true
+	itemsPanel.Initialize(Map.Current, GameManager.CurrentCampaign)
 	pass
+
+
+func OnManageItemsClosed():
+	InspectButton.grab_focus()
 
 func btn_Rest():
 

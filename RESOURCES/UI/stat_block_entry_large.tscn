@@ -3,13 +3,14 @@
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_j570s"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_r6dku"]
 
-[node name="StatBlockEntry_Large" type="PanelContainer" node_paths=PackedStringArray("icon", "statlabel")]
+[node name="StatBlockEntry_Large" type="PanelContainer" node_paths=PackedStringArray("icon", "statName", "statValue")]
 custom_minimum_size = Vector2(250, 40)
 offset_right = 149.0
 offset_bottom = 40.0
 script = ExtResource("1_j570s")
 icon = NodePath("MarginContainer/HBoxContainer/TextureRect")
-statlabel = NodePath("MarginContainer/HBoxContainer/StatBlockLabel")
+statName = NodePath("MarginContainer/HBoxContainer/StatBlockLabel")
+statValue = NodePath("MarginContainer/HBoxContainer/StatBlockLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
