@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=44 format=3 uid="uid://eyed7bxgka4g"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=46 format=3 uid="uid://eyed7bxgka4g"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_2gkof"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_gd10w"]
@@ -14,8 +14,10 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_cje5r"]
 [ext_resource type="PackedScene" uid="uid://cg83y8wvfexv6" path="res://RESOURCES/Units/Enemy/WildNecromancer/VIS_WildNecromancer.tscn" id="10_u3lpn"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2oydv"]
+[ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="13_stfxg"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="13_txp5l"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="14_abjbp"]
+[ext_resource type="PackedScene" uid="uid://c556s8kmuas5f" path="res://RESOURCES/Ability/Equippable/wolfbane.tscn" id="14_pk0bi"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="15_54b4b"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="16_x5xg5"]
 [ext_resource type="Texture2D" uid="uid://c6at30swahnfc" path="res://ART/Icons/Ability/Equippable/dark_pact.png" id="17_rgtqx"]
@@ -27,12 +29,12 @@
 [sub_resource type="Resource" id="Resource_edhhe"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("1_gd10w")
-Value = 15.0
+Value = 12.0
 
 [sub_resource type="Resource" id="Resource_gopix"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("3_dhw6u")
-Value = 0
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_1nkwt"]
 script = ExtResource("2_qy2cs")
@@ -42,12 +44,12 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_e8xmq"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("5_211fg")
-Value = 4.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_8gqf5"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("6_khlwk")
-Value = 3.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_3dnqf"]
 script = ExtResource("2_qy2cs")
@@ -113,7 +115,7 @@ Value = 20.0
 [sub_resource type="Resource" id="Resource_8vfo8"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("5_211fg")
-Value = 40.0
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_jjuk8"]
 script = ExtResource("2_qy2cs")
@@ -138,10 +140,10 @@ BaseStats = Array[ExtResource("2_qy2cs")]([SubResource("Resource_edhhe"), SubRes
 StatGrowths = Array[ExtResource("2_qy2cs")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_2gkof")
 StartingItems = Array[PackedScene]([SubResource("PackedScene_k3dks")])
-StartingEquippedWeapon = SubResource("PackedScene_k3dks")
+StartingEquippedWeapon = ExtResource("14_pk0bi")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
-Descriptors = Array[ExtResource("12_2oydv")]([])
+Descriptors = Array[ExtResource("12_2oydv")]([ExtResource("13_stfxg")])
 DebugName = "WildNecromancer"
 loc_DisplayName = "unit_wildnecromancer_name"
 loc_Description = "unit_wildnecromancer_desc"

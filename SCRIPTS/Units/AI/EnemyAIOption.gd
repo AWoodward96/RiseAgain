@@ -39,43 +39,49 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map):
 	unitUsable = sourceUnit.EquippedWeapon
 
 	CheckIfMovementNeeded(sourceUnit.GridPosition)
-
-	# We need to get all of the possible options for attacking this target
-	roughPath = _map.grid.GetPathBetweenTwoUnits(_source, _target)
-	if roughPath.size() == 0:
-		# If it's 0, there is no path between these two units that is valid.
-		# If the MovementNeeded check fails, then this unit option is invalid and won't be used
+	if valid:
+		# If Valid is true at the moment, then our target is within range to attack at the tile we're currently standing on
+		# At this point in time, just return. There's no additional information we need to attach to this option
 		return
-	roughPath.remove_at(0)  # Remove the first entry, because that is the current tile this unit is on
-
-	# Okay so we think we can get to the target unit right now.
-	# Issue is, that doesn't mean that we can ACTUALLY hit them. There could be units in the way, or other nonsense that we don't know how to deal with
-	var actionableTiles = GetActionableTiles(unitUsable.GetRange())
-	if actionableTiles == null || actionableTiles.size() == 0:
-		# This might happen if a melee unit only has one valid tile they can path through, and there's a unit on that spot
-		# In that case, truncate to a closer position.
-		valid = true
-		TruncatePathToMovement(roughPath)
-		return
-
-	# Okay so we have a list of actionableTiles - check which one is the closest
-	var lowest = 1000000
-	var selectedPath
-	for tile in actionableTiles:
-		var workingPath = map.grid.Pathfinding.get_point_path(sourceUnit.GridPosition, tile.Position)
-		if workingPath.size() < lowest && workingPath.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
-			selectedPath = workingPath
-			selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
-			lowest = workingPath.size()
-
-	if selectedPath != null && selectedPath.size() != 0:
-		valid = true
-		path = selectedPath
-		TruncatePathToMovement(path)
-		CheckIfMovementNeeded(path[path.size() - 1] / map.grid.CellSize)
 	else:
-		valid = true
-		TruncatePathToMovement(roughPath)
+		# If Valid isn't true, then we need to move to attack this target.
+		# We need to get all of the possible options for attacking this target
+		roughPath = _map.grid.GetPathBetweenTwoUnits(_source, _target)
+		if roughPath.size() == 0:
+			# If it's 0, there is no path between these two units that is valid.
+			# If the MovementNeeded check fails, then this unit option is invalid and won't be used
+			return
+		roughPath.remove_at(0)  # Remove the first entry, because that is the current tile this unit is on
+
+		# Okay so we think we can get to the target unit right now.
+		# Issue is, that doesn't mean that we can ACTUALLY hit them. There could be units in the way, or other nonsense that we don't know how to deal with
+		var actionableTiles = GetActionableTiles(unitUsable.GetRange())
+		if actionableTiles == null || actionableTiles.size() == 0:
+			# This might happen if a melee unit only has one valid tile they can path through, and there's a unit on that spot
+			# In that case, truncate to a closer position.
+			valid = true
+			TruncatePathToMovement(roughPath)
+			return
+
+		# Okay so we have a list of actionableTiles - check which one is the closest
+		var lowest = 1000000
+		var selectedPath
+		for tile in actionableTiles:
+			var workingPath = map.grid.Pathfinding.get_point_path(sourceUnit.GridPosition, tile.Position)
+			if workingPath.size() < lowest && workingPath.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
+				selectedPath = workingPath
+				selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
+				lowest = workingPath.size()
+
+		if selectedPath != null && selectedPath.size() != 0:
+			valid = true
+			path = selectedPath
+			TruncatePathToMovement(path)
+			CheckIfMovementNeeded(path[path.size() - 1] / map.grid.CellSize)
+		else:
+			valid = true
+			TruncatePathToMovement(roughPath)
+
 
 	pass
 
@@ -93,7 +99,10 @@ func CheckIfMovementNeeded(_origin : Vector2i):
 func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	tileToMoveTo = _tileToMoveTo
 	tileToAttack = _tileToAttack
-	var targetUnitRange = targetUnit.EquippedWeapon.GetRange()
+	var targetUnitRange = Vector2i.ONE
+	if targetUnit.EquippedWeapon != null:
+		targetUnitRange = targetUnit.EquippedWeapon.GetRange()
+
 	if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
 		unitWillRetaliate = true
 

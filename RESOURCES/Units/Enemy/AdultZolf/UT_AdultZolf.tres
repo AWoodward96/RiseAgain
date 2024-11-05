@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://dt5vofrnbdu6c"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=46 format=3 uid="uid://dt5vofrnbdu6c"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_cf4s8"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_mcvtx"]
@@ -17,11 +17,19 @@
 [ext_resource type="Texture2D" uid="uid://i63qlruqqjwh" path="res://ART/Icons/Units/zolf_mother.png" id="12_1g4sd"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_44lik"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_1ljsq"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_rqpxc"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_jgxjh"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="17_ahfj0"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_ad00w"]
+[ext_resource type="Texture2D" uid="uid://ci67qx2wt4fay" path="res://ART/Icons/Ability/Equippable/wolf_tooth.png" id="19_pln3m"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_0es8t"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_4omg7"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_d7hun"]
 
 [sub_resource type="Resource" id="Resource_j66t5"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("1_mcvtx")
-Value = 12.0
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_2cbmj"]
 script = ExtResource("2_q7r3r")
@@ -63,10 +71,36 @@ script = ExtResource("2_q7r3r")
 Template = ExtResource("10_qqtut")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_qgrug"]
+script = ExtResource("17_ahfj0")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_6ubox"]
+script = ExtResource("18_ad00w")
+
+[sub_resource type="Resource" id="Resource_8j4gf"]
+script = ExtResource("2_q7r3r")
+Template = ExtResource("3_mw331")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_srnl5"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("wolf_tooth", "Node2D", "script", "type", "focusCost", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "BaseAccuracy", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
+"variants": [ExtResource("15_rqpxc"), 1, 0.0, Array[ExtResource("16_jgxjh")]([SubResource("Resource_qgrug"), SubResource("Resource_6ubox")]), true, "wolf_tooth", "weap_wolf_tooth_name", "weap_wolf_tooth_desc", ExtResource("19_pln3m"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_0es8t"), 90.0, Array[ExtResource("2_q7r3r")]([SubResource("Resource_8j4gf")]), ExtResource("21_4omg7"), ExtResource("3_mw331"), ExtResource("4_e82vl"), 0.0, ExtResource("22_d7hun")],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_q7r3r")
 Template = ExtResource("1_mcvtx")
-Value = 80.0
+Value = 70.0
 
 [sub_resource type="Resource" id="Resource_v87sc"]
 script = ExtResource("2_q7r3r")
@@ -105,7 +139,7 @@ VisualPrefab = ExtResource("11_aots3")
 BaseStats = Array[ExtResource("2_q7r3r")]([SubResource("Resource_j66t5"), SubResource("Resource_2cbmj"), SubResource("Resource_sijwk"), SubResource("Resource_nxj41"), SubResource("Resource_y0wwv"), SubResource("Resource_cci3d"), SubResource("Resource_hmwst"), SubResource("Resource_dvkmf"), SubResource("Resource_fv520")])
 StatGrowths = Array[ExtResource("2_q7r3r")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_cf4s8")
-StartingItems = Array[PackedScene]([ExtResource("14_1ljsq")])
+StartingItems = Array[PackedScene]([SubResource("PackedScene_srnl5")])
 StartingEquippedWeapon = ExtResource("14_1ljsq")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])

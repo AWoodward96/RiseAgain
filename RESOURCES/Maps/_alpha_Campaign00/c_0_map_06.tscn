@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://crsfuln75037q"]
+[gd_scene load_steps=45 format=4 uid="uid://crsfuln75037q"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_darpl"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_ljdxe"]
@@ -11,10 +11,11 @@
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_dklm8"]
 [ext_resource type="Texture2D" uid="uid://cfi1qga802aad" path="res://ART/Environment/_alpha_set0/c_0_map_6_leafmap.png" id="7_ib5rp"]
 [ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="8_joda4"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="10_l1q4g"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_TargetClosest.gd" id="11_6v40b"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_0ss6n"]
+[ext_resource type="Resource" uid="uid://cwpcdl6jod428" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_WildNecromancer.tres" id="12_4isph"]
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="12_11jmj"]
 [ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="13_biu8f"]
+[ext_resource type="Resource" uid="uid://dk6nu2fomck5p" path="res://RESOURCES/CombatEffects/CE_NecromancerPassive.tres" id="13_mjieb"]
 [ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="13_yq0oq"]
 [ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="14_3hk2d"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="15_g5vum"]
@@ -24,20 +25,15 @@
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="18_g67wg"]
 [ext_resource type="Resource" uid="uid://eyed7bxgka4g" path="res://RESOURCES/Units/Enemy/WildNecromancer/UT_WildNecromancer.tres" id="19_7ecbv"]
 [ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="20_7hdmx"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="20_cpxgo"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_TargetClosest.gd" id="21_unsqn"]
 
 [sub_resource type="Resource" id="Resource_5yfca"]
 script = ExtResource("2_ljdxe")
 loc_description = ""
 
-[sub_resource type="Resource" id="Resource_ihni7"]
-script = ExtResource("10_l1q4g")
-Team = 1
-
-[sub_resource type="Resource" id="Resource_5bae1"]
-script = ExtResource("11_6v40b")
-Flags = Array[ExtResource("10_l1q4g")]([SubResource("Resource_ihni7")])
-IsPriorityFlag = false
-RememberTarget = false
+[sub_resource type="Resource" id="Resource_anryn"]
+script = ExtResource("12_0ss6n")
 
 [sub_resource type="Resource" id="Resource_ulfrr"]
 script = ExtResource("17_p0lv4")
@@ -51,8 +47,38 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
+[sub_resource type="Resource" id="Resource_p1mk4"]
+script = ExtResource("20_cpxgo")
+Team = 2
+
+[sub_resource type="Resource" id="Resource_j83ma"]
+script = ExtResource("21_unsqn")
+Flags = Array[ExtResource("20_cpxgo")]([SubResource("Resource_p1mk4")])
+IsPriorityFlag = false
+RememberTarget = false
+
 [sub_resource type="Resource" id="Resource_h56u6"]
 script = ExtResource("12_0ss6n")
+
+[sub_resource type="Resource" id="Resource_qj8tr"]
+script = ExtResource("20_cpxgo")
+Team = 2
+
+[sub_resource type="Resource" id="Resource_0frwo"]
+script = ExtResource("21_unsqn")
+Flags = Array[ExtResource("20_cpxgo")]([SubResource("Resource_qj8tr")])
+IsPriorityFlag = false
+RememberTarget = false
+
+[sub_resource type="Resource" id="Resource_u35vd"]
+script = ExtResource("20_cpxgo")
+Team = 2
+
+[sub_resource type="Resource" id="Resource_5k6yt"]
+script = ExtResource("21_unsqn")
+Flags = Array[ExtResource("20_cpxgo")]([SubResource("Resource_u35vd")])
+IsPriorityFlag = false
+RememberTarget = false
 
 [sub_resource type="Resource" id="Resource_oau40"]
 script = ExtResource("17_p0lv4")
@@ -77,9 +103,6 @@ script = ExtResource("17_p0lv4")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
-
-[sub_resource type="Resource" id="Resource_anryn"]
-script = ExtResource("12_0ss6n")
 
 [sub_resource type="Resource" id="Resource_ycudw"]
 script = ExtResource("17_p0lv4")
@@ -202,6 +225,21 @@ map = NodePath("../..")
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="Spawn_WildNecromancer" type="Sprite2D" parent="Spawners"]
+position = Vector2(512, 256)
+texture = ExtResource("6_cu7r5")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_dklm8")
+UnitToSpawn = ExtResource("19_7ecbv")
+UnitLevel = 7
+PreAppliedEffects = Array[ExtResource("12_11jmj")]([ExtResource("13_mjieb")])
+Position = Vector2i(8, 4)
+AIBehavior = ExtResource("12_4isph")
+AggroBehavior = SubResource("Resource_anryn")
+
 [node name="Spawn_CorpseChimera" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 512)
 texture = ExtResource("6_cu7r5")
@@ -213,7 +251,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("18_7x2mb")
 UnitLevel = 4
 Position = Vector2i(10, 8)
-AIBehavior = SubResource("Resource_5bae1")
+AIBehavior = ExtResource("18_g67wg")
 AggroBehavior = SubResource("Resource_ulfrr")
 
 [node name="Spawn_CorpseChimera2" type="Sprite2D" parent="Spawners"]
@@ -227,7 +265,7 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("18_7x2mb")
 UnitLevel = 4
 Position = Vector2i(6, 8)
-AIBehavior = SubResource("Resource_5bae1")
+AIBehavior = ExtResource("18_g67wg")
 AggroBehavior = SubResource("Resource_olt3l")
 
 [node name="Spawn_WolfMother" type="Sprite2D" parent="Spawners"]
@@ -239,10 +277,10 @@ vframes = 4
 frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("8_joda4")
-UnitLevel = 6
+UnitLevel = 4
 Position = Vector2i(8, 2)
 Allegiance = 4
-AIBehavior = ExtResource("13_yq0oq")
+AIBehavior = SubResource("Resource_j83ma")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners"]
@@ -254,10 +292,10 @@ vframes = 4
 frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("15_g5vum")
-UnitLevel = 6
+UnitLevel = 4
 Position = Vector2i(7, 1)
 Allegiance = 4
-AIBehavior = ExtResource("13_yq0oq")
+AIBehavior = SubResource("Resource_0frwo")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_WolfPup2" type="Sprite2D" parent="Spawners"]
@@ -269,10 +307,10 @@ vframes = 4
 frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("15_g5vum")
-UnitLevel = 6
+UnitLevel = 4
 Position = Vector2i(9, 1)
 Allegiance = 4
-AIBehavior = ExtResource("13_yq0oq")
+AIBehavior = SubResource("Resource_5k6yt")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners"]
@@ -365,20 +403,6 @@ Enabled = false
 AIBehavior = ExtResource("18_g67wg")
 AggroBehavior = SubResource("Resource_ajtkb")
 
-[node name="Spawn_AdultZolf2" type="Sprite2D" parent="Spawners"]
-position = Vector2(512, 256)
-texture = ExtResource("6_cu7r5")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_dklm8")
-UnitToSpawn = ExtResource("16_sm0cq")
-UnitLevel = 5
-Position = Vector2i(8, 4)
-AIBehavior = ExtResource("20_7hdmx")
-AggroBehavior = SubResource("Resource_anryn")
-
 [node name="Spawn_AdultZolf3" type="Sprite2D" parent="Spawners"]
 position = Vector2(192, 192)
 texture = ExtResource("6_cu7r5")
@@ -440,6 +464,7 @@ AIBehavior = ExtResource("20_7hdmx")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_Zolf5" type="Sprite2D" parent="Spawners"]
+visible = false
 position = Vector2(576, 256)
 texture = ExtResource("6_cu7r5")
 centered = false
@@ -450,10 +475,12 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("14_3hk2d")
 UnitLevel = 5
 Position = Vector2i(9, 4)
+Enabled = false
 AIBehavior = ExtResource("20_7hdmx")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_Zolf6" type="Sprite2D" parent="Spawners"]
+visible = false
 position = Vector2(448, 256)
 texture = ExtResource("6_cu7r5")
 centered = false
@@ -464,21 +491,8 @@ script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("14_3hk2d")
 UnitLevel = 5
 Position = Vector2i(7, 4)
+Enabled = false
 AIBehavior = ExtResource("20_7hdmx")
-AggroBehavior = SubResource("Resource_anryn")
-
-[node name="Spawn_WildNecromancer" type="Sprite2D" parent="Spawners"]
-position = Vector2(512, 320)
-texture = ExtResource("6_cu7r5")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_dklm8")
-UnitToSpawn = ExtResource("19_7ecbv")
-UnitLevel = 7
-Position = Vector2i(8, 5)
-AIBehavior = ExtResource("18_g67wg")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Variants" type="Node2D" parent="."]

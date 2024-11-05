@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbialq4cw38re"]
+[gd_scene load_steps=5 format=3 uid="uid://bbialq4cw38re"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Managers/Juice.gd" id="1_41id7"]
 [ext_resource type="PackedScene" uid="uid://cnv8h0l0c4s6d" path="res://RESOURCES/Juice/damage_popup.tscn" id="2_g4ic6"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="3_c7nvh"]
+[ext_resource type="PackedScene" uid="uid://ckf4unljro6gn" path="res://RESOURCES/Juice/effect_popup.tscn" id="4_6yi6b"]
 
 [node name="Juice" type="Node2D"]
 script = ExtResource("1_41id7")
 damagePopup = ExtResource("2_g4ic6")
 damagePreview = ExtResource("3_c7nvh")
+effectPopup = ExtResource("4_6yi6b")
 combatSequenceCooloffTimer = 0.6
 combatSequenceDefenseOffset = 0.5

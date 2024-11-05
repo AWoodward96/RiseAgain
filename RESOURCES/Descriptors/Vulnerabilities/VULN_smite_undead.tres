@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DescriptorMultiplier" load_steps=3 format=3 uid="uid://b5xj74xra4bf4"]
 
-[ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="1_amgea"]
+[ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="1_4up0e"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="2_67swt"]
 
 [resource]
 script = ExtResource("2_67swt")
-Descriptor = ExtResource("1_amgea")
+Descriptor = ExtResource("1_4up0e")
 Multiplier = 2.0

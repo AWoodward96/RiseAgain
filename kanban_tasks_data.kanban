@@ -23,7 +23,8 @@
 			"tasks": [
 				"67b3b4e5-903b-4227-b386-6db63a3432b4",
 				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
-				"801cb78a-6aaf-4399-87aa-18537f529d8b"
+				"801cb78a-6aaf-4399-87aa-18537f529d8b",
+				"780512ad-4329-4c0d-934c-aee07a8ca0b8"
 			]
 		},
 		{
@@ -37,7 +38,9 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"c76b9987-237c-485e-ac4f-5877412707ad"
+				"5356146f-b401-4209-b629-476ef1443d9a",
+				"ff56de3b-ff56-4ff9-a028-9429fd6665a7",
+				"be6a0076-c6aa-479c-afac-c7f33b09c086"
 			]
 		},
 		{
@@ -45,6 +48,7 @@
 			"title": "Done",
 			"tasks": [
 				"c522e9e5-a53d-4b28-97fe-5b160086558f",
+				"c76b9987-237c-485e-ac4f-5877412707ad",
 				"1804c004-ba25-436b-801b-c661759ae86d",
 				"556cdf90-bb21-491c-ab85-1d7690cf31ac",
 				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
@@ -590,11 +594,11 @@
 			"steps": [
 				{
 					"details": "Fix Corpse Chimera's AI",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Fix 3 Range Unit Chjeating Their Range",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -621,6 +625,34 @@
 					"done": true
 				}
 			]
+		},
+		{
+			"uuid": "780512ad-4329-4c0d-934c-aee07a8ca0b8",
+			"title": "Consider: Increase of Mana Per Turn",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "5356146f-b401-4209-b629-476ef1443d9a",
+			"title": "Weapons in the manage items menu aren't working",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "ff56de3b-ff56-4ff9-a028-9429fd6665a7",
+			"title": "Map 4's neutral units play the  game by themselves",
+			"description": "They're level 7? Maybe don't do that.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "be6a0076-c6aa-479c-afac-c7f33b09c086",
+			"title": "Move around spawn locations for map 5 - they're too far away from the action",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
 		}
 	],
 	"layout": {

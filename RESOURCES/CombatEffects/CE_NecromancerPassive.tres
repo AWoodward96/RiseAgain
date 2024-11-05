@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="WildNecroPassive" load_steps=17 format=3 uid="uid://dk6nu2fomck5p"]
+
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="1_eva2r"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="2_xx4p3"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/UnitPair.gd" id="3_od7cj"]
+[ext_resource type="Resource" uid="uid://btjy0lp33oaqu" path="res://RESOURCES/Units/Enemy/AdultWolf/UT_AdultWolf.tres" id="4_u2bos"]
+[ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="5_8v2qm"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="6_a1eqf"]
+[ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="7_xa77d"]
+[ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_3dqbr"]
+[ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="9_32py0"]
+[ext_resource type="Texture2D" uid="uid://yqokd4g4dbxf" path="res://ART/Icons/Ability/Equippable/wolfbane.png" id="9_81m5i"]
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/WildNecroPassiveTemplate.gd" id="10_0loc0"]
+
+[sub_resource type="Resource" id="Resource_xw06q"]
+script = ExtResource("2_xx4p3")
+
+[sub_resource type="Resource" id="Resource_ais6r"]
+script = ExtResource("3_od7cj")
+Unit1 = ExtResource("4_u2bos")
+Unit2 = ExtResource("5_8v2qm")
+
+[sub_resource type="Resource" id="Resource_as0qu"]
+script = ExtResource("3_od7cj")
+Unit1 = ExtResource("6_a1eqf")
+Unit2 = ExtResource("7_xa77d")
+
+[sub_resource type="Resource" id="Resource_mox3i"]
+script = ExtResource("3_od7cj")
+Unit1 = ExtResource("8_3dqbr")
+Unit2 = ExtResource("7_xa77d")
+
+[sub_resource type="Resource" id="Resource_ic254"]
+script = ExtResource("3_od7cj")
+Unit1 = ExtResource("9_32py0")
+Unit2 = ExtResource("5_8v2qm")
+
+[resource]
+script = ExtResource("10_0loc0")
+UnitPairs = Array[ExtResource("3_od7cj")]([SubResource("Resource_ais6r"), SubResource("Resource_as0qu"), SubResource("Resource_mox3i"), SubResource("Resource_ic254")])
+SpawnedUnitAI = ExtResource("1_eva2r")
+SpawnedUnitAggroBehavior = SubResource("Resource_xw06q")
+AffectedTargets = 0
+Turns = -1
+loc_name = "ce_necropassive_name"
+loc_desc = "ce_necropassive_desc"
+loc_icon = ExtResource("9_81m5i")

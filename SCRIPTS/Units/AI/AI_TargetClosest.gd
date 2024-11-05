@@ -13,7 +13,7 @@ class_name AITargetClosest
 
 var targetUnit : UnitInstance
 
-var item : Item
+var weapon : UnitUsable
 
 var pathfindingOptions : Array[PathfindingOption]
 
@@ -29,7 +29,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
 	GetEquippedItem()
-	if item == null:
+	if weapon == null:
 		unit.QueueEndTurn()
 		return
 
@@ -148,7 +148,7 @@ func SortPathfindingOptions(path1 : PathfindingOption, path2 : PathfindingOption
 	return path1.PathSize < path2.PathSize
 
 func GetActionableTiles():
-	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, item.GetRange())
+	var tilesWithinRange = grid.GetTilesWithinRange(targetUnit.GridPosition, weapon.GetRange())
 	tilesWithinRange = tilesWithinRange.filter(func(tile) : return tile.Occupant == null || (tile.Occupant == unit))
 	tilesWithinRange = tilesWithinRange.filter(func(tile) : return !tile.IsWall)
 	return tilesWithinRange
@@ -164,24 +164,24 @@ func FilterTilesByPath(_actionableTiles : Array[Tile]):
 			lowest = path.size()
 
 func GetEquippedItem():
-	item = unit.EquippedItem
+	weapon = unit.EquippedWeapon
 
 func TryCombat():
 	if targetUnit == null:
 		unit.QueueEndTurn()
 		return
 
-	if !item.IsWithinRange(selectedTile.Position, targetUnit.GridPosition):
+	if !weapon.IsWithinRange(selectedTile.Position, targetUnit.GridPosition):
 		unit.QueueEndTurn()
 		return
 
 	## default to the first ability
-	if item != null && item.UsableDamageData != null:
-		var log = ActionLog.Construct(map.grid, unit, item)
+	if weapon != null && weapon.UsableDamageData != null:
+		var log = ActionLog.Construct(map.grid, unit, weapon)
 		log.actionOriginTile = targetUnit.CurrentTile # This is the target we're attacking, so the origin is here
 		log.sourceTile = selectedTile	# Remember, we're pathfinding to this tile so the source has to be from here
 		log.affectedTiles.append(targetUnit.CurrentTile.AsTargetData())
-		log.damageData = item.UsableDamageData
+		log.damageData = weapon.UsableDamageData
 
 		# The unit still needs to get to their destination first, so queue it up as a sequence
 		unit.QueueDelayedCombatAction(log)

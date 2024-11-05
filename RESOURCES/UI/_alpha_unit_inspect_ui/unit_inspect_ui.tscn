@@ -906,7 +906,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AbilityPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability" node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "focusCostText", "rangeText", "usageLeft")]
+[node name="AbilityPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability" node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "focusCostText", "rangeText")]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 offset_right = 604.0
@@ -917,7 +917,6 @@ abilityDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
 abilityIcon = NodePath("Weapon/TextureRect")
 focusCostText = NodePath("Weapon/Control/FocusCostParent/FocusCost")
 rangeText = NodePath("Weapon/Control/RangeParent/HBoxContainer/RangeAmt")
-usageLeft = NodePath("")
 
 [node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel"]
 layout_mode = 2

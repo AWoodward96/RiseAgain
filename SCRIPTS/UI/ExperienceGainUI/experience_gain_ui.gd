@@ -69,7 +69,7 @@ func ShowLevelUpData():
 		var oldValue = currentUnit.GetWorkingStat(stats)
 		if statChanges.has(stats):
 			oldValue -= statChanges[stats]
-		entry.statlabel.text = str(oldValue)
+		entry.statValue.text = str(oldValue)
 
 	await root.get_tree().create_timer(statUpDelayTime).timeout
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DescriptorMultiplier" load_steps=3 format=3 uid="uid://bugcne8hpbrlr"]
+
+[ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="1_gmiaj"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="2_7g2bk"]
+
+[resource]
+script = ExtResource("2_7g2bk")
+Descriptor = ExtResource("1_gmiaj")
+Multiplier = 2.0

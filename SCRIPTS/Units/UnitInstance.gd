@@ -431,15 +431,15 @@ func QueueTurnStartDelay():
 		PopAction()
 
 func DoHeal(_result : ActionResult):
-	ModifyHealth(_result.HealthDelta)
+	ModifyHealth(_result.HealthDelta, _result)
 
 func DoCombat(_result : ActionResult, _instantaneous : bool = false):
 	if _result.Miss:
 		Juice.CreateMissPopup(CurrentTile)
 	else:
-		ModifyHealth(_result.HealthDelta, _instantaneous)
+		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
-func ModifyHealth(_netHealthChange, _instantaneous : bool = false):
+func ModifyHealth(_netHealthChange, _context : ActionResult, _instantaneous : bool = false):
 	if _netHealthChange < 0:
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
@@ -456,10 +456,10 @@ func ModifyHealth(_netHealthChange, _instantaneous : bool = false):
 		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
 		# You'll need to wait for one to be finished before the other one starts
 		if !healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
-			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange))
+			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange, _context))
 
 	else:
-		OnModifyHealthTweenComplete(_netHealthChange)
+		OnModifyHealthTweenComplete(_netHealthChange, _context)
 	pass
 
 func UpdateHealthBarTween(value):
@@ -474,7 +474,7 @@ func ModifyFocus(_netFocusChange):
 	healthBar.UpdateFocusUI()
 	OnStatUpdated.emit()
 
-func OnModifyHealthTweenComplete(_delta):
+func OnModifyHealthTweenComplete(_delta, _context : ActionResult):
 	# you have to disconnect this because the nethealth change is a bound variable
 	if healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
 		healthBar.HealthBarTweenCallback.disconnect(OnModifyHealthTweenComplete)
@@ -493,7 +493,7 @@ func OnModifyHealthTweenComplete(_delta):
 	if _delta < 0 && AggroType is AggroOnDamage:
 		IsAggrod = true
 
-	CheckDeath()
+	CheckDeath(_context)
 
 func DealDamageToArmor(_damage : int):
 	# Damage dealt to armor should always be signed - and therefore should always be negative
@@ -559,9 +559,9 @@ func ApplyStatModifier(_statDef : StatDef):
 	UpdateDerivedStats()
 	OnStatUpdated.emit()
 
-func CheckDeath():
+func CheckDeath(_context : ActionResult):
 	if currentHealth <= 0:
-		map.OnUnitDeath(self)
+		map.OnUnitDeath(self, _context)
 
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible

@@ -30,7 +30,8 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	_unit.position += dst
 
 	if sourceHealthDelta != 0:
-		unit.ModifyHealth(sourceHealthDelta)
+		# WARNING: I don't actually know the best way to process this. Fix this later
+		unit.ModifyHealth(sourceHealthDelta, Log.actionResults[0])
 
 	unit.ModifyFocus(focusDelta)
 	TimerLock = true

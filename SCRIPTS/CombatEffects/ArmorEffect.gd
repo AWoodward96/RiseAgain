@@ -21,8 +21,10 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 	armorInstance.Template = self
 	armorInstance.SourceUnit = _sourceUnit
 	armorInstance.AffectedUnit = _affectedUnit
-	armorInstance.AbilitySource = _actionLog.ability
 	armorInstance.TurnsRemaining = Turns
+
+	if _actionLog != null:
+		armorInstance.AbilitySource = _actionLog.ability
 
 	var value = FlatValue
 	if UseDamageDealtAsValue && _actionLog != null:
