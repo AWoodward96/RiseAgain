@@ -128,48 +128,33 @@ texture = ExtResource("9_q01q6")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1088, 640)
-Position = Vector2i(17, 10)
+position = Vector2(1024, 448)
+Position = Vector2i(16, 7)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1152, 640)
-Position = Vector2i(18, 10)
+position = Vector2(1152, 448)
+Position = Vector2i(18, 7)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1216, 640)
-Position = Vector2i(19, 10)
+position = Vector2(960, 576)
+Position = Vector2i(15, 9)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1088, 704)
-Position = Vector2i(17, 11)
+position = Vector2(1024, 640)
+Position = Vector2i(16, 10)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1152, 704)
-Position = Vector2i(18, 11)
+position = Vector2(1088, 512)
+Position = Vector2i(17, 8)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper6" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1216, 704)
-Position = Vector2i(19, 11)
-map = NodePath("../..")
-
-[node name="StartingPositionHelper7" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1088, 768)
-Position = Vector2i(17, 12)
-map = NodePath("../..")
-
-[node name="StartingPositionHelper8" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1152, 768)
-Position = Vector2i(18, 12)
-map = NodePath("../..")
-
-[node name="StartingPositionHelper9" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1216, 768)
-Position = Vector2i(19, 12)
+position = Vector2(1152, 512)
+Position = Vector2i(18, 8)
 map = NodePath("../..")
 
 [node name="Spawners" type="Node2D" parent="."]

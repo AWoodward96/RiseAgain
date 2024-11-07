@@ -24,80 +24,38 @@
 				"67b3b4e5-903b-4227-b386-6db63a3432b4",
 				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
 				"801cb78a-6aaf-4399-87aa-18537f529d8b",
-				"780512ad-4329-4c0d-934c-aee07a8ca0b8"
+				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
+				"cfbec417-e205-448e-89cf-dad74ef59201"
 			]
 		},
 		{
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"cfbec417-e205-448e-89cf-dad74ef59201"
+				"922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
+				"468afdb4-e218-4636-8ff3-a92ed108ff73",
+				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
+				"318dee21-255e-471a-a66c-f75daeb9659a",
+				"579dad1e-a189-47eb-8525-df963722d0ef"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"5356146f-b401-4209-b629-476ef1443d9a",
-				"ff56de3b-ff56-4ff9-a028-9429fd6665a7",
 				"be6a0076-c6aa-479c-afac-c7f33b09c086"
 			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
 			"title": "Done",
-			"tasks": [
-				"c522e9e5-a53d-4b28-97fe-5b160086558f",
-				"c76b9987-237c-485e-ac4f-5877412707ad",
-				"1804c004-ba25-436b-801b-c661759ae86d",
-				"556cdf90-bb21-491c-ab85-1d7690cf31ac",
-				"6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
-				"26ec4286-6898-4bb3-9de8-d72996f84a10",
-				"94dc1f54-071d-45da-a0dc-70e6a13ba229",
-				"4f4570a4-9462-472b-af6f-bd31fe41f5b2",
-				"25c57aad-1b4f-4b19-8d92-ed0c423d9327",
-				"4f365f16-ea68-466b-a747-866899d8bb7a",
-				"56d288e7-8c62-447a-a8d5-090668c4a68e",
-				"5a902444-9adc-43eb-80df-f7f4cd78ea64",
-				"f9fbaece-cb9d-49c0-a0e1-f9f7930a06d8",
-				"66ddd42b-d9f6-485b-9df2-2720028fc06b",
-				"096acb38-436e-447a-b02c-844bb84bbc37",
-				"27270daa-4a13-4cd4-aac7-cd2217c3b304",
-				"97f81b19-7070-41a9-b91f-b89262aba694",
-				"b00b7028-484d-4c06-96b9-d774c29150de",
-				"3686a226-c8f2-4ed2-bf96-9cbd3e6e91f7",
-				"a066870f-4069-43fa-b64a-a28d5e3ba634",
-				"6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
-				"a703b63d-1315-4950-bb02-f6dd6f4880ce",
-				"5da4adea-da09-4b9f-803b-13078f8c3319",
-				"9885093d-540a-4082-95d0-21690a89185c",
-				"6bc3ab55-8902-48f0-bcc6-b61462525047",
-				"55a2e245-7bf4-4d18-a1fd-87c8ca7c14e3",
-				"f27b346d-03e2-4129-8b4a-85eba6e5a59f",
-				"7af6f4a1-4344-4a93-8712-b673c2df1150",
-				"2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
-				"7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d",
-				"a9b040dc-b1a3-477d-95cf-45fa15894bca",
-				"8cad8b9f-c2e6-4eaf-9db4-b23bfd1f3dcd",
-				"20f6b037-583a-449d-b665-5b653ad80f2c",
-				"f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
-				"a19eee9c-c6ce-41f4-bac6-d2772eab3403",
-				"fb165e11-ee03-492e-96bc-731da392713c",
-				"cf692c99-b3c1-41a1-a537-0e9a0c04ceeb",
-				"9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
-				"2f3fbf88-5ce2-4a4d-88b1-106bccc3a102",
-				"fa49ca5b-f21d-4292-adb9-5a8a0aa2d183",
-				"1d2aa347-7ae4-4662-9ce0-76dbcc9f6230",
-				"6adf1576-2b40-4c77-ac53-39156757ca3c",
-				"ec5f86e0-5833-4f41-91ef-f90764a61323"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f",
-				"954cc5d6-845f-408e-b8c0-5dc5413b83b2"
+				"03e18191-548c-4e16-aac3-787401d9675f"
 			]
 		}
 	],
@@ -115,26 +73,6 @@
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
-		},
-		{
-			"uuid": "5da4adea-da09-4b9f-803b-13078f8c3319",
-			"title": "Unit Inspect UI",
-			"description": "",
-			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": [
-				{
-					"details": "Move Affinities to Inventory section",
-					"done": true
-				},
-				{
-					"details": "Add Health - Focus - and EXP",
-					"done": true
-				},
-				{
-					"details": "Add icon for unit sprite over portrait",
-					"done": true
-				}
-			]
 		},
 		{
 			"uuid": "67b3b4e5-903b-4227-b386-6db63a3432b4",
@@ -168,156 +106,9 @@
 			]
 		},
 		{
-			"uuid": "6bbe5a1a-c20c-4811-9d1e-36f45165b2c2",
-			"title": "Seriously rethink how spawners are going to work long term",
-			"description": "Whenever I move anything in the project, refrences to resources break everywhere. When I moved the AI and Aggro scripts into their own folder, all of the Spawners broke because they could no longer find a reference to the script anymore. On a better game engine this would be handled automatically, unfortunately I went with the free option so now I have to fix this.\nIf every map in the game breaks because I feel like moving a single script, then the game will never be done.",
-			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": []
-		},
-		{
-			"uuid": "7e2d1fdc-79c2-42ae-8b6f-0be10af20a7d",
-			"title": "Update Localization to allow for programmer defined variables",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "c522e9e5-a53d-4b28-97fe-5b160086558f",
-			"title": "Build Experience System w/ Import Func",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "2dc5ab8a-5ae4-48a2-9e14-819c92aaace0",
-			"title": "Create Experience Gain UI",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "7af6f4a1-4344-4a93-8712-b673c2df1150",
-			"title": "Create Level Up UI",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "6aa830c6-e3f6-40ef-81f1-61524ae0b60b",
-			"title": "Implement Level Up Functionality",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "20f6b037-583a-449d-b665-5b653ad80f2c",
-			"title": "Create Focus System",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "f8a7b199-f6a8-4848-9463-1d1f6de1dc67",
-			"title": "Create Ability System",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "a19eee9c-c6ce-41f4-bac6-d2772eab3403",
-			"title": "Make Abilities",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Archer Ability",
-					"done": true
-				},
-				{
-					"details": "Dark Mage Ability",
-					"done": true
-				},
-				{
-					"details": "Elemental Mage Ability",
-					"done": true
-				},
-				{
-					"details": "Light Mage Ability",
-					"done": true
-				},
-				{
-					"details": "Mercenary Ability",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "fa49ca5b-f21d-4292-adb9-5a8a0aa2d183",
-			"title": "BIG: Defending units can counterattack more than once",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "9aa5236c-bbbb-43d8-8d72-f292a2f9dcb1",
-			"title": "Take defending out of the game, and let everyone fight back. See how it affects the gameplay",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "fb165e11-ee03-492e-96bc-731da392713c",
-			"title": "Make directional targeting functional",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "801cb78a-6aaf-4399-87aa-18537f529d8b",
 			"title": "Change Stats to Stat Blocks",
 			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "cf692c99-b3c1-41a1-a537-0e9a0c04ceeb",
-			"title": "Change the shaped targeting to their own resources",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "2f3fbf88-5ce2-4a4d-88b1-106bccc3a102",
-			"title": "Make Abilities Locked and Unlockable",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "1d2aa347-7ae4-4662-9ce0-76dbcc9f6230",
-			"title": "BUG: Fix focus not being capped",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "6adf1576-2b40-4c77-ac53-39156757ca3c",
-			"title": "BUG: Fix HP bars not going away after action is completed",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "ec5f86e0-5833-4f41-91ef-f90764a61323",
-			"title": "BUG: Zombie took a marathon sprint around the entirity of map 4, just to hit my mercenary",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "9885093d-540a-4082-95d0-21690a89185c",
-			"title": "Level scaling needs to be looked at",
-			"description": "I managed tro get my Dark Mage to level 10 by map 5, and he has 31 hp and takes no fucking damage lmao\nMaybe also curb the dark mages armor scaling",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
@@ -329,145 +120,8 @@
 			"steps": []
 		},
 		{
-			"uuid": "a9b040dc-b1a3-477d-95cf-45fa15894bca",
-			"title": "Make trees that can be cut down",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "8cad8b9f-c2e6-4eaf-9db4-b23bfd1f3dcd",
-			"title": "Show RoShamBo advantage",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "b00b7028-484d-4c06-96b9-d774c29150de",
-			"title": "Bug: Focus UI can become outdated mid-combat",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "cfbec417-e205-448e-89cf-dad74ef59201",
 			"title": "Inspect Tree's to see their hp",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "66ddd42b-d9f6-485b-9df2-2720028fc06b",
-			"title": "Soul Cleave applies Debuff to Self for some reason?",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "56d288e7-8c62-447a-a8d5-090668c4a68e",
-			"title": "Beam Attack! costs 4 focus. The Elemental Mage only has 3",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "6bc3ab55-8902-48f0-bcc6-b61462525047",
-			"title": "Great Cleave not loading aggressive stat",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "f27b346d-03e2-4129-8b4a-85eba6e5a59f",
-			"title": "Leap costs 0",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "55a2e245-7bf4-4d18-a1fd-87c8ca7c14e3",
-			"title": "heroic leaps damage makes no sense. Somehow it's 5?",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "a703b63d-1315-4950-bb02-f6dd6f4880ce",
-			"title": "dark pact has no item name or icon",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "954cc5d6-845f-408e-b8c0-5dc5413b83b2",
-			"title": "give corpse chimera different items",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "27270daa-4a13-4cd4-aac7-cd2217c3b304",
-			"title": "Maybe look at nerfing affinity bonus damage",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "a066870f-4069-43fa-b64a-a28d5e3ba634",
-			"title": "Make a Cheat menu",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "f9fbaece-cb9d-49c0-a0e1-f9f7930a06d8",
-			"title": "Implement campsites",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "26ec4286-6898-4bb3-9de8-d72996f84a10",
-			"title": "Implement the new Items",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Remove double logic from combat flow",
-					"done": false
-				},
-				{
-					"details": "Implement vulnerary as a Tactical",
-					"done": true
-				},
-				{
-					"details": "Replace all starting items with new Auto-Attack abilities",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "4f365f16-ea68-466b-a747-866899d8bb7a",
-			"title": "Implement Prep-Phase team inspection and item moving",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "25c57aad-1b4f-4b19-8d92-ed0c423d9327",
-			"title": "Update Item Importer to become the new Ability importer",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Also make sure the importer actually still works",
-					"done": false
-				}
-			]
-		},
-		{
-			"uuid": "94dc1f54-071d-45da-a0dc-70e6a13ba229",
-			"title": "Clean up the Item Selection UI - delete it",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
@@ -500,133 +154,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "97f81b19-7070-41a9-b91f-b89262aba694",
-			"title": "vitality granted from equipping items does not increase health",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "3686a226-c8f2-4ed2-bf96-9cbd3e6e91f7",
-			"title": "counter-attacks aren't granting exp",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "096acb38-436e-447a-b02c-844bb84bbc37",
-			"title": "corpse chimera is responding to abilities",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "4f4570a4-9462-472b-af6f-bd31fe41f5b2",
-			"title": "Item Reward Screen Grant is deleting items",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "5a902444-9adc-43eb-80df-f7f4cd78ea64",
-			"title": "Item Reward Screen can't send to convoy",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "1804c004-ba25-436b-801b-c661759ae86d",
-			"title": "New task",
-			"description": "Implement Feedback from Playtest",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": [
-				{
-					"details": "Update Inspect UI",
-					"done": true
-				},
-				{
-					"details": "Change format of Stat Block because -4 looks like minus 4",
-					"done": true
-				},
-				{
-					"details": "Make a popup after the campfire saying your party was healed",
-					"done": true
-				},
-				{
-					"details": "You can select a unit in a heazl animation and make them do stuff while in an action",
-					"done": true
-				},
-				{
-					"details": "Smite isn't importing the vulnerability",
-					"done": true
-				},
-				{
-					"details": "Map 4 is too big",
-					"done": true
-				},
-				{
-					"details": "Darken the distructable trees so that the walkable areas stand out more",
-					"done": true
-				},
-				{
-					"details": "lower the hp on the zolfs",
-					"done": true
-				},
-				{
-					"details": "Wild Mages icon is wrong",
-					"done": true
-				},
-				{
-					"details": "Corpse Chimera's ai is broken on the final map",
-					"done": true
-				},
-				{
-					"details": "3 Range Units can cheat their range",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "c76b9987-237c-485e-ac4f-5877412707ad",
-			"title": "Implement a final boss that you actually like",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Fix Corpse Chimera's AI",
-					"done": true
-				},
-				{
-					"details": "Fix 3 Range Unit Chjeating Their Range",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "556cdf90-bb21-491c-ab85-1d7690cf31ac",
-			"title": "Update Inspect UI",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "3 Tabs:",
-					"done": true
-				},
-				{
-					"details": "Stat Tab",
-					"done": true
-				},
-				{
-					"details": "Weapon, Tactical, Ability tab",
-					"done": true
-				},
-				{
-					"details": "Items Tab",
-					"done": true
-				}
-			]
-		},
-		{
 			"uuid": "780512ad-4329-4c0d-934c-aee07a8ca0b8",
 			"title": "Consider: Increase of Mana Per Turn",
 			"description": "",
@@ -634,22 +161,43 @@
 			"steps": []
 		},
 		{
-			"uuid": "5356146f-b401-4209-b629-476ef1443d9a",
-			"title": "Weapons in the manage items menu aren't working",
+			"uuid": "be6a0076-c6aa-479c-afac-c7f33b09c086",
+			"title": "Move around spawn locations for map 5 - they're too far away from the action",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
 		{
-			"uuid": "ff56de3b-ff56-4ff9-a028-9429fd6665a7",
-			"title": "Map 4's neutral units play the  game by themselves",
-			"description": "They're level 7? Maybe don't do that.",
+			"uuid": "579dad1e-a189-47eb-8525-df963722d0ef",
+			"title": "Three Maps: High Route 0-3",
+			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		},
 		{
-			"uuid": "be6a0076-c6aa-479c-afac-c7f33b09c086",
-			"title": "Move around spawn locations for map 5 - they're too far away from the action",
+			"uuid": "318dee21-255e-471a-a66c-f75daeb9659a",
+			"title": "Three Maps: High Route 4-6",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2d6e1241-b10d-406e-895c-e7297a8cca8b",
+			"title": "Three Maps: Low Route 0-3",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "468afdb4-e218-4636-8ff3-a92ed108ff73",
+			"title": "Three Maps: Low Route 4-6",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
+			"title": "Two Maps: Connections T2",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
