@@ -361,13 +361,14 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile) :
+func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile, _speedOverride : int = -1) :
 	if _route == null || _route.size() == 0:
 		return
 
 	var action = UnitMoveAction.new()
 	action.Route = _route
 	action.DestinationTile = _tile
+	action.SpeedOverride = _speedOverride
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()

@@ -16,7 +16,7 @@ func _ready():
 	pass
 
 
-func _process(delta: float):
+func _process(_delta: float):
 	if InputManager.inputDown[1]:
 		ShowPanel(openPanelIndex + 1)
 	if InputManager.inputDown[3]:

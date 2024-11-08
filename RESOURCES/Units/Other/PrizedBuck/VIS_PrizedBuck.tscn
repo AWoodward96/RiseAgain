@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d108irg1t3j5n"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_rdgx8"]
-[ext_resource type="Texture2D" uid="uid://olxft3bee4j4" path="res://ART/Icons/Units/prized_buck.png" id="2_n28vh"]
+[ext_resource type="Texture2D" uid="uid://olxft3bee4j4" path="res://ART/Icons/Units/prizedbuck.png" id="2_n28vh"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_ie00c"]
 [ext_resource type="AnimationLibrary" uid="uid://bj02d4u5cj7x7" path="res://ART/Animations/Units/UnitNeutralLibrary.res" id="4_kxa5j"]
 

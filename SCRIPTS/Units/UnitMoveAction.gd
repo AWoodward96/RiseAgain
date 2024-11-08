@@ -5,6 +5,7 @@ var Route : PackedVector2Array
 var DestinationTile : Tile
 var MovementIndex
 var MovementVelocity
+var SpeedOverride : int = -1
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	MovementIndex = 0
@@ -20,6 +21,9 @@ func _Enter(_unit : UnitInstance, _map : Map):
 
 func _Execute(_unit : UnitInstance, _delta):
 	var speed = GameManager.GameSettings.CharacterTileMovemementSpeed
+	if SpeedOverride != -1:
+		speed = SpeedOverride
+
 	var destination = Route[MovementIndex]
 	var distance = _unit.position.distance_squared_to(destination)
 	MovementVelocity = (destination - _unit.position).normalized() * speed

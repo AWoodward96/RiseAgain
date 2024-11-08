@@ -9,7 +9,6 @@
 [ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="7_xa77d"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="8_3dqbr"]
 [ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="9_32py0"]
-[ext_resource type="Texture2D" uid="uid://yqokd4g4dbxf" path="res://ART/Icons/Ability/Equippable/wolfbane.png" id="9_81m5i"]
 [ext_resource type="Script" path="res://SCRIPTS/CombatEffects/WildNecroPassiveTemplate.gd" id="10_0loc0"]
 
 [sub_resource type="Resource" id="Resource_xw06q"]
@@ -35,6 +34,9 @@ script = ExtResource("3_od7cj")
 Unit1 = ExtResource("9_32py0")
 Unit2 = ExtResource("5_8v2qm")
 
+[sub_resource type="Resource" id="Resource_0qyru"]
+metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/wolfbane.png"
+
 [resource]
 script = ExtResource("10_0loc0")
 UnitPairs = Array[ExtResource("3_od7cj")]([SubResource("Resource_ais6r"), SubResource("Resource_as0qu"), SubResource("Resource_mox3i"), SubResource("Resource_ic254")])
@@ -44,4 +46,4 @@ AffectedTargets = 0
 Turns = -1
 loc_name = "ce_necropassive_name"
 loc_desc = "ce_necropassive_desc"
-loc_icon = ExtResource("9_81m5i")
+loc_icon = SubResource("Resource_0qyru")

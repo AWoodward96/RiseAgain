@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cg83y8wvfexv6"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_hkdvi"]
-[ext_resource type="Texture2D" uid="uid://bseonxdq2nqpy" path="res://ART/Icons/Units/wild_necro.png" id="2_7tqre"]
+[ext_resource type="Texture2D" uid="uid://bseonxdq2nqpy" path="res://ART/Icons/Units/wildnecromancer.png" id="2_7tqre"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_iyxuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2kg7bpf1mqb0"
-path="res://.godot/imported/adolescent_wolf.png-959da2b08c6cef66a009996eea4d352d.ctex"
+uid="uid://hq4kmipluqr1"
+path="res://.godot/imported/wolfpup.png-a7f50c6b4d385ee39b7a79bba3edee7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Units/adolescent_wolf.png"
-dest_files=["res://.godot/imported/adolescent_wolf.png-959da2b08c6cef66a009996eea4d352d.ctex"]
+source_file="res://ART/Icons/Units/wolfpup.png"
+dest_files=["res://.godot/imported/wolfpup.png-a7f50c6b4d385ee39b7a79bba3edee7e.ctex"]
 
 [params]
 

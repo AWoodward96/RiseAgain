@@ -130,7 +130,7 @@ cheat={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://RESOURCES/Localization/Rise Again Localization - Localization.en.translation", "res://RESOURCES/Localization/Rise Again Localization - Localization.es.translation")
+locale/translations=PackedStringArray("res://RESOURCES/Localization/RALocalization.en.translation")
 
 [rendering]
 

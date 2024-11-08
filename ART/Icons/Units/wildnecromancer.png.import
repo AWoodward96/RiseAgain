@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i63qlruqqjwh"
-path="res://.godot/imported/zolf_mother.png-ed49367a553182a9eca9685e44feede3.ctex"
+uid="uid://bseonxdq2nqpy"
+path="res://.godot/imported/wildnecromancer.png-c461d635caa9a709656496bd4120abcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Units/zolf_mother.png"
-dest_files=["res://.godot/imported/zolf_mother.png-ed49367a553182a9eca9685e44feede3.ctex"]
+source_file="res://ART/Icons/Units/wildnecromancer.png"
+dest_files=["res://.godot/imported/wildnecromancer.png-c461d635caa9a709656496bd4120abcf.ctex"]
 
 [params]
 

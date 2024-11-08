@@ -15,16 +15,15 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_y1hu7"]
 [ext_resource type="PackedScene" uid="uid://dd0hi5md1y0q8" path="res://RESOURCES/Units/Enemy/WolfMother/VIS_WolfMother.tscn" id="12_f5ner"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_yylga"]
-[ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolf_mother.png" id="13_pbk78"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_pk1ms"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_cl160"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_wilj7"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="17_om8fb"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_f5cvm"]
-[ext_resource type="Texture2D" uid="uid://ci67qx2wt4fay" path="res://ART/Icons/Ability/Equippable/wolf_tooth.png" id="19_h7snb"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_830g0"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_2a275"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_2tj6v"]
+[ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolfmother.png" id="23_347f6"]
 
 [sub_resource type="Resource" id="Resource_i7ud2"]
 script = ExtResource("2_ic2vg")
@@ -79,6 +78,9 @@ useDefendAction = true
 [sub_resource type="Resource" id="Resource_6ubox"]
 script = ExtResource("18_f5cvm")
 
+[sub_resource type="Resource" id="Resource_t4mns"]
+metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/wolf_tooth.png"
+
 [sub_resource type="Resource" id="Resource_8j4gf"]
 script = ExtResource("2_ic2vg")
 Template = ExtResource("3_3goip")
@@ -93,7 +95,7 @@ _bundled = {
 "node_count": 4,
 "node_paths": [NodePath("."), NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
-"variants": [ExtResource("15_cl160"), 1, 0.0, Array[ExtResource("16_wilj7")]([SubResource("Resource_qgrug"), SubResource("Resource_6ubox")]), true, "wolf_tooth", "weap_wolf_tooth_name", "weap_wolf_tooth_desc", ExtResource("19_h7snb"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_830g0"), 90.0, Array[ExtResource("2_ic2vg")]([SubResource("Resource_8j4gf")]), ExtResource("21_2a275"), ExtResource("3_3goip"), ExtResource("4_lwm1f"), 0.0, ExtResource("22_2tj6v")],
+"variants": [ExtResource("15_cl160"), 1, 0.0, Array[ExtResource("16_wilj7")]([SubResource("Resource_qgrug"), SubResource("Resource_6ubox")]), true, "wolf_tooth", "weap_wolf_tooth_name", "weap_wolf_tooth_desc", SubResource("Resource_t4mns"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_830g0"), 90.0, Array[ExtResource("2_ic2vg")]([SubResource("Resource_8j4gf")]), ExtResource("21_2a275"), ExtResource("3_3goip"), ExtResource("4_lwm1f"), 0.0, ExtResource("22_2tj6v")],
 "version": 3
 }
 
@@ -147,4 +149,4 @@ Descriptors = Array[ExtResource("12_yylga")]([ExtResource("10_dbrfp")])
 DebugName = "WolfMother"
 loc_DisplayName = "unit_wolfmother_name"
 loc_Description = "unit_wolfmother_desc"
-icon = ExtResource("13_pbk78")
+icon = ExtResource("23_347f6")

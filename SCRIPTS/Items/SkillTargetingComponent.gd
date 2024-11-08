@@ -71,10 +71,11 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 		if tile != null:
 			tileData.Tile = tile
 			tileData.AOEMultiplier = t.Multiplier
-			arr.append(tileData)
 
 			if tile.IsWall && stopShapeOnWall:
 				return arr
+
+			arr.append(tileData)
 
 	return arr
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dd0hi5md1y0q8"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_pf5gd"]
-[ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolf_mother.png" id="2_3ijpx"]
+[ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolfmother.png" id="2_3ijpx"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_5m0vx"]
 [ext_resource type="AnimationLibrary" uid="uid://bj02d4u5cj7x7" path="res://ART/Animations/Units/UnitNeutralLibrary.res" id="4_g1id5"]
 

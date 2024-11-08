@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="UnitSettingsTemplate" load_steps=8 format=3 uid="uid://b4u6518tnwvj6"]
+[gd_resource type="Resource" script_class="UnitSettingsTemplate" load_steps=11 format=3 uid="uid://b4u6518tnwvj6"]
 
+[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_665j3"]
 [ext_resource type="Script" path="res://SCRIPTS/Managers/UnitSettings.gd" id="1_a2dt2"]
 [ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_fb7ip"]
 [ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/DarkMage/UT_DarkMage.tres" id="2_3wj7i"]
@@ -7,8 +8,10 @@
 [ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="4_qg1gr"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="5_ms0k5"]
 [ext_resource type="PackedScene" uid="uid://ri0c7iffkrao" path="res://RESOURCES/Units/UnitInstance.tscn" id="6_tjdwd"]
+[ext_resource type="Resource" uid="uid://b58tp7xqbg5jr" path="res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres" id="7_fphg7"]
+[ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="8_laijs"]
 
 [resource]
 script = ExtResource("1_a2dt2")
 UnitInstancePrefab = ExtResource("6_tjdwd")
-AllyUnitManifest = Array[Resource("res://SCRIPTS/Units/UnitTemplate.gd")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5")])
+AllyUnitManifest = Array[ExtResource("1_665j3")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5"), ExtResource("7_fphg7"), ExtResource("8_laijs")])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dldom72alcqhn"
-path="res://.godot/imported/wolf_mother.png-727b643dc93f1db02caa9abe30273445.ctex"
+uid="uid://i63qlruqqjwh"
+path="res://.godot/imported/adultzolf.png-f9b30ae061151f8b49adb49ccb8f8858.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Units/wolf_mother.png"
-dest_files=["res://.godot/imported/wolf_mother.png-727b643dc93f1db02caa9abe30273445.ctex"]
+source_file="res://ART/Icons/Units/adultzolf.png"
+dest_files=["res://.godot/imported/adultzolf.png-f9b30ae061151f8b49adb49ccb8f8858.ctex"]
 
 [params]
 

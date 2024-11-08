@@ -1,0 +1,170 @@
+key,en
+weap_dark_pact_name,Dark Pact
+weap_dark_pact_desc,A curse on life itself that crumbles flesh to dust
+weap_iron_bow_desc,A reliable bow with okay accuracy and okay Attack. Range 2-3
+weap_iron_bow_name,Iron Bow
+weap_iron_sword_desc,A reliable blade with high accuracy but low Attack. Range 1
+weap_iron_sword_name,Iron Sword
+weap_magic_bolt_desc,A more advanced magic blast with lower accuracy but good SpAttack. Range 1-2
+weap_magic_bolt_name,Magic Bolt
+weap_mana_bolt_desc,A weaker tome of magic. Range 1-2
+weap_mana_bolt_name,Mana Bolt
+weap_steel_bow_desc,"A more difficult to use bow, with decent accuracy and okay Attack. Range 2-3"
+weap_steel_bow_name,Steel Bow
+weap_steel_sword_desc,"A more difficult to use sword, with lower accuracy but good Attack. Range 1"
+weap_steel_sword_name,Steel Sword
+weap_wolf_tooth_desc,Dangerous teeth used for biting. Range 1
+weap_wolf_tooth_name,Wolf Bite
+weap_zombie_claw_desc,Sharp deteriorating claws that cut. Range 1
+weap_zombie_claw_name,Zombie Claw
+weap_wolfbane_name,Wolfbane
+weap_wolfbane_desc,Heals the user for {DMG_DRAINPERC}% damage dealt. Deals double damage to Canines.
+unit_adolescentwolf_desc,A young wolf not yet in its prime
+unit_adolescentwolf_name,Adolescent Wolf
+unit_adultwolf_desc,A terratorial hunting beast
+unit_adultwolf_name,Wolf
+unit_adultzolf_desc,"It has a couple of extra limbs, and teeth... everywhere"
+unit_adultzolf_name,Zolf Chimera
+unit_archer_desc,"A crackshot with higher skill, but low defense and lower Attack"
+unit_archer_name,Elven Archer
+unit_corpsechimera_desc,A stiched together mass of dead human and wolf bodies. It shudders with dark magics
+unit_corpsechimera_name,Corpse Chimera
+unit_darkmage_desc,"A user of black magics, with okay SpAttack but a higher Defense for scrapping"
+unit_darkmage_name,Dark Mage
+unit_elementalmage_desc,A user of nature magic with high SpAttack but low Defense and SpDefense
+unit_elementalmage_name,Elemental Mage
+unit_lightmage_desc,"Studier of holy arts, Light Mages can heal allies but have low agressive and defensive stats"
+unit_lightmage_name,Light Mage
+unit_mercenary_desc,A scrapper on the battlefield with high Health and okay Attack. Good for tanking.
+unit_mercenary_name,Mercenary
+unit_prizedbuck_desc,A deer with an enchanted white coat. It'd be worth it to hunt it for its hide.
+unit_prizedbuck_name,Prized Buck
+unit_wildnecromancer_desc,Stories of Wild Mage's gone mad in search for power are reoccuring characters in cautionary tales.
+unit_wildnecromancer_name,Wild Mage
+unit_wolfmother_desc,A ferocious matriarch of the pack. She's extremely protective of her cubs.
+unit_wolfmother_name,Wolf Mother
+unit_wolfpup_desc,Couldn't be older than a month or two
+unit_wolfpup_name,Wolf Pup
+unit_zolf_desc,Torn flesh hangs off of this undead wolf
+unit_zolf_name,Zolf
+unit_zombie_desc,A shambling corpse with low stats
+unit_zombie_name,Zombie
+unit_knight_desc,"A good defender with decent attack and high defense, but low movement"
+unit_knight_name,Knight
+unit_rogue_name,Rogue
+unit_rogue_desc,A high damage melee carry with good attack but low defense
+ui_health,Health
+ui_level_num,Level {NUM}
+ui_level_num_short,LvL {NUM}
+ui_range_amount,{MIN} to {MAX} Tiles
+ui_range_directional,Directional
+ui_select_an_ability,Select an Ability to Unlock:
+ui_statblock_label_large,{TEXT} - {VALUE}
+ui_num,{NUM}
+ui_current_max,{CUR}/{MAX}
+ui_empty,Empty
+ui_rout,Kill All Enemies
+ui_no_weapon_long,This Unit does not have a Weapon
+ui_equipped_weapon_label,Equipped Weapon:
+ui_items_label,Items:
+ui_btn_trade,Trade
+ui_btn_craft,Craft
+ui_btn_convoy,Convoy
+ui_accuracy_label,Accuracy:
+ui_select_a_unit,Select a Unit
+ui_move_item_where,Move {ITEM} where?
+ui_no_items_in_convoy,You currently have no items in the Convoy
+ui_space_to_continue,Press Confirm to Continue
+ui_campfire_units_rested,Your Party has been restored to Full Health. Tactical Ability Charges have been restored.
+ui_text,{TEXT}
+ui_value,{VALUE}
+ui_header_stats,Stats:
+ui_header_active_effects,Active Effects:
+ui_no_effects,No Effects
+ui_header_inventory,Inventory:
+ui_header_weapons,Weapons:
+ui_header_tactical,Tactical:
+ui_header_abilities,Abilities:
+ui_uses_label,Uses:
+tact_gauze_desc,Use: Heals the user 10 HP
+tact_gauze_name,Petty Gauze
+stat_attack,Attack
+stat_attack_desc,Increases Physical Damage dealt to Enemies
+stat_attack_short,ATK
+stat_defense,Defense
+stat_defense_desc,Decreases Physical Damage taken from Enemies
+stat_defense_short,DEF
+stat_health,Health
+stat_health_desc,How much Damage a Unit can take before they die
+stat_health_short,HP
+stat_luck,Luck
+stat_luck_desc,TBD
+stat_luck_short,LCK
+stat_mind,Mind
+stat_mind_desc,"Increases Max Focus, which is used to cast Abilities"
+stat_mind_short,MND
+stat_movement,Movement
+stat_movement_desc,How many Tiles can a Unit Move during their turn
+stat_movement_short,MOV
+stat_skill,Skill
+stat_skill_desc,Increases the chance to hit an Enemy
+stat_skill_short,SKL
+stat_spattack,Special Attack
+stat_spattack_desc,Increases Magical Damage dealt to Enemies
+stat_spattack_short,SpATK
+stat_spdefense,Special Defense
+stat_spdefense_desc,Decreases Magical Damage taken from Enemies
+stat_spdefense_short,SpDEF
+stat_vitality,Vitality
+stat_vitality_desc,Increases Health
+stat_vitality_short,VIT
+opoj_any_neutral_alive,Any Neutral Unit left Alive
+opoj_prized_buck,Kill the Prized Buck
+item_t1_holywater_desc,SpDefense +2
+item_t1_holywater_name,Holy Tears
+item_t1_ktome_desc,SpAttack +2
+item_t1_ktome_name,Tome
+item_t1_nectar_desc,Vitality +4
+item_t1_nectar_name,Golden Apple
+item_t1_polish_desc,Defense +2
+item_t1_polish_name,Armor Polish
+item_t1_skillbook_desc,Skill +2
+item_t1_skillbook_name,Cufflinks
+item_t1_whetstone_desc,Attack +2
+item_t1_whetstone_name,Whetstone
+des_canine_desc,A slim dog-like creature with sharp teeth
+des_canine_name,Canine
+des_undead_desc,A dead creature that's been reanimated through magic.
+des_undead_name,Undead
+ce_armor,Armor
+ce_armor_desc,"This Unit has temporary Armor. When they take damage, Armor is reduced before Health."
+ce_def_down,Def Down
+ce_def_down_desc,This Unit has had their Defense reduced and will take more damage from Physical attacks
+ce_spdef_down,SpDef Down
+ce_spdef_down_desc,This Unit has had their SpDefense reduced and will take more damage from Magic attacks
+ce_stunned,Stunned
+ce_stunned_desc,This Unit is stunned and will lose their next turn
+ce_necropassive_name,Necrotic Curse
+ce_necropassive_desc,Every Neutral Unit this Unit kills is brought back as a Zombified version of themselves
+art_beamattack_name,Beam Attack!
+art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
+art_cleave_name,Great Cleave
+art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGRESSIVESTAT}. \nUnits on the far edge take more damage.
+art_darkfell_name,Soul Cleave
+art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGRESSIVESTAT}. Reduce their Defense and Special Defense by ({EFFECT_FLAT} + {EFFECT_DERIVEDSTAT}) * {EFFECT_PERC}
+art_doubleshot_name,Repeater
+art_doubleshot_desc,Fire two shots at a Target in quick succession dealing damage based on {DMG_AGRESSIVESTAT}
+art_drain_name,Life Drain
+art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
+art_fireball_name,Fireball
+art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGRESSIVESTAT}. \nThis Ability hits a wider area at Level 5
+art_heal_name,Heal
+art_heal_desc,Heal an Ally Unit equal to this Units {HEAL_STAT}
+art_heroicleap_name,Heroic Leap
+art_heroicleap_desc,"Leap into an area, dealing Physical Damage to nearby Enemies. Gain a Shield equal to {SHIELD_MOD}% of your max Health"
+art_lesserheal_name,Lesser Heal
+art_lesserheal_desc,Heal an Ally Unit for {HEAL_FLAT} Health
+art_smite_name,Smite
+art_smite_desc,Deal Magic damage equal to {DMG_AGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
+art_snareshot_name,Snare Shot
+art_snareshot_desc,Deal Physical damage based on {DMG_AGRESSIVESTAT} to an Enemy and Stun them. Move backwards up to Two Tiles
