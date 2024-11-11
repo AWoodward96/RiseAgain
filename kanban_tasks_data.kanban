@@ -41,15 +41,14 @@
 				"dd2f19a1-e0bc-4639-a270-b53a4f5a0051",
 				"f2e28bda-495c-4f2f-9c5b-e221337be812",
 				"2e509820-42a3-454f-8b34-7706c7dc1257",
-				"5fdd40e3-8875-4416-b957-43b710f60d7b",
-				"5d0e9577-06ed-40db-9e78-9aaf0b1a3082"
+				"5fdd40e3-8875-4416-b957-43b710f60d7b"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f"
+				"5d0e9577-06ed-40db-9e78-9aaf0b1a3082"
 			]
 		},
 		{
@@ -57,7 +56,8 @@
 			"title": "Done",
 			"tasks": [
 				"be6a0076-c6aa-479c-afac-c7f33b09c086",
-				"cab74468-ed27-42d8-ab99-5b473a220ef3"
+				"cab74468-ed27-42d8-ab99-5b473a220ef3",
+				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f"
 			]
 		},
 		{
@@ -223,11 +223,11 @@
 				},
 				{
 					"details": "Ability 1",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Ability 2",
-					"done": false
+					"done": true
 				}
 			]
 		},

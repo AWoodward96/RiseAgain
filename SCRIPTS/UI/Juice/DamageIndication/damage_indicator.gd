@@ -2,6 +2,8 @@ extends Node2D
 class_name DamageIndicator
 
 @onready var death_indicator = $DeathIndicator
+@onready var hit_chance = $HitChance
+@onready var crit_chance = $CritChance
 @onready var damage_being_dealt = $DamageBeingDealt
 @onready var hp_listener = $HPListener
 
@@ -31,8 +33,13 @@ func PreviewDamage(_unitUsable : UnitUsable, _attackingUnit : UnitInstance, _tar
 			if asDamageStep != null:
 				damageBeingDealt += asDamageStep.GetDamageBeingDealt(_unitUsable, _attackingUnit, _defendingUnit, _targetedTileData)
 	else:
-		damageBeingDealt = -GameManager.GameSettings.DamageCalculation(_attackingUnit, _defendingUnit, damageContext, _targetedTileData.AOEMultiplier)
+		damageBeingDealt = -GameManager.GameSettings.DamageCalculation(_attackingUnit, _defendingUnit, damageContext, _targetedTileData)
 
+	if hit_chance != null:
+		hit_chance.text = str(clamp(GameManager.GameSettings.HitRateCalculation(_attackingUnit, _unitUsable, _defendingUnit, _targetedTileData), 0, 1) * 100) + "%"
+
+	if crit_chance != null:
+		crit_chance.text = str(clamp(GameManager.GameSettings.CritRateCalculation(_attackingUnit, _unitUsable, _defendingUnit, _targetedTileData), 0, 1) * 100) + "%"
 
 	damage_being_dealt.text = str(damageBeingDealt)
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])

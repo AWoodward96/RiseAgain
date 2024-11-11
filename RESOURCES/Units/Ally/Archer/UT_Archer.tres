@@ -193,6 +193,7 @@ _bundled = {
 [sub_resource type="Resource" id="Resource_im4d4"]
 script = ExtResource("28_5sl5l")
 WaitForStackFree = true
+SpeedOverride = -1
 
 [sub_resource type="Resource" id="Resource_s4ly1"]
 script = ExtResource("16_rthof")

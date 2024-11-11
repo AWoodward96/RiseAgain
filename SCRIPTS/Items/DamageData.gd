@@ -18,6 +18,8 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 # Negative heals, Positive hurts
 @export var DamageToHealthRatio : float = 0.5
 
+@export_category("Crit Modifier")
+@export_range(-1, 1) var CritModifier : float = 0
 
 @export_category("Vulnerability")
 @export var VulerableDescriptors : Array[DescriptorMultiplier]

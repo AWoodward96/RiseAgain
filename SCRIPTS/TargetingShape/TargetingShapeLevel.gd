@@ -16,6 +16,8 @@ func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 		if tile != null:
 			tileData.Tile = tile
 			tileData.AOEMultiplier = coord.Multiplier
+			tileData.CritModifier = coord.get("CritModifier") if coord.get("CritModifier") != null else 0
+			tileData.AccuracyModifier = coord.get("AccuracyModifier") if coord.get("AccuracyModifier") != null else 0
 			returnedTileData.append(tileData)
 
 	return returnedTileData

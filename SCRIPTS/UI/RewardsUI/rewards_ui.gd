@@ -75,7 +75,7 @@ func ShowGiveItemUI():
 func OnSendToConvoy():
 	# If we're here than the campaign kinda has to exist right?
 	if campaign != null:
-		campaign.AddItemToConvoy(workingSelectedReward.ItemPrefab)
+		campaign.AddItemToConvoy(workingSelectedReward.ItemPrefab.instantiate())
 		OnRewardSelected.emit(workingSelectedReward, null)
 	pass
 

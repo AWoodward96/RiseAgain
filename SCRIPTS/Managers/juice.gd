@@ -3,6 +3,7 @@ extends Node2D
 @export var damagePopup : PackedScene
 @export var damagePreview : PackedScene
 @export var effectPopup : PackedScene
+@export var critPopup : PackedScene
 
 @export_category("Camera Settings")
 @export var cameraMoveSpeed = 10
@@ -62,6 +63,14 @@ func CreateEffectPopup(_tile : Tile, _effectInstance : CombatEffectInstance):
 	add_child(popup)
 	_tile.QueuePopup(popup)
 	pass
+
+func CreateCritPopup(_tile : Tile):
+	var popup = critPopup.instantiate()
+	popup.global_position = _tile.GlobalPosition
+	add_child(popup)
+	_tile.QueuePopup(popup)
+	pass
+
 
 
 func CreateDamageIndicator(_tile : Tile):

@@ -56,9 +56,9 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 	if shapedTiles == null:
 		return arr
 
-	for t in shapedTiles.GetCoords(_unit, _grid, unitOriginTile):
+	for shapedTile in shapedTiles.GetCoords(_unit, _grid, unitOriginTile):
 		var tileData = TileTargetedData.new()
-		var pos = t.Position as Vector2
+		var pos = shapedTile.Position as Vector2
 		pos = pos.rotated(deg_to_rad(90 * _directionIndex))
 
 		# Take note of the bullshit you have to do here. Casting directly from a Vector2 to Vector2i ...
@@ -70,7 +70,9 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 		var tile = _grid.GetTile(relativePosition) as Tile
 		if tile != null:
 			tileData.Tile = tile
-			tileData.AOEMultiplier = t.Multiplier
+			tileData.AOEMultiplier = shapedTile.Multiplier
+			tileData.CritModifier = shapedTile.get("CritModifier") if shapedTile.get("CritModifier") != null else 0
+			tileData.AccuracyModifier = shapedTile.get("AccuracyModifier") if shapedTile.get("AccuracyModifier") != null else 0
 
 			if tile.IsWall && stopShapeOnWall:
 				return arr

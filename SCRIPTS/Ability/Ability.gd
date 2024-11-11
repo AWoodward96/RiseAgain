@@ -20,7 +20,6 @@ enum AbilityType { Standard, Weapon, Tactical }
 @export var autoEndTurn : bool = true
 @export var damageGrantsFocus : bool = false
 
-
 var remainingUsages : int = 0
 
 func Initialize(_unitOwner : UnitInstance):
@@ -50,6 +49,7 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 				if autoEndTurn:
 					_actionLog.source.QueueEndTurn()
 				AbilityActionComplete.emit()
+
 
 func OnRest():
 	if limitedUsage != -1:

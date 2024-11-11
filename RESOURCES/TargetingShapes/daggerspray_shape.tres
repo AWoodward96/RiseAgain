@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=7 format=3 uid="uid://b40qcbkv4pluw"]
+
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_laeo4"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_271ah"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_cbwdm"]
+
+[sub_resource type="Resource" id="Resource_1h23h"]
+script = ExtResource("2_271ah")
+AccuracyModifier = 0.0
+CritModifier = 1.0
+Position = Vector2i(0, -3)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_dwcip"]
+script = ExtResource("2_271ah")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-1, -3)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_ddswc"]
+script = ExtResource("2_271ah")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(1, -3)
+Multiplier = 1.0
+
+[resource]
+script = ExtResource("3_cbwdm")
+TileCoordinates = Array[ExtResource("1_laeo4")]([SubResource("Resource_1h23h"), SubResource("Resource_dwcip"), SubResource("Resource_ddswc")])

@@ -10,6 +10,7 @@ var stackIndex = -1
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
 
+	stackIndex = -1
 	passed = true
 	for r in requirements:
 		var rPass = r.CheckRequirement(_actionLog)
@@ -17,7 +18,6 @@ func Enter(_actionLog : ActionLog):
 			passed = passed && rPass
 		elif r.NOT:
 			passed = passed && !rPass
-
 
 
 func Execute(_delta):

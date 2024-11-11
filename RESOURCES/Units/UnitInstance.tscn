@@ -53,6 +53,33 @@ affinityIcon = NodePath("AffinityIcon")
 
 [node name="Effects" type="Node2D" parent="."]
 
+[node name="DefendIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.298039, 1, 0.254902, 1)
+position = Vector2(53.5, 53.5)
+scale = Vector2(0.0410156, 0.0410156)
+texture = ExtResource("4_reqvg")
+
+[node name="AffinityIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(11, 11)
+scale = Vector2(0.0410156, 0.0410156)
+texture = ExtResource("7_vnfmn")
+
+[node name="PositiveAfffinity" type="Sprite2D" parent="AffinityIcon"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("9_v7dhr")
+
+[node name="NegativeAffinity" type="Sprite2D" parent="AffinityIcon"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -463.238)
+scale = Vector2(2, 2)
+texture = ExtResource("10_pwwos")
+
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
 
 [node name="HealthBarParent" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList")]
@@ -128,30 +155,3 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 script = ExtResource("4_lg50f")
-
-[node name="DefendIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-modulate = Color(0.298039, 1, 0.254902, 1)
-position = Vector2(53.5, 53.5)
-scale = Vector2(0.0410156, 0.0410156)
-texture = ExtResource("4_reqvg")
-
-[node name="AffinityIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(11, 11)
-scale = Vector2(0.0410156, 0.0410156)
-texture = ExtResource("7_vnfmn")
-
-[node name="PositiveAfffinity" type="Sprite2D" parent="AffinityIcon"]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(2, 2)
-texture = ExtResource("9_v7dhr")
-
-[node name="NegativeAffinity" type="Sprite2D" parent="AffinityIcon"]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, -463.238)
-scale = Vector2(2, 2)
-texture = ExtResource("10_pwwos")

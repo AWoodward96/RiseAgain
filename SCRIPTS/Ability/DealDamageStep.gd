@@ -113,4 +113,4 @@ func GetDamageBeingDealt(_unitUsable : UnitUsable, _source: UnitInstance, _targe
 	else:
 		damageData = _unitUsable.UsableDamageData # Can't get Ability at this point bc it's set in _enter
 
-	return -GameManager.GameSettings.DamageCalculation(_source, _target, damageData, _targetedTileData.AOEMultiplier)
+	return -GameManager.GameSettings.DamageCalculation(_source, _target, damageData, _targetedTileData)

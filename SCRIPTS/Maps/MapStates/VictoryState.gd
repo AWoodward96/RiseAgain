@@ -75,7 +75,7 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 				counter += 1
 
 			if !equipped:
-				map.CurrentCampaign.AddItemToConvoy(_lootRewardEntry.ItemPrefab)
+				map.CurrentCampaign.AddItemToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
 
 	pass
 

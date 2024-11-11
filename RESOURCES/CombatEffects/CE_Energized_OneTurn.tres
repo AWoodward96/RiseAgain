@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnergizedEffect" load_steps=2 format=3 uid="uid://wqp2jesogl52"]
+
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/EnergizedEffectTemplate.gd" id="1_hidyl"]
+
+[resource]
+script = ExtResource("1_hidyl")
+AffectedTargets = 0
+Turns = 1
+loc_name = "ce_energized_name"
+loc_desc = "ce_energized_desc"

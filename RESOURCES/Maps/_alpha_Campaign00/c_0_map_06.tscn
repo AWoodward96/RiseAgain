@@ -104,17 +104,11 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
-[sub_resource type="Resource" id="Resource_ycudw"]
-script = ExtResource("17_p0lv4")
-TargetingFlags = 1
-RangeOverride = 0
-DamageAggros = true
+[sub_resource type="Resource" id="Resource_h7aw0"]
+script = ExtResource("12_0ss6n")
 
-[sub_resource type="Resource" id="Resource_gdmhh"]
-script = ExtResource("17_p0lv4")
-TargetingFlags = 1
-RangeOverride = 0
-DamageAggros = true
+[sub_resource type="Resource" id="Resource_ftmps"]
+script = ExtResource("12_0ss6n")
 
 [node name="C0_Map04" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_darpl")
@@ -314,7 +308,7 @@ AIBehavior = SubResource("Resource_5k6yt")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners"]
-position = Vector2(64, 64)
+position = Vector2(128, 64)
 texture = ExtResource("6_cu7r5")
 centered = false
 hframes = 4
@@ -323,13 +317,28 @@ frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("13_biu8f")
 UnitLevel = 6
-Position = Vector2i(1, 1)
+Position = Vector2i(2, 1)
+Allegiance = 4
+AIBehavior = ExtResource("13_yq0oq")
+AggroBehavior = SubResource("Resource_h56u6")
+
+[node name="Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners"]
+position = Vector2(64, 128)
+texture = ExtResource("6_cu7r5")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_dklm8")
+UnitToSpawn = ExtResource("13_biu8f")
+UnitLevel = 6
+Position = Vector2i(1, 2)
 Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf5" type="Sprite2D" parent="Spawners"]
-position = Vector2(960, 64)
+position = Vector2(960, 128)
 texture = ExtResource("6_cu7r5")
 centered = false
 hframes = 4
@@ -338,7 +347,22 @@ frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("13_biu8f")
 UnitLevel = 6
-Position = Vector2i(15, 1)
+Position = Vector2i(15, 2)
+Allegiance = 4
+AIBehavior = ExtResource("13_yq0oq")
+AggroBehavior = SubResource("Resource_h56u6")
+
+[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
+position = Vector2(896, 64)
+texture = ExtResource("6_cu7r5")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_dklm8")
+UnitToSpawn = ExtResource("13_biu8f")
+UnitLevel = 6
+Position = Vector2i(14, 1)
 Allegiance = 4
 AIBehavior = ExtResource("13_yq0oq")
 AggroBehavior = SubResource("Resource_h56u6")
@@ -404,7 +428,7 @@ AIBehavior = ExtResource("18_g67wg")
 AggroBehavior = SubResource("Resource_ajtkb")
 
 [node name="Spawn_AdultZolf3" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 192)
+position = Vector2(256, 256)
 texture = ExtResource("6_cu7r5")
 centered = false
 hframes = 4
@@ -413,12 +437,12 @@ frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("16_sm0cq")
 UnitLevel = 5
-Position = Vector2i(3, 3)
-AIBehavior = ExtResource("20_7hdmx")
-AggroBehavior = SubResource("Resource_ycudw")
+Position = Vector2i(4, 4)
+AIBehavior = ExtResource("18_g67wg")
+AggroBehavior = SubResource("Resource_h7aw0")
 
 [node name="Spawn_AdultZolf4" type="Sprite2D" parent="Spawners"]
-position = Vector2(832, 192)
+position = Vector2(768, 256)
 texture = ExtResource("6_cu7r5")
 centered = false
 hframes = 4
@@ -427,9 +451,9 @@ frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("16_sm0cq")
 UnitLevel = 5
-Position = Vector2i(13, 3)
-AIBehavior = ExtResource("20_7hdmx")
-AggroBehavior = SubResource("Resource_gdmhh")
+Position = Vector2i(12, 4)
+AIBehavior = ExtResource("18_g67wg")
+AggroBehavior = SubResource("Resource_ftmps")
 
 [node name="Spawn_Zolf" type="Sprite2D" parent="Spawners"]
 visible = false

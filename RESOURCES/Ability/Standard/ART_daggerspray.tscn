@@ -1,0 +1,43 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpgrco5853tx"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_twrak"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_u3xn0"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_wbddj"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_8p7s7"]
+[ext_resource type="Texture2D" uid="uid://bahn7dncans8s" path="res://ART/Icons/Ability/Standard/doubleshot.png" id="5_brpmk"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_7kqmr"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_lpdty"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_w0vyi"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_qfkqn"]
+[ext_resource type="Resource" uid="uid://b40qcbkv4pluw" path="res://RESOURCES/TargetingShapes/daggerspray_shape.tres" id="10_tucw4"]
+
+[sub_resource type="Resource" id="Resource_nobtd"]
+script = ExtResource("3_wbddj")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_5cjq5"]
+script = ExtResource("4_8p7s7")
+
+[node name="ART_daggerspray" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_twrak")
+focusCost = 2.0
+executionStack = Array[ExtResource("2_u3xn0")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
+internalName = "daggerspray"
+loc_displayName = "art_daggerspray_name"
+loc_displayDesc = "art_daggerspray_desc"
+icon = ExtResource("5_brpmk")
+TargetingData = NodePath("SkillTargetingData")
+UsableDamageData = NodePath("DamageData")
+
+[node name="DamageData" type="Node2D" parent="."]
+script = ExtResource("6_7kqmr")
+AgressiveStat = ExtResource("7_lpdty")
+DefensiveStat = ExtResource("8_w0vyi")
+DamageToHealthRatio = 0.0
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("9_qfkqn")
+TargetRange = Vector2i(1, 3)
+Type = 2
+shapedTiles = ExtResource("10_tucw4")

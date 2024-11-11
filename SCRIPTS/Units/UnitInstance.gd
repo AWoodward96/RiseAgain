@@ -422,8 +422,18 @@ func QueueExpGain(_expGain : int):
 		PopAction()
 
 func EndTurn():
+	var blockTurnEnd = false
+	for e in CombatEffects:
+		if e is EnergizedEffectInstance:
+			e.TurnsRemaining -= 1
+			blockTurnEnd = true
+			Juice.CreateEffectPopup(CurrentTile, e)
+			break
+
 	ShowHealthBar(false)
 	Activated = false
+	if blockTurnEnd:
+		Activate(map.currentTurn)
 
 func QueueTurnStartDelay():
 	var delay = UnitDelayAction.new()

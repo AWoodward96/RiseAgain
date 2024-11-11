@@ -1,0 +1,2 @@
+extends CombatEffectInstance
+class_name EnergizedEffectInstance

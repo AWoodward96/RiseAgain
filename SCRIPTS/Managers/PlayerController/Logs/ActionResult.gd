@@ -8,6 +8,7 @@ var SourceHealthDelta : int
 var FocusDelta : int
 var ExpGain : int
 var Kill : bool
+var Crit : bool
 
 var TileTargetData : TileTargetedData
 
@@ -21,14 +22,23 @@ var Miss : bool = false
 func Ability_CalculateResult(_rng : RandomNumberGenerator, _ability : Ability, _damageData):
 	if _ability.IsDamage():
 		# Damage dealing with autoattacks can miss
-		if _ability.type == Ability.AbilityType.Weapon:
+		if _ability.type == Ability.AbilityType.Weapon || GameManager.GameSettings.AbilitiesCanMiss:
 			var hitRate = 100
 			if Target != null:
-				hitRate = GameManager.GameSettings.HitRateCalculation(Source, _ability, Target)
+				hitRate = GameManager.GameSettings.HitRateCalculation(Source, _ability, Target, TileTargetData)
 
 			CalculateMiss(_rng, hitRate)
 
-		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _damageData, TileTargetData.AOEMultiplier)
+		if !Miss:
+			var critRate = GameManager.GameSettings.CritRateCalculation(Source, _ability, Target, TileTargetData)
+			CalculateCrit(_rng, critRate)
+		else:
+			Crit = false # Should be automatic - but lets declare it anyway. If you miss, you don't crit
+
+		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _damageData, TileTargetData)
+		if Crit:
+			HealthDelta = HealthDelta * GameManager.GameSettings.CritMultiplier
+			Juice.CreateCritPopup(TileTargetData.Tile)
 
 		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(_ability.UsableDamageData)
@@ -96,3 +106,7 @@ func CalculateMiss(_rng : RandomNumberGenerator, _missThreshold : float):
 	print("Calculated Miss Average of: ", MissAverage, " at rate:", HitRate)
 
 	Miss = MissAverage > _missThreshold
+
+func CalculateCrit(_rng : RandomNumberGenerator, _critThreshold : float):
+	var val = _rng.randf()
+	Crit = val < _critThreshold

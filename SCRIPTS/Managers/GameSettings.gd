@@ -17,6 +17,9 @@ enum Direction { Up, Right, Down, Left }
 @export var LevelUpStats : Array[StatTemplate]
 @export var ItemSlotsPerUnit : int = 3
 
+@export var UniversalCritChance : int = 5
+@export var CritMultiplier : int = 3
+
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate
 @export var AttackStat : StatTemplate
@@ -31,7 +34,7 @@ enum Direction { Up, Right, Down, Left }
 
 @export_category("Ability Data")
 @export var InitializeUnitsWithMaxFocus : bool = false
-
+@export var AbilitiesCanMiss : bool = true
 @export var FirstAbilityBreakpoint : int
 @export var SecondAbilityBreakpoint : int # NOTE: NOT CURRENTLY IMPLEMENTED
 
@@ -120,7 +123,7 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 
 	return 2
 
-func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _aoeMultiplier : float = 1):
+func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData):
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
 	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
@@ -144,7 +147,11 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 				# For now, these things wont stack
 				vulnerabilityMultiplier *= descriptor.Multiplier
 
-	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * _aoeMultiplier * vulnerabilityMultiplier)
+	var aoeMultiplier = 1
+	if _tileData != null:
+		aoeMultiplier = _tileData.AOEMultiplier
+
+	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * aoeMultiplier * vulnerabilityMultiplier)
 
 func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
 	var healAmount = _healData.FlatValue
@@ -153,8 +160,24 @@ func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float 
 	healAmount = floori(healAmount * _aoeMultiplier)
 	return healAmount
 
-func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance):
-	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender)
+func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
+	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
+
+func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
+	if _attacker == null || _defender == null:
+		# Cant crit what's not there
+		return 0
+
+	# Here's where I'd put crit bonuses on weapons
+	var critWeaponModifier = 0
+	if _attackerWeapon != null && _attackerWeapon.UsableDamageData != null:
+		critWeaponModifier = _attackerWeapon.UsableDamageData.CritModifier
+
+	var tileCritModifier = 0
+	if _tileData !=null:
+		tileCritModifier = _tileData.CritModifier * 100
+
+	return ((_attacker.GetWorkingStat(SkillStat) / 2.0) + _attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
 	# TODO: Increase or decrease the exp gained from damaging a foe based on some metric
@@ -181,11 +204,17 @@ func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : Uni
 		push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
 		return 0
 
+	if _defender == null:
+		# If the defender doesn't exist - then don't even do this dance - just say you have 100% chance to hit
+		return 1
+
 	var weaponAccuracy = 0
 	if _weapon != null:
 		weaponAccuracy = _weapon.GetAccuracy()
 
-	var affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
+	var affinityModifier = 0
+	if _defender != null && _defender.Template != null:
+		affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
 
 	# Equation is:
 	# WeaponAcc + (Skill * 2) + (Luck / 2)
@@ -195,7 +224,9 @@ func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
 	if _defender == null:
 		return 0
 
-	var affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
+	var affinityModifier = 0
+	if _defender != null && _defender.Template != null:
+		affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
 
 	# Equation is:
 	# (Skill * 2) + (Luck)

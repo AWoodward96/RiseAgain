@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://puxbxe6g34j8"]
+[gd_scene load_steps=24 format=3 uid="uid://puxbxe6g34j8"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_7xk4g"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_mbdvn"]
@@ -6,17 +6,17 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_jqx7w"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_ubaxs"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="5_j1vck"]
-[ext_resource type="Texture2D" uid="uid://dyxxey7f8swu8" path="res://ART/Icons/Ability/Standard/beamattack.png" id="5_qtme7"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/KillReq.gd" id="6_demtf"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_qf6m3"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_7uh8d"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ReqStep.gd" id="7_bot1l"]
+[ext_resource type="Resource" uid="uid://wqp2jesogl52" path="res://RESOURCES/CombatEffects/CE_Energized_OneTurn.tres" id="8_nmpxc"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_rv5y2"]
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="8_x2wpa"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="9_f4ctm"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_gb7p6"]
 [ext_resource type="Resource" uid="uid://d0xjc40ay5iaq" path="res://RESOURCES/TargetingShapes/slipnslash_shape.tres" id="10_okgaa"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_smoxh"]
+[ext_resource type="Texture2D" uid="uid://p4rnfhj67wax" path="res://ART/Icons/Ability/Standard/slipnslash.png" id="11_ubeem"]
 
 [sub_resource type="Resource" id="Resource_ag1gk"]
 script = ExtResource("3_jqx7w")
@@ -32,39 +32,26 @@ useDefendAction = false
 script = ExtResource("6_demtf")
 NOT = false
 
-[sub_resource type="Resource" id="Resource_1w157"]
-script = ExtResource("8_x2wpa")
-UseDamageDealtAsValue = false
-UseSourceForStats = false
-FlatValue = 10.0
-ModType = 0
-Mod = 0.0
-AffectedTargets = 0
-Turns = -1
-loc_name = ""
-loc_desc = ""
-
-[sub_resource type="Resource" id="Resource_d7rr2"]
+[sub_resource type="Resource" id="Resource_vrtqr"]
 script = ExtResource("9_f4ctm")
-CombatEffect = SubResource("Resource_1w157")
+CombatEffect = ExtResource("8_nmpxc")
 
 [sub_resource type="Resource" id="Resource_utxsf"]
 script = ExtResource("7_bot1l")
 requirements = Array[ExtResource("5_j1vck")]([SubResource("Resource_bq28f")])
-stackIfPassed = Array[ExtResource("2_mbdvn")]([SubResource("Resource_d7rr2")])
+stackIfPassed = Array[ExtResource("2_mbdvn")]([SubResource("Resource_vrtqr")])
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_ubaxs")
 
 [node name="ART_SlipNSlash" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_7xk4g")
-focusCost = 0
+focusCost = 2
 executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_ag1gk"), SubResource("Resource_nobtd"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
-damageGrantsFocus = true
-internalName = "beamattack"
-loc_displayName = "art_beamattack_name"
-loc_displayDesc = "art_beamattack_desc"
-icon = ExtResource("5_qtme7")
+internalName = "slipnslash"
+loc_displayName = "art_slipnslash_name"
+loc_displayDesc = "art_slipnslash_desc"
+icon = ExtResource("11_ubeem")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementComponent")
@@ -84,5 +71,4 @@ stopShapeOnWall = true
 [node name="AbilityMovementComponent" type="Node2D" parent="."]
 script = ExtResource("11_smoxh")
 type = 1
-stoppedByWalls = null
 movementAmount = 4
