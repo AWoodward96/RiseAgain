@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AISmartTarget" load_steps=5 format=3 uid="uid://cexo50gitfgxv"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="1_p184x"]
+[ext_resource type="Resource" uid="uid://eyed7bxgka4g" path="res://RESOURCES/Units/Enemy/WildNecromancer/UT_WildNecromancer.tres" id="2_c0k28"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_SmartTarget.gd" id="3_4nadf"]
+
+[sub_resource type="Resource" id="Resource_qc3ln"]
+script = ExtResource("1_p184x")
+Team = 2
+SpecificUnit = ExtResource("2_c0k28")
+
+[resource]
+script = ExtResource("3_4nadf")
+Flags = Array[ExtResource("1_p184x")]([SubResource("Resource_qc3ln")])

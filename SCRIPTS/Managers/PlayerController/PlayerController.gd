@@ -47,6 +47,9 @@ func Initialize(_map: Map):
 	UpdateCameraBounds()
 
 func _process(_delta):
+	if CSR.Open:
+		return
+
 	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
 	if ControllerState != null && inspectUI == null:
 		ControllerState._Execute(_delta)

@@ -1,11 +1,16 @@
 extends CanvasLayer
 class_name CSR
 
+static var Open : bool = false
 static var AllAbilitiesCost0 : bool = false
 
+@export var FirstEntry : Control
 @export var SpecificItem : PackedScene
 @export var SpecificItem2 : PackedScene
 
+func _ready():
+	if FirstEntry != null:
+		FirstEntry.grab_focus()
 
 func btnAllAbilitiesCost0():
 	AllAbilitiesCost0 = !AllAbilitiesCost0
@@ -51,4 +56,5 @@ func btnGiveSpecificItem():
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR
 	GameManager.add_child(csrMenu)
+	CSR.Open = true
 	return csrMenu

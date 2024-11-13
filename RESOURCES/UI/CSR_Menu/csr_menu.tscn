@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="2_0the5"]
 [ext_resource type="PackedScene" uid="uid://k7p2s1qa26kq" path="res://RESOURCES/Items/t1_holywater.tscn" id="3_qgjbs"]
 
-[node name="CSR" type="CanvasLayer"]
+[node name="CSR" type="CanvasLayer" node_paths=PackedStringArray("FirstEntry")]
 layer = 100
 script = ExtResource("1_508i1")
+FirstEntry = NodePath("PanelContainer/MarginContainer/GridContainer/AddAllAbilities")
 SpecificItem = ExtResource("2_0the5")
 SpecificItem2 = ExtResource("3_qgjbs")
 

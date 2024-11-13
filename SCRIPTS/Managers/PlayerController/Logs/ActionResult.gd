@@ -20,6 +20,10 @@ var Miss : bool = false
 
 
 func Ability_CalculateResult(_rng : RandomNumberGenerator, _ability : Ability, _damageData):
+	# Target died somewhere in the process - return null
+	if Target == null:
+		return
+
 	if _ability.IsDamage():
 		# Damage dealing with autoattacks can miss
 		if _ability.type == Ability.AbilityType.Weapon || GameManager.GameSettings.AbilitiesCanMiss:

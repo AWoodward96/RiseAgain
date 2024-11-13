@@ -36,8 +36,8 @@
 				"468afdb4-e218-4636-8ff3-a92ed108ff73",
 				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
 				"318dee21-255e-471a-a66c-f75daeb9659a",
-				"579dad1e-a189-47eb-8525-df963722d0ef",
 				"1a54fbcd-072e-426c-81a6-b2f202dbaede",
+				"5d0e9577-06ed-40db-9e78-9aaf0b1a3082",
 				"dd2f19a1-e0bc-4639-a270-b53a4f5a0051",
 				"f2e28bda-495c-4f2f-9c5b-e221337be812",
 				"2e509820-42a3-454f-8b34-7706c7dc1257",
@@ -48,7 +48,10 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"5d0e9577-06ed-40db-9e78-9aaf0b1a3082"
+				"579dad1e-a189-47eb-8525-df963722d0ef",
+				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
+				"073acedc-08f2-476c-bf21-67837a146552",
+				"7694be98-f91b-4346-a521-a56ba1181b15"
 			]
 		},
 		{
@@ -57,7 +60,9 @@
 			"tasks": [
 				"be6a0076-c6aa-479c-afac-c7f33b09c086",
 				"cab74468-ed27-42d8-ab99-5b473a220ef3",
-				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f"
+				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
+				"2da4feb0-3296-4b5c-83db-078c28f6f94d",
+				"f9d8c66d-3d4e-43fa-a41a-3d410f1df86d"
 			]
 		},
 		{
@@ -289,6 +294,50 @@
 		{
 			"uuid": "cab74468-ed27-42d8-ab99-5b473a220ef3",
 			"title": "Create a Localization importer",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2da4feb0-3296-4b5c-83db-078c28f6f94d",
+			"title": "Modify Necromancer",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Make him a defensive unit that stays in his starting area",
+					"done": true
+				},
+				{
+					"details": "Give him a skill that lets him summon a zombie",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "f9d8c66d-3d4e-43fa-a41a-3d410f1df86d",
+			"title": "Implement Flying Enemies",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "b92d61c5-24e0-4ca6-8145-80bd66e814d0",
+			"title": "Update Context UI to have Mana",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "073acedc-08f2-476c-bf21-67837a146552",
+			"title": "Update All Focus-Based-UI to use an icon with a number instead of a bar",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "7694be98-f91b-4346-a521-a56ba1181b15",
+			"title": "Implement Pushing",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

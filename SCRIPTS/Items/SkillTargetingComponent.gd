@@ -2,7 +2,7 @@ extends Node2D
 class_name SkillTargetingData
 
 enum TargetingType { Simple, ShapedFree, ShapedDirectional, SelfOnly }
-enum TargetingTeamFlag { AllyTeam, EnemyTeam, All }
+enum TargetingTeamFlag { AllyTeam, EnemyTeam, All, Empty }
 
 @export var TeamTargeting : TargetingTeamFlag = TargetingTeamFlag.EnemyTeam
 
@@ -92,6 +92,9 @@ func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
 	if Type == TargetingType.SelfOnly:
 		return _thisUnit == _otherUnit
+
+	if TeamTargeting == TargetingTeamFlag.Empty:
+		return _otherUnit == null
 
 	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All
 

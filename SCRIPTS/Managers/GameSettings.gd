@@ -30,6 +30,8 @@ enum Direction { Up, Right, Down, Left }
 @export var LuckStat : StatTemplate
 @export var MindStat : StatTemplate
 
+@export var FlyingDescriptor : DescriptorTemplate
+
 @export var CharacterTileMovemementSpeed : float = 100
 
 @export_category("Ability Data")

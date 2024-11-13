@@ -6,4 +6,3 @@ class_name AITargetDescriptor
 # ---------------------------------------
 
 @export var descriptor : DescriptorTemplate
-

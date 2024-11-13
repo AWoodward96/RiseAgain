@@ -1,0 +1,41 @@
+[gd_scene load_steps=14 format=3 uid="uid://dnhnmdp8kwdpc"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_fuk4q"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_muggo"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/SummonStep.gd" id="3_en8m4"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_ree2d"]
+[ext_resource type="Texture2D" uid="uid://dodlfksmqmyhh" path="res://ART/Icons/Ability/Standard/heal.png" id="5_gaaa7"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_bc5dy"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SummonUnitComponent.gd" id="7_n2vcp"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_jv71w"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="9_c5b41"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="10_ecwqc"]
+
+[sub_resource type="Resource" id="Resource_lu3qr"]
+script = ExtResource("3_en8m4")
+
+[sub_resource type="Resource" id="Resource_5cjq5"]
+script = ExtResource("4_ree2d")
+
+[sub_resource type="Resource" id="Resource_qqiev"]
+script = ExtResource("10_ecwqc")
+
+[node name="ART_RaiseDead" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_fuk4q")
+focusCost = 3
+executionStack = Array[ExtResource("2_muggo")]([SubResource("Resource_lu3qr"), SubResource("Resource_5cjq5")])
+internalName = "raisedead"
+loc_displayName = "art_raisedead_name"
+loc_displayDesc = "art_raisedead_desc"
+icon = ExtResource("5_gaaa7")
+TargetingData = NodePath("SkillTargetingData")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("6_bc5dy")
+TeamTargeting = 2
+
+[node name="SummonUnitComponent" type="Node2D" parent="."]
+script = ExtResource("7_n2vcp")
+UnitToSummon = ExtResource("8_jv71w")
+AI = ExtResource("9_c5b41")
+AggroBehavior = SubResource("Resource_qqiev")

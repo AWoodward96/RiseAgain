@@ -30,7 +30,6 @@ Value = 4
 [node name="wolfbane" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_2nsqj")
 type = 1
-focusCost = 0.0
 executionStack = Array[ExtResource("2_c4rx7")]([SubResource("Resource_tms8k"), SubResource("Resource_28tbx")])
 damageGrantsFocus = true
 internalName = "wolfbane"
@@ -51,7 +50,7 @@ script = ExtResource("5_6u87p")
 AgressiveStat = ExtResource("4_l15gm")
 DefensiveStat = ExtResource("6_awmfo")
 DamageAffectsUsersHealth = true
-DamageToHealthRatio = -0.5
+DamageToHealthRatio = -0.25
 VulerableDescriptors = Array[ExtResource("7_srfuo")]([ExtResource("8_u4jkt")])
 
 [node name="TargetingData" type="Node2D" parent="."]

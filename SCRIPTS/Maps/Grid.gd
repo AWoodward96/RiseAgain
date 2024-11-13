@@ -67,14 +67,14 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 
 			Pathfinding.set_point_solid(Vector2i(x,y), GridArr[index].Killbox || GridArr[index].IsWall)
 
-func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID):
+func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	for x in Width:
 		for y in Height:
 			var index = y * Width + x
 			var currentTile = GridArr[index]
-			RefreshTilesCollision(currentTile, _allegience)
+			RefreshTilesCollision(currentTile, _allegience, _flying)
 
-func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.TeamID):
+func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	if _tile == null:
 		return
 
@@ -94,7 +94,7 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 	if bg_data != null:
 		_tile.Killbox = bg_data.get_custom_data("Killbox")
 
-	Pathfinding.set_point_solid(Vector2i(x,y), _tile.IsWall || _tile.Killbox)
+	Pathfinding.set_point_solid(Vector2i(x,y), (_tile.IsWall || _tile.Killbox) && !_flying)
 
 	if _tile.Occupant != null:
 		if _tile.Occupant.UnitAllegiance != _allegience:
@@ -188,6 +188,8 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 	var startingIndex = _unit.GridPosition.y * Width + _unit.GridPosition.x
 	frontier.append(GridArr[startingIndex])
 
+	var unitHasFlying = _unit.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
+
 	var movement = _unit.GetUnitMovement()
 	for move in movement + 1: # +1 because for loops are not inclusive
 		for current in frontier :
@@ -199,7 +201,7 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 				var neighborLocation = current.Position + neigh
 				if Pathfinding.is_in_bounds(neighborLocation.x, neighborLocation.y) :
 					var neighborIndex = neighborLocation.y * Width + neighborLocation.x
-					if !Pathfinding.is_point_solid(neighborLocation):
+					if !Pathfinding.is_point_solid(neighborLocation) || unitHasFlying:
 						var occupant = GridArr[neighborIndex].Occupant
 						if (occupant== null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
 							workingList.append(GridArr[neighborIndex])
@@ -330,6 +332,55 @@ func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitI
 		Pathfinding.set_point_solid(_destinationUnit.GridPosition, true)
 
 	return path
+
+func PushCast(_tileData : TileTargetedData):
+	if _tileData == null || _tileData.Tile == null:
+		return
+
+	if !_tileData.willPush:
+		push_error("Attempting to pushcast with an invalid origin tile. Tile: " + str(_tileData.Tile.Position))
+
+	var currentTile = _tileData.Tile
+	var previousTile = _tileData.Tile
+	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_tileData.pushDirection)
+	for i in range(0, _tileData.pushAmount):
+		var nextTile = GetTile(currentTile.Position + directionVector)
+		if nextTile == null:
+			# Early exit - we're done
+			_tileData.pushSelfResult = currentTile
+			return
+
+		# Check if the next tile has an occupant
+		if nextTile.Occupant != null:
+			if _tileData.pushSubject == null:
+				_tileData.pushSubject = nextTile.Occupant
+			else:
+				# We already have a subject we're pushing and we've hit another subject
+				# Exit now
+				_tileData.pushSelfResult = previousTile
+				_tileData.pushSubjectResult = currentTile
+				_tileData.pushCollision = nextTile
+				return
+
+		if nextTile.IsWall:
+			_tileData.pushCollision = nextTile
+
+			# Can't push a unit through a wall, so exit now
+			if _tileData.pushSubject == null:
+				# We're not pushing anything at the moment, so the result is the current tile
+				_tileData.pushSelfResult = currentTile
+			else:
+				# We're carrying someone. The previous tile is where we'd end up, the current tile is where they'd end up
+				_tileData.pushSelfResult = previousTile
+				_tileData.pushSubjectResult = currentTile
+
+			return
+
+		# If we're here - the tile is free to push to
+		previousTile = currentTile
+
+
+	pass
 
 func GetManhattanDistance(_gridPosition1 : Vector2i, _gridPosition2 : Vector2i):
 	var x = abs(_gridPosition1.x - _gridPosition2.x)

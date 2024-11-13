@@ -1,0 +1,141 @@
+[gd_scene load_steps=17 format=4 uid="uid://bnk6nrale3gkx"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_r5sfq"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_i0nbb"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_m41m2"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_vm345"]
+[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_igwsr"]
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_8s5s7"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_i5oyn"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_03qds"]
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="9_83e0h"]
+[ext_resource type="Resource" uid="uid://dk6nu2fomck5p" path="res://RESOURCES/CombatEffects/CE_NecromancerPassive.tres" id="10_oee7n"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="11_fgm3c"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_hir2h"]
+
+[sub_resource type="Resource" id="Resource_vm3u1"]
+script = ExtResource("2_i0nbb")
+loc_description = ""
+
+[sub_resource type="Resource" id="Resource_oclll"]
+script = ExtResource("12_hir2h")
+
+[sub_resource type="Resource" id="Resource_h7prp"]
+script = ExtResource("12_hir2h")
+
+[sub_resource type="Resource" id="Resource_mju62"]
+script = ExtResource("12_hir2h")
+
+[node name="C1_Map01" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+script = ExtResource("1_r5sfq")
+GridSize = Vector2i(16, 12)
+tilemap_bg = NodePath("BG_Layer")
+tilemap_main = NodePath("Main_Layer")
+tilemap_threat = NodePath("Threat_Layer")
+tilemap_UI = NodePath("UI_Layer")
+WinCondition = SubResource("Resource_vm3u1")
+squadParent = NodePath("Squads")
+StartingPositionsParent = NodePath("StartingPositions")
+SpawnersParent = NodePath("Spawners")
+metadata/_edit_vertical_guides_ = [-108.0]
+
+[node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
+points = PackedVector2Array(0, 0, 1024, 0, 1024, 768, 0, 768, 0, 0)
+closed = true
+default_color = Color(1, 0, 0, 1)
+script = ExtResource("3_m41m2")
+map = NodePath("..")
+
+[node name="BG_Layer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = -5
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAQABAAAAAAABAAAAAQACAAAAAAACAAAAAQACAAAAAAADAAAAAQAAAAAAAAAEAAAAAQACAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQACAAAAAAAIAAAAAQACAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAAAAEAAQABAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQACAAAAAAAAAAQAAQABAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQACAAAAAAAAAAkAAQAAAAAAAAAOAAkAAQAAAAAAAAAOAAgAAQAAAAAAAAAOAAcAAQACAAAAAAAOAAYAAQAAAAAAAAAOAAUAAQAAAAAAAAAOAAQAAQAAAAAAAAAOAAMAAQABAAAAAAAOAAIAAQACAAAAAAAOAAEAAQACAAAAAAANAAkAAQAAAAAAAAANAAgAAQAAAAAAAAANAAcAAQAAAAAAAAANAAYAAQAAAAAAAAANAAUAAQAAAAAAAAANAAQAAQAAAAAAAAANAAMAAQACAAAAAAANAAIAAQAAAAAAAAANAAEAAQAAAAAAAAAMAAkAAQAKAAcAAAAMAAgAAQAKAAcAAAAMAAcAAQAKAAcAAAAMAAYAAQAKAAcAAAAMAAUAAQAKAAcAAAAMAAQAAQAKAAcAAAAMAAMAAQAKAAYAAAAMAAIAAQABAAAAAAAMAAEAAQABAAAAAAALAAMAAQAJAAYAAAALAAIAAQAAAAAAAAALAAEAAQAAAAAAAAAKAAMAAQAJAAYAAAAKAAIAAQAAAAAAAAAKAAEAAQAAAAAAAAAJAAMAAQAJAAYAAAAJAAIAAQABAAAAAAAJAAEAAQAAAAAAAAAIAAMAAQAJAAYAAAAIAAIAAQACAAAAAAAIAAEAAQAAAAAAAAAHAAMAAQAJAAYAAAAHAAIAAQACAAAAAAAHAAEAAQABAAAAAAAGAAMAAQAJAAYAAAAGAAIAAQACAAAAAAAGAAEAAQACAAAAAAAFAAMAAQAJAAYAAAAFAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAMAAQAJAAYAAAAEAAIAAQAAAAAAAAAEAAEAAQACAAAAAAADAAkAAQAIAAcAAAADAAgAAQAIAAcAAAADAAcAAQAIAAcAAAADAAYAAQAIAAcAAAADAAUAAQAIAAcAAAADAAQAAQAIAAcAAAADAAMAAQAIAAYAAAADAAIAAQAAAAAAAAADAAEAAQAAAAAAAAACAAkAAQAAAAAAAAACAAgAAQAAAAAAAAACAAcAAQAAAAAAAAACAAYAAQACAAAAAAACAAUAAQAAAAAAAAACAAQAAQAAAAAAAAACAAMAAQACAAAAAAACAAIAAQABAAAAAAACAAEAAQACAAAAAAABAAkAAQAAAAAAAAABAAgAAQAAAAAAAAABAAcAAQAAAAAAAAABAAYAAQABAAAAAAABAAUAAQACAAAAAAABAAQAAQAAAAAAAAABAAMAAQAAAAAAAAABAAIAAQABAAAAAAABAAEAAQAAAAAAAAAPAAsAAQACAAAAAAAPAAoAAQAAAAAAAAAPAAkAAQABAAAAAAAPAAgAAQAAAAAAAAAPAAcAAQAAAAAAAAAPAAYAAQABAAAAAAAPAAUAAQAAAAAAAAAPAAQAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAIAAQABAAAAAAAPAAEAAQACAAAAAAAPAAAAAQACAAAAAAAOAAsAAQACAAAAAAAOAAoAAQABAAAAAAANAAsAAQAAAAAAAAANAAoAAQABAAAAAAAMAAsAAQAKAAcAAAAMAAoAAQAKAAcAAAADAAsAAQAIAAcAAAADAAoAAQAIAAcAAAACAAsAAQACAAAAAAACAAoAAQACAAAAAAABAAsAAQAAAAAAAAABAAoAAQACAAAAAAAAAAsAAQAAAAAAAAAAAAoAAQAAAAAAAAAEAAQAAQAJAAQAAAAFAAQAAQAJAAQAAAAGAAQAAQAJAAQAAAAHAAQAAQAJAAQAAAAIAAQAAQAJAAQAAAAJAAQAAQAJAAQAAAAKAAQAAQAJAAQAAAALAAQAAQAJAAQAAAAEAAoAAQAJAAQAAAAEAAsAAQAJAAQAAAALAAoAAQAJAAQAAAALAAsAAQAJAAQAAAALAAUAAQAJAAQAAAALAAYAAQAJAAQAAAALAAcAAQAJAAQAAAAEAAUAAQAJAAQAAAAEAAYAAQAJAAQAAAAEAAcAAQAJAAQAAAA=")
+tile_set = ExtResource("4_vm345")
+
+[node name="Main_Layer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = -5
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAEAAgAAQAGAAUAAAAEAAkAAQAGAAUAAAAFAAgAAQAGAAUAAAAFAAkAAQAGAAUAAAAGAAgAAQAGAAUAAAAGAAkAAQAGAAUAAAAHAAgAAQAGAAUAAAAHAAkAAQAGAAUAAAAIAAgAAQAGAAUAAAAIAAkAAQAGAAUAAAAJAAgAAQAGAAUAAAAJAAkAAQAGAAUAAAAKAAgAAQAGAAUAAAAKAAkAAQAGAAUAAAALAAgAAQAGAAUAAAALAAkAAQAGAAUAAAAAAAgAAQAKAAUAAAACAAsAAQAMAAYAAAADAAsAAQANAAYAAAAMAAsAAQAMAAYAAAANAAsAAQANAAYAAAAEAAMAAQAMAAYAAAAFAAMAAQANAAYAAAALAAEAAQANAAcAAAALAAIAAQANAAgAAAAEAAAAAQAJAAUAAAAFAAAAAQAJAAUAAAAGAAAAAQAJAAUAAAAHAAAAAQAJAAUAAAAIAAAAAQAJAAUAAAAJAAAAAQAJAAUAAAAKAAAAAQAJAAUAAAALAAAAAQAJAAUAAAAMAAAAAQAJAAUAAAANAAAAAQAJAAUAAAADAAEAAQAKAAUAAAABAAMAAQAKAAUAAAADAAAAAQAOAAQAAAABAAEAAQAOAAQAAAAAAAMAAQAOAAQAAAACAAEAAQAJAAUAAAABAAIAAQAKAAQAAAAAAAQAAQAKAAQAAAAAAAUAAQAKAAQAAAAAAAYAAQAKAAQAAAAAAAcAAQAKAAQAAAAAAAAAAQAJAAQAAAABAAAAAQAJAAQAAAACAAAAAQAJAAQAAAAAAAEAAQAJAAQAAAAAAAIAAQAJAAQAAAAOAAAAAQAPAAQAAAAOAAEAAQAIAAUAAAAPAAIAAQAIAAQAAAAPAAMAAQAIAAQAAAAPAAQAAQAIAAQAAAAPAAUAAQAIAAQAAAAPAAYAAQAIAAQAAAAPAAcAAQAIAAUAAAAMAAYAAQAMAAYAAAANAAYAAQANAAYAAAAPAAEAAQAPAAQAAAAPAAAAAQAJAAQAAAAMAAQAAQANAAcAAAAMAAUAAQANAAgAAAABAAQAAQANAAcAAAABAAUAAQANAAgAAAA=")
+tile_set = ExtResource("4_vm345")
+
+[node name="Threat_Layer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+use_parent_material = true
+tile_set = ExtResource("4_vm345")
+navigation_enabled = false
+
+[node name="UI_Layer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = -3
+use_parent_material = true
+tile_set = ExtResource("4_vm345")
+
+[node name="StartingPositions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_igwsr")]
+position = Vector2(64, 512)
+Position = Vector2i(1, 8)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_igwsr")]
+position = Vector2(192, 512)
+Position = Vector2i(3, 8)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_igwsr")]
+position = Vector2(128, 576)
+Position = Vector2i(2, 9)
+map = NodePath("../..")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
+position = Vector2(320, 64)
+texture = ExtResource("6_8s5s7")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_i5oyn")
+UnitToSpawn = ExtResource("8_03qds")
+UnitLevel = 1
+PreAppliedEffects = Array[ExtResource("9_83e0h")]([ExtResource("10_oee7n")])
+Position = Vector2i(5, 1)
+AIBehavior = ExtResource("11_fgm3c")
+AggroBehavior = SubResource("Resource_oclll")
+
+[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
+position = Vector2(576, 192)
+texture = ExtResource("6_8s5s7")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_i5oyn")
+UnitToSpawn = ExtResource("8_03qds")
+UnitLevel = 1
+Position = Vector2i(9, 3)
+AIBehavior = ExtResource("11_fgm3c")
+AggroBehavior = SubResource("Resource_h7prp")
+
+[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
+position = Vector2(832, 512)
+texture = ExtResource("6_8s5s7")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_i5oyn")
+UnitToSpawn = ExtResource("8_03qds")
+UnitLevel = 1
+Position = Vector2i(13, 8)
+AIBehavior = ExtResource("11_fgm3c")
+AggroBehavior = SubResource("Resource_mju62")
+
+[node name="Variants" type="Node2D" parent="."]
+
+[node name="Squads" type="Node2D" parent="."]

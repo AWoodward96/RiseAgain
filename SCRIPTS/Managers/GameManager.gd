@@ -17,6 +17,7 @@ func _process(_delta: float):
 			remove_child(csrUI)
 			csrUI.queue_free()
 			csrUI = null
+			CSR.Open = false
 		else:
 			csrUI = CSR.ShowMenu()
 

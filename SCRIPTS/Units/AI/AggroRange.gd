@@ -32,4 +32,3 @@ func Check(_self : UnitInstance, _map : Map) -> bool:
 
 
 	return false
-

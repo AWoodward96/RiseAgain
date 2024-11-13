@@ -6,8 +6,16 @@ var CritModifier : float = 0
 var AccuracyModifier : float = 0
 
 # This is for pushing or pulling the target -- not for self movement
-var moveDirection : GameSettingsTemplate.Direction
-var moveAmount : int = 0
-var shouldMove : bool :
+var pushDirection : GameSettingsTemplate.Direction
+var pushAmount : int = 0
+var willPush : bool :
 	get:
-		return moveAmount > 0
+		return pushAmount > 0
+
+
+
+var pushSelfResult : Tile			# Where does this unit end up after being pushed?
+var pushSubject : UnitInstance		# If true - this unit will be pushed along with the self
+var pushSubjectResult : Tile		# Where does the  pushSubject end up after being pushed?
+
+var pushCollision : Tile			# If not null - this is the Tile that ended up stopping the push

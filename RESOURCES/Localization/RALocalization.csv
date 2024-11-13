@@ -174,3 +174,5 @@ art_slipnslash_name,Slip n Slash
 art_slipnslash_desc,"Dash forward and deal Physical damage based on {DMG_AGRESSIVESTAT} to anything this Unit passes through. If this ability Kills, grant Energized for one turn."
 art_daggerspray_name,Dagger Spray
 art_daggerspray_desc,Throw three daggers in a line dealing Physical damage based on {DM_AGRESSIVESTAT}. The center Dagger always Crits.
+des_flying_name,Flying
+des_flying_desc,This Unit can fly over all Terrain.
