@@ -3,7 +3,6 @@ class_name DealDamageStep
 
 @export var useAttackAction : bool = true
 @export var useDefendAction : bool = true
-@export var damageDataOverride : DamageDataResource
 
 var cooloff : float
 var dealtDamage : bool
@@ -21,13 +20,8 @@ func Enter(_actionLog : ActionLog):
 
 	for damageResult in log.actionResults:
 		dealtDamage = true
-		var damageData
-		if damageDataOverride != null:
-			damageData = damageDataOverride
-		else:
-			damageData = ability.UsableDamageData
 
-		damageResult.Ability_CalculateResult(Map.Current.rng, ability, damageData)
+		damageResult.RollChance(Map.Current.rng)
 
 		if damageResult.Target != null:
 			if useDefendAction:
@@ -107,10 +101,4 @@ func AffectedUnitsClear():
 	return r
 
 func GetDamageBeingDealt(_unitUsable : UnitUsable, _source: UnitInstance, _target : UnitInstance, _targetedTileData : TileTargetedData):
-	var damageData
-	if damageDataOverride != null:
-		damageData = damageDataOverride
-	else:
-		damageData = _unitUsable.UsableDamageData # Can't get Ability at this point bc it's set in _enter
-
-	return -GameManager.GameSettings.DamageCalculation(_source, _target, damageData, _targetedTileData)
+	return -GameManager.GameSettings.DamageCalculation(_source, _target, _unitUsable.UsableDamageData, _targetedTileData)

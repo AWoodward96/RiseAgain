@@ -611,9 +611,10 @@ func QueueDelayedCombatAction(_log : ActionLog):
 	if CurrentAction == null:
 		PopAction()
 
-func ShowDamagePreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
-	damage_indicator.visible = true
-	damage_indicator.PreviewDamage(_usable, _source, _targetedTileData, self)
+func ShowCombatPreview():
+	if damage_indicator.ShouldShow:
+		damage_indicator.visible = true
+		damage_indicator.ShowPreview(self)
 	pass
 
 func ShowHealPreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
@@ -674,6 +675,13 @@ func Rest():
 		ability.OnRest()
 
 	currentHealth = maxHealth
+
+func PreviewModifiedTile(_tile : Tile):
+	if _tile != null:
+		position = _tile.GlobalPosition
+
+func ResetVisualToTile():
+	position = CurrentTile.GlobalPosition
 
 func ToJSON():
 

@@ -341,6 +341,13 @@ func PushCast(_tileData : TileTargetedData):
 		push_error("Attempting to pushcast with an invalid origin tile. Tile: " + str(_tileData.Tile.Position))
 
 	var currentTile = _tileData.Tile
+
+	# Check the origin tile for an occupant - if there's one there add them to the stack.
+	if currentTile.Occupant != null:
+		var newResult = PushResult.new()
+		newResult.Subject = currentTile.Occupant
+		_tileData.pushStack.append(newResult)
+
 	var previousTile = _tileData.Tile
 	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_tileData.pushDirection)
 	for i in range(0, _tileData.pushAmount):
@@ -350,37 +357,67 @@ func PushCast(_tileData : TileTargetedData):
 			_tileData.pushSelfResult = currentTile
 			return
 
-		# Check if the next tile has an occupant
-		if nextTile.Occupant != null:
-			if _tileData.pushSubject == null:
-				_tileData.pushSubject = nextTile.Occupant
-			else:
-				# We already have a subject we're pushing and we've hit another subject
-				# Exit now
-				_tileData.pushSelfResult = previousTile
-				_tileData.pushSubjectResult = currentTile
-				_tileData.pushCollision = nextTile
-				return
-
-		if nextTile.IsWall:
-			_tileData.pushCollision = nextTile
-
-			# Can't push a unit through a wall, so exit now
-			if _tileData.pushSubject == null:
-				# We're not pushing anything at the moment, so the result is the current tile
-				_tileData.pushSelfResult = currentTile
-			else:
-				# We're carrying someone. The previous tile is where we'd end up, the current tile is where they'd end up
-				_tileData.pushSelfResult = previousTile
-				_tileData.pushSubjectResult = currentTile
-
+		if Push(_tileData, nextTile, currentTile, _tileData.pushDirection):
 			return
 
-		# If we're here - the tile is free to push to
+		# If we're here - the tile is free to push onto
 		previousTile = currentTile
+		currentTile = nextTile
+
+	# if we're here - than the push did not result in a collision
+	if _tileData.pushStack.size() != 0:
+		WalkBackPushStack(_tileData, currentTile, _tileData.pushDirection)
+
+		# Okay well this is awkward - we need to do one more push, because the subject would actually go to the resulting tile + 1 more
+		#var nextTile = GetTile(currentTile.Position + directionVector)
+		#if nextTile == null:
+			#push_error("A Push error has occured. I don't know what went wrong where, but you need to fix it.")
+			#return
+#
+		#if Push(_tileData, nextTile, currentTile, _tileData.pushDirection):
+			#return
 
 
 	pass
+
+func Push(_tileData : TileTargetedData, _nextTile : Tile, _currentTile : Tile, _direction : GameSettingsTemplate.Direction):
+	# Check if the next tile has an occupant
+	if _nextTile.Occupant != null:
+		if _tileData.pushStack.size() < _tileData.carryLimit:
+			var newResult = PushResult.new()
+			newResult.Subject = _nextTile.Occupant
+			_tileData.pushStack.append(newResult)
+		else:
+			# We already have a subject we're pushing and we've hit another subject
+			# Exit now
+			_tileData.pushCollision = _nextTile
+
+			WalkBackPushStack(_tileData, _currentTile, _direction)
+			return true
+
+	if _nextTile.IsWall:
+		# It's up in the air as to if this should even be set if there's nothing in the push stack
+		# We'll see if it affects anything
+		_tileData.pushCollision = _nextTile
+
+		if _tileData.pushStack.size() != 0:
+			# Walk back the push stack - placing units where they're supposed to be
+			WalkBackPushStack(_tileData, _currentTile, _direction)
+
+		return true
+
+	return false
+
+func WalkBackPushStack(_tileData : TileTargetedData, _currentTile : Tile, _direction : GameSettingsTemplate.Direction):
+	# The last unit added to the push stack gets the current tile
+	# Work backwards from there to determine who ends up where
+	var index = _tileData.pushStack.size() - 1
+	var inverseDirection = GameSettingsTemplate.GetInverseVectorFromDirection(_direction)
+	while (index >= 0):
+		var inverseIndex = (_tileData.pushStack.size() - 1) - index
+		_tileData.pushStack[index].ResultingTile = GetTile(_currentTile.Position + (inverseDirection * inverseIndex))
+		index -= 1
+		# man I wish it was easier to do deprecating for loops
 
 func GetManhattanDistance(_gridPosition1 : Vector2i, _gridPosition2 : Vector2i):
 	var x = abs(_gridPosition1.x - _gridPosition2.x)

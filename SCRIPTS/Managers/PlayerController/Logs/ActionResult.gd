@@ -2,61 +2,65 @@ class_name ActionResult
 
 var Source : UnitInstance
 var Target : UnitInstance # CAN BE NULL IN SCENARIOS WHERE WERE JUST HITTING A TILE
+var AbilityData : Ability
+var TileTargetData : TileTargetedData
 
-var HealthDelta : int		# The signed amount the Health of the Target should move. If being delt damage, this will be negative. If healing, this will be positive
+
+var HealthDelta : int # The signed amount the Health of the Target should move. If being delt damage, this will be negative. If healing, this will be positive
 var SourceHealthDelta : int
 var FocusDelta : int
 var ExpGain : int
 var Kill : bool
-var Crit : bool
-
-var TileTargetData : TileTargetedData
-
-
-var MissVals : Vector2		# The log of which numbers we rolled
-var MissAverage : float		# The average of missVals
-var HitRate : float			# The % the average needs to be under in order for it to be a hit
+var Crit : bool = false
 var Miss : bool = false
 
 
-func Ability_CalculateResult(_rng : RandomNumberGenerator, _ability : Ability, _damageData):
+var HitRate : float			# The % the average needs to be under in order for it to be a hit
+var CritRate : float		# The % the roll needs to be under in order for it to be a crit
+
+var MissVals : Vector2		# The log of which numbers we rolled
+var MissAverage : float		# The average of missVals
+
+
+func PreCalculate():
 	# Target died somewhere in the process - return null
 	if Target == null:
 		return
 
-	if _ability.IsDamage():
+	if AbilityData.IsDamage():
 		# Damage dealing with autoattacks can miss
-		if _ability.type == Ability.AbilityType.Weapon || GameManager.GameSettings.AbilitiesCanMiss:
-			var hitRate = 100
+		if AbilityData.type == Ability.AbilityType.Weapon || GameManager.GameSettings.AbilitiesCanMiss:
+			HitRate = 100
 			if Target != null:
-				hitRate = GameManager.GameSettings.HitRateCalculation(Source, _ability, Target, TileTargetData)
+				HitRate = GameManager.GameSettings.HitRateCalculation(Source, AbilityData, Target, TileTargetData)
 
-			CalculateMiss(_rng, hitRate)
-
-		if !Miss:
-			var critRate = GameManager.GameSettings.CritRateCalculation(Source, _ability, Target, TileTargetData)
-			CalculateCrit(_rng, critRate)
-		else:
-			Crit = false # Should be automatic - but lets declare it anyway. If you miss, you don't crit
-
-		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, _damageData, TileTargetData)
-		if Crit:
-			HealthDelta = HealthDelta * GameManager.GameSettings.CritMultiplier
-			Juice.CreateCritPopup(TileTargetData.Tile)
+		CritRate = GameManager.GameSettings.CritRateCalculation(Source, AbilityData, Target, TileTargetData)
+		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, AbilityData.UsableDamageData, TileTargetData)
 
 		# calculate if the source unit heals or is hurt by this attack
-		CalculateSourceHealthDelta(_ability.UsableDamageData)
+		CalculateSourceHealthDelta(AbilityData.UsableDamageData)
 
 		Kill = false
 		if Target != null:
 			Kill = (Target.currentHealth + HealthDelta <= 0)
-	elif _ability.IsHeal():
+
+	elif AbilityData.IsHeal():
 		# Healing items can't miss
-		HealthDelta = GameManager.GameSettings.HealCalculation(_ability.HealData, Source, TileTargetData.AOEMultiplier)
+		HealthDelta = GameManager.GameSettings.HealCalculation(AbilityData.HealData, Source, TileTargetData.AOEMultiplier)
+
+
+func RollChance(_rng : RandomNumberGenerator):
+	RollMiss(_rng, HitRate)
+	RollCrit(_rng, CritRate)
+
+	if Crit:
+		HealthDelta = HealthDelta * GameManager.GameSettings.CritMultiplier
+		Juice.CreateCritPopup(TileTargetData.Tile)
 
 	CalculateExpGain()
-	if _ability.damageGrantsFocus:
+	if AbilityData.damageGrantsFocus:
 		CalculateFocusDelta()
+
 
 func CalculateSourceHealthDelta(_damageData : DamageData):
 	if _damageData.DamageAffectsUsersHealth && Target != null:
@@ -87,7 +91,7 @@ func CalculateExpGain():
 		# It's like a heal or something
 		ExpGain = GameManager.GameSettings.ExpFromHealCalculation(HealthDelta, Source, Target)
 
-func CalculateMiss(_rng : RandomNumberGenerator, _missThreshold : float):
+func RollMiss(_rng : RandomNumberGenerator, _missThreshold : float):
 	var val1 = _rng.randf()
 	var val2 = _rng.randf()
 	MissVals = Vector2(val1, val2)
@@ -111,6 +115,15 @@ func CalculateMiss(_rng : RandomNumberGenerator, _missThreshold : float):
 
 	Miss = MissAverage > _missThreshold
 
-func CalculateCrit(_rng : RandomNumberGenerator, _critThreshold : float):
+func RollCrit(_rng : RandomNumberGenerator, _critThreshold : float):
 	var val = _rng.randf()
 	Crit = val < _critThreshold
+
+
+static func Construct(_ability : Ability, _targetedTile : TileTargetedData, _source : UnitInstance, _target : UnitInstance):
+	var result = ActionResult.new()
+	result.AbilityData = _ability
+	result.TileTargetData = _targetedTile
+	result.Source = _source
+	result.Target = _target
+	return result

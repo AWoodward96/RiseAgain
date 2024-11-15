@@ -3,7 +3,8 @@
 [ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="1_qiew5"]
 
 [resource]
+line_spacing = 0.0
 font = ExtResource("1_qiew5")
-font_size = 18
+font_size = 12
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)

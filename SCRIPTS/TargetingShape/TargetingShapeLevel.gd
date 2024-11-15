@@ -28,6 +28,13 @@ func GetCoords(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 		return []
 	return res.TileCoordinates
 
+func GetSpecificData(_index : int, _unit : UnitInstance):
+	var res = GetShapeFromLevel(_unit)
+	if res == null:
+		return null
+
+	return res[_index]
+
 func GetShapeFromLevel(_unit : UnitInstance):
 	var res : LeveledTargetingShape
 	for l in leveledShapes:

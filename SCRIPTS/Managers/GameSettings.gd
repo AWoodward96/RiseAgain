@@ -19,6 +19,7 @@ enum Direction { Up, Right, Down, Left }
 
 @export var UniversalCritChance : int = 5
 @export var CritMultiplier : int = 3
+@export var CollisionDamageMultiplier : float = 1.5
 
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate
@@ -154,6 +155,15 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 		aoeMultiplier = _tileData.AOEMultiplier
 
 	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * aoeMultiplier * vulnerabilityMultiplier)
+
+func CollisionDamageCalculation(_source : UnitInstance):
+	var highestDamageStat = _source.GetWorkingStat(AttackStat)
+	var special =  _source.GetWorkingStat(SpAttackStat)
+	if highestDamageStat < special:
+		highestDamageStat = special
+
+	# Collision damage is considered true damage - not reduced by armor or spdefense
+	return highestDamageStat * CollisionDamageMultiplier
 
 func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
 	var healAmount = _healData.FlatValue

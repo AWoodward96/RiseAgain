@@ -42,6 +42,12 @@ static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 	new.damageData = _itemOrAbility.UsableDamageData
 	return new
 
+func ContainsPush():
+	for targetedTiles in affectedTiles:
+		if targetedTiles.willPush:
+			return true
+
+	return false
 
 func QueueExpGains():
 	# Define a dictionary that is [UnitInstance]-[ExpGainedFromAction]

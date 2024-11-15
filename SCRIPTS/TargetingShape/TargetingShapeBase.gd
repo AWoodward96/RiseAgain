@@ -8,3 +8,6 @@ func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 
 func GetCoords(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 	pass
+
+func GetSpecificData(_index : int, _unit : UnitInstance):
+	pass

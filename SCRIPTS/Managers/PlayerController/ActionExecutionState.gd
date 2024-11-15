@@ -23,25 +23,6 @@ func _Enter(_ctrl : PlayerController, data):
 		ctrl.EnterSelectionState()
 		return
 
-	log.actionResults.clear()
-	# The target tiles is an array so loop through that and append the units to take damage
-	for tileData in log.affectedTiles:
-		var target = tileData.Tile.Occupant
-
-		if target != null:
-			# If we have a target - don't damage allies, only damage who they are supposed to hit
-			if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
-				continue
-
-			if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
-				continue
-
-		var actionResult = ActionResult.new()
-		actionResult.Source = log.source
-		actionResult.Target = tileData.Tile.Occupant # COULD BE NULL - wE COULD JUST BE TARGETING THE TILE
-		actionResult.TileTargetData = tileData
-		log.actionResults.append(actionResult)
-
 
 	if log.ability != null:
 		log.ability.AbilityActionComplete.connect(PostActionComplete)
@@ -49,7 +30,6 @@ func _Enter(_ctrl : PlayerController, data):
 
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()
-
 
 	if log.ability != null:
 		log.ability.TryExecute(log, _delta)

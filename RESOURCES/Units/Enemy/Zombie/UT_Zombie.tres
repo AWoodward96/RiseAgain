@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=46 format=3 uid="uid://7mx1nucm5v"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=42 format=3 uid="uid://7mx1nucm5v"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_6iv7s"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_ggk7c"]
@@ -18,8 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://dtc3xv5u5h2cd" path="res://RESOURCES/Ability/Equippable/zombie_claw.tscn" id="14_4tmws"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_xril5"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_s8bjq"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="17_4cs2t"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_76ctg"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_yb6o6"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_lkyt1"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_vl8xi"]
@@ -70,14 +68,6 @@ script = ExtResource("2_6lvkj")
 Template = ExtResource("10_nkgja")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_1qgml"]
-script = ExtResource("17_4cs2t")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_mqwq8"]
-script = ExtResource("18_76ctg")
-
 [sub_resource type="Resource" id="Resource_l4c1f"]
 metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/zombie_claw.png"
 
@@ -95,7 +85,7 @@ _bundled = {
 "node_count": 4,
 "node_paths": [NodePath("."), NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
-"variants": [ExtResource("15_xril5"), 1, 0.0, Array[ExtResource("16_s8bjq")]([SubResource("Resource_1qgml"), SubResource("Resource_mqwq8")]), true, "zombie_claw", "weap_zombie_claw_name", "weap_zombie_claw_desc", SubResource("Resource_l4c1f"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_yb6o6"), 80.0, Array[ExtResource("2_6lvkj")]([SubResource("Resource_oxr4r")]), ExtResource("21_lkyt1"), ExtResource("3_tiv5t"), ExtResource("4_sod5c"), 0.0, ExtResource("22_vl8xi")],
+"variants": [ExtResource("15_xril5"), 1, 0.0, Array[ExtResource("16_s8bjq")]([]), true, "zombie_claw", "weap_zombie_claw_name", "weap_zombie_claw_desc", SubResource("Resource_l4c1f"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_yb6o6"), 80.0, Array[ExtResource("2_6lvkj")]([SubResource("Resource_oxr4r")]), ExtResource("21_lkyt1"), ExtResource("3_tiv5t"), ExtResource("4_sod5c"), 0.0, ExtResource("22_vl8xi")],
 "version": 3
 }
 

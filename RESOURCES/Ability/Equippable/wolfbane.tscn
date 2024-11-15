@@ -1,26 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://c556s8kmuas5f"]
+[gd_scene load_steps=12 format=3 uid="uid://c556s8kmuas5f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_2nsqj"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_0pyxx"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_c4rx7"]
 [ext_resource type="Texture2D" uid="uid://yqokd4g4dbxf" path="res://ART/Icons/Ability/Equippable/wolfbane.png" id="2_nixb8"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_34e71"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="3_y35ns"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_8m5ou"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_l15gm"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_6u87p"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_awmfo"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="7_srfuo"]
 [ext_resource type="Resource" uid="uid://bugcne8hpbrlr" path="res://RESOURCES/Descriptors/Vulnerabilities/VULN_wolfbane.tres" id="8_u4jkt"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_f741i"]
-
-[sub_resource type="Resource" id="Resource_tms8k"]
-script = ExtResource("3_34e71")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_28tbx"]
-script = ExtResource("4_8m5ou")
 
 [sub_resource type="Resource" id="Resource_2frui"]
 script = ExtResource("3_y35ns")
@@ -30,7 +19,6 @@ Value = 4
 [node name="wolfbane" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_2nsqj")
 type = 1
-executionStack = Array[ExtResource("2_c4rx7")]([SubResource("Resource_tms8k"), SubResource("Resource_28tbx")])
 damageGrantsFocus = true
 internalName = "wolfbane"
 loc_displayName = "weap_wolfbane_name"

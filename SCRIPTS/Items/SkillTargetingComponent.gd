@@ -56,7 +56,11 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 	if shapedTiles == null:
 		return arr
 
+	var index = 0
 	for shapedTile in shapedTiles.GetCoords(_unit, _grid, unitOriginTile):
+		if shapedTile == null:
+			continue
+		var specificData = shapedTiles.GetSpecificData(index, _unit)
 		var tileData = TileTargetedData.new()
 		var pos = shapedTile.Position as Vector2
 		pos = pos.rotated(deg_to_rad(90 * _directionIndex))
@@ -66,6 +70,8 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 		# ... the snapped method manages to make it so that it recognizes that 1 and -1 are in fact ints and not 0 value
 		var vector2i = Vector2i(pos.snapped(Vector2.ONE))
 		var relativePosition = unitOriginTile.Position + vector2i
+
+		var specificDataAsComplex = specificData as Vector2iMultComplex
 
 		var tile = _grid.GetTile(relativePosition) as Tile
 		if tile != null:
@@ -77,13 +83,25 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 			if tile.IsWall && stopShapeOnWall:
 				return arr
 
+			if specificDataAsComplex != null:
+				if specificDataAsComplex.pushInfo != null:
+					var info = specificDataAsComplex.pushInfo
+					tileData.pushAmount = info.pushAmount
+					tileData.carryLimit = info.carryLimit
+					if info.overrideActionDirection:
+						tileData.pushDirection = info.pushDirectionOverride
+					else:
+						tileData.pushDirection = _directionIndex
+					_grid.PushCast(tileData)
+
 			arr.append(tileData)
+		index += 1
 
 	return arr
 
 
 func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[TileTargetedData]):
-	return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant == null || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant)) || (o.Tile.Occupant == _unit && CanTargetSelf))
+	return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant == null || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant)) || (o.Tile.Occupant == _unit && CanTargetSelf) || (o.willPush))
 
 func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant)) || (o.Occupant == _unit && CanTargetSelf))

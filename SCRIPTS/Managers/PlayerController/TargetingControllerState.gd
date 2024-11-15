@@ -15,6 +15,7 @@ var shapedDirection : GameSettingsTemplate.Direction
 var targetSelected : bool # To lock out double-attacks
 var unitMovement : PackedVector2Array
 var createdTileDamagePreview : Array[DamageIndicator]
+var unitsWithModifiedVisuals : Array[UnitInstance]
 
 func _Enter(_ctrl : PlayerController, ItemOrAbility):
 	super(_ctrl, ItemOrAbility)
@@ -117,6 +118,7 @@ func UpdateInput(_delta):
 	if unitUsable.MovementData != null:
 		UpdateMoveData(_delta)
 
+
 	if InputManager.selectDown && !targetSelected:
 		TileSelected()
 
@@ -185,9 +187,14 @@ func StandardTargetingInput(_delta):
 		if curIndex < 0:
 			curIndex = filteredList.size() - 1
 
+
 	ClearPreview()
 	currentTargetTile = filteredList[curIndex]
 	ShowPreview()
+
+	# Has to come after clear preview
+	if log.ContainsPush():
+		UpdatePushData(_delta)
 
 	ctrl.ForceReticlePosition(currentTargetTile.Position)
 
@@ -229,6 +236,9 @@ func ShapedFreeTargetingInput(_delta):
 	ShowAvailableTilesOnGrid()
 	ClearPreview()
 	ShowPreview()
+
+	if log.ContainsPush():
+		UpdatePushData(_delta)
 	pass
 
 func UpdateMoveData(_delta):
@@ -246,11 +256,35 @@ func UpdateMoveData(_delta):
 		ctrl.movement_preview_sprite.visible = false
 	pass
 
+func UpdatePushData(_delta):
+	for affectedTiles in log.affectedTiles:
+		if !affectedTiles.willPush:
+			continue
+
+		for stack in affectedTiles.pushStack:
+			if stack.Subject == log.source:
+				ctrl.movement_tracker.visible = true
+				ctrl.movement_preview_sprite.visible = true
+				ctrl.movement_tracker.clear_points()
+				var positionalOffset = Vector2(currentGrid.CellSize / 2, currentGrid.CellSize / 2)
+				var points = PackedVector2Array()
+				points.append(stack.Subject.CurrentTile.GlobalPosition + positionalOffset)
+				points.append(stack.ResultingTile.GlobalPosition + positionalOffset)
+				ctrl.movement_tracker.points = points
+				ctrl.movement_preview_sprite.texture = source.Template.icon
+				ctrl.movement_preview_sprite.position = points[points.size() - 1]
+			else:
+				stack.Subject.PreviewModifiedTile(stack.ResultingTile)
+				unitsWithModifiedVisuals.append(stack.Subject)
+
+	pass
+
 func ShapedDirectionalTargetingInput(_delta):
 	# only update when there's input
 	if !InputManager.inputAnyDown:
 		return
 
+	ClearPreview()
 	var newShaped
 	if InputManager.inputDown[0] :
 		newShaped = 0
@@ -272,8 +306,10 @@ func ShapedDirectionalTargetingInput(_delta):
 	ctrl.ForceReticlePosition(currentTargetTile.Position)
 
 	ShowAvailableTilesOnGrid()
-	ClearPreview()
 	ShowPreview()
+
+	if log.ContainsPush():
+		UpdatePushData(_delta)
 	pass
 
 func ClearPreview():
@@ -294,58 +330,81 @@ func ClearPreview():
 		ind.queue_free()
 	createdTileDamagePreview.clear()
 
+	for unit in unitsWithModifiedVisuals:
+		unit.ResetVisualToTile()
+	unitsWithModifiedVisuals.clear()
+
+func BuildResultsArray():
+	log.actionResults.clear()
+	# The target tiles is an array so loop through that and append the units to take damage
+	for tileData in log.affectedTiles:
+		var target = tileData.Tile.Occupant
+
+		if target != null:
+			# If we have a target - don't damage allies, only damage who they are supposed to hit
+			if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
+				continue
+
+			if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
+				continue
+
+		var actionResult = ActionResult.Construct(log.Ability, tileData, log.source, tileData.Tile.Occupant)
+		actionResult.PreCalculate()
+		log.actionResults.append(actionResult)
+
 
 func ShowPreview():
-	if unitUsable.IsDamage():
-		ShowDamagePreview()
-	elif unitUsable.IsHeal():
-		ShowHealPreview()
+	BuildResultsArray()
+	ShowCombatPreview()
 
-func ShowDamagePreview():
-	match targetingData.Type:
-		SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.SelfOnly:
-			if currentTargetTile != null:
-				var tempTargetData = currentTargetTile.AsTargetData()
-				if currentTargetTile.Occupant != null:
-					# Show the damage preview physically on the unit
-					# this section is slated for removal if it is deemed to be unnecessary
-					currentTargetTile.Occupant.ShowDamagePreview(source, unitUsable, tempTargetData)
+func ShowCombatPreview():
 
-					# Ping the CombatHUD to show the damage preview
-					if currentTargetTile.Occupant != null && currentTargetTile.Occupant.Template != null && currentTargetTile.Occupant.Template.Affinity != null:
-						source.ShowAffinityRelation(currentTargetTile.Occupant.Template.Affinity)
 
-					ctrl.combatHUD.ShowDamagePreviewUI(source, unitUsable, currentTargetTile.Occupant, tempTargetData)
-				else:
-					# We are targeting a tile without an occupant
-					# create a new preview for the tile
-					var preview = Juice.CreateDamageIndicator(currentTargetTile) as DamageIndicator
-					createdTileDamagePreview.append(preview)
-					preview.PreviewDamage(unitUsable, source, tempTargetData, null, currentTargetTile.Health, currentTargetTile.MaxHealth)
-
-		SkillTargetingData.TargetingType.ShapedFree:
-			for targetTileData in shapedTargetingTiles:
-				if targetTileData != null:
-					if targetTileData.Tile.Occupant != null:
-						targetTileData.Tile.Occupant.ShowDamagePreview(source, unitUsable, targetTileData)
-						cachedTargetUnits.append(targetTileData.Tile.Occupant)
-					elif targetTileData.Tile.MaxHealth > 0:
-						var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
-						createdTileDamagePreview.append(preview)
-						preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
-
-		SkillTargetingData.TargetingType.ShapedDirectional:
-			var filteredTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
-			for targetTileData in filteredTiles:
-				if targetTileData.Tile.Occupant != null:
-					targetTileData.Tile.Occupant.ShowDamagePreview(source, unitUsable, targetTileData)
-					cachedTargetUnits.append(targetTileData.Tile.Occupant)
-				elif targetTileData.Tile.MaxHealth > 0:
-					var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
-					createdTileDamagePreview.append(preview)
-					preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
-
-			pass
+	pass
+	#match targetingData.Type:
+		#SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.SelfOnly:
+			#if currentTargetTile != null:
+				#var tempTargetData = currentTargetTile.AsTargetData()
+				#if currentTargetTile.Occupant != null:
+					## Show the damage preview physically on the unit
+					## this section is slated for removal if it is deemed to be unnecessary
+					#currentTargetTile.Occupant.ShowDamagePreview(source, unitUsable, tempTargetData)
+#
+					## Ping the CombatHUD to show the damage preview
+					#if currentTargetTile.Occupant != null && currentTargetTile.Occupant.Template != null && currentTargetTile.Occupant.Template.Affinity != null:
+						#source.ShowAffinityRelation(currentTargetTile.Occupant.Template.Affinity)
+#
+					#ctrl.combatHUD.ShowDamagePreviewUI(source, unitUsable, currentTargetTile.Occupant, tempTargetData)
+				#else:
+					## We are targeting a tile without an occupant
+					## create a new preview for the tile
+					#var preview = Juice.CreateDamageIndicator(currentTargetTile) as DamageIndicator
+					#createdTileDamagePreview.append(preview)
+					#preview.PreviewDamage(unitUsable, source, tempTargetData, null, currentTargetTile.Health, currentTargetTile.MaxHealth)
+#
+		#SkillTargetingData.TargetingType.ShapedFree:
+			#for targetTileData in shapedTargetingTiles:
+				#if targetTileData != null:
+					#if targetTileData.Tile.Occupant != null:
+						#targetTileData.Tile.Occupant.ShowDamagePreview(source, unitUsable, targetTileData)
+						#cachedTargetUnits.append(targetTileData.Tile.Occupant)
+					#elif targetTileData.Tile.MaxHealth > 0:
+						#var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
+						#createdTileDamagePreview.append(preview)
+						#preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
+#
+		#SkillTargetingData.TargetingType.ShapedDirectional:
+			#var filteredTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
+			#for targetTileData in filteredTiles:
+				#if targetTileData.Tile.Occupant != null:
+					#targetTileData.Tile.Occupant.ShowDamagePreview(source, unitUsable, targetTileData)
+					#cachedTargetUnits.append(targetTileData.Tile.Occupant)
+				#elif targetTileData.Tile.MaxHealth > 0:
+					#var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
+					#createdTileDamagePreview.append(preview)
+					#preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
+#
+			#pass
 
 func ShowHealPreview():
 	match targetingData.Type:

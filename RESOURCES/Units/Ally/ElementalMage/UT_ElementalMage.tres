@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=61 format=3 uid="uid://dhofh2o4b8tg4"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=51 format=3 uid="uid://dhofh2o4b8tg4"]
 
 [ext_resource type="PackedScene" uid="uid://dmih52nttd88v" path="res://RESOURCES/Units/Ally/ElementalMage/VIS_ElementalMage.tscn" id="1_f24il"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_f24q4"]
@@ -19,13 +19,10 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="14_5ir2o"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_xjuoy"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="15_0olt6"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="16_4rur6"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="17_oydo5"]
 [ext_resource type="Texture2D" uid="uid://bvowbij7bann8" path="res://ART/Icons/Ability/Equippable/mana_bolt.png" id="18_mtdu3"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_dtko3"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="20_g8ebr"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_ns6td"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/HealStep.gd" id="22_3fyn8"]
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="23_2mqml"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="24_lnxge"]
 [ext_resource type="Texture2D" uid="uid://bty8oi4tn0t4j" path="res://ART/Icons/Ability/Standard/fireball.png" id="26_as6fp"]
@@ -78,14 +75,6 @@ script = ExtResource("2_dbc0j")
 Template = ExtResource("10_0vpda")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_d3am7"]
-script = ExtResource("16_4rur6")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_k0yij"]
-script = ExtResource("17_oydo5")
-
 [sub_resource type="Resource" id="Resource_w05g3"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("5_thm0u")
@@ -100,12 +89,9 @@ _bundled = {
 "node_count": 4,
 "node_paths": [NodePath("."), NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 2, 27, 19, 28, 20, 0),
-"variants": [ExtResource("14_5ir2o"), 1, 0.0, Array[ExtResource("15_0olt6")]([SubResource("Resource_d3am7"), SubResource("Resource_k0yij")]), true, "mana_bolt", "weap_mana_bolt_name", "weap_mana_bolt_desc", ExtResource("18_mtdu3"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_dtko3"), 90.0, Array[ExtResource("2_dbc0j")]([SubResource("Resource_w05g3")]), ExtResource("20_g8ebr"), ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_ns6td"), Vector2i(1, 2)],
+"variants": [ExtResource("14_5ir2o"), 1, 0.0, Array[ExtResource("15_0olt6")]([]), true, "mana_bolt", "weap_mana_bolt_name", "weap_mana_bolt_desc", ExtResource("18_mtdu3"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_dtko3"), 90.0, Array[ExtResource("2_dbc0j")]([SubResource("Resource_w05g3")]), ExtResource("20_g8ebr"), ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_ns6td"), Vector2i(1, 2)],
 "version": 3
 }
-
-[sub_resource type="Resource" id="Resource_dml4r"]
-script = ExtResource("22_3fyn8")
 
 [sub_resource type="PackedScene" id="PackedScene_t511n"]
 _bundled = {
@@ -116,7 +102,7 @@ _bundled = {
 "node_count": 3,
 "node_paths": [NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 2, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 5, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 0),
-"variants": [ExtResource("14_5ir2o"), 2, 0.0, 3.0, 3.0, Array[ExtResource("15_0olt6")]([SubResource("Resource_dml4r")]), "gauze", "tact_gauze_name", "tact_gauze_desc", ExtResource("23_2mqml"), NodePath("SkillTargetingData"), NodePath("HealComponent"), ExtResource("24_lnxge"), 10.0, ExtResource("21_ns6td"), 0, Vector2i(0, 0), 3, true],
+"variants": [ExtResource("14_5ir2o"), 2, 0.0, 3.0, 3.0, Array[ExtResource("15_0olt6")]([]), "gauze", "tact_gauze_name", "tact_gauze_desc", ExtResource("23_2mqml"), NodePath("SkillTargetingData"), NodePath("HealComponent"), ExtResource("24_lnxge"), 10.0, ExtResource("21_ns6td"), 0, Vector2i(0, 0), 3, true],
 "version": 3
 }
 
@@ -155,14 +141,6 @@ script = ExtResource("2_dbc0j")
 Template = ExtResource("10_te031")
 Value = 10.0
 
-[sub_resource type="Resource" id="Resource_nobtd"]
-script = ExtResource("16_4rur6")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_5cjq5"]
-script = ExtResource("17_oydo5")
-
 [sub_resource type="PackedScene" id="PackedScene_eun7s"]
 _bundled = {
 "conn_count": 0,
@@ -172,17 +150,9 @@ _bundled = {
 "node_count": 3,
 "node_paths": [NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 9, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 1073741833, 7, 1073741834, 8, 0, 1073741824, 0, 12, 11, -1, 5, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 5, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 0),
-"variants": [ExtResource("14_5ir2o"), 3.0, Array[ExtResource("15_0olt6")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")]), "fireball", "art_fireball_name", "art_fireball_desc", ExtResource("26_as6fp"), NodePath("SkillTargetingData"), NodePath("DamageData"), ExtResource("20_g8ebr"), 2.0, ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_ns6td"), Vector2i(1, 3), 1, true, ExtResource("27_6s8i8")],
+"variants": [ExtResource("14_5ir2o"), 3.0, Array[ExtResource("15_0olt6")]([]), "fireball", "art_fireball_name", "art_fireball_desc", ExtResource("26_as6fp"), NodePath("SkillTargetingData"), NodePath("DamageData"), ExtResource("20_g8ebr"), 2.0, ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_ns6td"), Vector2i(1, 3), 1, true, ExtResource("27_6s8i8")],
 "version": 3
 }
-
-[sub_resource type="Resource" id="Resource_7ime6"]
-script = ExtResource("16_4rur6")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_6vi7d"]
-script = ExtResource("17_oydo5")
 
 [sub_resource type="PackedScene" id="PackedScene_7pxw8"]
 _bundled = {
@@ -193,7 +163,7 @@ _bundled = {
 "node_count": 3,
 "node_paths": [NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 9, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 1073741833, 7, 1073741834, 8, 0, 1073741824, 0, 12, 11, -1, 4, 13, 9, 14, 10, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 3, 19, 13, 20, 14, 21, 15, 0),
-"variants": [ExtResource("14_5ir2o"), 3.0, Array[ExtResource("15_0olt6")]([SubResource("Resource_7ime6"), SubResource("Resource_6vi7d")]), "beamattack", "art_beamattack_name", "art_beamattack_desc", ExtResource("28_url30"), NodePath("SkillTargetingData"), NodePath("DamageData"), ExtResource("20_g8ebr"), ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_ns6td"), 2, ExtResource("29_atupi")],
+"variants": [ExtResource("14_5ir2o"), 3.0, Array[ExtResource("15_0olt6")]([]), "beamattack", "art_beamattack_name", "art_beamattack_desc", ExtResource("28_url30"), NodePath("SkillTargetingData"), NodePath("DamageData"), ExtResource("20_g8ebr"), ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_ns6td"), 2, ExtResource("29_atupi")],
 "version": 3
 }
 
