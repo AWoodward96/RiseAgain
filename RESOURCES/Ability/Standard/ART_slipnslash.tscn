@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_7xk4g"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_mbdvn"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_4cdrb"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_jqx7w"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_fsb37"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_ubaxs"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="5_j1vck"]
 [ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/KillReq.gd" id="6_demtf"]
@@ -23,8 +23,8 @@ script = ExtResource("3_jqx7w")
 WaitForStackFree = true
 SpeedOverride = 2000
 
-[sub_resource type="Resource" id="Resource_nobtd"]
-script = ExtResource("3_4cdrb")
+[sub_resource type="Resource" id="Resource_l02h2"]
+script = ExtResource("4_fsb37")
 useAttackAction = false
 useDefendAction = false
 
@@ -47,7 +47,7 @@ script = ExtResource("4_ubaxs")
 [node name="ART_SlipNSlash" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_7xk4g")
 focusCost = 2
-executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_ag1gk"), SubResource("Resource_nobtd"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_ag1gk"), SubResource("Resource_l02h2"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
 internalName = "slipnslash"
 loc_displayName = "art_slipnslash_name"
 loc_displayDesc = "art_slipnslash_desc"

@@ -15,9 +15,3 @@ var willPush : bool :
 var carryLimit : int = 2
 var pushStack : Array[PushResult]
 var pushCollision : Tile			# If not null - this is the Tile that ended up stopping the push
-
-
-# REMOVE:
-#var pushSelfResult : Tile			# Where does this unit end up after being pushed?
-#var pushSubject : UnitInstance		# If true - this unit will be pushed along with the self
-#var pushSubjectResult : Tile		# Where does the  pushSubject end up after being pushed?

@@ -348,7 +348,6 @@ func PushCast(_tileData : TileTargetedData):
 		newResult.Subject = currentTile.Occupant
 		_tileData.pushStack.append(newResult)
 
-	var previousTile = _tileData.Tile
 	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_tileData.pushDirection)
 	for i in range(0, _tileData.pushAmount):
 		var nextTile = GetTile(currentTile.Position + directionVector)
@@ -361,7 +360,6 @@ func PushCast(_tileData : TileTargetedData):
 			return
 
 		# If we're here - the tile is free to push onto
-		previousTile = currentTile
 		currentTile = nextTile
 
 	# if we're here - than the push did not result in a collision

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_nhf15"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ardhu"]
 [ext_resource type="Texture2D" uid="uid://bvowbij7bann8" path="res://ART/Icons/Ability/Equippable/mana_bolt.png" id="2_sck7k"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_7g1dc"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_aqi1q"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_urfj7"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_15h1q"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_ev71y"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="5_82x5q"]
@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="7_5cugg"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_lg6pv"]
 
-[sub_resource type="Resource" id="Resource_d3am7"]
-script = ExtResource("3_7g1dc")
+[sub_resource type="Resource" id="Resource_rkook"]
+script = ExtResource("3_urfj7")
 useAttackAction = true
 useDefendAction = true
 
@@ -29,7 +29,7 @@ Value = 4
 script = ExtResource("1_nhf15")
 type = 1
 focusCost = 0.0
-executionStack = Array[ExtResource("2_ardhu")]([SubResource("Resource_d3am7"), SubResource("Resource_k0yij")])
+executionStack = Array[ExtResource("2_ardhu")]([SubResource("Resource_rkook"), SubResource("Resource_k0yij")])
 damageGrantsFocus = true
 internalName = "mana_bolt"
 loc_displayName = "weap_mana_bolt_name"

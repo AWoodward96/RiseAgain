@@ -25,10 +25,7 @@
 				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
 				"801cb78a-6aaf-4399-87aa-18537f529d8b",
 				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
-				"cfbec417-e205-448e-89cf-dad74ef59201",
-				"186c4997-a3ba-4bac-967f-40c0f6c427df",
-				"efcfb7e9-d516-47cd-bc43-d7f5f16ddbaf",
-				"e51bbf1a-4746-4a68-a3ae-aeb70d8367bd"
+				"cfbec417-e205-448e-89cf-dad74ef59201"
 			]
 		},
 		{
@@ -65,7 +62,9 @@
 				"cab74468-ed27-42d8-ab99-5b473a220ef3",
 				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
 				"2da4feb0-3296-4b5c-83db-078c28f6f94d",
-				"f9d8c66d-3d4e-43fa-a41a-3d410f1df86d"
+				"f9d8c66d-3d4e-43fa-a41a-3d410f1df86d",
+				"6792c2de-7cbd-425b-98d6-ec17d6444815",
+				"e0633179-c6ee-495d-9f86-8949df0de05d"
 			]
 		},
 		{
@@ -346,31 +345,17 @@
 			"steps": []
 		},
 		{
-			"uuid": "186c4997-a3ba-4bac-967f-40c0f6c427df",
-			"title": "IDEA: Move the preview code to the ability step base",
+			"uuid": "e0633179-c6ee-495d-9f86-8949df0de05d",
+			"title": "Double Shot doesn't work anymore",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		},
 		{
-			"uuid": "efcfb7e9-d516-47cd-bc43-d7f5f16ddbaf",
-			"title": "Upper Route Boss Concept",
-			"description": "A Giant bird that flaps its wings to push units around\n\nThe arena is full of destructable boulders for units to bump into to take damage. The bird doesn't actually deal damage - it's just the pushing of units into bolders.\n\nBird is as 3 x 3 boss. It's AI determines the best tile to move to based on which tile has the most units in a 3 x 3 square",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "e51bbf1a-4746-4a68-a3ae-aeb70d8367bd",
-			"title": "Split Elemental Mage into 2 Characters",
-			"description": "A Fire Mage and an Elemental Mage. One is damage and burning, one is utility and cc.",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "7a22c9b0-0b02-400f-8fec-62782af0e910",
-			"title": "New task",
+			"uuid": "6792c2de-7cbd-425b-98d6-ec17d6444815",
+			"title": "Apply Effects needs its own result",
 			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],

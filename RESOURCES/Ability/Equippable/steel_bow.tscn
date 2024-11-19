@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_8sl2l"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_4jlfa"]
 [ext_resource type="Texture2D" uid="uid://dgyufpx5a6ka3" path="res://ART/Icons/Ability/Equippable/steel_bow.png" id="2_tu0mj"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_mt5dd"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_b2ojx"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_t6gdh"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_30xxt"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_ydbij"]
@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_ijos8"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_xkm8v"]
 
-[sub_resource type="Resource" id="Resource_fiudk"]
-script = ExtResource("3_mt5dd")
+[sub_resource type="Resource" id="Resource_3us1r"]
+script = ExtResource("3_b2ojx")
 useAttackAction = true
 useDefendAction = true
 
@@ -29,7 +29,7 @@ Value = 5
 script = ExtResource("1_8sl2l")
 type = 1
 focusCost = 0.0
-executionStack = Array[ExtResource("2_4jlfa")]([SubResource("Resource_fiudk"), SubResource("Resource_ku5yt")])
+executionStack = Array[ExtResource("2_4jlfa")]([SubResource("Resource_3us1r"), SubResource("Resource_ku5yt")])
 damageGrantsFocus = true
 internalName = "steel_bow"
 loc_displayName = "weap_steel_bow_name"

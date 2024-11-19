@@ -192,15 +192,12 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 	return ((_attacker.GetWorkingStat(SkillStat) / 2.0) + _attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
-	# TODO: Increase or decrease the exp gained from damaging a foe based on some metric
 	return 10 + _healAmount
 
 func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
-	# TODO: Increase or decrease the exp gained from damaging a foe based on some metric
 	return 10 + _damageDealt
 
 func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
-	# TODO: Increase or decrease the exp gained from killing a foe based on some metric
 	var X = 0
 	if _target != null && _source != null:
 		X = _target.Level - _source.Level

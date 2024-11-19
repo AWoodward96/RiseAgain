@@ -3,6 +3,7 @@ class_name UnitHealAction
 
 var delay
 var Log : ActionLog
+var ActionIndex : int
 var targetUnits : Array[UnitInstance]
 
 func _Enter(_unit : UnitInstance, _map : Map):
@@ -11,7 +12,8 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	delay = false
 	await _map.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
-	for results in Log.actionResults:
+	var actions = Log.GetResultsFromActionIndex(ActionIndex)
+	for results in actions:
 		results.Target.DoHeal(results)
 
 	await _map.get_tree().create_timer(Juice.combatSequenceCooloffTimer).timeout

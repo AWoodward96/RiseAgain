@@ -4,7 +4,7 @@ class_name Map
 
 static var Current : Map
 
-signal OnUnitDied(_unitInstasnce : UnitInstance, _context : ActionResult)
+signal OnUnitDied(_unitInstasnce : UnitInstance, _context : ActionStepResult)
 
 enum MAPSTATE { PreMap, Combat, PostMap }
 enum MAPTYPE { Standard, Campsite, Event }
@@ -181,7 +181,7 @@ func ChangeMapState(_newState : MapStateBase):
 	MapState = _newState
 	MapState.Enter(self, playercontroller)
 
-func OnUnitDeath(_unitInstance : UnitInstance, _context : ActionResult):
+func OnUnitDeath(_unitInstance : UnitInstance, _context : ActionStepResult):
 	var indexOf = teams[_unitInstance.UnitAllegiance].find(_unitInstance, 0)
 	if indexOf >= 0:
 		teams[_unitInstance.UnitAllegiance].remove_at(indexOf)

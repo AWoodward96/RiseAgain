@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_4owtj"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8bvfg"]
 [ext_resource type="Texture2D" uid="uid://ci67qx2wt4fay" path="res://ART/Icons/Ability/Equippable/wolf_tooth.png" id="2_wxyba"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_kcofi"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_0b8ky"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_olmah"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_07jnf"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="4_tsgbl"]
@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_7pm30"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_81734"]
 
-[sub_resource type="Resource" id="Resource_qgrug"]
-script = ExtResource("3_kcofi")
+[sub_resource type="Resource" id="Resource_md6lt"]
+script = ExtResource("3_0b8ky")
 useAttackAction = true
 useDefendAction = true
 
@@ -29,7 +29,7 @@ Value = 2
 script = ExtResource("1_7vw3g")
 type = 1
 focusCost = 0.0
-executionStack = Array[ExtResource("2_8bvfg")]([SubResource("Resource_qgrug"), SubResource("Resource_6ubox")])
+executionStack = Array[ExtResource("2_8bvfg")]([SubResource("Resource_md6lt"), SubResource("Resource_6ubox")])
 damageGrantsFocus = true
 internalName = "wolf_tooth"
 loc_displayName = "weap_wolf_tooth_name"

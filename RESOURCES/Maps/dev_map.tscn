@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cab65o5qhlejd"]
+[gd_scene load_steps=23 format=4 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_hfwsr"]
@@ -15,7 +15,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="11_owybn"]
 [ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="15_g081h"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_EndTurn.gd" id="15_sr05p"]
-[ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="16_6fonm"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="15_wtqf6"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="16_rj3a3"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_hfwsr")
@@ -36,11 +37,11 @@ script = ExtResource("15_sr05p")
 [node name="Dev_Map" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_yneqe")
 GridSize = Vector2i(15, 10)
-WinCondition = SubResource("Resource_vm3u1")
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
 tilemap_UI = NodePath("UI_Layer")
+WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -117,6 +118,7 @@ UnitToSpawn = ExtResource("8_4ojfh")
 UnitLevel = 3
 PreAppliedEffects = Array[ExtResource("9_v8l4r")]([ExtResource("10_gihwm")])
 Position = Vector2i(7, 3)
+Enabled = false
 AIBehavior = ExtResource("11_l2p1q")
 AggroBehavior = SubResource("Resource_oclll")
 
@@ -131,22 +133,48 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("8_yycfd")
 UnitLevel = 2
 Position = Vector2i(7, 5)
+Enabled = false
 Allegiance = 4
 AIBehavior = ExtResource("15_g081h")
 AggroBehavior = SubResource("Resource_h7prp")
 
-[node name="Spawn_WolfMother" type="Sprite2D" parent="Spawners"]
-position = Vector2(576, 256)
+[node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
+position = Vector2(320, 192)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("16_6fonm")
-Position = Vector2i(9, 4)
-Allegiance = 4
-AIBehavior = ExtResource("15_g081h")
+UnitToSpawn = ExtResource("15_wtqf6")
+Position = Vector2i(5, 3)
+AIBehavior = ExtResource("16_rj3a3")
+AggroBehavior = SubResource("Resource_mju62")
+
+[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
+position = Vector2(320, 256)
+texture = ExtResource("6_gfyht")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_vt2ms")
+UnitToSpawn = ExtResource("15_wtqf6")
+Position = Vector2i(5, 4)
+AIBehavior = ExtResource("16_rj3a3")
+AggroBehavior = SubResource("Resource_mju62")
+
+[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
+position = Vector2(320, 128)
+texture = ExtResource("6_gfyht")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_vt2ms")
+UnitToSpawn = ExtResource("15_wtqf6")
+Position = Vector2i(5, 2)
+AIBehavior = ExtResource("16_rj3a3")
 AggroBehavior = SubResource("Resource_mju62")
 
 [node name="Spawn_WolfPup3" type="Sprite2D" parent="Spawners"]

@@ -3,7 +3,6 @@ extends Node
 @export var sprite : Sprite2D
 @export var text : Label
 
-
 func SetEffect(_effectInstance : CombatEffectInstance):
 	var template = _effectInstance.Template
 	if template == null:

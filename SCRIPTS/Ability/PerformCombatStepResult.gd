@@ -1,20 +1,13 @@
-class_name ActionResult
+extends ActionStepResult
+class_name PerformCombatStepResult
 
-# DELETE
-var Source : UnitInstance
-var Target : UnitInstance # CAN BE NULL IN SCENARIOS WHERE WERE JUST HITTING A TILE
 var AbilityData : Ability
-var TileTargetData : TileTargetedData
-
 
 var HealthDelta : int # The signed amount the Health of the Target should move. If being delt damage, this will be negative. If healing, this will be positive
-var SourceHealthDelta : int
+var SourceHealthDelta : int # Signed amount referring to how the Sources HP will be modified. Positive is a heal, negative is a self-damage
 var FocusDelta : int
-var ExpGain : int
-var Kill : bool
 var Crit : bool = false
 var Miss : bool = false
-
 
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var CritRate : float		# The % the roll needs to be under in order for it to be a crit
@@ -22,16 +15,17 @@ var CritRate : float		# The % the roll needs to be under in order for it to be a
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
 
-
 func PreCalculate():
-	# Target died somewhere in the process - return null
-	if Target == null:
-		return
+	## Target died somewhere in the process - return null
+	# NOTE: I had this commented out at some point because of an error I ran into -- not quite sure how to handle this at the moment
+	# So just.... bleh
+	#if Target == null:
+		#return
 
 	if AbilityData.IsDamage():
 		# Damage dealing with autoattacks can miss
+		HitRate = 100
 		if AbilityData.type == Ability.AbilityType.Weapon || GameManager.GameSettings.AbilitiesCanMiss:
-			HitRate = 100
 			if Target != null:
 				HitRate = GameManager.GameSettings.HitRateCalculation(Source, AbilityData, Target, TileTargetData)
 
@@ -120,11 +114,42 @@ func RollCrit(_rng : RandomNumberGenerator, _critThreshold : float):
 	var val = _rng.randf()
 	Crit = val < _critThreshold
 
+func PreviewResult(_map : Map):
+	PreCalculate()
 
-static func Construct(_ability : Ability, _targetedTile : TileTargetedData, _source : UnitInstance, _target : UnitInstance):
-	var result = ActionResult.new()
-	result.AbilityData = _ability
-	result.TileTargetData = _targetedTile
-	result.Source = _source
-	result.Target = _target
-	return result
+	if SourceHealthDelta != 0 && Source != null:
+		# Then the source will have their hp modified - so add that to their preview
+		if SourceHealthDelta < 0:
+			Source.damage_indicator.normalDamage += SourceHealthDelta
+		elif SourceHealthDelta > 0:
+			Source.damage_indicator.healAmount += SourceHealthDelta
+		Source.damage_indicator.SetHealthLevels(Source.currentHealth, Source.maxHealth)
+
+	if Target != null:
+		var indicator = Target.damage_indicator
+
+		if HealthDelta < 0:
+			indicator.normalDamage += HealthDelta
+		elif HealthDelta > 0:
+			indicator.healAmount += HealthDelta
+
+		indicator.SetHealthLevels(Target.currentHealth, Target.maxHealth)
+		indicator.hitChance = HitRate
+		indicator.critChance = CritRate
+
+		Target.ShowAffinityRelation(Source.Template.Affinity)
+	elif TileTargetData.Tile.Health != -1:
+		# Target may be a Tile we're hitting
+		var heal = 0
+		var damage = 0
+		if HealthDelta < 0:
+			damage += HealthDelta
+		elif HealthDelta > 0:
+			heal += HealthDelta
+
+		TileTargetData.Tile.PreviewDamage(damage, 0, heal)
+
+func CancelPreview():
+	if TileTargetData != null:
+		TileTargetData.Tile.CancelPreview()
+	pass

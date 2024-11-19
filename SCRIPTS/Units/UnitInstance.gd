@@ -161,6 +161,8 @@ func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 	combatEffectsParent.add_child(_combatEffectInstance)
 	UpdateCombatEffects()
 	RefreshHealthBarVisuals()
+	if _combatEffectInstance.Template.show_popup:
+		Juice.CreateEffectPopup(CurrentTile, _combatEffectInstance)
 
 func TriggerTurnStartEffects():
 	for c in CombatEffects:
@@ -441,16 +443,17 @@ func QueueTurnStartDelay():
 	if CurrentAction == null:
 		PopAction()
 
-func DoHeal(_result : ActionResult):
+func DoHeal(_result : HealStepResult):
 	ModifyHealth(_result.HealthDelta, _result)
+	pass
 
-func DoCombat(_result : ActionResult, _instantaneous : bool = false):
+func DoCombat(_result : PerformCombatStepResult, _instantaneous : bool = false):
 	if _result.Miss:
 		Juice.CreateMissPopup(CurrentTile)
 	else:
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
-func ModifyHealth(_netHealthChange, _context : ActionResult, _instantaneous : bool = false):
+func ModifyHealth(_netHealthChange, _result : ActionStepResult, _instantaneous : bool = false):
 	if _netHealthChange < 0:
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
@@ -467,10 +470,10 @@ func ModifyHealth(_netHealthChange, _context : ActionResult, _instantaneous : bo
 		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
 		# You'll need to wait for one to be finished before the other one starts
 		if !healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
-			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange, _context))
+			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
 
 	else:
-		OnModifyHealthTweenComplete(_netHealthChange, _context)
+		OnModifyHealthTweenComplete(_netHealthChange, _result)
 	pass
 
 func UpdateHealthBarTween(value):
@@ -485,7 +488,7 @@ func ModifyFocus(_netFocusChange):
 	healthBar.UpdateFocusUI()
 	OnStatUpdated.emit()
 
-func OnModifyHealthTweenComplete(_delta, _context : ActionResult):
+func OnModifyHealthTweenComplete(_delta, _result : ActionStepResult):
 	# you have to disconnect this because the nethealth change is a bound variable
 	if healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
 		healthBar.HealthBarTweenCallback.disconnect(OnModifyHealthTweenComplete)
@@ -504,7 +507,7 @@ func OnModifyHealthTweenComplete(_delta, _context : ActionResult):
 	if _delta < 0 && AggroType is AggroOnDamage:
 		IsAggrod = true
 
-	CheckDeath(_context)
+	CheckDeath(_result)
 
 func DealDamageToArmor(_damage : int):
 	# Damage dealt to armor should always be signed - and therefore should always be negative
@@ -570,7 +573,7 @@ func ApplyStatModifier(_statDef : StatDef):
 	UpdateDerivedStats()
 	OnStatUpdated.emit()
 
-func CheckDeath(_context : ActionResult):
+func CheckDeath(_context : ActionStepResult):
 	if currentHealth <= 0:
 		map.OnUnitDeath(self, _context)
 
@@ -583,12 +586,17 @@ func ShowHealthBar(_visible : bool):
 func QueueAttackSequence(_destination : Vector2, _log : ActionLog):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
+
+	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
+	# This locks in which action is doing what and when
+	attackAction.ActionIndex = _log.abilityStackIndex
 	attackAction.Log = _log
+
 	ActionStack.append(attackAction)
 	if CurrentAction == null:
 		PopAction()
 
-func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : ActionResult):
+func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : PerformCombatStepResult):
 	var defendAction = UnitDefendAction.new()
 	defendAction.SourcePosition = _damageSourcePosition
 	defendAction.Result = _result
@@ -599,6 +607,9 @@ func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : ActionResul
 func QueueHealAction(_log : ActionLog):
 	var healAction = UnitHealAction.new()
 	healAction.Log = _log
+	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
+	# This locks in which action is doing what and when
+	healAction.ActionIndex = _log.abilityStackIndex
 	ActionStack.append(healAction)
 	if CurrentAction == null:
 		PopAction()
@@ -610,12 +621,6 @@ func QueueDelayedCombatAction(_log : ActionLog):
 	ActionStack.append(combatAction)
 	if CurrentAction == null:
 		PopAction()
-
-func ShowCombatPreview():
-	if damage_indicator.ShouldShow:
-		damage_indicator.visible = true
-		damage_indicator.ShowPreview(self)
-	pass
 
 func ShowHealPreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
 	damage_indicator.visible = true

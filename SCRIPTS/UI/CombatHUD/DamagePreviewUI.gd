@@ -1,6 +1,8 @@
 extends Control
 class_name DamagePreviewUI
 
+
+# FIXME: DELETE THIS UI
 @onready var attacker_name: Label = %AttackerName
 @onready var attacker_affinity_icon: TextureRect = %AttackerAffinityIcon
 @onready var attacker_advantage: TextureRect = %Attacker_Advantage

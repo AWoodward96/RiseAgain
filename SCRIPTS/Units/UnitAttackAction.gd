@@ -3,22 +3,31 @@ class_name UnitAttackAction
 
 var TargetPosition : Vector2
 var Log : ActionLog
+var ActionIndex : int
 var TimerLock : bool
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 
+	var combatResults : Array[PerformCombatStepResult]
 	TimerLock = false
-	for res in Log.actionResults:
-		if res.Target == null:
+	var actions = Log.GetResultsFromActionIndex(ActionIndex)
+	for result in actions:
+		var combatRes = result as PerformCombatStepResult
+		if combatRes == null:
 			continue
-		res.Target.ShowHealthBar(true)
+
+		combatResults.append(combatRes)
+		if combatRes.Target == null:
+			continue
+
+		combatRes.Target.ShowHealthBar(true)
 
 	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
 	var focusDelta = 0
 	var sourceHealthDelta = 0
-	for result in Log.actionResults:
+	for result in combatResults:
 		focusDelta += result.FocusDelta
 		sourceHealthDelta += result.SourceHealthDelta
 
@@ -30,8 +39,8 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	_unit.position += dst
 
 	if sourceHealthDelta != 0:
-		# WARNING: I don't actually know the best way to process this. Fix this later
-		unit.ModifyHealth(sourceHealthDelta, Log.actionResults[0])
+		# WARNING: I don't actually know the best way to process the source of this effect. Fix this later
+		unit.ModifyHealth(sourceHealthDelta, combatResults[0])
 
 	unit.ModifyFocus(focusDelta)
 	TimerLock = true

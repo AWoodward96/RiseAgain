@@ -21,3 +21,11 @@ func Execute(_delta):
 		return true
 
 	return false
+
+func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+	var result = AbilityMoveResult.new()
+	result.unitUsable = _actionLog.ability
+	result.shapedDirection = _actionLog.actionDirection
+	result.TileTargetData = _actionLog.actionOriginTile.AsTargetData()
+	result.Source = _actionLog.source
+	return result

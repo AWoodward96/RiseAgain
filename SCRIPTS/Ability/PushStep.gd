@@ -9,9 +9,10 @@ func Enter(_actionLog : ActionLog):
 		push_error("Ability " + ability.name + ", has a push step but doesn't have a push component.")
 		return
 
-	var actionDirection = _actionLog.actionDirection
+	#var actionDirection = _actionLog.actionDirection
 
-	for pushData in ability.PushComponentData.pushData:
-		var direction = actionDirection
-		if pushData.overrideActionDirection:
-			direction = pushData.pushDirectionOverride
+	# WIP
+	#for pushData in ability.PushComponentData.pushData:
+		#var direction = actionDirection
+		#if pushData.overrideActionDirection:
+			#direction = pushData.pushDirectionOverride

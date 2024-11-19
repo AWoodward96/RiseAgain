@@ -1,13 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg2bul2ropcg4"]
+[gd_scene load_steps=15 format=3 uid="uid://cg2bul2ropcg4"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_yk4c8"]
 [ext_resource type="Texture2D" uid="uid://bn36kolmwh5xb" path="res://ART/Icons/Ability/Equippable/torment.png" id="2_61skm"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_xapn7"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_y6ksq"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="3_0888o"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_m5vrv"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_a7oiq"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_cjfaa"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_c6u4v"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_yhpga"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_jg1o0"]
+
+[sub_resource type="Resource" id="Resource_xbfd0"]
+script = ExtResource("3_m5vrv")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_8u237"]
+script = ExtResource("4_cjfaa")
 
 [sub_resource type="Resource" id="Resource_ybk6x"]
 script = ExtResource("3_0888o")
@@ -18,6 +29,7 @@ Value = 2
 script = ExtResource("1_yk4c8")
 type = 1
 focusCost = 0.0
+executionStack = Array[ExtResource("2_xapn7")]([SubResource("Resource_xbfd0"), SubResource("Resource_8u237")])
 damageGrantsFocus = true
 internalName = "torment"
 loc_displayName = "weap_torment_name"

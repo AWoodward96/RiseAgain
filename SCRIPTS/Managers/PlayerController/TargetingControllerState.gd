@@ -5,42 +5,28 @@ var targetingData : SkillTargetingData
 var source
 
 var log : ActionLog
-var currentItem : Item
 var currentAbility : Ability
-var unitUsable : UnitUsable
-var currentTargetTile : Tile
-var cachedTargetUnits : Array[UnitInstance]
-var shapedTargetingTiles : Array[TileTargetedData]
-var shapedDirection : GameSettingsTemplate.Direction
 var targetSelected : bool # To lock out double-attacks
-var unitMovement : PackedVector2Array
-var createdTileDamagePreview : Array[DamageIndicator]
-var unitsWithModifiedVisuals : Array[UnitInstance]
 
-func _Enter(_ctrl : PlayerController, ItemOrAbility):
-	super(_ctrl, ItemOrAbility)
+func _Enter(_ctrl : PlayerController, _ability):
+	super(_ctrl, _ability)
 	ctrl.reticle.visible = true
 	targetSelected = false
-	unitUsable = ItemOrAbility
-	# Grid should already be showing the actionable tiles from the Item Selection state
-	# That information should be passed here for our selection
-	if ItemOrAbility is Item:
-		currentItem = ItemOrAbility as Item
 
-	if ItemOrAbility is Ability:
-		currentAbility = ItemOrAbility as Ability
+	currentAbility = _ability as Ability
 
-	if ItemOrAbility is UnitUsable:
-		source = ItemOrAbility.ownerUnit
+	if currentAbility != null:
+		source = currentAbility.ownerUnit
 
-		log = ActionLog.Construct(currentGrid, source, ItemOrAbility)
-		if ItemOrAbility.TargetingData != null:
-			targetingData = ItemOrAbility.TargetingData
+		log = ActionLog.Construct(currentGrid, source, currentAbility)
+		if currentAbility.TargetingData != null:
+			targetingData = currentAbility.TargetingData
 
 			match targetingData.Type:
 				SkillTargetingData.TargetingType.SelfOnly:
 					log.availableTiles = targetingData.GetTilesInRange(source, currentGrid)
-					currentTargetTile = source.CurrentTile
+					log.actionOriginTile = source.CurrentTile
+					log.affectedTiles.append(log.actionOriginTile.AsTargetData())
 
 				SkillTargetingData.TargetingType.Simple:
 					log.availableTiles = targetingData.GetTilesInRange(source, currentGrid)
@@ -68,32 +54,33 @@ func _Enter(_ctrl : PlayerController, ItemOrAbility):
 						return a.Occupant.currentHealth < b.Occupant.currentHealth)
 
 					if filteredList.size() > 0:
-						currentTargetTile = filteredList[0]
+						log.actionOriginTile = filteredList[0]
+						log.affectedTiles.append(log.actionOriginTile.AsTargetData())
 
 				SkillTargetingData.TargetingType.ShapedFree:
 					# we do it like this, because technically for a shaped free targeting, allegiance does not come into play
 					# until it comes to dealing damage
 					log.availableTiles = currentGrid.GetCharacterAttackOptions(source, [source.CurrentTile], targetingData.TargetRange)
 					log.availableTiles.push_front(source.CurrentTile)
-					shapedTargetingTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, log.availableTiles[0])
+					log.affectedTiles.append_array(targetingData.GetAdditionalTileTargets(source, currentGrid, log.availableTiles[0]))
 				SkillTargetingData.TargetingType.ShapedDirectional:
 					# Shaped directional just uses the dict from the targeting data as the available tiles
-					shapedDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
+					log.actionDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
 					log.availableTiles = currentGrid.GetAdjacentTiles(source.CurrentTile)
-					log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, shapedDirection)
+					log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, log.actionDirection)
 
 					# try and get the proper targeted tile based on the facing direction
-					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(shapedDirection))
+					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
 					if tile != null:
-						currentTargetTile = tile
+						log.actionOriginTile = tile
 
 			if log.availableTiles.size() == 0:
 				push_error("TargetingControllerState: No available tiles for selected action. Is your targeting script set up properly?")
 				return
 
-			if currentTargetTile == null:
-				currentTargetTile = log.availableTiles[0]
-			ctrl.ForceReticlePosition(currentTargetTile.Position)
+			if log.actionOriginTile == null:
+				log.actionOriginTile = log.availableTiles[0]
+			ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 			ShowAvailableTilesOnGrid()
 			ShowAffinityRelations(source.Template.Affinity)
 			ShowPreview()
@@ -115,40 +102,22 @@ func UpdateInput(_delta):
 			ShapedDirectionalTargetingInput(_delta)
 			pass
 
-	if unitUsable.MovementData != null:
-		UpdateMoveData(_delta)
-
-
 	if InputManager.selectDown && !targetSelected:
 		TileSelected()
 
 	if InputManager.cancelDown:
 		ClearPreview()
 		ShowAffinityRelations(null)
-		if currentItem != null:
-			ctrl.EnterItemSelectionState(ctrl.lastItemFilter)
-		else:
-			ctrl.EnterContextMenuState()
+		ctrl.EnterContextMenuState()
 
 func TileSelected():
-	if unitUsable.MovementData != null && unitMovement != null:
-		if unitMovement.size() == 0:
-			return
-		else:
-			log.moveSelf = true
-
-	var validSimple = (currentTargetTile.Occupant != null || currentTargetTile.MaxHealth > 0) && targetingData.Type == SkillTargetingData.TargetingType.Simple
+	var validSimple = (log.actionOriginTile.Occupant != null || log.actionOriginTile.MaxHealth > 0) && targetingData.Type == SkillTargetingData.TargetingType.Simple
 	var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
 	if validSimple || validShapedFree || targetingData.Type == SkillTargetingData.TargetingType.SelfOnly:
-		log.actionOriginTile = currentTargetTile
-		log.affectedTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, currentTargetTile)
 		targetSelected = true
 		# This will wait for the previous actions to be complete, and then do the stuff
 		source.QueueDelayedCombatAction(log)
 	elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		log.actionOriginTile = currentTargetTile
-		log.actionDirection = shapedDirection
-		log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, shapedDirection)
 		targetSelected = true
 		source.QueueDelayedCombatAction(log)
 		pass
@@ -176,7 +145,7 @@ func StandardTargetingInput(_delta):
 	#filteredList.sort_custom(func(a, b): return (a.Occupant != null && b.Occupant == null))
 
 	ctrl.combatHUD.ShowNoTargets(false)
-	var curIndex = filteredList.find(currentTargetTile, 0)
+	var curIndex = filteredList.find(log.actionOriginTile, 0)
 	if InputManager.inputDown[0] || InputManager.inputDown[1]:
 		curIndex += 1
 		if curIndex >= filteredList.size():
@@ -189,14 +158,18 @@ func StandardTargetingInput(_delta):
 
 
 	ClearPreview()
-	currentTargetTile = filteredList[curIndex]
+	log.actionOriginTile = filteredList[curIndex]
+	# Standard targeting means it's just one tile being targeted
+	# so make the affected tiles the current target tile
+	log.affectedTiles.clear()
+	log.affectedTiles.append(log.actionOriginTile.AsTargetData())
 	ShowPreview()
 
 	# Has to come after clear preview
 	if log.ContainsPush():
 		UpdatePushData(_delta)
 
-	ctrl.ForceReticlePosition(currentTargetTile.Position)
+	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 
 func ShapedFreeTargetingInput(_delta):
 	# only update when there's input
@@ -215,7 +188,7 @@ func ShapedFreeTargetingInput(_delta):
 		var tile = currentGrid.GetTile(newLocation / tileSize)
 		if log.availableTiles.has(tile):
 			reticle.global_position += movementThisFrame * tileSize
-			currentTargetTile = tile
+			log.actionOriginTile = tile
 	else:
 		if InputManager.inputHeld[0] : movementThisFrame.y -= 1
 		if InputManager.inputHeld[1] : movementThisFrame.x += 1
@@ -227,55 +200,41 @@ func ShapedFreeTargetingInput(_delta):
 			var tile = currentGrid.GetTile(newLocation / tileSize)
 			if log.availableTiles.has(tile):
 				reticle.global_position += movementThisFrame * tileSize
-				currentTargetTile = tile
+				log.actionOriginTile = tile
 			lastMoveTimer = 0
 
 		lastMoveTimer += _delta
 
-	shapedTargetingTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, currentTargetTile)
-	ShowAvailableTilesOnGrid()
 	ClearPreview()
+	log.affectedTiles.clear()
+	log.affectedTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, log.actionOriginTile)
+	ShowAvailableTilesOnGrid()
 	ShowPreview()
 
 	if log.ContainsPush():
 		UpdatePushData(_delta)
 	pass
 
-func UpdateMoveData(_delta):
-	unitMovement = unitUsable.MovementData.PreviewMove(currentGrid, source, currentTargetTile, shapedDirection)
-	if unitMovement.size() > 0:
-		ctrl.movement_tracker.visible = true
-		ctrl.movement_preview_sprite.visible = true
-
-		ctrl.movement_tracker.clear_points()
-		ctrl.movement_tracker.points = unitMovement
-		ctrl.movement_preview_sprite.texture = source.Template.icon
-		ctrl.movement_preview_sprite.position = unitMovement[unitMovement.size() - 1]
-	else:
-		ctrl.movement_tracker.visible = false
-		ctrl.movement_preview_sprite.visible = false
-	pass
-
 func UpdatePushData(_delta):
-	for affectedTiles in log.affectedTiles:
-		if !affectedTiles.willPush:
-			continue
-
-		for stack in affectedTiles.pushStack:
-			if stack.Subject == log.source:
-				ctrl.movement_tracker.visible = true
-				ctrl.movement_preview_sprite.visible = true
-				ctrl.movement_tracker.clear_points()
-				var positionalOffset = Vector2(currentGrid.CellSize / 2, currentGrid.CellSize / 2)
-				var points = PackedVector2Array()
-				points.append(stack.Subject.CurrentTile.GlobalPosition + positionalOffset)
-				points.append(stack.ResultingTile.GlobalPosition + positionalOffset)
-				ctrl.movement_tracker.points = points
-				ctrl.movement_preview_sprite.texture = source.Template.icon
-				ctrl.movement_preview_sprite.position = points[points.size() - 1]
-			else:
-				stack.Subject.PreviewModifiedTile(stack.ResultingTile)
-				unitsWithModifiedVisuals.append(stack.Subject)
+	#for affectedTiles in log.affectedTiles:
+		#if !affectedTiles.willPush:
+			#continue
+#
+		#for stack in affectedTiles.pushStack:
+			#if stack.Subject == log.source:
+				#ctrl.movement_tracker.visible = true
+				#ctrl.movement_preview_sprite.visible = true
+				#ctrl.movement_tracker.clear_points()
+				#var positionalOffset = Vector2(currentGrid.CellSize / 2, currentGrid.CellSize / 2)
+				#var points = PackedVector2Array()
+				#points.append(stack.Subject.CurrentTile.GlobalPosition + positionalOffset)
+				#points.append(stack.ResultingTile.GlobalPosition + positionalOffset)
+				#ctrl.movement_tracker.points = points
+				#ctrl.movement_preview_sprite.texture = source.Template.icon
+				#ctrl.movement_preview_sprite.position = points[points.size() - 1]
+			#else:
+				#stack.Subject.PreviewModifiedTile(stack.ResultingTile)
+				#unitsWithModifiedVisuals.append(stack.Subject)
 
 	pass
 
@@ -298,12 +257,12 @@ func ShapedDirectionalTargetingInput(_delta):
 	var targetTilePosition = source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(newShaped)
 	var newTargetTile = currentGrid.GetTile(targetTilePosition)
 	if newTargetTile != null:
-		currentTargetTile = currentGrid.GetTile(targetTilePosition)
-		shapedDirection = newShaped
+		log.actionOriginTile = currentGrid.GetTile(targetTilePosition)
+		log.actionDirection = newShaped
 
-	log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, shapedDirection)
+	log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, log.actionDirection)
 
-	ctrl.ForceReticlePosition(currentTargetTile.Position)
+	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 
 	ShowAvailableTilesOnGrid()
 	ShowPreview()
@@ -313,117 +272,44 @@ func ShapedDirectionalTargetingInput(_delta):
 	pass
 
 func ClearPreview():
-	if currentTargetTile != null && currentTargetTile.Occupant != null:
-		currentTargetTile.Occupant.HideDamagePreview()
+	if log.actionOriginTile != null && log.actionOriginTile.Occupant != null:
+		log.actionOriginTile.Occupant.HideDamagePreview()
 		ctrl.combatHUD.ClearDamagePreviewUI()
 
-	ctrl.movement_preview_sprite.visible = false
-	ctrl.movement_tracker.visible = false
-	for u in cachedTargetUnits:
-		if u != null:
-			u.HideDamagePreview()
-	cachedTargetUnits.clear()
+	for res in log.actionStepResults:
+		res.CancelPreview()
 
-	for ind in createdTileDamagePreview:
-		var parent = ind.get_parent()
-		parent.remove_child(ind)
-		ind.queue_free()
-	createdTileDamagePreview.clear()
+	var allPreviews = currentMap.get_tree().get_nodes_in_group("DamageIndicators")
+	for preview in allPreviews:
+		var previewAsDamageIndicator = preview as DamageIndicator
+		if previewAsDamageIndicator != null:
+			previewAsDamageIndicator.PreviewCanceled()
 
-	for unit in unitsWithModifiedVisuals:
-		unit.ResetVisualToTile()
-	unitsWithModifiedVisuals.clear()
-
-func BuildResultsArray():
-	log.actionResults.clear()
-	# The target tiles is an array so loop through that and append the units to take damage
-	for tileData in log.affectedTiles:
-		var target = tileData.Tile.Occupant
-
-		if target != null:
-			# If we have a target - don't damage allies, only damage who they are supposed to hit
-			if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
-				continue
-
-			if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
-				continue
-
-		var actionResult = ActionResult.Construct(log.Ability, tileData, log.source, tileData.Tile.Occupant)
-		actionResult.PreCalculate()
-		log.actionResults.append(actionResult)
-
+	#for unit in unitsWithModifiedVisuals:
+		#unit.ResetVisualToTile()
+	#unitsWithModifiedVisuals.clear()
 
 func ShowPreview():
-	BuildResultsArray()
+	# Filter out the tiles that have incorrect targeting on them
+	# The hard removal of specific tiles may not be what we want here - but we'll seeeeeeeeeeeeee
+	log.affectedTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
+	log.BuildStepResults()
+
+	# TODO: Figure out how this will be displayed via ui
+	for result in log.actionStepResults:
+		result.PreviewResult(currentMap)
+
 	ShowCombatPreview()
 
+
 func ShowCombatPreview():
-
-
+	var allPreviews = currentMap.get_tree().get_nodes_in_group("DamageIndicators")
+	for preview in allPreviews:
+		var previewAsDamageIndicator = preview as DamageIndicator
+		if previewAsDamageIndicator != null:
+			previewAsDamageIndicator.SetDisplayStyle(log.ability)
+			previewAsDamageIndicator.ShowPreview()
 	pass
-	#match targetingData.Type:
-		#SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.SelfOnly:
-			#if currentTargetTile != null:
-				#var tempTargetData = currentTargetTile.AsTargetData()
-				#if currentTargetTile.Occupant != null:
-					## Show the damage preview physically on the unit
-					## this section is slated for removal if it is deemed to be unnecessary
-					#currentTargetTile.Occupant.ShowDamagePreview(source, unitUsable, tempTargetData)
-#
-					## Ping the CombatHUD to show the damage preview
-					#if currentTargetTile.Occupant != null && currentTargetTile.Occupant.Template != null && currentTargetTile.Occupant.Template.Affinity != null:
-						#source.ShowAffinityRelation(currentTargetTile.Occupant.Template.Affinity)
-#
-					#ctrl.combatHUD.ShowDamagePreviewUI(source, unitUsable, currentTargetTile.Occupant, tempTargetData)
-				#else:
-					## We are targeting a tile without an occupant
-					## create a new preview for the tile
-					#var preview = Juice.CreateDamageIndicator(currentTargetTile) as DamageIndicator
-					#createdTileDamagePreview.append(preview)
-					#preview.PreviewDamage(unitUsable, source, tempTargetData, null, currentTargetTile.Health, currentTargetTile.MaxHealth)
-#
-		#SkillTargetingData.TargetingType.ShapedFree:
-			#for targetTileData in shapedTargetingTiles:
-				#if targetTileData != null:
-					#if targetTileData.Tile.Occupant != null:
-						#targetTileData.Tile.Occupant.ShowDamagePreview(source, unitUsable, targetTileData)
-						#cachedTargetUnits.append(targetTileData.Tile.Occupant)
-					#elif targetTileData.Tile.MaxHealth > 0:
-						#var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
-						#createdTileDamagePreview.append(preview)
-						#preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
-#
-		#SkillTargetingData.TargetingType.ShapedDirectional:
-			#var filteredTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
-			#for targetTileData in filteredTiles:
-				#if targetTileData.Tile.Occupant != null:
-					#targetTileData.Tile.Occupant.ShowDamagePreview(source, unitUsable, targetTileData)
-					#cachedTargetUnits.append(targetTileData.Tile.Occupant)
-				#elif targetTileData.Tile.MaxHealth > 0:
-					#var preview = Juice.CreateDamageIndicator(targetTileData.Tile) as DamageIndicator
-					#createdTileDamagePreview.append(preview)
-					#preview.PreviewDamage(unitUsable, source, targetTileData, null, targetTileData.Tile.Health, targetTileData.Tile.MaxHealth)
-#
-			#pass
-
-func ShowHealPreview():
-	match targetingData.Type:
-		SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.SelfOnly:
-			if currentTargetTile != null && currentTargetTile.Occupant != null:
-				# Show the damage preview physically on the unit
-				# this section is slated for removal if it is deemed to be unnecessary
-				currentTargetTile.Occupant.ShowHealPreview(source, unitUsable, currentTargetTile.AsTargetData())
-		SkillTargetingData.TargetingType.ShapedFree:
-			for target in shapedTargetingTiles:
-				if target != null && target.Occupant != null:
-					target.Occupant.ShowHealPreview(source, unitUsable.HealData, target)
-					cachedTargetUnits.append(target.Occupant)
-		SkillTargetingData.TargetingType.ShapedDirectional:
-			var filteredTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
-			for target in filteredTiles:
-				if target != null && target.Occupant != null:
-					target.Occupant.ShowHealPreview(source, unitUsable.HealData, target)
-					cachedTargetUnits.append(target.Occupant)
 
 func ShowAvailableTilesOnGrid():
 	currentGrid.ClearActions()
@@ -436,8 +322,7 @@ func ShowAvailableTilesOnGrid():
 			for tileData in log.availableTiles:
 				tileData.InRange = true
 
-			var shapedTargets = shapedTargetingTiles
-			for target in shapedTargets:
+			for target in log.affectedTiles:
 				target.Tile.CanAttack = true
 		SkillTargetingData.TargetingType.ShapedDirectional:
 			for tileData in log.affectedTiles:

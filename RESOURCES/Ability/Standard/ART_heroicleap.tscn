@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_8kx7m"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_jr4ej"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_kgbqm"]
 [ext_resource type="Resource" uid="uid://w4pf17p2i0wg" path="res://RESOURCES/CombatEffects/CE_Armor_HeroicLeap.tres" id="5_octw8"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_mtb8i"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_ytfja"]
@@ -18,9 +18,10 @@
 [sub_resource type="Resource" id="Resource_p650e"]
 script = ExtResource("3_8kx7m")
 WaitForStackFree = true
+SpeedOverride = -1
 
-[sub_resource type="Resource" id="Resource_aullh"]
-script = ExtResource("3_jr4ej")
+[sub_resource type="Resource" id="Resource_khgxx"]
+script = ExtResource("4_kgbqm")
 useAttackAction = true
 useDefendAction = true
 
@@ -34,7 +35,7 @@ script = ExtResource("4_isldo")
 [node name="ART_HeroicLeap" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_a52ru")
 focusCost = 3.0
-executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_aullh"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_khgxx"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "heroicleap"
 loc_displayName = "art_heroicleap_name"
 loc_displayDesc = "art_heroicleap_desc"

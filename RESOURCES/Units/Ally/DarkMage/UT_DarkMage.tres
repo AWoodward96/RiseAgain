@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=50 format=3 uid="uid://c0xfa5tbv14pu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=47 format=3 uid="uid://c0xfa5tbv14pu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_1f83v"]
 [ext_resource type="PackedScene" uid="uid://6bk65s2t5t5u" path="res://RESOURCES/Units/Ally/DarkMage/VIS_DarkMage.tscn" id="1_fdsu3"]
@@ -23,11 +23,10 @@
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_e17eg"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="20_4duw0"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_6yedl"]
+[ext_resource type="PackedScene" uid="uid://b1y1fm3qowl1q" path="res://RESOURCES/Ability/Standard/ART_darkfell.tscn" id="23_jfapx"]
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="23_wnpjj"]
+[ext_resource type="PackedScene" uid="uid://dnwracq246buh" path="res://RESOURCES/Ability/Standard/ART_drain.tscn" id="24_1xdql"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="24_2csca"]
-[ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/Standard/drain.png" id="26_mf2dt"]
-[ext_resource type="Texture2D" uid="uid://cinqp4oq3vxq4" path="res://ART/Icons/Ability/Standard/darkfell.png" id="30_7561t"]
-[ext_resource type="Resource" uid="uid://c2dfr4ubq82wn" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="31_msvfd"]
 
 [sub_resource type="Resource" id="Resource_vqqm1"]
 script = ExtResource("2_k1gfy")
@@ -140,32 +139,6 @@ script = ExtResource("2_k1gfy")
 Template = ExtResource("10_et1sy")
 Value = 10.0
 
-[sub_resource type="PackedScene" id="PackedScene_6irog"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("ART_drain", "Node2D", "script", "focusCost", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "SkillTargetingData", "Node2D", "script", "TargetRange", "DamageData", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageAffectsUsersHealth", "DamageToHealthRatio"),
-"node_count": 3,
-"node_paths": [NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 9, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 1073741833, 7, 1073741834, 8, 0, 1073741824, 0, 12, 11, -1, 2, 13, 9, 14, 10, 0, 1073741825, 0, 16, 15, -1, 5, 17, 11, 18, 12, 19, 13, 20, 14, 21, 15, 0),
-"variants": [ExtResource("14_6rldc"), 2.0, Array[ExtResource("15_c8dxi")]([]), "drain", "art_drain_name", "art_drain_desc", ExtResource("26_mf2dt"), NodePath("SkillTargetingData"), NodePath("DamageData"), ExtResource("21_6yedl"), Vector2i(1, 2), ExtResource("20_4duw0"), ExtResource("5_ik5lt"), ExtResource("6_dm6oy"), true, -1.0],
-"version": 3
-}
-
-[sub_resource type="PackedScene" id="PackedScene_bdlty"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("ART_darkfell", "Node2D", "script", "focusCost", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "SkillTargetingData", "Node2D", "script", "TargetRange", "Type", "CanTargetSelf", "shapedTiles", "DamageData", "Node2D", "script", "FlatValue", "AgressiveStat", "DefensiveStat", "DamageAffectsUsersHealth", "DamageToHealthRatio"),
-"node_count": 3,
-"node_paths": [NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 9, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 1073741833, 7, 1073741834, 8, 0, 1073741824, 0, 12, 11, -1, 5, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 6, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 25, 19, 0),
-"variants": [ExtResource("14_6rldc"), 3.0, Array[ExtResource("15_c8dxi")]([]), "darkfell", "art_darkfell_name", "art_darkfell_desc", ExtResource("30_7561t"), NodePath("SkillTargetingData"), NodePath("DamageData"), ExtResource("21_6yedl"), Vector2i(0, 0), 1, true, ExtResource("31_msvfd"), ExtResource("20_4duw0"), 2.0, ExtResource("3_5j8w0"), ExtResource("4_nnvcw"), true, -1.0],
-"version": 3
-}
-
 [resource]
 script = ExtResource("1_1f83v")
 VisualPrefab = ExtResource("1_fdsu3")
@@ -176,7 +149,7 @@ StartingItems = Array[PackedScene]([SubResource("PackedScene_yey5y"), SubResourc
 StartingEquippedWeapon = ExtResource("13_kwso3")
 StartingTactical = ExtResource("14_2cxh4")
 Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([SubResource("PackedScene_6irog"), SubResource("PackedScene_bdlty")])
+Tier1Abilities = Array[PackedScene]([ExtResource("24_1xdql"), ExtResource("23_jfapx")])
 Descriptors = Array[ExtResource("13_2xmk4")]([])
 DebugName = "DarkMage"
 loc_DisplayName = "unit_darkmage_name"

@@ -77,6 +77,8 @@ func TryCombat():
 		log.affectedTiles.append(selectedOption.targetUnit.CurrentTile.AsTargetData())
 		log.damageData = selectedOption.unitUsable.UsableDamageData
 
+		log.BuildStepResults()
+
 		# The unit still needs to get to their destination first, so queue it up as a sequence
 		unit.QueueDelayedCombatAction(log)
 	else:

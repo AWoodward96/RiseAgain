@@ -71,8 +71,6 @@ func CreateCritPopup(_tile : Tile):
 	_tile.QueuePopup(popup)
 	pass
 
-
-
 func CreateDamageIndicator(_tile : Tile):
 	var indicator = damagePreview.instantiate()
 	indicator.global_position = _tile.GlobalPosition

@@ -12,10 +12,10 @@ var actionDirection : GameSettingsTemplate.Direction
 var sourceTile : Tile		# Where this action is coming from. Is usually Source.CurrentTile, but might not be
 var affectedTiles : Array[TileTargetedData] # This is an array in case of aoe. Here are all of the tiles that were hit by this action. Could be one, could be many
 
-var actionResults : Array[ActionResult]
+var actionStepResults : Array[ActionStepResult]
 
 # for units defending or responding to the initial attack
-var responseResults : Array[ActionResult]
+var responseResults : Array[ActionStepResult]
 
 var actionType : ActionType
 var item : Item
@@ -25,8 +25,6 @@ var abilityStackIndex : int
 var damageData : DamageData
 
 var canRetaliate : bool = true
-
-var moveSelf : bool = false
 
 static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 	var new = ActionLog.new()
@@ -42,6 +40,26 @@ static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 	new.damageData = _itemOrAbility.UsableDamageData
 	return new
 
+func BuildStepResults():
+	if ability == null:
+		return
+
+	actionStepResults.clear()
+	for tile in affectedTiles:
+		var index = 0
+		for step in ability.executionStack:
+			var result = step.GetResult(self, tile)
+			if result != null:
+				if result is ActionStepResult:
+					result.StepIndex = index
+					actionStepResults.append(result)
+				else:
+					push_error("Ability Step: " + str(step.get_script()) + " - attached to ability " + ability.name + " has an improper ActionStepResult and cannot be previewed.")
+			index += 1
+
+func GetResultsFromActionIndex(_index : int):
+	return actionStepResults.filter(func(_res) : return _res.StepIndex == _index)
+
 func ContainsPush():
 	for targetedTiles in affectedTiles:
 		if targetedTiles.willPush:
@@ -54,7 +72,7 @@ func QueueExpGains():
 	var expGains = {}
 
 	# Go through all the action results and hide the targets health bars. Also, if the source of the result is an ally, tally up their exp gain
-	for result in actionResults:
+	for result in actionStepResults:
 		if result.Target != null:
 			result.Target.ShowHealthBar(false)
 

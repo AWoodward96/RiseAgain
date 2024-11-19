@@ -37,7 +37,7 @@ func Update(_delta):
 
 	if IsTurnOver():
 		var nextTurn
-		# TODO: Figure out the best way to determine whose turn it is up next
+
 		match map.currentTurn:
 			GameSettingsTemplate.TeamID.ALLY:
 				if map.teams.has(GameSettingsTemplate.TeamID.NEUTRAL) && map.teams[GameSettingsTemplate.TeamID.NEUTRAL].size() > 0:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_3jge8"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hdeun"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_vsia0"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_d2k4u"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_dngvr"]
 [ext_resource type="Texture2D" uid="uid://cr2shx01wwgbb" path="res://ART/Icons/Ability/Equippable/iron_sword.png" id="5_lyu1s"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_jfrxw"]
@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_f7mhm"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_j4lk0"]
 
-[sub_resource type="Resource" id="Resource_vfolb"]
-script = ExtResource("3_vsia0")
+[sub_resource type="Resource" id="Resource_0qngs"]
+script = ExtResource("3_d2k4u")
 useAttackAction = true
 useDefendAction = true
 
@@ -29,7 +29,7 @@ Value = 4
 script = ExtResource("1_3jge8")
 type = 1
 focusCost = 0.0
-executionStack = Array[ExtResource("2_hdeun")]([SubResource("Resource_vfolb"), SubResource("Resource_njyb8")])
+executionStack = Array[ExtResource("2_hdeun")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
 damageGrantsFocus = true
 internalName = "iron_sword"
 loc_displayName = "weap_iron_sword_name"

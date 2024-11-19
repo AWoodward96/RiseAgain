@@ -21,5 +21,5 @@ func Enter(_actionLog : ActionLog):
 func Execute(_delta):
 	return true
 
-func ShowPreview(_actionLog : ActionLog):
+func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
 	pass

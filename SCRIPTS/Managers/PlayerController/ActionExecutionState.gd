@@ -63,10 +63,8 @@ func PostActionComplete():
 		source.ShowHealthBar(false)
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 
-		# This is commented out - The ability handles weather or not the unit ends their turn
-		#log.source.QueueEndTurn()
 
-	for r in log.actionResults:
+	for r in log.actionStepResults:
 		if r.Target != null:
 			r.Target.ShowHealthBar(false)
 

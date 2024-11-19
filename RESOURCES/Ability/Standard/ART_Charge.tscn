@@ -1,40 +1,41 @@
 [gd_scene load_steps=13 format=3 uid="uid://dqbqlsqcw17lo"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_nhv34"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_4bnta"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/PushStep.gd" id="3_5q62h"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_ll8lx"]
-[ext_resource type="Texture2D" uid="uid://cnprc2tj8guy6" path="res://ART/Icons/Ability/Standard/charge.png" id="5_hblmq"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_f2265"]
-[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_jn1x1"]
-[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_sfswx"]
-[ext_resource type="Resource" uid="uid://cwb6cm8lesq76" path="res://RESOURCES/TargetingShapes/charge_shape.tres" id="9_jvxsx"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_ph3dg"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_kiov8"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_whdyn"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PushStep.gd" id="3_raqfr"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_w6f2a"]
+[ext_resource type="Texture2D" uid="uid://cnprc2tj8guy6" path="res://ART/Icons/Ability/Standard/charge.png" id="5_gbnod"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_sd4if"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_la30g"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_47agn"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_i7mej"]
+[ext_resource type="Resource" uid="uid://cwb6cm8lesq76" path="res://RESOURCES/TargetingShapes/charge_shape.tres" id="10_f2ypo"]
 
 [sub_resource type="Resource" id="Resource_5kv6w"]
-script = ExtResource("3_5q62h")
+script = ExtResource("3_raqfr")
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
-script = ExtResource("4_ll8lx")
+script = ExtResource("4_w6f2a")
 
 [node name="ART_Charge" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
-script = ExtResource("1_nhv34")
+script = ExtResource("1_kiov8")
 focusCost = 0
-executionStack = Array[ExtResource("2_4bnta")]([SubResource("Resource_5kv6w"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_whdyn")]([SubResource("Resource_5kv6w"), SubResource("Resource_5cjq5")])
 internalName = "charge"
 loc_displayName = "art_charge_name"
 loc_displayDesc = "art_charge_desc"
-icon = ExtResource("5_hblmq")
+icon = ExtResource("5_gbnod")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
 [node name="DamageData" type="Node2D" parent="."]
-script = ExtResource("6_f2265")
-AgressiveStat = ExtResource("7_jn1x1")
-DefensiveStat = ExtResource("8_sfswx")
+script = ExtResource("6_sd4if")
+AgressiveStat = ExtResource("7_la30g")
+DefensiveStat = ExtResource("8_47agn")
 DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
-script = ExtResource("9_ph3dg")
+script = ExtResource("9_i7mej")
+TeamTargeting = 2
 Type = 2
-shapedTiles = ExtResource("9_jvxsx")
+shapedTiles = ExtResource("10_f2ypo")

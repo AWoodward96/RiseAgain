@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://chgyuivvaogoe"]
+[gd_scene load_steps=14 format=3 uid="uid://chgyuivvaogoe"]
 
 [ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="1_efn74"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_indicator.gd" id="1_xo2sr"]
+[ext_resource type="PackedScene" uid="uid://d1laxqelcbhi8" path="res://RESOURCES/UI/GenericEntrys/effect_entry.tscn" id="2_gie3m"]
 [ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="3_ne7nt"]
 [ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="3_w0shn"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_jf3iu"]
 [ext_resource type="LabelSettings" uid="uid://16psntbgd1gu" path="res://RESOURCES/UI/LabelSettings/minimal_mini.tres" id="5_pc21c"]
 
 [sub_resource type="Gradient" id="Gradient_k557k"]
@@ -16,6 +18,7 @@ width = 64
 
 [sub_resource type="Animation" id="Animation_b8w1b"]
 resource_name = "Ability"
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -142,6 +145,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_m6tlk"]
 resource_name = "Standard"
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -210,8 +214,9 @@ _data = {
 "Weapon": SubResource("Animation_m6tlk")
 }
 
-[node name="DamageIndicator" type="Node2D"]
+[node name="DamageIndicator" type="Node2D" groups=["DamageIndicators"]]
 script = ExtResource("1_xo2sr")
+effectEntry = ExtResource("2_gie3m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -258,6 +263,13 @@ text = "[center][color=#e6a2a2]-10[/color][/center]"
 fit_content = true
 scroll_active = false
 
+[node name="EffectsPreview" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 32)
+offset_top = -32.0
+offset_right = 67.0
+alignment = 2
+script = ExtResource("5_jf3iu")
+
 [node name="CritChance" type="Label" parent="."]
 self_modulate = Color(1, 0.96, 0.4, 1)
 offset_left = 25.0
@@ -284,6 +296,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
 libraries = {
 "": SubResource("AnimationLibrary_j8o3t")
 }

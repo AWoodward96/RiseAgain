@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_qrlnf"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hgu7s"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_by1kh"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_spvf0"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_2o0l2"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_rvm2g"]
 [ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StunEffectTemplate.gd" id="5_a8hkw"]
 [ext_resource type="Texture2D" uid="uid://df743vavq35y" path="res://ART/Icons/stunned_icion.png" id="5_j56kh"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_42rmg"]
@@ -19,9 +19,10 @@
 [sub_resource type="Resource" id="Resource_im4d4"]
 script = ExtResource("3_spvf0")
 WaitForStackFree = true
+SpeedOverride = -1
 
-[sub_resource type="Resource" id="Resource_nobtd"]
-script = ExtResource("3_by1kh")
+[sub_resource type="Resource" id="Resource_mu7ey"]
+script = ExtResource("4_rvm2g")
 useAttackAction = true
 useDefendAction = true
 
@@ -43,7 +44,7 @@ script = ExtResource("4_2o0l2")
 [node name="ART_snareshot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_qrlnf")
 focusCost = 2.0
-executionStack = Array[ExtResource("2_hgu7s")]([SubResource("Resource_im4d4"), SubResource("Resource_nobtd"), SubResource("Resource_3ayen"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_hgu7s")]([SubResource("Resource_im4d4"), SubResource("Resource_mu7ey"), SubResource("Resource_3ayen"), SubResource("Resource_5cjq5")])
 internalName = "snareshot"
 loc_displayName = "art_snareshot_name"
 loc_displayDesc = "art_snareshot_desc"

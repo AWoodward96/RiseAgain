@@ -1,5 +1,5 @@
 extends ActionStep
-class_name DealDamageStep
+class_name PerformCombatStep
 
 @export var useAttackAction : bool = true
 @export var useDefendAction : bool = true
@@ -16,19 +16,26 @@ func Enter(_actionLog : ActionLog):
 	dealtDamage = false
 
 	if useAttackAction:
+		# The attack will take the log - and will determine who they're 'striking' visually based on the log
 		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log)
 
-	for damageResult in log.actionResults:
+	# The defending units however, need the specific result to take damage from
+	var results = log.GetResultsFromActionIndex(log.abilityStackIndex)
+	for stack in results:
+		var damageStepResult = stack as PerformCombatStepResult
+		if damageStepResult == null:
+			continue
+
 		dealtDamage = true
 
-		damageResult.RollChance(Map.Current.rng)
+		damageStepResult.RollChance(Map.Current.rng)
 
-		if damageResult.Target != null:
+		if damageStepResult.Target != null:
 			if useDefendAction:
-				damageResult.Target.QueueDefenseSequence(source.global_position, damageResult)
-				CheckForRetaliation(damageResult)
+				damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
+				CheckForRetaliation(damageStepResult)
 			else:
-				damageResult.Target.DoCombat(damageResult)
+				damageStepResult.Target.DoCombat(damageStepResult)
 
 	pass
 
@@ -44,7 +51,7 @@ func Execute(_delta):
 	return false
 
 
-func CheckForRetaliation(_result : ActionResult):
+func CheckForRetaliation(_result : PerformCombatStepResult):
 	if log.source == null:
 		return
 
@@ -71,18 +78,16 @@ func CheckForRetaliation(_result : ActionResult):
 			# okay at this point retaliation is possible
 			# oh boy time to make a brand new combat data
 			var newData = ActionLog.Construct(log.grid, defendingUnit, defendingUnit.EquippedWeapon)
-			newData.affectedTiles.append(log.source.CurrentTile.AsTargetData())
+			var tileData = log.source.CurrentTile.AsTargetData()
+			newData.affectedTiles.append(tileData)
 			# turn off retaliation or else these units will be fighting forever
 			newData.canRetaliate = false
 			newData.ability = retaliationWeapon
 
-			var retaliationResult = ActionResult.new()
-			retaliationResult.Source = defendingUnit
-			retaliationResult.Target = log.source
-			retaliationResult.TileTargetData = log.source.CurrentTile.AsTargetData()
-			retaliationResult.Ability_CalculateResult(Map.Current.rng, retaliationWeapon, retaliationWeapon.UsableDamageData)
+			var retaliationResult = GetResult(newData, tileData)
+			retaliationResult.RollChance(Map.Current.rng)
 
-			newData.actionResults.append(retaliationResult)
+			newData.actionStepResults.append(retaliationResult)
 			log.responseResults.append(retaliationResult)
 
 			defendingUnit.QueueAttackSequence(log.source.global_position, newData)
@@ -91,7 +96,7 @@ func CheckForRetaliation(_result : ActionResult):
 
 func AffectedUnitsClear():
 	var r = true
-	for u in log.actionResults:
+	for u in log.actionStepResults:
 		if u.Target == null:
 			continue
 
@@ -100,5 +105,11 @@ func AffectedUnitsClear():
 
 	return r
 
-func GetDamageBeingDealt(_unitUsable : UnitUsable, _source: UnitInstance, _target : UnitInstance, _targetedTileData : TileTargetedData):
-	return -GameManager.GameSettings.DamageCalculation(_source, _target, _unitUsable.UsableDamageData, _targetedTileData)
+func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+	var result = PerformCombatStepResult.new()
+	result.AbilityData = _actionLog.ability
+	result.TileTargetData = _specificTile
+	result.Source = _actionLog.source
+	result.Target = _specificTile.Tile.Occupant
+	result.PreCalculate()
+	return result

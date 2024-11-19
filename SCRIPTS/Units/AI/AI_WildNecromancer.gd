@@ -33,7 +33,6 @@ func Decision_RaiseDead():
 	# If we're here we have enough focus to cast Raise Dead
 	# Now we need to figure out where we're casting it
 	var allTilesInRange = map.grid.GetTilesWithinRange(unit.CurrentTile.Position, raiseDead.GetRange(), false)
-	var selectedTile : Tile
 	for tile in allTilesInRange:
 		# take the first tile that is empty
 		# If range is greater than 1,1 the gettileswithinrange will be sorted from closest to furthest anyway

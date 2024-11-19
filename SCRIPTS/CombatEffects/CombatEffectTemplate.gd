@@ -9,6 +9,7 @@ enum EffectTargetType { Source, Targets, Both }
 @export var ImmunityDescriptor : DescriptorTemplate
 
 @export_group("Localization")
+@export var show_popup : bool = true
 @export var loc_name : String
 @export var loc_desc : String
 @export var loc_icon : Texture2D
