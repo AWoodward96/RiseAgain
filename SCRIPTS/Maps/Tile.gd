@@ -50,7 +50,7 @@ func QueuePopup(_node : Node):
 	pass
 
 func PreviewDamage(_normalDamage : int, _collisionDamage : int, _heal : int):
-	if Health == 0:
+	if Health == 0 || Health == -1:
 		return false
 
 	if damageIndicator == null:

@@ -44,6 +44,7 @@ SpawnedUnitAI = ExtResource("1_eva2r")
 SpawnedUnitAggroBehavior = SubResource("Resource_xw06q")
 AffectedTargets = 0
 Turns = -1
+show_popup = true
 loc_name = "ce_necropassive_name"
 loc_desc = "ce_necropassive_desc"
 loc_icon = SubResource("Resource_0qyru")

@@ -15,7 +15,7 @@ func Enter(_actionLog : ActionLog):
 		source.AddCombatEffect(effect)
 
 	if CombatEffect.AffectedTargets == CombatEffect.EffectTargetType.Targets || CombatEffect.AffectedTargets == CombatEffect.EffectTargetType.Both:
-		var stepResults = _actionLog.GetResultsFromActionIndex(_actionLog.abilityStackIndex)
+		var stepResults = _actionLog.GetResultsFromActionIndex(_actionLog.actionStackIndex)
 		for results in stepResults:
 			if results.Target == null:
 				continue

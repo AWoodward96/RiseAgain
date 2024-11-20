@@ -1,7 +1,6 @@
-extends ActionStepResult
+extends DamageStepResult
 class_name HealStepResult
 
-var HealthDelta : int
 var AbilityData : Ability
 
 

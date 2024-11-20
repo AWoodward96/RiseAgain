@@ -28,23 +28,23 @@ func Initialize(_unitOwner : UnitInstance):
 		remainingUsages = limitedUsage
 
 func TryExecute(_actionLog : ActionLog, _delta : float):
-	if _actionLog.abilityStackIndex < 0:
+	if _actionLog.actionStackIndex < 0:
 		# Auto-finish any ability with a bad amount of usages left
 		if limitedUsage != -1 && remainingUsages <= 0:
 			AbilityActionComplete.emit()
 			return
 
-		_actionLog.abilityStackIndex = 0
-		executionStack[_actionLog.abilityStackIndex].Enter(_actionLog)
+		_actionLog.actionStackIndex = 0
+		executionStack[_actionLog.actionStackIndex].Enter(_actionLog)
 		_actionLog.source.ModifyFocus(-focusCost)
 		if limitedUsage != -1:
 			remainingUsages -= 1
 
-	if _actionLog.abilityStackIndex < executionStack.size():
-		if executionStack[_actionLog.abilityStackIndex].Execute(_delta):
-			_actionLog.abilityStackIndex += 1
-			if _actionLog.abilityStackIndex < executionStack.size():
-				executionStack[_actionLog.abilityStackIndex ].Enter(_actionLog)
+	if _actionLog.actionStackIndex < executionStack.size():
+		if executionStack[_actionLog.actionStackIndex].Execute(_delta):
+			_actionLog.actionStackIndex += 1
+			if _actionLog.actionStackIndex < executionStack.size():
+				executionStack[_actionLog.actionStackIndex ].Enter(_actionLog)
 			else:
 				if autoEndTurn:
 					_actionLog.source.QueueEndTurn()

@@ -13,9 +13,6 @@ script = ExtResource("3_y4ca7")
 [node name="gauze" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
 script = ExtResource("1_3yni1")
 type = 2
-focusCost = 0.0
-limitedUsage = 3.0
-usageRestoredByCampfire = 3.0
 executionStack = Array[ExtResource("2_lu14u")]([SubResource("Resource_dml4r")])
 internalName = "gauze"
 loc_displayName = "tact_gauze_name"

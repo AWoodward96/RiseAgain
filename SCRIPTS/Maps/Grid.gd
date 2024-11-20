@@ -366,16 +366,6 @@ func PushCast(_tileData : TileTargetedData):
 	if _tileData.pushStack.size() != 0:
 		WalkBackPushStack(_tileData, currentTile, _tileData.pushDirection)
 
-		# Okay well this is awkward - we need to do one more push, because the subject would actually go to the resulting tile + 1 more
-		#var nextTile = GetTile(currentTile.Position + directionVector)
-		#if nextTile == null:
-			#push_error("A Push error has occured. I don't know what went wrong where, but you need to fix it.")
-			#return
-#
-		#if Push(_tileData, nextTile, currentTile, _tileData.pushDirection):
-			#return
-
-
 	pass
 
 func Push(_tileData : TileTargetedData, _nextTile : Tile, _currentTile : Tile, _direction : GameSettingsTemplate.Direction):

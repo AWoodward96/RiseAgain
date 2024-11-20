@@ -15,3 +15,4 @@ var willPush : bool :
 var carryLimit : int = 2
 var pushStack : Array[PushResult]
 var pushCollision : Tile			# If not null - this is the Tile that ended up stopping the push
+var pushCanDamageUser : bool

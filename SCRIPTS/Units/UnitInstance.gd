@@ -447,13 +447,13 @@ func DoHeal(_result : HealStepResult):
 	ModifyHealth(_result.HealthDelta, _result)
 	pass
 
-func DoCombat(_result : PerformCombatStepResult, _instantaneous : bool = false):
+func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 	if _result.Miss:
 		Juice.CreateMissPopup(CurrentTile)
 	else:
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
-func ModifyHealth(_netHealthChange, _result : ActionStepResult, _instantaneous : bool = false):
+func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous : bool = false):
 	if _netHealthChange < 0:
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
@@ -573,7 +573,7 @@ func ApplyStatModifier(_statDef : StatDef):
 	UpdateDerivedStats()
 	OnStatUpdated.emit()
 
-func CheckDeath(_context : ActionStepResult):
+func CheckDeath(_context : DamageStepResult):
 	if currentHealth <= 0:
 		map.OnUnitDeath(self, _context)
 
@@ -589,14 +589,14 @@ func QueueAttackSequence(_destination : Vector2, _log : ActionLog):
 
 	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
 	# This locks in which action is doing what and when
-	attackAction.ActionIndex = _log.abilityStackIndex
+	attackAction.ActionIndex = _log.actionStackIndex
 	attackAction.Log = _log
 
 	ActionStack.append(attackAction)
 	if CurrentAction == null:
 		PopAction()
 
-func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : PerformCombatStepResult):
+func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : DamageStepResult):
 	var defendAction = UnitDefendAction.new()
 	defendAction.SourcePosition = _damageSourcePosition
 	defendAction.Result = _result
@@ -609,7 +609,7 @@ func QueueHealAction(_log : ActionLog):
 	healAction.Log = _log
 	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
 	# This locks in which action is doing what and when
-	healAction.ActionIndex = _log.abilityStackIndex
+	healAction.ActionIndex = _log.actionStackIndex
 	ActionStack.append(healAction)
 	if CurrentAction == null:
 		PopAction()

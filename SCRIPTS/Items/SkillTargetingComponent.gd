@@ -88,6 +88,7 @@ func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : 
 					var info = specificDataAsComplex.pushInfo
 					tileData.pushAmount = info.pushAmount
 					tileData.carryLimit = info.carryLimit
+					tileData.pushCanDamageUser = info.canDamageUser
 					if info.overrideActionDirection:
 						tileData.pushDirection = info.pushDirectionOverride
 					else:

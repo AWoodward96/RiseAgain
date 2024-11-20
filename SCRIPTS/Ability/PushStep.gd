@@ -5,14 +5,44 @@ class_name PushStep
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
 
-	if ability.PushComponentData == null:
-		push_error("Ability " + ability.name + ", has a push step but doesn't have a push component.")
-		return
+	var results = _actionLog.GetResultsFromActionIndex(_actionLog.actionStackIndex)
+	for res : PushStepResult in results:
+		var tileData = res.TileTargetData
+		var pushData = tileData.pushStack
 
-	#var actionDirection = _actionLog.actionDirection
+		for stack in pushData:
+			var unit = stack.Subject as UnitInstance
+			if unit == null:
+				continue
 
-	# WIP
-	#for pushData in ability.PushComponentData.pushData:
-		#var direction = actionDirection
-		#if pushData.overrideActionDirection:
-			#direction = pushData.pushDirectionOverride
+			#var halfTile = Vector2(_actionLog.grid.CellSize / 2, _actionLog.grid.CellSize / 2)
+			var movement : PackedVector2Array
+			movement.append(unit.CurrentTile.GlobalPosition)
+			movement.append(stack.ResultingTile.GlobalPosition)
+			if unit == _actionLog.source:
+				if res.willCollide && res.canDamageUser:
+					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
+				unit.MoveCharacterToNode(movement, stack.ResultingTile)
+			else:
+				unit.MoveCharacterToNode(movement, stack.ResultingTile)
+				if res.willCollide:
+					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
+
+			pass
+
+		if res.willCollide:
+			if tileData.pushCollision.Occupant != null:
+				tileData.pushCollision.Occupant.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
+			else:
+				_actionLog.grid.ModifyTileHealth(res.HealthDelta, tileData.Tile, true)
+		pass
+
+
+
+func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+	var result = PushStepResult.new()
+	result.Source = _actionLog.source
+	result.TileTargetData = _specificTile
+	result.canDamageUser = _specificTile.pushCanDamageUser
+	result.PreCalc()
+	return result

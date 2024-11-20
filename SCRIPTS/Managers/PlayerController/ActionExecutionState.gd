@@ -26,7 +26,7 @@ func _Enter(_ctrl : PlayerController, data):
 
 	if log.ability != null:
 		log.ability.AbilityActionComplete.connect(PostActionComplete)
-		log.abilityStackIndex = -1
+		log.actionStackIndex = -1
 
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()

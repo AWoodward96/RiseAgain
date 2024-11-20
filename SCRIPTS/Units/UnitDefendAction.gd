@@ -5,7 +5,7 @@ var SourcePosition : Vector2
 var tween : Tween
 
 var TimerLock : bool
-var Result : PerformCombatStepResult
+var Result : DamageStepResult
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)

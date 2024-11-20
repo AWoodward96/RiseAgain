@@ -20,7 +20,7 @@ var responseResults : Array[ActionStepResult]
 var actionType : ActionType
 var item : Item
 var ability : Ability
-var abilityStackIndex : int
+var actionStackIndex : int
 
 var damageData : DamageData
 

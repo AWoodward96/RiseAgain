@@ -11,6 +11,7 @@ overrideActionDirection = false
 pushDirectionOverride = 0
 pushAmount = 4
 carryLimit = 2
+canDamageUser = false
 
 [sub_resource type="Resource" id="Resource_dodim"]
 script = ExtResource("3_8d231")

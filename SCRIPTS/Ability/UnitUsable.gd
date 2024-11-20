@@ -13,7 +13,6 @@ class_name UnitUsable
 @export var MovementData : AbilityMovementComponent
 @export var EffectData : CombatEffectComponent
 @export var SummonData : SummonUnitComponent
-@export var PushComponentData : PushComponent
 
 
 var ownerUnit : UnitInstance
@@ -97,6 +96,3 @@ func GetComponents():
 
 		if SummonData == null && child is SummonUnitComponent:
 			SummonData = child as SummonUnitComponent
-
-		if PushComponentData == null && child is PushComponent:
-			PushComponentData = child as PushComponent

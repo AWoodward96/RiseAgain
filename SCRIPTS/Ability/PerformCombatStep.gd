@@ -20,7 +20,7 @@ func Enter(_actionLog : ActionLog):
 		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log)
 
 	# The defending units however, need the specific result to take damage from
-	var results = log.GetResultsFromActionIndex(log.abilityStackIndex)
+	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
 	for stack in results:
 		var damageStepResult = stack as PerformCombatStepResult
 		if damageStepResult == null:
