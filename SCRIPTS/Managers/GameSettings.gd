@@ -180,6 +180,9 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 		# Cant crit what's not there
 		return 0
 
+	if CSR.AlwaysCrit && _attacker.UnitAllegiance == TeamID.ALLY:
+		return 1
+
 	# Here's where I'd put crit bonuses on weapons
 	var critWeaponModifier = 0
 	if _attackerWeapon != null && _attackerWeapon.UsableDamageData != null:

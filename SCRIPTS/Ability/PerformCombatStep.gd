@@ -33,7 +33,13 @@ func Enter(_actionLog : ActionLog):
 		if damageStepResult.Target != null:
 			if useDefendAction:
 				damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
-				CheckForRetaliation(damageStepResult)
+
+				if damageStepResult.RetaliationResult != null:
+					var retaliation = damageStepResult.RetaliationResult
+					log.responseResults.append(retaliation)
+					retaliation.RollChance(Map.Current.rng)
+					retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log)
+					retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
 
@@ -50,17 +56,19 @@ func Execute(_delta):
 
 	return false
 
-
-func CheckForRetaliation(_result : PerformCombatStepResult):
-	if log.source == null:
+func WillRetaliate(_result : PerformCombatStepResult):
+	if _result.Source == null:
 		return
 
-	if log.ability.type == Ability.AbilityType.Standard:
+	if _result.AbilityData.type == Ability.AbilityType.Standard:
 		# This is a normal ability, and no retaliation is available
 		return
 
 	var defendingUnit = _result.Target
-	if log.canRetaliate && !_result.Kill:
+	if defendingUnit == null:
+		return
+
+	if !_result.Kill:
 		if defendingUnit.EquippedWeapon == null:
 			return
 
@@ -72,27 +80,23 @@ func CheckForRetaliation(_result : PerformCombatStepResult):
 		if range == Vector2i.ZERO:
 			return
 
-		var combatDistance = defendingUnit.map.grid.GetManhattanDistance(log.sourceTile.Position, defendingUnit.GridPosition)
+		var combatDistance = defendingUnit.map.grid.GetManhattanDistance(_result.SourceTile.Position, defendingUnit.GridPosition)
 		# so basically, if the weapon this unit is holding, has a max range
 		if range.x <= combatDistance && range.y >= combatDistance:
-			# okay at this point retaliation is possible
-			# oh boy time to make a brand new combat data
-			var newData = ActionLog.Construct(log.grid, defendingUnit, defendingUnit.EquippedWeapon)
-			var tileData = log.source.CurrentTile.AsTargetData()
-			newData.affectedTiles.append(tileData)
-			# turn off retaliation or else these units will be fighting forever
-			newData.canRetaliate = false
-			newData.ability = retaliationWeapon
+			return true
 
-			var retaliationResult = GetResult(newData, tileData)
-			retaliationResult.RollChance(Map.Current.rng)
+	return false
 
-			newData.actionStepResults.append(retaliationResult)
-			log.responseResults.append(retaliationResult)
+func BuildRetaliationResult(_result : PerformCombatStepResult):
+	if WillRetaliate(_result):
+		var retaliationResult = ConstructResult(_result.Target.EquippedWeapon, _result.SourceTile.AsTargetData(), _result.Source.CurrentTile, _result.Target, _result.Source)
 
-			defendingUnit.QueueAttackSequence(log.source.global_position, newData)
-			log.source.QueueDefenseSequence(defendingUnit.global_position, retaliationResult)
-			pass
+		# This Step Index feels like it should be important, but I'm not sure if it's required to set, or what to set it to.
+		# Leaving it commented out for now, but if something breaks somewhere, check the retaliation results index
+		#retaliationResult.StepIndex = 0
+
+		_result.RetaliationResult = retaliationResult
+		pass
 
 func AffectedUnitsClear():
 	var r = true
@@ -105,11 +109,17 @@ func AffectedUnitsClear():
 
 	return r
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+func ConstructResult(_ability : Ability, _tile : TileTargetedData, _sourceTile : Tile, _source : UnitInstance, _target : UnitInstance):
 	var result = PerformCombatStepResult.new()
-	result.AbilityData = _actionLog.ability
-	result.TileTargetData = _specificTile
-	result.Source = _actionLog.source
-	result.Target = _specificTile.Tile.Occupant
+	result.AbilityData = _ability
+	result.TileTargetData = _tile
+	result.Source = _source
+	result.Target = _target
+	result.SourceTile = _sourceTile
 	result.PreCalculate()
 	return result
+
+func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+	var returned = ConstructResult(_actionLog.ability, _specificTile, _actionLog.sourceTile, _actionLog.source, _specificTile.Tile.Occupant)
+	BuildRetaliationResult(returned)
+	return returned

@@ -165,10 +165,6 @@ func StandardTargetingInput(_delta):
 	log.affectedTiles.append(log.actionOriginTile.AsTargetData())
 	ShowPreview()
 
-	# Has to come after clear preview
-	if log.ContainsPush():
-		UpdatePushData(_delta)
-
 	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 
 func ShapedFreeTargetingInput(_delta):
@@ -210,33 +206,8 @@ func ShapedFreeTargetingInput(_delta):
 	log.affectedTiles = targetingData.GetAdditionalTileTargets(source, currentGrid, log.actionOriginTile)
 	ShowAvailableTilesOnGrid()
 	ShowPreview()
-
-	if log.ContainsPush():
-		UpdatePushData(_delta)
 	pass
 
-func UpdatePushData(_delta):
-	#for affectedTiles in log.affectedTiles:
-		#if !affectedTiles.willPush:
-			#continue
-#
-		#for stack in affectedTiles.pushStack:
-			#if stack.Subject == log.source:
-				#ctrl.movement_tracker.visible = true
-				#ctrl.movement_preview_sprite.visible = true
-				#ctrl.movement_tracker.clear_points()
-				#var positionalOffset = Vector2(currentGrid.CellSize / 2, currentGrid.CellSize / 2)
-				#var points = PackedVector2Array()
-				#points.append(stack.Subject.CurrentTile.GlobalPosition + positionalOffset)
-				#points.append(stack.ResultingTile.GlobalPosition + positionalOffset)
-				#ctrl.movement_tracker.points = points
-				#ctrl.movement_preview_sprite.texture = source.Template.icon
-				#ctrl.movement_preview_sprite.position = points[points.size() - 1]
-			#else:
-				#stack.Subject.PreviewModifiedTile(stack.ResultingTile)
-				#unitsWithModifiedVisuals.append(stack.Subject)
-
-	pass
 
 func ShapedDirectionalTargetingInput(_delta):
 	# only update when there's input
@@ -266,9 +237,6 @@ func ShapedDirectionalTargetingInput(_delta):
 
 	ShowAvailableTilesOnGrid()
 	ShowPreview()
-
-	if log.ContainsPush():
-		UpdatePushData(_delta)
 	pass
 
 func ClearPreview():
@@ -284,10 +252,6 @@ func ClearPreview():
 		var previewAsDamageIndicator = preview as DamageIndicator
 		if previewAsDamageIndicator != null:
 			previewAsDamageIndicator.PreviewCanceled()
-
-	#for unit in unitsWithModifiedVisuals:
-		#unit.ResetVisualToTile()
-	#unitsWithModifiedVisuals.clear()
 
 func ShowPreview():
 	# Filter out the tiles that have incorrect targeting on them

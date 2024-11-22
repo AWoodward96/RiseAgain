@@ -184,31 +184,50 @@ func ShowActions() :
 func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true) :
 	var returnList : Array[Tile] = []
 	var frontier : Array[Tile] = []
-	var workingList : Array[Tile] = []
+	var visited : Dictionary
+
+	# --- How does this work? ---
+	# the return list keeps track of a list to return. Even though this algorithm marks tiles as CanMove - there are cases where I actually need an array of the tiles
+	# the frontier is the engine of the algorithm. By adding to it and popping off Tiles, we can traverse the grid
+	# the visited dictionary is a dict of a Tile visited, and how much movement it'll take to get there.
+	# As the frontier moves through the grid, store tiles in the visited dictionary with a value equal to the current.movement + 1
+	# Once the current tile's movement value in the visited dictionary exceeds the units movement the algorithm is complete
+	# --------------------------
+
 	var startingIndex = _unit.GridPosition.y * Width + _unit.GridPosition.x
-	frontier.append(GridArr[startingIndex])
 
 	var unitHasFlying = _unit.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
 
 	var movement = _unit.GetUnitMovement()
-	for move in movement + 1: # +1 because for loops are not inclusive
-		for current in frontier :
-			if _markTiles:
-				current.CanMove = true
-			returnList.append(current)
+	frontier.append(GridArr[startingIndex])
+	visited[GridArr[startingIndex]] = 0
 
-			for neigh in NEIGHBORS:
-				var neighborLocation = current.Position + neigh
-				if Pathfinding.is_in_bounds(neighborLocation.x, neighborLocation.y) :
-					var neighborIndex = neighborLocation.y * Width + neighborLocation.x
-					if !Pathfinding.is_point_solid(neighborLocation) || unitHasFlying:
-						var occupant = GridArr[neighborIndex].Occupant
-						if (occupant== null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
-							workingList.append(GridArr[neighborIndex])
+	var currentMovement = 0
+	while !frontier.is_empty():
+		var current = frontier.pop_front() as Tile
+		if _markTiles:
+			current.CanMove = true
 
-		frontier = workingList.duplicate(true)
-		workingList.clear()
+		if visited[current] > movement:
+			break
 
+		for neigh in NEIGHBORS:
+			var neighborLocation = current.Position + neigh
+			var tile = GetTile(neighborLocation)
+			if tile == null:
+				continue
+
+			if visited.has(tile):
+				continue
+
+			if unitHasFlying || !Pathfinding.is_point_solid(neighborLocation):
+				var occupant = tile.Occupant
+				if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
+					if visited[current] + 1 > movement:
+						break
+					visited[tile] = visited[current] + 1
+					returnList.append(tile)
+					frontier.append(tile)
 	return returnList
 
 func SwapUnitPositions(_unit1 : UnitInstance, _unit2 : UnitInstance):
@@ -230,9 +249,16 @@ func SwapUnitPositions(_unit1 : UnitInstance, _unit2 : UnitInstance):
 func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateWorldPosition : bool) :
 	# Clear out the previous Positions Occupant so that
 	# we don't duplicate this units position in the Grid
-	var prevIndex = GetGridArrIndex(_unit.GridPosition)
-	if GridArr[prevIndex].Occupant == _unit:
-		GridArr[prevIndex].Occupant = null
+	var position = _unit.GridPosition
+	var unitSize = _unit.Template.GridSize
+	for i in range(0, unitSize):
+		for j in range(0, unitSize):
+			var gridIndex = GetGridArrIndex(position)
+			if GridArr[gridIndex].Occupant == _unit:
+				GridArr[gridIndex].Occupant = null
+			position += Vector2i(0,1)
+
+		position += Vector2i(0,1)
 
 	# update the physical location of the unit
 	if _updateWorldPosition:

@@ -21,17 +21,7 @@
 			"uuid": "39f315b3-0340-4b8b-be93-a0c21bdd0e80",
 			"title": "Backlog",
 			"tasks": [
-				"67b3b4e5-903b-4227-b386-6db63a3432b4",
-				"9dd612ed-3b0e-4436-83e2-8c6411e67fff",
-				"801cb78a-6aaf-4399-87aa-18537f529d8b",
 				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
-				"cfbec417-e205-448e-89cf-dad74ef59201"
-			]
-		},
-		{
-			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
-			"title": "ToDo",
-			"tasks": [
 				"922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
 				"468afdb4-e218-4636-8ff3-a92ed108ff73",
 				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
@@ -45,13 +35,20 @@
 			]
 		},
 		{
-			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
-			"title": "Doing",
+			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
+			"title": "ToDo",
 			"tasks": [
 				"579dad1e-a189-47eb-8525-df963722d0ef",
 				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
-				"073acedc-08f2-476c-bf21-67837a146552",
-				"7694be98-f91b-4346-a521-a56ba1181b15"
+				"073acedc-08f2-476c-bf21-67837a146552"
+			]
+		},
+		{
+			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
+			"title": "Doing",
+			"tasks": [
+				"d59c75b5-e317-4eea-8297-1ff82c287976",
+				"9b045b76-36e8-453b-a0c2-273324dc63d7"
 			]
 		},
 		{
@@ -64,7 +61,12 @@
 				"2da4feb0-3296-4b5c-83db-078c28f6f94d",
 				"f9d8c66d-3d4e-43fa-a41a-3d410f1df86d",
 				"6792c2de-7cbd-425b-98d6-ec17d6444815",
-				"e0633179-c6ee-495d-9f86-8949df0de05d"
+				"e0633179-c6ee-495d-9f86-8949df0de05d",
+				"482998a4-feff-415e-a84e-7b76e4130cd7",
+				"9f77496d-bd6d-4f59-b7e5-21b51b3d613d",
+				"aa617123-923a-462d-b3f5-eadb1ec60ab3",
+				"7694be98-f91b-4346-a521-a56ba1181b15",
+				"5df0de38-f0ad-449d-8ad9-ed32f89b1221"
 			]
 		},
 		{
@@ -91,53 +93,8 @@
 			"steps": []
 		},
 		{
-			"uuid": "67b3b4e5-903b-4227-b386-6db63a3432b4",
-			"title": "Roster Inspect UI",
-			"description": "",
-			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": []
-		},
-		{
-			"uuid": "9dd612ed-3b0e-4436-83e2-8c6411e67fff",
-			"title": "Create Unit Persistence to pass between rounds",
-			"description": "",
-			"category": "a3da8b11-c134-41b7-a9fe-43800fcf44a3",
-			"steps": [
-				{
-					"details": "Let units move between maps",
-					"done": true
-				},
-				{
-					"details": "Let units be loaded from json",
-					"done": false
-				},
-				{
-					"details": "Let items be loaded from json",
-					"done": false
-				},
-				{
-					"details": "Add an option to load an existing run from main",
-					"done": false
-				}
-			]
-		},
-		{
-			"uuid": "801cb78a-6aaf-4399-87aa-18537f529d8b",
-			"title": "Change Stats to Stat Blocks",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "3b7a1ca4-e5e3-4788-8e2b-f37bb3bbce2c",
 			"title": "POLISH: Let the damage popup numbers reflect armor damage and then actual damage",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "cfbec417-e205-448e-89cf-dad74ef59201",
-			"title": "Inspect Tree's to see their hp",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
@@ -356,6 +313,48 @@
 			"title": "Apply Effects needs its own result",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "aa617123-923a-462d-b3f5-eadb1ec60ab3",
+			"title": "Petty Gauze has lost it's usage?",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "5df0de38-f0ad-449d-8ad9-ed32f89b1221",
+			"title": "We don't see a preview of how much damage you're taking in standard combat",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "d59c75b5-e317-4eea-8297-1ff82c287976",
+			"title": "Implement Death Zones",
+			"description": "Also, need to fix interactions with charge - so you don't kill yourself?",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "482998a4-feff-415e-a84e-7b76e4130cd7",
+			"title": "Focus Generation isn't working for retaliation attacks",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "9f77496d-bd6d-4f59-b7e5-21b51b3d613d",
+			"title": "Unit retaliated after dying",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "9b045b76-36e8-453b-a0c2-273324dc63d7",
+			"title": "2x2 Enemies",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

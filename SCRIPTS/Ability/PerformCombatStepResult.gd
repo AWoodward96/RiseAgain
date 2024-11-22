@@ -3,11 +3,14 @@ class_name PerformCombatStepResult
 
 var AbilityData : Ability
 
+var SourceTile : Tile
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var CritRate : float		# The % the roll needs to be under in order for it to be a crit
 
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
+
+var RetaliationResult : DamageStepResult
 
 func PreCalculate():
 	## Target died somewhere in the process - return null
@@ -30,8 +33,7 @@ func PreCalculate():
 		CalculateSourceHealthDelta(AbilityData.UsableDamageData)
 
 		Kill = false
-		if Target != null:
-			Kill = (Target.currentHealth + HealthDelta <= 0)
+		UpdateWillKill()
 
 	elif AbilityData.IsHeal():
 		# Healing items can't miss
@@ -45,11 +47,15 @@ func RollChance(_rng : RandomNumberGenerator):
 	if Crit:
 		HealthDelta = HealthDelta * GameManager.GameSettings.CritMultiplier
 		Juice.CreateCritPopup(TileTargetData.Tile)
+		UpdateWillKill()
 
 	CalculateExpGain()
 	if AbilityData.damageGrantsFocus:
 		CalculateFocusDelta()
 
+func UpdateWillKill():
+	if Target != null:
+		Kill = (Target.currentHealth + HealthDelta <= 0)
 
 func CalculateSourceHealthDelta(_damageData : DamageData):
 	if _damageData.DamageAffectsUsersHealth && Target != null:
@@ -142,6 +148,14 @@ func PreviewResult(_map : Map):
 			heal += HealthDelta
 
 		TileTargetData.Tile.PreviewDamage(damage, 0, heal)
+
+	PreviewRetaliation(_map)
+
+
+func PreviewRetaliation(_map : Map):
+	# Wait I love this
+	if RetaliationResult != null:
+		RetaliationResult.PreviewResult(_map)
 
 func CancelPreview():
 	if TileTargetData != null:

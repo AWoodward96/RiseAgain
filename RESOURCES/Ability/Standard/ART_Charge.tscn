@@ -19,7 +19,7 @@ script = ExtResource("4_w6f2a")
 
 [node name="ART_Charge" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_kiov8")
-focusCost = 0
+focusCost = 2
 executionStack = Array[ExtResource("2_whdyn")]([SubResource("Resource_5kv6w"), SubResource("Resource_5cjq5")])
 internalName = "charge"
 loc_displayName = "art_charge_name"

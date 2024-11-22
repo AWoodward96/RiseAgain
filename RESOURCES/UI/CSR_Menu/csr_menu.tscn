@@ -41,6 +41,11 @@ text = "Abilities Cost 0"
 layout_mode = 2
 text = "Give Predefined Item to Allies"
 
+[node name="AlwaysCrit" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Always Crit"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AlwaysCrit" to="." method="btnAlwaysCrit"]

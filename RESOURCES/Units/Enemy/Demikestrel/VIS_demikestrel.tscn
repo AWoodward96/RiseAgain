@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcyy0fwyp15x2"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_wrhgk"]
+[ext_resource type="Texture2D" uid="uid://bmmunjl57obdt" path="res://ART/Icons/Units/demikestrel.png" id="2_75l2h"]
+[ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_3a4ir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
+size = Vector2(64, 64)
+
+[node name="VIS_DemiKestrel" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+script = ExtResource("1_wrhgk")
+AnimationCTRL = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.290196, 0.211765, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_75l2h")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"UnitEnemyLibrary": ExtResource("3_3a4ir")
+}
+autoplay = "Unactivated"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_4m7bv")

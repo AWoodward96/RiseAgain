@@ -14,6 +14,7 @@ class_name UnitTemplate
 @export var Tier0Abilities : Array[PackedScene]
 @export var Tier1Abilities : Array[PackedScene]
 @export var Descriptors : Array[DescriptorTemplate]
+@export var GridSize : int = 1
 #@export var BaseClass : ClassTemplate
 
 @export_group("Meta Data")

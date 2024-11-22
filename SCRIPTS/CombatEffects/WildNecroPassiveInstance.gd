@@ -7,7 +7,7 @@ func _ready():
 	if !Map.Current.OnUnitDied.is_connected(OnUnitDeath):
 		Map.Current.OnUnitDied.connect(OnUnitDeath)
 
-func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionResult):
+func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionStepResult):
 	var map = Map.Current
 	if map == null:
 		return

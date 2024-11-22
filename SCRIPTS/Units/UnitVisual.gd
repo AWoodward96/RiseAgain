@@ -9,9 +9,11 @@ func Initialize(_unit : UnitInstance) :
 
 func SetActivated(_activated : bool):
 	if _activated:
-		AnimationCTRL.play(GetAnimString("Activated"))
+		if AnimationCTRL.has_animation("Activated"):
+			AnimationCTRL.play(GetAnimString("Activated"))
 	else:
-		AnimationCTRL.play(GetAnimString("Unactivated"))
+		if AnimationCTRL.has_animation("Unactivated"):
+			AnimationCTRL.play(GetAnimString("Unactivated"))
 
 func GetAnimString(_suffix : String):
 	var animStr = ""
