@@ -108,6 +108,7 @@ StartingItems = Array[PackedScene]([])
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_q7fsu")]([ExtResource("13_g3qgd")])
+GridSize = 2
 DebugName = "Demikestrel"
 loc_DisplayName = "unit_demikestrel_name"
 loc_Description = "unit_demikestrel_desc"

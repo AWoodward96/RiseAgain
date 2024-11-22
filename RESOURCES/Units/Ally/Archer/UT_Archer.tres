@@ -151,6 +151,7 @@ StartingTactical = ExtResource("14_exkpg")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([ExtResource("23_0sxef"), ExtResource("24_itl1i")])
 Descriptors = Array[ExtResource("13_oca27")]([])
+GridSize = 1
 DebugName = "Archer"
 loc_DisplayName = "unit_archer_name"
 loc_Description = "unit_archer_desc"

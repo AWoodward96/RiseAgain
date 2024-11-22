@@ -251,14 +251,15 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 	# we don't duplicate this units position in the Grid
 	var position = _unit.GridPosition
 	var unitSize = _unit.Template.GridSize
+
+	# Some units have sizes that are greater than 1.
+	# Make sure that units know where these units actually are
 	for i in range(0, unitSize):
 		for j in range(0, unitSize):
+			position =  _unit.GridPosition + Vector2i(i,j)
 			var gridIndex = GetGridArrIndex(position)
 			if GridArr[gridIndex].Occupant == _unit:
 				GridArr[gridIndex].Occupant = null
-			position += Vector2i(0,1)
-
-		position += Vector2i(0,1)
 
 	# update the physical location of the unit
 	if _updateWorldPosition:
@@ -266,9 +267,19 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 
 	_unit.GridPosition = _newPosition
 
-	var newIndex = GetGridArrIndex(_newPosition)
-	GridArr[newIndex].Occupant = _unit
-	_unit.CurrentTile = GridArr[newIndex]
+
+	if unitSize != 1:
+		print("ignoreme")
+
+	position = _newPosition
+	for i in range(0, unitSize):
+		for j in range(0, unitSize):
+			position = _newPosition + Vector2i(i,j)
+			var newIndex = GetGridArrIndex(position)
+			if GridArr[newIndex].Occupant == null:
+				GridArr[newIndex].Occupant = _unit
+
+	_unit.CurrentTile = GridArr[GetGridArrIndex(_newPosition)]
 
 
 func GetGridArrIndex(_pos : Vector2i):

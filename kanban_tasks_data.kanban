@@ -73,7 +73,8 @@
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f"
+				"03e18191-548c-4e16-aac3-787401d9675f",
+				"e2668e30-8208-4f06-992a-63e384bb56c1"
 			]
 		}
 	],
@@ -355,6 +356,13 @@
 			"title": "2x2 Enemies",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "e2668e30-8208-4f06-992a-63e384bb56c1",
+			"title": "Optimization: Inspect Panel",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],
