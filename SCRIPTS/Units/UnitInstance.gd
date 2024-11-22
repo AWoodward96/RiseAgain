@@ -363,7 +363,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile, _speedOverride : int = -1) :
+func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1) :
 	if _route == null || _route.size() == 0:
 		return
 

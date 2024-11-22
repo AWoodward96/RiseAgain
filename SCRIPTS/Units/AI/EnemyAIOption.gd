@@ -13,8 +13,8 @@ var damageAmount : int
 var flagIndex : int
 var totalFlags : int
 
-var roughPath : PackedVector2Array # Rough path is the direct path to the target unit, without taking into account other units
-var path : PackedVector2Array		# The actual path, taking other units into consideration. This is what the enemy should use to move to a target
+var roughPath : Array[Tile] # Rough path is the direct path to the target unit, without taking into account other units
+var path : Array[Tile]		# The actual path, taking other units into consideration. This is what the enemy should use to move to a target
 
 var targetUnit : UnitInstance
 var sourceUnit : UnitInstance
@@ -38,7 +38,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map):
 	targetUnit = _target
 	unitUsable = sourceUnit.EquippedWeapon
 
-	CheckIfMovementNeeded(sourceUnit.GridPosition)
+	CheckIfMovementNeeded(sourceUnit.CurrentTile)
 	if valid:
 		# If Valid is true at the moment, then our target is within range to attack at the tile we're currently standing on
 		# At this point in time, just return. There's no additional information we need to attach to this option
@@ -67,7 +67,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map):
 		var lowest = 1000000
 		var selectedPath
 		for tile in actionableTiles:
-			var workingPath = map.grid.Pathfinding.get_point_path(sourceUnit.GridPosition, tile.Position)
+			var workingPath = map.grid.GetTilePath(sourceUnit, sourceUnit.CurrentTile, tile)
 			if workingPath.size() < lowest && workingPath.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
 				selectedPath = workingPath
 				selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
@@ -77,7 +77,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map):
 			valid = true
 			path = selectedPath
 			TruncatePathToMovement(path)
-			CheckIfMovementNeeded(path[path.size() - 1] / map.grid.CellSize)
+			CheckIfMovementNeeded(path[path.size() - 1])
 		else:
 			valid = true
 			TruncatePathToMovement(roughPath)
@@ -86,14 +86,14 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map):
 	pass
 
 
-func CheckIfMovementNeeded(_origin : Vector2i):
+func CheckIfMovementNeeded(_origin : Tile):
 	# First, check if we even need to move in order to hit the target
 	var itemRange = unitUsable.GetRange()
-	manhattanDistance = map.grid.GetManhattanDistance(_origin, targetUnit.GridPosition)
+	manhattanDistance = map.grid.GetManhattanDistance(_origin.Position, targetUnit.GridPosition)
 	if manhattanDistance >= itemRange.x && manhattanDistance <= itemRange.y:
 		# Congrats we have a valid attack strategy
 		valid = true
-		SetValidAttack(map.grid.GetTile(_origin), targetUnit.CurrentTile)
+		SetValidAttack(_origin, targetUnit.CurrentTile)
 
 
 func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
@@ -121,7 +121,7 @@ func UpdateWeight():
 	weight += damageAmount
 	weight += (TIER_AMOUNT * ((totalFlags - 1) - flagIndex))
 
-func TruncatePathToMovement(_path : Array[Vector2i]):
+func TruncatePathToMovement(_path : Array[Tile]):
 	if _path.size() == 0:
 		return
 
@@ -129,7 +129,7 @@ func TruncatePathToMovement(_path : Array[Vector2i]):
 	path = _path.slice(0, sourceUnit.GetUnitMovement())
 
 	var indexedSize = path.size() - 1
-	var selectedTile =  map.grid.GetTile(path[indexedSize] / map.grid.CellSize)
+	var selectedTile =  path[indexedSize]
 
 	if selectedTile.Occupant != null:
 		while selectedTile.Occupant != null:
@@ -142,7 +142,7 @@ func TruncatePathToMovement(_path : Array[Vector2i]):
 				selectedTile = sourceUnit.CurrentTile
 				return
 
-			selectedTile = map.grid.GetTile(path[indexedSize] / map.grid.CellSize)
+			selectedTile = path[indexedSize]
 			path.remove_at(path.size() - 1)
 
 	tileToMoveTo = selectedTile

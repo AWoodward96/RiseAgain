@@ -14,7 +14,6 @@ const NEIGHBORS = [Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
 var GridArr : Array[Tile]
 var Width: int
 var Height: int
-var Pathfinding : AStarGrid2D
 var map : Map
 var CellSize : int
 var ShowingThreat : bool
@@ -27,15 +26,6 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 	Height = _height
 	CellSize = _cell_size
 	map = _map
-
-	# pre-initialize the Pathfinding data
-	Pathfinding = AStarGrid2D.new()
-	Pathfinding.region = Rect2i(0, 0, Width, Height)
-	Pathfinding.cell_size = Vector2(CellSize, CellSize)
-	Pathfinding.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
-	Pathfinding.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
-	Pathfinding.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	Pathfinding.update() # NOTE: calling update clears all solid data. DO NOT CALL THIS AGAIN
 
 	# no 2d arrays, cowabunga it is
 	GridArr.resize(Width*Height)
@@ -65,7 +55,6 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 					GridArr[index].Health = health
 					GridArr[index].MaxHealth = health
 
-			Pathfinding.set_point_solid(Vector2i(x,y), GridArr[index].Killbox || GridArr[index].IsWall)
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	for x in Width:
@@ -83,25 +72,14 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 	var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
 	var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 
-	Pathfinding.set_point_solid(Vector2i(x,y), false)
-	_tile.IsWall = false
 
-	Pathfinding.set_point_weight_scale(Vector2i(x,y), 1)
+	_tile.IsWall = false
 	if main_data:
 		if main_data.get_collision_polygons_count(0) > 0 :
 			_tile.IsWall = true
 
 	if bg_data != null:
 		_tile.Killbox = bg_data.get_custom_data("Killbox")
-
-	Pathfinding.set_point_solid(Vector2i(x,y), (_tile.IsWall || _tile.Killbox) && !_flying)
-
-	if _tile.Occupant != null:
-		if _tile.Occupant.UnitAllegiance != _allegience:
-			Pathfinding.set_point_solid(Vector2i(x,y), true)
-		else:
-			Pathfinding.set_point_weight_scale(Vector2i(x,y), 2)
-
 
 
 func ShowUnitActions(_unit : UnitInstance):
@@ -202,7 +180,6 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 	frontier.append(GridArr[startingIndex])
 	visited[GridArr[startingIndex]] = 0
 
-	var currentMovement = 0
 	while !frontier.is_empty():
 		var current = frontier.pop_front() as Tile
 		if _markTiles:
@@ -220,7 +197,7 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 			if visited.has(tile):
 				continue
 
-			if unitHasFlying || !Pathfinding.is_point_solid(neighborLocation):
+			if unitHasFlying || (!tile.IsWall && !tile.Killbox):
 				var occupant = tile.Occupant
 				if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
 					if visited[current] + 1 > movement:
@@ -286,13 +263,16 @@ func GetGridArrIndex(_pos : Vector2i):
 	return _pos.y * Width + _pos.x
 
 func GetTile(_pos : Vector2i):
-	if _pos.y < 0 || _pos.x < 0 || _pos.x >= Width || _pos.y >= Height:
+	if !PositionIsInGridBounds(_pos):
 		return null
 
 	var index = GetGridArrIndex(_pos)
 	if index < 0 || index >= GridArr.size():
 		return null
 	return GridArr[index]
+
+func PositionIsInGridBounds(_pos : Vector2i):
+	return _pos.y >= 0 && _pos.x >= 0 && _pos.x < Width && _pos.y < Height
 
 func GetAdjacentTiles(_tile : Tile):
 	var arr : Array[Tile]
@@ -311,7 +291,7 @@ func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile],
 					continue
 
 				var position = n.Position as Vector2 + Vector2(x,y)
-				if (Pathfinding.is_in_bounds(position.x, position.y)):
+				if (PositionIsInGridBounds(position)):
 					#var dst = position.distance_to(n.Position as Vector2)
 					var dst = position - (n.Position as Vector2)
 					var riseOverRun = abs(dst.x) + abs(dst.y)
@@ -330,7 +310,7 @@ func GetTilesWithinRange(_origin : Vector2i, _range : Vector2i, _includeOrigin =
 				continue
 
 			var position = _origin as Vector2 + Vector2(x,y)
-			if Pathfinding.is_in_bounds(position.x, position.y):
+			if PositionIsInGridBounds(position):
 				var dst = position.distance_to(_origin as Vector2)
 				if dst >= _range.x && dst <= _range.y :
 					returnArr.append(GridArr[position.y * Width + position.x])
@@ -354,21 +334,72 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 
 
 func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitInstance):
-	# save whether or not the destination is solid.
-	var destinationIsSolid = Pathfinding.is_point_solid(_destinationUnit.GridPosition)
-	if destinationIsSolid:
-		# set the destination as not solid before the calculation
-		Pathfinding.set_point_solid(_destinationUnit.GridPosition, false)
+	return GetTilePath(_originUnit, _originUnit.CurrentTile, _destinationUnit.CurrentTile, false)
 
-	# do the calculation
-	var path = Pathfinding.get_point_path(_originUnit.GridPosition, _destinationUnit.GridPosition)
+func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true):
+	var frontier = PriorityQueue_Tile.new()
+	frontier.Enqueue(TileQueue.Construct(_startingTile, 0))
 
-	# and if it was solid before the calculation, reset it to being solid again for future calculations
-	if destinationIsSolid:
-		# and then reset the point to solid if it is
-		Pathfinding.set_point_solid(_destinationUnit.GridPosition, true)
+	var visited : Dictionary
+	var visitedCost : Dictionary
+	visited[_startingTile] = null
+	visitedCost[_startingTile] = 0
 
-	return path
+	var unitIsFlying = false
+	if _unitInstance != null:
+		unitIsFlying = _unitInstance.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
+
+	var success = false
+	while(!frontier.size == 0):
+		var currentTile = frontier.Dequeue().tile
+
+		if currentTile == _endingTile:
+			success = true
+			break
+
+		for neigh in NEIGHBORS:
+			var neighborLocation = currentTile.Position + neigh
+			var nextTile = GetTile(neighborLocation)
+			if nextTile == null:
+				continue
+
+			# Early Exit: Unit isn't flying, and there is a wall there
+			if !unitIsFlying && nextTile.IsWall:
+				continue
+
+			# Early Exit: The next tile is a killbox - don't let them willingly move over them
+			if !unitIsFlying && nextTile.Killbox:
+				continue
+
+			if _unitInstance != null:
+				if _different_teams_are_walls && !unitIsFlying && nextTile.Occupant != null && nextTile.Occupant.UnitAllegiance != _unitInstance.UnitAllegiance:
+					continue
+
+			# There is at this time, no terrain modifiers that decreases the movement, therefore
+			# the cost to travel is equal to 1 at all times
+			var costToTravel = visitedCost[currentTile] + 1
+
+			if !visitedCost.has(nextTile) || costToTravel < visitedCost[nextTile]:
+				visitedCost[nextTile] = costToTravel
+				var priority = costToTravel + HeuristicManhattan(currentTile, nextTile)
+				frontier.Enqueue(TileQueue.Construct(nextTile, priority))# should read frontier.append(next, priority)
+				visited[nextTile] = currentTile
+
+	var returnMe : Array[Tile] = []
+	if !success:
+		return returnMe
+
+	var walkback = _endingTile
+	returnMe.append(walkback)
+	while walkback != _startingTile:
+		returnMe.append(visited[walkback])
+		walkback = visited[walkback]
+
+	returnMe.reverse()
+	return returnMe
+
+func HeuristicManhattan(_tileA : Tile, _tileB : Tile):
+	return abs(_tileA.Position.x - _tileB.Position.x) + abs(_tileA.Position.y - _tileB.Position.y)
 
 func PushCast(_tileData : TileTargetedData):
 	if _tileData == null || _tileData.Tile == null:

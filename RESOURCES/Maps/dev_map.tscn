@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cab65o5qhlejd"]
+[gd_scene load_steps=23 format=4 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_hfwsr"]
@@ -13,7 +13,6 @@
 [ext_resource type="Resource" uid="uid://dk6nu2fomck5p" path="res://RESOURCES/CombatEffects/CE_NecromancerPassive.tres" id="10_gihwm"]
 [ext_resource type="Resource" uid="uid://cwpcdl6jod428" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_WildNecromancer.tres" id="11_l2p1q"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="11_owybn"]
-[ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="15_g081h"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_EndTurn.gd" id="15_sr05p"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="15_wtqf6"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="16_rj3a3"]
@@ -119,6 +118,7 @@ UnitToSpawn = ExtResource("8_4ojfh")
 UnitLevel = 3
 PreAppliedEffects = Array[ExtResource("9_v8l4r")]([ExtResource("10_gihwm")])
 Position = Vector2i(7, 3)
+Enabled = false
 AIBehavior = ExtResource("11_l2p1q")
 AggroBehavior = SubResource("Resource_oclll")
 
@@ -133,9 +133,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("8_yycfd")
 UnitLevel = 2
 Position = Vector2i(7, 5)
-Enabled = false
-Allegiance = 4
-AIBehavior = ExtResource("15_g081h")
+AIBehavior = ExtResource("16_rj3a3")
 AggroBehavior = SubResource("Resource_h7prp")
 
 [node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
@@ -148,6 +146,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("15_wtqf6")
 Position = Vector2i(6, 3)
+Enabled = false
 AIBehavior = ExtResource("16_rj3a3")
 AggroBehavior = SubResource("Resource_mju62")
 
@@ -161,6 +160,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("17_lc43g")
 Position = Vector2i(4, 4)
+Enabled = false
 Allegiance = 1
 
 [node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
@@ -173,6 +173,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("15_wtqf6")
 Position = Vector2i(5, 3)
+Enabled = false
 AIBehavior = ExtResource("16_rj3a3")
 AggroBehavior = SubResource("Resource_mju62")
 

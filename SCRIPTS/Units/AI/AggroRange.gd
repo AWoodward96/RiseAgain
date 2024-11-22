@@ -21,7 +21,7 @@ func Check(_self : UnitInstance, _map : Map) -> bool:
 		if u == null || u.CurrentTile == null:
 			continue
 
-		# Remember to use this helper method because otherwise, the U might be a wall depending on whose turn it is
+		# Remember to use this helper method because otherwise, the Unit might be a wall depending on whose turn it is
 		var path = grid.GetPathBetweenTwoUnits(_self, u)
 		if path.size() == 0:
 			continue

@@ -8,7 +8,6 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		unit = _unit
 		map = _map
 		grid = map.grid
-		pathfinding = grid.Pathfinding
 
 		# Decision Tree 1:
 		# We have enough Focus to cast Raise Dead
