@@ -151,6 +151,7 @@ StartingTactical = ExtResource("14_xjuoy")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([ExtResource("23_q5m34"), ExtResource("24_chr0n")])
 Descriptors = Array[ExtResource("13_w741q")]([])
+GridSize = 1
 DebugName = "ElementalMage"
 loc_DisplayName = "unit_elementalmage_name"
 loc_Description = "unit_elementalmage_desc"

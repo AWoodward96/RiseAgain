@@ -128,7 +128,7 @@ func PreviewResult(_map : Map):
 	if Target != null:
 		var indicator = Target.damage_indicator
 
-		if HealthDelta < 0:
+		if HealthDelta <= 0: # The = to here is to trigger the indicator for if your attack deals 0 damage
 			indicator.normalDamage += HealthDelta
 		elif HealthDelta > 0:
 			indicator.healAmount += HealthDelta

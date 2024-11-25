@@ -15,8 +15,8 @@
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="13_xw7d6"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_neaj6"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="14_x2jo7"]
-[ext_resource type="PackedScene" uid="uid://bdslgjv74suwb" path="res://RESOURCES/Units/Ally/Archer/VIS_Archer.tscn" id="15_uvmw3"]
-[ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="16_jw4ff"]
+[ext_resource type="PackedScene" uid="uid://bcflhsodyjf6y" path="res://RESOURCES/Units/Enemy/Roc/VIS_Roc.tscn" id="15_ee4tk"]
+[ext_resource type="Texture2D" uid="uid://w8vjlbfjniik" path="res://ART/Icons/Units/roc.png" id="16_qmiun"]
 
 [sub_resource type="Resource" id="Resource_l056c"]
 script = ExtResource("2_3ts4j")
@@ -101,7 +101,7 @@ Value = 10.0
 [resource]
 resource_name = "UT_Roc"
 script = ExtResource("14_x2jo7")
-VisualPrefab = ExtResource("15_uvmw3")
+VisualPrefab = ExtResource("15_ee4tk")
 BaseStats = Array[ExtResource("2_3ts4j")]([SubResource("Resource_l056c"), SubResource("Resource_tvo8y"), SubResource("Resource_xdv5d"), SubResource("Resource_c60xi"), SubResource("Resource_8agkh"), SubResource("Resource_hb7yt"), SubResource("Resource_xpqof"), SubResource("Resource_op1d7"), SubResource("Resource_jxckb")])
 StatGrowths = Array[ExtResource("2_3ts4j")]([SubResource("Resource_whflk"), SubResource("Resource_w8a63"), SubResource("Resource_6mgnq"), SubResource("Resource_frkow"), SubResource("Resource_0t7wq"), SubResource("Resource_bry0q"), SubResource("Resource_a1c8e")])
 Affinity = ExtResource("1_41g16")
@@ -110,7 +110,8 @@ StartingEquippedWeapon = ExtResource("14_neaj6")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_76hjn")]([ExtResource("13_xw7d6")])
+GridSize = 1
 DebugName = "Roc"
 loc_DisplayName = "unit_roc_name"
 loc_Description = "unit_roc_desc"
-icon = ExtResource("16_jw4ff")
+icon = ExtResource("16_qmiun")

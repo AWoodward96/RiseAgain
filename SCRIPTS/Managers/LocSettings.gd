@@ -24,9 +24,9 @@ func FormatAsHeal(_healAmount : int):
 	var htmlHash = HealColor.to_html(false)
 	return FormatCenter("[color=#" + htmlHash + "]" + str(_healAmount) + "[/color]")
 
-func FormatForCombat(_damageAmount : int, _collisionAmount : int, _healAmount : int):
+func FormatForCombat(_damageAmount : int, _collisionAmount : int, _healAmount : int, _forceShow : bool = false):
 	var string = ""
-	if _damageAmount != 0:
+	if _damageAmount != 0 || (_damageAmount == 0 && _collisionAmount == 0 && _healAmount == 0 && _forceShow):
 		string += "[color=#{hash}]{dmg}[/color] ".format({"hash" : DamageColor.to_html(false), "dmg" : str(_damageAmount)})
 	if _collisionAmount != 0:
 		string += "[color=#{hash}]{dmg}[/color] ".format({"hash" : CollisionColor.to_html(false), "dmg" : str(_collisionAmount)})

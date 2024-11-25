@@ -107,6 +107,7 @@ StartingItems = Array[PackedScene]([])
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_f6kpa")]([])
+GridSize = 1
 DebugName = "PrizedBuck"
 loc_DisplayName = "unit_prizedbuck_name"
 loc_Description = "unit_prizedbuck_desc"

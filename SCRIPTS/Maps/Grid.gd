@@ -197,6 +197,9 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 			if visited.has(tile):
 				continue
 
+			if !CanUnitFitOnTile(_unit, tile, unitHasFlying):
+				continue
+
 			if unitHasFlying || (!tile.IsWall && !tile.Killbox):
 				var occupant = tile.Occupant
 				if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
@@ -364,11 +367,12 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 				continue
 
 			# Early Exit: Unit isn't flying, and there is a wall there
-			if !unitIsFlying && nextTile.IsWall:
-				continue
-
 			# Early Exit: The next tile is a killbox - don't let them willingly move over them
-			if !unitIsFlying && nextTile.Killbox:
+			if !unitIsFlying:
+				if nextTile.IsWall || nextTile.Killbox:
+					continue
+
+			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying):
 				continue
 
 			if _unitInstance != null:
@@ -397,6 +401,31 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 
 	returnMe.reverse()
 	return returnMe
+
+func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying : bool):
+	if _unitInstance == null:
+		return true
+
+	if _unitInstance.Template.GridSize == 1:
+		return _tile.Occupant == null || (_tile.Occupant.UnitAllegiance == _unitInstance.UnitAllegiance)
+
+	for i in range(0, _unitInstance.Template.GridSize):
+		for j in range(0, _unitInstance.Template.GridSize):
+			var position = _tile.Position + Vector2i(i,j)
+			var tileFromSize = GetTile(position)
+			if tileFromSize == null: # Can't fit here, bc then you'd bleed off the map a little bit
+				return false
+
+			# Case: Unit isn't flying, and there's a wall or a killbox here
+			if !_unitIsFlying:
+				if tileFromSize.IsWall || tileFromSize.Killbox:
+					return false
+
+			# Case: There is a unit that doesn't match your allegience here
+			if tileFromSize.Occupant != null && (tileFromSize.Occupant.UnitAllegiance != _unitInstance.UnitAllegiance):
+				return false
+
+	return true
 
 func HeuristicManhattan(_tileA : Tile, _tileB : Tile):
 	return abs(_tileA.Position.x - _tileB.Position.x) + abs(_tileA.Position.y - _tileB.Position.y)
@@ -437,6 +466,18 @@ func PushCast(_tileData : TileTargetedData):
 	pass
 
 func Push(_tileData : TileTargetedData, _nextTile : Tile, _currentTile : Tile, _direction : GameSettingsTemplate.Direction):
+	# Check wall first, then occupant
+	if _nextTile.IsWall:
+		# It's up in the air as to if this should even be set if there's nothing in the push stack
+		# We'll see if it affects anything
+		_tileData.pushCollision = _nextTile
+
+		if _tileData.pushStack.size() != 0:
+			# Walk back the push stack - placing units where they're supposed to be
+			WalkBackPushStack(_tileData, _currentTile, _direction)
+
+		return true
+
 	# Check if the next tile has an occupant
 	if _nextTile.Occupant != null:
 		if _tileData.pushStack.size() < _tileData.carryLimit:
@@ -450,17 +491,6 @@ func Push(_tileData : TileTargetedData, _nextTile : Tile, _currentTile : Tile, _
 
 			WalkBackPushStack(_tileData, _currentTile, _direction)
 			return true
-
-	if _nextTile.IsWall:
-		# It's up in the air as to if this should even be set if there's nothing in the push stack
-		# We'll see if it affects anything
-		_tileData.pushCollision = _nextTile
-
-		if _tileData.pushStack.size() != 0:
-			# Walk back the push stack - placing units where they're supposed to be
-			WalkBackPushStack(_tileData, _currentTile, _direction)
-
-		return true
 
 	return false
 

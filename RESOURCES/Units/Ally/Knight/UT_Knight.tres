@@ -112,6 +112,7 @@ StartingTactical = ExtResource("14_v0j6g")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([ExtResource("15_j0v3k")])
 Descriptors = Array[ExtResource("12_l5q2i")]([])
+GridSize = 1
 DebugName = "Knight"
 loc_DisplayName = "unit_knight_name"
 loc_Description = "unit_knight_desc"

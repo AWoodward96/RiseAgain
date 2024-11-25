@@ -136,6 +136,7 @@ StartingEquippedWeapon = ExtResource("14_60la1")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_2nnof")]([ExtResource("10_1wq3p")])
+GridSize = 1
 DebugName = "CorpseChimera"
 loc_DisplayName = "unit_corpsechimera_name"
 loc_Description = "unit_corpsechimera_desc"

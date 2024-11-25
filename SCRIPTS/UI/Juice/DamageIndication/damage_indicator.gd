@@ -16,7 +16,7 @@ enum DisplayStyle { Weapon, Ability}
 
 var ShouldShow : bool :
 	get:
-		return !(normalDamage == 0 && collisionDamage == 0 && healAmount == 0)
+		return !(normalDamage == 0 && collisionDamage == 0 && healAmount == 0) || normalDamageModified
 
 var display_style : DisplayStyle
 var currentHP : int # Units current HP
@@ -25,7 +25,11 @@ var previewedHP # The hp value visible to the player. Gets ticked down over the 
 var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
 var previewHPTween : Tween
 
-var normalDamage : int
+var normalDamage : int :
+	set(val):
+		normalDamageModified = true
+		normalDamage = val
+var normalDamageModified : bool = false
 var collisionDamage : int
 var healAmount : int
 var hitChance : float
@@ -58,7 +62,7 @@ func ShowPreview():
 		crit_chance_label.text = str(clamp(critChance, 0, 1) * 100) + "%"
 
 	if delta_hp_label != null:
-		delta_hp_label.text = GameManager.LocalizationSettings.FormatForCombat(normalDamage, collisionDamage, healAmount)
+		delta_hp_label.text = GameManager.LocalizationSettings.FormatForCombat(normalDamage, collisionDamage, healAmount, normalDamageModified)
 
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
 	resultingHP = clamp(currentHP + normalDamage + collisionDamage - healAmount, 0, maxHealth)
@@ -104,6 +108,7 @@ func PreviewCanceled():
 	collisionDamage = 0
 	hitChance = 0
 	critChance = 0
+	normalDamageModified = false
 
 	if effects_preview != null:
 		effects_preview.ClearEntries()

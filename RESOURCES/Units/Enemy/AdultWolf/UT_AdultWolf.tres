@@ -136,6 +136,7 @@ StartingEquippedWeapon = ExtResource("14_o7rr2")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_57w4d")]([ExtResource("10_b7vio")])
+GridSize = 1
 DebugName = "AdultWolf"
 loc_DisplayName = "unit_adultwolf_name"
 loc_Description = "unit_adultwolf_desc"

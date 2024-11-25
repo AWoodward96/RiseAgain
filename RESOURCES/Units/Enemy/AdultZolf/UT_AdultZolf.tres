@@ -136,6 +136,7 @@ StartingEquippedWeapon = ExtResource("14_1ljsq")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_44lik")]([ExtResource("10_sunqo")])
+GridSize = 1
 DebugName = "AdultZolf"
 loc_DisplayName = "unit_adultzolf_name"
 loc_Description = "unit_adultzolf_desc"

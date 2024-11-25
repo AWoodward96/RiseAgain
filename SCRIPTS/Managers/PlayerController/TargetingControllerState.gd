@@ -133,9 +133,14 @@ func StandardTargetingInput(_delta):
 		return
 
 	var filteredList = []
+	var unitsFound = []
 	for t in log.availableTiles:
-		if t.Occupant != null || (t.Occupant == null && t.MaxHealth > 0):
+		if (t.Occupant != null && !unitsFound.has(t.Occupant)) || (t.Occupant == null && t.MaxHealth > 0):
 			filteredList.append(t)
+
+			# only allow one unit per target
+			if t.Occupant != null:
+				unitsFound.append(t.Occupant)
 
 	if filteredList.size() == 0:
 		ctrl.combatHUD.ShowNoTargets(true)
@@ -165,7 +170,10 @@ func StandardTargetingInput(_delta):
 	log.affectedTiles.append(log.actionOriginTile.AsTargetData())
 	ShowPreview()
 
-	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
+	if log.actionOriginTile.Occupant != null:
+		ctrl.FocusReticleOnUnit(log.actionOriginTile.Occupant)
+	else:
+		ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 
 func ShapedFreeTargetingInput(_delta):
 	# only update when there's input

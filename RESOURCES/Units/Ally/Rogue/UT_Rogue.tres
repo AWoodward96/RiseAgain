@@ -113,6 +113,7 @@ StartingTactical = ExtResource("14_v6xa5")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([ExtResource("15_dhaiq"), ExtResource("16_da6hm")])
 Descriptors = Array[ExtResource("12_0ywe3")]([])
+GridSize = 1
 DebugName = "Rogue"
 loc_DisplayName = "unit_rogue_name"
 loc_Description = "unit_rogue_desc"

@@ -136,6 +136,7 @@ StartingEquippedWeapon = ExtResource("14_pk1ms")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_yylga")]([ExtResource("10_dbrfp")])
+GridSize = 1
 DebugName = "WolfMother"
 loc_DisplayName = "unit_wolfmother_name"
 loc_Description = "unit_wolfmother_desc"

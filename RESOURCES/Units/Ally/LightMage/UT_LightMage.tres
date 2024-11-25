@@ -165,6 +165,7 @@ StartingTactical = ExtResource("14_4gxa1")
 Tier0Abilities = Array[PackedScene]([SubResource("PackedScene_ft1kl")])
 Tier1Abilities = Array[PackedScene]([ExtResource("24_fw6d6"), ExtResource("25_bt6ol")])
 Descriptors = Array[ExtResource("13_yp22s")]([])
+GridSize = 1
 DebugName = "LightMage"
 loc_DisplayName = "unit_lightmage_name"
 loc_Description = "unit_lightmage_desc"

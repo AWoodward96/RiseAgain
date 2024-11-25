@@ -94,6 +94,9 @@ func _ready():
 	HideDamagePreview()
 	defend_icon.visible = false
 
+	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
+	health_bar_parent.scale = Vector2i(Template.GridSize, Template.GridSize)
+
 func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	Template = _unitTemplate
 

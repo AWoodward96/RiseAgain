@@ -115,7 +115,8 @@ func UpdateWeight():
 	weight = 0
 
 	if canKill: weight += KILL_TIER_AMOUNT
-	if canDealDamage : weight += TIER_AMOUNT
+	# Commenting this out because it's making units ignore units that they can't hurt. They should still try imo
+	#if canDealDamage : weight += TIER_AMOUNT
 	if !unitWillRetaliate && canDealDamage : weight += TIER_AMOUNT
 
 	weight += damageAmount

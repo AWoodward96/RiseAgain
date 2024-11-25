@@ -31,7 +31,9 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		focusDelta += result.FocusDelta
 		sourceHealthDelta += result.SourceHealthDelta
 
-		Log.grid.ModifyTileHealth(result.HealthDelta, result.TileTargetData.Tile)
+		if result.Target == null:
+			# only deal damage to tiles if there's no unit there
+			Log.grid.ModifyTileHealth(result.HealthDelta, result.TileTargetData.Tile)
 
 
 	var dst = (TargetPosition - _unit.position).normalized()

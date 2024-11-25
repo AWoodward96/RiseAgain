@@ -135,6 +135,7 @@ StartingEquippedWeapon = ExtResource("14_4tmws")
 Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_yhm8x")]([ExtResource("10_x76nx")])
+GridSize = 1
 DebugName = "Zombie"
 loc_DisplayName = "unit_zombie_name"
 loc_Description = "unit_zombie_desc"

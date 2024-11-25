@@ -16,13 +16,13 @@ func Enter(_actionLog : ActionLog):
 				continue
 
 			#var halfTile = Vector2(_actionLog.grid.CellSize / 2, _actionLog.grid.CellSize / 2)
-			var movement : PackedVector2Array
-			movement.append(unit.CurrentTile.GlobalPosition)
-			movement.append(stack.ResultingTile.GlobalPosition)
+			var movement : Array[Tile]
+			movement.append(unit.CurrentTile)
+			movement.append(stack.ResultingTile)
 			if unit == _actionLog.source:
+				unit.MoveCharacterToNode(movement, stack.ResultingTile)
 				if res.willCollide && res.canDamageUser:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
-				unit.MoveCharacterToNode(movement, stack.ResultingTile)
 			else:
 				unit.MoveCharacterToNode(movement, stack.ResultingTile)
 				if res.willCollide:
@@ -34,7 +34,7 @@ func Enter(_actionLog : ActionLog):
 			if tileData.pushCollision.Occupant != null:
 				tileData.pushCollision.Occupant.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 			else:
-				_actionLog.grid.ModifyTileHealth(res.HealthDelta, tileData.Tile, true)
+				_actionLog.grid.ModifyTileHealth(res.HealthDelta, res.TileTargetData.pushCollision, true)
 		pass
 
 

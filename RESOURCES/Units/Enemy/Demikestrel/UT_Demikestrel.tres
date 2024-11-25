@@ -30,7 +30,7 @@ Value = 10
 [sub_resource type="Resource" id="Resource_ff1x7"]
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
-Value = 10
+Value = 1
 
 [sub_resource type="Resource" id="Resource_5dcfk"]
 script = ExtResource("2_bnito")
@@ -40,7 +40,7 @@ Value = 10
 [sub_resource type="Resource" id="Resource_woabl"]
 script = ExtResource("2_bnito")
 Template = ExtResource("7_dwwwo")
-Value = 10
+Value = 1
 
 [sub_resource type="Resource" id="Resource_4jpo4"]
 script = ExtResource("2_bnito")

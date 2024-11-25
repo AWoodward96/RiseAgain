@@ -87,18 +87,24 @@ unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 3
-anchors_preset = 0
-offset_top = 70.0
+anchors_preset = 9
+anchor_bottom = 1.0
 offset_right = 64.0
-offset_bottom = 86.0
+offset_bottom = 16.0
+grow_vertical = 2
 script = ExtResource("4_ae3kp")
-HealthBar = NodePath("HealthBar")
-ArmorBar = NodePath("ArmorBar")
-HealthText = NodePath("HP Val")
-FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
+HealthBar = NodePath("Offset/HealthBar")
+ArmorBar = NodePath("Offset/ArmorBar")
+HealthText = NodePath("Offset/HP Val")
+FocusBarEntryList = NodePath("Offset/FocusContainer/FocusBarParent")
 FocusBarPrefab = ExtResource("4_kfodt")
 
-[node name="HealthBar" type="ProgressBar" parent="HealthBarParent"]
+[node name="Offset" type="Control" parent="HealthBarParent"]
+anchors_preset = 0
+offset_top = 64.0
+offset_bottom = 64.0
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBarParent/Offset"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 16)
 layout_mode = 2
@@ -111,7 +117,7 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="ArmorBar" type="ProgressBar" parent="HealthBarParent"]
+[node name="ArmorBar" type="ProgressBar" parent="HealthBarParent/Offset"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(80, 16)
@@ -125,7 +131,7 @@ value = 0.84
 fill_mode = 1
 show_percentage = false
 
-[node name="HP Val" type="Label" parent="HealthBarParent"]
+[node name="HP Val" type="Label" parent="HealthBarParent/Offset"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
@@ -141,7 +147,7 @@ label_settings = SubResource("LabelSettings_lypks")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FocusContainer" type="MarginContainer" parent="HealthBarParent"]
+[node name="FocusContainer" type="MarginContainer" parent="HealthBarParent/Offset"]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 16.0
@@ -150,7 +156,7 @@ offset_bottom = 24.0
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="FocusBarParent" type="HBoxContainer" parent="HealthBarParent/FocusContainer"]
+[node name="FocusBarParent" type="HBoxContainer" parent="HealthBarParent/Offset/FocusContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
