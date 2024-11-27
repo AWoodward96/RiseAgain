@@ -17,7 +17,7 @@ func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 			returnTileData.append(tileData)
 	return returnTileData
 
-func GetCoords(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
+func GetCoords(_unit : UnitInstance, _originTile : Tile):
 	return TileCoordinates
 
 func GetSpecificData(_index : int, _unit : UnitInstance):

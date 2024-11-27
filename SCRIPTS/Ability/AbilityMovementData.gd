@@ -34,24 +34,24 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _dire
 		AbilityMovementType.InverseDirectional:
 			return GetRoute_DirectionalRelative(_grid, _unit, _direction, true)
 
-	return PackedVector2Array()
+	return []
 
 func GetRoute_TargetTile(_origin : Tile, _destination : Tile):
 	if _destination.Occupant == null && !_destination.IsWall:
 		destinationTile = _destination
-		return PackedVector2Array([_origin.GlobalPosition + positionalOffset, _destination.GlobalPosition + positionalOffset])
-	return PackedVector2Array()
+		return Array([_origin, _destination])
+	return []
 
 func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction : GameSettingsTemplate.Direction, _inverse : bool = false):
 	# Okay this one is a little harder
-	var route = PackedVector2Array()
+	var route : Array[Tile] = []
 	var origin = _unit.CurrentTile
 	var workingTile = origin
 	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_direction)
 	if _inverse:
 		directionVector = GameSettingsTemplate.GetInverseVectorFromDirection(_direction)
 
-	route.append(origin.GlobalPosition + positionalOffset)
+	route.append(origin)
 	for i in movementAmount:
 		var tile = _grid.GetTile(workingTile.Position + directionVector)
 		if tile != null:
@@ -59,13 +59,13 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction
 				destinationTile = workingTile
 				break
 
-			route.append(tile.GlobalPosition + positionalOffset)
+			route.append(tile)
 			workingTile = tile
 
 	# currently, workingTile should be the last tile added to the route
 	var occupantValidator = workingTile.Occupant == null || (workingTile.Occupant != null && workingTile.Occupant == _unit)
 	if !occupantValidator:
-		return PackedVector2Array()
+		return []
 
 	destinationTile = workingTile
 	return route
@@ -76,7 +76,7 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction :
 	positionalOffset = Vector2.ZERO
 	destinationTile = null
 
-	var route = PackedVector2Array()
+	var route : Array[Tile] = []
 	match type:
 		AbilityMovementType.TargetTile:
 			# The TargetTile type is automatically not stopped by walls, as it would be too difficult to detect where

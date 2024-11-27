@@ -73,6 +73,18 @@ func _Enter(_ctrl : PlayerController, _ability):
 					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
 					if tile != null:
 						log.actionOriginTile = tile
+				SkillTargetingData.TargetingType.Global:
+					# This attack hits everyone on a specific team
+					log.actionOriginTile = source.CurrentTile
+					for team in currentMap.teams:
+						for unit : UnitInstance in currentMap.teams[team]:
+							if unit == null:
+								continue
+
+							if targetingData.OnCorrectTeam(source, unit):
+								log.availableTiles.append(unit.CurrentTile)
+								log.affectedTiles.append(unit.CurrentTile.AsTargetData())
+					pass
 
 			if log.availableTiles.size() == 0:
 				push_error("TargetingControllerState: No available tiles for selected action. Is your targeting script set up properly?")
@@ -117,7 +129,7 @@ func TileSelected():
 		targetSelected = true
 		# This will wait for the previous actions to be complete, and then do the stuff
 		source.QueueDelayedCombatAction(log)
-	elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+	elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional || targetingData.Type == SkillTargetingData.TargetingType.Global:
 		targetSelected = true
 		source.QueueDelayedCombatAction(log)
 		pass

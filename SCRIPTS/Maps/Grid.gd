@@ -72,7 +72,6 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 	var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
 	var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 
-
 	_tile.IsWall = false
 	if main_data:
 		if main_data.get_collision_polygons_count(0) > 0 :
@@ -260,6 +259,9 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 				GridArr[newIndex].Occupant = _unit
 
 	_unit.CurrentTile = GridArr[GetGridArrIndex(_newPosition)]
+
+	# See: UnitMoveAction for where the killbox gets checked
+	#_unit.CheckKillbox()
 
 
 func GetGridArrIndex(_pos : Vector2i):

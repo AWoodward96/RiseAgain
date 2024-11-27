@@ -39,6 +39,10 @@ var IsDefending : bool = false :
 			defend_icon.visible = value
 		IsDefending = value
 
+var IsFlying : bool :
+	get:
+		return Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
+
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
@@ -96,6 +100,8 @@ func _ready():
 
 	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
 	health_bar_parent.scale = Vector2i(Template.GridSize, Template.GridSize)
+
+	name = "{0}_{1}_{2}".format({"0" : str(UnitAllegiance), "1" : Template.DebugName, "2" : str(randi() % 100000)})
 
 func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	Template = _unitTemplate
@@ -439,6 +445,8 @@ func EndTurn():
 	Activated = false
 	if blockTurnEnd:
 		Activate(map.currentTurn)
+	else:
+		map.OnUnitTurnEnd.emit(self)
 
 func QueueTurnStartDelay():
 	var delay = UnitDelayAction.new()
@@ -579,6 +587,12 @@ func ApplyStatModifier(_statDef : StatDef):
 func CheckDeath(_context : DamageStepResult):
 	if currentHealth <= 0:
 		map.OnUnitDeath(self, _context)
+
+func CheckKillbox():
+	if CurrentTile.ActiveKillbox && !IsFlying:
+		# The unit's fucking dead - kill them
+		ModifyHealth(-currentHealth, null, true)
+		pass
 
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible

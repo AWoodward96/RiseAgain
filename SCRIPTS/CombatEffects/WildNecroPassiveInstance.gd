@@ -12,6 +12,10 @@ func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionStepResult)
 	if map == null:
 		return
 
+	# If this unit died to some unknown result - just ignore it
+	if _actionResult == null:
+		return
+
 	# If it wasn't us that dealt the damage - go away
 	if _actionResult.Source != SourceUnit:
 		return

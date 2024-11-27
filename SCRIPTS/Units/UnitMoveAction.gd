@@ -35,6 +35,6 @@ func _Execute(_unit : UnitInstance, _delta):
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
 			_unit.position = Route[MovementIndex - 1].GlobalPosition
-
+			_unit.CheckKillbox()
 			return true
 	return false

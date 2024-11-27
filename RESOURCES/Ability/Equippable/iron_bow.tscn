@@ -53,3 +53,4 @@ DamageToHealthRatio = 0.0
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("8_5alf8")
 TargetRange = Vector2i(2, 3)
+Type = 4

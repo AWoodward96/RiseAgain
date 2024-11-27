@@ -47,8 +47,7 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"d59c75b5-e317-4eea-8297-1ff82c287976",
-				"9b045b76-36e8-453b-a0c2-273324dc63d7"
+				"9d049bd3-a9d1-485d-afa6-5b53d350b775"
 			]
 		},
 		{
@@ -64,16 +63,18 @@
 				"e0633179-c6ee-495d-9f86-8949df0de05d",
 				"482998a4-feff-415e-a84e-7b76e4130cd7",
 				"9f77496d-bd6d-4f59-b7e5-21b51b3d613d",
+				"03e18191-548c-4e16-aac3-787401d9675f",
 				"aa617123-923a-462d-b3f5-eadb1ec60ab3",
 				"7694be98-f91b-4346-a521-a56ba1181b15",
-				"5df0de38-f0ad-449d-8ad9-ed32f89b1221"
+				"5df0de38-f0ad-449d-8ad9-ed32f89b1221",
+				"9b045b76-36e8-453b-a0c2-273324dc63d7",
+				"d59c75b5-e317-4eea-8297-1ff82c287976"
 			]
 		},
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"03e18191-548c-4e16-aac3-787401d9675f",
 				"e2668e30-8208-4f06-992a-63e384bb56c1"
 			]
 		}
@@ -361,9 +362,33 @@
 		{
 			"uuid": "e2668e30-8208-4f06-992a-63e384bb56c1",
 			"title": "Optimization: Inspect Panel",
-			"description": "",
+			"description": "After inspecting a performance bug with how I was determining movement options, I noticed that the Inspect UI is taking up an awful lot of processing time. I believe it's updating the focus UI a bit too much.",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
+		},
+		{
+			"uuid": "9d049bd3-a9d1-485d-afa6-5b53d350b775",
+			"title": "DemiKestrel Boss Fight",
+			"description": "The DemiKestrel is going to be the boss of the high route. Unlike the Wild Necromancer boss fight, this will be a 1 Unit boss fight where Players will have to navigate the DemiKestrels abilities to survive.\n\nThe DemiKestrel will have two main abilities which will need tech to support.\n\n1: Howling Winds - An ability  that pushes all Player Units in a direction. The Map should be designed with terrain that units can collide with to take damage, and if they're on the outside of the map, they are potentially blown off the map for an insta kill\n\n2: Rending Gale - An ability that spawns a Grid Entity that moves in the direction shot. This will be the first Grid Entity implemented, and wil require tech to support. Every time any unit moves, the Gale moves in the direction fired, dealing damage to any unit it passes through. Rending Gale will be one of the bigger question marks as I'm implementing the system. I don't know if this is a good idea or a bad idea - so getting the system to support it in now is extremely important.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Howling Winds",
+					"done": false
+				},
+				{
+					"details": "AI",
+					"done": false
+				},
+				{
+					"details": "Rending Gale",
+					"done": false
+				},
+				{
+					"details": "Map",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

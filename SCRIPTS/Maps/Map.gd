@@ -4,7 +4,8 @@ class_name Map
 
 static var Current : Map
 
-signal OnUnitDied(_unitInstasnce : UnitInstance, _context : DamageStepResult)
+signal OnUnitDied(_unitInstance : UnitInstance, _context : DamageStepResult)
+signal OnUnitTurnEnd(_unitInstance : UnitInstance)
 
 enum MAPSTATE { PreMap, Combat, PostMap }
 enum MAPTYPE { Standard, Campsite, Event }
@@ -31,6 +32,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var squadParent : Node2D
 @export var StartingPositionsParent : Node2D
 @export var SpawnersParent : Node2D
+var gridEntityParent : Node2D # Gets created at runtime
 
 var MapState : MapStateBase
 var CurrentCampaign : CampaignTemplate
@@ -38,7 +40,7 @@ var CurrentCampaign : CampaignTemplate
 var teams = {}
 var unitsKilled = {}
 var playercontroller : PlayerController
-var currentTurn = GameSettingsTemplate.TeamID
+var currentTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 
 var rng : RandomNumberGenerator
 var grid : Grid
@@ -46,6 +48,7 @@ var turnCount : int
 var formationSelected = false
 var startingPositions : Array[Vector2i]
 var spawners : Array[SpawnerBase]
+var gridEntities : Array[GridEntityBase]
 
 var combatLedger
 
@@ -155,6 +158,17 @@ func CreateUnit(_unitTemplate : UnitTemplate, _levelOverride : int = 0):
 	unitInstance.Initialize(_unitTemplate, _levelOverride)
 	return unitInstance
 
+func AddGridEntity(_gridEntity : GridEntityBase):
+	if _gridEntity != null:
+		gridEntities.append(_gridEntity)
+
+	if gridEntityParent == null:
+		gridEntityParent = Node2D.new()
+		gridEntityParent.name = "GridEntityParent"
+		add_child(gridEntityParent)
+
+	gridEntityParent.add_child(_gridEntity)
+
 func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID):
 	_unitInstance.AddToMap(self, _position, _allegiance)
 	grid.SetUnitGridPosition(_unitInstance, _position, true)
@@ -203,12 +217,16 @@ func RemoveUnitFromMap(_unitInstance : UnitInstance):
 
 	await _unitInstance.IsStackFree
 
-	# Collect the reference before hand
-	var tile = _unitInstance.CurrentTile
-	tile.Occupant = null
-	_unitInstance.queue_free()
+	# Some units are bigger than one tile big - we need to clear those tiles
+	var unitSize = _unitInstance.Template.GridSize
+	for i in range(0, unitSize):
+		for j in range(0, unitSize):
+			var offsetPosition = _unitInstance.GridPosition + Vector2i(i,j)
+			var tile = grid.GetTile(offsetPosition)
+			if tile != null && tile.Occupant == _unitInstance:
+				tile.Occupant = null
 
-	grid.RefreshTilesCollision(tile, currentTurn)
+	_unitInstance.queue_free()
 
 func GetUnitsOnTeam(_teamBitMask : int):
 	var returnUnits : Array[UnitInstance] = []

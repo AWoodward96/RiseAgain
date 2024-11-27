@@ -8,6 +8,9 @@ var unitTurnStack : Array[UnitInstance]
 var currentUnitsTurn : UnitInstance
 var turnBannerOpen : bool
 
+var preTurnUpdate : bool
+var teamTurnUpdate : bool
+var unitTurnUpdate : bool
 
 var IsAllyTurn : bool :
 	get :
@@ -19,11 +22,23 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	combatHud = controller.CreateCombatHUD()
 	controller.ClearSelectionData()
 
+	if !map.OnUnitTurnEnd.is_connected(OnUnitEndTurn):
+		map.OnUnitTurnEnd.connect(OnUnitEndTurn)
+
 	StartTurn(GameSettingsTemplate.TeamID.ALLY)
 	ActivateAll()
 
+func Exit():
+	if map.OnUnitTurnEnd.is_connected(OnUnitEndTurn):
+		map.OnUnitTurnEnd.disconnect(OnUnitEndTurn)
+
 func Update(_delta):
 	if turnBannerOpen:
+		return
+
+	RemoveExpiredGridEntities()
+	if preTurnUpdate:
+		UpdateGridEntities(_delta)
 		return
 
 	match map.currentTurn:
@@ -72,6 +87,54 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 		controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
 	currentUnitsTurn = null
 	ActivateAll()
+	EnterTeamTurnUpdate()
+
+
+func EnterTeamTurnUpdate():
+	preTurnUpdate = true
+	teamTurnUpdate = true
+	for entities in map.gridEntities:
+		if entities.UpdatePerTeamTurn:
+			entities.Enter()
+
+func EnterUnitTurnUpdate():
+	preTurnUpdate = true
+	unitTurnUpdate = true
+	for entities in map.gridEntities:
+		if entities.UpdatePerUnitTurn:
+			entities.Enter()
+
+func UpdateGridEntities(_delta):
+	if teamTurnUpdate:
+		var over = true
+		for entities in map.gridEntities:
+			if entities.UpdatePerTeamTurn:
+				over = entities.UpdateGridEntity_TeamTurn(_delta) && over
+
+		if over:
+			preTurnUpdate = false
+			teamTurnUpdate = false
+
+	if unitTurnUpdate:
+		var over = true
+		for entities in map.gridEntities:
+			if entities.UpdatePerUnitTurn:
+				over = entities.UpdateGridEntity_UnitTurn(_delta) &&  over
+
+		if over:
+			preTurnUpdate = false
+			unitTurnUpdate = false
+
+func RemoveExpiredGridEntities():
+	for i in range(map.gridEntities.size() - 1, -1, -1):
+		var cur = map.gridEntities[i]
+		if cur == null:
+			map.gridEntities.remove_at(i)
+			continue
+
+		if map.gridEntities[i].Expired:
+			cur.queue_free()
+			map.gridEntities.remove_at(i)
 
 func ActivateAll():
 	for team in map.teams:
@@ -98,6 +161,8 @@ func IsTurnOver():
 
 	return turnOver && !(map.playercontroller.ControllerState is ActionExecutionState) # If we're still in action execution then we need to wait for it to resolve
 
+func OnUnitEndTurn(_unitInstance : UnitInstance):
+	EnterUnitTurnUpdate()
 
 func ClearTileSelection():
 	currentlySelectedUnit = null

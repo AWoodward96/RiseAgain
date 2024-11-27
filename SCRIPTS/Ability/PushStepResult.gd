@@ -30,7 +30,10 @@ func PreviewResult(_map : Map):
 
 		unit.damage_indicator.SetHealthLevels(unit.currentHealth, unit.maxHealth)
 		if unit == Source:
-			if willCollide && canDamageUser:
+			# Prioritize death to killbox over other damage
+			if stack.ResultingTile != null && stack.ResultingTile.ActiveKillbox && !unit.IsFlying:
+				unit.damage_indicator.collisionDamage += -unit.currentHealth
+			elif willCollide && canDamageUser:
 				unit.damage_indicator.collisionDamage += HealthDelta
 
 			# TODO: Make a system for phantoms - showing where a unit might be after an action is performed
@@ -47,9 +50,10 @@ func PreviewResult(_map : Map):
 		else:
 			unit.PreviewModifiedTile(stack.ResultingTile)
 
-			if willCollide:
+			if stack.ResultingTile != null && stack.ResultingTile.ActiveKillbox && !unit.IsFlying:
+				unit.damage_indicator.collisionDamage += -unit.currentHealth
+			elif willCollide:
 				unit.damage_indicator.collisionDamage += HealthDelta
-			pass
 
 	if willCollide:
 		# The thing we're colliding with also takes damage

@@ -18,6 +18,7 @@ func _Execute(_delta):
 	if combatState != null:
 		if combatState.currentUnitsTurn != null:
 			ctrl.ForceReticlePosition(combatState.currentUnitsTurn.CurrentTile.Position)
+			pass
 	pass
 
 func ToString():

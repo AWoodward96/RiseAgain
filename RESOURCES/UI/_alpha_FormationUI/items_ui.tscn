@@ -22,7 +22,7 @@ bg_color = Color(0.54, 0.5184, 0.432, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp2hr"]
 bg_color = Color(0.54, 0.5184, 0.432, 1)
 
-[node name="Items" type="Control" node_paths=PackedStringArray("selectedUnitIcon", "unitEntryList", "itemEntryList", "weaponPanel", "weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText", "tradeBtn", "craftBtn", "convoyBtn")]
+[node name="Items" type="Control" node_paths=PackedStringArray("selectedUnitIcon", "unitEntryList", "itemEntryList", "weaponPanel", "tradeBtn", "craftBtn", "convoyBtn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,14 +35,7 @@ unitEntryList = NodePath("HBoxContainer/UnitsPanel/Margin/UnitsEntryList")
 unitEntryPrefab = ExtResource("2_ndcy3")
 itemEntryList = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/Items/ItemEntryList")
 itemEntryPrefab = ExtResource("3_l5it4")
-weaponPanel = NodePath("")
-weaponParent = NodePath("")
-noWeaponParent = NodePath("")
-weaponIcon = NodePath("")
-weaponNameText = NodePath("")
-weaponDescriptionText = NodePath("")
-statBlockEntry = NodePath("")
-accuracyText = NodePath("")
+weaponPanel = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponPanel")
 tradeBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/TradeBtn")
 craftBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/CraftBtn")
 convoyBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/ConvoyBtn")

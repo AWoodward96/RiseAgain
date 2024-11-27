@@ -7,11 +7,16 @@ var IsWall
 var Health : int = -1
 var MaxHealth : int = -1
 var Killbox : bool
+var ActiveKillbox : bool :
+	get:
+		return Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0)
 
 var CanAttack: bool
 var CanMove: bool
 var InRange : bool
 var Occupant : UnitInstance
+
+var GridEntities : Array[GridEntityBase]
 
 var popupStack : Array[Node2D]
 var popingOffPopups : bool = false
@@ -69,3 +74,12 @@ func CancelPreview():
 	if damageIndicator != null:
 		damageIndicator.queue_free()
 	damageIndicator = null
+
+func AddEntity(_gridEntity : GridEntityBase):
+	if !GridEntities.has(_gridEntity):
+		GridEntities.append(_gridEntity)
+
+func RemoveEntity(_gridEntity : GridEntityBase):
+	if GridEntities.has(_gridEntity):
+		var index = GridEntities.find(_gridEntity)
+		GridEntities.remove_at(index)
