@@ -11,6 +11,10 @@ func Enter(_actionLog : ActionLog):
 		var pushData = tileData.pushStack
 
 		for stack in pushData:
+			# Unit died sometime before this
+			if stack.Subject == null:
+				continue
+
 			var unit = stack.Subject as UnitInstance
 			if unit == null:
 				continue

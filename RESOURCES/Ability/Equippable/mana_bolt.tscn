@@ -20,7 +20,7 @@ useDefendAction = true
 [sub_resource type="Resource" id="Resource_k0yij"]
 script = ExtResource("4_15h1q")
 
-[sub_resource type="Resource" id="Resource_2hcix"]
+[sub_resource type="Resource" id="Resource_r65rk"]
 script = ExtResource("5_82x5q")
 Template = ExtResource("4_ev71y")
 Value = 4
@@ -28,6 +28,7 @@ Value = 4
 [node name="mana_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_nhf15")
 type = 1
+focusCost = 0.0
 executionStack = Array[ExtResource("2_ardhu")]([SubResource("Resource_rkook"), SubResource("Resource_k0yij")])
 damageGrantsFocus = true
 internalName = "mana_bolt"
@@ -41,7 +42,7 @@ StatData = NodePath("StatComponent")
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("3_aqi1q")
 BaseAccuracy = 90.0
-GrantedStats = Array[ExtResource("5_82x5q")]([SubResource("Resource_2hcix")])
+GrantedStats = Array[ExtResource("5_82x5q")]([SubResource("Resource_r65rk")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("6_3cgcw")

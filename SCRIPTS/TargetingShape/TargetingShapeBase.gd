@@ -12,13 +12,13 @@ func GetCoords(_unit : UnitInstance, _originTile : Tile):
 func GetSpecificData(_index : int, _unit : UnitInstance):
 	pass
 
-func GetTargetedTilesFromDirection(_unit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false):
+func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false):
 	var retArray : Array[TileTargetedData]
 	var index = 0
-	for shapedTile in GetCoords(_unit, _origin):
+	for shapedTile in GetCoords(_sourceUnit, _origin):
 		if shapedTile == null:
 			continue
-		var specificData = GetSpecificData(index, _unit)
+		var specificData = GetSpecificData(index, _sourceUnit)
 		var tileData = TileTargetedData.new()
 		var pos = shapedTile.Position as Vector2
 		pos = pos.rotated(deg_to_rad(90 * _direction))

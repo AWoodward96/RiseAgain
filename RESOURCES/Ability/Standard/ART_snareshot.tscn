@@ -30,6 +30,7 @@ useDefendAction = true
 script = ExtResource("5_a8hkw")
 AffectedTargets = 1
 Turns = 1
+show_popup = true
 loc_name = "ce_stunned"
 loc_desc = "ce_stunned_desc"
 loc_icon = ExtResource("5_j56kh")

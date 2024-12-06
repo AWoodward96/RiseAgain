@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://cfc2kbiar5cpa"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://cfc2kbiar5cpa"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_cgu6t"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_bnito"]
@@ -15,87 +15,89 @@
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="13_g3qgd"]
 [ext_resource type="PackedScene" uid="uid://bcyy0fwyp15x2" path="res://RESOURCES/Units/Enemy/Demikestrel/VIS_demikestrel.tscn" id="14_kqktv"]
 [ext_resource type="Texture2D" uid="uid://bmmunjl57obdt" path="res://ART/Icons/Units/demikestrel.png" id="14_lm8hf"]
+[ext_resource type="PackedScene" uid="uid://diegks43t77gp" path="res://RESOURCES/Ability/Standard/ART_howlingwinds.tscn" id="14_yt1q8"]
+[ext_resource type="PackedScene" uid="uid://caqjnk7qlllww" path="res://RESOURCES/Ability/Standard/ART_summongale.tscn" id="15_b0dy3"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_k0c2y"]
 
 [sub_resource type="Resource" id="Resource_mgsdi"]
 script = ExtResource("2_bnito")
 Template = ExtResource("3_i5xwm")
-Value = 10
+Value = 25.0
 
 [sub_resource type="Resource" id="Resource_5iok2"]
 script = ExtResource("2_bnito")
 Template = ExtResource("4_87imx")
-Value = 10
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_ff1x7"]
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
-Value = 1
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_5dcfk"]
 script = ExtResource("2_bnito")
 Template = ExtResource("6_km4nm")
-Value = 10
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_woabl"]
 script = ExtResource("2_bnito")
 Template = ExtResource("7_dwwwo")
-Value = 1
+Value = 3.0
 
 [sub_resource type="Resource" id="Resource_4jpo4"]
 script = ExtResource("2_bnito")
 Template = ExtResource("8_kvk3q")
-Value = 8
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_y4d5p"]
 script = ExtResource("2_bnito")
 Template = ExtResource("9_0sn5d")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_nwvi7"]
 script = ExtResource("2_bnito")
 Template = ExtResource("10_cd505")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_pmvlv"]
 script = ExtResource("2_bnito")
 Template = ExtResource("11_66n8e")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_xjjyg"]
 script = ExtResource("2_bnito")
 Template = ExtResource("3_i5xwm")
-Value = 40
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_kg154"]
 script = ExtResource("2_bnito")
 Template = ExtResource("4_87imx")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_5budq"]
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
-Value = 10
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_m0hmu"]
 script = ExtResource("2_bnito")
 Template = ExtResource("6_km4nm")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_b1kdk"]
 script = ExtResource("2_bnito")
 Template = ExtResource("7_dwwwo")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_rwauj"]
 script = ExtResource("2_bnito")
 Template = ExtResource("9_0sn5d")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_tsios"]
 script = ExtResource("2_bnito")
 Template = ExtResource("10_cd505")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_Demikestrel"
@@ -105,10 +107,10 @@ BaseStats = Array[ExtResource("2_bnito")]([SubResource("Resource_mgsdi"), SubRes
 StatGrowths = Array[ExtResource("2_bnito")]([SubResource("Resource_xjjyg"), SubResource("Resource_kg154"), SubResource("Resource_5budq"), SubResource("Resource_m0hmu"), SubResource("Resource_b1kdk"), SubResource("Resource_rwauj"), SubResource("Resource_tsios")])
 Affinity = ExtResource("1_cgu6t")
 StartingItems = Array[PackedScene]([])
-Tier0Abilities = Array[PackedScene]([])
+Tier0Abilities = Array[PackedScene]([ExtResource("14_yt1q8"), ExtResource("15_b0dy3")])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_q7fsu")]([ExtResource("13_g3qgd")])
-GridSize = 2
+GridSize = 3
 DebugName = "Demikestrel"
 loc_DisplayName = "unit_demikestrel_name"
 loc_Description = "unit_demikestrel_desc"

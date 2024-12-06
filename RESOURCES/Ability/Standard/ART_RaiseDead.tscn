@@ -22,7 +22,7 @@ script = ExtResource("10_ecwqc")
 
 [node name="ART_RaiseDead" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_fuk4q")
-focusCost = 3
+focusCost = 3.0
 executionStack = Array[ExtResource("2_muggo")]([SubResource("Resource_lu3qr"), SubResource("Resource_5cjq5")])
 internalName = "raisedead"
 loc_displayName = "art_raisedead_name"
@@ -32,7 +32,7 @@ TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("6_bc5dy")
-TeamTargeting = 2
+TeamTargeting = 0
 
 [node name="SummonUnitComponent" type="Node2D" parent="."]
 script = ExtResource("7_n2vcp")

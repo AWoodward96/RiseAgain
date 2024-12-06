@@ -14,7 +14,6 @@ func Enter(_map : Map, _ctrl : PlayerController):
 		combatHUD.PlayVictoryBanner()
 		await combatHUD.BannerAnimComplete
 
-	# TODO : Item selection, or Unit Selection
 	if map.CurrentCampaign != null:
 		# Start the reward selection process
 		var campaign = map.CurrentCampaign

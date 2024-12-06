@@ -20,7 +20,6 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 func RunTurn():
 	pass
 
-
 func TruncatePathBasedOnMovement(_path, _currentMovement):
 	selectedPath = _path
 	selectedPath = selectedPath.slice(0, _currentMovement)

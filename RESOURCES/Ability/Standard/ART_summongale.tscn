@@ -1,0 +1,40 @@
+[gd_scene load_steps=12 format=3 uid="uid://caqjnk7qlllww"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_vtmyb"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_js4wy"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_nit5m"]
+[ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="3_axws4"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_kf78k"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="6_h7vi5"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="7_k6kxa"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="8_3ym3h"]
+
+[sub_resource type="Resource" id="Resource_enlx2"]
+script = ExtResource("4_kf78k")
+GridEntityPrefab = ExtResource("3_axws4")
+
+[sub_resource type="Resource" id="Resource_yvmxb"]
+script = ExtResource("7_k6kxa")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_h6isx"]
+script = ExtResource("8_3ym3h")
+TileCoordinates = Array[ExtResource("6_h7vi5")]([SubResource("Resource_yvmxb")])
+
+[node name="summongale" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_vtmyb")
+focusCost = 0
+executionStack = Array[ExtResource("2_js4wy")]([SubResource("Resource_enlx2")])
+internalName = "summongale"
+loc_displayName = "art_summongale_name"
+loc_displayDesc = "art_summongale_desc"
+TargetingData = NodePath("TargetingData")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("2_nit5m")
+TeamTargeting = 0
+Type = 2
+shapedTiles = SubResource("Resource_h6isx")

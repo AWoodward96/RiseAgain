@@ -123,12 +123,14 @@ func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x
 
 func ForceReticlePosition(_gridPosition : Vector2i):
+	reticle.scale = Vector2(1, 1)
 	reticle.global_position = _gridPosition * tileSize
 	UpdateCameraPosition()
 	OnTileChanged.emit(CurrentTile)
 
 func FocusReticleOnUnit(_unit : UnitInstance):
 	if _unit == null:
+		reticle.scale = Vector2(1, 1)
 		return
 
 	reticle.scale = Vector2(_unit.Template.GridSize,_unit.Template.GridSize)

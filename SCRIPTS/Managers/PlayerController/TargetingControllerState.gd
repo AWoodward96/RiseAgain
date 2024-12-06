@@ -75,15 +75,22 @@ func _Enter(_ctrl : PlayerController, _ability):
 						log.actionOriginTile = tile
 				SkillTargetingData.TargetingType.Global:
 					# This attack hits everyone on a specific team
-					log.actionOriginTile = source.CurrentTile
-					for team in currentMap.teams:
-						for unit : UnitInstance in currentMap.teams[team]:
-							if unit == null:
-								continue
+					log.actionDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
+					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
+					if tile != null:
+						log.actionOriginTile = currentGrid.GetTile(tile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
 
-							if targetingData.OnCorrectTeam(source, unit):
-								log.availableTiles.append(unit.CurrentTile)
-								log.affectedTiles.append(unit.CurrentTile.AsTargetData())
+					log.affectedTiles = targetingData.GetGlobalAttack(source, currentMap, log.actionDirection)
+					for t in log.affectedTiles:
+						log.availableTiles.append(t.Tile)
+					#for team in currentMap.teams:
+						#for unit : UnitInstance in currentMap.teams[team]:
+							#if unit == null:
+								#continue
+#
+							#if targetingData.OnCorrectTeam(source, unit):
+								#log.availableTiles.append(unit.CurrentTile)
+								#log.affectedTiles.append(unit.CurrentTile.AsTargetData())
 					pass
 
 			if log.availableTiles.size() == 0:
@@ -92,7 +99,11 @@ func _Enter(_ctrl : PlayerController, _ability):
 
 			if log.actionOriginTile == null:
 				log.actionOriginTile = log.availableTiles[0]
-			ctrl.ForceReticlePosition(log.actionOriginTile.Position)
+
+			if log.actionOriginTile.Occupant != null:
+				ctrl.FocusReticleOnUnit(log.actionOriginTile.Occupant)
+			else:
+				ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 			ShowAvailableTilesOnGrid()
 			ShowAffinityRelations(source.Template.Affinity)
 			ShowPreview()
@@ -110,7 +121,8 @@ func UpdateInput(_delta):
 			# If it's shaped free, then we don't actually need to select a tile with a target on it
 			ShapedFreeTargetingInput(_delta)
 			pass
-		SkillTargetingData.TargetingType.ShapedDirectional:
+		SkillTargetingData.TargetingType.ShapedDirectional, SkillTargetingData.TargetingType.Global:
+			# Note that global also uses the shaped directional targeting inpu, so that it contains a direction
 			ShapedDirectionalTargetingInput(_delta)
 			pass
 
@@ -251,7 +263,12 @@ func ShapedDirectionalTargetingInput(_delta):
 		log.actionOriginTile = currentGrid.GetTile(targetTilePosition)
 		log.actionDirection = newShaped
 
-	log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, log.actionDirection)
+	if targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+		log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, log.actionDirection)
+	elif targetingData.Type == SkillTargetingData.TargetingType.Global:
+		log.affectedTiles = targetingData.GetGlobalAttack(source, currentMap, log.actionDirection)
+		#TBD actually if this does anything special. We already actually have the targeted tiles
+		pass
 
 	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 

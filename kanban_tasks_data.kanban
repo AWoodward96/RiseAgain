@@ -47,7 +47,9 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"9d049bd3-a9d1-485d-afa6-5b53d350b775"
+				"9d049bd3-a9d1-485d-afa6-5b53d350b775",
+				"941b2cbd-1c25-40a9-a292-6849245f69ee",
+				"9f627e78-f58e-4270-8720-9d4e630328d0"
 			]
 		},
 		{
@@ -382,13 +384,40 @@
 				},
 				{
 					"details": "Rending Gale",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Map",
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "941b2cbd-1c25-40a9-a292-6849245f69ee",
+			"title": "Extra Stuff",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Global Targeting should accept a direction",
+					"done": true
+				},
+				{
+					"details": "Tiles that brreak after walking over them",
+					"done": false
+				},
+				{
+					"details": "Push Logic is not taking into account where the unit is currently",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "9f627e78-f58e-4270-8720-9d4e630328d0",
+			"title": "BUG: The crit bug is back. If an enemy kills the player the player still counter attacks",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
 		}
 	],
 	"layout": {

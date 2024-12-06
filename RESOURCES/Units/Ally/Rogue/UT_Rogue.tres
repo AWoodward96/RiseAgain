@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://b58tp7xqbg5jr"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=57 format=3 uid="uid://b58tp7xqbg5jr"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_t7bl4"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
@@ -15,10 +15,24 @@
 [ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="13_36dkf"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_v6xa5"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_5b53c"]
-[ext_resource type="PackedScene" uid="uid://puxbxe6g34j8" path="res://RESOURCES/Ability/Standard/ART_slipnslash.tscn" id="15_dhaiq"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_vcu3f"]
 [ext_resource type="PackedScene" uid="uid://dkuqjts8ysscx" path="res://RESOURCES/Units/Ally/Rogue/VIS_Rogue.tscn" id="15_wkala"]
 [ext_resource type="PackedScene" uid="uid://bpgrco5853tx" path="res://RESOURCES/Ability/Standard/ART_daggerspray.tscn" id="16_da6hm"]
 [ext_resource type="Texture2D" uid="uid://cyunyo5s6o5oy" path="res://ART/Icons/Units/rogue.png" id="16_gnxnw"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_weuax"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="17_12c4y"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="18_w5pep"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="19_rl1v3"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/KillReq.gd" id="20_iae7y"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ReqStep.gd" id="21_8t2d1"]
+[ext_resource type="Resource" uid="uid://wqp2jesogl52" path="res://RESOURCES/CombatEffects/CE_Energized_OneTurn.tres" id="22_4unux"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="23_v2ykg"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="24_ud1o5"]
+[ext_resource type="Texture2D" uid="uid://p4rnfhj67wax" path="res://ART/Icons/Ability/Standard/slipnslash.png" id="25_5aqeh"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="26_s77s7"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="27_nteld"]
+[ext_resource type="Resource" uid="uid://d0xjc40ay5iaq" path="res://RESOURCES/TargetingShapes/slipnslash_shape.tres" id="28_2mlef"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="29_twrcd"]
 
 [sub_resource type="Resource" id="Resource_oxnwj"]
 script = ExtResource("2_jwwlf")
@@ -100,6 +114,45 @@ script = ExtResource("2_jwwlf")
 Template = ExtResource("10_h8hmd")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_ag1gk"]
+script = ExtResource("17_12c4y")
+WaitForStackFree = true
+SpeedOverride = 2000
+
+[sub_resource type="Resource" id="Resource_l02h2"]
+script = ExtResource("18_w5pep")
+useAttackAction = false
+useDefendAction = false
+
+[sub_resource type="Resource" id="Resource_bq28f"]
+script = ExtResource("20_iae7y")
+NOT = false
+
+[sub_resource type="Resource" id="Resource_vrtqr"]
+script = ExtResource("23_v2ykg")
+CombatEffect = ExtResource("22_4unux")
+
+[sub_resource type="Resource" id="Resource_utxsf"]
+script = ExtResource("21_8t2d1")
+requirements = Array[ExtResource("19_rl1v3")]([SubResource("Resource_bq28f")])
+stackIfPassed = Array[ExtResource("16_weuax")]([SubResource("Resource_vrtqr")])
+
+[sub_resource type="Resource" id="Resource_5cjq5"]
+script = ExtResource("24_ud1o5")
+
+[sub_resource type="PackedScene" id="PackedScene_hkv08"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("ART_SlipNSlash", "Node2D", "script", "focusCost", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "MovementData", "DamageData", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "SkillTargetingData", "Node2D", "script", "Type", "shapedTiles", "stopShapeOnWall", "AbilityMovementComponent", "Node2D", "script", "type", "movementAmount"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 10, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 1073741833, 7, 1073741834, 8, 1073741835, 9, 0, 1073741824, 0, 13, 12, -1, 4, 14, 10, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 4, 20, 14, 21, 15, 22, 16, 23, 17, 0, 1073741826, 0, 25, 24, -1, 3, 26, 18, 27, 19, 28, 20, 0),
+"variants": [ExtResource("15_vcu3f"), 2, Array[ExtResource("16_weuax")]([SubResource("Resource_ag1gk"), SubResource("Resource_l02h2"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")]), "slipnslash", "art_slipnslash_name", "art_slipnslash_desc", ExtResource("25_5aqeh"), NodePath("SkillTargetingData"), NodePath("DamageData"), NodePath("AbilityMovementComponent"), ExtResource("26_s77s7"), ExtResource("4_yo3n0"), ExtResource("5_yn44r"), 0.0, ExtResource("27_nteld"), 2, ExtResource("28_2mlef"), true, ExtResource("29_twrcd"), 1, 4],
+"version": 3
+}
+
 [resource]
 resource_name = "UT_Rogue"
 script = ExtResource("15_5b53c")
@@ -111,7 +164,7 @@ StartingItems = Array[PackedScene]([])
 StartingEquippedWeapon = ExtResource("13_36dkf")
 StartingTactical = ExtResource("14_v6xa5")
 Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([ExtResource("15_dhaiq"), ExtResource("16_da6hm")])
+Tier1Abilities = Array[PackedScene]([SubResource("PackedScene_hkv08"), ExtResource("16_da6hm")])
 Descriptors = Array[ExtResource("12_0ywe3")]([])
 GridSize = 1
 DebugName = "Rogue"

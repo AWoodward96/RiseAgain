@@ -22,6 +22,10 @@ func RollTable(rng : RandomNumberGenerator, _numberOfRewards : int, _duplicatePr
 				var isUnique = true
 				if currentCampaign != null:
 					for u in currentCampaign.CurrentRoster:
+						# Ignore the dead units on your team. The campaign cleans them up later
+						if u == null:
+							continue
+
 						if u.Template == specificUnitRewardEntry.Unit:
 							isUnique = false
 							break

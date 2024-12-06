@@ -17,12 +17,6 @@ func _Enter(_ctrl : PlayerController, data):
 	log = data
 	source = log.source
 
-	# Ability context at this point should have targets
-	if log.affectedTiles.size() == 0:
-		push_error("Controller in CombatControllerState without a target. Going back to SelectionState")
-		ctrl.EnterSelectionState()
-		return
-
 
 	if log.ability != null:
 		log.ability.AbilityActionComplete.connect(PostActionComplete)

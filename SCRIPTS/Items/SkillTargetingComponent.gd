@@ -53,6 +53,24 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
 	return shapedTiles.GetTargetedTilesFromDirection(_unit, _grid, _unit.CurrentTile, _directionIndex)
 
+func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : GameSettingsTemplate.Direction):
+	var returnTiles : Array[TileTargetedData] = []
+	for team in _map.teams:
+		for targetUnit : UnitInstance in _map.teams[team]:
+			if targetUnit == null:
+				continue
+
+			if OnCorrectTeam(_sourceUnit, targetUnit):
+				if shapedTiles != null:
+					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, _map.grid, targetUnit.CurrentTile, _directionIndex))
+				else:
+					returnTiles.append(targetUnit.CurrentTile.AsTargetData())
+			else:
+				# Since the units are sorted into the proper teams, we can slightly optimize this by just breaking out if we ever detect a unit on the wrong team
+				break
+
+	return returnTiles
+
 func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[TileTargetedData]):
 	return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant == null || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant)) || (o.Tile.Occupant == _unit && CanTargetSelf) || (o.willPush))
 

@@ -53,7 +53,6 @@ func UpdatePositionOnGrid():
 func MoveAndDealDamage():
 	var newTile = CurrentMap.grid.GetTile(Origin.Position + GameSettingsTemplate.GetVectorFromDirection(direction))
 	if newTile == null:
-		# TODO : Figure out how these should ber destroyed
 		Expired = true
 		return
 
@@ -64,7 +63,7 @@ func MoveAndDealDamage():
 		if t == null || t.Tile == null || t.Tile.Occupant == null:
 			continue
 
-		t.Tile.Occupant.ModifyHealth(-3, null, false)
+		t.Tile.Occupant.ModifyHealth(-GameManager.GameSettings.DamageCalculation(Source, t.Tile.Occupant, damageData, t), null, false)
 
 func Enter():
 	super()

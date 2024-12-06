@@ -196,7 +196,7 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 			if visited.has(tile):
 				continue
 
-			if !CanUnitFitOnTile(_unit, tile, unitHasFlying):
+			if !CanUnitFitOnTile(_unit, tile, unitHasFlying, true):
 				continue
 
 			if unitHasFlying || (!tile.IsWall && !tile.Killbox):
@@ -245,10 +245,6 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 		_unit.global_position = _newPosition * CellSize
 
 	_unit.GridPosition = _newPosition
-
-
-	if unitSize != 1:
-		print("ignoreme")
 
 	position = _newPosition
 	for i in range(0, unitSize):
@@ -368,13 +364,16 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 			if nextTile == null:
 				continue
 
+			if nextTile.Position == Vector2i(6,4):
+				pass
+
 			# Early Exit: Unit isn't flying, and there is a wall there
 			# Early Exit: The next tile is a killbox - don't let them willingly move over them
 			if !unitIsFlying:
 				if nextTile.IsWall || nextTile.Killbox:
 					continue
 
-			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying):
+			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
 				continue
 
 			if _unitInstance != null:
@@ -404,12 +403,12 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 	returnMe.reverse()
 	return returnMe
 
-func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying : bool):
+func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying : bool, _opposingTeamIsWall : bool):
 	if _unitInstance == null:
 		return true
 
 	if _unitInstance.Template.GridSize == 1:
-		return _tile.Occupant == null || (_tile.Occupant.UnitAllegiance == _unitInstance.UnitAllegiance)
+		return _tile.Occupant == null || (_tile.Occupant.UnitAllegiance == _unitInstance.UnitAllegiance) || !_opposingTeamIsWall
 
 	for i in range(0, _unitInstance.Template.GridSize):
 		for j in range(0, _unitInstance.Template.GridSize):
@@ -424,8 +423,9 @@ func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying 
 					return false
 
 			# Case: There is a unit that doesn't match your allegience here
-			if tileFromSize.Occupant != null && (tileFromSize.Occupant.UnitAllegiance != _unitInstance.UnitAllegiance):
-				return false
+			if _opposingTeamIsWall:
+				if tileFromSize.Occupant != null && (tileFromSize.Occupant.UnitAllegiance != _unitInstance.UnitAllegiance):
+					return false
 
 	return true
 
