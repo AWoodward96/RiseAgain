@@ -89,11 +89,10 @@ Multiplier = 1.0
 script = ExtResource("4_40ksf")
 TileCoordinates = Array[ExtResource("3_sbnqw")]([SubResource("Resource_ntpqj"), SubResource("Resource_qxpgp"), SubResource("Resource_imahb"), SubResource("Resource_53dyg"), SubResource("Resource_rp5o3"), SubResource("Resource_u6q4o"), SubResource("Resource_rihne"), SubResource("Resource_5mgdg"), SubResource("Resource_oedsk"), SubResource("Resource_gfdwo"), SubResource("Resource_cdnne"), SubResource("Resource_8pvef"), SubResource("Resource_belmr"), SubResource("Resource_7crhv"), SubResource("Resource_ce2rr"), SubResource("Resource_0jyvg")])
 
-[node name="Bridge" type="Node2D" node_paths=PackedStringArray("visual")]
+[node name="Bridge" type="Node2D"]
 z_index = -5
 script = ExtResource("1_g5sjn")
 shapedTiles = SubResource("Resource_p4qm4")
-visual = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(256, 64)

@@ -91,6 +91,7 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 
 	currentUnitsTurn = null
 	ActivateAll()
+	map.OnTurnStart.emit(_turn)
 	EnterTeamTurnUpdate()
 
 

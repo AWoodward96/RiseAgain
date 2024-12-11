@@ -1,11 +1,11 @@
 extends Node2D
 class_name Map
 
-
 static var Current : Map
 
 signal OnUnitDied(_unitInstance : UnitInstance, _context : DamageStepResult)
 signal OnUnitTurnEnd(_unitInstance : UnitInstance)
+signal OnTurnStart(_turn : GameSettingsTemplate.TeamID)
 
 enum MAPSTATE { PreMap, Combat, PostMap }
 enum MAPTYPE { Standard, Campsite, Event }

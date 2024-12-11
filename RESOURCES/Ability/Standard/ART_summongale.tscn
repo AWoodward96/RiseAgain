@@ -36,5 +36,5 @@ TargetingData = NodePath("TargetingData")
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("2_nit5m")
 TeamTargeting = 0
-Type = 2
+Type = 1
 shapedTiles = SubResource("Resource_h6isx")

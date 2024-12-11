@@ -15,7 +15,7 @@ script = ExtResource("4_erx74")
 
 [node name="howlingwinds" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_642os")
-focusCost = 0.0
+focusCost = 0
 executionStack = Array[ExtResource("2_wkpf1")]([SubResource("Resource_kkayp"), SubResource("Resource_ajh08")])
 internalName = "howlingwinds"
 loc_displayName = "art_howlingwinds_name"

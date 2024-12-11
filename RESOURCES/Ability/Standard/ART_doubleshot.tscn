@@ -30,7 +30,7 @@ script = ExtResource("3_ru3jp")
 
 [node name="ART_DoubleShot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_5p40p")
-focusCost = 2.0
+focusCost = 2
 executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_rr3r1"), SubResource("Resource_a5h2l"), SubResource("Resource_tr8wu"), SubResource("Resource_5cjq5")])
 internalName = "doubleshot"
 loc_displayName = "art_doubleshot_name"

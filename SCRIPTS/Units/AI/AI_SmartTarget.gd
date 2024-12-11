@@ -18,11 +18,12 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		unit.QueueEndTurn()
 		return
 
-	var gridNeedsRefresh = false
-	if unit.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor):
-		# This unit is flying and sort of follows different rules for navigation
-		_map.grid.RefreshGridForTurn(_map.crrentTurn, true)
-		gridNeedsRefresh = true
+	# DELETE: Does this need to be here anymore?
+	#var gridNeedsRefresh = false
+	#if unit.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor):
+		## This unit is flying and sort of follows different rules for navigation
+		#_map.grid.RefreshGridForTurn(_map.currentTurn, true)
+		#gridNeedsRefresh = true
 
 	for i in range(0, Flags.size()):
 		var aiflag = Flags[i]
@@ -56,8 +57,9 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	unit.MoveCharacterToNode(selectedOption.path, selectedOption.tileToMoveTo)
 	TryCombat()
 
-	if gridNeedsRefresh:
-		_map.grid.RefreshGridForTurn(_map.currentTurn)
+	# DELETE: Does this need to be here anymore?
+	#if gridNeedsRefresh:
+		#_map.grid.RefreshGridForTurn(_map.currentTurn)
 
 
 func SortOptions(_optA : EnemyAIOption, _optB : EnemyAIOption):

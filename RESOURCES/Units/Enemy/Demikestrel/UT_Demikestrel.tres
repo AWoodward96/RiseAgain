@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://cfc2kbiar5cpa"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=51 format=3 uid="uid://cfc2kbiar5cpa"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_cgu6t"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_bnito"]
@@ -15,9 +15,18 @@
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="13_g3qgd"]
 [ext_resource type="PackedScene" uid="uid://bcyy0fwyp15x2" path="res://RESOURCES/Units/Enemy/Demikestrel/VIS_demikestrel.tscn" id="14_kqktv"]
 [ext_resource type="Texture2D" uid="uid://bmmunjl57obdt" path="res://ART/Icons/Units/demikestrel.png" id="14_lm8hf"]
-[ext_resource type="PackedScene" uid="uid://diegks43t77gp" path="res://RESOURCES/Ability/Standard/ART_howlingwinds.tscn" id="14_yt1q8"]
-[ext_resource type="PackedScene" uid="uid://caqjnk7qlllww" path="res://RESOURCES/Ability/Standard/ART_summongale.tscn" id="15_b0dy3"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="14_y6d8w"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_k0c2y"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="15_vd5vc"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PushStep.gd" id="16_axtpy"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="17_seaw5"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="18_ioke3"]
+[ext_resource type="Resource" uid="uid://uvrphj76fjju" path="res://RESOURCES/TargetingShapes/howlingwinds_shape.tres" id="19_74oxf"]
+[ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="20_r1qg0"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="21_t4j6q"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="22_eb3uc"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="23_ymcd7"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="24_7i06u"]
 
 [sub_resource type="Resource" id="Resource_mgsdi"]
 script = ExtResource("2_bnito")
@@ -32,7 +41,7 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_ff1x7"]
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
-Value = 10.0
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_5dcfk"]
 script = ExtResource("2_bnito")
@@ -77,7 +86,7 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_5budq"]
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
-Value = 1.0
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_m0hmu"]
 script = ExtResource("2_bnito")
@@ -99,6 +108,53 @@ script = ExtResource("2_bnito")
 Template = ExtResource("10_cd505")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_kkayp"]
+script = ExtResource("16_axtpy")
+
+[sub_resource type="Resource" id="Resource_ajh08"]
+script = ExtResource("17_seaw5")
+
+[sub_resource type="PackedScene" id="PackedScene_7wq13"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("howlingwinds", "Node2D", "script", "focusCost", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "TargetingData", "TargetingData", "Node2D", "script", "TargetRange", "Type", "shapedTiles"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 1073741832, 6, 0, 1073741824, 0, 10, 9, -1, 4, 11, 7, 12, 8, 13, 9, 14, 10, 0),
+"variants": [ExtResource("14_y6d8w"), 0.0, Array[ExtResource("15_vd5vc")]([SubResource("Resource_kkayp"), SubResource("Resource_ajh08")]), "howlingwinds", "art_howlingwinds_name", "art_howlingwinds_desc", NodePath("TargetingData"), ExtResource("18_ioke3"), Vector2i(0, 0), 4, ExtResource("19_74oxf")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_enlx2"]
+script = ExtResource("21_t4j6q")
+GridEntityPrefab = ExtResource("20_r1qg0")
+
+[sub_resource type="Resource" id="Resource_yvmxb"]
+script = ExtResource("23_ymcd7")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_h6isx"]
+script = ExtResource("24_7i06u")
+TileCoordinates = Array[ExtResource("22_eb3uc")]([SubResource("Resource_yvmxb")])
+
+[sub_resource type="PackedScene" id="PackedScene_twuj7"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("summongale", "Node2D", "script", "focusCost", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "TargetingData", "TargetingData", "Node2D", "script", "TeamTargeting", "Type", "shapedTiles"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 1073741832, 6, 0, 1073741824, 0, 10, 9, -1, 4, 11, 7, 12, 8, 13, 9, 14, 10, 0),
+"variants": [ExtResource("14_y6d8w"), 0, Array[ExtResource("15_vd5vc")]([SubResource("Resource_enlx2")]), "summongale", "art_summongale_name", "art_summongale_desc", NodePath("TargetingData"), ExtResource("18_ioke3"), 0, 2, SubResource("Resource_h6isx")],
+"version": 3
+}
+
 [resource]
 resource_name = "UT_Demikestrel"
 script = ExtResource("15_k0c2y")
@@ -107,7 +163,7 @@ BaseStats = Array[ExtResource("2_bnito")]([SubResource("Resource_mgsdi"), SubRes
 StatGrowths = Array[ExtResource("2_bnito")]([SubResource("Resource_xjjyg"), SubResource("Resource_kg154"), SubResource("Resource_5budq"), SubResource("Resource_m0hmu"), SubResource("Resource_b1kdk"), SubResource("Resource_rwauj"), SubResource("Resource_tsios")])
 Affinity = ExtResource("1_cgu6t")
 StartingItems = Array[PackedScene]([])
-Tier0Abilities = Array[PackedScene]([ExtResource("14_yt1q8"), ExtResource("15_b0dy3")])
+Tier0Abilities = Array[PackedScene]([SubResource("PackedScene_7wq13"), SubResource("PackedScene_twuj7")])
 Tier1Abilities = Array[PackedScene]([])
 Descriptors = Array[ExtResource("12_q7fsu")]([ExtResource("13_g3qgd")])
 GridSize = 3

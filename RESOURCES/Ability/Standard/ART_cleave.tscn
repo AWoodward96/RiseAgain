@@ -21,7 +21,7 @@ script = ExtResource("3_nycen")
 
 [node name="ART_Cleave" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_3n530")
-focusCost = 5.0
+focusCost = 5
 executionStack = Array[ExtResource("2_ipi5c")]([SubResource("Resource_6pi40"), SubResource("Resource_5cjq5")])
 internalName = "cleave"
 loc_displayName = "art_cleave_name"

@@ -8,7 +8,7 @@ signal AbilityActionComplete
 #	If another Equippable is added to a Unit, their existing Equippable Ability gets deleted
 #	All Equippables should have the Damage Grants Focus bool set to true - but it's available as an option to be false for any edge cases
 # Tactical: A utility focused Ability that every Unit can use
-enum AbilityType { Standard, Weapon, Tactical }
+enum AbilityType { Standard, Weapon, Tactical, Passive }
 
 
 @export var type : AbilityType
@@ -19,6 +19,7 @@ enum AbilityType { Standard, Weapon, Tactical }
 @export var executionStack : Array[ActionStep]
 @export var autoEndTurn : bool = true
 @export var damageGrantsFocus : bool = false
+@export var passiveListeners : Array[PassiveListenerBase]
 
 var remainingUsages : int = 0
 
@@ -49,6 +50,13 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 				if autoEndTurn:
 					_actionLog.source.QueueEndTurn()
 				AbilityActionComplete.emit()
+
+
+func SetMap(_map : Map):
+	super(_map)
+	for passive in passiveListeners:
+		if passive != null:
+			passive.RegisterListener(self, _map)
 
 
 func OnRest():

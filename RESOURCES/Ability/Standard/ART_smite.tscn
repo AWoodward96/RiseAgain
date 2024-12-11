@@ -22,7 +22,7 @@ script = ExtResource("4_gt72d")
 
 [node name="ART_smite" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_fphlf")
-focusCost = 2.0
+focusCost = 2
 executionStack = Array[ExtResource("2_qs2f3")]([SubResource("Resource_v3o1y"), SubResource("Resource_5cjq5")])
 internalName = "smite"
 loc_displayName = "art_smite_name"

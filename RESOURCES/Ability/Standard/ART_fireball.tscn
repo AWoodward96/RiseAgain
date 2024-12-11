@@ -21,7 +21,7 @@ script = ExtResource("3_tw6ek")
 
 [node name="ART_Fireball" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_826b6")
-focusCost = 3.0
+focusCost = 3
 executionStack = Array[ExtResource("2_078wy")]([SubResource("Resource_wdsyk"), SubResource("Resource_5cjq5")])
 internalName = "fireball"
 loc_displayName = "art_fireball_name"

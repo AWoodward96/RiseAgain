@@ -44,7 +44,7 @@ script = ExtResource("4_2o0l2")
 
 [node name="ART_snareshot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_qrlnf")
-focusCost = 2.0
+focusCost = 2
 executionStack = Array[ExtResource("2_hgu7s")]([SubResource("Resource_im4d4"), SubResource("Resource_mu7ey"), SubResource("Resource_3ayen"), SubResource("Resource_5cjq5")])
 internalName = "snareshot"
 loc_displayName = "art_snareshot_name"

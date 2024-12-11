@@ -21,7 +21,7 @@ script = ExtResource("4_mapok")
 
 [node name="ART_BeamAttack" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_er7fc")
-focusCost = 3.0
+focusCost = 3
 executionStack = Array[ExtResource("2_a85nj")]([SubResource("Resource_8f0l2"), SubResource("Resource_5cjq5")])
 internalName = "beamattack"
 loc_displayName = "art_beamattack_name"
