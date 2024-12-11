@@ -41,7 +41,7 @@ DamageAggros = true
 
 [node name="C1_Map05" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_lb7hk")
-GridSize = Vector2i(10, 10)
+GridSize = Vector2i(24, 27)
 CameraStart = Vector2(8.5, 0)
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
@@ -54,7 +54,7 @@ SpawnersParent = NodePath("Spawners")
 metadata/_edit_vertical_guides_ = [-108.0]
 
 [node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
-points = PackedVector2Array(0, 0, 640, 0, 640, 640, 0, 640, 0, 0)
+points = PackedVector2Array(0, 0, 1536, 0, 1536, 1728, 0, 1728, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
 script = ExtResource("3_coj7s")
@@ -90,33 +90,33 @@ tile_set = ExtResource("4_4ihj0")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1fy0s")]
-position = Vector2(448, 1408)
-Position = Vector2i(7, 22)
+position = Vector2(1024, 1408)
+Position = Vector2i(16, 22)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1fy0s")]
-position = Vector2(576, 1408)
-Position = Vector2i(9, 22)
+position = Vector2(1152, 1344)
+Position = Vector2i(18, 21)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1fy0s")]
-position = Vector2(384, 1472)
-Position = Vector2i(6, 23)
+position = Vector2(1088, 1472)
+Position = Vector2i(17, 23)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1fy0s")]
-position = Vector2(640, 1472)
-Position = Vector2i(10, 23)
+position = Vector2(1216, 1408)
+Position = Vector2i(19, 22)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper6" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1fy0s")]
-position = Vector2(448, 1536)
-Position = Vector2i(7, 24)
+position = Vector2(1152, 1536)
+Position = Vector2i(18, 24)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper7" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1fy0s")]
-position = Vector2(576, 1536)
-Position = Vector2i(9, 24)
+position = Vector2(1216, 1472)
+Position = Vector2i(19, 23)
 map = NodePath("../..")
 
 [node name="Spawners" type="Node2D" parent="."]

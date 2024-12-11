@@ -85,6 +85,10 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 
 	if unitTurnStack.size() > 0:
 		controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
+
+	for units in unitTurnStack:
+		units.ModifyFocus(1)
+
 	currentUnitsTurn = null
 	ActivateAll()
 	EnterTeamTurnUpdate()

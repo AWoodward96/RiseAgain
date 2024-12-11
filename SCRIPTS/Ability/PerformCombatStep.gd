@@ -36,10 +36,11 @@ func Enter(_actionLog : ActionLog):
 
 				if damageStepResult.RetaliationResult != null:
 					var retaliation = damageStepResult.RetaliationResult
-					log.responseResults.append(retaliation)
-					retaliation.RollChance(Map.Current.rng)
-					retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log)
-					retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
+					if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
+						log.responseResults.append(retaliation)
+						retaliation.RollChance(Map.Current.rng)
+						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log)
+						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
 
@@ -62,6 +63,9 @@ func WillRetaliate(_result : PerformCombatStepResult):
 
 	if _result.AbilityData.type == Ability.AbilityType.Standard:
 		# This is a normal ability, and no retaliation is available
+		return
+
+	if _result.Kill:
 		return
 
 	var defendingUnit = _result.Target

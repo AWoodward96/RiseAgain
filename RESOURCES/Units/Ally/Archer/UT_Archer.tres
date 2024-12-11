@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=68 format=3 uid="uid://buh5fj1fbm8oa"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=67 format=3 uid="uid://buh5fj1fbm8oa"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_vkbtp"]
@@ -26,7 +26,6 @@
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="20_7ft50"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_ia705"]
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="23_wjstf"]
-[ext_resource type="PackedScene" uid="uid://caqjnk7qlllww" path="res://RESOURCES/Ability/Standard/ART_summongale.tscn" id="24_k05dm"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="24_m757o"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="25_onbul"]
 [ext_resource type="Texture2D" uid="uid://df743vavq35y" path="res://ART/Icons/stunned_icion.png" id="26_t7q8s"]
@@ -227,7 +226,7 @@ Affinity = ExtResource("2_41as1")
 StartingItems = Array[PackedScene]([SubResource("PackedScene_ugwqb"), SubResource("PackedScene_t511n")])
 StartingEquippedWeapon = ExtResource("13_t0pje")
 StartingTactical = ExtResource("14_exkpg")
-Tier0Abilities = Array[PackedScene]([ExtResource("24_k05dm")])
+Tier0Abilities = Array[PackedScene]([])
 Tier1Abilities = Array[PackedScene]([SubResource("PackedScene_iuat4"), SubResource("PackedScene_70o8n")])
 Descriptors = Array[ExtResource("13_oca27")]([])
 GridSize = 1

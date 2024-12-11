@@ -7,9 +7,7 @@ var IsWall
 var Health : int = -1
 var MaxHealth : int = -1
 var Killbox : bool
-var ActiveKillbox : bool :
-	get:
-		return Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0)
+var ActiveKillbox : bool
 
 var CanAttack: bool
 var CanMove: bool
@@ -78,8 +76,18 @@ func CancelPreview():
 func AddEntity(_gridEntity : GridEntityBase):
 	if !GridEntities.has(_gridEntity):
 		GridEntities.append(_gridEntity)
+	RefreshActiveKillbox()
 
 func RemoveEntity(_gridEntity : GridEntityBase):
 	if GridEntities.has(_gridEntity):
 		var index = GridEntities.find(_gridEntity)
 		GridEntities.remove_at(index)
+	RefreshActiveKillbox()
+
+func RefreshActiveKillbox():
+	var hasPlatform = false
+	for e in GridEntities:
+		if e is GEWalkablePlatform:
+			hasPlatform = true
+			break
+	ActiveKillbox = Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform

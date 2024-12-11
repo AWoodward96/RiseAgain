@@ -79,6 +79,7 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 
 	if bg_data != null:
 		_tile.Killbox = bg_data.get_custom_data("Killbox")
+	_tile.RefreshActiveKillbox()
 
 
 func ShowUnitActions(_unit : UnitInstance):
@@ -199,7 +200,7 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 			if !CanUnitFitOnTile(_unit, tile, unitHasFlying, true):
 				continue
 
-			if unitHasFlying || (!tile.IsWall && !tile.Killbox):
+			if unitHasFlying || (!tile.IsWall && !tile.ActiveKillbox):
 				var occupant = tile.Occupant
 				if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
 					if visited[current] + 1 > movement:
@@ -370,7 +371,7 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 			# Early Exit: Unit isn't flying, and there is a wall there
 			# Early Exit: The next tile is a killbox - don't let them willingly move over them
 			if !unitIsFlying:
-				if nextTile.IsWall || nextTile.Killbox:
+				if nextTile.IsWall || nextTile.ActiveKillbox:
 					continue
 
 			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
@@ -419,7 +420,7 @@ func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying 
 
 			# Case: Unit isn't flying, and there's a wall or a killbox here
 			if !_unitIsFlying:
-				if tileFromSize.IsWall || tileFromSize.Killbox:
+				if tileFromSize.IsWall || tileFromSize.ActiveKillbox:
 					return false
 
 			# Case: There is a unit that doesn't match your allegience here

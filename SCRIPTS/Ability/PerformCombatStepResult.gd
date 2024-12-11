@@ -62,8 +62,8 @@ func CalculateSourceHealthDelta(_damageData : DamageData):
 		SourceHealthDelta = min(floori(HealthDelta * _damageData.DamageToHealthRatio), Target.currentHealth)
 
 func CalculateFocusDelta():
-	if !Miss && Target != null:
-		FocusDelta += 1
+	#if !Miss && Target != null:
+		#FocusDelta += 1
 
 	if Kill:
 		FocusDelta += 1

@@ -65,7 +65,7 @@ func ShowPreview():
 		delta_hp_label.text = GameManager.LocalizationSettings.FormatForCombat(normalDamage, collisionDamage, healAmount, normalDamageModified)
 
 	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	resultingHP = clamp(currentHP + normalDamage + collisionDamage - healAmount, 0, maxHealth)
+	resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)
 
 	death_indicator.visible = resultingHP <= 0
 
