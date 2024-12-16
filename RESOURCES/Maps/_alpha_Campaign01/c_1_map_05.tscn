@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cy86ijwe6ivvn"]
+[gd_scene load_steps=22 format=4 uid="uid://cy86ijwe6ivvn"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_lb7hk"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_jsrl8"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="12_fmjai"]
 [ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="13_im2ao"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="14_i235r"]
+[ext_resource type="Resource" uid="uid://by00pi1y5u8eg" path="res://RESOURCES/Units/Enemy/RocEgg/UT_RocEgg.tres" id="15_46kok"]
+[ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="16_7vnoq"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_jsrl8")
@@ -36,7 +38,7 @@ TurnsToAggro = 1
 [sub_resource type="Resource" id="Resource_fph27"]
 script = ExtResource("12_fmjai")
 TargetingFlags = 1
-RangeOverride = 0
+RangeOverride = 4
 DamageAggros = true
 
 [node name="C1_Map05" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
@@ -123,7 +125,7 @@ map = NodePath("../..")
 unique_name_in_owner = true
 
 [node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
-position = Vector2(512, 320)
+position = Vector2(832, 384)
 texture = ExtResource("6_h4kws")
 centered = false
 hframes = 4
@@ -133,12 +135,12 @@ script = ExtResource("7_65tmo")
 UnitToSpawn = ExtResource("8_q5xb1")
 UnitLevel = 1
 PreAppliedEffects = Array[ExtResource("9_hq6of")]([ExtResource("10_ubwl1")])
-Position = Vector2i(8, 5)
+Position = Vector2i(13, 6)
 AIBehavior = ExtResource("11_jcj2c")
 AggroBehavior = SubResource("Resource_kpros")
 
 [node name="Spawn_Roc" type="Sprite2D" parent="Spawners"]
-position = Vector2(128, 832)
+position = Vector2(448, 960)
 texture = ExtResource("6_h4kws")
 centered = false
 hframes = 4
@@ -147,12 +149,12 @@ frame = 2
 script = ExtResource("7_65tmo")
 UnitToSpawn = ExtResource("13_im2ao")
 UnitLevel = 3
-Position = Vector2i(2, 13)
+Position = Vector2i(7, 15)
 AIBehavior = ExtResource("11_jcj2c")
 AggroBehavior = SubResource("Resource_ok065")
 
 [node name="Spawn_Roc2" type="Sprite2D" parent="Spawners"]
-position = Vector2(256, 832)
+position = Vector2(576, 960)
 texture = ExtResource("6_h4kws")
 centered = false
 hframes = 4
@@ -161,12 +163,124 @@ frame = 2
 script = ExtResource("7_65tmo")
 UnitToSpawn = ExtResource("13_im2ao")
 UnitLevel = 3
-Position = Vector2i(4, 13)
+Position = Vector2i(9, 15)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_Roc3" type="Sprite2D" parent="Spawners"]
+position = Vector2(1088, 960)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("13_im2ao")
+UnitLevel = 3
+Position = Vector2i(17, 15)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_Roc5" type="Sprite2D" parent="Spawners"]
+position = Vector2(704, 512)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("13_im2ao")
+UnitLevel = 3
+Position = Vector2i(11, 8)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_Roc6" type="Sprite2D" parent="Spawners"]
+position = Vector2(576, 512)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("13_im2ao")
+UnitLevel = 3
+Position = Vector2i(9, 8)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_Roc4" type="Sprite2D" parent="Spawners"]
+position = Vector2(1024, 1024)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("13_im2ao")
+UnitLevel = 3
+Position = Vector2i(16, 16)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_RocEgg" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 704)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("15_46kok")
+UnitLevel = 3
+Position = Vector2i(12, 11)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_RocEgg2" type="Sprite2D" parent="Spawners"]
+position = Vector2(896, 704)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("15_46kok")
+UnitLevel = 3
+Position = Vector2i(14, 11)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_RocEgg3" type="Sprite2D" parent="Spawners"]
+position = Vector2(896, 832)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("15_46kok")
+UnitLevel = 3
+Position = Vector2i(14, 13)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_rk0ki")
+
+[node name="Spawn_RocEgg4" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 832)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("15_46kok")
+UnitLevel = 3
+Position = Vector2i(12, 13)
 AIBehavior = ExtResource("11_jcj2c")
 AggroBehavior = SubResource("Resource_rk0ki")
 
 [node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
-position = Vector2(512, 1216)
+position = Vector2(576, 1280)
 texture = ExtResource("6_h4kws")
 centered = false
 hframes = 4
@@ -175,7 +289,7 @@ frame = 2
 script = ExtResource("7_65tmo")
 UnitToSpawn = ExtResource("8_q5xb1")
 UnitLevel = 3
-Position = Vector2i(8, 19)
+Position = Vector2i(9, 20)
 AIBehavior = ExtResource("11_jcj2c")
 AggroBehavior = SubResource("Resource_fph27")
 
@@ -193,17 +307,45 @@ Position = Vector2i(9, 18)
 AIBehavior = ExtResource("11_jcj2c")
 AggroBehavior = SubResource("Resource_fph27")
 
-[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
-position = Vector2(448, 1152)
+[node name="Spawn_EarthElemental" type="Sprite2D" parent="Spawners"]
+position = Vector2(192, 832)
 texture = ExtResource("6_h4kws")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_65tmo")
-UnitToSpawn = ExtResource("8_q5xb1")
+UnitToSpawn = ExtResource("16_7vnoq")
 UnitLevel = 3
-Position = Vector2i(7, 18)
+Position = Vector2i(3, 13)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_fph27")
+
+[node name="Spawn_EarthElemental2" type="Sprite2D" parent="Spawners"]
+position = Vector2(1088, 448)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("16_7vnoq")
+UnitLevel = 3
+Position = Vector2i(17, 7)
+AIBehavior = ExtResource("11_jcj2c")
+AggroBehavior = SubResource("Resource_fph27")
+
+[node name="Spawn_EarthElemental3" type="Sprite2D" parent="Spawners"]
+position = Vector2(128, 256)
+texture = ExtResource("6_h4kws")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_65tmo")
+UnitToSpawn = ExtResource("16_7vnoq")
+UnitLevel = 3
+Position = Vector2i(2, 4)
 AIBehavior = ExtResource("11_jcj2c")
 AggroBehavior = SubResource("Resource_fph27")
 

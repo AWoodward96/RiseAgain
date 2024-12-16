@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=42 format=3 uid="uid://druuu3tv4re06"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://druuu3tv4re06"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_qm2y0"]
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_tvwtq"]
@@ -16,11 +16,6 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_vyxpi"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_644si"]
 [ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_t5be6"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_6xv8q"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_uicxb"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_7xter"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_75fnd"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_b2dql"]
 [ext_resource type="Texture2D" uid="uid://c2kg7bpf1mqb0" path="res://ART/Icons/Units/adolescentwolf.png" id="23_ipfm4"]
 
 [sub_resource type="Resource" id="Resource_drfyp"]
@@ -68,27 +63,6 @@ script = ExtResource("3_pgxgp")
 Template = ExtResource("10_021g7")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_ra3n4"]
-metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/wolf_tooth.png"
-
-[sub_resource type="Resource" id="Resource_8j4gf"]
-script = ExtResource("3_pgxgp")
-Template = ExtResource("4_uhkmf")
-Value = 2
-
-[sub_resource type="PackedScene" id="PackedScene_srnl5"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("wolf_tooth", "Node2D", "script", "type", "focusCost", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "BaseAccuracy", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
-"variants": [ExtResource("15_6xv8q"), 1, 0.0, Array[ExtResource("16_uicxb")]([]), true, "wolf_tooth", "weap_wolf_tooth_name", "weap_wolf_tooth_desc", SubResource("Resource_ra3n4"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_7xter"), 90.0, Array[ExtResource("3_pgxgp")]([SubResource("Resource_8j4gf")]), ExtResource("21_75fnd"), ExtResource("4_uhkmf"), ExtResource("5_7sjbl"), 0.0, ExtResource("22_b2dql")],
-"version": 3
-}
-
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("2_n5q5a")
@@ -130,10 +104,9 @@ VisualPrefab = ExtResource("9_ctp86")
 BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_drfyp"), SubResource("Resource_676dy"), SubResource("Resource_lslhn"), SubResource("Resource_iad1d"), SubResource("Resource_u60o3"), SubResource("Resource_sqpnh"), SubResource("Resource_gs6il"), SubResource("Resource_8msav"), SubResource("Resource_aarhc")])
 StatGrowths = Array[ExtResource("3_pgxgp")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_tvwtq")
-StartingItems = Array[PackedScene]([SubResource("PackedScene_srnl5")])
 StartingEquippedWeapon = ExtResource("14_t5be6")
-Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([])
+Tier0Abilities = Array[String]([])
+Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_644si")]([ExtResource("10_fydjx")])
 GridSize = 1
 DebugName = "AdolescentWolf"

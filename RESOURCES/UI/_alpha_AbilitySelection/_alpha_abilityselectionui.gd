@@ -7,12 +7,15 @@ signal SelectionComplete(_packedScene : PackedScene)
 @export var abilityEntryPrefab : PackedScene
 
 
-func Initialize(_abilities : Array[PackedScene]):
+func Initialize(_abilities : Array[String]):
 	entryParent.ClearEntries()
-	for a in _abilities:
+	for abilityPath in _abilities:
 		var entry = entryParent.CreateEntry(abilityEntryPrefab)
-		entry.Initialize(a)
-		entry.EntrySelected.connect(OnAbilitySelected.bind(a))
+		var packedScene = load(abilityPath)
+		if packedScene == null:
+			continue
+		entry.Initialize(packedScene)
+		entry.EntrySelected.connect(OnAbilitySelected.bind(packedScene))
 
 	entryParent.FocusFirst()
 
@@ -21,7 +24,7 @@ func OnAbilitySelected(_ability : PackedScene):
 	queue_free()
 	SelectionComplete.emit(_ability)
 
-static func Show(_root : Node2D, _abilities : Array[PackedScene]):
+static func Show(_root : Node2D, _abilities : Array[String]):
 	var ui = UIManager.AbilitySelectionUI.instantiate() as SelectAbilityUI
 	_root.add_child(ui)
 	ui.Initialize(_abilities)

@@ -22,7 +22,7 @@ func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 
 	return returnedTileData
 
-func GetCoords(_unit : UnitInstance, _originTile : Tile):
+func GetCoords(_unit : UnitInstance):
 	var res = GetShapeFromLevel(_unit)
 	if res == null:
 		return []

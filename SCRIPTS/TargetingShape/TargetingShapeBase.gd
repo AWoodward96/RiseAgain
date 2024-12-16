@@ -6,18 +6,22 @@ func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 	# Should return an array of TileTargetData
 	pass
 
-func GetCoords(_unit : UnitInstance, _originTile : Tile):
+func GetCoords(_unit : UnitInstance):
 	pass
 
 func GetSpecificData(_index : int, _unit : UnitInstance):
 	pass
 
 func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false):
+	var relativeOrigin = _origin
+
+
 	var retArray : Array[TileTargetedData]
 	var index = 0
-	for shapedTile in GetCoords(_sourceUnit, _origin):
+	for shapedTile in GetCoords(_sourceUnit):
 		if shapedTile == null:
 			continue
+
 		var specificData = GetSpecificData(index, _sourceUnit)
 		var tileData = TileTargetedData.new()
 		var pos = shapedTile.Position as Vector2
@@ -27,7 +31,15 @@ func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _or
 		# ... somehow manages to lose values, even if the Vector2 is 100% a Vector2i ...
 		# ... the snapped method manages to make it so that it recognizes that 1 and -1 are in fact ints and not 0 value
 		var vector2i = Vector2i(pos.snapped(Vector2.ONE))
-		var relativePosition = _origin.Position + vector2i
+
+		var originPosition = _origin.Position
+		if _sourceUnit != null:
+			if _sourceUnit.Template.GridSize != 1:
+				originPosition = GameSettingsTemplate.GetOriginPositionFromDirection(_sourceUnit.Template.GridSize, originPosition, _direction)
+				pass
+
+		var relativePosition = originPosition + vector2i
+
 
 		var specificDataAsComplex = specificData as Vector2iMultComplex
 

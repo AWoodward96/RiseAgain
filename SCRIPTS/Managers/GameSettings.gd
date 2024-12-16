@@ -129,7 +129,12 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData):
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
-	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
+
+	# Grid Entities may use this, meaning sometimes an attacking unit may be null (if it's created by the
+	var agressiveVal = 0
+	if _attackingUnit != null:
+		agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
+
 	agressiveVal = flatValue + _damageData.DoMod(agressiveVal, _damageData.AgressiveMod, _damageData.AgressiveModType)
 
 	var defensiveStat = _damageData.DefensiveStat
@@ -140,7 +145,7 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
 
 	var affinityMultiplier = 1
-	if _defendingUnit != null:
+	if _defendingUnit != null && _attackingUnit != null:
 		affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
 	var vulnerabilityMultiplier = 1
@@ -231,6 +236,19 @@ func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : Uni
 	# Equation is:
 	# WeaponAcc + (Skill * 2) + (Luck / 2)
 	return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0) + affinityModifier) / 100.0
+
+static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i, _direction : Direction):
+	match (_direction):
+		Direction.Up:
+			return _position
+		Direction.Right:
+			return _position + (Vector2i.RIGHT * (_unitSize - 1))
+		Direction.Down:
+			return _position + (Vector2i.RIGHT * (_unitSize - 1)) + (Vector2i.DOWN * (_unitSize - 1))
+		Direction.Left:
+			return _position + (Vector2i.DOWN * (_unitSize - 1))
+	return _position
+
 
 func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
 	if _defender == null:

@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7m8r8wh7mgsk"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_d5lrr"]
+[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="2_bd61j"]
+[ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignNode.gd" id="3_lwatt"]
+[ext_resource type="PackedScene" uid="uid://b8pr2dwrcap2u" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_01.tscn" id="4_1eeq4"]
+[ext_resource type="PackedScene" uid="uid://bnk6nrale3gkx" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_02.tscn" id="5_bxenq"]
+[ext_resource type="PackedScene" uid="uid://72w1kvoj27y6" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_03.tscn" id="6_qndna"]
+[ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_campsite_01.tscn" id="7_qmknn"]
+[ext_resource type="PackedScene" uid="uid://3si6typ48sr0" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_04.tscn" id="8_7mkg8"]
+[ext_resource type="PackedScene" uid="uid://cy86ijwe6ivvn" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_05.tscn" id="9_nponf"]
+[ext_resource type="PackedScene" uid="uid://b02uvbj15y0dh" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_06.tscn" id="10_q2cog"]
+
+[node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent", "UnitHoldingArea")]
+script = ExtResource("1_d5lrr")
+ledger_root = NodePath("LedgerRoot")
+AutoProceed = true
+current_map_parent = NodePath("CurrentMap")
+UnitHoldingArea = NodePath("UnitHoldingArea")
+MapRewardTable = ExtResource("2_bd61j")
+
+[node name="LedgerRoot" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="LedgerRoot"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("4_1eeq4")
+
+[node name="1" type="Node2D" parent="LedgerRoot/0"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("5_bxenq")
+
+[node name="2" type="Node2D" parent="LedgerRoot/0/1"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("6_qndna")
+
+[node name="Campsite" type="Node2D" parent="LedgerRoot/0/1/2"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("7_qmknn")
+
+[node name="3" type="Node2D" parent="LedgerRoot/0/1/2/Campsite"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("8_7mkg8")
+
+[node name="4" type="Node2D" parent="LedgerRoot/0/1/2/Campsite/3"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("9_nponf")
+
+[node name="5" type="Node2D" parent="LedgerRoot/0/1/2/Campsite/3/4"]
+script = ExtResource("3_lwatt")
+MapPrefab = ExtResource("10_q2cog")
+
+[node name="CurrentMap" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="UnitHoldingArea" type="Node2D" parent="."]

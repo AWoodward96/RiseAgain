@@ -256,7 +256,7 @@ func RefreshThreat():
 		grid.RefreshThreat(GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
 
 func _input(event):
-	#this eats button inputs funnily enough, so the CSR menu wont work if this is commented in
+	# this eats button inputs funnily enough, so the CSR menu wont work if this is commented in
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mousePos = get_global_mouse_position()
 		var tile_pos = tilemap_main.local_to_map(mousePos)

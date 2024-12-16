@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://by00pi1y5u8eg"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://by00pi1y5u8eg"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_8oc7x"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_vcd88"]
@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_mbfmv"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_hitny"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_543b7"]
-[ext_resource type="PackedScene" uid="uid://dl6oykv0h4h7v" path="res://RESOURCES/Ability/Standard/ART_hatch.tscn" id="13_1x0lf"]
 [ext_resource type="Texture2D" uid="uid://b5oiy617hkm0k" path="res://ART/Icons/Units/rocegg.png" id="13_ds8ji"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="14_2h2kw"]
 [ext_resource type="PackedScene" uid="uid://c6rnk74xlkxji" path="res://RESOURCES/Units/Enemy/Roc/VIS_RocEgg.tscn" id="14_dpthe"]
@@ -104,9 +103,8 @@ VisualPrefab = ExtResource("14_dpthe")
 BaseStats = Array[ExtResource("2_vcd88")]([SubResource("Resource_0etaw"), SubResource("Resource_r3biu"), SubResource("Resource_vn80d"), SubResource("Resource_j0vu4"), SubResource("Resource_3jb66"), SubResource("Resource_bveuc"), SubResource("Resource_3unnj"), SubResource("Resource_lgsma"), SubResource("Resource_8tkpt")])
 StatGrowths = Array[ExtResource("2_vcd88")]([SubResource("Resource_m8k7y"), SubResource("Resource_7cchn"), SubResource("Resource_l615q"), SubResource("Resource_hppgb"), SubResource("Resource_54pvi"), SubResource("Resource_6bf8h"), SubResource("Resource_olcme")])
 Affinity = ExtResource("1_8oc7x")
-StartingItems = Array[PackedScene]([])
-Tier0Abilities = Array[PackedScene]([ExtResource("13_1x0lf")])
-Tier1Abilities = Array[PackedScene]([])
+Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_hatch.tscn"])
+Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_543b7")]([])
 GridSize = 1
 DebugName = "RocEgg"

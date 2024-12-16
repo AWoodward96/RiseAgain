@@ -48,7 +48,14 @@
 			"tasks": [
 				"9d049bd3-a9d1-485d-afa6-5b53d350b775",
 				"941b2cbd-1c25-40a9-a292-6849245f69ee",
-				"780512ad-4329-4c0d-934c-aee07a8ca0b8"
+				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
+				"a9de6f43-a986-4af2-853d-271276bddbc0",
+				"ea6de32d-fd72-4d47-b79a-8138320b933d",
+				"83f9db6e-4eae-4cad-b21b-c7fb114f6568",
+				"9b53adba-8501-4d5f-8c9e-480aba12c2f6",
+				"2ea5decd-4122-43a9-9220-703c6365f69c",
+				"b5c643c5-a71e-4119-b5b3-d51eeaffda43",
+				"e0c5e008-b47f-4418-b189-245e706616dd"
 			]
 		},
 		{
@@ -423,6 +430,55 @@
 		{
 			"uuid": "592e9494-2782-496e-8906-b96a9e576422",
 			"title": "Gauze is showing 'kill' while in prview",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "a9de6f43-a986-4af2-853d-271276bddbc0",
+			"title": "Map 2: Make bird aggro after turns",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "ea6de32d-fd72-4d47-b79a-8138320b933d",
+			"title": "Map 2: Make zombie aggro after turns",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "83f9db6e-4eae-4cad-b21b-c7fb114f6568",
+			"title": "Retaliation from weapons is not being previewed",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "9b53adba-8501-4d5f-8c9e-480aba12c2f6",
+			"title": "Golem on Map 3 has necrotic",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "2ea5decd-4122-43a9-9220-703c6365f69c",
+			"title": "Heroic Leap is broken",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "b5c643c5-a71e-4119-b5b3-d51eeaffda43",
+			"title": "not enough starting spaces on map 3",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "e0c5e008-b47f-4418-b189-245e706616dd",
+			"title": "lesser heal is broken too",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []

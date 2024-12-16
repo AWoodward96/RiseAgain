@@ -162,8 +162,8 @@ func InitializeTier0Abilities():
 	if Template == null:
 		return
 
-	for abilities in Template.Tier0Abilities:
-		AddAbility(abilities)
+	for abilityPath in Template.Tier0Abilities:
+		AddAbility(load(abilityPath))
 
 func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 	CombatEffects.append(_combatEffectInstance)

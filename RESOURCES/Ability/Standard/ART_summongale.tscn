@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://caqjnk7qlllww"]
+[gd_scene load_steps=13 format=3 uid="uid://caqjnk7qlllww"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_vtmyb"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_js4wy"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_nit5m"]
 [ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="3_axws4"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_kf78k"]
+[ext_resource type="Texture2D" uid="uid://jq6pguj1dv2r" path="res://ART/Icons/Ability/Standard/summongale.png" id="5_8polg"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="6_h7vi5"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="7_k6kxa"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="8_3ym3h"]
@@ -31,6 +32,7 @@ executionStack = Array[ExtResource("2_js4wy")]([SubResource("Resource_enlx2")])
 internalName = "summongale"
 loc_displayName = "art_summongale_name"
 loc_displayDesc = "art_summongale_desc"
+icon = ExtResource("5_8polg")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

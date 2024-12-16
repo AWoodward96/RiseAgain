@@ -11,10 +11,19 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 	options.clear()
 	selectedOption = null
+
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
-	var item = unit.EquippedWeapon
-	if item == null || !item.IsDamage():
+	var hasWeaponToUse = false
+	var weaponsAvailableForUse : Array[UnitUsable]
+	for a in unit.Abilities:
+		if a.type != Ability.AbilityType.Tactical && a.IsDamage():
+			if _unit.currentFocus >= a.focusCost:
+				weaponsAvailableForUse.append(a)
+			hasWeaponToUse = true
+			break
+
+	if !hasWeaponToUse:
 		unit.QueueEndTurn()
 		return
 
@@ -35,14 +44,15 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template.Descriptors.find(aiflag.Descriptor) != -1)
 
 		for u in filteredUnitsOnTeam:
-			var newOption = EnemyAIOption.new()
-			newOption.flagIndex = i
-			newOption.totalFlags = Flags.size()
-			newOption.Update(_unit, u, map)
+			for weapon in weaponsAvailableForUse:
+				var newOption = EnemyAIOption.new()
+				newOption.flagIndex = i
+				newOption.totalFlags = Flags.size()
+				newOption.Update(_unit, u, map, weapon)
 
-			if newOption.valid:
-				newOption.UpdateWeight()
-				options.append(newOption)
+				if newOption.valid:
+					newOption.UpdateWeight()
+					options.append(newOption)
 
 	if options.size() == 0:
 		unit.QueueEndTurn()
@@ -76,9 +86,9 @@ func TryCombat():
 		var log = ActionLog.Construct(map.grid, unit, selectedOption.unitUsable)
 		log.actionOriginTile = selectedOption.tileToAttack
 		log.sourceTile = selectedOption.tileToMoveTo	# Remember, we're pathfinding to this tile so the source has to be from here
-		log.affectedTiles.append(selectedOption.targetUnit.CurrentTile.AsTargetData())
+		log.affectedTiles.append_array(selectedOption.tilesHitByAttack)
 		log.damageData = selectedOption.unitUsable.UsableDamageData
-
+		log.actionDirection = selectedOption.direction
 		log.BuildStepResults()
 
 		# The unit still needs to get to their destination first, so queue it up as a sequence

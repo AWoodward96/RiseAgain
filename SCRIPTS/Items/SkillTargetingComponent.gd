@@ -50,8 +50,8 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 		options.sort_custom(OrderTargets)
 	return options
 
-func GetDirectionalAttack(_unit : UnitInstance, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
-	return shapedTiles.GetTargetedTilesFromDirection(_unit, _grid, _unit.CurrentTile, _directionIndex)
+func GetDirectionalAttack(_unit : UnitInstance, _origin : Tile, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
+	return shapedTiles.GetTargetedTilesFromDirection(_unit, _grid, _origin, _directionIndex)
 
 func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : GameSettingsTemplate.Direction):
 	var returnTiles : Array[TileTargetedData] = []

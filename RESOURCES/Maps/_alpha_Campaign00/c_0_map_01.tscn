@@ -117,19 +117,6 @@ AIBehavior = ExtResource("9_b46gt")
 AggroBehavior = SubResource("Resource_bbkis")
 
 [node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
-position = Vector2(896, 192)
-texture = ExtResource("6_06gip")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_2ek70")
-UnitToSpawn = ExtResource("10_41f2o")
-Position = Vector2i(14, 3)
-AIBehavior = ExtResource("9_b46gt")
-AggroBehavior = SubResource("Resource_dwgyn")
-
-[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
 position = Vector2(576, 128)
 texture = ExtResource("6_06gip")
 centered = false
@@ -138,8 +125,21 @@ vframes = 4
 frame = 2
 script = ExtResource("7_2ek70")
 UnitToSpawn = ExtResource("10_41f2o")
-UnitLevel = 3
 Position = Vector2i(9, 2)
+AIBehavior = ExtResource("9_b46gt")
+AggroBehavior = SubResource("Resource_dwgyn")
+
+[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
+position = Vector2(896, 192)
+texture = ExtResource("6_06gip")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_2ek70")
+UnitToSpawn = ExtResource("10_41f2o")
+UnitLevel = 2
+Position = Vector2i(14, 3)
 AIBehavior = ExtResource("9_b46gt")
 AggroBehavior = SubResource("Resource_hkjcv")
 

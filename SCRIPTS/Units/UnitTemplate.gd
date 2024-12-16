@@ -8,11 +8,11 @@ class_name UnitTemplate
 
 @export var Affinity : AffinityTemplate
 
-@export var StartingItems : Array[PackedScene]
 @export var StartingEquippedWeapon : PackedScene
 @export var StartingTactical : PackedScene
-@export var Tier0Abilities : Array[PackedScene]
-@export var Tier1Abilities : Array[PackedScene]
+
+@export_file("*.tscn") var Tier0Abilities : Array[String]
+@export_file("*.tscn") var Tier1Abilities : Array[String]
 @export var Descriptors : Array[DescriptorTemplate]
 @export var GridSize : int = 1
 #@export var BaseClass : ClassTemplate

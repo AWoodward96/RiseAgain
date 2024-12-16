@@ -33,8 +33,8 @@ func btnUnlockAllAbilities():
 		if template == null:
 			continue
 
-		for ability in template.Tier1Abilities:
-			unit.AddAbility(ability)
+		for abilityPath in template.Tier1Abilities:
+			unit.AddAbility(load(abilityPath))
 	pass
 
 func btnGiveSpecificItem():

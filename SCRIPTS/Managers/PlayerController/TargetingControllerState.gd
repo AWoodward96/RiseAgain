@@ -67,7 +67,7 @@ func _Enter(_ctrl : PlayerController, _ability):
 					# Shaped directional just uses the dict from the targeting data as the available tiles
 					log.actionDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
 					log.availableTiles = currentGrid.GetAdjacentTiles(source.CurrentTile)
-					log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, log.actionDirection)
+					log.affectedTiles = targetingData.GetDirectionalAttack(source, source.CurrentTile, currentGrid, log.actionDirection)
 
 					# try and get the proper targeted tile based on the facing direction
 					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
@@ -264,7 +264,7 @@ func ShapedDirectionalTargetingInput(_delta):
 		log.actionDirection = newShaped
 
 	if targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		log.affectedTiles = targetingData.GetDirectionalAttack(source, currentGrid, log.actionDirection)
+		log.affectedTiles = targetingData.GetDirectionalAttack(source, source.CurrentTile, currentGrid, log.actionDirection)
 	elif targetingData.Type == SkillTargetingData.TargetingType.Global:
 		log.affectedTiles = targetingData.GetGlobalAttack(source, currentMap, log.actionDirection)
 		#TBD actually if this does anything special. We already actually have the targeted tiles

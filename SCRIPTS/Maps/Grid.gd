@@ -144,8 +144,9 @@ func ClearActions() :
 
 func ShowActions() :
 	for n in GridArr :
-		if n.Occupant != null :
-			continue
+		# TODO: Do a run or two to see if this being commented out is a problem
+		#if n.Occupant != null :
+			#continue
 
 		if n.InRange :
 			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, RANGETILE)
@@ -336,9 +337,74 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 
 
 func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitInstance):
-	return GetTilePath(_originUnit, _originUnit.CurrentTile, _destinationUnit.CurrentTile, false)
+	# Note that this will take the rough path as well - so a movement path that is imper
+	return GetTilePath(_originUnit, _originUnit.CurrentTile, _destinationUnit.CurrentTile, false, true)
 
-func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true):
+func GetGreedyTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true):
+	var frontier = PriorityQueue_Tile.new()
+	frontier.Enqueue(TileQueue.Construct(_startingTile, 0))
+	var visited : Dictionary
+	visited[_startingTile] = null
+
+	var unitIsFlying = false
+	if _unitInstance != null:
+		unitIsFlying = _unitInstance.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
+
+	var lowestValue = 100000
+	var lowestTile = _startingTile
+	var success = false
+
+	while (!frontier.size == 0):
+		var current = frontier.Dequeue().tile
+
+		if current == _endingTile:
+			success = true
+			break
+
+		for neigh in NEIGHBORS:
+			var neighborLocation = current.Position + neigh
+			var nextTile = GetTile(neighborLocation)
+			if nextTile == null:
+				continue
+
+			if !visited.has(nextTile):
+				# Early Exit: Unit isn't flying, and there is a wall there
+				# Early Exit: The next tile is a killbox - don't let them willingly move over them
+				if !unitIsFlying:
+					if (nextTile.IsWall || nextTile.ActiveKillbox):
+						continue
+
+				if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
+					continue
+
+				if _unitInstance != null:
+					if _different_teams_are_walls && !unitIsFlying && nextTile.Occupant != null && nextTile.Occupant.UnitAllegiance != _unitInstance.UnitAllegiance:
+						continue
+
+				var prio = HeuristicManhattan(_endingTile, nextTile)
+				frontier.Enqueue(TileQueue.Construct(nextTile, prio))
+				visited[nextTile] = current
+
+				if lowestValue > prio:
+					lowestValue = prio
+					lowestTile = nextTile
+
+	var walkback = _endingTile
+	if !success:
+		walkback = lowestTile
+
+	var returnMe : Array[Tile] = []
+	returnMe.append(walkback)
+	while walkback != _startingTile:
+		returnMe.append(visited[walkback])
+		walkback = visited[walkback]
+
+	returnMe.reverse()
+	returnMe.remove_at(0) # To remove the tile you're currently on
+	return returnMe
+
+
+func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true, _roughPath : bool = false):
 	var frontier = PriorityQueue_Tile.new()
 	frontier.Enqueue(TileQueue.Construct(_startingTile, 0))
 
@@ -352,7 +418,7 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 		unitIsFlying = _unitInstance.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
 
 	var success = false
-	while(!frontier.size == 0):
+	while (!frontier.size == 0):
 		var currentTile = frontier.Dequeue().tile
 
 		if currentTile == _endingTile:
@@ -365,13 +431,10 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 			if nextTile == null:
 				continue
 
-			if nextTile.Position == Vector2i(6,4):
-				pass
-
 			# Early Exit: Unit isn't flying, and there is a wall there
 			# Early Exit: The next tile is a killbox - don't let them willingly move over them
 			if !unitIsFlying:
-				if nextTile.IsWall || nextTile.ActiveKillbox:
+				if (nextTile.IsWall || nextTile.ActiveKillbox):
 					continue
 
 			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
@@ -388,11 +451,14 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 			if !visitedCost.has(nextTile) || costToTravel < visitedCost[nextTile]:
 				visitedCost[nextTile] = costToTravel
 				var priority = costToTravel + HeuristicManhattan(currentTile, nextTile)
-				frontier.Enqueue(TileQueue.Construct(nextTile, priority))# should read frontier.append(next, priority)
+				frontier.Enqueue(TileQueue.Construct(nextTile, priority))
 				visited[nextTile] = currentTile
+
 
 	var returnMe : Array[Tile] = []
 	if !success:
+		if _roughPath:
+			return GetGreedyTilePath(_unitInstance, _startingTile, _endingTile, _different_teams_are_walls)
 		return returnMe
 
 	var walkback = _endingTile
@@ -453,7 +519,6 @@ func PushCast(_tileData : TileTargetedData):
 		var nextTile = GetTile(currentTile.Position + directionVector)
 		if nextTile == null:
 			# Early exit - we're done
-			_tileData.pushSelfResult = currentTile
 			return
 
 		if Push(_tileData, nextTile, currentTile, _tileData.pushDirection):
@@ -470,7 +535,7 @@ func PushCast(_tileData : TileTargetedData):
 
 func Push(_tileData : TileTargetedData, _nextTile : Tile, _currentTile : Tile, _direction : GameSettingsTemplate.Direction):
 	# Check wall first, then occupant
-	if _nextTile.IsWall:
+	if _nextTile.IsWall && _tileData.pushStack.size() > 0:
 		# It's up in the air as to if this should even be set if there's nothing in the push stack
 		# We'll see if it affects anything
 		_tileData.pushCollision = _nextTile

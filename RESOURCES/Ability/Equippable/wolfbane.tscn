@@ -22,7 +22,7 @@ useDefendAction = true
 [sub_resource type="Resource" id="Resource_gq7j7"]
 script = ExtResource("4_8m5ou")
 
-[sub_resource type="Resource" id="Resource_8b24u"]
+[sub_resource type="Resource" id="Resource_aj6lf"]
 script = ExtResource("3_y35ns")
 Template = ExtResource("4_l15gm")
 Value = 4
@@ -44,7 +44,7 @@ StatData = NodePath("StatComponent")
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_0pyxx")
 BaseAccuracy = 100.0
-GrantedStats = Array[ExtResource("3_y35ns")]([SubResource("Resource_8b24u")])
+GrantedStats = Array[ExtResource("3_y35ns")]([SubResource("Resource_aj6lf")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_6u87p")
