@@ -4,6 +4,7 @@ class_name CSR
 static var Open : bool = false
 static var AllAbilitiesCost0 : bool = false
 static var AlwaysCrit : bool = false
+static var NeverHit : bool = false
 
 @export var FirstEntry : Control
 @export var SpecificItem : PackedScene
@@ -18,6 +19,9 @@ func btnAllAbilitiesCost0():
 
 func btnAlwaysCrit():
 	AlwaysCrit = !AlwaysCrit
+
+func btnNeverHit():
+	NeverHit = !NeverHit
 
 func btnUnlockAllAbilities():
 	var map = Map.Current

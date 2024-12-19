@@ -62,7 +62,7 @@ func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : G
 
 			if OnCorrectTeam(_sourceUnit, targetUnit):
 				if shapedTiles != null:
-					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, _map.grid, targetUnit.CurrentTile, _directionIndex))
+					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, _map.grid, targetUnit.CurrentTile, _directionIndex, false, true))
 				else:
 					returnTiles.append(targetUnit.CurrentTile.AsTargetData())
 			else:

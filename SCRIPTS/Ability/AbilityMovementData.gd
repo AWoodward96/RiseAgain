@@ -39,7 +39,10 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _dire
 func GetRoute_TargetTile(_origin : Tile, _destination : Tile):
 	if _destination.Occupant == null && !_destination.IsWall:
 		destinationTile = _destination
-		return Array([_origin, _destination])
+		var ar : Array[Tile] = []
+		ar.append(_origin)
+		ar.append(_destination)
+		return ar
 	return []
 
 func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction : GameSettingsTemplate.Direction, _inverse : bool = false):

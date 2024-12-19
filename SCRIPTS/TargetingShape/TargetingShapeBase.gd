@@ -12,7 +12,7 @@ func GetCoords(_unit : UnitInstance):
 func GetSpecificData(_index : int, _unit : UnitInstance):
 	pass
 
-func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false):
+func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false, _isGlobalAttack : bool = false):
 	var relativeOrigin = _origin
 
 
@@ -34,7 +34,7 @@ func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _or
 
 		var originPosition = _origin.Position
 		if _sourceUnit != null:
-			if _sourceUnit.Template.GridSize != 1:
+			if _sourceUnit.Template.GridSize != 1 && !_isGlobalAttack:
 				originPosition = GameSettingsTemplate.GetOriginPositionFromDirection(_sourceUnit.Template.GridSize, originPosition, _direction)
 				pass
 

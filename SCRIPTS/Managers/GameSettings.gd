@@ -178,6 +178,9 @@ func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float 
 	return healAmount
 
 func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
+	if CSR.NeverHit:
+		return 0
+
 	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
 
 func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):

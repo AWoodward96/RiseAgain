@@ -91,7 +91,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _weapon 
 			# What we're going to do now is to check to see if the target is within range based on this current tile
 			if unitUsable.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
 				# So basically, always move towards the player AND if you can hit them - well then do so!
-				CheckAbilityAttacks(tileToMoveTo)
+				CheckAbilityAttacks(path[path.size() - 1])
 	pass
 
 

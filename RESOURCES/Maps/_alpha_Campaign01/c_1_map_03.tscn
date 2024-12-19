@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://72w1kvoj27y6"]
+[gd_scene load_steps=28 format=4 uid="uid://72w1kvoj27y6"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_0q0au"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_snc73"]
@@ -9,13 +9,12 @@
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_m6v06"]
 [ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="8_5evbd"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_hvvig"]
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="9_qaupr"]
-[ext_resource type="Resource" uid="uid://dk6nu2fomck5p" path="res://RESOURCES/CombatEffects/CE_NecromancerPassive.tres" id="10_g0d7c"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="11_m3n5o"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_ccasm"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="12_oimew"]
 [ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="13_qih1l"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="14_6sg7n"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_Static_UseAbility.gd" id="14_jse70"]
 [ext_resource type="Resource" uid="uid://by00pi1y5u8eg" path="res://RESOURCES/Units/Enemy/RocEgg/UT_RocEgg.tres" id="15_k8826"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
@@ -28,10 +27,34 @@ script = ExtResource("12_ccasm")
 [sub_resource type="Resource" id="Resource_ok065"]
 script = ExtResource("14_6sg7n")
 TurnsToAggro = 1
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_rk0ki"]
 script = ExtResource("14_6sg7n")
 TurnsToAggro = 1
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_t0kbs"]
+script = ExtResource("14_jse70")
+
+[sub_resource type="Resource" id="Resource_xhkee"]
+script = ExtResource("12_ccasm")
+
+[sub_resource type="Resource" id="Resource_jvuj2"]
+script = ExtResource("14_jse70")
+
+[sub_resource type="Resource" id="Resource_sqbxa"]
+script = ExtResource("12_ccasm")
+
+[sub_resource type="Resource" id="Resource_7jd62"]
+script = ExtResource("14_jse70")
+
+[sub_resource type="Resource" id="Resource_3i2j7"]
+script = ExtResource("12_ccasm")
 
 [sub_resource type="Resource" id="Resource_fph27"]
 script = ExtResource("12_oimew")
@@ -103,6 +126,11 @@ position = Vector2(256, 832)
 Position = Vector2i(4, 13)
 map = NodePath("../..")
 
+[node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_1tkba")]
+position = Vector2(192, 832)
+Position = Vector2i(3, 13)
+map = NodePath("../..")
+
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -116,7 +144,6 @@ frame = 2
 script = ExtResource("7_m6v06")
 UnitToSpawn = ExtResource("8_5evbd")
 UnitLevel = 1
-PreAppliedEffects = Array[ExtResource("9_qaupr")]([ExtResource("10_g0d7c")])
 Position = Vector2i(4, 7)
 AIBehavior = ExtResource("11_m3n5o")
 AggroBehavior = SubResource("Resource_2hbrq")
@@ -160,8 +187,8 @@ script = ExtResource("7_m6v06")
 UnitToSpawn = ExtResource("15_k8826")
 UnitLevel = 3
 Position = Vector2i(0, 7)
-AIBehavior = ExtResource("11_m3n5o")
-AggroBehavior = SubResource("Resource_rk0ki")
+AIBehavior = SubResource("Resource_t0kbs")
+AggroBehavior = SubResource("Resource_xhkee")
 
 [node name="Spawn_RocEgg2" type="Sprite2D" parent="Spawners"]
 position = Vector2(64, 384)
@@ -174,8 +201,8 @@ script = ExtResource("7_m6v06")
 UnitToSpawn = ExtResource("15_k8826")
 UnitLevel = 3
 Position = Vector2i(1, 6)
-AIBehavior = ExtResource("11_m3n5o")
-AggroBehavior = SubResource("Resource_rk0ki")
+AIBehavior = SubResource("Resource_jvuj2")
+AggroBehavior = SubResource("Resource_sqbxa")
 
 [node name="Spawn_RocEgg3" type="Sprite2D" parent="Spawners"]
 position = Vector2(0, 384)
@@ -188,8 +215,8 @@ script = ExtResource("7_m6v06")
 UnitToSpawn = ExtResource("15_k8826")
 UnitLevel = 3
 Position = Vector2i(0, 6)
-AIBehavior = ExtResource("11_m3n5o")
-AggroBehavior = SubResource("Resource_rk0ki")
+AIBehavior = SubResource("Resource_7jd62")
+AggroBehavior = SubResource("Resource_3i2j7")
 
 [node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
 position = Vector2(576, 832)

@@ -65,29 +65,28 @@ func WillRetaliate(_result : PerformCombatStepResult):
 		# This is a normal ability, and no retaliation is available
 		return
 
-	if _result.Kill:
+	if _result.Kill && _result.AbilityData.type != Ability.AbilityType.Weapon:
 		return
 
 	var defendingUnit = _result.Target
 	if defendingUnit == null:
 		return
 
-	if !_result.Kill:
-		if defendingUnit.EquippedWeapon == null:
-			return
+	if defendingUnit.EquippedWeapon == null:
+		return
 
-		var retaliationWeapon = defendingUnit.EquippedWeapon
-		if retaliationWeapon.UsableDamageData == null:
-			return
+	var retaliationWeapon = defendingUnit.EquippedWeapon
+	if retaliationWeapon.UsableDamageData == null:
+		return
 
-		var range = defendingUnit.EquippedWeapon.GetRange()
-		if range == Vector2i.ZERO:
-			return
+	var range = defendingUnit.EquippedWeapon.GetRange()
+	if range == Vector2i.ZERO:
+		return
 
-		var combatDistance = defendingUnit.map.grid.GetManhattanDistance(_result.SourceTile.Position, defendingUnit.GridPosition)
-		# so basically, if the weapon this unit is holding, has a max range
-		if range.x <= combatDistance && range.y >= combatDistance:
-			return true
+	var combatDistance = defendingUnit.map.grid.GetManhattanDistance(_result.SourceTile.Position, defendingUnit.GridPosition)
+	# so basically, if the weapon this unit is holding, has a max range
+	if range.x <= combatDistance && range.y >= combatDistance:
+		return true
 
 	return false
 

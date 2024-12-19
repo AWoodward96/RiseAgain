@@ -14,7 +14,6 @@
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="11_fgm3c"]
 [ext_resource type="PackedScene" uid="uid://eerys1o8nkjh" path="res://RESOURCES/GridEntities/wp_bridge.tscn" id="12_cwii1"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_hir2h"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="14_ryogm"]
 [ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="15_2ukwe"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="15_ef6la"]
 
@@ -37,8 +36,16 @@ script = ExtResource("12_hir2h")
 [sub_resource type="Resource" id="Resource_mju62"]
 script = ExtResource("12_hir2h")
 
-[sub_resource type="Resource" id="Resource_1s6pl"]
-script = ExtResource("14_ryogm")
+[sub_resource type="Resource" id="Resource_bq54g"]
+script = ExtResource("15_ef6la")
+TurnsToAggro = 4
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_jovr1"]
+script = ExtResource("15_ef6la")
+TurnsToAggro = 3
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
@@ -46,6 +53,9 @@ DamageAggros = true
 [sub_resource type="Resource" id="Resource_i3x6b"]
 script = ExtResource("15_ef6la")
 TurnsToAggro = 3
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
 
 [node name="C1_Map02" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_r5sfq")
@@ -196,7 +206,7 @@ UnitToSpawn = ExtResource("8_03qds")
 UnitLevel = 1
 Position = Vector2i(10, 3)
 AIBehavior = ExtResource("11_fgm3c")
-AggroBehavior = SubResource("Resource_1s6pl")
+AggroBehavior = SubResource("Resource_bq54g")
 
 [node name="Spawn_Roc" type="Sprite2D" parent="Spawners"]
 position = Vector2(128, 64)
@@ -210,7 +220,7 @@ UnitToSpawn = ExtResource("15_2ukwe")
 UnitLevel = 1
 Position = Vector2i(2, 1)
 AIBehavior = ExtResource("11_fgm3c")
-AggroBehavior = SubResource("Resource_1s6pl")
+AggroBehavior = SubResource("Resource_jovr1")
 
 [node name="Spawn_Roc2" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 64)

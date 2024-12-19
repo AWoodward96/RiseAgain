@@ -49,13 +49,7 @@
 				"9d049bd3-a9d1-485d-afa6-5b53d350b775",
 				"941b2cbd-1c25-40a9-a292-6849245f69ee",
 				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
-				"a9de6f43-a986-4af2-853d-271276bddbc0",
-				"ea6de32d-fd72-4d47-b79a-8138320b933d",
-				"83f9db6e-4eae-4cad-b21b-c7fb114f6568",
-				"9b53adba-8501-4d5f-8c9e-480aba12c2f6",
-				"2ea5decd-4122-43a9-9220-703c6365f69c",
-				"b5c643c5-a71e-4119-b5b3-d51eeaffda43",
-				"e0c5e008-b47f-4418-b189-245e706616dd"
+				"cad1a58b-24c8-484e-a360-c2f55357e43e"
 			]
 		},
 		{
@@ -71,7 +65,15 @@
 				"e0633179-c6ee-495d-9f86-8949df0de05d",
 				"9f627e78-f58e-4270-8720-9d4e630328d0",
 				"592e9494-2782-496e-8906-b96a9e576422",
+				"c5f953c6-d9d6-48c6-b58d-98589d83a6b7",
+				"9b53adba-8501-4d5f-8c9e-480aba12c2f6",
+				"a9de6f43-a986-4af2-853d-271276bddbc0",
+				"b5c643c5-a71e-4119-b5b3-d51eeaffda43",
+				"83f9db6e-4eae-4cad-b21b-c7fb114f6568",
 				"482998a4-feff-415e-a84e-7b76e4130cd7",
+				"2ea5decd-4122-43a9-9220-703c6365f69c",
+				"e0c5e008-b47f-4418-b189-245e706616dd",
+				"ea6de32d-fd72-4d47-b79a-8138320b933d",
 				"9f77496d-bd6d-4f59-b7e5-21b51b3d613d",
 				"03e18191-548c-4e16-aac3-787401d9675f",
 				"aa617123-923a-462d-b3f5-eadb1ec60ab3",
@@ -479,6 +481,20 @@
 		{
 			"uuid": "e0c5e008-b47f-4418-b189-245e706616dd",
 			"title": "lesser heal is broken too",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "cad1a58b-24c8-484e-a360-c2f55357e43e",
+			"title": "Remake Map 4",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "c5f953c6-d9d6-48c6-b58d-98589d83a6b7",
+			"title": "Demikestrel isn't working",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []

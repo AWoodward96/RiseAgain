@@ -47,15 +47,18 @@ func RollChance(_rng : RandomNumberGenerator):
 	if Crit:
 		HealthDelta = HealthDelta * GameManager.GameSettings.CritMultiplier
 		Juice.CreateCritPopup(TileTargetData.Tile)
-		UpdateWillKill()
 
+	UpdateWillKill()
 	CalculateExpGain()
 	if AbilityData.damageGrantsFocus:
 		CalculateFocusDelta()
 
 func UpdateWillKill():
 	if Target != null:
-		Kill = (Target.currentHealth + HealthDelta <= 0)
+		if Miss:
+			Kill = false
+		else:
+			Kill = (Target.currentHealth + HealthDelta <= 0)
 
 func CalculateSourceHealthDelta(_damageData : DamageData):
 	if _damageData.DamageAffectsUsersHealth && Target != null:

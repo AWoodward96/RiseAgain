@@ -1,4 +1,4 @@
-extends AlwaysAggro
+extends AggroRange
 class_name DelayedAggro
 
 @export var TurnsToAggro : int = 3
@@ -13,4 +13,5 @@ func Check(_self : UnitInstance, _map : Map) -> bool:
 		return true
 	else:
 		_self.set_meta("TurnsToAggro", metaTurn - 1)
-	return false
+
+	return super(_self, _map)

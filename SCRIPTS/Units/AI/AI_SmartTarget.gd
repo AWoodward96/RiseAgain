@@ -18,8 +18,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	var weaponsAvailableForUse : Array[UnitUsable]
 	for a in unit.Abilities:
 		if a.type != Ability.AbilityType.Tactical && a.IsDamage():
-			if _unit.currentFocus >= a.focusCost:
-				weaponsAvailableForUse.append(a)
+			weaponsAvailableForUse.append(a)
 			hasWeaponToUse = true
 			break
 

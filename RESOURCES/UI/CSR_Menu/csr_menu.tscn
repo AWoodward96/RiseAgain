@@ -45,7 +45,12 @@ text = "Give Predefined Item to Allies"
 layout_mode = 2
 text = "Always Crit"
 
+[node name="NeverHit" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Never Hit"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AlwaysCrit" to="." method="btnAlwaysCrit"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/NeverHit" to="." method="btnNeverHit"]
