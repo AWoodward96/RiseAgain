@@ -7,8 +7,9 @@ signal selectDownCallback
 
 var inputDown : Array[bool] = [false, false, false, false]
 var inputHeld : Array[bool] = [false, false, false, false]
-var inputVertical : bool
-var inputHorizontal: bool
+
+var topdownVertical : float
+var topdownHorizontal: float
 
 var inputAnyDown : bool
 var inputAnyHeld : bool
@@ -47,8 +48,9 @@ func UpdateInputArrays(_delta):
 	if Input.is_action_just_pressed("down"): inputDown[2] = true
 	if Input.is_action_just_pressed("left"): inputDown[3] = true
 
-	inputVertical = inputHeld[0] || inputHeld[2]
-	inputHorizontal = inputHeld[1] || inputHeld[3]
+	topdownHorizontal =  Input.get_action_strength("right") - Input.get_action_strength("left")
+	topdownVertical = Input.get_action_strength("down") - Input.get_action_strength("up")
+
 	inputAnyDown = inputDown.any(func(v) : return v)
 	inputAnyHeld = inputHeld.any(func(v) : return v)
 

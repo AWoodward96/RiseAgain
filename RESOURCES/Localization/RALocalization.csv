@@ -178,3 +178,5 @@ des_flying_name,Flying
 des_flying_desc,This Unit can fly over all Terrain.
 art_charge_name,Brazen Charge
 art_charge_desc,"Charge forward and push Units you collide with with you. If you collide with a wall or another Unit, deal Collision Damage to both."
+ui_select_a_route,Select a Campaign:
+ui_set_off,Set off ->

@@ -8,7 +8,11 @@ class_name CampaignTemplate
 @export var UnitHoldingArea : Node2D
 @export var MapRewardTable : LootTable # The loot table that the map will default to if not overwritten by the node itself
 
-var PersistData : CampaignPersistData
+@export_category("Meta Data")
+@export var loc_name : String
+@export var loc_icon : Texture2D
+
+#var PersistData : CampaignPersistData
 
 var campaignLedger : Array[int]
 var currentNode : CampaignNode
@@ -32,8 +36,8 @@ func StartCampaign(_roster : Array[UnitTemplate]):
 	CampaignRng.seed = CampaignSeed
 
 	StartingRosterTemplates = _roster
-	if PersistData == null:
-		PersistData = CampaignPersistData.new()
+	#if PersistData == null:
+		#PersistData = CampaignPersistData.new()
 
 	campaignLedger.clear()
 	currentNode = ledger_root.get_child(0)
@@ -64,7 +68,7 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 		await ui.OnRosterSelected
 		CreateSquadInstance()
 
-	PersistData.Construct(CurrentRoster)
+	#PersistData.Construct(CurrentRoster)
 	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNG)
 	current_map_parent.add_child(map)
 	campaignLedger.append(_index)

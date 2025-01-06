@@ -66,3 +66,7 @@ static func ShowMenu():
 	GameManager.add_child(csrMenu)
 	CSR.Open = true
 	return csrMenu
+
+
+func TestSaveGame() -> void:
+	PersistDataManager.SaveGame()

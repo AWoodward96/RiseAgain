@@ -13,9 +13,6 @@ func GetSpecificData(_index : int, _unit : UnitInstance):
 	pass
 
 func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false, _isGlobalAttack : bool = false):
-	var relativeOrigin = _origin
-
-
 	var retArray : Array[TileTargetedData]
 	var index = 0
 	for shapedTile in GetCoords(_sourceUnit):

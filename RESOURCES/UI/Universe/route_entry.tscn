@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://d15536g3bwgq0"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/Universe/RouteEntry.gd" id="1_iyh24"]
+[ext_resource type="Texture2D" uid="uid://dnrv84l38b3db" path="res://ART/Icons/Route/maroon_forest.png" id="2_hf7rs"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_w3u64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4g44o"]
+font = ExtResource("3_w3u64")
+font_color = Color(0, 0, 0, 1)
+
+[node name="RouteEntry" type="Panel" node_paths=PackedStringArray("EntrySelectionBG", "RouteLabel", "RouteIcon")]
+custom_minimum_size = Vector2(0, 96)
+offset_bottom = 96.0
+focus_mode = 2
+script = ExtResource("1_iyh24")
+EntrySelectionBG = NodePath("entryBG")
+RouteLabel = NodePath("MarginContainer/Control/RouteName")
+RouteIcon = NodePath("MarginContainer/Control/Icon")
+
+[node name="entryBG" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="bgagain" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/Control"]
+layout_mode = 2
+offset_right = 88.0
+offset_bottom = 88.0
+texture = ExtResource("2_hf7rs")
+expand_mode = 1
+
+[node name="RouteName" type="Label" parent="MarginContainer/Control"]
+layout_mode = 2
+offset_left = 120.0
+offset_top = 13.0
+offset_right = 459.0
+offset_bottom = 77.0
+text = "routeName"
+label_settings = SubResource("LabelSettings_4g44o")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/Control"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 25.0
+offset_right = 527.0
+offset_bottom = 60.0
+focus_mode = 0
+text = "ui_set_off"
+
+[connection signal="focus_entered" from="." to="." method="OnFocus"]
+[connection signal="focus_exited" from="." to="." method="OnUnFocus"]
+[connection signal="pressed" from="MarginContainer/Control/Button" to="." method="OnPressed"]

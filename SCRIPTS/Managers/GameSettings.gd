@@ -11,6 +11,7 @@ enum Direction { Up, Right, Down, Left }
 
 @export_category("Unit Data")
 @export var PlayerControllerPrefab : PackedScene
+@export var TopdownPlayerControllerPrefab : PackedScene
 @export var DerivedStatDefinitions : Array[DerivedStatDef]
 
 @export var UIDisplayedStats : Array[StatTemplate]
@@ -49,6 +50,9 @@ enum Direction { Up, Right, Down, Left }
 @export var AffinityAccuracyModifier : int = 10
 @export var AllAffinities : Array[AffinityTemplate]
 
+@export_category("Universe Data")
+
+@export var GlobalResources : Array[ResourceTemplate]
 
 static func GetVectorFromDirection(_dir : Direction):
 	match(_dir):

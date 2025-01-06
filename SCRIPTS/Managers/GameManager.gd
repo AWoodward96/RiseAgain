@@ -6,6 +6,7 @@ static var CurrentCampaign : CampaignTemplate
 @export var UnitSettings : UnitSettingsTemplate
 @export var LocalizationSettings : LocSettings
 
+
 @export var LoadingScreenPrefab : PackedScene
 
 var loadingScreen : LoadingScreen
