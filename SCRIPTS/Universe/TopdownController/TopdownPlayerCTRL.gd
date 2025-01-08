@@ -25,6 +25,8 @@ func UpdateCameraBounds():
 func _process(_delta):
 	if BlockInputCounter > 0:
 		return
+	elif BlockInputCounter < 0:
+		BlockInputCounter = 0
 
 	Move(_delta)
 	if CurrentInteractable != null && InputManager.selectDown:

@@ -22,3 +22,4 @@ class_name UnitTemplate
 @export var loc_DisplayName : String
 @export var loc_Description : String
 @export var icon : Texture2D
+@export var persistDataScript : Script

@@ -8,7 +8,6 @@ static var CurrentBastion : Bastion
 @onready var environment_parent: Node2D = $EnvironmentParent
 
 var environment : TopdownEnvironment
-var selectedRoster : Array[UnitTemplate]
 
 
 func _ready():

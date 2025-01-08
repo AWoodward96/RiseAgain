@@ -36,8 +36,7 @@ func StartCampaign(_roster : Array[UnitTemplate]):
 	CampaignRng.seed = CampaignSeed
 
 	StartingRosterTemplates = _roster
-	#if PersistData == null:
-		#PersistData = CampaignPersistData.new()
+	CreateSquadInstance()
 
 	campaignLedger.clear()
 	currentNode = ledger_root.get_child(0)

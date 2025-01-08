@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://61oi65hp3jdj"]
+[gd_scene load_steps=20 format=4 uid="uid://61oi65hp3jdj"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Universe/TopdownEnvironment.gd" id="1_bp5x6"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="2_y5i7m"]
@@ -9,6 +9,11 @@
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="6_cldrg"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="7_ok3a8"]
 [ext_resource type="Script" path="res://SCRIPTS/Universe/Tavern.gd" id="9_qtpfn"]
+[ext_resource type="PackedScene" uid="uid://ba6ls0pu4git6" path="res://RESOURCES/UI/TavernUI/TavernCharacterEntry.tscn" id="10_0ac81"]
+[ext_resource type="Theme" uid="uid://y2p37fdv061m" path="res://RESOURCES/Theme/RusticPaper.tres" id="10_fjuv4"]
+[ext_resource type="PackedScene" uid="uid://hkrdforcue3c" path="res://RESOURCES/UI/TavernUI/unit_icon.tscn" id="11_j58iv"]
+[ext_resource type="FontFile" uid="uid://pt15ohmwthe1" path="res://ART/Fonts/fude.ttf" id="11_t68hm"]
+[ext_resource type="LabelSettings" uid="uid://klboyvialx7" path="res://RESOURCES/Theme/TavernText.tres" id="13_xnyyx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_byjll"]
 shader = ExtResource("4_1i6q3")
@@ -20,6 +25,42 @@ shader_parameter/minimal_flickering_alpha = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jl8"]
 size = Vector2(150, 101)
+
+[sub_resource type="Animation" id="Animation_hwwui"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.217638, 0.125),
+"update": 0,
+"values": [Vector2(0, -640), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_crhww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beymq"]
+_data = {
+"RESET": SubResource("Animation_crhww"),
+"Show": SubResource("Animation_hwwui")
+}
 
 [node name="Env1" type="Node2D" node_paths=PackedStringArray("playerNode", "interactableParent")]
 script = ExtResource("1_bp5x6")
@@ -46,12 +87,14 @@ position = Vector2(1715, 774)
 
 [node name="Interactables" type="Node2D" parent="."]
 
-[node name="SignPost" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "RouteEntryParent", "interactableArea", "visual")]
+[node name="SignPost" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "RouteEntryParent", "LoadoutEntryParent", "interactableArea", "visual")]
 position = Vector2(2688, 709)
 script = ExtResource("3_ovcri")
 UIParent = NodePath("UI")
 RouteEntryParent = NodePath("UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Routes/VBoxContainer")
 RouteEntryPrefab = ExtResource("4_5x7nt")
+LoadoutEntryParent = NodePath("UI/LoadoutParent/MarginContainer/HBoxContainer")
+LoadoutEntryPrefab = ExtResource("11_j58iv")
 interactableArea = NodePath("InteractableArea")
 visual = NodePath("Sprite2D")
 
@@ -69,7 +112,6 @@ position = Vector2(6, 46.5)
 shape = SubResource("RectangleShape2D_f6jl8")
 
 [node name="UI" type="CanvasLayer" parent="Interactables/SignPost"]
-visible = false
 
 [node name="Margin" type="MarginContainer" parent="Interactables/SignPost/UI"]
 anchors_preset = 15
@@ -144,10 +186,80 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Tavern" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "interactableArea", "visual")]
+[node name="LoadoutParent" type="Control" parent="Interactables/SignPost/UI"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Interactables/SignPost/UI/LoadoutParent"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = -29.0
+offset_right = 136.0
+offset_bottom = 11.0
+
+[node name="ColorRect" type="ColorRect" parent="Interactables/SignPost/UI/LoadoutParent/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87, 0.87, 0.87, 1)
+
+[node name="Label" type="Label" parent="Interactables/SignPost/UI/LoadoutParent/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Party"
+label_settings = ExtResource("13_xnyyx")
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Interactables/SignPost/UI/LoadoutParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/SignPost/UI/LoadoutParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/SignPost/UI/LoadoutParent/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("7_ok3a8")
+
+[node name="Tavern" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "Anim", "CharacterEntryParent", "LoadoutEntryParent", "interactableArea", "visual")]
 position = Vector2(1654, 456)
 script = ExtResource("9_qtpfn")
 UIParent = NodePath("UI")
+Anim = NodePath("UI/AnimationPlayer")
+CharacterEntryParent = NodePath("UI/Root/PaperParent/MarginContainer/MainContent/ScrollContainer/CharacterEntryParent")
+CharacterEntryPrefab = ExtResource("10_0ac81")
+LoadoutEntryParent = NodePath("UI/Root/LoadoutParent/MarginContainer/HBoxContainer")
+LoadoutEntryPrefab = ExtResource("11_j58iv")
 interactableArea = NodePath("InteractableArea")
 visual = NodePath("Sprite2D")
 
@@ -167,75 +279,237 @@ shape = SubResource("RectangleShape2D_f6jl8")
 [node name="UI" type="CanvasLayer" parent="Interactables/Tavern"]
 visible = false
 
-[node name="Margin" type="MarginContainer" parent="Interactables/Tavern/UI"]
+[node name="Root" type="Control" parent="Interactables/Tavern/UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TableBG" type="ColorRect" parent="Interactables/Tavern/UI/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.552941, 0.384314, 0.411765, 1)
+
+[node name="PaperParent" type="Control" parent="Interactables/Tavern/UI/Root"]
+custom_minimum_size = Vector2(672, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 672.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Tavern/UI/Root/PaperParent"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
 
-[node name="ColorRect" type="ColorRect" parent="Interactables/Tavern/UI/Margin"]
+[node name="PaperBG" type="ColorRect" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer"]
 layout_mode = 2
-color = Color(0.79, 0.79, 0.79, 1)
+color = Color(0.8, 0.803922, 0.74902, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Interactables/Tavern/UI/Margin"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/Tavern/UI/Margin/MarginContainer"]
+[node name="MainContent" type="VBoxContainer" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Control" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer"]
+[node name="TitleParent" type="Control" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer/Title"]
+[node name="Title" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_top = 11.0
+offset_right = 179.0
+offset_bottom = 43.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_cldrg")
-text = "ui_select_a_route"
-fit_content = true
+theme = ExtResource("10_fjuv4")
+theme_override_colors/default_color = Color(0.33, 0.2607, 0.27687, 1)
+theme_override_font_sizes/bold_italics_font_size = 32
+bbcode_enabled = true
+text = "[center][b][i]Mourning Swan Tavern[/i][/b][/center]"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer"]
+[node name="PageNumber" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 47.0
+offset_bottom = 50.0
+theme = ExtResource("10_fjuv4")
+theme_type_variation = &"PageNum"
+bbcode_enabled = true
+text = "[b]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -270.0
+offset_top = 42.0
+offset_right = 190.0
+offset_bottom = 82.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
-[node name="Routes" type="Control" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="DateLabel" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent/HBoxContainer/Control"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 77.0
+offset_bottom = 51.0
+theme = ExtResource("10_fjuv4")
+text = "Date:"
+
+[node name="DateNumber" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent/HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("10_fjuv4")
+theme_override_fonts/normal_font = ExtResource("11_t68hm")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[left]January 11th 1XXX[/left]"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Routes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_ok3a8")
-
-[node name="Units" type="Control" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(192, 416)
+[node name="HSeparator" type="HSeparator" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Units"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SecondaryHeader" type="MarginContainer" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
 
-[node name="FillSpace" type="Control" parent="Interactables/Tavern/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Units/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/SecondaryHeader"]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/SecondaryHeader/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_fjuv4")
+text = "Name"
+fit_content = true
+
+[node name="Status" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/SecondaryHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_fjuv4")
+text = "Status"
+fit_content = true
+
+[node name="Room" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/SecondaryHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_fjuv4")
+text = "Room"
+fit_content = true
+
+[node name="InParty" type="RichTextLabel" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/SecondaryHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_fjuv4")
+text = "In Party"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent"]
 layout_mode = 2
 size_flags_vertical = 3
+follow_focus = true
+
+[node name="CharacterEntryParent" type="VBoxContainer" parent="Interactables/Tavern/UI/Root/PaperParent/MarginContainer/MainContent/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_ok3a8")
+
+[node name="LoadoutParent" type="Control" parent="Interactables/Tavern/UI/Root"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="Interactables/Tavern/UI/Root/LoadoutParent"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = -29.0
+offset_right = 136.0
+offset_bottom = 11.0
+
+[node name="ColorRect" type="ColorRect" parent="Interactables/Tavern/UI/Root/LoadoutParent/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87, 0.87, 0.87, 1)
+
+[node name="Label" type="Label" parent="Interactables/Tavern/UI/Root/LoadoutParent/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Party"
+label_settings = ExtResource("13_xnyyx")
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Interactables/Tavern/UI/Root/LoadoutParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Tavern/UI/Root/LoadoutParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/Tavern/UI/Root/LoadoutParent/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("7_ok3a8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Tavern/UI"]
+libraries = {
+"": SubResource("AnimationLibrary_beymq")
+}
+autoplay = "Show"

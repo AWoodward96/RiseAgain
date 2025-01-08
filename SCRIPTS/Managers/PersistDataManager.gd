@@ -40,19 +40,35 @@ func LoadFromJSON(_key : String, _dict : Dictionary):
 func LoadPersistData():
 	if !FileAccess.file_exists(GLOBAL_FILE):
 		universeData = UniversePersistence.CreateNewUniversePersist()
+		universeData.bastionData.GenerateTavernOccupants(3, [] as Array[UnitTemplate])
 	else:
 		var save_file = FileAccess.open(GLOBAL_FILE, FileAccess.READ)
 
 		# It should only be one line, but we'll see
-		var json = save_file.get_as_text()
+		var fileText = save_file.get_as_text()
 		var jsonHelper = JSON.new()
-		var parsedString = jsonHelper.parse_string(json)
+		var parsedString = JSON.parse_string(fileText)
 		universeData = UniversePersistence.new()
 		universeData.name = UniversePersistence.NODENAME
 		add_child(universeData)
 		universeData.FromJSON(parsedString)
+		universeData.LoadUnitPersistence()
 
 	pass
+
+func ResourcePathToJSON(_array : Array):
+	var arrayAsJSONString : Array[String]
+	for resource in _array:
+		arrayAsJSONString.append(resource.resource_path)
+	return arrayAsJSONString
+
+func JSONtoResourceFromPath(_array, _assignedArrayType : Array):
+	_assignedArrayType.clear()
+	var temp = []
+	for path in _array:
+		temp.append(load(path))
+
+	_assignedArrayType.assign(temp)
 
 func ArrayToJSON(_array : Array[Variant]):
 	var arrayAsJSONString : Array[String]

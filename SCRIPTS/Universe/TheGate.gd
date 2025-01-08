@@ -4,6 +4,8 @@ class_name Gate
 @export var UIParent : Node
 @export var RouteEntryParent : EntryList
 @export var RouteEntryPrefab : PackedScene
+@export var LoadoutEntryParent : EntryList
+@export var LoadoutEntryPrefab : PackedScene
 
 var hasInteractable : bool
 var availableCampaigns : Array[CampaignTemplate]
@@ -40,7 +42,15 @@ func UpdateUI():
 		entry.Initialize(self, campaignTemplate)
 
 	RouteEntryParent.FocusFirst()
+	RefreshLoadout()
 	pass
+
+func RefreshLoadout():
+	LoadoutEntryParent.ClearEntries()
+	var loadout = PersistDataManager.universeData.bastionData.SelectedRoster
+	for unit in loadout:
+		var textRect = LoadoutEntryParent.CreateEntry(LoadoutEntryPrefab)
+		textRect.texture = unit.icon
 
 func GatherCampaigns():
 	availableCampaigns.clear()
@@ -50,7 +60,7 @@ func GatherCampaigns():
 			availableCampaigns.append(template)
 
 func CampaignSelected(_campaignTemplate : CampaignTemplate):
-	Main.Root.StartCampaign(_campaignTemplate, Bastion.CurrentBastion.selectedRoster)
+	Main.Root.StartCampaign(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster)
 	pass
 
 func OnShutdown():

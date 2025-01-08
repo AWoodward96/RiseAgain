@@ -180,3 +180,9 @@ art_charge_name,Brazen Charge
 art_charge_desc,"Charge forward and push Units you collide with with you. If you collide with a wall or another Unit, deal Collision Damage to both."
 ui_select_a_route,Select a Campaign:
 ui_set_off,Set off ->
+campaign_maroon_forest,Maroon Forest
+campaign_mountain,Mountain Path
+res_gold_name,Gold
+res_gold_desc,Coins from days gone by. Can be exchanged for goods and services in the Bastion.
+ui_unit_in_campsite,Campsite
+ui_unit_in_tavern,Room {NUM}
