@@ -1,10 +1,15 @@
 extends Node2D
 class_name CampaignTemplate
 
+@export_category("Campaign Information")
+@export var startingCampaignOptions : Array[CampaignBlock] # Just use duplicate entries if you want a 'weighted list'
+@export var campaignBlockCap : int = -1
+@export var campaignFinale : CampaignBlock
 
 @export var ledger_root  : Node2D
 @export var AutoProceed : bool # When true, there is no campaign selection, we just go to the next node at index 0 depending on the ledger
 @export var current_map_parent : Node2D
+
 @export var UnitHoldingArea : Node2D
 @export var MapRewardTable : LootTable # The loot table that the map will default to if not overwritten by the node itself
 
@@ -12,11 +17,15 @@ class_name CampaignTemplate
 @export var loc_name : String
 @export var loc_icon : Texture2D
 
-#var PersistData : CampaignPersistData
-
-var campaignLedger : Array[int]
-var currentNode : CampaignNode
+var campaignLedger : Array[MapOption]
 var currentMap : Map
+var currentMapOption : MapOption
+var startingCampaignBlock : CampaignBlock
+var currentCampaignBlock : CampaignBlock
+var currentMapBlock : MapBlock
+
+var campaignBlockMapIndex : int
+var traversedCampaignBlocks : int
 
 var CampaignRng : RandomNumberGenerator
 var CampaignSeed : int
@@ -27,7 +36,6 @@ var StartingRosterTemplates : Array[UnitTemplate]
 var ConvoyParent : Node2D
 var Convoy : Array[Item]
 
-var CurrentMap
 
 func StartCampaign(_roster : Array[UnitTemplate]):
 	var cachedRng = RandomNumberGenerator.new()
@@ -38,19 +46,53 @@ func StartCampaign(_roster : Array[UnitTemplate]):
 	StartingRosterTemplates = _roster
 	CreateSquadInstance()
 
-	campaignLedger.clear()
-	currentNode = ledger_root.get_child(0)
-	if currentNode != null && AutoProceed:
-		StartMap(currentNode, 0)
-
-
-func StartMap(_campaignNode : CampaignNode, _index : int):
-	var map = _campaignNode.MapPrefab.instantiate() as Map
-	if map == null:
+	if startingCampaignOptions.size() == 0:
+		push_error("Campaign: " , name, " - does not have a starting campaign block and will not function.")
 		return
 
+	var startingCampaignBlockIndex = CampaignRng.randi_range(0, startingCampaignOptions.size() - 1)
+
+	startingCampaignBlock = startingCampaignOptions[startingCampaignBlockIndex]
+	currentCampaignBlock = startingCampaignBlock
+	campaignBlockMapIndex = 0
+	traversedCampaignBlocks = 0
+	StartNextMap()
+
+func StartNextMap():
+	if campaignBlockMapIndex >= currentCampaignBlock.mapOptions.size():
+		traversedCampaignBlocks += 1
+		campaignBlockMapIndex = 0
+		if campaignBlockCap != -1 && traversedCampaignBlocks >= campaignBlockCap && campaignFinale != null:
+			# We in endgame
+			currentCampaignBlock = campaignFinale
+		else:
+			if currentCampaignBlock.nextCampaignBlocks.size() == 0:
+				# Well it's not.... easy to do anything here so just... end the map
+
+				return
+			# if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
+			var nextIndex = CampaignRng.randi_range(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
+			#currentCampaignBlock = currentCampaignBlock.nextCampaignBlocks[nextIndex]
+			currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
+
+
 	GameManager.HideLoadingScreen()
-	currentMap = map
+	currentMapBlock = currentCampaignBlock.GetMapBlock(campaignBlockMapIndex)
+	if currentMapBlock == null:
+		push_error("Campaign: " , name, " - rolled a map block from the map options that is null somehow.")
+		return
+
+	currentMapOption = currentMapBlock.GetMapFromBlock()
+
+	if currentMap != null:
+		currentMap.queue_free()
+
+	var newMap = currentMapOption.GetMap()
+	if newMap == null:
+		push_error("Campaign: " , name, " - Could not descern what the next map should be from index: ", campaignBlockMapIndex)
+		return
+
+	currentMap = currentMapOption.GetMap().instantiate() as Map
 	var MapRNG = CampaignRng.randi()
 
 	# preinitialize collects up the spawners and the starting positions for usage
@@ -67,20 +109,16 @@ func StartMap(_campaignNode : CampaignNode, _index : int):
 		await ui.OnRosterSelected
 		CreateSquadInstance()
 
-	#PersistData.Construct(CurrentRoster)
+
 	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNG)
-	current_map_parent.add_child(map)
-	campaignLedger.append(_index)
+	current_map_parent.add_child(currentMap)
+	campaignLedger.append(currentMapOption)
 
 func CreateSquadInstance():
 	for unit in StartingRosterTemplates:
 		AddUnitToRoster(unit)
 
 func MapComplete():
-	var walkedNode = ledger_root
-	for i in campaignLedger:
-		walkedNode = walkedNode.get_child(i)
-
 	# Persist the current roster between maps
 	RemoveEmptyRosterEntries()
 	for unit in CurrentRoster:
@@ -91,12 +129,14 @@ func MapComplete():
 
 		UnitHoldingArea.add_child(unit)
 
-	var nextMap
-	if AutoProceed:
-		nextMap = walkedNode.get_child(0)
-		if nextMap != null:
-			currentMap.queue_free()
-			StartMap(nextMap, 0)
+	campaignBlockMapIndex += 1
+	StartNextMap()
+	#var nextMap
+	#if AutoProceed:
+		#nextMap = walkedNode.get_child(0)
+		#if nextMap != null:
+			#currentMap.queue_free()
+			#StartMap(nextMap, 0)
 
 func RemoveEmptyRosterEntries():
 	var i = CurrentRoster.size() - 1
@@ -106,8 +146,8 @@ func RemoveEmptyRosterEntries():
 		i -= 1
 
 func GetMapRewardTable():
-	if currentNode != null && currentNode.RewardOverride != null:
-		return currentNode.RewardOverride
+	if currentMapOption != null && currentMapOption.rewardOverride != null:
+		return currentMapOption.rewardOverride
 
 	return MapRewardTable
 
@@ -144,3 +184,10 @@ func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 0):
 	unitInstance.Initialize(_unitTemplate, _levelOverride)
 	CurrentRoster.append(unitInstance)
 	UnitHoldingArea.add_child(unitInstance)
+
+func IsUnitInRoster(_unitTemplate : UnitTemplate):
+	for u in CurrentRoster:
+		if u.Template == _unitTemplate:
+			return true
+
+	return false

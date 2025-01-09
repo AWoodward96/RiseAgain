@@ -66,3 +66,13 @@ func Roll(rng : RandomNumberGenerator):
 				return entry.Table.Roll(rng)
 			else:
 				return entry
+
+
+func ReCalcWeightSum(_lootTable : LootTable):
+	_lootTable.WeightSum = 0
+	for e in _lootTable.Table:
+		if e == null:
+			continue
+
+		_lootTable.WeightSum += e.Weight
+		e.AccumulatedWeight = _lootTable.WeightSum

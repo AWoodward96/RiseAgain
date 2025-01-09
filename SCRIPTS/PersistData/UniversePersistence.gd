@@ -55,9 +55,7 @@ func LoadUnitPersistence():
 
 				# It should only be one line, but we'll see
 				var fileText = save_file.get_as_text()
-				var jsonHelper = JSON.new()
 				var parsedString = JSON.parse_string(fileText)
-
 				var persist = UnitPersistBase.FromJSON(parsedString)
 				persist.name = persist.Template.DebugName + PersistDataManager.PERSIST_DATA_SUFFIX
 				unitPersistParent.add_child(persist)

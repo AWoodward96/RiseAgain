@@ -61,9 +61,9 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 
 	if _lootRewardEntry is ItemRewardEntry :
 		# Default to giving the first person in the roster the item
-		if _unit == null:
-			push_error("Can't give reward to a null unit. Item has been sent to convoy")
-		else:
+		if _unit != null:
+			# NOTE: if Unit is null, then the item has been sent to the convoy via a different sequence
+
 			var counter = 0
 			var equipped = false
 			for slot in _unit.ItemSlots:

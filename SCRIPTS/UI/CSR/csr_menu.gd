@@ -5,6 +5,7 @@ static var Open : bool = false
 static var AllAbilitiesCost0 : bool = false
 static var AlwaysCrit : bool = false
 static var NeverHit : bool = false
+static var AutoWin : bool = false
 
 @export var FirstEntry : Control
 @export var SpecificItem : PackedScene
@@ -59,7 +60,8 @@ func btnGiveSpecificItem():
 		unit.EquipItem(1, SpecificItem2)
 	pass
 
-
+func btnAutoWin():
+	AutoWin = true
 
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR

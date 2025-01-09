@@ -46,7 +46,6 @@ func LoadPersistData():
 
 		# It should only be one line, but we'll see
 		var fileText = save_file.get_as_text()
-		var jsonHelper = JSON.new()
 		var parsedString = JSON.parse_string(fileText)
 		universeData = UniversePersistence.new()
 		universeData.name = UniversePersistence.NODENAME

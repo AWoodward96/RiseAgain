@@ -53,9 +53,14 @@ text = "Never Hit"
 layout_mode = 2
 text = "Test Save Game"
 
+[node name="AutoWin" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Auto Win"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AlwaysCrit" to="." method="btnAlwaysCrit"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/NeverHit" to="." method="btnNeverHit"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/TestSaveGame" to="." method="TestSaveGame"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoWin" to="." method="btnAutoWin"]

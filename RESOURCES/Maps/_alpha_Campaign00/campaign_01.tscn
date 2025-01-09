@@ -1,56 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyq5ckgj34tlt"]
+[gd_scene load_steps=6 format=3 uid="uid://cyq5ckgj34tlt"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_e5c8l"]
-[ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignNode.gd" id="2_f8ouy"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_u6xxn"]
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="2_w31g5"]
-[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_01.tscn" id="3_gff2l"]
 [ext_resource type="Texture2D" uid="uid://dnrv84l38b3db" path="res://ART/Icons/Route/maroon_forest.png" id="3_n0d4p"]
-[ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_02.tscn" id="4_4t7dt"]
-[ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_campsite_01.tscn" id="4_h2iby"]
-[ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_03.tscn" id="5_tqnkq"]
-[ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_04.tscn" id="7_ly3f1"]
-[ext_resource type="PackedScene" uid="uid://b1edodfhgyr3p" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_05.tscn" id="8_8wabd"]
-[ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_06.tscn" id="10_qqcec"]
+[ext_resource type="Resource" uid="uid://co274sk3utsf2" path="res://RESOURCES/Maps/CampaignBlocks/cb_maroon_early.tres.tres" id="3_t06ym"]
 
 [node name="Campaign01" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent", "UnitHoldingArea")]
 script = ExtResource("1_e5c8l")
-ledger_root = NodePath("LedgerRoot")
+startingCampaignOptions = Array[ExtResource("2_u6xxn")]([ExtResource("3_t06ym")])
+campaignBlockCap = null
+ledger_root = NodePath("")
 AutoProceed = true
 current_map_parent = NodePath("CurrentMap")
 UnitHoldingArea = NodePath("UnitHoldingArea")
 MapRewardTable = ExtResource("2_w31g5")
 loc_name = "campaign_maroon_forest"
 loc_icon = ExtResource("3_n0d4p")
-
-[node name="LedgerRoot" type="Node2D" parent="."]
-
-[node name="0" type="Node2D" parent="LedgerRoot"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("3_gff2l")
-
-[node name="1" type="Node2D" parent="LedgerRoot/0"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("4_4t7dt")
-
-[node name="2" type="Node2D" parent="LedgerRoot/0/1"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("5_tqnkq")
-
-[node name="Campsite" type="Node2D" parent="LedgerRoot/0/1/2"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("4_h2iby")
-
-[node name="3" type="Node2D" parent="LedgerRoot/0/1/2/Campsite"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("7_ly3f1")
-
-[node name="4" type="Node2D" parent="LedgerRoot/0/1/2/Campsite/3"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("8_8wabd")
-
-[node name="5" type="Node2D" parent="LedgerRoot/0/1/2/Campsite/3/4"]
-script = ExtResource("2_f8ouy")
-MapPrefab = ExtResource("10_qqcec")
 
 [node name="CurrentMap" type="Node2D" parent="."]
 unique_name_in_owner = true

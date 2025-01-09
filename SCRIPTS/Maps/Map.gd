@@ -77,9 +77,11 @@ func _process(_delta):
 
 	if mapType == MAPTYPE.Standard:
 		if WinCondition != null && MapState is CombatState:
-			if WinCondition.CheckObjective(self):
+			if WinCondition.CheckObjective(self) || CSR.AutoWin:
 				# Wait for everything to resolve first
 				if GlobalStackClear():
+					if CSR.AutoWin:
+						CSR.AutoWin = false
 					ChangeMapState(VictoryState.new())
 
 func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitInstance], _rngSeed : int):
