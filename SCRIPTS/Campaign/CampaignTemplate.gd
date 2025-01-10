@@ -6,7 +6,6 @@ class_name CampaignTemplate
 @export var campaignBlockCap : int = -1
 @export var campaignFinale : CampaignBlock
 
-@export var ledger_root  : Node2D
 @export var AutoProceed : bool # When true, there is no campaign selection, we just go to the next node at index 0 depending on the ledger
 @export var current_map_parent : Node2D
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_g1xjk"]
-[ext_resource type="PackedScene" uid="uid://cyq5ckgj34tlt" path="res://RESOURCES/Maps/_alpha_Campaign00/campaign_01.tscn" id="1_ir5fq"]
+[ext_resource type="PackedScene" uid="uid://cyq5ckgj34tlt" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_forest_campaign.tscn" id="1_ir5fq"]
 [ext_resource type="Script" path="res://SCRIPTS/Managers/GameSettings.gd" id="1_wj702"]
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="2_jwfbj"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_buqcn"]

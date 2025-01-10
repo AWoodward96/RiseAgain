@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_yih10"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_lmyna"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_s4lpw"]
-[ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_04.tscn" id="3_3eu8k"]
+[ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b01_default.tscn" id="3_3eu8k"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="4_kkv2s"]
-[ext_resource type="PackedScene" uid="uid://b1edodfhgyr3p" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_05.tscn" id="5_7i4j8"]
-[ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/c_0_map_06.tscn" id="6_t05ht"]
+[ext_resource type="PackedScene" uid="uid://b1edodfhgyr3p" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b02_default.tscn" id="5_7i4j8"]
+[ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b03_default.tscn" id="6_t05ht"]
 
 [sub_resource type="Resource" id="Resource_06hbk"]
 script = ExtResource("2_s4lpw")
