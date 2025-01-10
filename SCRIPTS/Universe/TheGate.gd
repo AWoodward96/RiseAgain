@@ -60,7 +60,7 @@ func GatherCampaigns():
 			availableCampaigns.append(template)
 
 func CampaignSelected(_campaignTemplate : CampaignTemplate):
-	Main.Root.StartCampaign(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster)
+	GameManager.StartCampaign(CampaignInitData.Construct(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
 	pass
 
 func OnShutdown():

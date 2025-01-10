@@ -20,4 +20,5 @@ func _ready():
 func ShutDown():
 	if environment != null:
 		environment.Shutdown()
+	queue_free()
 	pass

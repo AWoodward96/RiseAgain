@@ -1,0 +1,331 @@
+[gd_scene load_steps=34 format=4 uid="uid://l37idahcw0k7"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_kqij1"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_y6wk6"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_3rorp"]
+[ext_resource type="Resource" uid="uid://8pqnjdx0myv4" path="res://RESOURCES/Maps/OptionalObjectives/killPrizedBuck.tres" id="4_vkcib"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="5_ivtap"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_olhjq"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="7_xmhas"]
+[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_wa7fq"]
+[ext_resource type="Texture2D" uid="uid://b455es5okh5je" path="res://ART/Environment/_alpha_set0/c_0_map_1_leafmap.png" id="9_avicm"]
+[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="10_qqi5i"]
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="11_cxihk"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="12_7aky0"]
+[ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="13_lyrvg"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="14_ypai4"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="15_8t8ce"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="16_1ad7b"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="17_e3qc3"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="18_mrsgm"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="18_w2kbw"]
+[ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="19_i6jsy"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="20_gy7yh"]
+
+[sub_resource type="Resource" id="Resource_vm3u1"]
+script = ExtResource("2_y6wk6")
+loc_description = ""
+
+[sub_resource type="Resource" id="Resource_1u085"]
+script = ExtResource("15_8t8ce")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_jto7i"]
+script = ExtResource("15_8t8ce")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_8tche"]
+script = ExtResource("15_8t8ce")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_vtkl2"]
+script = ExtResource("17_e3qc3")
+
+[sub_resource type="Resource" id="Resource_o8bys"]
+script = ExtResource("15_8t8ce")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_7jrpa"]
+script = ExtResource("15_8t8ce")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_e8n5s"]
+script = ExtResource("18_mrsgm")
+TurnsToAggro = 1
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_wtpf7"]
+script = ExtResource("18_mrsgm")
+TurnsToAggro = 2
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_cyewq"]
+script = ExtResource("18_mrsgm")
+TurnsToAggro = 1
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_ceg4b"]
+script = ExtResource("20_gy7yh")
+positionToMoveTo = Vector2i(11, 0)
+
+[sub_resource type="Resource" id="Resource_hrfmh"]
+script = ExtResource("17_e3qc3")
+
+[node name="maroon_a02_alt" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+script = ExtResource("1_kqij1")
+GridSize = Vector2i(16, 10)
+tilemap_bg = NodePath("BG")
+tilemap_water = NodePath("Water")
+tilemap_main = NodePath("Main")
+tilemap_threat = NodePath("Threat")
+tilemap_UI = NodePath("UI")
+WinCondition = SubResource("Resource_vm3u1")
+OptionalObjectives = Array[ExtResource("3_3rorp")]([ExtResource("4_vkcib")])
+squadParent = NodePath("Squads")
+StartingPositionsParent = NodePath("StartingPositions")
+SpawnersParent = NodePath("Spawners")
+
+[node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
+points = PackedVector2Array(0, 0, 1024, 0, 1024, 640, 0, 640, 0, 0)
+closed = true
+default_color = Color(1, 0, 0, 1)
+script = ExtResource("5_ivtap")
+map = NodePath("..")
+
+[node name="Water" type="TileMapLayer" parent="."]
+z_index = -6
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAGAAMAAAAEAAcAAAAHAAMAAAAAAAcAAAAHAAQAAAAAAAcAAAAIAAQAAAAAAAcAAAAJAAQAAAAAAAcAAAAKAAQAAAAAAAcAAAALAAQAAAAAAAcAAAAMAAQAAAAAAAcAAAANAAQAAAAAAAcAAAAOAAQAAAAAAAcAAAAPAAQAAAAAAAcAAAAAAAUAAAAAAAcAAAABAAUAAAAAAAcAAAACAAUAAAAAAAcAAAADAAUAAAAAAAcAAAAEAAUAAAAAAAcAAAAEAAYAAAAAAAcAAAAFAAYAAAAEAAcAAAAGAAYAAAAEAAcAAAAHAAYAAAAAAAcAAAAIAAYAAAAAAAcAAAAJAAYAAAAAAAcAAAAKAAYAAAAAAAcAAAALAAYAAAAAAAcAAAAMAAYAAAAAAAcAAAANAAYAAAAAAAcAAAANAAcAAAABAAoAAAAOAAcAAAAAAAcAAAAPAAcAAAAAAAcAAAAAAAQAAAAAAAcAAAABAAQAAAAAAAcAAAAEAAQAAAAAAAcAAAAFAAQAAAAEAAcAAAAGAAQAAAAEAAcAAAAGAAUAAAAEAAcAAAAFAAUAAAAEAAcAAAAHAAUAAAAAAAcAAAAIAAUAAAAAAAcAAAAJAAUAAAAAAAcAAAAKAAUAAAAAAAcAAAANAAUAAAAAAAcAAAAOAAUAAAAAAAcAAAAPAAUAAAAAAAcAAAAPAAYAAAAAAAcAAAAOAAYAAAAAAAcAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAACAAAAAAAGAAAAAAACAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAACAAAAAAAHAAIAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAEAAAAAAAAAAAABAAEAAAACAAAAAAACAAEAAAAAAAAAAAAAAAIAAAABAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAACAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAACAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAABAAAAAAALAAMAAAAAAAAAAAAMAAAAAAACAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAOAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAABAAAAAAAPAAMAAAACAAAAAAAIAAMAAAABAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAABAAAAAAABAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAkAAAABAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAkAAAACAAAAAAAJAAgAAAABAAAAAAAJAAcAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAACAAAAAAAIAAcAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAABAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAACAAAAAAAGAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAPAAkAAAABAAAAAAAPAAgAAAABAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAAAAAMAAAAAAAcAAAABAAMAAAAAAAcAAAACAAMAAAAAAAcAAAADAAMAAAAAAAcAAAAEAAMAAAAAAAcAAAAFAAMAAAAEAAcAAAALAAUAAAAEAAcAAAAMAAUAAAAEAAcAAAADAAQAAAAAAAcAAAACAAQAAAAAAAcAAAA=")
+tile_set = ExtResource("6_olhjq")
+
+[node name="BG" type="TileMapLayer" parent="."]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAMAAAABAAsAAAABAAMAAAABAAsAAAACAAMAAAACAAsAAAADAAMAAAACAAsAAAAEAAMAAAACAAsAAAAFAAMAAAACAAsAAAAGAAMAAAACAAsAAAAHAAMAAAACAAkAAAAHAAQAAAAAAAsAAAAIAAQAAAABAAsAAAAJAAQAAAABAAsAAAAKAAQAAAABAAsAAAALAAQAAAABAAsAAAAMAAQAAAABAAsAAAANAAQAAAABAAsAAAAOAAQAAAABAAsAAAAPAAQAAAABAAsAAAAAAAUAAAABAAgAAAABAAUAAAABAAgAAAACAAUAAAACAAgAAAADAAUAAAADAAgAAAAEAAYAAAABAAgAAAAFAAYAAAABAAgAAAAGAAYAAAABAAgAAAAHAAYAAAABAAgAAAAIAAYAAAABAAgAAAAJAAYAAAABAAgAAAAKAAYAAAABAAgAAAALAAYAAAABAAgAAAAMAAYAAAABAAgAAAANAAYAAAADAAgAAAANAAcAAAABAAoAAAAOAAcAAAACAAgAAAAPAAcAAAACAAgAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAACAAAAAAAGAAAAAAACAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAACAAAAAAAHAAIAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAEAAAAAAAAAAAABAAEAAAACAAAAAAACAAEAAAAAAAAAAAAAAAIAAAABAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAACAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAACAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAABAAAAAAALAAMAAAAAAAAAAAAMAAAAAAACAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAOAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAABAAAAAAAPAAMAAAACAAAAAAAIAAMAAAABAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAABAAoAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAABAAAAAAABAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAkAAAABAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAkAAAACAAAAAAAJAAgAAAABAAAAAAAJAAcAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAACAAAAAAAIAAcAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAABAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAACAAAAAAAGAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAPAAkAAAABAAAAAAAPAAgAAAABAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAA=")
+tile_set = ExtResource("6_olhjq")
+
+[node name="BG2" type="TileMapLayer" parent="."]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAMAAAABAAsAAAABAAMAAAABAAsAAAACAAMAAAACAAsAAAADAAMAAAACAAsAAAAEAAMAAAACAAsAAAAFAAMAAAACAAsAAAAGAAMAAAACAAsAAAAHAAMAAAACAAkAAAAHAAQAAAAAAAsAAAAIAAQAAAABAAsAAAAJAAQAAAABAAsAAAAKAAQAAAABAAsAAAALAAQAAAABAAsAAAAMAAQAAAABAAsAAAANAAQAAAABAAsAAAAOAAQAAAABAAsAAAAPAAQAAAABAAsAAAAAAAUAAAABAAgAAAABAAUAAAABAAgAAAACAAUAAAACAAgAAAADAAUAAAADAAgAAAAEAAYAAAABAAgAAAAFAAYAAAABAAgAAAAGAAYAAAABAAgAAAAHAAYAAAABAAgAAAAIAAYAAAABAAgAAAAJAAYAAAABAAgAAAAKAAYAAAABAAgAAAALAAYAAAABAAgAAAAMAAYAAAABAAgAAAANAAYAAAADAAgAAAANAAcAAAABAAoAAAAOAAcAAAACAAgAAAAPAAcAAAACAAgAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAACAAAAAAAGAAAAAAACAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAACAAAAAAAHAAIAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAEAAAAAAAAAAAABAAEAAAACAAAAAAACAAEAAAAAAAAAAAAAAAIAAAABAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAACAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAACAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAABAAAAAAALAAMAAAAAAAAAAAAMAAAAAAACAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAOAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAABAAAAAAAPAAMAAAACAAAAAAAIAAMAAAABAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAABAAoAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAABAAAAAAABAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAkAAAABAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAkAAAACAAAAAAAJAAgAAAABAAAAAAAJAAcAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAACAAAAAAAIAAcAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAABAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAACAAAAAAAGAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAPAAkAAAABAAAAAAAPAAgAAAABAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAA=")
+tile_set = ExtResource("6_olhjq")
+
+[node name="Main" type="TileMapLayer" parent="."]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAKAAAAAAAAAAMAAAAJAAAAAAADAAAAAAAGAAAAAAAFAAIAAAAFAAAAAAAFAAEAAAAEAAAAAAAEAAEAAAADAAAAAAADAAAAAAACAAAAAAAFAAAAAAABAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAKAAEAAAACAAQAAAAJAAEAAAAAAAIAAAAGAAEAAAAHAAAAAAAFAAEAAAAFAAIAAAAEAAEAAAAEAAIAAAABAAEAAAAFAAIAAAAAAAEAAAAEAAIAAAAPAAEAAAAFAAIAAAAPAAAAAAAFAAEAAAAOAAEAAAAEAAIAAAAOAAAAAAAEAAEAAAAPAAkAAAAGAAAAAAAOAAkAAAAFAAAAAAANAAkAAAAEAAAAAAAMAAkAAAAGAAAAAAALAAkAAAADAAAAAAAKAAkAAAAGAAAAAAAJAAkAAAAFAAAAAAAIAAkAAAAEAAAAAAAHAAkAAAAEAAAAAAABAAkAAAAEAAAAAAAAAAkAAAAGAAAAAAAAAAgAAAACAAUAAAAAAAcAAAABAAEAAAAHAAEAAAAEAAIAAAAIAAEAAAAFAAIAAAAIAAAAAAAFAAEAAAAHAAAAAAAEAAEAAAANAAAAAAADAAMAAAANAAEAAAADAAMAAAAKAAIAAAABAAEAAAANAAIAAAADAAMAAAALAAAAAAAAAAEAAAAMAAAAAAABAAEAAAAMAAEAAAAAAAEAAAAMAAIAAAACAAEAAAALAAIAAAACAAEAAAALAAEAAAABAAEAAAAIAAYAAAAEAAAAAAAJAAYAAAAGAAAAAAAIAAgAAAAGAAAAAAAIAAcAAAAFAAAAAAAKAAMAAAABAAEAAAALAAMAAAABAAMAAAAMAAMAAAABAAUAAAANAAMAAAADAAUAAAACAAYAAAABAAQAAAADAAYAAAABAAIAAAAEAAYAAAABAAIAAAAFAAYAAAACAAIAAAADAAcAAAABAAEAAAAEAAcAAAABAAEAAAAFAAcAAAABAAEAAAAJAAIAAAAAAAMAAAAJAAMAAAAAAAMAAAAJAAQAAAAAAAUAAAAKAAQAAAABAAUAAAALAAQAAAADAAUAAAALAAcAAAABAAEAAAALAAYAAAABAAIAAAAMAAYAAAADAAIAAAAMAAcAAAADAAMAAAAMAAgAAAADAAUAAAALAAgAAAACAAUAAAAKAAgAAAAAAAUAAAAKAAcAAAAAAAQAAAAKAAYAAAAAAAIAAAACAAcAAAADAAEAAAABAAgAAAACAAUAAAABAAcAAAADAAEAAAABAAYAAAABAAEAAAAAAAYAAAABAAEAAAD//wgAAAAAAAUAAAD//wcAAAAAAAMAAAD//wYAAAAAAAQAAAD//wUAAAAAAAIAAAAAAAUAAAABAAIAAAABAAUAAAABAAIAAAACAAUAAAADAAIAAAAGAAcAAAABAAEAAAAGAAYAAAACAAIAAAAHAAcAAAADAAQAAAAHAAYAAAADAAIAAAADAAgAAAABAAUAAAACAAgAAAACAAUAAAAEAAgAAAABAAUAAAAFAAgAAAACAAUAAAAGAAgAAAABAAUAAAAHAAgAAAADAAUAAAACAAkAAAAFAAAAAAADAAkAAAAHAAAAAAAEAAkAAAAEAAAAAAAFAAkAAAAGAAAAAAAGAAkAAAAGAAAAAAA=")
+tile_set = ExtResource("6_olhjq")
+
+[node name="Extra" type="TileMapLayer" parent="."]
+z_index = -4
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAALAAMAAAANAAAAAAALAAQAAAANAAEAAAALAAUAAAANAAIAAAALAAYAAAANAAMAAAAMAAMAAAAOAAAAAAAMAAQAAAAOAAEAAAAMAAUAAAAOAAIAAAAMAAYAAAAOAAMAAAAJAAEAAAAHAAUAAAD//wEAAAAEAAUAAAACAAEAAAAHAAUAAAANAAEAAAAEAAUAAAAFAAMAAAALAAAAAAAFAAQAAAALAAEAAAAFAAUAAAALAAIAAAAFAAYAAAALAAMAAAAGAAMAAAAMAAAAAAAGAAQAAAAMAAEAAAAGAAUAAAAMAAIAAAAGAAYAAAAMAAMAAAA=")
+tile_set = ExtResource("6_olhjq")
+navigation_enabled = false
+
+[node name="Threat" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("7_xmhas")
+navigation_enabled = false
+
+[node name="UI" type="TileMapLayer" parent="."]
+z_index = -3
+use_parent_material = true
+tile_set = ExtResource("7_xmhas")
+
+[node name="C0Map1Leafmap" type="Sprite2D" parent="."]
+z_index = 1
+material = ExtResource("8_wa7fq")
+position = Vector2(512, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("9_avicm")
+
+[node name="StartingPositions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_qqi5i")]
+position = Vector2(192, 384)
+Position = Vector2i(3, 6)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_qqi5i")]
+position = Vector2(256, 448)
+Position = Vector2i(4, 7)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_qqi5i")]
+position = Vector2(192, 448)
+Position = Vector2i(3, 7)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_qqi5i")]
+position = Vector2(320, 512)
+Position = Vector2i(5, 8)
+map = NodePath("../..")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
+position = Vector2(960, 192)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("13_lyrvg")
+UnitLevel = 2
+Position = Vector2i(15, 3)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_1u085")
+
+[node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 64)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("13_lyrvg")
+UnitLevel = 2
+Position = Vector2i(12, 1)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_jto7i")
+
+[node name="Spawn_Wolf Pup6" type="Sprite2D" parent="Spawners"]
+position = Vector2(704, 64)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("13_lyrvg")
+UnitLevel = 2
+Position = Vector2i(11, 1)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_8tche")
+
+[node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
+position = Vector2(128, 64)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("16_1ad7b")
+UnitLevel = 1
+Position = Vector2i(2, 1)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_vtkl2")
+
+[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
+position = Vector2(384, 192)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("16_1ad7b")
+UnitLevel = 1
+Position = Vector2i(6, 3)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_o8bys")
+
+[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
+position = Vector2(320, 192)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("16_1ad7b")
+UnitLevel = 1
+Position = Vector2i(5, 3)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_7jrpa")
+
+[node name="Spawn_Wolf Pup7" type="Sprite2D" parent="Spawners"]
+position = Vector2(704, 448)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("13_lyrvg")
+UnitLevel = 2
+Position = Vector2i(11, 7)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_e8n5s")
+
+[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 448)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("18_w2kbw")
+UnitLevel = 2
+Position = Vector2i(12, 7)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_wtpf7")
+
+[node name="Spawn_WolfPup2" type="Sprite2D" parent="Spawners"]
+position = Vector2(832, 448)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("13_lyrvg")
+UnitLevel = 2
+Position = Vector2i(13, 7)
+AIBehavior = ExtResource("14_ypai4")
+AggroBehavior = SubResource("Resource_cyewq")
+
+[node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
+position = Vector2(960, 512)
+texture = ExtResource("11_cxihk")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("12_7aky0")
+UnitToSpawn = ExtResource("19_i6jsy")
+Position = Vector2i(15, 8)
+AIBehavior = SubResource("Resource_ceg4b")
+AggroBehavior = SubResource("Resource_hrfmh")
+
+[node name="Variants" type="Node2D" parent="."]
+
+[node name="Squads" type="Node2D" parent="."]

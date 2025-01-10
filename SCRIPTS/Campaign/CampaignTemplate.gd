@@ -29,20 +29,24 @@ var traversedCampaignBlocks : int
 var CampaignRng : RandomNumberGenerator
 var CampaignSeed : int
 
-var CurrentRoster : Array[UnitInstance]
+var InitData : CampaignInitData
 var StartingRosterTemplates : Array[UnitTemplate]
+var CurrentRoster : Array[UnitInstance]
 
 var ConvoyParent : Node2D
 var Convoy : Array[Item]
 
+var currentLevelDifficulty : int
 
-func StartCampaign(_roster : Array[UnitTemplate]):
+
+func StartCampaign(_initData : CampaignInitData):
+	InitData = _initData
 	var cachedRng = RandomNumberGenerator.new()
 	CampaignSeed = cachedRng.randi()
 	CampaignRng = RandomNumberGenerator.new()
 	CampaignRng.seed = CampaignSeed
 
-	StartingRosterTemplates = _roster
+	StartingRosterTemplates = InitData.InitialRoster
 	CreateSquadInstance()
 
 	if startingCampaignOptions.size() == 0:
@@ -92,9 +96,11 @@ func StartNextMap():
 		return
 
 	currentMap = currentMapOption.GetMap().instantiate() as Map
-	var MapRNG = CampaignRng.randi()
+
+	RefreshDifficultyLevel()
 
 	# preinitialize collects up the spawners and the starting positions for usage
+	# doesn't actually spawn anything yet
 	currentMap.PreInitialize()
 
 	# If there is no Roster, pull up the selection UI to force one. This should not occur in normal gameplay tbh
@@ -108,7 +114,7 @@ func StartNextMap():
 		await ui.OnRosterSelected
 		CreateSquadInstance()
 
-
+	var MapRNG = CampaignRng.randi()
 	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNG)
 	current_map_parent.add_child(currentMap)
 	campaignLedger.append(currentMapOption)
@@ -130,12 +136,6 @@ func MapComplete():
 
 	campaignBlockMapIndex += 1
 	StartNextMap()
-	#var nextMap
-	#if AutoProceed:
-		#nextMap = walkedNode.get_child(0)
-		#if nextMap != null:
-			#currentMap.queue_free()
-			#StartMap(nextMap, 0)
 
 func RemoveEmptyRosterEntries():
 	var i = CurrentRoster.size() - 1
@@ -190,3 +190,11 @@ func IsUnitInRoster(_unitTemplate : UnitTemplate):
 			return true
 
 	return false
+
+func RefreshDifficultyLevel():
+	for u in CurrentRoster:
+		if u == null:
+			continue
+
+		if u.Level > currentLevelDifficulty:
+			currentLevelDifficulty = u.Level

@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cw2y83vld1yn4"]
+[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://cw2y83vld1yn4"]
 
 [ext_resource type="Texture2D" uid="uid://b1ovua6g8svh3" path="res://ART/Environment/_alpha_set0/art_test_6.png" id="1_7skec"]
+[ext_resource type="Resource" uid="uid://dxxcjmiflnpud" path="res://RESOURCES/Resources/ResourceDefs/PaleTreeReward.tres" id="1_a7bp7"]
 [ext_resource type="Texture2D" uid="uid://bfe045sf8cs64" path="res://ART/Environment/_alpha_set0/terrain_basic.png" id="1_eal0u"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="2_ljnt0"]
 [ext_resource type="Texture2D" uid="uid://dwjwd2rsa38rs" path="res://ART/Environment/Other_Peoples/TX Tileset Wall.png" id="4_mu1cm"]
@@ -261,6 +262,14 @@ texture_region_size = Vector2i(32, 32)
 14:6/0 = 0
 5:11/0 = 0
 5:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:0/0 = 0
+8:0/0/terrain_set = 0
+8:0/0/custom_data_0 = 10
+8:0/0/custom_data_2 = ExtResource("1_a7bp7")
+9:0/0 = 0
+9:0/0/terrain_set = 0
+9:0/0/custom_data_0 = 10
+9:0/0/custom_data_2 = ExtResource("1_a7bp7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5q2h"]
 texture = ExtResource("1_eal0u")
@@ -510,6 +519,8 @@ custom_data_layer_0/name = "Health"
 custom_data_layer_0/type = 2
 custom_data_layer_1/name = "Killbox"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "Resource"
+custom_data_layer_2/type = 24
 sources/1 = SubResource("TileSetAtlasSource_s5q2h")
 sources/2 = SubResource("TileSetAtlasSource_30vyt")
 sources/0 = SubResource("TileSetAtlasSource_gj2f4")

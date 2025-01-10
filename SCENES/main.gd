@@ -16,12 +16,4 @@ func _ready():
 	if DEBUG_Campaign != null && DEBUG_AutoEnter:
 		var campaign = DEBUG_Campaign.instantiate() as CampaignTemplate
 		if campaign != null:
-			StartCampaign(campaign, [])
-
-
-func StartCampaign(_campaignTemplate : CampaignTemplate, _roster : Array[UnitTemplate]):
-	Bastion.CurrentBastion.ShutDown()
-	BastionParent.visible = false
-	GameManager.CurrentCampaign = _campaignTemplate
-	add_child(_campaignTemplate)
-	_campaignTemplate.StartCampaign(_roster)
+			GameManager.StartCampaign(CampaignInitData.Construct(campaign, []))

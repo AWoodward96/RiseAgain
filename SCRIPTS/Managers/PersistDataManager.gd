@@ -9,6 +9,7 @@ static var UNITS_DIRECTORY = "user://_GLOBAL/Units/"
 
 static var GLOBAL_FILE = "user://_GLOBAL/Universe.json"
 static var PERSIST_DATA_SUFFIX = "PersistData"
+signal Initialized
 
 var universeData : UniversePersistence
 
@@ -16,6 +17,7 @@ var universeData : UniversePersistence
 func _ready():
 	ValidateDirectories()
 	LoadPersistData()
+	Initialized.emit()
 
 func ValidateDirectories():
 	var dir = DirAccess.open("user://")

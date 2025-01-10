@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_mea1j"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_hbvlr"]
-[ext_resource type="Resource" uid="uid://co274sk3utsf2" path="res://RESOURCES/Maps/CampaignBlocks/cb_maroon_early.tres.tres" id="3_uoe1s"]
+[ext_resource type="Resource" uid="uid://co274sk3utsf2" path="res://RESOURCES/Maps/_alpha_Campaign00/cb_maroon_early.tres.tres" id="3_uoe1s"]
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="4_8iiyo"]
 [ext_resource type="Texture2D" uid="uid://dnrv84l38b3db" path="res://ART/Icons/Route/maroon_forest.png" id="5_cxixe"]
 

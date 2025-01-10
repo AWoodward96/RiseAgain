@@ -97,7 +97,7 @@ tile_set = ExtResource("6_vlckj")
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAADAAIAAAADAAAAAAADAAEAAAAFAAIAAAADAAAAAAAFAAEAAAACAAIAAAAGAAAAAAACAAEAAAAEAAIAAAACAAAAAAAEAAEAAAABAAIAAAAFAAIAAAABAAEAAAAFAAEAAAABAAAAAAAEAAAAAAAAAAIAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAAAAAADAAAAAAACAAgAAAAFAAIAAAACAAcAAAAFAAEAAAACAAYAAAADAAAAAAACAAUAAAAFAAAAAAACAAQAAAAEAAAAAAACAAMAAAAHAAAAAAABAAgAAAAEAAIAAAABAAcAAAAEAAEAAAABAAYAAAAFAAIAAAABAAUAAAAFAAEAAAABAAQAAAAHAAAAAAABAAMAAAAHAAAAAAAAAAgAAAAEAAAAAAAAAAcAAAAEAAAAAAAAAAYAAAAEAAIAAAAAAAUAAAAEAAEAAAAAAAQAAAADAAAAAAAAAAMAAAAGAAAAAAAEAAcAAAAGAAAAAAAEAAYAAAAHAAAAAAADAAcAAAAGAAAAAAADAAYAAAAGAAAAAAACAAwAAAAHAAAAAAACAAsAAAAHAAAAAAACAAoAAAAHAAAAAAACAAkAAAAEAAAAAAABAAwAAAAEAAAAAAABAAsAAAAGAAAAAAABAAoAAAAGAAAAAAABAAkAAAAGAAAAAAAAAAwAAAAEAAAAAAAAAAsAAAAFAAAAAAAAAAoAAAAGAAAAAAAAAAkAAAAGAAAAAAALAAwAAAADAAAAAAAKAAwAAAADAAAAAAAJAAwAAAADAAAAAAAIAAwAAAAHAAAAAAAHAAwAAAAFAAAAAAAGAAwAAAAGAAAAAAAFAAwAAAAFAAAAAAAEAAwAAAAFAAAAAAADAAwAAAADAAAAAAALAAsAAAAGAAAAAAAKAAsAAAAGAAAAAAAJAAsAAAAFAAAAAAAIAAsAAAAFAAAAAAAKAAoAAAAEAAAAAAAJAAoAAAAGAAAAAAALAAgAAAADAAAAAAALAAcAAAAGAAAAAAAKAAkAAAAGAAAAAAAKAAgAAAAFAAIAAAAKAAcAAAAFAAEAAAAJAAcAAAAEAAEAAAAJAAYAAAAHAAAAAAAJAAUAAAAHAAAAAAAIAAcAAAAEAAAAAAAIAAYAAAADAAAAAAAIAAUAAAAHAAAAAAAKAAYAAAAHAAAAAAAJAAgAAAAEAAIAAAAHAAYAAAAGAAAAAAAJAAIAAAAFAAIAAAAJAAEAAAAFAAEAAAAJAAAAAAAFAAAAAAAIAAIAAAAEAAIAAAAIAAEAAAAEAAEAAAAIAAAAAAAHAAAAAAAHAAIAAAAGAAAAAAAHAAEAAAAHAAAAAAAHAAAAAAAGAAAAAAAGAAIAAAADAAAAAAAGAAEAAAAFAAAAAAAGAAAAAAADAAAAAAAQAAIAAAAFAAAAAAAQAAEAAAAFAAIAAAAQAAAAAAAFAAEAAAAPAAIAAAAGAAAAAAAPAAEAAAAEAAIAAAAPAAAAAAAEAAEAAAAUAAAAAAAGAAAAAAATAAAAAAAEAAAAAAASAAAAAAADAAAAAAARAAAAAAADAAAAAAAUAAEAAAAFAAAAAAATAAEAAAAHAAAAAAAUAAgAAAADAAAAAAAUAAcAAAAEAAAAAAAUAAYAAAAEAAAAAAAUAAUAAAADAAAAAAAUAAQAAAAHAAAAAAAUAAMAAAAFAAAAAAAUAAIAAAAFAAAAAAAUAAkAAAAFAAAAAAATAAkAAAAHAAAAAAATAAgAAAAFAAAAAAATAAcAAAAHAAAAAAAUAAwAAAAFAAAAAAAUAAsAAAADAAAAAAAUAAoAAAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAIAAAADAAAAAAADAAEAAAAFAAIAAAADAAAAAAAFAAEAAAACAAIAAAAGAAAAAAACAAEAAAAEAAIAAAACAAAAAAAEAAEAAAABAAIAAAAFAAIAAAABAAEAAAAFAAEAAAABAAAAAAAEAAAAAAAAAAIAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAAAAAADAAAAAAACAAgAAAAFAAIAAAACAAcAAAAFAAEAAAACAAYAAAADAAAAAAACAAUAAAAFAAAAAAACAAQAAAAEAAAAAAACAAMAAAAHAAAAAAABAAgAAAAEAAIAAAABAAcAAAAEAAEAAAABAAYAAAAFAAIAAAABAAUAAAAFAAEAAAABAAQAAAAHAAAAAAABAAMAAAAHAAAAAAAAAAgAAAAEAAAAAAAAAAcAAAAEAAAAAAAAAAYAAAAEAAIAAAAAAAUAAAAEAAEAAAAAAAQAAAADAAAAAAAAAAMAAAAGAAAAAAACAAwAAAAHAAAAAAACAAsAAAAHAAAAAAACAAoAAAAHAAAAAAACAAkAAAAEAAAAAAABAAwAAAAEAAAAAAABAAsAAAAGAAAAAAABAAoAAAAGAAAAAAABAAkAAAAGAAAAAAAAAAwAAAAEAAAAAAAAAAsAAAAFAAAAAAAAAAoAAAAGAAAAAAAAAAkAAAAGAAAAAAALAAwAAAADAAAAAAAKAAwAAAADAAAAAAAJAAwAAAADAAAAAAAIAAwAAAAHAAAAAAAHAAwAAAAFAAAAAAAGAAwAAAAGAAAAAAAFAAwAAAAFAAAAAAAEAAwAAAAFAAAAAAADAAwAAAADAAAAAAALAAsAAAAGAAAAAAAKAAsAAAAGAAAAAAAJAAsAAAAFAAAAAAAIAAsAAAAFAAAAAAALAAgAAAADAAAAAAALAAcAAAAGAAAAAAAKAAgAAAAFAAIAAAAKAAcAAAAFAAEAAAAJAAcAAAAEAAEAAAAJAAYAAAAHAAAAAAAIAAcAAAAEAAAAAAAIAAYAAAADAAAAAAAKAAYAAAAHAAAAAAAJAAgAAAAEAAIAAAAJAAIAAAAFAAIAAAAJAAEAAAAFAAEAAAAJAAAAAAAFAAAAAAAIAAIAAAAEAAIAAAAIAAEAAAAEAAEAAAAIAAAAAAAHAAAAAAAHAAIAAAAGAAAAAAAHAAEAAAAHAAAAAAAHAAAAAAAGAAAAAAAQAAIAAAAFAAAAAAAQAAEAAAAFAAIAAAAQAAAAAAAFAAEAAAAPAAIAAAAGAAAAAAAPAAEAAAAEAAIAAAAPAAAAAAAEAAEAAAAUAAAAAAAGAAAAAAATAAAAAAAEAAAAAAASAAAAAAADAAAAAAARAAAAAAADAAAAAAAUAAEAAAAFAAAAAAATAAEAAAAHAAAAAAAUAAwAAAAFAAAAAAAUAAsAAAAFAAAAAAARAAsAAAAFAAAAAAASAAsAAAAHAAAAAAATAAsAAAAFAAAAAAATAAwAAAAEAAAAAAASAAwAAAAFAAAAAAARAAwAAAAGAAAAAAADAAoAAAAEAAAAAAADAAsAAAADAAAAAAAEAAsAAAADAAAAAAAFAAsAAAADAAAAAAAGAAsAAAAEAAAAAAAEAAAAAAAFAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAGAAAAAAAEAAMAAAAEAAAAAAADAAMAAAADAAAAAAADAAQAAAAFAAAAAAAQAAsAAAADAAAAAAAQAAwAAAAEAAAAAAAPAAUAAAAGAAAAAAAQAAUAAAAEAAAAAAARAAUAAAAEAAAAAAASAAUAAAAGAAAAAAATAAUAAAAEAAAAAAATAAYAAAAGAAAAAAASAAYAAAAFAAAAAAARAAYAAAADAAAAAAAQAAYAAAAEAAAAAAAPAAYAAAAFAAAAAAAQAAcAAAAHAAAAAAARAAcAAAADAAAAAAASAAcAAAAFAAAAAAATAAcAAAAEAAAAAAAPAAcAAAADAAAAAAAUAAUAAAAEAAAAAAAUAAYAAAAGAAAAAAAUAAcAAAAHAAAAAAAUAAgAAAAHAAAAAAATAAgAAAAFAAAAAAAUAAQAAAAFAAAAAAATAAQAAAAFAAAAAAAHAAYAAAAHAAAAAAAHAAcAAAAFAAAAAAAHAAsAAAAFAAAAAAADAAkAAAAFAAAAAAA=")
 tile_set = ExtResource("6_vlckj")
 
 [node name="Extras" type="TileMapLayer" parent="."]
@@ -128,28 +128,28 @@ texture = ExtResource("9_q01q6")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1024, 448)
-Position = Vector2i(16, 7)
+position = Vector2(1088, 128)
+Position = Vector2i(17, 2)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1152, 448)
-Position = Vector2i(18, 7)
+position = Vector2(1088, 256)
+Position = Vector2i(17, 4)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(960, 576)
-Position = Vector2i(15, 9)
+position = Vector2(1088, 576)
+Position = Vector2i(17, 9)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1024, 640)
-Position = Vector2i(16, 10)
+position = Vector2(1152, 640)
+Position = Vector2i(18, 10)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
-position = Vector2(1088, 512)
-Position = Vector2i(17, 8)
+position = Vector2(1152, 192)
+Position = Vector2i(18, 3)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper6" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
@@ -161,7 +161,7 @@ map = NodePath("../..")
 unique_name_in_owner = true
 
 [node name="Spawn_WolfMother" type="Sprite2D" parent="Spawners"]
-position = Vector2(1152, 128)
+position = Vector2(832, 576)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -170,13 +170,30 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("8_ll2rp")
 UnitLevel = 6
-Position = Vector2i(18, 2)
+DeltaLevel = -1
+Position = Vector2i(13, 9)
+Allegiance = 4
+AIBehavior = ExtResource("9_ox083")
+AggroBehavior = SubResource("Resource_h56u6")
+
+[node name="Spawn_WolfMother2" type="Sprite2D" parent="Spawners"]
+position = Vector2(832, 256)
+texture = ExtResource("6_cnclu")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_xf8cb")
+UnitToSpawn = ExtResource("8_ll2rp")
+UnitLevel = 6
+DeltaLevel = -1
+Position = Vector2i(13, 4)
 Allegiance = 4
 AIBehavior = ExtResource("9_ox083")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners"]
-position = Vector2(320, 704)
+position = Vector2(192, 448)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -185,13 +202,13 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("13_1e5rr")
 UnitLevel = 6
-Position = Vector2i(5, 11)
+Position = Vector2i(3, 7)
 Allegiance = 4
 AIBehavior = ExtResource("9_ox083")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf5" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 576)
+position = Vector2(192, 384)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -200,13 +217,13 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("13_1e5rr")
 UnitLevel = 6
-Position = Vector2i(3, 9)
+Position = Vector2i(3, 6)
 Allegiance = 4
 AIBehavior = ExtResource("9_ox083")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_Zolf" type="Sprite2D" parent="Spawners"]
-position = Vector2(1024, 256)
+position = Vector2(256, 320)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -215,12 +232,28 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("14_n602y")
 UnitLevel = 4
-Position = Vector2i(16, 4)
+DeltaLevel = 1
+Position = Vector2i(4, 5)
+AIBehavior = ExtResource("13_onhmp")
+AggroBehavior = SubResource("Resource_anryn")
+
+[node name="Spawn_Zolf2" type="Sprite2D" parent="Spawners"]
+position = Vector2(256, 512)
+texture = ExtResource("6_cnclu")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_xf8cb")
+UnitToSpawn = ExtResource("14_n602y")
+UnitLevel = 4
+DeltaLevel = 1
+Position = Vector2i(4, 8)
 AIBehavior = ExtResource("13_onhmp")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_AdultZolf" type="Sprite2D" parent="Spawners"]
-position = Vector2(1152, 320)
+position = Vector2(640, 576)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -229,12 +262,12 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("16_fbg75")
 UnitLevel = 4
-Position = Vector2i(18, 5)
+Position = Vector2i(10, 9)
 AIBehavior = ExtResource("13_onhmp")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_AdultZolf3" type="Sprite2D" parent="Spawners"]
-position = Vector2(256, 192)
+position = Vector2(640, 640)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -243,12 +276,12 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("16_fbg75")
 UnitLevel = 4
-Position = Vector2i(4, 3)
+Position = Vector2i(10, 10)
 AIBehavior = ExtResource("13_onhmp")
 AggroBehavior = SubResource("Resource_ycudw")
 
 [node name="Spawn_AdultZolf4" type="Sprite2D" parent="Spawners"]
-position = Vector2(320, 192)
+position = Vector2(640, 192)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -257,12 +290,26 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("16_fbg75")
 UnitLevel = 4
-Position = Vector2i(5, 3)
+Position = Vector2i(10, 3)
 AIBehavior = ExtResource("13_onhmp")
 AggroBehavior = SubResource("Resource_gdmhh")
 
+[node name="Spawn_AdultZolf2" type="Sprite2D" parent="Spawners"]
+position = Vector2(640, 256)
+texture = ExtResource("6_cnclu")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("7_xf8cb")
+UnitToSpawn = ExtResource("16_fbg75")
+UnitLevel = 4
+Position = Vector2i(10, 4)
+AIBehavior = ExtResource("13_onhmp")
+AggroBehavior = SubResource("Resource_anryn")
+
 [node name="Spawn_Zolf5" type="Sprite2D" parent="Spawners"]
-position = Vector2(384, 576)
+position = Vector2(320, 448)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -271,12 +318,13 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("14_n602y")
 UnitLevel = 4
-Position = Vector2i(6, 9)
+DeltaLevel = 1
+Position = Vector2i(5, 7)
 AIBehavior = ExtResource("13_onhmp")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_Zolf6" type="Sprite2D" parent="Spawners"]
-position = Vector2(320, 512)
+position = Vector2(320, 384)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -285,26 +333,13 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("14_n602y")
 UnitLevel = 4
-Position = Vector2i(5, 8)
-AIBehavior = ExtResource("13_onhmp")
-AggroBehavior = SubResource("Resource_anryn")
-
-[node name="Spawn_AdultZolf2" type="Sprite2D" parent="Spawners"]
-position = Vector2(320, 576)
-texture = ExtResource("6_cnclu")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("16_fbg75")
-UnitLevel = 4
-Position = Vector2i(5, 9)
+DeltaLevel = 1
+Position = Vector2i(5, 6)
 AIBehavior = ExtResource("13_onhmp")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_CorpseChimera" type="Sprite2D" parent="Spawners"]
-position = Vector2(576, 576)
+position = Vector2(448, 576)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -313,12 +348,13 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("19_e4sxn")
 UnitLevel = 4
-Position = Vector2i(9, 9)
+DeltaLevel = 2
+Position = Vector2i(7, 9)
 AIBehavior = ExtResource("17_eiql8")
 AggroBehavior = SubResource("Resource_ulfrr")
 
 [node name="Spawn_CorpseChimera2" type="Sprite2D" parent="Spawners"]
-position = Vector2(576, 192)
+position = Vector2(448, 256)
 texture = ExtResource("6_cnclu")
 centered = false
 hframes = 4
@@ -327,7 +363,8 @@ frame = 2
 script = ExtResource("7_xf8cb")
 UnitToSpawn = ExtResource("19_e4sxn")
 UnitLevel = 4
-Position = Vector2i(9, 3)
+DeltaLevel = 2
+Position = Vector2i(7, 4)
 AIBehavior = ExtResource("17_eiql8")
 AggroBehavior = SubResource("Resource_olt3l")
 

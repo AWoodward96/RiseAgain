@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ResourceDef" load_steps=3 format=3 uid="uid://dxxcjmiflnpud"]
+
+[ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="1_267mj"]
+[ext_resource type="Script" path="res://SCRIPTS/Universe/ResourceDef.gd" id="1_uc4d4"]
+
+[resource]
+script = ExtResource("1_uc4d4")
+ItemResource = ExtResource("1_267mj")
+Amount = 10
