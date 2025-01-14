@@ -15,7 +15,16 @@ func _ready():
 	if defaultEnvironment != null:
 		environment = defaultEnvironment.instantiate() as TopdownEnvironment
 		environment_parent.add_child(environment)
+
+	if PersistDataManager.universeData.bastionData.DayComplete:
+		GenerateNewDay()
 	pass
+
+func GenerateNewDay():
+
+	PersistDataManager.universeData.bastionData.GenerateTavernOccupants(3, [] as Array[UnitTemplate])
+	PersistDataManager.universeData.bastionData.DayComplete = false
+	PersistDataManager.SaveGame()
 
 func ShutDown():
 	if environment != null:

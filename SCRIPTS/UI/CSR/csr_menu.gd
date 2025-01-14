@@ -6,6 +6,7 @@ static var AllAbilitiesCost0 : bool = false
 static var AlwaysCrit : bool = false
 static var NeverHit : bool = false
 static var AutoWin : bool = false
+static var AutoLose : bool = false
 
 @export var FirstEntry : Control
 @export var SpecificItem : PackedScene
@@ -61,7 +62,7 @@ func btnGiveSpecificItem():
 	pass
 
 func btnAutoWin():
-	AutoWin = true
+	AutoWin = !AutoLose
 
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR
@@ -72,3 +73,7 @@ static func ShowMenu():
 
 func TestSaveGame() -> void:
 	PersistDataManager.SaveGame()
+
+
+func btnAutoLose() -> void:
+	AutoLose = !AutoLose

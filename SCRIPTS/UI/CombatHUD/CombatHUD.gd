@@ -7,6 +7,7 @@ signal BannerAnimComplete
 @export var EnemyTurnBanner : PackedScene
 @export var NeutralTurnBanner : PackedScene
 @export var VictoryBanner : PackedScene
+@export var LossBanner : PackedScene
 @export var InspectUI : InspectPanel
 @export var InspectEffectsUI : GridEntryList
 @export var ContextUI : ContextMenu
@@ -70,6 +71,13 @@ func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 
 func PlayVictoryBanner():
 	var createdElement = VictoryBanner.instantiate()
+	center_left_anchor.add_child(createdElement)
+	await createdElement.AnimationComplete
+
+	BannerAnimComplete.emit()
+
+func PlayLossBanner():
+	var createdElement = LossBanner.instantiate()
 	center_left_anchor.add_child(createdElement)
 	await createdElement.AnimationComplete
 

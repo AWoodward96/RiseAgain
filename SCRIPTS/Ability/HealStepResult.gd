@@ -7,6 +7,7 @@ var AbilityData : Ability
 func PreCalculate():
 	# Healing items can't miss
 	HealthDelta = GameManager.GameSettings.HealCalculation(AbilityData.HealData, Source, TileTargetData.AOEMultiplier)
+	ExpGain = GameManager.GameSettings.ExpFromHealCalculation(HealthDelta, Source, Target)
 
 func PreviewResult(_map : Map):
 	PreCalculate()

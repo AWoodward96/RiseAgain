@@ -1,5 +1,5 @@
 extends PlayerControllerState
-class_name VictoryControllerState
+class_name EndGameControllerState
 
 
 func _Enter(_playerController : PlayerController, _data):
@@ -7,3 +7,13 @@ func _Enter(_playerController : PlayerController, _data):
 	ctrl.BlockMovementInput = true
 	ctrl.reticle.visible = false
 	pass
+
+
+func ShowInspectUI():
+	return false
+
+func CanShowThreat():
+	return false
+
+func ToString():
+	return "EndGameControllerState"

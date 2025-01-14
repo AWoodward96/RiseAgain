@@ -76,13 +76,17 @@ func CalculateExpGain():
 		ExpGain = 1
 		return
 
+	var isAOE = false
+	if AbilityData != null && AbilityData.TargetingData != null:
+		isAOE = !(AbilityData.TargetingData.Type == SkillTargetingData.TargetingType.Simple || AbilityData.TargetingData.Type == SkillTargetingData.TargetingType.SelfOnly)
+
 	if HealthDelta < 0: # Meaning it will deal damage
 		var HealthDeltaABS = abs(HealthDelta)
 		if Target != null:
 			if Target.currentHealth <= HealthDeltaABS:
-				ExpGain = GameManager.GameSettings.ExpFromKillCalculation(HealthDeltaABS, Source, Target)
+				ExpGain = GameManager.GameSettings.ExpFromKillCalculation(HealthDeltaABS, Source, Target, isAOE)
 			else:
-				ExpGain = GameManager.GameSettings.ExpFromDamageCalculation(HealthDeltaABS, Source, Target)
+				ExpGain = GameManager.GameSettings.ExpFromDamageCalculation(HealthDeltaABS, Source, Target, isAOE)
 		else:
 			ExpGain = 1
 	else:

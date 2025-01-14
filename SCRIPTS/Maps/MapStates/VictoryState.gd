@@ -7,7 +7,7 @@ var rewardUI : RewardsUI
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map, _ctrl)
 
-	controller.EnterVictoryState()
+	controller.EnterEndGameState()
 
 	combatHUD = controller.combatHUD
 	if combatHUD != null:
@@ -42,10 +42,8 @@ func Enter(_map : Map, _ctrl : PlayerController):
 				await rewardUI.OnRewardSelected
 
 
-	await map.get_tree().create_timer(1).timeout
-
 	var signalCallback = GameManager.ShowLoadingScreen()
-	await signalCallback
+	await signalCallback.ScreenObscured
 
 	if map.CurrentCampaign != null:
 		map.CurrentCampaign.MapComplete()

@@ -57,6 +57,10 @@ text = "Test Save Game"
 layout_mode = 2
 text = "Auto Win"
 
+[node name="AutoLose" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Auto Lose"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
@@ -64,3 +68,4 @@ text = "Auto Win"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/NeverHit" to="." method="btnNeverHit"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/TestSaveGame" to="." method="TestSaveGame"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoWin" to="." method="btnAutoWin"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoLose" to="." method="btnAutoLose"]

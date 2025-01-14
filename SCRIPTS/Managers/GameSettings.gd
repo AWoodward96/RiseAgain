@@ -8,6 +8,7 @@ enum Direction { Up, Right, Down, Left }
 @export_category("Campaign Data")
 @export var CampaignManifest : Array[PackedScene]
 @export var NumberOfRewardsInPostMap = 3
+@export var DefaultLossState : MapObjective
 
 @export_category("Bastion Data")
 @export var BastionPrefab : PackedScene
@@ -41,6 +42,7 @@ enum Direction { Up, Right, Down, Left }
 @export var FlyingDescriptor : DescriptorTemplate
 
 @export var CharacterTileMovemementSpeed : float = 100
+@export var AOEExpMultiplier : float = 0.5
 
 @export_category("Ability Data")
 @export var InitializeUnitsWithMaxFocus : bool = false
@@ -212,10 +214,13 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
 	return 10 + _healAmount
 
-func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
-	return 10 + _damageDealt
+func ExpFromDamageCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance, _isAOE : bool):
+	var result = (10 + _damageDealt) + (_target.Level - _source.Level)
+	if _isAOE:
+		result = result * GameManager.GameSettings.AOEExpMultiplier
+	return result
 
-func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance):
+func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target : UnitInstance, _isAOE : bool):
 	var X = 0
 	if _target != null && _source != null:
 		X = _target.Level - _source.Level
@@ -224,7 +229,10 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	var A = 0.9 # Gradual growth
 	var B = 1.4	# Exponential slope, higher number = more exp based on level diff
 	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
-	return (A * (pow(B, X)) + C) * 20 + _damageDealt
+	var equationResult = (A * (pow(B, X)) + C) * 20 + _damageDealt
+	if _isAOE:
+		equationResult = equationResult * GameManager.GameSettings.AOEExpMultiplier
+	return equationResult
 
 func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):
 	if _attacker == null:

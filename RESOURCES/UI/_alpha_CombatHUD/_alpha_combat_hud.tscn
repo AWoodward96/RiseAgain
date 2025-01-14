@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=29 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
 [ext_resource type="PackedScene" uid="uid://c8waiobn8d83h" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_enemy.tscn" id="3_7liuy"]
 [ext_resource type="PackedScene" uid="uid://8a67pehymjsr" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_neutral.tscn" id="4_yq0hc"]
 [ext_resource type="PackedScene" uid="uid://bx0ahfyy2rnc3" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_victory.tscn" id="5_k07rk"]
+[ext_resource type="PackedScene" uid="uid://c4bdhbe8or16j" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_loss.tscn" id="6_7myj1"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/DamagePreviewUI.gd" id="6_rywjh"]
 [ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Ability/Equippable/generic_melee.png" id="7_o5pds"]
 [ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="8_r73m2"]
@@ -41,6 +42,7 @@ AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
 NeutralTurnBanner = ExtResource("4_yq0hc")
 VictoryBanner = ExtResource("5_k07rk")
+LossBanner = ExtResource("6_7myj1")
 InspectUI = NodePath("BottomLeft/InspectUI")
 InspectEffectsUI = NodePath("BottomLeft/InspectUI/EffectsGrid")
 ContextUI = NodePath("ContextMenu")

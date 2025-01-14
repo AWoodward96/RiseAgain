@@ -45,7 +45,7 @@ func StartCampaign(_initData : CampaignInitData):
 	CampaignSeed = cachedRng.randi()
 	CampaignRng = RandomNumberGenerator.new()
 	CampaignRng.seed = CampaignSeed
-
+	UnitHoldingArea.visible = false
 	StartingRosterTemplates = InitData.InitialRoster
 	CreateSquadInstance()
 
@@ -71,12 +71,15 @@ func StartNextMap():
 		else:
 			if currentCampaignBlock.nextCampaignBlocks.size() == 0:
 				# Well it's not.... easy to do anything here so just... end the map
-
+				ReportCampaignResult(true)
+				GameManager.ChangeGameState(BastionGameState.new(), null)
 				return
+
 			# if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
 			var nextIndex = CampaignRng.randi_range(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
 			#currentCampaignBlock = currentCampaignBlock.nextCampaignBlocks[nextIndex]
 			currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
+
 
 
 	GameManager.HideLoadingScreen()
@@ -198,3 +201,12 @@ func RefreshDifficultyLevel():
 
 		if u.Level > currentLevelDifficulty:
 			currentLevelDifficulty = u.Level
+
+func ReportCampaignResult(_victory : bool):
+	# TODO: Figure out where you're reporting your results too
+
+	# then clean up the campaign
+	currentMap.queue_free()
+
+	# Tell the Bastion Persist Data that they need to generate a new set of tavern dwellers
+	PersistDataManager.universeData.bastionData.DayComplete = true

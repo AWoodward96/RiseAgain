@@ -51,7 +51,8 @@ func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
 	return loadingScreen
 
 func OnInitFinished():
-	ReturnToBastion()
+	if get_tree().root == Main.Root:
+		ReturnToBastion()
 	pass
 
 func ReturnToBastion():

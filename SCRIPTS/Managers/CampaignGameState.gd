@@ -15,3 +15,7 @@ func Enter(_data):
 	campaignParent.add_child(initData.Campaign)
 	initData.StartCampaign()
 	pass
+
+func Exit():
+	# clean up the maps
+	pass

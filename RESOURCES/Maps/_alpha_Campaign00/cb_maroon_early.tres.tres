@@ -56,4 +56,4 @@ generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_dtbd4")
 [resource]
 script = ExtResource("8_4vk3q")
 mapOptions = Array[ExtResource("1_cjmg3")]([SubResource("Resource_xavni"), SubResource("Resource_f7ysl"), SubResource("Resource_xrykd")])
-nextCampaignBlocks = Array[String](["res://RESOURCES/Maps/CampaignBlocks/cb_maroon_mid.tres"])
+nextCampaignBlocks = Array[String](["res://RESOURCES/Maps/_alpha_Campaign00/cb_maroon_mid.tres"])

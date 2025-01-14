@@ -21,10 +21,6 @@
 			"uuid": "39f315b3-0340-4b8b-be93-a0c21bdd0e80",
 			"title": "Backlog",
 			"tasks": [
-				"922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
-				"468afdb4-e218-4636-8ff3-a92ed108ff73",
-				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
-				"318dee21-255e-471a-a66c-f75daeb9659a",
 				"1a54fbcd-072e-426c-81a6-b2f202dbaede",
 				"5d0e9577-06ed-40db-9e78-9aaf0b1a3082",
 				"dd2f19a1-e0bc-4639-a270-b53a4f5a0051",
@@ -40,7 +36,6 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"579dad1e-a189-47eb-8525-df963722d0ef",
 				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
 				"073acedc-08f2-476c-bf21-67837a146552",
 				"cad1a58b-24c8-484e-a360-c2f55357e43e"
@@ -58,7 +53,12 @@
 				"be6a0076-c6aa-479c-afac-c7f33b09c086",
 				"cab74468-ed27-42d8-ab99-5b473a220ef3",
 				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
+				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
+				"468afdb4-e218-4636-8ff3-a92ed108ff73",
+				"579dad1e-a189-47eb-8525-df963722d0ef",
+				"922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
 				"2da4feb0-3296-4b5c-83db-078c28f6f94d",
+				"318dee21-255e-471a-a66c-f75daeb9659a",
 				"f9d8c66d-3d4e-43fa-a41a-3d410f1df86d",
 				"6792c2de-7cbd-425b-98d6-ec17d6444815",
 				"e0633179-c6ee-495d-9f86-8949df0de05d",

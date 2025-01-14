@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=32 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=34 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
@@ -25,11 +25,16 @@
 [ext_resource type="PackedScene" uid="uid://cj0urxfuhjo0c" path="res://RESOURCES/Universe/Bastion.tscn" id="10_q2hqg"]
 [ext_resource type="PackedScene" uid="uid://c7m8r8wh7mgsk" path="res://RESOURCES/Maps/_alpha_Campaign01/campaign_02.tscn" id="11_8vhj7"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_t1n24"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/GameOverObjective.gd" id="13_k6h66"]
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="15_gyih8"]
 [ext_resource type="Script" path="res://SCRIPTS/Universe/ResourceTemplate.gd" id="17_gb5h8"]
 [ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="18_pd04j"]
 [ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="19_qup0j"]
 [ext_resource type="PackedScene" uid="uid://crldlj6agxmjg" path="res://RESOURCES/Universe/topdown_player_ctrl.tscn" id="24_jqxsc"]
+
+[sub_resource type="Resource" id="Resource_l1yyb"]
+script = ExtResource("13_k6h66")
+loc_description = ""
 
 [sub_resource type="Resource" id="Resource_qy6mm"]
 script = ExtResource("1_d0crg")
@@ -42,6 +47,7 @@ Value = 0
 script = ExtResource("1_wj702")
 CampaignManifest = Array[PackedScene]([ExtResource("1_ir5fq"), ExtResource("11_8vhj7")])
 NumberOfRewardsInPostMap = 3
+DefaultLossState = SubResource("Resource_l1yyb")
 BastionPrefab = ExtResource("10_q2hqg")
 GlobalResources = Array[ExtResource("17_gb5h8")]([ExtResource("18_pd04j"), ExtResource("19_qup0j")])
 PlayerControllerPrefab = ExtResource("7_77hq5")

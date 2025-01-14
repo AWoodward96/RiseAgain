@@ -2,6 +2,7 @@ extends Node2D
 class_name BastionPersistData
 
 var TavernRoomNumbers : Array[int] = [101, 102, 103, 201, 202, 203, 204, 205, 206]
+var DayComplete : bool
 
 # TODO: Figure out persist data for bastion stuff
 # There are upgrades for each building - so maybe a base class could see usage
@@ -54,7 +55,8 @@ func ToJSON():
 	var returnDict = {
 		"UnitsInTavern" = PersistDataManager.ResourcePathToJSON(UnitsInTavern),
 		"SelectedRoster" = PersistDataManager.ResourcePathToJSON(SelectedRoster),
-		"UnitsInCampsite" = PersistDataManager.ResourcePathToJSON(UnitsInCampsite)
+		"UnitsInCampsite" = PersistDataManager.ResourcePathToJSON(UnitsInCampsite),
+		"DayComplete" = DayComplete
 	}
 	return returnDict
 
@@ -62,4 +64,5 @@ func FromJSON(_dict : Dictionary):
 	PersistDataManager.JSONtoResourceFromPath(_dict["UnitsInTavern"], UnitsInTavern)
 	PersistDataManager.JSONtoResourceFromPath(_dict["SelectedRoster"], SelectedRoster)
 	PersistDataManager.JSONtoResourceFromPath(_dict["UnitsInCampsite"], UnitsInCampsite)
+	if _dict.has("DayComplete"): DayComplete = _dict["DayComplete"]
 	pass

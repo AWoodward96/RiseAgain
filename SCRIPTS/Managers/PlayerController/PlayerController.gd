@@ -184,8 +184,8 @@ func EnterItemSelectionState(_filterForInventory):
 func EnterUnitStackClearState(_unitInstance : UnitInstance):
 	ChangeControllerState(UnitStackClearControllerState.new(), _unitInstance)
 
-func EnterVictoryState():
-	ChangeControllerState(VictoryControllerState.new(), null)
+func EnterEndGameState():
+	ChangeControllerState(EndGameControllerState.new(), null)
 
 func EnterActionExecutionState(_log):
 	ChangeControllerState(ActionExecutionState.new(), _log)
