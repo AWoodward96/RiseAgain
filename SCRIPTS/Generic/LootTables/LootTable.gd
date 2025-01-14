@@ -9,7 +9,7 @@ const INFINITE_LOOP_PROTECTION = 1000
 @export var WeightSum : float = -1
 
 
-func RollTable(rng : RandomNumberGenerator, _numberOfRewards : int, _duplicateProtections : bool = true):
+func RollTable(rng : DeterministicRNG, _numberOfRewards : int, _duplicateProtections : bool = true):
 	var rewardArray : Array[LootTableEntry]
 	var infiniteProtection = 0
 	while rewardArray.size() < _numberOfRewards:
@@ -47,15 +47,15 @@ func RollTable(rng : RandomNumberGenerator, _numberOfRewards : int, _duplicatePr
 	return rewardArray
 
 
-func Roll(rng : RandomNumberGenerator):
+func Roll(rng : DeterministicRNG):
 	if rng == null:
-		rng = RandomNumberGenerator.new()
+		rng = DeterministicRNG.Construct()
 
 	if WeightSum == -1:
 		push_error("WEIGHT SUM IS INVALID FOR ", self.resource_name, " IF YOU SEE THIS AT RUNTIME THEN YOU'RE PROBABLY FUCKED LMAO. GOOD LUCK!")
 		return null
 
-	var rolledValue = rng.randf_range(0, WeightSum)
+	var rolledValue = rng.NextFloat(0, WeightSum)
 	print("Loot Table Rolled: ", rolledValue)
 	for entry in Table:
 		if entry.AccumulatedWeight > rolledValue:

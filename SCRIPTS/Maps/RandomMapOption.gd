@@ -6,7 +6,7 @@ class_name RandomMapOption
 
 func GetMap():
 	var mapOptions = BuildWeightedList()
-	var rng = GameManager.CurrentCampaign.CampaignRng.randi_range(0, mapOptions.size() - 1)
+	var rng = GameManager.CurrentCampaign.CampaignRng.NextInt(0, mapOptions.size() - 1)
 	return mapOptions[rng]
 
 func BuildWeightedList():

@@ -22,7 +22,7 @@ var levelsGained
 var currentUnit : UnitInstance
 var root : Node2D
 
-func Initialize(_experienceGained : int, _unit : UnitInstance, _root : Node2D, _rng : RandomNumberGenerator):
+func Initialize(_experienceGained : int, _unit : UnitInstance, _root : Node2D, _rng : DeterministicRNG):
 	experience_progress_bar.visible = true
 	level_up_parent.visible = false
 
@@ -100,7 +100,7 @@ func ShowLevelUpData():
 func AbilitySelected(_ability : PackedScene):
 	currentUnit.AddAbility(_ability)
 
-static func Show(_experienceGained : int, _unit :  UnitInstance, _root : Node2D, _rng : RandomNumberGenerator):
+static func Show(_experienceGained : int, _unit :  UnitInstance, _root : Node2D, _rng : DeterministicRNG):
 	var ui = UIManager.ExperienceUI.instantiate() as ExperienceGainUI
 	_root.add_child(ui)
 	ui.Initialize(_experienceGained, _unit, _root, _rng)

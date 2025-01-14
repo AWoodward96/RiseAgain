@@ -42,7 +42,7 @@ var unitsKilled = {}
 var playercontroller : PlayerController
 var currentTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 
-var rng : RandomNumberGenerator
+var mapRNG : DeterministicRNG
 var grid : Grid
 var turnCount : int
 var formationSelected = false
@@ -91,8 +91,7 @@ func _process(_delta):
 
 
 func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitInstance], _rngSeed : int):
-	rng = RandomNumberGenerator.new()
-	rng.seed = _rngSeed
+	mapRNG = DeterministicRNG.Construct(_rngSeed)
 	CurrentCampaign = _campaign
 
 	InitializeGrid()
@@ -125,7 +124,7 @@ func GlobalStackClear():
 
 func InitializeStandalone():
 	# the campaign should initialize this
-	rng = RandomNumberGenerator.new()
+	mapRNG = DeterministicRNG.Construct()
 
 	# make the grid first so that we know where the starting positions are
 	InitializeGrid()

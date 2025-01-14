@@ -5,7 +5,7 @@ class_name SpawnerGridEntity
 @export var GridEntityPrefab : PackedScene
 @export var Direction : GameSettingsTemplate.Direction
 
-func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
+func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	if GridEntityPrefab == null || !Enabled:
 		return
 

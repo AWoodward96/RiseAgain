@@ -8,10 +8,14 @@ static var UNITS_DIRECTORY = "user://_GLOBAL/Units/"
 
 
 static var GLOBAL_FILE = "user://_GLOBAL/Universe.json"
+static var CAMPAIGN_FILE = "user://_RUN/Campaign.json"
+static var MAP_FILE = "user://_RUN/Map.json"
 static var PERSIST_DATA_SUFFIX = "PersistData"
 signal Initialized
 
 var universeData : UniversePersistence
+var campaignData : CampaignPersistence
+var mapData : MapPersistence
 
 
 func _ready():
@@ -40,22 +44,36 @@ func LoadFromJSON(_key : String, _dict : Dictionary):
 	return null
 
 func LoadPersistData():
+	LoadUniverse()
+	LoadCampaign()
+	pass
+
+func LoadUniverse():
 	if !FileAccess.file_exists(GLOBAL_FILE):
 		universeData = UniversePersistence.CreateNewUniversePersist()
 		universeData.bastionData.GenerateTavernOccupants(3, [] as Array[UnitTemplate])
 	else:
-		var save_file = FileAccess.open(GLOBAL_FILE, FileAccess.READ)
-
-		# It should only be one line, but we'll see
-		var fileText = save_file.get_as_text()
-		var parsedString = JSON.parse_string(fileText)
+		var parsedString = GetJSONTextFromFile(GLOBAL_FILE)
 		universeData = UniversePersistence.new()
 		universeData.name = UniversePersistence.NODENAME
 		add_child(universeData)
 		universeData.FromJSON(parsedString)
 		universeData.LoadUnitPersistence()
 
+func LoadCampaign():
+	if FileAccess.file_exists(CAMPAIGN_FILE):
+		# If file is null - there's no campaign being run. Null is fine
+		var parsedString = GetJSONTextFromFile(CAMPAIGN_FILE)
+
+
 	pass
+
+func GetJSONTextFromFile(_path : String):
+	# Validate this before hand - or don't I'm not your mom
+	var save_file = FileAccess.open(_path, FileAccess.READ)
+	# It should only be one line, but we'll see
+	var fileText = save_file.get_as_text()
+	return JSON.parse_string(fileText)
 
 func ResourcePathToJSON(_array : Array):
 	var arrayAsJSONString : Array[String]

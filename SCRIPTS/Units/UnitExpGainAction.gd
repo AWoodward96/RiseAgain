@@ -13,7 +13,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		return
 
 	waitForUI = true
-	var expUI = ExperienceGainUI.Show(ExpGained, _unit, map, map.rng)
+	var expUI = ExperienceGainUI.Show(ExpGained, _unit, map, map.mapRNG)
 	expUI.SequenceComplete.connect(OnSequenceComplete)
 
 	pass

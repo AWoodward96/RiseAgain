@@ -26,8 +26,7 @@ var currentMapBlock : MapBlock
 var campaignBlockMapIndex : int
 var traversedCampaignBlocks : int
 
-var CampaignRng : RandomNumberGenerator
-var CampaignSeed : int
+var CampaignRng : DeterministicRNG
 
 var InitData : CampaignInitData
 var StartingRosterTemplates : Array[UnitTemplate]
@@ -41,10 +40,9 @@ var currentLevelDifficulty : int
 
 func StartCampaign(_initData : CampaignInitData):
 	InitData = _initData
-	var cachedRng = RandomNumberGenerator.new()
-	CampaignSeed = cachedRng.randi()
-	CampaignRng = RandomNumberGenerator.new()
-	CampaignRng.seed = CampaignSeed
+
+	CampaignRng = DeterministicRNG.Construct()
+
 	UnitHoldingArea.visible = false
 	StartingRosterTemplates = InitData.InitialRoster
 	CreateSquadInstance()
@@ -53,7 +51,7 @@ func StartCampaign(_initData : CampaignInitData):
 		push_error("Campaign: " , name, " - does not have a starting campaign block and will not function.")
 		return
 
-	var startingCampaignBlockIndex = CampaignRng.randi_range(0, startingCampaignOptions.size() - 1)
+	var startingCampaignBlockIndex = CampaignRng.NextInt(0, startingCampaignOptions.size() - 1)
 
 	startingCampaignBlock = startingCampaignOptions[startingCampaignBlockIndex]
 	currentCampaignBlock = startingCampaignBlock
@@ -76,7 +74,7 @@ func StartNextMap():
 				return
 
 			# if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
-			var nextIndex = CampaignRng.randi_range(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
+			var nextIndex = CampaignRng.NextInt(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
 			#currentCampaignBlock = currentCampaignBlock.nextCampaignBlocks[nextIndex]
 			currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
 
@@ -117,8 +115,8 @@ func StartNextMap():
 		await ui.OnRosterSelected
 		CreateSquadInstance()
 
-	var MapRNG = CampaignRng.randi()
-	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNG)
+	var MapRNGSeed = CampaignRng.NextInt(0, 10000000)
+	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNGSeed)
 	current_map_parent.add_child(currentMap)
 	campaignLedger.append(currentMapOption)
 

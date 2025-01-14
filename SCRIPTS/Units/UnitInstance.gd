@@ -271,7 +271,7 @@ func AddExperience(_expIncrease : int):
 
 	return levelIncrease
 
-func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
+func PerformLevelUp(_rng : DeterministicRNG, _levelIncrease = 1):
 	print("Level Up!")
 	Level += _levelIncrease
 	var levelUpResult = {}
@@ -286,7 +286,7 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 				workingValue -= 100
 
 			# Roll RNG
-			var result = _rng.randi_range(0,100)
+			var result = _rng.NextInt(0,100)
 			if result <= workingValue:
 				statIncrease += 1
 

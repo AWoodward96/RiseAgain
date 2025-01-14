@@ -17,6 +17,6 @@ const NodeSize : int = 64
 @export var AIBehavior : AIBehaviorBase
 @export var AggroBehavior : AlwaysAggro
 
-func SpawnEnemy(_map: Map, _rng : RandomNumberGenerator):
+func SpawnEnemy(_map: Map, _rng : DeterministicRNG):
 	if !Enabled:
 		return

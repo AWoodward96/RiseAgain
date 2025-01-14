@@ -20,7 +20,7 @@ func GetMapFromBlock():
 		return selectedMap
 
 	var mapOptions = BuildWeightedList()
-	var rng = GameManager.CurrentCampaign.CampaignRng.randi_range(0, totalWeight)
+	var rng = GameManager.CurrentCampaign.CampaignRng.NextInt(0, totalWeight)
 	for opt in mapOptions:
 		if rng <= opt.accumulatedWeight:
 			return opt

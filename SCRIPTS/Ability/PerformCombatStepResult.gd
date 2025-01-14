@@ -40,7 +40,7 @@ func PreCalculate():
 		HealthDelta = GameManager.GameSettings.HealCalculation(AbilityData.HealData, Source, TileTargetData.AOEMultiplier)
 
 
-func RollChance(_rng : RandomNumberGenerator):
+func RollChance(_rng : DeterministicRNG):
 	RollMiss(_rng, HitRate)
 	RollCrit(_rng, CritRate)
 
@@ -93,9 +93,9 @@ func CalculateExpGain():
 		# It's like a heal or something
 		ExpGain = GameManager.GameSettings.ExpFromHealCalculation(HealthDelta, Source, Target)
 
-func RollMiss(_rng : RandomNumberGenerator, _missThreshold : float):
-	var val1 = _rng.randf()
-	var val2 = _rng.randf()
+func RollMiss(_rng : DeterministicRNG, _missThreshold : float):
+	var val1 = _rng.NextFloat(0, 1)
+	var val2 = _rng.NextFloat(0, 1)
 	MissVals = Vector2(val1, val2)
 	HitRate = _missThreshold
 
@@ -117,8 +117,8 @@ func RollMiss(_rng : RandomNumberGenerator, _missThreshold : float):
 
 	Miss = MissAverage > _missThreshold
 
-func RollCrit(_rng : RandomNumberGenerator, _critThreshold : float):
-	var val = _rng.randf()
+func RollCrit(_rng : DeterministicRNG, _critThreshold : float):
+	var val = _rng.NextFloat(0, 1)
 	Crit = val < _critThreshold
 
 func PreviewResult(_map : Map):
