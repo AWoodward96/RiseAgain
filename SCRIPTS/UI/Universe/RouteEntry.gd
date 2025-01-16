@@ -9,11 +9,11 @@ class_name RouteEntry
 var gate : Gate
 var template : CampaignTemplate
 
-func Initialize(_gate : Gate, _campaignTemplate : CampaignTemplate):
+func Initialize(_gate : Gate, _template : CampaignTemplate):
 	gate = _gate
-	template = _campaignTemplate
-	RouteLabel.text = _campaignTemplate.loc_name
-	RouteIcon.texture = _campaignTemplate.loc_icon
+	template = _template
+	RouteLabel.text = _template.loc_name
+	RouteIcon.texture = _template.loc_icon
 	pass
 
 

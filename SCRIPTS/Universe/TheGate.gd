@@ -8,7 +8,7 @@ class_name Gate
 @export var LoadoutEntryPrefab : PackedScene
 
 var hasInteractable : bool
-var availableCampaigns : Array[CampaignTemplate]
+var availableCampaigns : Array[Campaign]
 
 
 func _ready() -> void:
@@ -34,12 +34,10 @@ func _process(_delta: float) -> void:
 		SetInteractable(false)
 
 func UpdateUI():
-	GatherCampaigns()
-
 	RouteEntryParent.ClearEntries()
-	for campaignTemplate in availableCampaigns:
+	for campTemplate in GameManager.GameSettings.CampaignManifest:
 		var entry = RouteEntryParent.CreateEntry(RouteEntryPrefab)
-		entry.Initialize(self, campaignTemplate)
+		entry.Initialize(self, campTemplate)
 
 	RouteEntryParent.FocusFirst()
 	RefreshLoadout()
@@ -52,15 +50,9 @@ func RefreshLoadout():
 		var textRect = LoadoutEntryParent.CreateEntry(LoadoutEntryPrefab)
 		textRect.texture = unit.icon
 
-func GatherCampaigns():
-	availableCampaigns.clear()
-	for packedScene in GameManager.GameSettings.CampaignManifest:
-		var template = packedScene.instantiate() as CampaignTemplate
-		if template != null:
-			availableCampaigns.append(template)
 
 func CampaignSelected(_campaignTemplate : CampaignTemplate):
-	GameManager.StartCampaign(CampaignInitData.Construct(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
+	GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
 	pass
 
 func OnShutdown():

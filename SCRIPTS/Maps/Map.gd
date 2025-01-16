@@ -32,10 +32,12 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var squadParent : Node2D
 @export var StartingPositionsParent : Node2D
 @export var SpawnersParent : Node2D
+
 var gridEntityParent : Node2D # Gets created at runtime
 
+var PersistedMapState : String
 var MapState : MapStateBase
-var CurrentCampaign : CampaignTemplate
+var CurrentCampaign : Campaign
 
 var teams = {}
 var unitsKilled = {}
@@ -45,12 +47,10 @@ var currentTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 var mapRNG : DeterministicRNG
 var grid : Grid
 var turnCount : int
-var formationSelected = false
 var startingPositions : Array[Vector2i]
 var spawners : Array[SpawnerBase]
 var gridEntities : Array[GridEntityBase]
 
-var combatLedger
 
 func _ready():
 	PreInitialize()
@@ -90,7 +90,7 @@ func _process(_delta):
 				ChangeMapState(LossState.new())
 
 
-func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitInstance], _rngSeed : int):
+func InitializeFromCampaign(_campaign : Campaign, _roster : Array[UnitInstance], _rngSeed : int):
 	mapRNG = DeterministicRNG.Construct(_rngSeed)
 	CurrentCampaign = _campaign
 
@@ -107,6 +107,29 @@ func InitializeFromCampaign(_campaign : CampaignTemplate, _roster : Array[UnitIn
 			ChangeMapState(PreMapState.new())
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
+
+	Current = self
+
+func ResumeFromCampaign(_campaign : Campaign):
+	CurrentCampaign = _campaign
+	InitializePlayerController()
+	match mapType:
+		MAPTYPE.Standard:
+			match PersistedMapState:
+				"CombatState":
+					var combatState = CombatState.new()
+					combatState.InitializeFromPersistence(self, playercontroller)
+					MapState = combatState
+					pass
+
+		MAPTYPE.Campsite:
+			ChangeMapState(CampsiteState.new())
+
+	for spawner in spawners:
+		spawner.hide()
+
+	for startingP in StartingPositionsParent.get_children():
+		startingP.hide()
 
 	Current = self
 
@@ -279,3 +302,74 @@ func OnTileClicked(a_tilePosition : Vector2i) :
 
 	else :
 		print_debug("Click was not in pathfinding bounds")
+
+func Save():
+	var mapJSON = ToJSON()
+	var map_save_file = FileAccess.open(PersistDataManager.MAP_FILE, FileAccess.WRITE)
+	var map_stringify = JSON.stringify(mapJSON, "\t")
+	map_save_file.store_line(map_stringify)
+
+	# then save the grid as a json
+	var gridJSON = grid.ToJSON()
+	var grid_save_file = FileAccess.open(PersistDataManager.MAP_GRID_FILE, FileAccess.WRITE)
+	var grid_stringify = JSON.stringify(gridJSON, "\t")
+	grid_save_file.store_line(grid_stringify)
+	pass
+
+func ToJSON():
+	# LETS FUCKING GOOOOOOO
+	var dict = {
+		"scenepath" = self.scene_file_path,
+		"currentTurn" = currentTurn,
+		"mapRNG" = mapRNG.ToJSON(),
+		"turnCount" = turnCount,
+		"MapState" = MapState.ToJSON(),
+		"gridEntities" = PersistDataManager.ArrayToJSON(gridEntities)
+	}
+
+	var teamsJSONDict : Dictionary = {}
+	for t in teams:
+		# Teams is a dictionary containing arrays
+		teamsJSONDict[t] = PersistDataManager.ArrayToJSON(teams[t])
+
+	dict["teams"] = teamsJSONDict
+
+	return dict
+
+static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
+	# This should make it so that everything that's exported - doesn't need to be stored from JSON
+	var map = load(_dict["scenepath"]).instantiate() as Map
+	Map.Current = map
+	map.CurrentCampaign = _assignedCampaign
+	map.currentTurn = _dict["currentTurn"]
+	map.mapRNG = DeterministicRNG.FromJSON(_dict["mapRNG"])
+	map.turnCount = _dict["turnCount"]
+
+	map.PersistedMapState = _dict["MapState"]
+
+	# Get the grid data
+	var parsedString = PersistDataManager.GetJSONTextFromFile(PersistDataManager.MAP_GRID_FILE)
+	map.grid = Grid.FromJSON(parsedString)
+	map.grid.map = map
+
+	# Load the units
+	var storedTeamsDict = _dict["teams"]
+	for t in storedTeamsDict:
+		var assignMe : Array[UnitInstance]
+		var data = PersistDataManager.JSONToArray(storedTeamsDict[t], Callable.create(UnitInstance, "FromJSON"))
+		assignMe.assign(data)
+		map.teams[int(t)] = assignMe
+
+	# Move the units where they're supposed to go
+	for t in map.teams:
+		for unit : UnitInstance in map.teams[t]:
+			unit.AddToMap(map, unit.GridPosition, unit.UnitAllegiance)
+			map.grid.SetUnitGridPosition(unit, unit.GridPosition, true)
+			unit.TurnStartTile = map.grid.GetTile(unit.GridPosition)
+
+	# Initialize the Grid Entities Last
+	var data = PersistDataManager.JSONToArray(_dict["gridEntities"], Callable.create(GridEntityBase, "FromJSON"))
+	for d in data:
+		map.AddGridEntity(d)
+
+	return map

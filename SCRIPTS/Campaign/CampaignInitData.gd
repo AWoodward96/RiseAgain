@@ -1,14 +1,14 @@
 class_name CampaignInitData
 
 var InitialRoster : Array[UnitTemplate]
-var Campaign : CampaignTemplate
+var CurrentCampaign : CampaignTemplate
 
 static func Construct(_campaign : CampaignTemplate, _roster : Array[UnitTemplate]):
 	var initData = CampaignInitData.new()
-	initData.Campaign = _campaign
+	initData.CurrentCampaign = _campaign
 	initData.InitialRoster = _roster
 	return initData
 
 func StartCampaign():
-	if Campaign != null:
-		Campaign.StartCampaign(self)
+	if CurrentCampaign != null:
+		CurrentCampaign.StartCampaign(self)

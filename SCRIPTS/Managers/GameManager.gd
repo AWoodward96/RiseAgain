@@ -1,6 +1,6 @@
 extends Node2D
 
-static var CurrentCampaign : CampaignTemplate
+static var CurrentCampaign : Campaign
 
 @export var GameSettings : GameSettingsTemplate
 @export var UnitSettings : UnitSettingsTemplate
@@ -51,8 +51,15 @@ func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
 	return loadingScreen
 
 func OnInitFinished():
-	if get_tree().root == Main.Root:
-		ReturnToBastion()
+	if RunningMainScene():
+
+		# Check if there is a campaign in the save data
+		var campaign = PersistDataManager.TryLoadCampaign() as Campaign
+		if campaign != null:
+			# we need to figure out what to do here
+			StartCampaign(campaign)
+		else:
+			ReturnToBastion()
 	pass
 
 func ReturnToBastion():
@@ -66,5 +73,8 @@ func ChangeGameState(_newGamestate : GameState, _initData):
 	CurrentGameState = _newGamestate
 	CurrentGameState.Enter(_initData)
 
-func StartCampaign(_campaignInitData : CampaignInitData):
-	ChangeGameState(CampaignGameState.new(), _campaignInitData)
+func RunningMainScene():
+	return get_tree().get_first_node_in_group("MainScene") != null
+
+func StartCampaign(_campaign : Campaign):
+	ChangeGameState(CampaignGameState.new(), _campaign)

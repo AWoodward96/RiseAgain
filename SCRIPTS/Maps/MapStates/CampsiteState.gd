@@ -40,3 +40,6 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	if map.CurrentCampaign != null:
 		map.CurrentCampaign.MapComplete()
 	pass
+
+func ToJSON():
+	return "CampsiteState"

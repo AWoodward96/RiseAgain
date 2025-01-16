@@ -1,19 +1,19 @@
 extends GameState
 class_name CampaignGameState
 
-var initData : CampaignInitData
+var campaign : Campaign
 
 func Enter(_data):
-	if _data is not CampaignInitData:
-		push_error("Entering CampaignGameState without CampaignInitData is not allowed. Please fix")
+	if _data is not Campaign:
+		push_error("Entering CampaignGameState without a Campaign that's preinitialized is not allowed. Please fix")
 		return
 
-	initData = _data as CampaignInitData
+	campaign = _data as Campaign
 
-	GameManager.CurrentCampaign = initData.Campaign
+	GameManager.CurrentCampaign = campaign
 	var campaignParent = GameManager.get_tree().get_first_node_in_group("CampaignParent")
-	campaignParent.add_child(initData.Campaign)
-	initData.StartCampaign()
+	campaignParent.add_child(campaign)
+	campaign.StartCampaign()
 	pass
 
 func Exit():

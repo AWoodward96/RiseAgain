@@ -25,3 +25,13 @@ func GetStatDelta(_statTemplate : StatTemplate):
 				delta += stats.Value
 
 	return delta
+
+func ToJSON():
+	var dict = {
+		"prefab" : self.scene_file_path
+	}
+	return dict
+
+static func FromJSON(_dict : Dictionary):
+	var item = load(_dict["prefab"]).instantiate as Item
+	return item

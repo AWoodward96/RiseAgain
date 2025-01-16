@@ -112,7 +112,6 @@ vframes = 4
 frame = 2
 script = ExtResource("10_awfn1")
 UnitToSpawn = ExtResource("11_trmad")
-DeltaLevel = null
 Position = Vector2i(9, 5)
 AIBehavior = ExtResource("12_wt7k8")
 AggroBehavior = SubResource("Resource_bbkis")

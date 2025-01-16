@@ -91,3 +91,26 @@ func RefreshActiveKillbox():
 			hasPlatform = true
 			break
 	ActiveKillbox = Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform
+
+func ToJSON():
+	var dict = {
+		"GlobalPosition" = GlobalPosition,
+		"Position" = Position,
+		"IsWall" = IsWall,
+		"Health" = Health,
+		"MaxHealth" = MaxHealth,
+		"Killbox" = Killbox,
+		"ActiveKillbox" = ActiveKillbox
+	}
+	return dict
+
+static func FromJSON(_dict : Dictionary):
+	var newTile = Tile.new()
+	newTile.GlobalPosition =  PersistDataManager.String_To_Vector2(_dict["GlobalPosition"])
+	newTile.Position = PersistDataManager.String_To_Vector2i(_dict["Position"])
+	newTile.IsWall = _dict["IsWall"]
+	newTile.Health = _dict["Health"]
+	newTile.MaxHealth = _dict["MaxHealth"]
+	newTile.Killbox = _dict["Killbox"]
+	newTile.ActiveKillbox = _dict["ActiveKillbox"]
+	return newTile

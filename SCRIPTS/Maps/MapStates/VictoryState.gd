@@ -82,6 +82,8 @@ func Exit():
 func Update(_delta):
 	pass
 
-
 func ToString():
+	return "VictoryState"
+
+func ToJSON():
 	return "VictoryState"

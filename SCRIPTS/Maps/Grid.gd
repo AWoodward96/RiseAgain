@@ -577,3 +577,22 @@ func GetManhattanDistance(_gridPosition1 : Vector2i, _gridPosition2 : Vector2i):
 	var x = abs(_gridPosition1.x - _gridPosition2.x)
 	var y = abs(_gridPosition1.y - _gridPosition2.y)
 	return x + y
+
+func ToJSON():
+	var dict = {
+		"Width" = Width,
+		"Height" = Height,
+		"CellSize" = CellSize,
+		"GridArr" = PersistDataManager.ArrayToJSON(GridArr)
+	}
+	return dict
+
+static func FromJSON(_dict):
+	var newGrid = Grid.new()
+	newGrid.Width = _dict["Width"]
+	newGrid.Height = _dict["Height"]
+	newGrid.CellSize = _dict["CellSize"]
+
+	var gridArrData = PersistDataManager.JSONToArray(_dict["GridArr"], Callable.create(Tile, "FromJSON"))
+	newGrid.GridArr.assign(gridArrData)
+	return newGrid

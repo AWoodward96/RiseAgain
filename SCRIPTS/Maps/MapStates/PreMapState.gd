@@ -27,3 +27,6 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 	map.ChangeMapState(CombatState.new())
 	pass
+
+func ToJSON():
+	return "PreMapState"

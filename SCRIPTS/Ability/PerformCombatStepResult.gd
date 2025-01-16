@@ -114,6 +114,7 @@ func RollMiss(_rng : DeterministicRNG, _missThreshold : float):
 	# but it should only occur rarely and hopefully you haven't banked too much off of it
 	MissAverage = (val1 + val2) / 2.0
 	print("Calculated Miss Average of: ", MissAverage, " at rate:", HitRate)
+	print("HitVals: ", MissVals)
 
 	Miss = MissAverage > _missThreshold
 

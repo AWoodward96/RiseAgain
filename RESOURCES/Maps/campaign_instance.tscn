@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyq5ckgj34tlt"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Campaign/Campaign.gd" id="1_4iu5n"]
+
+[node name="CampaignInstance" type="Node2D" node_paths=PackedStringArray("current_map_parent", "UnitHoldingArea")]
+script = ExtResource("1_4iu5n")
+current_map_parent = NodePath("CurrentMap")
+UnitHoldingArea = NodePath("UnitHoldingArea")
+
+[node name="CurrentMap" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="UnitHoldingArea" type="Node2D" parent="."]

@@ -40,7 +40,7 @@ func CheckPriorityMaps():
 			validPriorityMaps.remove_at(i)
 			continue
 
-		if !option.requirement.CheckRequirement(null):
+		if option.requirement != null && !option.requirement.CheckRequirement(null):
 			validPriorityMaps.remove_at(i)
 			continue
 

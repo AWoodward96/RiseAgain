@@ -28,7 +28,7 @@ func Enter(_actionLog : ActionLog):
 
 		dealtDamage = true
 
-		damageStepResult.RollChance(Map.Current.rng)
+		damageStepResult.RollChance(Map.Current.mapRNG)
 
 		if damageStepResult.Target != null:
 			if useDefendAction:
@@ -38,7 +38,7 @@ func Enter(_actionLog : ActionLog):
 					var retaliation = damageStepResult.RetaliationResult
 					if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
 						log.responseResults.append(retaliation)
-						retaliation.RollChance(Map.Current.rng)
+						retaliation.RollChance(Map.Current.mapRNG)
 						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log)
 						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:

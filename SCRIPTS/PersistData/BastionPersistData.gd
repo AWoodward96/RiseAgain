@@ -23,6 +23,13 @@ func GenerateTavernOccupants(_availableSlots : int, _garunteedUnits : Array[Unit
 	# That way players can still use the content I have set up in the early game, and have something to look forward to later
 
 	var allUnits = GameManager.UnitSettings.AllyUnitManifest.duplicate()
+
+	# don't let units in the campsite show up in the tavern
+	for u in UnitsInCampsite:
+		var index = allUnits.find(u)
+		if index != -1:
+			allUnits.remove_at(index)
+
 	var garunteedCopy = _garunteedUnits.duplicate()
 
 	# this isn't seeded but we could seed it if we wanted to.... Up to you
@@ -50,6 +57,16 @@ func TryRemoveUnitFromRoster(_unitTemplate : UnitTemplate):
 		SelectedRoster.remove_at(indexOf)
 		return true
 	return false
+
+func UpdateCampsite(_roster : Array[UnitInstance]):
+	UnitsInCampsite.clear()
+	for u in _roster:
+		if u == null:
+			continue
+
+		if u.currentHealth > 0:
+			UnitsInCampsite.append(u.Template)
+	pass
 
 func ToJSON():
 	var returnDict = {

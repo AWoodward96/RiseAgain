@@ -6,7 +6,8 @@ enum Direction { Up, Right, Down, Left }
 
 
 @export_category("Campaign Data")
-@export var CampaignManifest : Array[PackedScene]
+@export var CampaignManifest : Array[CampaignTemplate]
+@export var CampaignInstancePrefab : PackedScene
 @export var NumberOfRewardsInPostMap = 3
 @export var DefaultLossState : MapObjective
 

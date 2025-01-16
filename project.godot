@@ -48,6 +48,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 DamageIndicators="Stuff that Shows What's Happening Next"
 BastionParent=""
 CampaignParent=""
+MainScene=""
 
 [input]
 

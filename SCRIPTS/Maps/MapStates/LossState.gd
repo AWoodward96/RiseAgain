@@ -24,3 +24,6 @@ func Enter(_map : Map, _ctrl : PlayerController):
 		map.queue_free()
 	GameManager.ChangeGameState(BastionGameState.new(), null)
 	pass
+
+func ToJSON():
+	return "LossState"

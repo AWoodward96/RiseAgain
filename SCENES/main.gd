@@ -14,6 +14,6 @@ var currentBastion : Bastion
 func _ready():
 	Root = self
 	if DEBUG_Campaign != null && DEBUG_AutoEnter:
-		var campaign = DEBUG_Campaign.instantiate() as CampaignTemplate
+		var campaign = DEBUG_Campaign.instantiate() as Campaign
 		if campaign != null:
 			GameManager.StartCampaign(CampaignInitData.Construct(campaign, []))

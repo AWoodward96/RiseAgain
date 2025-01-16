@@ -19,14 +19,23 @@ var IsAllyTurn : bool :
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map, _ctrl)
 
+	InitializeFromPersistence(_map, _ctrl)
+
+	StartTurn(GameSettingsTemplate.TeamID.ALLY)
+	ActivateAll()
+
+func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
+	map = _map
+	controller = _ctrl
+
 	combatHud = controller.CreateCombatHUD()
 	controller.ClearSelectionData()
 
 	if !map.OnUnitTurnEnd.is_connected(OnUnitEndTurn):
 		map.OnUnitTurnEnd.connect(OnUnitEndTurn)
 
-	StartTurn(GameSettingsTemplate.TeamID.ALLY)
-	ActivateAll()
+	UpdateCurrentTurnInfo()
+
 
 func Exit():
 	if map.OnUnitTurnEnd.is_connected(OnUnitEndTurn):
@@ -64,6 +73,7 @@ func Update(_delta):
 			GameSettingsTemplate.TeamID.NEUTRAL:
 				nextTurn = GameSettingsTemplate.TeamID.ENEMY
 		StartTurn(nextTurn)
+		map.turnCount += 1
 
 func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	map.currentTurn = _turn
@@ -76,15 +86,7 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	controller.BlockMovementInput = false
 	turnBannerOpen = false
 
-	unitTurnStack = map.GetUnitsOnTeam(_turn)
-	if _turn == GameSettingsTemplate.TeamID.ALLY:
-		controller.EnterSelectionState()
-
-	if _turn != GameSettingsTemplate.TeamID.ALLY:
-		controller.EnterOffTurnState()
-
-	if unitTurnStack.size() > 0:
-		controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
+	UpdateCurrentTurnInfo()
 
 	for units in unitTurnStack:
 		units.ModifyFocus(1)
@@ -93,6 +95,19 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	ActivateAll()
 	map.OnTurnStart.emit(_turn)
 	EnterTeamTurnUpdate()
+	PersistDataManager.SaveMap()
+
+
+func UpdateCurrentTurnInfo():
+	unitTurnStack = map.GetUnitsOnTeam(map.currentTurn)
+	if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
+		controller.EnterSelectionState()
+
+	if map.currentTurn != GameSettingsTemplate.TeamID.ALLY:
+		controller.EnterOffTurnState()
+
+	if unitTurnStack.size() > 0:
+		controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
 
 
 func EnterTeamTurnUpdate():
@@ -225,3 +240,6 @@ func UpdateNeutralTurn(_delta):
 		return
 
 	UpdateOffTurn(_delta)
+
+func ToJSON():
+	return "CombatState"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCENES/main.gd" id="1_q6lq6"]
 [ext_resource type="PackedScene" uid="uid://c7m8r8wh7mgsk" path="res://RESOURCES/Maps/_alpha_Campaign01/campaign_02.tscn" id="2_j1iwb"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("BastionParent", "CampaignParent")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("BastionParent", "CampaignParent") groups=["MainScene"]]
 script = ExtResource("1_q6lq6")
 DEBUG_Campaign = ExtResource("2_j1iwb")
 BastionParent = NodePath("BastionParent")

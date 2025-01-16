@@ -151,6 +151,10 @@ func OtherUnitSelected(_unit : UnitInstance):
 	unit1ItemEntryList.FocusFirst()
 
 func OnItemSentToConvoy(_item : Item, _index: int):
+	if _item == null:
+		# Get outa here - no null items allowed in the convoy
+		return
+
 	var campaign = GameManager.CurrentCampaign
 
 	currentUnit.EquipItem(_index, null)
@@ -170,6 +174,9 @@ func OnItemTakenFromConvoy(_item : Item):
 	campaign.RemoveItemFromConvoy(_item,currentUnit,index)
 	UpdateUnit1Panel(true)
 	UpdateConvoy()
+
+	if GameManager.CurrentCampaign.Convoy.size() == 0:
+		unit1ItemEntryList.FocusFirst()
 
 func OnItemSlotSelected(_isCurrentOrOther : bool, _item : Item, _index : int):
 	if currentState == UIState.SelectItem:
@@ -226,7 +233,7 @@ func OnItemSlotSelected(_isCurrentOrOther : bool, _item : Item, _index : int):
 
 
 static func ShowUI(_parent : Control, _unit : UnitInstance, _isConvoy : bool):
-	var tradeUI = GameManager.TradeUIPrefab.instantiate() as TradeUI
+	var tradeUI = UIManager.TradeUIPrefab.instantiate() as TradeUI
 	tradeUI.Initialize(_unit, _isConvoy)
 	_parent.add_child(tradeUI)
 	return tradeUI

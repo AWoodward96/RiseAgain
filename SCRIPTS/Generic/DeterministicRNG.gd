@@ -10,6 +10,7 @@ func ToJSON():
 		"randomSeed" = randomSeed,
 		"uses" = uses
 	}
+	return returnJSON
 
 static func FromJSON(_dict : Dictionary):
 	var deterministicRNG = DeterministicRNG.new()
@@ -37,7 +38,7 @@ func SetUpRNG():
 
 func BurnRNG(_amountToBurn : int):
 	for i in _amountToBurn:
-		var variable = rng.randi()
+		var _variable = rng.randi()
 		# that rng should now be 'burnt' and we should be set up for the next sequence
 
 func NextInt(min : int, max : int):

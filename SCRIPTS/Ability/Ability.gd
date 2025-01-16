@@ -66,3 +66,13 @@ func OnRest():
 
 func _to_string():
 	return self.name
+
+func ToJSON():
+	var dict = {
+		"prefab" : self.scene_file_path,
+		"remainingUsages" : remainingUsages
+	}
+	return dict
+
+func FromJSON(_dict : Dictionary):
+	remainingUsages = _dict["remainingUsages"]

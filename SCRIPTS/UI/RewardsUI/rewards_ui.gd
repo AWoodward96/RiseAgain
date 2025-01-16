@@ -11,11 +11,11 @@ signal OnRewardSelected(_reward : LootTableEntry, _unit : UnitInstance)
 @export var giveItemEntryList : EntryList
 @export var giveItemIcon : TextureRect
 
-var campaign : CampaignTemplate
+var campaign : Campaign
 var workingSelectedReward : LootTableEntry
 var allRewards : Array[LootTableEntry]
 
-func Initialize(_rewards : Array[LootTableEntry], _campaign : CampaignTemplate, _callback : Callable):
+func Initialize(_rewards : Array[LootTableEntry], _campaign : Campaign, _callback : Callable):
 	giveItemParent.visible = false
 	campaign = _campaign
 	allRewards = _rewards

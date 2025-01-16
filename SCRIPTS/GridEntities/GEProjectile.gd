@@ -15,6 +15,10 @@ var moved : bool = false
 
 func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _allegience : GameSettingsTemplate.TeamID):
 	super(_map, _origin, _source, _allegience)
+	RefreshVisual()
+	UpdatePositionOnGrid()
+
+func RefreshVisual():
 	if visual != null:
 		visual.rotation = deg_to_rad(90 * direction)
 
@@ -28,14 +32,13 @@ func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _allegience : Gam
 			3:
 				visual.position = Vector2i(0, 32)
 
-	UpdatePositionOnGrid()
 
 func UpdatePositionOnGrid():
 	if shapedTiles == null:
 		push_error("Grid Entity Projectile is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, CurrentMap.grid, Origin, direction)
+	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, CurrentMap.grid, Origin, direction, false, false,  false)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue
@@ -99,3 +102,17 @@ func UpdateGridEntity_TeamTurn(_delta : float):
 func UpdateGridEntity_UnitTurn(_delta : float):
 	CommonUpdate(_delta)
 	return ExecutionComplete
+
+func ToJSON():
+	var dict = super()
+	dict["type"] = "GEProjectile"
+	dict["direction"] = direction
+	return dict
+
+func InitFromJSON(_dict : Dictionary):
+	super(_dict)
+	direction = _dict["direction"]
+	RefreshVisual()
+	UpdatePositionOnGrid()
+	position = Origin.GlobalPosition
+	pass

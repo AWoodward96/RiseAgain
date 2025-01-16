@@ -53,7 +53,6 @@ var TurnStartTile : Tile # The tile that this Unit Started their turn on
 
 var baseStats = {}			#Stats determined by the template object and out-of-run-progression
 var statModifiers = {}		#Stats determined by in-run progression. These are NOT temporary, and shouldn't be removed
-var temporaryStats = {}		#Stats determined by buffs, debuffs, or other TEMPORARY changes on the battlefield. This gets cleared at the end of a map!
 
 var facingDirection : GameSettingsTemplate.Direction
 
@@ -106,9 +105,7 @@ func _ready():
 func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	Template = _unitTemplate
 
-	if _unitTemplate.Affinity != null:
-		affinityIcon.texture = _unitTemplate.Affinity.loc_icon
-
+	RefreshVisuals()
 
 	if ItemSlots.size() == 0:
 		for s in GameManager.GameSettings.ItemSlotsPerUnit:
@@ -120,6 +117,9 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	UpdateDerivedStats()
 	InitializeTier0Abilities()
 
+func RefreshVisuals():
+	if Template.Affinity != null:
+		affinityIcon.texture = Template.Affinity.loc_icon
 
 func InitializeStats():
 	for stat in Template.BaseStats:
@@ -219,12 +219,11 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 	CreateVisual()
 
 	# has to be after CreateVisual
-	Activated = true
+	#Activated = true
 
 func OnMapComplete():
 	ShowHealthBar(false)
 	IsDefending = false
-	temporaryStats.clear()
 
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
@@ -556,8 +555,6 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 	if statModifiers.has(_statTemplate):
 		current += statModifiers[_statTemplate]
 
-	if temporaryStats.has(_statTemplate):
-		current += temporaryStats[_statTemplate]
 
 	if EquippedWeapon != null && EquippedWeapon.StatData != null:
 		for statDef in EquippedWeapon.StatData.GrantedStats:
@@ -706,11 +703,86 @@ func ResetVisualToTile():
 	position = CurrentTile.GlobalPosition
 
 func ToJSON():
-
-	return {
+	var dict = {
 		"Template" : Template.resource_path,
 		"currentHealth" : currentHealth,
-		"GridPosition_x" : GridPosition.x,
-		"GridPosition_y" : GridPosition.y,
-		"IsAggrod" : IsAggrod
+		"currentFocus" : currentFocus,
+		"Level" : Level,
+		"Exp" : Exp,
+		"GridPosition" : GridPosition,
+		"IsAggrod" : IsAggrod,
+		"UnitAllegience" : UnitAllegiance,
+		"Activated" : Activated,
+		"Abilities" : PersistDataManager.ArrayToJSON(Abilities),
+		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots)
 	}
+
+	if AI != null:
+		dict["AI"] = AI.resource_path
+		dict["AggroType"] = AggroType.resource_path
+
+	# get base stats
+	var baseStatsStorage : Dictionary
+	for b in baseStats:
+		baseStatsStorage[b.resource_path] = baseStats[b]
+	dict["baseStats"] = baseStatsStorage
+
+	var modifierStatStorage : Dictionary
+	for b in statModifiers:
+		modifierStatStorage[b.resource_path] = statModifiers[b]
+	dict["statModifiers"] = modifierStatStorage
+
+
+	return dict
+
+static func FromJSON(_dict : Dictionary):
+	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
+	unitInstance.Template = load(_dict["Template"]) as UnitTemplate
+	unitInstance.Level = _dict["Level"]
+	unitInstance.Exp = _dict["Exp"]
+	unitInstance.UnitAllegiance = _dict["UnitAllegience"]
+
+	if _dict.has("AI"):
+		unitInstance.AI = load(_dict["AI"]) as AIBehaviorBase
+		unitInstance.AggroType = load(_dict["AggroType"]) as AlwaysAggro
+
+	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
+	unitInstance.IsAggrod = _dict["IsAggrod"]
+
+	var baseStatsDict = _dict["baseStats"]
+	for stringref in baseStatsDict:
+		var template = load(stringref) as StatTemplate
+		unitInstance.baseStats[template] = baseStatsDict[stringref]
+
+	var statmods = _dict["statModifiers"]
+	for stringref in statmods:
+		var template = load(stringref) as StatTemplate
+		unitInstance.statModifiers[template] = statmods[stringref]
+
+	for element in _dict["Abilities"]:
+		var elementAsDict = JSON.parse_string(element)
+		var prefab = load(elementAsDict["prefab"]) as PackedScene
+		var newInstance = unitInstance.AddAbility(prefab)
+		if newInstance != null:
+			newInstance.FromJSON(elementAsDict)
+
+	for abl in unitInstance.Abilities:
+		if abl.type == Ability.AbilityType.Weapon:
+			unitInstance.EquippedWeapon = abl
+			break
+
+	var data = PersistDataManager.JSONToArray(_dict["ItemSlots"], Callable.create(Item, "FromJSON"))
+	unitInstance.ItemSlots.assign(data)
+
+	unitInstance.UpdateDerivedStats()
+	unitInstance.CreateVisual()
+	# Set these after derived stats, so that health can actually be equal to the correct values
+	unitInstance.currentHealth = _dict["currentHealth"]
+	unitInstance.currentFocus = _dict["currentFocus"]
+
+	var updateActivated = func(_dict : Dictionary):
+		unitInstance.Activated = _dict["Activated"]
+	updateActivated.call_deferred(_dict)
+
+	unitInstance.RefreshVisuals()
+	return unitInstance

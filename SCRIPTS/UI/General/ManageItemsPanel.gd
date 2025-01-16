@@ -23,7 +23,7 @@ var hoveredUnit : UnitInstance
 var hoveredEntry
 var selectedUnit : UnitInstance
 var map : Map
-var campaign : CampaignTemplate
+var campaign : Campaign
 var selectedIndex : int = 0
 var tradeUI : TradeUI
 
@@ -31,7 +31,7 @@ var tradeUI : TradeUI
 # REMOVE THIS WHEN YOU IMPLEMENT THIS
 var craftingEnabled = false
 
-func Initialize(_currentMap : Map, _campaign : CampaignTemplate):
+func Initialize(_currentMap : Map, _campaign : Campaign):
 	# Campaign CAN be null if we initialize from editor. Don't rely on it being not null
 	map = _currentMap
 	campaign = _campaign

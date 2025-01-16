@@ -20,7 +20,7 @@ func UpdateInput(_delta):
 
 		# Done in this order, so that the Reticle is where the unit was hovering before cancel was called
 		ctrl.ForceReticlePosition(selectedUnit.GridPosition)
-		currentGrid.SetUnitGridPosition(selectedUnit,selectedUnit.TurnStartTile.Position, true)
+		currentGrid.SetUnitGridPosition(selectedUnit, selectedUnit.TurnStartTile.Position, true)
 
 		ctrl.EnterUnitMovementState()
 	pass

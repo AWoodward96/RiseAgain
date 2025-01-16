@@ -64,6 +64,9 @@ func btnGiveSpecificItem():
 func btnAutoWin():
 	AutoWin = !AutoLose
 
+func btnSaveMap():
+	PersistDataManager.SaveMap()
+
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR
 	GameManager.add_child(csrMenu)
