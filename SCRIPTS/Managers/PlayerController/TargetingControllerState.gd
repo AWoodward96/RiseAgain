@@ -156,7 +156,7 @@ func StandardTargetingInput(_delta):
 	if !InputManager.inputAnyDown:
 		return
 
-	var filteredList = []
+	var filteredList : Array[Tile] = []
 	var unitsFound = []
 	for t in log.availableTiles:
 		if (t.Occupant != null && !unitsFound.has(t.Occupant)) || (t.Occupant == null && t.MaxHealth > 0):
@@ -175,15 +175,34 @@ func StandardTargetingInput(_delta):
 
 	ctrl.combatHUD.ShowNoTargets(false)
 	var curIndex = filteredList.find(log.actionOriginTile, 0)
-	if InputManager.inputDown[0] || InputManager.inputDown[1]:
-		curIndex += 1
-		if curIndex >= filteredList.size():
-			curIndex = 0
+	#if InputManager.inputDown[0] || InputManager.inputDown[1]:
+		#curIndex += 1
+		#if curIndex >= filteredList.size():
+			#curIndex = 0
+#
+	#if InputManager.inputDown[2] || InputManager.inputDown[3]:
+		#curIndex -= 1
+		#if curIndex < 0:
+			#curIndex = filteredList.size() - 1
+	if InputManager.inputAnyDown:
+		var currentTile = filteredList[curIndex]
+		var direction : GameSettingsTemplate.Direction
 
-	if InputManager.inputDown[2] || InputManager.inputDown[3]:
-		curIndex -= 1
-		if curIndex < 0:
-			curIndex = filteredList.size() - 1
+		if InputManager.inputDown[0]:
+			direction = GameSettingsTemplate.Direction.Up
+		elif InputManager.inputDown[1]:
+			direction = GameSettingsTemplate.Direction.Right
+		elif InputManager.inputDown[2]:
+			direction = GameSettingsTemplate.Direction.Down
+		elif InputManager.inputDown[3]:
+			direction = GameSettingsTemplate.Direction.Left
+
+		var newTile = currentGrid.GetBestTileFromDirection(currentTile, direction, filteredList)
+		if newTile != null:
+			var newTileIndex = filteredList.find(newTile)
+			if newTileIndex != -1:
+				curIndex = newTileIndex
+
 
 
 	ClearPreview()

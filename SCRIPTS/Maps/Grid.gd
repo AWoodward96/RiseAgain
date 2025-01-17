@@ -573,6 +573,36 @@ func WalkBackPushStack(_tileData : TileTargetedData, _currentTile : Tile, _direc
 		index -= 1
 		# man I wish it was easier to do deprecating for loops
 
+func GetBestTileFromDirection(_origin : Tile, _direction : GameSettingsTemplate.Direction, _filteredList : Array[Tile]):
+	var listCopy = _filteredList.duplicate()
+	var originIndex = listCopy.find(_origin)
+	if originIndex != -1:
+		listCopy.remove_at(originIndex)
+
+	match _direction:
+		GameSettingsTemplate.Direction.Up:
+			listCopy = listCopy.filter(func(tile : Tile): return tile.Position.y < _origin.Position.y)
+		GameSettingsTemplate.Direction.Right:
+			listCopy = listCopy.filter(func(tile : Tile): return tile.Position.x > _origin.Position.x)
+		GameSettingsTemplate.Direction.Down:
+			listCopy = listCopy.filter(func(tile : Tile): return tile.Position.y > _origin.Position.y)
+		GameSettingsTemplate.Direction.Left:
+			listCopy = listCopy.filter(func(tile : Tile): return tile.Position.x < _origin.Position.x)
+
+	if listCopy.size() == 0:
+		return null
+
+	var smallestTileBasedOnDistance : Tile = listCopy[0]
+	var dst = GetManhattanDistance(smallestTileBasedOnDistance.Position, _origin.Position)
+	for t in listCopy:
+		var newDST = GetManhattanDistance(t.Position, _origin.Position)
+		if newDST < dst:
+			dst = newDST
+			smallestTileBasedOnDistance = t
+
+	return smallestTileBasedOnDistance
+
+
 func GetManhattanDistance(_gridPosition1 : Vector2i, _gridPosition2 : Vector2i):
 	var x = abs(_gridPosition1.x - _gridPosition2.x)
 	var y = abs(_gridPosition1.y - _gridPosition2.y)

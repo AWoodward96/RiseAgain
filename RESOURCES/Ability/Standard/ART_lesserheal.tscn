@@ -16,7 +16,7 @@ script = ExtResource("4_63mhg")
 
 [node name="ART_LesserHeal" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
 script = ExtResource("1_jaewu")
-focusCost = 2
+focusCost = 0
 executionStack = Array[ExtResource("2_r6uyf")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
 internalName = "lesserheal"
 loc_displayName = "art_lesserheal_name"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=20 format=3 uid="uid://co274sk3utsf2"]
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=18 format=3 uid="uid://co274sk3utsf2"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_cjmg3"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_pfvmt"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="4_0s12q"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_fypxo"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="6_dof8u"]
-[ext_resource type="PackedScene" uid="uid://b02uvbj15y0dh" path="res://RESOURCES/Maps/_alpha_Campaign01/c_1_map_06.tscn" id="6_x4hvs"]
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a03_default.tscn" id="7_ie7j4"]
 [ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="7_xk4vt"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="8_4vk3q"]
@@ -21,15 +20,10 @@ script = ExtResource("2_pfvmt")
 map = ExtResource("4_0s12q")
 weight = 1
 
-[sub_resource type="Resource" id="Resource_k5btq"]
-script = ExtResource("5_fypxo")
-Priority = 1
-map = ExtResource("6_x4hvs")
-
 [sub_resource type="Resource" id="Resource_xavni"]
 resource_name = "Map 1"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([SubResource("Resource_k5btq")])
+priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_5bfw7"), SubResource("Resource_86wal")])
 
 [sub_resource type="Resource" id="Resource_thphl"]

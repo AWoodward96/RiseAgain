@@ -54,7 +54,7 @@ func _process(_delta):
 	if ControllerState != null && inspectUI == null:
 		ControllerState._Execute(_delta)
 
-	if ControllerState.CanShowThreat():
+	if ControllerState != null && ControllerState.CanShowThreat():
 		if InputManager.infoDown:
 			# ShowInspectUI() check is also reffering to the hanging ui element in the combat hud
 			# If this behavior needs to be split - then do that but for now it actually works out fine
