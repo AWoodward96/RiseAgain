@@ -91,6 +91,8 @@ var Activated : bool :
 
 		Activated = _value
 
+var unitPersistence : UnitPersistBase
+
 func _ready():
 	ShowHealthBar(false)
 	healthBar.SetUnit(self)
@@ -111,6 +113,7 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 		for s in GameManager.GameSettings.ItemSlotsPerUnit:
 			ItemSlots.append(null)
 
+	unitPersistence = PersistDataManager.universeData.GetUnitPersistence(Template)
 	CreateStartingAbilities()
 	InitializeLevels(_levelOverride)
 	InitializeStats()
@@ -555,7 +558,6 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 	if statModifiers.has(_statTemplate):
 		current += statModifiers[_statTemplate]
 
-
 	if EquippedWeapon != null && EquippedWeapon.StatData != null:
 		for statDef in EquippedWeapon.StatData.GrantedStats:
 			if statDef.Template == _statTemplate:
@@ -570,6 +572,9 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 			var statChange = (effect as StatChangeEffectInstance).GetEffect() as StatBuff
 			if statChange != null && statChange.Stat == _statTemplate:
 				current += statChange.Value
+
+	if unitPersistence != null:
+		current += unitPersistence.GetPrestiegeStatMod(_statTemplate)
 
 	return current
 
@@ -749,6 +754,7 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
 	unitInstance.IsAggrod = _dict["IsAggrod"]
 
+	unitInstance.unitPersistence = PersistDataManager.universeData.GetUnitPersistence(unitInstance.Template)
 	var baseStatsDict = _dict["baseStats"]
 	for stringref in baseStatsDict:
 		var template = load(stringref) as StatTemplate
@@ -783,6 +789,7 @@ static func FromJSON(_dict : Dictionary):
 	var updateActivated = func(_dict : Dictionary):
 		unitInstance.Activated = _dict["Activated"]
 	updateActivated.call_deferred(_dict)
+
 
 	unitInstance.RefreshVisuals()
 	return unitInstance

@@ -44,7 +44,12 @@
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
+				"31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
+				"270f607d-5b4b-4fc6-8c03-e00f27b00f42",
+				"d9c02ecb-585a-4fc9-9bd1-30b4daaca7df"
+			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -496,6 +501,34 @@
 			"title": "Demikestrel isn't working",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
+			"title": "Skills Audit",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
+			"title": "Character Writing",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "270f607d-5b4b-4fc6-8c03-e00f27b00f42",
+			"title": "Out-Of-Run Buff System",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "d9c02ecb-585a-4fc9-9bd1-30b4daaca7df",
+			"title": "Contact Artist",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

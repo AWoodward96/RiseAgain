@@ -22,7 +22,6 @@ func OnBodyEnter(_body: Node2D) -> void:
 			visual.material.set_shader_parameter("enabled", true)
 
 
-
 func OnBodyExit(_body: Node2D) -> void:
 	if !_body.is_in_group("Player"):
 		return

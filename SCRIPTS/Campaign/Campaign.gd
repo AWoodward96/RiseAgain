@@ -119,7 +119,9 @@ func StartMap():
 	var MapRNGSeed = CampaignRng.NextInt(0, 10000000)
 	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNGSeed)
 
-	current_map_parent.add_child(currentMap)
+	if currentMap.get_parent() != current_map_parent:
+		current_map_parent.add_child(currentMap)
+
 	campaignLedger.append(currentMapOption)
 	GameManager.HideLoadingScreen()
 	PersistDataManager.SaveCampaign()
@@ -149,6 +151,8 @@ func MapComplete():
 			parent.remove_child(unit)
 
 		UnitHoldingArea.add_child(unit)
+		if unit.currentHealth > 0:
+			PersistDataManager.universeData.GrantPrestiegeExp(unit.Template, GameManager.UnitSettings.PrestiegeGrantedPerMap)
 
 	campaignBlockMapIndex += 1
 	StartNextMap()

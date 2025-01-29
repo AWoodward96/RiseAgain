@@ -19,6 +19,20 @@ func CreateParents():
 	unitPersistParent.name = "Units"
 	add_child(unitPersistParent)
 
+func GrantPrestiegeExp(_unitTemplate : UnitTemplate, _amount : int):
+	var persist = GetUnitPersistence(_unitTemplate) as UnitPersistBase
+	if persist != null:
+		if persist.Alive:
+			persist.GrantPrestiegeExp(_amount)
+	Save()
+
+func GetUnitPersistence(_unitTemplate : UnitTemplate):
+	for u in unitPersistData:
+		if u.Template == _unitTemplate:
+			return u
+
+	return null
+
 func ToJSON():
 	var saveData = {
 		"resourceData" = PersistDataManager.ArrayToJSON(resourceData),
@@ -71,10 +85,7 @@ func Save():
 	save_file.store_line(stringify)
 
 	for unitPersist in unitPersistData:
-		var unit_save_file = FileAccess.open(PersistDataManager.UNITS_DIRECTORY + unitPersist.Template.DebugName + ".json", FileAccess.WRITE)
-		var unitSaveToJson = unitPersist.ToJSON()
-		var stringifiedUnit = JSON.stringify(unitSaveToJson, "\t")
-		unit_save_file.store_line(stringifiedUnit)
+		unitPersist.Save()
 
 static func CreateNewUniversePersist():
 	var universePersist = UniversePersistence.new()

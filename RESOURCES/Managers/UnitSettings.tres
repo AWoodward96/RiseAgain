@@ -15,3 +15,6 @@
 script = ExtResource("1_a2dt2")
 UnitInstancePrefab = ExtResource("6_tjdwd")
 AllyUnitManifest = Array[ExtResource("1_665j3")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5"), ExtResource("7_fphg7"), ExtResource("8_laijs")])
+BaseUnitPrestiegeCost = 40
+AdditionalUnitPrestiegeCost = 10
+PrestiegeGrantedPerMap = 10

@@ -23,3 +23,11 @@ class_name UnitTemplate
 @export var loc_Description : String
 @export var icon : Texture2D
 @export var persistDataScript : Script
+
+
+func GetBaseStat(_statTemplate : StatTemplate):
+	for def in BaseStats:
+		if def.Template == _statTemplate:
+			return def.Value
+
+	return 0

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=18 format=3 uid="uid://co274sk3utsf2"]
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=21 format=3 uid="uid://co274sk3utsf2"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_cjmg3"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_pfvmt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a03_default.tscn" id="7_ie7j4"]
 [ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="7_xk4vt"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="8_4vk3q"]
+[ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_campsite_default.tscn" id="9_xuuw2"]
 
 [sub_resource type="Resource" id="Resource_5bfw7"]
 script = ExtResource("2_pfvmt")
@@ -53,7 +54,18 @@ script = ExtResource("1_cjmg3")
 priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_dtbd4")])
 
+[sub_resource type="Resource" id="Resource_4dgbo"]
+script = ExtResource("2_pfvmt")
+map = ExtResource("9_xuuw2")
+weight = 1
+
+[sub_resource type="Resource" id="Resource_fmftn"]
+resource_name = "Campsite"
+script = ExtResource("1_cjmg3")
+priorityMapOptions = Array[ExtResource("5_fypxo")]([])
+generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_4dgbo")])
+
 [resource]
 script = ExtResource("8_4vk3q")
-mapOptions = Array[ExtResource("1_cjmg3")]([SubResource("Resource_xavni"), SubResource("Resource_f7ysl"), SubResource("Resource_xrykd")])
+mapOptions = Array[ExtResource("1_cjmg3")]([SubResource("Resource_xavni"), SubResource("Resource_f7ysl"), SubResource("Resource_xrykd"), SubResource("Resource_fmftn")])
 nextCampaignBlocks = Array[String](["res://RESOURCES/Maps/_alpha_Campaign00/cb_maroon_mid.tres"])

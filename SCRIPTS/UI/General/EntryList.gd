@@ -15,6 +15,9 @@ func ClearEntries():
 
 		createdEntries.clear()
 
+func SetEntryFocus(_focus : Control.FocusMode):
+	for e in createdEntries:
+		e.focus_mode = _focus
 
 func CreateEntry(_prefab : PackedScene):
 	var entry = _prefab.instantiate()

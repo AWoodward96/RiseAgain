@@ -1,0 +1,161 @@
+[gd_scene load_steps=8 format=3 uid="uid://cflal3jirl4pa"]
+
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_owhuc"]
+[ext_resource type="Script" path="res://SCRIPTS/Universe/BarracksStatUpgradeEntry.gd" id="1_rc87r"]
+[ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_3rx0x"]
+[ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="3_4fdci"]
+[ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="5_yytrk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0bsc"]
+font = ExtResource("3_4fdci")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_k1xa7"]
+font = ExtResource("3_4fdci")
+font_size = 32
+
+[node name="StatBlockEntry_Barracks" type="Control" node_paths=PackedStringArray("StatBlockEntry", "MinusButton", "PlusButton", "AllocatedUpgradeLabel")]
+custom_minimum_size = Vector2(436, 72)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 308.0
+offset_bottom = 64.0
+script = ExtResource("1_rc87r")
+StatBlockEntry = NodePath("MarginContainer/ParentHBox/StatBlockEntry_Inspect")
+MinusButton = NodePath("MarginContainer/ParentHBox/Minus/MinusButton")
+PlusButton = NodePath("MarginContainer/ParentHBox/Plus/PlusButton")
+AllocatedUpgradeLabel = NodePath("MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2/AllocatedUpgrades")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 308.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ParentHBox" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Minus" type="Control" parent="MarginContainer/ParentHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="MinusButton" type="Button" parent="MarginContainer/ParentHBox/Minus"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-"
+
+[node name="StatBlockEntry_Inspect" type="PanelContainer" parent="MarginContainer/ParentHBox" node_paths=PackedStringArray("icon", "statName", "statValue")]
+custom_minimum_size = Vector2(250, 64)
+layout_mode = 2
+script = ExtResource("1_owhuc")
+icon = NodePath("MarginContainer/HBoxContainer/Control/HBoxContainer/TextureRect")
+statName = NodePath("MarginContainer/HBoxContainer/Control/HBoxContainer/StatBlockName")
+statValue = NodePath("MarginContainer/HBoxContainer/StatBlockValue")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(152, 0)
+layout_mode = 2
+
+[node name="Bg" type="ColorRect" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42, 0.42, 0.42, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_3rx0x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="StatBlockName" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "ui_text"
+label_settings = SubResource("LabelSettings_f0bsc")
+
+[node name="StatBlockValue" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ui_value"
+label_settings = SubResource("LabelSettings_k1xa7")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="AllocatedUpgrades" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2"]
+layout_mode = 2
+offset_left = -33.0
+offset_top = -4.0
+offset_right = -3.0
+offset_bottom = 19.0
+text = "+1"
+label_settings = ExtResource("5_yytrk")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Plus" type="Control" parent="MarginContainer/ParentHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="PlusButton" type="Button" parent="MarginContainer/ParentHBox/Plus"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+
+[connection signal="pressed" from="MarginContainer/ParentHBox/Minus/MinusButton" to="." method="OnMinus"]
+[connection signal="pressed" from="MarginContainer/ParentHBox/Plus/PlusButton" to="." method="OnPlus"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b1wafu4c325v1"]
+[gd_scene load_steps=19 format=4 uid="uid://b1wafu4c325v1"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_4ana2"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_643m3"]
@@ -13,9 +13,7 @@
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="11_iw8uk"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_ftky7"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="13_rfq00"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="14_l5qnx"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="14_us1w8"]
-[ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="15_37pts"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="15_ks74r"]
 
 [sub_resource type="Resource" id="Resource_bbkis"]
@@ -117,18 +115,6 @@ UnitToSpawn = ExtResource("11_iw8uk")
 Position = Vector2i(6, 7)
 AIBehavior = ExtResource("12_ftky7")
 AggroBehavior = SubResource("Resource_bbkis")
-
-[node name="Temp_Object" type="Sprite2D" parent="Spawners"]
-position = Vector2(640, 256)
-texture = ExtResource("9_65sxo")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("14_l5qnx")
-GridEntityPrefab = ExtResource("15_37pts")
-Direction = 2
-Position = Vector2i(10, 4)
 
 [node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
 position = Vector2(576, 128)

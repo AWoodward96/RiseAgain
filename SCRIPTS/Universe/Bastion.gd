@@ -21,7 +21,6 @@ func _ready():
 	pass
 
 func GenerateNewDay():
-
 	PersistDataManager.universeData.bastionData.GenerateTavernOccupants(3, [] as Array[UnitTemplate])
 	PersistDataManager.universeData.bastionData.DayComplete = false
 	PersistDataManager.SaveGame()

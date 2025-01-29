@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://61oi65hp3jdj"]
+[gd_scene load_steps=28 format=4 uid="uid://61oi65hp3jdj"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Universe/TopdownEnvironment.gd" id="1_bp5x6"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="2_y5i7m"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://hkrdforcue3c" path="res://RESOURCES/UI/TavernUI/unit_icon.tscn" id="11_j58iv"]
 [ext_resource type="FontFile" uid="uid://pt15ohmwthe1" path="res://ART/Fonts/fude.ttf" id="11_t68hm"]
 [ext_resource type="LabelSettings" uid="uid://klboyvialx7" path="res://RESOURCES/Theme/TavernText.tres" id="13_xnyyx"]
+[ext_resource type="Script" path="res://SCRIPTS/Universe/Barracks.gd" id="15_gvr6f"]
+[ext_resource type="PackedScene" uid="uid://cflal3jirl4pa" path="res://RESOURCES/UI/Barracks/stat_block_entry_barracks.tscn" id="16_b04xw"]
+[ext_resource type="PackedScene" uid="uid://7hkdtcp08x61" path="res://RESOURCES/UI/GenericEntrys/simple_unit_entry.tscn" id="16_mgwwk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_byjll"]
 shader = ExtResource("4_1i6q3")
@@ -25,6 +28,69 @@ shader_parameter/minimal_flickering_alpha = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jl8"]
 size = Vector2(150, 101)
+
+[sub_resource type="Animation" id="Animation_qrow8"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Tavern/UI/Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.217638, 0.125),
+"update": 0,
+"values": [Vector2(0, -640), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jh0tb"]
+_data = {
+"Show": SubResource("Animation_qrow8")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_dukkp"]
+font = ExtResource("6_cldrg")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_crhww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/PaperParent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(704, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/ModParent/block_everything:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_hwwui"]
 resource_name = "Show"
@@ -41,23 +107,64 @@ tracks/0/keys = {
 "values": [Vector2(0, -640), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_crhww"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_163fs"]
+resource_name = "FocusMods"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Root:position")
+tracks/0/path = NodePath("Root/PaperParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(704, 0), Vector2(896, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/ModParent/block_everything:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_w1egs"]
+resource_name = "FocusEntries"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/PaperParent:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(704, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/ModParent/block_everything:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_beymq"]
 _data = {
+"FocusEntries": SubResource("Animation_w1egs"),
+"FocusMods": SubResource("Animation_163fs"),
 "RESET": SubResource("Animation_crhww"),
 "Show": SubResource("Animation_hwwui")
 }
@@ -67,6 +174,7 @@ script = ExtResource("1_bp5x6")
 size = Vector2i(46, 28)
 playerNode = NodePath("PlayerStartingNode")
 interactableParent = NodePath("Interactables")
+metadata/_edit_vertical_guides_ = [-326.0]
 
 [node name="Tilemaps" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -112,6 +220,7 @@ position = Vector2(6, 46.5)
 shape = SubResource("RectangleShape2D_f6jl8")
 
 [node name="UI" type="CanvasLayer" parent="Interactables/SignPost"]
+visible = false
 
 [node name="Margin" type="MarginContainer" parent="Interactables/SignPost/UI"]
 anchors_preset = 15
@@ -509,6 +618,232 @@ size_flags_vertical = 4
 script = ExtResource("7_ok3a8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Tavern/UI"]
+libraries = {
+"": SubResource("AnimationLibrary_jh0tb")
+}
+autoplay = "Show"
+
+[node name="Barracks" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "Anim", "PrestiegeBar", "PrestiegeBarLabel", "UnitEntryParent", "StatBlockEntryParent", "interactableArea", "visual")]
+position = Vector2(1027, 491)
+script = ExtResource("15_gvr6f")
+UIParent = NodePath("UI")
+Anim = NodePath("UI/AnimationPlayer")
+PrestiegeBar = NodePath("UI/Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar")
+PrestiegeBarLabel = NodePath("UI/Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar/EXPLabel")
+UnitEntryParent = NodePath("UI/Root/PaperParent/MarginContainer/MainContent/ScrollContainer/CharacterEntryParent")
+UnitEntryPrefab = ExtResource("16_mgwwk")
+StatBlockEntryParent = NodePath("UI/Root/ModParent/VBoxContainer/StatBuffs/MarginContainer/GridContainer")
+StatBlockEntryPrefab = ExtResource("16_b04xw")
+interactableArea = NodePath("InteractableArea")
+visual = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactables/Barracks"]
+material = SubResource("ShaderMaterial_byjll")
+scale = Vector2(2, 2)
+texture = ExtResource("3_mrfn0")
+offset = Vector2(0, -16)
+
+[node name="InteractableArea" type="Area2D" parent="Interactables/Barracks"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Barracks/InteractableArea"]
+position = Vector2(6, 46.5)
+shape = SubResource("RectangleShape2D_f6jl8")
+
+[node name="UI" type="CanvasLayer" parent="Interactables/Barracks"]
+
+[node name="Root" type="Control" parent="Interactables/Barracks/UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -640.0
+offset_bottom = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TableBG" type="ColorRect" parent="Interactables/Barracks/UI/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.348417, 0.464839, 0.449028, 1)
+
+[node name="ModParent" type="Control" parent="Interactables/Barracks/UI/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/Barracks/UI/Root/ModParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrestiegeLevel" type="Control" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel"]
+custom_minimum_size = Vector2(600, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="EXPBar" type="ProgressBar" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = 3.0
+offset_right = -51.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+show_percentage = false
+
+[node name="EXPLabel" type="Label" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/100"
+label_settings = SubResource("LabelSettings_dukkp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = 6.0
+offset_right = 154.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button2")
+text = "Add 10"
+
+[node name="Button2" type="Button" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_right = NodePath("../Button3")
+text = "Add 50
+"
+
+[node name="Button3" type="Button" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/PrestiegeLevel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Button2")
+text = "Add 100"
+
+[node name="StatBuffs" type="Control" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/StatBuffs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="Panel" type="Panel" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/StatBuffs/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Interactables/Barracks/UI/Root/ModParent/VBoxContainer/StatBuffs/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+columns = 2
+script = ExtResource("7_ok3a8")
+
+[node name="block_everything" type="ColorRect" parent="Interactables/Barracks/UI/Root/ModParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.25, 0.25, 0.713726)
+
+[node name="PaperParent" type="Control" parent="Interactables/Barracks/UI/Root"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 640.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Barracks/UI/Root/PaperParent"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="PaperBG" type="ColorRect" parent="Interactables/Barracks/UI/Root/PaperParent/MarginContainer"]
+layout_mode = 2
+color = Color(0.8, 0.803922, 0.74902, 1)
+
+[node name="MainContent" type="VBoxContainer" parent="Interactables/Barracks/UI/Root/PaperParent/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Interactables/Barracks/UI/Root/PaperParent/MarginContainer/MainContent"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="CharacterEntryParent" type="VBoxContainer" parent="Interactables/Barracks/UI/Root/PaperParent/MarginContainer/MainContent/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_ok3a8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Barracks/UI"]
 libraries = {
 "": SubResource("AnimationLibrary_beymq")
 }
