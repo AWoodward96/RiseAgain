@@ -1,0 +1,156 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=25 format=3 uid="uid://5aehkg35rm1d"]
+
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_4dhcm"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_i1yhu"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_pt3nr"]
+
+[sub_resource type="Resource" id="Resource_medm5"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_0qkml"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, -1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_4wr12"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, -2)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_qycjt"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-1, -1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_ai26y"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(1, -1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_gjdv6"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-1, -2)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_cfpi0"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(1, -2)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_k2rlw"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_nk80d"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(0, 2)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_58hpu"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(1, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_cqr6v"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(1, 2)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_uoahi"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-1, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_m03fl"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-1, 2)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_lyj4e"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-1, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_5ew22"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-2, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_4yf0h"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-2, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_ytmyw"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(-2, -1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_5fpju"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(1, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_m6cy8"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(2, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_6sfpu"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(2, -1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_l0l4n"]
+script = ExtResource("2_i1yhu")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Position = Vector2i(2, 1)
+Multiplier = 1.0
+
+[resource]
+script = ExtResource("3_pt3nr")
+TileCoordinates = Array[ExtResource("1_4dhcm")]([SubResource("Resource_medm5"), SubResource("Resource_0qkml"), SubResource("Resource_4wr12"), SubResource("Resource_qycjt"), SubResource("Resource_ai26y"), SubResource("Resource_gjdv6"), SubResource("Resource_cfpi0"), SubResource("Resource_k2rlw"), SubResource("Resource_nk80d"), SubResource("Resource_58hpu"), SubResource("Resource_cqr6v"), SubResource("Resource_uoahi"), SubResource("Resource_m03fl"), SubResource("Resource_lyj4e"), SubResource("Resource_5ew22"), SubResource("Resource_4yf0h"), SubResource("Resource_ytmyw"), SubResource("Resource_5fpju"), SubResource("Resource_m6cy8"), SubResource("Resource_6sfpu"), SubResource("Resource_l0l4n")])

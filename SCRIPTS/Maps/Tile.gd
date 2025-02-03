@@ -11,6 +11,7 @@ var ActiveKillbox : bool
 
 var CanAttack: bool
 var CanMove: bool
+var CanBuff : bool
 var InRange : bool
 var Occupant : UnitInstance
 
@@ -20,6 +21,11 @@ var popupStack : Array[Node2D]
 var popingOffPopups : bool = false
 
 var damageIndicator : DamageIndicator
+
+# Handles what happens if a unit steps on this tile
+# Returns true or false - if true then the unit's movement has been interrupted
+func OnUnitTraversed(_unitInstance : UnitInstance):
+	return false
 
 func AsTargetData():
 	var target = TileTargetedData.new()

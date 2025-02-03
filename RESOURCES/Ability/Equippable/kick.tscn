@@ -1,0 +1,70 @@
+[gd_scene load_steps=20 format=3 uid="uid://cax418luk4qpx"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_530dh"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_tfsjt"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/PushStep.gd" id="3_82b4q"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_fexrv"]
+[ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="5_2fb0m"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_2p1gn"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_ttf87"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="9_wbsl0"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_obae2"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_fuelo"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="11_smiig"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/PushData.gd" id="12_64l0w"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="13_ah4tc"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="14_dhmv7"]
+
+[sub_resource type="Resource" id="Resource_xo5wk"]
+script = ExtResource("3_82b4q")
+
+[sub_resource type="Resource" id="Resource_vewy0"]
+script = ExtResource("4_fexrv")
+
+[sub_resource type="Resource" id="Resource_514x0"]
+script = ExtResource("12_64l0w")
+overrideActionDirection = false
+pushDirectionOverride = 0
+pushAmount = 2
+carryLimit = 1
+canDamageUser = false
+
+[sub_resource type="Resource" id="Resource_063p5"]
+script = ExtResource("13_ah4tc")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+pushInfo = SubResource("Resource_514x0")
+Position = Vector2i(0, -1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_1p2ob"]
+script = ExtResource("14_dhmv7")
+TileCoordinates = Array[ExtResource("11_smiig")]([SubResource("Resource_063p5")])
+
+[node name="kick" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_530dh")
+type = 1
+executionStack = Array[ExtResource("2_tfsjt")]([SubResource("Resource_xo5wk"), SubResource("Resource_vewy0")])
+damageGrantsFocus = true
+internalName = "iron_bow"
+loc_displayName = "weap_iron_bow_name"
+loc_displayDesc = "weap_iron_bow_desc"
+icon = ExtResource("5_2fb0m")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("6_2p1gn")
+BaseAccuracy = 100
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("9_wbsl0")
+AgressiveStat = ExtResource("8_ttf87")
+DefensiveStat = ExtResource("10_obae2")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("11_fuelo")
+Type = 2
+shapedTiles = SubResource("Resource_1p2ob")

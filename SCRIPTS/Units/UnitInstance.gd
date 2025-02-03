@@ -46,6 +46,7 @@ var IsFlying : bool :
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
+var CanMove : bool
 
 var ActionStack : Array[UnitActionBase]
 var CurrentAction : UnitActionBase
@@ -399,11 +400,12 @@ func PopAction():
 		CurrentAction._Enter(self, map)
 
 func GetUnitMovement():
-	return baseStats[GameManager.GameSettings.MovementStat]
+	return GetWorkingStat(GameManager.GameSettings.MovementStat)
 
 func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	# Turns on this unit to let them take their turn
 	Activated = true
+	CanMove = true
 	CurrentAction = null
 	ActionStack.clear()
 
@@ -420,6 +422,10 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 
 func Defend():
 	IsDefending = true
+
+func LockInMovement():
+	TurnStartTile = CurrentTile
+	CanMove = false
 
 func QueueEndTurn():
 	var endTurn = UnitEndTurnAction.new()
@@ -714,6 +720,7 @@ func ToJSON():
 		"currentFocus" : currentFocus,
 		"Level" : Level,
 		"Exp" : Exp,
+		"CanMove" : CanMove,
 		"GridPosition" : GridPosition,
 		"IsAggrod" : IsAggrod,
 		"UnitAllegience" : UnitAllegiance,
@@ -746,6 +753,7 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.Level = _dict["Level"]
 	unitInstance.Exp = _dict["Exp"]
 	unitInstance.UnitAllegiance = _dict["UnitAllegience"]
+	unitInstance.CanMove = _dict["CanMove"]
 
 	if _dict.has("AI"):
 		unitInstance.AI = load(_dict["AI"]) as AIBehaviorBase

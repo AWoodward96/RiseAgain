@@ -7,6 +7,7 @@ static var AlwaysCrit : bool = false
 static var NeverHit : bool = false
 static var AutoWin : bool = false
 static var AutoLose : bool = false
+static var BlockRetaliation : bool = false
 
 @export var FirstEntry : Control
 @export var SpecificItem : PackedScene
@@ -64,6 +65,9 @@ func btnGiveSpecificItem():
 func btnAutoWin():
 	AutoWin = !AutoLose
 
+func btnBlockRetaliation():
+	BlockRetaliation = !BlockRetaliation
+
 func btnSaveMap():
 	PersistDataManager.SaveMap()
 
@@ -80,3 +84,8 @@ func TestSaveGame() -> void:
 
 func btnAutoLose() -> void:
 	AutoLose = !AutoLose
+
+
+func ClearCampaignData() -> void:
+	PersistDataManager.ClearCampaign()
+	pass # Replace with function body.

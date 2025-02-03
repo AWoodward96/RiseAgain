@@ -132,7 +132,7 @@ AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_7rlf2")
 
 [node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
-position = Vector2(640, 384)
+position = Vector2(704, 320)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -141,7 +141,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("10_cf7c1")
 UnitLevel = 2
-Position = Vector2i(10, 6)
+Position = Vector2i(11, 5)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_7rlf2")
 
@@ -156,6 +156,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("10_tgwx5")
 UnitLevel = 2
 Position = Vector2i(10, 2)
+Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_vv3ax")
 

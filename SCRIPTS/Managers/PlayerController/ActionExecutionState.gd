@@ -17,6 +17,8 @@ func _Enter(_ctrl : PlayerController, data):
 	log = data
 	source = log.source
 
+	if source != null:
+		source.LockInMovement()
 
 	if log.ability != null:
 		log.ability.AbilityActionComplete.connect(PostActionComplete)
@@ -54,13 +56,10 @@ func AffectedUnitsClear():
 
 func PostActionComplete():
 	if source != null:
-		source.ShowHealthBar(false)
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 
-
-	for r in log.actionStepResults:
-		if r.Target != null:
-			r.Target.ShowHealthBar(false)
+		if !log.ability.autoEndTurn:
+			ctrl.EnterContextMenuState()
 
 	if currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 		ctrl.EnterSelectionState()

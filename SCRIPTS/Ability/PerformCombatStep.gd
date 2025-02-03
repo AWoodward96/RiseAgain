@@ -22,13 +22,20 @@ func Enter(_actionLog : ActionLog):
 	# The defending units however, need the specific result to take damage from
 	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
 	for stack in results:
+		var subActionRes = null
 		var damageStepResult = stack as PerformCombatStepResult
 		if damageStepResult == null:
-			continue
+			subActionRes = stack as RepeatPerFocusStepResult
+			if subActionRes != null:
+				if subActionRes.SubStepResult[log.subActionStackIndex] is PerformCombatStepResult:
+					damageStepResult = subActionRes.SubStepResult[log.subActionStackIndex] as PerformCombatStepResult
+
 
 		dealtDamage = true
 
 		damageStepResult.RollChance(Map.Current.mapRNG)
+		if subActionRes != null:
+			subActionRes.ExpGain += damageStepResult.ExpGain
 
 		if damageStepResult.Target != null:
 			if useDefendAction:
@@ -58,30 +65,33 @@ func Execute(_delta):
 	return false
 
 func WillRetaliate(_result : PerformCombatStepResult):
+	if CSR.BlockRetaliation:
+		return false
+
 	if _result.Source == null:
-		return
+		return false
 
 	if _result.AbilityData.type == Ability.AbilityType.Standard:
 		# This is a normal ability, and no retaliation is available
-		return
+		return false
 
 	if _result.Kill && _result.AbilityData.type != Ability.AbilityType.Weapon:
-		return
+		return false
 
 	var defendingUnit = _result.Target
 	if defendingUnit == null:
-		return
+		return false
 
 	if defendingUnit.EquippedWeapon == null:
-		return
+		return false
 
 	var retaliationWeapon = defendingUnit.EquippedWeapon
 	if retaliationWeapon.UsableDamageData == null:
-		return
+		return false
 
 	var range = defendingUnit.EquippedWeapon.GetRange()
 	if range == Vector2i.ZERO:
-		return
+		return false
 
 	var combatDistance = defendingUnit.map.grid.GetManhattanDistance(_result.SourceTile.Position, defendingUnit.GridPosition)
 	# so basically, if the weapon this unit is holding, has a max range

@@ -105,19 +105,18 @@ void fragment() {
 	{
 		vec4 result_leaves = texture(TEXTURE, noise_uv);
 		result_leaves.a = (texture(TEXTURE, noise_uv).a) * alpha_value;
-		
+
 		if (do_shadow)
 		{
 			vec4 shadow_texture = texture(TEXTURE, noise_uv + shadow_offset * SCREEN_PIXEL_SIZE);
 			vec4 shadow = vec4(shadow_color.rgb, shadow_texture.a - (1.0 - shadow_color.a));
-		
+
 			vec4 result = mix(shadow, result_leaves, result_leaves.a);
 			COLOR = result;
 		}
 		else
 			COLOR = result_leaves;
-		
-		
+
+
 	}
 }
-

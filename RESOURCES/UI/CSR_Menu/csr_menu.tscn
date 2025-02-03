@@ -65,6 +65,10 @@ text = "Auto Win"
 layout_mode = 2
 text = "Auto Lose"
 
+[node name="ClearCampaignData" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Clear Campaign Data"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
@@ -74,3 +78,4 @@ text = "Auto Lose"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/SaveMap" to="." method="btnSaveMap"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoWin" to="." method="btnAutoWin"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoLose" to="." method="btnAutoLose"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCampaignData" to="." method="ClearCampaignData"]

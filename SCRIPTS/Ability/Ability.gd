@@ -49,6 +49,7 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 			else:
 				if autoEndTurn:
 					_actionLog.source.QueueEndTurn()
+
 				AbilityActionComplete.emit()
 
 
@@ -64,8 +65,10 @@ func OnRest():
 		remainingUsages += usageRestoredByCampfire
 		remainingUsages = clampi(remainingUsages, 0, limitedUsage)
 
+
 func _to_string():
 	return self.name
+
 
 func ToJSON():
 	var dict = {
@@ -73,6 +76,7 @@ func ToJSON():
 		"remainingUsages" : remainingUsages
 	}
 	return dict
+
 
 func FromJSON(_dict : Dictionary):
 	remainingUsages = _dict["remainingUsages"]

@@ -6,6 +6,7 @@ class_name UnitHealthBar
 @export var HealthText : Label
 @export var FocusBarEntryList : EntryList
 @export var FocusBarPrefab : PackedScene
+@export var HideTimer : Timer
 
 @export_category("Level and EXP")
 @export var ExperienceBar : ProgressBar
@@ -39,8 +40,14 @@ func SetUnit(_unit : UnitInstance):
 	Unit = _unit
 	Unit.OnCombatEffectsUpdated.connect(RefreshCombatEffects)
 
+	if HideTimer != null:
+		HideTimer.timeout.connect(AutoHide)
+
 	Refresh()
 	RefreshCombatEffects()
+
+func AutoHide():
+	visible = false
 
 func ModifyHealthOverTime(_deltaHealthChange : int):
 	if Unit == null:
@@ -95,15 +102,19 @@ func UpdateArmorBarTween(value):
 	HealthText.text += str(" + %02d" % value)
 	HealthBar.value = clampf(Unit.currentHealth, 0, UnitMaxHealth) / UnitMaxHealth as float
 	ArmorBar.value = clampf(value, 0, StartingArmor) / UnitMaxHealth as float
+	HideTimer.start() # restart it so it doesn't hide itself
 	pass
 
 func UpdateHealthBarTween(value):
 	HealthText.text = str("%02d/%02d" % [clamp(value, 0, UnitMaxHealth), UnitMaxHealth])
 	HealthBar.value = clampf(value, 0, UnitMaxHealth) / UnitMaxHealth as float
+	HideTimer.start() # restart it so it doesn't hide itself
 	pass
 
 func UpdateBarTweenComplete():
 	HealthBarTweenCallback.emit()
+	if HideTimer != null:
+		HideTimer.start()
 
 func Refresh(_forceUpdate : bool = false):
 	if Unit == null || Unit.Template == null:

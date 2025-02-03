@@ -9,7 +9,7 @@ func PreCalc():
 	if TileTargetData == null:
 		return
 
-	if TileTargetData.pushCollision != null:
+	if TileTargetData.pushCollision != null && TileTargetData.pushStack.size() != 0:
 		willCollide = true
 
 	HealthDelta = -GameManager.GameSettings.CollisionDamageCalculation(Source)
@@ -62,7 +62,6 @@ func PreviewResult(_map : Map):
 			occupant.damage_indicator.collisionDamage += HealthDelta
 			occupant.damage_indicator.SetHealthLevels(occupant.currentHealth, occupant.maxHealth)
 		else:
-
 			TileTargetData.pushCollision.PreviewDamage(0, HealthDelta, 0)
 	pass
 

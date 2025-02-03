@@ -22,7 +22,10 @@ func UpdateInput(_delta):
 		ctrl.ForceReticlePosition(selectedUnit.GridPosition)
 		currentGrid.SetUnitGridPosition(selectedUnit, selectedUnit.TurnStartTile.Position, true)
 
-		ctrl.EnterUnitMovementState()
+		if selectedUnit.CanMove:
+			ctrl.EnterUnitMovementState()
+		else:
+			ctrl.EnterSelectionState()
 	pass
 
 func _Exit():

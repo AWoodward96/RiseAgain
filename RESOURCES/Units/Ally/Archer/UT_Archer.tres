@@ -14,8 +14,8 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_qwdht"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_my8s7"]
+[ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="13_0n32w"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_oca27"]
-[ext_resource type="PackedScene" uid="uid://bd713bpwx5v37" path="res://RESOURCES/Ability/Equippable/iron_bow.tscn" id="13_t0pje"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_exkpg"]
 [ext_resource type="Script" path="res://SCRIPTS/PersistData/UnitPersistence/ArcherPersistBase.gd" id="17_wh034"]
 
@@ -105,9 +105,9 @@ VisualPrefab = ExtResource("8_hvc7e")
 BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_yoyw8"), SubResource("Resource_vvt6p"), SubResource("Resource_nwtxq"), SubResource("Resource_1buui"), SubResource("Resource_53bxk"), SubResource("Resource_ea3uv"), SubResource("Resource_1cnl2"), SubResource("Resource_shn85"), SubResource("Resource_n43fn")])
 StatGrowths = Array[ExtResource("2_pkkgr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("2_41as1")
-StartingEquippedWeapon = ExtResource("13_t0pje")
+StartingEquippedWeapon = ExtResource("13_0n32w")
 StartingTactical = ExtResource("14_exkpg")
-Tier0Abilities = Array[String]([])
+Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_doubleshot.tscn"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_doubleshot.tscn", "res://RESOURCES/Ability/Standard/ART_snareshot.tscn"])
 Descriptors = Array[ExtResource("13_oca27")]([])
 GridSize = 1

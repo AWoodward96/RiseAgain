@@ -82,7 +82,7 @@ texture = ExtResource("10_pwwos")
 
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
 
-[node name="HealthBarParent" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList")]
+[node name="HealthBarParent" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "HideTimer")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 16)
@@ -98,6 +98,7 @@ ArmorBar = NodePath("Offset/ArmorBar")
 HealthText = NodePath("Offset/HP Val")
 FocusBarEntryList = NodePath("Offset/FocusContainer/FocusBarParent")
 FocusBarPrefab = ExtResource("4_kfodt")
+HideTimer = NodePath("AutoHideTimer")
 
 [node name="Offset" type="Control" parent="HealthBarParent"]
 anchors_preset = 0
@@ -161,3 +162,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
 script = ExtResource("4_lg50f")
+
+[node name="AutoHideTimer" type="Timer" parent="HealthBarParent"]
+wait_time = 1.5

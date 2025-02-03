@@ -1,0 +1,62 @@
+[gd_scene load_steps=17 format=3 uid="uid://bd66sm3kjyqb5"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_k3jju"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hiyoq"]
+[ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="3_edl6j"]
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="3_wc5f0"]
+[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="4_hewdv"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_vlvfv"]
+[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_kwc1e"]
+[ext_resource type="Texture2D" uid="uid://osmj6jxl88kl" path="res://ART/Icons/Ability/Standard/heroicleap.png" id="8_3goa5"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_xjesf"]
+[ext_resource type="Resource" uid="uid://5aehkg35rm1d" path="res://RESOURCES/TargetingShapes/push_forward_shape.tres" id="11_3lh6q"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="12_3mhhj"]
+
+[sub_resource type="Resource" id="Resource_osvxn"]
+script = ExtResource("3_wc5f0")
+Stat = ExtResource("3_edl6j")
+FlatValue = 3
+DerivedFromUnit = 0
+SignedPercentageValue = 0.0
+
+[sub_resource type="Resource" id="Resource_yb416"]
+script = ExtResource("3_wc5f0")
+Stat = ExtResource("12_3mhhj")
+FlatValue = 3
+DerivedFromUnit = 0
+SignedPercentageValue = 0.0
+
+[sub_resource type="Resource" id="Resource_emwwx"]
+script = ExtResource("4_hewdv")
+StatChanges = Array[ExtResource("3_wc5f0")]([SubResource("Resource_osvxn"), SubResource("Resource_yb416")])
+AffectedTargets = 1
+Turns = 1
+show_popup = true
+loc_name = ""
+loc_desc = ""
+
+[sub_resource type="Resource" id="Resource_ttix8"]
+script = ExtResource("6_vlvfv")
+CombatEffect = SubResource("Resource_emwwx")
+
+[sub_resource type="Resource" id="Resource_5cjq5"]
+script = ExtResource("7_kwc1e")
+
+[node name="ART_PushForward" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
+script = ExtResource("1_k3jju")
+executionStack = Array[ExtResource("2_hiyoq")]([SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
+autoEndTurn = false
+internalName = "pushforward"
+loc_displayName = "art_pushforward_name"
+loc_displayDesc = "art_pushforward_desc"
+icon = ExtResource("8_3goa5")
+TargetingData = NodePath("SkillTargetingData")
+UsableDamageData = NodePath("")
+MovementData = NodePath("")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("9_xjesf")
+TeamTargeting = 0
+TargetRange = Vector2i(0, 0)
+Type = 1
+shapedTiles = ExtResource("11_3lh6q")

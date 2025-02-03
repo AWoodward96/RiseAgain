@@ -333,20 +333,31 @@ func ShowCombatPreview():
 
 func ShowAvailableTilesOnGrid():
 	currentGrid.ClearActions()
+	var isAttack = currentAbility.IsDamage()
 
 	match targetingData.Type:
 		SkillTargetingData.TargetingType.Simple:
 			for tileData in log.availableTiles:
-				tileData.CanAttack = true
+				if isAttack:
+					tileData.CanAttack = true
+				else:
+					tileData.CanBuff = true
+
 		SkillTargetingData.TargetingType.ShapedFree:
 			for tileData in log.availableTiles:
 				tileData.InRange = true
 
 			for target in log.affectedTiles:
-				target.Tile.CanAttack = true
+				if isAttack:
+					target.Tile.CanAttack = true
+				else:
+					target.Tile.CanBuff = true
 		SkillTargetingData.TargetingType.ShapedDirectional:
-			for tileData in log.affectedTiles:
-				tileData.Tile.CanAttack = true
+			for targetData in log.affectedTiles:
+				if isAttack:
+					targetData.Tile.CanAttack = true
+				else:
+					targetData.Tile.CanBuff = true
 
 
 	currentGrid.ShowActions()

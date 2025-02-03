@@ -31,6 +31,11 @@ func _Execute(_unit : UnitInstance, _delta):
 	var maximumDistanceTraveled = speed * _delta;
 
 	if distance < (maximumDistanceTraveled * maximumDistanceTraveled) :
+		if Route[MovementIndex].OnUnitStepped(_unit):
+			# The units movement has been interrupted and we're good
+			_unit.position = Route[MovementIndex].GlobalPosition
+			return true
+
 		#AudioFootstep.play()
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :

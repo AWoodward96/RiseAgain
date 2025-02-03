@@ -4,6 +4,7 @@ const THREATLAYER = 1
 const ACTIONOPTIONSLAYER = 2
 const UITILEATLAS = 2
 const ATTACKTILE = Vector2i(2,0)
+const BUFFTILE = Vector2i(3,0)
 const RANGETILE = Vector2i(1,0)
 const MOVETILE = Vector2i(0,0)
 const THREATTILE_1 = Vector2i(0,1)
@@ -139,6 +140,7 @@ func ClearActions() :
 		n.CanMove = false
 		n.CanAttack = false
 		n.InRange = false
+		n.CanBuff = false
 
 	map.tilemap_UI.clear()
 
@@ -157,6 +159,9 @@ func ShowActions() :
 
 		if n.CanAttack :
 			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, ATTACKTILE)
+
+		if n.CanBuff :
+			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, BUFFTILE)
 
 
 
@@ -509,7 +514,7 @@ func PushCast(_tileData : TileTargetedData):
 	var currentTile = _tileData.Tile
 
 	# Check the origin tile for an occupant - if there's one there add them to the stack.
-	if currentTile.Occupant != null:
+	if currentTile.Occupant != null && currentTile.Occupant.Template.GridSize == 1:
 		var newResult = PushResult.new()
 		newResult.Subject = currentTile.Occupant
 		_tileData.pushStack.append(newResult)
@@ -535,7 +540,7 @@ func PushCast(_tileData : TileTargetedData):
 
 func Push(_tileData : TileTargetedData, _nextTile : Tile, _currentTile : Tile, _direction : GameSettingsTemplate.Direction):
 	# Check wall first, then occupant
-	if _nextTile.IsWall && _tileData.pushStack.size() > 0:
+	if _nextTile.IsWall || (_nextTile.Occupant != null && _nextTile.Occupant.Template.GridSize > 1):
 		# It's up in the air as to if this should even be set if there's nothing in the push stack
 		# We'll see if it affects anything
 		_tileData.pushCollision = _nextTile

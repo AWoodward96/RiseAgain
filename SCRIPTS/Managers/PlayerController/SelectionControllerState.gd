@@ -23,7 +23,10 @@ func _Execute(_delta):
 				if selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && isAllyTurn:
 					# This blocks the ability to cheese units that are mid-action
 					if selectedUnit.IsStackFree:
-						ctrl.EnterUnitMovementState()
+						if selectedUnit.CanMove:
+							ctrl.EnterUnitMovementState()
+						else:
+							ctrl.EnterContextMenuState()
 				else:
 					currentGrid.ShowUnitActions(tile.Occupant)
 		else:

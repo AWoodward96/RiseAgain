@@ -21,6 +21,7 @@ var actionType : ActionType
 var item : Item
 var ability : Ability
 var actionStackIndex : int
+var subActionStackIndex : int
 
 var damageData : DamageData
 
