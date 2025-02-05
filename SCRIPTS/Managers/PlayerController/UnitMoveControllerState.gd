@@ -23,6 +23,7 @@ func _Execute(_delta):
 	if InputManager.selectDown:
 		var tile = currentGrid.GetTile(ctrl.ConvertGlobalPositionToGridPosition())
 		if selectedUnit != null && selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == selectedUnit):
+			selectedUnit.PendingMove = walkedPath.size() > 1	# the path starts with the units current tile - so check above 1
 			selectedUnit.MoveCharacterToNode(walkedPath, tile)
 			EndMovementTracker()
 			movementSelected = true
@@ -33,6 +34,7 @@ func _Execute(_delta):
 		if movementSelected:
 			movementSelected = false
 			ctrl.BlockMovementInput = false
+			selectedUnit.PendingMove = false
 
 			selectedUnit.StopCharacterMovement()
 			currentGrid.SetUnitGridPosition(selectedUnit, selectedUnit.TurnStartTile.Position, true)

@@ -34,12 +34,19 @@ func _Execute(_unit : UnitInstance, _delta):
 	_unit.position += MovementVelocity * _delta
 	var maximumDistanceTraveled = speed * _delta;
 
+	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
+
 	if distance < (maximumDistanceTraveled * maximumDistanceTraveled) :
 		var traversalResult = Route[MovementIndex].OnUnitTraversed(_unit)
 		match traversalResult:
 			GameSettingsTemplate.TraversalResult.OK:
 				pass
-			GameSettingsTemplate.TraversalResult.DamageTaken:
+			GameSettingsTemplate.TraversalResult.HealthModified:
+				if unit == null || unit.currentHealth <= 0:
+					# They fucking died lmao
+					if isAlliedTeam:
+						map.playercontroller.EnterSelectionState()
+					return true
 				pass
 			GameSettingsTemplate.TraversalResult.EndMovement:
 				# The units movement has been interrupted and we're good
@@ -49,16 +56,19 @@ func _Execute(_unit : UnitInstance, _delta):
 			GameSettingsTemplate.TraversalResult.EndTurn:
 				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true)
 				unit.EndTurn()
-				map.playercontroller.EnterSelectionState()
+				if isAlliedTeam:
+					map.playercontroller.EnterSelectionState()
 				return true
 
 		#AudioFootstep.play()
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
 			_unit.position = Route[MovementIndex - 1].GlobalPosition
-			if _unit.CheckKillbox(): # If it's true, then this unit's fucking dead lmao
-				map.playercontroller.EnterSelectionState()
-			else:
-				map.playercontroller.EnterContextMenuState()
+			var diedToKillbox = _unit.CheckKillbox()
+			if isAlliedTeam:
+				if diedToKillbox: # If it's true, then this unit's fucking dead lmao
+					map.playercontroller.EnterSelectionState()
+				else:
+					map.playercontroller.EnterContextMenuState()
 			return true
 	return false

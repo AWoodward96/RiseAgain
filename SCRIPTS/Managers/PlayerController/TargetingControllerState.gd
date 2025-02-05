@@ -83,18 +83,11 @@ func _Enter(_ctrl : PlayerController, _ability):
 					log.affectedTiles = targetingData.GetGlobalAttack(source, currentMap, log.actionDirection)
 					for t in log.affectedTiles:
 						log.availableTiles.append(t.Tile)
-					#for team in currentMap.teams:
-						#for unit : UnitInstance in currentMap.teams[team]:
-							#if unit == null:
-								#continue
-#
-							#if targetingData.OnCorrectTeam(source, unit):
-								#log.availableTiles.append(unit.CurrentTile)
-								#log.affectedTiles.append(unit.CurrentTile.AsTargetData())
 					pass
 
 			if log.availableTiles.size() == 0:
-				push_error("TargetingControllerState: No available tiles for selected action. Is your targeting script set up properly?")
+				ctrl.combatHUD.ShowNoTargets(true)
+				#push_error("TargetingControllerState: No available tiles for selected action. Is your targeting script set up properly?")
 				return
 
 			if log.actionOriginTile == null:
@@ -127,7 +120,8 @@ func UpdateInput(_delta):
 			pass
 
 	if InputManager.selectDown && !targetSelected:
-		TileSelected()
+		if log.availableTiles.size() != 0:
+			TileSelected()
 
 	if InputManager.cancelDown:
 		ClearPreview()
@@ -175,15 +169,6 @@ func StandardTargetingInput(_delta):
 
 	ctrl.combatHUD.ShowNoTargets(false)
 	var curIndex = filteredList.find(log.actionOriginTile, 0)
-	#if InputManager.inputDown[0] || InputManager.inputDown[1]:
-		#curIndex += 1
-		#if curIndex >= filteredList.size():
-			#curIndex = 0
-#
-	#if InputManager.inputDown[2] || InputManager.inputDown[3]:
-		#curIndex -= 1
-		#if curIndex < 0:
-			#curIndex = filteredList.size() - 1
 	if InputManager.inputAnyDown:
 		var currentTile = filteredList[curIndex]
 		var direction : GameSettingsTemplate.Direction

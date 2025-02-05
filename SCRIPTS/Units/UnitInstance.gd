@@ -43,10 +43,15 @@ var IsFlying : bool :
 	get:
 		return Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
 
+var CanHeal : bool :
+	get:
+		return currentHealth < maxHealth
+
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
 var CanMove : bool
+var PendingMove : bool
 
 var ActionStack : Array[UnitActionBase]
 var CurrentAction : UnitActionBase
@@ -406,8 +411,10 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	# Turns on this unit to let them take their turn
 	Activated = true
 	CanMove = true
+	PendingMove = false
 	CurrentAction = null
 	ActionStack.clear()
+
 
 	# If it's your units turn
 	if _currentTurn == UnitAllegiance:
@@ -424,8 +431,9 @@ func Defend():
 	IsDefending = true
 
 func LockInMovement():
-	TurnStartTile = CurrentTile
-	CanMove = false
+	if PendingMove:
+		TurnStartTile = CurrentTile
+		CanMove = false
 
 func QueueEndTurn():
 	var endTurn = UnitEndTurnAction.new()
@@ -477,9 +485,9 @@ func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous :
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
 		var armor = GetArmorAmount()
-		Juice.CreateDamagePopup(min(_netHealthChange + armor, 0), CurrentTile)
+		Juice.CreateDamagePopup(min(_netHealthChange + armor, 0), map.grid.GetTileFromGlobalPosition(global_position))
 	else:
-		Juice.CreateHealPopup(_netHealthChange, CurrentTile)
+		Juice.CreateHealPopup(_netHealthChange, map.grid.GetTileFromGlobalPosition(global_position))
 
 	if !_instantaneous:
 		ShowHealthBar(true)

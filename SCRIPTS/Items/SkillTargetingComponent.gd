@@ -32,6 +32,8 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 		TargetingType.SelfOnly:
 			addtionalTargetedTiles = [_unit.CurrentTile.AsTargetData()]
 
+	if ability.IsHeal():
+		addtionalTargetedTiles = FilterByHeal(addtionalTargetedTiles)
 
 	return addtionalTargetedTiles
 
@@ -47,6 +49,9 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 		options = _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
 	options = FilterTilesByTargettingFlags(_unit, options)
+
+	if ability.IsHeal():
+		options = FilterByHeal(options)
 
 	if options.size() > 1 && _sort:
 		options.sort_custom(OrderTargets)
@@ -79,6 +84,12 @@ func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[TileTargeted
 func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 	return _options.filter(func(o : Tile) : return o.Occupant == null || (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant)) || (o.Occupant == _unit && CanTargetSelf))
 
+func FilterByHeal(_options : Array):
+	if _options[0] is Tile:
+		return _options.filter(func(o : Tile) : return o.Occupant != null && o.Occupant.CanHeal)
+	elif _options[0] is TileTargetedData:
+		return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant != null && o.Tile.Occupant.CanHeal)
+	return _options
 
 func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
 	if Type == TargetingType.SelfOnly:

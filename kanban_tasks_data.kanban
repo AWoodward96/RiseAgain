@@ -46,9 +46,8 @@
 			"title": "Doing",
 			"tasks": [
 				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
-				"31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
-				"270f607d-5b4b-4fc6-8c03-e00f27b00f42",
-				"d9c02ecb-585a-4fc9-9bd1-30b4daaca7df"
+				"ea0566fd-0852-4e20-9b0f-be54dffd6cec",
+				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba"
 			]
 		},
 		{
@@ -57,7 +56,12 @@
 			"tasks": [
 				"be6a0076-c6aa-479c-afac-c7f33b09c086",
 				"cab74468-ed27-42d8-ab99-5b473a220ef3",
+				"ed13314e-f216-4e0e-a49d-c5826f318494",
 				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
+				"31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
+				"fdf90603-f23e-44fe-bf0c-95d4285f24d9",
+				"d9c02ecb-585a-4fc9-9bd1-30b4daaca7df",
+				"270f607d-5b4b-4fc6-8c03-e00f27b00f42",
 				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
 				"468afdb4-e218-4636-8ff3-a92ed108ff73",
 				"579dad1e-a189-47eb-8525-df963722d0ef",
@@ -529,6 +533,34 @@
 			"title": "Contact Artist",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "ed13314e-f216-4e0e-a49d-c5826f318494",
+			"title": "Change Heal to now allow healing towards full health targets",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "ea0566fd-0852-4e20-9b0f-be54dffd6cec",
+			"title": "Make 'Survive' Maps",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "fdf90603-f23e-44fe-bf0c-95d4285f24d9",
+			"title": "Update 'instant' speed to let you use an action and then move",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
+			"title": "Play the Game!",
+			"description": "See if these skill changes are good or bad",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],

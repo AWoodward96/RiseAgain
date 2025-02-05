@@ -281,6 +281,12 @@ func GetTile(_pos : Vector2i):
 		return null
 	return GridArr[index]
 
+func GetTileFromGlobalPosition(_position : Vector2):
+	var xInt = roundi(_position.x / CellSize)
+	var yInt = roundi(_position.y / CellSize)
+
+	return GetTile(Vector2i(xInt, yInt))
+
 func PositionIsInGridBounds(_pos : Vector2i):
 	return _pos.y >= 0 && _pos.x >= 0 && _pos.x < Width && _pos.y < Height
 
@@ -294,6 +300,10 @@ func GetAdjacentTiles(_tile : Tile):
 
 func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], _attackRange : Vector2i, _markTiles : bool = true) :
 	var returnArr : Array[Tile] = []
+	if _attackRange.x == 0:
+		# include the current tile
+		returnArr.append(_workingList[0])
+
 	for n in _workingList :
 		for x in range(-_attackRange.y, _attackRange.y + 1) :
 			for y in range(-_attackRange.y, _attackRange.y + 1) :

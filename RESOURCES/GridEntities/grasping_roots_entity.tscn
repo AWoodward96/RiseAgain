@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmhbg3jolre8u"]
+
+[ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEStaticAreaOfEffect.gd" id="1_13tne"]
+[ext_resource type="Texture2D" uid="uid://bc20wswxkf5f5" path="res://ART/GridEntities/grasping_roots.png" id="1_gfvns"]
+[ext_resource type="Resource" uid="uid://c587x0joump1o" path="res://RESOURCES/TargetingShapes/grasping_roots_shape.tres" id="2_0d7er"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="2_heghb"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_jro51"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="4_uleer"]
+
+[node name="GraspingRootsEntity" type="Node2D" node_paths=PackedStringArray("damage_data")]
+script = ExtResource("1_13tne")
+shaped_tiles = ExtResource("2_0d7er")
+damage_interval = 1
+interruptionType = 1
+damage_data = NodePath("DamageData")
+UpdatePerTeamTurn = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("1_gfvns")
+offset = Vector2(16, 16)
+
+[node name="DamageData" type="Node2D" parent="."]
+script = ExtResource("2_heghb")
+FlatValue = 2.0
+AgressiveStat = ExtResource("3_jro51")
+AgressiveModType = 2
+AgressiveMod = 0.5
+DefensiveStat = ExtResource("4_uleer")

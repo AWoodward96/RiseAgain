@@ -10,7 +10,7 @@ func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Abilit
 	_origin.AddEntity(self)
 
 
-func OnUnitTraversed(_unitInstance : UnitInstance):
+func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	var newDamageStepResult = DamageStepResult.new()
 	newDamageStepResult.Source = Source
 	newDamageStepResult.AbilityData = SourceAbility
@@ -18,15 +18,16 @@ func OnUnitTraversed(_unitInstance : UnitInstance):
 	if Source == null:
 		newDamageStepResult.HealthDelta = defaultDamage
 	else:
-		newDamageStepResult.HealthDelta = GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damageData, Origin.AsTargetData())
+		newDamageStepResult.HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damageData, Origin.AsTargetData())
 
 	_unitInstance.ModifyHealth(newDamageStepResult.HealthDelta, newDamageStepResult, true)
 
 	ExecutionComplete = true
 	Expired = true
-	Origin.RemoveEntity(self)
 	return interruptionType
 
+func Exit():
+	Origin.RemoveEntity(self)
 
 func ToJSON():
 	var dict = super()

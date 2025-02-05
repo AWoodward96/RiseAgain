@@ -153,6 +153,7 @@ func RemoveExpiredGridEntities():
 			continue
 
 		if map.gridEntities[i].Expired:
+			cur.Exit()
 			cur.queue_free()
 			map.gridEntities.remove_at(i)
 

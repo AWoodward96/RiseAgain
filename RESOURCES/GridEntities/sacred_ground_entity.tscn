@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhux4kbgsott1"]
+
+[ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEStaticAreaOfEffect.gd" id="1_547wj"]
+[ext_resource type="Resource" uid="uid://cm34ayxs4x5gm" path="res://RESOURCES/TargetingShapes/sacred_ground_shape.tres" id="2_mo663"]
+[ext_resource type="Texture2D" uid="uid://c3vyjq1tjdrc1" path="res://ART/GridEntities/radiant_blessing.png" id="3_kpy3g"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="4_3uwqy"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_ri8mk"]
+
+[node name="SacredGroundEntity" type="Node2D" node_paths=PackedStringArray("heal_data")]
+script = ExtResource("1_547wj")
+shaped_tiles = ExtResource("2_mo663")
+team_targeting = 0
+interruptionType = 1
+heal_data = NodePath("HealComponent")
+UpdatePerTeamTurn = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("3_kpy3g")
+offset = Vector2(16, 16)
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("4_3uwqy")
+FlatValue = 3
+ScalingStat = ExtResource("5_ri8mk")
+ScalingModType = 2
+ScalingMod = 0.5

@@ -103,6 +103,13 @@ func UpdateGridEntity_UnitTurn(_delta : float):
 	CommonUpdate(_delta)
 	return ExecutionComplete
 
+func Exit():
+	for t in tiles:
+		if t == null || t.Tile == null:
+			continue
+
+		t.Tile.RemoveEntity(self)
+
 func ToJSON():
 	var dict = super()
 	dict["type"] = "GEProjectile"

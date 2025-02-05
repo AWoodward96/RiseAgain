@@ -37,7 +37,6 @@ func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
 	if _actionLog.source != null:
 		result.FocusAmount = _actionLog.source.currentFocus
 
-	var subactionindex = 0
 	for step in repeatStack:
 		var newResult = step.GetResult(_actionLog, _specificTile)
 		result.SubStepResult.append(newResult)

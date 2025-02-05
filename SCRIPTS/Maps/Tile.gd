@@ -47,7 +47,7 @@ func OnUnitTraversed(_unitInstance : UnitInstance):
 	for ge in GridEntities:
 		# Since multiple GE's can be stacked on top of one another, each one needs to be checked to see if traversal
 		# has interrupted their movement
-		var nextResult = ge.OnUnitTraversed(_unitInstance)
+		var nextResult = ge.OnUnitTraversed(_unitInstance, self)
 		if int(result) < int(nextResult):
 			result = nextResult
 

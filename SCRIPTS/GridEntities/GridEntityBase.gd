@@ -32,8 +32,11 @@ func UpdateGridEntity_UnitTurn(_delta : float):
 	return true
 
 # Returns true if a units' movement should be interrupted
-func OnUnitTraversed(_unitInstance : UnitInstance):
+func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	return false
+
+func Exit():
+	pass
 
 func ToJSON():
 	var dict = {
@@ -86,6 +89,8 @@ static func FromJSON(_dict : Dictionary):
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEProjectile
 		"GEProximityBomb":
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEProximityBomb
+		"GEStaticAreaOfEffect":
+			gridEntityBase = load(_dict["prefab"]).instantiate() as GEStaticAreaOfEffect
 
 	gridEntityBase.InitFromJSON(_dict)
 	return gridEntityBase

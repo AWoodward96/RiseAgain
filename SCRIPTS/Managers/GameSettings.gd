@@ -3,7 +3,7 @@ class_name GameSettingsTemplate
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 enum Direction { Up, Right, Down, Left }
-enum TraversalResult { OK = 0, DamageTaken = 1, EndMovement = 2, EndTurn = 3}
+enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 
 
 @export_category("Campaign Data")
@@ -195,8 +195,8 @@ func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float 
 func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
 	if CSR.NeverHit:
 		return 0
-
-	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
+	return 1
+	#return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
 
 func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
 	if _attacker == null || _defender == null:
