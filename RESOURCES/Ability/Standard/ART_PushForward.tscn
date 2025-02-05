@@ -42,7 +42,7 @@ CombatEffect = SubResource("Resource_emwwx")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("7_kwc1e")
 
-[node name="ART_PushForward" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
+[node name="ART_PushForward" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_k3jju")
 executionStack = Array[ExtResource("2_hiyoq")]([SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 autoEndTurn = false
@@ -51,8 +51,6 @@ loc_displayName = "art_pushforward_name"
 loc_displayDesc = "art_pushforward_desc"
 icon = ExtResource("8_3goa5")
 TargetingData = NodePath("SkillTargetingData")
-UsableDamageData = NodePath("")
-MovementData = NodePath("")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("9_xjesf")

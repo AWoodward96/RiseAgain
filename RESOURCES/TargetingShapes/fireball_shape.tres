@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TargetingShapeLevel" load_steps=26 format=3 uid="uid://gxv2ghfwicf2"]
 
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/LeveledTargetingShape.gd" id="1_8eyp2"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/ThresholdTargetingShape.gd" id="1_no07u"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_x5wal"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShapeLevel.gd" id="2_f0uwk"]
 
@@ -30,8 +30,8 @@ Position = Vector2i(0, -1)
 Multiplier = 0.66
 
 [sub_resource type="Resource" id="Resource_jxrsc"]
-script = ExtResource("1_8eyp2")
-LevelTheshold = 0
+script = ExtResource("1_no07u")
+Threshold = 0
 TileCoordinates = Array[ExtResource("1_x5wal")]([SubResource("Resource_yiccj"), SubResource("Resource_hiplj"), SubResource("Resource_rj33o"), SubResource("Resource_u4cnt"), SubResource("Resource_vitgh")])
 
 [sub_resource type="Resource" id="Resource_qtxd0"]
@@ -60,8 +60,8 @@ Position = Vector2i(0, 0)
 Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_d8gfi"]
-script = ExtResource("1_8eyp2")
-LevelTheshold = 2
+script = ExtResource("1_no07u")
+Threshold = 0
 TileCoordinates = Array[ExtResource("1_x5wal")]([SubResource("Resource_qtxd0"), SubResource("Resource_qk6kv"), SubResource("Resource_xgkim"), SubResource("Resource_rk866"), SubResource("Resource_mj83o")])
 
 [sub_resource type="Resource" id="Resource_yborg"]
@@ -110,10 +110,10 @@ Position = Vector2i(-1, 1)
 Multiplier = 0.66
 
 [sub_resource type="Resource" id="Resource_hr0r4"]
-script = ExtResource("1_8eyp2")
-LevelTheshold = 4
+script = ExtResource("1_no07u")
+Threshold = 0
 TileCoordinates = Array[ExtResource("1_x5wal")]([SubResource("Resource_yborg"), SubResource("Resource_6dhsx"), SubResource("Resource_y4n6n"), SubResource("Resource_vphai"), SubResource("Resource_hgt2x"), SubResource("Resource_ypd6v"), SubResource("Resource_dxu0m"), SubResource("Resource_j7cds"), SubResource("Resource_r6xiv")])
 
 [resource]
 script = ExtResource("2_f0uwk")
-leveledShapes = Array[ExtResource("1_8eyp2")]([SubResource("Resource_jxrsc"), SubResource("Resource_d8gfi"), SubResource("Resource_hr0r4")])
+leveledShapes = Array[ExtResource("1_no07u")]([SubResource("Resource_jxrsc"), SubResource("Resource_d8gfi"), SubResource("Resource_hr0r4")])

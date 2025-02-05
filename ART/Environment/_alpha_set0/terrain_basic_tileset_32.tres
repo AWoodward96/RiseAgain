@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://cw2y83vld1yn4"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://cw2y83vld1yn4"]
 
+[ext_resource type="Resource" uid="uid://dum5iqty3hq5g" path="res://RESOURCES/TileMetaData/MaroonForest/MF_River.tres" id="1_3kalf"]
 [ext_resource type="Texture2D" uid="uid://b1ovua6g8svh3" path="res://ART/Environment/_alpha_set0/art_test_6.png" id="1_7skec"]
-[ext_resource type="Resource" uid="uid://dxxcjmiflnpud" path="res://RESOURCES/Resources/ResourceDefs/PaleTreeReward.tres" id="1_a7bp7"]
 [ext_resource type="Texture2D" uid="uid://bfe045sf8cs64" path="res://ART/Environment/_alpha_set0/terrain_basic.png" id="1_eal0u"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="2_ljnt0"]
+[ext_resource type="Resource" uid="uid://dkgajgdeqosxv" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestuctableTrees.tres" id="2_vbfp3"]
 [ext_resource type="Texture2D" uid="uid://dwjwd2rsa38rs" path="res://ART/Environment/Other_Peoples/TX Tileset Wall.png" id="4_mu1cm"]
 [ext_resource type="Texture2D" uid="uid://lr6uh8kj5fmy" path="res://ART/Environment/greyboxing_colors.png" id="5_jbuiq"]
 
@@ -25,27 +26,32 @@ texture_region_size = Vector2i(32, 32)
 3:0/0/terrain_set = 0
 3:0/0/terrain = 1
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:0/0/custom_data_0 = 5
+3:0/0/custom_data_0 = ExtResource("2_vbfp3")
+3:0/0/custom_data_1 = 5
 4:0/0 = 0
 4:0/0/terrain_set = 0
 4:0/0/terrain = 1
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-4:0/0/custom_data_0 = 5
+4:0/0/custom_data_0 = ExtResource("2_vbfp3")
+4:0/0/custom_data_1 = 5
 5:0/0 = 0
 5:0/0/terrain_set = 0
 5:0/0/terrain = 1
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-5:0/0/custom_data_0 = 5
+5:0/0/custom_data_0 = ExtResource("2_vbfp3")
+5:0/0/custom_data_1 = 5
 6:0/0 = 0
 6:0/0/terrain_set = 0
 6:0/0/terrain = 1
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-6:0/0/custom_data_0 = 5
+6:0/0/custom_data_0 = ExtResource("2_vbfp3")
+6:0/0/custom_data_1 = 5
 7:0/0 = 0
 7:0/0/terrain_set = 0
 7:0/0/terrain = 1
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-7:0/0/custom_data_0 = 5
+7:0/0/custom_data_0 = ExtResource("2_vbfp3")
+7:0/0/custom_data_1 = 5
 0:1/0 = 0
 0:1/0/terrain_set = 1
 0:1/0/terrain = 0
@@ -187,10 +193,14 @@ texture_region_size = Vector2i(32, 32)
 3:6/0 = 0
 0:7/0 = 0
 0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:7/0/custom_data_1 = true
+0:7/0/custom_data_0 = ExtResource("1_3kalf")
+0:7/0/custom_data_2 = true
 1:7/0 = 0
+1:7/0/custom_data_0 = ExtResource("1_3kalf")
 2:7/0 = 0
+2:7/0/custom_data_0 = ExtResource("1_3kalf")
 3:7/0 = 0
+3:7/0/custom_data_0 = ExtResource("1_3kalf")
 0:8/0 = 0
 1:8/0 = 0
 2:8/0 = 0
@@ -265,13 +275,13 @@ texture_region_size = Vector2i(32, 32)
 8:0/0 = 0
 8:0/0/terrain_set = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-8:0/0/custom_data_0 = 10
-8:0/0/custom_data_2 = ExtResource("1_a7bp7")
+8:0/0/custom_data_0 = ExtResource("2_vbfp3")
+8:0/0/custom_data_1 = 10
 9:0/0 = 0
 9:0/0/terrain_set = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-9:0/0/custom_data_0 = 10
-9:0/0/custom_data_2 = ExtResource("1_a7bp7")
+9:0/0/custom_data_0 = ExtResource("2_vbfp3")
+9:0/0/custom_data_1 = 10
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5q2h"]
 texture = ExtResource("1_eal0u")
@@ -287,15 +297,15 @@ texture_region_size = Vector2i(64, 64)
 2:1/0 = 0
 2:1/0/terrain_set = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:1/0/custom_data_0 = 5
+2:1/0/custom_data_1 = 5
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:1/0/custom_data_0 = 5
+1:1/0/custom_data_1 = 5
 0:1/0 = 0
 0:1/0/terrain_set = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-0:1/0/custom_data_0 = 5
+0:1/0/custom_data_1 = 5
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
@@ -327,20 +337,20 @@ texture_region_size = Vector2i(64, 64)
 2:7/0 = 0
 1:7/0 = 0
 1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:7/0/custom_data_1 = true
+1:7/0/custom_data_2 = true
 0:7/0 = 0
 0:8/0 = 0
 1:8/0 = 0
 2:8/0 = 0
 2:9/0 = 0
 2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:9/0/custom_data_1 = true
+2:9/0/custom_data_2 = true
 1:9/0 = 0
 1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:9/0/custom_data_1 = true
+1:9/0/custom_data_2 = true
 0:9/0 = 0
 0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-0:9/0/custom_data_1 = true
+0:9/0/custom_data_2 = true
 0:10/0 = 0
 1:10/0 = 0
 2:10/0 = 0
@@ -517,12 +527,12 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Paths"
 terrain_set_1/terrain_0/color = Color(0.5, 0.5, 0.5, 1)
-custom_data_layer_0/name = "Health"
-custom_data_layer_0/type = 2
-custom_data_layer_1/name = "Killbox"
-custom_data_layer_1/type = 1
-custom_data_layer_2/name = "Resource"
-custom_data_layer_2/type = 24
+custom_data_layer_0/name = "MetaData"
+custom_data_layer_0/type = 24
+custom_data_layer_1/name = "Health"
+custom_data_layer_1/type = 2
+custom_data_layer_2/name = "Killbox"
+custom_data_layer_2/type = 1
 sources/1 = SubResource("TileSetAtlasSource_s5q2h")
 sources/2 = SubResource("TileSetAtlasSource_30vyt")
 sources/0 = SubResource("TileSetAtlasSource_gj2f4")

@@ -81,12 +81,12 @@ func TryCombat():
 		return
 
 	## default to the first item
-	if selectedOption.unitUsable != null && selectedOption.unitUsable.UsableDamageData != null:
-		var log = ActionLog.Construct(map.grid, unit, selectedOption.unitUsable)
+	if selectedOption.ability != null && selectedOption.ability.UsableDamageData != null:
+		var log = ActionLog.Construct(map.grid, unit, selectedOption.ability)
 		log.actionOriginTile = selectedOption.tileToAttack
 		log.sourceTile = selectedOption.tileToMoveTo	# Remember, we're pathfinding to this tile so the source has to be from here
 		log.affectedTiles.append_array(selectedOption.tilesHitByAttack)
-		log.damageData = selectedOption.unitUsable.UsableDamageData
+		log.damageData = selectedOption.ability.UsableDamageData
 		log.actionDirection = selectedOption.direction
 		log.BuildStepResults()
 

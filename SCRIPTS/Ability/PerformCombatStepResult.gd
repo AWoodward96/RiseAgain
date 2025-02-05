@@ -1,8 +1,6 @@
 extends DamageStepResult
 class_name PerformCombatStepResult
 
-var AbilityData : Ability
-
 var SourceTile : Tile
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var CritRate : float		# The % the roll needs to be under in order for it to be a crit

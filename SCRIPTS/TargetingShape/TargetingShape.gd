@@ -3,7 +3,7 @@ class_name TargetingShape
 
 @export var TileCoordinates : Array[Vector2iMult]
 
-func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
+func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile):
 	var returnTileData : Array[TileTargetedData]
 	for coord in TileCoordinates:
 		var tileData = TileTargetedData.new()
@@ -17,8 +17,8 @@ func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
 			returnTileData.append(tileData)
 	return returnTileData
 
-func GetCoords(_unit : UnitInstance):
+func GetCoords(_unit : UnitInstance, _ability : Ability):
 	return TileCoordinates
 
-func GetSpecificData(_index : int, _unit : UnitInstance):
+func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability):
 	return TileCoordinates[_index]

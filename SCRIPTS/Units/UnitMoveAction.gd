@@ -8,6 +8,7 @@ var MovementVelocity
 var SpeedOverride : int = -1
 
 func _Enter(_unit : UnitInstance, _map : Map):
+	super(_unit, _map)
 	MovementIndex = 0
 	MovementVelocity = 0
 	if DestinationTile != null:
@@ -20,6 +21,9 @@ func _Enter(_unit : UnitInstance, _map : Map):
 
 
 func _Execute(_unit : UnitInstance, _delta):
+	if Route.size() == 0:
+		return true
+
 	var speed = GameManager.GameSettings.CharacterTileMovemementSpeed
 	if SpeedOverride != -1:
 		speed = SpeedOverride
@@ -31,15 +35,30 @@ func _Execute(_unit : UnitInstance, _delta):
 	var maximumDistanceTraveled = speed * _delta;
 
 	if distance < (maximumDistanceTraveled * maximumDistanceTraveled) :
-		if Route[MovementIndex].OnUnitStepped(_unit):
-			# The units movement has been interrupted and we're good
-			_unit.position = Route[MovementIndex].GlobalPosition
-			return true
+		var traversalResult = Route[MovementIndex].OnUnitTraversed(_unit)
+		match traversalResult:
+			GameSettingsTemplate.TraversalResult.OK:
+				pass
+			GameSettingsTemplate.TraversalResult.DamageTaken:
+				pass
+			GameSettingsTemplate.TraversalResult.EndMovement:
+				# The units movement has been interrupted and we're good
+				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true)
+				unit.LockInMovement()
+				return true
+			GameSettingsTemplate.TraversalResult.EndTurn:
+				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true)
+				unit.EndTurn()
+				map.playercontroller.EnterSelectionState()
+				return true
 
 		#AudioFootstep.play()
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
 			_unit.position = Route[MovementIndex - 1].GlobalPosition
-			_unit.CheckKillbox()
+			if _unit.CheckKillbox(): # If it's true, then this unit's fucking dead lmao
+				map.playercontroller.EnterSelectionState()
+			else:
+				map.playercontroller.EnterContextMenuState()
 			return true
 	return false

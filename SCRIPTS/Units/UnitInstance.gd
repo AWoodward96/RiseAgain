@@ -600,7 +600,8 @@ func CheckKillbox():
 	if CurrentTile.ActiveKillbox && !IsFlying:
 		# The unit's fucking dead - kill them
 		ModifyHealth(-currentHealth, null, true)
-		pass
+		return true
+	return false
 
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible
@@ -731,7 +732,8 @@ func ToJSON():
 
 	if AI != null:
 		dict["AI"] = AI.resource_path
-		dict["AggroType"] = AggroType.resource_path
+		if AggroType != null:
+			dict["AggroType"] = AggroType.resource_path
 
 	# get base stats
 	var baseStatsStorage : Dictionary
@@ -757,7 +759,11 @@ static func FromJSON(_dict : Dictionary):
 
 	if _dict.has("AI"):
 		unitInstance.AI = load(_dict["AI"]) as AIBehaviorBase
-		unitInstance.AggroType = load(_dict["AggroType"]) as AlwaysAggro
+		if _dict.has("AggroType"):
+			if _dict["AggroType"] == "":
+				unitInstance.AggroType = null
+			else:
+				unitInstance.AggroType = load(_dict["AggroType"]) as AlwaysAggro
 
 	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
 	unitInstance.IsAggrod = _dict["IsAggrod"]
@@ -794,8 +800,8 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.currentHealth = _dict["currentHealth"]
 	unitInstance.currentFocus = _dict["currentFocus"]
 
-	var updateActivated = func(_dict : Dictionary):
-		unitInstance.Activated = _dict["Activated"]
+	var updateActivated = func(_internalDict : Dictionary):
+		unitInstance.Activated = _internalDict["Activated"]
 	updateActivated.call_deferred(_dict)
 
 

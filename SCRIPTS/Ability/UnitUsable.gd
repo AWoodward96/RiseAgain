@@ -14,7 +14,7 @@ class_name UnitUsable
 @export var EffectData : CombatEffectComponent
 @export var SummonData : SummonUnitComponent
 
-
+var componentArray : Array[Node2D]
 var ownerUnit : UnitInstance
 var map : Map
 var playerController : PlayerController
@@ -74,6 +74,7 @@ func IsDamage():
 
 
 func GetComponents():
+	componentArray.clear()
 	var children = get_children()
 	for child in children:
 		if TargetingData == null && child is SkillTargetingData:
@@ -96,3 +97,11 @@ func GetComponents():
 
 		if SummonData == null && child is SummonUnitComponent:
 			SummonData = child as SummonUnitComponent
+
+	if TargetingData != null: componentArray.append(TargetingData)
+	if UsableDamageData != null: componentArray.append(UsableDamageData)
+	if StatData != null: componentArray.append(StatData)
+	if HealData != null: componentArray.append(HealData)
+	if MovementData != null: componentArray.append(MovementData)
+	if EffectData != null: componentArray.append(EffectData)
+	if SummonData != null: componentArray.append(SummonData)

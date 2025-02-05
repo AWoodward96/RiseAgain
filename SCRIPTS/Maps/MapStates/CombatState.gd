@@ -207,7 +207,8 @@ func UpdateOffTurn(_delta):
 				return
 
 			if !currentUnitsTurn.IsAggrod:
-				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
+				if currentUnitsTurn.AggroType != null:
+					currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
 
 			if currentUnitsTurn.IsAggrod:
 				if currentUnitsTurn.AI == null:

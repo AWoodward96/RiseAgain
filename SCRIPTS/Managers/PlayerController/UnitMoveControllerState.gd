@@ -3,6 +3,7 @@ class_name UnitMoveControllerState
 
 var walkedPath : Array[Tile]
 var prevTile : Tile
+var movementSelected : bool
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
@@ -24,15 +25,28 @@ func _Execute(_delta):
 		if selectedUnit != null && selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == selectedUnit):
 			selectedUnit.MoveCharacterToNode(walkedPath, tile)
 			EndMovementTracker()
-			ctrl.EnterContextMenuState()
+			movementSelected = true
+			ctrl.BlockMovementInput = true
+
 
 	if InputManager.cancelDown:
-		EndMovementTracker()
-		currentGrid.ClearActions()
-		ctrl.ForceReticlePosition(selectedUnit.GridPosition)
-		selectedUnit = null
-		ctrl.ChangeControllerState(SelectionControllerState.new(), null)
-		walkedPath.clear()
+		if movementSelected:
+			movementSelected = false
+			ctrl.BlockMovementInput = false
+
+			selectedUnit.StopCharacterMovement()
+			currentGrid.SetUnitGridPosition(selectedUnit, selectedUnit.TurnStartTile.Position, true)
+
+			StartMovementTracker()
+			currentGrid.ShowUnitActions(selectedUnit)
+			UpdateTracker()
+		else:
+			EndMovementTracker()
+			currentGrid.ClearActions()
+			ctrl.ForceReticlePosition(selectedUnit.GridPosition)
+			selectedUnit = null
+			ctrl.ChangeControllerState(SelectionControllerState.new(), null)
+			walkedPath.clear()
 
 func UpdateTracker():
 	if currentMap != null && ctrl.movement_tracker.visible && ctrl.CurrentTile != null:

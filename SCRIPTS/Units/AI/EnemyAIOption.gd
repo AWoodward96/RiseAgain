@@ -26,18 +26,18 @@ var tileToMoveTo : Tile
 var tileToAttack : Tile
 var manhattanDistance : int
 
-var unitUsable : UnitUsable
+var ability : Ability
 var valid : bool = false
 var map : Map
 var grid : Grid
 
 
-func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _weapon : UnitUsable):
+func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _ability : Ability):
 	map = _map
 	grid = map.grid
 	sourceUnit = _source
 	targetUnit = _target
-	unitUsable = _weapon
+	ability = _ability
 
 	CheckIfMovementNeeded(sourceUnit.CurrentTile)
 	if valid:
@@ -58,7 +58,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _weapon 
 		# Issue is, that doesn't mean that we can ACTUALLY hit them. There could be units in the way, or other nonsense that we don't know how to deal with
 		# How this actually works is we take the Target Units position, and get the tiles from that position based on the range of the attack
 		# It's sort of reverse engineering places where we can attack the unit before seeing if we can move there as opposed to checking every movement tile
-		var actionableTiles = GetActionableTiles(unitUsable.GetRange())
+		var actionableTiles = GetActionableTiles(ability.GetRange())
 		if actionableTiles == null || actionableTiles.size() == 0:
 			# This might happen if a melee unit only has one valid tile they can path through, and there's a unit on that spot
 			# In that case, truncate to a closer position.
@@ -89,7 +89,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _weapon 
 			# If we've reached here then there is no path that puts us within range to hit the target
 			# Exceeeeept we never really checked the ShapedDirectionals
 			# What we're going to do now is to check to see if the target is within range based on this current tile
-			if unitUsable.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+			if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
 				# So basically, always move towards the player AND if you can hit them - well then do so!
 				CheckAbilityAttacks(path[path.size() - 1])
 	pass
@@ -97,8 +97,8 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _weapon 
 
 func CheckIfMovementNeeded(_origin : Tile):
 	# First, check if we even need to move in order to hit the target
-	if unitUsable.type == Ability.AbilityType.Weapon:
-		var itemRange = unitUsable.GetRange()
+	if ability.type == Ability.AbilityType.Weapon:
+		var itemRange = ability.GetRange()
 		manhattanDistance = map.grid.GetManhattanDistance(_origin.Position, targetUnit.GridPosition)
 		if manhattanDistance >= itemRange.x && manhattanDistance <= itemRange.y:
 			# Congrats we have a valid attack strategy
@@ -109,10 +109,10 @@ func CheckIfMovementNeeded(_origin : Tile):
 	CheckAbilityAttacks(_origin)
 
 func CheckAbilityAttacks(_origin : Tile):
-	if unitUsable.type == Ability.AbilityType.Standard:
-		if sourceUnit.currentFocus >= unitUsable.focusCost && unitUsable.TargetingData != null:
-			var abilityRange = unitUsable.GetRange()
-			match unitUsable.TargetingData.Type:
+	if ability.type == Ability.AbilityType.Standard:
+		if sourceUnit.currentFocus >= ability.focusCost && ability.TargetingData != null:
+			var abilityRange = ability.GetRange()
+			match ability.TargetingData.Type:
 				SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.ShapedFree:
 					# Teeeechnically for shaped free, the attacks can hit units outside of the range of the ability (since it's aoe)
 					# But that would require a butload of calculation on a per-tile basis and that's just gonna slow the turn down
@@ -130,7 +130,7 @@ func CheckAbilityAttacks(_origin : Tile):
 					SetValidAttack(_origin, targetUnit.CurrentTile)
 				SkillTargetingData.TargetingType.SelfOnly:
 					# Self only first needs to check if the target will even be hit by the attack
-					var targetTiles = unitUsable.TargetingData.GetAffectedTiles(sourceUnit, grid, sourceUnit.CurrentTile)
+					var targetTiles = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, sourceUnit.CurrentTile)
 					for t in targetTiles:
 						if t.Tile.Occupant == targetUnit:
 							valid = true
@@ -141,7 +141,7 @@ func CheckAbilityAttacks(_origin : Tile):
 					# This is... poorly optmized, and for bigger AOE's will prioritize the directional order over how many units are actually hit by the attack
 					# but wtf ever
 					for i in range(0,4):
-						var directionalTiles = unitUsable.TargetingData.GetDirectionalAttack(sourceUnit, _origin, grid, i)
+						var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, _origin, grid, i)
 						for t in directionalTiles:
 							if t.Tile.Occupant == targetUnit:
 								valid = true
@@ -161,21 +161,21 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
 		unitWillRetaliate = true
 
-	if unitUsable.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		tilesHitByAttack = unitUsable.TargetingData.GetDirectionalAttack(sourceUnit, tileToMoveTo, grid, direction)
-	elif unitUsable.TargetingData.Type == SkillTargetingData.TargetingType.Global:
-		tilesHitByAttack = unitUsable.TargetingData.GetGlobalAttack(sourceUnit, map, direction)
+	if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+		tilesHitByAttack = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, tileToMoveTo, grid, direction)
+	elif ability.TargetingData.Type == SkillTargetingData.TargetingType.Global:
+		tilesHitByAttack = ability.TargetingData.GetGlobalAttack(sourceUnit, map, direction)
 	else:
-		tilesHitByAttack = unitUsable.TargetingData.GetAffectedTiles(sourceUnit, grid, tileToAttack)
+		tilesHitByAttack = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, tileToAttack)
 
 	for targetTile in tilesHitByAttack:
-		if targetTile.Tile.Occupant != null && unitUsable.TargetingData.OnCorrectTeam(sourceUnit, targetTile.Tile.Occupant):
-			var thisDamage = GameManager.GameSettings.DamageCalculation(sourceUnit, targetTile.Tile.Occupant, unitUsable.UsableDamageData, targetTile)
+		if targetTile.Tile.Occupant != null && ability.TargetingData.OnCorrectTeam(sourceUnit, targetTile.Tile.Occupant):
+			var thisDamage = GameManager.GameSettings.DamageCalculation(sourceUnit, targetTile.Tile.Occupant, ability.UsableDamageData, targetTile)
 			damageAmount += thisDamage
 			if targetTile.Tile.Occupant.currentHealth <= thisDamage:
 				killCount += 1
 
-	damageAmount = GameManager.GameSettings.DamageCalculation(sourceUnit, targetUnit, unitUsable.UsableDamageData, null)
+	damageAmount = GameManager.GameSettings.DamageCalculation(sourceUnit, targetUnit, ability.UsableDamageData, null)
 	canDealDamage = damageAmount > 0 # This could cause some fuckyness with 'no damage' attacks but we'll see
 
 

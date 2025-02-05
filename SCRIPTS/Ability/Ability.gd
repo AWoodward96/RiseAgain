@@ -22,11 +22,20 @@ enum AbilityType { Standard, Weapon, Tactical, Passive }
 @export var passiveListeners : Array[PassiveListenerBase]
 
 var remainingUsages : int = 0
+var kills : int = 0
+var usages : int = 0
 
 func Initialize(_unitOwner : UnitInstance):
 	super(_unitOwner)
 	if limitedUsage != -1:
 		remainingUsages = limitedUsage
+
+	# this is the price I pay for generic components :)
+	for c in componentArray:
+		if "ability" in c:
+			c.ability = self
+	# It would probably be proper to convert all of the components to a base AbilityType - but currently only one component is actually using this
+	# Sooooooooo
 
 func TryExecute(_actionLog : ActionLog, _delta : float):
 	if _actionLog.actionStackIndex < 0:
@@ -40,6 +49,7 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 		_actionLog.source.ModifyFocus(-focusCost)
 		if limitedUsage != -1:
 			remainingUsages -= 1
+		usages += 1
 
 	if _actionLog.actionStackIndex < executionStack.size():
 		if executionStack[_actionLog.actionStackIndex].Execute(_delta):
@@ -73,10 +83,14 @@ func _to_string():
 func ToJSON():
 	var dict = {
 		"prefab" : self.scene_file_path,
-		"remainingUsages" : remainingUsages
+		"remainingUsages" : remainingUsages,
+		"usages" : usages,
+		"kills" : kills
 	}
 	return dict
 
 
 func FromJSON(_dict : Dictionary):
 	remainingUsages = _dict["remainingUsages"]
+	if _dict.has("kills"): kills = int(_dict["kills"])
+	if _dict.has("usages"): usages = int(_dict["usages"])

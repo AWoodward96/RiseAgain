@@ -1,8 +1,6 @@
 extends DamageStepResult
 class_name HealStepResult
 
-var AbilityData : Ability
-
 
 func PreCalculate():
 	# Healing items can't miss

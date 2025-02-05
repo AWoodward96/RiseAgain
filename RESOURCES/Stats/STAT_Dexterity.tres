@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://d1v3am2xl1277"]
+
+[ext_resource type="Texture2D" uid="uid://c5hbeigva0dgy" path="res://ART/Icons/Stats/icon_dexterity.png" id="1_p37oe"]
+[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_nev10"]
+
+[resource]
+script = ExtResource("2_nev10")
+bst_weight = 1
+loc_displayName = "stat_dexteritry"
+loc_displayName_short = "stat_dexterity_short"
+loc_description = "stat_dexterity_desc"
+loc_icon = ExtResource("1_p37oe")

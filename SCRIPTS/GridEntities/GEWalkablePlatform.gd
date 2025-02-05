@@ -9,8 +9,8 @@ class_name GEWalkablePlatform
 var tiles : Array[TileTargetedData]
 
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _allegience : GameSettingsTemplate.TeamID):
-	super(_map, _origin, _source, _allegience)
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
+	super(_map, _origin, _source, _ability, _allegience)
 	if visual != null:
 		visual.rotation = deg_to_rad(90 * orientation)
 
@@ -31,7 +31,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Platform is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, CurrentMap.grid, Origin, orientation)
+	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, orientation)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue

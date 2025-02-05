@@ -6,6 +6,9 @@ class_name HealComponent
 @export var ScalingModType : DamageData.ModificationType
 @export var ScalingMod : float
 
+@export var ScalesWithUsage : bool = false
+
+var ability : Ability
 
 func DoMod(_val):
 	match ScalingModType:
@@ -17,4 +20,5 @@ func DoMod(_val):
 			_val *= ScalingMod
 		DamageData.ModificationType.Divisitive:
 			_val /= ScalingMod
+
 	return _val

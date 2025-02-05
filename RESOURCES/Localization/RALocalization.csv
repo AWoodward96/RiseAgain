@@ -149,15 +149,15 @@ ce_necropassive_desc,Every Neutral Unit this Unit kills is brought back as a Zom
 art_beamattack_name,Beam Attack!
 art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
 art_cleave_name,Great Cleave
-art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGRESSIVESTAT}. \nUnits on the far edge take more damage.
+art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}. \nUnits on the far edge take more damage.
 art_darkfell_name,Soul Cleave
-art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGRESSIVESTAT}. Reduce their Defense and Special Defense by ({EFFECT_FLAT} + {EFFECT_DERIVEDSTAT}) * {EFFECT_PERC}
+art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by ({EFFECT_FLAT} + {EFFECT_DERIVEDSTAT}) * {EFFECT_PERC}
 art_doubleshot_name,Repeater
-art_doubleshot_desc,Fire two shots at a Target in quick succession dealing damage based on {DMG_AGRESSIVESTAT}
+art_doubleshot_desc,Fire two shots at a Target in quick succession dealing damage based on {DMG_AGGRESSIVESTAT}
 art_drain_name,Life Drain
-art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
+art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
 art_fireball_name,Fireball
-art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGRESSIVESTAT}. \nThis Ability hits a wider area at Level 5
+art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nThis Ability hits a wider area at Level 5
 art_heal_name,Heal
 art_heal_desc,Heal an Ally Unit equal to this Units {HEAL_STAT}
 art_heroicleap_name,Heroic Leap
@@ -165,15 +165,15 @@ art_heroicleap_desc,"Leap into an area, dealing Physical Damage to nearby Enemie
 art_lesserheal_name,Lesser Heal
 art_lesserheal_desc,Heal an Ally Unit for {HEAL_FLAT} Health
 art_smite_name,Smite
-art_smite_desc,Deal Magic damage equal to {DMG_AGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
+art_smite_desc,Deal Magic damage equal to {DMG_AGGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
 art_snareshot_name,Snare Shot
-art_snareshot_desc,Deal Physical damage based on {DMG_AGRESSIVESTAT} to an Enemy and Stun them. Move backwards up to Two Tiles
+art_snareshot_desc,Deal Physical damage based on {DMG_AGGRESSIVESTAT} to an Enemy and Stun them. Move backwards up to Two Tiles
 ce_energized_name,Energized
 ce_energized_desc,"The next time this unit goes to end their turn, remove this effect instead."
 art_slipnslash_name,Slip n Slash
-art_slipnslash_desc,"Dash forward and deal Physical damage based on {DMG_AGRESSIVESTAT} to anything this Unit passes through. If this ability Kills, grant Energized for one turn."
+art_slipnslash_desc,"Dash forward and deal Physical damage based on {DMG_AGGRESSIVESTAT} to anything this Unit passes through. If this ability Kills, grant Energized for one turn."
 art_daggerspray_name,Dagger Spray
-art_daggerspray_desc,Throw three daggers in a line dealing Physical damage based on {DMG_AGRESSIVESTAT}. The center Dagger always Crits.
+art_daggerspray_desc,Throw three daggers in a line dealing Physical damage based on {DMG_AGGRESSIVESTAT}. The center Dagger always Crits.
 des_flying_name,Flying
 des_flying_desc,This Unit can fly over all Terrain.
 art_charge_name,Brazen Charge
@@ -188,3 +188,15 @@ ui_unit_in_campsite,Campsite
 ui_unit_in_tavern,Room {NUM}
 unit_roc_name,Roc
 unit_roc_desc,A terratorial bird with sharp claws. Hatches from Eggs.
+stat_dexterity,Dexterity
+stat_dexterity_short,DEX
+stat_dexterity_desc,Increases Physical Damage dealt by Abilities to Enemies
+stat_wisdom,Wisdom
+stat_wisdom_short,WIS
+stat_wisdom_desc,Increases Magical Damage dealt by Abilities to Enemies
+art_summonmine_name,Hunters Trap
+art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on {DMG_AGGRESSIVESTAT}
+art_spearthrow_name,Throw Spear
+art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
+art_pushforward_name,Push Forward
+art_pushforward_desc,Grant yourself and Allies close to you +3 Movement and +3 Attack

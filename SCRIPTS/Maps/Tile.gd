@@ -4,8 +4,13 @@ var GlobalPosition
 var Position
 var IsWall
 
+var MainTileData : TileMetaData 	# For the 'main' tile - or anything that sits on top of the bg
+var BGTileData : TileMetaData		# For the 'bg' tile - which can never be null
+var SubBGTileData : TileMetaData	# For the 'water' or other tiles that hide behind the BG - this CAN be null
+
 var Health : int = -1
 var MaxHealth : int = -1
+
 var Killbox : bool
 var ActiveKillbox : bool
 
@@ -22,10 +27,31 @@ var popingOffPopups : bool = false
 
 var damageIndicator : DamageIndicator
 
+
+func InitMetaData():
+	if MainTileData != null:
+		MaxHealth = MainTileData.Health
+		Health = MainTileData.Health
+
+	Killbox = false
+	if BGTileData != null:
+		Killbox = BGTileData.Killbox
+
+	if SubBGTileData != null:
+		Killbox = Killbox || SubBGTileData.Killbox
+
 # Handles what happens if a unit steps on this tile
 # Returns true or false - if true then the unit's movement has been interrupted
 func OnUnitTraversed(_unitInstance : UnitInstance):
-	return false
+	var result = GameSettingsTemplate.TraversalResult.OK
+	for ge in GridEntities:
+		# Since multiple GE's can be stacked on top of one another, each one needs to be checked to see if traversal
+		# has interrupted their movement
+		var nextResult = ge.OnUnitTraversed(_unitInstance)
+		if int(result) < int(nextResult):
+			result = nextResult
+
+	return result
 
 func AsTargetData():
 	var target = TileTargetedData.new()
@@ -43,8 +69,6 @@ func PlayPopupDeffered():
 		if anim != null:
 			anim.active = true
 		await nextPopup.get_tree().create_timer(Juice.combatPopupCooldown).timeout
-
-
 		nextPopup = popupStack.pop_front()
 
 
@@ -93,10 +117,14 @@ func RemoveEntity(_gridEntity : GridEntityBase):
 func RefreshActiveKillbox():
 	var hasPlatform = false
 	for e in GridEntities:
+		if e == null:
+			continue
+
 		if e is GEWalkablePlatform:
 			hasPlatform = true
 			break
 	ActiveKillbox = Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform
+
 
 func ToJSON():
 	var dict = {
@@ -108,6 +136,16 @@ func ToJSON():
 		"Killbox" = Killbox,
 		"ActiveKillbox" = ActiveKillbox
 	}
+
+	if MainTileData != null:
+		dict["MainTileData"] = MainTileData.resource_path
+
+	if BGTileData != null:
+		dict["BGTileData"] = BGTileData.resource_path
+
+	if SubBGTileData != null:
+		dict["SubBGTileData"] = SubBGTileData.resource_path
+
 	return dict
 
 static func FromJSON(_dict : Dictionary):
@@ -119,4 +157,14 @@ static func FromJSON(_dict : Dictionary):
 	newTile.MaxHealth = _dict["MaxHealth"]
 	newTile.Killbox = _dict["Killbox"]
 	newTile.ActiveKillbox = _dict["ActiveKillbox"]
+
+	if _dict.has("MainTileData"):
+		newTile.MainTileData = load(_dict["MainTileData"]) as TileMetaData
+
+	if _dict.has("BGTileData"):
+		newTile.BGTileData = load(_dict["BGTileData"]) as TileMetaData
+
+	if _dict.has("SubBGTileData"):
+		newTile.SubBGTileData = load(_dict["SubBGTileData"]) as TileMetaData
+
 	return newTile

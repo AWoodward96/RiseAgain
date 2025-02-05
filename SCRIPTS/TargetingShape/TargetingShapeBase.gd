@@ -2,24 +2,24 @@ extends Resource
 class_name TargetingShapeBase
 
 
-func GetTileData(_unit : UnitInstance,  _grid : Grid, _originTile : Tile):
+func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile):
 	# Should return an array of TileTargetData
 	pass
 
-func GetCoords(_unit : UnitInstance):
+func GetCoords(_unit : UnitInstance, _ability : Ability):
 	pass
 
-func GetSpecificData(_index : int, _unit : UnitInstance):
+func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability):
 	pass
 
-func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false, _isGlobalAttack : bool = false, _isAffectedBySourceSize : bool = true):
+func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _ability : Ability, _grid : Grid, _origin : Tile, _direction : GameSettingsTemplate.Direction, _stopShapeOnWall : bool = false, _isGlobalAttack : bool = false, _isAffectedBySourceSize : bool = true):
 	var retArray : Array[TileTargetedData]
 	var index = 0
-	for shapedTile in GetCoords(_sourceUnit):
+	for shapedTile in GetCoords(_sourceUnit, _ability):
 		if shapedTile == null:
 			continue
 
-		var specificData = GetSpecificData(index, _sourceUnit)
+		var specificData = GetSpecificData(index, _sourceUnit, _ability)
 		var tileData = TileTargetedData.new()
 		var pos = shapedTile.Position as Vector2
 		pos = pos.rotated(deg_to_rad(90 * _direction))

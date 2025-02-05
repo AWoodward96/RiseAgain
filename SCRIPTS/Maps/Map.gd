@@ -238,6 +238,9 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 	else:
 		unitsKilled[_unitInstance.Template] = 1
 
+	if _context.AbilityData != null:
+		_context.AbilityData.kills += 1
+
 	RemoveUnitFromMap(_unitInstance)
 	OnUnitDied.emit(_unitInstance, _context)
 
@@ -356,8 +359,8 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	var storedTeamsDict = _dict["teams"]
 	for t in storedTeamsDict:
 		var assignMe : Array[UnitInstance]
-		var data = PersistDataManager.JSONToArray(storedTeamsDict[t], Callable.create(UnitInstance, "FromJSON"))
-		assignMe.assign(data)
+		var teamData = PersistDataManager.JSONToArray(storedTeamsDict[t], Callable.create(UnitInstance, "FromJSON"))
+		assignMe.assign(teamData)
 		map.teams[int(t)] = assignMe
 
 	# Move the units where they're supposed to go

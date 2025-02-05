@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TileMetaData" load_steps=2 format=3 uid="uid://dum5iqty3hq5g"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_vjket"]
+
+[resource]
+script = ExtResource("1_vjket")
+Health = 0
+Killbox = true

@@ -3,6 +3,7 @@ class_name GameSettingsTemplate
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
 enum Direction { Up, Right, Down, Left }
+enum TraversalResult { OK = 0, DamageTaken = 1, EndMovement = 2, EndTurn = 3}
 
 
 @export_category("Campaign Data")
@@ -182,6 +183,10 @@ func CollisionDamageCalculation(_source : UnitInstance):
 
 func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float = 1):
 	var healAmount = _healData.FlatValue
+
+	if _healData.ScalesWithUsage && _healData.ability != null:
+		healAmount += _healData.ability.usages
+
 	if _healData.ScalingStat != null && _source != null:
 		healAmount += _healData.DoMod(_source.GetWorkingStat(_healData.ScalingStat))
 	healAmount = floori(healAmount * _aoeMultiplier)

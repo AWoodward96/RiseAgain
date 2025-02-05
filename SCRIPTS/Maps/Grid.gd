@@ -39,22 +39,24 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 
 			var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 			if bg_data != null:
-				GridArr[index].Killbox = bg_data.get_custom_data("Killbox")
+				GridArr[index].BGTileData = bg_data.get_custom_data("MetaData") as TileMetaData
+				#GridArr[index].Killbox = bg_data.get_custom_data("Killbox")
 
 			if map.tilemap_water != null:
 				var water_data = map.tilemap_water.get_cell_tile_data(Vector2i(x,y))
 				if water_data != null:
-					GridArr[index].Killbox = GridArr[index].Killbox || water_data.get_custom_data("Killbox")
+					GridArr[index].SubBGTileData = water_data.get_custom_data("MetaData") as TileMetaData
+					#GridArr[index].Killbox = GridArr[index].Killbox || water_data.get_custom_data("Killbox")
 
 			var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
 			if main_data:
 				if main_data.get_collision_polygons_count(0) > 0 :
 					GridArr[index].IsWall = true
 
-				var health = main_data.get_custom_data("Health")
-				if health > 0:
-					GridArr[index].Health = health
-					GridArr[index].MaxHealth = health
+				GridArr[index].MainTileData = main_data.get_custom_data("MetaData") as TileMetaData
+
+
+			GridArr[index].InitMetaData()
 
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):

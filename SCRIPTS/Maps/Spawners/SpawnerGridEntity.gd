@@ -17,5 +17,5 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 		gridentity.direction = Direction
 
 	var tile = _map.grid.GetTile(Position)
-	gridentity.Spawn(_map, tile, null, Allegiance)
+	gridentity.Spawn(_map, tile, null, null, Allegiance)
 	_map.AddGridEntity(gridentity)

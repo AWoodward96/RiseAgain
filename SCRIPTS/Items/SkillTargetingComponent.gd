@@ -14,6 +14,8 @@ enum TargetingTeamFlag { AllyTeam, EnemyTeam, All, Empty }
 @export var shapedTiles : TargetingShapeBase
 @export var stopShapeOnWall : bool = false
 
+var ability : Ability
+
 
 func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 	var addtionalTargetedTiles : Array[TileTargetedData]
@@ -22,7 +24,7 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 			addtionalTargetedTiles.append(_tile.AsTargetData())
 		TargetingType.ShapedFree:
 			if shapedTiles != null:
-				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, _grid, _tile))
+				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, ability, _grid, _tile))
 			addtionalTargetedTiles = FilterByTargettingFlags(_unit, addtionalTargetedTiles)
 			pass
 		TargetingType.ShapedDirectional:
@@ -50,8 +52,8 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 		options.sort_custom(OrderTargets)
 	return options
 
-func GetDirectionalAttack(_unit : UnitInstance, _origin : Tile, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
-	return shapedTiles.GetTargetedTilesFromDirection(_unit, _grid, _origin, _directionIndex)
+func GetDirectionalAttack(_unit : UnitInstance, _ability : Ability, _origin : Tile, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
+	return shapedTiles.GetTargetedTilesFromDirection(_unit, _ability, _grid, _origin, _directionIndex)
 
 func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : GameSettingsTemplate.Direction):
 	var returnTiles : Array[TileTargetedData] = []
@@ -62,7 +64,7 @@ func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : G
 
 			if OnCorrectTeam(_sourceUnit, targetUnit):
 				if shapedTiles != null:
-					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, _map.grid, targetUnit.CurrentTile, _directionIndex, false, true))
+					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, ability, _map.grid, targetUnit.CurrentTile, _directionIndex, false, true))
 				else:
 					returnTiles.append(targetUnit.CurrentTile.AsTargetData())
 			else:

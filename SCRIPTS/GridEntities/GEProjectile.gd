@@ -13,8 +13,8 @@ var delay : float
 var tiles : Array[TileTargetedData]
 var moved : bool = false
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _allegience : GameSettingsTemplate.TeamID):
-	super(_map, _origin, _source, _allegience)
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
+	super(_map, _origin, _source, _ability, _allegience)
 	RefreshVisual()
 	UpdatePositionOnGrid()
 
@@ -38,7 +38,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Projectile is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, CurrentMap.grid, Origin, direction, false, false,  false)
+	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, direction, false, false,  false)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue

@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://c77gxravt3w7h"]
+
+[ext_resource type="Texture2D" uid="uid://dr8fijixwuvi5" path="res://ART/GridEntities/tmp_bomb.png" id="1_7of5h"]
+[ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEProximityBomb.gd" id="1_uihm1"]
+[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="3_r5jt8"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_a3sup"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_1bqos"]
+
+[node name="ProximityMine" type="Node2D" node_paths=PackedStringArray("damageData")]
+z_index = -1
+script = ExtResource("1_uihm1")
+interruptionType = 3
+damageData = NodePath("DamageData")
+
+[node name="Visual" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_7of5h")
+offset = Vector2(16, 16)
+
+[node name="DamageData" type="Node2D" parent="."]
+script = ExtResource("3_r5jt8")
+AgressiveStat = ExtResource("4_a3sup")
+DefensiveStat = ExtResource("5_1bqos")

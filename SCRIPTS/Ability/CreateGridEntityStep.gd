@@ -14,7 +14,7 @@ func Enter(_actionLog : ActionLog):
 	if gridentity.get("direction") != null:
 		gridentity.direction = _actionLog.actionDirection
 
-	gridentity.Spawn(Map.Current, _actionLog.actionOriginTile, source, source.UnitAllegiance)
+	gridentity.Spawn(Map.Current, _actionLog.actionOriginTile, source, ability, source.UnitAllegiance)
 	Map.Current.AddGridEntity(gridentity)
 
 #func Execute(_delta):

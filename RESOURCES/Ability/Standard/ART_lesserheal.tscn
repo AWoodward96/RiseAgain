@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://do6j0afq7345v"]
+[gd_scene load_steps=9 format=3 uid="uid://do6j0afq7345v"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_jaewu"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_r6uyf"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/HealStep.gd" id="3_rx2dj"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_63mhg"]
-[ext_resource type="Texture2D" uid="uid://bk3hhnq4ujca8" path="res://ART/Icons/Ability/Standard/lesserheal.png" id="5_niusa"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnb1s"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="7_70oey"]
 
@@ -14,16 +13,14 @@ script = ExtResource("3_rx2dj")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_63mhg")
 
-[node name="ART_LesserHeal" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
+[node name="ART_LesserHeal" type="Node2D"]
 script = ExtResource("1_jaewu")
-focusCost = 0
+focusCost = 2
 executionStack = Array[ExtResource("2_r6uyf")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
+autoEndTurn = false
 internalName = "lesserheal"
 loc_displayName = "art_lesserheal_name"
 loc_displayDesc = "art_lesserheal_desc"
-icon = ExtResource("5_niusa")
-TargetingData = NodePath("SkillTargetingData")
-HealData = NodePath("HealComponent")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("6_pnb1s")
@@ -31,4 +28,5 @@ TeamTargeting = 0
 
 [node name="HealComponent" type="Node2D" parent="."]
 script = ExtResource("7_70oey")
-FlatValue = 4.0
+FlatValue = 3
+ScalesWithUsage = true

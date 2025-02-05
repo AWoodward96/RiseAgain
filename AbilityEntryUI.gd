@@ -51,7 +51,7 @@ func FormatAbilityDescription(_ability : Ability):
 		if _ability.UsableDamageData.DamageAffectsUsersHealth:
 			dict["DMG_DRAINPERC"] = abs(_ability.UsableDamageData.DamageToHealthRatio * 100)
 
-		dict["DMG_AGRESSIVESTAT"] = tr(_ability.UsableDamageData.AgressiveStat.loc_displayName)
+		dict["DMG_AGGRESSIVESTAT"] = tr(_ability.UsableDamageData.AgressiveStat.loc_displayName)
 
 		# Scale this up as needed. Format should be DMG_VULNERABLE_[DESC or MULT]_[Index]
 		if _ability.UsableDamageData.VulerableDescriptors.size() != 0:

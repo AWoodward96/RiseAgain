@@ -1,10 +1,10 @@
 extends TargetingShapeBase
-class_name TargetingShapeLevel
+class_name TargetingShapeKills
 
 @export var leveledShapes : Array[ThresholdTargetingShape]
 
 func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile):
-	var res = GetShapeFromLevel(_unit)
+	var res = GetShapeFromKills(_ability)
 	if res == null:
 		return []
 
@@ -23,22 +23,26 @@ func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _origin
 	return returnedTileData
 
 func GetCoords(_unit : UnitInstance, _ability : Ability):
-	var res = GetShapeFromLevel(_unit)
+	var res = GetShapeFromKills(_ability)
 	if res == null:
 		return []
 	return res.TileCoordinates
 
 func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability):
-	var res = GetShapeFromLevel(_unit)
+	var res = GetShapeFromKills(_ability)
 	if res == null:
 		return null
 
 	return res[_index]
 
-func GetShapeFromLevel(_unit : UnitInstance):
+func GetShapeFromKills(_ability : Ability):
+	var kills = 0
+	if _ability != null:
+		kills = _ability.kills
+
 	var res : ThresholdTargetingShape
 	for l in leveledShapes:
-		if l.Threshold <= _unit.Level:
+		if l.Threshold <= kills:
 			res = l
 		else:
 			return res
