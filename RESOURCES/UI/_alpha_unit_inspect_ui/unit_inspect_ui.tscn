@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/WeaponPanelUI.gd" id="18_2q762"]
 [ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="19_76bpb"]
 [ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="20_sy8c7"]
-[ext_resource type="Script" path="res://AbilityEntryUI.gd" id="21_5d6pf"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="21_5d6pf"]
 [ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="22_5kv6e"]
 [ext_resource type="Texture2D" uid="uid://x61rbwe8vybw" path="res://ART/Icons/range_icon.png" id="23_murkn"]
 
