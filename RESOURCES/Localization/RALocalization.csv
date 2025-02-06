@@ -167,7 +167,7 @@ art_lesserheal_desc,Heal an Ally Unit for {HEAL_FLAT} Health
 art_smite_name,Smite
 art_smite_desc,Deal Magic damage equal to {DMG_AGGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
 art_snareshot_name,Snare Shot
-art_snareshot_desc,Deal Physical damage based on {DMG_AGGRESSIVESTAT} to an Enemy and Stun them. Move backwards up to Two Tiles
+art_snareshot_desc,Stuns an Enemy for {EFFECT_TURNS} turn(s).
 ce_energized_name,Energized
 ce_energized_desc,"The next time this unit goes to end their turn, remove this effect instead."
 art_slipnslash_name,Slip n Slash
@@ -195,8 +195,12 @@ stat_wisdom,Wisdom
 stat_wisdom_short,WIS
 stat_wisdom_desc,Increases Magical Damage dealt by Abilities to Enemies
 art_summonmine_name,Hunters Trap
-art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on {DMG_AGGRESSIVESTAT}
+art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on DEX
 art_spearthrow_name,Throw Spear
 art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
 art_pushforward_name,Push Forward
-art_pushforward_desc,Grant yourself and Allies close to you +3 Movement and +3 Attack
+art_pushforward_desc,Grant yourself and Allies close to you +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and +{EFFECT_1_FLAT} {EFFECT_1_MODIFIEDSTAT}
+art_sacredground_name,Sacred Ground
+art_sacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
+art_graspingroots_name,Grasping Roots
+art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area.

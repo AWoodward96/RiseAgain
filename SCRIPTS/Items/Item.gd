@@ -33,5 +33,5 @@ func ToJSON():
 	return dict
 
 static func FromJSON(_dict : Dictionary):
-	var item = load(_dict["prefab"]).instantiate as Item
+	var item = load(_dict["prefab"]).instantiate() as Item
 	return item

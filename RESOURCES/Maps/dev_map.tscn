@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cab65o5qhlejd"]
+[gd_scene load_steps=22 format=4 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_hfwsr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_5aprs"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_gfyht"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_vt2ms"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_tdpt0"]
 [ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="10_tgwx5"]
 [ext_resource type="PackedScene" uid="uid://eerys1o8nkjh" path="res://RESOURCES/GridEntities/wp_bridge.tscn" id="11_rlgja"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_msltj"]
@@ -80,8 +81,8 @@ tile_set = ExtResource("4_lvx7e")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(256, 448)
-Position = Vector2i(4, 7)
+position = Vector2(192, 384)
+Position = Vector2i(3, 6)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
@@ -141,7 +142,7 @@ DeltaLevel = 0
 Position = Vector2i(5, 4)
 AIBehavior = SubResource("Resource_bi5d2")
 
-[node name="Spawn_Roc4" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
 position = Vector2(448, 320)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -149,7 +150,7 @@ hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("17_lmuyt")
+UnitToSpawn = ExtResource("10_tdpt0")
 DeltaLevel = 0
 Position = Vector2i(7, 5)
 AIBehavior = ExtResource("12_msltj")
@@ -210,7 +211,7 @@ Position = Vector2i(13, 6)
 Enabled = false
 
 [node name="ProjSpawner4" type="Sprite2D" parent="Spawners"]
-position = Vector2(448, 448)
+position = Vector2(320, 384)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -218,7 +219,7 @@ vframes = 4
 frame = 2
 script = ExtResource("19_bve7k")
 GridEntityPrefab = ExtResource("16_sxqp6")
-Position = Vector2i(7, 7)
+Position = Vector2i(5, 6)
 
 [node name="Variants" type="Node2D" parent="."]
 

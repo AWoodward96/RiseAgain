@@ -100,9 +100,13 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# STEP FIVE:
 	# MOVE
 	unit.MoveCharacterToNode(selectedPath, selectedTile)
-	TryCombat()
+
 	pass
 
+func RunTurn():
+	if unit.IsStackFree && unit.Activated:
+		TryCombat()
+	pass
 
 func GetAllValidPaths():
 	pathfindingOptions.clear()

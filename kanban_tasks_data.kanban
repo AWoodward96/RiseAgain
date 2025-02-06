@@ -47,7 +47,9 @@
 			"tasks": [
 				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
 				"ea0566fd-0852-4e20-9b0f-be54dffd6cec",
-				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba"
+				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
+				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
+				"63559e54-664b-4bd9-95ef-b9ce33f1f122"
 			]
 		},
 		{
@@ -59,6 +61,9 @@
 				"ed13314e-f216-4e0e-a49d-c5826f318494",
 				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
 				"31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
+				"1fa8c75f-5d05-418c-ac8f-cf1d88133268",
+				"114470b2-627f-4847-b4e2-2ca7db7db11e",
+				"53eefd22-c40a-4cd7-9154-75292a3e5a1f",
 				"fdf90603-f23e-44fe-bf0c-95d4285f24d9",
 				"d9c02ecb-585a-4fc9-9bd1-30b4daaca7df",
 				"270f607d-5b4b-4fc6-8c03-e00f27b00f42",
@@ -560,6 +565,48 @@
 			"uuid": "dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
 			"title": "Play the Game!",
 			"description": "See if these skill changes are good or bad",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
+			"title": "Fix popup going off the grid",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "114470b2-627f-4847-b4e2-2ca7db7db11e",
+			"title": "AGGRESSIVESTAT is not populating again",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "53eefd22-c40a-4cd7-9154-75292a3e5a1f",
+			"title": "Stunning with mine doesn't stop an attack for some reason",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "1fa8c75f-5d05-418c-ac8f-cf1d88133268",
+			"title": "Stat changes in descriptions of abilities can't be read anymore",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "63559e54-664b-4bd9-95ef-b9ce33f1f122",
+			"title": "Camera focus on turn start for holy ground doesn't work",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "4016da2c-3c5b-4c68-a200-153306bdeb0b",
+			"title": "",
+			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}

@@ -71,6 +71,18 @@ func btnBlockRetaliation():
 func btnSaveMap():
 	PersistDataManager.SaveMap()
 
+func TestAbilitySelectionScreen():
+	var map = Map.Current
+	if map == null:
+		return
+
+	if map.playercontroller != null:
+		var currentTile = map.playercontroller.CurrentTile
+		if currentTile != null && currentTile.Occupant != null:
+			# Open up the ability selection screen for that unit
+			SelectAbilityUI.Show(currentTile.Occupant, currentTile.Occupant.Template.Tier1Abilities)
+			pass
+
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR
 	GameManager.add_child(csrMenu)
