@@ -22,7 +22,7 @@ offset = Vector2(16, 16)
 
 [node name="HealComponent" type="Node2D" parent="."]
 script = ExtResource("4_3uwqy")
-FlatValue = 3
+FlatValue = 2
 ScalingStat = ExtResource("5_ri8mk")
 ScalingModType = 2
-ScalingMod = 0.5
+ScalingMod = 0.25

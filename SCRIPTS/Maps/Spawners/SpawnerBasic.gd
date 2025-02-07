@@ -1,5 +1,6 @@
 @tool
 extends SpawnerBase
+class_name SpawnerBasic
 
 @export var UnitToSpawn : UnitTemplate :
 	set(value):

@@ -71,6 +71,7 @@ script = ExtResource("17_sn377")
 [node name="C0_Map02" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_7bh0y")
 GridSize = Vector2i(16, 10)
+CameraStart = Vector2(3, 8)
 tilemap_bg = NodePath("BG")
 tilemap_water = NodePath("Water")
 tilemap_main = NodePath("Main")

@@ -69,11 +69,15 @@ func Update(_delta):
 				else:
 					nextTurn = GameSettingsTemplate.TeamID.ENEMY
 			GameSettingsTemplate.TeamID.ENEMY:
+				# only increment the turn count at the end of the enemy's turn
+				map.turnCount += 1
 				nextTurn = GameSettingsTemplate.TeamID.ALLY
+				for s in map.spawners:
+					if s is SpawnerTurnBased && s.CanSpawn(map):
+						s.SpawnEnemy(map, map.mapRNG)
 			GameSettingsTemplate.TeamID.NEUTRAL:
 				nextTurn = GameSettingsTemplate.TeamID.ENEMY
 		StartTurn(nextTurn)
-		map.turnCount += 1
 
 func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	map.currentTurn = _turn

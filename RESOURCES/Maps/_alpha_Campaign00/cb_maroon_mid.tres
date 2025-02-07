@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=16 format=3 uid="uid://c5614f31tb7m2"]
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=17 format=3 uid="uid://c5614f31tb7m2"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_4a1er"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_v6sny"]
@@ -19,10 +19,15 @@ script = ExtResource("2_v6sny")
 map = ExtResource("4_w10pj")
 weight = 1
 
+[sub_resource type="Resource" id="Resource_k0d6f"]
+script = ExtResource("5_4kf2b")
+Priority = 1
+map = ExtResource("4_w10pj")
+
 [sub_resource type="Resource" id="Resource_sd8c1"]
 resource_name = "Map 1"
 script = ExtResource("1_4a1er")
-priorityMapOptions = Array[ExtResource("5_4kf2b")]([])
+priorityMapOptions = Array[ExtResource("5_4kf2b")]([SubResource("Resource_k0d6f")])
 generalMapOptions = Array[ExtResource("2_v6sny")]([SubResource("Resource_06hbk"), SubResource("Resource_dig7b")])
 
 [sub_resource type="Resource" id="Resource_knv7b"]

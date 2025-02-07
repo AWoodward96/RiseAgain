@@ -380,7 +380,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1) :
+func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false) :
 	if _route == null || _route.size() == 0:
 		return
 
@@ -388,6 +388,7 @@ func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : in
 	action.Route = _route
 	action.DestinationTile = _tile
 	action.SpeedOverride = _speedOverride
+	action.MoveFromAbility = _moveFromAbility
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()

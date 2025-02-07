@@ -18,6 +18,8 @@ func Execute(_delta):
 		return true
 
 	if log.source.IsStackFree:
+		# force the turnstart tile to be where they end up because that's the breaks
+		log.source.TurnStartTile = ability.MovementData.destinationTile
 		return true
 
 	return false

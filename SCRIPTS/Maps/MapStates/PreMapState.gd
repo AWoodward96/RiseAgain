@@ -16,7 +16,11 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 	# spawn all Units
 	for spawner in map.spawners:
-		spawner.SpawnEnemy(map, map.mapRNG)
+		if spawner is not SpawnerTurnBased:
+			spawner.SpawnEnemy(map, map.mapRNG)
+		elif spawner.CanSpawn(map):
+			spawner.SpawnEnemy(map, map.mapRNG)
+
 		spawner.hide()
 
 	var formationUI = controller.EnterFormationState()

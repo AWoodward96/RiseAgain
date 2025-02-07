@@ -17,7 +17,6 @@ script = ExtResource("4_63mhg")
 script = ExtResource("1_jaewu")
 focusCost = 2
 executionStack = Array[ExtResource("2_r6uyf")]([SubResource("Resource_pmj5e"), SubResource("Resource_5cjq5")])
-autoEndTurn = false
 internalName = "lesserheal"
 loc_displayName = "art_lesserheal_name"
 loc_displayDesc = "art_lesserheal_desc"

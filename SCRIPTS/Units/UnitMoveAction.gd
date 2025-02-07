@@ -6,6 +6,7 @@ var DestinationTile : Tile
 var MovementIndex
 var MovementVelocity
 var SpeedOverride : int = -1
+var MoveFromAbility : bool = false
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
@@ -68,7 +69,7 @@ func _Execute(_unit : UnitInstance, _delta):
 			if isAlliedTeam:
 				if diedToKillbox: # If it's true, then this unit's fucking dead lmao
 					map.playercontroller.EnterSelectionState()
-				else:
+				elif !MoveFromAbility:
 					map.playercontroller.EnterContextMenuState()
 			return true
 	return false

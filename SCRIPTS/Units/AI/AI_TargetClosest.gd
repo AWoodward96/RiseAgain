@@ -12,14 +12,14 @@ class_name AITargetClosest
 @export var RememberTarget : bool
 
 var targetUnit : UnitInstance
-
+var attacked : bool
 var weapon : UnitUsable
 
 var pathfindingOptions : Array[PathfindingOption]
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
-
+	attacked = false
 	selectedTile = null
 	selectedPath.clear()
 
@@ -104,7 +104,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	pass
 
 func RunTurn():
-	if unit.IsStackFree && unit.Activated:
+	if unit.IsStackFree && unit.Activated && !attacked:
 		TryCombat()
 	pass
 
@@ -171,6 +171,7 @@ func GetEquippedItem():
 	weapon = unit.EquippedWeapon
 
 func TryCombat():
+	attacked = true
 	if targetUnit == null:
 		unit.QueueEndTurn()
 		return

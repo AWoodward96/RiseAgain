@@ -5,12 +5,14 @@ class_name AISmartTarget
 
 var options : Array[EnemyAIOption]
 var selectedOption : EnemyAIOption
+var attacked : bool = false
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
 
 	options.clear()
 	selectedOption = null
+	attacked = false
 
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
@@ -63,7 +65,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 
 func RunTurn():
-	if unit.IsStackFree && unit.Activated:
+	if unit.IsStackFree && unit.Activated && !attacked:
 		TryCombat()
 	pass
 
@@ -73,6 +75,7 @@ func SortOptions(_optA : EnemyAIOption, _optB : EnemyAIOption):
 
 
 func TryCombat():
+	attacked = true
 	if selectedOption.targetUnit == null || !selectedOption.canDealDamage:
 		unit.QueueEndTurn()
 		return

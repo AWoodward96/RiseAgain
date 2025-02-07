@@ -91,5 +91,5 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction :
 		AbilityMovementType.InverseDirectional:
 			route = GetRoute_DirectionalRelative(_grid, _unit, _direction, true)
 
-	_unit.MoveCharacterToNode(route, destinationTile, _speedOverride)
+	_unit.MoveCharacterToNode(route, destinationTile, _speedOverride, true)
 	return route

@@ -36,6 +36,7 @@ script = ExtResource("4_isldo")
 script = ExtResource("1_a52ru")
 focusCost = 3
 executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_khgxx"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
+autoEndTurn = false
 internalName = "heroicleap"
 loc_displayName = "art_heroicleap_name"
 loc_displayDesc = "art_heroicleap_desc"

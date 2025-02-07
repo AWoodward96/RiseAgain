@@ -32,6 +32,7 @@ func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Abilit
 func Enter():
 	super()
 	warmup = 0
+	cooloff = 0
 	affected = false
 	if CurrentMap.currentTurn == turn_specific_update:
 		CurrentMap.playercontroller.ForceCameraPosition(Origin.Position)
