@@ -47,53 +47,15 @@
 			"tasks": [
 				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
 				"ea0566fd-0852-4e20-9b0f-be54dffd6cec",
-				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
-				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
-				"63559e54-664b-4bd9-95ef-b9ce33f1f122"
+				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba"
 			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
 			"title": "Done",
 			"tasks": [
-				"be6a0076-c6aa-479c-afac-c7f33b09c086",
-				"cab74468-ed27-42d8-ab99-5b473a220ef3",
-				"ed13314e-f216-4e0e-a49d-c5826f318494",
-				"8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
-				"31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
-				"1fa8c75f-5d05-418c-ac8f-cf1d88133268",
-				"114470b2-627f-4847-b4e2-2ca7db7db11e",
-				"53eefd22-c40a-4cd7-9154-75292a3e5a1f",
-				"fdf90603-f23e-44fe-bf0c-95d4285f24d9",
-				"d9c02ecb-585a-4fc9-9bd1-30b4daaca7df",
-				"270f607d-5b4b-4fc6-8c03-e00f27b00f42",
-				"2d6e1241-b10d-406e-895c-e7297a8cca8b",
-				"468afdb4-e218-4636-8ff3-a92ed108ff73",
-				"579dad1e-a189-47eb-8525-df963722d0ef",
-				"922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
-				"2da4feb0-3296-4b5c-83db-078c28f6f94d",
-				"318dee21-255e-471a-a66c-f75daeb9659a",
-				"f9d8c66d-3d4e-43fa-a41a-3d410f1df86d",
-				"6792c2de-7cbd-425b-98d6-ec17d6444815",
-				"e0633179-c6ee-495d-9f86-8949df0de05d",
-				"9f627e78-f58e-4270-8720-9d4e630328d0",
-				"592e9494-2782-496e-8906-b96a9e576422",
-				"c5f953c6-d9d6-48c6-b58d-98589d83a6b7",
-				"9b53adba-8501-4d5f-8c9e-480aba12c2f6",
-				"a9de6f43-a986-4af2-853d-271276bddbc0",
-				"b5c643c5-a71e-4119-b5b3-d51eeaffda43",
-				"83f9db6e-4eae-4cad-b21b-c7fb114f6568",
-				"482998a4-feff-415e-a84e-7b76e4130cd7",
-				"2ea5decd-4122-43a9-9220-703c6365f69c",
-				"e0c5e008-b47f-4418-b189-245e706616dd",
-				"ea6de32d-fd72-4d47-b79a-8138320b933d",
-				"9f77496d-bd6d-4f59-b7e5-21b51b3d613d",
-				"03e18191-548c-4e16-aac3-787401d9675f",
-				"aa617123-923a-462d-b3f5-eadb1ec60ab3",
-				"7694be98-f91b-4346-a521-a56ba1181b15",
-				"5df0de38-f0ad-449d-8ad9-ed32f89b1221",
-				"9b045b76-36e8-453b-a0c2-273324dc63d7",
-				"d59c75b5-e317-4eea-8297-1ff82c287976"
+				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
+				"63559e54-664b-4bd9-95ef-b9ce33f1f122"
 			]
 		},
 		{
@@ -110,13 +72,6 @@
 			"title": "Campaign Selection UI",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "03e18191-548c-4e16-aac3-787401d9675f",
-			"title": "BUG: Don't reset twine for damage preview if there's only one target",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		},
 		{
@@ -159,68 +114,6 @@
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
-		},
-		{
-			"uuid": "be6a0076-c6aa-479c-afac-c7f33b09c086",
-			"title": "Move around spawn locations for map 5 - they're too far away from the action",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "579dad1e-a189-47eb-8525-df963722d0ef",
-			"title": "Three Maps: High Route 0-3",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "318dee21-255e-471a-a66c-f75daeb9659a",
-			"title": "Three Maps: High Route 4-6",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "2d6e1241-b10d-406e-895c-e7297a8cca8b",
-			"title": "Three Maps: Low Route 0-3",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "468afdb4-e218-4636-8ff3-a92ed108ff73",
-			"title": "Three Maps: Low Route 4-6",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "922ab5c4-ea9f-4fe8-b642-27f1c10afcc7",
-			"title": "Two Maps: Connections T2",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "8c2b4f8f-6c39-4e98-8882-72078eb8f16f",
-			"title": "Unit: Rogue",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Template",
-					"done": true
-				},
-				{
-					"details": "Ability 1",
-					"done": true
-				},
-				{
-					"details": "Ability 2",
-					"done": true
-				}
-			]
 		},
 		{
 			"uuid": "5d0e9577-06ed-40db-9e78-9aaf0b1a3082",
@@ -278,36 +171,6 @@
 			"steps": []
 		},
 		{
-			"uuid": "cab74468-ed27-42d8-ab99-5b473a220ef3",
-			"title": "Create a Localization importer",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "2da4feb0-3296-4b5c-83db-078c28f6f94d",
-			"title": "Modify Necromancer",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": [
-				{
-					"details": "Make him a defensive unit that stays in his starting area",
-					"done": true
-				},
-				{
-					"details": "Give him a skill that lets him summon a zombie",
-					"done": true
-				}
-			]
-		},
-		{
-			"uuid": "f9d8c66d-3d4e-43fa-a41a-3d410f1df86d",
-			"title": "Implement Flying Enemies",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "b92d61c5-24e0-4ca6-8145-80bd66e814d0",
 			"title": "Update Context UI to have Mana",
 			"description": "",
@@ -317,69 +180,6 @@
 		{
 			"uuid": "073acedc-08f2-476c-bf21-67837a146552",
 			"title": "Update All Focus-Based-UI to use an icon with a number instead of a bar",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "7694be98-f91b-4346-a521-a56ba1181b15",
-			"title": "Implement Pushing",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "e0633179-c6ee-495d-9f86-8949df0de05d",
-			"title": "Double Shot doesn't work anymore",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "6792c2de-7cbd-425b-98d6-ec17d6444815",
-			"title": "Apply Effects needs its own result",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "aa617123-923a-462d-b3f5-eadb1ec60ab3",
-			"title": "Petty Gauze has lost it's usage?",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "5df0de38-f0ad-449d-8ad9-ed32f89b1221",
-			"title": "We don't see a preview of how much damage you're taking in standard combat",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "d59c75b5-e317-4eea-8297-1ff82c287976",
-			"title": "Implement Death Zones",
-			"description": "Also, need to fix interactions with charge - so you don't kill yourself?",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "482998a4-feff-415e-a84e-7b76e4130cd7",
-			"title": "Focus Generation isn't working for retaliation attacks",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "9f77496d-bd6d-4f59-b7e5-21b51b3d613d",
-			"title": "Unit retaliated after dying",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "9b045b76-36e8-453b-a0c2-273324dc63d7",
-			"title": "2x2 Enemies",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
@@ -436,80 +236,10 @@
 			]
 		},
 		{
-			"uuid": "9f627e78-f58e-4270-8720-9d4e630328d0",
-			"title": "BUG: The crit bug is back. If an enemy kills the player the player still counter attacks",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "592e9494-2782-496e-8906-b96a9e576422",
-			"title": "Gauze is showing 'kill' while in prview",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "a9de6f43-a986-4af2-853d-271276bddbc0",
-			"title": "Map 2: Make bird aggro after turns",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "ea6de32d-fd72-4d47-b79a-8138320b933d",
-			"title": "Map 2: Make zombie aggro after turns",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "83f9db6e-4eae-4cad-b21b-c7fb114f6568",
-			"title": "Retaliation from weapons is not being previewed",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "9b53adba-8501-4d5f-8c9e-480aba12c2f6",
-			"title": "Golem on Map 3 has necrotic",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "2ea5decd-4122-43a9-9220-703c6365f69c",
-			"title": "Heroic Leap is broken",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "b5c643c5-a71e-4119-b5b3-d51eeaffda43",
-			"title": "not enough starting spaces on map 3",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "e0c5e008-b47f-4418-b189-245e706616dd",
-			"title": "lesser heal is broken too",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
 			"uuid": "cad1a58b-24c8-484e-a360-c2f55357e43e",
 			"title": "Remake Map 4",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "c5f953c6-d9d6-48c6-b58d-98589d83a6b7",
-			"title": "Demikestrel isn't working",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		},
 		{
@@ -520,43 +250,8 @@
 			"steps": []
 		},
 		{
-			"uuid": "31c31b6d-f31c-4127-aeb9-1ab7dc308bb5",
-			"title": "Character Writing",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "270f607d-5b4b-4fc6-8c03-e00f27b00f42",
-			"title": "Out-Of-Run Buff System",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "d9c02ecb-585a-4fc9-9bd1-30b4daaca7df",
-			"title": "Contact Artist",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "ed13314e-f216-4e0e-a49d-c5826f318494",
-			"title": "Change Heal to now allow healing towards full health targets",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
 			"uuid": "ea0566fd-0852-4e20-9b0f-be54dffd6cec",
 			"title": "Make 'Survive' Maps",
-			"description": "",
-			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
-		},
-		{
-			"uuid": "fdf90603-f23e-44fe-bf0c-95d4285f24d9",
-			"title": "Update 'instant' speed to let you use an action and then move",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
@@ -571,27 +266,6 @@
 		{
 			"uuid": "b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 			"title": "Fix popup going off the grid",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "114470b2-627f-4847-b4e2-2ca7db7db11e",
-			"title": "AGGRESSIVESTAT is not populating again",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "53eefd22-c40a-4cd7-9154-75292a3e5a1f",
-			"title": "Stunning with mine doesn't stop an attack for some reason",
-			"description": "",
-			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
-			"steps": []
-		},
-		{
-			"uuid": "1fa8c75f-5d05-418c-ac8f-cf1d88133268",
-			"title": "Stat changes in descriptions of abilities can't be read anymore",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []

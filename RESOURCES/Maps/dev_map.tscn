@@ -34,6 +34,7 @@ script = ExtResource("14_3fyh8")
 [node name="Dev_Map" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_yneqe")
 GridSize = Vector2i(15, 10)
+CameraStart = Vector2(13, 3)
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
@@ -81,13 +82,13 @@ tile_set = ExtResource("4_lvx7e")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(192, 384)
-Position = Vector2i(3, 6)
+position = Vector2(256, 448)
+Position = Vector2i(4, 7)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(768, 448)
-Position = Vector2i(12, 7)
+position = Vector2(832, 192)
+Position = Vector2i(13, 3)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
@@ -153,6 +154,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("10_tdpt0")
 DeltaLevel = 0
 Position = Vector2i(7, 5)
+Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 

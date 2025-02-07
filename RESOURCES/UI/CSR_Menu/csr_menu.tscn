@@ -65,9 +65,13 @@ text = "Auto Win"
 layout_mode = 2
 text = "Auto Lose"
 
-[node name="AutoLose2" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="ShowAbility" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Show Ability Selection"
+
+[node name="DamageEveryone" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Deal 1 Damage to Target"
 
 [node name="ClearCampaignData" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -82,5 +86,6 @@ text = "Clear Campaign Data"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/SaveMap" to="." method="btnSaveMap"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoWin" to="." method="btnAutoWin"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoLose" to="." method="btnAutoLose"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AutoLose2" to="." method="TestAbilitySelectionScreen"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ShowAbility" to="." method="TestAbilitySelectionScreen"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/DamageEveryone" to="." method="DealDamageToTarget"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCampaignData" to="." method="ClearCampaignData"]

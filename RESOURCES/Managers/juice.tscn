@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ckf4unljro6gn" path="res://RESOURCES/Juice/effect_popup.tscn" id="4_6yi6b"]
 [ext_resource type="PackedScene" uid="uid://6pxp4b6trdhe" path="res://RESOURCES/Juice/crit_popup.tscn" id="5_joqml"]
 
-[node name="Juice" type="Node2D"]
+[node name="juice" type="Node2D"]
 script = ExtResource("1_41id7")
 damagePopup = ExtResource("2_g4ic6")
 damagePreview = ExtResource("3_c7nvh")

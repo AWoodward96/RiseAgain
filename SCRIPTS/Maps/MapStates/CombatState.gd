@@ -134,6 +134,7 @@ func UpdateGridEntities(_delta):
 		if over:
 			preTurnUpdate = false
 			teamTurnUpdate = false
+			UpdateCurrentTurnInfo()
 
 	if unitTurnUpdate:
 		var over = true

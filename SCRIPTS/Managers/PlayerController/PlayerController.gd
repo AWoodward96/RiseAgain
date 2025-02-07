@@ -138,9 +138,11 @@ func FocusReticleOnUnit(_unit : UnitInstance):
 	UpdateCameraPosition()
 	OnTileChanged.emit(CurrentTile)
 
-func ForceCameraPosition(_gridPosition : Vector2):
-	camera.global_position = _gridPosition * tileSize
+func ForceCameraPosition(_gridPosition : Vector2, _instantaneous : bool = false):
+	reticle.global_position = _gridPosition * tileSize
 	desiredCameraPosition = _gridPosition * tileSize
+	if _instantaneous:
+		camera.global_position = _gridPosition * tileSize
 	UpdateCameraPosition()
 
 func ClearSelectionData():

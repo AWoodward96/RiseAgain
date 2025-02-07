@@ -72,16 +72,10 @@ func btnSaveMap():
 	PersistDataManager.SaveMap()
 
 func TestAbilitySelectionScreen():
-	var map = Map.Current
-	if map == null:
-		return
-
-	if map.playercontroller != null:
-		var currentTile = map.playercontroller.CurrentTile
-		if currentTile != null && currentTile.Occupant != null:
-			# Open up the ability selection screen for that unit
-			SelectAbilityUI.Show(currentTile.Occupant, currentTile.Occupant.Template.Tier1Abilities)
-			pass
+	var unit = GetCurrentHighlighedUnit() as UnitInstance
+	if unit != null:
+		SelectAbilityUI.Show(unit, unit.Template.Tier1Abilities)
+		pass
 
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR
@@ -101,3 +95,20 @@ func btnAutoLose() -> void:
 func ClearCampaignData() -> void:
 	PersistDataManager.ClearCampaign()
 	pass # Replace with function body.
+
+
+func DealDamageToTarget() -> void:
+	var unit = GetCurrentHighlighedUnit() as UnitInstance
+	if unit != null:
+		unit.ModifyHealth(-1, null, true)
+
+func GetCurrentHighlighedUnit():
+	if Map.Current == null:
+		return null
+
+	if Map.Current.playercontroller != null:
+		var currentTile = Map.Current.playercontroller.CurrentTile
+		if currentTile != null:
+			return Map.Current.playercontroller.CurrentTile.Occupant
+
+	return null

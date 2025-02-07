@@ -14,11 +14,14 @@ enum DamageInterval { DamageOnTurnStart, DamageOnTraversal }
 @export var duration : int = 3
 
 @export_category("Camera Focus Speed")
-@export var warmup_timer : float = 1.5
+@export var warmup_timer : float = 0.5
+@export var cooloff_timer : float = 1
 
 var remaining_duration : int
 var tiles : Array[TileTargetedData]
 var warmup : float = 0
+var cooloff : float = 0
+var affected : bool = false
 
 func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
 	super(_map, _origin, _source, _ability, _allegience)
@@ -29,21 +32,26 @@ func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Abilit
 func Enter():
 	super()
 	warmup = 0
-	CurrentMap.playercontroller.ForceCameraPosition(Origin.Position)
+	affected = false
 	if CurrentMap.currentTurn == turn_specific_update:
+		CurrentMap.playercontroller.ForceCameraPosition(Origin.Position)
 		remaining_duration -= 1
 	Expired = remaining_duration <= 0
 
 func UpdateGridEntity_TeamTurn(_delta : float):
 	if damage_interval == DamageInterval.DamageOnTurnStart && CurrentMap.currentTurn == turn_specific_update:
 		if !ExecutionComplete:
-			warmup	+= _delta
+			warmup += _delta
+			cooloff += _delta
 
-			if warmup > warmup_timer:
-				ExecutionComplete = true
+			if warmup > warmup_timer && !affected:
+				affected = true
 				for t in tiles:
 					if t != null && t.Tile.Occupant != null && OnCorrectTeam(Source, t.Tile.Occupant):
 						AffectUnit(t.Tile.Occupant, t)
+
+			if cooloff > warmup_timer + cooloff_timer:
+				ExecutionComplete = true
 	else:
 		ExecutionComplete = true
 

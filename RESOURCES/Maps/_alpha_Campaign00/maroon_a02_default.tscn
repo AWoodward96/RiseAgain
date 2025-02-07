@@ -137,7 +137,6 @@ texture = ExtResource("9_oduer")
 
 [node name="StartingPositions" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5ljj5")]
 position = Vector2(192, 512)
@@ -161,7 +160,6 @@ map = NodePath("../..")
 
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
 position = Vector2(128, 192)
