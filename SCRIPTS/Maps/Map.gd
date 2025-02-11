@@ -3,6 +3,14 @@ class_name Map
 
 static var Current : Map
 
+const SUBBGLAYER : int = -6
+const BGLAYER : int = -5
+const MAINLAYER : int = -5
+const EXTRALAYER : int = -4
+const UILAYER : int = -3
+const THREATLAYER : int = 0
+const FIRELAYER : int = 2
+
 signal OnUnitDied(_unitInstance : UnitInstance, _context : DamageStepResult)
 signal OnUnitTurnEnd(_unitInstance : UnitInstance)
 signal OnTurnStart(_turn : GameSettingsTemplate.TeamID)
@@ -21,6 +29,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var tilemap_water : TileMapLayer
 @export var tilemap_main : TileMapLayer
 @export var tilemap_threat : TileMapLayer
+@export var tilemap_fire : TileMapLayer
 @export var tilemap_UI : TileMapLayer
 
 @export_category("Objectives")
@@ -70,6 +79,13 @@ func PreInitialize():
 		var spawner = s as SpawnerBase
 		if spawner != null:
 			spawners.append(spawner)
+
+	if tilemap_water != null: tilemap_water.z_index = SUBBGLAYER
+	if tilemap_bg != null: tilemap_bg.z_index = BGLAYER
+	if tilemap_fire != null: tilemap_fire.z_index = FIRELAYER
+	if tilemap_main != null: tilemap_main.z_index = MAINLAYER
+	if tilemap_UI != null: tilemap_UI.z_index = UILAYER
+	if tilemap_threat != null: tilemap_threat.z_index = THREATLAYER
 
 func _process(_delta):
 	if MapState != null:
@@ -238,7 +254,7 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 	else:
 		unitsKilled[_unitInstance.Template] = 1
 
-	if _context.AbilityData != null:
+	if _context != null && _context.AbilityData != null:
 		_context.AbilityData.kills += 1
 
 	RemoveUnitFromMap(_unitInstance)
@@ -354,6 +370,9 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	var parsedString = PersistDataManager.GetJSONTextFromFile(PersistDataManager.MAP_GRID_FILE)
 	map.grid = Grid.FromJSON(parsedString)
 	map.grid.map = map
+	for t in map.grid.GridArr:
+		if t.OnFire:
+			map.grid.IgniteTile(t, t.FireLevel)
 
 	# Load the units
 	var storedTeamsDict = _dict["teams"]

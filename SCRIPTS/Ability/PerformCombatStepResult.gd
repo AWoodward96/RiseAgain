@@ -5,6 +5,7 @@ var SourceTile : Tile
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var CritRate : float		# The % the roll needs to be under in order for it to be a crit
 
+
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
 
@@ -26,6 +27,7 @@ func PreCalculate():
 
 		CritRate = GameManager.GameSettings.CritRateCalculation(Source, AbilityData, Target, TileTargetData)
 		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, AbilityData.UsableDamageData, TileTargetData)
+		Ignite = TileTargetData.Ignite
 
 		# calculate if the source unit heals or is hurt by this attack
 		CalculateSourceHealthDelta(AbilityData.UsableDamageData)
@@ -119,6 +121,11 @@ func RollMiss(_rng : DeterministicRNG, _missThreshold : float):
 func RollCrit(_rng : DeterministicRNG, _critThreshold : float):
 	var val = _rng.NextFloat(0, 1)
 	Crit = val < _critThreshold
+
+func RollIgnite(_rng : DeterministicRNG):
+	var val = _rng.NextFloat(0, 1)
+	Ignite = val < TileTargetData.IgniteChance
+
 
 func PreviewResult(_map : Map):
 	PreCalculate()

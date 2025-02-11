@@ -31,13 +31,14 @@ script = ExtResource("14_3fyh8")
 [sub_resource type="Resource" id="Resource_vv3ax"]
 script = ExtResource("14_3fyh8")
 
-[node name="Dev_Map" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="Dev_Map" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_yneqe")
-GridSize = Vector2i(15, 10)
+GridSize = Vector2i(17, 10)
 CameraStart = Vector2(13, 3)
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
+tilemap_fire = NodePath("Fire_Layer")
 tilemap_UI = NodePath("UI_Layer")
 WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
@@ -71,6 +72,11 @@ unique_name_in_owner = true
 use_parent_material = true
 tile_set = ExtResource("4_lvx7e")
 navigation_enabled = false
+
+[node name="Fire_Layer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = 2
+tile_set = ExtResource("4_lvx7e")
 
 [node name="UI_Layer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

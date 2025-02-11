@@ -8,9 +8,19 @@ var unitTurnStack : Array[UnitInstance]
 var currentUnitsTurn : UnitInstance
 var turnBannerOpen : bool
 
-var preTurnUpdate : bool
+var preTurnUpdate : bool :
+	get:
+		return teamTurnUpdate || unitTurnUpdate || fireUpdate
+
 var teamTurnUpdate : bool
 var unitTurnUpdate : bool
+var preTurnComplete : bool
+
+var turnStartFocusSubject : Tile
+var turnStartFocusDelta : float
+
+var fireUpdate : bool
+var fireDamageTiles : Array[Tile]
 
 var IsAllyTurn : bool :
 	get :
@@ -47,8 +57,20 @@ func Update(_delta):
 
 	RemoveExpiredGridEntities()
 	if preTurnUpdate:
-		UpdateGridEntities(_delta)
+		if teamTurnUpdate || unitTurnUpdate:
+			UpdateGridEntities(_delta)
+			return
+
+		if fireUpdate:
+			UpdateFireDamage(_delta)
+			return
 		return
+	elif !preTurnComplete:
+		# the preturn should be complete now, save the map
+		PersistDataManager.SaveMap()
+		if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
+			map.playercontroller.BlockMovementInput = false
+		preTurnComplete = true
 
 	match map.currentTurn:
 		GameSettingsTemplate.TeamID.ALLY:
@@ -115,18 +137,52 @@ func UpdateCurrentTurnInfo():
 
 
 func EnterTeamTurnUpdate():
-	preTurnUpdate = true
+	preTurnComplete = false
 	teamTurnUpdate = true
+
+	if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
+		map.playercontroller.BlockMovementInput = true
 	for entities in map.gridEntities:
 		if entities.UpdatePerTeamTurn:
 			entities.Enter()
 
+	fireDamageTiles = map.grid.UpdateFireDamageTiles(map.currentTurn)
+	if fireDamageTiles.size() > 0:
+		fireUpdate = true
+
 func EnterUnitTurnUpdate():
-	preTurnUpdate = true
 	unitTurnUpdate = true
 	for entities in map.gridEntities:
 		if entities.UpdatePerUnitTurn:
 			entities.Enter()
+
+func UpdateFireDamage(_delta):
+	if turnStartFocusSubject == null && fireDamageTiles.size() == 0:
+		fireUpdate = false
+		return
+
+	turnStartFocusDelta += _delta
+	if turnStartFocusDelta < 0:
+		return
+
+	if fireDamageTiles.size() > 0 && turnStartFocusSubject == null:
+		var pop = fireDamageTiles.pop_front() as Tile
+		if pop != null && pop.Occupant != null:
+			turnStartFocusSubject = pop
+			turnStartFocusDelta = 0
+			map.playercontroller.FocusReticleOnUnit(turnStartFocusSubject.Occupant)
+
+	if turnStartFocusDelta > 1:
+		match turnStartFocusSubject.FireLevel:
+			1:
+				turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level1FireDamage, null, true)
+			2:
+				turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level2FireDamage, null, true)
+			3:
+				turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level3FireDamage, null, true)
+		turnStartFocusSubject = null
+		turnStartFocusDelta = -0.5
+
 
 func UpdateGridEntities(_delta):
 	if teamTurnUpdate:
@@ -136,7 +192,6 @@ func UpdateGridEntities(_delta):
 				over = entities.UpdateGridEntity_TeamTurn(_delta) && over
 
 		if over:
-			preTurnUpdate = false
 			teamTurnUpdate = false
 			UpdateCurrentTurnInfo()
 
@@ -147,7 +202,6 @@ func UpdateGridEntities(_delta):
 				over = entities.UpdateGridEntity_UnitTurn(_delta) &&  over
 
 		if over:
-			preTurnUpdate = false
 			unitTurnUpdate = false
 
 func RemoveExpiredGridEntities():

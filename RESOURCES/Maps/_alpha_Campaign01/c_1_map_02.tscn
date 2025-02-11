@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=4 uid="uid://bnk6nrale3gkx"]
+[gd_scene load_steps=27 format=4 uid="uid://bnk6nrale3gkx"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_r5sfq"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_i0nbb"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_m41m2"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_vm345"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_igwsr"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="5_oxnnl"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_8s5s7"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_i5oyn"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_03qds"]
@@ -57,12 +58,13 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
-[node name="C1_Map02" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="C1_Map02" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_r5sfq")
 GridSize = Vector2i(16, 14)
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
+tilemap_fire = NodePath("Fire2")
 tilemap_UI = NodePath("UI_Layer")
 WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
@@ -90,6 +92,11 @@ z_index = -5
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAAAAIAAQAOAAUAAAAAAAMAAQAJAAQAAAAAAAQAAQAJAAQAAAAAAAUAAQAOAAQAAAAAAAYAAQAKAAQAAAAAAAcAAQAKAAQAAAAAAAgAAQAKAAQAAAABAAIAAQAJAAMAAAABAAMAAQAOAAQAAAABAAQAAQAKAAQAAAABAAUAAQAKAAUAAAAEAAUAAQAMAAYAAAAEAAYAAQAJAAQAAAAEAAcAAQAJAAQAAAALAAIAAQAJAAUAAAALAAQAAQANAAgAAAALAAYAAQAJAAQAAAALAAcAAQAJAAQAAAAMAAYAAQANAAcAAAAPAAIAAQAJAAQAAAAPAAMAAQAPAAQAAAAPAAQAAQAIAAQAAAAPAAUAAQAIAAQAAAAPAAYAAQAIAAQAAAAPAAcAAQAIAAQAAAAAAAkAAQAKAAQAAAAAAAoAAQAKAAUAAAABAAYAAQANAAcAAAABAAcAAQANAAgAAAACAAIAAQAJAAMAAAACAAMAAQAJAAUAAAACAA0AAQAMAAYAAAADAAIAAQAOAAQAAAADAAMAAQAKAAUAAAADAA0AAQANAAYAAAAEAAIAAQAJAAUAAAAEAAgAAQAJAAQAAAAEAAkAAQAJAAQAAAAEAAwAAQAJAAQAAAAEAA0AAQAJAAQAAAAFAAIAAQAJAAUAAAAFAAUAAQANAAYAAAAFAAYAAQAJAAQAAAAGAAIAAQAJAAUAAAAGAAYAAQAJAAQAAAAHAAIAAQAJAAUAAAAHAAYAAQAJAAQAAAAIAAIAAQAJAAUAAAAIAAYAAQAJAAQAAAAJAAIAAQAJAAUAAAAJAAYAAQAJAAQAAAAKAAIAAQAJAAUAAAAKAAYAAQAJAAQAAAALAAMAAQANAAcAAAALAAgAAQAJAAQAAAALAAkAAQAJAAQAAAALAAwAAQAJAAQAAAALAA0AAQAJAAQAAAAMAAIAAQAJAAUAAAAMAAcAAQANAAgAAAAMAAgAAQAMAAYAAAAMAA0AAQAMAAYAAAANAAIAAQAJAAUAAAANAAgAAQANAAYAAAANAA0AAQANAAYAAAAOAAIAAQAPAAQAAAAOAAMAAQAIAAUAAAAPAAgAAQAIAAQAAAAPAAkAAQAIAAUAAAADAAEAAQAIAAMAAAAAAAAAAQAKAAQAAAAAAAEAAQAKAAQAAAAEAAAAAQAIAAQAAAAEAAEAAQAPAAUAAAAFAAAAAQAJAAQAAAAFAAEAAQAJAAQAAAAGAAAAAQAJAAQAAAAGAAEAAQAJAAQAAAAHAAAAAQAJAAQAAAAHAAEAAQAJAAQAAAAIAAAAAQAJAAQAAAAIAAEAAQAJAAQAAAAJAAAAAQAJAAQAAAAJAAEAAQAJAAQAAAAKAAAAAQAJAAQAAAAKAAEAAQAJAAQAAAALAAAAAQAJAAQAAAALAAEAAQAJAAQAAAAMAAAAAQAJAAQAAAAMAAEAAQAJAAQAAAANAAAAAQAJAAQAAAANAAEAAQAJAAQAAAAOAAAAAQAJAAQAAAAOAAEAAQAJAAQAAAAPAAAAAQAJAAQAAAAPAAEAAQAJAAQAAAA=")
 tile_set = ExtResource("4_vm345")
+
+[node name="Fire2" type="TileMapLayer" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+tile_set = ExtResource("5_oxnnl")
 
 [node name="Threat_Layer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

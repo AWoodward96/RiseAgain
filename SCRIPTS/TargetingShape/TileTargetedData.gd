@@ -4,6 +4,7 @@ var Tile : Tile
 var AOEMultiplier : float = 1
 var CritModifier : float = 0
 var AccuracyModifier : float = 0
+var Ignite : int = 0
 
 # This is for pushing or pulling the target -- not for self movement
 var pushDirection : GameSettingsTemplate.Direction

@@ -82,3 +82,10 @@ unique_name_in_owner = true
 visible = false
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_g2hfv")
+
+[node name="GridEntityPreviewSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = -2
+scale = Vector2(2, 2)
+offset = Vector2(16, 16)

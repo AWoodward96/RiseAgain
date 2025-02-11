@@ -14,6 +14,7 @@ damage_interval = 1
 interruptionType = 1
 damage_data = NodePath("DamageData")
 UpdatePerTeamTurn = true
+PreviewSprite = ExtResource("1_gfvns")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2

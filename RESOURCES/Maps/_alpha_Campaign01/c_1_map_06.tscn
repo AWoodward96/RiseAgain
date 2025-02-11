@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://b02uvbj15y0dh"]
+[gd_scene load_steps=17 format=4 uid="uid://b02uvbj15y0dh"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_cslo6"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_cq2u7"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_ba5d4"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_rchmw"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="5_27v6w"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_xc507"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_m4g7l"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_hxbhg"]
@@ -27,7 +28,7 @@ howlingWindsAbilityRef = "howlingwinds"
 [sub_resource type="Resource" id="Resource_hqis5"]
 script = ExtResource("12_07bc6")
 
-[node name="Dev_Map" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="Dev_Map" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 position = Vector2(0, -1)
 script = ExtResource("1_cslo6")
 GridSize = Vector2i(19, 15)
@@ -35,6 +36,7 @@ CameraStart = Vector2(9.5, 2)
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
+tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI_Layer")
 WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
@@ -62,6 +64,11 @@ z_index = -5
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAHAAkAAQALAAYAAAALAAkAAQALAAYAAAAHAAQAAQALAAYAAAAHAAUAAQALAAYAAAAIAAQAAQALAAYAAAAJAAQAAQALAAYAAAAKAAQAAQALAAYAAAALAAQAAQALAAYAAAALAAUAAQALAAYAAAAIAAkAAQALAAYAAAAJAAkAAQALAAYAAAAKAAkAAQALAAYAAAAIAAoAAQALAAYAAAAJAAoAAQALAAYAAAAKAAoAAQALAAYAAAAHAA0AAQALAAYAAAAHAA4AAQALAAYAAAALAA0AAQALAAYAAAALAA4AAQALAAYAAAAMAAwAAQALAAYAAAAGAAwAAQALAAYAAAAFAAsAAQALAAYAAAANAAsAAQALAAYAAAAEAAoAAQALAAYAAAAOAAoAAQALAAYAAAAFAAUAAQALAAYAAAANAAUAAQALAAYAAAAGAAIAAQALAAYAAAAMAAIAAQALAAYAAAA=")
 tile_set = ExtResource("4_rchmw")
+
+[node name="Fire" type="TileMapLayer" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+tile_set = ExtResource("5_27v6w")
 
 [node name="Threat_Layer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

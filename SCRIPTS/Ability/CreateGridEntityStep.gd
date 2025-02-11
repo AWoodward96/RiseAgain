@@ -20,5 +20,9 @@ func Enter(_actionLog : ActionLog):
 #func Execute(_delta):
 	#return true
 
-#func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
-	#pass
+func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+	var preview = CreateGridEntityStepResult.new()
+	preview.TileTargetData = _specificTile
+	preview.Source = _actionLog.source
+	preview.prefab = GridEntityPrefab
+	return preview

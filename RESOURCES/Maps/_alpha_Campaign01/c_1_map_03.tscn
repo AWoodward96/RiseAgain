@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=4 uid="uid://72w1kvoj27y6"]
+[gd_scene load_steps=29 format=4 uid="uid://72w1kvoj27y6"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_0q0au"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_snc73"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_xj1c6"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_axuya"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_1tkba"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="5_xtfer"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_rydds"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_m6v06"]
 [ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="8_5evbd"]
@@ -62,12 +63,13 @@ TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
-[node name="C1_Map03" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="C1_Map03" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_0q0au")
 GridSize = Vector2i(17, 16)
 tilemap_bg = NodePath("BG_Layer")
 tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
+tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI_Layer")
 WinCondition = SubResource("Resource_vm3u1")
 squadParent = NodePath("Squads")
@@ -101,6 +103,11 @@ unique_name_in_owner = true
 use_parent_material = true
 tile_set = ExtResource("4_axuya")
 navigation_enabled = false
+
+[node name="Fire" type="TileMapLayer" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+tile_set = ExtResource("5_xtfer")
 
 [node name="UI_Layer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

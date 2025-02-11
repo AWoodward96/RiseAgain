@@ -52,6 +52,10 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var FirstAbilityBreakpoint : int
 @export var SecondAbilityBreakpoint : int # NOTE: NOT CURRENTLY IMPLEMENTED
 
+@export_category("Fire Data")
+@export var Level1FireDamage : int = -1
+@export var Level2FireDamage : int = -3
+@export var Level3FireDamage : int = -6
 
 @export_category("Affinity Data")
 @export var StrongAffinityMultiplier : float = 1.5

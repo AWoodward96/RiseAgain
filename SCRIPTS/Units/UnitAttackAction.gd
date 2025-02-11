@@ -35,6 +35,9 @@ func _Enter(_unit : UnitInstance, _map : Map):
 			# only deal damage to tiles if there's no unit there
 			Log.grid.ModifyTileHealth(result.HealthDelta, result.TileTargetData.Tile)
 
+		if result.TileTargetData.Ignite > 0:
+			Log.grid.IgniteTile(result.TileTargetData.Tile, result.TileTargetData.Ignite)
+
 
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)

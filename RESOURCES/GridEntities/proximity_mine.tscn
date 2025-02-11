@@ -11,6 +11,7 @@ z_index = -1
 script = ExtResource("1_uihm1")
 interruptionType = 3
 damageData = NodePath("DamageData")
+PreviewSprite = ExtResource("1_7of5h")
 
 [node name="Visual" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

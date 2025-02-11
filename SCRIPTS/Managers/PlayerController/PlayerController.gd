@@ -9,6 +9,7 @@ signal OnTileChanged(_tile)
 
 @onready var movement_tracker : Line2D = %MovementTracker
 @onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
+@onready var grid_entity_preview_sprite: Sprite2D = %GridEntityPreviewSprite
 
 var ControllerState : PlayerControllerState
 
@@ -267,6 +268,16 @@ func CanAttack(_unit : UnitInstance):
 		return false
 
 	return _unit.EquippedWeapon != null
+
+func PreviewGridEntity(_gridEntityPackedScene : PackedScene):
+	var instantiate = _gridEntityPackedScene.instantiate() as GridEntityBase
+	grid_entity_preview_sprite.visible = true
+	grid_entity_preview_sprite.texture = instantiate.PreviewSprite
+	pass
+
+func CancelGridEntityPreview():
+	grid_entity_preview_sprite.visible = false
+
 
 func OnAttack():
 	selectedItem = selectedUnit.EquippedWeapon

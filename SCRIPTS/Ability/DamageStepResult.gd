@@ -9,3 +9,4 @@ var FocusDelta : int
 
 var Miss : bool
 var Crit : bool
+var Ignite : int

@@ -3,6 +3,7 @@ class_name Grid
 const THREATLAYER = 1
 const ACTIONOPTIONSLAYER = 2
 const UITILEATLAS = 2
+const FIRETILEATLAS = 6
 const ATTACKTILE = Vector2i(2,0)
 const BUFFTILE = Vector2i(3,0)
 const RANGETILE = Vector2i(1,0)
@@ -10,6 +11,9 @@ const MOVETILE = Vector2i(0,0)
 const THREATTILE_1 = Vector2i(0,1)
 const THREATTILE_2 = Vector2i(1,1)
 const THREATTILE_3 = Vector2i(2,1)
+const FIRETILE_1 = Vector2i(0,0)
+const FIRETILE_2 = Vector2i(0,1)
+const FIRETILE_3 = Vector2i(0,2)
 const NEIGHBORS = [Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
 
 var GridArr : Array[Tile]
@@ -343,6 +347,21 @@ func GetTilesWithinRange(_origin : Vector2i, _range : Vector2i, _includeOrigin =
 					returnArr.append(GridArr[position.y * Width + position.x])
 	return returnArr
 
+# Returns a list of units affected by the fire
+func UpdateFireDamageTiles(_allegience : GameSettingsTemplate.TeamID):
+	var affectedTiles : Array[Tile]
+	for t in GridArr:
+		if t.OnFire:
+			# Maybe increase the fire or decrease the fire
+			if _allegience == GameSettingsTemplate.TeamID.ALLY && t.FireLevel < 3:
+				t.FireLevel += 1
+				IgniteTile(t, t.FireLevel)
+
+			if t.Occupant != null && t.Occupant.UnitAllegiance == _allegience:
+				affectedTiles.append(t)
+
+	return affectedTiles
+
 func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : bool = true):
 	if _tile.MaxHealth <= 0:
 		return
@@ -358,6 +377,19 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 		# We do it like this so that you can't retarget this tile anymore
 		_tile.MaxHealth = 0
 		_tile.Health = 0
+
+func IgniteTile(_tile : Tile, _fireLevel : int):
+	_tile.FireLevel = _fireLevel
+	match _fireLevel:
+		0:
+			map.tilemap_fire.set_cell(_tile.position)
+		1:
+			map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_1)
+		2:
+			map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_2)
+		3:
+			map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_3)
+
 
 
 func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitInstance):

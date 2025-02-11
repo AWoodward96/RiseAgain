@@ -3,6 +3,7 @@ class_name GridEntityBase
 
 @export var UpdatePerTeamTurn : bool
 @export var UpdatePerUnitTurn : bool
+@export var PreviewSprite : Texture2D
 
 var Origin : Tile
 var Allegience : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY

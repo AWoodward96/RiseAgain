@@ -13,6 +13,11 @@ var MaxHealth : int = -1
 
 var Killbox : bool
 var ActiveKillbox : bool
+var OnFire : bool :
+	get:
+		return FireLevel > 0
+
+var FireLevel : int = 0
 
 var CanAttack: bool
 var CanMove: bool
@@ -134,7 +139,8 @@ func ToJSON():
 		"Health" = Health,
 		"MaxHealth" = MaxHealth,
 		"Killbox" = Killbox,
-		"ActiveKillbox" = ActiveKillbox
+		"ActiveKillbox" = ActiveKillbox,
+		"FireLevel" = FireLevel
 	}
 
 	if MainTileData != null:
@@ -157,6 +163,9 @@ static func FromJSON(_dict : Dictionary):
 	newTile.MaxHealth = _dict["MaxHealth"]
 	newTile.Killbox = _dict["Killbox"]
 	newTile.ActiveKillbox = _dict["ActiveKillbox"]
+
+	if _dict.has("FireLevel"):
+		newTile.FireLevel = _dict["FireLevel"]
 
 	if _dict.has("MainTileData"):
 		newTile.MainTileData = load(_dict["MainTileData"]) as TileMetaData
