@@ -13,6 +13,7 @@ signal BannerAnimComplete
 @export var ContextUI : ContextMenu
 @export var DmgPreviewUI : DamagePreviewUI
 @export var NoTargets : Control
+@export var TerrainInspectUI : TerrainInspectPanel
 
 @export_category("Optional Objective")
 
@@ -112,26 +113,20 @@ func UpdateInspectUISide():
 	# update the InspectUI based on where the reticle is so that it's not in the way
 	var side = ctrl.IsReticleInLeftHalfOfViewport()
 	var newside = (side if 1 else 0) as int
-	if newside != lastReticleSide:
-		InspectUI.get_parent().remove_child(InspectUI)
-		DmgPreviewUI.get_parent().remove_child(DmgPreviewUI)
+	if newside == 1:
+		InspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
 
-		# If side is (1) true, the Reticle is on the left side of the screen, so to help visibility, the UI should be moved to the RIGHT
-		if newside == 1:
-			bottom_right_anchor.add_child(InspectUI)
-			InspectUI.position = Vector2(-InspectUI.size.x, -InspectUI.size.y)
-			InspectEffectsUI.position = Vector2(-InspectEffectsUI.size.x, 0)
-			InspectEffectsUI.SetMirror(true)
-			top_right_anchor.add_child(DmgPreviewUI)
+		if InspectUI.visible:
+			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+		else:
+			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
 
-		elif newside == 0:
-			# If side is (0) false, the Reticle is on the right side of the screen, so to help visibility, the UI should be move to the LEFT
-			bottom_left_anchor.add_child(InspectUI)
-			InspectUI.position = Vector2(0, -InspectUI.size.y)
-			InspectEffectsUI.position = Vector2(InspectUI.size.x, 0)
-			InspectEffectsUI.SetMirror(false)
-
-			top_left_anchor.add_child(DmgPreviewUI)
+	elif newside == 0:
+		InspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+		if InspectUI.visible:
+			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+		else:
+			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 
 	lastReticleSide = newside
 
@@ -149,5 +144,9 @@ func UpdateOptionalObjective():
 func OnTileChanged(_tile : Tile):
 	if _tile.Occupant == null:
 		HideInspectUI()
+	else:
+		InspectUI.visible = true
+
+	TerrainInspectUI.Update(_tile)
 	UpdateInspectUISide()
 	pass

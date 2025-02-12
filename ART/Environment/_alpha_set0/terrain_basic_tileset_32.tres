@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://cw2y83vld1yn4"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://cw2y83vld1yn4"]
 
 [ext_resource type="Resource" uid="uid://dum5iqty3hq5g" path="res://RESOURCES/TileMetaData/MaroonForest/MF_River.tres" id="1_3kalf"]
 [ext_resource type="Texture2D" uid="uid://b1ovua6g8svh3" path="res://ART/Environment/_alpha_set0/art_test_6.png" id="1_7skec"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="2_ljnt0"]
 [ext_resource type="Resource" uid="uid://dkgajgdeqosxv" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestuctableTrees.tres" id="2_vbfp3"]
+[ext_resource type="Resource" uid="uid://ejdh6bdh2gf5" path="res://RESOURCES/TileMetaData/MaroonForest/MF_CorpseEater.tres" id="3_kj72c"]
 [ext_resource type="Texture2D" uid="uid://dwjwd2rsa38rs" path="res://ART/Environment/Other_Peoples/TX Tileset Wall.png" id="4_mu1cm"]
 [ext_resource type="Texture2D" uid="uid://lr6uh8kj5fmy" path="res://ART/Environment/greyboxing_colors.png" id="5_jbuiq"]
 [ext_resource type="Texture2D" uid="uid://bx0a5woamx3j8" path="res://ART/Grid/tmp_fire_tiles.png" id="7_1ahre"]
@@ -27,31 +28,26 @@ texture_region_size = Vector2i(32, 32)
 3:0/0/terrain = 1
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0/custom_data_0 = ExtResource("2_vbfp3")
-3:0/0/custom_data_1 = 5
 4:0/0 = 0
 4:0/0/terrain_set = 0
 4:0/0/terrain = 1
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:0/0/custom_data_0 = ExtResource("2_vbfp3")
-4:0/0/custom_data_1 = 5
 5:0/0 = 0
 5:0/0/terrain_set = 0
 5:0/0/terrain = 1
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 5:0/0/custom_data_0 = ExtResource("2_vbfp3")
-5:0/0/custom_data_1 = 5
 6:0/0 = 0
 6:0/0/terrain_set = 0
 6:0/0/terrain = 1
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:0/0/custom_data_0 = ExtResource("2_vbfp3")
-6:0/0/custom_data_1 = 5
 7:0/0 = 0
 7:0/0/terrain_set = 0
 7:0/0/terrain = 1
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:0/0/custom_data_0 = ExtResource("2_vbfp3")
-7:0/0/custom_data_1 = 5
 0:1/0 = 0
 0:1/0/terrain_set = 1
 0:1/0/terrain = 0
@@ -101,8 +97,10 @@ texture_region_size = Vector2i(32, 32)
 3:1/0/terrains_peering_bit/top_right_corner = 0
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0/custom_data_0 = ExtResource("3_kj72c")
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0/custom_data_0 = ExtResource("3_kj72c")
 0:2/0 = 0
 0:2/0/terrain_set = 1
 0:2/0/terrains_peering_bit/bottom_right_corner = 0
@@ -121,8 +119,10 @@ texture_region_size = Vector2i(32, 32)
 3:2/0/terrains_peering_bit/bottom_left_corner = 0
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0/custom_data_0 = ExtResource("3_kj72c")
 5:2/0 = 0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0/custom_data_0 = ExtResource("3_kj72c")
 0:3/0 = 0
 0:3/0/terrain_set = 1
 0:3/0/terrains_peering_bit/right_side = 0
@@ -194,7 +194,6 @@ texture_region_size = Vector2i(32, 32)
 0:7/0 = 0
 0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 0:7/0/custom_data_0 = ExtResource("1_3kalf")
-0:7/0/custom_data_2 = true
 1:7/0 = 0
 1:7/0/custom_data_0 = ExtResource("1_3kalf")
 2:7/0 = 0
@@ -276,12 +275,10 @@ texture_region_size = Vector2i(32, 32)
 8:0/0/terrain_set = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 8:0/0/custom_data_0 = ExtResource("2_vbfp3")
-8:0/0/custom_data_1 = 10
 9:0/0 = 0
 9:0/0/terrain_set = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 9:0/0/custom_data_0 = ExtResource("2_vbfp3")
-9:0/0/custom_data_1 = 10
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30vyt"]
 texture = ExtResource("2_ljnt0")
@@ -444,10 +441,6 @@ terrain_set_1/terrain_0/name = "Paths"
 terrain_set_1/terrain_0/color = Color(0.5, 0.5, 0.5, 1)
 custom_data_layer_0/name = "MetaData"
 custom_data_layer_0/type = 24
-custom_data_layer_1/name = "Health"
-custom_data_layer_1/type = 2
-custom_data_layer_2/name = "Killbox"
-custom_data_layer_2/type = 1
 sources/2 = SubResource("TileSetAtlasSource_30vyt")
 sources/0 = SubResource("TileSetAtlasSource_gj2f4")
 sources/3 = SubResource("TileSetAtlasSource_m4wp3")

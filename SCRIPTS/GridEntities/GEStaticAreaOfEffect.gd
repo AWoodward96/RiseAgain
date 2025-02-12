@@ -17,6 +17,7 @@ enum DamageInterval { DamageOnTurnStart, DamageOnTraversal }
 @export var warmup_timer : float = 0.5
 @export var cooloff_timer : float = 1
 
+
 var remaining_duration : int
 var tiles : Array[TileTargetedData]
 var warmup : float = 0
@@ -104,6 +105,29 @@ func AffectUnit(_unitInstance : UnitInstance, _relatedTile : TileTargetedData):
 		_unitInstance.ModifyHealth(newHealStepResult.HealthDelta, newHealStepResult, true)
 
 
+func GetLocalizedDescription(_tile : Tile):
+	var tileData = GetTileTargetDataFromTile(_tile)
+	if tileData == null:
+		return ""
+
+	var returnString = tr(localization_desc)
+	var madlibs = {}
+	if damage_data != null:
+		madlibs["NUM"] = -GameManager.GameSettings.DamageCalculation(Source, null, damage_data, tileData)
+
+	if heal_data != null:
+		madlibs["NUM"] = GameManager.GameSettings.HealCalculation(heal_data, Source, tileData.AOEMultiplier)
+
+
+	return returnString.format(madlibs)
+
+func GetTileTargetDataFromTile(_tile : Tile):
+	for t in tiles:
+		if t.Tile == _tile:
+			return t
+
+	return null
+
 func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	if damage_interval != DamageInterval.DamageOnTraversal:
 		return GameSettingsTemplate.TraversalResult.OK
@@ -127,7 +151,6 @@ func Exit():
 			continue
 
 		t.Tile.RemoveEntity(self)
-
 
 func ToJSON():
 	var dict = super()

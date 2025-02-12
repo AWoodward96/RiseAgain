@@ -4,6 +4,7 @@ class_name InspectPanel
 @export var icon : TextureRect
 @export var unitHealthBar : UnitHealthBar
 @export var namelabel : Label
+@export var affinity_icon : TextureRect
 
 @export_category("Stat Stuff")
 
@@ -49,6 +50,8 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 	unitHealthBar.SetUnit(_unit)
 	unitHealthBar.Refresh()
 
+	if affinity_icon != null: affinity_icon.texture = currentUnit.Template.Affinity.loc_icon
+
 	if forceUpdate:
 		UpdateStatsUI()
 		UpdateWeaponInfo()
@@ -60,6 +63,9 @@ func OnUnitEffectsUpdated():
 	Update(currentUnit, true)
 
 func UpdateWeaponInfo():
+	if weaponEntryParent == null:
+		return
+
 	var equippedItem = currentUnit.EquippedWeapon
 	var hasItem = equippedItem != null
 	weaponIcon.visible = hasItem

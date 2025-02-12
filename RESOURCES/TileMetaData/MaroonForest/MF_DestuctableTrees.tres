@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_q832u")
+loc_name = "tile_deadtree_name"
 Health = 5
 Killbox = false
+FireSpreadChance = 0.5

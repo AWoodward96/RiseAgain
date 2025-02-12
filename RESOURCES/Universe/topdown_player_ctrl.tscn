@@ -10,7 +10,6 @@ height = 62.0
 [node name="TopdownPlayerCTRL" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_y6b2r")
-maximumSpeed = 448.0
 camera = NodePath("Camera2D")
 
 [node name="VisualParent" type="Node2D" parent="."]

@@ -18,6 +18,7 @@ class_name UnitHealthBar
 
 @export_category("Combat Effects")
 
+@export var EffectParent : Control
 @export var EffectsList : EntryList
 @export var EffectsIconPrefab : PackedScene
 
@@ -148,6 +149,8 @@ func Refresh(_forceUpdate : bool = false):
 func RefreshCombatEffects():
 	if EffectsList == null:
 		return
+
+	EffectParent.visible = Unit.CombatEffects.size() > 0
 
 	EffectsList.ClearEntries()
 	for effect in Unit.CombatEffects:

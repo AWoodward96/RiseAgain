@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ngbhm"]
 [ext_resource type="PackedScene" uid="uid://dmhbg3jolre8u" path="res://RESOURCES/GridEntities/grasping_roots_entity.tscn" id="3_euem1"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_rqfdi"]
-[ext_resource type="Texture2D" uid="uid://jq6pguj1dv2r" path="res://ART/Icons/Ability/Standard/summongale.png" id="5_2njna"]
+[ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/grasping_roots.png" id="5_b85m2"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_6cu26"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_7s5il"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_t7vw6"]
@@ -18,6 +18,7 @@ GridEntityPrefab = ExtResource("3_euem1")
 script = ExtResource("8_t7vw6")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 Position = Vector2i(0, 0)
 Multiplier = 1.0
 
@@ -32,7 +33,7 @@ executionStack = Array[ExtResource("2_ngbhm")]([SubResource("Resource_tovoj")])
 internalName = "summonroots"
 loc_displayName = "art_graspingroots_name"
 loc_displayDesc = "art_graspingroots_desc"
-icon = ExtResource("5_2njna")
+icon = ExtResource("5_b85m2")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

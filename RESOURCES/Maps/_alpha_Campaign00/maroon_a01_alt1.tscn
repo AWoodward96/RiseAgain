@@ -87,7 +87,7 @@ use_parent_material = true
 tile_set = ExtResource("5_ymkt3")
 
 [node name="C0Map0Leafmap" type="Sprite2D" parent="."]
-z_index = -4
+z_index = 1
 material = ExtResource("6_5ebkg")
 position = Vector2(480, 288)
 scale = Vector2(2, 2)

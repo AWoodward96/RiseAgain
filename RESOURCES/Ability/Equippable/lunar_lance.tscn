@@ -31,6 +31,7 @@ Value = 4
 script = ExtResource("13_mv1sx")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 Position = Vector2i(0, -1)
 Multiplier = 1.0
 
@@ -38,6 +39,7 @@ Multiplier = 1.0
 script = ExtResource("13_mv1sx")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 Position = Vector2i(0, -2)
 Multiplier = 1.0
 
@@ -51,8 +53,8 @@ type = 1
 executionStack = Array[ExtResource("2_ohson")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
 damageGrantsFocus = true
 internalName = "lunar_lance"
-loc_displayName = "weap_lunar_lance_name"
-loc_displayDesc = "weap_lunar_lance_desc"
+loc_displayName = "weap_lunarlance_name"
+loc_displayDesc = "weap_lunarlance_desc"
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_30bv3")

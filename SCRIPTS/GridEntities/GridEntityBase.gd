@@ -5,6 +5,10 @@ class_name GridEntityBase
 @export var UpdatePerUnitTurn : bool
 @export var PreviewSprite : Texture2D
 
+@export_category("Localization")
+@export var localization_icon : Texture2D
+@export var localization_desc : String
+
 var Origin : Tile
 var Allegience : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY
 var Source : UnitInstance
@@ -59,6 +63,9 @@ func ToJSON():
 			dict["SourceAbility"] = SourceAbility.internalName
 
 	return dict
+
+func GetLocalizedDescription(_tile : Tile):
+	return tr(localization_desc)
 
 func InitFromJSON(_dict : Dictionary):
 	CurrentMap = Map.Current # If we're loading from JSON, there's no ambiguity here

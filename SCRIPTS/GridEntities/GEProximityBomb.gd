@@ -26,6 +26,17 @@ func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	Expired = true
 	return interruptionType
 
+func GetLocalizedDescription(_tile : Tile):
+	var returnString = tr(localization_desc)
+	var madlibs = {}
+	if Source == null:
+		madlibs["NUM"] = defaultDamage
+	else:
+		madlibs["NUM"] = -GameManager.GameSettings.DamageCalculation(Source, null, damageData, Origin.AsTargetData())
+
+	return returnString.format(madlibs)
+
+
 func Exit():
 	Origin.RemoveEntity(self)
 

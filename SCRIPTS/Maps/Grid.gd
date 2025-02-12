@@ -77,15 +77,12 @@ func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.Team
 	var x = _tile.Position.x
 	var y = _tile.Position.y
 	var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
-	var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 
 	_tile.IsWall = false
 	if main_data:
 		if main_data.get_collision_polygons_count(0) > 0 :
 			_tile.IsWall = true
 
-	if bg_data != null:
-		_tile.Killbox = bg_data.get_custom_data("Killbox")
 	_tile.RefreshActiveKillbox()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=47 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -18,17 +18,29 @@
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="11_8mf6d"]
 [ext_resource type="PackedScene" uid="uid://b7850ynb8vsrl" path="res://RESOURCES/UI/_alpha_CombatHUD/context_button_entry.tscn" id="11_aar1f"]
 [ext_resource type="Script" path="res://RESOURCES/Units/UnitHealthBar.gd" id="12_60paf"]
+[ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="13_6r2ue"]
 [ext_resource type="Texture2D" uid="uid://d0g2rta26msr7" path="res://ART/Icons/Ability/Equippable/magic_bolt.png" id="13_6rrfk"]
+[ext_resource type="PackedScene" uid="uid://k6a1bknwdhr" path="res://RESOURCES/UI/_alpha_CombatHUD/grid_entity_info_prefab.tscn" id="15_2krlt"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="15_ynng0"]
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="16_2y1mh"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="17_qifey"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/GridEntryList.gd" id="18_0w6qp"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
+[ext_resource type="Texture2D" uid="uid://dux76wobeluiu" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
 [ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="24_6ybxf"]
+[ext_resource type="Texture2D" uid="uid://bc86vvwt0eosa" path="res://ART/UI/Dividers/deviders4.png" id="24_cm1b8"]
+[ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="25_a6jy8"]
+[ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="25_gcwxk"]
+[ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="25_lfimk"]
+[ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="26_vkkdr"]
+[ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="27_gwkwg"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
+[sub_resource type="LabelSettings" id="LabelSettings_r1gep"]
+font = ExtResource("8_rdfo2")
 
-[sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
+[sub_resource type="LabelSettings" id="LabelSettings_n4mcp"]
 font = ExtResource("8_rdfo2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
@@ -43,24 +55,30 @@ font = ExtResource("8_rdfo2")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgwnx"]
 bg_color = Color(1, 0.872869, 0.485299, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_n4mcp"]
-font = ExtResource("8_rdfo2")
-
 [sub_resource type="LabelSettings" id="LabelSettings_qnurt"]
 font = ExtResource("8_rdfo2")
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
+[sub_resource type="LabelSettings" id="LabelSettings_c51qu"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
+font = ExtResource("8_rdfo2")
+
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_dux2t")
 AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
 NeutralTurnBanner = ExtResource("4_yq0hc")
 VictoryBanner = ExtResource("5_k07rk")
 LossBanner = ExtResource("6_7myj1")
-InspectUI = NodePath("BottomLeft/InspectUI")
-InspectEffectsUI = NodePath("BottomLeft/InspectUI/EffectsGrid")
+InspectUI = NodePath("Full_NoMargin/InspectUnitPanel")
+InspectEffectsUI = NodePath("OldInspectUI/EffectsGrid")
 ContextUI = NodePath("ContextMenu")
 DmgPreviewUI = NodePath("TopLeft/DamagePreviewUI")
 NoTargets = NodePath("TopCenter/NoTargets")
+TerrainInspectUI = NodePath("Full_NoMargin/TerrainInspectPanel")
 OptionalObjectiveParent = NodePath("OptionalObjective")
 OptionalObjectiveText = NodePath("OptionalObjective/Label")
 bottom_left_anchor = NodePath("BottomLeft")
@@ -96,12 +114,527 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Optional Objective:"
 
-[node name="Full" type="MarginContainer" parent="."]
+[node name="Full_NoMargin" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TerrainInspectPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("tile_name", "tile_health_parent", "tile_health", "tile_is_killbox_parent", "fire_data_parent", "fire_level_label", "fire_damage_label", "grid_entity_parent")]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -101.0
+offset_right = 200.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("23_q4cyj")
+tile_name = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/TerrainName")
+tile_health_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer")
+tile_health = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer/HealthNumber")
+tile_is_killbox_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent")
+fire_data_parent = NodePath("VBoxContainer/OnFireInfo")
+fire_level_label = NodePath("VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer/FireLevel")
+fire_damage_label = NodePath("VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer/HealthLostPerTurn")
+grid_entity_parent = NodePath("VBoxContainer")
+grid_entity_prefab = ExtResource("15_2krlt")
+fire_level_loc = "ui_xNUM"
+fire_damage_loc = "ui_firedamage_amt"
+no_name_loc = "ui_notiledata_name"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
+layout_mode = 2
+color = Color(0.16, 0.1088, 0.118187, 1)
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content"]
+layout_mode = 2
+
+[node name="TerrainName" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+layout_mode = 2
+text = "Dead Tree"
+label_settings = SubResource("LabelSettings_r1gep")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Divider" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_cm1b8")
+
+[node name="HealthContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer"]
+layout_mode = 2
+text = "ui_health"
+label_settings = ExtResource("25_gcwxk")
+
+[node name="HealthNumber" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{NUM}"
+label_settings = ExtResource("25_gcwxk")
+horizontal_alignment = 2
+
+[node name="KillboxParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 68.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 36.0
+texture = ExtResource("27_gwkwg")
+expand_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
+layout_mode = 2
+texture = ExtResource("23_vm2kk")
+region_rect = Rect2(0, 0, 80, 64)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="OnFireInfo" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo"]
+layout_mode = 2
+color = Color(0.36, 0.1296, 0.16416, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("13_6r2ue")
+expand_mode = 1
+
+[node name="FireLevel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "x2"
+label_settings = ExtResource("25_gcwxk")
+
+[node name="Space" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="HealthLostPerTurn" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "-6 Hp/Turn"
+label_settings = ExtResource("25_gcwxk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo"]
+layout_mode = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -124.0
+offset_right = 276.0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("9_tccg0")
+icon = NodePath("OffsetMargin/Content/Main/UnitIcon")
+unitHealthBar = NodePath("OffsetMargin/Content/Main")
+namelabel = NodePath("OffsetMargin/Content/Main/UnitName")
+affinity_icon = NodePath("OffsetMargin/Content/Main/Affinity")
+dmgIcon = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Atk/AttackIcon")
+dmgLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Atk/AttackNum")
+defLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Def/DefNum")
+spDefLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Def2/SpDefNum")
+moveLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Move/MoveNum")
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel"]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
+custom_minimum_size = Vector2(260, 108)
+layout_mode = 2
+script = ExtResource("12_60paf")
+HealthBar = NodePath("Health")
+ArmorBar = NodePath("Armor")
+HealthText = NodePath("HealthText")
+FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
+FocusBarPrefab = ExtResource("11_8mf6d")
+ExperienceBar = NodePath("EXP")
+LevelLabel = NodePath("Level")
+LevelLocalization = "ui_level_num_short"
+EffectParent = NodePath("../EffectsParent")
+EffectsList = NodePath("../EffectsParent/MarginContainer/ActiveEffects")
+EffectsIconPrefab = ExtResource("10_4ar5q")
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24, 0.1968, 0.20328, 1)
+
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 58.0
+offset_bottom = 55.0
+texture = ExtResource("25_a6jy8")
+expand_mode = 2
+
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/UnitIcon"]
+layout_mode = 2
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 44.0
+offset_right = 22.0
+offset_bottom = 60.0
+pivot_offset = Vector2(22, -2)
+texture = ExtResource("21_tmp02")
+expand_mode = 1
+
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Affinity"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 2.0
+offset_right = 218.0
+offset_bottom = 25.0
+text = "[UnitName]"
+label_settings = SubResource("LabelSettings_n4mcp")
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 2.0
+offset_right = 253.0
+offset_bottom = 25.0
+text = "[NUM]"
+label_settings = SubResource("LabelSettings_n4mcp")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FocusContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 44.0
+offset_right = 253.0
+offset_bottom = 52.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="FocusBarParent" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/FocusContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("10_fkj7h")
+
+[node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+custom_minimum_size = Vector2(132, 16)
+layout_mode = 2
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 254.0
+offset_bottom = 40.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
+max_value = 1.0
+show_percentage = false
+
+[node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+custom_minimum_size = Vector2(132, 16)
+layout_mode = 2
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 254.0
+offset_bottom = 40.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
+max_value = 1.0
+show_percentage = false
+
+[node name="HealthText" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 128.0
+offset_top = 17.0
+offset_right = 171.0
+offset_bottom = 40.0
+text = "25/25"
+label_settings = SubResource("LabelSettings_y7ooe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXP" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+custom_minimum_size = Vector2(132, 1)
+layout_mode = 2
+offset_left = 64.0
+offset_top = 58.0
+offset_right = 254.0
+offset_bottom = 62.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
+step = 1.0
+value = 23.0
+show_percentage = false
+
+[node name="FocusIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 41.0
+offset_right = 81.0
+offset_bottom = 57.0
+texture = ExtResource("26_vkkdr")
+expand_mode = 1
+
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 1.0
+offset_right = 80.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_cm1b8")
+
+[node name="ImportantStats" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 71.0
+offset_right = 251.0
+offset_bottom = 103.0
+pivot_offset = Vector2(4, 26)
+
+[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 24
+columns = 4
+script = ExtResource("10_fkj7h")
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32, 0.2784, 0.294347, 1)
+
+[node name="Glance" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats"]
+layout_mode = 2
+offset_right = 244.0
+offset_bottom = 32.0
+theme_override_constants/separation = 8
+
+[node name="Atk" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="AttackIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Atk"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("15_ynng0")
+expand_mode = 1
+
+[node name="AttackNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Atk"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="Def" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="DefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Def"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("16_2y1mh")
+expand_mode = 1
+
+[node name="DefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Def"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="Def2" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="SpDefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Def2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("17_qifey")
+expand_mode = 1
+
+[node name="SpDefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Def2"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="Move" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="MoveIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Move"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("18_pubiv")
+expand_mode = 1
+
+[node name="MoveNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats/Glance/Move"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/ImportantStats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="EffectsParent" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.168627, 0.172549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ActiveEffects" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent/MarginContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+script = ExtResource("10_fkj7h")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="TopLeft" type="Control" parent="."]
 layout_mode = 3
@@ -383,327 +916,12 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="BottomLeft" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
-
-[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel", "weaponIcon", "weaponName", "weaponEntryParent")]
-anchors_preset = 0
-offset_top = -108.0
-offset_right = 261.0
-script = ExtResource("9_tccg0")
-icon = NodePath("Main/Icon")
-unitHealthBar = NodePath("Main")
-namelabel = NodePath("Main/UnitName")
-dmgIcon = NodePath("Main/ImportantStats/Glance/Atk/AttackIcon")
-dmgLabel = NodePath("Main/ImportantStats/Glance/Atk/AttackNum")
-defLabel = NodePath("Main/ImportantStats/Glance/Def/DefNum")
-spDefLabel = NodePath("Main/ImportantStats/Glance/Def2/SpDefNum")
-moveLabel = NodePath("Main/ImportantStats/Glance/Move/MoveNum")
-weaponIcon = NodePath("Main/Equipped/Weapon")
-weaponName = NodePath("Main/Equipped/WeaponName")
-weaponEntryParent = NodePath("Main/Equipped")
-
-[node name="Main" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectsList")]
-anchors_preset = 0
-offset_right = 261.0
-offset_bottom = 107.0
-script = ExtResource("12_60paf")
-HealthBar = NodePath("Health")
-ArmorBar = NodePath("Armor")
-HealthText = NodePath("HealthText")
-FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("11_8mf6d")
-ExperienceBar = NodePath("EXP")
-LevelLabel = NodePath("Level")
-LevelLocalization = "ui_level_num_short"
-EffectsList = NodePath("../EffectsGrid")
-EffectsIconPrefab = ExtResource("10_4ar5q")
-
-[node name="BG" type="ColorRect" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.447059, 0.447059, 0.447059, 1)
-
-[node name="Icon" type="TextureRect" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 70.0
-texture = SubResource("PlaceholderTexture2D_aihfj")
-expand_mode = 1
-
-[node name="Level" type="Label" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-offset_left = 203.0
-offset_right = 255.0
-offset_bottom = 23.0
-text = "{NUM}"
-label_settings = SubResource("LabelSettings_dxpip")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI/Main"]
-visible = false
-layout_mode = 0
-offset_left = 92.0
-offset_top = 38.0
-offset_right = 164.0
-offset_bottom = 61.0
-text = "ui_health"
-
-[node name="Health" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(132, 27)
-layout_mode = 2
-offset_left = 73.0
-offset_top = 24.0
-offset_right = 253.0
-offset_bottom = 51.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
-max_value = 1.0
-show_percentage = false
-
-[node name="Armor" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(132, 27)
-layout_mode = 2
-offset_left = 73.0
-offset_top = 24.0
-offset_right = 253.0
-offset_bottom = 51.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
-max_value = 1.0
-value = 0.6
-fill_mode = 1
-show_percentage = false
-
-[node name="HealthText" type="Label" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-offset_left = 144.0
-offset_top = 25.0
-offset_right = 187.0
-offset_bottom = 48.0
-text = "25/25"
-label_settings = SubResource("LabelSettings_y7ooe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EXP" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(132, 10)
-layout_mode = 2
-offset_left = 74.0
-offset_top = 60.0
-offset_right = 253.0
-offset_bottom = 70.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
-step = 1.0
-value = 23.0
-show_percentage = false
-
-[node name="UnitName" type="Label" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 73.0
-offset_right = 228.0
-offset_bottom = 23.0
-text = "[UnitName]"
-label_settings = SubResource("LabelSettings_n4mcp")
-vertical_alignment = 1
-
-[node name="FocusContainer" type="MarginContainer" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 51.0
-offset_right = 253.0
-offset_bottom = 64.0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/FocusContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("10_fkj7h")
-
-[node name="Equipped" type="HBoxContainer" parent="BottomLeft/InspectUI/Main"]
-visible = false
-layout_mode = 0
-offset_left = 6.0
-offset_top = 74.0
-offset_right = 258.0
-offset_bottom = 106.0
-pivot_offset = Vector2(15, 2)
-script = ExtResource("10_fkj7h")
-
-[node name="Weapon" type="TextureRect" parent="BottomLeft/InspectUI/Main/Equipped"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("13_6rrfk")
-expand_mode = 1
-
-[node name="WeaponName" type="Label" parent="BottomLeft/InspectUI/Main/Equipped"]
-layout_mode = 2
-
-[node name="ImportantStats" type="Control" parent="BottomLeft/InspectUI/Main"]
-anchors_preset = 0
-offset_left = 6.0
-offset_top = 73.0
-offset_right = 252.0
-offset_bottom = 105.0
-pivot_offset = Vector2(4, 26)
-
-[node name="GridContainer" type="GridContainer" parent="BottomLeft/InspectUI/Main/ImportantStats"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 24
-columns = 4
-script = ExtResource("10_fkj7h")
-
-[node name="ColorRect" type="ColorRect" parent="BottomLeft/InspectUI/Main/ImportantStats"]
-layout_mode = 2
-offset_right = 252.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.25, 0.25, 0.25, 1)
-
-[node name="Glance" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats"]
-layout_mode = 2
-offset_right = 244.0
-offset_bottom = 32.0
-theme_override_constants/separation = 8
-
-[node name="Atk" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
-layout_mode = 2
-
-[node name="AttackIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Atk"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("15_ynng0")
-expand_mode = 1
-
-[node name="AttackNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Atk"]
-layout_mode = 2
-text = "00"
-label_settings = SubResource("LabelSettings_qnurt")
-
-[node name="Def" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
-layout_mode = 2
-
-[node name="DefIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("16_2y1mh")
-expand_mode = 1
-
-[node name="DefNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def"]
-layout_mode = 2
-text = "00"
-label_settings = SubResource("LabelSettings_qnurt")
-
-[node name="Def2" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
-layout_mode = 2
-
-[node name="SpDefIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def2"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("17_qifey")
-expand_mode = 1
-
-[node name="SpDefNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def2"]
-layout_mode = 2
-text = "00"
-label_settings = SubResource("LabelSettings_qnurt")
-
-[node name="Move" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
-layout_mode = 2
-
-[node name="MoveIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Move"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("18_pubiv")
-expand_mode = 1
-
-[node name="MoveNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Move"]
-layout_mode = 2
-text = "00"
-label_settings = SubResource("LabelSettings_qnurt")
-
-[node name="EffectsGrid" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("slots")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 261.0
-offset_top = -106.0
-offset_right = 362.0
-offset_bottom = -1.0
-grow_vertical = 0
-script = ExtResource("18_0w6qp")
-slots = [NodePath("HBoxContainer/Slot1"), NodePath("HBoxContainer/Slot2"), NodePath("HBoxContainer/Slot3")]
-entriesPerSlot = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Slot1" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-
-[node name="Slot2" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-
-[node name="Slot3" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-
-[node name="TerrainInspectUI" type="Control" parent="BottomLeft"]
-anchors_preset = 0
-offset_top = -108.0
-offset_right = 202.0
-offset_bottom = -2.0
-
-[node name="ColorRect" type="ColorRect" parent="BottomLeft/TerrainInspectUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16, 0.1088, 0.118187, 1)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="BottomLeft/TerrainInspectUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("23_vm2kk")
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
 
 [node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
 layout_mode = 3
@@ -749,7 +967,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.631373, 0.631373, 0.631373, 1)
+color = Color(0.2, 0.13, 0.13, 1)
 
 [node name="Label" type="Label" parent="TopCenter/NoTargets"]
 layout_mode = 1
@@ -765,3 +983,297 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "No Targets Found"
+label_settings = SubResource("LabelSettings_c51qu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TopCenter/NoTargets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_vm2kk")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="OldInspectUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 449.0
+offset_right = 501.0
+offset_bottom = 557.0
+
+[node name="Main" type="Control" parent="OldInspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectsList")]
+anchors_preset = 0
+offset_right = 261.0
+offset_bottom = 107.0
+script = ExtResource("12_60paf")
+HealthBar = NodePath("Health")
+ArmorBar = NodePath("Armor")
+HealthText = NodePath("HealthText")
+FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
+FocusBarPrefab = ExtResource("11_8mf6d")
+ExperienceBar = NodePath("EXP")
+LevelLabel = NodePath("Level")
+LevelLocalization = "ui_level_num_short"
+EffectsList = NodePath("../EffectsGrid")
+EffectsIconPrefab = ExtResource("10_4ar5q")
+
+[node name="BG" type="ColorRect" parent="OldInspectUI/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[node name="Icon" type="TextureRect" parent="OldInspectUI/Main"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = SubResource("PlaceholderTexture2D_aihfj")
+expand_mode = 1
+
+[node name="Level" type="Label" parent="OldInspectUI/Main"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 203.0
+offset_right = 255.0
+offset_bottom = 23.0
+text = "{NUM}"
+label_settings = SubResource("LabelSettings_dxpip")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="OldInspectUI/Main"]
+visible = false
+layout_mode = 0
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 164.0
+offset_bottom = 61.0
+text = "ui_health"
+
+[node name="Health" type="ProgressBar" parent="OldInspectUI/Main"]
+custom_minimum_size = Vector2(132, 27)
+layout_mode = 2
+offset_left = 73.0
+offset_top = 24.0
+offset_right = 253.0
+offset_bottom = 51.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
+max_value = 1.0
+show_percentage = false
+
+[node name="Armor" type="ProgressBar" parent="OldInspectUI/Main"]
+custom_minimum_size = Vector2(132, 27)
+layout_mode = 2
+offset_left = 73.0
+offset_top = 24.0
+offset_right = 253.0
+offset_bottom = 51.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
+max_value = 1.0
+value = 0.6
+fill_mode = 1
+show_percentage = false
+
+[node name="HealthText" type="Label" parent="OldInspectUI/Main"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+offset_left = 144.0
+offset_top = 25.0
+offset_right = 187.0
+offset_bottom = 48.0
+text = "25/25"
+label_settings = SubResource("LabelSettings_y7ooe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXP" type="ProgressBar" parent="OldInspectUI/Main"]
+custom_minimum_size = Vector2(132, 10)
+layout_mode = 2
+offset_left = 74.0
+offset_top = 60.0
+offset_right = 253.0
+offset_bottom = 70.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
+step = 1.0
+value = 23.0
+show_percentage = false
+
+[node name="UnitName" type="Label" parent="OldInspectUI/Main"]
+layout_mode = 0
+offset_left = 73.0
+offset_right = 228.0
+offset_bottom = 23.0
+text = "[UnitName]"
+label_settings = SubResource("LabelSettings_n4mcp")
+vertical_alignment = 1
+
+[node name="FocusContainer" type="MarginContainer" parent="OldInspectUI/Main"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 51.0
+offset_right = 253.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="FocusBarParent" type="HBoxContainer" parent="OldInspectUI/Main/FocusContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("10_fkj7h")
+
+[node name="Equipped" type="HBoxContainer" parent="OldInspectUI/Main"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 74.0
+offset_right = 258.0
+offset_bottom = 106.0
+pivot_offset = Vector2(15, 2)
+script = ExtResource("10_fkj7h")
+
+[node name="Weapon" type="TextureRect" parent="OldInspectUI/Main/Equipped"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("13_6rrfk")
+expand_mode = 1
+
+[node name="WeaponName" type="Label" parent="OldInspectUI/Main/Equipped"]
+layout_mode = 2
+
+[node name="ImportantStats" type="Control" parent="OldInspectUI/Main"]
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 73.0
+offset_right = 252.0
+offset_bottom = 105.0
+pivot_offset = Vector2(4, 26)
+
+[node name="GridContainer" type="GridContainer" parent="OldInspectUI/Main/ImportantStats"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 24
+columns = 4
+script = ExtResource("10_fkj7h")
+
+[node name="ColorRect" type="ColorRect" parent="OldInspectUI/Main/ImportantStats"]
+layout_mode = 2
+offset_right = 252.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.25, 0.25, 1)
+
+[node name="Glance" type="HBoxContainer" parent="OldInspectUI/Main/ImportantStats"]
+layout_mode = 2
+offset_right = 244.0
+offset_bottom = 32.0
+theme_override_constants/separation = 8
+
+[node name="Atk" type="HBoxContainer" parent="OldInspectUI/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="AttackIcon" type="TextureRect" parent="OldInspectUI/Main/ImportantStats/Glance/Atk"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("15_ynng0")
+expand_mode = 1
+
+[node name="AttackNum" type="Label" parent="OldInspectUI/Main/ImportantStats/Glance/Atk"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="Def" type="HBoxContainer" parent="OldInspectUI/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="DefIcon" type="TextureRect" parent="OldInspectUI/Main/ImportantStats/Glance/Def"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("16_2y1mh")
+expand_mode = 1
+
+[node name="DefNum" type="Label" parent="OldInspectUI/Main/ImportantStats/Glance/Def"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="Def2" type="HBoxContainer" parent="OldInspectUI/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="SpDefIcon" type="TextureRect" parent="OldInspectUI/Main/ImportantStats/Glance/Def2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("17_qifey")
+expand_mode = 1
+
+[node name="SpDefNum" type="Label" parent="OldInspectUI/Main/ImportantStats/Glance/Def2"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="Move" type="HBoxContainer" parent="OldInspectUI/Main/ImportantStats/Glance"]
+layout_mode = 2
+
+[node name="MoveIcon" type="TextureRect" parent="OldInspectUI/Main/ImportantStats/Glance/Move"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("18_pubiv")
+expand_mode = 1
+
+[node name="MoveNum" type="Label" parent="OldInspectUI/Main/ImportantStats/Glance/Move"]
+layout_mode = 2
+text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
+
+[node name="EffectsGrid" type="Control" parent="OldInspectUI" node_paths=PackedStringArray("slots")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 261.0
+offset_top = -106.0
+offset_right = 362.0
+offset_bottom = -1.0
+grow_vertical = 0
+script = ExtResource("18_0w6qp")
+slots = [NodePath("HBoxContainer/Slot1"), NodePath("HBoxContainer/Slot2"), NodePath("HBoxContainer/Slot3")]
+entriesPerSlot = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OldInspectUI/EffectsGrid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot1" type="VBoxContainer" parent="OldInspectUI/EffectsGrid/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Slot2" type="VBoxContainer" parent="OldInspectUI/EffectsGrid/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Slot3" type="VBoxContainer" parent="OldInspectUI/EffectsGrid/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2

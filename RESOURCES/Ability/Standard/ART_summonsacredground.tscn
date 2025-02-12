@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_xwm4y"]
 [ext_resource type="PackedScene" uid="uid://bhux4kbgsott1" path="res://RESOURCES/GridEntities/sacred_ground_entity.tscn" id="3_ml4we"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_aoqp5"]
-[ext_resource type="Texture2D" uid="uid://jq6pguj1dv2r" path="res://ART/Icons/Ability/Standard/summongale.png" id="5_kvj2t"]
+[ext_resource type="Texture2D" uid="uid://2775q6xpieqp" path="res://ART/Icons/Ability/Standard/sacred_ground.png" id="5_00xii"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_m70wh"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_hdsfx"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_u7ycf"]
@@ -33,7 +33,7 @@ executionStack = Array[ExtResource("2_xwm4y")]([SubResource("Resource_tovoj")])
 internalName = "summonsacredground"
 loc_displayName = "art_sacredground_name"
 loc_displayDesc = "art_sacredground_desc"
-icon = ExtResource("5_kvj2t")
+icon = ExtResource("5_00xii")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

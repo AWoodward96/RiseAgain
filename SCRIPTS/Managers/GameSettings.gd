@@ -289,3 +289,18 @@ func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
 	# Equation is:
 	# (Skill * 2) + (Luck)
 	return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat) + affinityModifier) / 100.0
+
+func GetFireDamage(_dmgLevel : int):
+	if _dmgLevel <= 0:
+		return 0
+
+	match(_dmgLevel):
+		1:
+			return Level1FireDamage
+		2:
+			return Level2FireDamage
+		3:
+			return Level3FireDamage
+
+	if _dmgLevel >= 3:
+		return Level3FireDamage

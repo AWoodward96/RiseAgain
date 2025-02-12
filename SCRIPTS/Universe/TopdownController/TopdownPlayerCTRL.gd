@@ -4,7 +4,7 @@ class_name TopDownPlayer
 static var CurrentInteractable : TopdownInteractable
 static var BlockInputCounter : int = 0
 
-@export var maximumSpeed : float = 96
+@export var maximumSpeed : float = 448
 @export var camera : Camera2D
 
 var currentEnvironment : TopdownEnvironment

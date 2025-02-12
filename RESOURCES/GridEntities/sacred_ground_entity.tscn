@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhux4kbgsott1"]
+[gd_scene load_steps=7 format=3 uid="uid://bhux4kbgsott1"]
 
 [ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEStaticAreaOfEffect.gd" id="1_547wj"]
 [ext_resource type="Resource" uid="uid://cm34ayxs4x5gm" path="res://RESOURCES/TargetingShapes/sacred_ground_shape.tres" id="2_mo663"]
 [ext_resource type="Texture2D" uid="uid://c3vyjq1tjdrc1" path="res://ART/GridEntities/radiant_blessing.png" id="3_kpy3g"]
+[ext_resource type="Texture2D" uid="uid://2775q6xpieqp" path="res://ART/Icons/Ability/Standard/sacred_ground.png" id="4_1yoiw"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="4_3uwqy"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_ri8mk"]
 
@@ -14,6 +15,8 @@ interruptionType = 1
 heal_data = NodePath("HealComponent")
 UpdatePerTeamTurn = true
 PreviewSprite = ExtResource("3_kpy3g")
+localization_icon = ExtResource("4_1yoiw")
+localization_desc = "ui_sacredgrounds_effectdesc"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_x4owp"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="3_6bboh"]
 [ext_resource type="PackedScene" uid="uid://c77gxravt3w7h" path="res://RESOURCES/GridEntities/proximity_mine.tscn" id="3_oobre"]
-[ext_resource type="Texture2D" uid="uid://c3j3s2tiyd5dy" path="res://ART/Icons/Ability/Standard/smite.png" id="5_k11v8"]
+[ext_resource type="Texture2D" uid="uid://dkqrtalgsk7nm" path="res://ART/Icons/Ability/Standard/summon_mine.png" id="5_oak7k"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnxer"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_y4vag"]
 [ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_nkbae"]
@@ -18,6 +18,7 @@ GridEntityPrefab = ExtResource("3_oobre")
 script = ExtResource("8_nkbae")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 Position = Vector2i(0, 0)
 Multiplier = 1.0
 
@@ -33,7 +34,7 @@ autoEndTurn = false
 internalName = "summonmine"
 loc_displayName = "art_summonmine_name"
 loc_displayDesc = "art_summonmine_desc"
-icon = ExtResource("5_k11v8")
+icon = ExtResource("5_oak7k")
 TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
