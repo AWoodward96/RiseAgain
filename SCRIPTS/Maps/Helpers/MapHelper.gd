@@ -1,4 +1,3 @@
-@tool
 extends Sprite2D
 class_name MapHelper
 
@@ -16,4 +15,3 @@ func UpdatePosition():
 		return
 
 	global_position = Position * map.TileSize
-

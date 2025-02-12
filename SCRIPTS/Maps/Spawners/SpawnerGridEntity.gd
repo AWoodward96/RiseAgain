@@ -1,4 +1,3 @@
-@tool
 extends SpawnerBase
 class_name SpawnerGridEntity
 

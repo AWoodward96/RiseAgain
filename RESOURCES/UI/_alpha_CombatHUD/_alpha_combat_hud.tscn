@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=34 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -24,8 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="17_qifey"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/GridEntryList.gd" id="18_0w6qp"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
+[ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
+font = ExtResource("8_rdfo2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
 bg_color = Color(3.36915e-07, 0.670276, 0.36946, 1)
@@ -33,8 +37,17 @@ bg_color = Color(3.36915e-07, 0.670276, 0.36946, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrmyv"]
 bg_color = Color(0.6497, 0.709775, 0.89, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_y7ooe"]
+font = ExtResource("8_rdfo2")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgwnx"]
 bg_color = Color(1, 0.872869, 0.485299, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4mcp"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qnurt"]
+font = ExtResource("8_rdfo2")
 
 [node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_dux2t")
@@ -378,7 +391,7 @@ grow_vertical = 0
 
 [node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel", "weaponIcon", "weaponName", "weaponEntryParent")]
 anchors_preset = 0
-offset_top = -144.0
+offset_top = -108.0
 offset_right = 261.0
 script = ExtResource("9_tccg0")
 icon = NodePath("Main/Icon")
@@ -396,7 +409,7 @@ weaponEntryParent = NodePath("Main/Equipped")
 [node name="Main" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectsList")]
 anchors_preset = 0
 offset_right = 261.0
-offset_bottom = 144.0
+offset_bottom = 107.0
 script = ExtResource("12_60paf")
 HealthBar = NodePath("Health")
 ArmorBar = NodePath("Armor")
@@ -434,6 +447,7 @@ offset_left = 203.0
 offset_right = 255.0
 offset_bottom = 23.0
 text = "{NUM}"
+label_settings = SubResource("LabelSettings_dxpip")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -478,6 +492,7 @@ offset_top = 25.0
 offset_right = 187.0
 offset_bottom = 48.0
 text = "25/25"
+label_settings = SubResource("LabelSettings_y7ooe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -499,6 +514,8 @@ offset_left = 73.0
 offset_right = 228.0
 offset_bottom = 23.0
 text = "[UnitName]"
+label_settings = SubResource("LabelSettings_n4mcp")
+vertical_alignment = 1
 
 [node name="FocusContainer" type="MarginContainer" parent="BottomLeft/InspectUI/Main"]
 layout_mode = 0
@@ -516,6 +533,7 @@ theme_override_constants/separation = 1
 script = ExtResource("10_fkj7h")
 
 [node name="Equipped" type="HBoxContainer" parent="BottomLeft/InspectUI/Main"]
+visible = false
 layout_mode = 0
 offset_left = 6.0
 offset_top = 74.0
@@ -536,9 +554,9 @@ layout_mode = 2
 [node name="ImportantStats" type="Control" parent="BottomLeft/InspectUI/Main"]
 anchors_preset = 0
 offset_left = 6.0
-offset_top = 110.0
+offset_top = 73.0
 offset_right = 252.0
-offset_bottom = 142.0
+offset_bottom = 105.0
 pivot_offset = Vector2(4, 26)
 
 [node name="GridContainer" type="GridContainer" parent="BottomLeft/InspectUI/Main/ImportantStats"]
@@ -581,6 +599,7 @@ expand_mode = 1
 [node name="AttackNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Atk"]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
 [node name="Def" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
 layout_mode = 2
@@ -594,6 +613,7 @@ expand_mode = 1
 [node name="DefNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def"]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
 [node name="Def2" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
 layout_mode = 2
@@ -607,6 +627,7 @@ expand_mode = 1
 [node name="SpDefNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def2"]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
 [node name="Move" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
 layout_mode = 2
@@ -620,6 +641,7 @@ expand_mode = 1
 [node name="MoveNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Move"]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
 [node name="EffectsGrid" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("slots")]
 layout_mode = 1
@@ -627,8 +649,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 261.0
-offset_top = -144.0
+offset_top = -106.0
 offset_right = 362.0
+offset_bottom = -1.0
 grow_vertical = 0
 script = ExtResource("18_0w6qp")
 slots = [NodePath("HBoxContainer/Slot1"), NodePath("HBoxContainer/Slot2"), NodePath("HBoxContainer/Slot3")]
@@ -653,6 +676,34 @@ layout_mode = 2
 [node name="Slot3" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+
+[node name="TerrainInspectUI" type="Control" parent="BottomLeft"]
+anchors_preset = 0
+offset_top = -108.0
+offset_right = 202.0
+offset_bottom = -2.0
+
+[node name="ColorRect" type="ColorRect" parent="BottomLeft/TerrainInspectUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.1088, 0.118187, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BottomLeft/TerrainInspectUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_vm2kk")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
 layout_mode = 3

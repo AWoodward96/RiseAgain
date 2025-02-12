@@ -393,6 +393,7 @@ AggroBehavior = SubResource("Resource_knm6u")
 visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="AShadingTest"]
+visible = false
 color = Color(0.422626, 0.543814, 0.638168, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="AShadingTest"]

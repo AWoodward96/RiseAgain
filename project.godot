@@ -39,10 +39,6 @@ window/stretch/mode="viewport"
 
 project/assembly_name="RiseAgain_Proto01"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dataimporter/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
-
 [global_group]
 
 DamageIndicators="Stuff that Shows What's Happening Next"
