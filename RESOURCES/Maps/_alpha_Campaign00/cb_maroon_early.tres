@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_cjmg3"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_pfvmt"]
-[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default_rename.tscn" id="3_q48fm"]
+[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default.tscn" id="3_q48fm"]
 [ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="4_0s12q"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_fypxo"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="6_dof8u"]
