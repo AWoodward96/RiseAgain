@@ -69,6 +69,7 @@ func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 	center_left_anchor.add_child(createdElement)
 	await createdElement.AnimationComplete
 
+	UpdateObjectives()
 	BannerAnimComplete.emit()
 
 func PlayVictoryBanner():

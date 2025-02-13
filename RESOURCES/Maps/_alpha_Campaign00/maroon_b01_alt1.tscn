@@ -1,11 +1,8 @@
-[gd_scene load_steps=30 format=4 uid="uid://571bc5ftblmp"]
+[gd_scene load_steps=25 format=4 uid="uid://571bc5ftblmp"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_m2v5c"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveSurvive.gd" id="2_pqicl"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_4n6xa"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectivesUnitsKilled.gd" id="4_lodyd"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="5_j7eql"]
-[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="5_xmni7"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_5aeaj"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="7_2gl5s"]
 [ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_t8208"]
@@ -22,17 +19,6 @@
 script = ExtResource("2_pqicl")
 turns = 8
 loc_description = "ui_survive"
-
-[sub_resource type="Resource" id="Resource_qj2d1"]
-script = ExtResource("4_lodyd")
-number = 12
-loc_description = ""
-
-[sub_resource type="Resource" id="Resource_eqnbm"]
-script = ExtResource("3_4n6xa")
-loc_objectiveDescription = ""
-objective = SubResource("Resource_qj2d1")
-rewardTable = ExtResource("5_xmni7")
 
 [sub_resource type="Resource" id="Resource_m5tu4"]
 script = ExtResource("18_tuqil")
@@ -70,7 +56,6 @@ tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
 WinCondition = SubResource("Resource_b8ibi")
-OptionalObjectives = Array[ExtResource("3_4n6xa")]([SubResource("Resource_eqnbm")])
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")

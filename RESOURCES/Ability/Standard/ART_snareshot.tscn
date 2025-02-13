@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cowl7jp74hd6j"]
+[gd_scene load_steps=8 format=3 uid="uid://cowl7jp74hd6j"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_qrlnf"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hgu7s"]
 [ext_resource type="Resource" uid="uid://b2s1f01511cjj" path="res://RESOURCES/CombatEffects/CE_Debuff_Stunned.tres" id="3_78h65"]
+[ext_resource type="Texture2D" uid="uid://cuj00bwwtw4n" path="res://ART/Icons/Ability/Standard/snareshot.png" id="5_05l1q"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_42rmg"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_8fewi"]
 
@@ -10,7 +11,7 @@
 script = ExtResource("6_42rmg")
 CombatEffect = ExtResource("3_78h65")
 
-[node name="ART_snareshot" type="Node2D"]
+[node name="ART_snareshot" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_qrlnf")
 focusCost = 2
 executionStack = Array[ExtResource("2_hgu7s")]([SubResource("Resource_j3wwt")])
@@ -18,6 +19,8 @@ autoEndTurn = false
 internalName = "snareshot"
 loc_displayName = "art_snareshot_name"
 loc_displayDesc = "art_snareshot_desc"
+icon = ExtResource("5_05l1q")
+TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
 script = ExtResource("9_8fewi")

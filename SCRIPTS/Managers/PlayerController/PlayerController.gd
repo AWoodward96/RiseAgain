@@ -46,8 +46,10 @@ func Initialize(_map: Map):
 	tileSize = _map.TileSize
 	tileHalfSize = tileSize / 2
 	UpdateCameraBounds()
-	currentMap.OnUnitTurnEnd.connect(RefreshObjectives)
-	currentMap.OnUnitDied.connect(RefreshObjectives)
+
+	# Both of these methods just refresh the objective ui
+	currentMap.OnUnitTurnEnd.connect(UnitTurnEnd)
+	currentMap.OnUnitDied.connect(UnitDied)
 
 func _process(_delta):
 	if CSR.Open:
@@ -291,6 +293,12 @@ func CancelGridEntityPreview():
 func RefreshObjectives():
 	if combatHUD != null:
 		combatHUD.UpdateObjectives()
+
+func UnitTurnEnd(_unit : UnitInstance):
+	RefreshObjectives()
+
+func UnitDied(_unit :UnitInstance, _result : DamageStepResult):
+	RefreshObjectives()
 
 func OnAttack():
 	selectedItem = selectedUnit.EquippedWeapon

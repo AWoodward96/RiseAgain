@@ -22,7 +22,9 @@ func Enter(_map : Map, _ctrl : PlayerController):
 		map.CurrentCampaign.ReportCampaignResult(false)
 	else:
 		map.queue_free()
-	GameManager.ChangeGameState(BastionGameState.new(), null)
+
+	if !Main.Root.DEBUG_ShowcaseMode:
+		GameManager.ChangeGameState(BastionGameState.new(), null)
 	pass
 
 func ToJSON():

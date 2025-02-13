@@ -164,6 +164,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_u48vi")
 text = "Items"
 
 [node name="WinCon" type="ColorRect" parent="Menu"]
+visible = false
 custom_minimum_size = Vector2(320, 192)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -209,6 +210,7 @@ label_settings = SubResource("LabelSettings_gh7pe")
 horizontal_alignment = 2
 
 [node name="Items" parent="." instance=ExtResource("3_jma22")]
+visible = false
 
 [connection signal="pressed" from="Menu/VBoxContainer/Formation" to="." method="OnFormationButton"]
 [connection signal="pressed" from="Menu/VBoxContainer/Item" to="." method="OnItemButton"]

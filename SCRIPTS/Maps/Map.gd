@@ -67,6 +67,7 @@ func _ready():
 		# I'm running the show by myself, so initialize a squad
 		InitializeStandalone()
 
+
 func PreInitialize():
 	startingPositions.clear()
 	for c in StartingPositionsParent.get_children():
@@ -362,7 +363,7 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	map.CurrentCampaign = _assignedCampaign
 	map.currentTurn = _dict["currentTurn"]
 	map.mapRNG = DeterministicRNG.FromJSON(_dict["mapRNG"])
-	map.turnCount = _dict["turnCount"]
+	map.turnCount = int(_dict["turnCount"])
 
 	map.PersistedMapState = _dict["MapState"]
 

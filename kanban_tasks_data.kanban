@@ -47,7 +47,8 @@
 			"tasks": [
 				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
 				"1889e452-ba76-4088-bf90-3a20569bb6a6",
-				"393f2420-d4f9-472f-9d97-425459720305"
+				"393f2420-d4f9-472f-9d97-425459720305",
+				"18c31b44-f817-41e3-b314-1b586654d3ed"
 			]
 		},
 		{
@@ -327,6 +328,13 @@
 			"uuid": "393f2420-d4f9-472f-9d97-425459720305",
 			"title": "Fix Floating UI Element in Combat Hud Problem",
 			"description": "Currently the ui elements are hard coded to move to the left or to the right depending on where the reticle is\nThis was a fine soultion when there was onliy one ui element on the combat hud but now there is more\nFor instance, if there is a bird standing on top of a tree in the bottom left hand corner, there's no way the current solution can handle that.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "18c31b44-f817-41e3-b314-1b586654d3ed",
+			"title": "Units Killed Optional Objective is weird and hamfisted",
+			"description": "Gotta figure out a better way of handling that. Also persist it please?",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

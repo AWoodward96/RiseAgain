@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1y1fm3qowl1q"]
+[gd_scene load_steps=16 format=3 uid="uid://b1y1fm3qowl1q"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_85abs"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_tpvyo"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_kbnsi"]
-[ext_resource type="Resource" uid="uid://fv3aw7d7xp6f" path="res://RESOURCES/CombatEffects/CE_Debuff_Def_DarkFell.tres" id="4_5dy2x"]
+[ext_resource type="Resource" uid="uid://fv3aw7d7xp6f" path="res://RESOURCES/CombatEffects/CE_Debuff_DarkFell.tres" id="4_5dy2x"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="5_xxovv"]
-[ext_resource type="Resource" uid="uid://5s51tjxqcu53" path="res://RESOURCES/CombatEffects/CE_Debuff_SpDef_DarkFell.tres" id="6_ohd4j"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_k3t2n"]
 [ext_resource type="Texture2D" uid="uid://cinqp4oq3vxq4" path="res://ART/Icons/Ability/Standard/darkfell.png" id="8_npdv1"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_6snke"]
@@ -23,17 +22,13 @@ useDefendAction = true
 script = ExtResource("5_xxovv")
 CombatEffect = ExtResource("4_5dy2x")
 
-[sub_resource type="Resource" id="Resource_fau0g"]
-script = ExtResource("5_xxovv")
-CombatEffect = ExtResource("6_ohd4j")
-
 [sub_resource type="Resource" id="Resource_0uo1w"]
 script = ExtResource("7_k3t2n")
 
 [node name="ART_darkfell" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_85abs")
 focusCost = 3
-executionStack = Array[ExtResource("2_tpvyo")]([SubResource("Resource_m1d2h"), SubResource("Resource_muj8o"), SubResource("Resource_fau0g"), SubResource("Resource_0uo1w")])
+executionStack = Array[ExtResource("2_tpvyo")]([SubResource("Resource_m1d2h"), SubResource("Resource_muj8o"), SubResource("Resource_0uo1w")])
 internalName = "darkfell"
 loc_displayName = "art_darkfell_name"
 loc_displayDesc = "art_darkfell_desc"

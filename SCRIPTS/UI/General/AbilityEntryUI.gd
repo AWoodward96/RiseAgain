@@ -82,7 +82,6 @@ func FormatAbilityDescription(_ability : Ability):
 				dict["SHIELD_STAT"] = tr(shield.RelativeStat.loc_displayName)
 				dict["SHIELD_MOD"] = shield.Mod * 100
 
-			# TODO: FIX
 			var statBuff = combateffect.CombatEffect as StatChangeEffect
 			if statBuff != null:
 				# Format should be EFFECT_[NUM]_[FLAT/PERC/DERIVEDSTAT] etc
