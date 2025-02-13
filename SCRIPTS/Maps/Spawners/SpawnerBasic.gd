@@ -1,3 +1,4 @@
+@tool
 extends SpawnerBase
 class_name SpawnerBasic
 

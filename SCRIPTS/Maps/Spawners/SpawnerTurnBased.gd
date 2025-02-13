@@ -1,3 +1,4 @@
+@tool
 extends SpawnerBasic
 class_name SpawnerTurnBased
 

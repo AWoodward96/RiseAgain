@@ -1,2 +1,3 @@
+@tool
 extends MapHelper
 class_name StartingPositionsHelper
