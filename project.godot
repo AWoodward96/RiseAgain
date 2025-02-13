@@ -22,7 +22,7 @@ config/icon="res://icon.svg"
 GameManager="*res://RESOURCES/Managers/GameManager.tscn"
 PersistDataManager="*res://RESOURCES/Managers/PersistDataManager.tscn"
 InputManager="*res://SCRIPTS/Managers/InputManager.gd"
-Juice="*res://RESOURCES/Managers/JuiceScene.tscn"
+Juice="*res://RESOURCES/Managers/Juice.tscn"
 UIManager="*res://RESOURCES/Managers/UIManager.tscn"
 
 [debug]
