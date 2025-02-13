@@ -63,7 +63,7 @@ ui_statblock_label_large,{TEXT} - {VALUE}
 ui_num,{NUM}
 ui_current_max,{CUR}/{MAX}
 ui_empty,Empty
-ui_rout,Kill All Enemies
+ui_rout,Kill All Enemies - {NUM} Remain
 ui_no_weapon_long,This Unit does not have a Weapon
 ui_equipped_weapon_label,Equipped Weapon:
 ui_items_label,Items:
@@ -118,8 +118,8 @@ stat_spdefense_short,SpDEF
 stat_vitality,Vitality
 stat_vitality_desc,Increases Health
 stat_vitality_short,VIT
-opoj_any_neutral_alive,Any Neutral Unit left Alive
-opoj_prized_buck,Kill the Prized Buck
+opoj_any_neutral_alive,Opt: Any Neutral Unit left Alive
+opoj_prized_buck,Opt: Kill the Prized Buck
 item_t1_holywater_desc,SpDefense +2
 item_t1_holywater_name,Holy Tears
 item_t1_ktome_desc,SpAttack +2

@@ -13,6 +13,7 @@ enum AbilityType { Standard, Weapon, Tactical, Passive }
 
 @export var type : AbilityType
 @export var focusCost : int = 1
+@export var isXFocusCost : bool = false # This only affects the UI - make sure it's synced up
 @export var limitedUsage : int = -1 # -1 means there is no limited usage
 @export var usageRestoredByCampfire : int = 0
 

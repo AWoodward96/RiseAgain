@@ -7,3 +7,7 @@ func CheckObjective(_map : Map):
 		return true
 
 	return false
+
+func UpdateLocalization(_map : Map):
+	var enemies = _map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY)
+	return tr(loc_description).format({"NUM" : str(enemies.size())})

@@ -46,10 +46,15 @@ func Initialize(_map: Map):
 	tileSize = _map.TileSize
 	tileHalfSize = tileSize / 2
 	UpdateCameraBounds()
+	currentMap.OnUnitTurnEnd.connect(RefreshObjectives)
+	currentMap.OnUnitDied.connect(RefreshObjectives)
 
 func _process(_delta):
 	if CSR.Open:
 		return
+
+	if combatHUD != null:
+		combatHUD.ObjectivesParent.visible = ControllerState.ShowObjective()
 
 	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
 	if ControllerState != null && inspectUI == null:
@@ -212,20 +217,25 @@ func UpdateGlobalContextUI():
 func UpdateContextUI():
 	combatHUD.ContextUI.Clear()
 
-	if CanAttack(selectedUnit):
-		combatHUD.ContextUI.AddButton("Attack", true, OnAttack)
+	if selectedUnit.EquippedWeapon != null:
+		combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, true, OnAttack)
 
+	# First do the standard abilities
 	for ability in selectedUnit.Abilities:
-		if ability.type != Ability.AbilityType.Weapon:
-			var label = tr(ability.loc_displayName)
-			if ability.limitedUsage != -1:
-				label += " - " + str(ability.remainingUsages)
-
+		if ability.type == Ability.AbilityType.Standard:
 			# Block if focus cost can't be met - or if the ability has a limited usage
 			var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
 			canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+			combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
 
-			combatHUD.ContextUI.AddButton(label, canCast, OnAbility.bind(ability))
+	# Then do tacticals
+	for ability in selectedUnit.Abilities:
+		if ability.type == Ability.AbilityType.Tactical:
+			# Block if focus cost can't be met - or if the ability has a limited usage
+			var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
+			canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+			combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+
 
 	combatHUD.ContextUI.AddButton("Wait", true, OnWait)
 	combatHUD.ContextUI.SelectFirst()
@@ -278,6 +288,9 @@ func PreviewGridEntity(_gridEntityPackedScene : PackedScene):
 func CancelGridEntityPreview():
 	grid_entity_preview_sprite.visible = false
 
+func RefreshObjectives():
+	if combatHUD != null:
+		combatHUD.UpdateObjectives()
 
 func OnAttack():
 	selectedItem = selectedUnit.EquippedWeapon

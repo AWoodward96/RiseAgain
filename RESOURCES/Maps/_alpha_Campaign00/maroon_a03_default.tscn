@@ -1,7 +1,7 @@
-[gd_scene load_steps=35 format=4 uid="uid://dmn5mbio3opjl"]
+[gd_scene load_steps=34 format=4 uid="uid://dmn5mbio3opjl"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_df2ss"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_irenx"]
+[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_4c1r8"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_lt0ou"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="4_1ugqm"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="5_bbl3u"]
@@ -24,10 +24,6 @@
 [ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="22_v81i0"]
 [ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="23_nevay"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="24_0qksa"]
-
-[sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_irenx")
-loc_description = ""
 
 [sub_resource type="Resource" id="Resource_0m3f4"]
 script = ExtResource("13_8yeqa")
@@ -77,7 +73,7 @@ tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
-WinCondition = SubResource("Resource_vm3u1")
+WinCondition = ExtResource("2_4c1r8")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")

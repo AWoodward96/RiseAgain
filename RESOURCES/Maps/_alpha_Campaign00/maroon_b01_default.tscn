@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=4 uid="uid://hwqrstkn4a22"]
+[gd_scene load_steps=27 format=4 uid="uid://hwqrstkn4a22"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_bwyvd"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_rhj17"]
+[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_qydvc"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_5larn"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_6iuoo"]
 [ext_resource type="Resource" uid="uid://da3o0kjhor1b0" path="res://RESOURCES/Maps/OptionalObjectives/anyCanineAlive.tres" id="3_hcx6d"]
@@ -20,10 +20,6 @@
 [ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="15_r6hsr"]
 [ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="16_8bjlc"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="17_1l1oh"]
-
-[sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_rhj17")
-loc_description = ""
 
 [sub_resource type="Resource" id="Resource_a6yb0"]
 script = ExtResource("17_1l1oh")
@@ -60,7 +56,7 @@ tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
-WinCondition = SubResource("Resource_vm3u1")
+WinCondition = ExtResource("2_qydvc")
 OptionalObjectives = Array[ExtResource("3_5larn")]([ExtResource("3_hcx6d")])
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")

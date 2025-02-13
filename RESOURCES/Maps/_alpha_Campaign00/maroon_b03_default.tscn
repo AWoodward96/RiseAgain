@@ -1,7 +1,7 @@
-[gd_scene load_steps=40 format=4 uid="uid://crsfuln75037q"]
+[gd_scene load_steps=39 format=4 uid="uid://crsfuln75037q"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_darpl"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_ljdxe"]
+[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_de7ap"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_inot6"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="4_chjog"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_j5ahy"]
@@ -26,10 +26,6 @@
 [ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="20_7hdmx"]
 [ext_resource type="Resource" uid="uid://cexo50gitfgxv" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_TargetNecromancer.tres" id="20_7i5ol"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="23_gwbfm"]
-
-[sub_resource type="Resource" id="Resource_5yfca"]
-script = ExtResource("2_ljdxe")
-loc_description = ""
 
 [sub_resource type="Resource" id="Resource_anryn"]
 script = ExtResource("12_0ss6n")
@@ -102,7 +98,7 @@ tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
-WinCondition = SubResource("Resource_5yfca")
+WinCondition = ExtResource("2_de7ap")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="1_opl86"]
 [ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/Standard/drain.png" id="2_bmu0w"]
-[ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="3_bwi8i"]
+[ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="3_8p7i2"]
 [ext_resource type="Texture2D" uid="uid://x61rbwe8vybw" path="res://ART/Icons/range_icon.png" id="4_xkn6m"]
 [ext_resource type="Texture2D" uid="uid://bdl6ktf4ibcmo" path="res://ART/UI/arrow_icon.png" id="5_rxj5p"]
 
@@ -64,7 +64,7 @@ layout_mode = 2
 offset_left = 8.0
 offset_right = 40.0
 offset_bottom = 32.0
-texture = ExtResource("3_bwi8i")
+texture = ExtResource("3_8p7i2")
 expand_mode = 1
 
 [node name="FocusCost" type="Label" parent="Panel/VBoxContainer/Control/FocusCostParent"]

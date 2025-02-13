@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=48 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/UI/General/GridEntryList.gd" id="18_0w6qp"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
 [ext_resource type="Texture2D" uid="uid://dux76wobeluiu" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
+[ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="23_fs4q2"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
 [ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]
 [ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="24_6ybxf"]
@@ -34,8 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="25_a6jy8"]
 [ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="25_gcwxk"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="25_lfimk"]
-[ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="26_vkkdr"]
 [ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="27_gwkwg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j302s"]
+font = ExtResource("8_rdfo2")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1gep"]
 font = ExtResource("8_rdfo2")
@@ -66,7 +69,7 @@ font = ExtResource("8_rdfo2")
 [sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
 font = ExtResource("8_rdfo2")
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivesParent", "ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
 script = ExtResource("1_dux2t")
 AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
@@ -79,40 +82,84 @@ ContextUI = NodePath("ContextMenu")
 DmgPreviewUI = NodePath("TopLeft/DamagePreviewUI")
 NoTargets = NodePath("TopCenter/NoTargets")
 TerrainInspectUI = NodePath("Full_NoMargin/TerrainInspectPanel")
-OptionalObjectiveParent = NodePath("OptionalObjective")
-OptionalObjectiveText = NodePath("OptionalObjective/Label")
+ObjectivesParent = NodePath("Objective")
+ObjectiveText = NodePath("Objective/VBoxContainer/Objective/Content/MainObjectiveLabel")
+OptionalObjectiveParent = NodePath("Objective/VBoxContainer/OptionalObjective")
+OptionalObjectiveText = NodePath("Objective/VBoxContainer/OptionalObjective/Content/OptionalObjectiveLabel")
 bottom_left_anchor = NodePath("BottomLeft")
 bottom_right_anchor = NodePath("BottomRight")
 
-[node name="OptionalObjective" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -960.0
-offset_right = -720.0
-offset_bottom = 48.0
-grow_horizontal = 0
+[node name="Objective" type="MarginContainer" parent="."]
+offset_right = 283.0
+offset_bottom = 84.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="ColorRect" type="ColorRect" parent="OptionalObjective"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.31, 0.31, 0.31, 0.690196)
+[node name="VBoxContainer" type="VBoxContainer" parent="Objective"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="OptionalObjective"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Optional Objective:"
+[node name="Objective" type="MarginContainer" parent="Objective/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Objective/VBoxContainer/Objective"]
+layout_mode = 2
+color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="Content" type="MarginContainer" parent="Objective/VBoxContainer/Objective"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="MainObjectiveLabel" type="Label" parent="Objective/VBoxContainer/Objective/Content"]
+layout_mode = 2
+text = "Route: X Remaining"
+label_settings = SubResource("LabelSettings_j302s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objective/VBoxContainer/Objective"]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OptionalObjective" type="MarginContainer" parent="Objective/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Objective/VBoxContainer/OptionalObjective"]
+layout_mode = 2
+color = Color(0.23, 0.23, 0.23, 1)
+
+[node name="Content" type="MarginContainer" parent="Objective/VBoxContainer/OptionalObjective"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="OptionalObjectiveLabel" type="Label" parent="Objective/VBoxContainer/OptionalObjective/Content"]
+layout_mode = 2
+text = "Opt: Any Neutral Unit left Alive"
+label_settings = SubResource("LabelSettings_j302s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Objective/VBoxContainer/OptionalObjective"]
+layout_mode = 2
+texture = ExtResource("23_vm2kk")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OffsetMargin" type="MarginContainer" parent="Objective"]
+layout_mode = 2
 
 [node name="Full_NoMargin" type="Control" parent="."]
 layout_mode = 3
@@ -270,6 +317,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -455,7 +503,7 @@ offset_left = 65.0
 offset_top = 41.0
 offset_right = 81.0
 offset_bottom = 57.0
-texture = ExtResource("26_vkkdr")
+texture = ExtResource("23_fs4q2")
 expand_mode = 1
 
 [node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
@@ -924,6 +972,7 @@ anchor_bottom = 1.0
 grow_vertical = 0
 
 [node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
@@ -931,9 +980,14 @@ script = ExtResource("10_5gr1e")
 entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
 entryPrefab = ExtResource("11_aar1f")
 
-[node name="PanelContainer" type="PanelContainer" parent="ContextMenu"]
+[node name="PanelContainer" type="MarginContainer" parent="ContextMenu"]
 layout_mode = 0
 offset_right = 192.0
+offset_bottom = 20.0
+
+[node name="ColorRect" type="ColorRect" parent="ContextMenu/PanelContainer"]
+layout_mode = 2
+color = Color(0.16, 0.1488, 0.1488, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer"]
 layout_mode = 2
@@ -944,6 +998,14 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ContextMenu/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
 [node name="TopCenter" type="Control" parent="."]
 layout_mode = 3

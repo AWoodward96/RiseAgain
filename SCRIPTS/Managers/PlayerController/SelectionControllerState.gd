@@ -38,3 +38,6 @@ func _Execute(_delta):
 
 func ToString():
 	return "SelectionControllerState"
+
+func ShowObjective():
+	return true

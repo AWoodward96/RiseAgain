@@ -24,6 +24,7 @@ script = ExtResource("3_ru3jp")
 
 [node name="ART_DoubleShot" type="Node2D"]
 script = ExtResource("1_5p40p")
+isXFocusCost = true
 executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_nu8sm"), SubResource("Resource_5cjq5")])
 internalName = "doubleshot"
 loc_displayName = "art_doubleshot_name"

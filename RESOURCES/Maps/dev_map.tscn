@@ -20,7 +20,7 @@
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_hfwsr")
-loc_description = ""
+loc_description = "ui_rout"
 
 [sub_resource type="Resource" id="Resource_bi5d2"]
 script = ExtResource("15_sr05p")

@@ -80,3 +80,6 @@ func ShowInspectUI():
 
 func CanShowThreat():
 	return true
+
+func ShowObjective():
+	return false

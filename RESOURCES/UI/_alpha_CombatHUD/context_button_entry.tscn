@@ -1,26 +1,166 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7850ynb8vsrl"]
+[gd_scene load_steps=9 format=3 uid="uid://b7850ynb8vsrl"]
 
-[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_fdhr2"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
+[ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="2_1p72w"]
+[ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="3_tvrtu"]
+[ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="3_yvwub"]
+[ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="4_5k861"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfkil"]
-bg_color = Color(0.568973, 0.568973, 0.568973, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_1lrvp"]
+font = ExtResource("3_tvrtu")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1m5j"]
-bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_glskh"]
+font = ExtResource("3_tvrtu")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bhwv"]
-bg_color = Color(0.303233, 0.303233, 0.303233, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_s44bi"]
+font = ExtResource("3_tvrtu")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2i5r"]
-bg_color = Color(0.329158, 0.329158, 0.329158, 1)
-
-[node name="ContextButtonEntry" type="Button"]
+[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "focus_cost_parent", "focus_cost_label", "usage_parent", "usage_label")]
 custom_minimum_size = Vector2(0, 32)
-theme_override_fonts/font = ExtResource("1_fdhr2")
-theme_override_styles/focus = SubResource("StyleBoxFlat_bfkil")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_n1m5j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7bhwv")
-theme_override_styles/normal = SubResource("StyleBoxFlat_d2i5r")
-text = "Attack"
+focus_mode = 2
+mouse_filter = 0
 script = ExtResource("2_0colu")
+action_label = NodePath("MarginContainer/HBoxContainer/Label/ActionText")
+bg_color_fill = NodePath("ColorRect")
+disabled_parent = NodePath("Disabled")
+focus_parent = NodePath("FocusParent")
+default_color = Color(0, 0, 0, 0)
+weapon_color = Color(0.27, 0.1701, 0.1701, 1)
+ability_color = Color(0.183, 0.22395, 0.3, 1)
+tactical_color = Color(0.115169, 0.284758, 0.193253, 1)
+focus_cost_parent = NodePath("MarginContainer/HBoxContainer/Cost")
+focus_cost_label = NodePath("MarginContainer/HBoxContainer/Cost/FocusCostLabel")
+usage_parent = NodePath("MarginContainer/HBoxContainer/Uses")
+usage_label = NodePath("MarginContainer/HBoxContainer/Uses/UsesRemaining")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.183, 0.22395, 0.3, 1)
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Cost" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Cost"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_1p72w")
+expand_mode = 1
+
+[node name="FocusCostLabel" type="Label" parent="MarginContainer/HBoxContainer/Cost"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 15.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_1lrvp")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label" type="Panel" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionText" type="Label" parent="MarginContainer/HBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Attack"
+label_settings = SubResource("LabelSettings_glskh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Uses" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Uses"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="UsesRemaining" type="Label" parent="MarginContainer/HBoxContainer/Uses"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+label_settings = SubResource("LabelSettings_s44bi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_5k861")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Disabled" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0.0592, 0.056, 0.08, 0.537255)
+
+[node name="FocusParent" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Focused" type="ColorRect" parent="FocusParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.203922)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="FocusParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yvwub")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[connection signal="focus_entered" from="." to="." method="OnFocusEnter"]
+[connection signal="focus_exited" from="." to="." method="OnFocusExit"]

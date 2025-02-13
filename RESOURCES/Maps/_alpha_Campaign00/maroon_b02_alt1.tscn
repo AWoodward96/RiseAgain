@@ -1,60 +1,60 @@
-[gd_scene load_steps=29 format=4 uid="uid://b1edodfhgyr3p"]
+[gd_scene load_steps=29 format=4 uid="uid://dbb2evvfc2suy"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_uoybh"]
-[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_me6g1"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_lmoyb"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_pxm64"]
-[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_71qsi"]
-[ext_resource type="Resource" uid="uid://da3o0kjhor1b0" path="res://RESOURCES/Maps/OptionalObjectives/anyCanineAlive.tres" id="4_svkr0"]
-[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_fmu3y"]
-[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_cnclu"]
-[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_vlckj"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_xf8cb"]
-[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_0nos4"]
-[ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="8_ll2rp"]
-[ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="9_ox083"]
-[ext_resource type="Texture2D" uid="uid://ov8ckkvhvoiy" path="res://ART/Environment/_alpha_set0/c_0_map_5_leafmap.png" id="9_q01q6"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_d2m7k"]
-[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="13_1e5rr"]
-[ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="13_onhmp"]
-[ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="14_n602y"]
-[ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="16_fbg75"]
-[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="17_eiql8"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="18_8wrig"]
-[ext_resource type="Resource" uid="uid://crv54ls8tyldj" path="res://RESOURCES/Units/Enemy/CorpseChimera/UT_CorpseChimera.tres" id="19_e4sxn"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_nf1db"]
+[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_ftxqw"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_3c44p"]
+[ext_resource type="Resource" uid="uid://da3o0kjhor1b0" path="res://RESOURCES/Maps/OptionalObjectives/anyCanineAlive.tres" id="4_c2igc"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="5_gfjdl"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_ov1cx"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="7_3jjgl"]
+[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_ge6le"]
+[ext_resource type="Texture2D" uid="uid://ov8ckkvhvoiy" path="res://ART/Environment/_alpha_set0/c_0_map_5_leafmap.png" id="9_m06po"]
+[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="10_5wce5"]
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="11_iwyxe"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="12_ba5cp"]
+[ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="13_spujj"]
+[ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="14_5t82y"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="15_djo04"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="16_0qm1l"]
+[ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="17_dspva"]
+[ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="18_jaxv2"]
+[ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="19_qn31o"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="20_babx1"]
+[ext_resource type="Resource" uid="uid://crv54ls8tyldj" path="res://RESOURCES/Units/Enemy/CorpseChimera/UT_CorpseChimera.tres" id="21_t12gj"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="22_krjxe"]
 
 [sub_resource type="Resource" id="Resource_h56u6"]
-script = ExtResource("12_d2m7k")
+script = ExtResource("15_djo04")
 
 [sub_resource type="Resource" id="Resource_anryn"]
-script = ExtResource("12_d2m7k")
+script = ExtResource("15_djo04")
 
 [sub_resource type="Resource" id="Resource_ycudw"]
-script = ExtResource("18_8wrig")
+script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_gdmhh"]
-script = ExtResource("18_8wrig")
+script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_ulfrr"]
-script = ExtResource("18_8wrig")
+script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_olt3l"]
-script = ExtResource("18_8wrig")
+script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
 DamageAggros = true
 
 [node name="C0_Map04" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
-script = ExtResource("1_uoybh")
+script = ExtResource("1_nf1db")
 GridSize = Vector2i(21, 13)
 CameraStart = Vector2(7, 3)
 tilemap_bg = NodePath("BG")
@@ -63,8 +63,8 @@ tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
-WinCondition = ExtResource("2_me6g1")
-OptionalObjectives = Array[ExtResource("3_lmoyb")]([ExtResource("4_svkr0")])
+WinCondition = ExtResource("2_ftxqw")
+OptionalObjectives = Array[ExtResource("3_3c44p")]([ExtResource("4_c2igc")])
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -73,7 +73,7 @@ SpawnersParent = NodePath("Spawners")
 points = PackedVector2Array(0, 0, 1344, 0, 1344, 832, 0, 832, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
-script = ExtResource("3_pxm64")
+script = ExtResource("5_gfjdl")
 map = NodePath("..")
 
 [node name="Water" type="TileMapLayer" parent="."]
@@ -81,80 +81,80 @@ z_index = -6
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAJAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAwAAAABAAAAAAAIAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAkAAAACAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAYAAAABAAAAAAAIAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAABAAAAAAAIAAAAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAABAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAcAAAACAAAAAAAGAAYAAAACAAAAAAAGAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAABAAAAAAAFAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAwAAAACAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAACAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAACAAAAAAADAAwAAAAAAAAAAAADAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAUAAAABAAAAAAADAAQAAAAAAAAAAAADAAMAAAACAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAwAAAAAAAAAAAACAAsAAAABAAAAAAACAAoAAAAAAAAAAAACAAkAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAACAAAAAAACAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAABAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAACAAAAAAABAAMAAAAAAAAAAAABAAIAAAACAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAABAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAwAAAAEAAcAAAALAAsAAAAEAAcAAAALAAoAAAAEAAcAAAALAAkAAAAEAAcAAAAKAAwAAAAAAAcAAAAKAAsAAAAAAAcAAAAKAAoAAAAAAAcAAAAKAAkAAAAAAAcAAAALAAgAAAAEAAcAAAALAAcAAAAEAAcAAAAKAAgAAAAAAAcAAAAKAAcAAAAAAAcAAAAKAAYAAAAAAAcAAAAKAAUAAAAAAAcAAAAKAAQAAAAEAAcAAAAKAAMAAAAEAAcAAAAKAAIAAAAAAAcAAAAKAAEAAAAAAAcAAAAKAAAAAAAAAAcAAAALAAYAAAAEAAcAAAALAAUAAAAEAAcAAAALAAQAAAAEAAcAAAALAAMAAAAEAAcAAAAUAAgAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAYAAAACAAAAAAAUAAUAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAAAAAAAAAAAAAATAAgAAAACAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAACAAAAAAATAAQAAAACAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAASAAgAAAABAAAAAAASAAcAAAAAAAAAAAASAAYAAAABAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAABAAAAAAASAAEAAAAAAAAAAAASAAAAAAAAAAAAAAARAAgAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAUAAAAAAAAAAAARAAQAAAABAAAAAAARAAMAAAACAAAAAAARAAIAAAAAAAAAAAARAAEAAAAAAAAAAAARAAAAAAAAAAAAAAAQAAgAAAAEAAcAAAAQAAcAAAAAAAcAAAAQAAYAAAAAAAcAAAAQAAUAAAAAAAcAAAAQAAQAAAAEAAcAAAAQAAMAAAAEAAcAAAAQAAIAAAAAAAcAAAAQAAEAAAAAAAcAAAAQAAAAAAAAAAcAAAAPAAgAAAAEAAcAAAAPAAcAAAAEAAcAAAAPAAYAAAAEAAcAAAAPAAUAAAAEAAcAAAAPAAQAAAAEAAcAAAAPAAMAAAAEAAcAAAAPAAIAAAAEAAcAAAAPAAEAAAAEAAcAAAAPAAAAAAAAAAcAAAAUAAwAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAkAAAAAAAAAAAATAAwAAAAAAAAAAAATAAsAAAABAAAAAAATAAoAAAABAAAAAAATAAkAAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAASAAoAAAAAAAAAAAASAAkAAAACAAAAAAARAAwAAAACAAAAAAARAAsAAAAAAAAAAAARAAoAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAwAAAAEAAcAAAAQAAsAAAAEAAcAAAAQAAoAAAAEAAcAAAAQAAkAAAAEAAcAAAALAA0AAAADAAkAAAALAAAAAAAEAAcAAAALAAEAAAAEAAcAAAALAAIAAAAEAAcAAAAMAAAAAAAAAAcAAAAMAAEAAAAAAAcAAAAMAAIAAAAAAAcAAAAMAAMAAAAEAAcAAAAMAAQAAAAEAAcAAAAMAAUAAAAAAAcAAAAMAAYAAAAAAAcAAAAMAAcAAAAAAAcAAAAMAAgAAAAAAAcAAAAMAAkAAAAEAAcAAAAMAAoAAAAEAAcAAAAMAAsAAAAAAAcAAAAMAAwAAAAAAAcAAAANAAAAAAAAAAcAAAANAAEAAAAAAAcAAAANAAIAAAAAAAcAAAANAAMAAAAEAAcAAAANAAQAAAAEAAcAAAANAAUAAAAAAAcAAAANAAYAAAAAAAcAAAANAAcAAAAAAAcAAAANAAgAAAAAAAcAAAANAAkAAAAEAAcAAAANAAoAAAAEAAcAAAANAAsAAAAAAAcAAAANAAwAAAAAAAcAAAAOAAAAAAAAAAcAAAAOAAEAAAAAAAcAAAAOAAIAAAAAAAcAAAAOAAMAAAAEAAcAAAAOAAQAAAAEAAcAAAAOAAUAAAAAAAcAAAAOAAYAAAAAAAcAAAAOAAcAAAAAAAcAAAAOAAgAAAAAAAcAAAAOAAkAAAAEAAcAAAAOAAoAAAAEAAcAAAAOAAsAAAAAAAcAAAAOAAwAAAAAAAcAAAAPAAkAAAAEAAcAAAAPAAoAAAAEAAcAAAAPAAsAAAAAAAcAAAAPAAwAAAAAAAcAAAA=")
-tile_set = ExtResource("6_vlckj")
+tile_set = ExtResource("6_ov1cx")
 
 [node name="BG" type="TileMapLayer" parent="."]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAJAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAwAAAABAAAAAAAIAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAkAAAACAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAYAAAABAAAAAAAIAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAABAAAAAAAIAAAAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAABAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAcAAAACAAAAAAAGAAYAAAACAAAAAAAGAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAABAAAAAAAFAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAwAAAACAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAACAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAACAAAAAAADAAwAAAAAAAAAAAADAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAUAAAABAAAAAAADAAQAAAAAAAAAAAADAAMAAAACAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAwAAAAAAAAAAAACAAsAAAABAAAAAAACAAoAAAAAAAAAAAACAAkAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAACAAAAAAACAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAABAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAACAAAAAAABAAMAAAAAAAAAAAABAAIAAAACAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAABAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAwAAAADAAkAAAALAAsAAAADAAkAAAALAAoAAAADAAkAAAALAAkAAAADAAkAAAAKAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAgAAAADAAkAAAALAAcAAAADAAkAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAABAAAAAAAKAAQAAAACAAAAAAAKAAMAAAABAAoAAAAKAAIAAAADAAkAAAAKAAEAAAADAAkAAAAKAAAAAAADAAkAAAALAAYAAAADAAkAAAALAAUAAAADAAkAAAALAAQAAAADAAkAAAALAAMAAAADAAgAAAAUAAgAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAYAAAACAAAAAAAUAAUAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAAAAAAAAAAAAAATAAgAAAACAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAACAAAAAAATAAQAAAACAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAASAAgAAAABAAAAAAASAAcAAAAAAAAAAAASAAYAAAABAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAABAAAAAAASAAEAAAAAAAAAAAASAAAAAAAAAAAAAAARAAgAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAUAAAAAAAAAAAARAAQAAAABAAAAAAARAAMAAAACAAAAAAARAAIAAAAAAAAAAAARAAEAAAAAAAAAAAARAAAAAAAAAAAAAAAQAAgAAAACAAkAAAAQAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAAAAAAAAAAAAAAPAAgAAAAAAAsAAAAPAAcAAAAAAAoAAAAPAAYAAAAAAAoAAAAPAAUAAAAAAAoAAAAPAAQAAAAAAAoAAAAPAAMAAAAAAAoAAAAPAAIAAAAAAAoAAAAPAAEAAAAAAAoAAAAPAAAAAAAAAAoAAAAUAAwAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAkAAAAAAAAAAAATAAwAAAAAAAAAAAATAAsAAAABAAAAAAATAAoAAAABAAAAAAATAAkAAAAAAAAAAAASAAwAAAAAAAAAAAASAAsAAAAAAAAAAAASAAoAAAAAAAAAAAASAAkAAAACAAAAAAARAAwAAAACAAAAAAARAAsAAAAAAAAAAAARAAoAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAwAAAAAAAoAAAAQAAsAAAAAAAoAAAAQAAoAAAAAAAoAAAAQAAkAAAAAAAoAAAALAA0AAAADAAkAAAA=")
-tile_set = ExtResource("6_vlckj")
+tile_set = ExtResource("6_ov1cx")
 
 [node name="Main" type="TileMapLayer" parent="."]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAADAAIAAAADAAAAAAADAAEAAAAFAAIAAAADAAAAAAAFAAEAAAACAAIAAAAGAAAAAAACAAEAAAAEAAIAAAACAAAAAAAEAAEAAAABAAIAAAAFAAIAAAABAAEAAAAFAAEAAAABAAAAAAAEAAAAAAAAAAIAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAAAAAADAAAAAAACAAgAAAAFAAIAAAACAAcAAAAFAAEAAAACAAYAAAADAAAAAAACAAUAAAAFAAAAAAACAAQAAAAEAAAAAAACAAMAAAAHAAAAAAABAAgAAAAEAAIAAAABAAcAAAAEAAEAAAABAAYAAAAFAAIAAAABAAUAAAAFAAEAAAABAAQAAAAHAAAAAAABAAMAAAAHAAAAAAAAAAgAAAAEAAAAAAAAAAcAAAAEAAAAAAAAAAYAAAAEAAIAAAAAAAUAAAAEAAEAAAAAAAQAAAADAAAAAAAAAAMAAAAGAAAAAAACAAwAAAAHAAAAAAACAAsAAAAHAAAAAAACAAoAAAAHAAAAAAACAAkAAAAEAAAAAAABAAwAAAAEAAAAAAABAAsAAAAGAAAAAAABAAoAAAAGAAAAAAABAAkAAAAGAAAAAAAAAAwAAAAEAAAAAAAAAAsAAAAFAAAAAAAAAAoAAAAGAAAAAAAAAAkAAAAGAAAAAAALAAwAAAADAAAAAAAKAAwAAAADAAAAAAAJAAwAAAADAAAAAAAIAAwAAAAHAAAAAAAHAAwAAAAFAAAAAAAGAAwAAAAGAAAAAAAFAAwAAAAFAAAAAAAEAAwAAAAFAAAAAAADAAwAAAADAAAAAAALAAsAAAAGAAAAAAAKAAsAAAAGAAAAAAAJAAsAAAAFAAAAAAAIAAsAAAAFAAAAAAALAAgAAAADAAAAAAALAAcAAAAGAAAAAAAKAAgAAAAFAAIAAAAKAAcAAAAFAAEAAAAJAAcAAAAEAAEAAAAJAAYAAAAHAAAAAAAIAAcAAAAEAAAAAAAIAAYAAAADAAAAAAAKAAYAAAAHAAAAAAAJAAgAAAAEAAIAAAAJAAIAAAAFAAIAAAAJAAEAAAAFAAEAAAAJAAAAAAAFAAAAAAAIAAIAAAAEAAIAAAAIAAEAAAAEAAEAAAAIAAAAAAAHAAAAAAAHAAIAAAAGAAAAAAAHAAEAAAAHAAAAAAAHAAAAAAAGAAAAAAAQAAIAAAAFAAAAAAAQAAEAAAAFAAIAAAAQAAAAAAAFAAEAAAAPAAIAAAAGAAAAAAAPAAEAAAAEAAIAAAAPAAAAAAAEAAEAAAAUAAAAAAAGAAAAAAATAAAAAAAEAAAAAAASAAAAAAADAAAAAAARAAAAAAADAAAAAAAUAAEAAAAFAAAAAAATAAEAAAAHAAAAAAAUAAwAAAAFAAAAAAAUAAsAAAAFAAAAAAARAAsAAAAFAAAAAAASAAsAAAAHAAAAAAATAAsAAAAFAAAAAAATAAwAAAAEAAAAAAASAAwAAAAFAAAAAAARAAwAAAAGAAAAAAADAAoAAAAEAAAAAAADAAsAAAADAAAAAAAEAAsAAAADAAAAAAAFAAsAAAADAAAAAAAGAAsAAAAEAAAAAAAEAAAAAAAFAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAGAAAAAAAEAAMAAAAEAAAAAAADAAMAAAADAAAAAAADAAQAAAAFAAAAAAAQAAsAAAADAAAAAAAQAAwAAAAEAAAAAAAPAAUAAAAGAAAAAAAQAAUAAAAEAAAAAAARAAUAAAAEAAAAAAASAAUAAAAGAAAAAAATAAUAAAAEAAAAAAATAAYAAAAGAAAAAAASAAYAAAAFAAAAAAARAAYAAAADAAAAAAAQAAYAAAAEAAAAAAAPAAYAAAAFAAAAAAAQAAcAAAAHAAAAAAARAAcAAAADAAAAAAASAAcAAAAFAAAAAAATAAcAAAAEAAAAAAAPAAcAAAADAAAAAAAUAAUAAAAEAAAAAAAUAAYAAAAGAAAAAAAUAAcAAAAHAAAAAAAUAAgAAAAHAAAAAAATAAgAAAAFAAAAAAAUAAQAAAAFAAAAAAATAAQAAAAFAAAAAAAHAAYAAAAHAAAAAAAHAAcAAAAFAAAAAAAHAAsAAAAFAAAAAAADAAkAAAAFAAAAAAA=")
-tile_set = ExtResource("6_vlckj")
+tile_set = ExtResource("6_ov1cx")
 
 [node name="Extras" type="TileMapLayer" parent="."]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAALAAkAAAAJAAYAAAALAAoAAAAJAAcAAAAMAAkAAAAKAAYAAAAMAAoAAAAKAAcAAAANAAkAAAALAAYAAAANAAoAAAALAAcAAAAOAAkAAAAMAAYAAAAOAAoAAAAMAAcAAAALAAMAAAAJAAQAAAALAAQAAAAJAAUAAAAMAAMAAAAKAAQAAAAMAAQAAAAKAAUAAAANAAMAAAALAAQAAAANAAQAAAALAAUAAAAOAAMAAAANAAQAAAAOAAQAAAANAAUAAAAPAAkAAAANAAYAAAAPAAoAAAANAAcAAAAQAAkAAAAOAAYAAAAQAAoAAAAOAAcAAAAPAAMAAAAOAAQAAAAPAAQAAAAOAAUAAAA=")
-tile_set = ExtResource("6_vlckj")
+tile_set = ExtResource("6_ov1cx")
 
 [node name="Fire" type="TileMapLayer" parent="."]
 z_index = -2
 scale = Vector2(2, 2)
-tile_set = ExtResource("6_vlckj")
+tile_set = ExtResource("6_ov1cx")
 
 [node name="Threat" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_set = ExtResource("4_71qsi")
+tile_set = ExtResource("7_3jjgl")
 navigation_enabled = false
 
 [node name="UI" type="TileMapLayer" parent="."]
 z_index = -3
 use_parent_material = true
-tile_set = ExtResource("4_71qsi")
+tile_set = ExtResource("7_3jjgl")
 
 [node name="C0Map1Leafmap" type="Sprite2D" parent="."]
 z_index = 1
-material = ExtResource("8_0nos4")
+material = ExtResource("8_ge6le")
 position = Vector2(672, 416)
 scale = Vector2(2, 2)
-texture = ExtResource("9_q01q6")
+texture = ExtResource("9_m06po")
 
 [node name="StartingPositions" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
+[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5wce5")]
 position = Vector2(1088, 128)
 Position = Vector2i(17, 2)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
+[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5wce5")]
 position = Vector2(1088, 256)
 Position = Vector2i(17, 4)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
+[node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5wce5")]
 position = Vector2(1088, 576)
 Position = Vector2i(17, 9)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
+[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5wce5")]
 position = Vector2(1152, 640)
 Position = Vector2i(18, 10)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
+[node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5wce5")]
 position = Vector2(1152, 192)
 Position = Vector2i(18, 3)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper6" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_fmu3y")]
+[node name="StartingPositionHelper6" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_5wce5")]
 position = Vector2(1152, 512)
 Position = Vector2i(18, 8)
 map = NodePath("../..")
@@ -164,208 +164,208 @@ unique_name_in_owner = true
 
 [node name="Spawn_WolfMother" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 576)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("8_ll2rp")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("13_spujj")
 UnitLevel = 6
 Position = Vector2i(13, 9)
 Allegiance = 4
-AIBehavior = ExtResource("9_ox083")
+AIBehavior = ExtResource("14_5t82y")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_WolfMother2" type="Sprite2D" parent="Spawners"]
 position = Vector2(832, 256)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("8_ll2rp")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("13_spujj")
 UnitLevel = 6
 Position = Vector2i(13, 4)
 Allegiance = 4
-AIBehavior = ExtResource("9_ox083")
+AIBehavior = ExtResource("14_5t82y")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners"]
 position = Vector2(192, 448)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("13_1e5rr")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("16_0qm1l")
 UnitLevel = 6
 Position = Vector2i(3, 7)
 Allegiance = 4
-AIBehavior = ExtResource("9_ox083")
+AIBehavior = ExtResource("14_5t82y")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_AdolescentWolf5" type="Sprite2D" parent="Spawners"]
 position = Vector2(192, 384)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("13_1e5rr")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("16_0qm1l")
 UnitLevel = 6
 Position = Vector2i(3, 6)
 Allegiance = 4
-AIBehavior = ExtResource("9_ox083")
+AIBehavior = ExtResource("14_5t82y")
 AggroBehavior = SubResource("Resource_h56u6")
 
 [node name="Spawn_Zolf" type="Sprite2D" parent="Spawners"]
 position = Vector2(256, 320)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("14_n602y")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("17_dspva")
 UnitLevel = 4
 DeltaLevel = 1
 Position = Vector2i(4, 5)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_Zolf2" type="Sprite2D" parent="Spawners"]
 position = Vector2(256, 512)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("14_n602y")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("17_dspva")
 UnitLevel = 4
 DeltaLevel = 1
 Position = Vector2i(4, 8)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_AdultZolf" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 576)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("16_fbg75")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("19_qn31o")
 UnitLevel = 4
 Position = Vector2i(10, 9)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_AdultZolf3" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 640)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("16_fbg75")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("19_qn31o")
 UnitLevel = 4
 Position = Vector2i(10, 10)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_ycudw")
 
 [node name="Spawn_AdultZolf4" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 192)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("16_fbg75")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("19_qn31o")
 UnitLevel = 4
 Position = Vector2i(10, 3)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_gdmhh")
 
 [node name="Spawn_AdultZolf2" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 256)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("16_fbg75")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("19_qn31o")
 UnitLevel = 4
 Position = Vector2i(10, 4)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_Zolf5" type="Sprite2D" parent="Spawners"]
 position = Vector2(320, 448)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("14_n602y")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("17_dspva")
 UnitLevel = 4
 DeltaLevel = 1
 Position = Vector2i(5, 7)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_Zolf6" type="Sprite2D" parent="Spawners"]
 position = Vector2(320, 384)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("14_n602y")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("17_dspva")
 UnitLevel = 4
 DeltaLevel = 1
 Position = Vector2i(5, 6)
-AIBehavior = ExtResource("13_onhmp")
+AIBehavior = ExtResource("18_jaxv2")
 AggroBehavior = SubResource("Resource_anryn")
 
 [node name="Spawn_CorpseChimera" type="Sprite2D" parent="Spawners"]
 position = Vector2(448, 576)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("19_e4sxn")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("21_t12gj")
 UnitLevel = 4
 DeltaLevel = 2
 Position = Vector2i(7, 9)
-AIBehavior = ExtResource("17_eiql8")
+AIBehavior = ExtResource("22_krjxe")
 AggroBehavior = SubResource("Resource_ulfrr")
 
 [node name="Spawn_CorpseChimera2" type="Sprite2D" parent="Spawners"]
 position = Vector2(448, 256)
-texture = ExtResource("6_cnclu")
+texture = ExtResource("11_iwyxe")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
-script = ExtResource("7_xf8cb")
-UnitToSpawn = ExtResource("19_e4sxn")
+script = ExtResource("12_ba5cp")
+UnitToSpawn = ExtResource("21_t12gj")
 UnitLevel = 4
 DeltaLevel = 2
 Position = Vector2i(7, 4)
-AIBehavior = ExtResource("17_eiql8")
+AIBehavior = ExtResource("22_krjxe")
 AggroBehavior = SubResource("Resource_olt3l")
 
 [node name="Variants" type="Node2D" parent="."]

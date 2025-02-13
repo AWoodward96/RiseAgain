@@ -6,3 +6,6 @@ class_name MapObjective
 
 func CheckObjective(_map : Map):
 	return false
+
+func UpdateLocalization(_map : Map):
+	return tr(loc_description)

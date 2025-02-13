@@ -27,9 +27,15 @@ func AddButton(_text : String, _enabled : bool, _callback : Callable):
 	var entry = entryPrefab.instantiate() as ContextButtonEntry
 	if entry != null :
 		entryParent.add_child(entry)
-		entry.Initialize(_text, _callback)
-		entry.pressed.connect(AnyButtonPressed)
-		entry.disabled = !_enabled
+		entry.Initialize(_text, _enabled, _callback)
+		entry.OnSelectedCallback.connect(AnyButtonPressed)
+
+	return entry
+
+func AddAbilityButton(_ability : Ability, _enabled : bool, _callback : Callable):
+	var btn = AddButton(_ability.loc_displayName, _enabled, _callback)
+	btn.AddAbility(_ability)
+	return btn
 
 func AnyButtonPressed():
 	OnAnyActionSelected.emit()

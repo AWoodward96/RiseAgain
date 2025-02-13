@@ -15,8 +15,9 @@ signal BannerAnimComplete
 @export var NoTargets : Control
 @export var TerrainInspectUI : TerrainInspectPanel
 
-@export_category("Optional Objective")
-
+@export_category("Objectives")
+@export var ObjectivesParent : Control
+@export var ObjectiveText : Label
 @export var OptionalObjectiveParent : Control
 @export var OptionalObjectiveText : Label
 
@@ -52,7 +53,7 @@ func Initialize(_map : Map, _currentTile : Tile):
 
 	# Do this now that we have a map ref
 	UpdateInspectUISide()
-	UpdateOptionalObjective()
+	UpdateObjectives()
 
 func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 	var scene
@@ -130,15 +131,17 @@ func UpdateInspectUISide():
 
 	lastReticleSide = newside
 
-func UpdateOptionalObjective():
+func UpdateObjectives():
+	ObjectiveText.text = map.WinCondition.UpdateLocalization(map)
 	if map.OptionalObjectives.size() > 0:
 		OptionalObjectiveParent.visible = true
 
 		# For now only do the first one
 		var firstOptional = map.OptionalObjectives[0]
-		OptionalObjectiveText.text = tr(LocSettings.Optional_Objective_Block).format({"TEXT" : tr(firstOptional.loc_objectiveDescription)})
+		OptionalObjectiveText.text = firstOptional.UpdateLocalization(map)
 	else:
 		OptionalObjectiveParent.visible = false
+	pass
 
 
 func OnTileChanged(_tile : Tile):
