@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=17 format=3 uid="uid://c5614f31tb7m2"]
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=19 format=3 uid="uid://c5614f31tb7m2"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_4a1er"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_v6sny"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_4kf2b"]
 [ext_resource type="PackedScene" uid="uid://b1edodfhgyr3p" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b02_default.tscn" id="6_irmo1"]
 [ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b03_default.tscn" id="7_cfyak"]
+[ext_resource type="PackedScene" uid="uid://dbb2evvfc2suy" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b02_alt1.tscn" id="7_vpwnk"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="8_h84r8"]
 
 [sub_resource type="Resource" id="Resource_06hbk"]
@@ -35,11 +36,16 @@ script = ExtResource("2_v6sny")
 map = ExtResource("6_irmo1")
 weight = 1
 
+[sub_resource type="Resource" id="Resource_gplr4"]
+script = ExtResource("2_v6sny")
+map = ExtResource("7_vpwnk")
+weight = 1
+
 [sub_resource type="Resource" id="Resource_x8ckv"]
 resource_name = "Map 2"
 script = ExtResource("1_4a1er")
 priorityMapOptions = Array[ExtResource("5_4kf2b")]([])
-generalMapOptions = Array[ExtResource("2_v6sny")]([SubResource("Resource_knv7b")])
+generalMapOptions = Array[ExtResource("2_v6sny")]([SubResource("Resource_knv7b"), SubResource("Resource_gplr4")])
 
 [sub_resource type="Resource" id="Resource_ya816"]
 script = ExtResource("2_v6sny")
