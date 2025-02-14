@@ -151,19 +151,19 @@ art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in 
 art_cleave_name,Great Cleave
 art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}. \nUnits on the far edge take more damage.
 art_darkfell_name,Soul Cleave
-art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by ({EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
+art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
 art_doubleshot_name,Repeater
 art_doubleshot_desc,Fire two shots at a Target in quick succession dealing damage based on {DMG_AGGRESSIVESTAT}
 art_drain_name,Life Drain
 art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
 art_fireball_name,Fireball
-art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nThis Ability hits a wider area at Level 5
+art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nAfter killing 3 and 10 Units the area it hits grows bigger.
 art_heal_name,Heal
 art_heal_desc,Heal an Ally Unit equal to this Units {HEAL_STAT}
 art_heroicleap_name,Heroic Leap
 art_heroicleap_desc,"Leap into an area, dealing Physical Damage to nearby Enemies. Gain a Shield equal to {SHIELD_MOD}% of your max Health"
 art_lesserheal_name,Lesser Heal
-art_lesserheal_desc,Heal an Ally Unit for {HEAL_FLAT} Health
+art_lesserheal_desc,"Heal an Ally Unit for {HEAL_FLAT} Health. Each time this is used, increase that value by 1."
 art_smite_name,Smite
 art_smite_desc,Deal Magic damage equal to {DMG_AGGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
 art_snareshot_name,Snare Shot
@@ -217,3 +217,5 @@ ui_graspingvines_effectdesc,{NUM} HP/Move
 ui_mine_effectdesc,{NUM} HP + Stun
 opoj_killunits,Opt: Kill Units {CUR}/{MAX}
 ui_survive,Survive Turns: {CUR}/{MAX}
+art_flamewall_name,Flame Wall
+art_flamewall_desc,"Ignites the ground in a line, dealing fire damage to all Units in the fire at the start of their turn."
