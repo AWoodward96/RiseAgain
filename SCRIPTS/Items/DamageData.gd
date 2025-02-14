@@ -11,6 +11,8 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 @export var DefensiveModType : ModificationType
 @export var DefensiveMod : float
 
+@export var DamageCantKill : bool = false
+
 @export_category("Drain")
 @export var DamageAffectsUsersHealth : bool = false
 

@@ -482,7 +482,7 @@ func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
 func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous : bool = false):
-	if _netHealthChange < 0:
+	if _netHealthChange <= 0:
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
 		var armor = GetArmorAmount()

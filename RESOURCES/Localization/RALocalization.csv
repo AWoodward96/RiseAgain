@@ -203,7 +203,7 @@ art_pushforward_desc,Grant yourself and Allies close to you +{EFFECT_0_FLAT} {EF
 art_sacredground_name,Sacred Ground
 art_sacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
 art_graspingroots_name,Grasping Roots
-art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area.
+art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
 tile_deadtree_name,Dead Tree
 tile_river_name,River
 weap_lunarlance_name,Strange Lance
@@ -219,3 +219,4 @@ opoj_killunits,Opt: Kill Units {CUR}/{MAX}
 ui_survive,Survive Turns: {CUR}/{MAX}
 art_flamewall_name,Flame Wall
 art_flamewall_desc,"Ignites the ground in a line, dealing fire damage to all Units in the fire at the start of their turn."
+ui_nodamage,No Damage

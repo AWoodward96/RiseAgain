@@ -174,7 +174,11 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	if _tileData != null:
 		aoeMultiplier = _tileData.AOEMultiplier
 
-	return floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * aoeMultiplier * vulnerabilityMultiplier)
+	var damageTotal = floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * aoeMultiplier * vulnerabilityMultiplier)
+	if _damageData.DamageCantKill && _defendingUnit != null && damageTotal >= _defendingUnit.currentHealth:
+		damageTotal = _defendingUnit.currentHealth - 1
+
+	return damageTotal
 
 func CollisionDamageCalculation(_source : UnitInstance):
 	var highestDamageStat = _source.GetWorkingStat(AttackStat)

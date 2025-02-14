@@ -32,3 +32,4 @@ AgressiveStat = ExtResource("3_jro51")
 AgressiveModType = 2
 AgressiveMod = 0.5
 DefensiveStat = ExtResource("4_uleer")
+DamageCantKill = true

@@ -3,12 +3,16 @@ extends Node2D
 @export var damage_val: Label
 @export var heal_val : Label
 @export var armor_val : Label
+@export var no_damage : Label
 
 
 func SetDamageValue(_val):
 	TurnOffEverything()
-	damage_val.text = str("-", _val)
-	damage_val.visible = true
+	if _val == 0:
+		no_damage.visible = true
+	else:
+		damage_val.text = str("-", _val)
+		damage_val.visible = true
 
 func SetHealValue(_val):
 	TurnOffEverything()
@@ -26,6 +30,7 @@ func SetMiss():
 	damage_val.visible = true
 
 func TurnOffEverything():
+	no_damage.visible = false
 	damage_val.visible = false
 	heal_val.visible = false
 	armor_val.visible = false

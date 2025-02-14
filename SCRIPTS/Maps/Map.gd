@@ -49,7 +49,7 @@ var MapState : MapStateBase
 var CurrentCampaign : Campaign
 
 var teams = {}
-var unitsKilled = {}
+var enemyUnitsKilled = {}
 var playercontroller : PlayerController
 var currentTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 
@@ -250,10 +250,11 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 		if teams[_unitInstance.UnitAllegiance].size() == 0:
 			teams.erase(_unitInstance.UnitAllegiance)
 
-	if unitsKilled.has(_unitInstance.Template):
-		unitsKilled[_unitInstance.Template] += 1
-	else:
-		unitsKilled[_unitInstance.Template] = 1
+	if _unitInstance.UnitAllegiance == GameSettingsTemplate.TeamID.ENEMY:
+		if enemyUnitsKilled.has(_unitInstance.Template):
+			enemyUnitsKilled[_unitInstance.Template] += 1
+		else:
+			enemyUnitsKilled[_unitInstance.Template] = 1
 
 	if _context != null && _context.AbilityData != null:
 		_context.AbilityData.kills += 1
@@ -344,7 +345,7 @@ func ToJSON():
 		"mapRNG" = mapRNG.ToJSON(),
 		"turnCount" = turnCount,
 		"MapState" = MapState.ToJSON(),
-		"gridEntities" = PersistDataManager.ArrayToJSON(gridEntities)
+		"gridEntities" = PersistDataManager.ArrayToJSON(gridEntities),
 	}
 
 	var teamsJSONDict : Dictionary = {}
@@ -353,6 +354,14 @@ func ToJSON():
 		teamsJSONDict[t] = PersistDataManager.ArrayToJSON(teams[t])
 
 	dict["teams"] = teamsJSONDict
+
+	# convert the kills dict to a storable json
+	var killsDict = {}
+	for keypair in enemyUnitsKilled:
+		if keypair == null:
+			continue
+		killsDict[keypair.resource_path] = enemyUnitsKilled[keypair]
+	dict["enemyUnitsKilled"] = killsDict
 
 	return dict
 
@@ -374,6 +383,11 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	for t in map.grid.GridArr:
 		if t.OnFire:
 			map.grid.IgniteTile(t, t.FireLevel)
+
+	# get units killed
+	for keypair in _dict["enemyUnitsKilled"]:
+		var template = load(keypair) as UnitTemplate
+		map.enemyUnitsKilled[template] = _dict["enemyUnitsKilled"][keypair] # Disgusting
 
 	# Load the units
 	var storedTeamsDict = _dict["teams"]

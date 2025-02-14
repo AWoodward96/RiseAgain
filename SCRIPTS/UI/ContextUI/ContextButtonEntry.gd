@@ -12,6 +12,7 @@ signal OnSelectedCallback
 @export var ability_color : Color
 @export var tactical_color : Color
 
+@export var fast_speed_parent : Control
 @export var focus_cost_parent : Control
 @export var focus_cost_label : Label
 @export var usage_parent : Control
@@ -31,6 +32,7 @@ func Initialize(_locTitle : String, _enabled : bool, _callback : Callable):
 	# default to false on these
 	usage_parent.visible = false
 	focus_cost_parent.visible = false
+	fast_speed_parent.visible = false
 
 func AddAbility(_ability : Ability):
 	match (_ability.type):
@@ -49,6 +51,8 @@ func AddAbility(_ability : Ability):
 
 	if _ability.limitedUsage != -1:
 		AddUsage(_ability.remainingUsages)
+
+	fast_speed_parent.visible = !_ability.autoEndTurn
 
 func AddCost(_focusCost : int):
 	focus_cost_parent.visible = _focusCost > 0

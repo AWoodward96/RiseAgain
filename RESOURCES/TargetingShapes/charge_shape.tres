@@ -17,6 +17,7 @@ canDamageUser = false
 script = ExtResource("3_8d231")
 AccuracyModifier = 2.0
 CritModifier = -1.0
+Ignite = 0
 pushInfo = SubResource("Resource_ynuat")
 Position = Vector2i(0, 0)
 Multiplier = 1.0

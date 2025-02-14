@@ -7,4 +7,4 @@ class_name ObjectiveReward
 
 
 func UpdateLocalization(map):
-	return tr(loc_objectiveDescription)
+	return objective.UpdateLocalization(map)

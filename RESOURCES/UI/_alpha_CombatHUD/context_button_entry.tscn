@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7850ynb8vsrl"]
+[gd_scene load_steps=10 format=3 uid="uid://b7850ynb8vsrl"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
 [ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="2_1p72w"]
 [ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="3_tvrtu"]
 [ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="3_yvwub"]
+[ext_resource type="Texture2D" uid="uid://g0wv2ofym0em" path="res://ART/Icons/fast_speed.png" id="4_3hivy"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="4_5k861"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lrvp"]
@@ -21,7 +22,7 @@ font = ExtResource("3_tvrtu")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "focus_cost_parent", "focus_cost_label", "usage_parent", "usage_label")]
+[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "focus_cost_parent", "focus_cost_label", "usage_parent", "usage_label")]
 custom_minimum_size = Vector2(0, 32)
 focus_mode = 2
 mouse_filter = 0
@@ -34,6 +35,7 @@ default_color = Color(0, 0, 0, 0)
 weapon_color = Color(0.27, 0.1701, 0.1701, 1)
 ability_color = Color(0.183, 0.22395, 0.3, 1)
 tactical_color = Color(0.115169, 0.284758, 0.193253, 1)
+fast_speed_parent = NodePath("MarginContainer/HBoxContainer/FastSpeed")
 focus_cost_parent = NodePath("MarginContainer/HBoxContainer/Cost")
 focus_cost_label = NodePath("MarginContainer/HBoxContainer/Cost/FocusCostLabel")
 usage_parent = NodePath("MarginContainer/HBoxContainer/Uses")
@@ -100,6 +102,17 @@ text = "Attack"
 label_settings = SubResource("LabelSettings_glskh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FastSpeed" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/FastSpeed"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_3hivy")
+expand_mode = 1
 
 [node name="Uses" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)

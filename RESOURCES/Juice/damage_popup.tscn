@@ -102,12 +102,13 @@ _data = {
 "Run": SubResource("Animation_pkacr")
 }
 
-[node name="DamagePopup" type="Node2D" node_paths=PackedStringArray("damage_val", "heal_val", "armor_val")]
+[node name="DamagePopup" type="Node2D" node_paths=PackedStringArray("damage_val", "heal_val", "armor_val", "no_damage")]
 z_index = 10
 script = ExtResource("1_75kli")
 damage_val = NodePath("DamageVal")
 heal_val = NodePath("HealVal")
 armor_val = NodePath("ArmorVal")
+no_damage = NodePath("No Damage")
 
 [node name="DamageVal" type="Label" parent="."]
 anchors_preset = 8
@@ -166,6 +167,26 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_g52x4")
 theme_override_font_sizes/font_size = 48
 text = "+8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="No Damage" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_g52x4")
+theme_override_font_sizes/font_size = 24
+text = "ui_nodamage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
