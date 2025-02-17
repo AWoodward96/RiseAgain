@@ -584,9 +584,10 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 
 	for effect in CombatEffects:
 		if effect is StatChangeEffectInstance:
-			var statChange = (effect as StatChangeEffectInstance).GetEffect() as StatBuff
-			if statChange != null && statChange.Stat == _statTemplate:
-				current += statChange.Value
+			var statChanges = (effect as StatChangeEffectInstance).GetEffects() as Array[StatBuff]
+			for change in statChanges:
+				if change != null && change.Stat == _statTemplate:
+					current += change.Value
 
 	if unitPersistence != null:
 		current += unitPersistence.GetPrestiegeStatMod(_statTemplate)

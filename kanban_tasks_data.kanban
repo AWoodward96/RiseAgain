@@ -45,10 +45,9 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
-				"1889e452-ba76-4088-bf90-3a20569bb6a6",
 				"393f2420-d4f9-472f-9d97-425459720305",
-				"18c31b44-f817-41e3-b314-1b586654d3ed"
+				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
+				"699aab52-45ba-4327-b881-5d2aed61b4d8"
 			]
 		},
 		{
@@ -60,7 +59,10 @@
 				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
 				"ea0566fd-0852-4e20-9b0f-be54dffd6cec",
 				"0f3a97d5-2503-4719-9cc6-1bbee5ebaae6",
-				"baa40d5d-a402-4ab8-9ae6-3dd0fddc50bf"
+				"baa40d5d-a402-4ab8-9ae6-3dd0fddc50bf",
+				"18c31b44-f817-41e3-b314-1b586654d3ed",
+				"1889e452-ba76-4088-bf90-3a20569bb6a6",
+				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0"
 			]
 		},
 		{
@@ -255,7 +257,7 @@
 			"steps": [
 				{
 					"details": "Check all of the icons",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -320,7 +322,7 @@
 				},
 				{
 					"details": "Update Context UI",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -336,6 +338,20 @@
 			"title": "Units Killed Optional Objective is weird and hamfisted",
 			"description": "Gotta figure out a better way of handling that. Also persist it please?",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "94df7687-9284-4958-9a1a-96ddcfdda1d3",
+			"title": "Importable Abilities",
+			"description": "Make sure everything is still valid in the spreadsheets and also importable\n",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "699aab52-45ba-4327-b881-5d2aed61b4d8",
+			"title": "Cache GE-AOE Values so they work after Caster Death",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],

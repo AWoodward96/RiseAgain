@@ -34,6 +34,7 @@ DamageAggros = true
 [node name="maroon_a01_alt1" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_x3xps")
 GridSize = Vector2i(15, 10)
+CameraStart = Vector2(5, 4)
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

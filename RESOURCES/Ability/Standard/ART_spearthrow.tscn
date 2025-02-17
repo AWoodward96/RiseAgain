@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_tdc7e"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohxl5"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_8sdtm"]
+[ext_resource type="Texture2D" uid="uid://bj46s4m3vnr0e" path="res://ART/Icons/Ability/Standard/spear_throw.png" id="5_55p6l"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_owh5c"]
-[ext_resource type="Texture2D" uid="uid://bahn7dncans8s" path="res://ART/Icons/Ability/Standard/doubleshot.png" id="6_3x3lj"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="7_2se6n"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_vk287"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="9_vhw76"]
@@ -25,7 +25,7 @@ executionStack = Array[ExtResource("2_ohxl5")]([SubResource("Resource_rr3r1"), S
 internalName = "spearthrow"
 loc_displayName = "art_spearthrow_name"
 loc_displayDesc = "art_spearthrow_desc"
-icon = ExtResource("6_3x3lj")
+icon = ExtResource("5_55p6l")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

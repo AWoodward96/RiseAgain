@@ -40,7 +40,7 @@ func Initialize(_ctrl : PlayerController, _map : Map):
 	else:
 		optionalObjectiveLabel.visible = true
 		optionalObjectiveText.visible = true
-		optionalObjectiveText.text = _map.OptionalObjectives[0].loc_objectiveDescription
+		optionalObjectiveText.text = _map.OptionalObjectives[0].UpdateLocalization(_map)
 
 func _process(_delta):
 	if InputManager.startDown:

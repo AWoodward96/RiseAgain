@@ -145,7 +145,7 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
 
-	# Grid Entities may use this, meaning sometimes an attacking unit may be null (if it's created by the
+	# Grid Entities may use this, meaning sometimes an attacking unit may be null (if it's created by the map)
 	var agressiveVal = 0
 	if _attackingUnit != null:
 		agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
@@ -179,6 +179,43 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 		damageTotal = _defendingUnit.currentHealth - 1
 
 	return damageTotal
+
+
+# TODO: When the playtest is over, recomment this back in to figure out everything
+#func Damage(_aggressiveStatValue : int, _attackingAffinity : AffinityTemplate, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData):
+	#var flatValue = _damageData.FlatValue
+	#var aggressiveStat = _damageData.AgressiveStat
+#
+	## Grid Entities may use this, meaning sometimes an attacking unit may be null (if it's created by the map)
+	#var agressiveVal = flatValue + _damageData.DoMod(_aggressiveStatValue, _damageData.AgressiveMod, _damageData.AgressiveModType)
+#
+	#var defensiveStat = _damageData.DefensiveStat
+#
+	#var defensiveVal = 0
+	#if _defendingUnit != null:
+		#defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
+	#defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
+#
+	#var affinityMultiplier = 1
+	#if _defendingUnit != null && _attackingAffinity != null:
+		#affinityMultiplier = _attackingAffinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
+#
+	#var vulnerabilityMultiplier = 1
+	#if _defendingUnit != null:
+		#for descriptor in _damageData.VulerableDescriptors:
+			#if _defendingUnit.Template.Descriptors.count(descriptor.Descriptor) > 0:
+				## For now, these things wont stack
+				#vulnerabilityMultiplier *= descriptor.Multiplier
+#
+	#var aoeMultiplier = 1
+	#if _tileData != null:
+		#aoeMultiplier = _tileData.AOEMultiplier
+#
+	#var damageTotal = floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * aoeMultiplier * vulnerabilityMultiplier)
+	#if _damageData.DamageCantKill && _defendingUnit != null && damageTotal >= _defendingUnit.currentHealth:
+		#damageTotal = _defendingUnit.currentHealth - 1
+#
+	#return damageTotal
 
 func CollisionDamageCalculation(_source : UnitInstance):
 	var highestDamageStat = _source.GetWorkingStat(AttackStat)

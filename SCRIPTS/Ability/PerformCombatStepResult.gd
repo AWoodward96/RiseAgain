@@ -164,6 +164,15 @@ func PreviewResult(_map : Map):
 
 	PreviewRetaliation(_map)
 
+func ToString():
+	var sourceString = "NULL"
+	if Source != null:
+		sourceString = Source.Template.DebugName
+
+	var targetString = "NULL"
+	if Target != null:
+		targetString = Target.Template.DebugName
+	return "{0} attacked {1} with {2} dealing {3} damage. Crit: {4}. Tile {5}".format([sourceString, targetString, AbilityData.internalName, str(HealthDelta), str(Crit), str(TileTargetData.Tile.Position)])
 
 func PreviewRetaliation(_map : Map):
 	# Wait I love this

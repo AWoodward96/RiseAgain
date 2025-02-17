@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://sk4xm5rs346c"]
+[gd_scene load_steps=21 format=3 uid="uid://sk4xm5rs346c"]
 
 [ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_5xil8"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohson"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_qjoex"]
 [ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_2xqle"]
+[ext_resource type="Texture2D" uid="uid://dl5gn0wedpspr" path="res://ART/Icons/Ability/Equippable/spear.png" id="5_6tfgu"]
 [ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_30bv3"]
 [ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="7_08kjx"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_rbqf4"]
@@ -50,11 +51,13 @@ TileCoordinates = Array[ExtResource("12_6o3yb")]([SubResource("Resource_s510u"),
 [node name="lunar_lance" type="Node2D"]
 script = ExtResource("1_5xil8")
 type = 1
+focusCost = 0
 executionStack = Array[ExtResource("2_ohson")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
 damageGrantsFocus = true
 internalName = "lunar_lance"
 loc_displayName = "weap_lunarlance_name"
 loc_displayDesc = "weap_lunarlance_desc"
+icon = ExtResource("5_6tfgu")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_30bv3")

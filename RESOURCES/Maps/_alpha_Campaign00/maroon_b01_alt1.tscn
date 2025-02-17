@@ -30,7 +30,6 @@ loc_description = "opoj_killunits"
 
 [sub_resource type="Resource" id="Resource_dua48"]
 script = ExtResource("3_bm05u")
-loc_objectiveDescription = "opoj_killunits"
 objective = SubResource("Resource_f6oie")
 rewardTable = ExtResource("5_y11mx")
 

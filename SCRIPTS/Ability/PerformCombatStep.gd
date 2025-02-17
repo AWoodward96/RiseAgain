@@ -34,6 +34,7 @@ func Enter(_actionLog : ActionLog):
 		dealtDamage = true
 
 		damageStepResult.RollChance(Map.Current.mapRNG)
+		print(damageStepResult.ToString())
 
 		if subActionRes != null:
 			subActionRes.ExpGain += damageStepResult.ExpGain

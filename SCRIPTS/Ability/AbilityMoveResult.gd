@@ -4,6 +4,7 @@ class_name AbilityMoveResult
 var unitUsable : UnitUsable
 var shapedDirection : GameSettingsTemplate.Direction
 var ctrl : PlayerController
+var resultingTile : Tile
 
 func PreviewResult(_map : Map):
 	ctrl = _map.playercontroller
@@ -21,10 +22,19 @@ func PreviewResult(_map : Map):
 			ctrl.movement_tracker.points.append(tile.GlobalPosition + offset)
 		ctrl.movement_preview_sprite.texture = Source.Template.icon
 		ctrl.movement_preview_sprite.position = unitMovement[unitMovement.size() - 1].GlobalPosition + offset
+		resultingTile = unitMovement[unitMovement.size()-1]
 	else:
 		ctrl.movement_tracker.visible = false
 		ctrl.movement_preview_sprite.visible = false
+		resultingTile = null
+
 	pass
+
+func Validate():
+	if resultingTile != null:
+		return resultingTile.Occupant == null || (resultingTile.Occupant != null && resultingTile.Occupant == Source)
+	else:
+		return false
 
 func CancelPreview():
 	if ctrl != null:

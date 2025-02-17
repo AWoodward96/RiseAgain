@@ -15,10 +15,9 @@ Descriptor = ExtResource("2_a2q3y")
 script = ExtResource("1_0ysnn")
 targetingFlag = SubResource("Resource_gf163")
 number = 1
-loc_description = ""
+loc_description = "opoj_any_neutral_alive"
 
 [resource]
 script = ExtResource("5_y8ri3")
-loc_objectiveDescription = "opoj_any_neutral_alive"
 objective = SubResource("Resource_y6ybs")
 rewardTable = ExtResource("4_6fp1p")

@@ -21,6 +21,7 @@ script = ExtResource("4_w6f2a")
 script = ExtResource("1_kiov8")
 focusCost = 2
 executionStack = Array[ExtResource("2_whdyn")]([SubResource("Resource_5kv6w"), SubResource("Resource_5cjq5")])
+autoEndTurn = false
 internalName = "charge"
 loc_displayName = "art_charge_name"
 loc_displayDesc = "art_charge_desc"

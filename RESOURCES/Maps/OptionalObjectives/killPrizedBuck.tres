@@ -9,10 +9,9 @@
 script = ExtResource("1_gm2d5")
 unitTemplate = ExtResource("2_u1u1c")
 number = 1
-loc_description = ""
+loc_description = "opoj_prized_buck"
 
 [resource]
 script = ExtResource("4_7jsx2")
-loc_objectiveDescription = "opoj_prized_buck"
 objective = SubResource("Resource_riyoq")
 rewardTable = ExtResource("3_cgnn5")

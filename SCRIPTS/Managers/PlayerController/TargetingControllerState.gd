@@ -129,6 +129,10 @@ func UpdateInput(_delta):
 		ctrl.EnterContextMenuState()
 
 func TileSelected():
+	for res in log.actionStepResults:
+		if !res.Validate():
+			return
+
 	var validSimple = (log.actionOriginTile.Occupant != null || log.actionOriginTile.MaxHealth > 0) && targetingData.Type == SkillTargetingData.TargetingType.Simple
 	var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
 	if validSimple || validShapedFree || targetingData.Type == SkillTargetingData.TargetingType.SelfOnly:

@@ -259,8 +259,26 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 	if _context != null && _context.AbilityData != null:
 		_context.AbilityData.kills += 1
 
+	# despawn any grid entities that this unit is the owner of
+	for ge in gridEntities:
+		if ge != null && ge.Source != null && ge.Source == _unitInstance:
+			ge.Expired = true
+	RemoveExpiredGridEntities()
+
 	RemoveUnitFromMap(_unitInstance)
 	OnUnitDied.emit(_unitInstance, _context)
+
+func RemoveExpiredGridEntities():
+	for i in range(gridEntities.size() - 1, -1, -1):
+		var cur = gridEntities[i]
+		if cur == null:
+			gridEntities.remove_at(i)
+			continue
+
+		if gridEntities[i].Expired:
+			cur.Exit()
+			cur.queue_free()
+			gridEntities.remove_at(i)
 
 # This can be called outside of unit death for units that are escaping
 func RemoveUnitFromMap(_unitInstance : UnitInstance):

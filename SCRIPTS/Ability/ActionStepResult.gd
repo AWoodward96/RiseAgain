@@ -14,5 +14,8 @@ var Kill : bool
 func PreviewResult(_map : Map):
 	pass
 
+func Validate():
+	return true
+
 func CancelPreview():
 	pass

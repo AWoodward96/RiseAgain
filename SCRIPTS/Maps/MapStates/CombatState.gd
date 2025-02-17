@@ -55,7 +55,7 @@ func Update(_delta):
 	if turnBannerOpen:
 		return
 
-	RemoveExpiredGridEntities()
+	map.RemoveExpiredGridEntities()
 	if preTurnUpdate:
 		if teamTurnUpdate || unitTurnUpdate:
 			UpdateGridEntities(_delta)
@@ -203,18 +203,6 @@ func UpdateGridEntities(_delta):
 
 		if over:
 			unitTurnUpdate = false
-
-func RemoveExpiredGridEntities():
-	for i in range(map.gridEntities.size() - 1, -1, -1):
-		var cur = map.gridEntities[i]
-		if cur == null:
-			map.gridEntities.remove_at(i)
-			continue
-
-		if map.gridEntities[i].Expired:
-			cur.Exit()
-			cur.queue_free()
-			map.gridEntities.remove_at(i)
 
 func ActivateAll():
 	for team in map.teams:
