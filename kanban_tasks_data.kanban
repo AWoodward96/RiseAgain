@@ -47,7 +47,8 @@
 			"tasks": [
 				"393f2420-d4f9-472f-9d97-425459720305",
 				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
-				"699aab52-45ba-4327-b881-5d2aed61b4d8"
+				"699aab52-45ba-4327-b881-5d2aed61b4d8",
+				"984e0418-bab3-4f8c-97a6-4b3329e3bd29"
 			]
 		},
 		{
@@ -62,7 +63,10 @@
 				"baa40d5d-a402-4ab8-9ae6-3dd0fddc50bf",
 				"18c31b44-f817-41e3-b314-1b586654d3ed",
 				"1889e452-ba76-4088-bf90-3a20569bb6a6",
-				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0"
+				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
+				"a2caf12e-9eb0-4c83-819b-8999ff273315",
+				"213c0802-0e59-40c6-a1eb-a1bfce2e05df",
+				"3350a6ea-0d2b-4e0d-b24c-72046ebc1cd8"
 			]
 		},
 		{
@@ -350,6 +354,34 @@
 		{
 			"uuid": "699aab52-45ba-4327-b881-5d2aed61b4d8",
 			"title": "Cache GE-AOE Values so they work after Caster Death",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "3350a6ea-0d2b-4e0d-b24c-72046ebc1cd8",
+			"title": "Make Fire Affect Tiles",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "a2caf12e-9eb0-4c83-819b-8999ff273315",
+			"title": "weird collisions on maroon_b02_default",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "984e0418-bab3-4f8c-97a6-4b3329e3bd29",
+			"title": "somehow the merc got glitched after doing their combo. Can't select them but they still exist",
+			"description": "the tiles Occupant field is not set to the unit anymore so there's some breakdown with the move step",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "213c0802-0e59-40c6-a1eb-a1bfce2e05df",
+			"title": "maroon_b02_default has no fire map",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []

@@ -1,0 +1,82 @@
+[gd_scene load_steps=18 format=3 uid="uid://dosox11j2kfip"]
+
+[ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_ud0qq"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_dblpb"]
+[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_tr1cr"]
+[ext_resource type="Texture2D" uid="uid://bchdvo7thv41q" path="res://ART/Environment/MaroonForest/trunk_3.png" id="4_uob1o"]
+
+[sub_resource type="Resource" id="Resource_7ajsr"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_73ha8"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(0, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_ubllb"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(1, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_xel2c"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(1, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_hed3r"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(2, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_fnq0j"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(2, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_qgbqa"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(3, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_4pnwf"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(3, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_pme80"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(4, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_0tyju"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(4, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_yb172"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(5, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_frptr"]
+script = ExtResource("2_dblpb")
+Position = Vector2i(5, 1)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_hkk0p"]
+script = ExtResource("3_tr1cr")
+TileCoordinates = Array[ExtResource("2_dblpb")]([SubResource("Resource_7ajsr"), SubResource("Resource_73ha8"), SubResource("Resource_ubllb"), SubResource("Resource_xel2c"), SubResource("Resource_hed3r"), SubResource("Resource_fnq0j"), SubResource("Resource_qgbqa"), SubResource("Resource_4pnwf"), SubResource("Resource_pme80"), SubResource("Resource_0tyju"), SubResource("Resource_yb172"), SubResource("Resource_frptr")])
+
+[node name="trunk_bridge" type="Node2D"]
+z_index = -5
+script = ExtResource("1_ud0qq")
+shapedTiles = SubResource("Resource_hkk0p")
+visual = NodePath("")
+ui_invisible = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(192, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("4_uob1o")

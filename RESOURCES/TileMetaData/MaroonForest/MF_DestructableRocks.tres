@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileMetaData" load_steps=2 format=3 uid="uid://cv4qyupu316sy"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_d17dv"]
+
+[resource]
+script = ExtResource("1_d17dv")
+loc_name = "tile_rocks_name"
+Health = 5
+Killbox = false
+FireSpreadChance = 0.5

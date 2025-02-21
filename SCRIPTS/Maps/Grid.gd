@@ -356,6 +356,8 @@ func UpdateFireDamageTiles(_allegience : GameSettingsTemplate.TeamID):
 
 			if t.Occupant != null && t.Occupant.UnitAllegiance == _allegience:
 				affectedTiles.append(t)
+			elif t.Health > 0 && t.MaxHealth > 0 && _allegience == GameSettingsTemplate.TeamID.ALLY:
+				affectedTiles.append(t)
 
 	return affectedTiles
 
@@ -368,12 +370,16 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 		Juice.CreateDamagePopup(_healthDelta, _tile)
 
 	if _tile.Health <= 0:
-		map.tilemap_main.set_cell(_tile.Position)
-		RefreshTilesCollision(_tile, map.currentTurn as int)
-
+		DestroyTerrain(_tile)
 		# We do it like this so that you can't retarget this tile anymore
-		_tile.MaxHealth = 0
+		_tile.MaxHealth = -1
 		_tile.Health = 0
+
+func DestroyTerrain(_tile : Tile):
+	_tile.TerrainDestroyed = true
+	map.tilemap_main.set_cell(_tile.Position)
+	RefreshTilesCollision(_tile, map.currentTurn as int)
+
 
 func IgniteTile(_tile : Tile, _fireLevel : int):
 	_tile.FireLevel = _fireLevel
@@ -670,12 +676,17 @@ func ToJSON():
 	}
 	return dict
 
-static func FromJSON(_dict):
+static func FromJSON(_dict, _map : Map):
 	var newGrid = Grid.new()
+	newGrid.map = _map
 	newGrid.Width = _dict["Width"]
 	newGrid.Height = _dict["Height"]
 	newGrid.CellSize = _dict["CellSize"]
 
 	var gridArrData = PersistDataManager.JSONToArray(_dict["GridArr"], Callable.create(Tile, "FromJSON"))
 	newGrid.GridArr.assign(gridArrData)
+	for t in newGrid.GridArr:
+		if t.TerrainDestroyed:
+			newGrid.DestroyTerrain(t)
+
 	return newGrid

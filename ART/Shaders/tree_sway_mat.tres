@@ -22,5 +22,5 @@ shader_parameter/edge_and_mask = false
 shader_parameter/alpha_value = 1.0
 shader_parameter/do_shadow = true
 shader_parameter/shadow_offset = Vector2(0, -64)
-shader_parameter/shadow_color = Color(0.1, 0, 0, 0.286275)
+shader_parameter/shadow_color = Color(0.04, 0, 0, 0.372549)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_0foyj")

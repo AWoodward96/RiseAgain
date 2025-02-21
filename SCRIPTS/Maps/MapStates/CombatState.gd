@@ -167,19 +167,22 @@ func UpdateFireDamage(_delta):
 
 	if fireDamageTiles.size() > 0 && turnStartFocusSubject == null:
 		var pop = fireDamageTiles.pop_front() as Tile
-		if pop != null && pop.Occupant != null:
+		if pop != null:
 			turnStartFocusSubject = pop
 			turnStartFocusDelta = 0
-			map.playercontroller.FocusReticleOnUnit(turnStartFocusSubject.Occupant)
+			map.playercontroller.ForceCameraPosition(turnStartFocusSubject.Position)
 
 	if turnStartFocusDelta > 1:
 		match turnStartFocusSubject.FireLevel:
 			1:
-				turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level1FireDamage, null, true)
+				if map.currentTurn == GameSettingsTemplate.TeamID.ALLY: map.grid.ModifyTileHealth(GameManager.GameSettings.Level1FireDamage, turnStartFocusSubject)
+				if turnStartFocusSubject.Occupant != null : turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level1FireDamage, null, true)
 			2:
-				turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level2FireDamage, null, true)
+				if map.currentTurn == GameSettingsTemplate.TeamID.ALLY: map.grid.ModifyTileHealth(GameManager.GameSettings.Level2FireDamage, turnStartFocusSubject)
+				if turnStartFocusSubject.Occupant != null : turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level2FireDamage, null, true)
 			3:
-				turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level3FireDamage, null, true)
+				if map.currentTurn == GameSettingsTemplate.TeamID.ALLY: map.grid.ModifyTileHealth(GameManager.GameSettings.Level3FireDamage, turnStartFocusSubject)
+				if turnStartFocusSubject.Occupant != null : turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level3FireDamage, null, true)
 		turnStartFocusSubject = null
 		turnStartFocusDelta = -0.5
 

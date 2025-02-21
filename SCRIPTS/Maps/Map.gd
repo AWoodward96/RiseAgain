@@ -396,7 +396,7 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 
 	# Get the grid data
 	var parsedString = PersistDataManager.GetJSONTextFromFile(PersistDataManager.MAP_GRID_FILE)
-	map.grid = Grid.FromJSON(parsedString)
+	map.grid = Grid.FromJSON(parsedString, map)
 	map.grid.map = map
 	for t in map.grid.GridArr:
 		if t.OnFire:

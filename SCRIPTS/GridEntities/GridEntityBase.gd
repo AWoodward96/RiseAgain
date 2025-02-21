@@ -8,6 +8,7 @@ class_name GridEntityBase
 @export_category("Localization")
 @export var localization_icon : Texture2D
 @export var localization_desc : String
+@export var ui_invisible : bool = false
 
 var Origin : Tile
 var Allegience : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY
@@ -99,6 +100,8 @@ static func FromJSON(_dict : Dictionary):
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEProximityBomb
 		"GEStaticAreaOfEffect":
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEStaticAreaOfEffect
+		"GEWalkablePlatform":
+			gridEntityBase = load(_dict["prefab"]).instantiate() as GEWalkablePlatform
 
 	gridEntityBase.InitFromJSON(_dict)
 	return gridEntityBase

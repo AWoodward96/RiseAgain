@@ -11,6 +11,11 @@ var tiles : Array[TileTargetedData]
 
 func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
 	super(_map, _origin, _source, _ability, _allegience)
+
+	UpdateOrientation()
+	UpdatePositionOnGrid()
+
+func UpdateOrientation():
 	if visual != null:
 		visual.rotation = deg_to_rad(90 * orientation)
 
@@ -24,7 +29,6 @@ func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Abilit
 			3:
 				visual.position = Vector2i(0, 32)
 
-	UpdatePositionOnGrid()
 
 func UpdatePositionOnGrid():
 	if shapedTiles == null:
@@ -44,4 +48,19 @@ func UpdatePositionOnGrid():
 			continue
 
 		t.Tile.AddEntity(self)
+	pass
+
+
+func ToJSON():
+	var dict = super()
+	dict["orientation"] = orientation
+	dict["type"] = "GEWalkablePlatform"
+	return dict
+
+func InitFromJSON(_dict : Dictionary):
+	super(_dict)
+	position = Origin.GlobalPosition
+	orientation = _dict["orientation"]
+	UpdateOrientation()
+	UpdatePositionOnGrid()
 	pass

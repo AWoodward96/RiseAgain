@@ -7,6 +7,7 @@ var IsWall
 var MainTileData : TileMetaData 	# For the 'main' tile - or anything that sits on top of the bg
 var BGTileData : TileMetaData		# For the 'bg' tile - which can never be null
 var SubBGTileData : TileMetaData	# For the 'water' or other tiles that hide behind the BG - this CAN be null
+var TerrainDestroyed : bool
 
 var Health : int = -1
 var MaxHealth : int = -1
@@ -140,7 +141,8 @@ func ToJSON():
 		"MaxHealth" = MaxHealth,
 		"Killbox" = Killbox,
 		"ActiveKillbox" = ActiveKillbox,
-		"FireLevel" = FireLevel
+		"FireLevel" = FireLevel,
+		"TerrainDestroyed" = TerrainDestroyed
 	}
 
 	if MainTileData != null:
@@ -163,6 +165,7 @@ static func FromJSON(_dict : Dictionary):
 	newTile.MaxHealth = _dict["MaxHealth"]
 	newTile.Killbox = _dict["Killbox"]
 	newTile.ActiveKillbox = _dict["ActiveKillbox"]
+	newTile.TerrainDestroyed = _dict["TerrainDestroyed"]
 
 	if _dict.has("FireLevel"):
 		newTile.FireLevel = _dict["FireLevel"]

@@ -24,13 +24,11 @@ var createdGridEntityInfos : Array[Control]
 func Update(_tile : Tile):
 	shouldShow = false
 	if _tile.MainTileData != null && _tile.MaxHealth > 0 && _tile.Health > 0:
-		tile_is_killbox_parent.visible = _tile.MainTileData.Killbox
 		tile_health_parent.visible = true
 		tile_name.text = tr(_tile.MainTileData.loc_name)
 		tile_health.text = str(_tile.Health)
 		shouldShow = true
-	elif _tile.MainTileData != null && _tile.MaxHealth <= 0:
-		tile_is_killbox_parent.visible = _tile.MainTileData.Killbox
+	elif _tile.MainTileData != null && _tile.MaxHealth <= 0 && !_tile.TerrainDestroyed:
 		tile_health_parent.visible = false
 		tile_name.text = tr(_tile.MainTileData.loc_name)
 		shouldShow = true
@@ -39,7 +37,6 @@ func Update(_tile : Tile):
 		# Only the main tile data can have health, so lets hide that
 		tile_health_parent.visible = false
 		tile_name.text = tr(_tile.BGTileData.loc_name)
-		tile_is_killbox_parent.visible = _tile.BGTileData.Killbox
 		shouldShow = true
 	elif _tile.SubBGTileData != null:
 		# OKAY WE'VE GONE A BIT FAR DOWN BUT WE CAN MAKE IT WORK
@@ -49,6 +46,7 @@ func Update(_tile : Tile):
 		tile_is_killbox_parent.visible = _tile.SubBGTileData.Killbox
 		shouldShow = true
 
+	tile_is_killbox_parent.visible = _tile.ActiveKillbox
 	UpdateFireData(_tile)
 	UpdateGridEntities(_tile)
 	visible = shouldShow
@@ -85,6 +83,10 @@ func UpdateGridEntities(_tile : Tile):
 	createdGridEntityInfos.clear()
 
 	for ge in _tile.GridEntities:
+		# If marked as invisible - then this information is not necessary to share with the player'
+		if ge.ui_invisible:
+			continue
+
 		var new = grid_entity_prefab.instantiate() as GridEntityCombatHUDEntry
 		if new != null:
 			new.Update(ge, _tile)
