@@ -13,6 +13,7 @@ func _Enter(_ctrl : PlayerController, data):
 	StartMovementTracker()
 	currentGrid.ShowUnitActions(selectedUnit)
 	UpdateTracker()
+	selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 
 func _Execute(_delta):
 	if UpdateInput(_delta):
@@ -42,10 +43,12 @@ func _Execute(_delta):
 			StartMovementTracker()
 			currentGrid.ShowUnitActions(selectedUnit)
 			UpdateTracker()
+			selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 		else:
 			EndMovementTracker()
 			currentGrid.ClearActions()
 			ctrl.ForceReticlePosition(selectedUnit.GridPosition)
+			selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 			selectedUnit = null
 			ctrl.ChangeControllerState(SelectionControllerState.new(), null)
 			walkedPath.clear()

@@ -13,16 +13,16 @@ void fragment() {
 	{
 		uv = SCREEN_UV;
 	}
-	
+
 	vec4 texture_copy = texture(TEXTURE, uv);
 	texture_copy.a = (texture(TEXTURE, uv).a) * 1.0;
-	
+
 	vec4 shadow_texture = texture(TEXTURE, uv + shadow_offset * SCREEN_PIXEL_SIZE);
 	vec4 shadow = vec4(shadow_color.rgb, shadow_texture.a - (1.0 - shadow_color.a));
 
 	vec4 result = mix(shadow, texture_copy, texture_copy.a);
 	COLOR = result;
-	
+
 }
 
 //void light() {

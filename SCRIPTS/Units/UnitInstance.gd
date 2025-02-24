@@ -724,6 +724,10 @@ func PreviewModifiedTile(_tile : Tile):
 func ResetVisualToTile():
 	position = CurrentTile.GlobalPosition
 
+func PlayAnimation(_animString : String, _smoothTransition : bool = false, _animSpeed : float = 1, _fromEnd : bool = false):
+	if visual != null:
+		visual.PlayAnimation(_animString, _smoothTransition, _animSpeed, _fromEnd)
+
 func ToJSON():
 	var dict = {
 		"Template" : Template.resource_path,

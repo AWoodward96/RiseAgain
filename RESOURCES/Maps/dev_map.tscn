@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_5aprs"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_gfyht"]
 [ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_vt2ms"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_hh47g"]
 [ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="10_tgwx5"]
-[ext_resource type="Resource" uid="uid://crv54ls8tyldj" path="res://RESOURCES/Units/Enemy/CorpseChimera/UT_CorpseChimera.tres" id="10_tsvxs"]
 [ext_resource type="PackedScene" uid="uid://eerys1o8nkjh" path="res://RESOURCES/GridEntities/wp_bridge.tscn" id="11_rlgja"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_msltj"]
 [ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="14_3fyh8"]
@@ -149,18 +149,18 @@ DeltaLevel = 0
 Position = Vector2i(5, 4)
 AIBehavior = SubResource("Resource_bi5d2")
 
-[node name="Spawn_CorpseChimera" type="Sprite2D" parent="Spawners"]
-position = Vector2(448, 320)
+[node name="Spawn_Zombie" type="Sprite2D" parent="Spawners"]
+position = Vector2(512, 320)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("10_tsvxs")
+UnitToSpawn = ExtResource("10_hh47g")
 UnitLevel = 1
 DeltaLevel = 0
-Position = Vector2i(7, 5)
+Position = Vector2i(8, 5)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 

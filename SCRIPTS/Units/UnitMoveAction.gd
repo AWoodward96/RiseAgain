@@ -31,7 +31,12 @@ func _Execute(_unit : UnitInstance, _delta):
 
 	var destination = Route[MovementIndex].GlobalPosition
 	var distance = _unit.position.distance_squared_to(destination)
+
+
 	MovementVelocity = (destination - _unit.position).normalized() * speed
+
+	_unit.PlayAnimation(UnitSettingsTemplate.GetMovementAnimationFromVector(MovementVelocity))
+
 	_unit.position += MovementVelocity * _delta
 	var maximumDistanceTraveled = speed * _delta;
 
@@ -65,6 +70,7 @@ func _Execute(_unit : UnitInstance, _delta):
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
 			_unit.position = Route[MovementIndex - 1].GlobalPosition
+			unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 			var diedToKillbox = _unit.CheckKillbox()
 			if isAlliedTeam:
 				if diedToKillbox: # If it's true, then this unit's fucking dead lmao

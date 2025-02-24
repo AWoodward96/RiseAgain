@@ -63,7 +63,7 @@ texture = ExtResource("4_reqvg")
 
 [node name="AffinityIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(11, 11)
+position = Vector2(11, 55)
 scale = Vector2(0.0410156, 0.0410156)
 texture = ExtResource("7_vnfmn")
 
