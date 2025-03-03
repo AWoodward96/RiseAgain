@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://co7lel8ngy6or"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="1_opl86"]
+[ext_resource type="Script" uid="uid://dsclb6hje7yvq" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="1_opl86"]
 [ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/Standard/drain.png" id="2_bmu0w"]
 [ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="3_8p7i2"]
 [ext_resource type="Texture2D" uid="uid://x61rbwe8vybw" path="res://ART/Icons/range_icon.png" id="4_xkn6m"]

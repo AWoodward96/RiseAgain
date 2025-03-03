@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4bdhbe8or16j"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_7q5of"]
+[ext_resource type="Script" uid="uid://cwehsgb67jbya" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_7q5of"]
 
 [sub_resource type="Gradient" id="Gradient_mn0bn"]
 colors = PackedColorArray(0.774488, 0, 0.319441, 1, 0.305894, 0.0938271, 0.330662, 1)
@@ -127,8 +127,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbaiq"]
 _data = {
-"RESET": SubResource("Animation_37trb"),
-"Run": SubResource("Animation_knfe8")
+&"RESET": SubResource("Animation_37trb"),
+&"Run": SubResource("Animation_knfe8")
 }
 
 [node name="Loss_Banner" type="Control"]

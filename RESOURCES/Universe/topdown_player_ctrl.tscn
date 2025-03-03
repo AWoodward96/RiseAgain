@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crldlj6agxmjg"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Universe/TopdownController/TopdownPlayerCTRL.gd" id="1_y6b2r"]
+[ext_resource type="Script" uid="uid://b4yvrpbxj8og" path="res://SCRIPTS/Universe/TopdownController/TopdownPlayerCTRL.gd" id="1_y6b2r"]
 [ext_resource type="Texture2D" uid="uid://brl6oy6ikhs1q" path="res://ART/Icons/the_wanderer.png" id="2_bkvkx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6247n"]

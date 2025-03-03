@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crsd05m8xofxm"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Units/ui_effect_icon.gd" id="1_rwc03"]
+[ext_resource type="Script" uid="uid://blpixonl06w50" path="res://SCRIPTS/UI/Units/ui_effect_icon.gd" id="1_rwc03"]
 [ext_resource type="Texture2D" uid="uid://jjucjm0kw2ay" path="res://ART/Icons/temp_shield.png" id="2_gmkoh"]
 
 [node name="EffectsEntry" type="HBoxContainer" node_paths=PackedStringArray("icon", "label")]

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="LootTable" load_steps=14 format=3 uid="uid://ckn2gmate3jr1"]
 
 [ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_4v6xu"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="2_eremd"]
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
+[ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="2_eremd"]
 [ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/DarkMage/UT_DarkMage.tres" id="3_vuepv"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="4_x450q"]
 [ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="5_f3hp4"]
 [ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="6_kcbml"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
+[ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
 
 [sub_resource type="Resource" id="Resource_udyiq"]
 script = ExtResource("2_eremd")

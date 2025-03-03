@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://bo53wngqa8non"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_qifck"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ngbhm"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_qifck"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ngbhm"]
 [ext_resource type="PackedScene" uid="uid://dmhbg3jolre8u" path="res://RESOURCES/GridEntities/grasping_roots_entity.tscn" id="3_euem1"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_rqfdi"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_rqfdi"]
 [ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/grasping_roots.png" id="5_b85m2"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_6cu26"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_7s5il"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_t7vw6"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="9_jb5x2"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_6cu26"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_7s5il"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_t7vw6"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="9_jb5x2"]
 
 [sub_resource type="Resource" id="Resource_tovoj"]
 script = ExtResource("4_rqfdi")

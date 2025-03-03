@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://by00pi1y5u8eg"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_8oc7x"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_vcd88"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_vcd88"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_cgq4l"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_pqhac"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_wjrgh"]
@@ -11,9 +11,9 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_cm46p"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_mbfmv"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_hitny"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_543b7"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_543b7"]
 [ext_resource type="Texture2D" uid="uid://b5oiy617hkm0k" path="res://ART/Icons/Units/rocegg.png" id="13_ds8ji"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="14_2h2kw"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="14_2h2kw"]
 [ext_resource type="PackedScene" uid="uid://c6rnk74xlkxji" path="res://RESOURCES/Units/Enemy/Roc/VIS_RocEgg.tscn" id="14_dpthe"]
 
 [sub_resource type="Resource" id="Resource_0etaw"]

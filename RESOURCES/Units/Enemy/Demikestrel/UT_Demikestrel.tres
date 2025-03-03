@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=33 format=3 uid="uid://cfc2kbiar5cpa"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_cgu6t"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_bnito"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_bnito"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_i5xwm"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_87imx"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_n1su1"]
@@ -11,11 +11,11 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_0sn5d"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_cd505"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_66n8e"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_q7fsu"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_q7fsu"]
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="13_g3qgd"]
 [ext_resource type="PackedScene" uid="uid://bcyy0fwyp15x2" path="res://RESOURCES/Units/Enemy/Demikestrel/VIS_demikestrel.tscn" id="14_kqktv"]
 [ext_resource type="Texture2D" uid="uid://bmmunjl57obdt" path="res://ART/Icons/Units/demikestrel.png" id="14_lm8hf"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_k0c2y"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_k0c2y"]
 
 [sub_resource type="Resource" id="Resource_mgsdi"]
 script = ExtResource("2_bnito")

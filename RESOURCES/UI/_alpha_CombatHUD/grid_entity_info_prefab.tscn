@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://k6a1bknwdhr"]
 
 [ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="1_mucif"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/GridEntityCombatHUDEntry.gd" id="1_tt21h"]
+[ext_resource type="Script" uid="uid://rwhybefsddn1" path="res://SCRIPTS/UI/CombatHUD/GridEntityCombatHUDEntry.gd" id="1_tt21h"]
 [ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="2_hnnjj"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="3_k55we"]
 

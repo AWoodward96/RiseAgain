@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="CampaignBlock" load_steps=21 format=3 uid="uid://co274sk3utsf2"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_cjmg3"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_pfvmt"]
+[ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_cjmg3"]
+[ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_pfvmt"]
 [ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default.tscn" id="3_q48fm"]
 [ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="4_0s12q"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_fypxo"]
+[ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_fypxo"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="6_dof8u"]
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a03_default.tscn" id="7_ie7j4"]
 [ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="7_xk4vt"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="8_4vk3q"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="8_4vk3q"]
 [ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_campsite_default.tscn" id="9_xuuw2"]
 
 [sub_resource type="Resource" id="Resource_5bfw7"]

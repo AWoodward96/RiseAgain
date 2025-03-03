@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://buh5fj1fbm8oa"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_vkbtp"]
 [ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Humanity_Affinity.tres" id="2_41as1"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pkkgr"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pkkgr"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_e1gbq"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_ry5o0"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_5fnpr"]
@@ -15,9 +15,9 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_my8s7"]
 [ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="13_0n32w"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_oca27"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_oca27"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_exkpg"]
-[ext_resource type="Script" path="res://SCRIPTS/PersistData/UnitPersistence/ArcherPersistBase.gd" id="17_wh034"]
+[ext_resource type="Script" uid="uid://cq3xuoqo0g88i" path="res://SCRIPTS/PersistData/UnitPersistence/ArcherPersistBase.gd" id="17_wh034"]
 
 [sub_resource type="Resource" id="Resource_yoyw8"]
 script = ExtResource("2_pkkgr")

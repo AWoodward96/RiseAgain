@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://b58tp7xqbg5jr"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_t7bl4"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_wfm6a"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_yo3n0"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_yn44r"]
@@ -11,10 +11,10 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_ef8hw"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_h8hmd"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_ydrqc"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_0ywe3"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_0ywe3"]
 [ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="13_36dkf"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_v6xa5"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_5b53c"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_5b53c"]
 [ext_resource type="PackedScene" uid="uid://dkuqjts8ysscx" path="res://RESOURCES/Units/Ally/Rogue/VIS_Rogue.tscn" id="15_wkala"]
 [ext_resource type="Texture2D" uid="uid://cyunyo5s6o5oy" path="res://ART/Icons/Units/rogue.png" id="16_gnxnw"]
 

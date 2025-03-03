@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://bmucnmn8tsjf8"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_3kk5a"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_14ij1"]
+[ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_3kk5a"]
+[ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_14ij1"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_u63b7"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_xfm8g"]
 

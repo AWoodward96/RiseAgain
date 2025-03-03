@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b86wbdh3gr6j1"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Units/focus_slot.gd" id="1_iuqte"]
+[ext_resource type="Script" uid="uid://bo1gkbl7wr1ae" path="res://SCRIPTS/UI/Units/focus_slot.gd" id="1_iuqte"]
 
 [node name="FocusSlot" type="MarginContainer" node_paths=PackedStringArray("on_state", "off_state")]
 size_flags_horizontal = 3

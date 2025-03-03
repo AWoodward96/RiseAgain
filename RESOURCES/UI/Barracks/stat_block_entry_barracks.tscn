@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cflal3jirl4pa"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_owhuc"]
-[ext_resource type="Script" path="res://SCRIPTS/Universe/BarracksStatUpgradeEntry.gd" id="1_rc87r"]
+[ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_owhuc"]
+[ext_resource type="Script" uid="uid://n7vt2tqk58f8" path="res://SCRIPTS/Universe/BarracksStatUpgradeEntry.gd" id="1_rc87r"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_3rx0x"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="3_4fdci"]
 [ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="5_yytrk"]

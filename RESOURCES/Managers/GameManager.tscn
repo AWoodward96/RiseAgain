@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cls83uyoykivy"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
+[ext_resource type="Script" uid="uid://djvjsoy5dfdeb" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
 [ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
 [ext_resource type="Resource" uid="uid://b4u6518tnwvj6" path="res://RESOURCES/Managers/UnitSettings.tres" id="3_d1hgw"]
 [ext_resource type="Resource" uid="uid://ctv538x46ffve" path="res://RESOURCES/Managers/LocSettings.tres" id="4_4gcm7"]

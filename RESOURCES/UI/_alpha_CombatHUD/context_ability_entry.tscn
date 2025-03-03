@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkefu6kqmmks0"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ContextAbilityEntry.gd" id="1_d1317"]
+[ext_resource type="Script" uid="uid://kekrmw0o554e" path="res://SCRIPTS/UI/CombatHUD/ContextAbilityEntry.gd" id="1_d1317"]
 [ext_resource type="Texture2D" uid="uid://b5x51xfnbjnh7" path="res://ART/UI/ui_ability_icon_placeholder.png" id="2_61fil"]
 
 [node name="ContextAbilityEntry" type="Button"]

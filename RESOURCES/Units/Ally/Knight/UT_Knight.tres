@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://bjtxp4kdt5wvy"]
 
 [ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="1_tce1b"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pgscv"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pgscv"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_mywxh"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_eic0y"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_4jjhj"]
@@ -11,11 +11,11 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_x6nrg"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_ddobi"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_8a84f"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_l5q2i"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_l5q2i"]
 [ext_resource type="PackedScene" uid="uid://sk4xm5rs346c" path="res://RESOURCES/Ability/Equippable/lunar_lance.tscn" id="13_cuic2"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_v0j6g"]
 [ext_resource type="PackedScene" uid="uid://1f8h3j214nus" path="res://RESOURCES/Units/Ally/Knight/VIS_Knight.tscn" id="15_2ywwj"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_fg716"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_fg716"]
 [ext_resource type="Texture2D" uid="uid://da8e6v5th61vs" path="res://ART/Icons/Units/knight.png" id="16_3e3g6"]
 
 [sub_resource type="Resource" id="Resource_geyf3"]

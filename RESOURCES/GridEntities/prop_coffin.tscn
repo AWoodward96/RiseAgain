@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dsregfebfk5f6"]
 
-[ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_c5w0b"]
+[ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_c5w0b"]
 [ext_resource type="Texture2D" uid="uid://d3q4q27243v6t" path="res://ART/Environment/Tutorial/alpha_coffin.png" id="2_6gny5"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_rhfxd"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_ntts7"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_rhfxd"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_ntts7"]
 
 [sub_resource type="Resource" id="Resource_kat3i"]
 script = ExtResource("2_rhfxd")
@@ -66,9 +66,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s0unp"]
 _data = {
-"RESET": SubResource("Animation_3183d"),
-"default": SubResource("Animation_nfno8"),
-"open": SubResource("Animation_kbmv5")
+&"RESET": SubResource("Animation_3183d"),
+&"default": SubResource("Animation_nfno8"),
+&"open": SubResource("Animation_kbmv5")
 }
 
 [node name="GECoffin" type="Node2D" node_paths=PackedStringArray("Animator")]

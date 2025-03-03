@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnv8h0l0c4s6d"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_popup.gd" id="1_75kli"]
+[ext_resource type="Script" uid="uid://c1tdvq1h3gl3c" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_popup.gd" id="1_75kli"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_g52x4"]
 
 [sub_resource type="Animation" id="Animation_floic"]
@@ -98,8 +98,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5d1jg"]
 _data = {
-"RESET": SubResource("Animation_floic"),
-"Run": SubResource("Animation_pkacr")
+&"RESET": SubResource("Animation_floic"),
+&"Run": SubResource("Animation_pkacr")
 }
 
 [node name="DamagePopup" type="Node2D" node_paths=PackedStringArray("damage_val", "heal_val", "armor_val", "no_damage")]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnsp2jieynl7x"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
-[ext_resource type="Shader" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
+[ext_resource type="Script" uid="uid://b0td0w4ri6sy8" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
+[ext_resource type="Shader" uid="uid://chstaroxl1fuw" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
 [ext_resource type="PackedScene" uid="uid://cj14t2nuhup7j" path="res://RESOURCES/UI/_alpha_FormationUI/items_ui.tscn" id="3_hs3ra"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bl6de"]

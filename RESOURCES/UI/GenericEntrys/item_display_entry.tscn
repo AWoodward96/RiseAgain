@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci2yfcw0fc6pv"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/InspectUI/item_display_entry.gd" id="1_cfolw"]
+[ext_resource type="Script" uid="uid://0axd1trhte48" path="res://SCRIPTS/UI/InspectUI/item_display_entry.gd" id="1_cfolw"]
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="2_8c5n5"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_w2me1"]
 

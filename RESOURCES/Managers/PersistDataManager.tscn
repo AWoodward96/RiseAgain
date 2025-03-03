@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bv1qw5f8hjxry"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Managers/PersistDataManager.gd" id="1_6epwi"]
+[ext_resource type="Script" uid="uid://c41xt2tdpfugd" path="res://SCRIPTS/Managers/PersistDataManager.gd" id="1_6epwi"]
 
 [node name="PersistDataManager" type="Node2D"]
 script = ExtResource("1_6epwi")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7850ynb8vsrl"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
+[ext_resource type="Script" uid="uid://cvuvblt057f7i" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
 [ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="2_1p72w"]
 [ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="3_tvrtu"]
 [ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="3_yvwub"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dq0077hvdawdy"]
 
-[ext_resource type="Script" path="res://SCENES/LootTableTestingScene.gd" id="1_ejacv"]
+[ext_resource type="Script" uid="uid://npr64kk8qg5c" path="res://SCENES/LootTableTestingScene.gd" id="1_ejacv"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("parent")]
 layout_mode = 3

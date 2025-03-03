@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="TargetingShape" load_steps=13 format=3 uid="uid://bxwbvxhh4bgye"]
 
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_v62f6"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/PushData.gd" id="2_2lrju"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="3_hhr0n"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="4_0voxm"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_v62f6"]
+[ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="2_2lrju"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="3_hhr0n"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="4_0voxm"]
 
 [sub_resource type="Resource" id="Resource_8be51"]
 script = ExtResource("2_2lrju")
@@ -17,6 +17,7 @@ canDamageUser = false
 script = ExtResource("3_hhr0n")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 pushInfo = SubResource("Resource_8be51")
 Position = Vector2i(0, -1)
 Multiplier = 1.0
@@ -33,6 +34,7 @@ canDamageUser = false
 script = ExtResource("3_hhr0n")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 pushInfo = SubResource("Resource_gtgv2")
 Position = Vector2i(1, -1)
 Multiplier = 1.0
@@ -49,6 +51,7 @@ canDamageUser = false
 script = ExtResource("3_hhr0n")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 pushInfo = SubResource("Resource_su6b7")
 Position = Vector2i(1, -2)
 Multiplier = 1.0
@@ -65,6 +68,7 @@ canDamageUser = false
 script = ExtResource("3_hhr0n")
 AccuracyModifier = 0.0
 CritModifier = 0.0
+Ignite = 0
 pushInfo = SubResource("Resource_kvv6a")
 Position = Vector2i(0, -2)
 Multiplier = 1.0

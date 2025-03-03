@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://cj14t2nuhup7j"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/ManageItemsPanel.gd" id="1_vg402"]
+[ext_resource type="Script" uid="uid://d2dcw1mqsk33e" path="res://SCRIPTS/UI/General/ManageItemsPanel.gd" id="1_vg402"]
 [ext_resource type="PackedScene" uid="uid://g5tjj4fkvdxp" path="res://RESOURCES/UI/GenericEntrys/unit_button_horiz.tscn" id="2_ndcy3"]
 [ext_resource type="PackedScene" uid="uid://ci2yfcw0fc6pv" path="res://RESOURCES/UI/GenericEntrys/item_display_entry.tscn" id="3_l5it4"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_yfs73"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_yfs73"]
 [ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="5_hsjp0"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="6_lq7uk"]
 [ext_resource type="PackedScene" uid="uid://ck5ndsyrok8ag" path="res://RESOURCES/UI/GenericEntrys/weapon_panel.tscn" id="7_r1hna"]

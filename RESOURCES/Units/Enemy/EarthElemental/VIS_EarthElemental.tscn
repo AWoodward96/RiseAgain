@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6sxj0k1xxj6i"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_4yr5o"]
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_4yr5o"]
 [ext_resource type="Texture2D" uid="uid://dwc3osfxurjhi" path="res://ART/Icons/Units/earthelemental.png" id="2_xwr3m"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_jphu6"]
 

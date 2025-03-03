@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="StatChangeEffect" load_steps=9 format=3 uid="uid://fv3aw7d7xp6f"]
 
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_ycfw3"]
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_ycfw3"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="2_2yocl"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="2_43mb3"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="3_d63bk"]
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="3_kpp0i"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="3_kpp0i"]
 [ext_resource type="Texture2D" uid="uid://d0ecls1kw7y8t" path="res://ART/Icons/Stats/icon_defense_down.png" id="3_mk4mw"]
 
 [sub_resource type="Resource" id="Resource_8pnm6"]

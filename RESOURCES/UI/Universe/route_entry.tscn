@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d15536g3bwgq0"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Universe/RouteEntry.gd" id="1_iyh24"]
+[ext_resource type="Script" uid="uid://w4dr0fi0k7h5" path="res://SCRIPTS/UI/Universe/RouteEntry.gd" id="1_iyh24"]
 [ext_resource type="Texture2D" uid="uid://dnrv84l38b3db" path="res://ART/Icons/Route/maroon_forest.png" id="2_hf7rs"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_w3u64"]
 

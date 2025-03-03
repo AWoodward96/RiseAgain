@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckf4unljro6gn"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Juice/DamageIndication/effect_popup.gd" id="1_p7oov"]
+[ext_resource type="Script" uid="uid://drgv2pkyf56k5" path="res://SCRIPTS/UI/Juice/DamageIndication/effect_popup.gd" id="1_p7oov"]
 [ext_resource type="Texture2D" uid="uid://yqokd4g4dbxf" path="res://ART/Icons/Ability/Equippable/wolfbane.png" id="2_8spsc"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_rxcfh"]
 
@@ -143,8 +143,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5d1jg"]
 _data = {
-"RESET": SubResource("Animation_floic"),
-"Run": SubResource("Animation_pkacr")
+&"RESET": SubResource("Animation_floic"),
+&"Run": SubResource("Animation_pkacr")
 }
 
 [node name="EffectPopup" type="Node2D" node_paths=PackedStringArray("sprite", "text")]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgtng3hy3kia5"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Items/Item.gd" id="1_yarmj"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_4wqr7"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="3_cu1av"]
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_yarmj"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_4wqr7"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="3_cu1av"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_abep2"]
 
 [node name="healing_tome" type="Node2D"]

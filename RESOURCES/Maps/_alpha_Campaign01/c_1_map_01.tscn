@@ -1,17 +1,17 @@
 [gd_scene load_steps=17 format=4 uid="uid://b8pr2dwrcap2u"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Map.gd" id="1_b37qi"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_5lxij"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_4rgr7"]
+[ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_b37qi"]
+[ext_resource type="Script" uid="uid://c0bc1depbcrxx" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_5lxij"]
+[ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_4rgr7"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_4djy7"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_v0tn0"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="5_xbaub"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_akeod"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_n77rd"]
+[ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_n77rd"]
 [ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="8_73gft"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_y33dn"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="11_24j3e"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_qt4ty"]
+[ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_qt4ty"]
 
 [sub_resource type="Resource" id="Resource_vm3u1"]
 script = ExtResource("2_5lxij")

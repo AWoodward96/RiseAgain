@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctnhuq1c5q3tg"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/ContextAbilityEntry.gd" id="1_c1qlp"]
+[ext_resource type="Script" uid="uid://kekrmw0o554e" path="res://SCRIPTS/UI/CombatHUD/ContextAbilityEntry.gd" id="1_c1qlp"]
 [ext_resource type="Texture2D" uid="uid://b5x51xfnbjnh7" path="res://ART/UI/ui_ability_icon_placeholder.png" id="2_qt2j5"]
 
 [node name="AbilitySelectionEntry" type="HBoxContainer"]

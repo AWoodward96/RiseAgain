@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b362cldejqkxn"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_ssn08"]
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_ssn08"]
 [ext_resource type="Texture2D" uid="uid://ddew6qrlip5o6" path="res://ART/Icons/Units/adultwolf.png" id="2_pwxou"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_3lbek"]
 [ext_resource type="AnimationLibrary" uid="uid://bj02d4u5cj7x7" path="res://ART/Animations/Units/UnitNeutralLibrary.res" id="4_bfsfu"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkuqjts8ysscx"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_1ku2m"]
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_1ku2m"]
 [ext_resource type="Texture2D" uid="uid://cyunyo5s6o5oy" path="res://ART/Icons/Units/rogue.png" id="2_piuv5"]
 [ext_resource type="AnimationLibrary" uid="uid://1mcui1br08sh" path="res://ART/Animations/Units/UnitAllyLibrary.res" id="3_xqiqc"]
 

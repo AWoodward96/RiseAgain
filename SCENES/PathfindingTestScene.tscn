@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://cele7b5qvy8l5"]
 
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="1_552gp"]
-[ext_resource type="Script" path="res://SCENES/PathfindingTestScene.gd" id="1_c54kw"]
+[ext_resource type="Script" uid="uid://cdpvq6p3ahav" path="res://SCENES/PathfindingTestScene.gd" id="1_c54kw"]
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://ART/Icons/Units/zombie.png" id="2_4boto"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://ART/Icons/Units/wolfpup.png" id="3_q8xkp"]
 [ext_resource type="Texture2D" uid="uid://dka51kt0xndy3" path="res://ART/Icons/Units/lightmage.png" id="3_skxbj"]

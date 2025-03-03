@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7hkdtcp08x61"]
 
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="1_ers36"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/simple_unit_entry.gd" id="1_l40nu"]
+[ext_resource type="Script" uid="uid://8pnlkrxqpeow" path="res://SCRIPTS/UI/General/simple_unit_entry.gd" id="1_l40nu"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_0j35c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g3mb8"]

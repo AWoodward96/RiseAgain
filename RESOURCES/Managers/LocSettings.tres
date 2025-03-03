@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LocSettings" load_steps=3 format=3 uid="uid://ctv538x46ffve"]
 
 [ext_resource type="Texture2D" uid="uid://cg7gnaihhqagy" path="res://ART/Icons/Missing/missing_combateffect_icon.png" id="1_5tmtt"]
-[ext_resource type="Script" path="res://SCRIPTS/Managers/LocSettings.gd" id="1_46x2a"]
+[ext_resource type="Script" uid="uid://cd6v7lelrdia0" path="res://SCRIPTS/Managers/LocSettings.gd" id="1_46x2a"]
 
 [resource]
 script = ExtResource("1_46x2a")

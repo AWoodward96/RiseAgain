@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://po4nfl4dmthc"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/LoadingScreen/loading_screen.gd" id="1_egxw3"]
+[ext_resource type="Script" uid="uid://cfenw3h6kjdan" path="res://SCRIPTS/UI/LoadingScreen/loading_screen.gd" id="1_egxw3"]
 
 [node name="LoadingScreen" type="CanvasLayer" node_paths=PackedStringArray("Screen")]
 layer = 10

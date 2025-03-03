@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dl6qxjh1aw8tj"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_3yni1"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_lu14u"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/HealStep.gd" id="3_y4ca7"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3yni1"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_lu14u"]
+[ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="3_y4ca7"]
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="4_4ievu"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/HealComponent.gd" id="4_x0tmk"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_s22t7"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="4_x0tmk"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_s22t7"]
 
 [sub_resource type="Resource" id="Resource_dml4r"]
 script = ExtResource("3_y4ca7")

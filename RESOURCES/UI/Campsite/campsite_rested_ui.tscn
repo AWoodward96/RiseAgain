@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6e83bb58hsat"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/Campsite/campsite_rested_ui.gd" id="1_r378u"]
+[ext_resource type="Script" uid="uid://cshxeuqha8lde" path="res://RESOURCES/UI/Campsite/campsite_rested_ui.gd" id="1_r378u"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_tf2qc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu4vn"]

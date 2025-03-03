@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://t7o5840ctb3j"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_0u6q6"]
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_0u6q6"]
 [ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="2_iq8xo"]
 [ext_resource type="AnimationLibrary" uid="uid://1mcui1br08sh" path="res://ART/Animations/Units/UnitAllyLibrary.res" id="3_mp0qq"]
 

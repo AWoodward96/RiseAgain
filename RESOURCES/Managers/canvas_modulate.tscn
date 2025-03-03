@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://hosrqyrxnwxc"]
 
-[ext_resource type="Shader" path="res://RESOURCES/Managers/GridOverlay.gdshader" id="1_ita1k"]
+[ext_resource type="Shader" uid="uid://ehu0spi0nw6h" path="res://RESOURCES/Managers/GridOverlay.gdshader" id="1_ita1k"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="2_mu434"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3urn0"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bbahoua1vgwbw"]
 
 [ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="1_mbt6g"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/Trade/trade_ui.gd" id="1_rrqi0"]
+[ext_resource type="Script" uid="uid://by51jcvx5o6sw" path="res://SCRIPTS/UI/Trade/trade_ui.gd" id="1_rrqi0"]
 [ext_resource type="PackedScene" uid="uid://cucrwa6f3vsha" path="res://RESOURCES/UI/Trade/horiz_item_slot.tscn" id="2_h0net"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_swnhn"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="3_jqkfc"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_ufvat"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_ufvat"]
 [ext_resource type="PackedScene" uid="uid://g5tjj4fkvdxp" path="res://RESOURCES/UI/GenericEntrys/unit_button_horiz.tscn" id="6_5cjft"]
 [ext_resource type="Texture2D" uid="uid://bmofmf8j51t2c" path="res://ART/Icons/wagon.png" id="8_4fotp"]
 [ext_resource type="Texture2D" uid="uid://cr2shx01wwgbb" path="res://ART/Icons/Ability/Equippable/iron_sword.png" id="8_xljgp"]

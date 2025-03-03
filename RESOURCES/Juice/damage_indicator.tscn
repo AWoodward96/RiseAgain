@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://chgyuivvaogoe"]
 
 [ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="1_efn74"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_indicator.gd" id="1_xo2sr"]
+[ext_resource type="Script" uid="uid://c87sjcse7aq1e" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_indicator.gd" id="1_xo2sr"]
 [ext_resource type="PackedScene" uid="uid://d1laxqelcbhi8" path="res://RESOURCES/UI/GenericEntrys/effect_entry.tscn" id="2_gie3m"]
 [ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="3_ne7nt"]
 [ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="3_w0shn"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_jf3iu"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_jf3iu"]
 [ext_resource type="LabelSettings" uid="uid://16psntbgd1gu" path="res://RESOURCES/UI/LabelSettings/minimal_mini.tres" id="5_pc21c"]
 
 [sub_resource type="Gradient" id="Gradient_k557k"]
@@ -209,9 +209,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j8o3t"]
 _data = {
-"Ability": SubResource("Animation_b8w1b"),
-"RESET": SubResource("Animation_brgej"),
-"Weapon": SubResource("Animation_m6tlk")
+&"Ability": SubResource("Animation_b8w1b"),
+&"RESET": SubResource("Animation_brgej"),
+&"Weapon": SubResource("Animation_m6tlk")
 }
 
 [node name="DamageIndicator" type="Node2D" groups=["DamageIndicators"]]

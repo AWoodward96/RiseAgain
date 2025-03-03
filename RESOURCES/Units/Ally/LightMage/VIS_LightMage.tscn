@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcs78xo7fpefo"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_j27yk"]
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_j27yk"]
 [ext_resource type="Texture2D" uid="uid://dka51kt0xndy3" path="res://ART/Icons/Units/lightmage.png" id="2_37u34"]
 [ext_resource type="AnimationLibrary" uid="uid://1mcui1br08sh" path="res://ART/Animations/Units/UnitAllyLibrary.res" id="3_stly0"]
 

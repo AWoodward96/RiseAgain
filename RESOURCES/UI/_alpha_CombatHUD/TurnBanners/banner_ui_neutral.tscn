@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://8a67pehymjsr"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_jpmv2"]
+[ext_resource type="Script" uid="uid://cwehsgb67jbya" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_jpmv2"]
 
 [sub_resource type="Gradient" id="Gradient_mn0bn"]
 colors = PackedColorArray(0.372549, 0.482353, 0.32549, 1, 0.741176, 0.733333, 0.682353, 1)
@@ -126,8 +126,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbaiq"]
 _data = {
-"RESET": SubResource("Animation_37trb"),
-"Run": SubResource("Animation_knfe8")
+&"RESET": SubResource("Animation_37trb"),
+&"Run": SubResource("Animation_knfe8")
 }
 
 [node name="TurnUI_Neutral" type="Control"]

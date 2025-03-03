@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba6ls0pu4git6"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Universe/Tavern/TavernCharacterEntry.gd" id="1_qb2uk"]
+[ext_resource type="Script" uid="uid://b3rwui87fbvch" path="res://SCRIPTS/Universe/Tavern/TavernCharacterEntry.gd" id="1_qb2uk"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_sacn2"]
 [ext_resource type="LabelSettings" uid="uid://klboyvialx7" path="res://RESOURCES/Theme/TavernText.tres" id="3_8nmqy"]
 

@@ -1,20 +1,20 @@
 [gd_scene load_steps=28 format=4 uid="uid://61oi65hp3jdj"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Universe/TopdownEnvironment.gd" id="1_bp5x6"]
+[ext_resource type="Script" uid="uid://co1th5xf2klm8" path="res://SCRIPTS/Universe/TopdownEnvironment.gd" id="1_bp5x6"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="2_y5i7m"]
 [ext_resource type="Texture2D" uid="uid://dmcwh6wwd5o05" path="res://ART/Environment/signpost.png" id="3_mrfn0"]
-[ext_resource type="Script" path="res://SCRIPTS/Universe/TheGate.gd" id="3_ovcri"]
-[ext_resource type="Shader" path="res://ART/Shaders/TopdownInteractableObjectShader.gdshader" id="4_1i6q3"]
+[ext_resource type="Script" uid="uid://cnvgtyeptwc4f" path="res://SCRIPTS/Universe/TheGate.gd" id="3_ovcri"]
+[ext_resource type="Shader" uid="uid://wvlux66yr2d2" path="res://ART/Shaders/TopdownInteractableObjectShader.gdshader" id="4_1i6q3"]
 [ext_resource type="PackedScene" uid="uid://d15536g3bwgq0" path="res://RESOURCES/UI/Universe/route_entry.tscn" id="4_5x7nt"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="6_cldrg"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="7_ok3a8"]
-[ext_resource type="Script" path="res://SCRIPTS/Universe/Tavern.gd" id="9_qtpfn"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="7_ok3a8"]
+[ext_resource type="Script" uid="uid://cqc8ihfb4yd6f" path="res://SCRIPTS/Universe/Tavern.gd" id="9_qtpfn"]
 [ext_resource type="PackedScene" uid="uid://ba6ls0pu4git6" path="res://RESOURCES/UI/TavernUI/TavernCharacterEntry.tscn" id="10_0ac81"]
 [ext_resource type="Theme" uid="uid://y2p37fdv061m" path="res://RESOURCES/Theme/RusticPaper.tres" id="10_fjuv4"]
 [ext_resource type="PackedScene" uid="uid://hkrdforcue3c" path="res://RESOURCES/UI/TavernUI/unit_icon.tscn" id="11_j58iv"]
 [ext_resource type="FontFile" uid="uid://pt15ohmwthe1" path="res://ART/Fonts/fude.ttf" id="11_t68hm"]
 [ext_resource type="LabelSettings" uid="uid://klboyvialx7" path="res://RESOURCES/Theme/TavernText.tres" id="13_xnyyx"]
-[ext_resource type="Script" path="res://SCRIPTS/Universe/Barracks.gd" id="15_gvr6f"]
+[ext_resource type="Script" uid="uid://4ci5d5nuum3x" path="res://SCRIPTS/Universe/Barracks.gd" id="15_gvr6f"]
 [ext_resource type="PackedScene" uid="uid://cflal3jirl4pa" path="res://RESOURCES/UI/Barracks/stat_block_entry_barracks.tscn" id="16_b04xw"]
 [ext_resource type="PackedScene" uid="uid://7hkdtcp08x61" path="res://RESOURCES/UI/GenericEntrys/simple_unit_entry.tscn" id="16_mgwwk"]
 
@@ -46,7 +46,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jh0tb"]
 _data = {
-"Show": SubResource("Animation_qrow8")
+&"Show": SubResource("Animation_qrow8")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_dukkp"]
@@ -163,10 +163,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_beymq"]
 _data = {
-"FocusEntries": SubResource("Animation_w1egs"),
-"FocusMods": SubResource("Animation_163fs"),
-"RESET": SubResource("Animation_crhww"),
-"Show": SubResource("Animation_hwwui")
+&"FocusEntries": SubResource("Animation_w1egs"),
+&"FocusMods": SubResource("Animation_163fs"),
+&"RESET": SubResource("Animation_crhww"),
+&"Show": SubResource("Animation_hwwui")
 }
 
 [node name="Env1" type="Node2D" node_paths=PackedStringArray("playerNode", "interactableParent")]

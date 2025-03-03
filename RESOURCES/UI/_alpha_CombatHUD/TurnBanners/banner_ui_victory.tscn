@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bx0ahfyy2rnc3"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_e5myi"]
+[ext_resource type="Script" uid="uid://cwehsgb67jbya" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_e5myi"]
 
 [sub_resource type="Gradient" id="Gradient_mn0bn"]
 colors = PackedColorArray(0.605643, 0.683264, 0.944779, 1, 0.526655, 0.802387, 0.655788, 1)
@@ -126,8 +126,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbaiq"]
 _data = {
-"RESET": SubResource("Animation_37trb"),
-"Run": SubResource("Animation_knfe8")
+&"RESET": SubResource("Animation_37trb"),
+&"Run": SubResource("Animation_knfe8")
 }
 
 [node name="Victory_Banner" type="Control"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CampaignTemplate" load_steps=4 format=3 uid="uid://ddhgteb5cmmht"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_pdt8p"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_0iaka"]
+[ext_resource type="Script" uid="uid://bjwkg4cb6y7vw" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_pdt8p"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_0iaka"]
 [ext_resource type="Resource" uid="uid://dlpsb7mx1m51b" path="res://RESOURCES/Maps/Tutorial/tutorial_campaign_block.tres" id="3_i6rcb"]
 
 [resource]

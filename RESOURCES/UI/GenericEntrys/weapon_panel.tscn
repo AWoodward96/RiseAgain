@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ck5ndsyrok8ag"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/WeaponPanelUI.gd" id="1_u8riw"]
+[ext_resource type="Script" uid="uid://uw1nf0glva35" path="res://RESOURCES/UI/_alpha_FormationUI/WeaponPanelUI.gd" id="1_u8riw"]
 [ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="2_wi5d2"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="3_8ffdn"]
 [ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="4_onf6y"]

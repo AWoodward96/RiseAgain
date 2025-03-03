@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AffinityTemplate" load_steps=3 format=3 uid="uid://ddrt0g2j6488t"]
 
 [ext_resource type="Texture2D" uid="uid://db48aj7x7wlgy" path="res://ART/Icons/Affinity/light_affinity_icon.png" id="1_pxb6g"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="2_yf4wn"]
+[ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="2_yf4wn"]
 
 [resource]
 script = ExtResource("2_yf4wn")

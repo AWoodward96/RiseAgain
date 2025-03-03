@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cmfxqfg6s24dv"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.gd" id="1_o7qx3"]
+[ext_resource type="Script" uid="uid://xk06yi1h6mnk" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.gd" id="1_o7qx3"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_1bnfi"]
 [ext_resource type="PackedScene" uid="uid://cj14t2nuhup7j" path="res://RESOURCES/UI/_alpha_FormationUI/items_ui.tscn" id="3_jma22"]
 

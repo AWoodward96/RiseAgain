@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://wsk41q52641b"]
 
 [ext_resource type="PackedScene" uid="uid://c67gru2ubp5ke" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.tscn" id="1_2u64n"]
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.gd" id="1_jtsas"]
+[ext_resource type="Script" uid="uid://cu0hrefgahdx8" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.gd" id="1_jtsas"]
 [ext_resource type="PackedScene" uid="uid://cs0nm4n8i48as" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_squad_entry.tscn" id="2_5swuv"]
 
 [node name="UnitSelection" type="CanvasLayer" node_paths=PackedStringArray("ReadyButton")]

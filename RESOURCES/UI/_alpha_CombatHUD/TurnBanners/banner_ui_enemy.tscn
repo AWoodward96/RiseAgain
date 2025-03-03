@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8waiobn8d83h"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_b4ymu"]
+[ext_resource type="Script" uid="uid://cwehsgb67jbya" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_b4ymu"]
 
 [sub_resource type="Gradient" id="Gradient_mn0bn"]
 colors = PackedColorArray(0.568627, 0.337255, 0.337255, 1, 0.639216, 0.54902, 0.529412, 1)
@@ -126,8 +126,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbaiq"]
 _data = {
-"RESET": SubResource("Animation_37trb"),
-"Run": SubResource("Animation_knfe8")
+&"RESET": SubResource("Animation_37trb"),
+&"Run": SubResource("Animation_knfe8")
 }
 
 [node name="TurnUI_Enemy" type="Control"]

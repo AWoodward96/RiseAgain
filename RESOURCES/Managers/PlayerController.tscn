@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cjghdlg16u8ih"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Managers/PlayerController/PlayerController.gd" id="1_f0rkc"]
-[ext_resource type="Shader" path="res://ART/Shaders/invert_alpha.gdshader" id="2_xtctr"]
+[ext_resource type="Script" uid="uid://cjdxt3e0nkwfc" path="res://SCRIPTS/Managers/PlayerController/PlayerController.gd" id="1_f0rkc"]
+[ext_resource type="Shader" uid="uid://d4lll4gfq3n2g" path="res://ART/Shaders/invert_alpha.gdshader" id="2_xtctr"]
 [ext_resource type="Texture2D" uid="uid://bef613hw3a3a0" path="res://ART/Grid/Reticle_Expanded.png" id="3_0dhjq"]
 [ext_resource type="Texture2D" uid="uid://b03fpbe8d66ao" path="res://ART/Grid/Tutorial_Reticle.png" id="4_do4m5"]
 [ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="4_g2hfv"]
@@ -42,8 +42,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfrvr"]
 _data = {
-"RESET": SubResource("Animation_i3eqo"),
-"idle": SubResource("Animation_umss5")
+&"RESET": SubResource("Animation_i3eqo"),
+&"idle": SubResource("Animation_umss5")
 }
 
 [sub_resource type="Animation" id="Animation_4ksrb"]
@@ -79,8 +79,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5os2c"]
 _data = {
-"RESET": SubResource("Animation_4ksrb"),
-"idle": SubResource("Animation_vyuu3")
+&"RESET": SubResource("Animation_4ksrb"),
+&"idle": SubResource("Animation_vyuu3")
 }
 
 [node name="PlayerController" type="Node2D" node_paths=PackedStringArray("camera", "reticle", "tutorialReticle")]

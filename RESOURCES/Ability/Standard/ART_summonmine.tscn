@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://bwie83u2l24t0"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_d3qc6"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_x4owp"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="3_6bboh"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_d3qc6"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_x4owp"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="3_6bboh"]
 [ext_resource type="PackedScene" uid="uid://c77gxravt3w7h" path="res://RESOURCES/GridEntities/proximity_mine.tscn" id="3_oobre"]
 [ext_resource type="Texture2D" uid="uid://dkqrtalgsk7nm" path="res://ART/Icons/Ability/Standard/summon_mine.png" id="5_oak7k"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnxer"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_y4vag"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_nkbae"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="9_sw3cw"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnxer"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_y4vag"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_nkbae"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="9_sw3cw"]
 
 [sub_resource type="Resource" id="Resource_gt8dd"]
 script = ExtResource("3_6bboh")

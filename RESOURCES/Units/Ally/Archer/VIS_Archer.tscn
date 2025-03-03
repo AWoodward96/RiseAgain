@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bdslgjv74suwb"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_o6eg6"]
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_o6eg6"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_hggkb"]
 [ext_resource type="AnimationLibrary" uid="uid://1mcui1br08sh" path="res://ART/Animations/Units/UnitAllyLibrary.res" id="3_jvcvd"]
 
@@ -33,7 +33,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4v8ft"]
 _data = {
-"RESET": SubResource("Animation_t25oj")
+&"RESET": SubResource("Animation_t25oj")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]

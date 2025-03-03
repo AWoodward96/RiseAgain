@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TargetingShape" load_steps=6 format=3 uid="uid://cq7aefc4mbdim"]
 
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_0lwnd"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_br3et"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_0lwnd"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_br3et"]
 
 [sub_resource type="Resource" id="Resource_jwp0x"]
 script = ExtResource("1_0lwnd")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://2vibhtsx8ugj"]
 
-[ext_resource type="Script" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_r1w7x"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_m6uno"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_kqs3m"]
+[ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_r1w7x"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_m6uno"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_kqs3m"]
 [ext_resource type="Texture2D" uid="uid://die3y8hbaiac5" path="res://ART/Environment/MaroonForest/trunk_0.png" id="4_mvgu2"]
 
 [sub_resource type="Resource" id="Resource_7ajsr"]

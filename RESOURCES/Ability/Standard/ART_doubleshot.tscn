@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://b5ge0dn8wtstb"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_5p40p"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_avuim"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_bjvjc"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/RepeatPerFocusStep.gd" id="3_eychb"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_ru3jp"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_fbic6"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5p40p"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_avuim"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_bjvjc"]
+[ext_resource type="Script" uid="uid://by4hlamajp5xt" path="res://SCRIPTS/Ability/RepeatPerFocusStep.gd" id="3_eychb"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_ru3jp"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_fbic6"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="6_e48nk"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_c6kxc"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_p4cl1"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_p4cl1"]
 
 [sub_resource type="Resource" id="Resource_0f0hj"]
 script = ExtResource("3_bjvjc")

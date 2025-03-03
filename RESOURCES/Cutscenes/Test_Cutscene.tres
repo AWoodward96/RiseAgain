@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=21 format=3 uid="uid://bm7oqtrrevt4i"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_v1wxr"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/DebugLogEvent.gd" id="2_b3ty7"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_u1be4"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="3_7oxe7"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BasicMovementKeystrokeListenerEvent.gd" id="3_fu4uk"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Requirements/ReticleAtCoordReq.gd" id="4_p66r0"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Requirements/UnitSelectedReq.gd" id="5_46pc7"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneRequirement.gd" id="6_s4lim"]
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_v1wxr"]
+[ext_resource type="Script" uid="uid://c257k143e3xng" path="res://SCRIPTS/Cutscene/Events/DebugLogEvent.gd" id="2_b3ty7"]
+[ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_u1be4"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="3_7oxe7"]
+[ext_resource type="Script" uid="uid://c4ks4smb80twb" path="res://SCRIPTS/Cutscene/Events/BasicMovementKeystrokeListenerEvent.gd" id="3_fu4uk"]
+[ext_resource type="Script" uid="uid://cyk5hm7tfo1v0" path="res://SCRIPTS/Cutscene/Requirements/ReticleAtCoordReq.gd" id="4_p66r0"]
+[ext_resource type="Script" uid="uid://w2i6c8wojnrw" path="res://SCRIPTS/Cutscene/Requirements/UnitSelectedReq.gd" id="5_46pc7"]
+[ext_resource type="Script" uid="uid://dpjk17wyac3d7" path="res://SCRIPTS/Cutscene/CutsceneRequirement.gd" id="6_s4lim"]
 [ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="6_x2p4t"]
-[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ForceTileSelectionEvent.gd" id="7_b6eij"]
+[ext_resource type="Script" uid="uid://drnfj0klsgqt3" path="res://SCRIPTS/Cutscene/Events/ForceTileSelectionEvent.gd" id="7_b6eij"]
 
 [sub_resource type="Resource" id="Resource_oh4qr"]
 resource_name = "Print Hey This Works!"
@@ -61,3 +61,4 @@ script = ExtResource("2_u1be4")
 startingRequirement = Array[ExtResource("3_7oxe7")]([SubResource("Resource_xk8xy")])
 events = Array[ExtResource("1_v1wxr")]([SubResource("Resource_oh4qr"), SubResource("Resource_4arkc"), SubResource("Resource_4yx8i"), SubResource("Resource_gqh1q"), SubResource("Resource_bhbd5"), SubResource("Resource_0cpdh"), SubResource("Resource_thqjs")])
 repeatable = true
+autoComplete = true

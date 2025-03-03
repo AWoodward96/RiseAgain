@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://clcpfyfw63n4t"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_18h31"]
+[ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_18h31"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_kr58k"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="3_ke3td"]
 

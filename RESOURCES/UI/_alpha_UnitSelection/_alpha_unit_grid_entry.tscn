@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c67gru2ubp5ke"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.gd" id="1_rolom"]
+[ext_resource type="Script" uid="uid://c6yc1rv2egpuc" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_grid_entry.gd" id="1_rolom"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_6llwj"]
 
 [node name="_alpha_UnitGridEntry" type="PanelContainer" node_paths=PackedStringArray("SelectedParent", "UnitIcon", "UnitName", "UnitDescriptionText")]

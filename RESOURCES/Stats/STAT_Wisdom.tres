@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://vlkqip7ksgab"]
 
 [ext_resource type="Texture2D" uid="uid://c0a865vypiaw4" path="res://ART/Icons/Stats/icon_wisdom.png" id="1_4584o"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_dppuc"]
+[ext_resource type="Script" uid="uid://d0mls8wl053cd" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_dppuc"]
 
 [resource]
 script = ExtResource("2_dppuc")

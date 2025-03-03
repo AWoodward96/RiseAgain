@@ -142,8 +142,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5d1jg"]
 _data = {
-"RESET": SubResource("Animation_floic"),
-"Run": SubResource("Animation_pkacr")
+&"RESET": SubResource("Animation_floic"),
+&"Run": SubResource("Animation_pkacr")
 }
 
 [node name="CritPopup" type="Node2D"]

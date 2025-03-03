@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xl37svyevc7s"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
+[ext_resource type="Script" uid="uid://bqe5sme8cxec8" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
 [ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
 
 [node name="SelectAnAbilityUI" type="CanvasLayer" node_paths=PackedStringArray("entryParent")]
