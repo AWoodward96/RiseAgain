@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=8 format=3 uid="uid://dlpsb7mx1m51b"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_rnm6s"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_ntku5"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_rfxen"]
+[ext_resource type="Script" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="3_vfe4g"]
+[ext_resource type="PackedScene" uid="uid://crf3nsxjbjrhb" path="res://RESOURCES/Maps/Tutorial/tutorial_a01_default.tscn" id="4_1w8i6"]
+
+[sub_resource type="Resource" id="Resource_kkxsi"]
+script = ExtResource("3_vfe4g")
+Priority = 1
+map = ExtResource("4_1w8i6")
+
+[sub_resource type="Resource" id="Resource_67q65"]
+script = ExtResource("1_rnm6s")
+priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_kkxsi")])
+generalMapOptions = Array[ExtResource("2_rfxen")]([])
+
+[resource]
+script = ExtResource("2_ntku5")
+mapOptions = Array[ExtResource("1_rnm6s")]([SubResource("Resource_67q65")])
+nextCampaignBlocks = Array[String]([])

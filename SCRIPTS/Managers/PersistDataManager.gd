@@ -1,5 +1,8 @@
 extends Node2D
 
+var BlockUniverseSave : bool = false
+var BlockCampaignSave : bool = false
+var BlockMapSave : bool = false
 
 static var IN_RUN_DIRECTORY = "user://_RUN/"
 static var GLOBAL_DIRECTORY = "user://_GLOBAL/"
@@ -175,10 +178,11 @@ func ClearCampaign():
 	DirAccess.remove_absolute(MAP_GRID_FILE)
 
 func SaveGame():
-	print("Saving the game")
 	# First save the universe file
 	if universeData != null:
-		universeData.Save()
+		if !BlockUniverseSave:
+			print("Saving universe")
+			universeData.Save()
 	else:
 		push_error("Universe Data is null when trying to save. Something went horribly wrong!")
 
@@ -187,14 +191,17 @@ func SaveGame():
 
 func SaveCampaign():
 	if GameManager.CurrentCampaign != null:
-		GameManager.CurrentCampaign.Save()
+		if !BlockCampaignSave:
+			print("Saving campaign")
+			GameManager.CurrentCampaign.Save()
 	else:
 		ClearCampaign()
 
 func SaveMap():
-	print("Map Saved")
 	if Map.Current != null:
-		Map.Current.Save()
+		if !BlockMapSave:
+			print("Map Saved")
+			Map.Current.Save()
 	pass
 
 

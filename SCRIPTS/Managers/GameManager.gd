@@ -6,15 +6,18 @@ static var CurrentCampaign : Campaign
 @export var UnitSettings : UnitSettingsTemplate
 @export var LocalizationSettings : LocSettings
 
-
+@export var TutorialCutscene : CutsceneTemplate
 @export var LoadingScreenPrefab : PackedScene
 
 var CurrentGameState : GameState
 var loadingScreen : LoadingScreen
 var csrUI : CSR
+var persistInitialized : bool
+var cutsceneInitialized : bool
 
 func _ready() -> void:
-	PersistDataManager.Initialized.connect(OnInitFinished)
+	PersistDataManager.Initialized.connect(PersistDataManagerFinished)
+	CutsceneManager.Initialized.connect(CutsceneManagerFinished)
 	pass
 
 func _process(_delta: float):
@@ -50,16 +53,29 @@ func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
 	loadingScreen.HideLoadingScreen(_fadeTime, lambda)
 	return loadingScreen
 
+func PersistDataManagerFinished():
+	persistInitialized = true
+	CheckInitFinished()
+
+func CutsceneManagerFinished():
+	cutsceneInitialized = true
+	CheckInitFinished()
+
+func CheckInitFinished():
+	if persistInitialized && cutsceneInitialized:
+		OnInitFinished()
+
+
 func OnInitFinished():
 	if RunningMainScene():
-
-		# Check if there is a campaign in the save data
-		var campaign = PersistDataManager.TryLoadCampaign() as Campaign
-		if campaign != null:
-			# we need to figure out what to do here
-			StartCampaign(campaign)
-		else:
-			ReturnToBastion()
+		if CutsceneManager.active_cutscene == null:
+			# Check if there is a campaign in the save data
+			var campaign = PersistDataManager.TryLoadCampaign() as Campaign
+			if campaign != null:
+				# we need to figure out what to do here
+				StartCampaign(campaign)
+			else:
+				ReturnToBastion()
 	pass
 
 func ReturnToBastion():

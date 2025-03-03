@@ -67,7 +67,9 @@ func Update(_delta):
 		return
 	elif !preTurnComplete:
 		# the preturn should be complete now, save the map
-		PersistDataManager.SaveMap()
+		if map.AutosaveEnabled:
+			PersistDataManager.SaveMap()
+
 		if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 			map.playercontroller.BlockMovementInput = false
 		preTurnComplete = true
@@ -121,7 +123,8 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	ActivateAll()
 	map.OnTurnStart.emit(_turn)
 	EnterTeamTurnUpdate()
-	PersistDataManager.SaveMap()
+	if map.AutosaveEnabled:
+		PersistDataManager.SaveMap()
 
 
 func UpdateCurrentTurnInfo():

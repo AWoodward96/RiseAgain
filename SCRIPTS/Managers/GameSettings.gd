@@ -12,6 +12,9 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var NumberOfRewardsInPostMap = 3
 @export var DefaultLossState : MapObjective
 
+@export_category("Map Data")
+@export var GridModulatePrefab : PackedScene
+
 @export_category("Bastion Data")
 @export var BastionPrefab : PackedScene
 

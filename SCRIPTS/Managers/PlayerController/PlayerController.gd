@@ -2,10 +2,12 @@ extends Node2D
 class_name PlayerController
 
 signal OnTileChanged(_tile)
+signal OnTileSelected(_tile)
 
 @export var viewportTilePadding = 2
 @export var camera : Camera2D
 @export var reticle : Node2D
+@export var tutorialReticle : Node2D
 
 @onready var movement_tracker : Line2D = %MovementTracker
 @onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
@@ -40,6 +42,8 @@ var formationUI
 var combatHUD : CombatHUD
 var inspectUI : UnitInspectUI
 
+var forcedTileSelection : Tile
+
 func Initialize(_map: Map):
 	currentMap = _map
 	currentGrid = _map.grid
@@ -52,11 +56,11 @@ func Initialize(_map: Map):
 	currentMap.OnUnitDied.connect(UnitDied)
 
 func _process(_delta):
-	if CSR.Open:
+	if CSR.Open || CutsceneManager.BlockAllInput:
 		return
 
 	if combatHUD != null:
-		combatHUD.ObjectivesParent.visible = ControllerState.ShowObjective()
+		combatHUD.ObjectivePanelUI.Disabled = !ControllerState.ShowObjective()
 
 	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
 	if ControllerState != null && inspectUI == null:
@@ -130,6 +134,20 @@ func UpdateCameraPosition():
 func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x
 
+func GetReticleQuadrant():
+	if reticle.global_position.x < desiredCameraPosition.x:
+		# On the left side
+		if reticle.global_position.y < desiredCameraPosition.y:
+			# top left!
+			return Control.PRESET_TOP_LEFT
+		else:
+			return Control.PRESET_BOTTOM_LEFT
+	else:
+		if reticle.global_position.y < desiredCameraPosition.y:
+			return Control.PRESET_TOP_RIGHT
+		else:
+			return Control.PRESET_BOTTOM_RIGHT
+
 func ForceReticlePosition(_gridPosition : Vector2i):
 	reticle.scale = Vector2(1, 1)
 	reticle.global_position = _gridPosition * tileSize
@@ -165,6 +183,10 @@ func EnterFormationState():
 func EnterCampsiteState():
 	var campsiteState = CampsiteControllerState.new()
 	ChangeControllerState(campsiteState, null)
+
+func EnterCutsceneState():
+	var cutsceneState = CutsceneControllerState.new()
+	ChangeControllerState(cutsceneState, null)
 
 func EnterSelectionState():
 	ChangeControllerState(SelectionControllerState.new(), null)
@@ -219,27 +241,32 @@ func UpdateGlobalContextUI():
 func UpdateContextUI():
 	combatHUD.ContextUI.Clear()
 
-	if selectedUnit.EquippedWeapon != null:
-		combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, true, OnAttack)
+	if !CutsceneManager.BlockWeaponContextMenuOption:
+		if selectedUnit.EquippedWeapon != null:
+			combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, true, OnAttack)
 
 	# First do the standard abilities
-	for ability in selectedUnit.Abilities:
-		if ability.type == Ability.AbilityType.Standard:
-			# Block if focus cost can't be met - or if the ability has a limited usage
-			var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
-			canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
-			combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+
+	if !CutsceneManager.BlockAbilityContextMenuOption:
+		for ability in selectedUnit.Abilities:
+			if ability.type == Ability.AbilityType.Standard:
+				# Block if focus cost can't be met - or if the ability has a limited usage
+				var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
+				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
 
 	# Then do tacticals
-	for ability in selectedUnit.Abilities:
-		if ability.type == Ability.AbilityType.Tactical:
-			# Block if focus cost can't be met - or if the ability has a limited usage
-			var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
-			canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
-			combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+	if !CutsceneManager.BlockTacticalContextMenuOption:
+		for ability in selectedUnit.Abilities:
+			if ability.type == Ability.AbilityType.Tactical:
+				# Block if focus cost can't be met - or if the ability has a limited usage
+				var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
+				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
 
 
-	combatHUD.ContextUI.AddButton("Wait", true, OnWait)
+	if !CutsceneManager.BlockWaitContextMenuOption:
+		combatHUD.ContextUI.AddButton("Wait", true, OnWait)
 	combatHUD.ContextUI.SelectFirst()
 
 func OnWait():
@@ -306,3 +333,11 @@ func OnAttack():
 
 func OnAbility(_ability : Ability):
 	EnterTargetingState(_ability)
+
+func ShowTutorialReticle(_pos : Vector2i):
+	tutorialReticle.visible = true
+	tutorialReticle.global_position = _pos * currentGrid.CellSize
+	pass
+
+func HideTutorialReticle():
+	tutorialReticle.visible = false

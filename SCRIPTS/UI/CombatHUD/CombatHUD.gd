@@ -14,30 +14,31 @@ signal BannerAnimComplete
 @export var DmgPreviewUI : DamagePreviewUI
 @export var NoTargets : Control
 @export var TerrainInspectUI : TerrainInspectPanel
+@export var ObjectivePanelUI : ObjectivePanel
+@export var TutorialPrompt : TutorialPromptPanel
 
-@export_category("Objectives")
-@export var ObjectivesParent : Control
-@export var ObjectiveText : Label
-@export var OptionalObjectiveParent : Control
-@export var OptionalObjectiveText : Label
 
 @export_category("Anchors")
 @onready var center_left_anchor = $CenterLeft
 @onready var top_left_anchor = $TopLeft
 @onready var top_right_anchor = $TopRight
-@export var bottom_left_anchor : Control
-@export var bottom_right_anchor : Control
-
+@export var AvailableUIAnchors : Array[Control.LayoutPreset]
+@export var BlankAnchor : AnchoredUIElement
+@export var PresetAnchoredUIElements : Array[AnchoredUIElement]
 
 var map : Map
 var ctrl : PlayerController
 var lastReticleSide = -1 	# -1 : The reticle is unknown and needs to be updated
 							#  0 : The reticle is on the right side, so the UI should be on the left
 							#  1 : The reticle is on the left side, so the UI should be on the right
+var currentAnchoredUIElements : Array[AnchoredUIElement]
 
 func _ready():
 	ContextUI.visible = false
 	NoTargets.visible = false
+	currentAnchoredUIElements.clear()
+	for preset in PresetAnchoredUIElements:
+		currentAnchoredUIElements.append(preset)
 
 func Initialize(_map : Map, _currentTile : Tile):
 	await self.ready
@@ -51,8 +52,16 @@ func Initialize(_map : Map, _currentTile : Tile):
 	ContextUI.OnAnyActionSelected.connect(OnAnyActionSelected)
 	ctrl.OnTileChanged.connect(OnTileChanged)
 
+	# This is bullshit - but wait two frames lmao
+	# The anchored UI elements need the player-controllers desired camera position --
+	# -- and that is waiting for the viewport to be initialized
+	# -- so basically wait two frames
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	# Do this now that we have a map ref
-	UpdateInspectUISide()
+	TerrainInspectUI.Update(ctrl.CurrentTile)
+	UpdateAnchoredUIElements()
 	UpdateObjectives()
 
 func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
@@ -87,7 +96,7 @@ func PlayLossBanner():
 	BannerAnimComplete.emit()
 
 func HideInspectUI():
-	InspectUI.visible = false
+	InspectUI.Disabled = true
 
 func ShowContext():
 	ContextUI.visible = true
@@ -111,37 +120,41 @@ func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : UnitUsable, _defend
 func ClearDamagePreviewUI():
 	DmgPreviewUI.visible = false
 
-func UpdateInspectUISide():
+func ShowTutorialPrompt(_text : String):
+	TutorialPrompt.Disabled = false
+	TutorialPrompt.PromptLabel.text = _text
+
+func HideTutorialPrompt():
+	TutorialPrompt.Disabled = true
+
+func UpdateAnchoredUIElements():
 	# update the InspectUI based on where the reticle is so that it's not in the way
-	var side = ctrl.IsReticleInLeftHalfOfViewport()
-	var newside = (side if 1 else 0) as int
-	if newside == 1:
-		InspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+	var side = ctrl.GetReticleQuadrant()
 
-		if InspectUI.visible:
-			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-		else:
-			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+	var availableQuadrants = AvailableUIAnchors.duplicate()
+	# put the blank anchor where the reticle currently is
+	var index = availableQuadrants.find(side)
+	if index != -1:
+		availableQuadrants.remove_at(index)
+	BlankAnchor.RefreshAnchor([side])
 
-	elif newside == 0:
-		InspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-		if InspectUI.visible:
-			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
-		else:
-			TerrainInspectUI.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+	# Also make sure the  blank anchor isn't in the current anchors
+	var remainingElements = currentAnchoredUIElements.duplicate()
+	var blankIndex = remainingElements.find(BlankAnchor)
+	if blankIndex != -1:
+		remainingElements.remove_at(blankIndex)
 
-	lastReticleSide = newside
+	# This sorts high priority items to the start of the list
+	remainingElements.sort_custom(func(a, b): return a.Priority > b.Priority)
+	for element in remainingElements:
+		var slot = element.RefreshAnchor(availableQuadrants)
+		if slot != null:
+			var slotIndex = availableQuadrants.find(slot)
+			availableQuadrants.remove_at(slotIndex)
+
 
 func UpdateObjectives():
-	ObjectiveText.text = map.WinCondition.UpdateLocalization(map)
-	if map.OptionalObjectives.size() > 0:
-		OptionalObjectiveParent.visible = true
-
-		# For now only do the first one
-		var firstOptional = map.OptionalObjectives[0]
-		OptionalObjectiveText.text = firstOptional.UpdateLocalization(map)
-	else:
-		OptionalObjectiveParent.visible = false
+	ObjectivePanelUI.RefreshObjective(map)
 	pass
 
 
@@ -149,8 +162,8 @@ func OnTileChanged(_tile : Tile):
 	if _tile.Occupant == null:
 		HideInspectUI()
 	else:
-		InspectUI.visible = true
+		InspectUI.Disabled = false
 
 	TerrainInspectUI.Update(_tile)
-	UpdateInspectUISide()
+	UpdateAnchoredUIElements()
 	pass

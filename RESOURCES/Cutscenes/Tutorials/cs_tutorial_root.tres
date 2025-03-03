@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=4 format=3 uid="uid://dwvjo3jy73m3o"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_y6up8"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_6pvlw"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="3_citbk"]
+
+[resource]
+script = ExtResource("2_6pvlw")
+startingRequirement = Array[ExtResource("3_citbk")]([])
+events = Array[ExtResource("1_y6up8")]([])
+repeatable = false

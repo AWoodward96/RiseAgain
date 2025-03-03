@@ -1,0 +1,266 @@
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=80 format=3 uid="uid://co8lbhq0yd011"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_y6up8"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_6pvlw"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ShowLoadingScreenEvent.gd" id="2_h1li6"]
+[ext_resource type="Script" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="3_citbk"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BlockSaveEvent.gd" id="3_xh0ul"]
+[ext_resource type="Resource" uid="uid://ddhgteb5cmmht" path="res://RESOURCES/Maps/Tutorial/tutorial_campaign.tres" id="4_3d2lw"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/DisableObjectiveUIEvent.gd" id="4_88s7x"]
+[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="5_g2ng1"]
+[ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="6_om1a3"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/StartCampaignEvent.gd" id="7_aouap"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ForceStartMapEvent.gd" id="8_kfeuc"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/HideAllUnitsEvent.gd" id="9_eyybg"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/WaitEvent.gd" id="10_1bwdr"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/PlayGridEntityAnimationEvent.gd" id="11_e1fau"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/HideReticleEvent.gd" id="12_qfp0g"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/FocusReticleEvent.gd" id="13_0yudq"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BlockAllInputEvent.gd" id="14_dlkmd"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ShowTutorialPromptEvent.gd" id="14_r4nrm"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/DisableInspectUIEvent.gd" id="14_ycj6g"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BlockControllerInputEvent.gd" id="15_nmrd7"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ShowTutorialReticle.gd" id="16_oe4h7"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BasicMovementKeystrokeListenerEvent.gd" id="16_vp83u"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Requirements/ReticleAtCoordReq.gd" id="18_th3fq"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneRequirement.gd" id="19_xydu4"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/GoToSelectionControllerStateEvent.gd" id="22_6hhgt"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ForceTileSelectionEvent.gd" id="22_wffug"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/ActiveUnitEvent.gd" id="24_w6pgj"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BlockCancelInputEvent.gd" id="25_t2ds7"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/BlockContextMenuOptionsEvent.gd" id="27_dgid7"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/WaitForTurnStartEvent.gd" id="28_wqh4d"]
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/Events/FocusCameraEvent.gd" id="29_upsxs"]
+
+[sub_resource type="Resource" id="Resource_ybgik"]
+script = ExtResource("2_h1li6")
+Show = true
+FadeTime = 0.0
+WaitForFade = false
+
+[sub_resource type="Resource" id="Resource_ru1es"]
+script = ExtResource("3_xh0ul")
+BlockUniverseSave = true
+BlockCampaignSave = true
+BlockMapSave = true
+
+[sub_resource type="Resource" id="Resource_fhwlb"]
+script = ExtResource("7_aouap")
+campaign = ExtResource("4_3d2lw")
+roster = Array[ExtResource("5_g2ng1")]([ExtResource("6_om1a3")])
+
+[sub_resource type="Resource" id="Resource_q4par"]
+script = ExtResource("8_kfeuc")
+GoToCutsceneState = true
+
+[sub_resource type="Resource" id="Resource_chr1k"]
+script = ExtResource("9_eyybg")
+Hide = true
+
+[sub_resource type="Resource" id="Resource_rmh4i"]
+script = ExtResource("10_1bwdr")
+WaitTime = 2.5
+
+[sub_resource type="Resource" id="Resource_oqc02"]
+resource_name = "Play Coffin Opening Anim"
+script = ExtResource("11_e1fau")
+Position = Vector2i(6, 11)
+AnimString = "open"
+
+[sub_resource type="Resource" id="Resource_bkftg"]
+script = ExtResource("10_1bwdr")
+WaitTime = 2.0
+
+[sub_resource type="Resource" id="Resource_v5i1q"]
+script = ExtResource("4_88s7x")
+Block = true
+
+[sub_resource type="Resource" id="Resource_3qg1k"]
+script = ExtResource("14_ycj6g")
+Block = true
+
+[sub_resource type="Resource" id="Resource_g2ji5"]
+script = ExtResource("9_eyybg")
+Hide = false
+
+[sub_resource type="Resource" id="Resource_cpe52"]
+script = ExtResource("10_1bwdr")
+WaitTime = 1.0
+
+[sub_resource type="Resource" id="Resource_e58pf"]
+script = ExtResource("14_dlkmd")
+Block = true
+
+[sub_resource type="Resource" id="Resource_o4p8a"]
+resource_name = "Start map in combat state fr"
+script = ExtResource("8_kfeuc")
+GoToCutsceneState = false
+
+[sub_resource type="Resource" id="Resource_ov4gy"]
+script = ExtResource("12_qfp0g")
+Hide = true
+
+[sub_resource type="Resource" id="Resource_lwjsd"]
+script = ExtResource("10_1bwdr")
+WaitTime = 2.0
+
+[sub_resource type="Resource" id="Resource_3hu4k"]
+script = ExtResource("13_0yudq")
+Position = Vector2i(11, 11)
+
+[sub_resource type="Resource" id="Resource_3ptow"]
+script = ExtResource("12_qfp0g")
+Hide = false
+
+[sub_resource type="Resource" id="Resource_ubprb"]
+script = ExtResource("10_1bwdr")
+WaitTime = 1.0
+
+[sub_resource type="Resource" id="Resource_iavln"]
+script = ExtResource("14_dlkmd")
+Block = false
+
+[sub_resource type="Resource" id="Resource_t2hli"]
+script = ExtResource("14_r4nrm")
+show = true
+loc_text = "tut_map0_prompt0"
+
+[sub_resource type="Resource" id="Resource_y0pl8"]
+script = ExtResource("15_nmrd7")
+Block = false
+
+[sub_resource type="Resource" id="Resource_x4pvm"]
+script = ExtResource("16_vp83u")
+
+[sub_resource type="Resource" id="Resource_ctr2d"]
+script = ExtResource("16_oe4h7")
+show = true
+position = Vector2i(8, 11)
+
+[sub_resource type="Resource" id="Resource_vctfq"]
+script = ExtResource("18_th3fq")
+Coord = Vector2i(8, 11)
+NOT = false
+
+[sub_resource type="Resource" id="Resource_p55yb"]
+script = ExtResource("19_xydu4")
+requirements = Array[ExtResource("3_citbk")]([SubResource("Resource_vctfq")])
+events = Array[ExtResource("1_y6up8")]([])
+
+[sub_resource type="Resource" id="Resource_icmhh"]
+script = ExtResource("16_oe4h7")
+show = false
+position = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Resource_8an8x"]
+script = ExtResource("22_6hhgt")
+
+[sub_resource type="Resource" id="Resource_qjsj2"]
+script = ExtResource("24_w6pgj")
+unitPosition = Vector2i(8, 11)
+
+[sub_resource type="Resource" id="Resource_xafv6"]
+resource_name = "block cancel on"
+script = ExtResource("25_t2ds7")
+Block = true
+
+[sub_resource type="Resource" id="Resource_ytlvg"]
+resource_name = "\"Press space to select the unit\""
+script = ExtResource("14_r4nrm")
+show = true
+loc_text = "tut_map0_prompt1"
+
+[sub_resource type="Resource" id="Resource_avutb"]
+resource_name = "block input on"
+script = ExtResource("15_nmrd7")
+Block = true
+
+[sub_resource type="Resource" id="Resource_1frbv"]
+script = ExtResource("16_oe4h7")
+show = true
+position = Vector2i(8, 11)
+
+[sub_resource type="Resource" id="Resource_dibti"]
+script = ExtResource("22_wffug")
+tileLocation = Vector2i(8, 11)
+
+[sub_resource type="Resource" id="Resource_ajlum"]
+resource_name = "block input off"
+script = ExtResource("15_nmrd7")
+Block = false
+
+[sub_resource type="Resource" id="Resource_dhdxn"]
+resource_name = "Move the Reticle to the highlighted Tile"
+script = ExtResource("14_r4nrm")
+show = true
+loc_text = "tut_map0_prompt2"
+
+[sub_resource type="Resource" id="Resource_3qn6j"]
+script = ExtResource("16_oe4h7")
+show = true
+position = Vector2i(10, 11)
+
+[sub_resource type="Resource" id="Resource_n0vr4"]
+script = ExtResource("18_th3fq")
+Coord = Vector2i(10, 11)
+NOT = false
+
+[sub_resource type="Resource" id="Resource_tqfl8"]
+script = ExtResource("19_xydu4")
+requirements = Array[ExtResource("3_citbk")]([SubResource("Resource_n0vr4")])
+events = Array[ExtResource("1_y6up8")]([])
+
+[sub_resource type="Resource" id="Resource_ieqoj"]
+resource_name = "Press [Space] again to confirm movement"
+script = ExtResource("14_r4nrm")
+show = true
+loc_text = "tut_map0_prompt3"
+
+[sub_resource type="Resource" id="Resource_0pmxl"]
+script = ExtResource("22_wffug")
+tileLocation = Vector2i(10, 11)
+
+[sub_resource type="Resource" id="Resource_bqk5m"]
+script = ExtResource("27_dgid7")
+BlockWeapons = true
+BlockAbilities = true
+BlockTacticals = true
+BlockWait = false
+
+[sub_resource type="Resource" id="Resource_al805"]
+resource_name = "Select the Wait option with [Space] to end your Turn"
+script = ExtResource("14_r4nrm")
+show = true
+loc_text = "tut_map0_prompt4"
+
+[sub_resource type="Resource" id="Resource_51vbe"]
+script = ExtResource("28_wqh4d")
+TeamID = 1
+
+[sub_resource type="Resource" id="Resource_gjlme"]
+script = ExtResource("16_oe4h7")
+show = false
+position = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Resource_586i5"]
+script = ExtResource("29_upsxs")
+Position = Vector2i(16, 12)
+Instantaneous = false
+BuiltInWaitTime = 2.0
+
+[sub_resource type="Resource" id="Resource_64tl8"]
+script = ExtResource("29_upsxs")
+Position = Vector2i(10, 11)
+Instantaneous = false
+BuiltInWaitTime = 0.0
+
+[sub_resource type="Resource" id="Resource_x41k5"]
+script = ExtResource("12_qfp0g")
+Hide = false
+
+[resource]
+script = ExtResource("2_6pvlw")
+startingRequirement = Array[ExtResource("3_citbk")]([])
+events = Array[ExtResource("1_y6up8")]([SubResource("Resource_ybgik"), SubResource("Resource_ru1es"), SubResource("Resource_fhwlb"), SubResource("Resource_q4par"), SubResource("Resource_chr1k"), SubResource("Resource_rmh4i"), SubResource("Resource_oqc02"), SubResource("Resource_bkftg"), SubResource("Resource_v5i1q"), SubResource("Resource_3qg1k"), SubResource("Resource_g2ji5"), SubResource("Resource_cpe52"), SubResource("Resource_e58pf"), SubResource("Resource_o4p8a"), SubResource("Resource_ov4gy"), SubResource("Resource_lwjsd"), SubResource("Resource_3hu4k"), SubResource("Resource_3ptow"), SubResource("Resource_ubprb"), SubResource("Resource_iavln"), SubResource("Resource_t2hli"), SubResource("Resource_y0pl8"), SubResource("Resource_x4pvm"), SubResource("Resource_ctr2d"), SubResource("Resource_p55yb"), SubResource("Resource_icmhh"), SubResource("Resource_8an8x"), SubResource("Resource_qjsj2"), SubResource("Resource_xafv6"), SubResource("Resource_ytlvg"), SubResource("Resource_avutb"), SubResource("Resource_1frbv"), SubResource("Resource_dibti"), SubResource("Resource_ajlum"), SubResource("Resource_dhdxn"), SubResource("Resource_3qn6j"), SubResource("Resource_tqfl8"), SubResource("Resource_ieqoj"), SubResource("Resource_0pmxl"), SubResource("Resource_bqk5m"), SubResource("Resource_al805"), SubResource("Resource_51vbe"), SubResource("Resource_gjlme"), SubResource("Resource_586i5"), SubResource("Resource_64tl8"), SubResource("Resource_x41k5")])
+repeatable = false
+autoComplete = true

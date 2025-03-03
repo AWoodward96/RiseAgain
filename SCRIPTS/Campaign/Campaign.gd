@@ -25,6 +25,7 @@ var Convoy : Array[Item]
 
 var resumingCampaign : bool = false
 var currentLevelDifficulty : int
+var alphaTeamSelection
 
 func InitializeNewCampaign(_template : CampaignTemplate, _startingRoster : Array[UnitTemplate]):
 	StartingRosterTemplates = _startingRoster

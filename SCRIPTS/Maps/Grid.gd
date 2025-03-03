@@ -8,6 +8,7 @@ const ATTACKTILE = Vector2i(2,0)
 const BUFFTILE = Vector2i(3,0)
 const RANGETILE = Vector2i(1,0)
 const MOVETILE = Vector2i(0,0)
+const BASEBLACKTILE = Vector2i(3, 1)
 const THREATTILE_1 = Vector2i(0,1)
 const THREATTILE_2 = Vector2i(1,1)
 const THREATTILE_3 = Vector2i(2,1)
@@ -24,6 +25,7 @@ var CellSize : int
 var ShowingThreat : bool
 
 var StartingPositions : Array[Vector2i]
+var CanvasModLayer : TileMapLayer
 
 
 func Init(_width : int, _height : int, _map : Map, _cell_size : int):
@@ -31,6 +33,10 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 	Height = _height
 	CellSize = _cell_size
 	map = _map
+
+
+	var canvasMod = GameManager.GameSettings.GridModulatePrefab.instantiate() as TileMapLayer
+	map.add_child(canvasMod)
 
 	# no 2d arrays, cowabunga it is
 	GridArr.resize(Width*Height)
@@ -61,7 +67,8 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 
 
 			GridArr[index].InitMetaData()
-
+			# The canvas mod has a shader that replaces any tile on it with a grid overlay - np
+			canvasMod.set_cell(Vector2i(x,y), UITILEATLAS, BASEBLACKTILE)
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	for x in Width:
@@ -683,10 +690,16 @@ static func FromJSON(_dict, _map : Map):
 	newGrid.Height = _dict["Height"]
 	newGrid.CellSize = _dict["CellSize"]
 
+	var canvasMod = GameManager.GameSettings.GridModulatePrefab.instantiate() as TileMapLayer
+	_map.add_child(canvasMod)
+
 	var gridArrData = PersistDataManager.JSONToArray(_dict["GridArr"], Callable.create(Tile, "FromJSON"))
 	newGrid.GridArr.assign(gridArrData)
 	for t in newGrid.GridArr:
 		if t.TerrainDestroyed:
 			newGrid.DestroyTerrain(t)
+
+		canvasMod.set_cell(t.Position, UITILEATLAS, BASEBLACKTILE)
+
 
 	return newGrid

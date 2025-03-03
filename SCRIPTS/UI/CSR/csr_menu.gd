@@ -87,13 +87,17 @@ static func ShowMenu():
 func TestSaveGame() -> void:
 	PersistDataManager.SaveGame()
 
-
 func btnAutoLose() -> void:
 	AutoLose = !AutoLose
 
-
 func ClearCampaignData() -> void:
 	PersistDataManager.ClearCampaign()
+	pass # Replace with function body.
+
+
+func ClearCutsceneData() -> void:
+	PersistDataManager.universeData.completedCutscenes.clear()
+	PersistDataManager.universeData.Save()
 	pass # Replace with function body.
 
 

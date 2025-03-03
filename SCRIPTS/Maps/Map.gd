@@ -23,6 +23,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var GridSize = Vector2i(22 , 15)
 @export var CameraStart : Vector2
 @export var TileSize = 64
+@export var AutosaveEnabled : bool = true
 
 @export_category("Layers")
 @export var tilemap_bg : TileMapLayer
@@ -36,6 +37,8 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var WinCondition : MapObjective
 @export var OptionalObjectives : Array[ObjectiveReward]
 
+@export_category("Map Cutscenes")
+@export var PreMapCutscene : CutsceneTemplate
 
 @export_category("Parents")
 @export var squadParent : Node2D
@@ -59,6 +62,8 @@ var turnCount : int
 var startingPositions : Array[Vector2i]
 var spawners : Array[SpawnerBase]
 var gridEntities : Array[GridEntityBase]
+
+var standaloneUnitSelectionUI
 
 
 func _ready():
@@ -88,6 +93,9 @@ func PreInitialize():
 	if tilemap_UI != null: tilemap_UI.z_index = UILAYER
 	if tilemap_threat != null: tilemap_threat.z_index = THREATLAYER
 
+	if PreMapCutscene != null:
+		CutsceneManager.QueueCutscene(PreMapCutscene)
+
 func _process(_delta):
 	if MapState != null:
 		MapState.Update(_delta)
@@ -109,6 +117,7 @@ func _process(_delta):
 
 func InitializeFromCampaign(_campaign : Campaign, _roster : Array[UnitInstance], _rngSeed : int):
 	mapRNG = DeterministicRNG.Construct(_rngSeed)
+	Current = self
 	CurrentCampaign = _campaign
 
 	InitializeGrid()
@@ -125,10 +134,10 @@ func InitializeFromCampaign(_campaign : Campaign, _roster : Array[UnitInstance],
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
 
-	Current = self
 
 func ResumeFromCampaign(_campaign : Campaign):
 	CurrentCampaign = _campaign
+	Current = self
 	InitializePlayerController()
 	match mapType:
 		MAPTYPE.Standard:
@@ -148,7 +157,6 @@ func ResumeFromCampaign(_campaign : Campaign):
 	for startingP in StartingPositionsParent.get_children():
 		startingP.hide()
 
-	Current = self
 
 func GlobalStackClear():
 	var stackFree = true
@@ -164,18 +172,19 @@ func GlobalStackClear():
 
 func InitializeStandalone():
 	# the campaign should initialize this
+	Current = self
 	mapRNG = DeterministicRNG.Construct()
 
 	# make the grid first so that we know where the starting positions are
 	InitializeGrid()
 
-	var ui = UIManager.AlphaUnitSelection.instantiate()
-	ui.Initialize(startingPositions.size())
-	ui.OnRosterSelected.connect(OnRosterTemplatesSelected)
-	add_child(ui)
+	standaloneUnitSelectionUI = UIManager.AlphaUnitSelection.instantiate()
+	standaloneUnitSelectionUI.Initialize(startingPositions.size())
+	standaloneUnitSelectionUI.OnRosterSelected.connect(OnRosterTemplatesSelected)
+	add_child(standaloneUnitSelectionUI)
 
 	#waits until that UI is closed, when the squad is all selected
-	await ui.OnRosterSelected
+	await standaloneUnitSelectionUI.OnRosterSelected
 
 	InitializePlayerController()
 
@@ -185,7 +194,6 @@ func InitializeStandalone():
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
 
-	Current = self
 
 # only used by the roster selection ui. In normal campaign initialization, the UnitInstances should already be created
 func OnRosterTemplatesSelected(_roster : Array[UnitTemplate]):

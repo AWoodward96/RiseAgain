@@ -1,4 +1,4 @@
-extends Control
+extends AnchoredUIElement
 class_name TerrainInspectPanel
 
 
@@ -49,8 +49,8 @@ func Update(_tile : Tile):
 	tile_is_killbox_parent.visible = _tile.ActiveKillbox
 	UpdateFireData(_tile)
 	UpdateGridEntities(_tile)
-	visible = shouldShow
-	return visible
+	Disabled = !shouldShow
+	return !Disabled
 
 func UpdateFireData(_tile : Tile):
 	fire_data_parent.visible = _tile.FireLevel > 0

@@ -1,6 +1,7 @@
 extends MapStateBase
 class_name PreMapState
 
+var formationUI
 
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map,_ctrl)
@@ -11,7 +12,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 	#set the controllers position
 	controller.ForceReticlePosition(map.startingPositions[0])
-	controller.ForceCameraPosition(map.CameraStart)
+	controller.ForceCameraPosition(map.CameraStart, true)
 	controller.ClearSelectionData()
 
 	# spawn all Units
@@ -23,14 +24,18 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 		spawner.hide()
 
-	var formationUI = controller.EnterFormationState()
+	formationUI = controller.EnterFormationState()
 	await formationUI.FormationSelected
+	map.ChangeMapState(CombatState.new())
+	pass
+
+
+func Exit():
+	if formationUI != null:
+		formationUI.queue_free()
 
 	for startingP in map.StartingPositionsParent.get_children():
 		startingP.hide()
-
-	map.ChangeMapState(CombatState.new())
-	pass
 
 func ToJSON():
 	return "PreMapState"

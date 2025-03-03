@@ -77,6 +77,10 @@ text = "Deal 1 Damage to Target"
 layout_mode = 2
 text = "Clear Campaign Data"
 
+[node name="ClearCutsceneData" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Clear Cutscene Data"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
@@ -89,3 +93,4 @@ text = "Clear Campaign Data"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ShowAbility" to="." method="TestAbilitySelectionScreen"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/DamageEveryone" to="." method="DealDamageToTarget"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCampaignData" to="." method="ClearCampaignData"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCutsceneData" to="." method="ClearCutsceneData"]

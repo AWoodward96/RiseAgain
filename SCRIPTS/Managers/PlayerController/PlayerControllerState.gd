@@ -8,11 +8,6 @@ var movementThisFrame : Vector2 = Vector2.ZERO
 
 var lastMoveTimer = 0
 
-var selectedUnit : UnitInstance :
-	get:
-		return ctrl.selectedUnit
-	set(_value):
-		ctrl.selectedUnit = _value
 
 func _Enter(_playerController : PlayerController, _data):
 	ctrl = _playerController

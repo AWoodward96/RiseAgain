@@ -220,3 +220,16 @@ ui_survive,Survive Turns: {CUR}/{MAX}
 art_flamewall_name,Flame Wall
 art_flamewall_desc,"Ignites the ground in a line, dealing fire damage to all Units in the fire at the start of their turn."
 ui_nodamage,No Damage
+ce_pushforward_name,Push Forward
+ce_pushforward_desc,Grants +3 Move and +3 Attack
+tile_cavewall_name,Cave
+tile_rocks_name,Rocks
+tut_map0_prompt0,Use WASD Keys to move the Reticle
+tut_map0_prompt1,Use [Space] to Select the Unit
+tut_map0_prompt2,Move the Reticle to the highlighted Tile
+tut_map0_prompt3,Press [Space] again to confirm movement
+tut_map0_prompt4,Select the Wait option with [Space] to end your Turn
+tut_map0_prompt5,Select the Unit again with [Space]
+tut_map0_prompt6,Move the Reticle to the highlighted Tile and press [Space] to confirm movement
+tut_map0_prompt7,Select [Mana Bolt] with [Space]
+tut_map0_prompt8,Press [Space] once again to confirm your Attack

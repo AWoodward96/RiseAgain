@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://hosrqyrxnwxc"]
+
+[ext_resource type="Shader" path="res://RESOURCES/Managers/GridOverlay.gdshader" id="1_ita1k"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="2_mu434"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3urn0"]
+shader = ExtResource("1_ita1k")
+shader_parameter/grid_cell_size = 64
+shader_parameter/thickness = 2
+shader_parameter/grid_color = Color(0.06, 0.0414, 0.0414, 0.509804)
+
+[node name="CanvasModulate" type="TileMapLayer"]
+physics_interpolation_mode = 2
+z_index = -4
+material = SubResource("ShaderMaterial_3urn0")
+tile_set = ExtResource("2_mu434")
+collision_enabled = false

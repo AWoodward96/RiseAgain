@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bywdpur6phgne"]
+
+[ext_resource type="Script" path="res://SCRIPTS/Cutscene/CutsceneManager.gd" id="1_qadun"]
+[ext_resource type="Resource" uid="uid://co8lbhq0yd011" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_map_0.tres" id="2_5wngj"]
+
+[node name="CutsceneManager" type="Node2D"]
+script = ExtResource("1_qadun")
+FTUE = ExtResource("2_5wngj")

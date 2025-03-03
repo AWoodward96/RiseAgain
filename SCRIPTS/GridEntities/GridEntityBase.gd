@@ -4,6 +4,7 @@ class_name GridEntityBase
 @export var UpdatePerTeamTurn : bool
 @export var UpdatePerUnitTurn : bool
 @export var PreviewSprite : Texture2D
+@export var Animator : AnimationPlayer
 
 @export_category("Localization")
 @export var localization_icon : Texture2D
@@ -40,6 +41,13 @@ func UpdateGridEntity_UnitTurn(_delta : float):
 # Returns true if a units' movement should be interrupted
 func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	return false
+
+func PlayAnimation(_animString : String):
+	if Animator == null:
+		return
+
+	if Animator.has_animation(_animString):
+		Animator.play(_animString)
 
 func Exit():
 	pass

@@ -7,6 +7,8 @@ var resourceData : Array[ResourcePersistence]
 var bastionData : BastionPersistData
 var unitPersistData : Array[UnitPersistBase]
 
+var completedCutscenes : Array[CutsceneTemplate]
+
 var resourcePersistParent : Node2D
 var unitPersistParent : Node2D
 
@@ -38,6 +40,12 @@ func ToJSON():
 		"resourceData" = PersistDataManager.ArrayToJSON(resourceData),
 		"bastionData" = bastionData.ToJSON()
 	}
+
+	var ar : Array[String] = []
+	for c in completedCutscenes:
+		ar.append(c.resource_path)
+
+	saveData["completedCutscenes"] = ar
 	return saveData
 
 func FromJSON(_dict : Dictionary):
@@ -55,6 +63,13 @@ func FromJSON(_dict : Dictionary):
 		bastionData.FromJSON(_dict["bastionData"])
 		bastionData.name = "BastionPersistData"
 		add_child(bastionData)
+
+	if _dict.has("completedCutscenes"):
+		for res in _dict["completedCutscenes"]:
+			var loadedCutscene = load(res) as CutsceneTemplate
+			if loadedCutscene != null:
+				completedCutscenes.append(loadedCutscene)
+
 	pass
 
 func LoadUnitPersistence():

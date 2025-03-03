@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=53 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bx0ahfyy2rnc3" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_victory.tscn" id="5_k07rk"]
 [ext_resource type="PackedScene" uid="uid://c4bdhbe8or16j" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_loss.tscn" id="6_7myj1"]
 [ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/DamagePreviewUI.gd" id="6_rywjh"]
+[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_CombatHUD/ObjectivePanel.gd" id="7_cwusy"]
 [ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Ability/Equippable/generic_melee.png" id="7_o5pds"]
 [ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="8_r73m2"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_rdfo2"]
@@ -36,9 +37,8 @@
 [ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="25_gcwxk"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="25_lfimk"]
 [ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="27_gwkwg"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_j302s"]
-font = ExtResource("8_rdfo2")
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnchoredUIElement.gd" id="29_g8xya"]
+[ext_resource type="Script" path="res://SCRIPTS/UI/General/TutorialPromptPanel.gd" id="31_1fiyo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1gep"]
 font = ExtResource("8_rdfo2")
@@ -61,6 +61,18 @@ bg_color = Color(1, 0.872869, 0.485299, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_qnurt"]
 font = ExtResource("8_rdfo2")
 
+[sub_resource type="LabelSettings" id="LabelSettings_j302s"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="Gradient" id="Gradient_ehkmj"]
+colors = PackedColorArray(0.1692, 0.2444, 0.47, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cd1a5"]
+gradient = SubResource("Gradient_ehkmj")
+width = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_c51qu"]
 font = ExtResource("8_rdfo2")
 
@@ -69,7 +81,7 @@ font = ExtResource("8_rdfo2")
 [sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
 font = ExtResource("8_rdfo2")
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivesParent", "ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "BlankAnchor", "PresetAnchoredUIElements")]
 script = ExtResource("1_dux2t")
 AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
@@ -82,84 +94,11 @@ ContextUI = NodePath("ContextMenu")
 DmgPreviewUI = NodePath("TopLeft/DamagePreviewUI")
 NoTargets = NodePath("TopCenter/NoTargets")
 TerrainInspectUI = NodePath("Full_NoMargin/TerrainInspectPanel")
-ObjectivesParent = NodePath("Objective")
-ObjectiveText = NodePath("Objective/VBoxContainer/Objective/Content/MainObjectiveLabel")
-OptionalObjectiveParent = NodePath("Objective/VBoxContainer/OptionalObjective")
-OptionalObjectiveText = NodePath("Objective/VBoxContainer/OptionalObjective/Content/OptionalObjectiveLabel")
-bottom_left_anchor = NodePath("BottomLeft")
-bottom_right_anchor = NodePath("BottomRight")
-
-[node name="Objective" type="MarginContainer" parent="."]
-offset_right = 283.0
-offset_bottom = 84.0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Objective"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 0
-
-[node name="Objective" type="MarginContainer" parent="Objective/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="Objective/VBoxContainer/Objective"]
-layout_mode = 2
-color = Color(0.31, 0.31, 0.31, 1)
-
-[node name="Content" type="MarginContainer" parent="Objective/VBoxContainer/Objective"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="MainObjectiveLabel" type="Label" parent="Objective/VBoxContainer/Objective/Content"]
-layout_mode = 2
-text = "Route: X Remaining"
-label_settings = SubResource("LabelSettings_j302s")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Objective/VBoxContainer/Objective"]
-layout_mode = 2
-texture = ExtResource("24_6ybxf")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="OptionalObjective" type="MarginContainer" parent="Objective/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="Objective/VBoxContainer/OptionalObjective"]
-layout_mode = 2
-color = Color(0.23, 0.23, 0.23, 1)
-
-[node name="Content" type="MarginContainer" parent="Objective/VBoxContainer/OptionalObjective"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="OptionalObjectiveLabel" type="Label" parent="Objective/VBoxContainer/OptionalObjective/Content"]
-layout_mode = 2
-text = "Opt: Any Neutral Unit left Alive"
-label_settings = SubResource("LabelSettings_j302s")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Objective/VBoxContainer/OptionalObjective"]
-layout_mode = 2
-texture = ExtResource("23_vm2kk")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="OffsetMargin" type="MarginContainer" parent="Objective"]
-layout_mode = 2
+ObjectivePanelUI = NodePath("Full_NoMargin/Objective")
+TutorialPrompt = NodePath("Full_NoMargin/TutorialPrompt")
+AvailableUIAnchors = Array[int]([0, 1, 2, 3])
+BlankAnchor = NodePath("Full_NoMargin/PanelBlocker")
+PresetAnchoredUIElements = [NodePath("Full_NoMargin/TerrainInspectPanel"), NodePath("Full_NoMargin/InspectUnitPanel"), NodePath("Full_NoMargin/PanelBlocker"), NodePath("Full_NoMargin/Objective"), NodePath("Full_NoMargin/TutorialPrompt")]
 
 [node name="Full_NoMargin" type="Control" parent="."]
 layout_mode = 3
@@ -197,6 +136,8 @@ grid_entity_prefab = ExtResource("15_2krlt")
 fire_level_loc = "ui_xNUM"
 fire_damage_loc = "ui_firedamage_amt"
 no_name_loc = "ui_notiledata_name"
+PreferredAnchor = Array[int]([2, 3])
+AvailableAnchors = Array[int]([2, 3, 0, 1])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel"]
 layout_mode = 2
@@ -339,6 +280,9 @@ dmgLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Atk/AttackN
 defLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Def/DefNum")
 spDefLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Def2/SpDefNum")
 moveLabel = NodePath("OffsetMargin/Content/Main/ImportantStats/Glance/Move/MoveNum")
+Priority = 2
+PreferredAnchor = Array[int]([2, 3])
+AvailableAnchors = Array[int]([2, 3, 0, 1])
 
 [node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel"]
 layout_mode = 2
@@ -683,6 +627,156 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
+
+[node name="PanelBlocker" type="Control" parent="Full_NoMargin"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("29_g8xya")
+Priority = 100
+AvailableAnchors = Array[int]([0, 1, 2, 3])
+
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText")]
+visible = false
+layout_mode = 0
+offset_right = 283.0
+offset_bottom = 84.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("7_cwusy")
+ObjectiveText = NodePath("VBoxContainer/Objective/Content/MainObjectiveLabel")
+OptionalObjectiveParent = NodePath("VBoxContainer/OptionalObjective")
+OptionalObjectiveText = NodePath("VBoxContainer/OptionalObjective/Content/OptionalObjectiveLabel")
+PreferredAnchor = Array[int]([0, 1])
+AvailableAnchors = Array[int]([0, 1])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/Objective"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective"]
+layout_mode = 2
+color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/Objective"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="MainObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/Objective/Content"]
+layout_mode = 2
+text = "Route: X Remaining"
+label_settings = SubResource("LabelSettings_j302s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective"]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OptionalObjective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective"]
+layout_mode = 2
+color = Color(0.23, 0.23, 0.23, 1)
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="OptionalObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective/Content"]
+layout_mode = 2
+text = "Opt: Any Neutral Unit left Alive"
+label_settings = SubResource("LabelSettings_j302s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective"]
+layout_mode = 2
+texture = ExtResource("23_vm2kk")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/Objective"]
+layout_mode = 2
+
+[node name="TutorialPrompt" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("PromptLabel")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -283.0
+offset_top = -84.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("31_1fiyo")
+PromptLabel = NodePath("VBoxContainer/Objective/Content/Prompt")
+Priority = 10
+PreferredAnchor = Array[int]([3])
+AvailableAnchors = Array[int]([3])
+Disabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TutorialPrompt"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_top = 0
+
+[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_cd1a5")
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 16
+
+[node name="Prompt" type="Label" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective/Content"]
+layout_mode = 2
+text = "Use WASD to move the Reticle."
+label_settings = SubResource("LabelSettings_j302s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective"]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt"]
+layout_mode = 2
 
 [node name="TopLeft" type="Control" parent="."]
 layout_mode = 3

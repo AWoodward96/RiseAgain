@@ -1,5 +1,6 @@
-extends Control
+extends AnchoredUIElement
 class_name InspectPanel
+
 
 @export var icon : TextureRect
 @export var unitHealthBar : UnitHealthBar
@@ -103,7 +104,7 @@ func UpdateStatsUI():
 func _process(_delta):
 	if ctrl != null:
 		if ctrl.ControllerState.ShowInspectUI():
-			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null:
+			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null && !Disabled && !GlobalDisable:
 				visible = true
 				Update(ctrl.CurrentTile.Occupant)
 			else:

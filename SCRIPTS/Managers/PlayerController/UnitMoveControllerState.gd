@@ -8,12 +8,12 @@ var movementSelected : bool
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 
-	walkedPath = currentGrid.GetTilePath(selectedUnit, selectedUnit.CurrentTile, ctrl.CurrentTile)
+	walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 	prevTile = ctrl.CurrentTile
 	StartMovementTracker()
-	currentGrid.ShowUnitActions(selectedUnit)
+	currentGrid.ShowUnitActions(ctrl.selectedUnit)
 	UpdateTracker()
-	selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
+	ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 
 func _Execute(_delta):
 	if UpdateInput(_delta):
@@ -23,42 +23,50 @@ func _Execute(_delta):
 
 	if InputManager.selectDown:
 		var tile = currentGrid.GetTile(ctrl.ConvertGlobalPositionToGridPosition())
-		if selectedUnit != null && selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == selectedUnit):
-			selectedUnit.PendingMove = walkedPath.size() > 1	# the path starts with the units current tile - so check above 1
-			selectedUnit.MoveCharacterToNode(walkedPath, tile)
+
+		if ctrl.forcedTileSelection != null && tile != ctrl.forcedTileSelection:
+			return
+
+		if ctrl.selectedUnit != null && ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == ctrl.selectedUnit):
+			ctrl.selectedUnit.PendingMove = walkedPath.size() > 1	# the path starts with the units current tile - so check above 1
+			ctrl.selectedUnit.MoveCharacterToNode(walkedPath, tile)
 			EndMovementTracker()
 			movementSelected = true
 			ctrl.BlockMovementInput = true
+			ctrl.OnTileSelected.emit(tile)
 
 
 	if InputManager.cancelDown:
+		if CutsceneManager.BlockCancelInput:
+			return
+
 		if movementSelected:
 			movementSelected = false
 			ctrl.BlockMovementInput = false
-			selectedUnit.PendingMove = false
+			ctrl.selectedUnit.PendingMove = false
 
-			selectedUnit.StopCharacterMovement()
-			currentGrid.SetUnitGridPosition(selectedUnit, selectedUnit.TurnStartTile.Position, true)
+			ctrl.selectedUnit.StopCharacterMovement()
+			currentGrid.SetUnitGridPosition(ctrl.selectedUnit, ctrl.selectedUnit.TurnStartTile.Position, true)
 
 			StartMovementTracker()
-			currentGrid.ShowUnitActions(selectedUnit)
+			currentGrid.ShowUnitActions(ctrl.selectedUnit)
 			UpdateTracker()
-			selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 		else:
 			EndMovementTracker()
 			currentGrid.ClearActions()
-			ctrl.ForceReticlePosition(selectedUnit.GridPosition)
-			selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
-			selectedUnit = null
+			ctrl.ForceReticlePosition(ctrl.selectedUnit.GridPosition)
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+			ctrl.selectedUnit = null
 			ctrl.ChangeControllerState(SelectionControllerState.new(), null)
 			walkedPath.clear()
 
 func UpdateTracker():
 	if currentMap != null && ctrl.movement_tracker.visible && ctrl.CurrentTile != null:
 		if ctrl.CurrentTile.CanMove:
-			var unitMovement = selectedUnit.GetUnitMovement()
+			var unitMovement = ctrl.selectedUnit.GetUnitMovement()
 			if walkedPath.size() - 1 == unitMovement:
-				walkedPath = currentGrid.GetTilePath(selectedUnit, selectedUnit.CurrentTile, ctrl.CurrentTile)
+				walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 			else:
 				if walkedPath.size() > 1 && walkedPath[walkedPath.size() - 2] == ctrl.CurrentTile:
 					walkedPath.remove_at(walkedPath.size() - 1)
@@ -66,7 +74,7 @@ func UpdateTracker():
 					if movementThisFrame.length() <= 1 && prevTile.CanMove && !walkedPath.has(ctrl.CurrentTile):
 						walkedPath.append(ctrl.CurrentTile)
 					else:
-						walkedPath = currentGrid.GetTilePath(selectedUnit, selectedUnit.CurrentTile, ctrl.CurrentTile)
+						walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 
 			ctrl.movement_tracker.clear_points()
 			for p in walkedPath:

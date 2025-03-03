@@ -124,6 +124,9 @@ func UpdateInput(_delta):
 			TileSelected()
 
 	if InputManager.cancelDown:
+		if CutsceneManager.BlockCancelInput:
+			return
+
 		ClearPreview()
 		ShowAffinityRelations(null)
 		ctrl.EnterContextMenuState()
