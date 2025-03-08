@@ -104,7 +104,7 @@ func _process(_delta):
 		# To stop repeatedly going to victory or loss state
 		if MapState is CombatState:
 			if WinCondition != null:
-				if WinCondition.CheckObjective(self) || CSR.AutoWin:
+				if !CutsceneManager.BlockWincon && (WinCondition.CheckObjective(self) || CSR.AutoWin):
 					# Wait for everything to resolve first
 					if GlobalStackClear():
 						if CSR.AutoWin:
@@ -147,6 +147,13 @@ func ResumeFromCampaign(_campaign : Campaign):
 					combatState.InitializeFromPersistence(self, playercontroller)
 					MapState = combatState
 					pass
+				"PreMapState":
+					var premapState = PreMapState.new()
+					# Yes this is different. The real Enter method spawns all of the enemies
+					# so this should NOT do that
+					premapState.InitializeFromPersistence(self, playercontroller)
+					MapState = premapState
+
 
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
@@ -208,9 +215,9 @@ func InitializePlayerController():
 	add_child(playercontroller)
 	playercontroller.Initialize(self)
 
-func CreateUnit(_unitTemplate : UnitTemplate, _levelOverride : int = 0):
+func CreateUnit(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthPerc : float = 1):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
-	unitInstance.Initialize(_unitTemplate, _levelOverride)
+	unitInstance.Initialize(_unitTemplate, _levelOverride, _healthPerc)
 	return unitInstance
 
 func AddGridEntity(_gridEntity : GridEntityBase):
@@ -224,7 +231,7 @@ func AddGridEntity(_gridEntity : GridEntityBase):
 
 	gridEntityParent.add_child(_gridEntity)
 
-func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID):
+func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID, _healthPerc : float = 1):
 	_unitInstance.AddToMap(self, _position, _allegiance)
 	grid.SetUnitGridPosition(_unitInstance, _position, true)
 	AddUnitToRoster(_unitInstance, _allegiance)
@@ -393,7 +400,8 @@ func ToJSON():
 
 static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	# This should make it so that everything that's exported - doesn't need to be stored from JSON
-	var map = load(_dict["scenepath"]).instantiate() as Map
+	var mapscene = load(_dict["scenepath"]) as PackedScene
+	var map = mapscene.instantiate() as Map
 	Map.Current = map
 	map.CurrentCampaign = _assignedCampaign
 	map.currentTurn = _dict["currentTurn"]
@@ -419,8 +427,8 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	var storedTeamsDict = _dict["teams"]
 	for t in storedTeamsDict:
 		var assignMe : Array[UnitInstance]
-		var teamData = PersistDataManager.JSONToArray(storedTeamsDict[t], Callable.create(UnitInstance, "FromJSON"))
-		assignMe.assign(teamData)
+		var unitData = PersistDataManager.JSONToArray(storedTeamsDict[t], Callable.create(UnitInstance, "FromJSON"))
+		assignMe.assign(unitData)
 		map.teams[int(t)] = assignMe
 
 	# Move the units where they're supposed to go
@@ -429,6 +437,10 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 			unit.AddToMap(map, unit.GridPosition, unit.UnitAllegiance)
 			map.grid.SetUnitGridPosition(unit, unit.GridPosition, true)
 			unit.TurnStartTile = map.grid.GetTile(unit.GridPosition)
+
+			if t == GameSettingsTemplate.TeamID.ALLY:
+				_assignedCampaign.CurrentRoster.append(unit)
+
 
 	# Initialize the Grid Entities Last
 	var data = PersistDataManager.JSONToArray(_dict["gridEntities"], Callable.create(GridEntityBase, "FromJSON"))

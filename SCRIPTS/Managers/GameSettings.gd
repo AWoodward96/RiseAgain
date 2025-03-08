@@ -284,6 +284,7 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	var B = 1.4	# Exponential slope, higher number = more exp based on level diff
 	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
 	var equationResult = (A * (pow(B, X)) + C) * 20 + _damageDealt
+	equationResult += _target.ExtraEXPGranted
 	if _isAOE:
 		equationResult = equationResult * GameManager.GameSettings.AOEExpMultiplier
 	return equationResult

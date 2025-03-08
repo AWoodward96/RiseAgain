@@ -64,11 +64,11 @@ font = ExtResource("8_rdfo2")
 [sub_resource type="LabelSettings" id="LabelSettings_j302s"]
 font = ExtResource("8_rdfo2")
 
-[sub_resource type="Gradient" id="Gradient_ehkmj"]
+[sub_resource type="Gradient" id="Gradient_3wvpc"]
 colors = PackedColorArray(0.1692, 0.2444, 0.47, 1, 0.2, 0.2, 0.2, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cd1a5"]
-gradient = SubResource("Gradient_ehkmj")
+gradient = SubResource("Gradient_3wvpc")
 width = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -736,7 +736,7 @@ script = ExtResource("31_1fiyo")
 PromptLabel = NodePath("VBoxContainer/Objective/Content/Prompt")
 Priority = 10
 PreferredAnchor = Array[int]([3])
-AvailableAnchors = Array[int]([3])
+AvailableAnchors = Array[int]([3, 7, 8])
 Disabled = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TutorialPrompt"]

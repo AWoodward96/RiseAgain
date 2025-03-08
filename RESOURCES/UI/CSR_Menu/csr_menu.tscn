@@ -28,6 +28,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+columns = 2
 
 [node name="AddAllAbilities" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -81,6 +82,10 @@ text = "Clear Campaign Data"
 layout_mode = 2
 text = "Clear Cutscene Data"
 
+[node name="MarkTutorialComplete" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Mark Tutorial Complete"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
@@ -94,3 +99,4 @@ text = "Clear Cutscene Data"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/DamageEveryone" to="." method="DealDamageToTarget"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCampaignData" to="." method="ClearCampaignData"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCutsceneData" to="." method="ClearCutsceneData"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/MarkTutorialComplete" to="." method="btnMarkTutorialComplete"]

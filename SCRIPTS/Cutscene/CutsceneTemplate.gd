@@ -8,6 +8,7 @@ class_name CutsceneTemplate
 
 var index = -1
 var enter = false
+var forceComplete = false
 
 func CanStart(_context):
 	for req in startingRequirement:
@@ -19,6 +20,9 @@ func CanStart(_context):
 
 
 func Execute(_delta : float, _context : CutsceneContext):
+	if forceComplete:
+		return true
+
 	if events.size() == 0:
 		return true
 
@@ -35,6 +39,7 @@ func Execute(_delta : float, _context : CutsceneContext):
 				enter = false
 		else:
 			if events[index].Execute(_delta, _context):
+				events[index].Exit(_context) # Exit doesn't wait
 				index += 1
 				if index < events.size():
 					enter = true

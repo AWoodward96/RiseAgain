@@ -34,7 +34,7 @@ func UpdateStats():
 		var entry = statBlockEntryList.CreateEntry(statBlockEntry)
 		entry.icon.texture = stat.loc_icon
 		entry.statName.text = tr(stat.loc_displayName_short)
-		entry.statValue.text = str(currentValue)
+		entry.statValue.text = "%01.0d" % [currentValue]
 
 func UpdateCombatEffects():
 	if effectsList == null:

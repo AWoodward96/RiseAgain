@@ -66,6 +66,7 @@ var DisplayLevel : int :
 	get: return Level + 1
 var Level : int
 var Exp : int
+var ExtraEXPGranted : int = 0
 
 var map : Map
 var currentHealth
@@ -110,7 +111,7 @@ func _ready():
 
 	name = "{0}_{1}_{2}".format({"0" : str(UnitAllegiance), "1" : Template.DebugName, "2" : str(randi() % 100000)})
 
-func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
+func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthPerc : float = 1) :
 	Template = _unitTemplate
 
 	RefreshVisuals()
@@ -125,6 +126,8 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
 	InitializeStats()
 	UpdateDerivedStats()
 	InitializeTier0Abilities()
+
+	currentHealth = roundi(maxHealth * _healthPerc)
 
 func RefreshVisuals():
 	if Template.Affinity != null:
@@ -380,7 +383,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false) :
+func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false) :
 	if _route == null || _route.size() == 0:
 		return
 
@@ -389,6 +392,7 @@ func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : in
 	action.DestinationTile = _tile
 	action.SpeedOverride = _speedOverride
 	action.MoveFromAbility = _moveFromAbility
+	action.CutsceneMove = _cutsceneMove
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()
@@ -740,8 +744,10 @@ func ToJSON():
 		"IsAggrod" : IsAggrod,
 		"UnitAllegience" : UnitAllegiance,
 		"Activated" : Activated,
+		"ExtraEXPGranted" : ExtraEXPGranted,
 		"Abilities" : PersistDataManager.ArrayToJSON(Abilities),
-		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots)
+		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots),
+		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects)
 	}
 
 	if AI != null:
@@ -759,7 +765,10 @@ func ToJSON():
 	for b in statModifiers:
 		modifierStatStorage[b.resource_path] = statModifiers[b]
 	dict["statModifiers"] = modifierStatStorage
-
+#
+	#var combatEffectsDict : Array[Dictionary] = []
+	#for ce in CombatEffects:
+		#combatEffectsDict.append(ce.ToJSON())
 
 	return dict
 
@@ -770,6 +779,8 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.Exp = _dict["Exp"]
 	unitInstance.UnitAllegiance = _dict["UnitAllegience"]
 	unitInstance.CanMove = _dict["CanMove"]
+
+	unitInstance.ExtraEXPGranted = int(_dict["ExtraEXPGranted"])
 
 	if _dict.has("AI"):
 		unitInstance.AI = load(_dict["AI"]) as AIBehaviorBase
@@ -804,6 +815,10 @@ static func FromJSON(_dict : Dictionary):
 		if abl.type == Ability.AbilityType.Weapon:
 			unitInstance.EquippedWeapon = abl
 			break
+
+
+	var cedata = PersistDataManager.JSONToArray(_dict["CombatEffects"], Callable.create(CombatEffectInstance, "FromJSON"))
+	unitInstance.CombatEffects.assign(cedata)
 
 	var data = PersistDataManager.JSONToArray(_dict["ItemSlots"], Callable.create(Item, "FromJSON"))
 	unitInstance.ItemSlots.assign(data)

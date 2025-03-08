@@ -99,15 +99,15 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 
 
 func UpdateArmorBarTween(value):
-	HealthText.text = str("%02d/%02d" % [clamp(Unit.currentHealth, 0, UnitMaxHealth), UnitMaxHealth])
-	HealthText.text += str(" + %02d" % value)
+	HealthText.text = str("%01.0d/%01.0d" % [clamp(Unit.currentHealth, 0, UnitMaxHealth), UnitMaxHealth])
+	HealthText.text += str(" + %01.0d" % value)
 	HealthBar.value = clampf(Unit.currentHealth, 0, UnitMaxHealth) / UnitMaxHealth as float
 	ArmorBar.value = clampf(value, 0, StartingArmor) / UnitMaxHealth as float
 	HideTimer.start() # restart it so it doesn't hide itself
 	pass
 
 func UpdateHealthBarTween(value):
-	HealthText.text = str("%02d/%02d" % [clamp(value, 0, UnitMaxHealth), UnitMaxHealth])
+	HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, UnitMaxHealth), UnitMaxHealth])
 	HealthBar.value = clampf(value, 0, UnitMaxHealth) / UnitMaxHealth as float
 	HideTimer.start() # restart it so it doesn't hide itself
 	pass
@@ -125,7 +125,7 @@ func Refresh(_forceUpdate : bool = false):
 
 	ArmorBar.visible = armor > 0
 
-	if HealthText != null: HealthText.text = str(Unit.currentHealth) + "/" + str(Unit.maxHealth)
+	if HealthText != null: HealthText.text = "%01.0d/%01.0d" % [Unit.currentHealth, Unit.maxHealth]
 	if HealthBar != null: HealthBar.value = Unit.currentHealth / Unit.maxHealth
 
 	if LevelLabel != null:
@@ -134,7 +134,7 @@ func Refresh(_forceUpdate : bool = false):
 
 	if armor > 0:
 		ArmorBar.value = armor as float / Unit.maxHealth
-		HealthText.text += str(" + %02d" % armor)
+		HealthText.text += str(" + %01.0d" % armor)
 
 	if ExpLabel != null:
 		var madlibs = {"NUM" : Unit.Exp, "CUR" : Unit.Exp, "MAX" : str(100)}

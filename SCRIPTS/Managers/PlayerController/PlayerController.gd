@@ -43,6 +43,7 @@ var combatHUD : CombatHUD
 var inspectUI : UnitInspectUI
 
 var forcedTileSelection : Tile
+var forcedContextOption : int = -1
 
 func Initialize(_map: Map):
 	currentMap = _map
@@ -56,7 +57,7 @@ func Initialize(_map: Map):
 	currentMap.OnUnitDied.connect(UnitDied)
 
 func _process(_delta):
-	if CSR.Open || CutsceneManager.BlockAllInput:
+	if CSR.Open:
 		return
 
 	if combatHUD != null:
@@ -67,7 +68,7 @@ func _process(_delta):
 		ControllerState._Execute(_delta)
 
 	if ControllerState != null && ControllerState.CanShowThreat():
-		if InputManager.infoDown:
+		if InputManager.infoDown && !CutsceneManager.BlockInspectInput:
 			# ShowInspectUI() check is also reffering to the hanging ui element in the combat hud
 			# If this behavior needs to be split - then do that but for now it actually works out fine
 			if CurrentTile.Occupant != null && ControllerState.ShowInspectUI():
@@ -241,9 +242,16 @@ func UpdateGlobalContextUI():
 func UpdateContextUI():
 	combatHUD.ContextUI.Clear()
 
+	var optionCount = 0
+	var forcedOption = -1
+	if CutsceneManager.active_cutscene != null:
+		forcedOption = forcedContextOption
+
 	if !CutsceneManager.BlockWeaponContextMenuOption:
 		if selectedUnit.EquippedWeapon != null:
-			combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, true, OnAttack)
+			var enabled = forcedOption == -1 || forcedOption == 0
+			combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, enabled, OnAttack)
+			optionCount += 1
 
 	# First do the standard abilities
 
@@ -253,7 +261,9 @@ func UpdateContextUI():
 				# Block if focus cost can't be met - or if the ability has a limited usage
 				var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
 				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+				canCast = canCast && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
 				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+				optionCount += 1
 
 	# Then do tacticals
 	if !CutsceneManager.BlockTacticalContextMenuOption:
@@ -262,11 +272,14 @@ func UpdateContextUI():
 				# Block if focus cost can't be met - or if the ability has a limited usage
 				var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
 				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+				canCast = canCast && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
 				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+				optionCount += 1
 
 
-	if !CutsceneManager.BlockWaitContextMenuOption:
-		combatHUD.ContextUI.AddButton("Wait", true, OnWait)
+	var canWait = !CutsceneManager.BlockWaitContextMenuOption
+	canWait = canWait && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
+	combatHUD.ContextUI.AddButton("Wait", canWait, OnWait)
 	combatHUD.ContextUI.SelectFirst()
 
 func OnWait():

@@ -68,14 +68,14 @@ func CheckInitFinished():
 
 func OnInitFinished():
 	if RunningMainScene():
-		if CutsceneManager.active_cutscene == null:
-			# Check if there is a campaign in the save data
-			var campaign = PersistDataManager.TryLoadCampaign() as Campaign
-			if campaign != null:
-				# we need to figure out what to do here
-				StartCampaign(campaign)
-			else:
-				ReturnToBastion()
+		#if CutsceneManager.active_cutscene == null:
+		# Check if there is a campaign in the save data
+		var campaign = PersistDataManager.TryLoadCampaign() as Campaign
+		if campaign != null:
+			# we need to figure out what to do here
+			StartCampaign(campaign)
+		else:
+			ReturnToBastion()
 	pass
 
 func ReturnToBastion():

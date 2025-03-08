@@ -21,7 +21,7 @@ func _Execute(_delta):
 
 	ctrl.UpdateCameraPosition()
 
-	if InputManager.selectDown:
+	if InputManager.selectDown && !CutsceneManager.BlockSelectInput:
 		var tile = currentGrid.GetTile(ctrl.ConvertGlobalPositionToGridPosition())
 
 		if ctrl.forcedTileSelection != null && tile != ctrl.forcedTileSelection:

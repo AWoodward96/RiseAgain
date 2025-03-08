@@ -232,4 +232,69 @@ tut_map0_prompt4,Select the Wait option with [Space] to end your Turn
 tut_map0_prompt5,Select the Unit again with [Space]
 tut_map0_prompt6,Move the Reticle to the highlighted Tile and press [Space] to confirm movement
 tut_map0_prompt7,Select [Mana Bolt] with [Space]
-tut_map0_prompt8,Press [Space] once again to confirm your Attack
+tut_map0_prompt8,Here you can preview how combat will play out
+tut_map0_prompt9,"You will do 5 damage to the Zombie, bringing its Health down to 4."
+tut_map0_prompt10,"When a Unit's Health reaches 0, it is removed from the Map"
+tut_map0_prompt11,Press [Space] once again to confirm your Attack
+tut_map0_prompt12,Units gain EXP by performing actions in the game
+tut_map0_prompt13,Once the EXP reaches 100 they will Level Up and get stronger
+tut_map0_prompt14,Blue Units are Allies. Red Units are Enemies.
+tut_map0_prompt15,Hover the Reticle over the Knight
+ce_unholyintruder_name,Unholy Intrusion
+ce_unholyintruder_desc,This Unit is tresspassing on sacred ground and has reduced ATK
+tut_map0_prompt16,"That Knight looks injured, let's help them out."
+tut_abilities_lesserheal0,We can use the Ability [Lesser Heal] to heal the Knight
+tut_abilities_lesserheal1,"Abilities are powerful actions that can turn the tide of battle, but require Mana to use."
+tut_abilities_lesserheal2,"1 Mana is gained at the start of every turn, and an additional Mana is gained when defeating an Enemy"
+tut_abilities_lesserheal3,"[Lesser Heal] costs 2 Mana, and has a special property that makes it get stronger every time you use it."
+tut_abilities_lesserheal4,Let's heal the Knight
+tut_weapons_knight0,The Knight is a defensive Melee Unit with a unique Weapon
+tut_weapons_knight1,Move the Knight to the indicated Tile
+tut_weapons_knight2,"When attacking with a Weapon, Unit's with similar a similar ranged Weapon can counter-attack."
+tut_weapons_knight3,Because the Zombie's weapon has a Range of 1 we're at risk of being counter-attacked
+tut_weapons_knight4,Press [Left Shift] to Cancel the Attack
+tut_weapons_knight5,Press [Left Shift] again to Cancel the Move
+tut_weapons_knight6,"Instead, let's move to this Tile"
+tut_weapons_knight7,"Because the Lance can attack from more than one Tile away, we're not at risk of being counter-attacked anymore!"
+tut_weapons_knight8,Finish off the last two Zombies to complete the map.
+tut_map1_prompt0,This is the Formation screen
+tut_map1_prompt1,Here you can move Units around before starting a Map by selecting their starting Tile
+tut_map1_prompt2,Feel free to mess around with your formation and when you're ready press [ENTER] to start
+tut_map1_prompt2.5,Our path appears to be blocked by a tree!
+tut_map1_prompt3,The Knight can handle this for us. Let's move them closer
+tut_map1_prompt4,Some Terrain is destructable. AOE attacks are good ways of carving a new path forward when obstructed
+tut_map1_prompt5,Your Knight is injured again. Let's learn about Tacticals
+tut_map1_prompt6,Select the Knight but don't Move them.
+tut_map1_prompt7,Tactical Abilities are Utility based Abilities that any Unit can use
+tut_map1_prompt8,All Units start with [Petty Gauze] as their Tactical. The [Petty Gauze] has 3 Charges and heals the user 10 Health
+tut_map1_prompt9,When a Tactical is out of Charges it can't be used again until the Unit has rested at a Campfire
+tut_map1_prompt10,Let's use the [Petty Gauze] to heal the Knight
+tut_map1_prompt11,Finish the Map by defeating the remaining Enemies.
+tut_map2_prompt0,There are a couple more tools at your disposal to know about.
+tut_map2_prompt1,"While not hovering anything, press [TAB]"
+tut_map2_prompt2,The Red Area now shows the Enemies Threat Range: Spaces where Enemies can attack you on their next turn.
+tut_map2_prompt3,Use this to make safe decisions from turn to turn.
+tut_map2_prompt4,Press [TAB] again to toggle off the Threat Range
+tut_map2_prompt5,Let's get some more information on the Zombie in front of us
+tut_map2_prompt6,"This time, hover over the Zombie and then press [TAB]"
+tut_map2_prompt7,This is the Unit Inspect Screen
+tut_map2_prompt8,There's a lot of information you can gleem from this screen:\n-What Weapons a Unit is using\n-What their stats are\n-How their Abilities work (if they have any)
+tut_map2_prompt9,You can change tabs to see more information on this Unit by pressing [A] or [D]
+tut_map2_prompt10,"One important piece of information is the Units Affinity, seen on the left."
+tut_map2_prompt11,Every Unit has a Color that refers to their Affinity. All Affinities are strong against something and weak to something else.
+tut_map2_prompt12,"Fire Affinity is weak to Water Affinity, Dark Affinity is weak to Light Affinity, and so on and so on"
+tut_map2_prompt13,"You'll get a grasp for what's good against what by playing the game, but if you really need to know you can always Inspect a Unit and check this section down here"
+tut_map2_prompt14,"When you're done, press [Left Shift] to back out of the Inspect Screen"
+ui_press_any_key,Press any key to continue
+tut_rewardsui_1,After every Map you'll have a set of three rewards to choose from
+tut_rewardsui_2,"These can be Items that make your Units stronger, Units themselves, and more!"
+tut_rewardsui_3,"Right now we have a very small team, so let's select the Mercenary as our reward for this Map."
+tut_level3_0,Whenever a Unit reaches Level 3 they unlock a new Ability for the Campagin
+tut_level3_1,Each Ability is unique and can change up how you use the Unit going forward.
+tut_level3_2,Experiment with different builds and Abilities to figure out which one works best for your playstyle!
+tut_optionalobjectives_0,On this map you have an optional objective: Kill the Prized Buck
+tut_optionalobjectives_1,"Completing an optional objective will grant you a second set of rewards when you beat the Map, so try your best to accomplish it if you can"
+tut_fastspeed_0,Select the Mercenary we picked up at the end of the last map
+tut_fastspeed_1,The Mercenary has an ability called [Heroic Leap]
+tut_fastspeed_2,"[Heroic Leap] is a Fast Speed Ability, as denoted by the Lightning bolt icon"
+tut_fastspeed_3,"Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana"

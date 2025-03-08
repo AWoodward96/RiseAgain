@@ -1,11 +1,22 @@
 extends CanvasLayer
 class_name SelectAbilityUI
 
+static var Instance : SelectAbilityUI
 signal SelectionComplete(_packedScene : PackedScene)
 
 @export var entryParent : EntryList
 @export var abilityEntryPrefab : PackedScene
 
+
+func _ready() -> void:
+	if Instance != null:
+		queue_free()
+		return
+	Instance = self
+
+func _exit_tree() -> void:
+	if Instance == self:
+		Instance = null
 
 func Initialize(_abilities : Array[String]):
 	entryParent.ClearEntries()

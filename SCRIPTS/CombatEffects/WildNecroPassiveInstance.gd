@@ -35,3 +35,8 @@ func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionStepResult)
 # This passive never expires
 func IsExpired():
 	return false
+
+func ToJSON():
+	var dict = super()
+	dict["type"] = "WildNecroPassiveInstance"
+	return dict

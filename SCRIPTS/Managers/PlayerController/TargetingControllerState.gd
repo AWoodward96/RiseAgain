@@ -120,6 +120,13 @@ func UpdateInput(_delta):
 			pass
 
 	if InputManager.selectDown && !targetSelected:
+		# If there's a currently enforced tile - block it
+		if ctrl.forcedTileSelection != null && CutsceneManager.active_cutscene != null && log.actionOriginTile != ctrl.forcedTileSelection:
+			return
+
+		if CutsceneManager.BlockSelectInput:
+			return
+
 		if log.availableTiles.size() != 0:
 			TileSelected()
 
@@ -146,6 +153,8 @@ func TileSelected():
 		targetSelected = true
 		source.QueueDelayedCombatAction(log)
 		pass
+
+	ctrl.OnTileSelected.emit(log.actionOriginTile)
 
 func _Exit():
 	ShowAffinityRelations(null)

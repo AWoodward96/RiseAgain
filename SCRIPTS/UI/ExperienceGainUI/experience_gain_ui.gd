@@ -69,7 +69,7 @@ func ShowLevelUpData():
 		var oldValue = currentUnit.GetWorkingStat(stats)
 		if statChanges.has(stats):
 			oldValue -= statChanges[stats]
-		entry.statValue.text = str(oldValue)
+		entry.statValue.text = "%01.0d" % [oldValue]
 
 	await root.get_tree().create_timer(statUpDelayTime).timeout
 
@@ -81,8 +81,8 @@ func ShowLevelUpData():
 		var index = GameManager.GameSettings.LevelUpStats.find(increment)
 		var entry = stat_entry_parent.GetEntry(index)
 		entry.statIncreaseLabel.visible = true
-		entry.statIncreaseLabel.text = str("+", statChanges[increment])
-		entry.statValue.text = str(currentUnit.GetWorkingStat(increment))
+		entry.statIncreaseLabel.text = "+%01.0d" % [statChanges[increment]]
+		entry.statValue.text = "%01.0d" % [currentUnit.GetWorkingStat(increment)]
 		await root.get_tree().create_timer(statUpDelayTime).timeout
 
 

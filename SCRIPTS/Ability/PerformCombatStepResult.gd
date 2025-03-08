@@ -25,7 +25,12 @@ func PreCalculate():
 			if Target != null:
 				HitRate = GameManager.GameSettings.HitRateCalculation(Source, AbilityData, Target, TileTargetData)
 
-		CritRate = GameManager.GameSettings.CritRateCalculation(Source, AbilityData, Target, TileTargetData)
+		# No crits in cutscenes it fucks with everything
+		if CutsceneManager.active_cutscene != null:
+			CritRate = 0
+		else:
+			CritRate = GameManager.GameSettings.CritRateCalculation(Source, AbilityData, Target, TileTargetData)
+
 		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, AbilityData.UsableDamageData, TileTargetData)
 		Ignite = TileTargetData.Ignite
 
@@ -147,7 +152,6 @@ func PreviewResult(_map : Map):
 			indicator.healAmount += HealthDelta
 
 		indicator.SetHealthLevels(Target.currentHealth, Target.maxHealth)
-		indicator.hitChance = HitRate
 		indicator.critChance = CritRate
 
 		Target.ShowAffinityRelation(Source.Template.Affinity)

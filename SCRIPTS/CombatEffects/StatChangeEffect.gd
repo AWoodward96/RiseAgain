@@ -12,7 +12,8 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 	effectInstance.Template = self
 	effectInstance.SourceUnit = _sourceUnit
 	effectInstance.AffectedUnit = _affectedUnit
-	effectInstance.AbilitySource = _actionLog.ability
+	if _actionLog != null && _actionLog.ability != null:
+		effectInstance.AbilitySource = _actionLog.ability
 	effectInstance.TurnsRemaining = Turns
 
 	for effectTemplate in StatChanges:

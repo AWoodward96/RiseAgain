@@ -2,12 +2,19 @@ extends CutsceneEventBase
 class_name ForceTileSelectionEvent
 
 @export var tileLocation : Vector2i
+@export var clear : bool = false
+
 var referencedTile : Tile
 var executionComplete = false
 
 func Enter(_context : CutsceneContext):
 	if Map.Current == null || Map.Current.playercontroller == null:
 		return false
+
+	if clear:
+		executionComplete = true
+		Map.Current.playercontroller.forcedTileSelection = null
+		return true
 
 	referencedTile = Map.Current.grid.GetTile(tileLocation)
 	if referencedTile == null:
@@ -27,5 +34,6 @@ func TileSelected(_tile : Tile):
 		executionComplete = true
 
 func Exit(_context : CutsceneContext):
-	Map.Current.playercontroller.OnTileSelected.disconnect(TileSelected)
+	if Map.Current.playercontroller.OnTileChanged.is_connected(TileSelected):
+		Map.Current.playercontroller.OnTileSelected.disconnect(TileSelected)
 	Map.Current.playercontroller.forcedTileSelection = null

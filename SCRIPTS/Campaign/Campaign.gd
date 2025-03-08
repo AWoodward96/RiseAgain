@@ -49,10 +49,10 @@ func StartCampaign():
 		return
 
 	UnitHoldingArea.visible = false
-	CreateSquadInstance()
 
 	if currentMap != null:
 		if !resumingCampaign:
+			CreateSquadInstance()
 			StartMap()
 		else:
 			ResumeMap()
@@ -93,7 +93,7 @@ func GetNextMapOption():
 		push_error("Campaign: " , name, " - Could not descern what the next map should be from index: ", campaignBlockMapIndex)
 		return
 
-	currentMap = currentMapOption.GetMap().instantiate() as Map
+	currentMap = newMap.instantiate() as Map
 
 # Takes the current map option and starts it
 func StartMap():
@@ -286,6 +286,7 @@ static func FromJSON(_dict : Dictionary):
 
 	campaign.TryLoadMap()
 
+
 	return campaign
 
 func TryLoadMap():
@@ -299,6 +300,7 @@ func TryLoadMap():
 		if map != null:
 			currentMap = map
 			resumingCampaign = true
+			return map
 
 	return null
 

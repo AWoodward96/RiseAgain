@@ -6,11 +6,9 @@ enum DisplayStyle { Weapon, Ability}
 @export var effectEntry : PackedScene
 
 @onready var death_indicator = $DeathIndicator
-@onready var hit_chance_label = $VBoxContainer/HitChance
 @onready var crit_chance_label = $CritChance
-@onready var delta_hp_label = $VBoxContainer/DamageBeingDealt
+@onready var delta_hp_label = $DamageBeingDealt
 @onready var hp_listener = $HPListener
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effects_preview : EntryList = $EffectsPreview
 
 
@@ -32,7 +30,6 @@ var normalDamage : int :
 var normalDamageModified : bool = false
 var collisionDamage : int
 var healAmount : int
-var hitChance : float
 var critChance : float
 
 var effects : Array[CombatEffectTemplate]
@@ -42,20 +39,6 @@ func ShowPreview():
 		return
 
 	visible = true
-	if animation_player != null:
-		match(display_style):
-			DisplayStyle.Weapon:
-				animation_player.play("Weapon")
-			DisplayStyle.Ability:
-				animation_player.play("Ability")
-
-		# This animation is advanced manually. This makes it so that there isn't a frame where it's incorrect
-		animation_player.advance(0.1)
-
-	# Weapons can miss
-	# Abilities cannot
-	if display_style == DisplayStyle.Weapon && hit_chance_label != null:
-		hit_chance_label.text = str(clamp(hitChance, 0, 1) * 100) + "%"
 
 	# Abilities can crit too however - so get that in there
 	if crit_chance_label != null:
@@ -106,7 +89,6 @@ func PreviewCanceled():
 	normalDamage = 0
 	healAmount = 0
 	collisionDamage = 0
-	hitChance = 0
 	critChance = 0
 	normalDamageModified = false
 

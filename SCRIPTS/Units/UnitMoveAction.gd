@@ -7,6 +7,7 @@ var MovementIndex
 var MovementVelocity
 var SpeedOverride : int = -1
 var MoveFromAbility : bool = false
+var CutsceneMove : bool = false
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
@@ -72,7 +73,7 @@ func _Execute(_unit : UnitInstance, _delta):
 			_unit.position = Route[MovementIndex - 1].GlobalPosition
 			unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 			var diedToKillbox = _unit.CheckKillbox()
-			if isAlliedTeam:
+			if isAlliedTeam && !CutsceneMove:
 				if diedToKillbox: # If it's true, then this unit's fucking dead lmao
 					map.playercontroller.EnterSelectionState()
 				elif !MoveFromAbility:

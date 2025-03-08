@@ -99,9 +99,6 @@ func PreviewDamage(_normalDamage : int, _collisionDamage : int, _heal : int):
 	damageIndicator.normalDamage += _normalDamage
 	damageIndicator.collisionDamage += _collisionDamage
 	damageIndicator.healAmount += _heal
-
-	# Everything should always hit this
-	damageIndicator.hitChance = 100
 	return true
 
 func CancelPreview():

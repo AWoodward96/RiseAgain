@@ -110,6 +110,8 @@ static func FromJSON(_dict : Dictionary):
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEStaticAreaOfEffect
 		"GEWalkablePlatform":
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEWalkablePlatform
+		"GEProp":
+			gridEntityBase = load(_dict["prefab"]).instantiate() as GEProp
 
 	gridEntityBase.InitFromJSON(_dict)
 	return gridEntityBase

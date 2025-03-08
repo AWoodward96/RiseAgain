@@ -11,7 +11,7 @@ func _Enter(_ctrl : PlayerController, data):
 	currentGrid.ClearActions()
 
 func UpdateInput(_delta):
-	# don't accept inputs here
+	# don't accept inputs heres
 	if InputManager.cancelDown:
 		if CutsceneManager.BlockCancelInput:
 			return

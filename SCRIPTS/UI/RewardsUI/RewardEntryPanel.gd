@@ -1,7 +1,7 @@
 extends Button
 class_name RewardEntryPanel
 
-signal OnRewardSelected(reward : LootTableEntry)
+signal OnRewardSelected(reward : LootTableEntry, index : int)
 
 
 @export var rewardType : Label
@@ -9,9 +9,11 @@ signal OnRewardSelected(reward : LootTableEntry)
 @export var rewardName : Label
 @export var rewardDesc : Label
 var reward : LootTableEntry
+var index : int
 
-func Initialize(_reward : LootTableEntry):
+func Initialize(_reward : LootTableEntry, _index : int):
 	reward = _reward
+	index = _index
 
 	if reward is ItemRewardEntry:
 		InitializeAsItem(reward as ItemRewardEntry)
@@ -46,4 +48,4 @@ func InitializeAsUnit(_unitRewardEntry : SpecificUnitRewardEntry):
 	rewardDesc.text = tr(unitToBeRewarded.loc_Description)
 
 func OnEntryPressed():
-	OnRewardSelected.emit(reward)
+	OnRewardSelected.emit(reward, index)

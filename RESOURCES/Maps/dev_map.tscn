@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cab65o5qhlejd"]
+[gd_scene load_steps=24 format=4 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
 [ext_resource type="Script" uid="uid://c0bc1depbcrxx" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_hfwsr"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_5aprs"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_gfyht"]
 [ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_vt2ms"]
+[ext_resource type="Script" uid="uid://b8v8fou10ucrg" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="9_rg0w7"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_hh47g"]
+[ext_resource type="Resource" uid="uid://cr516cksscxju" path="res://RESOURCES/CombatEffects/CE_UnholyIntrusion.tres" id="10_jydnc"]
 [ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="10_tgwx5"]
 [ext_resource type="PackedScene" uid="uid://eerys1o8nkjh" path="res://RESOURCES/GridEntities/wp_bridge.tscn" id="11_rlgja"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_msltj"]
@@ -47,7 +49,7 @@ SpawnersParent = NodePath("Spawners")
 metadata/_edit_vertical_guides_ = [-108.0]
 
 [node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
-points = PackedVector2Array(0, 0, 960, 0, 960, 640, 0, 640, 0, 0)
+points = PackedVector2Array(0, 0, 1088, 0, 1088, 640, 0, 640, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
 script = ExtResource("3_j1gep")
@@ -120,6 +122,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("17_lmuyt")
 DeltaLevel = 0
+PreAppliedEffects = Array[ExtResource("9_rg0w7")]([ExtResource("10_jydnc")])
 Position = Vector2i(3, 4)
 AIBehavior = SubResource("Resource_bi5d2")
 

@@ -4,7 +4,7 @@ class_name SelectionControllerState
 func _Enter(_playerController : PlayerController, _data):
 	super(_playerController, _data)
 
-	if CutsceneManager.active_cutscene == null:
+	if !CutsceneManager.InvisibleReticle:
 		ctrl.reticle.visible = true
 	ctrl.BlockMovementInput = false
 	pass
@@ -13,7 +13,7 @@ func _Enter(_playerController : PlayerController, _data):
 func _Execute(_delta):
 	super(_delta)
 
-	if InputManager.selectDown:
+	if InputManager.selectDown && !CutsceneManager.BlockSelectInput:
 		var isAllyTurn = currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY
 
 		var tile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
@@ -39,6 +39,9 @@ func _Execute(_delta):
 		ctrl.OnTileSelected.emit(tile)
 
 	if InputManager.cancelDown:
+		if CutsceneManager.BlockCancelInput:
+			return
+
 		currentGrid.ClearActions()
 
 

@@ -87,18 +87,18 @@ func UpdateStatsUI():
 
 		if attack > spattack:
 			dmgIcon.texture = GameManager.GameSettings.AttackStat.loc_icon
-			dmgLabel.text = str(attack)
+			dmgLabel.text = "%01.0d" % [attack]
 		else:
 			dmgIcon.texture = GameManager.GameSettings.SpAttackStat.loc_icon
-			dmgLabel.text = str(spattack)
+			dmgLabel.text = "%01.0d" % [spattack]
 	else:
 		var agressiveStat = equippedItem.UsableDamageData.AgressiveStat
 		dmgIcon.texture = agressiveStat.loc_icon
-		dmgLabel.text = str(currentUnit.GetWorkingStat(agressiveStat))
+		dmgLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(agressiveStat)]
 
-	defLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.DefenseStat))
-	spDefLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.SpDefenseStat))
-	moveLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.MovementStat))
+	defLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(GameManager.GameSettings.DefenseStat)]
+	spDefLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(GameManager.GameSettings.SpDefenseStat)]
+	moveLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(GameManager.GameSettings.MovementStat)]
 
 
 func _process(_delta):

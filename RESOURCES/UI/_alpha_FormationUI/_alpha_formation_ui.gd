@@ -7,6 +7,7 @@ signal FormationSelected
 @export var MenuParent : Control
 @export var FormationButton : Button
 @export var ItemButton : Button
+@export var BlockInstantStartTimer : float = 1
 
 @export var mapObjectiveText : Label
 @export var optionalObjectiveLabel : Label
@@ -16,11 +17,13 @@ signal FormationSelected
 
 var ctrl : PlayerController
 var map : Map
+var blockTimer : float = 0
 
 func _ready():
 	MenuParent.visible = true
 	FormationParent.visible = false
 	FormationButton.grab_focus()
+	blockTimer = 0
 
 	manageItemsPanel.OnClose.connect(OnManageItemsClosed)
 
@@ -43,9 +46,15 @@ func Initialize(_ctrl : PlayerController, _map : Map):
 		optionalObjectiveText.text = _map.OptionalObjectives[0].UpdateLocalization(_map)
 
 func _process(_delta):
-	if InputManager.startDown:
-		FormationSelected.emit()
-		queue_free()
+	if blockTimer > BlockInstantStartTimer:
+		if InputManager.startDown:
+			if CutsceneManager.BlockEnterAction:
+				return
+
+			FormationSelected.emit()
+			queue_free()
+	else:
+		blockTimer += _delta
 
 func SetFormationMode(_enabled : bool):
 	MenuParent.visible = !_enabled

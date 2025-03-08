@@ -25,7 +25,7 @@ func _Exit():
 	pass
 
 func UpdateInput(_delta):
-	if ctrl.BlockMovementInput:
+	if ctrl.BlockMovementInput || CutsceneManager.BlockMovementInput:
 		return
 
 	# If you press a directional button, move in that direction

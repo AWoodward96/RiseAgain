@@ -5,11 +5,11 @@ class_name FocusCameraEvent
 @export var Instantaneous : bool
 @export var BuiltInWaitTime : float = 0
 
-var delta = 0
+var delta : float = 0
 
 func Enter(_context : CutsceneContext):
 	if Map.Current != null && Map.Current.playercontroller != null:
-		Map.Current.playercontroller.ForceCameraPosition(Position)
+		Map.Current.playercontroller.ForceCameraPosition(Position, Instantaneous)
 		delta = 0
 		return true
 	return false

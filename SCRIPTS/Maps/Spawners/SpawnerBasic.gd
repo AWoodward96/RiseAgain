@@ -8,8 +8,10 @@ class_name SpawnerBasic
 		if value != null:
 			name = PREFIX + UnitToSpawn.DebugName
 
+
 @export var UnitLevel : int = 0 # remember, this is indexed - NOT USED ANYMORE
 @export var DeltaLevel : int = -1 # The level of this unit relative to the highest level of the campaign. Defaulting to -1, because otherwise the exp gain on a unit that level would be too snowbally
+@export var ExtraEXPGranted : int = 0
 @export var PreAppliedEffects : Array[CombatEffectTemplate]
 
 func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
@@ -24,6 +26,7 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	var unit = _map.CreateUnit(UnitToSpawn, level + DeltaLevel)
 	_map.InitializeUnit(unit, Position, Allegiance)
 	unit.SetAI(AIBehavior, AggroBehavior)
+	unit.ExtraEXPGranted = ExtraEXPGranted
 
 	for effect in PreAppliedEffects:
 		var instance = effect.CreateInstance(unit, unit, null)

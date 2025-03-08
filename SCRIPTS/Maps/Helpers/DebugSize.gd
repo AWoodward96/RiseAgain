@@ -1,4 +1,4 @@
-#@tool
+@tool
 extends Line2D
 
 @export var map : Map

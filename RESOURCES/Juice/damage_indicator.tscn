@@ -1,218 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://chgyuivvaogoe"]
+[gd_scene load_steps=8 format=3 uid="uid://chgyuivvaogoe"]
 
 [ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="1_efn74"]
 [ext_resource type="Script" uid="uid://c87sjcse7aq1e" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_indicator.gd" id="1_xo2sr"]
 [ext_resource type="PackedScene" uid="uid://d1laxqelcbhi8" path="res://RESOURCES/UI/GenericEntrys/effect_entry.tscn" id="2_gie3m"]
 [ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="3_ne7nt"]
-[ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="3_w0shn"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_jf3iu"]
 [ext_resource type="LabelSettings" uid="uid://16psntbgd1gu" path="res://RESOURCES/UI/LabelSettings/minimal_mini.tres" id="5_pc21c"]
 
-[sub_resource type="Gradient" id="Gradient_k557k"]
-offsets = PackedFloat32Array(0, 0.337398, 0.457317, 0.715447, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.404228, 0.404228, 0.404228, 1, 0.45935, 0.45935, 0.45935, 1, 0.715447, 0.715447, 0.715447, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vro7v"]
-gradient = SubResource("Gradient_k557k")
-width = 64
-
-[sub_resource type="Animation" id="Animation_b8w1b"]
-resource_name = "Ability"
-length = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HitChance:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/border:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/border:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 24)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer/DamageBeingDealt:theme_override_font_sizes/normal_font_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
-
-[sub_resource type="Animation" id="Animation_brgej"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HitChance:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/border:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/border:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 24)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer/DamageBeingDealt:theme_override_font_sizes/normal_font_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer/DamageBeingDealt:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(64, 32)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("VBoxContainer/DamageBeingDealt:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 30)]
-}
-
-[sub_resource type="Animation" id="Animation_m6tlk"]
-resource_name = "Standard"
-length = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/HitChance:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/border:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/DamageBeingDealt:theme_override_font_sizes/normal_font_size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer/DamageBeingDealt:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(64, 32)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer/DamageBeingDealt:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 30)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8o3t"]
-_data = {
-&"Ability": SubResource("Animation_b8w1b"),
-&"RESET": SubResource("Animation_brgej"),
-&"Weapon": SubResource("Animation_m6tlk")
-}
+[sub_resource type="LabelSettings" id="LabelSettings_2st6q"]
+font = ExtResource("3_ne7nt")
+font_size = 12
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="DamageIndicator" type="Node2D" groups=["DamageIndicators"]]
 script = ExtResource("1_xo2sr")
@@ -231,29 +29,11 @@ offset_bottom = 64.0
 texture = ExtResource("1_efn74")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 64.0
-offset_bottom = 64.0
-size_flags_vertical = 3
-alignment = 1
-
-[node name="HitChance" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/shadow_outline_size = 4
-theme_override_font_sizes/font_size = 18
-text = "10%"
-label_settings = ExtResource("3_w0shn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="border" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 3)
-layout_mode = 2
-texture = SubResource("GradientTexture1D_vro7v")
-
-[node name="DamageBeingDealt" type="RichTextLabel" parent="VBoxContainer"]
+[node name="DamageBeingDealt" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(48, 32)
-layout_mode = 2
+offset_top = 37.0
+offset_right = 64.0
+offset_bottom = 69.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/normal_font = ExtResource("3_ne7nt")
@@ -262,6 +42,7 @@ bbcode_enabled = true
 text = "[center][color=#e6a2a2]-10[/color][/center]"
 fit_content = true
 scroll_active = false
+vertical_alignment = 1
 
 [node name="EffectsPreview" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 32)
@@ -284,19 +65,12 @@ label_settings = ExtResource("5_pc21c")
 horizontal_alignment = 2
 
 [node name="HPListener" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 49.0
+offset_top = 23.0
 offset_right = 64.0
-offset_bottom = 70.0
+offset_bottom = 44.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 6
 text = "01/23"
-label_settings = ExtResource("5_pc21c")
-horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_2st6q")
+horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-callback_mode_process = 2
-libraries = {
-"": SubResource("AnimationLibrary_j8o3t")
-}

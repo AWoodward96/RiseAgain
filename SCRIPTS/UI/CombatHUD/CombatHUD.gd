@@ -120,9 +120,10 @@ func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : UnitUsable, _defend
 func ClearDamagePreviewUI():
 	DmgPreviewUI.visible = false
 
-func ShowTutorialPrompt(_text : String):
+func ShowTutorialPrompt(_text : String, _anchor : Control.LayoutPreset):
 	TutorialPrompt.Disabled = false
 	TutorialPrompt.PromptLabel.text = _text
+	TutorialPrompt.RefreshAnchor([_anchor])
 
 func HideTutorialPrompt():
 	TutorialPrompt.Disabled = true

@@ -95,6 +95,15 @@ func ClearCampaignData() -> void:
 	pass # Replace with function body.
 
 
+func btnMarkTutorialComplete() -> void:
+	PersistDataManager.universeData.completedCutscenes.append(CutsceneManager.FTUE)
+	PersistDataManager.BlockUniverseSave = false
+	PersistDataManager.BlockCampaignSave = false
+	PersistDataManager.BlockMapSave = false
+	PersistDataManager.SaveGame()
+	ClearCampaignData()
+
+
 func ClearCutsceneData() -> void:
 	PersistDataManager.universeData.completedCutscenes.clear()
 	PersistDataManager.universeData.Save()

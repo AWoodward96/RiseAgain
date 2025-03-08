@@ -32,7 +32,7 @@ func Refresh():
 	MinusButton.disabled = currentIncrease <= 0
 	PlusButton.disabled = unitPersist.UnallocatedPrestiege <= 0
 
-	StatBlockEntry.statValue.text = str(baseStatValue + currentIncrease)
+	StatBlockEntry.statValue.text = "%01.0d" % [(baseStatValue + currentIncrease)]
 	AllocatedUpgradeLabel.visible = currentIncrease > 0
 	AllocatedUpgradeLabel.text = "+" + str(currentIncrease)
 

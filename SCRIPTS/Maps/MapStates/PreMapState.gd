@@ -24,11 +24,28 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 		spawner.hide()
 
+	MakeEveryoneLookActive()
 	formationUI = controller.EnterFormationState()
 	await formationUI.FormationSelected
 	map.ChangeMapState(CombatState.new())
 	pass
 
+func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
+	map = _map
+	controller = _ctrl
+	controller.ForceReticlePosition(map.startingPositions[0])
+	controller.ForceCameraPosition(map.CameraStart, true)
+	controller.ClearSelectionData()
+	MakeEveryoneLookActive()
+
+	formationUI = controller.EnterFormationState()
+	await formationUI.FormationSelected
+	map.ChangeMapState(CombatState.new())
+
+func MakeEveryoneLookActive():
+	for teamID in map.teams:
+		for unit : UnitInstance in map.teams[teamID]:
+			unit.Activated = true
 
 func Exit():
 	if formationUI != null:
