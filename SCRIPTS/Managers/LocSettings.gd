@@ -13,11 +13,39 @@ static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 @export var Missing_CombatEffectName : String
 
 
-@export_category("Text Formatting")
+@export_category("Damage Text Formatting")
 @export var HealColor : Color
 @export var DamageColor : Color
 @export var CritColor : Color
 @export var CollisionColor : Color
+
+@export_category("Ability Text Formatting")
+@export var RangeAmountTextFormat : String
+
+@export var AbilityTypeWeaponTextShorthand : String
+@export var AbilityTypeWeaponColor : Color
+@export var AbilityTypeTacticalTextShorthand : String
+@export var AbilityTypeTacticalColor : Color
+@export var AbilityTypeAbilityTextShorthand : String
+@export var AbilityTypeAbilityColor : Color
+
+@export var TargetingSimpleText : String
+@export var TargetingSimpleColor : Color
+@export var TargetingDirectionalText : String
+@export var TargetingDirectionalColor : Color
+@export var TargetingShapedText : String
+@export var TargetingShapedColor : Color
+@export var TargetingSelfText : String
+@export var TargetingSelfColor : Color
+@export var TargetingGlobalText : String
+@export var TargetingGlobalColor : Color
+
+@export var AbilitySpeedNormalText : String
+@export var AbilitySpeedNormalColor : Color
+@export var AbilitySpeedFastText : String
+@export var AbilitySpeedFastColor : Color
+@export var AbilitySpeedSlowText : String
+@export var AbilitySpeedSlowColor : Color
 
 
 func FormatAsHeal(_healAmount : int):

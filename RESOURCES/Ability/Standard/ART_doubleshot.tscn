@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5ge0dn8wtstb"]
+[gd_scene load_steps=14 format=3 uid="uid://b5ge0dn8wtstb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5p40p"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_avuim"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://by4hlamajp5xt" path="res://SCRIPTS/Ability/RepeatPerFocusStep.gd" id="3_eychb"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_ru3jp"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_fbic6"]
+[ext_resource type="Texture2D" uid="uid://bahn7dncans8s" path="res://ART/Icons/Ability/Standard/doubleshot.png" id="6_5arvb"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="6_e48nk"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_c6kxc"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_p4cl1"]
@@ -22,13 +23,16 @@ repeatStack = Array[ExtResource("2_avuim")]([SubResource("Resource_0f0hj")])
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("3_ru3jp")
 
-[node name="ART_DoubleShot" type="Node2D"]
+[node name="ART_DoubleShot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_5p40p")
 isXFocusCost = true
 executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_nu8sm"), SubResource("Resource_5cjq5")])
 internalName = "doubleshot"
 loc_displayName = "art_doubleshot_name"
 loc_displayDesc = "art_doubleshot_desc"
+icon = ExtResource("6_5arvb")
+TargetingData = NodePath("SkillTargetingData")
+UsableDamageData = NodePath("DamageData")
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("5_fbic6")

@@ -1,4 +1,5 @@
-extends Control
+extends InspectableElement
+class_name StatBlockEntry
 
 @export var icon : TextureRect
 @export var statName : Label

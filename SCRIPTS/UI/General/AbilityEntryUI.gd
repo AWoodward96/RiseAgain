@@ -1,16 +1,40 @@
-extends Control
+extends InspectableElement
 class_name AbilityEntryUI
 
-signal EntrySelected
 
-@export var SelectedParent : Control
+@export var Background : TextureRect
 
+@export var abilityTypeHeader : Label
 @export var abilityNameText : Label
 @export var abilityDescriptionText : RichTextLabel
 @export var abilityIcon : TextureRect
+@export var focusParent : Control
 @export var focusCostText : Label
-@export var rangeText : Label
+
+@export_category("Weapon Stats Granted")
+@export var StatsGrantedParent : EntryList
+@export var StatsGrantedPrefab : PackedScene
+
+@export_category("Uses")
+@export var usesParent : Control
 @export var usageLeft : Label
+
+@export_category("Range")
+@export var rangeParent : Control
+@export var rangeText : Label
+
+@export_category("Targeting")
+@export var targetingParent : Control
+@export var targetingTypeText : Label
+
+@export_category("Speed")
+@export var speedParent : Control
+@export var speedText : Label
+
+@export_category("BG Gradients")
+@export var AbilityBG : GradientTexture2D
+@export var WeaponBG : GradientTexture2D
+@export var TacticalBG : GradientTexture2D
 
 
 func Initialize(_packedScene : PackedScene):
@@ -21,6 +45,39 @@ func Refresh(_ability : Ability):
 	if _ability == null:
 		return
 
+	match _ability.type:
+		Ability.AbilityType.Standard:
+			if Background != null:
+				Background.texture = AbilityBG
+
+			if abilityTypeHeader != null:
+				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypeAbilityTextShorthand
+				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypeAbilityColor
+		Ability.AbilityType.Weapon:
+			if Background != null:
+				Background.texture = WeaponBG
+
+			if abilityTypeHeader != null:
+				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypeWeaponTextShorthand
+				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypeWeaponColor
+
+			if StatsGrantedParent != null:
+				StatsGrantedParent.ClearEntries()
+				if _ability.StatData != null:
+					for stats : StatDef in _ability.StatData.GrantedStats:
+						var entry = StatsGrantedParent.CreateEntry(StatsGrantedPrefab)
+						entry.statValue.text = str(stats.Value)
+						entry.icon.texture = stats.Template.loc_icon
+
+		Ability.AbilityType.Tactical:
+			if Background != null:
+				Background.texture = TacticalBG
+
+			if abilityTypeHeader != null:
+				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypeTacticalTextShorthand
+				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypeTacticalColor
+
+
 	abilityNameText.text = _ability.loc_displayName
 	abilityIcon.texture = _ability.icon
 
@@ -30,20 +87,100 @@ func Refresh(_ability : Ability):
 		var translated_string = tr(_ability.loc_displayDesc)
 		abilityDescriptionText.text = translated_string.format(formatDict)
 
+	UpdateTargeting(_ability)
+	UpdateSpeed(_ability)
+	UpdateUsages(_ability)
+	UpdateRange(_ability)
 
+	focusParent.visible = _ability.focusCost != 0
 	if focusCostText != null:
-		focusCostText.text = "{AMT}".format({"AMT" : _ability.focusCost })
-
-	if rangeText != null:
-		var range = _ability.GetRange()
-		if _ability.TargetingData != null && _ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-			rangeText.text = tr("ui_range_directional")
+		if _ability.isXFocusCost:
+			focusCostText.text = "X"
 		else:
-			rangeText.text = tr("ui_range_amount").format({"MIN" : range.x, "MAX" : range.y })
+			focusCostText.text = "{AMT}".format({"AMT" : _ability.focusCost })
 
-	if usageLeft != null:
-		usageLeft.text = str(_ability.remainingUsages)
 
+func UpdateTargeting(_ability : Ability):
+	if targetingParent == null:
+		return
+
+	var targeting = _ability.TargetingData
+	if targeting == null:
+		targetingParent.visible = false
+		return
+
+	targetingParent.visible = true
+	match targeting.Type:
+		SkillTargetingData.TargetingType.Simple:
+			targetingTypeText.text = GameManager.LocalizationSettings.TargetingSimpleText
+			targetingTypeText.modulate = GameManager.LocalizationSettings.TargetingSimpleColor
+			pass
+		SkillTargetingData.TargetingType.ShapedFree:
+			targetingTypeText.text = GameManager.LocalizationSettings.TargetingShapedText
+			targetingTypeText.modulate = GameManager.LocalizationSettings.TargetingShapedColor
+			pass
+		SkillTargetingData.TargetingType.ShapedDirectional:
+			targetingTypeText.text = GameManager.LocalizationSettings.TargetingDirectionalText
+			targetingTypeText.modulate = GameManager.LocalizationSettings.TargetingDirectionalColor
+			pass
+		SkillTargetingData.TargetingType.Global:
+			targetingTypeText.text = GameManager.LocalizationSettings.TargetingGlobalText
+			targetingTypeText.modulate = GameManager.LocalizationSettings.TargetingGlobalColor
+			pass
+		SkillTargetingData.TargetingType.SelfOnly:
+			targetingTypeText.text = GameManager.LocalizationSettings.TargetingSelfText
+			targetingTypeText.modulate = GameManager.LocalizationSettings.TargetingSelfColor
+			pass
+
+
+func UpdateRange(_ability : Ability):
+	if rangeParent == null:
+		return
+
+	var targeting = _ability.TargetingData
+	if targeting == null:
+		rangeParent.visible = false
+		return
+
+	match targeting.Type:
+		SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.ShapedFree:
+			rangeParent.visible = true
+			var range = _ability.GetRange()
+			if range.x == range.y:
+				rangeText.text = str(range.x)
+			else:
+				rangeText.text = tr(GameManager.LocalizationSettings.RangeAmountTextFormat).format({"MIN" : range.x, "MAX" : range.y })
+		_:
+			rangeParent.visible = false
+
+func UpdateUsages(_ability : Ability):
+	if usesParent == null:
+		return
+
+	if _ability.limitedUsage == -1:
+		usesParent.visible = false
+		return
+
+	usesParent.visible = true
+	usageLeft.text = str(_ability.remainingUsages)
+
+func UpdateSpeed(_ability : Ability):
+	if speedText == null:
+		return
+
+	match _ability.ability_speed:
+		Ability.AbilitySpeed.Normal:
+			speedText.text = GameManager.LocalizationSettings.AbilitySpeedNormalText
+			speedText.modulate = GameManager.LocalizationSettings.AbilitySpeedNormalColor
+			pass
+		Ability.AbilitySpeed.Fast:
+			speedText.text = GameManager.LocalizationSettings.AbilitySpeedFastText
+			speedText.modulate = GameManager.LocalizationSettings.AbilitySpeedFastColor
+			pass
+		Ability.AbilitySpeed.Slow:
+			speedText.text = GameManager.LocalizationSettings.AbilitySpeedSlowText
+			speedText.modulate = GameManager.LocalizationSettings.AbilitySpeedSlowColor
+			pass
 
 func FormatAbilityDescription(_ability : Ability):
 	var dict = {}
@@ -55,7 +192,6 @@ func FormatAbilityDescription(_ability : Ability):
 
 		dict["DMG_AGGRESSIVESTAT"] = tr(_ability.UsableDamageData.AgressiveStat.loc_displayName_short)
 
-		#dict["DMG_AGGRESSIVESTAT"] = "TITS"
 
 		# Scale this up as needed. Format should be DMG_VULNERABLE_[DESC or MULT]_[Index]
 		if _ability.UsableDamageData.VulerableDescriptors.size() != 0:
@@ -96,19 +232,3 @@ func FormatAbilityDescription(_ability : Ability):
 
 
 	return dict
-
-
-func _ready():
-	gui_input.connect(OnGUI)
-	focus_entered.connect(OnFocusEntered)
-	focus_exited.connect(OnFocusExited)
-
-func OnGUI(_event : InputEvent):
-	if _event.is_action_pressed("select"):
-		EntrySelected.emit()
-
-func OnFocusEntered():
-	SelectedParent.visible = true
-
-func OnFocusExited():
-	SelectedParent.visible = false

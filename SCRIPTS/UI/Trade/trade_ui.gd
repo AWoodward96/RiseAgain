@@ -89,9 +89,9 @@ func UpdateUnit1Panel(_showItems : bool):
 			entry.Refresh(slot)
 
 			if !convoyMode:
-				entry.OnSelected.connect(OnItemSlotSelected.bind(true, slot, index))
+				entry.EntrySelected.connect(OnItemSlotSelected.bind(true, slot, index))
 			else:
-				entry.OnSelected.connect(OnItemSentToConvoy.bind(slot, index))
+				entry.EntrySelected.connect(OnItemSentToConvoy.bind(slot, index))
 			index += 1
 
 func UpdateUnit2Panel(_showItems : bool):
@@ -107,7 +107,7 @@ func UpdateUnit2Panel(_showItems : bool):
 		for slot in otherUnit.ItemSlots:
 			var entry = unit2ItemEntryList.CreateEntry(itemSlotPrefab)
 			entry.Refresh(slot)
-			entry.OnSelected.connect(OnItemSlotSelected.bind(false, slot, index))
+			entry.EntrySelected.connect(OnItemSlotSelected.bind(false, slot, index))
 			index += 1
 
 func UpdateConvoy():
@@ -119,7 +119,7 @@ func UpdateConvoy():
 	for item in GameManager.CurrentCampaign.Convoy:
 		var entry = convoyList.CreateEntry(itemSlotPrefab)
 		entry.Refresh(item)
-		entry.OnSelected.connect(OnItemTakenFromConvoy.bind(item))
+		entry.EntrySelected.connect(OnItemTakenFromConvoy.bind(item))
 
 	pass
 

@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://civyu43ep0hvd"]
+[gd_scene load_steps=6 format=3 uid="uid://civyu43ep0hvd"]
 
 [ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_uimmc"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_la0o7"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_dqcbo"]
+[ext_resource type="Texture2D" uid="uid://0qoyrxict7xs" path="res://ART/UI/ScalableScreens/Stat_Holder.png" id="4_3432u"]
 
-[node name="StatBlockEntry" type="PanelContainer" node_paths=PackedStringArray("icon", "statValue", "statIncreaseLabel")]
-custom_minimum_size = Vector2(85, 40)
+[sub_resource type="LabelSettings" id="LabelSettings_3432u"]
+font = ExtResource("3_dqcbo")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="StatBlockEntry" type="MarginContainer" node_paths=PackedStringArray("icon", "statValue", "statIncreaseLabel")]
+custom_minimum_size = Vector2(85, 32)
+offset_right = 85.0
+offset_bottom = 32.0
+theme_override_constants/margin_left = 0
 script = ExtResource("1_uimmc")
 icon = NodePath("MarginContainer/HBoxContainer/TextureRect")
 statValue = NodePath("MarginContainer/HBoxContainer/Amount")
@@ -12,13 +22,16 @@ statIncreaseLabel = NodePath("MarginContainer/HBoxContainer/Amount/Increase")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 6
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.290196, 0.235294, 0.227451, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -30,6 +43,7 @@ stretch_mode = 4
 [node name="Amount" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "7"
+label_settings = SubResource("LabelSettings_3432u")
 
 [node name="Increase" type="Label" parent="MarginContainer/HBoxContainer/Amount"]
 visible = false
@@ -40,3 +54,7 @@ offset_right = 26.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(1, 1, 0.52549, 1)
 text = "+7"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_3432u")

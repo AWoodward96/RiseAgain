@@ -9,7 +9,7 @@ signal AbilityActionComplete
 #	All Equippables should have the Damage Grants Focus bool set to true - but it's available as an option to be false for any edge cases
 # Tactical: A utility focused Ability that every Unit can use
 enum AbilityType { Standard, Weapon, Tactical, Passive }
-
+enum AbilitySpeed { Normal, Fast, Slow }
 
 @export var type : AbilityType
 @export var focusCost : int = 1
@@ -17,6 +17,7 @@ enum AbilityType { Standard, Weapon, Tactical, Passive }
 @export var limitedUsage : int = -1 # -1 means there is no limited usage
 @export var usageRestoredByCampfire : int = 0
 
+@export var ability_speed : AbilitySpeed = AbilitySpeed.Normal
 @export var executionStack : Array[ActionStep]
 @export var autoEndTurn : bool = true
 @export var damageGrantsFocus : bool = false
@@ -58,7 +59,7 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 			if _actionLog.actionStackIndex < executionStack.size():
 				executionStack[_actionLog.actionStackIndex ].Enter(_actionLog)
 			else:
-				if autoEndTurn:
+				if ability_speed != AbilitySpeed.Fast:
 					_actionLog.source.QueueEndTurn()
 
 				AbilityActionComplete.emit()

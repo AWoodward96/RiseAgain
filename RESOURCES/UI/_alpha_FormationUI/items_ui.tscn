@@ -111,11 +111,13 @@ texture = ExtResource("5_hsjp0")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "ui_equipped_weapon_label"
 label_settings = SubResource("LabelSettings_2u5kn")
 
 [node name="WeaponPanel" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" instance=ExtResource("7_r1hna")]
+visible = false
 layout_mode = 2
 
 [node name="ItemsLabel" type="Label" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]

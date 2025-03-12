@@ -7,6 +7,7 @@ class_name MultipanelController
 
 var openPanelIndex : int = 0
 var lastOpenPanel : int = 0
+var tabshift_cd : float = 0
 
 func _ready():
 	if saveLastPanelIndex:
@@ -16,11 +17,13 @@ func _ready():
 	pass
 
 
-func _process(_delta: float):
-	if InputManager.inputDown[1]:
-		ShowPanel(openPanelIndex + 1)
-	if InputManager.inputDown[3]:
-		ShowPanel(openPanelIndex - 1)
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("right"):
+		if UIManager.CurrentInspectedElement == null || UIManager.CurrentInspectedElement.find_valid_focus_neighbor(SIDE_RIGHT) == null:
+			ShowPanel(openPanelIndex + 1)
+	if event.is_action_pressed("left"):
+		if UIManager.CurrentInspectedElement == null || UIManager.CurrentInspectedElement.find_valid_focus_neighbor(SIDE_LEFT) == null:
+			ShowPanel(openPanelIndex - 1)
 
 func ShowPanel(_index : int):
 	if controls.size() == 0:

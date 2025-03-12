@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bpweev6j422g3"]
+
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_r6cvq"]
+
+[resource]
+font = ExtResource("1_r6cvq")
+shadow_color = Color(0, 0, 0, 1)

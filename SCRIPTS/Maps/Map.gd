@@ -373,7 +373,7 @@ func Save():
 func ToJSON():
 	# LETS FUCKING GOOOOOOO
 	var dict = {
-		"scenepath" = self.scene_file_path,
+		"prefabpath" = self.scene_file_path,
 		"currentTurn" = currentTurn,
 		"mapRNG" = mapRNG.ToJSON(),
 		"turnCount" = turnCount,
@@ -400,7 +400,7 @@ func ToJSON():
 
 static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	# This should make it so that everything that's exported - doesn't need to be stored from JSON
-	var mapscene = load(_dict["scenepath"]) as PackedScene
+	var mapscene = load(_dict["prefabpath"]) as PackedScene
 	var map = mapscene.instantiate() as Map
 	Map.Current = map
 	map.CurrentCampaign = _assignedCampaign

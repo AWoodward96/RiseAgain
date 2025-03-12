@@ -14,6 +14,7 @@ CombatEffect = ExtResource("3_78h65")
 [node name="ART_snareshot" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_qrlnf")
 focusCost = 2
+ability_speed = 1
 executionStack = Array[ExtResource("2_hgu7s")]([SubResource("Resource_j3wwt")])
 autoEndTurn = false
 internalName = "snareshot"

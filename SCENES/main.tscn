@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c76vc288ovh8q"]
+[gd_scene load_steps=5 format=3 uid="uid://c76vc288ovh8q"]
 
 [ext_resource type="Script" uid="uid://821pl6iihp24" path="res://SCENES/main.gd" id="1_q6lq6"]
 [ext_resource type="Resource" uid="uid://ddhgteb5cmmht" path="res://RESOURCES/Maps/Tutorial/tutorial_campaign.tres" id="2_pgmeu"]
+[ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="3_i3vxn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i3vxn"]
+viewport_path = NodePath("CanvasLayer/SubViewportContainer/SubViewport")
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("BastionParent", "CampaignParent") groups=["MainScene"]]
 script = ExtResource("1_q6lq6")
@@ -12,3 +16,38 @@ CampaignParent = NodePath("CampaignParent")
 [node name="BastionParent" type="Node2D" parent="." groups=["BastionParent"]]
 
 [node name="CampaignParent" type="Node2D" parent="." groups=["CampaignParent"]]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -162.5
+offset_top = -93.5
+offset_right = 349.5
+offset_bottom = 418.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size_2d_override = Vector2i(512, 512)
+render_target_update_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Camera2D"]
+position = Vector2(272.5, 260.5)
+texture = ExtResource("3_i3vxn")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 841.0
+offset_top = 537.0
+offset_right = 905.0
+offset_bottom = 601.0
+texture = SubResource("ViewportTexture_i3vxn")
+expand_mode = 1

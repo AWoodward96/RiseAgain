@@ -10,6 +10,8 @@ func OnVisiblityChanged():
 	if InspectUI != null:
 		unit = InspectUI.unit
 		RefreshEntries()
+		if visible:
+			itemSlotEntryList.FocusFirst()
 	pass
 
 func RefreshEntries():

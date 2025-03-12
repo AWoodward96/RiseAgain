@@ -40,7 +40,6 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var DefenseStat : StatTemplate
 @export var SpAttackStat : StatTemplate
 @export var SpDefenseStat : StatTemplate
-@export var SkillStat : StatTemplate
 @export var LuckStat : StatTemplate
 @export var MindStat : StatTemplate
 
@@ -263,7 +262,8 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 	if _tileData !=null:
 		tileCritModifier = _tileData.CritModifier * 100
 
-	return ((_attacker.GetWorkingStat(SkillStat) / 2.0) + _attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
+	return (_attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat)) / 100
+	# return ((_attacker.GetWorkingStat(SkillStat) / 2.0) + _attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
 	return 10 + _healAmount
@@ -289,26 +289,26 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 		equationResult = equationResult * GameManager.GameSettings.AOEExpMultiplier
 	return equationResult
 
-func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):
-	if _attacker == null:
-		push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
-		return 0
-
-	if _defender == null:
-		# If the defender doesn't exist - then don't even do this dance - just say you have 100% chance to hit
-		return 1
-
-	var weaponAccuracy = 0
-	if _weapon != null:
-		weaponAccuracy = _weapon.GetAccuracy()
-
-	var affinityModifier = 0
-	if _defender != null && _defender.Template != null:
-		affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
-
-	# Equation is:
-	# WeaponAcc + (Skill * 2) + (Luck / 2)
-	return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0) + affinityModifier) / 100.0
+#func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):
+	#if _attacker == null:
+		#push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
+		#return 0
+#
+	#if _defender == null:
+		## If the defender doesn't exist - then don't even do this dance - just say you have 100% chance to hit
+		#return 1
+#
+	#var weaponAccuracy = 0
+	#if _weapon != null:
+		#weaponAccuracy = _weapon.GetAccuracy()
+#
+	#var affinityModifier = 0
+	#if _defender != null && _defender.Template != null:
+		#affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
+#
+	## Equation is:
+	## WeaponAcc + (Skill * 2) + (Luck / 2)
+	#return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0) + affinityModifier) / 100.0
 
 static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i, _direction : Direction):
 	match (_direction):
@@ -323,17 +323,17 @@ static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i
 	return _position
 
 
-func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
-	if _defender == null:
-		return 0
-
-	var affinityModifier = 0
-	if _defender != null && _defender.Template != null:
-		affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
-
-	# Equation is:
-	# (Skill * 2) + (Luck)
-	return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat) + affinityModifier) / 100.0
+#func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
+	#if _defender == null:
+		#return 0
+#
+	#var affinityModifier = 0
+	#if _defender != null && _defender.Template != null:
+		#affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
+#
+	## Equation is:
+	## (Skill * 2) + (Luck)
+	#return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat) + affinityModifier) / 100.0
 
 func GetFireDamage(_dmgLevel : int):
 	if _dmgLevel <= 0:

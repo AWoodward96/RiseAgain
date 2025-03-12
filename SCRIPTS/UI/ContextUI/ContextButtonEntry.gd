@@ -52,7 +52,7 @@ func AddAbility(_ability : Ability):
 	if _ability.limitedUsage != -1:
 		AddUsage(_ability.remainingUsages)
 
-	fast_speed_parent.visible = !_ability.autoEndTurn
+	fast_speed_parent.visible = _ability.ability_speed == Ability.AbilitySpeed.Fast
 
 func AddCost(_focusCost : int):
 	focus_cost_parent.visible = _focusCost > 0

@@ -1,21 +1,21 @@
 key,en
 weap_dark_pact_name,Dark Pact
 weap_dark_pact_desc,A curse on life itself that crumbles flesh to dust
-weap_iron_bow_desc,A reliable bow with okay accuracy and okay Attack. Range 2-3
+weap_iron_bow_desc,A reliable bow with okay accuracy and okay Attack.
 weap_iron_bow_name,Iron Bow
-weap_iron_sword_desc,A reliable blade with high accuracy but low Attack. Range 1
+weap_iron_sword_desc,A reliable blade with high accuracy but low Attack.
 weap_iron_sword_name,Iron Sword
-weap_magic_bolt_desc,A more advanced magic blast with lower accuracy but good SpAttack. Range 1-2
+weap_magic_bolt_desc,A more advanced magic blast with good SpAttack.
 weap_magic_bolt_name,Magic Bolt
-weap_mana_bolt_desc,A weaker tome of magic. Range 1-2
+weap_mana_bolt_desc,A weaker tome of magic.
 weap_mana_bolt_name,Mana Bolt
-weap_steel_bow_desc,"A more difficult to use bow, with decent accuracy and okay Attack. Range 2-3"
+weap_steel_bow_desc,"A more difficult to use bow, with decent accuracy and okay Attack."
 weap_steel_bow_name,Steel Bow
-weap_steel_sword_desc,"A more difficult to use sword, with lower accuracy but good Attack. Range 1"
+weap_steel_sword_desc,A more difficult to use sword but good Attack. 
 weap_steel_sword_name,Steel Sword
-weap_wolf_tooth_desc,Dangerous teeth used for biting. Range 1
+weap_wolf_tooth_desc,Dangerous teeth used for biting.
 weap_wolf_tooth_name,Wolf Bite
-weap_zombie_claw_desc,Sharp deteriorating claws that cut. Range 1
+weap_zombie_claw_desc,Sharp deteriorating claws that cut.
 weap_zombie_claw_name,Zombie Claw
 weap_wolfbane_name,Wolfbane
 weap_wolfbane_desc,Heals the user for {DMG_DRAINPERC}% damage dealt. Deals double damage to Canines.
@@ -56,8 +56,8 @@ unit_rogue_desc,A high damage melee carry with good attack but low defense
 ui_health,Health
 ui_level_num,Level {NUM}
 ui_level_num_short,LvL {NUM}
-ui_range_amount,{MIN} to {MAX} Tiles
-ui_range_directional,Directional
+ui_level_short,LvL:
+ui_range_amount,{MIN} - {MAX}
 ui_select_an_ability,Select an Ability to Unlock:
 ui_statblock_label_large,{TEXT} - {VALUE}
 ui_num,{NUM}
@@ -86,7 +86,7 @@ ui_header_weapons,Weapons:
 ui_header_tactical,Tactical:
 ui_header_abilities,Abilities:
 ui_uses_label,Uses:
-tact_gauze_desc,Use: Heals the user 10 HP
+tact_gauze_desc,Heals the user 10 HP
 tact_gauze_name,Petty Gauze
 stat_attack,Attack
 stat_attack_desc,Increases Physical Damage dealt to Enemies
@@ -153,7 +153,7 @@ art_cleave_desc,This Unit takes a huge swing at a large area in front of them de
 art_darkfell_name,Soul Cleave
 art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
 art_doubleshot_name,Repeater
-art_doubleshot_desc,Fire two shots at a Target in quick succession dealing damage based on {DMG_AGGRESSIVESTAT}
+art_doubleshot_desc,Spend all of this Units Mana to deal damage equal to {DMG_AGGRESSIVESTAT} times the amount of Mana spent
 art_drain_name,Life Drain
 art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
 art_fireball_name,Fireball
@@ -195,7 +195,7 @@ stat_wisdom,Wisdom
 stat_wisdom_short,WIS
 stat_wisdom_desc,Increases Magical Damage dealt by Abilities to Enemies
 art_summonmine_name,Hunters Trap
-art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on DEX
+art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on DEX and Stuns
 art_spearthrow_name,Throw Spear
 art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
 art_pushforward_name,Push Forward
@@ -298,3 +298,22 @@ tut_fastspeed_0,Select the Mercenary we picked up at the end of the last map
 tut_fastspeed_1,The Mercenary has an ability called [Heroic Leap]
 tut_fastspeed_2,"[Heroic Leap] is a Fast Speed Ability, as denoted by the Lightning bolt icon"
 tut_fastspeed_3,"Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana"
+tut_complete0,"This is the last map in the Tutorial. Be careful, the training wheels have been removed, and Enemies deal a lot more damage now!"
+tut_complete1,"After you win or lose, you'll have the option of starting a real campaign with any of the Units in the game."
+tut_complete2,Good luck!
+ui_targeting_title,Targeting:
+ui_targeting_simple,Simple
+ui_targeting_directional,Directional
+ui_targeting_shaped,Simple Shaped
+ui_targeting_self,Self
+ui_uses_title,Uses:
+ui_speed_title,Speed:
+ui_speed_normal,Normal
+ui_speed_fast,Fast
+ui_speed_slow,Slow
+ui_targeting_global,Global
+ui_range_title,Range:
+ui_ability_title_shorthand,ABLY:
+ui_tactical_title_shorthand,TACT:
+ui_weapon_title_shorthand,WEAP:
+ui_exp,Exp:

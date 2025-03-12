@@ -1,7 +1,5 @@
-extends Control
+extends InspectableElement
 class_name ItemDisplayEntry
-
-signal OnSelected
 
 @export var emptyParent : Control
 @export var displayParent : Control
@@ -10,23 +8,6 @@ signal OnSelected
 @export var itemName : Label
 @export var itemDescription : Label
 
-@export var selectedParent : Control
-
-
-func _ready():
-	gui_input.connect(OnGUI)
-	focus_entered.connect(OnFocusEntered)
-	focus_exited.connect(OnFocusExited)
-
-func OnGUI(_event : InputEvent):
-	if _event.is_action_pressed("select") && selectedParent.visible:
-		OnSelected.emit()
-
-func OnFocusEntered():
-	if selectedParent != null: selectedParent.visible = true
-
-func OnFocusExited():
-	if selectedParent != null: selectedParent.visible = false
 
 func Refresh(_item : Item):
 	if _item == null:

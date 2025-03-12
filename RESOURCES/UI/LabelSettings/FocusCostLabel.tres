@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dhpn7ahthlvkq"]
+
+[ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="1_pjt63"]
+
+[resource]
+font = ExtResource("1_pjt63")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)

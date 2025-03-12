@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://xl37svyevc7s"]
+[gd_scene load_steps=8 format=3 uid="uid://xl37svyevc7s"]
 
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
 [ext_resource type="Script" uid="uid://bqe5sme8cxec8" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
+[ext_resource type="LabelSettings" uid="uid://pyo20d27qcsx" path="res://RESOURCES/UI/LabelSettings/ability_selection_title.tres" id="3_ql6cx"]
 [ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
+[ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="4_vyvjt"]
+
+[sub_resource type="Gradient" id="Gradient_yi4lc"]
+offsets = PackedFloat32Array(0.0100503, 1)
+colors = PackedColorArray(0.34, 0.266787, 0.0816, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vyvjt"]
+gradient = SubResource("Gradient_yi4lc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [node name="SelectAnAbilityUI" type="CanvasLayer" node_paths=PackedStringArray("entryParent")]
 layer = 2
@@ -16,37 +28,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 96
-theme_override_constants/margin_top = 96
-theme_override_constants/margin_right = 96
-theme_override_constants/margin_bottom = 96
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0.53, 0.34927, 0.2014, 1)
+texture = SubResource("GradientTexture2D_vyvjt")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 
+[node name="Spacer" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="TitleLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "ui_select_an_ability"
+label_settings = ExtResource("3_ql6cx")
 
-[node name="AbilityEntryList" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="AbilityEntryList" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 32
+size_flags_vertical = 6
+theme_override_constants/separation = 8
 script = ExtResource("1_3ktkx")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_vyvjt")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16

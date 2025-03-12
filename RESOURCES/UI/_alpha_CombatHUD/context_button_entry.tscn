@@ -2,15 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cvuvblt057f7i" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
 [ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="2_1p72w"]
+[ext_resource type="LabelSettings" uid="uid://dhpn7ahthlvkq" path="res://RESOURCES/UI/LabelSettings/FocusCostLabel.tres" id="3_4cgg7"]
 [ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="3_tvrtu"]
 [ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="3_yvwub"]
 [ext_resource type="Texture2D" uid="uid://g0wv2ofym0em" path="res://ART/Icons/fast_speed.png" id="4_3hivy"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="4_5k861"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_1lrvp"]
-font = ExtResource("3_tvrtu")
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_glskh"]
 font = ExtResource("3_tvrtu")
@@ -82,7 +78,7 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "3"
-label_settings = SubResource("LabelSettings_1lrvp")
+label_settings = ExtResource("3_4cgg7")
 horizontal_alignment = 2
 vertical_alignment = 2
 

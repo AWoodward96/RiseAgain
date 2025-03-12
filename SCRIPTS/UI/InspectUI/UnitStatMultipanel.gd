@@ -4,7 +4,7 @@ extends MultipanelBase
 
 @export var statBlockEntryList : EntryList
 @export var statBlockEntry : PackedScene
-@export var statBlockLocalization : String = "ui_statblock_label_large"
+#@export var statBlockLocalization : String = "ui_statblock_label_large"
 
 
 @export_category("Combat Effects")
@@ -21,6 +21,8 @@ func OnVisiblityChanged():
 		unit = InspectUI.unit
 		UpdateStats()
 		UpdateCombatEffects()
+		if visible:
+			statBlockEntryList.FocusFirst()
 	pass
 
 func UpdateStats():

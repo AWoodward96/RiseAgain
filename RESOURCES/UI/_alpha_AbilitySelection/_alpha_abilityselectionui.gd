@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name SelectAbilityUI
 
 static var Instance : SelectAbilityUI
@@ -15,6 +15,7 @@ func _ready() -> void:
 	Instance = self
 
 func _exit_tree() -> void:
+	super()
 	if Instance == self:
 		Instance = null
 
