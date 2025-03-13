@@ -619,7 +619,7 @@ script = ExtResource("7_ok3a8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Tavern/UI"]
 libraries = {
-"": SubResource("AnimationLibrary_jh0tb")
+&"": SubResource("AnimationLibrary_jh0tb")
 }
 autoplay = "Show"
 
@@ -845,6 +845,6 @@ script = ExtResource("7_ok3a8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Barracks/UI"]
 libraries = {
-"": SubResource("AnimationLibrary_beymq")
+&"": SubResource("AnimationLibrary_beymq")
 }
 autoplay = "Show"

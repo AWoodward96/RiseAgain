@@ -106,8 +106,9 @@ func OnFocusChanged(_unit : UnitInstance, _entry):
 
 	itemEntryList.ClearEntries()
 	for item in _unit.ItemSlots:
-		var entry = itemEntryList.CreateEntry(itemEntryPrefab)
+		var entry = itemEntryList.CreateEntry(itemEntryPrefab) as ItemDisplayEntry
 		entry.Refresh(item)
+		entry.focus_mode = Control.FOCUS_NONE
 
 	if weaponPanel != null:
 		weaponPanel.Refresh(_unit.EquippedWeapon)

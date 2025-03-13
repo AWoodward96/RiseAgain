@@ -24,11 +24,6 @@ func InitializeNew(_unitTemplate : UnitTemplate):
 	UnallocatedPrestiege = 0
 	PrestiegeStatMods = []
 
-	# we moddin this
-	var testMod = StatDef.new()
-	testMod.Template = GameManager.GameSettings.AttackStat
-	testMod.Value = 1
-	PrestiegeStatMods.append(testMod)
 
 func GrantPrestiegeExp(_amount : int):
 	PrestiegeEXP += _amount
@@ -109,6 +104,9 @@ static func FromJSON(_dict : Dictionary):
 	var templateSTR = PersistDataManager.LoadFromJSON("template", _dict)
 	if templateSTR != null:
 		var ut = load(templateSTR) as UnitTemplate
+		if ut == null:
+			return null
+
 		var persistType = ut.persistDataScript
 		if persistType == null:
 			persistType = UnitPersistBase

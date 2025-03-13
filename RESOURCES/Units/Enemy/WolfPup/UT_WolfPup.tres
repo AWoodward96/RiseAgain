@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://ba7d8xyuy5mgm"]
 
 [ext_resource type="PackedScene" uid="uid://ds4w7ttanxhhg" path="res://RESOURCES/Units/Enemy/WolfPup/VIS_WolfPup.tscn" id="1_2ldp6"]
-[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_2mdvt"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_pk4jk"]
+[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_rohrg"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_uma5a"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ndbtr"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_3eixl"]
@@ -103,7 +103,7 @@ script = ExtResource("1_pk4jk")
 VisualPrefab = ExtResource("1_2ldp6")
 BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_ckqos"), SubResource("Resource_l8ew5"), SubResource("Resource_0sg4x"), SubResource("Resource_2k2yt"), SubResource("Resource_k8354"), SubResource("Resource_seakt"), SubResource("Resource_i536u"), SubResource("Resource_1ht2i"), SubResource("Resource_asq6f")])
 StatGrowths = Array[ExtResource("2_ndbtr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
-Affinity = ExtResource("1_2mdvt")
+Affinity = ExtResource("1_rohrg")
 StartingEquippedWeapon = ExtResource("14_vqo4v")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxolfuwxyja2v"]
+[gd_scene load_steps=6 format=3 uid="uid://dxolfuwxyja2v"]
 
 [ext_resource type="Script" uid="uid://dab7y862ea62y" path="res://SCRIPTS/UI/ExperienceGainUI/experience_gain_ui.gd" id="1_hieq5"]
 [ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="2_1xx7x"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_odcso"]
+[ext_resource type="LabelSettings" uid="uid://bqijakfhechmw" path="res://RESOURCES/UI/LabelSettings/levelup_ui_text.tres" id="3_setno"]
+[ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="5_k37rl"]
 
 [node name="ExperienceGainUI" type="CanvasLayer"]
 script = ExtResource("1_hieq5")
@@ -37,7 +39,7 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="LevelUpParent"]
+[node name="Margin" type="MarginContainer" parent="LevelUpParent"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,31 +47,45 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelUpParent/PanelContainer"]
+[node name="TextureRect" type="ColorRect" parent="LevelUpParent/Margin"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+color = Color(0.396078, 0.317647, 0.294118, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpParent/PanelContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelUpParent/Margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpParent/Margin/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Level:"
+label_settings = ExtResource("3_setno")
 
-[node name="CurrentLevelLabel" type="Label" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CurrentLevelLabel" type="Label" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "$NUM$"
+label_settings = ExtResource("3_setno")
 
-[node name="StatEntryParent" type="GridContainer" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="StatEntryParent" type="GridContainer" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 3
 script = ExtResource("3_odcso")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LevelUpParent/Margin"]
+layout_mode = 2
+texture = ExtResource("5_k37rl")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16

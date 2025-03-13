@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_tc7nm")
 affinity = 1
-strongAgainst = 4
+strongAgainst = 12
 loc_icon = ExtResource("1_60uag")
 loc_name = "affinity_fire"

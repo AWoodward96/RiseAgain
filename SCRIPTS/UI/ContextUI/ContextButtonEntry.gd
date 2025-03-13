@@ -62,7 +62,7 @@ func AddUsage(_usagesRemaining : int):
 	usage_parent.visible = true
 	usage_label.text = str(_usagesRemaining)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if InputManager.selectDown && enabled && focus_parent.visible == true:
 		if callback != null:
 			callback.call()

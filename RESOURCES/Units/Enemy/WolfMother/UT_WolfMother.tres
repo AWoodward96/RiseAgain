@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://qtltk2i8ar11"]
 
+[ext_resource type="Resource" uid="uid://cw401rjsoo6be" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_7y7ke"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_813ky"]
-[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_xpmu0"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ic2vg"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_3goip"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_lwm1f"]
@@ -26,7 +26,7 @@ Value = 8.0
 [sub_resource type="Resource" id="Resource_4mlcp"]
 script = ExtResource("2_ic2vg")
 Template = ExtResource("3_3goip")
-Value = 5.0
+Value = 3.0
 
 [sub_resource type="Resource" id="Resource_uvcah"]
 script = ExtResource("2_ic2vg")
@@ -104,7 +104,7 @@ script = ExtResource("10_y1hu7")
 VisualPrefab = ExtResource("12_f5ner")
 BaseStats = Array[ExtResource("2_ic2vg")]([SubResource("Resource_i7ud2"), SubResource("Resource_4mlcp"), SubResource("Resource_uvcah"), SubResource("Resource_6n7qq"), SubResource("Resource_x0iqu"), SubResource("Resource_vhf22"), SubResource("Resource_s5wu2"), SubResource("Resource_85her"), SubResource("Resource_ih3yn")])
 StatGrowths = Array[ExtResource("2_ic2vg")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
-Affinity = ExtResource("1_xpmu0")
+Affinity = ExtResource("1_7y7ke")
 StartingEquippedWeapon = ExtResource("14_pk1ms")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])

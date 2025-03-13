@@ -177,6 +177,7 @@ func ClearCampaign():
 	DirAccess.remove_absolute(MAP_FILE)
 	DirAccess.remove_absolute(MAP_GRID_FILE)
 
+
 func SaveGame():
 	# First save the universe file
 	if universeData != null:

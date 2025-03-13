@@ -25,10 +25,8 @@
 				"5d0e9577-06ed-40db-9e78-9aaf0b1a3082",
 				"dd2f19a1-e0bc-4639-a270-b53a4f5a0051",
 				"f2e28bda-495c-4f2f-9c5b-e221337be812",
-				"2e509820-42a3-454f-8b34-7706c7dc1257",
 				"5fdd40e3-8875-4416-b957-43b710f60d7b",
 				"9d049bd3-a9d1-485d-afa6-5b53d350b775",
-				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
 				"941b2cbd-1c25-40a9-a292-6849245f69ee"
 			]
 		},
@@ -36,9 +34,7 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
-				"073acedc-08f2-476c-bf21-67837a146552",
-				"cad1a58b-24c8-484e-a360-c2f55357e43e"
+				"073acedc-08f2-476c-bf21-67837a146552"
 			]
 		},
 		{
@@ -47,8 +43,7 @@
 			"tasks": [
 				"393f2420-d4f9-472f-9d97-425459720305",
 				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
-				"699aab52-45ba-4327-b881-5d2aed61b4d8",
-				"984e0418-bab3-4f8c-97a6-4b3329e3bd29"
+				"699aab52-45ba-4327-b881-5d2aed61b4d8"
 			]
 		},
 		{
@@ -58,9 +53,15 @@
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
 				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
+				"cad1a58b-24c8-484e-a360-c2f55357e43e",
+				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
+				"4ed03008-ca7a-420d-8974-f4755e00ab92",
 				"ea0566fd-0852-4e20-9b0f-be54dffd6cec",
+				"984e0418-bab3-4f8c-97a6-4b3329e3bd29",
 				"0f3a97d5-2503-4719-9cc6-1bbee5ebaae6",
 				"baa40d5d-a402-4ab8-9ae6-3dd0fddc50bf",
+				"2e509820-42a3-454f-8b34-7706c7dc1257",
+				"780512ad-4329-4c0d-934c-aee07a8ca0b8",
 				"18c31b44-f817-41e3-b314-1b586654d3ed",
 				"1889e452-ba76-4088-bf90-3a20569bb6a6",
 				"6f7cc9a0-a74a-4a09-9724-754feae9cbd0",
@@ -384,6 +385,13 @@
 			"title": "maroon_b02_default has no fire map",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "4ed03008-ca7a-420d-8974-f4755e00ab92",
+			"title": "Stunned units acan counter attack - don't let them",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

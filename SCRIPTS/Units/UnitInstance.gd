@@ -12,10 +12,10 @@ signal OnCombatEffectsUpdated
 @export var focusSlotPrefab : PackedScene
 @export var affinityIcon: Sprite2D
 
-@onready var health_bar : ProgressBar = %HealthBar
-@onready var hp_val = %"HP Val"
+#@onready var health_bar : ProgressBar = %HealthBar
+#@onready var hp_val = %"HP Val"
 @onready var health_bar_parent = %HealthBarParent
-@onready var armor_bar: ProgressBar = %ArmorBar
+#@onready var armor_bar: ProgressBar = %ArmorBar
 
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
 @onready var defend_icon: Sprite2D = %DefendIcon
@@ -383,7 +383,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false) :
+func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false) :
 	if _route == null || _route.size() == 0:
 		return
 
@@ -393,6 +393,7 @@ func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : in
 	action.SpeedOverride = _speedOverride
 	action.MoveFromAbility = _moveFromAbility
 	action.CutsceneMove = _cutsceneMove
+	action.AllowOccupantOverwrite = _allowOverwrite
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()
@@ -508,10 +509,6 @@ func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous :
 		OnModifyHealthTweenComplete(_netHealthChange, _result)
 	pass
 
-func UpdateHealthBarTween(value):
-	hp_val.text = str("%02d/%02d" % [clamp(value, 0, maxHealth), maxHealth])
-	health_bar.value = clampf(value, 0, maxHealth) / maxHealth as float
-	pass
 
 func ModifyFocus(_netFocusChange):
 	currentFocus += _netFocusChange
@@ -620,8 +617,7 @@ func CheckKillbox():
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible
 	if _visible:
-		hp_val.text = str(currentHealth)
-		health_bar.value = healthPerc
+		healthBar.Refresh()
 
 func QueueAttackSequence(_destination : Vector2, _log : ActionLog):
 	var attackAction = UnitAttackAction.new()

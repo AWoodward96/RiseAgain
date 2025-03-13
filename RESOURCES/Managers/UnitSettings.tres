@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_665j3"]
 [ext_resource type="Script" uid="uid://bkepgvus333qa" path="res://SCRIPTS/Managers/UnitSettings.gd" id="1_a2dt2"]
 [ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_fb7ip"]
-[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/DarkMage/UT_DarkMage.tres" id="2_3wj7i"]
+[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/WildMage/UT_WildMage.tres" id="2_3wj7i"]
 [ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="3_784br"]
 [ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="4_qg1gr"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="5_ms0k5"]

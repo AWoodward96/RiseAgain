@@ -18,10 +18,10 @@ class_name AffinityTemplate
 
 
 # Theis is the affinity this template represents
-@export_flags("Fire", "Water", "Earth", "Light", "Dark", "Humanity", "Maggai") var affinity : int
+@export_flags("Fire", "Water", "Grass", "Metal", "Earth", "Light", "Dark", "Maggai") var affinity : int
 
 # These are the affinities we deal more damage to
-@export_flags("Fire", "Water", "Earth", "Light", "Dark", "Humanity", "Maggai") var strongAgainst : int
+@export_flags("Fire", "Water", "Grass", "Metal", "Earth", "Light", "Dark", "Maggai") var strongAgainst : int
 
 # These affinities deal 1.25% damage to each other, as opposed to the 1.5%
 #@export_flags("Fire", "Water", "Earth", "Light", "Dark", "Scholar", "Maggai") var opposedWith : int

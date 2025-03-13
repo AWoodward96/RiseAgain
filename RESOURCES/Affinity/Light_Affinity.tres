@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_yf4wn")
-affinity = 8
-strongAgainst = 80
+affinity = 32
+strongAgainst = 64
 loc_icon = ExtResource("1_pxb6g")
 loc_name = "affinity_light"

@@ -9,7 +9,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export_category("Campaign Data")
 @export var CampaignManifest : Array[CampaignTemplate]
 @export var CampaignInstancePrefab : PackedScene
-@export var NumberOfRewardsInPostMap = 3
+@export var NumberOfRewardsInPostMap : int = 3
 @export var DefaultLossState : MapObjective
 
 @export_category("Map Data")
@@ -262,7 +262,7 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 	if _tileData !=null:
 		tileCritModifier = _tileData.CritModifier * 100
 
-	return (_attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat)) / 100
+	return (_attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 	# return ((_attacker.GetWorkingStat(SkillStat) / 2.0) + _attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):

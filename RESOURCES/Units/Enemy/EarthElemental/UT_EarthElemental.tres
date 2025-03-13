@@ -19,12 +19,12 @@
 [sub_resource type="Resource" id="Resource_7h4pr"]
 script = ExtResource("2_50beg")
 Template = ExtResource("3_qblo7")
-Value = 14
+Value = 14.0
 
 [sub_resource type="Resource" id="Resource_b4xeo"]
 script = ExtResource("2_50beg")
 Template = ExtResource("4_clsg0")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_i6c8y"]
 script = ExtResource("2_50beg")
@@ -44,7 +44,7 @@ Value = 0
 [sub_resource type="Resource" id="Resource_ddjmc"]
 script = ExtResource("2_50beg")
 Template = ExtResource("8_fbfy8")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_eqqd1"]
 script = ExtResource("2_50beg")
@@ -59,17 +59,17 @@ Value = 0
 [sub_resource type="Resource" id="Resource_xhryc"]
 script = ExtResource("2_50beg")
 Template = ExtResource("11_55mju")
-Value = 2
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_towby"]
 script = ExtResource("2_50beg")
 Template = ExtResource("3_qblo7")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_tperq"]
 script = ExtResource("2_50beg")
 Template = ExtResource("4_clsg0")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_o270h"]
 script = ExtResource("2_50beg")

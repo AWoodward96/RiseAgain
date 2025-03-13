@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_rl7un")
 affinity = 2
-strongAgainst = 1
+strongAgainst = 9
 loc_icon = ExtResource("1_w0y6t")
 loc_name = "affinity_water"

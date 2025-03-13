@@ -10,6 +10,7 @@ func Enter(_actionLog : ActionLog):
 		var tileData = res.TileTargetData
 		var pushData = tileData.pushStack
 
+
 		for stack in pushData:
 			# Unit died sometime before this
 			if stack.Subject == null:
@@ -24,12 +25,12 @@ func Enter(_actionLog : ActionLog):
 			movement.append(unit.CurrentTile)
 			movement.append(stack.ResultingTile)
 			if unit == _actionLog.source:
-				unit.MoveCharacterToNode(movement, stack.ResultingTile)
+				unit.MoveCharacterToNode(movement, stack.ResultingTile, -1, false, false, true)
 				unit.TurnStartTile = stack.ResultingTile
 				if res.willCollide && res.canDamageUser:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 			else:
-				unit.MoveCharacterToNode(movement, stack.ResultingTile)
+				unit.MoveCharacterToNode(movement, stack.ResultingTile, -1, false, false, true)
 				if res.willCollide:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 

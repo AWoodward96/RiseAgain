@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AffinityTemplate" load_steps=3 format=3 uid="uid://tv148nwskj75"]
+
+[ext_resource type="Texture2D" uid="uid://cdodt48i71r6i" path="res://ART/Icons/Affinity/grass_affinity_icon.png" id="1_ni6q6"]
+[ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="2_v5n4x"]
+
+[resource]
+script = ExtResource("2_v5n4x")
+affinity = 4
+strongAgainst = 18
+loc_icon = ExtResource("1_ni6q6")
+loc_name = "affinity_grass"

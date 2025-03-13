@@ -121,6 +121,7 @@ show_percentage = false
 [node name="ArmorBar" type="ProgressBar" parent="HealthBarParent/Offset"]
 unique_name_in_owner = true
 visible = false
+modulate = Color(1, 1, 1, 0.631373)
 custom_minimum_size = Vector2(80, 16)
 layout_mode = 2
 offset_left = -8.0
@@ -129,7 +130,6 @@ offset_bottom = 16.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_f5801")
 max_value = 1.0
 value = 0.84
-fill_mode = 1
 show_percentage = false
 
 [node name="HP Val" type="Label" parent="HealthBarParent/Offset"]

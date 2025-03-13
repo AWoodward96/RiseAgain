@@ -242,7 +242,7 @@ func SwapUnitPositions(_unit1 : UnitInstance, _unit2 : UnitInstance):
 	_unit2.global_position = GridArr[index1].Position * CellSize
 
 
-func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateWorldPosition : bool) :
+func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateWorldPosition : bool, _allowOccupantOverwrite : bool = false) :
 	# Clear out the previous Positions Occupant so that
 	# we don't duplicate this units position in the Grid
 	var position = _unit.GridPosition
@@ -270,6 +270,11 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 			var newIndex = GetGridArrIndex(position)
 			if GridArr[newIndex].Occupant == null:
 				GridArr[newIndex].Occupant = _unit
+			else:
+				if _allowOccupantOverwrite:
+					GridArr[newIndex].Occupant = _unit
+				else:
+					push_error("Unit: {0} want's to end up on tile {1}, but it's currently occupied by {2}. If this is the intended behavior, ignore this, but otherwise this may be a problem.".format([_unit.Template.DebugName, str(_newPosition), GridArr[newIndex].Occupant.Template.DebugName]))
 
 	_unit.CurrentTile = GridArr[GetGridArrIndex(_newPosition)]
 

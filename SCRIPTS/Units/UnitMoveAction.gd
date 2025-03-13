@@ -8,15 +8,12 @@ var MovementVelocity
 var SpeedOverride : int = -1
 var MoveFromAbility : bool = false
 var CutsceneMove : bool = false
+var AllowOccupantOverwrite : bool = false
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	MovementIndex = 0
 	MovementVelocity = 0
-	if DestinationTile != null:
-		_map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, false)
-	else:
-		push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
 
 	if Route.size() > 1:
 		_unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
@@ -57,11 +54,11 @@ func _Execute(_unit : UnitInstance, _delta):
 				pass
 			GameSettingsTemplate.TraversalResult.EndMovement:
 				# The units movement has been interrupted and we're good
-				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true)
+				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
 				unit.LockInMovement()
 				return true
 			GameSettingsTemplate.TraversalResult.EndTurn:
-				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true)
+				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
 				unit.EndTurn()
 				if isAlliedTeam:
 					map.playercontroller.EnterSelectionState()
@@ -70,8 +67,13 @@ func _Execute(_unit : UnitInstance, _delta):
 		#AudioFootstep.play()
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
-			_unit.position = Route[MovementIndex - 1].GlobalPosition
 			unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+
+			if DestinationTile != null:
+				map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, true, AllowOccupantOverwrite)
+			else:
+				push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
+
 			var diedToKillbox = _unit.CheckKillbox()
 			if isAlliedTeam && !CutsceneMove:
 				if diedToKillbox: # If it's true, then this unit's fucking dead lmao

@@ -75,7 +75,8 @@ func OnInitFinished():
 			# we need to figure out what to do here
 			StartCampaign(campaign)
 		else:
-			ReturnToBastion()
+			if PersistDataManager.universeData.IsStartingCutsceneCompleted():
+				ReturnToBastion()
 	pass
 
 func ReturnToBastion():

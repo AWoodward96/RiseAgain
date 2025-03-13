@@ -38,10 +38,13 @@ signal HealthBarTweenCallback
 func SetUnit(_unit : UnitInstance):
 	if Unit != null:
 		Unit.OnCombatEffectsUpdated.disconnect(RefreshCombatEffects)
-	Unit = _unit
-	Unit.OnCombatEffectsUpdated.connect(RefreshCombatEffects)
 
-	if HideTimer != null:
+	Unit = _unit
+
+	if !Unit.OnCombatEffectsUpdated.is_connected(RefreshCombatEffects):
+		Unit.OnCombatEffectsUpdated.connect(RefreshCombatEffects)
+
+	if HideTimer != null && !HideTimer.timeout.is_connected(AutoHide):
 		HideTimer.timeout.connect(AutoHide)
 
 	Refresh()
@@ -64,6 +67,8 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 	var remainingDelta = DeltaValueChange
 	StartingArmor = Unit.GetArmorAmount()
 	var unitHealth = Unit.currentHealth
+
+
 	if DeltaValueChange < 0:
 		# We're taking damage. If Armor is over 0, then the armor needs to take damage first
 		if StartingArmor > 0:
@@ -117,7 +122,7 @@ func UpdateBarTweenComplete():
 	if HideTimer != null:
 		HideTimer.start()
 
-func Refresh(_forceUpdate : bool = false):
+func Refresh():
 	if Unit == null || Unit.Template == null:
 		return
 

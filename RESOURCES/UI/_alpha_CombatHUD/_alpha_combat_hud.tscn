@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="17_qifey"]
 [ext_resource type="Script" uid="uid://ckm0lsn0sahrf" path="res://SCRIPTS/UI/General/GridEntryList.gd" id="18_0w6qp"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
-[ext_resource type="Texture2D" uid="uid://dux76wobeluiu" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
+[ext_resource type="Texture2D" uid="uid://cqc5de5p7rain" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
 [ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="23_fs4q2"]
 [ext_resource type="Script" uid="uid://bqldm4nmooiyg" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
 [ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]

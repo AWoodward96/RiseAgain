@@ -80,6 +80,8 @@ func ShowLevelUpData():
 			continue
 		var index = GameManager.GameSettings.LevelUpStats.find(increment)
 		var entry = stat_entry_parent.GetEntry(index)
+		if entry == null:
+			continue
 		entry.statIncreaseLabel.visible = true
 		entry.statIncreaseLabel.text = "+%01.0d" % [statChanges[increment]]
 		entry.statValue.text = "%01.0d" % [currentUnit.GetWorkingStat(increment)]

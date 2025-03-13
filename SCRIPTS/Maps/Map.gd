@@ -282,6 +282,7 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 
 	RemoveUnitFromMap(_unitInstance)
 	OnUnitDied.emit(_unitInstance, _context)
+	RefreshThreat()
 
 func RemoveExpiredGridEntities():
 	for i in range(gridEntities.size() - 1, -1, -1):

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk6whh2weqyxi"
-path="res://.godot/imported/darkmage.png-1196e43a133cc7843e52bd238cde0bff.ctex"
+uid="uid://djnvlnqibegb"
+path="res://.godot/imported/Miranda_0.png-1d8cb15ec11d82ef3fb58e5bcfc9bfa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Units/darkmage.png"
-dest_files=["res://.godot/imported/darkmage.png-1196e43a133cc7843e52bd238cde0bff.ctex"]
+source_file="res://ART/Units/Mercenary/Miranda_0.png"
+dest_files=["res://.godot/imported/Miranda_0.png-1d8cb15ec11d82ef3fb58e5bcfc9bfa3.ctex"]
 
 [params]
 

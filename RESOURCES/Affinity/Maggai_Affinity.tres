@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_wf4wc")
-affinity = 64
-strongAgainst = 7
+affinity = 128
+strongAgainst = 32
 loc_icon = ExtResource("1_h7u1i")
 loc_name = "affinity_maggai"

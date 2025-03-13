@@ -3,12 +3,12 @@ class_name WaitEvent
 
 @export var WaitTime : float = 1
 
-var delta = 0
+var timer = 0
 
 func Enter(_context : CutsceneContext):
-	delta = 0
+	timer = 0
 	return true
 
 func Execute(_delta, _context : CutsceneContext):
-	delta += _delta
-	return delta >= WaitTime
+	timer += _delta
+	return timer >= WaitTime

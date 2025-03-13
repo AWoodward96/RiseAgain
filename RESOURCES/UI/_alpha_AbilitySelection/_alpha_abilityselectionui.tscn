@@ -1,20 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://xl37svyevc7s"]
+[gd_scene load_steps=7 format=3 uid="uid://xl37svyevc7s"]
 
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
 [ext_resource type="Script" uid="uid://bqe5sme8cxec8" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
+[ext_resource type="Texture2D" uid="uid://c15l7muofk0qs" path="res://ART/UI/Textures/parchment_2.png" id="3_omd1k"]
 [ext_resource type="LabelSettings" uid="uid://pyo20d27qcsx" path="res://RESOURCES/UI/LabelSettings/ability_selection_title.tres" id="3_ql6cx"]
 [ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
-[ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="4_vyvjt"]
-
-[sub_resource type="Gradient" id="Gradient_yi4lc"]
-offsets = PackedFloat32Array(0.0100503, 1)
-colors = PackedColorArray(0.34, 0.266787, 0.0816, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vyvjt"]
-gradient = SubResource("Gradient_yi4lc")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="6_omd1k"]
 
 [node name="SelectAnAbilityUI" type="CanvasLayer" node_paths=PackedStringArray("entryParent")]
 layer = 2
@@ -32,8 +23,11 @@ theme_override_constants/margin_left = 128
 theme_override_constants/margin_right = 128
 
 [node name="ColorRect" type="TextureRect" parent="MarginContainer"]
+self_modulate = Color(0.4, 0.320267, 0.296, 0.839216)
 layout_mode = 2
-texture = SubResource("GradientTexture2D_vyvjt")
+tooltip_text = "aaaa"
+texture = ExtResource("3_omd1k")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -64,8 +58,8 @@ script = ExtResource("1_3ktkx")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("4_vyvjt")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+texture = ExtResource("6_omd1k")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24

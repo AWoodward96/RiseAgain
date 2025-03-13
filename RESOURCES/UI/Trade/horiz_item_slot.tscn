@@ -9,7 +9,7 @@ font = ExtResource("3_wst6f")
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[node name="HorezItemSlot" type="Control" node_paths=PackedStringArray("emptyParent", "displayParent", "icon", "itemName", "selectedParent")]
+[node name="HorezItemSlot" type="Control" node_paths=PackedStringArray("emptyParent", "displayParent", "icon", "itemName", "SelectedParent")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 3
 anchors_preset = 0
@@ -19,7 +19,7 @@ emptyParent = NodePath("Empty")
 displayParent = NodePath("Full")
 icon = NodePath("Full/Icon")
 itemName = NodePath("Full/Name")
-selectedParent = NodePath("Selected")
+SelectedParent = NodePath("Selected")
 
 [node name="Full" type="Control" parent="."]
 layout_mode = 1

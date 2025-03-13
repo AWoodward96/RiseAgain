@@ -27,7 +27,7 @@ func _ready():
 func OnNodeFocusedChanged(_ctrl : Control):
 	CurrentInspectedElement = _ctrl
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if InputManager.infoDown:
 		InspectActive = true
 		if OpenUIs.size() > 0:

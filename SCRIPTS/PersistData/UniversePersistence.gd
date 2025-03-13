@@ -35,6 +35,10 @@ func GetUnitPersistence(_unitTemplate : UnitTemplate):
 
 	return null
 
+
+func IsStartingCutsceneCompleted():
+	return completedCutscenes.has(CutsceneManager.FTUE)
+
 func ToJSON():
 	var saveData = {
 		"resourceData" = PersistDataManager.ArrayToJSON(resourceData),
@@ -86,6 +90,11 @@ func LoadUnitPersistence():
 				var fileText = save_file.get_as_text()
 				var parsedString = JSON.parse_string(fileText)
 				var persist = UnitPersistBase.FromJSON(parsedString)
+				if persist == null:
+					push_error("Could not load Unit Persistence for dict: " + parsedString["template"])
+					file_name = dir.get_next()
+					continue
+
 				persist.name = persist.Template.DebugName + PersistDataManager.PERSIST_DATA_SUFFIX
 				unitPersistParent.add_child(persist)
 				unitPersistData.append(persist)

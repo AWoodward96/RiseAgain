@@ -29,8 +29,8 @@ unit_archer_desc,"A crackshot with higher skill, but low defense and lower Attac
 unit_archer_name,Elven Archer
 unit_corpsechimera_desc,A stiched together mass of dead human and wolf bodies. It shudders with dark magics
 unit_corpsechimera_name,Corpse Chimera
-unit_darkmage_desc,"A user of black magics, with okay SpAttack but a higher Defense for scrapping"
-unit_darkmage_name,Dark Mage
+unit_wildmage_desc,"A user of nature magics, with okay SpAttack but a higher Defense for scrapping"
+unit_wildmage_name,Wild Mage
 unit_elementalmage_desc,A user of nature magic with high SpAttack but low Defense and SpDefense
 unit_elementalmage_name,Elemental Mage
 unit_lightmage_desc,"Studier of holy arts, Light Mages can heal allies but have low agressive and defensive stats"
@@ -278,7 +278,7 @@ tut_map2_prompt4,Press [TAB] again to toggle off the Threat Range
 tut_map2_prompt5,Let's get some more information on the Zombie in front of us
 tut_map2_prompt6,"This time, hover over the Zombie and then press [TAB]"
 tut_map2_prompt7,This is the Unit Inspect Screen
-tut_map2_prompt8,There's a lot of information you can gleem from this screen:\n-What Weapons a Unit is using\n-What their stats are\n-How their Abilities work (if they have any)
+tut_map2_prompt8,There's a lot of information you can get from this screen:\n-What Weapons a Unit is using\n-What their stats are\n-How their Abilities work (if they have any)
 tut_map2_prompt9,You can change tabs to see more information on this Unit by pressing [A] or [D]
 tut_map2_prompt10,"One important piece of information is the Units Affinity, seen on the left."
 tut_map2_prompt11,Every Unit has a Color that refers to their Affinity. All Affinities are strong against something and weak to something else.
@@ -289,7 +289,7 @@ ui_press_any_key,Press any key to continue
 tut_rewardsui_1,After every Map you'll have a set of three rewards to choose from
 tut_rewardsui_2,"These can be Items that make your Units stronger, Units themselves, and more!"
 tut_rewardsui_3,"Right now we have a very small team, so let's select the Mercenary as our reward for this Map."
-tut_level3_0,Whenever a Unit reaches Level 3 they unlock a new Ability for the Campagin
+tut_level3_0,Whenever a Unit reaches Level 3 they unlock a new Ability for the Campaign
 tut_level3_1,Each Ability is unique and can change up how you use the Unit going forward.
 tut_level3_2,Experiment with different builds and Abilities to figure out which one works best for your playstyle!
 tut_optionalobjectives_0,On this map you have an optional objective: Kill the Prized Buck
@@ -317,3 +317,11 @@ ui_ability_title_shorthand,ABLY:
 ui_tactical_title_shorthand,TACT:
 ui_weapon_title_shorthand,WEAP:
 ui_exp,Exp:
+affinity_metal,Metal
+affinity_water,Water
+affinity_earth,Earth
+affinity_dark,Dark
+affinity_light,Light
+affinity_maggai,Wild
+affinity_grass,Nature
+affinity_fire,Fire

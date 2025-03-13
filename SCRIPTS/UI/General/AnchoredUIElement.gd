@@ -29,7 +29,7 @@ func RefreshAnchor(_availableSlots : Array[Control.LayoutPreset]):
 	return null
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if GlobalDisable:
 		visible = false
 	else:

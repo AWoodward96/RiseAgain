@@ -87,6 +87,10 @@ func WillRetaliate(_result : PerformCombatStepResult):
 	if defendingUnit.EquippedWeapon == null:
 		return false
 
+	for ce in defendingUnit.CombatEffects:
+		if ce is StunEffectInstance:
+			return false
+
 	var retaliationWeapon = defendingUnit.EquippedWeapon
 	if retaliationWeapon.UsableDamageData == null:
 		return false
