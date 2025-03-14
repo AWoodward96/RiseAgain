@@ -1,36 +1,35 @@
 [gd_scene load_steps=11 format=3 uid="uid://bd66sm3kjyqb5"]
 
-[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_k3jju"]
-[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hiyoq"]
-[ext_resource type="Resource" uid="uid://cuh4yfx0ldaje" path="res://RESOURCES/CombatEffects/CE_PushForward.tres" id="3_ny3gq"]
-[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/push_forward.png" id="6_3v3cw"]
-[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_vlvfv"]
-[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_kwc1e"]
-[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_xjesf"]
-[ext_resource type="Resource" uid="uid://5aehkg35rm1d" path="res://RESOURCES/TargetingShapes/push_forward_shape.tres" id="11_3lh6q"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_stemp"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ogjtm"]
+[ext_resource type="Resource" uid="uid://cuh4yfx0ldaje" path="res://RESOURCES/CombatEffects/CE_PushForward.tres" id="3_3gex7"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="4_ineaq"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_rlmwd"]
+[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/push_forward.png" id="6_gmwg4"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_rpv43"]
+[ext_resource type="Resource" uid="uid://5aehkg35rm1d" path="res://RESOURCES/TargetingShapes/push_forward_shape.tres" id="8_umevs"]
 
 [sub_resource type="Resource" id="Resource_ttix8"]
-script = ExtResource("6_vlvfv")
-CombatEffect = ExtResource("3_ny3gq")
+script = ExtResource("4_ineaq")
+CombatEffect = ExtResource("3_3gex7")
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
-script = ExtResource("7_kwc1e")
+script = ExtResource("5_rlmwd")
 
 [node name="ART_PushForward" type="Node2D" node_paths=PackedStringArray("TargetingData")]
-script = ExtResource("1_k3jju")
+script = ExtResource("1_stemp")
 focusCost = 3
 ability_speed = 1
-executionStack = Array[ExtResource("2_hiyoq")]([SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
-autoEndTurn = false
+executionStack = Array[ExtResource("2_ogjtm")]([SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "pushforward"
 loc_displayName = "art_pushforward_name"
 loc_displayDesc = "art_pushforward_desc"
-icon = ExtResource("6_3v3cw")
+icon = ExtResource("6_gmwg4")
 TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
-script = ExtResource("9_xjesf")
+script = ExtResource("7_rpv43")
 TeamTargeting = 0
 TargetRange = Vector2i(0, 0)
 Type = 1
-shapedTiles = ExtResource("11_3lh6q")
+shapedTiles = ExtResource("8_umevs")

@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c2ke44okmibun"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://c2ke44okmibun"]
 
 [ext_resource type="Texture2D" uid="uid://bfe045sf8cs64" path="res://ART/Environment/_alpha_set0/terrain_basic.png" id="1_t5vry"]
+[ext_resource type="Resource" uid="uid://dkgajgdeqosxv" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestuctableTrees.tres" id="1_xnct5"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="2_nfkgl"]
 [ext_resource type="Texture2D" uid="uid://2r1jmihr5im0" path="res://ART/Grid/tmp_fire_tiles_64.png" id="3_yem1i"]
 
@@ -22,16 +23,19 @@ texture_region_size = Vector2i(64, 64)
 2:1/0/terrain_set = 0
 2:1/0/terrain = 1
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0/custom_data_0 = ExtResource("1_xnct5")
 2:1/0/custom_data_1 = 5
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 1
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0/custom_data_0 = ExtResource("1_xnct5")
 1:1/0/custom_data_1 = 5
 0:1/0 = 0
 0:1/0/terrain_set = 0
 0:1/0/terrain = 1
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0/custom_data_0 = ExtResource("1_xnct5")
 0:1/0/custom_data_1 = 5
 0:2/0 = 0
 0:2/0/terrain_set = 1

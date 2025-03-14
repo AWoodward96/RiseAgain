@@ -5,6 +5,7 @@ signal OnTileChanged(_tile)
 signal OnTileSelected(_tile)
 
 @export var viewportTilePadding = 2
+@export var floatingElementPadding = 4
 @export var camera : Camera2D
 @export var reticle : Node2D
 @export var tutorialReticle : Node2D
@@ -135,19 +136,35 @@ func UpdateCameraPosition():
 func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x
 
-func GetReticleQuadrant():
-	if reticle.global_position.x < desiredCameraPosition.x:
-		# On the left side
-		if reticle.global_position.y < desiredCameraPosition.y:
-			# top left!
+func GetReticleQuintant():
+	# Basically, if the reticle is in the corners (determined by floatingElementPadding), return which corner it's in
+	# If it's not in a corner, return that it's in the Center somewhere
+
+	var viewportHalf = get_viewport_rect().size / 2
+	viewportHalf -= Vector2(tileSize, tileSize) * floatingElementPadding
+	var topleft = desiredCameraPosition - viewportHalf
+	var bottomright = desiredCameraPosition + viewportHalf
+	bottomright.x = clamp(bottomright.x, 0 + viewportHalf.x, totalMapSize.x - viewportHalf.x)
+	bottomright.y = clamp(bottomright.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
+
+	if reticle.global_position.x <= topleft.x:
+		# Left side
+		if reticle.global_position.y <= topleft.y:
+			# We're in the top left
 			return Control.PRESET_TOP_LEFT
-		else:
+
+		if reticle.global_position.y >= bottomright.y:
 			return Control.PRESET_BOTTOM_LEFT
-	else:
-		if reticle.global_position.y < desiredCameraPosition.y:
+
+	if reticle.global_position.x >= bottomright.x:
+		if reticle.global_position.y <= topleft.y:
+			# We're in the top left
 			return Control.PRESET_TOP_RIGHT
-		else:
+
+		if reticle.global_position.y >= bottomright.y:
 			return Control.PRESET_BOTTOM_RIGHT
+
+	return Control.PRESET_CENTER
 
 func ForceReticlePosition(_gridPosition : Vector2i):
 	reticle.scale = Vector2(1, 1)

@@ -619,9 +619,10 @@ func ShowHealthBar(_visible : bool):
 	if _visible:
 		healthBar.Refresh()
 
-func QueueAttackSequence(_destination : Vector2, _log : ActionLog):
+func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _useRetaliation : bool = false):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
+	attackAction.IsRetaliation = _useRetaliation
 
 	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
 	# This locks in which action is doing what and when

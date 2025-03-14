@@ -38,6 +38,7 @@ offset_right = 130.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 0
 
 [node name="Margin" type="MarginContainer" parent="LevelUpParent"]
 layout_mode = 1

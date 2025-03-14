@@ -11,6 +11,7 @@ Stat = ExtResource("2_iryat")
 FlatValue = -3
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
+MultipliedByX = false
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [resource]

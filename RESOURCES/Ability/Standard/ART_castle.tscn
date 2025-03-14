@@ -1,0 +1,84 @@
+[gd_scene load_steps=19 format=3 uid="uid://owg3aes4dx8x"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0vxst"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_kn2ih"]
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="3_8047x"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_5kp8q"]
+[ext_resource type="Texture2D" uid="uid://dydtjejbmqduh" path="res://ART/Icons/Ability/Standard/castle.png" id="5_t53ly"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="6_og4ws"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="7_4eb40"]
+[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="8_3o0jt"]
+[ext_resource type="Texture2D" uid="uid://jjucjm0kw2ay" path="res://ART/Icons/temp_shield.png" id="9_5yf1a"]
+[ext_resource type="Script" uid="uid://0q4rq73mdmc" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="10_po7i1"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="11_tqha5"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="12_imxxk"]
+
+[sub_resource type="Resource" id="Resource_cqvc4"]
+script = ExtResource("3_8047x")
+Stat = ExtResource("4_5kp8q")
+FlatValue = 1
+DerivedFromUnit = 0
+SignedPercentageValue = 0.0
+MultipliedByX = true
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[sub_resource type="Resource" id="Resource_3x8qu"]
+script = ExtResource("6_og4ws")
+StatChanges = Array[ExtResource("3_8047x")]([SubResource("Resource_cqvc4")])
+AffectedTargets = 0
+Turns = 1
+show_popup = true
+loc_name = "art_castle_name"
+loc_desc = "art_castle_desc"
+loc_icon = ExtResource("5_t53ly")
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"
+
+[sub_resource type="Resource" id="Resource_wck5u"]
+script = ExtResource("7_4eb40")
+CombatEffect = SubResource("Resource_3x8qu")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_xiri8"]
+script = ExtResource("10_po7i1")
+UseDamageDealtAsValue = false
+UseSourceForStats = true
+FlatValue = 0.0
+RelativeStat = ExtResource("8_3o0jt")
+ModType = 2
+Mod = 0.15
+MultiplyByX = true
+AffectedTargets = 0
+Turns = 1
+show_popup = true
+loc_name = "ce_armor"
+loc_desc = "ce_armor_desc"
+loc_icon = ExtResource("9_5yf1a")
+metadata/_custom_type_script = "uid://0q4rq73mdmc"
+
+[sub_resource type="Resource" id="Resource_cuqbw"]
+script = ExtResource("7_4eb40")
+CombatEffect = SubResource("Resource_xiri8")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_rqtjn"]
+script = ExtResource("11_tqha5")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="ART_castle" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_0vxst")
+focusCost = 0
+isXFocusCost = true
+ability_speed = 1
+executionStack = Array[ExtResource("2_kn2ih")]([SubResource("Resource_wck5u"), SubResource("Resource_cuqbw"), SubResource("Resource_rqtjn")])
+internalName = "hunkerdown"
+loc_displayName = "art_castle_name"
+loc_displayDesc = "art_castle_desc"
+icon = ExtResource("5_t53ly")
+TargetingData = NodePath("SkillTargetingData")
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("12_imxxk")
+TeamTargeting = 0
+TargetRange = Vector2i(0, 0)
+Type = 3
+CanTargetSelf = true

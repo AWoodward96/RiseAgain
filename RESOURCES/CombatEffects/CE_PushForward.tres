@@ -9,16 +9,18 @@
 [sub_resource type="Resource" id="Resource_osvxn"]
 script = ExtResource("1_k3tfc")
 Stat = ExtResource("2_rn7n0")
-FlatValue = 3
+FlatValue = 1
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
+MultipliedByX = false
 
 [sub_resource type="Resource" id="Resource_yb416"]
 script = ExtResource("1_k3tfc")
 Stat = ExtResource("3_asbay")
-FlatValue = 3
+FlatValue = 2
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
+MultipliedByX = false
 
 [resource]
 script = ExtResource("4_7fma4")

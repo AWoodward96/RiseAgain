@@ -130,7 +130,7 @@ func HideTutorialPrompt():
 
 func UpdateAnchoredUIElements():
 	# update the InspectUI based on where the reticle is so that it's not in the way
-	var side = ctrl.GetReticleQuadrant()
+	var side = ctrl.GetReticleQuintant()
 
 	var availableQuadrants = AvailableUIAnchors.duplicate()
 	# put the blank anchor where the reticle currently is

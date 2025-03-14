@@ -92,7 +92,7 @@ func Refresh(_ability : Ability):
 	UpdateUsages(_ability)
 	UpdateRange(_ability)
 
-	focusParent.visible = _ability.focusCost != 0
+	focusParent.visible = _ability.focusCost != 0 || (_ability.focusCost == 0 && _ability.isXFocusCost)
 	if focusCostText != null:
 		if _ability.isXFocusCost:
 			focusCostText.text = "X"

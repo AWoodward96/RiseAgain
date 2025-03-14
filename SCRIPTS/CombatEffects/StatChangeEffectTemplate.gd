@@ -9,6 +9,7 @@ class_name StatChangeEffectTemplate
 @export var DerivedFromUnit : CombatEffectTemplate.EffectTargetType
 @export var DerivedFromStat : StatTemplate
 @export var SignedPercentageValue : float
+@export var MultipliedByX : bool
 
 
 func CreateStatBuff(_parent : Node2D, _sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _actionLog : ActionLog):
@@ -32,5 +33,9 @@ func CreateStatBuff(_parent : Node2D, _sourceUnit : UnitInstance, _affectedUnit 
 				push_error("StatChangeEffect applied by ability: " + _actionLog.ability.to_string() + " has it's effect target type set to Both. This is not supported (how would a stat buff be derived from two different sources??). Please fix")
 				pass
 
+	if MultipliedByX && _sourceUnit != null:
+		value = value * _sourceUnit.currentFocus
+
 	buff.Value = value
 	buff.Stat = Stat
+	return buff

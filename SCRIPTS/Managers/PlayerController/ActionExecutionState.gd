@@ -58,7 +58,7 @@ func PostActionComplete():
 	if source != null:
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 
-		if !log.ability.autoEndTurn:
+		if log.ability.ability_speed == Ability.AbilitySpeed.Fast:
 			ctrl.EnterContextMenuState()
 
 	if currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY:

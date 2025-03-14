@@ -5,6 +5,7 @@ var TargetPosition : Vector2
 var Log : ActionLog
 var ActionIndex : int
 var TimerLock : bool
+var IsRetaliation : bool = false
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
@@ -17,7 +18,11 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		if combatRes == null:
 			continue
 
-		combatResults.append(combatRes)
+		if IsRetaliation:
+			if combatRes.Target != null && combatRes.RetaliationResult != null:
+				combatResults.append(combatRes.RetaliationResult)
+		else:
+			combatResults.append(combatRes)
 		if combatRes.Target == null:
 			continue
 

@@ -17,7 +17,7 @@ func Enter(_actionLog : ActionLog):
 
 	if useAttackAction:
 		# The attack will take the log - and will determine who they're 'striking' visually based on the log
-		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log)
+		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, false)
 
 	# The defending units however, need the specific result to take damage from
 	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
@@ -48,7 +48,7 @@ func Enter(_actionLog : ActionLog):
 					if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
 						log.responseResults.append(retaliation)
 						retaliation.RollChance(Map.Current.mapRNG)
-						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log)
+						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, true)
 						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)

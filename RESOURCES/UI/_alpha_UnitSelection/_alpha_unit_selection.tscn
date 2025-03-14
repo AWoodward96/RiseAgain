@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://cu0hrefgahdx8" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.gd" id="1_jtsas"]
 [ext_resource type="PackedScene" uid="uid://cs0nm4n8i48as" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_squad_entry.tscn" id="2_5swuv"]
 
-[node name="UnitSelection" type="CanvasLayer" node_paths=PackedStringArray("ReadyButton")]
+[node name="UnitSelection" type="CanvasLayer" node_paths=PackedStringArray("ReadyButton", "RemainingSlotsText")]
 script = ExtResource("1_jtsas")
 UnitEntryPrefab = ExtResource("1_2u64n")
 SquadEntryPrefab = ExtResource("2_5swuv")
 ReadyButton = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButtons/ReadyButton")
+RemainingSlotsText = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer/Remaining Slots")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -66,6 +67,14 @@ layout_mode = 2
 
 [node name="_alpha_SquadEntry" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer/SquadEntryParent" instance=ExtResource("2_5swuv")]
 layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Remaining Slots" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer"]
+layout_mode = 2
+text = "Remaining Slots: 3"
 
 [node name="StartButtons" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

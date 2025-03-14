@@ -128,8 +128,8 @@ item_t1_nectar_desc,Vitality +4
 item_t1_nectar_name,Golden Apple
 item_t1_polish_desc,Defense +2
 item_t1_polish_name,Armor Polish
-item_t1_skillbook_desc,Skill +2
-item_t1_skillbook_name,Cufflinks
+item_t1_skillbook_desc,Max Mana +2
+item_t1_skillbook_name,Skill Book
 item_t1_whetstone_desc,Attack +2
 item_t1_whetstone_name,Whetstone
 des_canine_desc,A slim dog-like creature with sharp teeth
@@ -206,7 +206,7 @@ art_graspingroots_name,Grasping Roots
 art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
 tile_deadtree_name,Dead Tree
 tile_river_name,River
-weap_lunarlance_name,Strange Lance
+weap_lunarlance_name,Lance
 weap_lunarlance_desc,A mysterious ethereal spear with a strange emblem on it. You've never seen anything like it.
 tile_corpseeater_name,Corpse Eater Tree
 ui_notiledata_name,None
@@ -257,7 +257,7 @@ tut_weapons_knight5,Press [Left Shift] again to Cancel the Move
 tut_weapons_knight6,"Instead, let's move to this Tile"
 tut_weapons_knight7,"Because the Lance can attack from more than one Tile away, we're not at risk of being counter-attacked anymore!"
 tut_weapons_knight8,Finish off the last two Zombies to complete the map.
-tut_map1_prompt0,This is the Formation screen
+tut_map1_prompt0,This is the Battle Preperation screen
 tut_map1_prompt1,Here you can move Units around before starting a Map by selecting their starting Tile
 tut_map1_prompt2,Feel free to mess around with your formation and when you're ready press [ENTER] to start
 tut_map1_prompt2.5,Our path appears to be blocked by a tree!
@@ -325,3 +325,6 @@ affinity_light,Light
 affinity_maggai,Wild
 affinity_grass,Nature
 affinity_fire,Fire
+art_castle_name,Castle
+art_castle_desc,Spend all of your Mana to grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield per Mana consumed
+ui_battleprep_title,Battle Preperations

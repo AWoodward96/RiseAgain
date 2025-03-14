@@ -41,9 +41,7 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"393f2420-d4f9-472f-9d97-425459720305",
-				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
-				"699aab52-45ba-4327-b881-5d2aed61b4d8"
+				"94df7687-9284-4958-9a1a-96ddcfdda1d3"
 			]
 		},
 		{
@@ -52,9 +50,11 @@
 			"tasks": [
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
+				"393f2420-d4f9-472f-9d97-425459720305",
 				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
 				"cad1a58b-24c8-484e-a360-c2f55357e43e",
 				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
+				"e2668e30-8208-4f06-992a-63e384bb56c1",
 				"4ed03008-ca7a-420d-8974-f4755e00ab92",
 				"ea0566fd-0852-4e20-9b0f-be54dffd6cec",
 				"984e0418-bab3-4f8c-97a6-4b3329e3bd29",
@@ -74,7 +74,7 @@
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
 			"tasks": [
-				"e2668e30-8208-4f06-992a-63e384bb56c1"
+				"699aab52-45ba-4327-b881-5d2aed61b4d8"
 			]
 		}
 	],
@@ -336,7 +336,12 @@
 			"title": "Fix Floating UI Element in Combat Hud Problem",
 			"description": "Currently the ui elements are hard coded to move to the left or to the right depending on where the reticle is\nThis was a fine soultion when there was onliy one ui element on the combat hud but now there is more\nFor instance, if there is a bird standing on top of a tree in the bottom left hand corner, there's no way the current solution can handle that.",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
+			"steps": [
+				{
+					"details": "Need 'center' designation",
+					"done": true
+				}
+			]
 		},
 		{
 			"uuid": "18c31b44-f817-41e3-b314-1b586654d3ed",
@@ -350,7 +355,36 @@
 			"title": "Importable Abilities",
 			"description": "Make sure everything is still valid in the spreadsheets and also importable\n",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
-			"steps": []
+			"steps": [
+				{
+					"details": "Speed",
+					"done": false
+				},
+				{
+					"details": "XFocusCost",
+					"done": false
+				},
+				{
+					"details": "Sacred Ground",
+					"done": false
+				},
+				{
+					"details": "Grasping Vines",
+					"done": false
+				},
+				{
+					"details": "Spear Throw",
+					"done": false
+				},
+				{
+					"details": "Flame Wall",
+					"done": false
+				},
+				{
+					"details": "Summon Mine",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "699aab52-45ba-4327-b881-5d2aed61b4d8",

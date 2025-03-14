@@ -886,6 +886,7 @@ Stat = ExtResource("47_tsyc5")
 FlatValue = -3
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
+MultipliedByX = false
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_nvuwk"]

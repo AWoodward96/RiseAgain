@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=14 format=3 uid="uid://xnen5vhxjagq"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=16 format=3 uid="uid://xnen5vhxjagq"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_4cpa1"]
 [ext_resource type="PackedScene" uid="uid://6644i1yes1rk" path="res://RESOURCES/Items/t1_ktome.tscn" id="1_w5eu1"]
@@ -7,40 +7,47 @@
 [ext_resource type="PackedScene" uid="uid://d1hq4h7k3ewlj" path="res://RESOURCES/Items/t1_polish.tscn" id="4_bglpx"]
 [ext_resource type="PackedScene" uid="uid://k7p2s1qa26kq" path="res://RESOURCES/Items/t1_holywater.tscn" id="5_3fkmt"]
 [ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="7_qccxx"]
+[ext_resource type="PackedScene" uid="uid://cyj7myy0hwsqy" path="res://RESOURCES/Items/t1_skillbook.tscn" id="8_lq6l7"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="8_w8g6q"]
 
-[sub_resource type="Resource" id="Resource_6dqcw"]
+[sub_resource type="Resource" id="Resource_lq6l7"]
 script = ExtResource("2_cg8sm")
 ItemPrefab = ExtResource("1_w5eu1")
 Weight = 1.0
 AccumulatedWeight = 1.0
 
-[sub_resource type="Resource" id="Resource_lx4ri"]
+[sub_resource type="Resource" id="Resource_44v2f"]
 script = ExtResource("2_cg8sm")
 ItemPrefab = ExtResource("3_qdalx")
 Weight = 1.0
 AccumulatedWeight = 2.0
 
-[sub_resource type="Resource" id="Resource_eftr6"]
+[sub_resource type="Resource" id="Resource_kvaae"]
 script = ExtResource("2_cg8sm")
 ItemPrefab = ExtResource("4_bglpx")
 Weight = 1.0
 AccumulatedWeight = 3.0
 
-[sub_resource type="Resource" id="Resource_qgb0b"]
+[sub_resource type="Resource" id="Resource_c5qsw"]
 script = ExtResource("2_cg8sm")
 ItemPrefab = ExtResource("5_3fkmt")
 Weight = 1.0
 AccumulatedWeight = 4.0
 
-[sub_resource type="Resource" id="Resource_p8x2w"]
+[sub_resource type="Resource" id="Resource_remfb"]
 script = ExtResource("2_cg8sm")
 ItemPrefab = ExtResource("7_qccxx")
 Weight = 1.0
-AccumulatedWeight = 6.0
+AccumulatedWeight = 5.0
+
+[sub_resource type="Resource" id="Resource_hiv5w"]
+script = ExtResource("2_cg8sm")
+ItemPrefab = ExtResource("8_lq6l7")
+Weight = 0.5
+AccumulatedWeight = 5.5
 
 [resource]
 resource_name = "LT_StatUpgrades_T1"
 script = ExtResource("8_w8g6q")
-Table = Array[ExtResource("1_4cpa1")]([SubResource("Resource_6dqcw"), SubResource("Resource_lx4ri"), SubResource("Resource_eftr6"), SubResource("Resource_qgb0b"), SubResource("Resource_p8x2w")])
-WeightSum = 6.0
+Table = Array[ExtResource("1_4cpa1")]([SubResource("Resource_lq6l7"), SubResource("Resource_44v2f"), SubResource("Resource_kvaae"), SubResource("Resource_c5qsw"), SubResource("Resource_remfb"), SubResource("Resource_hiv5w")])
+WeightSum = 5.5

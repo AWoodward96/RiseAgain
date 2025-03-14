@@ -3,9 +3,11 @@ class_name RepeatPerFocusStep
 
 @export var repeatStack : Array[ActionStep]
 
+var focusTotal = 0
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
+	focusTotal = log.source.currentFocus
 	_actionLog.subActionStackIndex = -1
 
 func Execute(_delta):
@@ -21,9 +23,9 @@ func Execute(_delta):
 
 		return false
 
-	if log.source.currentFocus > 0:
+	focusTotal -= 1
+	if focusTotal > 0:
 		log.subActionStackIndex = -1
-		log.source.ModifyFocus(-1)
 		return false
 
 	return true

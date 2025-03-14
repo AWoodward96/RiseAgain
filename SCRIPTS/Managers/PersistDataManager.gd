@@ -91,6 +91,9 @@ func GetJSONTextFromFile(_path : String):
 func ResourcePathToJSON(_array : Array):
 	var arrayAsJSONString : Array[String]
 	for resource in _array:
+		if resource == null:
+			continue
+
 		arrayAsJSONString.append(resource.resource_path)
 	return arrayAsJSONString
 

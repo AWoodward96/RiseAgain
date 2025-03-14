@@ -13,13 +13,12 @@ enum AbilitySpeed { Normal, Fast, Slow }
 
 @export var type : AbilityType
 @export var focusCost : int = 1
-@export var isXFocusCost : bool = false # This only affects the UI - make sure it's synced up
+@export var isXFocusCost : bool = false # This will deduct the entire focus of the unit after they're done
 @export var limitedUsage : int = -1 # -1 means there is no limited usage
 @export var usageRestoredByCampfire : int = 0
 
 @export var ability_speed : AbilitySpeed = AbilitySpeed.Normal
 @export var executionStack : Array[ActionStep]
-@export var autoEndTurn : bool = true
 @export var damageGrantsFocus : bool = false
 @export var passiveListeners : Array[PassiveListenerBase]
 
@@ -61,6 +60,9 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 			else:
 				if ability_speed != AbilitySpeed.Fast:
 					_actionLog.source.QueueEndTurn()
+
+				if isXFocusCost && _actionLog.source != null:
+					_actionLog.source.ModifyFocus(-_actionLog.source.currentFocus)
 
 				AbilityActionComplete.emit()
 

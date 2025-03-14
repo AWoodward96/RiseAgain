@@ -1,5 +1,7 @@
 extends CombatEffectTemplate
 class_name StatChangeEffect
+#  This is the parent class for stat changes
+# There are StatChangeEffectTemplates which define which stats are changed before creating an instance of those templates
 
 @export var StatChanges : Array[StatChangeEffectTemplate]
 

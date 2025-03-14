@@ -4,6 +4,7 @@ signal OnRosterSelected(_squad : Array[UnitTemplate])
 @export var UnitEntryPrefab : PackedScene
 @export var SquadEntryPrefab : PackedScene
 @export var ReadyButton : Button
+@export var RemainingSlotsText : Label
 
 @onready var unitEntryParent = %UnitEntryParent
 @onready var squadEntryParent = %SquadEntryParent
@@ -46,6 +47,8 @@ func UpdateSquadList():
 		var entry = SquadEntryPrefab.instantiate()
 		entry.Initialize(unit)
 		squadEntryParent.add_child(entry)
+
+	RemainingSlotsText.text = "Remaining Slots: " + str(maxSquadSize - workingSquad.size())
 
 # When a unit is selected, if it's already in the party, unselect it. If it isn't, then add it to it then update the squad list
 func OnUnitEntrySelected(_unitTemplate : UnitTemplate):
