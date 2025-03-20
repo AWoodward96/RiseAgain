@@ -18,6 +18,13 @@ func Clear():
 func SelectFirst():
 	entryParent.get_child(0).grab_focus()
 
+func LoopButtons():
+	var firstEntry = entryParent.get_child(0) as ContextButtonEntry
+	var lastEntry = entryParent.get_child(entryParent.get_child_count() - 1) as ContextButtonEntry
+	firstEntry.focus_neighbor_top = lastEntry.get_path()
+	lastEntry.focus_neighbor_bottom = firstEntry.get_path()
+
+
 func SelectIndex(_index : int):
 	var obj = entryParent.get_child(_index)
 	if obj != null:

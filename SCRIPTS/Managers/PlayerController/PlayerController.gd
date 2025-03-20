@@ -297,6 +297,7 @@ func UpdateContextUI():
 	var canWait = !CutsceneManager.BlockWaitContextMenuOption
 	canWait = canWait && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
 	combatHUD.ContextUI.AddButton("Wait", canWait, OnWait)
+	combatHUD.ContextUI.LoopButtons()
 	combatHUD.ContextUI.SelectFirst()
 
 func OnWait():
