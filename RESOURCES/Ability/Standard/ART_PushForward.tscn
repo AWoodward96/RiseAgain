@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cuh4yfx0ldaje" path="res://RESOURCES/CombatEffects/CE_PushForward.tres" id="3_3gex7"]
 [ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="4_ineaq"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_rlmwd"]
-[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/push_forward.png" id="6_gmwg4"]
+[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/pushforward.png" id="6_gmwg4"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_rpv43"]
 [ext_resource type="Resource" uid="uid://5aehkg35rm1d" path="res://RESOURCES/TargetingShapes/push_forward_shape.tres" id="8_umevs"]
 
@@ -32,4 +32,5 @@ script = ExtResource("7_rpv43")
 TeamTargeting = 0
 TargetRange = Vector2i(0, 0)
 Type = 1
+CanTargetSelf = true
 shapedTiles = ExtResource("8_umevs")

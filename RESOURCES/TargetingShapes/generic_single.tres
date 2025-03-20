@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=5 format=3 uid="uid://bcxirawtj8qd5"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_c8kum"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_michq"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_6r85h"]
+
+[sub_resource type="Resource" id="Resource_yvmxb"]
+script = ExtResource("2_michq")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 0
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[resource]
+script = ExtResource("3_6r85h")
+TileCoordinates = Array[ExtResource("1_c8kum")]([SubResource("Resource_yvmxb")])

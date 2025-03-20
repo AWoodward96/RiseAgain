@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2775q6xpieqp"
-path="res://.godot/imported/sacred_ground.png-bed313b351a87774c095c48ab72cb451.ctex"
+uid="uid://dl5gn0wedpspr"
+path="res://.godot/imported/lunar_lance.png-9b3dbfefffa288034650177676b55125.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/sacred_ground.png"
-dest_files=["res://.godot/imported/sacred_ground.png-bed313b351a87774c095c48ab72cb451.ctex"]
+source_file="res://ART/Icons/Ability/Equippable/lunar_lance.png"
+dest_files=["res://.godot/imported/lunar_lance.png-9b3dbfefffa288034650177676b55125.ctex"]
 
 [params]
 

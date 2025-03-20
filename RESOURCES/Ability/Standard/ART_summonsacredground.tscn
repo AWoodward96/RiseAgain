@@ -1,30 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjeovpy83spym"]
+[gd_scene load_steps=9 format=3 uid="uid://bjeovpy83spym"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7kqy1"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_xwm4y"]
 [ext_resource type="PackedScene" uid="uid://bhux4kbgsott1" path="res://RESOURCES/GridEntities/sacred_ground_entity.tscn" id="3_ml4we"]
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_aoqp5"]
-[ext_resource type="Texture2D" uid="uid://2775q6xpieqp" path="res://ART/Icons/Ability/Standard/sacred_ground.png" id="5_00xii"]
+[ext_resource type="Texture2D" uid="uid://2775q6xpieqp" path="res://ART/Icons/Ability/Standard/summonsacredground.png" id="5_00xii"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_m70wh"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="7_hdsfx"]
-[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="8_u7ycf"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="9_2hhy1"]
+[ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="7_em5lm"]
 
 [sub_resource type="Resource" id="Resource_tovoj"]
 script = ExtResource("4_aoqp5")
 GridEntityPrefab = ExtResource("3_ml4we")
-
-[sub_resource type="Resource" id="Resource_yvmxb"]
-script = ExtResource("8_u7ycf")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-Position = Vector2i(0, 0)
-Multiplier = 1.0
-
-[sub_resource type="Resource" id="Resource_h6isx"]
-script = ExtResource("9_2hhy1")
-TileCoordinates = Array[ExtResource("7_hdsfx")]([SubResource("Resource_yvmxb")])
 
 [node name="summonsacredground" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_7kqy1")
@@ -41,4 +27,4 @@ script = ExtResource("6_m70wh")
 TeamTargeting = 0
 TargetRange = Vector2i(1, 3)
 Type = 1
-shapedTiles = SubResource("Resource_h6isx")
+shapedTiles = ExtResource("7_em5lm")

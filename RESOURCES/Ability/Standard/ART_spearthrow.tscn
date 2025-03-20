@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_tdc7e"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohxl5"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_8sdtm"]
-[ext_resource type="Texture2D" uid="uid://bj46s4m3vnr0e" path="res://ART/Icons/Ability/Standard/spear_throw.png" id="5_55p6l"]
+[ext_resource type="Texture2D" uid="uid://bj46s4m3vnr0e" path="res://ART/Icons/Ability/Standard/spearthrow.png" id="5_55p6l"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_owh5c"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="7_2se6n"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_vk287"]
@@ -32,11 +32,10 @@ UsableDamageData = NodePath("DamageData")
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("7_2se6n")
 AgressiveStat = ExtResource("8_vk287")
-AgressiveModType = 2
-AgressiveMod = 0.75
 DefensiveStat = ExtResource("9_vhw76")
 DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]
+position = Vector2(0, 1)
 script = ExtResource("10_n0s6x")
-TargetRange = Vector2i(3, 4)
+TargetRange = Vector2i(2, 3)

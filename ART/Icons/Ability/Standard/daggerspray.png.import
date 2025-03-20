@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djj1idam8mig0"
-path="res://.godot/imported/grasping_roots.png-7da1e07a4450d8d74014de9b199413d8.ctex"
+uid="uid://c0l0mkghce4r7"
+path="res://.godot/imported/daggerspray.png-eb632cd36a8fc0ce15feeea45c4ed804.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Standard/grasping_roots.png"
-dest_files=["res://.godot/imported/grasping_roots.png-7da1e07a4450d8d74014de9b199413d8.ctex"]
+source_file="res://ART/Icons/Ability/Standard/daggerspray.png"
+dest_files=["res://.godot/imported/daggerspray.png-eb632cd36a8fc0ce15feeea45c4ed804.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="2_rn7n0"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_asbay"]
 [ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="4_7fma4"]
-[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/push_forward.png" id="4_sxg75"]
+[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/pushforward.png" id="4_sxg75"]
 
 [sub_resource type="Resource" id="Resource_osvxn"]
 script = ExtResource("1_k3tfc")

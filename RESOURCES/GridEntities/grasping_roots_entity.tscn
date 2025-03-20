@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://c587x0joump1o" path="res://RESOURCES/TargetingShapes/grasping_roots_shape.tres" id="2_0d7er"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_heghb"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_jro51"]
-[ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/grasping_roots.png" id="4_532rp"]
+[ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/summonroots.png" id="4_532rp"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="4_uleer"]
 
 [node name="GraspingRootsEntity" type="Node2D" node_paths=PackedStringArray("damage_data")]

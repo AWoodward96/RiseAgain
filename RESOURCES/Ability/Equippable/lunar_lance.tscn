@@ -1,19 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://sk4xm5rs346c"]
+[gd_scene load_steps=16 format=3 uid="uid://sk4xm5rs346c"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5xil8"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohson"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_qjoex"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_2xqle"]
-[ext_resource type="Texture2D" uid="uid://dl5gn0wedpspr" path="res://ART/Icons/Ability/Equippable/spear.png" id="5_6tfgu"]
+[ext_resource type="Texture2D" uid="uid://dl5gn0wedpspr" path="res://ART/Icons/Ability/Equippable/lunar_lance.png" id="5_6tfgu"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_30bv3"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="7_08kjx"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_rbqf4"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_i857f"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_bhowq"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_h3pcw"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="12_6o3yb"]
-[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="13_mv1sx"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="14_8uh0j"]
+[ext_resource type="Resource" uid="uid://dx1alowpf74li" path="res://RESOURCES/TargetingShapes/lunar_lance_shape.tres" id="12_56t7s"]
 
 [sub_resource type="Resource" id="Resource_0qngs"]
 script = ExtResource("3_qjoex")
@@ -23,46 +21,28 @@ useDefendAction = true
 [sub_resource type="Resource" id="Resource_njyb8"]
 script = ExtResource("4_2xqle")
 
-[sub_resource type="Resource" id="Resource_el4ag"]
+[sub_resource type="Resource" id="Resource_56t7s"]
 script = ExtResource("7_08kjx")
 Template = ExtResource("8_rbqf4")
 Value = 4
 
-[sub_resource type="Resource" id="Resource_s510u"]
-script = ExtResource("13_mv1sx")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-Position = Vector2i(0, -1)
-Multiplier = 1.0
-
-[sub_resource type="Resource" id="Resource_pm26c"]
-script = ExtResource("13_mv1sx")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-Position = Vector2i(0, -2)
-Multiplier = 1.0
-
-[sub_resource type="Resource" id="Resource_oxspd"]
-script = ExtResource("14_8uh0j")
-TileCoordinates = Array[ExtResource("12_6o3yb")]([SubResource("Resource_s510u"), SubResource("Resource_pm26c")])
-
-[node name="lunar_lance" type="Node2D"]
+[node name="lunar_lance" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_5xil8")
 type = 1
 focusCost = 0
 executionStack = Array[ExtResource("2_ohson")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
 damageGrantsFocus = true
 internalName = "lunar_lance"
-loc_displayName = "weap_lunarlance_name"
-loc_displayDesc = "weap_lunarlance_desc"
+loc_displayName = "weap_lunar_lance_name"
+loc_displayDesc = "weap_lunar_lance_desc"
 icon = ExtResource("5_6tfgu")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_30bv3")
-BaseAccuracy = 90.0
-GrantedStats = Array[ExtResource("7_08kjx")]([SubResource("Resource_el4ag")])
+GrantedStats = Array[ExtResource("7_08kjx")]([SubResource("Resource_56t7s")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_i857f")
@@ -73,4 +53,4 @@ DamageToHealthRatio = 0.0
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("11_h3pcw")
 Type = 2
-shapedTiles = SubResource("Resource_oxspd")
+shapedTiles = ExtResource("12_56t7s")

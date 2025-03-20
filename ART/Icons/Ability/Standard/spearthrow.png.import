@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl5gn0wedpspr"
-path="res://.godot/imported/spear.png-8c21556d43dc0d0fe02ca04ea35fca34.ctex"
+uid="uid://bj46s4m3vnr0e"
+path="res://.godot/imported/spearthrow.png-bb75c1bf6ddb21f041d55e7212cd5eee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Icons/Ability/Equippable/spear.png"
-dest_files=["res://.godot/imported/spear.png-8c21556d43dc0d0fe02ca04ea35fca34.ctex"]
+source_file="res://ART/Icons/Ability/Standard/spearthrow.png"
+dest_files=["res://.godot/imported/spearthrow.png-bb75c1bf6ddb21f041d55e7212cd5eee.ctex"]
 
 [params]
 

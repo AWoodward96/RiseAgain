@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_w6f2a"]
 [ext_resource type="Texture2D" uid="uid://cnprc2tj8guy6" path="res://ART/Icons/Ability/Standard/charge.png" id="5_gbnod"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_sd4if"]
-[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_la30g"]
-[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_47agn"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_qgsot"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_m6l0l"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_i7mej"]
 [ext_resource type="Resource" uid="uid://cwb6cm8lesq76" path="res://RESOURCES/TargetingShapes/charge_shape.tres" id="10_f2ypo"]
 
@@ -17,12 +17,11 @@ script = ExtResource("3_raqfr")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_w6f2a")
 
-[node name="ART_Charge" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_charge" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_kiov8")
 focusCost = 2
 ability_speed = 1
 executionStack = Array[ExtResource("2_whdyn")]([SubResource("Resource_5kv6w"), SubResource("Resource_5cjq5")])
-autoEndTurn = false
 internalName = "charge"
 loc_displayName = "art_charge_name"
 loc_displayDesc = "art_charge_desc"
@@ -32,8 +31,8 @@ UsableDamageData = NodePath("DamageData")
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("6_sd4if")
-AgressiveStat = ExtResource("7_la30g")
-DefensiveStat = ExtResource("8_47agn")
+AgressiveStat = ExtResource("7_qgsot")
+DefensiveStat = ExtResource("8_m6l0l")
 DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

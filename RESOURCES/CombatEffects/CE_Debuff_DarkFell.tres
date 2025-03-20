@@ -14,6 +14,7 @@ FlatValue = -2
 DerivedFromUnit = 0
 DerivedFromStat = ExtResource("2_2yocl")
 SignedPercentageValue = -0.25
+MultipliedByX = false
 
 [sub_resource type="Resource" id="Resource_ebs5i"]
 script = ExtResource("1_ycfw3")
@@ -22,6 +23,7 @@ FlatValue = -2
 DerivedFromUnit = 0
 DerivedFromStat = ExtResource("2_2yocl")
 SignedPercentageValue = -0.25
+MultipliedByX = false
 
 [resource]
 script = ExtResource("3_kpp0i")
