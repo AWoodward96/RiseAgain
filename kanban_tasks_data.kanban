@@ -40,9 +40,7 @@
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": [
-				"94df7687-9284-4958-9a1a-96ddcfdda1d3"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -50,6 +48,7 @@
 			"tasks": [
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
+				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
 				"393f2420-d4f9-472f-9d97-425459720305",
 				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
 				"cad1a58b-24c8-484e-a360-c2f55357e43e",
@@ -358,31 +357,31 @@
 			"steps": [
 				{
 					"details": "Speed",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "XFocusCost",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Sacred Ground",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Grasping Vines",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Spear Throw",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Flame Wall",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Summon Mine",
-					"done": false
+					"done": true
 				}
 			]
 		},

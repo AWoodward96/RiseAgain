@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcb607i15qtyu"]
+
+[ext_resource type="Script" uid="uid://duho810n1berd" path="res://SCRIPTS/bippinbits_palette_generator.gd" id="1_foerb"]
+
+[node name="PaletteGenerator" type="Node2D"]
+script = ExtResource("1_foerb")
+base_palette = "uid://dlghwrfjw2te0"
+in_palettes_dir = "res://ART/Units/WildMage/In/"
+out_palettes_dir = "<null>res://ART/Units/WildMage/Out/"

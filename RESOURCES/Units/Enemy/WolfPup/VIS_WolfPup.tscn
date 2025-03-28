@@ -19,8 +19,8 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"UnitEnemyLibrary": ExtResource("3_vhiu5"),
-"UnitNeutralLibrary": ExtResource("4_spgqu")
+&"UnitEnemyLibrary": ExtResource("3_vhiu5"),
+&"UnitNeutralLibrary": ExtResource("4_spgqu")
 }
 
 [node name="Area2D" type="Area2D" parent="."]

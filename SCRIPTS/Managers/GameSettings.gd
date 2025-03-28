@@ -48,6 +48,12 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var CharacterTileMovemementSpeed : float = 100
 @export var AOEExpMultiplier : float = 0.5
 
+
+@export var Alpha_AlliedUnitColor : Color
+@export var Alpha_EnemyUnitColor : Color
+@export var Alpha_NeutralUnitColor : Color
+@export var Alpha_DeactivatedModulate : Color
+
 @export_category("Ability Data")
 @export var InitializeUnitsWithMaxFocus : bool = false
 @export var AbilitiesCanMiss : bool = true
@@ -55,6 +61,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var SecondAbilityBreakpoint : int # NOTE: NOT CURRENTLY IMPLEMENTED
 
 @export_category("Fire Data")
+@export var FireSpreadLevel : int = 3
 @export var Level1FireDamage : int = -1
 @export var Level2FireDamage : int = -3
 @export var Level3FireDamage : int = -6

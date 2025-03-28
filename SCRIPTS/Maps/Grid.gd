@@ -366,6 +366,12 @@ func UpdateFireDamageTiles(_allegience : GameSettingsTemplate.TeamID):
 				t.FireLevel += 1
 				IgniteTile(t, t.FireLevel)
 
+			if t.FireLevel >= GameManager.GameSettings.FireSpreadLevel:
+				var adjacent = GetAdjacentTiles(t)
+				for adj in adjacent:
+					if !adj.OnFire:
+						IgniteTile(adj, 1)
+
 			if t.Occupant != null && t.Occupant.UnitAllegiance == _allegience:
 				affectedTiles.append(t)
 			elif t.Health > 0 && t.MaxHealth > 0 && _allegience == GameSettingsTemplate.TeamID.ALLY:

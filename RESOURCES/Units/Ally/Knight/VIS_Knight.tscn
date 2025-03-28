@@ -166,14 +166,12 @@ script = ExtResource("1_hr2ox")
 AnimationCTRL = NodePath("AnimationPlayer")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.537255)
 position = Vector2(32, 16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_y3o6y")
-animation = &"run_down"
+animation = &"run_right"
 autoplay = "idle"
-frame_progress = 0.904923
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0.623529, 0.890196, 1)
