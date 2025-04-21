@@ -19,7 +19,14 @@ func Initialize(_unit : UnitInstance) :
 func RefreshAllegience():
 	if MyUnit != null && visual != null:
 		if AnimationWorkComplete:
-			pass
+			match MyUnit.UnitAllegiance:
+				GameSettingsTemplate.TeamID.ALLY:
+					visual.material.set_shader_parameter("palette_index", 1)
+				GameSettingsTemplate.TeamID.ENEMY:
+					visual.material.set_shader_parameter("palette_index", 2)
+				GameSettingsTemplate.TeamID.NEUTRAL:
+					visual.material.set_shader_parameter("palette_index", 3)
+
 		else:
 			match MyUnit.UnitAllegiance:
 				GameSettingsTemplate.TeamID.ALLY:
@@ -33,6 +40,7 @@ func RefreshAllegience():
 func SetActivated(_activated : bool):
 	if _activated:
 		sprite.self_modulate = Color.WHITE
+		PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 0, false)
 		#if AnimationCTRL.has_animation(GetAnimString("Activated")):
 			#AnimationCTRL.play(GetAnimString("Activated"))
 	else:

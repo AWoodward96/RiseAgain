@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b20v1qsv6c8ek"
-path="res://.godot/imported/default_palette.png-c259e3f821f722bfcbc57e868a0f2a5d.ctex"
+uid="uid://c1y6arpnoudvk"
+path="res://.godot/imported/thaligus_base.png-487616783e1ba37a365318d855094afd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Units/WildMage/default_palette.png"
-dest_files=["res://.godot/imported/default_palette.png-c259e3f821f722bfcbc57e868a0f2a5d.ctex"]
+source_file="res://ART/Units/WildMage/thaligus_base.png"
+dest_files=["res://.godot/imported/thaligus_base.png-487616783e1ba37a365318d855094afd.ctex"]
 
 [params]
 

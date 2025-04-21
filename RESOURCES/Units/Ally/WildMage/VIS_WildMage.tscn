@@ -1,23 +1,22 @@
-[gd_scene load_steps=40 format=3 uid="uid://6bk65s2t5t5u"]
+[gd_scene load_steps=38 format=3 uid="uid://6bk65s2t5t5u"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_iysls"]
 [ext_resource type="Texture2D" uid="uid://dlghwrfjw2te0" path="res://ART/Units/WildMage/thaligus.png" id="2_4j1bm"]
 [ext_resource type="Texture2D" uid="uid://dk6whh2weqyxi" path="res://ART/Icons/Units/wildmage.png" id="2_g7d8n"]
 [ext_resource type="Shader" uid="uid://cf720m26t7obl" path="res://RESOURCES/Units/Ally/WildMage/palette_swap_complex.gdshader" id="2_o2050"]
-[ext_resource type="Texture2D" uid="uid://b20v1qsv6c8ek" path="res://ART/Units/WildMage/default_palette.png" id="3_o2050"]
-[ext_resource type="Texture2D" uid="uid://oihv05lvw50q" path="res://ART/Units/WildMage/enemy_palette.png" id="4_3h323"]
-[ext_resource type="Texture2D" uid="uid://divctsdghfyi3" path="res://ART/Units/WildMage/allied_palette.png" id="4_vfdbp"]
+[ext_resource type="Texture2D" uid="uid://de8vwm080ia7b" path="res://ART/Units/WildMage/sprite_palette.png" id="3_o2050"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vfdbp"]
+resource_local_to_scene = true
 shader = ExtResource("2_o2050")
-shader_parameter/palette_choice = 0
-shader_parameter/input_palette_texture = ExtResource("3_o2050")
-shader_parameter/enemy_palette_texture = ExtResource("4_3h323")
-shader_parameter/neutral_palette_texture = ExtResource("4_vfdbp")
-shader_parameter/precision = 0.0
+shader_parameter/palette = ExtResource("3_o2050")
+shader_parameter/palette_count = 4.0
+shader_parameter/palette_index = 1.0
+shader_parameter/use_color_override = false
+shader_parameter/color_override = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2050"]
 atlas = ExtResource("2_4j1bm")
@@ -395,6 +394,13 @@ script = ExtResource("1_iysls")
 AnimationCTRL = NodePath("AnimationPlayer")
 AnimationWorkComplete = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -61.0
+offset_top = -32.0
+offset_right = 94.0
+offset_bottom = 86.0
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -407,6 +413,8 @@ position = Vector2(30, 22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u1mdi")
 animation = &"idle"
+frame = 1
+frame_progress = 0.110095
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

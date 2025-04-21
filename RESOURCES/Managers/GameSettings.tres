@@ -82,6 +82,7 @@ InitializeUnitsWithMaxFocus = false
 AbilitiesCanMiss = false
 FirstAbilityBreakpoint = 2
 SecondAbilityBreakpoint = -1
+FireSpreadLevel = 3
 Level1FireDamage = -1
 Level2FireDamage = -3
 Level3FireDamage = -6

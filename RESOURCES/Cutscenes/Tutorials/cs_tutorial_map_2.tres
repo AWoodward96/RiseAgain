@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=91 format=3 uid="uid://740g1hlunqtw"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=89 format=3 uid="uid://740g1hlunqtw"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_5wonj"]
 [ext_resource type="Script" uid="uid://7au8sue07yi0" path="res://SCRIPTS/Cutscene/Events/SaveCampaignEvent.gd" id="4_u3cuo"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" uid="uid://cq7odh02q3pvy" path="res://SCRIPTS/Cutscene/Events/WaitForTurnStartEvent.gd" id="15_d3ptn"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="16_x85fq"]
 [ext_resource type="Script" uid="uid://cglhhbp52k0s2" path="res://SCRIPTS/Cutscene/Events/SmartSelectUnitEvent.gd" id="17_2q82g"]
-[ext_resource type="Script" uid="uid://dd7kyb1qm0iay" path="res://SCRIPTS/Cutscene/Requirements/PlayerControllerStateReq.gd" id="18_2q82g"]
 [ext_resource type="Script" uid="uid://drnfj0klsgqt3" path="res://SCRIPTS/Cutscene/Events/ForceTileSelectionEvent.gd" id="18_32y5q"]
 [ext_resource type="Script" uid="uid://b4ojf7jfxwvws" path="res://SCRIPTS/Cutscene/Events/WaitMapCompleteEvent.gd" id="20_di2bk"]
 [ext_resource type="Resource" uid="uid://beibj568earfb" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_map_3.tres" id="21_4axw1"]
@@ -537,15 +536,9 @@ tileLocation = Vector2i(0, 0)
 clear = true
 metadata/_custom_type_script = "uid://drnfj0klsgqt3"
 
-[sub_resource type="Resource" id="Resource_tik0c"]
-script = ExtResource("18_2q82g")
-State = 3
-NOT = false
-metadata/_custom_type_script = "uid://dd7kyb1qm0iay"
-
 [sub_resource type="Resource" id="Resource_i7t65"]
 script = ExtResource("7_x0f4a")
-requirements = Array[ExtResource("7_mtt1u")]([SubResource("Resource_tik0c")])
+requirements = Array[ExtResource("7_mtt1u")]([])
 events = Array[ExtResource("1_5wonj")]([SubResource("Resource_1y754"), SubResource("Resource_h4bnk"), SubResource("Resource_01xx4"), SubResource("Resource_mebfv"), SubResource("Resource_87arm"), SubResource("Resource_cicjx")])
 metadata/_custom_type_script = "uid://dpjk17wyac3d7"
 
