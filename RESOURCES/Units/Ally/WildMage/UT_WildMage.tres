@@ -141,6 +141,7 @@ DefaultPalette = SubResource("Resource_1mqxv")
 AllyPalette = SubResource("Resource_fnk75")
 EnemyPalette = SubResource("Resource_b6nw1")
 NeutralPalette = SubResource("Resource_7undg")
+FootstepGUID = ""
 DebugName = "WildMage"
 loc_DisplayName = "unit_wildmage_name"
 loc_Description = "unit_wildmage_desc"

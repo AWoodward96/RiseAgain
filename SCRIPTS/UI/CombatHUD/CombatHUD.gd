@@ -26,6 +26,9 @@ signal BannerAnimComplete
 @export var BlankAnchor : AnchoredUIElement
 @export var PresetAnchoredUIElements : Array[AnchoredUIElement]
 
+@export_category("SFX")
+@export var TurnStartSound : FmodEventEmitter2D
+
 var map : Map
 var ctrl : PlayerController
 var lastReticleSide = -1 	# -1 : The reticle is unknown and needs to be updated
@@ -74,6 +77,9 @@ func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 		GameSettingsTemplate.TeamID.NEUTRAL:
 			scene = NeutralTurnBanner
 
+	if TurnStartSound != null:
+		TurnStartSound.play()
+		
 	var createdElement = scene.instantiate()
 	center_left_anchor.add_child(createdElement)
 	await createdElement.AnimationComplete

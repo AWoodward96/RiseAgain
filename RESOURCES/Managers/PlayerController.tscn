@@ -83,12 +83,15 @@ _data = {
 &"idle": SubResource("Animation_vyuu3")
 }
 
-[node name="PlayerController" type="Node2D" node_paths=PackedStringArray("camera", "reticle", "tutorialReticle")]
+[node name="PlayerController" type="Node2D" node_paths=PackedStringArray("camera", "reticle", "tutorialReticle", "reticleMoveSound", "reticleSelectSound", "reticleCancelSound")]
 script = ExtResource("1_f0rkc")
 viewportTilePadding = 3
 camera = NodePath("MainCamera")
 reticle = NodePath("Reticle")
 tutorialReticle = NodePath("TutorialReticle")
+reticleMoveSound = NodePath("Reticle/ReticleMove")
+reticleSelectSound = NodePath("Reticle/ReticleSelect")
+reticleCancelSound = NodePath("Reticle/ReticleCancel")
 
 [node name="Reticle" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -102,9 +105,21 @@ hframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Reticle"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_rfrvr")
+&"": SubResource("AnimationLibrary_rfrvr")
 }
 autoplay = "idle"
+
+[node name="ReticleMove" type="FmodEventEmitter2D" parent="Reticle"]
+event_name = "event:/SFX/Reticle/Reticle_Move_Retro"
+event_guid = "{42b976de-13be-497f-94a7-c57eb35a13b6}"
+
+[node name="ReticleSelect" type="FmodEventEmitter2D" parent="Reticle"]
+event_name = "event:/SFX/Reticle/Reticle_Select_Retro"
+event_guid = "{66f92d6a-bd44-4807-a9c6-32423a571333}"
+
+[node name="ReticleCancel" type="FmodEventEmitter2D" parent="Reticle"]
+event_name = "event:/SFX/Reticle/Reticle_Cancel_Retro"
+event_guid = "{bfab3294-2e75-488b-9e78-3020ee95737c}"
 
 [node name="TutorialReticle" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -118,7 +133,7 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialReticle"]
 libraries = {
-"": SubResource("AnimationLibrary_5os2c")
+&"": SubResource("AnimationLibrary_5os2c")
 }
 autoplay = "idle"
 
@@ -144,3 +159,5 @@ visible = false
 z_index = -2
 scale = Vector2(2, 2)
 offset = Vector2(16, 16)
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]

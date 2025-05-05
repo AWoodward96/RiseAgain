@@ -14,7 +14,10 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	MovementIndex = 0
 	MovementVelocity = 0
-
+	
+	if unit.footstepsSound != null:
+		unit.footstepsSound.play()
+		
 	if Route.size() > 1:
 		_unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
 
@@ -41,11 +44,15 @@ func _Execute(_unit : UnitInstance, _delta):
 	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
 
 	if distance < (maximumDistanceTraveled * maximumDistanceTraveled) :
+	
 		var traversalResult = Route[MovementIndex].OnUnitTraversed(_unit)
 		match traversalResult:
 			GameSettingsTemplate.TraversalResult.OK:
 				pass
 			GameSettingsTemplate.TraversalResult.HealthModified:
+				if unit.footstepsSound != null:
+					unit.footstepsSound.stop()
+				
 				if unit == null || unit.currentHealth <= 0:
 					# They fucking died lmao
 					if isAlliedTeam:
@@ -53,11 +60,15 @@ func _Execute(_unit : UnitInstance, _delta):
 					return true
 				pass
 			GameSettingsTemplate.TraversalResult.EndMovement:
+				if unit.footstepsSound != null:
+					unit.footstepsSound.stop()
 				# The units movement has been interrupted and we're good
 				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
 				unit.LockInMovement()
 				return true
 			GameSettingsTemplate.TraversalResult.EndTurn:
+				if unit.footstepsSound != null:
+					unit.footstepsSound.stop()
 				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
 				unit.EndTurn()
 				if isAlliedTeam:
@@ -67,6 +78,9 @@ func _Execute(_unit : UnitInstance, _delta):
 		#AudioFootstep.play()
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
+			if unit.footstepsSound != null:
+				unit.footstepsSound.stop()
+				
 			unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 
 			if DestinationTile != null:

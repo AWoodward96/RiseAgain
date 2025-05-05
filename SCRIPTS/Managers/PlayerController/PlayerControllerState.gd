@@ -31,6 +31,7 @@ func UpdateInput(_delta):
 	# If you press a directional button, move in that direction
 	# if you hold a directional button, move in that direction, and then after a certain amount of time
 	#	start auto-moving in that direction really fast
+	var held = false
 	var tileSize = ctrl.tileSize
 	movementThisFrame = Vector2.ZERO
 	if InputManager.inputHeldTimer < InputManager.inputHeldThreshold:
@@ -48,7 +49,7 @@ func UpdateInput(_delta):
 		if lastMoveTimer > InputManager.inputHeldMoveTick:
 			reticle.global_position += movementThisFrame * tileSize
 			lastMoveTimer = 0
-
+		held = true
 		lastMoveTimer += _delta
 
 	var mapTotalSizeMinusOne = (currentMap.GridSize * tileSize) - Vector2i(tileSize, tileSize)
@@ -59,6 +60,7 @@ func UpdateInput(_delta):
 
 	var didMove = movementThisFrame != Vector2.ZERO
 	if didMove:
+		ctrl.reticleMoveSound.play(!held)
 		ctrl.CurrentTile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
 		ctrl.OnTileChanged.emit(ctrl.CurrentTile)
 

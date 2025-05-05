@@ -17,6 +17,8 @@ func _Enter(_ctrl : PlayerController, data):
 	log = data
 	source = log.source
 
+	AudioManager.IncrementIntensity()
+	
 	if source != null:
 		source.LockInMovement()
 

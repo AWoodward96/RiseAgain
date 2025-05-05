@@ -24,6 +24,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var CameraStart : Vector2
 @export var TileSize = 64
 @export var AutosaveEnabled : bool = true
+@export var Biome : BiomeData
 
 @export_category("Layers")
 @export var tilemap_bg : TileMapLayer
@@ -55,6 +56,7 @@ var teams = {}
 var enemyUnitsKilled = {}
 var playercontroller : PlayerController
 var currentTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
+var currentBiome : BiomeData
 
 var mapRNG : DeterministicRNG
 var grid : Grid
@@ -92,6 +94,9 @@ func PreInitialize():
 	if tilemap_main != null: tilemap_main.z_index = MAINLAYER
 	if tilemap_UI != null: tilemap_UI.z_index = UILAYER
 	if tilemap_threat != null: tilemap_threat.z_index = THREATLAYER
+
+	if Biome != null:
+		Biome.UpdateBiomeAudio()
 
 	if PreMapCutscene != null:
 		CutsceneManager.QueueCutscene(PreMapCutscene)

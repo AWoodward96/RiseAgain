@@ -110,6 +110,7 @@ Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_76hjn")]([ExtResource("13_xw7d6")])
 GridSize = 1
+FootstepGUID = "{b6992048-47c9-4b7c-a433-1e2649b0a7a5}"
 DebugName = "Roc"
 loc_DisplayName = "unit_roc_name"
 loc_Description = "unit_roc_desc"

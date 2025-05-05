@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bmucnmn8tsjf8"]
+[gd_scene load_steps=10 format=4 uid="uid://bmucnmn8tsjf8"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_3kk5a"]
+[ext_resource type="Resource" uid="uid://dm5toftpq6eup" path="res://RESOURCES/Maps/BiomeData/Maroon_Forest_Standard.tres" id="2_776no"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="3_0grcv"]
 [ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_14ij1"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_u63b7"]
@@ -13,6 +14,7 @@
 script = ExtResource("1_3kk5a")
 mapType = 1
 GridSize = Vector2i(15, 10)
+Biome = ExtResource("2_776no")
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

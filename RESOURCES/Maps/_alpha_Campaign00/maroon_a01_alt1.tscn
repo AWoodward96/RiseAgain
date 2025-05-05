@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://g70ucf3btrt8"]
+[gd_scene load_steps=20 format=4 uid="uid://g70ucf3btrt8"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_x3xps"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_doc2k"]
+[ext_resource type="Resource" uid="uid://dm5toftpq6eup" path="res://RESOURCES/Maps/BiomeData/Maroon_Forest_Standard.tres" id="2_lx0gi"]
 [ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_w3vli"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="4_xi4rg"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="5_ymkt3"]
@@ -35,6 +36,7 @@ DamageAggros = true
 script = ExtResource("1_x3xps")
 GridSize = Vector2i(15, 10)
 CameraStart = Vector2(5, 4)
+Biome = ExtResource("2_lx0gi")
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

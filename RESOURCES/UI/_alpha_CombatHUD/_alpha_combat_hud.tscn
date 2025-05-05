@@ -81,7 +81,7 @@ font = ExtResource("8_rdfo2")
 [sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
 font = ExtResource("8_rdfo2")
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "BlankAnchor", "PresetAnchoredUIElements")]
+[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "BlankAnchor", "PresetAnchoredUIElements", "TurnStartSound")]
 script = ExtResource("1_dux2t")
 AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
@@ -99,6 +99,8 @@ TutorialPrompt = NodePath("Full_NoMargin/TutorialPrompt")
 AvailableUIAnchors = Array[int]([0, 1, 2, 3])
 BlankAnchor = NodePath("Full_NoMargin/PanelBlocker")
 PresetAnchoredUIElements = [NodePath("Full_NoMargin/TerrainInspectPanel"), NodePath("Full_NoMargin/InspectUnitPanel"), NodePath("Full_NoMargin/PanelBlocker"), NodePath("Full_NoMargin/Objective"), NodePath("Full_NoMargin/TutorialPrompt")]
+TurnStartSound = NodePath("TurnStart")
+metadata/_edit_horizontal_guides_ = [-94.0]
 
 [node name="Full_NoMargin" type="Control" parent="."]
 layout_mode = 3
@@ -1065,13 +1067,14 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
+[node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent", "OnShowSound")]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
 script = ExtResource("10_5gr1e")
 entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
 entryPrefab = ExtResource("11_aar1f")
+OnShowSound = NodePath("OnShow")
 
 [node name="PanelContainer" type="MarginContainer" parent="ContextMenu"]
 layout_mode = 0
@@ -1099,6 +1102,10 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
+
+[node name="OnShow" type="FmodEventEmitter2D" parent="ContextMenu"]
+event_name = "event:/SFX/UI/UI_Paper_Small"
+event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"
 
 [node name="TopCenter" type="Control" parent="."]
 layout_mode = 3
@@ -1432,3 +1439,7 @@ layout_mode = 2
 [node name="Slot3" type="VBoxContainer" parent="OldInspectUI/EffectsGrid/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+
+[node name="TurnStart" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/UI_Turn_Start"
+event_guid = "{0c576d34-7726-4c30-a6f7-e3633fee61e2}"

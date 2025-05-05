@@ -40,7 +40,12 @@
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"e8267663-5393-49b0-89de-0c24e9998ad2",
+				"74755431-829a-4027-92df-f9210e878e79",
+				"394f4ea5-b591-4fab-ab00-8f1dfd582c7f",
+				"eedcc07f-36a7-420b-9759-a0e67176f81d"
+			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -48,6 +53,8 @@
 			"tasks": [
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
+				"5bb0a342-2039-4861-a622-11031c1d8e02",
+				"1256e757-b175-4709-ae5c-7e7149241b14",
 				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
 				"393f2420-d4f9-472f-9d97-425459720305",
 				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
@@ -424,6 +431,48 @@
 			"uuid": "4ed03008-ca7a-420d-8974-f4755e00ab92",
 			"title": "Stunned units acan counter attack - don't let them",
 			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "1256e757-b175-4709-ae5c-7e7149241b14",
+			"title": "Agnostic Environment Data",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "5bb0a342-2039-4861-a622-11031c1d8e02",
+			"title": "Character Footsteps",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "e8267663-5393-49b0-89de-0c24e9998ad2",
+			"title": "Ability SFX",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "74755431-829a-4027-92df-f9210e878e79",
+			"title": "Prized Buck being removed from map fucks with the saving and loading",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "394f4ea5-b591-4fab-ab00-8f1dfd582c7f",
+			"title": "Improve the intro tech",
+			"description": "The player should select a unit, and the drums come in, they move the unit, the bass comes in, they attack - we should almost immediately transition into the full song.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "eedcc07f-36a7-420b-9759-a0e67176f81d",
+			"title": "Improve the down-grade tech",
+			"description": "It should feel natural for the song to taper off if you're not doing anything. It doesn't feel that way right now.",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

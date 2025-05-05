@@ -35,7 +35,7 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound")]
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
@@ -44,6 +44,9 @@ itemsParent = NodePath("Items")
 healthBar = NodePath("HealthBarParent")
 focusSlotPrefab = ExtResource("4_kfodt")
 affinityIcon = NodePath("AffinityIcon")
+takeDamageSound = NodePath("Audio/TakeDamage")
+takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
+footstepsSound = NodePath("Audio/FootSteps")
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -52,6 +55,18 @@ affinityIcon = NodePath("AffinityIcon")
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Effects" type="Node2D" parent="."]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="TakeDamage" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Combat_TakeDamage_Standard"
+event_guid = "{0f552edb-29ad-4bdf-bb22-bfdd97ba4b91}"
+
+[node name="TakeLethalDamage" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Combat_TakeDamage_Kill"
+event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
+
+[node name="FootSteps" type="FmodEventEmitter2D" parent="Audio"]
 
 [node name="DefendIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true

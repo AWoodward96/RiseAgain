@@ -6,8 +6,12 @@
 [ext_resource type="LabelSettings" uid="uid://bqijakfhechmw" path="res://RESOURCES/UI/LabelSettings/levelup_ui_text.tres" id="3_setno"]
 [ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="5_k37rl"]
 
-[node name="ExperienceGainUI" type="CanvasLayer"]
+[node name="ExperienceGainUI" type="CanvasLayer" node_paths=PackedStringArray("ShowStatChangePanelSound", "ExpGainSound", "LevelUpTickSound", "StatTickUpSound")]
 script = ExtResource("1_hieq5")
+ShowStatChangePanelSound = NodePath("ShowStatChange")
+ExpGainSound = NodePath("ExperienceGainLoop")
+LevelUpTickSound = NodePath("LevelUpTick")
+StatTickUpSound = NodePath("StatUpTick")
 statBlockEntryPrefab = ExtResource("2_1xx7x")
 
 [node name="ExperienceProgressBar" type="ProgressBar" parent="."]
@@ -90,3 +94,19 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
+
+[node name="ExperienceGainLoop" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/Level_Up/Exp_Gain"
+event_guid = "{729fc7f1-685c-40d3-a040-28da2748b1a7}"
+
+[node name="LevelUpTick" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/Level_Up/Level_Tick_Up"
+event_guid = "{2b4121f8-d6d4-49e8-9ea9-eaf2d1b90138}"
+
+[node name="StatUpTick" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/Level_Up/Level_Stat_Tick_Up"
+event_guid = "{29fd2247-8538-4053-9e81-c7119817457e}"
+
+[node name="ShowStatChange" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/UI_Paper_Small"
+event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"

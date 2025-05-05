@@ -9,6 +9,8 @@ static var CurrentCampaign : Campaign
 @export var TutorialCutscene : CutsceneTemplate
 @export var LoadingScreenPrefab : PackedScene
 
+
+
 var CurrentGameState : GameState
 var loadingScreen : LoadingScreen
 var csrUI : CSR

@@ -2,6 +2,11 @@ extends CanvasLayer
 class_name ExperienceGainUI
 
 signal SequenceComplete
+@export var ShowStatChangePanelSound : FmodEventEmitter2D
+@export var ExpGainSound : FmodEventEmitter2D
+@export var LevelUpTickSound : FmodEventEmitter2D
+@export var StatTickUpSound : FmodEventEmitter2D
+
 @export var fillTime : float = 0.5
 @export var delayTime : float = 0.5
 @export var statUpDelayTime : float = 0.25
@@ -38,16 +43,24 @@ func Initialize(_experienceGained : int, _unit : UnitInstance, _root : Node2D, _
 	tweenEXPGain = get_tree().create_tween()
 	tweenEXPGain.tween_method(UpdateExpGain, startingEXP, startingEXP + _experienceGained, fillTime)
 	tweenEXPGain.tween_callback(ExpGainComplete.bind(_experienceGained))
+	if ExpGainSound != null:
+		ExpGainSound.play()
 	pass
 
 func UpdateExpGain(_value):
 	var current = _value
+	
+	if LevelUpTickSound != null && current % 100 == 0 && current != 0:
+		LevelUpTickSound.play()
+	
 	while current >= 100:
 		current -= 100
+		
 	experience_progress_bar.value = current
 	pass
 
 func ExpGainComplete(_netChange):
+	ExpGainSound.stop()
 	await get_tree().create_timer(delayTime).timeout
 
 	if levelsGained == 0:
@@ -59,6 +72,9 @@ func ExpGainComplete(_netChange):
 	pass
 
 func ShowLevelUpData():
+	if ShowStatChangePanelSound != null:
+		ShowStatChangePanelSound.play()
+		
 	level_up_parent.visible = true
 	experience_progress_bar.visible = false
 	current_level_label.text = str(startingDisplayLevel)
@@ -85,6 +101,10 @@ func ShowLevelUpData():
 		entry.statIncreaseLabel.visible = true
 		entry.statIncreaseLabel.text = "+%01.0d" % [statChanges[increment]]
 		entry.statValue.text = "%01.0d" % [currentUnit.GetWorkingStat(increment)]
+		
+		if StatTickUpSound != null:
+			StatTickUpSound.play()
+			
 		await root.get_tree().create_timer(statUpDelayTime).timeout
 
 

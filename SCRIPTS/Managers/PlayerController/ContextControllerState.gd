@@ -29,6 +29,7 @@ func UpdateInput(_delta):
 			ctrl.EnterUnitMovementState()
 		else:
 			ctrl.EnterSelectionState()
+		ctrl.reticleCancelSound.play()
 	pass
 
 func _Exit():

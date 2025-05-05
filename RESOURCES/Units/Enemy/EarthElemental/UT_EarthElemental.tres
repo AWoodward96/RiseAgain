@@ -107,6 +107,7 @@ Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_giantslam.
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_mrmw8")]([])
 GridSize = 2
+FootstepGUID = "{00000000-0000-0000-0000-000000000000}"
 DebugName = "EarthElemental"
 loc_DisplayName = "unit_earthelemental_name"
 loc_Description = "unit_earthelemental_desc"

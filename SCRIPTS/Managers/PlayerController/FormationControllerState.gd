@@ -43,6 +43,8 @@ func _Execute(_delta):
 
 			ctrl.ClearSelectionData()
 			formationUI.ShowSwapWithPanel(false)
+			
+		ctrl.reticleSelectSound.play()
 
 	if InputManager.cancelDown:
 		if ctrl.selectedUnit == null:
@@ -50,6 +52,7 @@ func _Execute(_delta):
 
 		ctrl.ClearSelectionData()
 		formationUI.ShowSwapWithPanel(false)
+		ctrl.reticleCancelSound.play()
 
 func ToString():
 	return "FormationControllerState"

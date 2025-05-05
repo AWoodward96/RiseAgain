@@ -6,9 +6,14 @@ signal OnAnyActionSelected()
 @export var entryParent : Control
 @export var entryPrefab : PackedScene
 
+@export_category("SFX")
+@export var OnShowSound : FmodEventEmitter2D
+
 
 func Initialize():
 	SelectFirst()
+	if OnShowSound != null:
+		OnShowSound.play()
 
 func Clear():
 	for n in entryParent.get_children():

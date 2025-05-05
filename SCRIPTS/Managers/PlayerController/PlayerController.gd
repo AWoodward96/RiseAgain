@@ -10,6 +10,10 @@ signal OnTileSelected(_tile)
 @export var reticle : Node2D
 @export var tutorialReticle : Node2D
 
+@export var reticleMoveSound : FmodEventEmitter2D
+@export var reticleSelectSound : FmodEventEmitter2D
+@export var reticleCancelSound : FmodEventEmitter2D
+
 @onready var movement_tracker : Line2D = %MovementTracker
 @onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
 @onready var grid_entity_preview_sprite: Sprite2D = %GridEntityPreviewSprite
@@ -53,6 +57,7 @@ func Initialize(_map: Map):
 	tileHalfSize = tileSize / 2
 	UpdateCameraBounds()
 
+	
 	# Both of these methods just refresh the objective ui
 	currentMap.OnUnitTurnEnd.connect(UnitTurnEnd)
 	currentMap.OnUnitDied.connect(UnitDied)

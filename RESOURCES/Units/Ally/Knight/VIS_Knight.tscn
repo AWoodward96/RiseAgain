@@ -166,6 +166,7 @@ script = ExtResource("1_hr2ox")
 AnimationCTRL = NodePath("AnimationPlayer")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.537255)
 position = Vector2(32, 16)
 scale = Vector2(2, 2)

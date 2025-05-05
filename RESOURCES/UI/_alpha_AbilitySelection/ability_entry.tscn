@@ -52,7 +52,7 @@ metadata/_snap_enabled = true
 font = ExtResource("2_16e7i")
 font_size = 32
 
-[node name="AbilityEntry" type="PanelContainer" node_paths=PackedStringArray("Background", "abilityTypeHeader", "abilityNameText", "abilityDescriptionText", "abilityIcon", "focusParent", "focusCostText", "StatsGrantedParent", "usesParent", "usageLeft", "rangeParent", "rangeText", "targetingParent", "targetingTypeText", "speedParent", "speedText", "SelectedParent")]
+[node name="AbilityEntry" type="PanelContainer" node_paths=PackedStringArray("Background", "abilityTypeHeader", "abilityNameText", "abilityDescriptionText", "abilityIcon", "focusParent", "focusCostText", "StatsGrantedParent", "usesParent", "usageLeft", "rangeParent", "rangeText", "targetingParent", "targetingTypeText", "speedParent", "speedText", "SelectedParent", "FocusSound", "SelectedSound")]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(576, 160)
 offset_right = 600.0
@@ -81,6 +81,8 @@ AbilityBG = SubResource("GradientTexture2D_dk8wh")
 WeaponBG = SubResource("GradientTexture2D_ergra")
 TacticalBG = SubResource("GradientTexture2D_em1u0")
 SelectedParent = NodePath("Base/Selected")
+FocusSound = NodePath("Focused")
+SelectedSound = NodePath("Selected")
 
 [node name="Base" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -311,3 +313,11 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
+
+[node name="Focused" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/UI_Move_Standard"
+event_guid = "{9e237bb9-a830-4ce7-bde8-fdf81456e26c}"
+
+[node name="Selected" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/UI_Select_Standard"
+event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"

@@ -109,6 +109,7 @@ Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_38fi3")]([ExtResource("10_ioa71")])
 GridSize = 1
+FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"
 loc_Description = "unit_wolfpup_desc"

@@ -12,6 +12,11 @@ signal OnCombatEffectsUpdated
 @export var focusSlotPrefab : PackedScene
 @export var affinityIcon: Sprite2D
 
+@export_category("SFX")
+@export var takeDamageSound : FmodEventEmitter2D
+@export var takeLethalDamageSound : FmodEventEmitter2D
+@export var footstepsSound : FmodEventEmitter2D
+
 #@onready var health_bar : ProgressBar = %HealthBar
 #@onready var hp_val = %"HP Val"
 @onready var health_bar_parent = %HealthBarParent
@@ -22,6 +27,7 @@ signal OnCombatEffectsUpdated
 @onready var focus_bar_parent: EntryList = %FocusBarParent
 @onready var positive_afffinity: Sprite2D = %PositiveAfffinity
 @onready var negative_affinity: Sprite2D = %NegativeAffinity
+
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
@@ -115,6 +121,8 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthP
 	Template = _unitTemplate
 
 	RefreshVisuals()
+	
+
 
 	if ItemSlots.size() == 0:
 		for s in GameManager.GameSettings.ItemSlotsPerUnit:
@@ -132,6 +140,10 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthP
 func RefreshVisuals():
 	if Template.Affinity != null:
 		affinityIcon.texture = Template.Affinity.loc_icon
+	
+	footstepsSound.event_guid = AudioManager.DefaultFootstepGUID
+	if Template.FootstepGUID != "":
+		footstepsSound.event_guid = Template.FootstepGUID
 
 func InitializeStats():
 	for stat in Template.BaseStats:
@@ -492,6 +504,11 @@ func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous :
 		# Since healthChange would be negative here, healthChange
 		var armor = GetArmorAmount()
 		Juice.CreateDamagePopup(min(_netHealthChange + armor, 0), map.grid.GetTileFromGlobalPosition(global_position))
+		if -_netHealthChange >= currentHealth:
+			takeLethalDamageSound.play()
+		else:
+			takeDamageSound.play()
+			
 	else:
 		Juice.CreateHealPopup(_netHealthChange, map.grid.GetTileFromGlobalPosition(global_position))
 

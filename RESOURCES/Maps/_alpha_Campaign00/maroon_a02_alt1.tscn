@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=4 uid="uid://l37idahcw0k7"]
+[gd_scene load_steps=36 format=4 uid="uid://l37idahcw0k7"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_kqij1"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_v57yd"]
+[ext_resource type="Resource" uid="uid://dm5toftpq6eup" path="res://RESOURCES/Maps/BiomeData/Maroon_Forest_Standard.tres" id="2_xt4he"]
 [ext_resource type="Script" uid="uid://dptt57bfpyboi" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="3_3rorp"]
 [ext_resource type="Resource" uid="uid://8pqnjdx0myv4" path="res://RESOURCES/Maps/OptionalObjectives/killPrizedBuck.tres" id="4_vkcib"]
 [ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="5_ivtap"]
@@ -89,6 +90,7 @@ script = ExtResource("17_e3qc3")
 script = ExtResource("1_kqij1")
 GridSize = Vector2i(16, 10)
 CameraStart = Vector2(3, 8)
+Biome = ExtResource("2_xt4he")
 tilemap_bg = NodePath("BG")
 tilemap_water = NodePath("Water")
 tilemap_main = NodePath("Main")

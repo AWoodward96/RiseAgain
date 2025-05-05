@@ -387,11 +387,21 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 	if _showDamageNumbers:
 		Juice.CreateDamagePopup(_healthDelta, _tile)
 
+	var hitSoundKill = "event:/SFX/Combat_TakeDamage_Kill"
+	var hitSoundHurt = "event:/SFX/Combat_TakeDamage_Standard"
+	
+	var event
 	if _tile.Health <= 0:
 		DestroyTerrain(_tile)
 		# We do it like this so that you can't retarget this tile anymore
 		_tile.MaxHealth = -1
 		_tile.Health = 0
+		event = FmodServer.create_event_instance(hitSoundKill)
+	else:
+		event = FmodServer.create_event_instance(hitSoundHurt)
+	
+	event.start()
+		
 
 func DestroyTerrain(_tile : Tile):
 	_tile.TerrainDestroyed = true

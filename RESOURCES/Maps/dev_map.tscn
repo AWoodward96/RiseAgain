@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_gfyht"]
 [ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_vt2ms"]
 [ext_resource type="Script" uid="uid://b8v8fou10ucrg" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="9_rg0w7"]
-[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="10_hh47g"]
 [ext_resource type="Resource" uid="uid://cr516cksscxju" path="res://RESOURCES/CombatEffects/CE_UnholyIntrusion.tres" id="10_jydnc"]
 [ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="10_tgwx5"]
 [ext_resource type="PackedScene" uid="uid://eerys1o8nkjh" path="res://RESOURCES/GridEntities/wp_bridge.tscn" id="11_rlgja"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_msltj"]
+[ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="12_rg0w7"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="14_3fyh8"]
 [ext_resource type="Script" uid="uid://do0w73rdu2ar6" path="res://SCRIPTS/Units/AI/AI_EndTurn.gd" id="15_sr05p"]
 [ext_resource type="PackedScene" uid="uid://c77gxravt3w7h" path="res://RESOURCES/GridEntities/proximity_mine.tscn" id="16_sxqp6"]
@@ -160,10 +160,11 @@ hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("10_hh47g")
+UnitToSpawn = ExtResource("12_rg0w7")
 UnitLevel = 1
 DeltaLevel = 0
 Position = Vector2i(8, 6)
+Allegiance = 1
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 

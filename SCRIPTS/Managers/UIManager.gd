@@ -37,6 +37,7 @@ func OnUIOpened(_ui : FullscreenUI):
 	OpenUIs.append(_ui)
 	OpenUIs.sort_custom(func(a : FullscreenUI, b : FullscreenUI): return a.layer < b.layer)
 	InspectActive = false
+	UIOpened.emit(_ui)
 
 func OnUIClosed(_ui : FullscreenUI):
 	InspectActive = false
@@ -48,3 +49,5 @@ func OnUIClosed(_ui : FullscreenUI):
 	for i in range(OpenUIs.size() - 1, -1, -1):
 		if OpenUIs[i] == null:
 			OpenUIs.remove_at(i)
+	
+	UIClosed.emit(_ui)

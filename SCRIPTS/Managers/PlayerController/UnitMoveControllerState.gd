@@ -34,6 +34,9 @@ func _Execute(_delta):
 			movementSelected = true
 			ctrl.BlockMovementInput = true
 			ctrl.OnTileSelected.emit(tile)
+			ctrl.reticleSelectSound.play()
+			if AudioManager.CurrentIntensity == 0:
+				AudioManager.IncrementIntensity()
 
 
 	if InputManager.cancelDown:
@@ -60,6 +63,7 @@ func _Execute(_delta):
 			ctrl.selectedUnit = null
 			ctrl.ChangeControllerState(SelectionControllerState.new(), null)
 			walkedPath.clear()
+		ctrl.reticleCancelSound.play()
 
 func UpdateTracker():
 	if currentMap != null && ctrl.movement_tracker.visible && ctrl.CurrentTile != null:

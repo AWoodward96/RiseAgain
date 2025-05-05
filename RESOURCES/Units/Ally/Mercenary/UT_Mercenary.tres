@@ -110,6 +110,7 @@ Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_heroicleap
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_cleave.tscn", "res://RESOURCES/Ability/Standard/ART_Charge.tscn"])
 Descriptors = Array[ExtResource("13_a62ql")]([])
 GridSize = 1
+FootstepGUID = ""
 DebugName = "Mercenary"
 loc_DisplayName = "unit_mercenary_name"
 loc_Description = "unit_mercenary_desc"
