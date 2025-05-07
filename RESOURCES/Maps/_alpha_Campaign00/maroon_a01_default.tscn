@@ -166,3 +166,4 @@ AggroBehavior = SubResource("Resource_hkjcv")
 [node name="Variants" type="Node2D" parent="."]
 
 [node name="Squads" type="Node2D" parent="."]
+y_sort_enabled = true

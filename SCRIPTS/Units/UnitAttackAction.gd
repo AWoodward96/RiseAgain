@@ -10,6 +10,9 @@ var IsRetaliation : bool = false
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 
+
+	_unit.PlayPrepAnimation(TargetPosition - _unit.position)
+
 	var combatResults : Array[PerformCombatStepResult]
 	TimerLock = false
 	var actions = Log.GetResultsFromActionIndex(ActionIndex)
@@ -44,6 +47,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 			Log.grid.IgniteTile(result.TileTargetData.Tile, result.TileTargetData.Ignite)
 
 
+	_unit.PlayAttackAnimation(TargetPosition - _unit.position)
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)
 	_unit.position += dst
@@ -67,3 +71,8 @@ func ReturnToCenter(_unit, delta):
 		return true
 
 	return false
+
+func _Exit():
+	if unit != null:
+		unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+	pass

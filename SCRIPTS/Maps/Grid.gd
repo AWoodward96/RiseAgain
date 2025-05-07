@@ -389,7 +389,7 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 
 	var hitSoundKill = "event:/SFX/Combat_TakeDamage_Kill"
 	var hitSoundHurt = "event:/SFX/Combat_TakeDamage_Standard"
-	
+
 	var event
 	if _tile.Health <= 0:
 		DestroyTerrain(_tile)
@@ -399,9 +399,9 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 		event = FmodServer.create_event_instance(hitSoundKill)
 	else:
 		event = FmodServer.create_event_instance(hitSoundHurt)
-	
+
 	event.start()
-		
+
 
 func DestroyTerrain(_tile : Tile):
 	_tile.TerrainDestroyed = true

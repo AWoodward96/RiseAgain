@@ -49,13 +49,13 @@ func Initialize(_experienceGained : int, _unit : UnitInstance, _root : Node2D, _
 
 func UpdateExpGain(_value):
 	var current = _value
-	
+
 	if LevelUpTickSound != null && current % 100 == 0 && current != 0:
 		LevelUpTickSound.play()
-	
+
 	while current >= 100:
 		current -= 100
-		
+
 	experience_progress_bar.value = current
 	pass
 
@@ -74,7 +74,7 @@ func ExpGainComplete(_netChange):
 func ShowLevelUpData():
 	if ShowStatChangePanelSound != null:
 		ShowStatChangePanelSound.play()
-		
+
 	level_up_parent.visible = true
 	experience_progress_bar.visible = false
 	current_level_label.text = str(startingDisplayLevel)
@@ -101,10 +101,10 @@ func ShowLevelUpData():
 		entry.statIncreaseLabel.visible = true
 		entry.statIncreaseLabel.text = "+%01.0d" % [statChanges[increment]]
 		entry.statValue.text = "%01.0d" % [currentUnit.GetWorkingStat(increment)]
-		
+
 		if StatTickUpSound != null:
 			StatTickUpSound.play()
-			
+
 		await root.get_tree().create_timer(statUpDelayTime).timeout
 
 

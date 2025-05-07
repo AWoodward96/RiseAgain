@@ -15,6 +15,7 @@ const NULL_EVENT = "{00000000-0000-0000-0000-000000000000}"
 
 var localIntensity : float = 0
 var localFalloff : float = 0
+var currentBiome : BiomeData
 
 func _ready():
 	MusicPlayer.timeline_marker.connect(MarkerCallback)
@@ -23,7 +24,7 @@ func IncrementIntensity():
 	if MusicPlayer != null:
 		CurrentIntensity += 1
 		localFalloff = IntensityFalloffUp
-	
+
 
 func DecrementIntensity():
 	if MusicPlayer != null:
@@ -41,17 +42,40 @@ func RaiseIntensity(_int : int):
 		localFalloff = IntensityFalloffUp
 
 func _process(delta: float):
+	if currentBiome == null:
+		return
+
 	if MusicPlayer != null:
 		localIntensity = lerp(localIntensity, CurrentIntensity, IntensityLerp * delta)
 		MusicPlayer.set_parameter("Intensity", localIntensity)
-	
+
 	if localFalloff > 0:
 		localFalloff -= delta
-	
-		
+
+
+func UpdateBiomeData(_biomeData : BiomeData):
+	currentBiome = _biomeData
+	if _biomeData == null:
+		return
+
+	if _biomeData.AmbienceID != "{00000000-0000-0000-0000-000000000000}":
+		if AmbiencePlayer.event_guid != _biomeData.AmbienceID:
+			AmbiencePlayer.event_guid = _biomeData.AmbienceID
+			AudioManager.AmbiencePlayer.play()
+	else:
+		AudioManager.AmbiencePlayer.stop()
+
+	if _biomeData.MusicID != "{00000000-0000-0000-0000-000000000000}":
+		if MusicPlayer.event_guid != _biomeData.MusicID:
+			MusicPlayer.event_guid = _biomeData.MusicID
+			MusicPlayer.play()
+	else:
+		MusicPlayer.stop()
+
+
 func MarkerCallback(_dict : Dictionary):
 	print("Marker Hit")
-	
+
 	if localFalloff <= 0:
 		DecrementIntensity()
 	pass

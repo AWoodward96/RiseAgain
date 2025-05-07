@@ -15,6 +15,9 @@ shader = ExtResource("2_o2050")
 shader_parameter/palette = ExtResource("3_o2050")
 shader_parameter/palette_count = 4.0
 shader_parameter/palette_index = 1.0
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/grey_scale = false
+shader_parameter/grey_scale_offset = -0.1
 shader_parameter/use_color_override = false
 shader_parameter/color_override = Color(1, 1, 1, 1)
 
@@ -413,8 +416,6 @@ position = Vector2(30, 22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u1mdi")
 animation = &"idle"
-frame = 1
-frame_progress = 0.110095
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

@@ -36,6 +36,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound")]
+y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
@@ -49,6 +50,7 @@ takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
 
 [node name="Visual" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Abilities" type="Node2D" parent="."]
 
@@ -67,6 +69,7 @@ event_name = "event:/SFX/Combat_TakeDamage_Kill"
 event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 
 [node name="FootSteps" type="FmodEventEmitter2D" parent="Audio"]
+event_guid = "{00000000-0002-0000-0300-000026000000}"
 
 [node name="DefendIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -78,8 +81,8 @@ texture = ExtResource("4_reqvg")
 
 [node name="AffinityIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(11, 11)
-scale = Vector2(0.0410156, 0.0410156)
+position = Vector2(8, 56)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("7_vnfmn")
 
 [node name="PositiveAfffinity" type="Sprite2D" parent="AffinityIcon"]

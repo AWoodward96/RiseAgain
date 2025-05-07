@@ -150,6 +150,10 @@ static func GetValidDirectional(_currentTile : Tile, _currentGrid : Grid, _prefe
 
 	return 2
 
+static func AxisRound(_vector : Vector2):
+	# snaps to 4
+	return Vector2.RIGHT.rotated(round(_vector.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
+
 func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData):
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat

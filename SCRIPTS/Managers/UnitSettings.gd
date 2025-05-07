@@ -7,6 +7,15 @@ static var ANIM_MOVE_DOWN = "run_down"
 static var ANIM_MOVE_UP = "run_up"
 static var ANIM_MOVE_LEFT = "run_left"
 static var ANIM_MOVE_RIGHT = "run_right"
+static var ANIM_PREP_UP = "prep_up"
+static var ANIM_PREP_RIGHT = "prep_right"
+static var ANIM_PREP_DOWN = "prep_down"
+static var ANIM_PREP_LEFT = "prep_left"
+static var ANIM_ATTACK_DOWN = "attack_down"
+static var ANIM_ATTACK_RIGHT = "attack_right"
+static var ANIM_ATTACK_UP = "attack_up"
+static var ANIM_ATTACK_LEFT = "attack_left"
+static var ANIM_TAKE_DAMAGE = "take_damage"
 
 @export var UnitInstancePrefab : PackedScene
 @export var AllyUnitManifest : Array[UnitTemplate]

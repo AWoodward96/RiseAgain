@@ -1,0 +1,275 @@
+[gd_scene load_steps=32 format=4 uid="uid://c3wejxre08pq2"]
+
+[ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_pik88"]
+[ext_resource type="Resource" uid="uid://dm5toftpq6eup" path="res://RESOURCES/Maps/BiomeData/Maroon_Forest_Standard.tres" id="2_wka0b"]
+[ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="3_vd6jq"]
+[ext_resource type="Script" uid="uid://dptt57bfpyboi" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="4_amdbq"]
+[ext_resource type="Resource" uid="uid://8pqnjdx0myv4" path="res://RESOURCES/Maps/OptionalObjectives/killPrizedBuck.tres" id="5_lfhns"]
+[ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="6_8xuxs"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="7_y2n5u"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="8_g3shn"]
+[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="9_j37v2"]
+[ext_resource type="Texture2D" uid="uid://cudvgus0ja3x6" path="res://ART/Environment/MaroonForest/c_0_map_1_leafmap-export.png" id="10_u332u"]
+[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="11_fjbig"]
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="12_va6nv"]
+[ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="13_6fyc4"]
+[ext_resource type="PackedScene" uid="uid://ngjq2cf315i3" path="res://RESOURCES/GridEntities/wp_trunkbridge_1.tscn" id="14_g7mde"]
+[ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="15_d1561"]
+[ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="16_j1qmx"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="17_27dmo"]
+[ext_resource type="Script" uid="uid://cx7hr1gnxldm5" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="18_jyqfc"]
+[ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="20_lo64v"]
+[ext_resource type="Script" uid="uid://di1yqkv0ulmb4" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="21_cfbar"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="22_lpqts"]
+[ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="23_nc7yb"]
+[ext_resource type="Script" uid="uid://cgbbqe0tsncp" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="24_n1a7j"]
+
+[sub_resource type="Resource" id="Resource_1u085"]
+script = ExtResource("18_jyqfc")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_jto7i"]
+script = ExtResource("18_jyqfc")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_8tche"]
+script = ExtResource("18_jyqfc")
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_e8n5s"]
+script = ExtResource("21_cfbar")
+TurnsToAggro = 1
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_wtpf7"]
+script = ExtResource("21_cfbar")
+TurnsToAggro = 2
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_cyewq"]
+script = ExtResource("21_cfbar")
+TurnsToAggro = 1
+TargetingFlags = 1
+RangeOverride = 0
+DamageAggros = true
+
+[sub_resource type="Resource" id="Resource_ceg4b"]
+script = ExtResource("24_n1a7j")
+positionToMoveTo = Vector2i(11, 0)
+
+[sub_resource type="Resource" id="Resource_hrfmh"]
+script = ExtResource("20_lo64v")
+
+[node name="maroon_wolf_showcase" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+script = ExtResource("1_pik88")
+GridSize = Vector2i(16, 10)
+CameraStart = Vector2(3, 8)
+Biome = ExtResource("2_wka0b")
+tilemap_bg = NodePath("BG")
+tilemap_water = NodePath("Water")
+tilemap_main = NodePath("Main")
+tilemap_threat = NodePath("Threat")
+tilemap_fire = NodePath("Fire")
+tilemap_UI = NodePath("UI")
+WinCondition = ExtResource("3_vd6jq")
+OptionalObjectives = Array[ExtResource("4_amdbq")]([ExtResource("5_lfhns")])
+squadParent = NodePath("Squads")
+StartingPositionsParent = NodePath("StartingPositions")
+SpawnersParent = NodePath("Spawners")
+
+[node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
+points = PackedVector2Array(0, 0, 1024, 0, 1024, 640, 0, 640, 0, 0)
+closed = true
+default_color = Color(1, 0, 0, 1)
+script = ExtResource("6_8xuxs")
+map = NodePath("..")
+
+[node name="Water" type="TileMapLayer" parent="."]
+z_index = -6
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAGAAMAAAAEAAcAAAAHAAMAAAAEAAcAAAAHAAQAAQANAAwAAAAIAAQAAAAEAAcAAAAJAAQAAAAEAAcAAAAKAAQAAAAEAAcAAAALAAQAAAAEAAcAAAAMAAQAAAAEAAcAAAANAAQAAAAEAAcAAAAOAAQAAAAEAAcAAAAPAAQAAAAEAAcAAAAAAAUAAQANAAwAAAABAAUAAQANAAwAAAACAAUAAQANAAwAAAADAAUAAQANAAwAAAAEAAUAAQANAAwAAAAFAAYAAAAEAAcAAAAGAAYAAAAEAAcAAAAHAAYAAAAEAAcAAAAIAAYAAAAEAAcAAAAJAAYAAAAEAAcAAAAKAAYAAAAEAAcAAAALAAYAAAAEAAcAAAAMAAYAAAAEAAcAAAANAAYAAAAEAAcAAAANAAcAAAAEAAcAAAAOAAcAAAAEAAcAAAAPAAcAAAAEAAcAAAAAAAQAAQANAAwAAAABAAQAAQANAAwAAAAEAAQAAQANAAwAAAAFAAQAAQANAAwAAAAGAAQAAQANAAwAAAAGAAUAAQANAAwAAAAFAAUAAQANAAwAAAAHAAUAAQANAAwAAAAIAAUAAQANAAwAAAAJAAUAAQANAAwAAAAKAAUAAQANAAwAAAANAAUAAQANAAwAAAAOAAUAAQANAAwAAAAPAAUAAQANAAwAAAAPAAYAAQANAAwAAAAOAAYAAQANAAwAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAACAAAAAAAGAAAAAAACAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAACAAAAAAAHAAIAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAEAAAAAAAAAAAABAAEAAAACAAAAAAACAAEAAAAAAAAAAAAAAAIAAAABAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAACAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAACAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAABAAAAAAALAAMAAAAEAAcAAAAMAAAAAAACAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAOAAIAAAAAAAAAAAAMAAMAAAAEAAcAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAABAAAAAAAPAAMAAAACAAAAAAAIAAMAAAABAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAEAAcAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAABAAAAAAABAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAkAAAABAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAkAAAACAAAAAAAJAAgAAAABAAAAAAAJAAcAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAACAAAAAAAIAAcAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAABAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAACAAAAAAAGAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAPAAkAAAABAAAAAAAPAAgAAAABAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAAAAAMAAAAEAAcAAAABAAMAAAAEAAcAAAACAAMAAAAEAAcAAAADAAMAAAAEAAcAAAAEAAMAAAAEAAcAAAAFAAMAAAAEAAcAAAALAAUAAQANAAwAAAAMAAUAAQANAAwAAAADAAQAAQANAAwAAAACAAQAAQANAAwAAAAEAAYAAAAEAAcAAAA=")
+tile_set = ExtResource("7_y2n5u")
+
+[node name="BG" type="TileMapLayer" parent="."]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAMAAQAPAAgAAAABAAMAAQAPAAgAAAACAAMAAQAPAAgAAAADAAMAAQAPAAgAAAAEAAMAAQAPAAgAAAAFAAMAAQAPAAgAAAAGAAMAAQAPAAgAAAAHAAMAAQAPAAgAAAAIAAQAAQAOAAoAAAAJAAQAAQAPAAgAAAAKAAQAAQAPAAgAAAALAAQAAQAPAAgAAAAMAAQAAQAPAAgAAAANAAQAAQAPAAgAAAAOAAQAAQAPAAgAAAAPAAQAAQAPAAgAAAAAAAUAAQAOAAsAAAABAAUAAQAOAAsAAAACAAUAAQAOAAsAAAADAAUAAQAPAAkAAAAEAAYAAQAPAAsAAAAFAAYAAQAPAAsAAAAGAAYAAQAPAAsAAAAHAAYAAQAPAAsAAAAIAAYAAQAPAAsAAAAJAAYAAQAPAAsAAAAKAAYAAQAPAAsAAAALAAYAAQAPAAsAAAAMAAYAAQAPAAsAAAANAAYAAQAPAAkAAAANAAcAAQANAAsAAAAOAAcAAQAPAAsAAAAPAAcAAQAPAAsAAAAEAAAAAQADAAIAAAAEAAEAAQAFAAIAAAAEAAIAAQAEAAEAAAAFAAAAAQAFAAIAAAAFAAEAAQAFAAEAAAAFAAIAAQADAAEAAAAGAAAAAQAEAAEAAAAGAAEAAQAFAAEAAAAGAAIAAQAFAAEAAAAHAAAAAQAFAAIAAAAHAAEAAQAFAAIAAAAHAAIAAQAFAAIAAAAAAAAAAQAEAAEAAAABAAAAAQAFAAIAAAACAAAAAQAFAAIAAAAAAAEAAQADAAEAAAABAAEAAQADAAIAAAACAAEAAQAEAAEAAAAAAAIAAQAFAAEAAAABAAIAAQAFAAIAAAACAAIAAQAFAAIAAAADAAAAAQAFAAEAAAADAAEAAQAFAAIAAAADAAIAAQAEAAEAAAAIAAAAAQAFAAIAAAAIAAEAAQAFAAIAAAAIAAIAAQAEAAEAAAAJAAAAAQAFAAIAAAAKAAAAAQAEAAIAAAALAAAAAQADAAEAAAAJAAEAAQAEAAIAAAAKAAEAAQAFAAEAAAALAAEAAQAEAAEAAAAJAAIAAQAEAAIAAAAKAAIAAQAEAAIAAAALAAIAAQADAAIAAAAJAAMAAQAEAAIAAAAKAAMAAQAFAAEAAAALAAMAAQADAAEAAAAMAAAAAQADAAIAAAANAAAAAQAEAAEAAAAOAAAAAQAEAAIAAAAMAAEAAQAEAAEAAAANAAEAAQAFAAIAAAAOAAEAAQADAAEAAAAMAAIAAQAEAAIAAAANAAIAAQADAAEAAAAOAAIAAQAEAAIAAAAMAAMAAQADAAIAAAANAAMAAQAFAAEAAAAOAAMAAQAFAAEAAAAPAAIAAQAEAAIAAAAPAAEAAQAEAAEAAAAPAAAAAQADAAEAAAAPAAMAAQAFAAIAAAAIAAMAAQAQAAgAAAADAAkAAQAFAAIAAAADAAgAAQADAAEAAAADAAcAAQAEAAEAAAADAAYAAQANAAsAAAACAAkAAQADAAEAAAACAAgAAQADAAEAAAACAAcAAQAFAAIAAAACAAYAAQAFAAIAAAABAAkAAQAFAAEAAAABAAgAAQAFAAIAAAABAAcAAQAEAAEAAAABAAYAAQAEAAEAAAAAAAkAAQAEAAIAAAAAAAgAAQAFAAEAAAAAAAcAAQAEAAIAAAAAAAYAAQAFAAEAAAAMAAkAAQAFAAIAAAAMAAgAAQAEAAEAAAAMAAcAAQAEAAEAAAALAAkAAQAFAAEAAAALAAgAAQADAAIAAAALAAcAAQADAAEAAAAKAAkAAQADAAEAAAAKAAgAAQADAAIAAAAKAAcAAQADAAEAAAAJAAkAAQAEAAEAAAAJAAgAAQAEAAEAAAAJAAcAAQADAAIAAAAIAAkAAQAEAAEAAAAIAAgAAQADAAIAAAAIAAcAAQAFAAEAAAAHAAkAAQAEAAIAAAAHAAgAAQAEAAIAAAAHAAcAAQADAAEAAAAGAAkAAQAEAAEAAAAGAAgAAQAEAAEAAAAGAAcAAQAEAAIAAAAFAAkAAQAEAAEAAAAFAAgAAQADAAEAAAAFAAcAAQADAAEAAAAEAAkAAQADAAEAAAAEAAgAAQADAAEAAAAEAAcAAQAFAAIAAAAPAAkAAQAFAAIAAAAPAAgAAQAEAAIAAAAOAAkAAQADAAIAAAAOAAgAAQADAAEAAAANAAkAAQAFAAEAAAANAAgAAQADAAIAAAA=")
+tile_set = ExtResource("7_y2n5u")
+
+[node name="Main" type="TileMapLayer" parent="."]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAKAAAAAQAAAAgAAAAJAAAAAQAJAAIAAAAGAAAAAQAJAAIAAAAFAAAAAQAVAAMAAAAEAAAAAQAUAAMAAAADAAAAAQAIAAEAAAACAAAAAQAHAAEAAAABAAAAAQATAAEAAAAAAAAAAQASAAEAAAAKAAEAAQACAAkAAAAJAAEAAQAAAAcAAAAGAAEAAQAIAAIAAAAFAAEAAQAVAAQAAAAEAAEAAQAUAAQAAAABAAEAAQATAAIAAAAAAAEAAQASAAIAAAAPAAEAAQAVAAQAAAAPAAAAAQAVAAMAAAAOAAEAAQAUAAQAAAAOAAAAAQAUAAMAAAAPAAkAAQAJAAEAAAAOAAkAAQAHAAIAAAANAAkAAQAIAAEAAAAMAAkAAQAJAAIAAAALAAkAAQAJAAIAAAAKAAkAAQAIAAEAAAAJAAkAAQAIAAEAAAAIAAkAAQAIAAIAAAAHAAkAAQAHAAEAAAABAAkAAQAJAAEAAAAAAAkAAQAIAAIAAAAAAAgAAQACAAoAAAAAAAcAAQAAAAsAAAAHAAEAAQAUAAIAAAAIAAEAAQAVAAIAAAAIAAAAAQAVAAEAAAAHAAAAAQAUAAEAAAANAAAAAQADAAgAAAANAAEAAQADAAgAAAAKAAIAAQAAAAsAAAANAAIAAQADAAoAAAALAAAAAQAAAAsAAAAMAAAAAQAAAAsAAAAMAAEAAQAAAAsAAAAMAAIAAQABAAgAAAALAAIAAQAAAAsAAAALAAEAAQAAAAsAAAAIAAgAAQAJAAIAAAAIAAcAAQAIAAIAAAAKAAMAAQACAAoAAAALAAMAAQACAAoAAAAMAAMAAQADAAoAAAACAAYAAQADAAcAAAADAAcAAQABAAcAAAAEAAcAAQACAAcAAAAFAAcAAQACAAcAAAAJAAIAAQAAAAgAAAAJAAMAAQAAAAoAAAALAAcAAQAAAAsAAAALAAYAAQABAAcAAAAMAAYAAQADAAcAAAAMAAcAAQADAAgAAAAMAAgAAQADAAoAAAALAAgAAQABAAoAAAAKAAgAAQAAAAoAAAAKAAcAAQAAAAgAAAAKAAYAAQAAAAcAAAACAAcAAQABAAkAAAABAAgAAQACAAoAAAABAAcAAQAAAAsAAAABAAYAAQACAAcAAAAAAAYAAQACAAcAAAAGAAcAAQACAAcAAAAHAAcAAQADAAcAAAADAAgAAQACAAoAAAACAAgAAQABAAoAAAAEAAgAAQABAAoAAAAFAAgAAQABAAoAAAAGAAgAAQABAAoAAAAHAAgAAQADAAoAAAACAAkAAQAHAAIAAAADAAkAAQAJAAEAAAAEAAkAAQAIAAIAAAAFAAkAAQAHAAEAAAAGAAkAAQAIAAEAAAAKAP//AQAAAAcAAAALAP//AQABAAcAAAAMAP//AQACAAcAAAANAP//AQADAAcAAAAIAAYAAQAIAAEAAAA=")
+tile_set = ExtResource("7_y2n5u")
+
+[node name="Fire" type="TileMapLayer" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+tile_set = ExtResource("7_y2n5u")
+
+[node name="Threat" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("8_g3shn")
+navigation_enabled = false
+
+[node name="UI" type="TileMapLayer" parent="."]
+z_index = -3
+use_parent_material = true
+tile_set = ExtResource("8_g3shn")
+
+[node name="C0Map1Leafmap" type="Sprite2D" parent="."]
+z_index = 1
+material = ExtResource("9_j37v2")
+position = Vector2(512, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("10_u332u")
+
+[node name="StartingPositions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("11_fjbig")]
+position = Vector2(704, 128)
+Position = Vector2i(11, 2)
+map = NodePath("../..")
+
+[node name="Spawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Spawn_Bridge" type="Sprite2D" parent="Spawners"]
+position = Vector2(320, 192)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("13_6fyc4")
+GridEntityPrefab = ExtResource("14_g7mde")
+Position = Vector2i(5, 3)
+
+[node name="Spawn_Bridge2" type="Sprite2D" parent="Spawners"]
+position = Vector2(704, 192)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("13_6fyc4")
+GridEntityPrefab = ExtResource("14_g7mde")
+Position = Vector2i(11, 3)
+
+[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
+position = Vector2(960, 192)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("16_j1qmx")
+UnitLevel = 2
+Position = Vector2i(15, 3)
+Allegiance = 4
+AIBehavior = ExtResource("17_27dmo")
+AggroBehavior = SubResource("Resource_1u085")
+
+[node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 64)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("16_j1qmx")
+UnitLevel = 2
+Position = Vector2i(12, 1)
+AIBehavior = ExtResource("17_27dmo")
+AggroBehavior = SubResource("Resource_jto7i")
+
+[node name="Spawn_Wolf Pup6" type="Sprite2D" parent="Spawners"]
+position = Vector2(704, 64)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("16_j1qmx")
+UnitLevel = 2
+Position = Vector2i(11, 1)
+Allegiance = 1
+AIBehavior = ExtResource("17_27dmo")
+AggroBehavior = SubResource("Resource_8tche")
+
+[node name="Spawn_Wolf Pup7" type="Sprite2D" parent="Spawners"]
+position = Vector2(640, 448)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("16_j1qmx")
+UnitLevel = 2
+Position = Vector2i(10, 7)
+AIBehavior = ExtResource("17_27dmo")
+AggroBehavior = SubResource("Resource_e8n5s")
+
+[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
+position = Vector2(640, 192)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("22_lpqts")
+UnitLevel = 2
+Position = Vector2i(10, 3)
+AIBehavior = ExtResource("17_27dmo")
+AggroBehavior = SubResource("Resource_wtpf7")
+
+[node name="Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 192)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("22_lpqts")
+UnitLevel = 2
+Position = Vector2i(12, 3)
+Allegiance = 1
+AIBehavior = ExtResource("17_27dmo")
+AggroBehavior = SubResource("Resource_cyewq")
+
+[node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
+position = Vector2(0, 512)
+texture = ExtResource("12_va6nv")
+centered = false
+hframes = 4
+vframes = 4
+frame = 2
+script = ExtResource("15_d1561")
+UnitToSpawn = ExtResource("23_nc7yb")
+Position = Vector2i(0, 8)
+AIBehavior = SubResource("Resource_ceg4b")
+AggroBehavior = SubResource("Resource_hrfmh")
+
+[node name="Variants" type="Node2D" parent="."]
+
+[node name="Squads" type="Node2D" parent="."]

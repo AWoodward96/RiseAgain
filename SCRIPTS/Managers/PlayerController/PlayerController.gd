@@ -57,7 +57,7 @@ func Initialize(_map: Map):
 	tileHalfSize = tileSize / 2
 	UpdateCameraBounds()
 
-	
+
 	# Both of these methods just refresh the objective ui
 	currentMap.OnUnitTurnEnd.connect(UnitTurnEnd)
 	currentMap.OnUnitDied.connect(UnitDied)

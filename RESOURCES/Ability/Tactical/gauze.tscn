@@ -1,14 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl6qxjh1aw8tj"]
+[gd_scene load_steps=17 format=3 uid="uid://dl6qxjh1aw8tj"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3yni1"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_lu14u"]
+[ext_resource type="Script" uid="uid://cnlspk1u6udgh" path="res://SCRIPTS/Ability/PlayAnimationStep.gd" id="3_cf2ed"]
+[ext_resource type="PackedScene" uid="uid://x6vokynwesn0" path="res://RESOURCES/VFX/heal_vfx.tscn" id="3_grjo6"]
 [ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="3_y4ca7"]
 [ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="4_4ievu"]
+[ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="4_cf2ed"]
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="4_x0tmk"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_s22t7"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_0uc5p"]
+
+[sub_resource type="Resource" id="Resource_tbbfs"]
+script = ExtResource("3_cf2ed")
+AnimName = "use_item_in"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = true
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_0uc5p"]
+script = ExtResource("4_cf2ed")
+VFXPrefab = ExtResource("3_grjo6")
+metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
+
+[sub_resource type="Resource" id="Resource_vod3w"]
+script = ExtResource("6_0uc5p")
+time = 0.75
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
 [sub_resource type="Resource" id="Resource_dml4r"]
 script = ExtResource("3_y4ca7")
+
+[sub_resource type="Resource" id="Resource_cf2ed"]
+script = ExtResource("3_cf2ed")
+AnimName = "use_item_out"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = true
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_kf6lm"]
+script = ExtResource("3_cf2ed")
+AnimName = "idle"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = false
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [node name="gauze" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
 script = ExtResource("1_3yni1")
@@ -16,7 +54,7 @@ type = 2
 focusCost = 0
 limitedUsage = 3
 usageRestoredByCampfire = 3
-executionStack = Array[ExtResource("2_lu14u")]([SubResource("Resource_dml4r")])
+executionStack = Array[ExtResource("2_lu14u")]([SubResource("Resource_tbbfs"), SubResource("Resource_0uc5p"), SubResource("Resource_vod3w"), SubResource("Resource_dml4r"), SubResource("Resource_cf2ed"), SubResource("Resource_kf6lm")])
 internalName = "gauze"
 loc_displayName = "tact_gauze_name"
 loc_displayDesc = "tact_gauze_desc"

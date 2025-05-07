@@ -79,7 +79,7 @@ func PlayTurnStart(_allegiance : GameSettingsTemplate.TeamID):
 
 	if TurnStartSound != null:
 		TurnStartSound.play()
-		
+
 	var createdElement = scene.instantiate()
 	center_left_anchor.add_child(createdElement)
 	await createdElement.AnimationComplete

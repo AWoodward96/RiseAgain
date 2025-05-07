@@ -57,6 +57,7 @@
 				"1256e757-b175-4709-ae5c-7e7149241b14",
 				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
 				"393f2420-d4f9-472f-9d97-425459720305",
+				"b09fe9a5-612b-4080-b033-fbb7c3aad33b",
 				"dc94abc5-fd0e-4ddd-8a40-a76494b214ba",
 				"cad1a58b-24c8-484e-a360-c2f55357e43e",
 				"b92d61c5-24e0-4ca6-8145-80bd66e814d0",
@@ -473,6 +474,13 @@
 			"uuid": "eedcc07f-36a7-420b-9759-a0e67176f81d",
 			"title": "Improve the down-grade tech",
 			"description": "It should feel natural for the song to taper off if you're not doing anything. It doesn't feel that way right now.",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "b09fe9a5-612b-4080-b033-fbb7c3aad33b",
+			"title": "Implement SFX and VFX for a petty gauze",
+			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}

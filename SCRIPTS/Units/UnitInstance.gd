@@ -121,8 +121,6 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthP
 	Template = _unitTemplate
 
 	RefreshVisuals()
-	
-
 
 	if ItemSlots.size() == 0:
 		for s in GameManager.GameSettings.ItemSlotsPerUnit:
@@ -140,7 +138,7 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthP
 func RefreshVisuals():
 	if Template.Affinity != null:
 		affinityIcon.texture = Template.Affinity.loc_icon
-	
+
 	footstepsSound.event_guid = AudioManager.DefaultFootstepGUID
 	if Template.FootstepGUID != "":
 		footstepsSound.event_guid = Template.FootstepGUID
@@ -444,6 +442,9 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 
 	# for 'canceling' movement
 	TurnStartTile = CurrentTile
+	PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+	if visual != null:
+		visual.ResetAnimation()
 
 func Defend():
 	IsDefending = true
@@ -508,7 +509,8 @@ func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous :
 			takeLethalDamageSound.play()
 		else:
 			takeDamageSound.play()
-			
+		visual.PlayDamageAnimation()
+
 	else:
 		Juice.CreateHealPopup(_netHealthChange, map.grid.GetTileFromGlobalPosition(global_position))
 
@@ -623,6 +625,20 @@ func ApplyStatModifier(_statDef : StatDef):
 func CheckDeath(_context : DamageStepResult):
 	if currentHealth <= 0:
 		map.OnUnitDeath(self, _context)
+
+func PlayDeathAnimation():
+	if visual != null && visual.AnimationWorkComplete:
+		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
+		var tween = create_tween()
+		tween.tween_interval(Juice.combatSequenceCooloffTimer)
+		tween.tween_property(visual.visual.material, 'shader_parameter/tint', Color(0.0,0.0,0.0,0.0), 0.5)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_EXPO)
+		tween.tween_callback(DeathAnimComplete)
+
+
+func DeathAnimComplete():
+	queue_free()
 
 func CheckKillbox():
 	if CurrentTile.ActiveKillbox && !IsFlying:
@@ -745,6 +761,33 @@ func ResetVisualToTile():
 func PlayAnimation(_animString : String, _smoothTransition : bool = false, _animSpeed : float = 1, _fromEnd : bool = false):
 	if visual != null:
 		visual.PlayAnimation(_animString, _smoothTransition, _animSpeed, _fromEnd)
+
+func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
+	if visual != null && visual.AnimationWorkComplete:
+		var round = GameManager.GameSettings.AxisRound(_dst)
+		match round:
+			Vector2.UP:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_UP, false, _animSpeed)
+			Vector2.RIGHT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_RIGHT, false, _animSpeed)
+			Vector2.DOWN:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_DOWN, false, _animSpeed)
+			Vector2.LEFT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_LEFT, false, _animSpeed)
+
+func PlayAttackAnimation(_dst : Vector2, _animSpeed : float = 1):
+	if visual != null && visual.AnimationWorkComplete:
+		var round = GameManager.GameSettings.AxisRound(_dst)
+		match round:
+			Vector2.UP:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_UP, false, _animSpeed)
+			Vector2.RIGHT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_RIGHT, false, _animSpeed)
+			Vector2.DOWN:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_DOWN, false, _animSpeed)
+			Vector2.LEFT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_LEFT, false, _animSpeed)
+
 
 func ToJSON():
 	var dict = {

@@ -74,6 +74,9 @@ func _ready():
 		# I'm running the show by myself, so initialize a squad
 		InitializeStandalone()
 
+	if squadParent != null:
+		squadParent.y_sort_enabled = true
+
 
 func PreInitialize():
 	startingPositions.clear()
@@ -95,8 +98,7 @@ func PreInitialize():
 	if tilemap_UI != null: tilemap_UI.z_index = UILAYER
 	if tilemap_threat != null: tilemap_threat.z_index = THREATLAYER
 
-	if Biome != null:
-		Biome.UpdateBiomeAudio()
+	AudioManager.UpdateBiomeData(Biome)
 
 	if PreMapCutscene != null:
 		CutsceneManager.QueueCutscene(PreMapCutscene)
@@ -302,8 +304,7 @@ func RemoveExpiredGridEntities():
 			gridEntities.remove_at(i)
 
 # This can be called outside of unit death for units that are escaping
-func RemoveUnitFromMap(_unitInstance : UnitInstance):
-	_unitInstance.visible = false
+func RemoveUnitFromMap(_unitInstance : UnitInstance, is_death : bool = true):
 
 	await _unitInstance.IsStackFree
 
@@ -316,7 +317,10 @@ func RemoveUnitFromMap(_unitInstance : UnitInstance):
 			if tile != null && tile.Occupant == _unitInstance:
 				tile.Occupant = null
 
-	_unitInstance.queue_free()
+	if !is_death:
+		_unitInstance.queue_free()
+	else:
+		_unitInstance.PlayDeathAnimation()
 
 func GetUnitsOnTeam(_teamBitMask : int):
 	var returnUnits : Array[UnitInstance] = []
