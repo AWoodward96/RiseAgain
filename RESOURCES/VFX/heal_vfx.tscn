@@ -176,4 +176,9 @@ wait_time = 1.2
 one_shot = true
 autostart = true
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Abilities/Abilities_Gauze"
+event_guid = "{40aba1bc-6cdf-4289-8d77-cef00e023e58}"
+autoplay = true
+
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

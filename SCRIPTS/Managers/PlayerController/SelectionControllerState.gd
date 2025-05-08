@@ -29,7 +29,7 @@ func _Execute(_delta):
 					if ctrl.selectedUnit.IsStackFree:
 						if ctrl.selectedUnit.CanMove:
 							ctrl.EnterUnitMovementState()
-							AudioManager.ResetIntensityTimer()
+							AudioManager.RaiseIntensity(1)
 						else:
 							ctrl.EnterContextMenuState()
 				else:

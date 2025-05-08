@@ -35,7 +35,7 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
@@ -48,6 +48,9 @@ affinityIcon = NodePath("AffinityIcon")
 takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
+deathSound = NodePath("Audio/Death")
+LeapSound = NodePath("Audio/LeapWoosh")
+LandSound = NodePath("Audio/Land")
 
 [node name="Visual" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -70,6 +73,18 @@ event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 
 [node name="FootSteps" type="FmodEventEmitter2D" parent="Audio"]
 event_guid = "{00000000-0002-0000-0300-000026000000}"
+
+[node name="Death" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Combat_Death"
+event_guid = "{e1fc6f52-a891-47fe-ba9c-ac9e8d8a9e5b}"
+
+[node name="LeapWoosh" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Units/Generic/Jump_Start"
+event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
+
+[node name="Land" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Units/Generic/Jump_End"
+event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
 
 [node name="DefendIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true

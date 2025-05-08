@@ -9,18 +9,31 @@ var SpeedOverride : int = -1
 var MoveFromAbility : bool = false
 var CutsceneMove : bool = false
 var AllowOccupantOverwrite : bool = false
+var AnimationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal
+var TravelVector : Vector2 # The Vector representing movement from one point to the next
+var JumpStart : Vector2
+var JumpTimer : float = 0
+
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	MovementIndex = 0
-	MovementVelocity = 0
+	JumpTimer = 0
 	
-	if unit.footstepsSound != null:
-		unit.footstepsSound.play()
-		
+	# Maybe make a switch statement
+	match AnimationStyle:
+		UnitSettingsTemplate.MovementAnimationStyle.Normal:
+			unit.footstepsSound.play()
+		UnitSettingsTemplate.MovementAnimationStyle.Jump:
+			unit.LeapSound.play()
+	
 	if Route.size() > 1:
-		_unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
+		unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
+		TravelVector = Route[1].GlobalPosition - Route[0].GlobalPosition
+		JumpStart = Route[0].GlobalPosition
 
+		
+	pass
 
 func _Execute(_unit : UnitInstance, _delta):
 	if Route.size() == 0:
@@ -31,20 +44,17 @@ func _Execute(_unit : UnitInstance, _delta):
 		speed = SpeedOverride
 
 	var destination = Route[MovementIndex].GlobalPosition
-	var distance = _unit.position.distance_squared_to(destination)
+	var distance = _unit.position.distance_squared_to(destination) 
 
-
-	MovementVelocity = (destination - _unit.position).normalized() * speed
-
-	_unit.PlayAnimation(UnitSettingsTemplate.GetMovementAnimationFromVector(MovementVelocity))
-
-	_unit.position += MovementVelocity * _delta
-	var maximumDistanceTraveled = speed * _delta;
+	Move(destination, distance, speed, _delta)
+	UpdateAnimations(distance)
+	
+	var maximumDistanceTraveled = speed * _delta; # or "Maximum distance we can travel in one frame"
 
 	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
 
+	# passes when we're closer to the destination than the maximum distance we can travel in one frame (ya know)
 	if distance < (maximumDistanceTraveled * maximumDistanceTraveled) :
-	
 		var traversalResult = Route[MovementIndex].OnUnitTraversed(_unit)
 		match traversalResult:
 			GameSettingsTemplate.TraversalResult.OK:
@@ -75,7 +85,6 @@ func _Execute(_unit : UnitInstance, _delta):
 					map.playercontroller.EnterSelectionState()
 				return true
 
-		#AudioFootstep.play()
 		MovementIndex += 1
 		if MovementIndex >= Route.size() :
 			if unit.footstepsSound != null:
@@ -95,4 +104,50 @@ func _Execute(_unit : UnitInstance, _delta):
 				elif !MoveFromAbility:
 					map.playercontroller.EnterContextMenuState()
 			return true
+		else:
+			TravelVector = Route[MovementIndex].GlobalPosition - Route[MovementIndex - 1].GlobalPosition  
 	return false
+
+func UpdateAnimations(_distance):
+	# dont update the animation when we're not moving
+	if _distance <= 0:
+		return
+				
+	match AnimationStyle:
+		UnitSettingsTemplate.MovementAnimationStyle.Normal:
+			unit.PlayAnimation(UnitSettingsTemplate.GetMovementAnimationFromVector(MovementVelocity))
+		UnitSettingsTemplate.MovementAnimationStyle.Jump:
+		
+			if _distance > (TravelVector.length_squared() / 2):
+				if TravelVector.y < 0:
+					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_BACK_UP)
+				else:
+					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_FRONT_UP)
+			else:
+				if TravelVector.y < 0:
+					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_BACK_DOWN)
+				else:
+					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_FRONT_DOWN)
+			
+			if unit.visual.AnimationWorkComplete:
+				unit.visual.visual.flip_h = TravelVector.x < 0
+			pass
+
+func Move(_destination : Vector2, _distance : float, _speed : float, _delta : float):
+	match AnimationStyle:
+		UnitSettingsTemplate.MovementAnimationStyle.Normal:
+			MovementVelocity = (_destination - unit.position).normalized() * _speed
+			unit.position += MovementVelocity * _delta
+		UnitSettingsTemplate.MovementAnimationStyle.Jump:
+			if JumpTimer <= 1:
+				var height = sin(PI * JumpTimer) * (JumpStart.distance_to(_destination) * 0.3)
+				unit.position = JumpStart.lerp(_destination, JumpTimer) - Vector2(0, height)
+				JumpTimer += _delta / 1
+			else:
+				unit.LandSound.play()
+			pass
+
+func _Exit():
+	if unit.visual.AnimationWorkComplete:
+		unit.visual.visual.flip_h = false
+	pass

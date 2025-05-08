@@ -35,8 +35,7 @@ func _Execute(_delta):
 			ctrl.BlockMovementInput = true
 			ctrl.OnTileSelected.emit(tile)
 			ctrl.reticleSelectSound.play()
-			if AudioManager.CurrentIntensity == 0:
-				AudioManager.IncrementIntensity()
+			AudioManager.RaiseIntensity(2)
 
 
 	if InputManager.cancelDown:

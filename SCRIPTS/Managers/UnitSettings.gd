@@ -1,6 +1,9 @@
 extends Resource
 class_name UnitSettingsTemplate
 
+
+enum MovementAnimationStyle { Normal, Jump, Teleport }
+
 static var ANIM_IDLE = "idle"
 static var ANIM_SELECTED = "selected"
 static var ANIM_MOVE_DOWN = "run_down"
@@ -16,6 +19,10 @@ static var ANIM_ATTACK_RIGHT = "attack_right"
 static var ANIM_ATTACK_UP = "attack_up"
 static var ANIM_ATTACK_LEFT = "attack_left"
 static var ANIM_TAKE_DAMAGE = "take_damage"
+static var ANIM_JUMP_FRONT_UP = "jump_front_up"
+static var ANIM_JUMP_FRONT_DOWN = "jump_front_down"
+static var ANIM_JUMP_BACK_UP = "jump_back_up"
+static var ANIM_JUMP_BACK_DOWN = "jump_back_down"
 
 @export var UnitInstancePrefab : PackedScene
 @export var AllyUnitManifest : Array[UnitTemplate]

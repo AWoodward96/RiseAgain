@@ -1,6 +1,7 @@
 extends Node2D
 
 const NULL_EVENT = "{00000000-0000-0000-0000-000000000000}"
+const INTENSITY_CAP : float = 5.0
 
 @export_category("Defaults")
 @export var DefaultFootstepGUID : String
@@ -17,12 +18,16 @@ var localIntensity : float = 0
 var localFalloff : float = 0
 var currentBiome : BiomeData
 
-func _ready():
-	MusicPlayer.timeline_marker.connect(MarkerCallback)
+# Commenting this out bc I don't think I want this to go down anymore
+# May revisit this system at a later date, but for now I'm not sure
+#func _ready():
+	#MusicPlayer.timeline_marker.connect(MarkerCallback)
 
 func IncrementIntensity():
 	if MusicPlayer != null:
 		CurrentIntensity += 1
+		if CurrentIntensity > INTENSITY_CAP:
+			CurrentIntensity = INTENSITY_CAP
 		localFalloff = IntensityFalloffUp
 
 
@@ -39,7 +44,7 @@ func ResetIntensityTimer():
 func RaiseIntensity(_int : int):
 	if CurrentIntensity < _int:
 		CurrentIntensity = _int
-		localFalloff = IntensityFalloffUp
+	localFalloff = IntensityFalloffUp
 
 func _process(delta: float):
 	if currentBiome == null:
@@ -73,9 +78,9 @@ func UpdateBiomeData(_biomeData : BiomeData):
 		MusicPlayer.stop()
 
 
-func MarkerCallback(_dict : Dictionary):
-	print("Marker Hit")
-
-	if localFalloff <= 0:
-		DecrementIntensity()
-	pass
+#func MarkerCallback(_dict : Dictionary):
+	#print("Marker Hit")
+#
+	#if localFalloff <= 0:
+		#DecrementIntensity()
+	#pass

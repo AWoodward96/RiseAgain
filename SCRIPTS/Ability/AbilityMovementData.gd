@@ -74,7 +74,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction
 	return route
 
 
-func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction : GameSettingsTemplate.Direction, _speedOverride : int = -1):
+func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction : GameSettingsTemplate.Direction, _speedOverride : int = -1, _animationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal):
 	# Set the positional offset to zero because actual unit movement does not go through the center
 	positionalOffset = Vector2.ZERO
 	destinationTile = null
@@ -91,5 +91,5 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction :
 		AbilityMovementType.InverseDirectional:
 			route = GetRoute_DirectionalRelative(_grid, _unit, _direction, true)
 
-	_unit.MoveCharacterToNode(route, destinationTile, _speedOverride, true)
+	_unit.MoveCharacterToNode(route, destinationTile, _speedOverride, true, false, false, _animationStyle)
 	return route

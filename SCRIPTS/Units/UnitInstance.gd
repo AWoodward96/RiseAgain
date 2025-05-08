@@ -16,6 +16,9 @@ signal OnCombatEffectsUpdated
 @export var takeDamageSound : FmodEventEmitter2D
 @export var takeLethalDamageSound : FmodEventEmitter2D
 @export var footstepsSound : FmodEventEmitter2D
+@export var deathSound : FmodEventEmitter2D
+@export var LeapSound : FmodEventEmitter2D
+@export var LandSound : FmodEventEmitter2D
 
 #@onready var health_bar : ProgressBar = %HealthBar
 #@onready var hp_val = %"HP Val"
@@ -393,7 +396,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false) :
+func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false, _style : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal) :
 	if _route == null || _route.size() == 0:
 		return
 
@@ -404,6 +407,7 @@ func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : in
 	action.MoveFromAbility = _moveFromAbility
 	action.CutsceneMove = _cutsceneMove
 	action.AllowOccupantOverwrite = _allowOverwrite
+	action.AnimationStyle = _style
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()
@@ -628,13 +632,17 @@ func CheckDeath(_context : DamageStepResult):
 
 func PlayDeathAnimation():
 	if visual != null && visual.AnimationWorkComplete:
+		deathSound.play()
 		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
 		var tween = create_tween()
 		tween.tween_interval(Juice.combatSequenceCooloffTimer)
 		tween.tween_property(visual.visual.material, 'shader_parameter/tint', Color(0.0,0.0,0.0,0.0), 0.5)
 		tween.set_ease(Tween.EASE_OUT)
 		tween.set_trans(Tween.TRANS_EXPO)
+		tween.tween_interval(1)
 		tween.tween_callback(DeathAnimComplete)
+	else:
+		DeathAnimComplete()
 
 
 func DeathAnimComplete():
@@ -643,7 +651,7 @@ func DeathAnimComplete():
 func CheckKillbox():
 	if CurrentTile.ActiveKillbox && !IsFlying:
 		# The unit's fucking dead - kill them
-		ModifyHealth(-currentHealth, null, true)
+		ModifyHealth(-currentHealth - GetArmorAmount(), null, true)
 		return true
 	return false
 
