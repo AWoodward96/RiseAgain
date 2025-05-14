@@ -55,7 +55,6 @@ func Update(_delta):
 	if turnBannerOpen:
 		return
 
-	map.RemoveExpiredGridEntities()
 	if preTurnUpdate:
 		if teamTurnUpdate || unitTurnUpdate:
 			UpdateGridEntities(_delta)
@@ -73,6 +72,8 @@ func Update(_delta):
 		if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 			map.playercontroller.BlockMovementInput = false
 		preTurnComplete = true
+
+
 
 	match map.currentTurn:
 		GameSettingsTemplate.TeamID.ALLY:
@@ -121,6 +122,7 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 
 	currentUnitsTurn = null
 	ActivateAll()
+	map.RemoveExpiredGridEntities()
 	map.OnTurnStart.emit(_turn)
 	EnterTeamTurnUpdate()
 	if map.AutosaveEnabled:

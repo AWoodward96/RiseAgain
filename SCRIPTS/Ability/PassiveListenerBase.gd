@@ -1,6 +1,8 @@
 extends Node2D
 class_name PassiveListenerBase
 
+@export var actionPriority = 1
+
 var ability : Ability
 var map : Map
 

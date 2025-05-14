@@ -10,7 +10,7 @@ signal OnCombatEffectsUpdated
 @export var itemsParent : Node2D
 @export var healthBar : UnitHealthBar
 @export var focusSlotPrefab : PackedScene
-@export var affinityIcon: Sprite2D
+@export var affinityIcon: TextureRect
 
 @export_category("SFX")
 @export var takeDamageSound : FmodEventEmitter2D
@@ -28,9 +28,9 @@ signal OnCombatEffectsUpdated
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
 @onready var defend_icon: Sprite2D = %DefendIcon
 @onready var focus_bar_parent: EntryList = %FocusBarParent
-@onready var positive_afffinity: Sprite2D = %PositiveAfffinity
-@onready var negative_affinity: Sprite2D = %NegativeAffinity
+@onready var positive_affinity: TextureRect = %PositiveAffinity
 
+@onready var negative_affinity: TextureRect = %NegativeAffinity
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
@@ -61,6 +61,7 @@ var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
 var CanMove : bool
 var PendingMove : bool
+var Injured : bool = false
 
 var ActionStack : Array[UnitActionBase]
 var CurrentAction : UnitActionBase
@@ -82,6 +83,10 @@ var currentHealth
 var currentFocus
 
 var takeDamageTween : Tween
+
+var trueMaxHealth :
+	get:
+		return GetWorkingStat(GameManager.GameSettings.HealthStat, true) as float
 
 var maxHealth :
 	get:
@@ -166,6 +171,7 @@ func InitializeStats():
 func UpdateDerivedStats():
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
 		baseStats[derivedStatDef.Template] = floori(GetWorkingStat(derivedStatDef.ParentStat) * derivedStatDef.Ratio)
+
 
 func InitializeLevels(_level : int):
 	if _level == 0:
@@ -588,7 +594,7 @@ func GetArmorAmount():
 	return armor
 
 ### The function you want to call when you want to know the Final state that the Unit is working with
-func GetWorkingStat(_statTemplate : StatTemplate):
+func GetWorkingStat(_statTemplate : StatTemplate, _ignoreInjured : bool = false):
 	# start with the base
 	var current = 0
 	if baseStats.has(_statTemplate):
@@ -615,6 +621,12 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 
 	if unitPersistence != null:
 		current += unitPersistence.GetPrestiegeStatMod(_statTemplate)
+
+	if Injured && !_ignoreInjured:
+		if GameManager.GameSettings.InjuredAffectedStats.has(_statTemplate):
+			current = roundi(float(current) - (float(current) * GameManager.GameSettings.InjuredStatsDebuff))
+		elif _statTemplate == GameManager.GameSettings.HealthStat:
+			current = roundi(float(current) - (float(current) * GameManager.GameSettings.InjuredHealthDebuff))
 
 	return current
 
@@ -646,7 +658,14 @@ func PlayDeathAnimation():
 
 
 func DeathAnimComplete():
-	queue_free()
+	if !Injured && UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+		Injured = true
+		if GameManager.CurrentCampaign != null:
+			GameManager.CurrentCampaign.UnitInjured(self)
+		else:
+			queue_free()
+	else:
+		queue_free()
 
 func CheckKillbox():
 	if CurrentTile.ActiveKillbox && !IsFlying:
@@ -735,7 +754,7 @@ func UpdateFocusUI():
 
 func ShowAffinityRelation(_affinity : AffinityTemplate):
 	if _affinity == null:
-		positive_afffinity.visible = false
+		positive_affinity.visible = false
 		negative_affinity.visible = false
 		return
 
@@ -744,7 +763,7 @@ func ShowAffinityRelation(_affinity : AffinityTemplate):
 		negative_affinity.visible = true
 
 	if Template.Affinity.strongAgainst & _affinity.affinity:
-		positive_afffinity.visible = true
+		positive_affinity.visible = true
 
 # Checks all the item slots and sees if the unit has any item equipped
 func HasAnyItem():
@@ -757,6 +776,7 @@ func Rest():
 	for ability in Abilities:
 		ability.OnRest()
 
+	Injured = false
 	currentHealth = maxHealth
 
 func PreviewModifiedTile(_tile : Tile):
@@ -812,7 +832,8 @@ func ToJSON():
 		"ExtraEXPGranted" : ExtraEXPGranted,
 		"Abilities" : PersistDataManager.ArrayToJSON(Abilities),
 		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots),
-		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects)
+		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects),
+		"Injured" : Injured
 	}
 
 	if AI != null:
@@ -830,10 +851,6 @@ func ToJSON():
 	for b in statModifiers:
 		modifierStatStorage[b.resource_path] = statModifiers[b]
 	dict["statModifiers"] = modifierStatStorage
-#
-	#var combatEffectsDict : Array[Dictionary] = []
-	#for ce in CombatEffects:
-		#combatEffectsDict.append(ce.ToJSON())
 
 	return dict
 
@@ -844,6 +861,7 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.Exp = _dict["Exp"]
 	unitInstance.UnitAllegiance = _dict["UnitAllegience"]
 	unitInstance.CanMove = _dict["CanMove"]
+	unitInstance.Injured = _dict["Injured"]
 
 	unitInstance.ExtraEXPGranted = int(_dict["ExtraEXPGranted"])
 

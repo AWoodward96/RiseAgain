@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=56 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" uid="uid://y87ywuus8k6s" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="17_qifey"]
 [ext_resource type="Script" uid="uid://ckm0lsn0sahrf" path="res://SCRIPTS/UI/General/GridEntryList.gd" id="18_0w6qp"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
+[ext_resource type="Texture2D" uid="uid://dacor14ec8yow" path="res://ART/UI/injured_overlay.png" id="21_m3k6o"]
 [ext_resource type="Texture2D" uid="uid://cqc5de5p7rain" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
 [ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="23_fs4q2"]
 [ext_resource type="Script" uid="uid://bqldm4nmooiyg" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
@@ -43,14 +44,21 @@
 [sub_resource type="LabelSettings" id="LabelSettings_r1gep"]
 font = ExtResource("8_rdfo2")
 
+[sub_resource type="LabelSettings" id="LabelSettings_dq8tc"]
+font = ExtResource("8_rdfo2")
+
 [sub_resource type="LabelSettings" id="LabelSettings_n4mcp"]
 font = ExtResource("8_rdfo2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
 bg_color = Color(3.36915e-07, 0.670276, 0.36946, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3k6o"]
+bg_color = Color(0.38, 0.1444, 0.148327, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrmyv"]
-bg_color = Color(0.6497, 0.709775, 0.89, 1)
+bg_color = Color(0.6497, 0.709775, 0.89, 0.4)
+border_color = Color(0.8, 0.8, 0.8, 0.623529)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y7ooe"]
 font = ExtResource("8_rdfo2")
@@ -259,8 +267,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
-visible = false
+[node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("icon", "injuredParent", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -274,6 +281,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("9_tccg0")
 icon = NodePath("OffsetMargin/Content/Main/UnitIcon")
+injuredParent = NodePath("OffsetMargin/Content/Injured")
 unitHealthBar = NodePath("OffsetMargin/Content/Main")
 namelabel = NodePath("OffsetMargin/Content/Main/UnitName")
 affinity_icon = NodePath("OffsetMargin/Content/Main/Affinity")
@@ -293,15 +301,62 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
+[node name="Injured" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.058, 0.0792999, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured/MarginContainer"]
+layout_mode = 2
+text = "Injured"
+label_settings = SubResource("LabelSettings_dq8tc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "FocusBarEntryList", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
 custom_minimum_size = Vector2(260, 108)
 layout_mode = 2
 script = ExtResource("12_60paf")
 HealthBar = NodePath("Health")
 ArmorBar = NodePath("Armor")
+InjuredBar = NodePath("InjuredBar")
 HealthText = NodePath("HealthText")
 FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
 FocusBarPrefab = ExtResource("11_8mf6d")
+InjuredParent = NodePath("UnitIcon/InjuredParent")
 ExperienceBar = NodePath("EXP")
 LevelLabel = NodePath("Level")
 LevelLocalization = "ui_level_num_short"
@@ -338,6 +393,13 @@ patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
+
+[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/UnitIcon"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("21_m3k6o")
+expand_mode = 2
 
 [node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
 layout_mode = 0
@@ -406,6 +468,19 @@ offset_right = 254.0
 offset_bottom = 40.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
+show_percentage = false
+
+[node name="InjuredBar" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+custom_minimum_size = Vector2(132, 16)
+layout_mode = 2
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 254.0
+offset_bottom = 40.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_m3k6o")
+max_value = 1.0
+value = 0.3
+fill_mode = 1
 show_percentage = false
 
 [node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
@@ -587,7 +662,6 @@ patch_margin_right = 24
 patch_margin_bottom = 24
 
 [node name="EffectsParent" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content"]
-visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 

@@ -17,8 +17,13 @@ signal OnTileSelected(_tile)
 @onready var movement_tracker : Line2D = %MovementTracker
 @onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
 @onready var grid_entity_preview_sprite: Sprite2D = %GridEntityPreviewSprite
+@onready var vis_top_left: Sprite2D = $VisTopLeft
+@onready var vis_bottom_right: Sprite2D = $VisBottomRight
+@onready var desired_camera_pos: Sprite2D = $DesiredCameraPos
 
 var ControllerState : PlayerControllerState
+var ReticleQuintet : Control.LayoutPreset
+var CameraMovementComplete : bool
 
 var BlockMovementInput : bool
 var CurrentTile : Tile :
@@ -69,6 +74,11 @@ func _process(_delta):
 	if combatHUD != null:
 		combatHUD.ObjectivePanelUI.Disabled = !ControllerState.ShowObjective()
 
+	# Block inputs from the player controller if we're in preturn or running passive results
+	if currentMap.MapState is CombatState:
+		if !currentMap.MapState.preTurnComplete:
+			return
+
 	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
 	if ControllerState != null && inspectUI == null:
 		ControllerState._Execute(_delta)
@@ -88,6 +98,7 @@ func _process(_delta):
 		inspectUI = null
 
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
+	CameraMovementComplete = camera.global_position.distance_to(desiredCameraPosition) < 0.1
 
 func ChangeControllerState(a_newState : PlayerControllerState, optionalData):
 	if ControllerState != null:
@@ -114,10 +125,10 @@ func UpdateCameraPosition():
 
 	var cameraPos = desiredCameraPosition
 	var viewportHalf = get_viewport_rect().size / 2
-	viewportHalf -= Vector2(tileSize, tileSize) * viewportTilePadding
+	var viewportHalfMinusPadding = viewportHalf - (Vector2(tileSize, tileSize) * viewportTilePadding)
 
-	var topleft = cameraPos - viewportHalf
-	var bottomright = cameraPos + viewportHalf
+	var topleft = cameraPos - viewportHalfMinusPadding
+	var bottomright = cameraPos + viewportHalfMinusPadding
 	var move = Vector2.ZERO
 	if reticle.global_position.x < topleft.x:
 		move.x += reticle.global_position.x - topleft.x
@@ -137,39 +148,48 @@ func UpdateCameraPosition():
 	desiredCameraPosition += move
 	desiredCameraPosition.x = clamp(desiredCameraPosition.x, 0 + viewportHalf.x, totalMapSize.x - viewportHalf.x)
 	desiredCameraPosition.y = clamp(desiredCameraPosition.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
+	desired_camera_pos.global_position = desiredCameraPosition
+	#UpdateReticleQuintant()
 
 func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x
 
-func GetReticleQuintant():
+func UpdateReticleQuintant():
 	# Basically, if the reticle is in the corners (determined by floatingElementPadding), return which corner it's in
 	# If it's not in a corner, return that it's in the Center somewhere
-
 	var viewportHalf = get_viewport_rect().size / 2
-	viewportHalf -= Vector2(tileSize, tileSize) * floatingElementPadding
-	var topleft = desiredCameraPosition - viewportHalf
-	var bottomright = desiredCameraPosition + viewportHalf
-	bottomright.x = clamp(bottomright.x, 0 + viewportHalf.x, totalMapSize.x - viewportHalf.x)
-	bottomright.y = clamp(bottomright.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
+	var viewportHalfMinusPadding = viewportHalf - (Vector2(tileSize, tileSize) * floatingElementPadding)
+
+	var topleft = desiredCameraPosition - viewportHalfMinusPadding
+	var bottomright = desiredCameraPosition + viewportHalfMinusPadding
+	bottomright.x = clamp(bottomright.x, 0 + viewportHalfMinusPadding.x, totalMapSize.x - viewportHalfMinusPadding.x)
+	bottomright.y = clamp(bottomright.y, 0 + viewportHalfMinusPadding.y, totalMapSize.y - viewportHalfMinusPadding.y)
+
+	vis_top_left.global_position = topleft
+	vis_bottom_right.global_position = bottomright
 
 	if reticle.global_position.x <= topleft.x:
 		# Left side
 		if reticle.global_position.y <= topleft.y:
 			# We're in the top left
-			return Control.PRESET_TOP_LEFT
+			ReticleQuintet = Control.PRESET_TOP_LEFT
+			return
 
 		if reticle.global_position.y >= bottomright.y:
-			return Control.PRESET_BOTTOM_LEFT
+			ReticleQuintet = Control.PRESET_BOTTOM_LEFT
+			return
 
 	if reticle.global_position.x >= bottomright.x:
 		if reticle.global_position.y <= topleft.y:
 			# We're in the top left
-			return Control.PRESET_TOP_RIGHT
+			ReticleQuintet = Control.PRESET_TOP_RIGHT
+			return
 
 		if reticle.global_position.y >= bottomright.y:
-			return Control.PRESET_BOTTOM_RIGHT
+			ReticleQuintet = Control.PRESET_BOTTOM_RIGHT
+			return
 
-	return Control.PRESET_CENTER
+	ReticleQuintet = Control.PRESET_CENTER
 
 func ForceReticlePosition(_gridPosition : Vector2i):
 	reticle.scale = Vector2(1, 1)

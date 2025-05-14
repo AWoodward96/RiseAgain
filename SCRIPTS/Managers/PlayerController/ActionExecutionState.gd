@@ -8,14 +8,15 @@ var tempTimer : Timer
 # Data being passed is of type ActionLog and can be an ItemLog or a AbilityLog
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
+	log = data
+	source = log.source
 
 	# clear all of the actions in the grid now that a target's been selected
 	currentGrid.ClearActions()
+	ctrl.ForceCameraPosition(log.actionOriginTile.Position)
 	ctrl.reticle.visible = false
 	ctrl.BlockMovementInput = true
 
-	log = data
-	source = log.source
 
 	AudioManager.IncrementIntensity()
 
@@ -28,6 +29,9 @@ func _Enter(_ctrl : PlayerController, data):
 
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()
+	# Wait until the camera has stopped moving
+	if !ctrl.CameraMovementComplete:
+		return
 
 	if log.ability != null:
 		log.ability.TryExecute(log, _delta)

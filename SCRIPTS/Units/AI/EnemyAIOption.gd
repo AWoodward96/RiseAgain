@@ -182,9 +182,13 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 func UpdateWeight():
 	weight = 0
 
+	# This means, the further away the unit is, the lower the priority it is.
+	# IE: Closer = better
+	weight += TIER_AMOUNT - path.size()
 	weight += KILL_TIER_AMOUNT * killCount
+
 	# Commenting this out because it's making units ignore units that they can't hurt. They should still try imo
-	#if canDealDamage : weight += TIER_AMOUNT
+	if canDealDamage : weight += TIER_AMOUNT
 	if !unitWillRetaliate && canDealDamage : weight += TIER_AMOUNT
 
 	weight += damageAmount

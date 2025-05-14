@@ -10,8 +10,8 @@ var IsRetaliation : bool = false
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 
-
-	_unit.PlayPrepAnimation(TargetPosition - _unit.position)
+	unit.affinityIcon.visible = false
+	unit.PlayPrepAnimation(TargetPosition - _unit.position)
 
 	var combatResults : Array[PerformCombatStepResult]
 	TimerLock = false
@@ -75,4 +75,6 @@ func ReturnToCenter(_unit, delta):
 func _Exit():
 	if unit != null:
 		unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+
+	unit.affinityIcon.visible = true
 	pass

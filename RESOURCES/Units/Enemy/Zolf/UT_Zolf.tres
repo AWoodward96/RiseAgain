@@ -110,6 +110,7 @@ Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_hyt3s")]([ExtResource("10_fgbow")])
 GridSize = 1
+FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "Zolf"
 loc_DisplayName = "unit_zolf_name"
 loc_Description = "unit_zolf_desc"

@@ -3,10 +3,12 @@ class_name UnitHealthBar
 
 @export var HealthBar : ProgressBar
 @export var ArmorBar : ProgressBar
+@export var InjuredBar : ProgressBar
 @export var HealthText : Label
 @export var FocusBarEntryList : EntryList
 @export var FocusBarPrefab : PackedScene
 @export var HideTimer : Timer
+@export var InjuredParent : Control
 
 @export_category("Level and EXP")
 @export var ExperienceBar : ProgressBar
@@ -131,14 +133,17 @@ func Refresh():
 	ArmorBar.visible = armor > 0
 
 	if HealthText != null: HealthText.text = "%01.0d/%01.0d" % [Unit.currentHealth, Unit.maxHealth]
-	if HealthBar != null: HealthBar.value = Unit.currentHealth / Unit.maxHealth
+	if HealthBar != null: HealthBar.value = Unit.currentHealth / Unit.trueMaxHealth
+	if InjuredBar != null:
+		InjuredBar.visible = Unit.Injured
+		InjuredBar.value = ((Unit.trueMaxHealth - Unit.maxHealth) / Unit.trueMaxHealth)
 
 	if LevelLabel != null:
 		var lvlStr = tr(LevelLocalization)
 		LevelLabel.text = lvlStr.format({"NUM" : Unit.DisplayLevel })
 
 	if armor > 0:
-		ArmorBar.value = armor as float / Unit.maxHealth
+		ArmorBar.value = armor as float / Unit.trueMaxHealth
 		HealthText.text += str(" + %01.0d" % armor)
 
 	if ExpLabel != null:
@@ -149,6 +154,9 @@ func Refresh():
 		ExperienceBar.value = Unit.Exp
 
 	UpdateFocusUI()
+
+	if InjuredParent != null:
+		InjuredParent.visible = Unit.Injured
 	pass
 
 func RefreshCombatEffects():

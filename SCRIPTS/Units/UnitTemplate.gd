@@ -24,7 +24,7 @@ class_name UnitTemplate
 @export var NeutralPalette : PaletteSwapData
 
 @export_group("Audio")
-@export var FootstepGUID : String = "{00000000-0000-0000-0000-000000000000}"
+@export var FootstepGUID : String = ""
 
 @export_group("Meta Data")
 @export var DebugName : String

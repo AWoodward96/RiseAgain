@@ -47,7 +47,9 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 
 @export var CharacterTileMovemementSpeed : float = 100
 @export var AOEExpMultiplier : float = 0.5
-
+@export var InjuredHealthDebuff : float = 0.33
+@export var InjuredStatsDebuff : float = 0.2
+@export var InjuredAffectedStats : Array[StatTemplate]
 
 @export var Alpha_AlliedUnitColor : Color
 @export var Alpha_EnemyUnitColor : Color
@@ -61,6 +63,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var SecondAbilityBreakpoint : int # NOTE: NOT CURRENTLY IMPLEMENTED
 
 @export_category("Fire Data")
+const FireSpreadMaxLevel : int = 3
 @export var FireSpreadLevel : int = 3
 @export var Level1FireDamage : int = -1
 @export var Level2FireDamage : int = -3

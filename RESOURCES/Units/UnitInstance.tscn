@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=16 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
@@ -15,6 +15,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrop1"]
 bg_color = Color(0.929412, 0.333333, 0.345098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0dhx"]
+bg_color = Color(0.38, 0.1444, 0.148327, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -42,9 +50,9 @@ visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
 combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
-healthBar = NodePath("HealthBarParent")
+healthBar = NodePath("VBoxContainer/HealthBarParent")
 focusSlotPrefab = ExtResource("4_kfodt")
-affinityIcon = NodePath("AffinityIcon")
+affinityIcon = NodePath("VBoxContainer/AffinityIcon")
 takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
@@ -72,7 +80,8 @@ event_name = "event:/SFX/Combat_TakeDamage_Kill"
 event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 
 [node name="FootSteps" type="FmodEventEmitter2D" parent="Audio"]
-event_guid = "{00000000-0002-0000-0300-000026000000}"
+event_name = "event:/SFX/Units/Generic/Footsteps_Common"
+event_guid = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 
 [node name="Death" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/SFX/Combat_Death"
@@ -94,79 +103,114 @@ position = Vector2(53.5, 53.5)
 scale = Vector2(0.0410156, 0.0410156)
 texture = ExtResource("4_reqvg")
 
-[node name="AffinityIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(8, 56)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("7_vnfmn")
-
-[node name="PositiveAfffinity" type="Sprite2D" parent="AffinityIcon"]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(2, 2)
-texture = ExtResource("9_v7dhr")
-
-[node name="NegativeAffinity" type="Sprite2D" parent="AffinityIcon"]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, -463.238)
-scale = Vector2(2, 2)
-texture = ExtResource("10_pwwos")
-
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
 
-[node name="HealthBarParent" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "HideTimer")]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AffinityIcon" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_vnfmn")
+expand_mode = 1
+
+[node name="PositiveAffinity" type="TextureRect" parent="VBoxContainer/AffinityIcon"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_right = 21.0
+offset_bottom = 16.0
+texture = ExtResource("9_v7dhr")
+expand_mode = 1
+
+[node name="NegativeAffinity" type="TextureRect" parent="VBoxContainer/AffinityIcon"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_right = 21.0
+offset_bottom = 16.0
+texture = ExtResource("10_pwwos")
+expand_mode = 1
+
+[node name="HealthBarParent" type="Control" parent="VBoxContainer" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "FocusBarEntryList", "HideTimer")]
+unique_name_in_owner = true
+visible = false
 z_index = 1
 custom_minimum_size = Vector2(64, 16)
-layout_mode = 3
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 64.0
-offset_bottom = 16.0
-grow_vertical = 2
+layout_mode = 2
 script = ExtResource("4_ae3kp")
 HealthBar = NodePath("Offset/HealthBar")
 ArmorBar = NodePath("Offset/ArmorBar")
+InjuredBar = NodePath("Offset/InjuryBar")
 HealthText = NodePath("Offset/HP Val")
 FocusBarEntryList = NodePath("Offset/FocusContainer/FocusBarParent")
 FocusBarPrefab = ExtResource("4_kfodt")
 HideTimer = NodePath("AutoHideTimer")
 
-[node name="Offset" type="Control" parent="HealthBarParent"]
+[node name="Offset" type="Control" parent="VBoxContainer/HealthBarParent"]
 anchors_preset = 0
-offset_top = 64.0
-offset_bottom = 64.0
 
-[node name="HealthBar" type="ProgressBar" parent="HealthBarParent/Offset"]
+[node name="FocusContainer" type="MarginContainer" parent="VBoxContainer/HealthBarParent/Offset"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 64.0
+offset_bottom = 13.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="FocusBarParent" type="HBoxContainer" parent="VBoxContainer/HealthBarParent/Offset/FocusContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 16)
 layout_mode = 2
-offset_left = -8.0
-offset_right = 72.0
-offset_bottom = 16.0
+theme_override_constants/separation = 1
+script = ExtResource("4_lg50f")
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HealthBarParent/Offset"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 8.0
 theme_override_styles/background = SubResource("StyleBoxFlat_n6je4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yrop1")
 max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="ArmorBar" type="ProgressBar" parent="HealthBarParent/Offset"]
+[node name="InjuryBar" type="ProgressBar" parent="VBoxContainer/HealthBarParent/Offset"]
 unique_name_in_owner = true
-visible = false
-modulate = Color(1, 1, 1, 0.631373)
-custom_minimum_size = Vector2(80, 16)
+custom_minimum_size = Vector2(64, 8)
 layout_mode = 2
-offset_left = -8.0
-offset_right = 72.0
-offset_bottom = 16.0
+offset_right = 64.0
+offset_bottom = 8.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_w0dhx")
+max_value = 1.0
+fill_mode = 1
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="VBoxContainer/HealthBarParent/Offset"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.631373)
+custom_minimum_size = Vector2(64, 8)
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 8.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_f5801")
 max_value = 1.0
 value = 0.84
 show_percentage = false
 
-[node name="HP Val" type="Label" parent="HealthBarParent/Offset"]
+[node name="HP Val" type="Label" parent="VBoxContainer/HealthBarParent/Offset"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 offset_left = 13.0
@@ -181,22 +225,7 @@ label_settings = SubResource("LabelSettings_lypks")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FocusContainer" type="MarginContainer" parent="HealthBarParent/Offset"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 16.0
-offset_right = 72.0
-offset_bottom = 24.0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="HealthBarParent/Offset/FocusContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("4_lg50f")
-
-[node name="AutoHideTimer" type="Timer" parent="HealthBarParent"]
+[node name="AutoHideTimer" type="Timer" parent="VBoxContainer/HealthBarParent"]
 wait_time = 1.5
 
 [editable path="DamageIndicator"]

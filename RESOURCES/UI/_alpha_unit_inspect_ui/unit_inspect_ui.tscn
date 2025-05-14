@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dn07slodp7juh"]
+[gd_scene load_steps=49 format=3 uid="uid://dn07slodp7juh"]
 
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="1_17hjj"]
 [ext_resource type="Script" uid="uid://dbkl27w85f8am" path="res://SCRIPTS/UI/InspectUI/unit_inspect_ui.gd" id="1_olrmn"]
@@ -54,10 +54,13 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hynhx"]
+bg_color = Color(0.38, 0.1444, 0.148327, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxp5j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i456a"]
-bg_color = Color(0.82, 0.82, 0.82, 1)
+bg_color = Color(0.82, 0.82, 0.82, 0.603922)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -227,7 +230,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "LevelLabel", "ExpLabel")]
+[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "InjuredParent", "LevelLabel", "ExpLabel")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 48)
@@ -238,6 +241,7 @@ ArmorBar = NodePath("ArmorBar")
 HealthText = NodePath("HP Val")
 FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
 FocusBarPrefab = ExtResource("8_bef1i")
+InjuredParent = NodePath("InjuredBar")
 LevelLabel = NodePath("../ExpAndLevel/MarginContainer/HBoxContainer/LevelNum")
 LevelLocalization = "ui_num"
 ExpLabel = NodePath("../ExpAndLevel/MarginContainer/HBoxContainer/ExpNum")
@@ -259,6 +263,22 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
+[node name="InjuredBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hynhx")
+max_value = 1.0
+value = 0.3
+fill_mode = 1
+show_percentage = false
+
 [node name="ArmorBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 16)
@@ -273,7 +293,6 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_sxp5j")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i456a")
 max_value = 1.0
 value = 0.84
-fill_mode = 1
 show_percentage = false
 
 [node name="HP Val" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]

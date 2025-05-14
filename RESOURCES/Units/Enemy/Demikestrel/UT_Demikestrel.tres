@@ -108,6 +108,7 @@ Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_summongale
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_q7fsu")]([ExtResource("13_g3qgd")])
 GridSize = 3
+FootstepGUID = "{00000000-0000-0000-0000-000000000000}"
 DebugName = "Demikestrel"
 loc_DisplayName = "unit_demikestrel_name"
 loc_Description = "unit_demikestrel_desc"

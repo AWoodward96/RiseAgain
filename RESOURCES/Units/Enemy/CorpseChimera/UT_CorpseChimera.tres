@@ -110,6 +110,7 @@ Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_2nnof")]([ExtResource("10_1wq3p")])
 GridSize = 1
+FootstepGUID = "{460c67f6-fb5a-4d36-9649-06d2f8c0903c}"
 DebugName = "CorpseChimera"
 loc_DisplayName = "unit_corpsechimera_name"
 loc_Description = "unit_corpsechimera_desc"

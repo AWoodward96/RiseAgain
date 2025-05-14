@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://crsfuln75037q"]
+[gd_scene load_steps=38 format=4 uid="uid://crsfuln75037q"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_darpl"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_de7ap"]
@@ -14,9 +14,7 @@
 [ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="8_joda4"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_0ss6n"]
 [ext_resource type="Resource" uid="uid://cwpcdl6jod428" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_WildNecromancer.tres" id="12_4isph"]
-[ext_resource type="Script" uid="uid://b8v8fou10ucrg" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="12_11jmj"]
 [ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="13_biu8f"]
-[ext_resource type="Resource" uid="uid://dk6nu2fomck5p" path="res://RESOURCES/CombatEffects/CE_NecromancerPassive.tres" id="13_mjieb"]
 [ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="14_3hk2d"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="15_g5vum"]
 [ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="16_sm0cq"]
@@ -216,7 +214,6 @@ frame = 2
 script = ExtResource("7_dklm8")
 UnitToSpawn = ExtResource("19_7ecbv")
 UnitLevel = 7
-PreAppliedEffects = Array[ExtResource("12_11jmj")]([ExtResource("13_mjieb")])
 Position = Vector2i(8, 4)
 AIBehavior = ExtResource("12_4isph")
 AggroBehavior = SubResource("Resource_anryn")

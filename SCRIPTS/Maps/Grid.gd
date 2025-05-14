@@ -362,7 +362,7 @@ func UpdateFireDamageTiles(_allegience : GameSettingsTemplate.TeamID):
 	for t in GridArr:
 		if t.OnFire:
 			# Maybe increase the fire or decrease the fire
-			if _allegience == GameSettingsTemplate.TeamID.ALLY && t.FireLevel < 3:
+			if _allegience == GameSettingsTemplate.TeamID.ALLY && t.FireLevel < GameSettingsTemplate.FireSpreadMaxLevel:
 				t.FireLevel += 1
 				IgniteTile(t, t.FireLevel)
 
@@ -410,8 +410,13 @@ func DestroyTerrain(_tile : Tile):
 
 
 func IgniteTile(_tile : Tile, _fireLevel : int):
-	_tile.FireLevel = _fireLevel
-	match _fireLevel:
+	if _tile == null:
+		return
+
+	if _tile.FireLevel < _fireLevel:
+		_tile.FireLevel = _fireLevel
+
+	match _tile.FireLevel:
 		0:
 			map.tilemap_fire.set_cell(_tile.position)
 		1:

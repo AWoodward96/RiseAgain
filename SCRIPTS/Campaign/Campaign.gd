@@ -147,16 +147,18 @@ func MapComplete():
 	RemoveEmptyRosterEntries()
 	for unit in CurrentRoster:
 		unit.OnMapComplete()
-		var parent = unit.get_parent()
-		if parent != null:
-			parent.remove_child(unit)
-
-		UnitHoldingArea.add_child(unit)
+		unit.reparent(UnitHoldingArea)
 		if unit.currentHealth > 0:
 			PersistDataManager.universeData.GrantPrestiegeExp(unit.Template, GameManager.UnitSettings.PrestiegeGrantedPerMap)
 
 	campaignBlockMapIndex += 1
 	StartNextMap()
+
+func UnitInjured(_unitInstance : UnitInstance):
+	_unitInstance.reparent(UnitHoldingArea)
+	_unitInstance.UpdateDerivedStats()
+	_unitInstance.currentHealth = _unitInstance.maxHealth
+
 
 func RemoveEmptyRosterEntries():
 	var i = CurrentRoster.size() - 1
@@ -259,6 +261,9 @@ func ToJSON():
 		"currentMapBlock" = currentMapBlock.resource_path,
 		"Convoy" = PersistDataManager.ArrayToJSON(Convoy)
 	}
+
+	var children = UnitHoldingArea.get_children() as Array[UnitInstance]
+	jsonDict["UnitsInHolding"] = PersistDataManager.ArrayToJSON(children)
 	return jsonDict
 
 static func FromJSON(_dict : Dictionary):
@@ -284,8 +289,15 @@ static func FromJSON(_dict : Dictionary):
 	if _dict.has("campaignRNG") && _dict["campaignRNG"] != null:
 		campaign.CampaignRng = DeterministicRNG.FromJSON(_dict["campaignRNG"])
 
-	campaign.TryLoadMap()
 
+	for u in _dict["UnitsInHolding"]:
+		var dataAsJson = JSON.parse_string(u)
+		var unit = UnitInstance.FromJSON(dataAsJson)
+		if unit != null:
+			campaign.UnitHoldingArea.add_child(unit)
+			campaign.CurrentRoster.append(unit)
+
+	campaign.TryLoadMap()
 
 	return campaign
 

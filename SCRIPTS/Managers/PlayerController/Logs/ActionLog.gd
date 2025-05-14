@@ -3,6 +3,7 @@ class_name ActionLog
 enum ActionType { Item, Ability }
 
 var source : UnitInstance
+var cachedSourceStats : Dictionary = {}
 var grid : Grid
 var availableTiles : Array[Tile] # The working tiles that are available when you select targeting. Updated via the Item or Abilities PollTargets
 var actionOriginTile : Tile # The tile that this action is actually centered on. Sort of like the PlayerControllers CurrentTile
@@ -39,7 +40,16 @@ static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 		new.actionType = ActionLog.ActionType.Ability
 	new.sourceTile = _unitSource.CurrentTile
 	new.damageData = _itemOrAbility.UsableDamageData
+	new.ConstructCachedStats()
 	return new
+
+
+func ConstructCachedStats():
+	if source == null:
+		return
+
+	for pair in source.baseStats:
+		cachedSourceStats[pair] = source.GetWorkingStat(pair)
 
 func BuildStepResults():
 	if ability == null:

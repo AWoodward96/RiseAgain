@@ -4,6 +4,7 @@ extends Node2D
 @export var damagePopup : PackedScene
 @export var damagePreview : PackedScene
 @export var effectPopup : PackedScene
+@export var abilityPopup : PackedScene
 @export var critPopup : PackedScene
 
 @export_category("Camera Settings")
@@ -60,6 +61,14 @@ func CreateMissPopup(_tile : Tile):
 func CreateEffectPopup(_tile : Tile, _effectInstance : CombatEffectInstance):
 	var popup = effectPopup.instantiate()
 	popup.SetEffect(_effectInstance)
+	popup.global_position = _tile.GlobalPosition
+	add_child(popup)
+	_tile.QueuePopup(popup)
+	pass
+
+func CreateAbilityPopup(_tile : Tile, _ability : Ability):
+	var popup = abilityPopup.instantiate()
+	popup.SetAbility(_ability)
 	popup.global_position = _tile.GlobalPosition
 	add_child(popup)
 	_tile.QueuePopup(popup)

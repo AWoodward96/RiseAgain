@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://co7lel8ngy6or"]
+[gd_scene load_steps=25 format=3 uid="uid://co7lel8ngy6or"]
 
 [ext_resource type="Script" uid="uid://dsclb6hje7yvq" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="1_opl86"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="2_16e7i"]
@@ -42,6 +42,14 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_ergra"]
+colors = PackedColorArray(0.51328, 0.4672, 0.64, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cye58"]
+gradient = SubResource("Gradient_ergra")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_16e7i"]
 gradient = SubResource("Gradient_icv2n")
 fill = 1
@@ -80,6 +88,7 @@ speedText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_T
 AbilityBG = SubResource("GradientTexture2D_dk8wh")
 WeaponBG = SubResource("GradientTexture2D_ergra")
 TacticalBG = SubResource("GradientTexture2D_em1u0")
+PassiveBG = SubResource("GradientTexture2D_cye58")
 SelectedParent = NodePath("Base/Selected")
 FocusSound = NodePath("Focused")
 SelectedSound = NodePath("Selected")

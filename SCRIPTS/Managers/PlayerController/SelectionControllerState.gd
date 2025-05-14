@@ -22,7 +22,7 @@ func _Execute(_delta):
 
 		if tile.Occupant != null:
 			ctrl.selectedUnit = tile.Occupant as UnitInstance
-			
+
 			if ctrl.selectedUnit.Activated:
 				if ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && isAllyTurn:
 					# This blocks the ability to cheese units that are mid-action
@@ -34,9 +34,11 @@ func _Execute(_delta):
 							ctrl.EnterContextMenuState()
 				else:
 					currentGrid.ShowUnitActions(tile.Occupant)
+
+				ctrl.reticleSelectSound.play()
 		else:
 			ctrl.EnterGlobalContextState()
-		ctrl.reticleSelectSound.play()
+			ctrl.reticleSelectSound.play()
 		ctrl.OnTileSelected.emit(tile)
 
 	if InputManager.cancelDown:

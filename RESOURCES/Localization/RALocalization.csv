@@ -144,8 +144,8 @@ ce_spdef_down,SpDef Down
 ce_spdef_down_desc,This Unit has had their SpDefense reduced and will take more damage from Magic attacks
 ce_stunned,Stunned
 ce_stunned_desc,This Unit is stunned and will lose their next turn
-ce_necropassive_name,Necrotic Curse
-ce_necropassive_desc,Every Neutral Unit this Unit kills is brought back as a Zombified version of themselves
+passive_necroticcurse_name,Necrotic Curse
+passive_necroticcurse_desc,Every Neutral Unit this Unit kills is brought back as a Zombified version of themselves
 art_beamattack_name,Beam Attack!
 art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
 art_cleave_name,Great Cleave
@@ -250,7 +250,7 @@ tut_abilities_lesserheal3,"[Lesser Heal] costs 2 Mana, and has a special propert
 tut_abilities_lesserheal4,Let's heal the Knight
 tut_weapons_knight0,The Knight is a defensive Melee Unit with a unique Weapon
 tut_weapons_knight1,Move the Knight to the indicated Tile
-tut_weapons_knight2,"When attacking with a Weapon, Unit's with similar a similar ranged Weapon can counter-attack."
+tut_weapons_knight2,"When attacking with a Weapon, Unit's with a similar ranged Weapon can counter-attack."
 tut_weapons_knight3,Because the Zombie's weapon has a Range of 1 we're at risk of being counter-attacked
 tut_weapons_knight4,Press [Left Shift] to Cancel the Attack
 tut_weapons_knight5,Press [Left Shift] again to Cancel the Move
@@ -328,3 +328,4 @@ affinity_fire,Fire
 art_castle_name,Castle
 art_castle_desc,Spend all of your Mana to grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield per Mana consumed
 ui_battleprep_title,Battle Preperations
+ui_passive_title_shorthand,PASS

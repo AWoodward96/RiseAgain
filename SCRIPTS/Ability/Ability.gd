@@ -8,7 +8,7 @@ signal AbilityActionComplete
 #	If another Equippable is added to a Unit, their existing Equippable Ability gets deleted
 #	All Equippables should have the Damage Grants Focus bool set to true - but it's available as an option to be false for any edge cases
 # Tactical: A utility focused Ability that every Unit can use
-enum AbilityType { Standard, Weapon, Tactical, Passive }
+enum AbilityType { Standard, Weapon, Tactical, Passive, Deathrattle }
 enum AbilitySpeed { Normal, Fast, Slow }
 
 @export var type : AbilityType

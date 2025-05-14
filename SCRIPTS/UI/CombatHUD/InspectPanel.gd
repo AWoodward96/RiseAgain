@@ -3,6 +3,7 @@ class_name InspectPanel
 
 
 @export var icon : TextureRect
+@export var injuredParent : Control
 @export var unitHealthBar : UnitHealthBar
 @export var namelabel : Label
 @export var affinity_icon : TextureRect
@@ -36,14 +37,15 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 
 	var forceUpdate = currentUnit != _unit || _forceUpdate
 
-	if currentUnit != null:
-		currentUnit.OnStatUpdated.disconnect(OnUnitStatUpdated)
-		currentUnit.OnCombatEffectsUpdated.disconnect(OnUnitEffectsUpdated)
+	if forceUpdate:
+		if currentUnit != null:
+			currentUnit.OnStatUpdated.disconnect(OnUnitStatUpdated)
+			currentUnit.OnCombatEffectsUpdated.disconnect(OnUnitEffectsUpdated)
 
-	currentUnit = _unit
+		currentUnit = _unit
 
-	currentUnit.OnStatUpdated.connect(OnUnitStatUpdated)
-	currentUnit.OnCombatEffectsUpdated.connect(OnUnitEffectsUpdated)
+		currentUnit.OnStatUpdated.connect(OnUnitStatUpdated)
+		currentUnit.OnCombatEffectsUpdated.connect(OnUnitEffectsUpdated)
 
 	var template = _unit.Template
 	icon.texture = template.icon
@@ -51,6 +53,7 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 	unitHealthBar.SetUnit(_unit)
 	unitHealthBar.Refresh()
 
+	if injuredParent != null: injuredParent.visible = _unit.Injured
 	if affinity_icon != null: affinity_icon.texture = currentUnit.Template.Affinity.loc_icon
 
 	if forceUpdate:

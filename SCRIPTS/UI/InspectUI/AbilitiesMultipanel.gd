@@ -35,6 +35,11 @@ func Refresh():
 			entry.Refresh(abl)
 
 	for abl in unit.Abilities:
+		if abl.type == Ability.AbilityType.Passive:
+			var entry = AbilityParent.CreateEntry(AbilityPrefab) as AbilityEntryUI
+			entry.Refresh(abl)
+
+	for abl in unit.Abilities:
 		if abl.type == Ability.AbilityType.Tactical:
 			var entry = AbilityParent.CreateEntry(AbilityPrefab) as AbilityEntryUI
 			entry.Refresh(abl)

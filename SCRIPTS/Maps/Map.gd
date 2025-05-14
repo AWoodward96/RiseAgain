@@ -64,6 +64,8 @@ var turnCount : int
 var startingPositions : Array[Vector2i]
 var spawners : Array[SpawnerBase]
 var gridEntities : Array[GridEntityBase]
+var passiveActionStack : Array[PassiveAbilityAction]
+var currentPassiveAction : PassiveAbilityAction
 
 var standaloneUnitSelectionUI
 
@@ -104,6 +106,9 @@ func PreInitialize():
 		CutsceneManager.QueueCutscene(PreMapCutscene)
 
 func _process(_delta):
+	if !UpdatePassiveActions(_delta):
+		return
+
 	if MapState != null:
 		MapState.Update(_delta)
 
@@ -120,6 +125,30 @@ func _process(_delta):
 
 			if GameManager.GameSettings.DefaultLossState.CheckObjective(self) || CSR.AutoLose:
 				ChangeMapState(LossState.new())
+
+func UpdatePassiveActions(_delta):
+	if currentPassiveAction == null && passiveActionStack.size() != 0:
+		# First wait for global stack clear
+		if GlobalStackClear():
+			currentPassiveAction = passiveActionStack.pop_front()
+
+	if currentPassiveAction != null:
+		if currentPassiveAction.TryExecute(_delta):
+			if passiveActionStack.size() != 0:
+				currentPassiveAction = passiveActionStack.pop_front()
+				return false
+			else:
+				currentPassiveAction = null
+				print("passive action complete")
+		else:
+			return false
+
+	return true
+
+func AppendPassiveAction(_action : PassiveAbilityAction):
+	print("Passive Action Logged")
+	passiveActionStack.append(_action)
+	passiveActionStack.sort_custom(func(a : PassiveAbilityAction, b : PassiveAbilityAction): return a.priority > b.priority)
 
 
 func InitializeFromCampaign(_campaign : Campaign, _roster : Array[UnitInstance], _rngSeed : int):

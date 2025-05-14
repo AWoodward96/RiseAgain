@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_33g52"]
 script = ExtResource("4_mgn58")
 Template = ExtResource("5_3sxj6")
-Value = 2
+Value = 1
 metadata/_custom_type_script = "uid://dp714j0ufhbjo"
 
 [node name="skillbook_t1" type="Node2D" node_paths=PackedStringArray("statData")]

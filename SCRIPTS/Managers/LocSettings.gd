@@ -29,6 +29,9 @@ static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 @export var AbilityTypeAbilityTextShorthand : String
 @export var AbilityTypeAbilityColor : Color
 
+@export var AbilityTypePassiveTextShorthand : String
+@export var AbilityTypePassiveColor : Color
+
 @export var TargetingSimpleText : String
 @export var TargetingSimpleColor : Color
 @export var TargetingDirectionalText : String

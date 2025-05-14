@@ -11,3 +11,4 @@ UnitHoldingArea = NodePath("UnitHoldingArea")
 unique_name_in_owner = true
 
 [node name="UnitHoldingArea" type="Node2D" parent="."]
+visible = false

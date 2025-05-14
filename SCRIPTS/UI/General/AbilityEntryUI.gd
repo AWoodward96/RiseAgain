@@ -35,6 +35,7 @@ class_name AbilityEntryUI
 @export var AbilityBG : GradientTexture2D
 @export var WeaponBG : GradientTexture2D
 @export var TacticalBG : GradientTexture2D
+@export var PassiveBG : GradientTexture2D
 
 
 func Initialize(_packedScene : PackedScene):
@@ -76,6 +77,13 @@ func Refresh(_ability : Ability):
 			if abilityTypeHeader != null:
 				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypeTacticalTextShorthand
 				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypeTacticalColor
+		Ability.AbilityType.Passive:
+			if Background != null:
+				Background.texture = PassiveBG
+
+			if abilityTypeHeader != null:
+				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypePassiveTextShorthand
+				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypePassiveColor
 
 
 	abilityNameText.text = _ability.loc_displayName
@@ -167,6 +175,12 @@ func UpdateUsages(_ability : Ability):
 func UpdateSpeed(_ability : Ability):
 	if speedText == null:
 		return
+
+	if _ability.type == Ability.AbilityType.Passive:
+		speedParent.visible = false
+		return
+
+	speedParent.visible = true
 
 	match _ability.ability_speed:
 		Ability.AbilitySpeed.Normal:
