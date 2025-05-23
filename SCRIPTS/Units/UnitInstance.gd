@@ -11,6 +11,7 @@ signal OnCombatEffectsUpdated
 @export var healthBar : UnitHealthBar
 @export var focusSlotPrefab : PackedScene
 @export var affinityIcon: TextureRect
+@export var hasLootIcon : Node2D
 
 @export_category("SFX")
 @export var takeDamageSound : FmodEventEmitter2D
@@ -256,6 +257,12 @@ func OnMapComplete():
 	ShowHealthBar(false)
 	IsDefending = false
 
+func UpdateLoot():
+	hasLootIcon.visible = false
+	for loot in ItemSlots:
+		if loot != null:
+			hasLootIcon.visible = true
+
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
 	IsAggrod = false
@@ -338,6 +345,10 @@ func CreateStartingAbilities():
 
 
 func AddAbility(_ability : PackedScene):
+	if _ability == null:
+		push_error("Attempting to create a null ability. Unit: " + Template.DebugName)
+		return
+
 	# We don't validate if the ability is on the template at all because maybe there might be an item that grants a
 	# general use ability to any unit
 	var abilityInstance = _ability.instantiate() as Ability
@@ -363,6 +374,18 @@ func AddAbility(_ability : PackedScene):
 	abilityParent.add_child(abilityInstance)
 	Abilities.append(abilityInstance)
 	return abilityInstance
+
+func TryEquipItem(_itemPrefabOrInstance):
+	var success = false
+	var counter = 0
+	for slot in ItemSlots:
+		if slot == null:
+			EquipItem(counter, _itemPrefabOrInstance)
+			success = true
+			break
+		counter += 1
+	return success
+
 
 # Equips an item to that slot
 # Returns true or false depending on if the item was properly equipped
@@ -392,6 +415,9 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 			itemsParent.add_child(item)
 		ItemSlots[_slotIndex] = item
 		UpdateDerivedStats()
+		if UnitAllegiance != GameSettingsTemplate.TeamID.ALLY:
+			UpdateLoot()
+
 		OnStatUpdated.emit()
 		return true
 	else:
@@ -403,7 +429,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 
 
 func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false, _style : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal) :
-	if _route == null || _route.size() == 0:
+	if _route == null  || _route.size() == 0:
 		return
 
 	var action = UnitMoveAction.new()
@@ -474,6 +500,13 @@ func QueueExpGain(_expGain : int):
 	var expGain = UnitExpGainAction.new()
 	expGain.ExpGained = _expGain
 	ActionStack.append(expGain)
+	if CurrentAction == null:
+		PopAction()
+
+func QueueAcquireLoot(_item : Item):
+	var lootGain = UnitAcquireLootAction.new()
+	lootGain.loot = _item
+	ActionStack.append(lootGain)
 	if CurrentAction == null:
 		PopAction()
 
@@ -654,7 +687,14 @@ func PlayDeathAnimation():
 		tween.tween_interval(1)
 		tween.tween_callback(DeathAnimComplete)
 	else:
-		DeathAnimComplete()
+		deathSound.play()
+		var tween = create_tween()
+		tween.tween_interval(Juice.combatSequenceCooloffTimer)
+		tween.tween_property(visual.sprite, 'self_modulate', Color(0,0,0,0), 0.5)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_EXPO)
+		tween.tween_interval(1)
+		tween.tween_callback(DeathAnimComplete)
 
 
 func DeathAnimComplete():
@@ -663,12 +703,15 @@ func DeathAnimComplete():
 		if GameManager.CurrentCampaign != null:
 			GameManager.CurrentCampaign.UnitInjured(self)
 		else:
-			queue_free()
+			map.QueueUnitForRemoval(self)
 	else:
-		queue_free()
+		map.QueueUnitForRemoval(self)
 
 func CheckKillbox():
 	if CurrentTile.ActiveKillbox && !IsFlying:
+		if CurrentTile.OpenWater && Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
+			return false
+
 		# The unit's fucking dead - kill them
 		ModifyHealth(-currentHealth - GetArmorAmount(), null, true)
 		return true
@@ -839,6 +882,7 @@ func ToJSON():
 	if AI != null:
 		dict["AI"] = AI.resource_path
 		if AggroType != null:
+			# Fuck this needs to be persisted doesn't it
 			dict["AggroType"] = AggroType.resource_path
 
 	# get base stats

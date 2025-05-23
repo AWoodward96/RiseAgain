@@ -47,6 +47,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var SpawnersParent : Node2D
 
 var gridEntityParent : Node2D # Gets created at runtime
+var trashCan : Node2D # Gets created at runtime
 
 var PersistedMapState : String
 var MapState : MapStateBase
@@ -150,6 +151,16 @@ func AppendPassiveAction(_action : PassiveAbilityAction):
 	passiveActionStack.append(_action)
 	passiveActionStack.sort_custom(func(a : PassiveAbilityAction, b : PassiveAbilityAction): return a.priority > b.priority)
 
+func QueueUnitForRemoval(_unitInstance : UnitInstance):
+	if trashCan == null:
+		trashCan = Node2D.new()
+		trashCan.name = "Trash"
+		add_child(trashCan)
+		trashCan.visible = false
+
+	# Actually, why queue-free the unit at all?
+	_unitInstance.reparent(trashCan)
+	pass
 
 func InitializeFromCampaign(_campaign : Campaign, _roster : Array[UnitInstance], _rngSeed : int):
 	mapRNG = DeterministicRNG.Construct(_rngSeed)
@@ -239,10 +250,10 @@ func InitializeStandalone():
 
 
 # only used by the roster selection ui. In normal campaign initialization, the UnitInstances should already be created
-func OnRosterTemplatesSelected(_roster : Array[UnitTemplate]):
+func OnRosterTemplatesSelected(_roster : Array[UnitTemplate], _levelOverride : int = 0):
 	for i in range(0, _roster.size()):
 		if i < startingPositions.size():
-			var unit = CreateUnit(_roster[i])
+			var unit = CreateUnit(_roster[i], _levelOverride)
 			InitializeUnit(unit, startingPositions[i], GameSettingsTemplate.TeamID.ALLY)
 
 
@@ -307,8 +318,15 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 		else:
 			enemyUnitsKilled[_unitInstance.Template] = 1
 
-	if _context != null && _context.AbilityData != null:
-		_context.AbilityData.kills += 1
+	if _context != null:
+		if _context.AbilityData != null:
+			_context.AbilityData.kills += 1
+
+		if _context.Source != null && _context.Source.currentHealth > 0 && _context.Source.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+			for item in _unitInstance.ItemSlots:
+				if item != null:
+					_context.Source.QueueAcquireLoot(item)
+
 
 	# despawn any grid entities that this unit is the owner of
 	for ge in gridEntities:
@@ -316,8 +334,9 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 			ge.Expired = true
 	RemoveExpiredGridEntities()
 
-	RemoveUnitFromMap(_unitInstance)
+	# should happen before removal from the map for deathrattle effects
 	OnUnitDied.emit(_unitInstance, _context)
+	RemoveUnitFromMap(_unitInstance)
 	RefreshThreat()
 
 func RemoveExpiredGridEntities():
@@ -377,6 +396,10 @@ func GetClosestUnitToUnit(_currentUnit : UnitInstance, _targetTeam : int):
 func RefreshThreat():
 	if grid.ShowingThreat && playercontroller.ControllerState.CanShowThreat():
 		grid.RefreshThreat(GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+
+func TryAddItemToConvoy(_item : Item):
+	if CurrentCampaign != null:
+		CurrentCampaign.AddItemToConvoy(_item)
 
 func _input(event):
 	# this eats button inputs funnily enough, so the CSR menu wont work if this is commented in

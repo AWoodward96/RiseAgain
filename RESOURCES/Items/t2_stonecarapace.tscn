@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdci2cagpqgn3"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_2ai5r"]
+[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="2_w6vei"]
+
+[node name="t2_stonecarapace" type="Node2D"]
+script = ExtResource("1_2ai5r")
+internalName = "t2_stonecarapace"
+loc_displayName = "item_t2_stonecarapace_name"
+loc_displayDesc = "item_t2_stonecarapace_desc"
+
+[node name="StatConsumableComponent" type="Node2D" parent="."]
+script = ExtResource("2_w6vei")

@@ -4,12 +4,14 @@
 [ext_resource type="Script" uid="uid://cu0hrefgahdx8" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.gd" id="1_jtsas"]
 [ext_resource type="PackedScene" uid="uid://cs0nm4n8i48as" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_squad_entry.tscn" id="2_5swuv"]
 
-[node name="UnitSelection" type="CanvasLayer" node_paths=PackedStringArray("ReadyButton", "RemainingSlotsText")]
+[node name="UnitSelection" type="CanvasLayer" node_paths=PackedStringArray("ReadyButton", "RemainingSlotsText", "LevelOverride", "UnlockAbilities")]
 script = ExtResource("1_jtsas")
 UnitEntryPrefab = ExtResource("1_2u64n")
 SquadEntryPrefab = ExtResource("2_5swuv")
 ReadyButton = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButtons/ReadyButton")
 RemainingSlotsText = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer/Remaining Slots")
+LevelOverride = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride/HBoxContainer/LevelOverride")
+UnlockAbilities = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride/HBoxContainer/CheckButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -75,6 +77,31 @@ size_flags_horizontal = 3
 [node name="Remaining Slots" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TeamPreview/HBoxContainer"]
 layout_mode = 2
 text = "Remaining Slots: 3"
+
+[node name="LevelOverride" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride/HBoxContainer"]
+layout_mode = 2
+text = "Level Override"
+
+[node name="LevelOverride" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride/HBoxContainer"]
+layout_mode = 2
+text = "0"
+alignment = 2
+max_length = 2
+select_all_on_focus = true
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/LevelOverride/HBoxContainer"]
+layout_mode = 2
+text = "Auto Unlock Abilities"
 
 [node name="StartButtons" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,0 +1,56 @@
+[gd_scene load_steps=15 format=3 uid="uid://cnqkq4ytoe6sq"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_msyxe"]
+[ext_resource type="Texture2D" uid="uid://dvuqajreaumg1" path="res://ART/Icons/Ability/Equippable/iron_teeth.png" id="2_18cp6"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_m60bh"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_cfioe"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_qx15y"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_m60bh"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_xlwq3"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_cfioe"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_xlwq3"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_bqel4"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_iwiic"]
+
+[sub_resource type="Resource" id="Resource_bqel4"]
+script = ExtResource("3_cfioe")
+useAttackAction = true
+useDefendAction = true
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_iwiic"]
+script = ExtResource("4_xlwq3")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_m60bh"]
+script = ExtResource("4_m60bh")
+Template = ExtResource("5_cfioe")
+Value = 3
+
+[node name="iron_teeth" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_msyxe")
+type = 1
+focusCost = 0
+executionStack = Array[ExtResource("2_m60bh")]([SubResource("Resource_bqel4"), SubResource("Resource_iwiic")])
+damageGrantsFocus = true
+internalName = "iron_teeth"
+loc_displayName = "weap_iron_teeth_name"
+loc_displayDesc = "weap_iron_teeth_desc"
+icon = ExtResource("2_18cp6")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("3_qx15y")
+BaseAccuracy = 90.0
+GrantedStats = Array[ExtResource("4_m60bh")]([SubResource("Resource_m60bh")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("6_xlwq3")
+AgressiveStat = ExtResource("5_cfioe")
+DefensiveStat = ExtResource("7_bqel4")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("8_iwiic")

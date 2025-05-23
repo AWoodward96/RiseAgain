@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bjkyhhnp44588"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vd6b5"]
-[ext_resource type="Texture2D" uid="uid://srsldwrfmqtr" path="res://ART/Icons/Descriptors/undead_icon.png" id="2_1m6u3"]
+[ext_resource type="Texture2D" uid="uid://dxd72mb5gjmsh" path="res://ART/Icons/Ability/Passive/necroticcurse.png" id="2_vd6b5"]
 [ext_resource type="Script" uid="uid://bwvegwrh1eo7t" path="res://SCRIPTS/Ability/PassiveZombifyOnKill.gd" id="3_66wk3"]
 [ext_resource type="Script" uid="uid://cadxxf235o7so" path="res://SCRIPTS/Generic/UnitPair.gd" id="4_ngpvk"]
 [ext_resource type="Resource" uid="uid://btjy0lp33oaqu" path="res://RESOURCES/Units/Enemy/AdultWolf/UT_AdultWolf.tres" id="5_fxkjc"]
@@ -42,10 +42,10 @@ script = ExtResource("1_vd6b5")
 type = 3
 focusCost = 0
 passiveListeners = [NodePath("PassiveUnitDeathListener")]
-internalName = "zombify"
-loc_displayName = "ce_necropassive_name"
-loc_displayDesc = "ce_necropassive_desc"
-icon = ExtResource("2_1m6u3")
+internalName = "necroticcurse"
+loc_displayName = "passive_necroticcurse_name"
+loc_displayDesc = "passive_necroticcurse_desc"
+icon = ExtResource("2_vd6b5")
 
 [node name="PassiveUnitDeathListener" type="Node2D" parent="."]
 script = ExtResource("3_66wk3")

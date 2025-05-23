@@ -14,6 +14,8 @@ var MaxHealth : int = -1
 
 var Killbox : bool
 var ActiveKillbox : bool
+var Water : bool
+var OpenWater : bool
 var OnFire : bool :
 	get:
 		return FireLevel > 0
@@ -40,11 +42,15 @@ func InitMetaData():
 		Health = MainTileData.Health
 
 	Killbox = false
+	Water = false
 	if BGTileData != null:
 		Killbox = BGTileData.Killbox
+		Water = BGTileData.Water
 
 	if SubBGTileData != null:
 		Killbox = Killbox || SubBGTileData.Killbox
+		Water = Water || SubBGTileData.Water
+
 
 # Handles what happens if a unit steps on this tile
 # Returns true or false - if true then the unit's movement has been interrupted
@@ -126,7 +132,23 @@ func RefreshActiveKillbox():
 		if e is GEWalkablePlatform:
 			hasPlatform = true
 			break
+
 	ActiveKillbox = Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform
+	OpenWater = Water && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform
+
+
+func Traversable(_unit : UnitInstance, _isFlying : bool):
+	if !_isFlying:
+		if IsWall:
+			return false
+
+		if ActiveKillbox:
+			if OpenWater && _unit.Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
+				return true
+
+			return false
+
+	return true
 
 
 func ToJSON():

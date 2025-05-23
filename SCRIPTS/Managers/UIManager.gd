@@ -14,6 +14,7 @@ signal UIClosed(UI : FullscreenUI)
 @export var CampsiteUIPrefab : PackedScene
 @export var CampsiteRestedPopupPrefab : PackedScene
 @export var TradeUIPrefab : PackedScene
+@export var FullscreenNotifUI : PackedScene
 
 var CurrentInspectedElement : Control
 var InspectActive : bool = false
@@ -49,5 +50,5 @@ func OnUIClosed(_ui : FullscreenUI):
 	for i in range(OpenUIs.size() - 1, -1, -1):
 		if OpenUIs[i] == null:
 			OpenUIs.remove_at(i)
-	
+
 	UIClosed.emit(_ui)

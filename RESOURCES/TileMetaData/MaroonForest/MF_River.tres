@@ -7,4 +7,5 @@ script = ExtResource("1_vjket")
 loc_name = "tile_river_name"
 Health = 0
 Killbox = true
+Water = true
 FireSpreadChance = 0.5

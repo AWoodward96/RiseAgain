@@ -12,7 +12,11 @@ const NodeSize : int = 64
 		position = Position * NodeSize
 
 
-@export var Enabled : bool = true
+@export var Enabled : bool = true :
+	set(value):
+		Enabled = value
+		OnEnableToggled()
+
 @export var Allegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY
 @export var AIBehavior : AIBehaviorBase
 @export var AggroBehavior : AlwaysAggro
@@ -20,3 +24,6 @@ const NodeSize : int = 64
 func SpawnEnemy(_map: Map, _rng : DeterministicRNG):
 	if !Enabled:
 		return
+
+func OnEnableToggled():
+	pass

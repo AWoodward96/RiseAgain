@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddcgn74t12axm"]
+
+[ext_resource type="Texture2D" uid="uid://c8t6102i2v87a" path="res://ART/VFX/cloud_vfx_2.png" id="1_cqaaw"]
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_jrtoe"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jrtoe"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_lj54a"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.378556, 0.68709, 1)
+colors = PackedColorArray(0, 0.473317, 0.237782, 1, 0.4788, 0.76, 0.581907, 1, 0.196333, 0, 0.31, 1, 0.633333, 0, 1, 0)
+
+[node name="HealingCloudVFX" type="Node2D" node_paths=PackedStringArray("emitOnReady")]
+script = ExtResource("1_jrtoe")
+emitOnReady = [NodePath("CPUParticles2D")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_jrtoe")
+position = Vector2(32, 32)
+emitting = false
+amount = 32
+texture = ExtResource("1_cqaaw")
+one_shot = true
+explosiveness = 0.6
+emission_shape = 1
+emission_sphere_radius = 16.0
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 64.0
+initial_velocity_max = 96.0
+color_ramp = SubResource("Gradient_lj54a")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://qmut2pi3nuyt"]
+
+[ext_resource type="Script" uid="uid://cokh86rye2b0" path="res://SCRIPTS/UI/General/FullscreenNotificationUI.gd" id="1_7ffif"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_iybiq"]
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="2_m1w6h"]
+
+[node name="FullscreenNotificationUI" type="CanvasLayer" node_paths=PackedStringArray("rich_text_label", "timer")]
+script = ExtResource("1_7ffif")
+rich_text_label = NodePath("Parent/MarginContainer/RichTextLabel")
+timer = NodePath("Timer")
+
+[node name="Parent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -48.0
+offset_right = 304.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Parent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect" type="ColorRect" parent="Parent/MarginContainer"]
+layout_mode = 2
+color = Color(0.24, 0.1968, 0.20328, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Parent/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_iybiq")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Parent/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_m1w6h")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Timer" type="Timer" parent="."]

@@ -289,14 +289,24 @@ func UpdateContextUI():
 	if CutsceneManager.active_cutscene != null:
 		forcedOption = forcedContextOption
 
+	var currentTile = selectedUnit.CurrentTile
+	# First do any special actions
+	for ge in currentTile.GridEntities:
+		if ge is GEChest:
+			if !ge.claimed:
+				combatHUD.ContextUI.AddButton(GameManager.LocalizationSettings.openChestAction, true, OnUnlock)
+
+
+	# Then the weapon
 	if !CutsceneManager.BlockWeaponContextMenuOption:
 		if selectedUnit.EquippedWeapon != null:
 			var enabled = forcedOption == -1 || forcedOption == 0
 			combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, enabled, OnAttack)
 			optionCount += 1
 
-	# First do the standard abilities
 
+
+	# Then do the standard abilities
 	if !CutsceneManager.BlockAbilityContextMenuOption:
 		for ability in selectedUnit.Abilities:
 			if ability.type == Ability.AbilityType.Standard:
@@ -321,7 +331,7 @@ func UpdateContextUI():
 
 	var canWait = !CutsceneManager.BlockWaitContextMenuOption
 	canWait = canWait && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
-	combatHUD.ContextUI.AddButton("Wait", canWait, OnWait)
+	combatHUD.ContextUI.AddButton(GameManager.LocalizationSettings.waitAction, canWait, OnWait)
 	combatHUD.ContextUI.LoopButtons()
 	combatHUD.ContextUI.SelectFirst()
 
@@ -329,6 +339,16 @@ func OnWait():
 	reticle.visible = true
 	ForceReticlePosition(selectedUnit.GridPosition)
 	selectedUnit.EndTurn()
+	ClearSelectionData()
+	EnterSelectionState()
+
+func OnUnlock():
+	# First do any special actions
+	for ge in selectedUnit.CurrentTile.GridEntities:
+		if ge is GEChest:
+			ge.Claim(selectedUnit)
+
+	selectedUnit.QueueEndTurn()
 	ClearSelectionData()
 	EnterSelectionState()
 

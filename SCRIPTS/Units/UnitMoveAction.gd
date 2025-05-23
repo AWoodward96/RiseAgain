@@ -19,20 +19,20 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	MovementIndex = 0
 	JumpTimer = 0
-	
+
 	# Maybe make a switch statement
 	match AnimationStyle:
 		UnitSettingsTemplate.MovementAnimationStyle.Normal:
 			unit.footstepsSound.play()
 		UnitSettingsTemplate.MovementAnimationStyle.Jump:
 			unit.LeapSound.play()
-	
+
 	if Route.size() > 1:
 		unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
 		TravelVector = Route[1].GlobalPosition - Route[0].GlobalPosition
 		JumpStart = Route[0].GlobalPosition
 
-		
+
 	pass
 
 func _Execute(_unit : UnitInstance, _delta):
@@ -44,11 +44,11 @@ func _Execute(_unit : UnitInstance, _delta):
 		speed = SpeedOverride
 
 	var destination = Route[MovementIndex].GlobalPosition
-	var distance = _unit.position.distance_squared_to(destination) 
+	var distance = _unit.position.distance_squared_to(destination)
 
 	Move(destination, distance, speed, _delta)
 	UpdateAnimations(distance)
-	
+
 	var maximumDistanceTraveled = speed * _delta; # or "Maximum distance we can travel in one frame"
 
 	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
@@ -62,7 +62,7 @@ func _Execute(_unit : UnitInstance, _delta):
 			GameSettingsTemplate.TraversalResult.HealthModified:
 				if unit.footstepsSound != null:
 					unit.footstepsSound.stop()
-				
+
 				if unit == null || unit.currentHealth <= 0:
 					# They fucking died lmao
 					if isAlliedTeam:
@@ -89,7 +89,7 @@ func _Execute(_unit : UnitInstance, _delta):
 		if MovementIndex >= Route.size() :
 			if unit.footstepsSound != null:
 				unit.footstepsSound.stop()
-				
+
 			unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 
 			if DestinationTile != null:
@@ -105,19 +105,19 @@ func _Execute(_unit : UnitInstance, _delta):
 					map.playercontroller.EnterContextMenuState()
 			return true
 		else:
-			TravelVector = Route[MovementIndex].GlobalPosition - Route[MovementIndex - 1].GlobalPosition  
+			TravelVector = Route[MovementIndex].GlobalPosition - Route[MovementIndex - 1].GlobalPosition
 	return false
 
 func UpdateAnimations(_distance):
 	# dont update the animation when we're not moving
 	if _distance <= 0:
 		return
-				
+
 	match AnimationStyle:
 		UnitSettingsTemplate.MovementAnimationStyle.Normal:
 			unit.PlayAnimation(UnitSettingsTemplate.GetMovementAnimationFromVector(MovementVelocity))
 		UnitSettingsTemplate.MovementAnimationStyle.Jump:
-		
+
 			if _distance > (TravelVector.length_squared() / 2):
 				if TravelVector.y < 0:
 					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_BACK_UP)
@@ -128,7 +128,7 @@ func UpdateAnimations(_distance):
 					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_BACK_DOWN)
 				else:
 					unit.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_FRONT_DOWN)
-			
+
 			if unit.visual.AnimationWorkComplete:
 				unit.visual.visual.flip_h = TravelVector.x < 0
 			pass
@@ -150,4 +150,7 @@ func Move(_destination : Vector2, _distance : float, _speed : float, _delta : fl
 func _Exit():
 	if unit.visual.AnimationWorkComplete:
 		unit.visual.visual.flip_h = false
+
+	if unit.footstepsSound != null:
+		unit.footstepsSound.stop()
 	pass

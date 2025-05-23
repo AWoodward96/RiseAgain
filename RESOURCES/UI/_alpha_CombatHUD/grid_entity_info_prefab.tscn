@@ -8,7 +8,7 @@
 [node name="GridEntityInfo" type="MarginContainer" node_paths=PackedStringArray("icon", "loc_label")]
 custom_minimum_size = Vector2(0, 24)
 script = ExtResource("1_tt21h")
-icon = NodePath("MarginContainer/HBoxContainer/AbilityIcon")
+icon = NodePath("MarginContainer/HBoxContainer/SizingSux/AbilityIcon")
 loc_label = NodePath("MarginContainer/HBoxContainer/Effect")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -23,12 +23,20 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
+size_flags_vertical = 4
 alignment = 1
 
-[node name="AbilityIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="SizingSux" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="AbilityIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/SizingSux"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+offset_right = 16.0
+offset_bottom = 16.0
 texture = ExtResource("1_mucif")
 expand_mode = 1
 

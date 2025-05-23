@@ -6,16 +6,21 @@ var unit : UnitInstance
 
 var grid : Grid
 
+var attacked : bool = false
 var selectedPath : Array[Tile]
 var selectedTile : Tile
 
 func StartTurn(_map : Map, _unit : UnitInstance):
+	CommonStartTurn(_map, _unit)
+	pass
+
+func CommonStartTurn(_map : Map, _unit : UnitInstance):
 	unit = _unit
 	map = _map
 	grid = map.grid
+	attacked = false
 
 	unit.QueueTurnStartDelay()
-	pass
 
 func RunTurn():
 	pass

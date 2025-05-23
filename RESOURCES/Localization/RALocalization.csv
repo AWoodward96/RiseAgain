@@ -206,8 +206,8 @@ art_graspingroots_name,Grasping Roots
 art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
 tile_deadtree_name,Dead Tree
 tile_river_name,River
-weap_lunarlance_name,Lance
-weap_lunarlance_desc,A mysterious ethereal spear with a strange emblem on it. You've never seen anything like it.
+weap_lunar_lance_name,Lance
+weap_lunar_lance_desc,A mysterious ethereal spear with a strange emblem on it. You've never seen anything like it.
 tile_corpseeater_name,Corpse Eater Tree
 ui_notiledata_name,None
 ui_firedamage_amt,{NUM} HP/Turn
@@ -329,3 +329,11 @@ art_castle_name,Castle
 art_castle_desc,Spend all of your Mana to grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield per Mana consumed
 ui_battleprep_title,Battle Preperations
 ui_passive_title_shorthand,PASS
+ui_wait,Wait
+ui_openchest,Unlock
+ui_gotitem_concat,Acquired 
+ui_stoleitem_concat, was pilfered!
+ui_chest,Chest
+ui_but_it_was_sent_to_convoy,\n ... it was sent to the Convoy
+des_amphibious_name,Amphibious
+des_amphibious_desc,Slimey and scaley. This Unit can survive in Water.

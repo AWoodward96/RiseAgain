@@ -52,6 +52,8 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 				_ability.type = Ability.AbilityType.Standard
 			"Tactical":
 				_ability.type = Ability.AbilityType.Tactical
+			"Passive":
+				_ability.type = Ability.AbilityType.Passive
 
 
 	if _data.has("internal_name"): _ability.internalName = _data["internal_name"]

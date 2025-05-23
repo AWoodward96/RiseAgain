@@ -1,15 +1,38 @@
-[gd_scene load_steps=16 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=20 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_ea6il"]
 [ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="4_ae3kp"]
+[ext_resource type="Texture2D" uid="uid://cjuonw20ub5yw" path="res://ART/UI/icon_has_loot.png" id="4_bcnfb"]
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
 [ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="9_v7dhr"]
 [ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="10_pwwos"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l8ji"]
+atlas = ExtResource("4_bcnfb")
+region = Rect2(5, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsear"]
+atlas = ExtResource("4_bcnfb")
+region = Rect2(5, 0, 5, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmoxs"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_6l8ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsear")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6je4"]
 
@@ -43,7 +66,7 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "hasLootIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
@@ -53,6 +76,7 @@ itemsParent = NodePath("Items")
 healthBar = NodePath("VBoxContainer/HealthBarParent")
 focusSlotPrefab = ExtResource("4_kfodt")
 affinityIcon = NodePath("VBoxContainer/AffinityIcon")
+hasLootIcon = NodePath("HasLoot")
 takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
@@ -102,6 +126,14 @@ modulate = Color(0.298039, 1, 0.254902, 1)
 position = Vector2(53.5, 53.5)
 scale = Vector2(0.0410156, 0.0410156)
 texture = ExtResource("4_reqvg")
+
+[node name="HasLoot" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(59, 58)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mmoxs")
+autoplay = "default"
+frame_progress = 0.326582
 
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
 

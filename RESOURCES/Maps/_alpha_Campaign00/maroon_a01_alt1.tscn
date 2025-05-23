@@ -24,12 +24,14 @@ script = ExtResource("13_1bp87")
 script = ExtResource("15_6sh8k")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_hkjcv"]
 script = ExtResource("15_6sh8k")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [node name="maroon_a01_alt1" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
@@ -140,7 +142,7 @@ Position = Vector2i(11, 1)
 AIBehavior = ExtResource("12_wt7k8")
 AggroBehavior = SubResource("Resource_dwgyn")
 
-[node name="Spawn_Zombie3" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Zombie2" type="Sprite2D" parent="Spawners"]
 position = Vector2(768, 256)
 texture = ExtResource("9_aec8j")
 centered = false

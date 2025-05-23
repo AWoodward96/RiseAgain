@@ -5,14 +5,26 @@ class_name SpawnerBasic
 @export var UnitToSpawn : UnitTemplate :
 	set(value):
 		UnitToSpawn = value
-		if value != null:
-			name = PREFIX + UnitToSpawn.DebugName
-
+		UpdateName()
 
 @export var UnitLevel : int = 0 # remember, this is indexed
 @export var DeltaLevel : int = -1 # The level of this unit relative to the highest level of the campaign. Defaulting to -1, because otherwise the exp gain on a unit that level would be too snowbally
 @export var ExtraEXPGranted : int = 0
 @export var PreAppliedEffects : Array[CombatEffectTemplate]
+
+func UpdateName():
+	if UnitToSpawn == null:
+		name = "Empty_Spawner"
+	else:
+		var newName = ""
+		if !Enabled:
+			newName += "DISABLED_"
+
+		newName += PREFIX + UnitToSpawn.DebugName
+		name = newName
+
+func OnEnableToggled():
+	UpdateName()
 
 func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	if UnitTemplate == null || !Enabled:

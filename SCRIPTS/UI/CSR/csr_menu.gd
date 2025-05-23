@@ -27,6 +27,9 @@ func btnNeverHit():
 	NeverHit = !NeverHit
 
 func btnUnlockAllAbilities():
+	UnlockAllAbilities()
+
+static func UnlockAllAbilities():
 	var map = Map.Current
 	if map == null:
 		return

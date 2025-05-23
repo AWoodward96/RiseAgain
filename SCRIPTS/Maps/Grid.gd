@@ -206,24 +206,26 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 
 		for neigh in NEIGHBORS:
 			var neighborLocation = current.Position + neigh
-			var tile = GetTile(neighborLocation)
+			var tile = GetTile(neighborLocation) as Tile
 			if tile == null:
 				continue
 
 			if visited.has(tile):
 				continue
 
+			if !tile.Traversable(_unit, unitHasFlying):
+				continue
+
 			if !CanUnitFitOnTile(_unit, tile, unitHasFlying, true):
 				continue
 
-			if unitHasFlying || (!tile.IsWall && !tile.ActiveKillbox):
-				var occupant = tile.Occupant
-				if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
-					if visited[current] + 1 > movement:
-						break
-					visited[tile] = visited[current] + 1
-					returnList.append(tile)
-					frontier.append(tile)
+			var occupant = tile.Occupant
+			if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
+				if visited[current] + 1 > movement:
+					break
+				visited[tile] = visited[current] + 1
+				returnList.append(tile)
+				frontier.append(tile)
 	return returnList
 
 func SwapUnitPositions(_unit1 : UnitInstance, _unit2 : UnitInstance):
@@ -455,16 +457,16 @@ func GetGreedyTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endi
 
 		for neigh in NEIGHBORS:
 			var neighborLocation = current.Position + neigh
-			var nextTile = GetTile(neighborLocation)
+			var nextTile = GetTile(neighborLocation) as Tile
 			if nextTile == null:
 				continue
 
 			if !visited.has(nextTile):
 				# Early Exit: Unit isn't flying, and there is a wall there
 				# Early Exit: The next tile is a killbox - don't let them willingly move over them
-				if !unitIsFlying:
-					if (nextTile.IsWall || nextTile.ActiveKillbox):
-						continue
+				if !nextTile.Traversable(_unitInstance, unitIsFlying):
+					continue
+
 
 				if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
 					continue
@@ -525,9 +527,8 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 
 			# Early Exit: Unit isn't flying, and there is a wall there
 			# Early Exit: The next tile is a killbox - don't let them willingly move over them
-			if !unitIsFlying:
-				if (nextTile.IsWall || nextTile.ActiveKillbox):
-					continue
+			if !nextTile.Traversable(_unitInstance, unitIsFlying):
+				continue
 
 			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
 				continue

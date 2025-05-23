@@ -44,6 +44,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var MindStat : StatTemplate
 
 @export var FlyingDescriptor : DescriptorTemplate
+@export var AmphibiousDescriptor : DescriptorTemplate
 
 @export var CharacterTileMovemementSpeed : float = 100
 @export var AOEExpMultiplier : float = 0.5
@@ -197,7 +198,7 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	return damageTotal
 
 
-# TODO: When the playtest is over, recomment this back in to figure out everything
+# TODO: When the playtest is over, re-comment this back in to figure out everything
 #func Damage(_aggressiveStatValue : int, _attackingAffinity : AffinityTemplate, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData):
 	#var flatValue = _damageData.FlatValue
 	#var aggressiveStat = _damageData.AgressiveStat

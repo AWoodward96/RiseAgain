@@ -26,6 +26,20 @@ func TryExecute(_delta : float):
 
 	return false
 
+func BuildResults():
+	log.actionStepResults.clear()
+	for tile in log.affectedTiles:
+		var index = 0
+		for step in executionStack:
+			var result = step.GetResult(log, tile)
+			if result != null:
+				if result is ActionStepResult:
+					result.StepIndex = index
+					log.actionStepResults.append(result)
+				else:
+					push_error("Ability Step: " + str(step.get_script()) + " - attached to ability " + ability.name + " has an improper ActionStepResult and cannot be previewed.")
+			index += 1
+
 
 static func Construct(_source : UnitInstance, _abilitySource : Ability, _priority : int = 0):
 	var newAction = PassiveAbilityAction.new()

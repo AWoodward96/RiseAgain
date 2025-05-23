@@ -31,14 +31,16 @@ var valid : bool = false
 var map : Map
 var grid : Grid
 
+static func Construct(_source : UnitInstance, _target : UnitInstance, _map : Map, _ability : Ability):
+	var option = EnemyAIOption.new()
+	option.map = _map
+	option.grid = _map.grid
+	option.sourceUnit = _source
+	option.targetUnit = _target
+	option.ability = _ability
+	return option
 
-func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _ability : Ability):
-	map = _map
-	grid = map.grid
-	sourceUnit = _source
-	targetUnit = _target
-	ability = _ability
-
+func Update():
 	CheckIfMovementNeeded(sourceUnit.CurrentTile)
 	if valid:
 		# If Valid is true at the moment, then our target is within range to attack at the tile we're currently standing on
@@ -48,7 +50,7 @@ func Update(_source : UnitInstance, _target : UnitInstance, _map : Map, _ability
 		# If Valid isn't true, then we need to move to attack this target.
 		# We need to get all of the possible options for attacking this target
 		# Greedy Tile Path is used here because 1: It's fast and 2: It can get us closer to a target thats's out of reach - where-as A* would simply fail
-		roughPath = _map.grid.GetGreedyTilePath(_source, sourceUnit.CurrentTile, targetUnit.CurrentTile)
+		roughPath = map.grid.GetGreedyTilePath(sourceUnit, sourceUnit.CurrentTile, targetUnit.CurrentTile)
 		if roughPath.size() == 0:
 			# If it's 0, there is no path between these two units that is valid.
 			# If the MovementNeeded check fails, then this unit option is invalid and won't be used

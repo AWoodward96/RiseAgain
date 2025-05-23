@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=29 format=3 uid="uid://cb51ipfqroolr"]
+
+[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_4fvcs"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_y3xvp"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_gi3ry"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_ewst1"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_t6x3g"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_3g7ki"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="7_gfxnt"]
+[ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="8_ysayb"]
+[ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_bxnph"]
+[ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_hfe2a"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_pv884"]
+[ext_resource type="Texture2D" uid="uid://cq12pc2hgi2h6" path="res://ART/Icons/Units/healcap.png" id="12_jbv3c"]
+[ext_resource type="PackedScene" uid="uid://djcp40pujey18" path="res://RESOURCES/Units/Enemy/HealCap/VIS_HealCap.tscn" id="12_y3xvp"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_fvbtl"]
+
+[sub_resource type="Resource" id="Resource_m1uct"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("3_gi3ry")
+Value = 3.0
+
+[sub_resource type="Resource" id="Resource_ua50t"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("4_ewst1")
+Value = 1.0
+
+[sub_resource type="Resource" id="Resource_rwfmq"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("5_t6x3g")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_27fya"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("6_3g7ki")
+Value = 3.0
+
+[sub_resource type="Resource" id="Resource_qyajh"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("7_gfxnt")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_k3o6q"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("8_ysayb")
+Value = 6.0
+
+[sub_resource type="Resource" id="Resource_7ncay"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("9_bxnph")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_jf1gk"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("10_hfe2a")
+Value = 2.0
+
+[sub_resource type="Resource" id="Resource_fegky"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("3_gi3ry")
+Value = 30.0
+
+[sub_resource type="Resource" id="Resource_0v4vg"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("4_ewst1")
+Value = 30.0
+
+[sub_resource type="Resource" id="Resource_xiax8"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("5_t6x3g")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_ncrfs"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("6_3g7ki")
+Value = 50.0
+
+[sub_resource type="Resource" id="Resource_irvnf"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("7_gfxnt")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_lv3ly"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("9_bxnph")
+Value = 0
+
+[resource]
+resource_name = "UT_HealCap"
+script = ExtResource("13_fvbtl")
+VisualPrefab = ExtResource("12_y3xvp")
+BaseStats = Array[ExtResource("2_y3xvp")]([SubResource("Resource_m1uct"), SubResource("Resource_ua50t"), SubResource("Resource_rwfmq"), SubResource("Resource_27fya"), SubResource("Resource_qyajh"), SubResource("Resource_k3o6q"), SubResource("Resource_7ncay"), SubResource("Resource_jf1gk")])
+StatGrowths = Array[ExtResource("2_y3xvp")]([SubResource("Resource_fegky"), SubResource("Resource_0v4vg"), SubResource("Resource_xiax8"), SubResource("Resource_ncrfs"), SubResource("Resource_irvnf"), SubResource("Resource_lv3ly")])
+Affinity = ExtResource("1_4fvcs")
+Tier0Abilities = Array[String](["uid://crgp0s3avbs4i"])
+Tier1Abilities = Array[String]([])
+Descriptors = Array[ExtResource("11_pv884")]([])
+GridSize = 1
+FootstepGUID = ""
+DebugName = "HealCap"
+loc_DisplayName = "unit_healcap_name"
+loc_Description = "unit_healcap_desc"
+icon = ExtResource("12_jbv3c")

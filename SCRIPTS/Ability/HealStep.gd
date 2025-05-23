@@ -3,9 +3,12 @@ class_name HealStep
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
-	for results in _actionLog.actionStepResults:
-		source.QueueHealAction(log)
-		pass
+	print("heal step update")
+
+	# The heal action will automatically grab the right result, it just needs to be queued
+	# This looks weird but it's right
+	source.QueueHealAction(log)
+	pass
 
 func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
 	var result = HealStepResult.new()

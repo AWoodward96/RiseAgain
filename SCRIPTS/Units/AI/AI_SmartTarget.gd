@@ -5,12 +5,11 @@ class_name AISmartTarget
 
 var options : Array[EnemyAIOption]
 var selectedOption : EnemyAIOption
-var attacked : bool = false
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-	super(_map, _unit)
-
+	CommonStartTurn(_map, _unit)
 	options.clear()
+
 	selectedOption = null
 	attacked = false
 
@@ -39,10 +38,10 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 		for u in filteredUnitsOnTeam:
 			for weapon in weaponsAvailableForUse:
-				var newOption = EnemyAIOption.new()
+				var newOption = EnemyAIOption.Construct(_unit, u, map, weapon)
 				newOption.flagIndex = i
 				newOption.totalFlags = Flags.size()
-				newOption.Update(_unit, u, map, weapon)
+				newOption.Update()
 
 				if newOption.valid:
 					newOption.UpdateWeight()

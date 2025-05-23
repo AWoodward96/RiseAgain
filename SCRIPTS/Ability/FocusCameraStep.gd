@@ -20,7 +20,7 @@ func Enter(_actionLog : ActionLog):
 	if OnActionOrigin:
 		ctrl.ForceCameraPosition(log.actionOriginTile.Position, Instant)
 	elif OnSource:
-		ctrl.ForceCameraPosition(log.source.GridPosition, Instant)
+		ctrl.ForceCameraPosition(log.sourceTile.Position, Instant)
 	elif OnSpecificPosition:
 		ctrl.ForceCameraPosition(SpecificPosition, Instant)
 

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CampaignTemplate" load_steps=6 format=3 uid="uid://dcucv6vauy0dy"]
+
+[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="1_gxh3s"]
+[ext_resource type="Texture2D" uid="uid://duq4qf5n0vf6a" path="res://ART/Icons/Route/mountain_path.png" id="2_s5apg"]
+[ext_resource type="Script" uid="uid://bjwkg4cb6y7vw" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="3_bqlod"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="4_bdvax"]
+[ext_resource type="Resource" uid="uid://dfg1bb4ol66cj" path="res://RESOURCES/Maps/WhiteCoast/cb_cliff_main.tres" id="5_gifw3"]
+
+[resource]
+script = ExtResource("3_bqlod")
+startingCampaignOptions = Array[ExtResource("4_bdvax")]([ExtResource("5_gifw3")])
+campaignBlockCap = -1
+MapRewardTable = ExtResource("1_gxh3s")
+loc_name = "campaign_white_coast"
+loc_icon = ExtResource("2_s5apg")

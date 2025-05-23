@@ -1,10 +1,12 @@
 extends CanvasLayer
 
-signal OnRosterSelected(_squad : Array[UnitTemplate])
+signal OnRosterSelected(_squad : Array[UnitTemplate], _level : int)
 @export var UnitEntryPrefab : PackedScene
 @export var SquadEntryPrefab : PackedScene
 @export var ReadyButton : Button
 @export var RemainingSlotsText : Label
+@export var LevelOverride : LineEdit
+@export var UnlockAbilities : CheckButton
 
 @onready var unitEntryParent = %UnitEntryParent
 @onready var squadEntryParent = %SquadEntryParent
@@ -62,5 +64,7 @@ func OnUnitEntrySelected(_unitTemplate : UnitTemplate):
 
 func OnReadyButton():
 	if workingSquad.size() > 0:
-		OnRosterSelected.emit(workingSquad)
+		OnRosterSelected.emit(workingSquad, int(LevelOverride.text))
+		if UnlockAbilities.button_pressed:
+			CSR.UnlockAllAbilities()
 		queue_free()

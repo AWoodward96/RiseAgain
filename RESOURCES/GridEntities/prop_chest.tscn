@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwl3gpxdre6gk"]
+
+[ext_resource type="Script" uid="uid://cvcugr0oaoiu" path="res://SCRIPTS/GridEntities/GEChest.gd" id="1_mtde5"]
+[ext_resource type="Texture2D" uid="uid://p8dgy52suhsr" path="res://ART/Environment/temp_chest.png" id="2_7gcw2"]
+[ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="2_jn04q"]
+[ext_resource type="Texture2D" uid="uid://cufnb5md2o452" path="res://ART/Icons/chest.png" id="3_jn04q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn04q"]
+atlas = ExtResource("2_7gcw2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vntur"]
+atlas = ExtResource("2_7gcw2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_47ren"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn04q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vntur")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="prop_chest" type="Node2D" node_paths=PackedStringArray("visual")]
+scale = Vector2(2, 2)
+script = ExtResource("1_mtde5")
+loot = ExtResource("2_jn04q")
+visual = NodePath("AnimatedSprite2D")
+localization_icon = ExtResource("3_jn04q")
+localization_desc = "ui_chest"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_47ren")
+autoplay = "default"

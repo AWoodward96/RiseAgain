@@ -8,7 +8,7 @@ func Enter(_actionLog : ActionLog):
 	super(_actionLog)
 
 	delay = false
-	await _actionLog.source.get_tree().create_timer(time).timeout
+	await GameManager.get_tree().create_timer(time).timeout
 	delay = true
 	pass
 

@@ -51,6 +51,16 @@ static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 @export var AbilitySpeedSlowColor : Color
 
 
+@export_category("Context UI")
+@export var waitAction : String = "ui_wait"
+@export var openChestAction : String = "ui_openchest"
+
+
+@export_category("Item Acquired UI")
+@export var gotItemConcat : String = "ui_gotitem_concat"
+@export var stoleItemConcat : String = "ui_stoleitem_concat"
+@export var butSentToConvoyConcat : String = "ui_but_it_was_sent_to_convoy"
+
 func FormatAsHeal(_healAmount : int):
 	var htmlHash = HealColor.to_html(false)
 	return FormatCenter("[color=#" + htmlHash + "]" + str(_healAmount) + "[/color]")

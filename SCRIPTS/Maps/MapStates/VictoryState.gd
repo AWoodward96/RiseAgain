@@ -61,19 +61,9 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 		# Default to giving the first person in the roster the item
 		if _unit != null:
 			# NOTE: if Unit is null, then the item has been sent to the convoy via a different sequence
-
-			var counter = 0
-			var equipped = false
-			for slot in _unit.ItemSlots:
-				if slot == null:
-					_unit.EquipItem(counter, _lootRewardEntry.ItemPrefab)
-					equipped = true
-					break
-				counter += 1
-
-			if !equipped:
+			# But if it's not null, it's handled here - lets gooo
+			if !_unit.TryEquipItem(_lootRewardEntry.ItemPrefab):
 				map.CurrentCampaign.AddItemToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
-
 	pass
 
 func Exit():

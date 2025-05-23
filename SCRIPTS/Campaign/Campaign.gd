@@ -26,6 +26,7 @@ var Convoy : Array[Item]
 var resumingCampaign : bool = false
 var currentLevelDifficulty : int
 var alphaTeamSelection
+var debug_leveloverride : int = 0
 
 func InitializeNewCampaign(_template : CampaignTemplate, _startingRoster : Array[UnitTemplate]):
 	StartingRosterTemplates = _startingRoster
@@ -140,7 +141,7 @@ func ResumeMap():
 
 func CreateSquadInstance():
 	for unit in StartingRosterTemplates:
-		AddUnitToRoster(unit)
+		AddUnitToRoster(unit, debug_leveloverride)
 
 func MapComplete():
 	# Persist the current roster between maps
@@ -173,8 +174,10 @@ func GetMapRewardTable():
 
 	return currentCampaignTemplate.MapRewardTable
 
-func OnRosterSelected(_roster : Array[UnitTemplate]):
+func OnRosterSelected(_roster : Array[UnitTemplate], _levelOverride : int):
 	StartingRosterTemplates = _roster
+	debug_leveloverride = _levelOverride
+
 
 func AddItemToConvoy(_item : Item):
 	CreateConvoyParent()

@@ -13,6 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_lu3qr"]
 script = ExtResource("3_en8m4")
+UseActionOrigin = true
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_ree2d")

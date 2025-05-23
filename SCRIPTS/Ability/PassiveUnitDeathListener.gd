@@ -27,9 +27,15 @@ func OnDeath(_unitThatDied : UnitInstance, _context : DamageStepResult):
 	if reqKilledByUser && _context.Source != ability.ownerUnit:
 		passes = false
 
-	# Figure this shit out later
-	# Can't run try-execute here because it needs to be in an update loop
-	#if passes && triggerAbilityStack:
-		#ability.TryExecute()
+	if passes && triggerAbilityStack:
+		var passiveInstance = PassiveAbilityAction.Construct(ability.ownerUnit, ability)
+		passiveInstance.executionStack = ability.executionStack
+		passiveInstance.log.actionOriginTile = _unitThatDied.CurrentTile
+
+		if ability.TargetingData != null:
+			passiveInstance.log.affectedTiles = ability.TargetingData.GetAffectedTiles(_unitThatDied, Map.Current.grid, _unitThatDied.CurrentTile)
+
+		passiveInstance.BuildResults()
+		Map.Current.AppendPassiveAction(passiveInstance)
 
 	pass
