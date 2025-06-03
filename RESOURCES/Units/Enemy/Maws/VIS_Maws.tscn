@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://7klh46agp38n"]
+[gd_scene load_steps=6 format=3 uid="uid://7klh46agp38n"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_edae0"]
 [ext_resource type="Texture2D" uid="uid://gjhjsx5ie5ib" path="res://ART/Icons/Units/maws.png" id="2_kgk8a"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_tjtun"]
+[ext_resource type="Texture2D" uid="uid://bbgi0j7f72ml4" path="res://ART/Icons/submerged_icon.png" id="4_lljie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
 
-[node name="VIS_Maws" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="VIS_Maws" type="Node2D" node_paths=PackedStringArray("AnimationCTRL", "SubmergedParent")]
 script = ExtResource("1_edae0")
 AnimationCTRL = NodePath("AnimationPlayer")
+SubmergedParent = NodePath("SubmergedSprite")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.290196, 0.211765, 1)
@@ -22,6 +24,13 @@ libraries = {
 &"UnitEnemyLibrary": ExtResource("3_tjtun")
 }
 autoplay = "Unactivated"
+
+[node name="SubmergedSprite" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.660642, 0.363976, 0.492913, 1)
+position = Vector2(32, 32)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_lljie")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

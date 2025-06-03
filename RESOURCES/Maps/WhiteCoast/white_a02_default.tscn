@@ -148,8 +148,8 @@ texture = ExtResource("9_xmcga")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(128, 384)
-Position = Vector2i(2, 6)
+position = Vector2(192, 384)
+Position = Vector2i(3, 6)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
@@ -158,13 +158,18 @@ Position = Vector2i(3, 5)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(64, 320)
-Position = Vector2i(1, 5)
+position = Vector2(128, 256)
+Position = Vector2i(2, 4)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(192, 384)
-Position = Vector2i(3, 6)
+position = Vector2(128, 320)
+Position = Vector2i(2, 5)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
+position = Vector2(64, 384)
+Position = Vector2i(1, 6)
 map = NodePath("../..")
 
 [node name="Spawners" type="Node2D" parent="."]

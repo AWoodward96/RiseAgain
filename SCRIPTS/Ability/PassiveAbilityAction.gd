@@ -7,7 +7,6 @@ var log : ActionLog
 var priority : int = 0
 var ability : Ability
 var source : UnitInstance
-var cachedSourceStats : Dictionary = {}	# unit might die before this so it's important to construct
 
 
 func TryExecute(_delta : float):

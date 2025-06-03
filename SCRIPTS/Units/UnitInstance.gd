@@ -42,6 +42,7 @@ var ItemSlots : Array[Item]
 var Abilities : Array[Ability]
 var CombatEffects : Array[CombatEffectInstance]
 var EquippedWeapon : Ability
+var Submerged : bool = false
 
 var IsDefending : bool = false :
 	set(value):
@@ -78,6 +79,7 @@ var DisplayLevel : int :
 var Level : int
 var Exp : int
 var ExtraEXPGranted : int = 0
+var IsDying : bool = false
 
 var map : Map
 var currentHealth
@@ -168,6 +170,7 @@ func InitializeStats():
 		currentFocus = GetWorkingStat(GameManager.GameSettings.MindStat)
 	else:
 		currentFocus = 0
+	IsDying = false
 
 func UpdateDerivedStats():
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
@@ -231,6 +234,7 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 	GridPosition = _gridLocation
 	map = _map
 	UnitAllegiance = _allegiance
+	IsDying = false
 
 	facingDirection = GameSettingsTemplate.Direction.Down
 
@@ -256,6 +260,26 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 func OnMapComplete():
 	ShowHealthBar(false)
 	IsDefending = false
+
+func OnTileUpdated(_tile : Tile):
+	if IsDying || Template == null || _tile == null:
+		return
+
+	if Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
+		if _tile.OpenWater && !Submerged:
+			SetSubmerged(true)
+		elif Submerged && !_tile.OpenWater:
+			SetSubmerged(false)
+
+func SetSubmerged(_val : bool):
+	Submerged = _val
+
+	visual.UpdateSubmerged(_val)
+	if Submerged:
+		affinityIcon.visible = false
+	else:
+		affinityIcon.visible = true
+
 
 func UpdateLoot():
 	hasLootIcon.visible = false
@@ -676,6 +700,8 @@ func CheckDeath(_context : DamageStepResult):
 		map.OnUnitDeath(self, _context)
 
 func PlayDeathAnimation():
+	IsDying = true
+	affinityIcon.visible = false
 	if visual != null && visual.AnimationWorkComplete:
 		deathSound.play()
 		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
@@ -833,6 +859,12 @@ func PlayAnimation(_animString : String, _smoothTransition : bool = false, _anim
 	if visual != null:
 		visual.PlayAnimation(_animString, _smoothTransition, _animSpeed, _fromEnd)
 
+# Should check to see if now's actually when we should return to idle.
+# Is currently just a wrapping method
+func TryPlayIdleAnimation():
+	if visual != null:
+		PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+
 func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
 	if visual != null && visual.AnimationWorkComplete:
 		var round = GameManager.GameSettings.AxisRound(_dst)
@@ -876,7 +908,8 @@ func ToJSON():
 		"Abilities" : PersistDataManager.ArrayToJSON(Abilities),
 		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots),
 		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects),
-		"Injured" : Injured
+		"Injured" : Injured,
+		"Submerged" : Submerged
 	}
 
 	if AI != null:
@@ -919,6 +952,7 @@ static func FromJSON(_dict : Dictionary):
 
 	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
 	unitInstance.IsAggrod = _dict["IsAggrod"]
+	unitInstance.Submerged = _dict["Submerged"]
 
 	unitInstance.unitPersistence = PersistDataManager.universeData.GetUnitPersistence(unitInstance.Template)
 	var baseStatsDict = _dict["baseStats"]

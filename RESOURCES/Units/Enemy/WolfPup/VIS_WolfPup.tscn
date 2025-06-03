@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://ART/Icons/Units/wolfpup.png" id="2_dhyip"]
 [ext_resource type="Texture2D" uid="uid://cp6kiljkkifkv" path="res://ART/Units/Wolfs/Spritesheet_Pup.png" id="3_u871h"]
 [ext_resource type="Shader" uid="uid://cf720m26t7obl" path="res://RESOURCES/Units/Ally/WildMage/palette_swap_complex.gdshader" id="3_x2p03"]
-[ext_resource type="Texture2D" uid="uid://ds2riu838u75r" path="res://ART/Units/Wolfs/wolf_pup_pallete.png" id="4_32e5i"]
+[ext_resource type="Texture2D" uid="uid://b48vjlj1rdj1d" path="res://ART/Units/Wolfs/Wolf_Pup_Palette.png" id="4_u871h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
@@ -12,9 +12,9 @@ size = Vector2(64, 64)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qymfw"]
 resource_local_to_scene = true
 shader = ExtResource("3_x2p03")
-shader_parameter/palette = ExtResource("4_32e5i")
-shader_parameter/palette_count = 4.0
-shader_parameter/palette_index = 3.0
+shader_parameter/palette = ExtResource("4_u871h")
+shader_parameter/palette_count = 7.0
+shader_parameter/palette_index = 1.0
 shader_parameter/tint = Color(1, 1, 1, 1)
 shader_parameter/grey_scale = false
 shader_parameter/grey_scale_offset = 0.25
@@ -890,7 +890,7 @@ material = SubResource("ShaderMaterial_qymfw")
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tlib1")
-animation = &"idle"
+animation = &"take_damage"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

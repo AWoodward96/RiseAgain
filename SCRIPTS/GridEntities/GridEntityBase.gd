@@ -114,6 +114,8 @@ static func FromJSON(_dict : Dictionary):
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEProp
 		"GEChest":
 			gridEntityBase = load(_dict["prefab"]).instantiate() as GEChest
+		"GESlowSpeedAttack":
+			gridEntityBase = load(_dict["prefab"]).instantiate() as GESlowSpeedAttack
 
 	gridEntityBase.InitFromJSON(_dict)
 	return gridEntityBase

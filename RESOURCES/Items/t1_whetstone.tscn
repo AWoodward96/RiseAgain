@@ -6,10 +6,10 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_mx0ga"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="5_8ff5h"]
 
-[sub_resource type="Resource" id="Resource_pr3df"]
+[sub_resource type="Resource" id="Resource_hodaj"]
 script = ExtResource("5_8ff5h")
 Template = ExtResource("4_mx0ga")
-Value = 2
+Value = 1
 
 [node name="whetstone_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_agn71")
@@ -21,4 +21,4 @@ statData = NodePath("ItemEquipData")
 
 [node name="ItemEquipData" type="Node2D" parent="."]
 script = ExtResource("3_yi1k6")
-StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_pr3df")])
+StatsToGrant = Array[ExtResource("5_8ff5h")]([SubResource("Resource_hodaj")])

@@ -36,6 +36,20 @@ static var ANIM_JUMP_BACK_DOWN = "jump_back_down"
 func GetPrestiegeBreakpoint(_currentLevel : int):
 	return BaseUnitPrestiegeCost + (_currentLevel * AdditionalUnitPrestiegeCost)
 
+func ValidateUnitTemplates():
+	for template in AllyUnitManifest:
+		if template.StartingEquippedWeapon != null:
+			var weaponPath = template.StartingEquippedWeapon.resource_path
+			if weaponPath.contains("PackedScene_"):
+				push_error("PACKED SCENE ERROR: UNIT '" + template.DebugName + "' HAS AN INVALID STARTING WEAPON")
+
+		if template.StartingTactical != null:
+			var tacticalPath = template.StartingTactical.resource_path
+			if tacticalPath.contains("PackedScene_"):
+				push_error("PACKED SCENE ERROR: UNIT '" + template.DebugName + "' HAS AN INVALID STARTING TACTICAL")
+
+	pass
+
 static func GetMovementAnimationFromVector(_movement : Vector2):
 	var angle = rad_to_deg(_movement.angle())
 	if angle < 0:

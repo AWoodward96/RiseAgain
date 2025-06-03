@@ -337,3 +337,9 @@ ui_chest,Chest
 ui_but_it_was_sent_to_convoy,\n ... it was sent to the Convoy
 des_amphibious_name,Amphibious
 des_amphibious_desc,Slimey and scaley. This Unit can survive in Water.
+tile_cliff_name,Cliff
+tile_waterfall_name,Waterfall
+art_arrow_rain_name,Arrow Rain
+art_arrow_rain_desc,"At the start of this Units next turn, deal damage to all Units in a 3x3 Square based on {DMG_AGGRESSIVESTAT}"
+ui_something_in_the_water,There's something in the water...
+ui_submerged_unknown,? ? ?

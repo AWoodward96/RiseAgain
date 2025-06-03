@@ -2,6 +2,7 @@ class_name EnemyAIOption
 
 const TIER_AMOUNT = 100
 const KILL_TIER_AMOUNT = 101 # Weighed only 1 higher than other tiers - just so it can stick out as the best option more oftan than not
+const ABILITY_TIER_AMOUNT = 1000
 
 var weight : int
 
@@ -99,14 +100,13 @@ func Update():
 
 func CheckIfMovementNeeded(_origin : Tile):
 	# First, check if we even need to move in order to hit the target
-	if ability.type == Ability.AbilityType.Weapon:
-		var itemRange = ability.GetRange()
-		manhattanDistance = map.grid.GetManhattanDistance(_origin.Position, targetUnit.GridPosition)
-		if manhattanDistance >= itemRange.x && manhattanDistance <= itemRange.y:
-			# Congrats we have a valid attack strategy
-			valid = true
-			SetValidAttack(_origin, targetUnit.CurrentTile)
-			return
+	var itemRange = ability.GetRange()
+	manhattanDistance = map.grid.GetManhattanDistance(_origin.Position, targetUnit.GridPosition)
+	if manhattanDistance >= itemRange.x && manhattanDistance <= itemRange.y:
+		# Congrats we have a valid attack strategy
+		valid = true
+		SetValidAttack(_origin, targetUnit.CurrentTile)
+		return
 
 	CheckAbilityAttacks(_origin)
 
@@ -157,11 +157,13 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	tileToMoveTo = _tileToMoveTo
 	tileToAttack = _tileToAttack
 	var targetUnitRange = Vector2i.ONE
-	if targetUnit.EquippedWeapon != null:
-		targetUnitRange = targetUnit.EquippedWeapon.GetRange()
 
-	if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
-		unitWillRetaliate = true
+	if ability != null:
+		targetUnitRange = ability.GetRange()
+
+	if ability.type == Ability.AbilityType.Weapon:
+		if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
+			unitWillRetaliate = true
 
 	if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
 		tilesHitByAttack = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, tileToMoveTo, grid, direction)
@@ -186,6 +188,9 @@ func UpdateWeight():
 
 	# This means, the further away the unit is, the lower the priority it is.
 	# IE: Closer = better
+	if ability.type == Ability.AbilityType.Standard:
+		weight += ABILITY_TIER_AMOUNT
+
 	weight += TIER_AMOUNT - path.size()
 	weight += KILL_TIER_AMOUNT * killCount
 

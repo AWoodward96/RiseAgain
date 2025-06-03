@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbajwwvmkeoo7"
-path="res://.godot/imported/wolf_pup_pallete_test.png-504de22bf22a59a2d6d6c817e4b023c6.ctex"
+uid="uid://uxr60sgilonh"
+path="res://.godot/imported/maul.png-51d3eff655549580db207cce7c828938.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Units/Wolfs/wolf_pup_pallete_test.png"
-dest_files=["res://.godot/imported/wolf_pup_pallete_test.png-504de22bf22a59a2d6d6c817e4b023c6.ctex"]
+source_file="res://ART/Icons/Ability/Standard/maul.png"
+dest_files=["res://.godot/imported/maul.png-51d3eff655549580db207cce7c828938.ctex"]
 
 [params]
 

@@ -1,0 +1,100 @@
+[gd_scene load_steps=22 format=3 uid="uid://dp0gbxwj2y26b"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6yhr7"]
+[ext_resource type="Texture2D" uid="uid://uxr60sgilonh" path="res://ART/Icons/Ability/Standard/maul.png" id="2_jsawa"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_laam4"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_p0no4"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_jsawa"]
+[ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_rqvwo"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_1g1qy"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_lrpj3"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_8yxgm"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_k7bwb"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="11_oybbw"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="12_jhchw"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="13_tv8hm"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="14_2kkgi"]
+
+[sub_resource type="Resource" id="Resource_a18b1"]
+script = ExtResource("3_rqvwo")
+WaitForStackFree = true
+SpeedOverride = -1
+AnimationStyle = 1
+metadata/_custom_type_script = "uid://cm68c4p601pk"
+
+[sub_resource type="Resource" id="Resource_r5wa8"]
+script = ExtResource("4_1g1qy")
+useAttackAction = false
+useDefendAction = true
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_ucxb0"]
+script = ExtResource("5_k7bwb")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_gq0em"]
+script = ExtResource("12_jhchw")
+AccuracyModifier = 0.0
+CritModifier = 0.33
+Ignite = 0
+Position = Vector2i(0, -3)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_56qcq"]
+script = ExtResource("12_jhchw")
+AccuracyModifier = 0.0
+CritModifier = 0.33
+Ignite = 0
+Position = Vector2i(-1, -3)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_h7rub"]
+script = ExtResource("12_jhchw")
+AccuracyModifier = 0.0
+CritModifier = 0.33
+Ignite = 0
+Position = Vector2i(1, -3)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_r1dpk"]
+script = ExtResource("13_tv8hm")
+TileCoordinates = Array[ExtResource("11_oybbw")]([SubResource("Resource_gq0em"), SubResource("Resource_56qcq"), SubResource("Resource_h7rub")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[node name="maul" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_6yhr7")
+focusCost = 0
+executionStack = Array[ExtResource("2_p0no4")]([SubResource("Resource_a18b1"), SubResource("Resource_r5wa8"), SubResource("Resource_ucxb0")])
+internalName = "maul"
+loc_displayName = "art_maul_name"
+loc_displayDesc = "art_maul_desc"
+icon = ExtResource("2_jsawa")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("2_laam4")
+AgressiveStat = ExtResource("3_jsawa")
+AgressiveModType = 2
+AgressiveMod = 1.5
+DefensiveStat = ExtResource("4_lrpj3")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("5_8yxgm")
+TeamTargeting = 2
+TargetRange = Vector2i(1, 3)
+Type = 2
+shapedTiles = SubResource("Resource_r1dpk")
+stopShapeOnWall = true
+
+[node name="AbilityMovementComponent" type="Node2D" parent="."]
+script = ExtResource("14_2kkgi")
+type = 1
+stoppedByWalls = false
+drawPath = false
+movementAmount = 2
+metadata/_custom_type_script = "uid://dosuyr8paidkx"

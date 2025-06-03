@@ -30,6 +30,12 @@ func UpdatePositionOnGrid():
 		t.Tile.AddEntity(self)
 	pass
 
+func Exit():
+	for t in tiles:
+		if t == null || t.Tile == null:
+			continue
+
+		t.Tile.RemoveEntity(self)
 
 func ToJSON():
 	var dict = super()

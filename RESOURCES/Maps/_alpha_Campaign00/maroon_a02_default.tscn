@@ -29,12 +29,14 @@
 script = ExtResource("15_hmykc")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_jto7i"]
 script = ExtResource("15_hmykc")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_vtkl2"]
@@ -47,18 +49,21 @@ script = ExtResource("17_sn377")
 script = ExtResource("15_hmykc")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_7jrpa"]
 script = ExtResource("15_hmykc")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_o8bys"]
 script = ExtResource("15_hmykc")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_ceg4b"]

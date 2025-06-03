@@ -92,19 +92,20 @@ func ModifyStatConsumableComponent(_item : Item, _data):
 			break
 
 	if component == null:
-		log += str("\n[color=green]No StatConusumableComponent detected for item: [/color]", _item.internalName ," [color=green]Creating a new one.[/color]")
+		log += str("\n[color=green]No HeldItemComponent detected for item: [/color]", _item.internalName ," [color=green]Creating a new one.[/color]")
 		component = HeldItemComponent.new()
 		_item.add_child(component)
-		component.name = "StatConsumableComponent"
+		component.name = "HeldItemComponent"
 
-	_item.StatConsumableData = component
+	_item.statData = component
 	component.StatsToGrant.clear()
 
 	if _data.has("Stat1") && _data.has("Stat1Val"):
 		if !_data["Stat1"].is_empty():
+			#log += str("\n[color=green]Item has a HeldItemComponent set to true. Here's the stuff it's supposed to read!: [/color]", _data["Stat1"], _data["Stat1Val"])
 			component.StatsToGrant.append(ConstructStatDef(_data["Stat1"], _data["Stat1Val"]))
 		else:
-			log += str("\n[color=orange]Item has a StatConsumableComponent set to true, but no stat defined in ConsStat1: [/color]", _item.internalName)
+			log += str("\n[color=orange]Item has a HeldItemComponent set to true, but no stat defined in ConsStat1: [/color]", _item.internalName)
 
 
 	if _data.has("Stat2") && _data.has("Stat2Val"):

@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_eiv3q"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_7wvan"]
 
-[sub_resource type="Resource" id="Resource_ily0w"]
+[sub_resource type="Resource" id="Resource_4ylsa"]
 script = ExtResource("4_eiv3q")
 Template = ExtResource("5_7wvan")
-Value = 2
+Value = 1
 
 [node name="polish_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_1tim0")
@@ -21,4 +21,4 @@ statData = NodePath("StatConsumableComponent")
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("3_pj6r4")
-StatsToGrant = Array[ExtResource("4_eiv3q")]([SubResource("Resource_ily0w")])
+StatsToGrant = Array[ExtResource("4_eiv3q")]([SubResource("Resource_4ylsa")])

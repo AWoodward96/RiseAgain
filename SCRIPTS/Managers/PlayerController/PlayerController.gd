@@ -88,8 +88,9 @@ func _process(_delta):
 			# ShowInspectUI() check is also reffering to the hanging ui element in the combat hud
 			# If this behavior needs to be split - then do that but for now it actually works out fine
 			if CurrentTile.Occupant != null && ControllerState.ShowInspectUI():
-				if inspectUI == null:
-					inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
+				if !CurrentTile.Occupant.Submerged || (CurrentTile.Occupant.Submerged && CurrentTile.Occupant.UnitAllegiance == GameManager.GameSettings.TeamID.ALLY):
+					if inspectUI == null:
+						inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
 			else:
 				currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
 

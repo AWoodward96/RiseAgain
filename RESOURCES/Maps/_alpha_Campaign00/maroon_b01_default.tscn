@@ -15,17 +15,18 @@
 [ext_resource type="Texture2D" uid="uid://engowdml6dwa" path="res://ART/Environment/MaroonForest/c_0_map_4_leafmap-export.png" id="9_ikose"]
 [ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="9_jd0qd"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="13_mjsbc"]
-[ext_resource type="Resource" uid="uid://btjy0lp33oaqu" path="res://RESOURCES/Units/Enemy/AdultWolf/UT_AdultWolf.tres" id="14_methd"]
 [ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="14_ni7mt"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="15_on2wx"]
 [ext_resource type="Resource" uid="uid://cxr5y6clktnni" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Zolf_Target_Canine.tres" id="15_r6hsr"]
 [ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="16_8bjlc"]
 [ext_resource type="Script" uid="uid://cx7hr1gnxldm5" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="17_1l1oh"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="20_2omre"]
 
 [sub_resource type="Resource" id="Resource_a6yb0"]
 script = ExtResource("17_1l1oh")
 TargetingFlags = 3
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_anryn"]
@@ -38,12 +39,14 @@ script = ExtResource("15_on2wx")
 script = ExtResource("17_1l1oh")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_knm6u"]
 script = ExtResource("17_1l1oh")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="MeshTexture" id="MeshTexture_86txg"]
@@ -240,7 +243,7 @@ Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_a6yb0")
 
-[node name="Spawn_AdultWolf" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 448)
 texture = ExtResource("6_at13p")
 centered = false
@@ -248,25 +251,9 @@ hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_t6ox0")
-UnitToSpawn = ExtResource("14_methd")
+UnitToSpawn = ExtResource("20_2omre")
 UnitLevel = 4
 Position = Vector2i(10, 7)
-Allegiance = 4
-AIBehavior = ExtResource("9_jd0qd")
-AggroBehavior = SubResource("Resource_h56u6")
-
-[node name="Spawn_AdultWolf2" type="Sprite2D" parent="Spawners"]
-position = Vector2(640, 192)
-texture = ExtResource("6_at13p")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_t6ox0")
-UnitToSpawn = ExtResource("14_methd")
-UnitLevel = 4
-Position = Vector2i(10, 3)
-Enabled = false
 Allegiance = 4
 AIBehavior = ExtResource("9_jd0qd")
 AggroBehavior = SubResource("Resource_h56u6")

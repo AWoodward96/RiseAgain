@@ -279,6 +279,7 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 					push_error("Unit: {0} want's to end up on tile {1}, but it's currently occupied by {2}. If this is the intended behavior, ignore this, but otherwise this may be a problem.".format([_unit.Template.DebugName, str(_newPosition), GridArr[newIndex].Occupant.Template.DebugName]))
 
 	_unit.CurrentTile = GridArr[GetGridArrIndex(_newPosition)]
+	_unit.OnTileUpdated(_unit.CurrentTile)
 
 	# See: UnitMoveAction for where the killbox gets checked
 	#_unit.CheckKillbox()

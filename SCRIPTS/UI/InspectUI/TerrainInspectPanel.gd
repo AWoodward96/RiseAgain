@@ -68,6 +68,12 @@ func UpdateFireData(_tile : Tile):
 
 func UpdateGridEntities(_tile : Tile):
 	if !shouldShow && _tile.GridEntities.size() > 0:
+		for  ge in _tile.GridEntities:
+			if ge != null:
+				shouldShow = true
+		if !shouldShow:
+			return
+
 		# if false at this point, then there's no other information to show besides the fire info
 		# do the best you can to show the information anyway
 		tile_name.text = tr(no_name_loc)
@@ -83,6 +89,9 @@ func UpdateGridEntities(_tile : Tile):
 	createdGridEntityInfos.clear()
 
 	for ge in _tile.GridEntities:
+		if ge == null:
+			continue
+
 		# If marked as invisible - then this information is not necessary to share with the player'
 		if ge.ui_invisible:
 			continue

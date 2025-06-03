@@ -3,6 +3,7 @@ class_name UnitVisual
 
 @export var AnimationCTRL : AnimationPlayer
 @export var AnimationWorkComplete : bool = false
+@export var SubmergedParent : Node2D
 var sprite : Sprite2D
 var visual : AnimatedSprite2D
 var MyUnit : UnitInstance
@@ -66,6 +67,13 @@ func PlayAnimation(_animString : String, _uniformTransition : bool, _animSpeed :
 
 func ResetAnimation():
 	AnimationCTRL.seek(0, true)
+
+func UpdateSubmerged(_submerged : bool):
+	if AnimationWorkComplete:
+		pass
+	else:
+		if SubmergedParent != null:
+			SubmergedParent.visible = _submerged
 
 func PlayDamageAnimation():
 	if AnimationWorkComplete:

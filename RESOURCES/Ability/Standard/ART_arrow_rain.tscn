@@ -1,0 +1,61 @@
+[gd_scene load_steps=16 format=3 uid="uid://cr3qojl35mikb"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_8c66l"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_en8oo"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_f25v4"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_0gchn"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_0tipk"]
+[ext_resource type="PackedScene" uid="uid://8087q7pbgat6" path="res://RESOURCES/GridEntities/ge_arrow_rain.tscn" id="3_erduy"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_f25v4"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_tp58g"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_umu6g"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_erduy"]
+[ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="5_umu6g"]
+[ext_resource type="Resource" uid="uid://b2528dgdj72fb" path="res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres" id="6_umu6g"]
+
+[sub_resource type="Resource" id="Resource_hx5hy"]
+script = ExtResource("3_0gchn")
+OnActionOrigin = true
+OnSource = false
+OnSpecificPosition = false
+SpecificPosition = Vector2i(0, 0)
+Instant = false
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_2e2fw"]
+script = ExtResource("4_tp58g")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_0gchn"]
+script = ExtResource("4_umu6g")
+GridEntityPrefab = ExtResource("3_erduy")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[node name="arrow_rain" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_8c66l")
+focusCost = 2
+ability_speed = 2
+executionStack = Array[ExtResource("2_f25v4")]([SubResource("Resource_hx5hy"), SubResource("Resource_2e2fw"), SubResource("Resource_0gchn")])
+internalName = "arrow_rain"
+loc_displayName = "art_arrow_rain_name"
+loc_displayDesc = "art_arrow_rain_desc"
+icon = ExtResource("5_umu6g")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("2_en8oo")
+AgressiveStat = ExtResource("3_0tipk")
+AgressiveModType = 2
+AgressiveMod = 1.5
+DefensiveStat = ExtResource("4_f25v4")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("5_erduy")
+TeamTargeting = 2
+TargetRange = Vector2i(1, 6)
+Type = 1
+CanTargetSelf = true
+shapedTiles = ExtResource("6_umu6g")

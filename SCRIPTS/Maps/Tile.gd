@@ -51,6 +51,8 @@ func InitMetaData():
 		Killbox = Killbox || SubBGTileData.Killbox
 		Water = Water || SubBGTileData.Water
 
+	RefreshActiveKillbox()
+
 
 # Handles what happens if a unit steps on this tile
 # Returns true or false - if true then the unit's movement has been interrupted
@@ -63,6 +65,7 @@ func OnUnitTraversed(_unitInstance : UnitInstance):
 		if int(result) < int(nextResult):
 			result = nextResult
 
+	_unitInstance.OnTileUpdated(self)
 	return result
 
 func AsTargetData():

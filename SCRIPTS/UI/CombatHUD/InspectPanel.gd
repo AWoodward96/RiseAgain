@@ -2,6 +2,10 @@ extends AnchoredUIElement
 class_name InspectPanel
 
 
+@export var DefaultLayoutParent : Control
+@export var SubmergedLayoutParent : Control
+
+
 @export var icon : TextureRect
 @export var injuredParent : Control
 @export var unitHealthBar : UnitHealthBar
@@ -34,6 +38,14 @@ func Initialize(_playercontroller : PlayerController):
 func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 	if _unit == null || _unit.Template == null:
 		return
+
+	if _unit.Submerged && _unit.UnitAllegiance != GameSettingsTemplate.TeamID.ALLY:
+		DefaultLayoutParent.visible = false
+		SubmergedLayoutParent.visible = true
+		return
+
+	DefaultLayoutParent.visible = true
+	SubmergedLayoutParent.visible = false
 
 	var forceUpdate = currentUnit != _unit || _forceUpdate
 

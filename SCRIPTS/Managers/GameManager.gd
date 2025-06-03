@@ -69,6 +69,9 @@ func CheckInitFinished():
 
 
 func OnInitFinished():
+	if UnitSettings != null:
+		UnitSettings.ValidateUnitTemplates()
+
 	if RunningMainScene():
 		#if CutsceneManager.active_cutscene == null:
 		# Check if there is a campaign in the save data
@@ -91,6 +94,7 @@ func ChangeGameState(_newGamestate : GameState, _initData):
 
 	CurrentGameState = _newGamestate
 	CurrentGameState.Enter(_initData)
+
 
 func RunningMainScene():
 	return get_tree().get_first_node_in_group("MainScene") != null

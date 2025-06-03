@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_fypi3"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("3_4n5ln")
-Value = 7.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_niqoe"]
 script = ExtResource("2_f28sa")
@@ -96,7 +96,7 @@ StatGrowths = Array[ExtResource("2_f28sa")]([SubResource("Resource_mpgea"), SubR
 Affinity = ExtResource("1_x8gvi")
 StartingEquippedWeapon = ExtResource("12_poo5b")
 StartingTactical = ExtResource("13_c5yfl")
-Tier0Abilities = Array[String]([])
+Tier0Abilities = Array[String](["uid://cr3qojl35mikb"])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_vi8ql")]([])
 GridSize = 1

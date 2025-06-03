@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_gybgy"]
 [ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="2_e1j3o"]
 
-[node name="t2_radientchestplate" type="Node2D"]
+[node name="t2_radientchestplate" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_gybgy")
 internalName = "t2_radientchestplate"
 loc_displayName = "item_t2_radientchestplate_name"
 loc_displayDesc = "item_t2_radientchestplate_desc"
+statData = NodePath("StatConsumableComponent")
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("2_e1j3o")

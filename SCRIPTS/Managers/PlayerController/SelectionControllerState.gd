@@ -32,10 +32,12 @@ func _Execute(_delta):
 							AudioManager.RaiseIntensity(1)
 						else:
 							ctrl.EnterContextMenuState()
+						ctrl.reticleSelectSound.play()
 				else:
-					currentGrid.ShowUnitActions(tile.Occupant)
+					if !ctrl.selectedUnit.Submerged:
+						currentGrid.ShowUnitActions(tile.Occupant)
+						ctrl.reticleSelectSound.play()
 
-				ctrl.reticleSelectSound.play()
 		else:
 			ctrl.EnterGlobalContextState()
 			ctrl.reticleSelectSound.play()

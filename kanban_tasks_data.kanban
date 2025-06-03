@@ -34,7 +34,8 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"073acedc-08f2-476c-bf21-67837a146552"
+				"073acedc-08f2-476c-bf21-67837a146552",
+				"bc86dafe-d53d-46d8-b698-a33b209110ac"
 			]
 		},
 		{
@@ -44,9 +45,7 @@
 				"74755431-829a-4027-92df-f9210e878e79",
 				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
 				"8c6ef764-233f-4c58-8039-a4816bffbdc2",
-				"b20362e5-83b3-4994-8130-299e0326c0e1",
-				"8ba8c317-665a-430b-b49b-33f5f4af2f5d",
-				"021cf49e-4e1a-4007-a568-57bc36e0d0a7"
+				"b20362e5-83b3-4994-8130-299e0326c0e1"
 			]
 		},
 		{
@@ -59,7 +58,10 @@
 				"d0054fe4-6d3b-4452-849b-3b7a3b37fc1c",
 				"e8267663-5393-49b0-89de-0c24e9998ad2",
 				"aac58012-41d3-4129-909e-aeeff9b01244",
+				"45e8c49f-87df-4e73-bc6c-d09742769f0f",
+				"8ba8c317-665a-430b-b49b-33f5f4af2f5d",
 				"5bb0a342-2039-4861-a622-11031c1d8e02",
+				"021cf49e-4e1a-4007-a568-57bc36e0d0a7",
 				"1256e757-b175-4709-ae5c-7e7149241b14",
 				"94df7687-9284-4958-9a1a-96ddcfdda1d3",
 				"394f4ea5-b591-4fab-ab00-8f1dfd582c7f",
@@ -546,6 +548,20 @@
 			"title": "Error thrown when Archer shoots an enemy that died on the first shot",
 			"description": "and maybe it was the last enemy alive on the map? It threw an error when trying to access the dictionary in the ondeath process",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "45e8c49f-87df-4e73-bc6c-d09742769f0f",
+			"title": "Make Lunar Lance's shape stop on wall",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "bc86dafe-d53d-46d8-b698-a33b209110ac",
+			"title": "Fix Movement Attack Animations",
+			"description": "Give the Complex tile data a boolean variable for \"SetThisTileAsActionOrigin\" and then check for that before queuing the attack animation so that directional attacks actually have correct animations",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

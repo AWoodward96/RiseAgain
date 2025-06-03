@@ -305,6 +305,9 @@ func ChangeMapState(_newState : MapStateBase):
 	MapState.Enter(self, playercontroller)
 
 func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
+	if !teams.has(_unitInstance.UnitAllegiance) || _unitInstance.IsDying:
+		return
+
 	var indexOf = teams[_unitInstance.UnitAllegiance].find(_unitInstance, 0)
 	if indexOf >= 0:
 		teams[_unitInstance.UnitAllegiance].remove_at(indexOf)

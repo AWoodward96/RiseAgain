@@ -1180,7 +1180,7 @@ material = SubResource("ShaderMaterial_33jkh")
 position = Vector2(32, 16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pqjdv")
-animation = &"idle"
+animation = &"use_item_in"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

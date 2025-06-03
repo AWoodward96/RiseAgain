@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_3elek"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="5_k88vi"]
 
-[sub_resource type="Resource" id="Resource_m44yr"]
+[sub_resource type="Resource" id="Resource_h8pt6"]
 script = ExtResource("4_3elek")
 Template = ExtResource("5_k88vi")
-Value = 2
+Value = 1
 
 [node name="holywater_t1" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_c2fsk")
@@ -21,4 +21,4 @@ statData = NodePath("HeldItemComponent")
 
 [node name="HeldItemComponent" type="Node2D" parent="."]
 script = ExtResource("3_cxl5f")
-StatsToGrant = Array[ExtResource("4_3elek")]([SubResource("Resource_m44yr")])
+StatsToGrant = Array[ExtResource("4_3elek")]([SubResource("Resource_h8pt6")])

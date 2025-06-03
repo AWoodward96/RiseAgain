@@ -79,8 +79,12 @@ func _Execute(_unit : UnitInstance, _delta):
 			GameSettingsTemplate.TraversalResult.EndTurn:
 				if unit.footstepsSound != null:
 					unit.footstepsSound.stop()
-				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
+
+				if unit != null && unit.currentHealth > 0 && !unit.IsDying:
+					map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
+
 				unit.EndTurn()
+
 				if isAlliedTeam:
 					map.playercontroller.EnterSelectionState()
 				return true
@@ -90,7 +94,7 @@ func _Execute(_unit : UnitInstance, _delta):
 			if unit.footstepsSound != null:
 				unit.footstepsSound.stop()
 
-			unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+			unit.TryPlayIdleAnimation()
 
 			if DestinationTile != null:
 				map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, true, AllowOccupantOverwrite)

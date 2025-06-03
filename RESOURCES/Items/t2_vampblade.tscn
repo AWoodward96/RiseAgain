@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_213k1"]
 [ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="2_lwcfo"]
 
-[node name="t2_vampblade" type="Node2D"]
+[node name="t2_vampblade" type="Node2D" node_paths=PackedStringArray("statData")]
 script = ExtResource("1_213k1")
 internalName = "t2_vampblade"
 loc_displayName = "item_t2_vampblade_name"
 loc_displayDesc = "item_t2_vampblade_desc"
+statData = NodePath("StatConsumableComponent")
 
 [node name="StatConsumableComponent" type="Node2D" parent="."]
 script = ExtResource("2_lwcfo")

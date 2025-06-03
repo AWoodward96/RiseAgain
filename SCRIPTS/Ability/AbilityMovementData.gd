@@ -10,6 +10,11 @@ enum AbilityMovementType { TargetTile, DirectionalRelative, InverseDirectional }
 
 @export var type : AbilityMovementType
 @export var stoppedByWalls : bool = true
+
+## If True, the route tries to draw a path from the unit's current position to the destination.
+## If False, the route just uses the start and end position - no inbetween. Good for jumping.
+## If False, stoppedByWalls is not used
+@export var drawPath : bool = true # Should
 @export var movementAmount : int
 
 var positionalOffset : Vector2
@@ -55,15 +60,19 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction
 		directionVector = GameSettingsTemplate.GetInverseVectorFromDirection(_direction)
 
 	route.append(origin)
-	for i in movementAmount:
-		var tile = _grid.GetTile(workingTile.Position + directionVector)
-		if tile != null:
-			if stoppedByWalls && tile.IsWall:
-				destinationTile = workingTile
-				break
+	if drawPath:
+		for i in movementAmount:
+			var tile = _grid.GetTile(workingTile.Position + directionVector)
+			if tile != null:
+				if stoppedByWalls && tile.IsWall:
+					destinationTile = workingTile
+					break
 
-			route.append(tile)
-			workingTile = tile
+				route.append(tile)
+				workingTile = tile
+	else:
+		workingTile = _grid.GetTile(workingTile.Position + (directionVector * movementAmount))
+		route.append(workingTile )
 
 	# currently, workingTile should be the last tile added to the route
 	var occupantValidator = workingTile.Occupant == null || (workingTile.Occupant != null && workingTile.Occupant == _unit)

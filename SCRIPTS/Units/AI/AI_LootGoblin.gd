@@ -43,11 +43,11 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 			if _unit.CurrentTile == escapeTile:
 				map.RemoveUnitFromMap(unit, false)
 			else:
-				var escapeRoute = EnemyAIOption.Construct(_unit, null, map, null)
-				escapeRoute.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, escapeTile, true, true)
-				escapeRoute.TruncatePathToMovement(escapeRoute.roughPath)
-				selectedOption = escapeRoute
-				unit.MoveCharacterToNode(escapeRoute.path, escapeRoute.tileToMoveTo)
+				var escapeOption = EnemyAIOption.Construct(_unit, null, map, null)
+				escapeOption.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, escapeTile, true, true)
+				escapeOption.TruncatePathToMovement(escapeOption.roughPath)
+				selectedOption = escapeOption
+				unit.MoveCharacterToNode(escapeOption.path, escapeOption.tileToMoveTo)
 				unit.QueueEndTurn()
 		else:
 			super(_map, _unit)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://dmn5mbio3opjl"]
+[gd_scene load_steps=38 format=4 uid="uid://dmn5mbio3opjl"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_df2ss"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_4c1r8"]
@@ -17,7 +17,6 @@
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_sk6by"]
 [ext_resource type="Script" uid="uid://cx7hr1gnxldm5" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="13_8yeqa"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="14_x3dyi"]
-[ext_resource type="Resource" uid="uid://btjy0lp33oaqu" path="res://RESOURCES/Units/Enemy/AdultWolf/UT_AdultWolf.tres" id="15_eeodg"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="16_pgb6b"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="17_pgni3"]
 [ext_resource type="Script" uid="uid://di1yqkv0ulmb4" path="res://SCRIPTS/Units/AI/DelayedAggro.gd" id="18_ttffw"]
@@ -35,6 +34,7 @@
 script = ExtResource("13_8yeqa")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_0he1m"]
@@ -56,12 +56,14 @@ script = ExtResource("14_x3dyi")
 script = ExtResource("13_8yeqa")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_bjs3t"]
 script = ExtResource("13_8yeqa")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_dspx0"]
@@ -69,6 +71,7 @@ script = ExtResource("18_ttffw")
 TurnsToAggro = 3
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [node name="C0_Map02" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
@@ -222,7 +225,7 @@ Position = Vector2i(11, 12)
 AIBehavior = ExtResource("12_sk6by")
 AggroBehavior = SubResource("Resource_rra62")
 
-[node name="Spawn_AdultWolf" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_AdolescentWolf5" type="Sprite2D" parent="Spawners"]
 position = Vector2(576, 128)
 texture = ExtResource("9_ekfbo")
 centered = false
@@ -230,7 +233,7 @@ hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("10_wj2cl")
-UnitToSpawn = ExtResource("15_eeodg")
+UnitToSpawn = ExtResource("11_7cc4g")
 UnitLevel = 4
 DeltaLevel = 1
 Position = Vector2i(9, 2)

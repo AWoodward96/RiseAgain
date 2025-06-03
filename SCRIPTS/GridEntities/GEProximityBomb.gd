@@ -20,6 +20,7 @@ func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	else:
 		newDamageStepResult.HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damageData, Origin.AsTargetData())
 
+	CurrentMap.grid.SetUnitGridPosition(_unitInstance, Origin.Position, true, false)
 	_unitInstance.ModifyHealth(newDamageStepResult.HealthDelta, newDamageStepResult, true)
 
 	ExecutionComplete = true

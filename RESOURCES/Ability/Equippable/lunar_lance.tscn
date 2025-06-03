@@ -54,3 +54,4 @@ DamageToHealthRatio = 0.0
 script = ExtResource("11_h3pcw")
 Type = 2
 shapedTiles = ExtResource("12_56t7s")
+stopShapeOnWall = true

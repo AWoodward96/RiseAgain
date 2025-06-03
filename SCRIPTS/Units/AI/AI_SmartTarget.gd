@@ -19,9 +19,9 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	var weaponsAvailableForUse : Array[UnitUsable]
 	for a in unit.Abilities:
 		if a.type != Ability.AbilityType.Tactical && a.IsDamage():
-			weaponsAvailableForUse.append(a)
-			hasWeaponToUse = true
-			break
+			if a.focusCost <= unit.currentFocus:
+				weaponsAvailableForUse.append(a)
+				hasWeaponToUse = true
 
 	if !hasWeaponToUse:
 		unit.QueueEndTurn()
@@ -38,7 +38,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 		for u in filteredUnitsOnTeam:
 			for weapon in weaponsAvailableForUse:
-				var newOption = EnemyAIOption.Construct(_unit, u, map, weapon)
+				var newOption = EnemyAIOption.Construct(_unit, u, map, weapon) as EnemyAIOption
 				newOption.flagIndex = i
 				newOption.totalFlags = Flags.size()
 				newOption.Update()
@@ -79,7 +79,9 @@ func TryCombat():
 		unit.QueueEndTurn()
 		return
 
-	## default to the first item
+
+
+
 	if selectedOption.ability != null && selectedOption.ability.UsableDamageData != null:
 		var log = ActionLog.Construct(map.grid, unit, selectedOption.ability)
 		log.actionOriginTile = selectedOption.tileToAttack

@@ -72,6 +72,7 @@ func Update(_delta):
 		if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 			map.playercontroller.BlockMovementInput = false
 		preTurnComplete = true
+		map.RemoveExpiredGridEntities()
 
 
 

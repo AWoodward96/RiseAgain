@@ -1,48 +1,166 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=16 format=3 uid="uid://xnen5vhxjagq"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=37 format=3 uid="uid://xnen5vhxjagq"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_4cpa1"]
-[ext_resource type="PackedScene" uid="uid://6644i1yes1rk" path="res://RESOURCES/Items/t1_ktome.tscn" id="1_w5eu1"]
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="2_bo47o"]
 [ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="2_cg8sm"]
-[ext_resource type="PackedScene" uid="uid://dc5t03o0j6sfg" path="res://RESOURCES/Items/t1_nectar.tscn" id="3_qdalx"]
-[ext_resource type="PackedScene" uid="uid://d1hq4h7k3ewlj" path="res://RESOURCES/Items/t1_polish.tscn" id="4_bglpx"]
-[ext_resource type="PackedScene" uid="uid://k7p2s1qa26kq" path="res://RESOURCES/Items/t1_holywater.tscn" id="5_3fkmt"]
-[ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="7_qccxx"]
-[ext_resource type="PackedScene" uid="uid://cyj7myy0hwsqy" path="res://RESOURCES/Items/t1_skillbook.tscn" id="8_lq6l7"]
+[ext_resource type="Texture2D" uid="uid://dskg55x1t4d4v" path="res://ART/Icons/Items/t1_ktome.png" id="3_ddo50"]
+[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="4_og43j"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="5_qnost"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_xpxto"]
+[ext_resource type="Texture2D" uid="uid://bcxc5ddtntqme" path="res://ART/Icons/Items/t1_nectar.png" id="8_c2ieg"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="8_w8g6q"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="9_ibtf5"]
+[ext_resource type="Texture2D" uid="uid://6ubbv8defryl" path="res://ART/Icons/Items/t1_polish.png" id="10_kraay"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="11_vxsjm"]
+[ext_resource type="Texture2D" uid="uid://cc3t70rtmwmym" path="res://ART/Icons/Items/t1_holywater.png" id="12_00wo4"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="13_0shuf"]
+[ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/t1_whetstone.png" id="14_l0cy3"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="15_jvxyc"]
+[ext_resource type="Texture2D" uid="uid://b8ijhtyw1jdib" path="res://ART/Icons/Items/t1_skillbook.png" id="16_42aed"]
+[ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="17_72bkd"]
+
+[sub_resource type="Resource" id="Resource_uk6vy"]
+script = ExtResource("5_qnost")
+Template = ExtResource("6_xpxto")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_is2wy"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("ktome_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "HeldItemComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("2_bo47o"), "t1_ktome", "item_t1_ktome_name", "item_t1_ktome_desc", ExtResource("3_ddo50"), NodePath("HeldItemComponent"), ExtResource("4_og43j"), Array[ExtResource("5_qnost")]([SubResource("Resource_uk6vy")])],
+"version": 3
+}
 
 [sub_resource type="Resource" id="Resource_lq6l7"]
 script = ExtResource("2_cg8sm")
-ItemPrefab = ExtResource("1_w5eu1")
+ItemPrefab = SubResource("PackedScene_is2wy")
 Weight = 1.0
 AccumulatedWeight = 1.0
 
+[sub_resource type="Resource" id="Resource_rrmlp"]
+script = ExtResource("5_qnost")
+Template = ExtResource("9_ibtf5")
+Value = 4
+
+[sub_resource type="PackedScene" id="PackedScene_premy"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("nectar_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "HeldItemComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("2_bo47o"), "t1_nectar", "item_t1_nectar_name", "item_t1_nectar_desc", ExtResource("8_c2ieg"), NodePath("HeldItemComponent"), ExtResource("4_og43j"), Array[ExtResource("5_qnost")]([SubResource("Resource_rrmlp")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_44v2f"]
 script = ExtResource("2_cg8sm")
-ItemPrefab = ExtResource("3_qdalx")
+ItemPrefab = SubResource("PackedScene_premy")
 Weight = 1.0
 AccumulatedWeight = 2.0
 
+[sub_resource type="Resource" id="Resource_ily0w"]
+script = ExtResource("5_qnost")
+Template = ExtResource("11_vxsjm")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_8voak"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("polish_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "StatConsumableComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("2_bo47o"), "t1_polish", "item_t1_polish_name", "item_t1_polish_desc", ExtResource("10_kraay"), NodePath("StatConsumableComponent"), ExtResource("4_og43j"), Array[ExtResource("5_qnost")]([SubResource("Resource_ily0w")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_kvaae"]
 script = ExtResource("2_cg8sm")
-ItemPrefab = ExtResource("4_bglpx")
+ItemPrefab = SubResource("PackedScene_8voak")
 Weight = 1.0
 AccumulatedWeight = 3.0
 
+[sub_resource type="Resource" id="Resource_m44yr"]
+script = ExtResource("5_qnost")
+Template = ExtResource("13_0shuf")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_ol8wd"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("holywater_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "HeldItemComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("2_bo47o"), "t1_holywater", "item_t1_holywater_name", "item_t1_holywater_desc", ExtResource("12_00wo4"), NodePath("HeldItemComponent"), ExtResource("4_og43j"), Array[ExtResource("5_qnost")]([SubResource("Resource_m44yr")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_c5qsw"]
 script = ExtResource("2_cg8sm")
-ItemPrefab = ExtResource("5_3fkmt")
+ItemPrefab = SubResource("PackedScene_ol8wd")
 Weight = 1.0
 AccumulatedWeight = 4.0
 
+[sub_resource type="Resource" id="Resource_pr3df"]
+script = ExtResource("5_qnost")
+Template = ExtResource("15_jvxyc")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_wuufb"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("whetstone_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "ItemEquipData", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("2_bo47o"), "t1_whetstone", "item_t1_whetstone_name", "item_t1_whetstone_desc", ExtResource("14_l0cy3"), NodePath("ItemEquipData"), ExtResource("4_og43j"), Array[ExtResource("5_qnost")]([SubResource("Resource_pr3df")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_remfb"]
 script = ExtResource("2_cg8sm")
-ItemPrefab = ExtResource("7_qccxx")
+ItemPrefab = SubResource("PackedScene_wuufb")
 Weight = 1.0
 AccumulatedWeight = 5.0
 
+[sub_resource type="Resource" id="Resource_33g52"]
+script = ExtResource("5_qnost")
+Template = ExtResource("17_72bkd")
+Value = 1
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="PackedScene" id="PackedScene_f66en"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("skillbook_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "HeldItemComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("2_bo47o"), "t1_skillbook", "item_t1_skillbook_name", "item_t1_skillbook_desc", ExtResource("16_42aed"), NodePath("HeldItemComponent"), ExtResource("4_og43j"), Array[ExtResource("5_qnost")]([SubResource("Resource_33g52")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_hiv5w"]
 script = ExtResource("2_cg8sm")
-ItemPrefab = ExtResource("8_lq6l7")
+ItemPrefab = SubResource("PackedScene_f66en")
 Weight = 0.5
 AccumulatedWeight = 5.5
 

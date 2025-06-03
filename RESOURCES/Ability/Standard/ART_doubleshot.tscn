@@ -37,6 +37,8 @@ UsableDamageData = NodePath("DamageData")
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("5_fbic6")
 AgressiveStat = ExtResource("6_e48nk")
+AgressiveModType = 2
+AgressiveMod = 0.75
 DefensiveStat = ExtResource("7_c6kxc")
 DamageToHealthRatio = 0.0
 

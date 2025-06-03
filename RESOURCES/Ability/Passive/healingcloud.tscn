@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ddcgn74t12axm" path="res://RESOURCES/VFX/healing_cloud_vfx.tscn" id="5_xhm4w"]
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_xhm4w"]
 [ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="6_xodfp"]
-[ext_resource type="Resource" uid="uid://cb6qg7lnlvv45" path="res://RESOURCES/TargetingShapes/generic_3x3_circle_shape.tres" id="12_v5pb2"]
+[ext_resource type="Resource" uid="uid://b2528dgdj72fb" path="res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres" id="12_v5pb2"]
 
 [sub_resource type="Resource" id="Resource_xodfp"]
 script = ExtResource("3_0iv54")

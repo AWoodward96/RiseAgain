@@ -33,5 +33,8 @@ func ToJSON():
 	return dict
 
 static func FromJSON(_dict : Dictionary):
+	if !_dict.has("prefab") || _dict["prefab"] == "":
+		return null
+
 	var item = load(_dict["prefab"]).instantiate() as Item
 	return item

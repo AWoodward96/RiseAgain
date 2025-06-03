@@ -10,7 +10,6 @@
 [ext_resource type="Resource" uid="uid://cb51ipfqroolr" path="res://RESOURCES/Units/Enemy/HealCap/UT_HealCap.tres" id="8_rg0w7"]
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="9_lsk74"]
 [ext_resource type="Script" uid="uid://3olxj2qvcrdo" path="res://SCRIPTS/Units/AI/AI_LootGoblin.gd" id="10_b5w76"]
-[ext_resource type="Resource" uid="uid://4dmxhtxvfe8d" path="res://RESOURCES/Units/Enemy/EarthElemental/UT_EarthElemental.tres" id="10_tgwx5"]
 [ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="11_ox76s"]
 [ext_resource type="PackedScene" uid="uid://eerys1o8nkjh" path="res://RESOURCES/GridEntities/wp_bridge.tscn" id="11_rlgja"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_msltj"]
@@ -20,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c77gxravt3w7h" path="res://RESOURCES/GridEntities/proximity_mine.tscn" id="16_sxqp6"]
 [ext_resource type="PackedScene" uid="uid://cwl3gpxdre6gk" path="res://RESOURCES/GridEntities/prop_chest.tscn" id="17_jydnc"]
 [ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="17_lmuyt"]
+[ext_resource type="Resource" uid="uid://crhpsqs4cv8a1" path="res://RESOURCES/Units/Enemy/BanditArcher/UT_BanditArcher.tres" id="17_lsk74"]
 [ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="19_bve7k"]
 [ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="20_qlo6o"]
 
@@ -206,7 +206,7 @@ Allegiance = 1
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 
-[node name="Spawn_EarthElemental" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_BanditArcher" type="Sprite2D" parent="Spawners"]
 position = Vector2(640, 128)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -214,10 +214,9 @@ hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("10_tgwx5")
+UnitToSpawn = ExtResource("17_lsk74")
 UnitLevel = 2
 Position = Vector2i(10, 2)
-Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_vv3ax")
 
