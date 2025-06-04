@@ -108,8 +108,8 @@ tile_set = ExtResource("4_lvx7e")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(640, 320)
-Position = Vector2i(10, 5)
+position = Vector2(576, 512)
+Position = Vector2i(9, 8)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]

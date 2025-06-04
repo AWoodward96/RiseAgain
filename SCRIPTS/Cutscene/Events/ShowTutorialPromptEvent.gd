@@ -5,6 +5,7 @@ class_name ShowTutorialPromptEvent
 @export var size : Vector2 = Vector2(280, 80)
 @export var anchor : Control.LayoutPreset = Control.LayoutPreset.PRESET_BOTTOM_RIGHT
 @export var loc_text : String
+@export var loc_controller_text : String
 @export var builtInFreeze : bool = false
 @export var freezeDuration : float = 0.0
 
@@ -13,15 +14,12 @@ var frozenTime : float = 0
 
 
 func Enter(_context : CutsceneContext):
-	#if Map.Current != null && Map.Current.playercontroller != null && Map.Current.playercontroller.combatHUD != null:
-		#if show:
-			#Map.Current.playercontroller.combatHUD.ShowTutorialPrompt(loc_text, anchor)
-		#else:
-			#Map.Current.playercontroller.combatHUD.HideTutorialPrompt()
-		#return true
-
 	if show:
-		CutsceneManager.ShowGlobalTutorialPrompt(loc_text, anchor, size, builtInFreeze)
+		if loc_controller_text != "" && InputManager.CurrentInputSchmeme == InputManager.ControllerScheme.Controller:
+			CutsceneManager.ShowGlobalTutorialPrompt(loc_controller_text, anchor, size, builtInFreeze)
+		else:
+			CutsceneManager.ShowGlobalTutorialPrompt(loc_text, anchor, size, builtInFreeze)
+
 	else:
 		CutsceneManager.HideGlobalTutorialPrompt()
 

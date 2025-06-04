@@ -66,7 +66,7 @@ metadata/_custom_type_script = "uid://ofdutqbqnjrf"
 
 [node name="maul" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_6yhr7")
-focusCost = 0
+focusCost = 2
 executionStack = Array[ExtResource("2_p0no4")]([SubResource("Resource_a18b1"), SubResource("Resource_r5wa8"), SubResource("Resource_ucxb0")])
 internalName = "maul"
 loc_displayName = "art_maul_name"

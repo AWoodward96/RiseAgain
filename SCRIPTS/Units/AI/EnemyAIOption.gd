@@ -102,6 +102,7 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 	# First, check if we even need to move in order to hit the target
 	if sourceUnit.currentFocus >= ability.focusCost && ability.TargetingData != null:
 		var abilityRange = ability.GetRange()
+		manhattanDistance = map.grid.GetManhattanDistance(_origin.Position, targetUnit.GridPosition)
 		match ability.TargetingData.Type:
 			SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.ShapedFree:
 				# Teeeechnically for shaped free, the attacks can hit units outside of the range of the ability (since it's aoe)

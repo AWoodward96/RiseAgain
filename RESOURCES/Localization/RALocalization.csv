@@ -224,36 +224,46 @@ ce_pushforward_name,Push Forward
 ce_pushforward_desc,Grants +3 Move and +3 Attack
 tile_cavewall_name,Cave
 tile_rocks_name,Rocks
-tut_map0_prompt0,Use [img=24x24]res://ART/UI/Inline/keyboard_up_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_down_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img] to move the Reticle
-tut_map0_prompt1,Use [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to Select the Unit
-tut_map0_prompt2,Move the Reticle to the highlighted Tile
-tut_map0_prompt3,Press [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img]  again to confirm movement
-tut_map0_prompt4,Select the Wait option with [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img]  to end your Turn
-tut_map0_prompt5,Select the Unit again with [Space]
-tut_map0_prompt6,Move the Reticle to the highlighted Tile and press [Space] to confirm movement
-tut_map0_prompt7,Select [Mana Bolt] with [Space]
-tut_map0_prompt8,Here you can preview how combat will play out
+tut_map0_prompt0,Use [img=24x24]res://ART/UI/Inline/keyboard_up_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_down_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img] to move the Reticle.
+tut_map0_prompt0_controller,Use [img=24x24]res://ART/UI/Inline/controller_movement_button.png[/img] to move the Reticle.
+tut_map0_prompt1,Use [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to Select the Unit.
+tut_map0_prompt1_controller,Use [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img] to Select the Unit.
+tut_map0_prompt2,Move the Reticle to the highlighted Tile.
+tut_map0_prompt3,Press [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] again to confirm movement.
+tut_map0_prompt3_controller,Press [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img] again to confirm movement.
+tut_map0_prompt4,Select the Wait option with [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to end your Turn.
+tut_map0_prompt4_controller,Select the Wait option with [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img] to end your Turn.
+tut_map0_prompt5,Select the Unit again with [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img].
+tut_map0_prompt5_controller,Select the Unit again with [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img].
+tut_map0_prompt6,Move the Reticle to the highlighted Tile and press [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to confirm movement.
+tut_map0_prompt6_controller,Move the Reticle to the highlighted Tile and press [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img] to confirm movement.
+tut_map0_prompt7,Select [Mana Bolt] with [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img].
+tut_map0_prompt7_controller,Select [Mana Bolt] with [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img].
+tut_map0_prompt8,Here you can preview how combat will play out.
 tut_map0_prompt9,"You will do 4 damage to the Zombie, bringing its Health down to 3."
-tut_map0_prompt10,"When a Unit's Health reaches 0, it is removed from the Map"
-tut_map0_prompt11,Press [Space] once again to confirm your Attack
-tut_map0_prompt12,Units gain EXP by performing actions in the game
-tut_map0_prompt13,Once the EXP reaches 100 they will Level Up and get stronger
+tut_map0_prompt10,"When a Unit's Health reaches 0, it is removed from the Map."
+tut_map0_prompt11,Press [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] once again to confirm your Attack.
+tut_map0_prompt11_controller,Press [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img] once again to confirm your Attack.
+tut_map0_prompt12,Units gain EXP by performing actions in the game.
+tut_map0_prompt13,Once the EXP reaches 100 they will Level Up and get stronger.
 tut_map0_prompt14,Blue Units are Allies. Red Units are Enemies.
-tut_map0_prompt15,Hover the Reticle over the Knight
+tut_map0_prompt15,Hover the Reticle over the Knight.
 ce_unholyintruder_name,Unholy Intrusion
-ce_unholyintruder_desc,This Unit is tresspassing on sacred ground and has reduced ATK
+ce_unholyintruder_desc,This Unit is tresspassing on sacred ground and has reduced ATK.
 tut_map0_prompt16,"That Knight looks injured, let's help them out."
-tut_abilities_lesserheal0,We can use the Ability [Lesser Heal] to heal the Knight
+tut_abilities_lesserheal0,We can use the Ability [Lesser Heal] to heal the Knight.
 tut_abilities_lesserheal1,"Abilities are powerful actions that can turn the tide of battle, but require Mana to use."
-tut_abilities_lesserheal2,"1 Mana is gained at the start of every turn, and an additional Mana is gained when defeating an Enemy"
+tut_abilities_lesserheal2,"1 Mana is gained at the start of every turn, and an additional Mana is gained when defeating an Enemy."
 tut_abilities_lesserheal3,"[Lesser Heal] costs 2 Mana, and has a special property that makes it get stronger every time you use it."
-tut_abilities_lesserheal4,Let's heal the Knight
-tut_weapons_knight0,The Knight is a defensive Melee Unit with a unique Weapon
-tut_weapons_knight1,Move the Knight to the indicated Tile
+tut_abilities_lesserheal4,Let's heal the Knight.
+tut_weapons_knight0,The Knight is a defensive Melee Unit with a unique Weapon.
+tut_weapons_knight1,Move the Knight to the indicated Tile.
 tut_weapons_knight2,"When attacking with a Weapon, Unit's with a similar ranged Weapon can counter-attack."
-tut_weapons_knight3,Because the Zombie's weapon has a Range of 1 we're at risk of being counter-attacked
-tut_weapons_knight4,Press [Left Shift] to Cancel the Attack
-tut_weapons_knight5,Press [Left Shift] again to Cancel the Move
+tut_weapons_knight3,Because the Zombie's weapon has a Range of 1 we're at risk of being counter-attacked.
+tut_weapons_knight4,Press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] to Cancel the Attack.
+tut_weapons_knight4_controller,Press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] to Cancel the Attack.
+tut_weapons_knight5,Press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] again to Cancel the Move
+tut_weapons_knight5_controller,Press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] again to Cancel the Move.
 tut_weapons_knight6,"Instead, let's move to this Tile"
 tut_weapons_knight7,"Because the Lance can attack from more than one Tile away, we're not at risk of being counter-attacked anymore!"
 tut_weapons_knight8,Finish off the last two Zombies to complete the map.
