@@ -13,7 +13,7 @@ func Enter(_actionLog : ActionLog):
 	if ability.MovementData == null:
 		return true
 
-	ability.MovementData.Move(log.grid, source, log.actionOriginTile, log.actionDirection, SpeedOverride, AnimationStyle)
+	ability.MovementData.Move(log.grid, source, log.actionOriginTile, source.CurrentTile, log.actionDirection, SpeedOverride, AnimationStyle)
 	return true
 
 func Execute(_delta):

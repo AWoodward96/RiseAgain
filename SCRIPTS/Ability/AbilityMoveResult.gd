@@ -11,7 +11,7 @@ func PreviewResult(_map : Map):
 	if ctrl == null:
 		return
 
-	var unitMovement = unitUsable.MovementData.PreviewMove(_map.grid, Source, TileTargetData.Tile, shapedDirection)
+	var unitMovement = unitUsable.MovementData.PreviewMove(_map.grid, Source, Source.CurrentTile, TileTargetData.Tile, shapedDirection)
 	if unitMovement.size() > 0:
 		ctrl.movement_tracker.visible = true
 		ctrl.movement_preview_sprite.visible = true

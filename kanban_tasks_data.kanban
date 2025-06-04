@@ -45,7 +45,8 @@
 				"74755431-829a-4027-92df-f9210e878e79",
 				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
 				"8c6ef764-233f-4c58-8039-a4816bffbdc2",
-				"b20362e5-83b3-4994-8130-299e0326c0e1"
+				"b20362e5-83b3-4994-8130-299e0326c0e1",
+				"fd11942d-191d-4019-9a21-163a01348401"
 			]
 		},
 		{
@@ -563,6 +564,22 @@
 			"description": "Give the Complex tile data a boolean variable for \"SetThisTileAsActionOrigin\" and then check for that before queuing the attack animation so that directional attacks actually have correct animations",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
+		},
+		{
+			"uuid": "fd11942d-191d-4019-9a21-163a01348401",
+			"title": "Sound Effects Bucket List",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": [
+				{
+					"details": "Victory and Defeat",
+					"done": false
+				},
+				{
+					"details": "Toggle Threat",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

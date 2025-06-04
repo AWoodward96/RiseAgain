@@ -176,6 +176,9 @@ func UpdateDerivedStats():
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
 		baseStats[derivedStatDef.Template] = floori(GetWorkingStat(derivedStatDef.ParentStat) * derivedStatDef.Ratio)
 
+	if currentHealth != null && currentHealth > maxHealth:
+		currentHealth = maxHealth
+
 
 func InitializeLevels(_level : int):
 	if _level == 0:
@@ -204,7 +207,9 @@ func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 	CombatEffects.append(_combatEffectInstance)
 	combatEffectsParent.add_child(_combatEffectInstance)
 	UpdateCombatEffects()
+	UpdateDerivedStats()
 	RefreshHealthBarVisuals()
+
 	if _combatEffectInstance.Template.show_popup:
 		Juice.CreateEffectPopup(CurrentTile, _combatEffectInstance)
 

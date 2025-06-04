@@ -42,7 +42,7 @@ static func Construct(_source : UnitInstance, _target : UnitInstance, _map : Map
 	return option
 
 func Update():
-	CheckIfMovementNeeded(sourceUnit.CurrentTile)
+	CheckIfMovementNeeded(sourceUnit.CurrentTile, [sourceUnit.CurrentTile])
 	if valid:
 		# If Valid is true at the moment, then our target is within range to attack at the tile we're currently standing on
 		# At this point in time, just return. There's no additional information we need to attach to this option
@@ -84,7 +84,7 @@ func Update():
 			valid = true
 			path = selectedPath
 			TruncatePathToMovement(path)
-			CheckIfMovementNeeded(path[path.size() - 1])
+			CheckIfMovementNeeded(path[path.size() - 1], path)
 		else:
 			valid = true
 			TruncatePathToMovement(roughPath)
@@ -94,64 +94,64 @@ func Update():
 			# What we're going to do now is to check to see if the target is within range based on this current tile
 			if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
 				# So basically, always move towards the player AND if you can hit them - well then do so!
-				CheckAbilityAttacks(path[path.size() - 1])
+				CheckIfMovementNeeded(path[path.size() - 1], path)
 	pass
 
 
-func CheckIfMovementNeeded(_origin : Tile):
+func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 	# First, check if we even need to move in order to hit the target
-	var itemRange = ability.GetRange()
-	manhattanDistance = map.grid.GetManhattanDistance(_origin.Position, targetUnit.GridPosition)
-	if manhattanDistance >= itemRange.x && manhattanDistance <= itemRange.y:
-		# Congrats we have a valid attack strategy
-		valid = true
-		SetValidAttack(_origin, targetUnit.CurrentTile)
-		return
+	if sourceUnit.currentFocus >= ability.focusCost && ability.TargetingData != null:
+		var abilityRange = ability.GetRange()
+		match ability.TargetingData.Type:
+			SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.ShapedFree:
+				# Teeeechnically for shaped free, the attacks can hit units outside of the range of the ability (since it's aoe)
+				# But that would require a butload of calculation on a per-tile basis and that's just gonna slow the turn down
+				# So we'll just take the manhattan calculation instead
+				if manhattanDistance >= abilityRange.x && manhattanDistance <= abilityRange.y:
+					# Congrats we have a valid attack strategy
+					valid = true
+					SetValidAttack(_origin, targetUnit.CurrentTile)
+					return
+			SkillTargetingData.TargetingType.Global:
+				# So the deal with global, is that we don't know which direction does the most damage
+				# We'll ignore this until it comes up later and hate ourselves for not putting the work in now
 
-	CheckAbilityAttacks(_origin)
-
-func CheckAbilityAttacks(_origin : Tile):
-	if ability.type == Ability.AbilityType.Standard:
-		if sourceUnit.currentFocus >= ability.focusCost && ability.TargetingData != null:
-			var abilityRange = ability.GetRange()
-			match ability.TargetingData.Type:
-				SkillTargetingData.TargetingType.Simple, SkillTargetingData.TargetingType.ShapedFree:
-					# Teeeechnically for shaped free, the attacks can hit units outside of the range of the ability (since it's aoe)
-					# But that would require a butload of calculation on a per-tile basis and that's just gonna slow the turn down
-					# So we'll just take the manhattan calculation instead
-					if manhattanDistance >= abilityRange.x && manhattanDistance <= abilityRange.y:
-						# Congrats we have a valid attack strategy
+				valid = true
+				SetValidAttack(_origin, targetUnit.CurrentTile)
+			SkillTargetingData.TargetingType.SelfOnly:
+				# Self only first needs to check if the target will even be hit by the attack
+				var targetTiles = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, sourceUnit.CurrentTile)
+				for t in targetTiles:
+					if t.Tile.Occupant == targetUnit:
 						valid = true
 						SetValidAttack(_origin, targetUnit.CurrentTile)
 						return
-				SkillTargetingData.TargetingType.Global:
-					# So the deal with global, is that we don't know which direction does the most damage
-					# We'll ignore this until it comes up later and hate ourselves for not putting the work in now
+			SkillTargetingData.TargetingType.ShapedDirectional:
+				# Go through all 4 directions and check to see if this directional attack will hit them
+				# This is... poorly optmized, and for bigger AOE's will prioritize the directional order over how many units are actually hit by the attack
+				# but wtf ever
 
-					valid = true
-					SetValidAttack(_origin, targetUnit.CurrentTile)
-				SkillTargetingData.TargetingType.SelfOnly:
-					# Self only first needs to check if the target will even be hit by the attack
-					var targetTiles = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, sourceUnit.CurrentTile)
-					for t in targetTiles:
-						if t.Tile.Occupant == targetUnit:
-							valid = true
-							SetValidAttack(_origin, targetUnit.CurrentTile)
-							return
-				SkillTargetingData.TargetingType.ShapedDirectional:
-					# Go through all 4 directions and check to see if this directional attack will hit them
-					# This is... poorly optmized, and for bigger AOE's will prioritize the directional order over how many units are actually hit by the attack
-					# but wtf ever
+				# oh and also it has to backtrack through the entire full path in order to determine which tile actually hits the player and
+				# god why did I do this? which fucking idiot thought this was a good idea (it was me it works shut up)
+				for potentialTile in _fullPath:
 					for i in range(0,4):
-						var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, _origin, grid, i)
+						var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, potentialTile, grid, i)
 						for t in directionalTiles:
 							if t.Tile.Occupant == targetUnit:
+								if ability.MovementData != null:
+									var evaluatedDestinationTile = ability.MovementData.PreviewMove(grid, sourceUnit, potentialTile, potentialTile, i)
+									if evaluatedDestinationTile == []:
+										continue
+									else:
+										pass
+
 								valid = true
 								direction = i as GameSettingsTemplate.Direction
-								SetValidAttack(_origin, targetUnit.CurrentTile)
+								SetValidAttack(potentialTile, targetUnit.CurrentTile)
 								return
 						pass
-					pass
+				pass
+
 
 func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	tileToMoveTo = _tileToMoveTo
@@ -204,6 +204,8 @@ func UpdateWeight():
 func TruncatePathToMovement(_path : Array[Tile]):
 	# Saying <= 1 because we cant truncate a path with just 1 tile
 	if _path.size() <= 1:
+		if _path.size() == 1:
+			tileToMoveTo = _path[0]
 		return
 
 	# Take the rough path, and start truncating it. Bring it down to the movement of the source Unit, and move backwards if there are tiles you can't stand on

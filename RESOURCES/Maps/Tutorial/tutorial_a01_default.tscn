@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://crf3nsxjbjrhb"]
+[gd_scene load_steps=24 format=4 uid="uid://crf3nsxjbjrhb"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_p1mrq"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_q7qqt"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="13_loxe4"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="14_5ngqw"]
 [ext_resource type="Texture2D" uid="uid://d3jgc60l1d3c0" path="res://ART/Icons/unholy_ground.png" id="15_1prea"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="15_5ngqw"]
 [ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="16_k6dnj"]
 
 [sub_resource type="Resource" id="Resource_8me8o"]
@@ -28,9 +29,18 @@ SignedPercentageValue = 0.0
 MultipliedByX = false
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
+[sub_resource type="Resource" id="Resource_1prea"]
+script = ExtResource("13_3w238")
+Stat = ExtResource("15_5ngqw")
+FlatValue = -1
+DerivedFromUnit = 0
+SignedPercentageValue = 0.0
+MultipliedByX = false
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
 [sub_resource type="Resource" id="Resource_kg6y5"]
 script = ExtResource("16_k6dnj")
-StatChanges = Array[ExtResource("13_3w238")]([SubResource("Resource_8me8o")])
+StatChanges = Array[ExtResource("13_3w238")]([SubResource("Resource_8me8o"), SubResource("Resource_1prea")])
 AffectedTargets = 0
 Turns = -1
 show_popup = false
@@ -154,7 +164,6 @@ frame = 2
 script = ExtResource("10_3ykwn")
 TurnsToSpawn = Array[int]([1])
 UnitToSpawn = ExtResource("11_nh3h7")
-UnitLevel = 1
 DeltaLevel = 0
 PreAppliedEffects = Array[ExtResource("12_07boi")]([SubResource("Resource_kg6y5")])
 Position = Vector2i(16, 12)

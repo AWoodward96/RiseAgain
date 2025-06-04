@@ -80,8 +80,6 @@ func TryCombat():
 		return
 
 
-
-
 	if selectedOption.ability != null && selectedOption.ability.UsableDamageData != null:
 		var log = ActionLog.Construct(map.grid, unit, selectedOption.ability)
 		log.actionOriginTile = selectedOption.tileToAttack

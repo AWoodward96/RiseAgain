@@ -86,7 +86,7 @@ DamageToHealthRatio = 0.0
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("5_8yxgm")
 TeamTargeting = 2
-TargetRange = Vector2i(1, 3)
+TargetRange = Vector2i(3, 3)
 Type = 2
 shapedTiles = SubResource("Resource_r1dpk")
 stopShapeOnWall = true

@@ -1,9 +1,12 @@
 extends Node2D
 
+signal selectDownCallback
+enum ControllerScheme { Keyboard, Controller }
+static var CurrentInputSchmeme : ControllerScheme = ControllerScheme.Keyboard
+
 @export var inputHeldThreshold = 0.5
 @export var inputHeldMoveTick = 0.06
 
-signal selectDownCallback
 
 var inputDown : Array[bool] = [false, false, false, false]
 var inputHeld : Array[bool] = [false, false, false, false]
@@ -33,11 +36,19 @@ func _process(_delta):
 	UpdateSelectAndCancel(_delta)
 	UpdateStart(_delta)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		CurrentInputSchmeme = ControllerScheme.Keyboard
+	elif event is InputEventJoypadButton or InputEventJoypadMotion:
+		CurrentInputSchmeme = ControllerScheme.Controller
+
+
 func UpdateInputArrays(_delta):
 	inputAnyDown = false
 	inputAnyHeld = false
 	inputDown = [false, false, false, false]
 	inputHeld = [false, false, false, false]
+
 
 	if Input.is_action_pressed("up") : inputHeld[0] = true
 	if Input.is_action_pressed("right") : inputHeld[1] = true

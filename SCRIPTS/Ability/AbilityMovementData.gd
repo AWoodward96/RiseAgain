@@ -23,7 +23,7 @@ var destinationTile : Tile
 
 # returns an array that says how this unit should move for this action
 # if the array is empty then it is not a valid move
-func PreviewMove(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction : GameSettingsTemplate.Direction):
+func PreviewMove(_grid : Grid, _unit : UnitInstance, _origin : Tile, _selectedTile : Tile, _direction : GameSettingsTemplate.Direction):
 	destinationTile = null
 
 	# Set the positional offset to be a half-cell size so that the route that we take goes through the center of each tile instead of on the corner
@@ -35,9 +35,9 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _dire
 			return GetRoute_TargetTile(_unit.CurrentTile, _selectedTile)
 		AbilityMovementType.DirectionalRelative:
 			# Okay this one is a little harder
-			return GetRoute_DirectionalRelative(_grid, _unit, _direction)
+			return GetRoute_DirectionalRelative(_grid, _unit, _origin, _direction)
 		AbilityMovementType.InverseDirectional:
-			return GetRoute_DirectionalRelative(_grid, _unit, _direction, true)
+			return GetRoute_DirectionalRelative(_grid, _unit, _origin, _direction, true)
 
 	return []
 
@@ -50,16 +50,15 @@ func GetRoute_TargetTile(_origin : Tile, _destination : Tile):
 		return ar
 	return ar
 
-func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction : GameSettingsTemplate.Direction, _inverse : bool = false):
+func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : Tile, _direction : GameSettingsTemplate.Direction, _inverse : bool = false):
 	# Okay this one is a little harder
 	var route : Array[Tile] = []
-	var origin = _unit.CurrentTile
-	var workingTile = origin
+	var workingTile = _origin
 	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_direction)
 	if _inverse:
 		directionVector = GameSettingsTemplate.GetInverseVectorFromDirection(_direction)
 
-	route.append(origin)
+	route.append(_origin)
 	if drawPath:
 		for i in movementAmount:
 			var tile = _grid.GetTile(workingTile.Position + directionVector)
@@ -71,8 +70,13 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction
 				route.append(tile)
 				workingTile = tile
 	else:
-		workingTile = _grid.GetTile(workingTile.Position + (directionVector * movementAmount))
-		route.append(workingTile )
+		var tmp = _grid.GetTile(workingTile.Position + (directionVector * movementAmount))
+		if tmp.IsWall && !_unit.IsFlying:
+			# units can't get stuck in walls plz
+			return []
+
+		workingTile = tmp
+		route.append(workingTile)
 
 	# currently, workingTile should be the last tile added to the route
 	var occupantValidator = workingTile.Occupant == null || (workingTile.Occupant != null && workingTile.Occupant == _unit)
@@ -83,7 +87,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _direction
 	return route
 
 
-func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction : GameSettingsTemplate.Direction, _speedOverride : int = -1, _animationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal):
+func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Tile, _direction : GameSettingsTemplate.Direction, _speedOverride : int = -1, _animationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal):
 	# Set the positional offset to zero because actual unit movement does not go through the center
 	positionalOffset = Vector2.ZERO
 	destinationTile = null
@@ -96,9 +100,9 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _direction :
 			route = GetRoute_TargetTile(_unit.CurrentTile, _selectedTile)
 		AbilityMovementType.DirectionalRelative:
 			# Okay this one is a little harder
-			route = GetRoute_DirectionalRelative(_grid, _unit, _direction)
+			route = GetRoute_DirectionalRelative(_grid, _unit, _origin, _direction)
 		AbilityMovementType.InverseDirectional:
-			route = GetRoute_DirectionalRelative(_grid, _unit, _direction, true)
+			route = GetRoute_DirectionalRelative(_grid, _unit, _origin, _direction, true)
 
 	_unit.MoveCharacterToNode(route, destinationTile, _speedOverride, true, false, false, _animationStyle)
 	return route

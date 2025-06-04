@@ -120,17 +120,17 @@ stat_vitality_desc,Increases Health
 stat_vitality_short,VIT
 opoj_any_neutral_alive,Opt: Any Neutral Unit left Alive
 opoj_prized_buck,Opt: Kill the Prized Buck
-item_t1_holywater_desc,SpDefense +2
+item_t1_holywater_desc,SpDefense +1
 item_t1_holywater_name,Holy Tears
-item_t1_ktome_desc,SpAttack +2
+item_t1_ktome_desc,SpAttack +1
 item_t1_ktome_name,Tome
-item_t1_nectar_desc,Vitality +4
+item_t1_nectar_desc,Vitality +2
 item_t1_nectar_name,Golden Apple
-item_t1_polish_desc,Defense +2
+item_t1_polish_desc,Defense +1
 item_t1_polish_name,Armor Polish
-item_t1_skillbook_desc,Max Mana +2
+item_t1_skillbook_desc,Max Mana +1
 item_t1_skillbook_name,Skill Book
-item_t1_whetstone_desc,Attack +2
+item_t1_whetstone_desc,Attack +1
 item_t1_whetstone_name,Whetstone
 des_canine_desc,A slim dog-like creature with sharp teeth
 des_canine_name,Canine
@@ -224,16 +224,16 @@ ce_pushforward_name,Push Forward
 ce_pushforward_desc,Grants +3 Move and +3 Attack
 tile_cavewall_name,Cave
 tile_rocks_name,Rocks
-tut_map0_prompt0,Use WASD Keys to move the Reticle
-tut_map0_prompt1,Use [Space] to Select the Unit
+tut_map0_prompt0,Use [img=24x24]res://ART/UI/Inline/keyboard_up_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_down_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img] to move the Reticle
+tut_map0_prompt1,Use [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to Select the Unit
 tut_map0_prompt2,Move the Reticle to the highlighted Tile
-tut_map0_prompt3,Press [Space] again to confirm movement
-tut_map0_prompt4,Select the Wait option with [Space] to end your Turn
+tut_map0_prompt3,Press [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img]  again to confirm movement
+tut_map0_prompt4,Select the Wait option with [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img]  to end your Turn
 tut_map0_prompt5,Select the Unit again with [Space]
 tut_map0_prompt6,Move the Reticle to the highlighted Tile and press [Space] to confirm movement
 tut_map0_prompt7,Select [Mana Bolt] with [Space]
 tut_map0_prompt8,Here you can preview how combat will play out
-tut_map0_prompt9,"You will do 5 damage to the Zombie, bringing its Health down to 4."
+tut_map0_prompt9,"You will do 4 damage to the Zombie, bringing its Health down to 3."
 tut_map0_prompt10,"When a Unit's Health reaches 0, it is removed from the Map"
 tut_map0_prompt11,Press [Space] once again to confirm your Attack
 tut_map0_prompt12,Units gain EXP by performing actions in the game
@@ -343,3 +343,5 @@ art_arrow_rain_name,Arrow Rain
 art_arrow_rain_desc,"At the start of this Units next turn, deal damage to all Units in a 3x3 Square based on {DMG_AGGRESSIVESTAT}"
 ui_something_in_the_water,There's something in the water...
 ui_submerged_unknown,? ? ?
+art_maul_name,Maul
+art_maul_desc,This Unit jumps forward 2 Tiles and slashes the Units in front of them dealing damage based on {DMG_AGGRESSIVESTAT}. This Ability has an increased Crit chance.
