@@ -584,11 +584,11 @@
 				},
 				{
 					"details": "Chest Open",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Pilfer and Acquire Jingle",
-					"done": false
+					"done": true
 				}
 			]
 		},

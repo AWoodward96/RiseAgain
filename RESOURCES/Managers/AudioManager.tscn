@@ -5,6 +5,8 @@
 [node name="AudioManager" type="Node2D" node_paths=PackedStringArray("AmbiencePlayer", "MusicPlayer")]
 script = ExtResource("1_2b4sn")
 DefaultFootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
+GetItem = "event:/SFX/Action/action_itemgot"
+ItemStolen = "event:/SFX/Action/action_itemstolen"
 AmbiencePlayer = NodePath("Environment/Ambience")
 MusicPlayer = NodePath("Environment/Music")
 

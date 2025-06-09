@@ -6,6 +6,10 @@ const INTENSITY_CAP : float = 5.0
 @export_category("Defaults")
 @export var DefaultFootstepGUID : String
 
+@export_category("Actions")
+@export var GetItem : String
+@export var ItemStolen : String
+
 @export_category("Environment")
 @export var AmbiencePlayer : FmodEventEmitter2D
 @export var MusicPlayer : FmodEventEmitter2D

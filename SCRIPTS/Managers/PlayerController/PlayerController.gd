@@ -13,6 +13,7 @@ signal OnTileSelected(_tile)
 @export var reticleMoveSound : FmodEventEmitter2D
 @export var reticleSelectSound : FmodEventEmitter2D
 @export var reticleCancelSound : FmodEventEmitter2D
+@export var toggleThreat : FmodEventEmitter2D
 
 @onready var movement_tracker : Line2D = %MovementTracker
 @onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
@@ -88,6 +89,8 @@ func _process(_delta):
 						inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
 			else:
 				currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+				if toggleThreat != null:
+					toggleThreat.play()
 
 	if InputManager.cancelDown && inspectUI != null:
 		inspectUI.queue_free()

@@ -32,11 +32,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="prop_chest" type="Node2D" node_paths=PackedStringArray("visual")]
+[node name="prop_chest" type="Node2D" node_paths=PackedStringArray("visual", "unlockSound")]
 scale = Vector2(2, 2)
 script = ExtResource("1_mtde5")
 loot = ExtResource("2_jn04q")
 visual = NodePath("AnimatedSprite2D")
+unlockSound = NodePath("Unlock")
 localization_icon = ExtResource("3_jn04q")
 localization_desc = "ui_chest"
 
@@ -45,3 +46,7 @@ z_index = -1
 position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_47ren")
 autoplay = "default"
+
+[node name="Unlock" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Action/action_unlock"
+event_guid = "{3f23ebf2-1af1-4e4b-9791-970f89faa969}"

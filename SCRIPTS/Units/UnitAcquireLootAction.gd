@@ -20,11 +20,13 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		notificationUI.AddTranlatedText(GameManager.LocalizationSettings.gotItemConcat)
 		notificationUI.AddIcon(loot.icon, Vector2(32, 32))
 		notificationUI.AddTranlatedText(loot.loc_displayName)
+		notificationUI.AddSoundEffect(AudioManager.GetItem)
 	else:
 		# This loc reads "__ was stolen" so format it with the item first then the text after
 		notificationUI.AddIcon(loot.icon, Vector2(32, 32))
 		notificationUI.AddTranlatedText(loot.loc_displayName)
 		notificationUI.AddTranlatedText(GameManager.LocalizationSettings.stoleItemConcat)
+		notificationUI.AddSoundEffect(AudioManager.ItemStolen)
 
 	if !unit.TryEquipItem(loot):
 		map.TryAddItemToConvoy(loot)

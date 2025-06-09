@@ -87,7 +87,7 @@ _data = {
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3lvow"]
 size = Vector2(8, 8)
 
-[node name="PlayerController" type="Node2D" node_paths=PackedStringArray("camera", "reticle", "tutorialReticle", "reticleMoveSound", "reticleSelectSound", "reticleCancelSound")]
+[node name="PlayerController" type="Node2D" node_paths=PackedStringArray("camera", "reticle", "tutorialReticle", "reticleMoveSound", "reticleSelectSound", "reticleCancelSound", "toggleThreat")]
 script = ExtResource("1_f0rkc")
 viewportTilePadding = 3
 camera = NodePath("MainCamera")
@@ -96,6 +96,7 @@ tutorialReticle = NodePath("TutorialReticle")
 reticleMoveSound = NodePath("Reticle/ReticleMove")
 reticleSelectSound = NodePath("Reticle/ReticleSelect")
 reticleCancelSound = NodePath("Reticle/ReticleCancel")
+toggleThreat = NodePath("Reticle/ToggleThreat")
 
 [node name="Reticle" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -124,6 +125,10 @@ event_guid = "{66f92d6a-bd44-4807-a9c6-32423a571333}"
 [node name="ReticleCancel" type="FmodEventEmitter2D" parent="Reticle"]
 event_name = "event:/SFX/Reticle/Reticle_Cancel_Retro"
 event_guid = "{bfab3294-2e75-488b-9e78-3020ee95737c}"
+
+[node name="ToggleThreat" type="FmodEventEmitter2D" parent="Reticle"]
+event_name = "event:/SFX/UI/UI_Paper_Small"
+event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"
 
 [node name="TutorialReticle" type="Node2D" parent="."]
 unique_name_in_owner = true
