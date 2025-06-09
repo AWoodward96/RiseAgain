@@ -1,13 +1,18 @@
 extends GEProp
 class_name GESlowSpeedAttack
 
+const TELEGRAPH_ATLAS : int = 2
+const TELEGRAPH_TILE : Vector2i = Vector2i(0,2)
+
 @export var executionStack : Array[ActionStep]
 @export var autoExpire : bool = true
+@export var telegraphTilemap : TileMapLayer
+@export var autoUpdateTelegraph : bool = true
 var log : ActionLog
 
-#func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
-	#super(_map, _origin, _source, _ability, _allegience)
-	#pass
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID, _direction : GameSettingsTemplate.Direction):
+	super(_map, _origin, _source, _ability, _allegience, _direction)
+	UpdateTelegraph()
 
 func Enter():
 	super()
@@ -16,6 +21,16 @@ func Enter():
 	log.affectedTiles = tiles
 	BuildResults()
 	log.actionStackIndex = -1
+
+func UpdateTelegraph():
+	if telegraphTilemap != null:
+		telegraphTilemap.clear()
+		var originPosition = Origin.Position
+		for tileTargetData in tiles:
+			telegraphTilemap.set_cell(tileTargetData.Tile.Position - originPosition, TELEGRAPH_ATLAS, TELEGRAPH_TILE)
+
+	pass
+
 
 func UpdateGridEntity_TeamTurn(_delta : float):
 	if Source == null:
@@ -67,4 +82,5 @@ func InitFromJSON(_dict : Dictionary):
 	super(_dict)
 	position = Origin.GlobalPosition
 	UpdatePositionOnGrid()
+	UpdateTelegraph()
 	pass

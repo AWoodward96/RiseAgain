@@ -1,12 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo53wngqa8non"]
+[gd_scene load_steps=11 format=3 uid="uid://bo53wngqa8non"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_bn3se"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_flx47"]
 [ext_resource type="PackedScene" uid="uid://dmhbg3jolre8u" path="res://RESOURCES/GridEntities/grasping_roots_entity.tscn" id="3_gsr8n"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_mcqpl"]
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_3ef5x"]
 [ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/summonroots.png" id="5_x8nb5"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_01leg"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="7_cq2cf"]
+
+[sub_resource type="Resource" id="Resource_bn3se"]
+script = ExtResource("3_mcqpl")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_tovoj"]
 script = ExtResource("4_3ef5x")
@@ -15,7 +21,7 @@ GridEntityPrefab = ExtResource("3_gsr8n")
 [node name="summonroots" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_bn3se")
 focusCost = 3
-executionStack = Array[ExtResource("2_flx47")]([SubResource("Resource_tovoj")])
+executionStack = Array[ExtResource("2_flx47")]([SubResource("Resource_bn3se"), SubResource("Resource_tovoj")])
 internalName = "summonroots"
 loc_displayName = "art_graspingroots_name"
 loc_displayDesc = "art_graspingroots_desc"

@@ -3,7 +3,6 @@ class_name GEProjectile
 
 @export var shapedTiles : TargetingShapeBase
 @export var tilesToMovePerTurn : int = 1
-@export var direction : GameSettingsTemplate.Direction
 @export var damageData : DamageData
 @export var visual : Node2D
 @export var moveSpeed : float = 100
@@ -13,16 +12,16 @@ var delay : float
 var tiles : Array[TileTargetedData]
 var moved : bool = false
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
-	super(_map, _origin, _source, _ability, _allegience)
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID, _direction : GameSettingsTemplate.Direction):
+	super(_map, _origin, _source, _ability, _allegience, _direction)
 	RefreshVisual()
 	UpdatePositionOnGrid()
 
 func RefreshVisual():
 	if visual != null:
-		visual.rotation = deg_to_rad(90 * direction)
+		visual.rotation = deg_to_rad(90 * Direction)
 
-		match(direction):
+		match(Direction):
 			0:
 				visual.position = Vector2i(0, 0)
 			1:
@@ -38,7 +37,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Projectile is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, direction, false, false,  false)
+	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, Direction, false, false,  false)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue
@@ -54,7 +53,7 @@ func UpdatePositionOnGrid():
 	pass
 
 func MoveAndDealDamage():
-	var newTile = CurrentMap.grid.GetTile(Origin.Position + GameSettingsTemplate.GetVectorFromDirection(direction))
+	var newTile = CurrentMap.grid.GetTile(Origin.Position + GameSettingsTemplate.GetVectorFromDirection(Direction))
 	if newTile == null:
 		Expired = true
 		return
@@ -113,12 +112,10 @@ func Exit():
 func ToJSON():
 	var dict = super()
 	dict["type"] = "GEProjectile"
-	dict["direction"] = direction
 	return dict
 
 func InitFromJSON(_dict : Dictionary):
 	super(_dict)
-	direction = _dict["direction"]
 	RefreshVisual()
 	UpdatePositionOnGrid()
 	position = Origin.GlobalPosition

@@ -1,0 +1,74 @@
+[gd_scene load_steps=20 format=4 uid="uid://wlfynlbay15t"]
+
+[ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_ki6dk"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_rut70"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_cbua2"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="4_u14no"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="5_yhl53"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="6_n5if2"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_ml4ie"]
+[ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="7_rut70"]
+[ext_resource type="Resource" uid="uid://c6jtfu4xmp7oe" path="res://RESOURCES/TargetingShapes/heatburst_shape.tres" id="8_ki6dk"]
+[ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="9_1q36f"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="10_ghvk2"]
+
+[sub_resource type="Resource" id="Resource_ki6dk"]
+script = ExtResource("3_cbua2")
+OnActionOrigin = false
+OnSource = true
+OnSpecificPosition = false
+SpecificPosition = Vector2i(0, 0)
+Instant = false
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_rut70"]
+script = ExtResource("5_yhl53")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_o5jkg"]
+script = ExtResource("3_cbua2")
+OnActionOrigin = true
+OnSource = false
+OnSpecificPosition = false
+SpecificPosition = Vector2i(0, 0)
+Instant = false
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_3seej"]
+script = ExtResource("4_u14no")
+PlayAtUnit = false
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_c5tec"]
+script = ExtResource("5_yhl53")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_cbua2"]
+script = ExtResource("7_rut70")
+metadata/_custom_type_script = "uid://45lb6jb6lb6n"
+
+[sub_resource type="Resource" id="Resource_utjrs"]
+script = ExtResource("6_n5if2")
+useAttackAction = false
+useDefendAction = false
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_utcex"]
+script = ExtResource("7_ml4ie")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="ge_heatbreak" type="Node2D" node_paths=PackedStringArray("telegraphTilemap")]
+z_index = -5
+script = ExtResource("1_ki6dk")
+executionStack = Array[ExtResource("2_rut70")]([SubResource("Resource_ki6dk"), SubResource("Resource_rut70"), SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_cbua2"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
+telegraphTilemap = NodePath("TileMapLayer")
+shapedTiles = ExtResource("8_ki6dk")
+UpdatePerTeamTurn = true
+localization_icon = ExtResource("9_1q36f")
+localization_desc = "art_arrow_rain_name"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AgAAAAIAAAAAAP//AgAAAAIAAAABAP//AgAAAAIAAAD//wAAAgAAAAIAAAAAAAAAAgAAAAIAAAABAAAAAgAAAAIAAAA=")
+tile_set = ExtResource("10_ghvk2")

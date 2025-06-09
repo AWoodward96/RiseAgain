@@ -10,11 +10,14 @@ var turnBannerOpen : bool
 
 var preTurnUpdate : bool :
 	get:
-		return teamTurnUpdate || unitTurnUpdate || fireUpdate
+		return teamTurnUpdate || unitTurnUpdate || fireUpdate || nextSpawner != null
 
 var teamTurnUpdate : bool
 var unitTurnUpdate : bool
 var preTurnComplete : bool
+var preTurnAvailableSpawners : Array[SpawnerBase]
+var nextSpawner : SpawnerBase
+
 
 var turnStartFocusSubject : Tile
 var turnStartFocusDelta : float
@@ -56,6 +59,10 @@ func Update(_delta):
 		return
 
 	if preTurnUpdate:
+		if preTurnAvailableSpawners.size() > 0 || nextSpawner != null:
+			UpdateTurnStartSpawn(_delta)
+			return
+
 		if teamTurnUpdate || unitTurnUpdate:
 			UpdateGridEntities(_delta)
 			return
@@ -73,7 +80,6 @@ func Update(_delta):
 			map.playercontroller.BlockMovementInput = false
 		preTurnComplete = true
 		map.RemoveExpiredGridEntities()
-
 
 
 	match map.currentTurn:
@@ -98,9 +104,7 @@ func Update(_delta):
 				# only increment the turn count at the end of the enemy's turn
 				map.turnCount += 1
 				nextTurn = GameSettingsTemplate.TeamID.ALLY
-				for s in map.spawners:
-					if s is SpawnerTurnBased && s.CanSpawn(map):
-						s.SpawnEnemy(map, map.mapRNG)
+
 			GameSettingsTemplate.TeamID.NEUTRAL:
 				nextTurn = GameSettingsTemplate.TeamID.ENEMY
 		StartTurn(nextTurn)
@@ -148,9 +152,16 @@ func EnterTeamTurnUpdate():
 
 	if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 		map.playercontroller.BlockMovementInput = true
+
 	for entities in map.gridEntities:
 		if entities.UpdatePerTeamTurn:
 			entities.Enter()
+
+	preTurnAvailableSpawners.clear()
+	for s in map.spawners:
+		if s is SpawnerTurnBased && s.CanSpawn(map):
+			preTurnAvailableSpawners.append(s)
+
 
 	fireDamageTiles = map.grid.UpdateFireDamageTiles(map.currentTurn)
 	if fireDamageTiles.size() > 0:
@@ -161,6 +172,27 @@ func EnterUnitTurnUpdate():
 	for entities in map.gridEntities:
 		if entities.UpdatePerUnitTurn:
 			entities.Enter()
+
+func UpdateTurnStartSpawn(_delta):
+	if nextSpawner == null:
+		if preTurnAvailableSpawners.size() == 0:
+			return
+
+		nextSpawner = preTurnAvailableSpawners.pop_front()
+		controller.ForceCameraPosition(nextSpawner.Position)
+		turnStartFocusDelta = 0
+		return
+
+	elif controller.CameraMovementComplete:
+		# yeah this looks a bit scuffed but what this does is basically add a 1s delay after a unit is spawned
+		# before something else occurs
+		if turnStartFocusDelta == 0:
+			nextSpawner.SpawnEnemy(map, map.mapRNG)
+		turnStartFocusDelta += _delta
+		if turnStartFocusDelta > 1:
+			nextSpawner = null
+
+	pass
 
 func UpdateFireDamage(_delta):
 	if turnStartFocusSubject == null && fireDamageTiles.size() == 0:

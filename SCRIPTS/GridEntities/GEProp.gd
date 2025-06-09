@@ -6,8 +6,8 @@ class_name GEProp
 var tiles : Array[TileTargetedData]
 
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
-	super(_map, _origin, _source, _ability, _allegience)
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID, _direction : GameSettingsTemplate.Direction):
+	super(_map, _origin, _source, _ability, _allegience, _direction)
 	UpdatePositionOnGrid()
 
 func UpdatePositionOnGrid():
@@ -15,7 +15,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Platform is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, GameSettingsTemplate.Direction.Up)
+	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, Direction)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue

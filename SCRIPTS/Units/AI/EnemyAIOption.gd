@@ -10,6 +10,7 @@ var killCount : int
 var unitWillRetaliate : bool
 var canDealDamage : bool
 var damageAmount : int
+var isPathToTarget : bool
 
 var flagIndex : int
 var totalFlags : int
@@ -65,8 +66,15 @@ func Update():
 		if actionableTiles == null || actionableTiles.size() == 0:
 			# This might happen if a melee unit only has one valid tile they can path through, and there's a unit on that spot
 			# In that case, truncate to a closer position.
-			valid = true
-			TruncatePathToMovement(roughPath)
+
+			if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+				# we set valid to false because if we can't actually use the ability, we don't want the unit to path weirdly and then not use the ability
+				valid = false
+				if roughPath.size() > 0:
+					CheckIfMovementNeeded(roughPath[roughPath.size() - 1], roughPath)
+			else:
+				valid = true
+				TruncatePathToMovement(roughPath)
 			return
 
 		# Okay so we have a list of actionableTiles - check which one is the closest
@@ -81,18 +89,29 @@ func Update():
 
 		# If selected path isn't null, then there is a path to the player
 		if selectedPath != null && selectedPath.size() != 0:
-			valid = true
+			# this is only valid if we're not using a shaped directional ability - if we are then the checkifmovementneed method will determine if this is a valid option
+			if ability.TargetingData.Type != SkillTargetingData.TargetingType.ShapedDirectional:
+				valid = true
+
+			isPathToTarget = true
 			path = selectedPath
 			TruncatePathToMovement(path)
 			CheckIfMovementNeeded(path[path.size() - 1], path)
 		else:
-			valid = true
-			TruncatePathToMovement(roughPath)
-
 			# If we've reached here then there is no path that puts us within range to hit the target
 			# Exceeeeept we never really checked the ShapedDirectionals
 			# What we're going to do now is to check to see if the target is within range based on this current tile
+			valid = true
+			isPathToTarget = false
+			TruncatePathToMovement(roughPath)
+
+
+			if path.size() == 0:
+				return
+
 			if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
+				# we set valid to false because if we can't actually use the ability, we don't want the unit to path weirdly and then not use the ability
+				valid = false
 				# So basically, always move towards the player AND if you can hit them - well then do so!
 				CheckIfMovementNeeded(path[path.size() - 1], path)
 	pass
@@ -192,13 +211,18 @@ func UpdateWeight():
 	if ability.type == Ability.AbilityType.Standard:
 		weight += ABILITY_TIER_AMOUNT
 
-	weight += TIER_AMOUNT - path.size()
+	# if path is 0 then there's no route to this unit, so don't prioritize this
+	if isPathToTarget:
+		weight += TIER_AMOUNT - roughPath.size()
+
 	weight += KILL_TIER_AMOUNT * killCount
 
 	# Commenting this out because it's making units ignore units that they can't hurt. They should still try imo
 	if canDealDamage : weight += TIER_AMOUNT
 	if !unitWillRetaliate && canDealDamage : weight += TIER_AMOUNT
 
+	# don't increase the weight if damage can't be delt
+	#if canDealDamage:
 	weight += damageAmount
 	weight += (TIER_AMOUNT * ((totalFlags - 1) - flagIndex))
 
@@ -207,6 +231,7 @@ func TruncatePathToMovement(_path : Array[Tile]):
 	if _path.size() <= 1:
 		if _path.size() == 1:
 			tileToMoveTo = _path[0]
+			path = _path
 		return
 
 	# Take the rough path, and start truncating it. Bring it down to the movement of the source Unit, and move backwards if there are tiles you can't stand on

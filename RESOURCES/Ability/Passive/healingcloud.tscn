@@ -29,6 +29,7 @@ metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
 
 [sub_resource type="Resource" id="Resource_6nieg"]
 script = ExtResource("4_v5pb2")
+PlayAtUnit = true
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_vs4yg"]

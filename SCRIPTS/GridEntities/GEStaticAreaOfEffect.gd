@@ -24,8 +24,8 @@ var warmup : float = 0
 var cooloff : float = 0
 var affected : bool = false
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
-	super(_map, _origin, _source, _ability, _allegience)
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID, _direction : GameSettingsTemplate.Direction):
+	super(_map, _origin, _source, _ability, _allegience, _direction)
 	UpdatePositionOnGrid()
 	remaining_duration = duration
 

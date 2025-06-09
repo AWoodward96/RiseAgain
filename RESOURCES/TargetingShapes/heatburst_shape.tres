@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=14 format=3 uid="uid://c6jtfu4xmp7oe"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_0ady0"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_7j75m"]
+[ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="2_uryce"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_b2u1r"]
+
+[sub_resource type="Resource" id="Resource_qsgbc"]
+script = ExtResource("2_7j75m")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 1
+Position = Vector2i(0, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_10y0u"]
+script = ExtResource("2_7j75m")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 1
+Position = Vector2i(1, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_ghc4d"]
+script = ExtResource("2_7j75m")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 1
+Position = Vector2i(-1, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_s1d0v"]
+script = ExtResource("2_uryce")
+overrideActionDirection = false
+pushDirectionOverride = 0
+pushAmount = 2
+carryLimit = 2
+canDamageUser = false
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_6o8eo"]
+script = ExtResource("2_7j75m")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 2
+pushInfo = SubResource("Resource_s1d0v")
+Position = Vector2i(0, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_8xfho"]
+script = ExtResource("2_uryce")
+overrideActionDirection = false
+pushDirectionOverride = 0
+pushAmount = 2
+carryLimit = 2
+canDamageUser = false
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_vfv1a"]
+script = ExtResource("2_7j75m")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 2
+pushInfo = SubResource("Resource_8xfho")
+Position = Vector2i(1, 0)
+Multiplier = 1.0
+
+[sub_resource type="Resource" id="Resource_5qa6x"]
+script = ExtResource("2_uryce")
+overrideActionDirection = false
+pushDirectionOverride = 0
+pushAmount = 2
+carryLimit = 2
+canDamageUser = false
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_lprnj"]
+script = ExtResource("2_7j75m")
+AccuracyModifier = 0.0
+CritModifier = 0.0
+Ignite = 2
+pushInfo = SubResource("Resource_5qa6x")
+Position = Vector2i(-1, 0)
+Multiplier = 1.0
+
+[resource]
+script = ExtResource("3_b2u1r")
+TileCoordinates = Array[ExtResource("1_0ady0")]([SubResource("Resource_qsgbc"), SubResource("Resource_10y0u"), SubResource("Resource_ghc4d"), SubResource("Resource_6o8eo"), SubResource("Resource_vfv1a"), SubResource("Resource_lprnj")])

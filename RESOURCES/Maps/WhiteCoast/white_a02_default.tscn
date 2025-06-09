@@ -43,7 +43,7 @@ metadata/_custom_type_script = "uid://bsigkcdkaqxem"
 
 [sub_resource type="Resource" id="Resource_7sjrr"]
 script = ExtResource("23_ixfpf")
-tileToLoot = Array[Vector2i]([Vector2i(17, 1), Vector2i(21, 9)])
+tileToLoot = Array[Vector2i]([Vector2i(17, 1)])
 tryToEscape = true
 escapeRoute = Vector2i(22, 0)
 Flags = Array[ExtResource("22_vmpk3")]([SubResource("Resource_2n151")])
@@ -148,28 +148,28 @@ texture = ExtResource("9_xmcga")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(192, 384)
-Position = Vector2i(3, 6)
+position = Vector2(384, 448)
+Position = Vector2i(6, 7)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(192, 320)
-Position = Vector2i(3, 5)
+position = Vector2(384, 320)
+Position = Vector2i(6, 5)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(128, 256)
-Position = Vector2i(2, 4)
+position = Vector2(256, 320)
+Position = Vector2i(4, 5)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(128, 320)
-Position = Vector2i(2, 5)
+position = Vector2(320, 384)
+Position = Vector2i(5, 6)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper5" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
-position = Vector2(64, 384)
-Position = Vector2i(1, 6)
+position = Vector2(256, 448)
+Position = Vector2i(4, 7)
 map = NodePath("../..")
 
 [node name="Spawners" type="Node2D" parent="."]
@@ -202,6 +202,7 @@ GridEntityPrefab = ExtResource("17_a1cur")
 Position = Vector2i(17, 1)
 
 [node name="Chest_2" type="Sprite2D" parent="Spawners"]
+visible = false
 position = Vector2(1344, 576)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -211,6 +212,7 @@ frame = 3
 script = ExtResource("16_smidf")
 GridEntityPrefab = ExtResource("17_a1cur")
 Position = Vector2i(21, 9)
+Enabled = false
 
 [node name="Spawn_Maws2" type="Sprite2D" parent="Spawners"]
 position = Vector2(320, 640)

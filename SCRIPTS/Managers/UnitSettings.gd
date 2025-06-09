@@ -2,7 +2,7 @@ extends Resource
 class_name UnitSettingsTemplate
 
 
-enum MovementAnimationStyle { Normal, Jump, Teleport }
+enum MovementAnimationStyle { Normal, Jump, Teleport, Pushed }
 
 static var ANIM_IDLE = "idle"
 static var ANIM_SELECTED = "selected"

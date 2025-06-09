@@ -5,7 +5,6 @@ var SourceTile : Tile
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var CritRate : float		# The % the roll needs to be under in order for it to be a crit
 
-
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
 

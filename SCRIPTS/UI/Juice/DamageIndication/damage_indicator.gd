@@ -22,6 +22,7 @@ var maxHealth : int
 var previewedHP # The hp value visible to the player. Gets ticked down over the course of the preview
 var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
 var previewHPTween : Tween
+var submerged : bool
 
 var normalDamage : int :
 	set(val):
@@ -47,21 +48,28 @@ func ShowPreview():
 	if delta_hp_label != null:
 		delta_hp_label.text = GameManager.LocalizationSettings.FormatForCombat(normalDamage, collisionDamage, healAmount, normalDamageModified)
 
-	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)
+	if !submerged:
+		hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
+		resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)
 
-	death_indicator.visible = resultingHP <= 0
+		death_indicator.visible = resultingHP <= 0
+	else:
+		hp_listener.text = str("???/???")
+		death_indicator.visible = false
 
 	for template in effects:
 		var entry = effects_preview.CreateEntry(effectEntry)
 		entry.texture.texture = template.loc_icon
 		entry.label.text = template.loc_name
 
-	CreateTween()
+	if !submerged:
+		CreateTween()
 
 func AddEffect(_effectTemplate : CombatEffectTemplate):
 	effects.append(_effectTemplate)
 
+func SetSubmerged(_bool : bool):
+	submerged = _bool
 
 func SetDisplayStyle(_ability : Ability):
 	match(_ability.type):

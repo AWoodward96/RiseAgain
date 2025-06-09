@@ -1,0 +1,87 @@
+[gd_scene load_steps=21 format=3 uid="uid://bysotjnllb6fb"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fxrtx"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_3bkcf"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_oeasa"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="3_likao"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_oeasa"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_yva3m"]
+[ext_resource type="PackedScene" uid="uid://wlfynlbay15t" path="res://RESOURCES/GridEntities/ge_heatbreak.tscn" id="4_bs4fn"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_likao"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_yva3m"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="10_t1f1k"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="11_bpjte"]
+
+[sub_resource type="Resource" id="Resource_t1f1k"]
+script = ExtResource("3_yva3m")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_yva3m"]
+script = ExtResource("3_likao")
+GridEntityPrefab = ExtResource("4_bs4fn")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[sub_resource type="Resource" id="Resource_1l6lb"]
+script = ExtResource("10_t1f1k")
+Position = Vector2i(0, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_t838u"]
+script = ExtResource("10_t1f1k")
+Position = Vector2i(0, -2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_wj487"]
+script = ExtResource("10_t1f1k")
+Position = Vector2i(-1, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_0v0kt"]
+script = ExtResource("10_t1f1k")
+Position = Vector2i(-1, -2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_km8gr"]
+script = ExtResource("10_t1f1k")
+Position = Vector2i(1, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_p3t8j"]
+script = ExtResource("10_t1f1k")
+Position = Vector2i(1, -2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_iomtv"]
+script = ExtResource("11_bpjte")
+TileCoordinates = Array[ExtResource("10_t1f1k")]([SubResource("Resource_1l6lb"), SubResource("Resource_t838u"), SubResource("Resource_wj487"), SubResource("Resource_0v0kt"), SubResource("Resource_km8gr"), SubResource("Resource_p3t8j")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[node name="heatbreak" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_fxrtx")
+focusCost = 5
+executionStack = Array[ExtResource("2_oeasa")]([SubResource("Resource_t1f1k"), SubResource("Resource_yva3m")])
+internalName = "heatbreak"
+loc_displayName = "art_heatbreak_name"
+loc_displayDesc = "art_heatbreak_desc"
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("2_3bkcf")
+AgressiveStat = ExtResource("3_oeasa")
+DefensiveStat = ExtResource("4_likao")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("5_yva3m")
+TeamTargeting = 2
+TargetRange = Vector2i(0, 1)
+Type = 2
+shapedTiles = SubResource("Resource_iomtv")

@@ -39,12 +39,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		focusDelta += result.FocusDelta
 		sourceHealthDelta += result.SourceHealthDelta
 
-		if result.Target == null:
-			# only deal damage to tiles if there's no unit there
-			Log.grid.ModifyTileHealth(result.HealthDelta, result.TileTargetData.Tile)
 
-		if result.TileTargetData.Ignite > 0:
-			Log.grid.IgniteTile(result.TileTargetData.Tile, result.TileTargetData.Ignite)
 
 
 	_unit.PlayAttackAnimation(TargetPosition - _unit.position)

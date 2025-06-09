@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dp0gbxwj2y26b"]
+[gd_scene load_steps=24 format=3 uid="uid://dp0gbxwj2y26b"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6yhr7"]
 [ext_resource type="Texture2D" uid="uid://uxr60sgilonh" path="res://ART/Icons/Ability/Standard/maul.png" id="2_jsawa"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_laam4"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_p0no4"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_1g1qy"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_jsawa"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_rqvwo"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_1g1qy"]
@@ -14,6 +15,11 @@
 [ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="12_jhchw"]
 [ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="13_tv8hm"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="14_2kkgi"]
+
+[sub_resource type="Resource" id="Resource_k7bwb"]
+script = ExtResource("3_1g1qy")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_a18b1"]
 script = ExtResource("3_rqvwo")
@@ -67,7 +73,7 @@ metadata/_custom_type_script = "uid://ofdutqbqnjrf"
 [node name="maul" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_6yhr7")
 focusCost = 2
-executionStack = Array[ExtResource("2_p0no4")]([SubResource("Resource_a18b1"), SubResource("Resource_r5wa8"), SubResource("Resource_ucxb0")])
+executionStack = Array[ExtResource("2_p0no4")]([SubResource("Resource_k7bwb"), SubResource("Resource_a18b1"), SubResource("Resource_r5wa8"), SubResource("Resource_ucxb0")])
 internalName = "maul"
 loc_displayName = "art_maul_name"
 loc_displayDesc = "art_maul_desc"

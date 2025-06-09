@@ -74,11 +74,6 @@ func _process(_delta):
 	if combatHUD != null:
 		combatHUD.ObjectivePanelUI.Disabled = !ControllerState.ShowObjective()
 
-	# Block inputs from the player controller if we're in preturn or running passive results
-	if currentMap.MapState is CombatState:
-		if !currentMap.MapState.preTurnComplete:
-			return
-
 	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
 	if ControllerState != null && inspectUI == null:
 		ControllerState._Execute(_delta)
@@ -209,6 +204,7 @@ func FocusReticleOnUnit(_unit : UnitInstance):
 	OnTileChanged.emit(CurrentTile)
 
 func ForceCameraPosition(_gridPosition : Vector2, _instantaneous : bool = false):
+	CameraMovementComplete = false
 	reticle.global_position = _gridPosition * tileSize
 	desiredCameraPosition = _gridPosition * tileSize
 	if _instantaneous:

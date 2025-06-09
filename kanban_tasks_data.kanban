@@ -43,10 +43,10 @@
 			"title": "Doing",
 			"tasks": [
 				"74755431-829a-4027-92df-f9210e878e79",
-				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
 				"8c6ef764-233f-4c58-8039-a4816bffbdc2",
 				"b20362e5-83b3-4994-8130-299e0326c0e1",
-				"fd11942d-191d-4019-9a21-163a01348401"
+				"fd11942d-191d-4019-9a21-163a01348401",
+				"78f0911a-a452-474e-bfca-5d4dc191c07e"
 			]
 		},
 		{
@@ -56,11 +56,16 @@
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
+				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
 				"d0054fe4-6d3b-4452-849b-3b7a3b37fc1c",
 				"e8267663-5393-49b0-89de-0c24e9998ad2",
+				"5c06e99f-f333-48e5-bd26-1e26e869f227",
+				"100d6fe3-063f-4e08-9447-45690ff5adcc",
 				"aac58012-41d3-4129-909e-aeeff9b01244",
 				"45e8c49f-87df-4e73-bc6c-d09742769f0f",
 				"8ba8c317-665a-430b-b49b-33f5f4af2f5d",
+				"f8e9b751-167c-4b5c-81d8-e3200a360524",
+				"699aab52-45ba-4327-b881-5d2aed61b4d8",
 				"5bb0a342-2039-4861-a622-11031c1d8e02",
 				"021cf49e-4e1a-4007-a568-57bc36e0d0a7",
 				"1256e757-b175-4709-ae5c-7e7149241b14",
@@ -91,9 +96,7 @@
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
-			"tasks": [
-				"699aab52-45ba-4327-b881-5d2aed61b4d8"
-			]
+			"tasks": []
 		}
 	],
 	"tasks": [
@@ -577,6 +580,58 @@
 				},
 				{
 					"details": "Toggle Threat",
+					"done": false
+				},
+				{
+					"details": "Chest Open",
+					"done": false
+				},
+				{
+					"details": "Pilfer and Acquire Jingle",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "f8e9b751-167c-4b5c-81d8-e3200a360524",
+			"title": "Items are Initializing as null after being saved",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "5c06e99f-f333-48e5-bd26-1e26e869f227",
+			"title": "When a new unit spawnes, the camera needs to focus on them",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "100d6fe3-063f-4e08-9447-45690ff5adcc",
+			"title": "Camera not properly focusing on arrow rain",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "9c1acddd-493b-4285-9a16-7994e0f905e5",
+			"title": "Fix weird interaction with pushes on edge of the map",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "78f0911a-a452-474e-bfca-5d4dc191c07e",
+			"title": "Push Mechanic Needs Fixing",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": [
+				{
+					"details": "Pushing units on the edge of the map might not work",
+					"done": false
+				},
+				{
+					"details": "Giant AOE pushes doesn't work",
 					"done": false
 				}
 			]

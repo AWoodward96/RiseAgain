@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnhnmdp8kwdpc"]
+[gd_scene load_steps=16 format=3 uid="uid://dnhnmdp8kwdpc"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fuk4q"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_muggo"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_a1d6o"]
 [ext_resource type="Script" uid="uid://cxibyhmsiee1i" path="res://SCRIPTS/Ability/SummonStep.gd" id="3_en8m4"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_ree2d"]
 [ext_resource type="Texture2D" uid="uid://dcnnvbyqv45ll" path="res://ART/Icons/Ability/Standard/raisedead.png" id="5_bv7d7"]
@@ -10,6 +11,11 @@
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_jv71w"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="9_c5b41"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="10_ecwqc"]
+
+[sub_resource type="Resource" id="Resource_hgqot"]
+script = ExtResource("3_a1d6o")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_lu3qr"]
 script = ExtResource("3_en8m4")
@@ -24,7 +30,7 @@ script = ExtResource("10_ecwqc")
 [node name="ART_RaiseDead" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_fuk4q")
 focusCost = 3
-executionStack = Array[ExtResource("2_muggo")]([SubResource("Resource_lu3qr"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_muggo")]([SubResource("Resource_hgqot"), SubResource("Resource_lu3qr"), SubResource("Resource_5cjq5")])
 internalName = "raisedead"
 loc_displayName = "art_raisedead_name"
 loc_displayDesc = "art_raisedead_desc"

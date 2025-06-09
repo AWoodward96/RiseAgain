@@ -120,6 +120,8 @@ func UpdateAnimations(_distance):
 	match AnimationStyle:
 		UnitSettingsTemplate.MovementAnimationStyle.Normal:
 			unit.PlayAnimation(UnitSettingsTemplate.GetMovementAnimationFromVector(MovementVelocity))
+		UnitSettingsTemplate.MovementAnimationStyle.Pushed:
+			unit.PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
 		UnitSettingsTemplate.MovementAnimationStyle.Jump:
 
 			if _distance > (TravelVector.length_squared() / 2):
@@ -139,7 +141,7 @@ func UpdateAnimations(_distance):
 
 func Move(_destination : Vector2, _distance : float, _speed : float, _delta : float):
 	match AnimationStyle:
-		UnitSettingsTemplate.MovementAnimationStyle.Normal:
+		UnitSettingsTemplate.MovementAnimationStyle.Normal, UnitSettingsTemplate.MovementAnimationStyle.Pushed:
 			MovementVelocity = (_destination - unit.position).normalized() * _speed
 			unit.position += MovementVelocity * _delta
 		UnitSettingsTemplate.MovementAnimationStyle.Jump:

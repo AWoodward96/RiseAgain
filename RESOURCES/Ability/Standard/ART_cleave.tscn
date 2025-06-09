@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b38f8bah8gh6y"]
+[gd_scene load_steps=15 format=3 uid="uid://b38f8bah8gh6y"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3n530"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ipi5c"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_1jlk6"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_8jwbh"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_nycen"]
 [ext_resource type="Texture2D" uid="uid://uh2xgg4i7bc" path="res://ART/Icons/Ability/Standard/cleave.png" id="4_nntet"]
@@ -10,6 +11,11 @@
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_ilbbx"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_0f5o6"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_pn77o"]
+
+[sub_resource type="Resource" id="Resource_q4876"]
+script = ExtResource("3_1jlk6")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_6pi40"]
 script = ExtResource("3_8jwbh")
@@ -22,7 +28,7 @@ script = ExtResource("3_nycen")
 [node name="ART_Cleave" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_3n530")
 focusCost = 5
-executionStack = Array[ExtResource("2_ipi5c")]([SubResource("Resource_6pi40"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_ipi5c")]([SubResource("Resource_q4876"), SubResource("Resource_6pi40"), SubResource("Resource_5cjq5")])
 internalName = "cleave"
 loc_displayName = "art_cleave_name"
 loc_displayDesc = "art_cleave_desc"

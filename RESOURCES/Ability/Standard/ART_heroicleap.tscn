@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgpijng0n124p"]
+[gd_scene load_steps=21 format=3 uid="uid://dgpijng0n124p"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_8kx7m"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_vi17b"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_kgbqm"]
 [ext_resource type="Resource" uid="uid://w4pf17p2i0wg" path="res://RESOURCES/CombatEffects/CE_Armor_HeroicLeap.tres" id="5_octw8"]
@@ -14,6 +15,11 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="9_uyhs5"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_6323x"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_anx3p"]
+
+[sub_resource type="Resource" id="Resource_5rliq"]
+script = ExtResource("3_vi17b")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_p650e"]
 script = ExtResource("3_8kx7m")
@@ -37,7 +43,7 @@ script = ExtResource("4_isldo")
 script = ExtResource("1_a52ru")
 focusCost = 3
 ability_speed = 1
-executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_khgxx"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_5rliq"), SubResource("Resource_p650e"), SubResource("Resource_khgxx"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "heroicleap"
 loc_displayName = "art_heroicleap_name"
 loc_displayDesc = "art_heroicleap_desc"

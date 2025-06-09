@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://puxbxe6g34j8"]
+[gd_scene load_steps=26 format=3 uid="uid://puxbxe6g34j8"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7xk4g"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_mbdvn"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_apckt"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_jqx7w"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_fsb37"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_ubaxs"]
@@ -17,6 +18,11 @@
 [ext_resource type="Resource" uid="uid://d0xjc40ay5iaq" path="res://RESOURCES/TargetingShapes/slipnslash_shape.tres" id="10_okgaa"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_smoxh"]
 [ext_resource type="Texture2D" uid="uid://p4rnfhj67wax" path="res://ART/Icons/Ability/Standard/slipnslash.png" id="11_ubeem"]
+
+[sub_resource type="Resource" id="Resource_xn624"]
+script = ExtResource("3_apckt")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_ag1gk"]
 script = ExtResource("3_jqx7w")
@@ -48,7 +54,7 @@ script = ExtResource("4_ubaxs")
 [node name="ART_SlipNSlash" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_7xk4g")
 focusCost = 2
-executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_ag1gk"), SubResource("Resource_l02h2"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
+executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_xn624"), SubResource("Resource_ag1gk"), SubResource("Resource_l02h2"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
 damageGrantsFocus = true
 internalName = "slipnslash"
 loc_displayName = "art_slipnslash_name"

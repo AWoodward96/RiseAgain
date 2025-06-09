@@ -5,8 +5,8 @@ class_name GEProximityBomb
 @export var damageData : DamageData
 @export var defaultDamage : int = -4
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
-	super(_map, _origin, _source, _ability, _allegience)
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID, _direction : GameSettingsTemplate.Direction):
+	super(_map, _origin, _source, _ability, _allegience, _direction)
 	_origin.AddEntity(self)
 
 

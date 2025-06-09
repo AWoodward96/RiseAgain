@@ -279,6 +279,10 @@ func OnTileUpdated(_tile : Tile):
 func SetSubmerged(_val : bool):
 	Submerged = _val
 
+	if damage_indicator != null:
+		damage_indicator.SetSubmerged(_val)
+
+
 	visual.UpdateSubmerged(_val)
 	if Submerged:
 		affinityIcon.visible = false
@@ -451,6 +455,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 	else:
 		itemsParent.remove_child(ItemSlots[_slotIndex])
+		itemsParent.add_child(item)
 		ItemSlots[_slotIndex] = item
 		UpdateDerivedStats()
 		OnStatUpdated.emit()
@@ -988,6 +993,9 @@ static func FromJSON(_dict : Dictionary):
 
 	var data = PersistDataManager.JSONToArray(_dict["ItemSlots"], Callable.create(Item, "FromJSON"))
 	unitInstance.ItemSlots.assign(data)
+	for i in unitInstance.ItemSlots:
+		# This technically throws an error but everything still works? So uhhh
+		unitInstance.itemsParent.add_child(i)
 
 	unitInstance.UpdateDerivedStats()
 	unitInstance.CreateVisual()

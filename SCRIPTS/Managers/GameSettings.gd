@@ -51,6 +51,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var InjuredHealthDebuff : float = 0.33
 @export var InjuredStatsDebuff : float = 0.2
 @export var InjuredAffectedStats : Array[StatTemplate]
+@export var OverLeveledEXPDebuff : int = 10
 
 @export var Alpha_AlliedUnitColor : Color
 @export var Alpha_EnemyUnitColor : Color
@@ -296,12 +297,19 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 
 	# Define variables A B and C
 	var A = 0.9 # Gradual growth
-	var B = 1.4	# Exponential slope, higher number = more exp based on level diff
+	var B = 2	# Exponential slope, higher number = more exp based on level diff
 	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
-	var equationResult = (A * (pow(B, X)) + C) * 20 + _damageDealt
+	var equationResult = (A * (pow(B, X)) + C) * 15 + _damageDealt
+
+	# Punish overleveling by decreasing exp by 10
+	if X < 0:
+		equationResult -= OverLeveledEXPDebuff
+
 	equationResult += _target.ExtraEXPGranted
 	if _isAOE:
 		equationResult = equationResult * GameManager.GameSettings.AOEExpMultiplier
+
+	equationResult = max(equationResult, 1)
 	return equationResult
 
 #func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):

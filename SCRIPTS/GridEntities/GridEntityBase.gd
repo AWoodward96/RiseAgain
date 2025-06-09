@@ -18,13 +18,15 @@ var SourceAbility : Ability
 var CurrentMap : Map
 var Expired : bool = false
 var ExecutionComplete : bool = false
+var Direction : GameSettingsTemplate.Direction = GameSettingsTemplate.Direction.Up
 
-func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID):
+func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Ability, _allegience : GameSettingsTemplate.TeamID, _direction : GameSettingsTemplate.Direction):
 	Origin = _origin
 	Allegience = _allegience
 	Source = _source
 	SourceAbility = _ability
 	CurrentMap = _map
+	Direction = _direction
 
 	if Origin != null:
 		position = Origin.GlobalPosition
@@ -59,7 +61,8 @@ func ToJSON():
 		"Expired" : Expired,
 		"ExecutionComplete" : ExecutionComplete,
 		"type" : "GridEntityBase",
-		"OriginPosition" : Origin.Position
+		"OriginPosition" : Origin.Position,
+		"Direction" : Direction
 	}
 
 	if Source != null:
@@ -82,6 +85,7 @@ func InitFromJSON(_dict : Dictionary):
 	Expired = _dict["Expired"]
 	ExecutionComplete = _dict["ExecutionComplete"]
 	Origin = Map.Current.grid.GetTile(PersistDataManager.String_To_Vector2i(_dict["OriginPosition"]))
+	Direction = _dict["Direction"]
 
 	if _dict.has("SourceUnitTemplate"):
 		var units = Map.Current.GetUnitsOnTeam(_dict["SourceAllegience"])

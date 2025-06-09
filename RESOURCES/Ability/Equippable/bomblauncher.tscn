@@ -1,0 +1,71 @@
+[gd_scene load_steps=18 format=3 uid="uid://vlpjvct6tdeb"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_022c1"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_jwuwu"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_pqj62"]
+[ext_resource type="PackedScene" uid="uid://dsjmls2c4362e" path="res://RESOURCES/GridEntities/ge_launcherbomb.tscn" id="3_47g6t"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_pqj62"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_xidfr"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_47g6t"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_apn66"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_logmo"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_logmo"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_xidfr"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_apn66"]
+[ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="8_ggq14"]
+
+[sub_resource type="Resource" id="Resource_ggq14"]
+script = ExtResource("3_xidfr")
+OnActionOrigin = true
+OnSource = false
+OnSpecificPosition = false
+SpecificPosition = Vector2i(0, 0)
+Instant = false
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_b0j54"]
+script = ExtResource("4_apn66")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_xidfr"]
+script = ExtResource("4_logmo")
+GridEntityPrefab = ExtResource("3_47g6t")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[sub_resource type="Resource" id="Resource_apn66"]
+script = ExtResource("3_pqj62")
+Template = ExtResource("4_47g6t")
+Value = 3
+
+[node name="bomblauncher" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_022c1")
+type = 1
+focusCost = 0
+ability_speed = 2
+executionStack = Array[ExtResource("2_pqj62")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_xidfr")])
+damageGrantsFocus = true
+internalName = "bomblauncher"
+loc_displayName = "weap_bomblauncher_name"
+loc_displayDesc = "weap_bomblauncher_desc"
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("2_jwuwu")
+GrantedStats = Array[ExtResource("3_pqj62")]([SubResource("Resource_apn66")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("5_logmo")
+AgressiveStat = ExtResource("4_47g6t")
+DefensiveStat = ExtResource("6_xidfr")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("7_apn66")
+TeamTargeting = 2
+TargetRange = Vector2i(1, 3)
+Type = 1
+CanTargetSelf = true
+shapedTiles = ExtResource("8_ggq14")

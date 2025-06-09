@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dl6oykv0h4h7v"]
+[gd_scene load_steps=16 format=3 uid="uid://dl6oykv0h4h7v"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_etbtn"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_kp30w"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_xgcjy"]
 [ext_resource type="Script" uid="uid://cxibyhmsiee1i" path="res://SCRIPTS/Ability/SummonStep.gd" id="3_yfucp"]
 [ext_resource type="Script" uid="uid://jtcvhyy5vhbh" path="res://SCRIPTS/Ability/RemoveSelfStep.gd" id="4_kt1v7"]
 [ext_resource type="Script" uid="uid://deq7lqalqcgnh" path="res://SCRIPTS/Items/SummonUnitComponent.gd" id="5_34uen"]
@@ -10,6 +11,11 @@
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="7_tcjl5"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="8_i6vqd"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_v1s51"]
+
+[sub_resource type="Resource" id="Resource_cm87u"]
+script = ExtResource("3_xgcjy")
+PlayAtUnit = true
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_nsxhh"]
 script = ExtResource("3_yfucp")
@@ -24,7 +30,7 @@ script = ExtResource("8_i6vqd")
 [node name="Hatch" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "SummonData")]
 script = ExtResource("1_etbtn")
 focusCost = 3
-executionStack = Array[ExtResource("2_kp30w")]([SubResource("Resource_nsxhh"), SubResource("Resource_16vul")])
+executionStack = Array[ExtResource("2_kp30w")]([SubResource("Resource_cm87u"), SubResource("Resource_nsxhh"), SubResource("Resource_16vul")])
 passiveListeners = [null]
 internalName = "hatch"
 loc_displayName = "art_hatch_name"

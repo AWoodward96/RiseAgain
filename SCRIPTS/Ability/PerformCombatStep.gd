@@ -52,6 +52,16 @@ func Enter(_actionLog : ActionLog):
 						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
+				if damageStepResult.TileTargetData.Ignite > 0:
+					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
+
+		else:
+			# we hit a tile.
+			# We're doing this here instead of in the attack sequence bc sometimes an ability  doesn't use an attack action
+			log.grid.ModifyTileHealth(damageStepResult.HealthDelta, damageStepResult.TileTargetData.Tile)
+
+			if damageStepResult.TileTargetData.Ignite > 0:
+				log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 
 	pass
 
