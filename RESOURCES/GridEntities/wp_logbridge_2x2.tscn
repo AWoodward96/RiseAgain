@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg1xup1qjwpl3"]
+[gd_scene load_steps=11 format=4 uid="uid://bg1xup1qjwpl3"]
 
 [ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_jr46n"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_gmtnm"]
 [ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_g3t0t"]
 [ext_resource type="Texture2D" uid="uid://qlirshxfnswf" path="res://ART/Environment/WhiteCoast/logbridge_2x2.png" id="4_jr46n"]
+[ext_resource type="TileSet" uid="uid://klf2tpkgl4h3" path="res://ART/Environment/WhiteCoast/whitecoast_tileset.tres" id="5_gmtnm"]
 
 [sub_resource type="Resource" id="Resource_gmtnm"]
 script = ExtResource("2_gmtnm")
@@ -41,6 +42,12 @@ shapedTiles = SubResource("Resource_8jvxw")
 ui_invisible = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(62, 61)
 scale = Vector2(2, 2)
 texture = ExtResource("4_jr46n")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAQAGAAsAAAABAAAAAQAHAAsAAAABAAEAAQAHAAwAAAAAAAEAAQAGAAwAAAD//wAAAQAFAAsAAAD//wEAAQAFAAwAAAACAAAAAQAIAAsAAAACAAEAAQAIAAwAAAA=")
+tile_set = ExtResource("5_gmtnm")

@@ -345,6 +345,21 @@ static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i
 			return _position + (Vector2i.DOWN * (_unitSize - 1))
 	return _position
 
+static func RollVariableChanceTable(_arrayOfVariableChance : Array[VariableChance], _rng : DeterministicRNG, _context):
+	var totalWeight = 0
+	var weightTable : Array[int]
+	for chance in _arrayOfVariableChance:
+		var weight = chance.EvaluateChance(_context)
+		totalWeight += weight
+		weightTable.append(totalWeight)
+
+	var roll = _rng.NextInt(0, totalWeight)
+	print("Chance table rolled: ", str(roll), " - against a total weight of ", str(totalWeight))
+	for index in range(0, weightTable.size()):
+		if roll < weightTable[index]:
+			return _arrayOfVariableChance[index]
+
+	return _arrayOfVariableChance[_arrayOfVariableChance.size() - 1]
 
 #func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
 	#if _defender == null:

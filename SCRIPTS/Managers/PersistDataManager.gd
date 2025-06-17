@@ -181,6 +181,30 @@ func ClearCampaign():
 	DirAccess.remove_absolute(MAP_GRID_FILE)
 
 
+func GetMapPersistData(_map : Map):
+	if _map == null:
+		return {}
+
+	var objectPersist = str(ResourceLoader.get_resource_uid(_map.scene_file_path))
+	if universeData != null && universeData.mapPersistData.has(objectPersist):
+		return universeData.mapPersistData[objectPersist]
+
+	return {}
+
+
+func SaveMapPersistData(_map : Map, _dict : Dictionary, _autoSave : bool):
+	if _map == null:
+		return
+
+	var resourceUID = str(ResourceLoader.get_resource_uid(_map.scene_file_path))
+	if universeData != null:
+		universeData.mapPersistData[resourceUID] = _dict
+
+	# be careful with autosave, if a player can exploit it by saving and reloading
+	if !BlockUniverseSave && _autoSave:
+		universeData.Save()
+
+
 func SaveGame():
 	# First save the universe file
 	if universeData != null:

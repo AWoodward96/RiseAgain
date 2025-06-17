@@ -6,4 +6,5 @@
 script = ExtResource("1_ool4j")
 AmbienceID = "{00e98ecf-4c74-4486-8773-1a4b04092164}"
 MusicID = "{7415619a-94b3-4f0e-a3da-32919593b5b1}"
+GridColor = Color(0.0588235, 0.0431373, 0.0431373, 0.509804)
 metadata/_custom_type_script = "uid://jtmse3fkm1gn"

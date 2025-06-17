@@ -86,3 +86,9 @@ func CreateDamageIndicator(_tile : Tile):
 	indicator.global_position = _tile.GlobalPosition
 	add_child(indicator)
 	return indicator
+
+func PlayShortRumble():
+	Input.start_joy_vibration(0, 0.1, 0.25, 0.1)
+
+func PlayHitRumble():
+	Input.start_joy_vibration(0, 0.3, 0.6, 0.25)

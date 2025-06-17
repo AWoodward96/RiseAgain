@@ -16,10 +16,10 @@ func PreviewResult(_map : Map):
 		ctrl.movement_tracker.visible = true
 		ctrl.movement_preview_sprite.visible = true
 
-		var offset = Vector2(_map.TileSize / 2, _map.TileSize / 2)
+		var offset = Vector2i(_map.TileSize / 2, _map.TileSize / 2)
 		ctrl.movement_tracker.clear_points()
 		for tile : Tile in unitMovement:
-			ctrl.movement_tracker.points.append(tile.GlobalPosition + offset)
+			ctrl.movement_tracker.points.append(Vector2i(tile.GlobalPosition.x, tile.GlobalPosition.y) + offset)
 		ctrl.movement_preview_sprite.texture = Source.Template.icon
 		ctrl.movement_preview_sprite.position = unitMovement[unitMovement.size() - 1].GlobalPosition + offset
 		resultingTile = unitMovement[unitMovement.size()-1]

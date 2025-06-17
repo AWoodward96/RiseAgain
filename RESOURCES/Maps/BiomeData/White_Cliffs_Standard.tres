@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BiomeData" load_steps=2 format=3 uid="uid://b85vbvqpusrko"]
+
+[ext_resource type="Script" uid="uid://jtmse3fkm1gn" path="res://SCRIPTS/Maps/BiomeData.gd" id="1_4fkwv"]
+
+[resource]
+script = ExtResource("1_4fkwv")
+AmbienceID = "{00e98ecf-4c74-4486-8773-1a4b04092164}"
+MusicID = "{7415619a-94b3-4f0e-a3da-32919593b5b1}"
+GridColor = Color(0.1168, 0.16, 0.15784, 0.301961)
+metadata/_custom_type_script = "uid://jtmse3fkm1gn"

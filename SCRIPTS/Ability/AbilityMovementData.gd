@@ -27,7 +27,7 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _origin : Tile, _selectedTi
 	destinationTile = null
 
 	# Set the positional offset to be a half-cell size so that the route that we take goes through the center of each tile instead of on the corner
-	positionalOffset = Vector2(_grid.CellSize / 2, _grid.CellSize / 2)
+	positionalOffset = Vector2i(_grid.CellSize / 2, _grid.CellSize / 2)
 	match type:
 		AbilityMovementType.TargetTile:
 			# The TargetTile type is automatically not stopped by walls, as it would be too difficult to detect where

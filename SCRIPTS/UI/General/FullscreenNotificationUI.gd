@@ -18,7 +18,7 @@ func AddAutoTimeout(_timeInSeconds : float):
 func AddTranlatedText(_text : String):
 	rich_text_label.append_text(tr(_text))
 
-func AddIcon(_image : Texture2D, _size : Vector2, _color : Color = Color(1,1,1,1)):
+func AddIcon(_image : Texture2D, _size : Vector2i, _color : Color = Color(1,1,1,1)):
 	rich_text_label.add_image(_image, _size.x, _size.y, _color)
 	rich_text_label.append_text(" ") # Adding a blank to format thjis a little bit since the icon is inline
 

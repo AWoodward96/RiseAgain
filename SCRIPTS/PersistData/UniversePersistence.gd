@@ -9,6 +9,9 @@ var unitPersistData : Array[UnitPersistBase]
 
 var completedCutscenes : Array[CutsceneTemplate]
 
+# map persistence is a dictionary of a dictionary, where the key is the maps resource_path and the value is a dictionary
+var mapPersistData : Dictionary = {}
+
 var resourcePersistParent : Node2D
 var unitPersistParent : Node2D
 
@@ -42,7 +45,8 @@ func IsStartingCutsceneCompleted():
 func ToJSON():
 	var saveData = {
 		"resourceData" = PersistDataManager.ArrayToJSON(resourceData),
-		"bastionData" = bastionData.ToJSON()
+		"bastionData" = bastionData.ToJSON(),
+		"mapPersistData" = JSON.stringify(mapPersistData)
 	}
 
 	var ar : Array[String] = []
@@ -74,6 +78,8 @@ func FromJSON(_dict : Dictionary):
 			if loadedCutscene != null:
 				completedCutscenes.append(loadedCutscene)
 
+	if _dict.has("mapPersistData"):
+		mapPersistData = JSON.parse_string(_dict["mapPersistData"])
 	pass
 
 func LoadUnitPersistence():

@@ -23,6 +23,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	TimerLock = true
 
 	_unit.DoCombat(Result)
+	Juice.PlayHitRumble()
 
 
 func _Execute(_unit : UnitInstance, delta):

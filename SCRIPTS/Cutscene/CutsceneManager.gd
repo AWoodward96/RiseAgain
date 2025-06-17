@@ -1,16 +1,29 @@
 extends Node2D
 
+const CHARACTER_PER_SECOND = 0.02
 signal Initialized
+
+signal EventPromptScrawlComplete
+signal EventDecisionChosen(_decision : int)
 
 @export var FTUE : CutsceneTemplate
 
-
+@export_category("Tutorial References")
 @export var TutorialPromptParent : Node
 @export var TutorialPanel : Control
 @export var TutorialText : RichTextLabel
 @export var PressAnyKey : Control
 @export var WaitTimeParent : Control
 @export var WaitTimeBar : ProgressBar
+
+
+@export_category("Event References")
+@export var EventParent : Node
+@export var EventText : RichTextLabel
+@export var EventPromptParent : Control
+@export var EventDecisionParent : Control
+@export var EventOptionParent : EntryList
+@export var EventOptionPrefab : PackedScene
 
 var BlockMovementInput : bool :
 	get:
@@ -78,8 +91,11 @@ var active_cutscene : CutsceneTemplate
 var queued_cutscenes : Array[CutsceneTemplate]
 var cutscene_context : CutsceneContext
 
+var textScrawlTween : Tween
+
 func _ready() -> void:
 	TutorialPromptParent.visible = false
+	EventParent.visible = false
 	QueueCutscene(FTUE)
 	Initialized.emit()
 
@@ -135,6 +151,60 @@ func ShowGlobalTutorialPrompt(_text : String, _anchor : Control.LayoutPreset, _p
 	TutorialPanel.size = _promptSize
 	pass
 
+func ShowEventPrompt(_textTranslated : String, _instantaneousText : bool):
+	EventParent.visible = true
+	EventPromptParent.visible = true
+	EventDecisionParent.visible = false
+
+	EventText.text = _textTranslated
+	if _instantaneousText:
+		EventText.visible_characters = -1
+	else:
+		EventText.visible_characters = 0
+		textScrawlTween = create_tween()
+		textScrawlTween.tween_property(EventText, "visible_characters", _textTranslated.length(), _textTranslated.length() * CHARACTER_PER_SECOND)
+		textScrawlTween.finished.connect(ForceCompleteEventPromptScrawl)
+
+func ForceCompleteEventPromptScrawl():
+	textScrawlTween.stop()
+	textScrawlTween = null
+	EventText.visible_characters = -1
+	EventPromptScrawlComplete.emit()
+
+
+func ShowEventDecision(_decisions : Array[EventDecision], _context):
+	EventParent.visible = true
+	EventPromptParent.visible = false
+	EventDecisionParent.visible = true
+
+	EventOptionParent.ClearEntries()
+	var decisionIndex = 0
+	for dec in _decisions:
+		var passReq = true
+		for r in dec.requirements:
+			if r == null:
+				continue
+
+			var res = r.CheckRequirement(_context)
+			if !res && !r.NOT || res && r.NOT:
+				passReq = false
+
+		# If you don't pass the hidden requirement for this option to be shown, don't let it exist
+		if !passReq && dec.hiddenRequirement:
+			decisionIndex += 1 # gotta up the index to keep the reference consistent
+			continue
+
+		var entry = EventOptionParent.CreateEntry(EventOptionPrefab) as EventOptionEntryUI
+		entry.Initialize(dec, passReq, decisionIndex, _context)
+		entry.EntrySelected.connect(DecisionSelected.bind(decisionIndex))
+		decisionIndex += 1
+
+	EventOptionParent.FocusFirst()
+	pass
+
+func DecisionSelected(_int : int):
+	EventDecisionChosen.emit(_int)
+
 func UpdateTutorialPromptWaitTime(_cur : float = -1, _max : float = -1):
 	if _cur == -1 && _max == -1:
 		PressAnyKey.visible = false
@@ -151,3 +221,6 @@ func UpdateTutorialPromptWaitTime(_cur : float = -1, _max : float = -1):
 func HideGlobalTutorialPrompt():
 	TutorialPromptParent.visible = false
 	TutorialPanel.visible = false
+
+func HideEventPrompt():
+	EventParent.visible = false

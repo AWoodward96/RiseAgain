@@ -262,39 +262,45 @@ tut_weapons_knight2,"When attacking with a Weapon, Unit's with a similar ranged 
 tut_weapons_knight3,Because the Zombie's weapon has a Range of 1 we're at risk of being counter-attacked.
 tut_weapons_knight4,Press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] to Cancel the Attack.
 tut_weapons_knight4_controller,Press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] to Cancel the Attack.
-tut_weapons_knight5,Press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] again to Cancel the Move
+tut_weapons_knight5,Press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] again to Cancel the Move.
 tut_weapons_knight5_controller,Press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] again to Cancel the Move.
-tut_weapons_knight6,"Instead, let's move to this Tile"
+tut_weapons_knight6,"Instead, let's move to this Tile."
 tut_weapons_knight7,"Because the Lance can attack from more than one Tile away, we're not at risk of being counter-attacked anymore!"
 tut_weapons_knight8,Finish off the last two Zombies to complete the map.
-tut_map1_prompt0,This is the Battle Preperation screen
-tut_map1_prompt1,Here you can move Units around before starting a Map by selecting their starting Tile
-tut_map1_prompt2,Feel free to mess around with your formation and when you're ready press [ENTER] to start
+tut_map1_prompt0,This is the Battle Preperation screen.
+tut_map1_prompt1,Here you can move Units around before starting a Map by selecting their starting Tile.
+tut_map1_prompt2,Feel free to mess around with your formation and when you're ready press [img=48x24]res://ART/UI/Inline/keyboard_start_button.png[/img] to start.
+tut_map1_prompt2_controller,Feel free to mess around with your formation and when you're ready press  [img=24x24]res://ART/UI/Inline/controller_start_button.png[/img] to start.
 tut_map1_prompt2.5,Our path appears to be blocked by a tree!
-tut_map1_prompt3,The Knight can handle this for us. Let's move them closer
-tut_map1_prompt4,Some Terrain is destructable. AOE attacks are good ways of carving a new path forward when obstructed
-tut_map1_prompt5,Your Knight is injured again. Let's learn about Tacticals
+tut_map1_prompt3,The Knight can handle this for us. Let's move them closer.
+tut_map1_prompt4,Some Terrain is destructable. AOE attacks are good ways of carving a new path forward when obstructed.
+tut_map1_prompt5,Your Knight is injured again. Let's learn about Tacticals.
 tut_map1_prompt6,Select the Knight but don't Move them.
-tut_map1_prompt7,Tactical Abilities are Utility based Abilities that any Unit can use
-tut_map1_prompt8,All Units start with [Petty Gauze] as their Tactical. The [Petty Gauze] has 3 Charges and heals the user 10 Health
-tut_map1_prompt9,When a Tactical is out of Charges it can't be used again until the Unit has rested at a Campfire
-tut_map1_prompt10,Let's use the [Petty Gauze] to heal the Knight
+tut_map1_prompt7,Tactical Abilities are Utility based Abilities that any Unit can use.
+tut_map1_prompt8,All Units start with [Petty Gauze] as their Tactical. The [Petty Gauze] has 3 Charges and heals the user 10 Health.
+tut_map1_prompt9,When a Tactical is out of Charges it can't be used again until the Unit has rested at a Campfire.
+tut_map1_prompt10,Let's use the [Petty Gauze] to heal the Knight.
 tut_map1_prompt11,Finish the Map by defeating the remaining Enemies.
 tut_map2_prompt0,There are a couple more tools at your disposal to know about.
-tut_map2_prompt1,"While not hovering anything, press [TAB]"
+tut_map2_prompt1,"While not hovering anything, press [img=48x24]res://ART/UI/Inline/keyboard_inspect_button.png[/img]."
+tut_map2_prompt1_controller,"While not hovering anything, press [img=24x24]res://ART/UI/Inline/controller_inspect_button.png[/img]."
 tut_map2_prompt2,The Red Area now shows the Enemies Threat Range: Spaces where Enemies can attack you on their next turn.
 tut_map2_prompt3,Use this to make safe decisions from turn to turn.
-tut_map2_prompt4,Press [TAB] again to toggle off the Threat Range
-tut_map2_prompt5,Let's get some more information on the Zombie in front of us
-tut_map2_prompt6,"This time, hover over the Zombie and then press [TAB]"
-tut_map2_prompt7,This is the Unit Inspect Screen
-tut_map2_prompt8,There's a lot of information you can get from this screen:\n-What Weapons a Unit is using\n-What their stats are\n-How their Abilities work (if they have any)
-tut_map2_prompt9,You can change tabs to see more information on this Unit by pressing [A] or [D]
+tut_map2_prompt4,Press  [img=48x24]res://ART/UI/Inline/keyboard_inspect_button.png[/img] again to toggle off the Threat Range.
+tut_map2_prompt4_controller,Press [img=24x24]res://ART/UI/Inline/controller_inspect_button.png[/img] again to toggle off the Threat Range.
+tut_map2_prompt5,Let's get some more information on the Zombie in front of us.
+tut_map2_prompt6,"This time, hover over the Zombie and then press [img=48x24]res://ART/UI/Inline/keyboard_inspect_button.png[/img]."
+tut_map2_prompt6_controller,"This time, hover over the Zombie and then press [img=24x24]res://ART/UI/Inline/controller_inspect_button.png[/img]."
+tut_map2_prompt7,This is the Unit Inspect Screen.
+tut_map2_prompt8,There's a lot of information you can get from this screen:\n-What Weapons a Unit is using\n-What their stats are\n-How their Abilities work (if they have any).
+tut_map2_prompt9,You can change tabs to see more information on this Unit by pressing [img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img] or [img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img].
+tut_map2_prompt9_controller,You can navigate around to see more information by using  [img=24x24]res://ART/UI/Inline/controller_movement_button.png[/img].
 tut_map2_prompt10,"One important piece of information is the Units Affinity, seen on the left."
 tut_map2_prompt11,Every Unit has a Color that refers to their Affinity. All Affinities are strong against something and weak to something else.
 tut_map2_prompt12,"Fire Affinity is weak to Water Affinity, Dark Affinity is weak to Light Affinity, and so on and so on"
 tut_map2_prompt13,"You'll get a grasp for what's good against what by playing the game, but if you really need to know you can always Inspect a Unit and check this section down here"
-tut_map2_prompt14,"When you're done, press [Left Shift] to back out of the Inspect Screen"
+tut_map2_prompt14,"When you're done, press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] to back out of the Inspect Screen"
+tut_map2_prompt14_controller,"When you're done, press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] to back out of the Inspect Screen"
 ui_press_any_key,Press any key to continue
 tut_rewardsui_1,After every Map you'll have a set of three rewards to choose from
 tut_rewardsui_2,"These can be Items that make your Units stronger, Units themselves, and more!"
@@ -355,3 +361,44 @@ ui_something_in_the_water,There's something in the water...
 ui_submerged_unknown,? ? ?
 art_maul_name,Maul
 art_maul_desc,This Unit jumps forward 2 Tiles and slashes the Units in front of them dealing damage based on {DMG_AGGRESSIVESTAT}. This Ability has an increased Crit chance.
+unit_bandit_name,Bandit
+unit_bandit_desc,A ruffian or an oppertunist looking to make a quick buck off of others misfortune.
+unit_banditarcher_name,Bandit Archer
+unit_banditarcher_desc,A sharpshooter making their living using their skills to harass travelers.
+unit_banditthief_name,Bandit Thief
+unit_banditthief_desc,"Smash, grab, and get out."
+unit_maws_name,Maws
+unit_maws_desc,A vicious amphibious creature that lurks and swarms those who stray too close to still waters.
+weap_bomblauncher_name,Explosive Crossbow
+weap_bomblauncher_desc,A crossbow designed to launch tiny bombs at a distance.
+art_heatbreak_name,Heat Break
+art_heatbreak_desc,"The user charges up a giant blast of superheated air. On their next turn, blast Units in front of them back and deal damage based on {DMG_AGGRESSIVESTAT}."
+unit_banditboss_name,Bandit Boss
+unit_banditboss_desc,The leader of the bunch. You know him well.
+event_fallenlog_prompt,Your party comes across a cave with a log blocking the front. You hear whimpering coming from inside.
+event_fallenlog_d1,[bgcolor=333333][5 ATK][/bgcolor] Move the Log
+event_fallenlog_d1_result,"With great effort, your party manages to move the log to the side and rescue whoever is trapped within."
+event_fallenlog_d1_result2,Your new friend and the rest of the party set off.
+event_fallenlog_d2,[bgcolor=333333][Fire Mage][/bgcolor] Burn the Log to a crisp
+event_fallenlog_d2_result,"With a flick, the log bursts into flames. Smoke fills your lungs and the cave, flushing out the Unit trapped behind it."
+event_fallenlog_d2_result2,"Looking slightly worse for wear, your new friend and the rest of the party set off."
+event_fallenlog_d3,Leave
+event_fallenlog_d3_result,You don't have time for this.
+event_abandonedcart_prompt,"Your party comes across a cart in the middle of the road. There's no sign of a struggle, did the driver step away? It looks like they might have some pretty valuable stuff...."
+event_abandonedcart_d1,Search for the driver
+event_abandonedcart_d1_preview1,[color=#94e089]{CONTEXTVAR}% T1 Item[/color]
+event_abandonedcart_d1_preview2,[color=#c69e96]{CONTEXTVAR}% Nothing[/color]
+event_abandonedcart_d2,Steal!
+event_abandonedcart_d2_preview1,[color=#94e089]65% T1 Item[/color]
+event_abandonedcart_d2_preview2,[color=#c69e96]35% It's trapped![/color]
+event_abandonedcart_d3,Leave it be
+event_abandonedcart_d2_result,While they're away you decide to take a look through their stuff.
+event_abandonedcart_d2_result2,You pocket an item from their wares. Hopefully they won't notice anything missing.
+event_abandonedcart_d2_result3,It's a trap! A bomb in the cart [shake rate=20 level=2 connected=1]explodes[/shake]!
+event_abandonedcart_d3_result,It's not worth the trouble either way.
+event_abandonedcart_d1_result,The driver waddles back into view from behind a tree. It seems he was just releaving himself!
+event_abandonedcart_d1_result2,"He thanks you for doing the right thing, even though no one was watching!"
+event_abandonedcart_d1_result3,"Unfortunately he doesn't have anything he can give you as a reward, but he promises to pay you back next time he see's you. Whatever that means."
+event_abandonedcart_d1_result4,As a reward he lets you pick an item from one of his wares for free!
+event_abandonedcart_d2_result_noinjured,"In a remarkable stroke of good luck, nobody was injured!"
+event_abandonedcart_d2_result3_injured,[color=#879ea3]{CONTEXTVAR}[/color] was Injured!

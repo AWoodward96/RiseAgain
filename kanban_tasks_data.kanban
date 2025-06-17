@@ -35,18 +35,19 @@
 			"title": "ToDo",
 			"tasks": [
 				"073acedc-08f2-476c-bf21-67837a146552",
-				"bc86dafe-d53d-46d8-b698-a33b209110ac"
+				"25bef414-e6a8-4b77-8a83-9a8622bc5c8a",
+				"09f531bd-2d11-40e7-8858-27239bac3649",
+				"2905a111-cc4c-46df-a64b-a12e008957fb",
+				"9a65eff4-1eed-4b8f-b80b-48b794d6ff76"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"74755431-829a-4027-92df-f9210e878e79",
-				"8c6ef764-233f-4c58-8039-a4816bffbdc2",
-				"b20362e5-83b3-4994-8130-299e0326c0e1",
 				"fd11942d-191d-4019-9a21-163a01348401",
-				"78f0911a-a452-474e-bfca-5d4dc191c07e"
+				"7b74a940-bdc5-4b24-8088-ccdcbf29149c",
+				"60e71ff7-da5b-4e9e-ad22-3158bee2b28c"
 			]
 		},
 		{
@@ -57,6 +58,8 @@
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
 				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
+				"6be5bacd-2ac8-45a2-af04-3e5ac5c5b22a",
+				"bc86dafe-d53d-46d8-b698-a33b209110ac",
 				"d0054fe4-6d3b-4452-849b-3b7a3b37fc1c",
 				"e8267663-5393-49b0-89de-0c24e9998ad2",
 				"5c06e99f-f333-48e5-bd26-1e26e869f227",
@@ -96,7 +99,12 @@
 		{
 			"uuid": "f0f641b3-b786-47ad-8b44-54492fbe2ea1",
 			"title": "Bug",
-			"tasks": []
+			"tasks": [
+				"8c6ef764-233f-4c58-8039-a4816bffbdc2",
+				"74755431-829a-4027-92df-f9210e878e79",
+				"b20362e5-83b3-4994-8130-299e0326c0e1",
+				"78f0911a-a452-474e-bfca-5d4dc191c07e"
+			]
 		}
 	],
 	"tasks": [
@@ -623,7 +631,7 @@
 		{
 			"uuid": "78f0911a-a452-474e-bfca-5d4dc191c07e",
 			"title": "Push Mechanic Needs Fixing",
-			"description": "",
+			"description": "Giant AOE pushes aren't as intuitive as you'd expect. If I have a 1x2 grid where each tile pushes upwards, since everything is calculated at the same time, if there are two units on the grid lined up vertically, the furthest unit will be pushed twice. First by the push on the tile it's currently on, and then second by the push from the tile below them. This causes two MoveUnit calls, and it looks horrible",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": [
 				{
@@ -635,6 +643,55 @@
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "25bef414-e6a8-4b77-8a83-9a8622bc5c8a",
+			"title": "Polish Task: Remove Units From Loot Pool",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "9a65eff4-1eed-4b8f-b80b-48b794d6ff76",
+			"title": "Polish: Add Stat Growth Items",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "09f531bd-2d11-40e7-8858-27239bac3649",
+			"title": "Polish: Create Default Explosion VFX",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "2905a111-cc4c-46df-a64b-a12e008957fb",
+			"title": "Polish: Create Transitions for the Music for event maps and victory",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "7b74a940-bdc5-4b24-8088-ccdcbf29149c",
+			"title": "Need Wagon Asset for Wagon Event",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "6be5bacd-2ac8-45a2-af04-3e5ac5c5b22a",
+			"title": "Poilish White Cliffs Map",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "60e71ff7-da5b-4e9e-ad22-3158bee2b28c",
+			"title": "Implement Karla",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
 		}
 	],
 	"layout": {

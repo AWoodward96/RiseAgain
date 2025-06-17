@@ -35,8 +35,8 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 	map = _map
 
 
-	var canvasMod = GameManager.GameSettings.GridModulatePrefab.instantiate() as TileMapLayer
-	map.add_child(canvasMod)
+	CanvasModLayer = GameManager.GameSettings.GridModulatePrefab.instantiate() as TileMapLayer
+	map.add_child(CanvasModLayer)
 
 	# no 2d arrays, cowabunga it is
 	GridArr.resize(Width*Height)
@@ -68,7 +68,7 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 
 			GridArr[index].InitMetaData()
 			# The canvas mod has a shader that replaces any tile on it with a grid overlay - np
-			canvasMod.set_cell(Vector2i(x,y), UITILEATLAS, BASEBLACKTILE)
+			CanvasModLayer.set_cell(Vector2i(x,y), UITILEATLAS, BASEBLACKTILE)
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	for x in Width:

@@ -649,6 +649,7 @@ metadata/_custom_type_script = "uid://bkyuvcghuagi"
 [sub_resource type="Resource" id="Resource_leel5"]
 script = ExtResource("35_b2pbs")
 unitTemplate = ExtResource("36_h4bmm")
+fromContext = ""
 position = Vector2i(24, 10)
 level = 1
 allegience = 1
@@ -675,6 +676,7 @@ route = Array[Vector2i]([Vector2i(24, 10), Vector2i(16, 10), Vector2i(16, 9)])
 destination = Vector2i(16, 9)
 speed = 200
 autoEndTurn = true
+waitForCompletion = true
 metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
 
 [sub_resource type="Resource" id="Resource_e6eio"]
@@ -886,6 +888,7 @@ metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 [sub_resource type="Resource" id="Resource_82wml"]
 script = ExtResource("35_b2pbs")
 unitTemplate = ExtResource("44_gcj32")
+fromContext = ""
 position = Vector2i(25, 11)
 level = 1
 allegience = 2
@@ -907,6 +910,7 @@ route = Array[Vector2i]([Vector2i(25, 11), Vector2i(21, 11), Vector2i(20, 10)])
 destination = Vector2i(20, 10)
 speed = 500
 autoEndTurn = false
+waitForCompletion = true
 metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
 
 [sub_resource type="Resource" id="Resource_kxxxo"]
@@ -932,6 +936,7 @@ metadata/_custom_type_script = "uid://bk6cr5s2uypt4"
 [sub_resource type="Resource" id="Resource_utq75"]
 script = ExtResource("35_b2pbs")
 unitTemplate = ExtResource("44_gcj32")
+fromContext = ""
 position = Vector2i(25, 13)
 level = 1
 allegience = 2
@@ -953,6 +958,7 @@ route = Array[Vector2i]([Vector2i(25, 13), Vector2i(23, 13), Vector2i(23, 14)])
 destination = Vector2i(23, 14)
 speed = 500
 autoEndTurn = false
+waitForCompletion = true
 metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
 
 [sub_resource type="Resource" id="Resource_o5xag"]

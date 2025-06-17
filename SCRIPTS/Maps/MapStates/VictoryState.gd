@@ -9,37 +9,38 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 	controller.EnterEndGameState()
 
-	combatHUD = controller.combatHUD
-	if combatHUD != null:
-		combatHUD.PlayVictoryBanner()
-		await combatHUD.BannerAnimComplete
+	if _map.mapType == _map.MAPTYPE.Standard:
+		combatHUD = controller.combatHUD
+		if combatHUD != null:
+			combatHUD.PlayVictoryBanner()
+			await combatHUD.BannerAnimComplete
 
-	if map.CurrentCampaign != null:
-		# Start the reward selection process
-		var campaign = map.CurrentCampaign
-		var rewardTable = campaign.GetMapRewardTable() as LootTable
-		if rewardTable != null:
-			# Roll the rewards for the rewardTable
-			var rewardArray = rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
+		if map.CurrentCampaign != null:
+			# Start the reward selection process
+			var campaign = map.CurrentCampaign
+			var rewardTable = campaign.GetMapRewardTable() as LootTable
+			if rewardTable != null:
+				# Roll the rewards for the rewardTable
+				var rewardArray = rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
 
-			# open the rewards ui
-			rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
-			map.add_child(rewardUI)
-
-			rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
-			await rewardUI.OnRewardSelected
-
-		for optionalObjectives in map.OptionalObjectives:
-			if optionalObjectives.objective == null:
-				continue
-
-			if optionalObjectives.objective.CheckObjective(map):
-				var rewardArray = optionalObjectives.rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
+				# open the rewards ui
 				rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
 				map.add_child(rewardUI)
 
 				rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
 				await rewardUI.OnRewardSelected
+
+			for optionalObjectives in map.OptionalObjectives:
+				if optionalObjectives.objective == null:
+					continue
+
+				if optionalObjectives.objective.CheckObjective(map):
+					var rewardArray = optionalObjectives.rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
+					rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
+					map.add_child(rewardUI)
+
+					rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
+					await rewardUI.OnRewardSelected
 
 
 	var signalCallback = GameManager.ShowLoadingScreen()

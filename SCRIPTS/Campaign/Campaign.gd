@@ -212,6 +212,7 @@ func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 0):
 	unitInstance.Initialize(_unitTemplate, _levelOverride)
 	CurrentRoster.append(unitInstance)
 	UnitHoldingArea.add_child(unitInstance)
+	return unitInstance
 
 func IsUnitInRoster(_unitTemplate : UnitTemplate):
 	for u in CurrentRoster:

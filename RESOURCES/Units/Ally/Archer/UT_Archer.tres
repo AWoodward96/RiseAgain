@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_qwdht"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_my8s7"]
-[ext_resource type="PackedScene" uid="uid://vlpjvct6tdeb" path="res://RESOURCES/Ability/Equippable/bomblauncher.tscn" id="13_mg30n"]
+[ext_resource type="PackedScene" uid="uid://bd713bpwx5v37" path="res://RESOURCES/Ability/Equippable/iron_bow.tscn" id="13_mg30n"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_oca27"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_cs0gj"]
 [ext_resource type="Script" uid="uid://cq3xuoqo0g88i" path="res://SCRIPTS/PersistData/UnitPersistence/ArcherPersistBase.gd" id="17_wh034"]

@@ -87,6 +87,7 @@ func ShowGiveItemUI():
 			return
 		giveItemIcon.texture = itemToBeRewarded.icon
 
+
 	for unit in campaign.CurrentRoster:
 		if unit == null:
 			continue

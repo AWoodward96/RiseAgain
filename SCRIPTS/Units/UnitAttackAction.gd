@@ -40,8 +40,6 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		sourceHealthDelta += result.SourceHealthDelta
 
 
-
-
 	_unit.PlayAttackAnimation(TargetPosition - _unit.position)
 	var dst = (TargetPosition - _unit.position).normalized()
 	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)

@@ -6,6 +6,7 @@ class_name MoveUnitEvent
 @export var destination : Vector2i
 @export var speed : int = 500
 @export var autoEndTurn : bool = false
+@export var waitForCompletion : bool = true
 
 var unit : UnitInstance
 
@@ -21,6 +22,9 @@ func Enter(_context : CutsceneContext):
 	return true
 
 func Execute(_delta, _context : CutsceneContext):
+	if !waitForCompletion:
+		return true
+
 	if unit == null:
 		return true
 

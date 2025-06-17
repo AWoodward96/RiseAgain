@@ -707,7 +707,7 @@ offset_left = 63.0
 offset_top = 19.0
 offset_right = 236.0
 offset_bottom = 42.0
-text = "ui_submerged_unkown"
+text = "ui_submerged_unknown"
 label_settings = SubResource("LabelSettings_n4mcp")
 vertical_alignment = 1
 

@@ -40,6 +40,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 
 @export_category("Map Cutscenes")
 @export var PreMapCutscene : CutsceneTemplate
+@export var PostMapCutscene : CutsceneTemplate
 
 @export_category("Parents")
 @export var squadParent : Node2D
@@ -52,6 +53,7 @@ var trashCan : Node2D # Gets created at runtime
 var PersistedMapState : String
 var MapState : MapStateBase
 var CurrentCampaign : Campaign
+var EventComplete : bool = false
 
 var teams = {}
 var enemyUnitsKilled = {}
@@ -103,8 +105,6 @@ func PreInitialize():
 
 	AudioManager.UpdateBiomeData(Biome)
 
-	if PreMapCutscene != null:
-		CutsceneManager.QueueCutscene(PreMapCutscene)
 
 func _process(_delta):
 	if !UpdatePassiveActions(_delta):
@@ -176,7 +176,7 @@ func InitializeFromCampaign(_campaign : Campaign, _roster : Array[UnitInstance],
 	InitializePlayerController()
 
 	match mapType:
-		MAPTYPE.Standard:
+		MAPTYPE.Standard, MAPTYPE.Event:
 			ChangeMapState(PreMapState.new())
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
@@ -200,7 +200,6 @@ func ResumeFromCampaign(_campaign : Campaign):
 					# so this should NOT do that
 					premapState.InitializeFromPersistence(self, playercontroller)
 					MapState = premapState
-
 
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
@@ -243,11 +242,10 @@ func InitializeStandalone():
 	InitializePlayerController()
 
 	match mapType:
-		MAPTYPE.Standard:
+		MAPTYPE.Standard, MAPTYPE.Event:
 			ChangeMapState(PreMapState.new())
 		MAPTYPE.Campsite:
 			ChangeMapState(CampsiteState.new())
-
 
 # only used by the roster selection ui. In normal campaign initialization, the UnitInstances should already be created
 func OnRosterTemplatesSelected(_roster : Array[UnitTemplate], _levelOverride : int = 0):
@@ -295,6 +293,10 @@ func AddUnitToRoster(_unitInstance : UnitInstance, _allegiance : GameSettingsTem
 func InitializeGrid():
 	grid = Grid.new()
 	grid.Init(GridSize.x, GridSize.y, self, TileSize)
+
+	if Biome != null:
+		grid.CanvasModLayer.material.set_shader_parameter("grid_color", Biome.GridColor)
+
 
 
 func ChangeMapState(_newState : MapStateBase):

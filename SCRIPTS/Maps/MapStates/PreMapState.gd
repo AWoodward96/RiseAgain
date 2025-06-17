@@ -25,9 +25,13 @@ func Enter(_map : Map, _ctrl : PlayerController):
 		spawner.hide()
 
 	MakeEveryoneLookActive()
-	formationUI = controller.EnterFormationState()
-	await formationUI.FormationSelected
-	map.ChangeMapState(CombatState.new())
+
+	if map.PreMapCutscene != null:
+		for startingP in map.StartingPositionsParent.get_children():
+			startingP.hide()
+		CutsceneManager.QueueCutscene(map.PreMapCutscene)
+	else:
+		PromptFormation()
 	pass
 
 func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
@@ -46,6 +50,11 @@ func MakeEveryoneLookActive():
 	for teamID in map.teams:
 		for unit : UnitInstance in map.teams[teamID]:
 			unit.Activated = true
+
+func PromptFormation():
+	formationUI = controller.EnterFormationState()
+	await formationUI.FormationSelected
+	map.ChangeMapState(CombatState.new())
 
 func Exit():
 	if formationUI != null:

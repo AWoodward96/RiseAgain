@@ -748,6 +748,7 @@ position = Vector2(30, 22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u1mdi")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

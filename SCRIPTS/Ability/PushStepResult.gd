@@ -40,10 +40,10 @@ func PreviewResult(_map : Map):
 			ctrl.movement_tracker.visible = true
 			ctrl.movement_preview_sprite.visible = true
 			ctrl.movement_tracker.clear_points()
-			var positionalOffset = Vector2(_map.grid.CellSize / 2, _map.grid.CellSize / 2)
+			var positionalOffset = Vector2i(_map.grid.CellSize / 2, _map.grid.CellSize / 2)
 			var points = PackedVector2Array()
-			points.append(stack.Subject.CurrentTile.GlobalPosition + positionalOffset)
-			points.append(stack.ResultingTile.GlobalPosition + positionalOffset)
+			points.append(Vector2i(stack.Subject.CurrentTile.GlobalPosition) + positionalOffset)
+			points.append(Vector2i(stack.ResultingTile.GlobalPosition) + positionalOffset)
 			ctrl.movement_tracker.points = points
 			ctrl.movement_preview_sprite.texture = Source.Template.icon
 			ctrl.movement_preview_sprite.position = points[points.size() - 1]

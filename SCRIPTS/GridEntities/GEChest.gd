@@ -20,10 +20,10 @@ func Claim(_claimingUnit : UnitInstance):
 	var rolledLoot = loot.RollTable(Map.Current.mapRNG, 1, false)
 	if rolledLoot[0] is ItemRewardEntry:
 		_claimingUnit.QueueAcquireLoot(rolledLoot[0].ItemPrefab.instantiate())
-	
+
 	if unlockSound != null:
 		unlockSound.play()
-		
+
 	claimed = true
 	visual.play(openAnimName)
 

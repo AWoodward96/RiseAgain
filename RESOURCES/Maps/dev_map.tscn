@@ -251,7 +251,7 @@ GridEntityPrefab = ExtResource("17_jydnc")
 Position = Vector2i(11, 7)
 
 [node name="Chest_1" type="Sprite2D" parent="Spawners"]
-position = Vector2(704, 513)
+position = Vector2(704, 512)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4

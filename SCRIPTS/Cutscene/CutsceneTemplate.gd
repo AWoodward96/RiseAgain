@@ -34,6 +34,11 @@ func Execute(_delta : float, _context : CutsceneContext):
 
 
 	if index < events.size():
+		if events[index] == null:
+			index += 1
+			push_error("Null Event Detected in tutorial: ", self.resource_path)
+			return false
+
 		if enter:
 			if events[index].Enter(_context):
 				enter = false
