@@ -56,6 +56,7 @@ func ModifyItem(_item : Item, _filePath, _data):
 			log += str("\n[color=red]Failed to find Icon for Item [/color]", _item.internalName ," [color=red]at path:[/color]", _data["iconPath"])
 
 	ModifyStatConsumableComponent(_item, _data)
+	ModifyStatGrowthModComponent(_item, _data)
 
 	log += str("\n[color=green]Successfully modified Item [/color]", _item.internalName)
 	var toSave : PackedScene = PackedScene.new()
@@ -84,6 +85,9 @@ func ConstructStatDef(_dataRef, value):
 	return statDef
 
 func ModifyStatConsumableComponent(_item : Item, _data):
+	if !_data.has("Stat1") || _data["Stat1"] == "":
+		return
+
 	var children = _item.get_children()
 	var component : HeldItemComponent
 	for child in children:
@@ -111,4 +115,36 @@ func ModifyStatConsumableComponent(_item : Item, _data):
 	if _data.has("Stat2") && _data.has("Stat2Val"):
 		if !_data["Stat2"].is_empty():
 			component.StatsToGrant.append(ConstructStatDef(_data["Stat2"], _data["Stat2Val"]))
+	pass
+
+func ModifyStatGrowthModComponent(_item : Item, _data):
+	if !_data.has("StatGrowthMod1") || _data["StatGrowthMod1"] == "":
+		return
+
+	var children = _item.get_children()
+	var component : HeldItemStatGrowthModifier
+	for child in children:
+		if child is HeldItemStatGrowthModifier:
+			component = child as HeldItemStatGrowthModifier
+			break
+
+	if component == null:
+		log += str("\n[color=green]No HeldItemStatGrowthModifier detected for item: [/color]", _item.internalName ," [color=green]Creating a new one.[/color]")
+		component = HeldItemStatGrowthModifier.new()
+		_item.add_child(component)
+		component.name = "HeldItemStatGrowthModifier"
+
+	_item.growthModifierData = component
+	component.GrowthModifiers.clear()
+
+	var count = 1
+	while(_data.has("StatGrowthMod" + str(count))):
+		var modcolumn = "StatGrowthMod" + str(count)
+		var valcolumn = "StatGrowthVal" + str(count)
+		if _data.has(modcolumn) && _data.has(modcolumn):
+			if !_data[modcolumn].is_empty():
+				component.GrowthModifiers.append(ConstructStatDef(_data[modcolumn], _data[valcolumn]))
+			else:
+				log += str("\n[color=orange]Item has a HeldItemStatGrowthModifier set to true, but no stat defined in ConsStat1: [/color]", _item.internalName)
+		count += 1
 	pass

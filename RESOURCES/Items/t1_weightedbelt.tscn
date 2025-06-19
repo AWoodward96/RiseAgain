@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvbkx5bat10bw"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_o1i4e"]
+[ext_resource type="Texture2D" uid="uid://wdgj7qlnffyo" path="res://ART/Icons/Items/t1_weightedbelt.png" id="2_wpoml"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_rg1hd"]
+[ext_resource type="Script" uid="uid://bbatkxmu5myen" path="res://SCRIPTS/Items/HeldItemStatGrowthModifier.gd" id="5_lntbm"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="6_cs76l"]
+
+[sub_resource type="Resource" id="Resource_by3d1"]
+script = ExtResource("4_rg1hd")
+Template = ExtResource("6_cs76l")
+Value = 10
+
+[node name="t1_weightedbelt" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
+script = ExtResource("1_o1i4e")
+internalName = "t1_weightedbelt"
+loc_displayName = "item_t1_weightedbelt_name"
+loc_displayDesc = "item_t1_weightedbelt_desc"
+icon = ExtResource("2_wpoml")
+growthModifierData = NodePath("HeldItemStatGrowthModifier")
+
+[node name="HeldItemStatGrowthModifier" type="Node2D" parent="."]
+script = ExtResource("5_lntbm")
+GrowthModifiers = Array[ExtResource("4_rg1hd")]([SubResource("Resource_by3d1")])

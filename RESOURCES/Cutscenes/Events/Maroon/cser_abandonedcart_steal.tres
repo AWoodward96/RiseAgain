@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventDecision" load_steps=33 format=3 uid="uid://dje71m8spufqm"]
+[gd_resource type="Resource" script_class="EventDecision" load_steps=37 format=3 uid="uid://dje71m8spufqm"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_ja0di"]
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="2_5jbqo"]
@@ -10,10 +10,12 @@
 [ext_resource type="Script" uid="uid://mlop65be0i6i" path="res://SCRIPTS/Generic/VariableChanceStack.gd" id="8_7jm3y"]
 [ext_resource type="Script" uid="uid://dcecpidnv62ns" path="res://SCRIPTS/Cutscene/Events/InjureUnitEvent.gd" id="9_5jbqo"]
 [ext_resource type="Script" uid="uid://c5aspb0cfbke2" path="res://SCRIPTS/Cutscene/Events/RandomChanceEvent.gd" id="9_e80lf"]
+[ext_resource type="Script" uid="uid://bsnlo2wjaj6uu" path="res://SCRIPTS/Cutscene/Events/PlayGridEntityAnimationEvent.gd" id="9_limi1"]
 [ext_resource type="Script" uid="uid://5k21572ri75" path="res://SCRIPTS/Generic/CutsceneContextMadLib.gd" id="10_5jbqo"]
 [ext_resource type="Script" uid="uid://d3p0cjllyxbl6" path="res://SCRIPTS/Generic/Requirements/HasCutsceneContextReq.gd" id="10_e80lf"]
 [ext_resource type="Script" uid="uid://cuheo7oad7i72" path="res://SCRIPTS/Cutscene/Events/IfEvent.gd" id="10_qonlb"]
 [ext_resource type="Script" uid="uid://cpajqbxayy16y" path="res://SCRIPTS/Generic/MadLibLoc.gd" id="10_t2nsw"]
+[ext_resource type="Script" uid="uid://dwb8tfveoy3fe" path="res://SCRIPTS/Cutscene/Events/ScreenShakeEvent.gd" id="11_e0vum"]
 [ext_resource type="Script" uid="uid://dihnqdhy7bo6v" path="res://SCRIPTS/Generic/MadLibBase.gd" id="11_s1d26"]
 [ext_resource type="Script" uid="uid://bxh0g23kritn8" path="res://SCRIPTS/Cutscene/Events/EventDecision.gd" id="12_vn5j2"]
 
@@ -52,6 +54,19 @@ usePosition = false
 unitAtPosition = Vector2i(0, 0)
 randomUnitInParty = true
 metadata/_custom_type_script = "uid://dcecpidnv62ns"
+
+[sub_resource type="Resource" id="Resource_24a4x"]
+script = ExtResource("9_limi1")
+Position = Vector2i(6, 4)
+AnimString = "result_trap"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_rrrhl"]
+script = ExtResource("11_e0vum")
+Strength = 8
+Duration = 0.5
+WaitTillComplete = false
+metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
 
 [sub_resource type="Resource" id="Resource_7jm3y"]
 script = ExtResource("4_7jm3y")
@@ -103,7 +118,7 @@ metadata/_custom_type_script = "uid://cuheo7oad7i72"
 [sub_resource type="Resource" id="Resource_rr2j6"]
 resource_name = "Fail 35%"
 script = ExtResource("8_7jm3y")
-CutsceneStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_qonlb"), SubResource("Resource_7jm3y"), SubResource("Resource_e80lf")])
+CutsceneStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_qonlb"), SubResource("Resource_24a4x"), SubResource("Resource_rrrhl"), SubResource("Resource_7jm3y"), SubResource("Resource_e80lf")])
 baseChance = 35
 modifiers = Array[ExtResource("7_qonlb")]([])
 metadata/_custom_type_script = "uid://mlop65be0i6i"

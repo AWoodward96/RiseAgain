@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=30 format=3 uid="uid://dfg1bb4ol66cj"]
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=36 format=3 uid="uid://dfg1bb4ol66cj"]
 
 [ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_6xp3m"]
 [ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_j2ynd"]
 [ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default.tscn" id="3_32aoh"]
 [ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="4_naajn"]
 [ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_kecb3"]
+[ext_resource type="PackedScene" uid="uid://t8g8du77bfim" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_abandonedcart.tscn" id="6_qr05m"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="6_qx8e6"]
 [ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="7_flcyr"]
 [ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a03_default.tscn" id="8_h7dvh"]
 [ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_campsite_default.tscn" id="9_no3wr"]
+[ext_resource type="PackedScene" uid="uid://4rtlps8m0j20" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_fallenlog.tscn" id="9_si4bs"]
 [ext_resource type="PackedScene" uid="uid://bul8d2khh2vmc" path="res://RESOURCES/Maps/WhiteCoast/white_a01_default.tscn" id="10_g73je"]
 [ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="10_sb7aj"]
 [ext_resource type="PackedScene" uid="uid://d23g88rbe10v8" path="res://RESOURCES/Maps/WhiteCoast/white_a02_default.tscn" id="11_sn1h8"]
@@ -30,6 +32,19 @@ script = ExtResource("1_6xp3m")
 priorityMapOptions = Array[ExtResource("5_kecb3")]([])
 generalMapOptions = Array[ExtResource("2_j2ynd")]([SubResource("Resource_5bfw7"), SubResource("Resource_86wal")])
 
+[sub_resource type="Resource" id="Resource_4elav"]
+script = ExtResource("2_j2ynd")
+map = ExtResource("6_qr05m")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_54h51"]
+resource_name = "Event 1"
+script = ExtResource("1_6xp3m")
+priorityMapOptions = Array[ExtResource("5_kecb3")]([])
+generalMapOptions = Array[ExtResource("2_j2ynd")]([SubResource("Resource_4elav")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
 [sub_resource type="Resource" id="Resource_thphl"]
 script = ExtResource("2_j2ynd")
 map = ExtResource("6_qx8e6")
@@ -45,6 +60,18 @@ resource_name = "Map 2"
 script = ExtResource("1_6xp3m")
 priorityMapOptions = Array[ExtResource("5_kecb3")]([])
 generalMapOptions = Array[ExtResource("2_j2ynd")]([SubResource("Resource_thphl"), SubResource("Resource_4s1ii")])
+
+[sub_resource type="Resource" id="Resource_xdabg"]
+script = ExtResource("2_j2ynd")
+map = ExtResource("9_si4bs")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_s20l7"]
+script = ExtResource("1_6xp3m")
+priorityMapOptions = Array[ExtResource("5_kecb3")]([])
+generalMapOptions = Array[ExtResource("2_j2ynd")]([SubResource("Resource_xdabg")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [sub_resource type="Resource" id="Resource_dtbd4"]
 script = ExtResource("2_j2ynd")
@@ -106,5 +133,5 @@ metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [resource]
 script = ExtResource("10_sb7aj")
-mapOptions = Array[ExtResource("1_6xp3m")]([SubResource("Resource_xavni"), SubResource("Resource_f7ysl"), SubResource("Resource_xrykd"), SubResource("Resource_fmftn"), SubResource("Resource_moqbw"), SubResource("Resource_qr05m"), SubResource("Resource_11yor")])
+mapOptions = Array[ExtResource("1_6xp3m")]([SubResource("Resource_xavni"), SubResource("Resource_54h51"), SubResource("Resource_f7ysl"), SubResource("Resource_s20l7"), SubResource("Resource_xrykd"), SubResource("Resource_fmftn"), SubResource("Resource_moqbw"), SubResource("Resource_qr05m"), SubResource("Resource_11yor")])
 nextCampaignBlocks = Array[String]([])

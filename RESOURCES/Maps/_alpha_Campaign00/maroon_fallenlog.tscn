@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="9_rt76j"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="11_fg0s7"]
 [ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="12_1p8t8"]
-[ext_resource type="PackedScene" uid="uid://box3su6g0xsd3" path="res://RESOURCES/GridEntities/ge_fallenlog_event.tscn" id="13_f8uco"]
+[ext_resource type="PackedScene" uid="uid://box3su6g0xsd3" path="res://RESOURCES/GridEntities/prop_fallenlog_event.tscn" id="13_f8uco"]
 
 [node name="maroon_fallenlog_event" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_uvwpj")

@@ -120,17 +120,17 @@ stat_vitality_desc,Increases Health
 stat_vitality_short,VIT
 opoj_any_neutral_alive,Opt: Any Neutral Unit left Alive
 opoj_prized_buck,Opt: Kill the Prized Buck
-item_t1_holywater_desc,SpDefense +1
+item_t1_holywater_desc,{STAT1} +{GROWTH1}
 item_t1_holywater_name,Holy Tears
-item_t1_ktome_desc,SpAttack +1
+item_t1_ktome_desc,{STAT1} +{GROWTH1}
 item_t1_ktome_name,Tome
-item_t1_nectar_desc,Vitality +2
+item_t1_nectar_desc,{STAT1} +{GROWTH1}
 item_t1_nectar_name,Golden Apple
-item_t1_polish_desc,Defense +1
+item_t1_polish_desc,{STAT1} +{GROWTH1}
 item_t1_polish_name,Armor Polish
-item_t1_skillbook_desc,Max Mana +1
+item_t1_skillbook_desc,{STAT1} +{GROWTH1}
 item_t1_skillbook_name,Skill Book
-item_t1_whetstone_desc,Attack +1
+item_t1_whetstone_desc,{STAT1} +{GROWTH1}
 item_t1_whetstone_name,Whetstone
 des_canine_desc,A slim dog-like creature with sharp teeth
 des_canine_name,Canine
@@ -297,23 +297,23 @@ tut_map2_prompt9,You can change tabs to see more information on this Unit by pre
 tut_map2_prompt9_controller,You can navigate around to see more information by using  [img=24x24]res://ART/UI/Inline/controller_movement_button.png[/img].
 tut_map2_prompt10,"One important piece of information is the Units Affinity, seen on the left."
 tut_map2_prompt11,Every Unit has a Color that refers to their Affinity. All Affinities are strong against something and weak to something else.
-tut_map2_prompt12,"Fire Affinity is weak to Water Affinity, Dark Affinity is weak to Light Affinity, and so on and so on"
-tut_map2_prompt13,"You'll get a grasp for what's good against what by playing the game, but if you really need to know you can always Inspect a Unit and check this section down here"
-tut_map2_prompt14,"When you're done, press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] to back out of the Inspect Screen"
-tut_map2_prompt14_controller,"When you're done, press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] to back out of the Inspect Screen"
+tut_map2_prompt12,"Fire Affinity is weak to Water Affinity, Dark Affinity is weak to Light Affinity, and so on and so on."
+tut_map2_prompt13,"You'll get a grasp for what's good against what by playing the game, but if you really need to know you can always Inspect a Unit and check this section down here."
+tut_map2_prompt14,"When you're done, press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] to back out of the Inspect Screen."
+tut_map2_prompt14_controller,"When you're done, press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] to back out of the Inspect Screen."
 ui_press_any_key,Press any key to continue
-tut_rewardsui_1,After every Map you'll have a set of three rewards to choose from
+tut_rewardsui_1,After every Map you'll have a set of three rewards to choose from.
 tut_rewardsui_2,"These can be Items that make your Units stronger, Units themselves, and more!"
 tut_rewardsui_3,"Right now we have a very small team, so let's select the Mercenary as our reward for this Map."
-tut_level3_0,Whenever a Unit reaches Level 3 they unlock a new Ability for the Campaign
+tut_level3_0,Whenever a Unit reaches Level 3 they unlock a new Ability for the Campaign.
 tut_level3_1,Each Ability is unique and can change up how you use the Unit going forward.
 tut_level3_2,Experiment with different builds and Abilities to figure out which one works best for your playstyle!
-tut_optionalobjectives_0,On this map you have an optional objective: Kill the Prized Buck
-tut_optionalobjectives_1,"Completing an optional objective will grant you a second set of rewards when you beat the Map, so try your best to accomplish it if you can"
-tut_fastspeed_0,Select the Mercenary we picked up at the end of the last map
-tut_fastspeed_1,The Mercenary has an ability called [Heroic Leap]
-tut_fastspeed_2,"[Heroic Leap] is a Fast Speed Ability, as denoted by the Lightning bolt icon"
-tut_fastspeed_3,"Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana"
+tut_optionalobjectives_0,On this map you have an optional objective: Kill the Prized Buck.
+tut_optionalobjectives_1,"Completing an optional objective will grant you a second set of rewards when you beat the Map, so try your best to accomplish it if you can."
+tut_fastspeed_0,Select the Mercenary we picked up at the end of the last map.
+tut_fastspeed_1,The Mercenary has an ability called [Heroic Leap].
+tut_fastspeed_2,"[Heroic Leap] is a Fast Speed Ability, as denoted by the [img=24x24]res://ART/Icons/fast_speed.png[/img] icon."
+tut_fastspeed_3,"[img=24x24]res://ART/Icons/fast_speed.png[/img] Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana"
 tut_complete0,"This is the last map in the Tutorial. Be careful, the training wheels have been removed, and Enemies deal a lot more damage now!"
 tut_complete1,"After you win or lose, you'll have the option of starting a real campaign with any of the Units in the game."
 tut_complete2,Good luck!
@@ -396,9 +396,19 @@ event_abandonedcart_d2_result,While they're away you decide to take a look throu
 event_abandonedcart_d2_result2,You pocket an item from their wares. Hopefully they won't notice anything missing.
 event_abandonedcart_d2_result3,It's a trap! A bomb in the cart [shake rate=20 level=2 connected=1]explodes[/shake]!
 event_abandonedcart_d3_result,It's not worth the trouble either way.
-event_abandonedcart_d1_result,The driver waddles back into view from behind a tree. It seems he was just releaving himself!
-event_abandonedcart_d1_result2,"He thanks you for doing the right thing, even though no one was watching!"
+event_abandonedcart_d1_result,The driver waddles back into view from behind a tree. It seems he was just relieving himself!
+event_abandonedcart_d1_result2,He thanks you for watching his stuff while he was gone.
 event_abandonedcart_d1_result3,"Unfortunately he doesn't have anything he can give you as a reward, but he promises to pay you back next time he see's you. Whatever that means."
 event_abandonedcart_d1_result4,As a reward he lets you pick an item from one of his wares for free!
 event_abandonedcart_d2_result_noinjured,"In a remarkable stroke of good luck, nobody was injured!"
 event_abandonedcart_d2_result3_injured,[color=#879ea3]{CONTEXTVAR}[/color] was Injured!
+item_t1_rosepolish_name,Rose Polish
+item_t1_rosepolish_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_maroontome_name,Maroon Tome
+item_t1_maroontome_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_weightedbelt_name,Weighted Belt
+item_t1_weightedbelt_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_lapispadding_name,Lapis Shoulder Pads
+item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_ceruleanplates_name,Cerulean Plates
+item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]

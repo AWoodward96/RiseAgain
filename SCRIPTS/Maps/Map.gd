@@ -187,12 +187,15 @@ func ResumeFromCampaign(_campaign : Campaign):
 	Current = self
 	InitializePlayerController()
 	match mapType:
-		MAPTYPE.Standard:
+		MAPTYPE.Standard, MAPTYPE.Event:
 			match PersistedMapState:
 				"CombatState":
 					var combatState = CombatState.new()
 					combatState.InitializeFromPersistence(self, playercontroller)
 					MapState = combatState
+
+					for startingP in StartingPositionsParent.get_children():
+						startingP.hide()
 					pass
 				"PreMapState":
 					var premapState = PreMapState.new()
@@ -207,8 +210,6 @@ func ResumeFromCampaign(_campaign : Campaign):
 	for spawner in spawners:
 		spawner.hide()
 
-	for startingP in StartingPositionsParent.get_children():
-		startingP.hide()
 
 
 func GlobalStackClear():
@@ -272,6 +273,7 @@ func AddGridEntity(_gridEntity : GridEntityBase):
 	if gridEntityParent == null:
 		gridEntityParent = Node2D.new()
 		gridEntityParent.name = "GridEntityParent"
+		gridEntityParent.y_sort_enabled = true
 		add_child(gridEntityParent)
 
 	gridEntityParent.add_child(_gridEntity)

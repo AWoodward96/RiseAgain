@@ -299,7 +299,8 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	var A = 0.9 # Gradual growth
 	var B = 2	# Exponential slope, higher number = more exp based on level diff
 	var C = 0.1 # The floor of the curve. Negative level-difs gradually approach this number
-	var equationResult = (A * (pow(B, X)) + C) * 15 + _damageDealt
+	var scalingCalc = (A * (pow(B, X)) + C)
+	var equationResult = scalingCalc * 15 + _damageDealt
 
 	# Punish overleveling by decreasing exp by 10
 	if X < 0:
@@ -309,6 +310,7 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	if _isAOE:
 		equationResult = equationResult * GameManager.GameSettings.AOEExpMultiplier
 
+	print("Evaluated Exp Gain At {0}. Scaling: {4} Damage Dealt: {1}. Level Dif {2}. Is AOE: {3}".format([equationResult, _damageDealt, X, _isAOE, scalingCalc]))
 	equationResult = max(equationResult, 1)
 	return equationResult
 

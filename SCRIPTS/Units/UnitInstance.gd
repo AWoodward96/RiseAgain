@@ -344,6 +344,8 @@ func AddExperience(_expIncrease : int):
 func PerformLevelUp(_rng : DeterministicRNG, _levelIncrease = 1):
 	print("Level Up!")
 	Level += _levelIncrease
+
+
 	var levelUpResult = {}
 	for i in _levelIncrease:
 		for growth in Template.StatGrowths:
@@ -359,6 +361,23 @@ func PerformLevelUp(_rng : DeterministicRNG, _levelIncrease = 1):
 			var result = _rng.NextInt(0,100)
 			if result <= workingValue:
 				statIncrease += 1
+			else:
+				# loop through the item slots of this unit. If there's any modifiers in there see if they make the difference. If they do, then increment the success count on that item
+				for item in ItemSlots:
+					var found = false
+					if item != null && item.growthModifierData != null:
+						for statdef in item.growthModifierData.GrowthModifiers:
+							if statdef.Template == growth.Template:
+								workingValue = workingValue + statdef.Value
+								if result <= workingValue:
+									found = true
+									statIncrease += 1
+									item.growthModifierData.SuccessCount += 1
+								break
+
+					if found:
+						break
+
 
 			print("StatCheck: ", result, " <= ", workingValue, " resulted in a stat increase: ", statIncrease)
 
@@ -993,9 +1012,15 @@ static func FromJSON(_dict : Dictionary):
 
 	var data = PersistDataManager.JSONToArray(_dict["ItemSlots"], Callable.create(Item, "FromJSON"))
 	unitInstance.ItemSlots.assign(data)
-	for i in unitInstance.ItemSlots:
+	for item in unitInstance.ItemSlots:
+		if item == null:
+			continue
+
 		# This technically throws an error but everything still works? So uhhh
-		unitInstance.itemsParent.add_child(i)
+		unitInstance.itemsParent.add_child(item)
+		#item.reparent(unitInstance.itemsParent)
+
+
 
 	unitInstance.UpdateDerivedStats()
 	unitInstance.CreateVisual()

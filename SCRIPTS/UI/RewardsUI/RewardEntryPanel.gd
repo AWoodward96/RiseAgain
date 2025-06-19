@@ -7,7 +7,7 @@ signal OnRewardSelected(reward : LootTableEntry, index : int)
 @export var rewardType : Label
 @export var rewardIcon : TextureRect
 @export var rewardName : Label
-@export var rewardDesc : Label
+@export var rewardDesc : RichTextLabel
 var reward : LootTableEntry
 var index : int
 
@@ -34,7 +34,8 @@ func InitializeAsItem(_itemRewardEntry : ItemRewardEntry):
 
 	rewardIcon.texture = itemToBeRewarded.icon
 	rewardName.text = tr(itemToBeRewarded.loc_displayName)
-	rewardDesc.text = tr(itemToBeRewarded.loc_displayDesc)
+	rewardDesc.text = tr(itemToBeRewarded.loc_displayDesc).format(LocSettings.GetItemDescriptionMadlibs(itemToBeRewarded))
+
 
 func InitializeAsUnit(_unitRewardEntry : SpecificUnitRewardEntry):
 	rewardType.text = "Type: Unit"

@@ -25,6 +25,12 @@ extends Node2D
 
 @export var enemyTurnWarmup = 0.5
 
+@export_category("Screen Shake Settings")
+@export var SimpleCombatShakeStrength = 4
+@export var SimpleCombatShakeDuration = 0.33
+@export var CritCombatShakeStrength = 8
+@export var CritCombatShakeDuration = 0.55
+
 @export_category("Damage Preview Settings")
 @export var damagePreviewDelayTime = 0.5
 @export var damagePreviewTickDuration = 0.5
@@ -92,3 +98,11 @@ func PlayShortRumble():
 
 func PlayHitRumble():
 	Input.start_joy_vibration(0, 0.3, 0.6, 0.25)
+
+func ScreenShakeCombatStandard():
+	if Map.Current != null:
+		Map.Current.playercontroller.StartScreenShake(SimpleCombatShakeStrength, SimpleCombatShakeDuration)
+
+func ScreenShakeCombatCrit():
+	if Map.Current != null:
+		Map.Current.playercontroller.StartScreenShake(CritCombatShakeStrength, CritCombatShakeDuration)

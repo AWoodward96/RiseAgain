@@ -43,7 +43,7 @@ func _Execute(_delta):
 
 			ctrl.ClearSelectionData()
 			formationUI.ShowSwapWithPanel(false)
-			
+
 		ctrl.reticleSelectSound.play()
 
 	if InputManager.cancelDown:

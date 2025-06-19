@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://cndmf0hcxrc30"]
+
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_c6ond"]
+[ext_resource type="Texture2D" uid="uid://dhtvsakidi6wf" path="res://ART/VFX/Explosion_Cloud_Huge.png" id="2_c6ond"]
+[ext_resource type="Texture2D" uid="uid://3ab1whilpsna" path="res://ART/VFX/Explosion_Poof.png" id="4_eq1q8"]
+[ext_resource type="Texture2D" uid="uid://c0r1trcwvb8w6" path="res://ART/VFX/Small_Particle_Shapes.png" id="5_c6ond"]
+[ext_resource type="Texture2D" uid="uid://boq02diyk4iwx" path="res://ART/VFX/Explosion_Crescent.png" id="5_njsxa"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ru4gq"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_bvvep"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mfuul"]
+gradient = SubResource("Gradient_bvvep")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bjvl4"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 10, 0)
+damping_max = 1.0
+color = Color(0.55, 0.55, 0.55, 1)
+color_ramp = SubResource("GradientTexture1D_mfuul")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rdh0h"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_24uom"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 18, 0)
+scale_min = 2.0
+scale_max = 2.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 2
+sub_emitter_keep_velocity = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_njsxa"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_jwnn6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.466667)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eq1q8"]
+gradient = SubResource("Gradient_jwnn6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7wvd"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 60.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 205.445, 0)
+linear_accel_min = -39.9
+linear_accel_max = -39.9
+damping_min = 41.969
+damping_max = 41.969
+color_ramp = SubResource("GradientTexture1D_eq1q8")
+anim_offset_max = 1.0
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bmqof"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_iybww"]
+offsets = PackedFloat32Array(0, 0.151934, 0.30663, 1)
+colors = PackedColorArray(0.75, 0.1425, 0.1425, 1, 1, 0.896, 0.22, 1, 0.85, 0.581117, 0.2295, 1, 1, 1, 1, 0)
+
+[node name="VFX_Explosion" type="Node2D" node_paths=PackedStringArray("cpuParticles", "gpuParticles", "sounds")]
+script = ExtResource("1_c6ond")
+emitOnReady = true
+cpuParticles = [NodePath("ExplosionFlash")]
+gpuParticles = [NodePath("Debris")]
+sounds = [NodePath("FmodEventEmitter2D")]
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ru4gq")
+emitting = false
+texture = ExtResource("2_c6ond")
+one_shot = true
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_bjvl4")
+
+[node name="LargePoof" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_rdh0h")
+emitting = false
+sub_emitter = NodePath("../Smoke")
+texture = ExtResource("4_eq1q8")
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_24uom")
+
+[node name="Debris" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_njsxa")
+rotation = -1.5708
+emitting = false
+amount = 6
+sub_emitter = NodePath("../LargePoof")
+texture = ExtResource("5_c6ond")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_a7wvd")
+
+[node name="ExplosionFlash" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_bmqof")
+emitting = false
+amount = 16
+texture = ExtResource("5_njsxa")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(64, 64)
+particle_flag_align_y = true
+direction = Vector2(3, 0)
+spread = 180.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+angular_velocity_min = -32.0
+angular_velocity_max = 32.0
+color_ramp = SubResource("Gradient_iybww")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+anim_offset_min = 0.1
+anim_offset_max = 0.1
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_guid = "{00000000-0002-0000-0300-000026000000}"

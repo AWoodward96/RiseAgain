@@ -42,9 +42,12 @@ func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
 	controller.ClearSelectionData()
 	MakeEveryoneLookActive()
 
-	formationUI = controller.EnterFormationState()
-	await formationUI.FormationSelected
-	map.ChangeMapState(CombatState.new())
+	if map.PreMapCutscene != null:
+		for startingP in map.StartingPositionsParent.get_children():
+			startingP.hide()
+		CutsceneManager.QueueCutscene(map.PreMapCutscene)
+	else:
+		PromptFormation()
 
 func MakeEveryoneLookActive():
 	for teamID in map.teams:

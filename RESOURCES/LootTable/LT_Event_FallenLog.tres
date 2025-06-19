@@ -7,22 +7,20 @@
 [ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="5_8o443"]
 [ext_resource type="Script" uid="uid://ctyhw0gbd17qw" path="res://SCRIPTS/Generic/LootTables/SpecificLootTable.gd" id="6_4lmyr"]
 
-[sub_resource type="Resource" id="Resource_el2l1"]
+[sub_resource type="Resource" id="Resource_2m1iq"]
 script = ExtResource("3_kosf7")
 Table = ExtResource("2_hip7b")
 Weight = 1.0
-AccumulatedWeight = 0.0
-metadata/_custom_type_script = "uid://c6bs11unvxfne"
+AccumulatedWeight = 1.0
 
-[sub_resource type="Resource" id="Resource_dga0r"]
+[sub_resource type="Resource" id="Resource_hip7b"]
 script = ExtResource("5_8o443")
 Unit = ExtResource("4_sqxpc")
 Weight = 1.0
-AccumulatedWeight = 0.0
-metadata/_custom_type_script = "uid://c624kc888mlih"
+AccumulatedWeight = 2.0
 
 [resource]
 script = ExtResource("6_4lmyr")
-Table = Array[ExtResource("1_2m1iq")]([SubResource("Resource_el2l1"), SubResource("Resource_dga0r")])
-WeightSum = -1.0
+Table = Array[ExtResource("1_2m1iq")]([SubResource("Resource_2m1iq"), SubResource("Resource_hip7b")])
+WeightSum = 2.0
 metadata/_custom_type_script = "uid://ctyhw0gbd17qw"

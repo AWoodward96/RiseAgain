@@ -53,8 +53,15 @@ var formationUI
 var combatHUD : CombatHUD
 var inspectUI : UnitInspectUI
 
+
 var forcedTileSelection : Tile
 var forcedContextOption : int = -1
+
+## The current strength of the current shake. Fades over time based on currentShadeTimer
+var currentShakeStrength : float
+## The time it takes for the current shake to be over. Does not go down over time.
+var currentShakeDuration : float
+var currentShakeDurationMax : float
 
 func Initialize(_map: Map):
 	currentMap = _map
@@ -98,6 +105,7 @@ func _process(_delta):
 
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
 	CameraMovementComplete = camera.global_position.distance_to(desiredCameraPosition) < 0.1
+	UpdateScreenShake(_delta)
 
 func ChangeControllerState(a_newState : PlayerControllerState, optionalData):
 	if ControllerState != null:
@@ -149,6 +157,23 @@ func UpdateCameraPosition():
 	desiredCameraPosition.y = clamp(desiredCameraPosition.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
 	desired_camera_pos.global_position = desiredCameraPosition
 	#UpdateReticleQuintant()
+
+func UpdateScreenShake(_delta):
+	if currentShakeStrength > 0:
+		currentShakeDuration += _delta
+		currentShakeStrength = lerpf(currentShakeStrength, 0, currentShakeDuration / currentShakeStrength)
+
+		camera.offset = Vector2(randf_range(-currentShakeStrength, currentShakeStrength), randf_range(-currentShakeStrength, currentShakeStrength))
+	else:
+		camera.offset = Vector2i.ZERO
+	pass
+
+func StartScreenShake(_strength : int, _time : float = 1):
+	# don't let weaker strength screen shakes override the current shake
+	if _strength > currentShakeStrength:
+		currentShakeStrength = _strength
+		currentShakeDuration = 0
+		currentShakeDurationMax = _time
 
 func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x

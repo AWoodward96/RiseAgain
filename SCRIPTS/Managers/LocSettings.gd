@@ -77,3 +77,25 @@ func FormatForCombat(_damageAmount : int, _collisionAmount : int, _healAmount : 
 
 func FormatCenter(_string : String):
 	return "[center]" + _string + "[/center]"
+
+
+static func GetItemDescriptionMadlibs(_item : Item):
+	var returnDict = {}
+
+	if _item.statData != null:
+		var count = 1
+		for statgrowth in _item.statData.StatsToGrant:
+			returnDict["STAT" + str(count)] = _item.tr(statgrowth.Template.loc_displayName_short)
+			returnDict["GROWTH" + str(count)] = str(statgrowth.Value)
+			count += 1
+
+	if _item.growthModifierData != null:
+		var count = 1
+		for statgrowth in _item.growthModifierData.GrowthModifiers:
+			returnDict["STATGROWTHSTAT" + str(count)] = _item.tr(statgrowth.Template.loc_displayName_short)
+			returnDict[	"STATGROWTHPERC" + str(count)] = str(statgrowth.Value)
+			count += 1
+
+		returnDict["GROWTHCOUNT"] = str(_item.growthModifierData.SuccessCount)
+
+	return returnDict

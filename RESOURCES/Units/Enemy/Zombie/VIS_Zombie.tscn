@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://ART/Icons/Units/zombie.png" id="2_cbuph"]
 [ext_resource type="Shader" uid="uid://cf720m26t7obl" path="res://RESOURCES/Units/Ally/WildMage/palette_swap_complex.gdshader" id="3_3hjbg"]
 [ext_resource type="AnimationLibrary" uid="uid://rf4q5i0pd6v" path="res://ART/Animations/Units/UnitEnemyLibrary.res" id="3_klhbh"]
-[ext_resource type="Texture2D" uid="uid://cy2iq8iqi77d2" path="res://ART/Units/Zombie/zombie_palettizer_palette.png" id="4_ej067"]
+[ext_resource type="Texture2D" uid="uid://bvj6se6d3et7h" path="res://ART/Units/Zombie/zombie_palettizer_palette.png" id="4_3hjbg"]
 [ext_resource type="Texture2D" uid="uid://c6sl3c0ohs36o" path="res://ART/Units/Zombie/zombie_palettizer_gray.png" id="5_v37nx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_podgw"]
 resource_local_to_scene = true
 shader = ExtResource("3_3hjbg")
-shader_parameter/palette = ExtResource("4_ej067")
+shader_parameter/palette = ExtResource("4_3hjbg")
 shader_parameter/palette_count = 4.0
 shader_parameter/palette_index = 0.0
 shader_parameter/tint = Color(1, 1, 1, 1)
@@ -845,7 +845,7 @@ material = SubResource("ShaderMaterial_podgw")
 position = Vector2(32, 22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_gqy6r")
-animation = &"attack_right"
+animation = &"prep_down"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -856,9 +856,7 @@ libraries = {
 autoplay = "Unactivated"
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")

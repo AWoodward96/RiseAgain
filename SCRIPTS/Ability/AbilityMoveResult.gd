@@ -21,7 +21,7 @@ func PreviewResult(_map : Map):
 		for tile : Tile in unitMovement:
 			ctrl.movement_tracker.points.append(Vector2i(tile.GlobalPosition.x, tile.GlobalPosition.y) + offset)
 		ctrl.movement_preview_sprite.texture = Source.Template.icon
-		ctrl.movement_preview_sprite.position = unitMovement[unitMovement.size() - 1].GlobalPosition + offset
+		ctrl.movement_preview_sprite.position = Vector2i(unitMovement[unitMovement.size() - 1].GlobalPosition) + offset
 		resultingTile = unitMovement[unitMovement.size()-1]
 	else:
 		ctrl.movement_tracker.visible = false

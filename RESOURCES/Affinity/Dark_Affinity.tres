@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="AffinityTemplate" load_steps=3 format=3 uid="uid://bj21oy32r8cy6"]
 
+[ext_resource type="Texture2D" uid="uid://cqc5de5p7rain" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="1_ociv8"]
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="2_a82wt"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n14uw"]
-load_path = "res://.godot/imported/dark_affinity_icon.png-82de9c691f035d9e5a23395a6aac88ed.ctex"
 
 [resource]
 script = ExtResource("2_a82wt")
 affinity = 64
 strongAgainst = 128
-loc_icon = SubResource("CompressedTexture2D_n14uw")
+loc_icon = ExtResource("1_ociv8")
 loc_name = "affinity_dark"

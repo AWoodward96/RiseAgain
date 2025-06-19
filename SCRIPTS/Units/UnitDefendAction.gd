@@ -23,6 +23,10 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	TimerLock = true
 
 	_unit.DoCombat(Result)
+	if Result.Crit:
+		Juice.ScreenShakeCombatCrit()
+	else:
+		Juice.ScreenShakeCombatStandard()
 	Juice.PlayHitRumble()
 
 

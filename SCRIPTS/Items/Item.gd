@@ -9,6 +9,7 @@ class_name Item
 
 @export_category("Item Data")
 @export var statData : HeldItemComponent
+@export var growthModifierData : HeldItemStatGrowthModifier
 
 var currentMap : Map
 
@@ -30,6 +31,9 @@ func ToJSON():
 	var dict = {
 		"prefab" : self.scene_file_path
 	}
+
+	if growthModifierData != null:
+		dict["ModifierSucceedCount"] = growthModifierData.SuccessCount
 	return dict
 
 static func FromJSON(_dict : Dictionary):
@@ -37,4 +41,7 @@ static func FromJSON(_dict : Dictionary):
 		return null
 
 	var item = load(_dict["prefab"]).instantiate() as Item
+	if _dict.has("ModifierSucceededCount"):
+		item.growthModifierData.SuccessCount = _dict["ModifierSucceededCount"]
+
 	return item

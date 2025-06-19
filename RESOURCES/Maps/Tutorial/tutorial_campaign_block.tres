@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=29 format=3 uid="uid://dlpsb7mx1m51b"]
+[gd_resource type="Resource" script_class="CampaignBlock" load_steps=38 format=3 uid="uid://dlpsb7mx1m51b"]
 
 [ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_rnm6s"]
 [ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_ntku5"]
@@ -9,13 +9,18 @@
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="6_iiod5"]
 [ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="7_xpm3n"]
 [ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="8_nqbd1"]
-[ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="9_1kvpe"]
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="9_8kkt1"]
 [ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="10_ofof7"]
-[ext_resource type="PackedScene" uid="uid://dc5t03o0j6sfg" path="res://RESOURCES/Items/t1_nectar.tscn" id="11_q3vch"]
+[ext_resource type="Texture2D" uid="uid://bcxc5ddtntqme" path="res://ART/Icons/Items/t1_nectar.png" id="10_xvue0"]
+[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="11_3ibi1"]
 [ext_resource type="Script" uid="uid://ctyhw0gbd17qw" path="res://SCRIPTS/Generic/LootTables/SpecificLootTable.gd" id="12_iiod5"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="12_tfhf4"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="13_qsjdv"]
 [ext_resource type="PackedScene" uid="uid://p6uj5vrpd3mi" path="res://RESOURCES/Maps/Tutorial/tutorial_a03_default.tscn" id="13_xpm3n"]
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="14_1kvpe"]
 [ext_resource type="PackedScene" uid="uid://dwdq8rmb2bu2f" path="res://RESOURCES/Maps/Tutorial/tutorial_a04_default.tscn" id="14_nqbd1"]
+[ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/t1_whetstone.png" id="15_6m2xl"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="16_ernwl"]
 
 [sub_resource type="Resource" id="Resource_kkxsi"]
 script = ExtResource("3_vfe4g")
@@ -34,16 +39,52 @@ Weight = 1.0
 AccumulatedWeight = 0.0
 metadata/_custom_type_script = "uid://c624kc888mlih"
 
+[sub_resource type="Resource" id="Resource_c0sfq"]
+script = ExtResource("12_tfhf4")
+Template = ExtResource("13_qsjdv")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_yl5rs"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("nectar_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "HeldItemComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("9_8kkt1"), "t1_nectar", "item_t1_nectar_name", "item_t1_nectar_desc", ExtResource("10_xvue0"), NodePath("HeldItemComponent"), ExtResource("11_3ibi1"), Array[ExtResource("12_tfhf4")]([SubResource("Resource_c0sfq")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_nqbd1"]
 script = ExtResource("10_ofof7")
-ItemPrefab = ExtResource("11_q3vch")
+ItemPrefab = SubResource("PackedScene_yl5rs")
 Weight = 1.0
 AccumulatedWeight = 0.0
 metadata/_custom_type_script = "uid://4xqdaqcl77e1"
 
+[sub_resource type="Resource" id="Resource_hodaj"]
+script = ExtResource("12_tfhf4")
+Template = ExtResource("16_ernwl")
+Value = 1
+
+[sub_resource type="PackedScene" id="PackedScene_bb5gj"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("whetstone_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "ItemEquipData", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("9_8kkt1"), "t1_whetstone", "item_t1_whetstone_name", "item_t1_whetstone_desc", ExtResource("15_6m2xl"), NodePath("ItemEquipData"), ExtResource("11_3ibi1"), Array[ExtResource("12_tfhf4")]([SubResource("Resource_hodaj")])],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_1kvpe"]
 script = ExtResource("10_ofof7")
-ItemPrefab = ExtResource("9_1kvpe")
+ItemPrefab = SubResource("PackedScene_bb5gj")
 Weight = 1.0
 AccumulatedWeight = 0.0
 metadata/_custom_type_script = "uid://4xqdaqcl77e1"

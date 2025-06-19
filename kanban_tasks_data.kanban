@@ -35,10 +35,8 @@
 			"title": "ToDo",
 			"tasks": [
 				"073acedc-08f2-476c-bf21-67837a146552",
-				"25bef414-e6a8-4b77-8a83-9a8622bc5c8a",
 				"09f531bd-2d11-40e7-8858-27239bac3649",
-				"2905a111-cc4c-46df-a64b-a12e008957fb",
-				"9a65eff4-1eed-4b8f-b80b-48b794d6ff76"
+				"2905a111-cc4c-46df-a64b-a12e008957fb"
 			]
 		},
 		{
@@ -46,8 +44,7 @@
 			"title": "Doing",
 			"tasks": [
 				"fd11942d-191d-4019-9a21-163a01348401",
-				"7b74a940-bdc5-4b24-8088-ccdcbf29149c",
-				"60e71ff7-da5b-4e9e-ad22-3158bee2b28c"
+				"30e9468c-9c8f-4f88-a32a-73a0f5247a28"
 			]
 		},
 		{
@@ -57,7 +54,13 @@
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
+				"60e71ff7-da5b-4e9e-ad22-3158bee2b28c",
+				"25bef414-e6a8-4b77-8a83-9a8622bc5c8a",
+				"7b74a940-bdc5-4b24-8088-ccdcbf29149c",
+				"b22bc624-1ac6-4d27-8a94-58f923d51dc8",
+				"ef294709-79b3-46bb-9df5-2a2a3398c9e0",
 				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
+				"9a65eff4-1eed-4b8f-b80b-48b794d6ff76",
 				"6be5bacd-2ac8-45a2-af04-3e5ac5c5b22a",
 				"bc86dafe-d53d-46d8-b698-a33b209110ac",
 				"d0054fe4-6d3b-4452-849b-3b7a3b37fc1c",
@@ -691,6 +694,27 @@
 			"title": "Implement Karla",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "b22bc624-1ac6-4d27-8a94-58f923d51dc8",
+			"title": "Change Zombie's borders to be more defined",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "ef294709-79b3-46bb-9df5-2a2a3398c9e0",
+			"title": "We're losing items again",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "30e9468c-9c8f-4f88-a32a-73a0f5247a28",
+			"title": "Knight is at an EXP Disadvantage",
+			"description": "Because of the way AOE is determined, the knights weapon permanently gives the knigh 60% of the exp they should get. Consider a different way of calculating if the attack should have an AOE debuff on it",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}
 	],
