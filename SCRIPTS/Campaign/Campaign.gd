@@ -294,12 +294,13 @@ static func FromJSON(_dict : Dictionary):
 		campaign.CampaignRng = DeterministicRNG.FromJSON(_dict["campaignRNG"])
 
 
-	for u in _dict["UnitsInHolding"]:
-		var dataAsJson = JSON.parse_string(u)
-		var unit = UnitInstance.FromJSON(dataAsJson)
-		if unit != null:
-			campaign.UnitHoldingArea.add_child(unit)
-			campaign.CurrentRoster.append(unit)
+	if _dict.has("UnitsInHolding"):
+		for u in _dict["UnitsInHolding"]:
+			var dataAsJson = JSON.parse_string(u)
+			var unit = UnitInstance.FromJSON(dataAsJson)
+			if unit != null:
+				campaign.UnitHoldingArea.add_child(unit)
+				campaign.CurrentRoster.append(unit)
 
 	campaign.TryLoadMap()
 

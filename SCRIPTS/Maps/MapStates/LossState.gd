@@ -12,6 +12,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 	combatHUD = controller.combatHUD
 	if combatHUD != null:
+		AudioManager.PlayLossStinger()
 		combatHUD.PlayLossBanner()
 		await combatHUD.BannerAnimComplete
 
@@ -26,6 +27,9 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	if !Main.Root.DEBUG_ShowcaseMode:
 		GameManager.ChangeGameState(BastionGameState.new(), null)
 	pass
+
+func Exit():
+	AudioManager.ClearTracks()
 
 func ToJSON():
 	return "LossState"

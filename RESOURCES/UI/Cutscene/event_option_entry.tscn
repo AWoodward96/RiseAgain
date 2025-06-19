@@ -139,8 +139,5 @@ event_name = "event:/SFX/UI/UI_Select_Standard"
 event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"
 
 [node name="SelectedDisabled" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/tutorial_event_0"
-event_guid = "{1c3095a3-9673-43d4-ab26-94422a80028b}"
-"fmod_parameters/Parameter 1/id" = -6163031330771002062
-"fmod_parameters/Parameter 1" = 0.0
-"fmod_parameters/Parameter 1/variant_type" = 3
+event_name = "event:/SFX/UI/UI_DisabledPress"
+event_guid = "{84eb9be5-9156-406c-8407-7a414c121185}"

@@ -6,5 +6,8 @@
 script = ExtResource("1_ool4j")
 AmbienceID = "{00e98ecf-4c74-4486-8773-1a4b04092164}"
 MusicID = "{7415619a-94b3-4f0e-a3da-32919593b5b1}"
+VictoryStinger = "{97bf097a-1484-450d-bbfc-8d6ca02014dd}"
+LossStinger = "{00cb14b6-6b8b-467e-985d-6c4445550ea0}"
+VictoryDelay = 1.5
 GridColor = Color(0.0588235, 0.0431373, 0.0431373, 0.509804)
 metadata/_custom_type_script = "uid://jtmse3fkm1gn"

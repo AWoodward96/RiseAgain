@@ -54,8 +54,15 @@ func _process(delta: float):
 	if currentBiome == null:
 		return
 
+	# MusicPlayer is an FModEventEmitter2D that loads and unloads different FMod Events
+	# depending on the game state
 	if MusicPlayer != null:
 		localIntensity = lerp(localIntensity, CurrentIntensity, IntensityLerp * delta)
+		
+		# The below code never triggers unless Intensity is set before this happens.
+		# but if a track doesn't have an Intensity parameter, the console gets flooded.
+		# I could program around this by not having this in process, but I'd rather just
+		#   have the flexibility of checking if a parameter exists first
 		MusicPlayer.set_parameter("Intensity", localIntensity)
 
 	if localFalloff > 0:
@@ -81,7 +88,22 @@ func UpdateBiomeData(_biomeData : BiomeData):
 	else:
 		MusicPlayer.stop()
 
+func PlayVictoryStinger():
+	if currentBiome.VictoryStinger !=  "{00000000-0000-0000-0000-000000000000}":
+		MusicPlayer.event_guid = currentBiome.VictoryStinger
+		MusicPlayer.play()
+		CurrentIntensity = 0
 
+func PlayLossStinger():
+	if currentBiome.LossStinger !=  "{00000000-0000-0000-0000-000000000000}":
+		MusicPlayer.event_guid = currentBiome.LossStinger
+		MusicPlayer.play()
+		CurrentIntensity = 0
+
+func ClearTracks():
+	MusicPlayer.stop()
+	AmbiencePlayer.stop()
+	
 #func MarkerCallback(_dict : Dictionary):
 	#print("Marker Hit")
 #

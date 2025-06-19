@@ -12,6 +12,10 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	if _map.mapType == _map.MAPTYPE.Standard:
 		combatHUD = controller.combatHUD
 		if combatHUD != null:
+			AudioManager.PlayVictoryStinger()
+			if _map.Biome != null && _map.Biome.VictoryDelay > 0:
+				await GameManager.get_tree().create_timer(_map.Biome.VictoryDelay).timeout
+			
 			combatHUD.PlayVictoryBanner()
 			await combatHUD.BannerAnimComplete
 

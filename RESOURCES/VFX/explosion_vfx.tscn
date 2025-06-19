@@ -156,4 +156,5 @@ anim_offset_min = 0.1
 anim_offset_max = 0.1
 
 [node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
-event_guid = "{00000000-0002-0000-0300-000026000000}"
+event_name = "event:/SFX/Generic/Generic_Explosion"
+event_guid = "{eb1258da-6064-4ed8-bc5f-01c30010a001}"
