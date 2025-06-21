@@ -45,7 +45,7 @@ metadata/_custom_type_script = "uid://bsigkcdkaqxem"
 
 [sub_resource type="Resource" id="Resource_7sjrr"]
 script = ExtResource("23_ixfpf")
-tileToLoot = Array[Vector2i]([Vector2i(17, 1)])
+tileToLoot = Array[Vector2i]([Vector2i(17, 2)])
 tryToEscape = true
 escapeRoute = Vector2i(22, 0)
 Flags = Array[ExtResource("22_vmpk3")]([SubResource("Resource_2n151")])

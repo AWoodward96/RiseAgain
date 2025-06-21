@@ -39,7 +39,10 @@ func _process(_delta):
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		CurrentInputSchmeme = ControllerScheme.Keyboard
-	elif event is InputEventJoypadButton or InputEventJoypadMotion:
+
+	# For some reason, a Mouse Move event passes the InputEventJoypadButton or InputEventJoypadMotion check
+	# Because of that filter out all mouse input events
+	elif event is InputEventJoypadButton or InputEventJoypadMotion && event is not InputEventMouse:
 		CurrentInputSchmeme = ControllerScheme.Controller
 
 

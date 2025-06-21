@@ -18,7 +18,7 @@ font = ExtResource("3_tvrtu")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "focus_cost_parent", "focus_cost_label", "usage_parent", "usage_label", "OnFocus", "OnSelect")]
+[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "focus_cost_parent", "focus_cost_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
 custom_minimum_size = Vector2(0, 32)
 focus_mode = 2
 mouse_filter = 0
@@ -38,6 +38,7 @@ usage_parent = NodePath("MarginContainer/HBoxContainer/Uses")
 usage_label = NodePath("MarginContainer/HBoxContainer/Uses/UsesRemaining")
 OnFocus = NodePath("OnFocus")
 OnSelect = NodePath("OnSelect")
+OnSelectDeny = NodePath("OnSelectDeny")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -180,6 +181,10 @@ event_guid = "{9e237bb9-a830-4ce7-bde8-fdf81456e26c}"
 [node name="OnSelect" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/SFX/UI/UI_Select_Standard"
 event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"
+
+[node name="OnSelectDeny" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/UI_DisabledPress"
+event_guid = "{84eb9be5-9156-406c-8407-7a414c121185}"
 
 [connection signal="focus_entered" from="." to="." method="OnFocusEnter"]
 [connection signal="focus_exited" from="." to="." method="OnFocusExit"]

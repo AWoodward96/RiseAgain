@@ -22,6 +22,9 @@ var localIntensity : float = 0
 var localFalloff : float = 0
 var currentBiome : BiomeData
 
+var musicFadeOutTween : Tween
+var ambienceFadeOutTween : Tween
+
 # Commenting this out bc I don't think I want this to go down anymore
 # May revisit this system at a later date, but for now I'm not sure
 #func _ready():
@@ -58,7 +61,7 @@ func _process(delta: float):
 	# depending on the game state
 	if MusicPlayer != null:
 		localIntensity = lerp(localIntensity, CurrentIntensity, IntensityLerp * delta)
-		
+
 		# The below code never triggers unless Intensity is set before this happens.
 		# but if a track doesn't have an Intensity parameter, the console gets flooded.
 		# I could program around this by not having this in process, but I'd rather just
@@ -77,33 +80,64 @@ func UpdateBiomeData(_biomeData : BiomeData):
 	if _biomeData.AmbienceID != "{00000000-0000-0000-0000-000000000000}":
 		if AmbiencePlayer.event_guid != _biomeData.AmbienceID:
 			AmbiencePlayer.event_guid = _biomeData.AmbienceID
+			AmbiencePlayer.volume = 1
 			AudioManager.AmbiencePlayer.play()
 	else:
-		AudioManager.AmbiencePlayer.stop()
+		FadeOutAmbience()
 
 	if _biomeData.MusicID != "{00000000-0000-0000-0000-000000000000}":
 		if MusicPlayer.event_guid != _biomeData.MusicID:
+			if musicFadeOutTween != null:
+				musicFadeOutTween.stop()
+				musicFadeOutTween = null
+
+			MusicPlayer.volume = 1
 			MusicPlayer.event_guid = _biomeData.MusicID
 			MusicPlayer.play()
 	else:
-		MusicPlayer.stop()
+		FadeOutMusic()
 
 func PlayVictoryStinger():
+	if currentBiome == null:
+		return
+
 	if currentBiome.VictoryStinger !=  "{00000000-0000-0000-0000-000000000000}":
 		MusicPlayer.event_guid = currentBiome.VictoryStinger
 		MusicPlayer.play()
 		CurrentIntensity = 0
 
 func PlayLossStinger():
+	if currentBiome == null:
+		return
+
 	if currentBiome.LossStinger !=  "{00000000-0000-0000-0000-000000000000}":
 		MusicPlayer.event_guid = currentBiome.LossStinger
 		MusicPlayer.play()
 		CurrentIntensity = 0
 
-func ClearTracks():
-	MusicPlayer.stop()
-	AmbiencePlayer.stop()
-	
+func ClearTracks(_fadeOut : bool = true):
+	if !_fadeOut:
+		MusicPlayer.stop()
+		AmbiencePlayer.stop()
+	else:
+		FadeOutMusic()
+		FadeOutAmbience()
+
+func FadeOutMusic(_duration : float = 2):
+	if MusicPlayer == null:
+		return
+
+	musicFadeOutTween = create_tween()
+	musicFadeOutTween.tween_property(MusicPlayer, "volume", 0, _duration)
+
+func FadeOutAmbience(_duration : float = 2):
+	if AmbiencePlayer != null:
+		return
+
+	ambienceFadeOutTween = create_tween()
+	ambienceFadeOutTween.tween_property(AmbiencePlayer, "volume", 0, _duration)
+	pass
+
 #func MarkerCallback(_dict : Dictionary):
 	#print("Marker Hit")
 #

@@ -254,7 +254,6 @@ vframes = 4
 frame = 2
 script = ExtResource("12_j7eq1")
 UnitToSpawn = ExtResource("16_wcwek")
-DeltaLevel = 0
 Position = Vector2i(15, 6)
 AIBehavior = ExtResource("15_mkida")
 AggroBehavior = SubResource("Resource_x1q16")
@@ -268,7 +267,6 @@ vframes = 4
 frame = 2
 script = ExtResource("12_j7eq1")
 UnitToSpawn = ExtResource("16_wcwek")
-DeltaLevel = 0
 Position = Vector2i(4, 6)
 AIBehavior = ExtResource("15_mkida")
 AggroBehavior = SubResource("Resource_1mxqn")
@@ -282,7 +280,7 @@ visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="AShadingTest"]
 visible = false
-color = Color(0.423529, 0.545098, 0.639216, 1)
+color = Color(0.79, 0.7031, 0.775517, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="AShadingTest"]
 visible = false

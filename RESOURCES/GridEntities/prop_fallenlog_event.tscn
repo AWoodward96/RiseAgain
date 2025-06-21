@@ -191,6 +191,34 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Woosh")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Land")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8uco"]
 _data = {
@@ -247,3 +275,11 @@ tile_set = ExtResource("3_lyc2n")
 
 [node name="VFX_Explosion" parent="parent" instance=ExtResource("6_6o3i8")]
 emitOnReady = false
+
+[node name="Woosh" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Units/Generic/Jump_Start"
+event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
+
+[node name="Land" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Combat_TakeDamage_Kill"
+event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"

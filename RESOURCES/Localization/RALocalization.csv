@@ -403,12 +403,13 @@ event_abandonedcart_d1_result4,As a reward he lets you pick an item from one of 
 event_abandonedcart_d2_result_noinjured,"In a remarkable stroke of good luck, nobody was injured!"
 event_abandonedcart_d2_result3_injured,[color=#879ea3]{CONTEXTVAR}[/color] was Injured!
 item_t1_rosepolish_name,Rose Polish
-item_t1_rosepolish_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_rosepolish_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 item_t1_maroontome_name,Maroon Tome
-item_t1_maroontome_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_maroontome_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 item_t1_weightedbelt_name,Weighted Belt
-item_t1_weightedbelt_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_weightedbelt_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 item_t1_lapispadding_name,Lapis Shoulder Pads
-item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 item_t1_ceruleanplates_name,Cerulean Plates
-item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. [color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+campaign_white_coast,The White Coast

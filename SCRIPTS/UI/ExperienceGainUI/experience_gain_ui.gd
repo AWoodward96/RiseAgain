@@ -110,7 +110,7 @@ func ShowLevelUpData():
 
 	await InputManager.selectDownCallback
 
-	if startingLevel < GameManager.GameSettings.FirstAbilityBreakpoint && startingLevel + levelsGained >= GameManager.GameSettings.FirstAbilityBreakpoint:
+	if startingLevel < GameManager.GameSettings.FirstAbilityBreakpoint && startingLevel + levelsGained >= GameManager.GameSettings.FirstAbilityBreakpoint && currentUnit.Template.Tier1Abilities.size() > 0:
 		var ui = SelectAbilityUI.Show(currentUnit, currentUnit.Template.Tier1Abilities)
 		ui.SelectionComplete.connect(AbilitySelected)
 		await ui.SelectionComplete

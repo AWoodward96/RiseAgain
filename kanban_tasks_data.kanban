@@ -41,7 +41,9 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"30e9468c-9c8f-4f88-a32a-73a0f5247a28"
+				"30e9468c-9c8f-4f88-a32a-73a0f5247a28",
+				"6511d0b5-3796-49a0-9597-c0a5d1125310",
+				"83cbd584-d741-4b33-b92c-0e4109f61023"
 			]
 		},
 		{
@@ -50,14 +52,19 @@
 			"tasks": [
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
-				"fd11942d-191d-4019-9a21-163a01348401",
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
+				"09f531bd-2d11-40e7-8858-27239bac3649",
+				"30a4749b-e705-4e4f-9cf9-6302ae04815e",
 				"60e71ff7-da5b-4e9e-ad22-3158bee2b28c",
+				"b5687b57-f7cd-4140-9c96-c6414378b6ca",
+				"2c7133f0-90e5-44fc-a1ee-ce707ab6d6e1",
+				"21f87e80-243d-4161-af06-9e4311f93a81",
+				"2905a111-cc4c-46df-a64b-a12e008957fb",
+				"19e2c55c-5745-46eb-823b-cc9ecba5975a",
+				"fd11942d-191d-4019-9a21-163a01348401",
 				"25bef414-e6a8-4b77-8a83-9a8622bc5c8a",
 				"7b74a940-bdc5-4b24-8088-ccdcbf29149c",
-				"2905a111-cc4c-46df-a64b-a12e008957fb",
 				"b22bc624-1ac6-4d27-8a94-58f923d51dc8",
-				"09f531bd-2d11-40e7-8858-27239bac3649",
 				"ef294709-79b3-46bb-9df5-2a2a3398c9e0",
 				"e2c7dbfd-8144-40e3-9642-c141513cb2d4",
 				"9a65eff4-1eed-4b8f-b80b-48b794d6ff76",
@@ -714,6 +721,55 @@
 			"uuid": "30e9468c-9c8f-4f88-a32a-73a0f5247a28",
 			"title": "Knight is at an EXP Disadvantage",
 			"description": "Because of the way AOE is determined, the knights weapon permanently gives the knigh 60% of the exp they should get. Consider a different way of calculating if the attack should have an AOE debuff on it",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "30a4749b-e705-4e4f-9cf9-6302ae04815e",
+			"title": "Charge not loading on build",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "6511d0b5-3796-49a0-9597-c0a5d1125310",
+			"title": "Potential Softlock if loading after tuts complete?",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "b5687b57-f7cd-4140-9c96-c6414378b6ca",
+			"title": "Check why the 5 ATK thing isn't working on a normal campaign",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "21f87e80-243d-4161-af06-9e4311f93a81",
+			"title": "Don't show ability unlock if you have no abilities",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "19e2c55c-5745-46eb-823b-cc9ecba5975a",
+			"title": "White Coast needs victory stinger",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "2c7133f0-90e5-44fc-a1ee-ce707ab6d6e1",
+			"title": "Bandit on White 02 doesn't go for the chest, he just leaves",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "83cbd584-d741-4b33-b92c-0e4109f61023",
+			"title": "You need to Thread the Enemies turn",
+			"description": "The calculations are getting bigger and bigger and cannot be done in one frame\nThis is good for the long term of the game",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}

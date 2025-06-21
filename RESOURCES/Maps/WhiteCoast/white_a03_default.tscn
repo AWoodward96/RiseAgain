@@ -1,7 +1,7 @@
-[gd_scene load_steps=34 format=4 uid="uid://dhucmo8waljh4"]
+[gd_scene load_steps=35 format=4 uid="uid://dhucmo8waljh4"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_y2hpq"]
-[ext_resource type="Resource" uid="uid://dm5toftpq6eup" path="res://RESOURCES/Maps/BiomeData/Maroon_Forest_Standard.tres" id="2_7to13"]
+[ext_resource type="Resource" uid="uid://b85vbvqpusrko" path="res://RESOURCES/Maps/BiomeData/White_Cliffs_Standard.tres" id="2_7to13"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="3_wdnd8"]
 [ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="4_182j4"]
 [ext_resource type="TileSet" uid="uid://klf2tpkgl4h3" path="res://ART/Environment/WhiteCoast/whitecoast_tileset.tres" id="5_d5pr4"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cx7hr1gnxldm5" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="19_tvc4v"]
 [ext_resource type="Script" uid="uid://djqktvilpgetr" path="res://SCRIPTS/Maps/Spawners/SpawnerTurnBased.gd" id="20_mqeft"]
 [ext_resource type="PackedScene" uid="uid://bhol0valbc8x7" path="res://RESOURCES/GridEntities/wp_logbridge_1x3.tscn" id="20_wdnd8"]
+[ext_resource type="Resource" uid="uid://txjfcstralf6" path="res://RESOURCES/Units/Enemy/BanditBoss/UT_BanditBoss.tres" id="23_7to13"]
 [ext_resource type="Resource" uid="uid://crhpsqs4cv8a1" path="res://RESOURCES/Units/Enemy/BanditArcher/UT_BanditArcher.tres" id="24_rg1bn"]
 
 [sub_resource type="Resource" id="Resource_d5pr4"]
@@ -364,7 +365,7 @@ Position = Vector2i(11, 3)
 AIBehavior = ExtResource("14_g7byu")
 AggroBehavior = SubResource("Resource_hkjcv")
 
-[node name="Spawn_Bandit8" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_BanditBoss" type="Sprite2D" parent="Spawners"]
 position = Vector2(960, 128)
 texture = ExtResource("11_f6cc5")
 centered = false
@@ -372,7 +373,7 @@ hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("12_ej4td")
-UnitToSpawn = ExtResource("18_atuci")
+UnitToSpawn = ExtResource("23_7to13")
 UnitLevel = 8
 DeltaLevel = 0
 Position = Vector2i(15, 2)

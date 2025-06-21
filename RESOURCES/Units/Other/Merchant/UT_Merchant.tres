@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=28 format=3 uid="uid://cs3bbmkpsr6uu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=29 format=3 uid="uid://cs3bbmkpsr6uu"]
 
 [ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Metal_Affinity.tres" id="1_3anym"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ruh1m"]
@@ -13,36 +13,37 @@
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_vvbq6"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_mef65"]
 [ext_resource type="PackedScene" uid="uid://cufy1338gshuy" path="res://RESOURCES/Units/Other/Merchant/VIS_Merchant.tscn" id="12_ruh1m"]
+[ext_resource type="Texture2D" uid="uid://dlar8v1wwyxk7" path="res://ART/Icons/Units/merchant.png" id="13_hfrcm"]
 
 [sub_resource type="Resource" id="Resource_yf4qt"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("3_hfrcm")
-Value = 5
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_38tme"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("4_2utqv")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_61wed"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("5_mtcv2")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_am1pm"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("6_q0f5r")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_kdunh"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("7_4mxi4")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_0uer2"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("8_byd46")
-Value = 5
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_oarue"]
 script = ExtResource("2_ruh1m")
@@ -52,32 +53,32 @@ Value = 0
 [sub_resource type="Resource" id="Resource_svil8"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("10_uvumg")
-Value = 2
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_1ondd"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("3_hfrcm")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_l63yt"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("4_2utqv")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_tm4r2"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("5_mtcv2")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_cdsbo"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("6_q0f5r")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_rl6a8"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("7_4mxi4")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_624ns"]
 script = ExtResource("2_ruh1m")
@@ -99,3 +100,4 @@ FootstepGUID = ""
 DebugName = "Merchant"
 loc_DisplayName = "unit_merchant_name"
 loc_Description = "unit_merchant_desc"
+icon = ExtResource("13_hfrcm")

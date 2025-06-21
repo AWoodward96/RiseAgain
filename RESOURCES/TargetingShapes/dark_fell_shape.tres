@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TargetingShape" load_steps=11 format=3 uid="uid://c2dfr4ubq82wn"]
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=23 format=3 uid="uid://c2dfr4ubq82wn"]
 
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_v3wq7"]
 [ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_cmwi7"]
@@ -43,6 +43,78 @@ script = ExtResource("1_v3wq7")
 Position = Vector2i(1, -1)
 Multiplier = 1.0
 
+[sub_resource type="Resource" id="Resource_eyegr"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(0, 2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_bq3h3"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(-1, 2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_xgtck"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(1, 2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_aoulj"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(2, 0)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_t7ivt"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(2, 1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_u82qg"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(2, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_yhfww"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(0, -2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_4jtov"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(-1, -2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_vqenl"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(1, -2)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_bns2x"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(-2, 0)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_jera3"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(-2, 1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_ixp08"]
+script = ExtResource("1_v3wq7")
+Position = Vector2i(-2, -1)
+Multiplier = 1.0
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
 [resource]
 script = ExtResource("2_cmwi7")
-TileCoordinates = Array[ExtResource("1_v3wq7")]([SubResource("Resource_dsski"), SubResource("Resource_2pji2"), SubResource("Resource_6bref"), SubResource("Resource_lrswp"), SubResource("Resource_ppohr"), SubResource("Resource_qsq1n"), SubResource("Resource_7mqug"), SubResource("Resource_omc4r")])
+TileCoordinates = Array[ExtResource("1_v3wq7")]([SubResource("Resource_dsski"), SubResource("Resource_2pji2"), SubResource("Resource_6bref"), SubResource("Resource_lrswp"), SubResource("Resource_ppohr"), SubResource("Resource_qsq1n"), SubResource("Resource_7mqug"), SubResource("Resource_omc4r"), SubResource("Resource_eyegr"), SubResource("Resource_bq3h3"), SubResource("Resource_xgtck"), SubResource("Resource_aoulj"), SubResource("Resource_t7ivt"), SubResource("Resource_u82qg"), SubResource("Resource_yhfww"), SubResource("Resource_4jtov"), SubResource("Resource_vqenl"), SubResource("Resource_bns2x"), SubResource("Resource_jera3"), SubResource("Resource_ixp08")])

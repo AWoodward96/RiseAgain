@@ -21,6 +21,7 @@ signal OnSelectedCallback
 @export_category("SFX")
 @export var OnFocus : FmodEventEmitter2D
 @export var OnSelect : FmodEventEmitter2D
+@export var OnSelectDeny : FmodEventEmitter2D
 
 var callback : Callable
 var enabled : bool
@@ -67,12 +68,16 @@ func AddUsage(_usagesRemaining : int):
 	usage_label.text = str(_usagesRemaining)
 
 func _process(_delta: float) -> void:
-	if InputManager.selectDown && enabled && focus_parent.visible == true:
-		if callback != null:
-			if OnSelect != null:
-				OnSelect.play()
-			callback.call()
-			OnSelectedCallback.emit()
+	if InputManager.selectDown && focus_parent.visible == true:
+		if enabled:
+			if callback != null:
+				if OnSelect != null:
+					OnSelect.play()
+				callback.call()
+				OnSelectedCallback.emit()
+		else:
+			if OnSelectDeny != null:
+				OnSelectDeny.play()
 
 func OnFocusEnter():
 	focus_parent.visible = true

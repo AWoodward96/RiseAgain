@@ -25,11 +25,10 @@ func Enter(_map : Map, _ctrl : PlayerController):
 		map.queue_free()
 
 	if !Main.Root.DEBUG_ShowcaseMode:
+		AudioManager.ClearTracks()
 		GameManager.ChangeGameState(BastionGameState.new(), null)
 	pass
 
-func Exit():
-	AudioManager.ClearTracks()
 
 func ToJSON():
 	return "LossState"

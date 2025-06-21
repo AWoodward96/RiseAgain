@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=27 format=3 uid="uid://txjfcstralf6"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=30 format=3 uid="uid://txjfcstralf6"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_vy8pt"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ieqod"]
@@ -11,37 +11,40 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_p1yub"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_f24kq"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_1j13p"]
+[ext_resource type="PackedScene" uid="uid://doxn71htn5rvr" path="res://RESOURCES/Units/Enemy/BanditBoss/VIS_BanditBoss.tscn" id="12_ieqod"]
+[ext_resource type="PackedScene" uid="uid://vlpjvct6tdeb" path="res://RESOURCES/Ability/Equippable/bomblauncher.tscn" id="12_ro8a3"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_vf3cb"]
+[ext_resource type="Texture2D" uid="uid://cjrp3ll0fhp7" path="res://ART/Icons/Units/banditboss.png" id="14_jeiil"]
 
 [sub_resource type="Resource" id="Resource_0hxi7"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_kf6tu"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("4_jeiil")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_2xa3j"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("5_h0e5d")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_p8mo6"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("6_ttcan")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_e2cik"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("7_gd2bv")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_k7r3a"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("8_18ss8")
-Value = 6
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_pv12v"]
 script = ExtResource("2_ieqod")
@@ -51,32 +54,32 @@ Value = 0
 [sub_resource type="Resource" id="Resource_lowip"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("10_f24kq")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_bgdu5"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
-Value = 50
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_huiq2"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("4_jeiil")
-Value = 55
+Value = 55.0
 
 [sub_resource type="Resource" id="Resource_umk3d"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("5_h0e5d")
-Value = 25
+Value = 25.0
 
 [sub_resource type="Resource" id="Resource_85sgu"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("6_ttcan")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_g3q6i"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("7_gd2bv")
-Value = 25
+Value = 25.0
 
 [sub_resource type="Resource" id="Resource_5aln8"]
 script = ExtResource("2_ieqod")
@@ -86,10 +89,12 @@ Value = 0
 [resource]
 resource_name = "UT_BanditBoss"
 script = ExtResource("12_vf3cb")
+VisualPrefab = ExtResource("12_ieqod")
 BaseStats = Array[ExtResource("2_ieqod")]([SubResource("Resource_0hxi7"), SubResource("Resource_kf6tu"), SubResource("Resource_2xa3j"), SubResource("Resource_p8mo6"), SubResource("Resource_e2cik"), SubResource("Resource_k7r3a"), SubResource("Resource_pv12v"), SubResource("Resource_lowip")])
 StatGrowths = Array[ExtResource("2_ieqod")]([SubResource("Resource_bgdu5"), SubResource("Resource_huiq2"), SubResource("Resource_umk3d"), SubResource("Resource_85sgu"), SubResource("Resource_g3q6i"), SubResource("Resource_5aln8")])
 Affinity = ExtResource("1_vy8pt")
-Tier0Abilities = Array[String]([])
+StartingTactical = ExtResource("12_ro8a3")
+Tier0Abilities = Array[String](["uid://bysotjnllb6fb"])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_1j13p")]([])
 GridSize = 1
@@ -97,3 +102,4 @@ FootstepGUID = ""
 DebugName = "BanditBoss"
 loc_DisplayName = "unit_banditboss_name"
 loc_Description = "unit_banditboss_desc"
+icon = ExtResource("14_jeiil")

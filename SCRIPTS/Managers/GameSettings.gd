@@ -51,7 +51,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var InjuredHealthDebuff : float = 0.33
 @export var InjuredStatsDebuff : float = 0.2
 @export var InjuredAffectedStats : Array[StatTemplate]
-@export var OverLeveledEXPDebuff : int = 10
+@export var OverLeveledEXPDebuff : int = 4
 
 @export var Alpha_AlliedUnitColor : Color
 @export var Alpha_EnemyUnitColor : Color
@@ -302,9 +302,11 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	var scalingCalc = (A * (pow(B, X)) + C)
 	var equationResult = scalingCalc * 15 + _damageDealt
 
-	# Punish overleveling by decreasing exp by 10
-	if X < 0:
-		equationResult -= OverLeveledEXPDebuff
+	# Punish overleveling by decreasing exp by a scaling amount
+	# This is commented out because it's like... too harsh? The scalingCalc goes down to 55% after X = -1
+	# So like, this is just kicking people while they're down. But I don't know if it keeps the game in line or not
+	#if X < 0:
+		#equationResult += OverLeveledEXPDebuff * X
 
 	equationResult += _target.ExtraEXPGranted
 	if _isAOE:
