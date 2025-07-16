@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=35 format=3 uid="uid://dwvjo3jy73m3o"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=37 format=3 uid="uid://dwvjo3jy73m3o"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_y6up8"]
 [ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_6pvlw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://740g1hlunqtw" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_map_2.tres" id="9_owh4j"]
 [ext_resource type="Resource" uid="uid://beibj568earfb" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_map_3.tres" id="10_rbyee"]
 [ext_resource type="Script" uid="uid://b0nhkd1ubw5h" path="res://SCRIPTS/Cutscene/Events/MarkTutorialCompleteEvent.gd" id="11_wwrin"]
+[ext_resource type="Script" uid="uid://btll8vy86gdjd" path="res://SCRIPTS/Cutscene/Events/ReturnToBastionEvent.gd" id="12_7toe5"]
 
 [sub_resource type="Resource" id="Resource_ba8nt"]
 script = ExtResource("4_76rbs")
@@ -129,10 +130,15 @@ metadata/_custom_type_script = "uid://c2efja0836lg1"
 script = ExtResource("11_wwrin")
 metadata/_custom_type_script = "uid://b0nhkd1ubw5h"
 
+[sub_resource type="Resource" id="Resource_fkbbp"]
+script = ExtResource("12_7toe5")
+IsCampaignConsideredVictorious = true
+metadata/_custom_type_script = "uid://btll8vy86gdjd"
+
 [sub_resource type="Resource" id="Resource_a66jh"]
 script = ExtResource("5_ullrt")
 Conditions = Array[ExtResource("3_citbk")]([SubResource("Resource_ae57w"), SubResource("Resource_iuoal"), SubResource("Resource_mxa2o"), SubResource("Resource_xthae")])
-True = Array[ExtResource("1_y6up8")]([SubResource("Resource_8rt6v")])
+True = Array[ExtResource("1_y6up8")]([SubResource("Resource_8rt6v"), SubResource("Resource_fkbbp")])
 False = Array[ExtResource("1_y6up8")]([])
 metadata/_custom_type_script = "uid://cuheo7oad7i72"
 

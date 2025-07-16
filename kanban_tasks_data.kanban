@@ -34,17 +34,17 @@
 			"uuid": "99536e58-5f56-4042-aa53-40b017f895d4",
 			"title": "ToDo",
 			"tasks": [
-				"073acedc-08f2-476c-bf21-67837a146552"
+				"073acedc-08f2-476c-bf21-67837a146552",
+				"83cbd584-d741-4b33-b92c-0e4109f61023",
+				"98025ce6-4593-41bd-80f1-9b4fd50fbfa2",
+				"9b6062e2-5557-412d-a6a2-251928001c57",
+				"426d2428-a3ce-417b-a38f-572458e6a6d0"
 			]
 		},
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": [
-				"30e9468c-9c8f-4f88-a32a-73a0f5247a28",
-				"6511d0b5-3796-49a0-9597-c0a5d1125310",
-				"83cbd584-d741-4b33-b92c-0e4109f61023"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -55,8 +55,12 @@
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
 				"09f531bd-2d11-40e7-8858-27239bac3649",
 				"30a4749b-e705-4e4f-9cf9-6302ae04815e",
+				"f62bedbf-8fd3-450f-9498-167df9f5690f",
+				"30e9468c-9c8f-4f88-a32a-73a0f5247a28",
+				"6511d0b5-3796-49a0-9597-c0a5d1125310",
 				"60e71ff7-da5b-4e9e-ad22-3158bee2b28c",
 				"b5687b57-f7cd-4140-9c96-c6414378b6ca",
+				"14250528-2a40-4c84-9a61-7a97ecc79121",
 				"2c7133f0-90e5-44fc-a1ee-ce707ab6d6e1",
 				"21f87e80-243d-4161-af06-9e4311f93a81",
 				"2905a111-cc4c-46df-a64b-a12e008957fb",
@@ -770,6 +774,41 @@
 			"uuid": "83cbd584-d741-4b33-b92c-0e4109f61023",
 			"title": "You need to Thread the Enemies turn",
 			"description": "The calculations are getting bigger and bigger and cannot be done in one frame\nThis is good for the long term of the game",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "f62bedbf-8fd3-450f-9498-167df9f5690f",
+			"title": "Victory Condition: Beat Boss",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "14250528-2a40-4c84-9a61-7a97ecc79121",
+			"title": "Death Mechanic not working?",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "98025ce6-4593-41bd-80f1-9b4fd50fbfa2",
+			"title": "Wolf Abilities",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "9b6062e2-5557-412d-a6a2-251928001c57",
+			"title": "Fix Gauze when at full hp being confusing",
+			"description": "",
+			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "426d2428-a3ce-417b-a38f-572458e6a6d0",
+			"title": "CRITICAL: Release Build Crash related to Wild Mage and Ability Selection UI",
+			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
 			"steps": []
 		}

@@ -8,6 +8,7 @@ var CritRate : float		# The % the roll needs to be under in order for it to be a
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
 
+var AffectedTiles : Array[TileTargetedData]
 var RetaliationResult : DamageStepResult
 
 func PreCalculate():
@@ -82,7 +83,12 @@ func CalculateExpGain():
 
 	var isAOE = false
 	if AbilityData != null && AbilityData.TargetingData != null:
-		isAOE = !(AbilityData.TargetingData.Type == SkillTargetingData.TargetingType.Simple || AbilityData.TargetingData.Type == SkillTargetingData.TargetingType.SelfOnly)
+		var targetsHit = 0
+		for tileData in AffectedTiles:
+			if tileData.Tile.Occupant != null && AbilityData.TargetingData.OnCorrectTeam(Source, tileData.Tile.Occupant):
+				targetsHit += 1
+
+		isAOE = targetsHit > 1
 
 	if HealthDelta < 0: # Meaning it will deal damage
 		var HealthDeltaABS = abs(HealthDelta)

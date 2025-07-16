@@ -48,3 +48,5 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 		unit.AddCombatEffect(instance)
 	if _map.CurrentCampaign != null && Allegiance == GameSettingsTemplate.TeamID.ALLY:
 		_map.CurrentCampaign.CurrentRoster.append(unit)
+
+	unit.IsBoss = Boss

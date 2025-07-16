@@ -12,6 +12,7 @@ signal OnCombatEffectsUpdated
 @export var focusSlotPrefab : PackedScene
 @export var affinityIcon: TextureRect
 @export var hasLootIcon : Node2D
+@export var isBossIcon : Node2D
 
 @export_category("SFX")
 @export var takeDamageSound : FmodEventEmitter2D
@@ -43,6 +44,7 @@ var Abilities : Array[Ability]
 var CombatEffects : Array[CombatEffectInstance]
 var EquippedWeapon : Ability
 var Submerged : bool = false
+var IsBoss : bool = false
 
 var IsDefending : bool = false :
 	set(value):
@@ -153,6 +155,8 @@ func RefreshVisuals():
 	footstepsSound.event_guid = AudioManager.DefaultFootstepGUID
 	if Template.FootstepGUID != "":
 		footstepsSound.event_guid = Template.FootstepGUID
+
+	isBossIcon.visible = IsBoss
 
 func InitializeStats():
 	for stat in Template.BaseStats:
@@ -525,6 +529,8 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	if _currentTurn == UnitAllegiance:
 		# defending doesn't drop off until it's your turn again
 		IsDefending = false
+		for abl in Abilities:
+			abl.OnOwnerUnitTurnStart()
 
 		TriggerTurnStartEffects()
 		UpdateCombatEffects()
@@ -753,12 +759,19 @@ func PlayDeathAnimation():
 
 
 func DeathAnimComplete():
-	if !Injured && UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
-		Injured = true
-		if GameManager.CurrentCampaign != null:
-			GameManager.CurrentCampaign.UnitInjured(self)
+	if  UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+		if !Injured:
+			Injured = true
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.UnitInjured(self)
+			else:
+				map.QueueUnitForRemoval(self)
 		else:
-			map.QueueUnitForRemoval(self)
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.RegisterUnitDeath(self)
+			else:
+				map.QueueUnitForRemoval(self)
+
 	else:
 		map.QueueUnitForRemoval(self)
 
@@ -938,7 +951,8 @@ func ToJSON():
 		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots),
 		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects),
 		"Injured" : Injured,
-		"Submerged" : Submerged
+		"Submerged" : Submerged,
+		"IsBoss" : IsBoss
 	}
 
 	if AI != null:
@@ -1020,6 +1034,8 @@ static func FromJSON(_dict : Dictionary):
 		unitInstance.itemsParent.add_child(item)
 		#item.reparent(unitInstance.itemsParent)
 
+	if _dict.has("IsBoss"):
+		unitInstance.IsBoss = _dict["IsBoss"]
 
 
 	unitInstance.UpdateDerivedStats()

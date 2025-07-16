@@ -19,6 +19,7 @@ var CampaignRng : DeterministicRNG
 
 var StartingRosterTemplates : Array[UnitTemplate]
 var CurrentRoster : Array[UnitInstance]
+var DeadUnits : Array[UnitTemplate]
 
 var ConvoyParent : Node2D
 var Convoy : Array[Item]
@@ -160,6 +161,9 @@ func UnitInjured(_unitInstance : UnitInstance):
 	_unitInstance.UpdateDerivedStats()
 	_unitInstance.currentHealth = _unitInstance.maxHealth
 
+func RegisterUnitDeath(_unitInstance : UnitInstance):
+	DeadUnits.append(_unitInstance.Template)
+	_unitInstance.queue_free()
 
 func RemoveEmptyRosterEntries():
 	var i = CurrentRoster.size() - 1
@@ -240,6 +244,7 @@ func ReportCampaignResult(_victory : bool):
 
 	# then clean up the campaign
 	currentMap.queue_free()
+	queue_free()
 
 static func CreateNewCampaignInstance(_campaignTemplate : CampaignTemplate, _startingRoster : Array[UnitTemplate]):
 	var campaignInstance = GameManager.GameSettings.CampaignInstancePrefab.instantiate() as Campaign

@@ -111,13 +111,15 @@ func ShowLevelUpData():
 	await InputManager.selectDownCallback
 
 	if startingLevel < GameManager.GameSettings.FirstAbilityBreakpoint && startingLevel + levelsGained >= GameManager.GameSettings.FirstAbilityBreakpoint && currentUnit.Template.Tier1Abilities.size() > 0:
+		print("EXPERIENCE GAIN UI: Unit can unlock an ability, showing now")
 		var ui = SelectAbilityUI.Show(currentUnit, currentUnit.Template.Tier1Abilities)
 		ui.SelectionComplete.connect(AbilitySelected)
 		await ui.SelectionComplete
+		print("EXPERIENCE GAIN UI: Ability select complete")
 
+	print("EXPERIENCE GAIN UI: Sequence Complete, closing UI now")
 	SequenceComplete.emit()
 	queue_free()
-	pass
 
 func AbilitySelected(_ability : PackedScene):
 	currentUnit.AddAbility(_ability)

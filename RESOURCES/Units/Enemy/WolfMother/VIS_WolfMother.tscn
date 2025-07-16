@@ -19,8 +19,8 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"UnitEnemyLibrary": ExtResource("3_5m0vx"),
-"UnitNeutralLibrary": ExtResource("4_g1id5")
+&"UnitEnemyLibrary": ExtResource("3_5m0vx"),
+&"UnitNeutralLibrary": ExtResource("4_g1id5")
 }
 autoplay = "Unactivated"
 

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DefeatBossObjective" load_steps=2 format=3 uid="uid://5lm3bqqyelpb"]
+
+[ext_resource type="Script" uid="uid://d1x601uhposmm" path="res://SCRIPTS/Maps/Objectives/ObjectiveDefeatBoss.gd" id="1_ai2wr"]
+
+[resource]
+script = ExtResource("1_ai2wr")
+loc_description = "ui_defeatboss"
+metadata/_custom_type_script = "uid://d1x601uhposmm"

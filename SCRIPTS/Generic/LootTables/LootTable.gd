@@ -30,6 +30,11 @@ func RollTable(rng : DeterministicRNG, _numberOfRewards : int, _duplicateProtect
 							isUnique = false
 							break
 
+					for u in currentCampaign.DeadUnits:
+						if u != null && u == specificUnitRewardEntry.Unit:
+							isUnique = false
+							break
+
 				if !isUnique:
 					continue
 

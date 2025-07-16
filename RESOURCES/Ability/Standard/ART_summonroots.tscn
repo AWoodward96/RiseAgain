@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 script = ExtResource("4_3ef5x")
 GridEntityPrefab = ExtResource("3_gsr8n")
 
-[node name="summonroots" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="ART_summonroots" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_bn3se")
 focusCost = 3
 executionStack = Array[ExtResource("2_flx47")]([SubResource("Resource_bn3se"), SubResource("Resource_tovoj")])

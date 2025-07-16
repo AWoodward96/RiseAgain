@@ -149,7 +149,7 @@ passive_necroticcurse_desc,Every Neutral Unit this Unit kills is brought back as
 art_beamattack_name,Beam Attack!
 art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
 art_cleave_name,Great Cleave
-art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}. \nUnits on the far edge take more damage.
+art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}.
 art_darkfell_name,Soul Cleave
 art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
 art_doubleshot_name,Repeater
@@ -195,7 +195,7 @@ stat_wisdom,Wisdom
 stat_wisdom_short,WIS
 stat_wisdom_desc,Increases Magical Damage dealt by Abilities to Enemies
 art_summonmine_name,Hunters Trap
-art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on DEX and Stuns
+art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on {DMG_AGGRESSIVESTAT} and Stuns
 art_spearthrow_name,Throw Spear
 art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
 art_pushforward_name,Push Forward
@@ -310,10 +310,10 @@ tut_level3_1,Each Ability is unique and can change up how you use the Unit going
 tut_level3_2,Experiment with different builds and Abilities to figure out which one works best for your playstyle!
 tut_optionalobjectives_0,On this map you have an optional objective: Kill the Prized Buck.
 tut_optionalobjectives_1,"Completing an optional objective will grant you a second set of rewards when you beat the Map, so try your best to accomplish it if you can."
-tut_fastspeed_0,Select the Mercenary we picked up at the end of the last map.
+tut_fastspeed_0,"Select the Mercenary we picked up at the end of the last map, but don't move them anywhere."
 tut_fastspeed_1,The Mercenary has an ability called [Heroic Leap].
 tut_fastspeed_2,"[Heroic Leap] is a Fast Speed Ability, as denoted by the [img=24x24]res://ART/Icons/fast_speed.png[/img] icon."
-tut_fastspeed_3,"[img=24x24]res://ART/Icons/fast_speed.png[/img] Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana"
+tut_fastspeed_3,"[img=24x24]res://ART/Icons/fast_speed.png[/img] Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana."
 tut_complete0,"This is the last map in the Tutorial. Be careful, the training wheels have been removed, and Enemies deal a lot more damage now!"
 tut_complete1,"After you win or lose, you'll have the option of starting a real campaign with any of the Units in the game."
 tut_complete2,Good luck!
@@ -413,3 +413,4 @@ item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color
 item_t1_ceruleanplates_name,Cerulean Plates
 item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 campaign_white_coast,The White Coast
+ui_defeatboss,Defeat Boss

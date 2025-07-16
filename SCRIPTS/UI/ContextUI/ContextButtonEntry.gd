@@ -48,11 +48,13 @@ func AddAbility(_ability : Ability):
 		Ability.AbilityType.Weapon:
 			bg_color_fill.color = weapon_color
 
-	AddCost(_ability.focusCost)
-	# Gotta do this manually
-	if _ability.isXFocusCost:
-		focus_cost_label.text = "X"
-		focus_cost_parent.visible = true
+	focus_cost_parent.visible = _ability.remainingCooldown > 0
+	focus_cost_label.text = str(_ability.remainingCooldown)
+	#AddCost(_ability.focusCost)
+	## Gotta do this manually
+	#if _ability.isXFocusCost:
+		#focus_cost_label.text = "X"
+		#focus_cost_parent.visible = true
 
 	if _ability.limitedUsage != -1:
 		AddUsage(_ability.remainingUsages)

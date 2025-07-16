@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=24 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
+[ext_resource type="Texture2D" uid="uid://dilxnpnqkcann" path="res://ART/UI/icon_is_boss.png" id="5_6l8ji"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
 [ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="9_v7dhr"]
 [ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="10_pwwos"]
@@ -28,6 +29,28 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xsear")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmoxs"]
+atlas = ExtResource("5_6l8ji")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob6s8"]
+atlas = ExtResource("5_6l8ji")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_166fo"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_mmoxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob6s8")
 }],
 "loop": true,
 "name": &"default",
@@ -66,7 +89,7 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "hasLootIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
@@ -77,6 +100,7 @@ healthBar = NodePath("VBoxContainer/HealthBarParent")
 focusSlotPrefab = ExtResource("4_kfodt")
 affinityIcon = NodePath("VBoxContainer/AffinityIcon")
 hasLootIcon = NodePath("HasLoot")
+isBossIcon = NodePath("Boss")
 takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
@@ -134,6 +158,14 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mmoxs")
 autoplay = "default"
 frame_progress = 0.326582
+
+[node name="Boss" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(59, 43)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_166fo")
+autoplay = "default"
+frame_progress = 0.57805
 
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
 

@@ -330,13 +330,13 @@ func UpdateContextUI():
 			optionCount += 1
 
 
-
 	# Then do the standard abilities
 	if !CutsceneManager.BlockAbilityContextMenuOption:
 		for ability in selectedUnit.Abilities:
 			if ability.type == Ability.AbilityType.Standard:
 				# Block if focus cost can't be met - or if the ability has a limited usage
-				var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
+				#var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
+				var canCast = (ability.remainingCooldown <= 0 || CSR.AllAbilitiesCost0)
 				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
 				canCast = canCast && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
 				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))

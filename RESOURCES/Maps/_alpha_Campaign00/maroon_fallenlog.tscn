@@ -105,6 +105,7 @@ frame = 3
 script = ExtResource("12_1p8t8")
 GridEntityPrefab = ExtResource("13_f8uco")
 Position = Vector2i(6, 3)
+Allegiance = 0
 
 [node name="Variants" type="Node2D" parent="."]
 

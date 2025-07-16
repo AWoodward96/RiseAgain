@@ -8,7 +8,8 @@ var weight : int
 
 var killCount : int
 var unitWillRetaliate : bool
-var canDealDamage : bool
+var canDealDamage : bool	# Oh buddy we can attack the target AND deal some damage
+var canAttack : bool		# We can attack the target but we may not deal damage
 var damageAmount : int
 var isPathToTarget : bool
 
@@ -154,6 +155,10 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 				# oh and also it has to backtrack through the entire full path in order to determine which tile actually hits the player and
 				# god why did I do this? which fucking idiot thought this was a good idea (it was me it works shut up)
 				for potentialTile in _fullPath:
+					# No overlapping please
+					if potentialTile.Occupant != null:
+						continue
+
 					for i in range(0,4):
 						var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, potentialTile, grid, i)
 						for t in directionalTiles:
@@ -201,6 +206,7 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 
 	damageAmount = GameManager.GameSettings.DamageCalculation(sourceUnit, targetUnit, ability.UsableDamageData, null)
 	canDealDamage = damageAmount > 0 # This could cause some fuckyness with 'no damage' attacks but we'll see
+	canAttack = true
 
 
 func UpdateWeight():
@@ -217,8 +223,12 @@ func UpdateWeight():
 
 	weight += KILL_TIER_AMOUNT * killCount
 
-	# Commenting this out because it's making units ignore units that they can't hurt. They should still try imo
+	#  If they can attack the unit +1 tier
+	# If they can do DAMAGE to a unit - well put that up another tier.
 	if canDealDamage : weight += TIER_AMOUNT
+	if canAttack : weight += TIER_AMOUNT
+
+	# If the unit can attack, and deal damage AND the unit won't retaliate, put that up another tier
 	if !unitWillRetaliate && canDealDamage : weight += TIER_AMOUNT
 
 	# don't increase the weight if damage can't be delt

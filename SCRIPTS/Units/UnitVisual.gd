@@ -45,25 +45,15 @@ func SetActivated(_activated : bool):
 		if _activated:
 			sprite.self_modulate = Color.WHITE
 			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 0, false)
-			#if AnimationCTRL.has_animation(GetAnimString("Activated")):
-				#AnimationCTRL.play(GetAnimString("Activated"))
 		else:
 			sprite.self_modulate = GameManager.GameSettings.Alpha_DeactivatedModulate
-			#if AnimationCTRL.has_animation(GetAnimString("Unactivated")):
-				#AnimationCTRL.play(GetAnimString("Unactivated"))
+
 
 func PlayAnimation(_animString : String, _uniformTransition : bool, _animSpeed : float = 1, _fromEnd : bool = false):
 	if AnimationWorkComplete:
 		AnimationCTRL.play(_animString, -1, _animSpeed, _fromEnd)
 		visual.speed_scale = _animSpeed
-		# Change the animation with keeping the frame index and progress.
-		#if _uniformTransition:
-			#var current_frame = visual.get_frame()
-			#var current_progress = visual.get_frame_progress()
-			#visual.play(_animString)
-			#visual.set_frame_and_progress(current_frame, current_progress)
-		#else:
-			#visual.play(_animString)
+
 
 func ResetAnimation():
 	AnimationCTRL.seek(0, true)

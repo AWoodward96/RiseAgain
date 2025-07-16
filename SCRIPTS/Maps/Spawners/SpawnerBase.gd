@@ -17,6 +17,7 @@ const NodeSize : int = 64
 		Enabled = value
 		OnEnableToggled()
 
+@export var Boss : bool = false
 @export var Allegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY
 @export var AIBehavior : AIBehaviorBase
 @export var AggroBehavior : AlwaysAggro

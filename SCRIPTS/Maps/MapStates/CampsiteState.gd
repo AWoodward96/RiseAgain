@@ -20,6 +20,11 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	for startingP in map.StartingPositionsParent.get_children():
 		startingP.hide()
 
+	for teamID in map.teams:
+		for unit : UnitInstance in map.teams[teamID]:
+			unit.Activated = true
+
+
 	await campsite.OnRest
 
 

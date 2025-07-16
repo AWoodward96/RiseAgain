@@ -75,7 +75,9 @@ func SortOptions(_optA : EnemyAIOption, _optB : EnemyAIOption):
 
 func TryCombat():
 	attacked = true
-	if selectedOption.targetUnit == null || !selectedOption.canDealDamage:
+
+	# If we can't attack, just end the turn
+	if selectedOption.targetUnit == null || !selectedOption.canAttack:
 		unit.QueueEndTurn()
 		return
 

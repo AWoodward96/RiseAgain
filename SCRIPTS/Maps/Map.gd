@@ -358,6 +358,13 @@ func RemoveExpiredGridEntities():
 			cur.queue_free()
 			gridEntities.remove_at(i)
 
+func RemoveGridEntity(_gridEntity : GridEntityBase):
+	var found = gridEntities.find(_gridEntity)
+	if found != -1:
+		gridEntities[found].Exit()
+		gridEntities[found].queue_free()
+		gridEntities.remove_at(found)
+
 # This can be called outside of unit death for units that are escaping
 func RemoveUnitFromMap(_unitInstance : UnitInstance, is_death : bool = true):
 

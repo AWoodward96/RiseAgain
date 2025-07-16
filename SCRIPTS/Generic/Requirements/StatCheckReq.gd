@@ -7,7 +7,7 @@ func CheckRequirement(_genericData):
 	if GameManager.CurrentCampaign != null:
 		for u in GameManager.CurrentCampaign.CurrentRoster:
 			var check = u.GetWorkingStat(StatCheck.Template)
-			if check > StatCheck.Value:
+			if check >= StatCheck.Value:
 				return true
 	elif Map.Current != null:
 		var team = Map.Current.teams[GameSettingsTemplate.TeamID.ALLY]

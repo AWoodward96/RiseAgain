@@ -11,6 +11,10 @@ func Spawn(_map : Map, _origin : Tile, _source : UnitInstance, _ability : Abilit
 
 
 func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
+	# If for some reason this hasn't been cleaned up yet, then say its good
+	if Expired:
+		return GameSettingsTemplate.TraversalResult.OK
+
 	var newDamageStepResult = DamageStepResult.new()
 	newDamageStepResult.Source = Source
 	newDamageStepResult.AbilityData = SourceAbility
@@ -23,9 +27,34 @@ func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	CurrentMap.grid.SetUnitGridPosition(_unitInstance, Origin.Position, true, false)
 	_unitInstance.ModifyHealth(newDamageStepResult.HealthDelta, newDamageStepResult, true)
 
+	if Source != null:
+
+		# try and grant the source of this ability some exp for this
+		var healthABS = abs(newDamageStepResult.HealthDelta)
+		var expGained = 0
+		if _unitInstance.currentHealth <= healthABS:
+			# Hard coding AOE = false here bc how how this is set up. If a large aoe explosion is made, update this
+			expGained = GameManager.GameSettings.ExpFromKillCalculation(healthABS, Source, _unitInstance, false)
+		else:
+			expGained = GameManager.GameSettings.ExpFromDamageCalculation(healthABS, Source, _unitInstance, false)
+
+		var fakeResult = DamageStepResult.new()
+		fakeResult.ExpGain = expGained
+		fakeResult.Source = Source
+
+		var passiveAction = PassiveAbilityAction.Construct(Source, SourceAbility)
+		passiveAction.log.actionStepResults.append(fakeResult)
+		passiveAction.executionStack.append(GainExpStep.new())
+
+		CurrentMap.AppendPassiveAction(passiveAction)
+
+
 	ExecutionComplete = true
 	Expired = true
+	CurrentMap.RemoveGridEntity(self)
 	return interruptionType
+
+
 
 func GetLocalizedDescription(_tile : Tile):
 	var returnString = tr(localization_desc)

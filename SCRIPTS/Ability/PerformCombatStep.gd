@@ -9,6 +9,8 @@ var dealtDamage : bool
 
 var waitForActionToFinish : bool
 var waitForPostActionToFinish : bool
+var affectedTiles : Array[TileTargetedData]
+
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
@@ -50,6 +52,9 @@ func Enter(_actionLog : ActionLog):
 						retaliation.RollChance(Map.Current.mapRNG)
 						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, true)
 						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
+
+				if damageStepResult.TileTargetData.Ignite > 0:
+					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
 				if damageStepResult.TileTargetData.Ignite > 0:
@@ -118,7 +123,7 @@ func WillRetaliate(_result : PerformCombatStepResult):
 
 func BuildRetaliationResult(_result : PerformCombatStepResult):
 	if WillRetaliate(_result):
-		var retaliationResult = ConstructResult(_result.Target.EquippedWeapon, _result.SourceTile.AsTargetData(), _result.Source.CurrentTile, _result.Target, _result.Source)
+		var retaliationResult = ConstructResult(_result.Target.EquippedWeapon, _result.SourceTile.AsTargetData(), _result.Source.CurrentTile, _result.Target, _result.Source, [_result.SourceTile.AsTargetData()])
 
 		# This Step Index feels like it should be important, but I'm not sure if it's required to set, or what to set it to.
 		# Leaving it commented out for now, but if something breaks somewhere, check the retaliation results index
@@ -138,17 +143,20 @@ func AffectedUnitsClear():
 
 	return r
 
-func ConstructResult(_ability : Ability, _tile : TileTargetedData, _sourceTile : Tile, _source : UnitInstance, _target : UnitInstance):
+func ConstructResult(_ability : Ability, _tile : TileTargetedData, _sourceTile : Tile, _source : UnitInstance, _target : UnitInstance, _affectedTiles : Array[TileTargetedData]):
 	var result = PerformCombatStepResult.new()
 	result.AbilityData = _ability
 	result.TileTargetData = _tile
 	result.Source = _source
 	result.Target = _target
 	result.SourceTile = _sourceTile
+	result.AffectedTiles = _affectedTiles
+
 	result.PreCalculate()
+
 	return result
 
 func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
-	var returned = ConstructResult(_actionLog.ability, _specificTile, _actionLog.sourceTile, _actionLog.source, _specificTile.Tile.Occupant)
+	var returned = ConstructResult(_actionLog.ability, _specificTile, _actionLog.sourceTile, _actionLog.source, _specificTile.Tile.Occupant, _actionLog.affectedTiles)
 	BuildRetaliationResult(returned)
 	return returned

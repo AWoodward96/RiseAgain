@@ -22,6 +22,7 @@ enum AbilitySpeed { Normal, Fast, Slow }
 @export var damageGrantsFocus : bool = false
 @export var passiveListeners : Array[PassiveListenerBase]
 
+var remainingCooldown : int = 0
 var remainingUsages : int = 0
 var kills : int = 0
 var usages : int = 0
@@ -50,6 +51,7 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 		_actionLog.source.ModifyFocus(-focusCost)
 		if limitedUsage != -1:
 			remainingUsages -= 1
+		remainingCooldown = focusCost
 		usages += 1
 
 	if _actionLog.actionStackIndex < executionStack.size():
@@ -79,6 +81,10 @@ func OnRest():
 		remainingUsages += usageRestoredByCampfire
 		remainingUsages = clampi(remainingUsages, 0, limitedUsage)
 
+	remainingCooldown = 0
+
+func OnOwnerUnitTurnStart():
+	remainingCooldown -= 1
 
 func _to_string():
 	return self.name
@@ -88,6 +94,7 @@ func ToJSON():
 	var dict = {
 		"prefab" : self.scene_file_path,
 		"remainingUsages" : remainingUsages,
+		"remainingCooldown" : remainingCooldown,
 		"usages" : usages,
 		"kills" : kills
 	}
@@ -96,5 +103,6 @@ func ToJSON():
 
 func FromJSON(_dict : Dictionary):
 	remainingUsages = _dict["remainingUsages"]
+	if _dict.has("remainingCooldown"): remainingCooldown = _dict["remainingCooldown"]
 	if _dict.has("kills"): kills = int(_dict["kills"])
 	if _dict.has("usages"): usages = int(_dict["usages"])
