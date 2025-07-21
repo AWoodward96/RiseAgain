@@ -60,9 +60,8 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 	if _data.has("loc_name"): _ability.loc_displayName = _data["loc_name"]
 	if _data.has("loc_desc"): _ability.loc_displayDesc = _data["loc_desc"]
 	if _data.has("UsageLimit"): _ability.limitedUsage = int(_data["UsageLimit"])
-	if _data.has("FocusCost"): _ability.focusCost = int(_data["FocusCost"])
+	if _data.has("AbilityCooldown"): _ability.abilityCooldown = int(_data["AbilityCooldown"])
 	if _data.has("UsageRestoredByCampfire"): _ability.usageRestoredByCampfire = int(_data["UsageRestoredByCampfire"])
-	if _data.has("DamageGrantsFocus"): _ability.damageGrantsFocus = _data["DamageGrantsFocus"]
 
 	if _data.has("iconPath"):
 		if ResourceLoader.exists(_data["iconPath"]):

@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://gneoqi5t7opg"]
 
 [ext_resource type="Script" uid="uid://d0v0ac02bpy6v" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
-[ext_resource type="PackedScene" uid="uid://i763t3u3306k" path="res://RESOURCES/Items/t1_rosepolish.tscn" id="2_dewqg"]
-[ext_resource type="PackedScene" uid="uid://k7p2s1qa26kq" path="res://RESOURCES/Items/t1_holywater.tscn" id="3_qgjbs"]
+[ext_resource type="PackedScene" uid="uid://bpb8l34cffsly" path="res://RESOURCES/Items/t2_vampblade.tscn" id="2_dewqg"]
+[ext_resource type="PackedScene" uid="uid://rya7lpnjs0yp" path="res://RESOURCES/Items/t2_spikedshoulderpad.tscn" id="3_dewqg"]
 
 [node name="CSR" type="CanvasLayer" node_paths=PackedStringArray("FirstEntry")]
 layer = 100
 script = ExtResource("1_508i1")
 FirstEntry = NodePath("PanelContainer/MarginContainer/GridContainer/AddAllAbilities")
 SpecificItem = ExtResource("2_dewqg")
-SpecificItem2 = ExtResource("3_qgjbs")
+SpecificItem2 = ExtResource("3_dewqg")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 3

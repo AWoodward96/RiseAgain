@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=23 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cjuonw20ub5yw" path="res://ART/UI/icon_has_loot.png" id="4_bcnfb"]
 [ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
-[ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
 [ext_resource type="Texture2D" uid="uid://dilxnpnqkcann" path="res://ART/UI/icon_is_boss.png" id="5_6l8ji"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
 [ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="9_v7dhr"]
@@ -143,14 +142,6 @@ event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
 event_name = "event:/SFX/Units/Generic/Jump_End"
 event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
 
-[node name="DefendIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-modulate = Color(0.298039, 1, 0.254902, 1)
-position = Vector2(53.5, 53.5)
-scale = Vector2(0.0410156, 0.0410156)
-texture = ExtResource("4_reqvg")
-
 [node name="HasLoot" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(59, 58)
@@ -206,7 +197,7 @@ offset_bottom = 16.0
 texture = ExtResource("10_pwwos")
 expand_mode = 1
 
-[node name="HealthBarParent" type="Control" parent="VBoxContainer" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "FocusBarEntryList", "HideTimer")]
+[node name="HealthBarParent" type="Control" parent="VBoxContainer" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "HideTimer")]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -217,8 +208,6 @@ HealthBar = NodePath("Offset/HealthBar")
 ArmorBar = NodePath("Offset/ArmorBar")
 InjuredBar = NodePath("Offset/InjuryBar")
 HealthText = NodePath("Offset/HP Val")
-FocusBarEntryList = NodePath("Offset/FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("4_kfodt")
 HideTimer = NodePath("AutoHideTimer")
 
 [node name="Offset" type="Control" parent="VBoxContainer/HealthBarParent"]

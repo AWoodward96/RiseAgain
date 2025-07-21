@@ -1,14 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpb8l34cffsly"]
+[gd_scene load_steps=16 format=3 uid="uid://bpb8l34cffsly"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_213k1"]
-[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="2_lwcfo"]
+[ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_2qjh2"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_t0uq6"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_d5lbe"]
+[ext_resource type="Script" uid="uid://dwybkjr1cr223" path="res://SCRIPTS/Ability/PassiveUnitDeathListener.gd" id="5_2qjh2"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="6_dgep0"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="7_gq2fy"]
+[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="7_lce1q"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_c3mvv"]
+[ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="9_hd3uk"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_hd3uk"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="13_tftnf"]
 
-[node name="t2_vampblade" type="Node2D" node_paths=PackedStringArray("statData")]
+[sub_resource type="Resource" id="Resource_6oqpg"]
+script = ExtResource("9_hd3uk")
+metadata/_custom_type_script = "uid://ct8lhn6f420te"
+
+[sub_resource type="Resource" id="Resource_y68xy"]
+script = ExtResource("3_t0uq6")
+Template = ExtResource("4_d5lbe")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_su7t0"]
+script = ExtResource("3_t0uq6")
+Template = ExtResource("8_c3mvv")
+Value = 1
+
+[node name="t2_vampblade" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "StatData", "HealData")]
 script = ExtResource("1_213k1")
+executionStack = Array[ExtResource("6_dgep0")]([SubResource("Resource_6oqpg")])
+passiveListeners = [NodePath("PassiveUnitDeathListener")]
 internalName = "t2_vampblade"
 loc_displayName = "item_t2_vampblade_name"
 loc_displayDesc = "item_t2_vampblade_desc"
-statData = NodePath("StatConsumableComponent")
+icon = ExtResource("2_2qjh2")
+TargetingData = NodePath("SkillTargetingData")
+StatData = NodePath("ItemStatComponent")
+HealData = NodePath("HealComponent")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
-script = ExtResource("2_lwcfo")
+[node name="PassiveUnitDeathListener" type="Node2D" parent="."]
+script = ExtResource("5_2qjh2")
+reqKilledByUser = true
+triggerAbilityStack = true
+metadata/_custom_type_script = "uid://dwybkjr1cr223"
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("7_gq2fy")
+ScalingStat = ExtResource("7_lce1q")
+ScalingModType = 2
+ScalingMod = 0.1
+metadata/_custom_type_script = "uid://my6pk2oy4yv6"
+
+[node name="SkillTargetingData" type="Node2D" parent="."]
+script = ExtResource("11_hd3uk")
+TeamTargeting = 0
+Type = 3
+metadata/_custom_type_script = "uid://bqu21cvg4s6wk"
+
+[node name="ItemStatComponent" type="Node2D" parent="."]
+script = ExtResource("13_tftnf")
+GrantedStats = Array[ExtResource("3_t0uq6")]([SubResource("Resource_y68xy"), SubResource("Resource_su7t0")])

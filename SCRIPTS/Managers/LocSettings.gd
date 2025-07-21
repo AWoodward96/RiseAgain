@@ -82,9 +82,9 @@ func FormatCenter(_string : String):
 static func GetItemDescriptionMadlibs(_item : Item):
 	var returnDict = {}
 
-	if _item.statData != null:
+	if _item.StatData != null:
 		var count = 1
-		for statgrowth in _item.statData.StatsToGrant:
+		for statgrowth in _item.StatData.GrantedStats:
 			returnDict["STAT" + str(count)] = _item.tr(statgrowth.Template.loc_displayName_short)
 			returnDict["GROWTH" + str(count)] = str(statgrowth.Value)
 			count += 1

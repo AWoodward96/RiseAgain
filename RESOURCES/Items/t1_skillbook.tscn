@@ -2,23 +2,23 @@
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_txydk"]
 [ext_resource type="Texture2D" uid="uid://b8ijhtyw1jdib" path="res://ART/Icons/Items/t1_skillbook.png" id="2_5sff6"]
-[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_amr31"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_mgn58"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="5_mgn58"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_3sxj6"]
 
-[sub_resource type="Resource" id="Resource_3sxj6"]
+[sub_resource type="Resource" id="Resource_33g52"]
 script = ExtResource("4_mgn58")
 Template = ExtResource("5_mgn58")
 Value = 1
 
-[node name="skillbook_t1" type="Node2D" node_paths=PackedStringArray("statData")]
+[node name="skillbook_t1" type="Node2D" node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_txydk")
 internalName = "t1_skillbook"
 loc_displayName = "item_t1_skillbook_name"
 loc_displayDesc = "item_t1_skillbook_desc"
 icon = ExtResource("2_5sff6")
-statData = NodePath("HeldItemComponent")
+StatData = NodePath("ItemStatComponent")
 
-[node name="HeldItemComponent" type="Node2D" parent="."]
-script = ExtResource("3_amr31")
-StatsToGrant = Array[ExtResource("4_mgn58")]([SubResource("Resource_3sxj6")])
+[node name="ItemStatComponent" type="Node2D" parent="."]
+script = ExtResource("6_3sxj6")
+GrantedStats = Array[ExtResource("4_mgn58")]([SubResource("Resource_33g52")])

@@ -1,7 +1,7 @@
-[gd_scene load_steps=32 format=4 uid="uid://cab65o5qhlejd"]
+[gd_scene load_steps=31 format=4 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
-[ext_resource type="Script" uid="uid://c0bc1depbcrxx" path="res://SCRIPTS/Maps/Objectives/ObjectiveRoute.gd" id="2_hfwsr"]
+[ext_resource type="Script" uid="uid://rx6hw8y5t3o" path="res://SCRIPTS/Maps/Objectives/GameOverObjective.gd" id="2_b4ggw"]
 [ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_j1gep"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_lvx7e"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_5aprs"]
@@ -22,9 +22,10 @@
 [ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="19_bve7k"]
 [ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="20_qlo6o"]
 
-[sub_resource type="Resource" id="Resource_vm3u1"]
-script = ExtResource("2_hfwsr")
-loc_description = "ui_rout"
+[sub_resource type="Resource" id="Resource_3va2l"]
+script = ExtResource("2_b4ggw")
+loc_description = ""
+metadata/_custom_type_script = "uid://rx6hw8y5t3o"
 
 [sub_resource type="Resource" id="Resource_yulnj"]
 script = ExtResource("10_b5w76")
@@ -44,10 +45,6 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 
 [sub_resource type="Resource" id="Resource_h368l"]
 script = ExtResource("14_3fyh8")
-
-[sub_resource type="Resource" id="Resource_hyg5s"]
-script = ExtResource("13_b4ggw")
-metadata/_custom_type_script = "uid://do0w73rdu2ar6"
 
 [sub_resource type="Resource" id="Resource_lsk74"]
 script = ExtResource("14_3fyh8")
@@ -73,7 +70,7 @@ tilemap_main = NodePath("Main_Layer")
 tilemap_threat = NodePath("Threat_Layer")
 tilemap_fire = NodePath("Fire_Layer")
 tilemap_UI = NodePath("UI_Layer")
-WinCondition = SubResource("Resource_vm3u1")
+WinCondition = SubResource("Resource_3va2l")
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
@@ -159,7 +156,7 @@ Enabled = false
 AIBehavior = SubResource("Resource_yulnj")
 AggroBehavior = SubResource("Resource_xxpgp")
 
-[node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners"]
 position = Vector2(384, 128)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -171,10 +168,11 @@ UnitToSpawn = ExtResource("11_ox76s")
 DeltaLevel = 0
 ExtraEXPGranted = 100
 Position = Vector2i(6, 2)
+Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_b4ggw")
 
-[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners"]
 position = Vector2(384, 192)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -186,11 +184,12 @@ UnitToSpawn = ExtResource("11_ox76s")
 UnitLevel = 1
 DeltaLevel = 0
 Position = Vector2i(6, 3)
+Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 
 [node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners"]
-position = Vector2(576, 384)
+position = Vector2(512, 320)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -200,8 +199,8 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_jydnc")
 UnitLevel = 2
 DeltaLevel = 0
-Position = Vector2i(9, 6)
-AIBehavior = SubResource("Resource_hyg5s")
+Position = Vector2i(8, 5)
+AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
 [node name="DISABLED_Spawn_WolfPup" type="Sprite2D" parent="Spawners"]

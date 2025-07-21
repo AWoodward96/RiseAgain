@@ -1,14 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdci2cagpqgn3"]
+[gd_scene load_steps=8 format=3 uid="uid://bdci2cagpqgn3"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_2ai5r"]
-[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="2_w6vei"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_4g3m4"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_u1js6"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_u1xtr"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_c58ib"]
 
-[node name="t2_stonecarapace" type="Node2D" node_paths=PackedStringArray("statData")]
+[sub_resource type="Resource" id="Resource_xx4ff"]
+script = ExtResource("4_u1js6")
+Template = ExtResource("5_u1xtr")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_0mwnv"]
+script = ExtResource("4_u1js6")
+Template = ExtResource("6_c58ib")
+Value = 1
+
+[node name="t2_stonecarapace" type="Node2D" node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_2ai5r")
 internalName = "t2_stonecarapace"
 loc_displayName = "item_t2_stonecarapace_name"
 loc_displayDesc = "item_t2_stonecarapace_desc"
-statData = NodePath("StatConsumableComponent")
+StatData = NodePath("ItemStatComponent")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
-script = ExtResource("2_w6vei")
+[node name="ItemStatComponent" type="Node2D" parent="."]
+script = ExtResource("3_4g3m4")
+GrantedStats = Array[ExtResource("4_u1js6")]([SubResource("Resource_xx4ff"), SubResource("Resource_0mwnv")])

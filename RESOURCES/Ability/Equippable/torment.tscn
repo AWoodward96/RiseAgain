@@ -28,7 +28,7 @@ Value = 2
 [node name="torment" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_yk4c8")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_xapn7")]([SubResource("Resource_xbfd0"), SubResource("Resource_8u237")])
 damageGrantsFocus = true
 internalName = "torment"

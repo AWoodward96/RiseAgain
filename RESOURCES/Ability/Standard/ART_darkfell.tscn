@@ -33,7 +33,7 @@ script = ExtResource("7_k3t2n")
 
 [node name="ART_darkfell" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_85abs")
-focusCost = 3
+abilityCooldown = 3
 executionStack = Array[ExtResource("2_tpvyo")]([SubResource("Resource_bem5n"), SubResource("Resource_m1d2h"), SubResource("Resource_muj8o"), SubResource("Resource_0uo1w")])
 internalName = "darkfell"
 loc_displayName = "art_darkfell_name"

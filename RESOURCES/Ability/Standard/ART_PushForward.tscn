@@ -24,7 +24,7 @@ script = ExtResource("5_rlmwd")
 
 [node name="ART_PushForward" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_stemp")
-focusCost = 3
+abilityCooldown = 3
 ability_speed = 1
 executionStack = Array[ExtResource("2_ogjtm")]([SubResource("Resource_3gex7"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "pushforward"

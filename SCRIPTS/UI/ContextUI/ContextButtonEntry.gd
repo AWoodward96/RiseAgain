@@ -13,8 +13,8 @@ signal OnSelectedCallback
 @export var tactical_color : Color
 
 @export var fast_speed_parent : Control
-@export var focus_cost_parent : Control
-@export var focus_cost_label : Label
+@export var cooldown_parent : Control
+@export var cooldown_label : Label
 @export var usage_parent : Control
 @export var usage_label : Label
 
@@ -36,7 +36,7 @@ func Initialize(_locTitle : String, _enabled : bool, _callback : Callable):
 
 	# default to false on these
 	usage_parent.visible = false
-	focus_cost_parent.visible = false
+	cooldown_parent.visible = false
 	fast_speed_parent.visible = false
 
 func AddAbility(_ability : Ability):
@@ -48,22 +48,22 @@ func AddAbility(_ability : Ability):
 		Ability.AbilityType.Weapon:
 			bg_color_fill.color = weapon_color
 
-	focus_cost_parent.visible = _ability.remainingCooldown > 0
-	focus_cost_label.text = str(_ability.remainingCooldown)
-	#AddCost(_ability.focusCost)
-	## Gotta do this manually
-	#if _ability.isXFocusCost:
-		#focus_cost_label.text = "X"
-		#focus_cost_parent.visible = true
+	AddCooldown(_ability.abilityCooldown, _ability.remainingCooldown)
 
 	if _ability.limitedUsage != -1:
 		AddUsage(_ability.remainingUsages)
 
 	fast_speed_parent.visible = _ability.ability_speed == Ability.AbilitySpeed.Fast
 
-func AddCost(_focusCost : int):
-	focus_cost_parent.visible = _focusCost > 0
-	focus_cost_label.text = str(_focusCost)
+func AddCooldown(_cooldown : int, _remainingCooldown : int):
+	cooldown_parent.visible = _cooldown > 0
+
+	if _remainingCooldown > 0:
+		cooldown_label.text = str(_remainingCooldown)
+	else:
+		cooldown_label.text = str(_cooldown)
+
+
 
 func AddUsage(_usagesRemaining : int):
 	usage_parent.visible = true

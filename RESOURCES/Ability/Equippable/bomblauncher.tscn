@@ -41,7 +41,7 @@ Value = 3
 [node name="bomblauncher" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_022c1")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 ability_speed = 2
 executionStack = Array[ExtResource("2_pqj62")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_xidfr")])
 damageGrantsFocus = true

@@ -20,7 +20,7 @@ GridEntityPrefab = ExtResource("3_gsr8n")
 
 [node name="ART_summonroots" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_bn3se")
-focusCost = 3
+abilityCooldown = 3
 executionStack = Array[ExtResource("2_flx47")]([SubResource("Resource_bn3se"), SubResource("Resource_tovoj")])
 internalName = "summonroots"
 loc_displayName = "art_graspingroots_name"

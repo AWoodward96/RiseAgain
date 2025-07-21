@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=56 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" uid="uid://y87ywuus8k6s" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://mrtikl2yemdi" path="res://SCRIPTS/UI/Units/ui_effect_icon.tscn" id="10_4ar5q"]
 [ext_resource type="Script" uid="uid://7hi1ipg40hwy" path="res://SCRIPTS/UI/ContextUI/ContextMenu.gd" id="10_5gr1e"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="10_fkj7h"]
-[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="11_8mf6d"]
 [ext_resource type="PackedScene" uid="uid://b7850ynb8vsrl" path="res://RESOURCES/UI/_alpha_CombatHUD/context_button_entry.tscn" id="11_aar1f"]
 [ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="12_60paf"]
 [ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="13_6r2ue"]
@@ -29,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
 [ext_resource type="Texture2D" uid="uid://dacor14ec8yow" path="res://ART/UI/injured_overlay.png" id="21_m3k6o"]
 [ext_resource type="Texture2D" uid="uid://cqc5de5p7rain" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
-[ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="23_fs4q2"]
 [ext_resource type="Script" uid="uid://bqldm4nmooiyg" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
 [ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]
 [ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="24_6ybxf"]
@@ -353,7 +351,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "FocusBarEntryList", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
+[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
 custom_minimum_size = Vector2(260, 108)
 layout_mode = 2
 script = ExtResource("12_60paf")
@@ -361,8 +359,6 @@ HealthBar = NodePath("Default_Layout/Health")
 ArmorBar = NodePath("Default_Layout/Armor")
 InjuredBar = NodePath("Default_Layout/InjuredBar")
 HealthText = NodePath("Default_Layout/HealthText")
-FocusBarEntryList = NodePath("Default_Layout/FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("11_8mf6d")
 InjuredParent = NodePath("Default_Layout/UnitIcon/InjuredParent")
 ExperienceBar = NodePath("Default_Layout/EXP")
 LevelLabel = NodePath("Default_Layout/Level")
@@ -381,7 +377,6 @@ grow_vertical = 2
 color = Color(0.24, 0.1968, 0.20328, 1)
 
 [node name="Default_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -461,20 +456,6 @@ label_settings = SubResource("LabelSettings_n4mcp")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="FocusContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
-layout_mode = 0
-offset_left = 83.0
-offset_top = 44.0
-offset_right = 253.0
-offset_bottom = 52.0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/FocusContainer"]
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("10_fkj7h")
-
 [node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 2
@@ -526,22 +507,13 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(132, 1)
 layout_mode = 2
 offset_left = 64.0
-offset_top = 58.0
+offset_top = 50.0
 offset_right = 254.0
-offset_bottom = 62.0
+offset_bottom = 54.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
 step = 1.0
 value = 23.0
 show_percentage = false
-
-[node name="FocusIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 41.0
-offset_right = 81.0
-offset_bottom = 57.0
-texture = ExtResource("23_fs4q2")
-expand_mode = 1
 
 [node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
 layout_mode = 1
@@ -665,6 +637,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="Submerged_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1379,7 +1352,7 @@ offset_top = 449.0
 offset_right = 501.0
 offset_bottom = 557.0
 
-[node name="Main" type="Control" parent="OldInspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectsList")]
+[node name="Main" type="Control" parent="OldInspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "ExperienceBar", "LevelLabel", "EffectsList")]
 anchors_preset = 0
 offset_right = 261.0
 offset_bottom = 107.0
@@ -1387,8 +1360,6 @@ script = ExtResource("12_60paf")
 HealthBar = NodePath("Health")
 ArmorBar = NodePath("Armor")
 HealthText = NodePath("HealthText")
-FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("11_8mf6d")
 ExperienceBar = NodePath("EXP")
 LevelLabel = NodePath("Level")
 LevelLocalization = "ui_level_num_short"

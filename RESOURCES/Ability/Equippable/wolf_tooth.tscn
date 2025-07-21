@@ -28,7 +28,7 @@ Value = 2
 [node name="wolf_tooth" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_7vw3g")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_8bvfg")]([SubResource("Resource_md6lt"), SubResource("Resource_6ubox")])
 damageGrantsFocus = true
 internalName = "wolf_tooth"

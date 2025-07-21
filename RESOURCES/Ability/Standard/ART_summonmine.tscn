@@ -20,7 +20,7 @@ GridEntityPrefab = ExtResource("3_oobre")
 
 [node name="ART_SummonMine" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_d3qc6")
-focusCost = 2
+abilityCooldown = 2
 ability_speed = 1
 executionStack = Array[ExtResource("2_x4owp")]([SubResource("Resource_oroy7"), SubResource("Resource_gt8dd")])
 internalName = "summonmine"

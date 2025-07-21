@@ -28,7 +28,7 @@ Value = 6
 [node name="magic_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_ebpsu")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_ylls6")]([SubResource("Resource_xmptj"), SubResource("Resource_hdq0i")])
 damageGrantsFocus = true
 internalName = "magic_bolt"

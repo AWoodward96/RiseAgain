@@ -5,8 +5,6 @@ class_name UnitHealthBar
 @export var ArmorBar : ProgressBar
 @export var InjuredBar : ProgressBar
 @export var HealthText : Label
-@export var FocusBarEntryList : EntryList
-@export var FocusBarPrefab : PackedScene
 @export var HideTimer : Timer
 @export var InjuredParent : Control
 
@@ -153,8 +151,6 @@ func Refresh():
 	if ExperienceBar != null:
 		ExperienceBar.value = Unit.Exp
 
-	UpdateFocusUI()
-
 	if InjuredParent != null:
 		InjuredParent.visible = Unit.Injured
 	pass
@@ -180,10 +176,3 @@ func RefreshCombatEffects():
 
 		if entry.icon != null: entry.icon.texture = icon
 		if entry.label != null: entry.label.text = labeltext
-
-func UpdateFocusUI():
-	var maxFocus = Unit.GetWorkingStat(GameManager.GameSettings.MindStat)
-	FocusBarEntryList.ClearEntries()
-	for fIndex in maxFocus:
-		var entry = FocusBarEntryList.CreateEntry(FocusBarPrefab)
-		entry.Toggle(Unit.currentFocus >= (fIndex + 1)) # +1 because it's an index

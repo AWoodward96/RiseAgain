@@ -28,9 +28,8 @@ Value = 4
 [node name="iron_sword" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_3jge8")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_hdeun")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
-damageGrantsFocus = true
 internalName = "iron_sword"
 loc_displayName = "weap_iron_sword_name"
 loc_displayDesc = "weap_iron_sword_desc"
@@ -41,7 +40,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_jfrxw")
-BaseAccuracy = 90.0
 GrantedStats = Array[ExtResource("7_taltb")]([SubResource("Resource_ecmbu")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

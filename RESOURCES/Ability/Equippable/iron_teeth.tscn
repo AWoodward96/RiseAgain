@@ -30,7 +30,7 @@ Value = 3
 [node name="iron_teeth" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_msyxe")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_m60bh")]([SubResource("Resource_bqel4"), SubResource("Resource_iwiic")])
 damageGrantsFocus = true
 internalName = "iron_teeth"

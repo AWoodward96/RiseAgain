@@ -3,7 +3,6 @@ class_name HealStep
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
-	print("heal step update")
 
 	# The heal action will automatically grab the right result, it just needs to be queued
 	# This looks weird but it's right

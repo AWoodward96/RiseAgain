@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 [node name="NecroticCurse" type="Node2D" node_paths=PackedStringArray("passiveListeners")]
 script = ExtResource("1_vd6b5")
 type = 3
-focusCost = 0
+abilityCooldown = 0
 passiveListeners = [NodePath("PassiveUnitDeathListener")]
 internalName = "necroticcurse"
 loc_displayName = "passive_necroticcurse_name"

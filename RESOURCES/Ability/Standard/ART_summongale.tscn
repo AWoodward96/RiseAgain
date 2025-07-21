@@ -34,7 +34,7 @@ TileCoordinates = Array[ExtResource("6_h7vi5")]([SubResource("Resource_yvmxb")])
 
 [node name="summongale" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_vtmyb")
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_js4wy")]([SubResource("Resource_34thx"), SubResource("Resource_enlx2")])
 internalName = "summongale"
 loc_displayName = "art_summongale_name"

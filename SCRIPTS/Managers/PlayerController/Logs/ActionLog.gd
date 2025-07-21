@@ -1,7 +1,5 @@
 class_name ActionLog
 
-enum ActionType { Item, Ability }
-
 var source : UnitInstance
 var cachedSourceStats : Dictionary = {}
 var grid : Grid
@@ -18,8 +16,6 @@ var actionStepResults : Array[ActionStepResult]
 # for units defending or responding to the initial attack
 var responseResults : Array[ActionStepResult]
 
-var actionType : ActionType
-var item : Item
 var ability : Ability
 var actionStackIndex : int
 var subActionStackIndex : int
@@ -32,12 +28,7 @@ static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 	var new = ActionLog.new()
 	new.grid = _grid
 	new.source = _unitSource
-	if _itemOrAbility is Item:
-		new.item = _itemOrAbility
-		new.actionType = ActionLog.ActionType.Item
-	elif _itemOrAbility is Ability:
-		new.ability = _itemOrAbility
-		new.actionType = ActionLog.ActionType.Ability
+	new.ability = _itemOrAbility
 	new.sourceTile = _unitSource.CurrentTile
 	new.damageData = _itemOrAbility.UsableDamageData
 	new.ConstructCachedStats()

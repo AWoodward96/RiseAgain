@@ -13,11 +13,11 @@ Value = 10
 
 [node name="t1_ceruleanplates" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_qd88g")
+growthModifierData = NodePath("HeldItemComponent2")
 internalName = "t1_ceruleanplates"
 loc_displayName = "item_t1_ceruleanplates_name"
 loc_displayDesc = "item_t1_ceruleanplates_desc"
 icon = ExtResource("2_036x3")
-growthModifierData = NodePath("HeldItemComponent2")
 
 [node name="HeldItemComponent2" type="Node2D" parent="."]
 script = ExtResource("5_e6dbj")

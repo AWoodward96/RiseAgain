@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dn07slodp7juh"]
+[gd_scene load_steps=48 format=3 uid="uid://dn07slodp7juh"]
 
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="1_17hjj"]
 [ext_resource type="Script" uid="uid://dbkl27w85f8am" path="res://SCRIPTS/UI/InspectUI/unit_inspect_ui.gd" id="1_olrmn"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="7_k3b1t"]
 [ext_resource type="LabelSettings" uid="uid://dvudk4pbsuotf" path="res://RESOURCES/UI/LabelSettings/inspect_standard.tres" id="7_l1uge"]
 [ext_resource type="PackedScene" uid="uid://bktnwekn25b70" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/affinity_entry.tscn" id="7_prn4o"]
-[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="8_bef1i"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="8_hynhx"]
 [ext_resource type="PackedScene" uid="uid://crsd05m8xofxm" path="res://RESOURCES/UI/_alpha_unit_inspect_ui/unit_inspect_effects_entry.tscn" id="9_tejvk"]
 [ext_resource type="LabelSettings" uid="uid://pcxiv8hwxb5y" path="res://RESOURCES/UI/LabelSettings/inspect_bold.tres" id="12_bf6h3"]
@@ -230,7 +229,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "InjuredParent", "LevelLabel", "ExpLabel")]
+[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "InjuredParent", "LevelLabel", "ExpLabel")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 48)
@@ -239,8 +238,6 @@ script = ExtResource("7_k3b1t")
 HealthBar = NodePath("HealthBar")
 ArmorBar = NodePath("ArmorBar")
 HealthText = NodePath("HP Val")
-FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("8_bef1i")
 InjuredParent = NodePath("InjuredBar")
 LevelLabel = NodePath("../ExpAndLevel/MarginContainer/HBoxContainer/LevelNum")
 LevelLocalization = "ui_num"
@@ -317,24 +314,6 @@ text = "25/30"
 label_settings = SubResource("LabelSettings_s1uql")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="FocusContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 31.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent/FocusContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("5_vhggx")
 
 [node name="ExpAndLevel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName"]
 layout_mode = 2

@@ -1,14 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf3484ldvsvyh"]
+[gd_scene load_steps=8 format=3 uid="uid://bf3484ldvsvyh"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_gybgy"]
-[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="2_e1j3o"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_d6ieq"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_uw3xn"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="5_vylks"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_45i4p"]
 
-[node name="t2_radientchestplate" type="Node2D" node_paths=PackedStringArray("statData")]
+[sub_resource type="Resource" id="Resource_qcb2q"]
+script = ExtResource("4_uw3xn")
+Template = ExtResource("5_vylks")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_5pvvb"]
+script = ExtResource("4_uw3xn")
+Template = ExtResource("6_45i4p")
+Value = 1
+
+[node name="t2_radientchestplate" type="Node2D" node_paths=PackedStringArray("StatData")]
+position = Vector2(-1, 0)
 script = ExtResource("1_gybgy")
 internalName = "t2_radientchestplate"
 loc_displayName = "item_t2_radientchestplate_name"
 loc_displayDesc = "item_t2_radientchestplate_desc"
-statData = NodePath("StatConsumableComponent")
+StatData = NodePath("ItemStatComponent")
 
-[node name="StatConsumableComponent" type="Node2D" parent="."]
-script = ExtResource("2_e1j3o")
+[node name="ItemStatComponent" type="Node2D" parent="."]
+script = ExtResource("3_d6ieq")
+GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_qcb2q"), SubResource("Resource_5pvvb")])

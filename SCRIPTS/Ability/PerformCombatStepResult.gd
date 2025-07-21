@@ -55,8 +55,6 @@ func RollChance(_rng : DeterministicRNG):
 
 	UpdateWillKill()
 	CalculateExpGain()
-	if AbilityData.damageGrantsFocus:
-		CalculateFocusDelta()
 
 func UpdateWillKill():
 	if Target != null:
@@ -68,13 +66,6 @@ func UpdateWillKill():
 func CalculateSourceHealthDelta(_damageData : DamageData):
 	if _damageData.DamageAffectsUsersHealth && Target != null:
 		SourceHealthDelta = min(floori(HealthDelta * _damageData.DamageToHealthRatio), Target.currentHealth)
-
-func CalculateFocusDelta():
-	#if !Miss && Target != null:
-		#FocusDelta += 1
-
-	if Kill:
-		FocusDelta += 1
 
 func CalculateExpGain():
 	if Miss:

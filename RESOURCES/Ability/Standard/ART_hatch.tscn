@@ -29,7 +29,7 @@ script = ExtResource("8_i6vqd")
 
 [node name="Hatch" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "SummonData")]
 script = ExtResource("1_etbtn")
-focusCost = 3
+abilityCooldown = 3
 executionStack = Array[ExtResource("2_kp30w")]([SubResource("Resource_cm87u"), SubResource("Resource_nsxhh"), SubResource("Resource_16vul")])
 passiveListeners = [null]
 internalName = "hatch"

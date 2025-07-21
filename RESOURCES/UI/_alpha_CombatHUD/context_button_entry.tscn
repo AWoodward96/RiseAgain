@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7850ynb8vsrl"]
 
 [ext_resource type="Script" uid="uid://cvuvblt057f7i" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
-[ext_resource type="Texture2D" uid="uid://bubn1act0mob6" path="res://ART/Icons/focus_icon_2.png" id="2_1p72w"]
+[ext_resource type="Texture2D" uid="uid://db37hp17pcctg" path="res://ART/Icons/cooldown_icon.png" id="2_4cgg7"]
 [ext_resource type="LabelSettings" uid="uid://dhpn7ahthlvkq" path="res://RESOURCES/UI/LabelSettings/FocusCostLabel.tres" id="3_4cgg7"]
 [ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="3_tvrtu"]
 [ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="3_yvwub"]
@@ -18,12 +18,12 @@ font = ExtResource("3_tvrtu")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "focus_cost_parent", "focus_cost_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
+[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "cooldown_parent", "cooldown_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
 custom_minimum_size = Vector2(0, 32)
 focus_mode = 2
 mouse_filter = 0
 script = ExtResource("2_0colu")
-action_label = NodePath("MarginContainer/HBoxContainer/Label/ActionText")
+action_label = NodePath("StandardButton/HBoxContainer/Label/ActionText")
 bg_color_fill = NodePath("ColorRect")
 disabled_parent = NodePath("Disabled")
 focus_parent = NodePath("FocusParent")
@@ -31,11 +31,11 @@ default_color = Color(0, 0, 0, 0)
 weapon_color = Color(0.27, 0.1701, 0.1701, 1)
 ability_color = Color(0.183, 0.22395, 0.3, 1)
 tactical_color = Color(0.115169, 0.284758, 0.193253, 1)
-fast_speed_parent = NodePath("MarginContainer/HBoxContainer/FastSpeed")
-focus_cost_parent = NodePath("MarginContainer/HBoxContainer/Cost")
-focus_cost_label = NodePath("MarginContainer/HBoxContainer/Cost/FocusCostLabel")
-usage_parent = NodePath("MarginContainer/HBoxContainer/Uses")
-usage_label = NodePath("MarginContainer/HBoxContainer/Uses/UsesRemaining")
+fast_speed_parent = NodePath("StandardButton/HBoxContainer/FastSpeed")
+cooldown_parent = NodePath("StandardButton/HBoxContainer/Cooldown")
+cooldown_label = NodePath("StandardButton/HBoxContainer/Cooldown/CooldownLabel")
+usage_parent = NodePath("StandardButton/HBoxContainer/Uses")
+usage_label = NodePath("StandardButton/HBoxContainer/Uses/UsesRemaining")
 OnFocus = NodePath("OnFocus")
 OnSelect = NodePath("OnSelect")
 OnSelectDeny = NodePath("OnSelectDeny")
@@ -48,7 +48,7 @@ color = Color(0.183, 0.22395, 0.3, 1)
 visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="StandardButton" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -56,21 +56,21 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StandardButton"]
 layout_mode = 2
 
-[node name="Cost" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Cooldown" type="Control" parent="StandardButton/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Cost"]
+[node name="TextureRect" type="TextureRect" parent="StandardButton/HBoxContainer/Cooldown"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-texture = ExtResource("2_1p72w")
+texture = ExtResource("2_4cgg7")
 expand_mode = 1
 
-[node name="FocusCostLabel" type="Label" parent="MarginContainer/HBoxContainer/Cost"]
+[node name="CooldownLabel" type="Label" parent="StandardButton/HBoxContainer/Cooldown"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,11 +85,11 @@ label_settings = ExtResource("3_4cgg7")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label" type="Panel" parent="MarginContainer/HBoxContainer"]
+[node name="Label" type="Panel" parent="StandardButton/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ActionText" type="Label" parent="MarginContainer/HBoxContainer/Label"]
+[node name="ActionText" type="Label" parent="StandardButton/HBoxContainer/Label"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,27 +102,27 @@ label_settings = SubResource("LabelSettings_glskh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FastSpeed" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="FastSpeed" type="Control" parent="StandardButton/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/FastSpeed"]
+[node name="TextureRect" type="TextureRect" parent="StandardButton/HBoxContainer/FastSpeed"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("4_3hivy")
 expand_mode = 1
 
-[node name="Uses" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Uses" type="Control" parent="StandardButton/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Uses"]
+[node name="Panel" type="Panel" parent="StandardButton/HBoxContainer/Uses"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="UsesRemaining" type="Label" parent="MarginContainer/HBoxContainer/Uses"]
+[node name="UsesRemaining" type="Label" parent="StandardButton/HBoxContainer/Uses"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -30,7 +30,7 @@ Value = 4
 [node name="wolfbane" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_2nsqj")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_c4rx7")]([SubResource("Resource_mflbd"), SubResource("Resource_gq7j7")])
 damageGrantsFocus = true
 internalName = "wolfbane"

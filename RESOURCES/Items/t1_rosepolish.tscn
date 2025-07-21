@@ -13,11 +13,11 @@ Value = 10
 
 [node name="rosepolish_t1" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_0wjra")
+growthModifierData = NodePath("HeldItemStatGrowthModifier")
 internalName = "t1_rosepolish"
 loc_displayName = "item_t1_rosepolish_name"
 loc_displayDesc = "item_t1_rosepolish_desc"
 icon = ExtResource("2_f21ey")
-growthModifierData = NodePath("HeldItemStatGrowthModifier")
 
 [node name="HeldItemStatGrowthModifier" type="Node2D" parent="."]
 script = ExtResource("3_0wjra")

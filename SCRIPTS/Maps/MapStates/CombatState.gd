@@ -122,9 +122,6 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 
 	UpdateCurrentTurnInfo()
 
-	for units in unitTurnStack:
-		units.ModifyFocus(1)
-
 	currentUnitsTurn = null
 	ActivateAll()
 	map.RemoveExpiredGridEntities()

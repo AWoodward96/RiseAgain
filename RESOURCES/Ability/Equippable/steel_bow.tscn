@@ -28,7 +28,7 @@ Value = 5
 [node name="steel_bow" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_8sl2l")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_4jlfa")]([SubResource("Resource_3us1r"), SubResource("Resource_ku5yt")])
 damageGrantsFocus = true
 internalName = "steel_bow"

@@ -10,7 +10,6 @@ class_name ArmorEffect
 @export var RelativeStat : StatTemplate
 @export var ModType : DamageData.ModificationType
 @export var Mod : float
-@export var MultiplyByX : bool
 
 
 func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _actionLog : ActionLog):
@@ -54,8 +53,6 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 			DamageData.ModificationType.Divisitive:
 				value = floori(value / Mod)
 
-	if MultiplyByX:
-		value = value * _sourceUnit.currentFocus
 
 	armorInstance.ArmorValue = value
 

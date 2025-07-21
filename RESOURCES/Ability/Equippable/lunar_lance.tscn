@@ -29,7 +29,7 @@ Value = 4
 [node name="lunar_lance" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_5xil8")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_ohson")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
 damageGrantsFocus = true
 internalName = "lunar_lance"

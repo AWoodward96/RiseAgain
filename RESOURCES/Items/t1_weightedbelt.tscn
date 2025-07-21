@@ -13,11 +13,11 @@ Value = 10
 
 [node name="t1_weightedbelt" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_o1i4e")
+growthModifierData = NodePath("HeldItemStatGrowthModifier")
 internalName = "t1_weightedbelt"
 loc_displayName = "item_t1_weightedbelt_name"
 loc_displayDesc = "item_t1_weightedbelt_desc"
 icon = ExtResource("2_wpoml")
-growthModifierData = NodePath("HeldItemStatGrowthModifier")
 
 [node name="HeldItemStatGrowthModifier" type="Node2D" parent="."]
 script = ExtResource("5_lntbm")

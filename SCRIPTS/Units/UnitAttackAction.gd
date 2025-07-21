@@ -33,10 +33,8 @@ func _Enter(_unit : UnitInstance, _map : Map):
 
 	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
-	var focusDelta = 0
 	var sourceHealthDelta = 0
 	for result in combatResults:
-		focusDelta += result.FocusDelta
 		sourceHealthDelta += result.SourceHealthDelta
 
 
@@ -49,7 +47,6 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		# WARNING: I don't actually know the best way to process the source of this effect. Fix this later
 		unit.ModifyHealth(sourceHealthDelta, combatResults[0])
 
-	unit.ModifyFocus(focusDelta)
 	TimerLock = true
 
 func _Execute(_unit : UnitInstance, delta):

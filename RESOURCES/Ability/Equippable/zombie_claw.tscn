@@ -28,7 +28,7 @@ Value = 3
 [node name="zombie_claw" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_0llaf")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_ntjbe")]([SubResource("Resource_tlp3y"), SubResource("Resource_mqwq8")])
 damageGrantsFocus = true
 internalName = "zombie_claw"

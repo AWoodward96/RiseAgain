@@ -28,7 +28,7 @@ Value = 4
 [node name="mana_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_nhf15")
 type = 1
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_ardhu")]([SubResource("Resource_rkook"), SubResource("Resource_k0yij")])
 damageGrantsFocus = true
 internalName = "mana_bolt"

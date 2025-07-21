@@ -55,7 +55,7 @@ func ModifyItem(_item : Item, _filePath, _data):
 		else:
 			log += str("\n[color=red]Failed to find Icon for Item [/color]", _item.internalName ," [color=red]at path:[/color]", _data["iconPath"])
 
-	ModifyStatConsumableComponent(_item, _data)
+	ModifyItemStatComponent(_item, _data)
 	ModifyStatGrowthModComponent(_item, _data)
 
 	log += str("\n[color=green]Successfully modified Item [/color]", _item.internalName)
@@ -84,37 +84,37 @@ func ConstructStatDef(_dataRef, value):
 	statDef.Value = value
 	return statDef
 
-func ModifyStatConsumableComponent(_item : Item, _data):
+func ModifyItemStatComponent(_item : Item, _data):
 	if !_data.has("Stat1") || _data["Stat1"] == "":
 		return
 
 	var children = _item.get_children()
-	var component : HeldItemComponent
+	var component : ItemStatComponent
 	for child in children:
-		if child is HeldItemComponent:
-			component = child as HeldItemComponent
+		if child is ItemStatComponent:
+			component = child as ItemStatComponent
 			break
 
 	if component == null:
-		log += str("\n[color=green]No HeldItemComponent detected for item: [/color]", _item.internalName ," [color=green]Creating a new one.[/color]")
-		component = HeldItemComponent.new()
+		log += str("\n[color=green]No ItemStatComponent detected for item: [/color]", _item.internalName ," [color=green]Creating a new one.[/color]")
+		component = ItemStatComponent.new()
 		_item.add_child(component)
-		component.name = "HeldItemComponent"
+		component.name = "ItemStatComponent"
 
-	_item.statData = component
-	component.StatsToGrant.clear()
+	_item.StatData = component
+	component.GrantedStats.clear()
 
 	if _data.has("Stat1") && _data.has("Stat1Val"):
 		if !_data["Stat1"].is_empty():
-			#log += str("\n[color=green]Item has a HeldItemComponent set to true. Here's the stuff it's supposed to read!: [/color]", _data["Stat1"], _data["Stat1Val"])
-			component.StatsToGrant.append(ConstructStatDef(_data["Stat1"], _data["Stat1Val"]))
+			#log += str("\n[color=green]Item has a ItemStatComponent set to true. Here's the stuff it's supposed to read!: [/color]", _data["Stat1"], _data["Stat1Val"])
+			component.GrantedStats.append(ConstructStatDef(_data["Stat1"], _data["Stat1Val"]))
 		else:
-			log += str("\n[color=orange]Item has a HeldItemComponent set to true, but no stat defined in ConsStat1: [/color]", _item.internalName)
+			log += str("\n[color=orange]Item has a ItemStatComponent set to true, but no stat defined in ConsStat1: [/color]", _item.internalName)
 
 
 	if _data.has("Stat2") && _data.has("Stat2Val"):
 		if !_data["Stat2"].is_empty():
-			component.StatsToGrant.append(ConstructStatDef(_data["Stat2"], _data["Stat2Val"]))
+			component.GrantedStats.append(ConstructStatDef(_data["Stat2"], _data["Stat2Val"]))
 	pass
 
 func ModifyStatGrowthModComponent(_item : Item, _data):

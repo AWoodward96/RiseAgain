@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 
 [node name="arrow_rain" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_8c66l")
-focusCost = 2
+abilityCooldown = 2
 ability_speed = 2
 executionStack = Array[ExtResource("2_f25v4")]([SubResource("Resource_hx5hy"), SubResource("Resource_728ar"), SubResource("Resource_2e2fw"), SubResource("Resource_0gchn")])
 internalName = "arrow_rain"

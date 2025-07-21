@@ -44,7 +44,9 @@
 		{
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"70047452-a245-4e54-99f2-25628fa07330"
+			]
 		},
 		{
 			"uuid": "d8fecb8d-1866-4b89-9fd1-92e2688bfd52",
@@ -55,6 +57,9 @@
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
 				"09f531bd-2d11-40e7-8858-27239bac3649",
 				"30a4749b-e705-4e4f-9cf9-6302ae04815e",
+				"7f0dd652-fcea-4387-bd98-f376c66bac51",
+				"51323a20-858a-4e6b-aad5-fb236254c03c",
+				"5ca57162-7819-47a7-b294-ac3ecbd27f8a",
 				"f62bedbf-8fd3-450f-9498-167df9f5690f",
 				"30e9468c-9c8f-4f88-a32a-73a0f5247a28",
 				"6511d0b5-3796-49a0-9597-c0a5d1125310",
@@ -810,6 +815,34 @@
 			"title": "CRITICAL: Release Build Crash related to Wild Mage and Ability Selection UI",
 			"description": "",
 			"category": "63d559c6-f958-4209-b0b8-eb682c449dda",
+			"steps": []
+		},
+		{
+			"uuid": "51323a20-858a-4e6b-aad5-fb236254c03c",
+			"title": "Update Ability importer to use DataRefs for HealData",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "7f0dd652-fcea-4387-bd98-f376c66bac51",
+			"title": "Rework all X abilities",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "5ca57162-7819-47a7-b294-ac3ecbd27f8a",
+			"title": "Clean Up Focus from project",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "70047452-a245-4e54-99f2-25628fa07330",
+			"title": "Implement some new Items",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []
 		}
 	],

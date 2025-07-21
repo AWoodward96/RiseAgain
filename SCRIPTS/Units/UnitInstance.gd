@@ -22,14 +22,9 @@ signal OnCombatEffectsUpdated
 @export var LeapSound : FmodEventEmitter2D
 @export var LandSound : FmodEventEmitter2D
 
-#@onready var health_bar : ProgressBar = %HealthBar
-#@onready var hp_val = %"HP Val"
 @onready var health_bar_parent = %HealthBarParent
-#@onready var armor_bar: ProgressBar = %ArmorBar
 
 @onready var damage_indicator: DamageIndicator = $DamageIndicator
-@onready var defend_icon: Sprite2D = %DefendIcon
-@onready var focus_bar_parent: EntryList = %FocusBarParent
 @onready var positive_affinity: TextureRect = %PositiveAffinity
 
 @onready var negative_affinity: TextureRect = %NegativeAffinity
@@ -46,19 +41,6 @@ var EquippedWeapon : Ability
 var Submerged : bool = false
 var IsBoss : bool = false
 
-var IsDefending : bool = false :
-	set(value):
-		if defend_icon != null:
-			defend_icon.visible = value
-		IsDefending = value
-
-var IsFlying : bool :
-	get:
-		return Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
-
-var CanHeal : bool :
-	get:
-		return currentHealth < maxHealth
 
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
@@ -76,18 +58,24 @@ var statModifiers = {}		#Stats determined by in-run progression. These are NOT t
 
 var facingDirection : GameSettingsTemplate.Direction
 
-var DisplayLevel : int :
-	get: return Level + 1
 var Level : int
 var Exp : int
 var ExtraEXPGranted : int = 0
 var IsDying : bool = false
 
+var AI # Only used by units initialized via a spawner
+var AggroType # Only used by units initialized via a spawner
+var IsAggrod : bool = false
+
 var map : Map
 var currentHealth
-var currentFocus
 
 var takeDamageTween : Tween
+
+var unitPersistence : UnitPersistBase
+
+var DisplayLevel : int :
+	get: return Level + 1
 
 var trueMaxHealth :
 	get:
@@ -105,11 +93,6 @@ var IsStackFree:
 	get:
 		return ActionStack.size() == 0 && CurrentAction == null
 
-
-var AI # Only used by units initialized via a spawner
-var AggroType # Only used by units initialized via a spawner
-var IsAggrod : bool = false
-
 var Activated : bool :
 	set(_value):
 		if visual != null:
@@ -117,13 +100,18 @@ var Activated : bool :
 
 		Activated = _value
 
-var unitPersistence : UnitPersistBase
+var IsFlying : bool :
+	get:
+		return Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
+
+var CanHeal : bool :
+	get:
+		return currentHealth < maxHealth
 
 func _ready():
 	ShowHealthBar(false)
 	healthBar.SetUnit(self)
 	HideDamagePreview()
-	defend_icon.visible = false
 
 	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
 	health_bar_parent.scale = Vector2i(Template.GridSize, Template.GridSize)
@@ -170,10 +158,6 @@ func InitializeStats():
 	# Remember: Vitality != Health. Health = Vitality * ~1.5, a value which can change for balancing
 	currentHealth = GetWorkingStat(GameManager.GameSettings.HealthStat)
 
-	if GameManager.GameSettings.InitializeUnitsWithMaxFocus:
-		currentFocus = GetWorkingStat(GameManager.GameSettings.MindStat)
-	else:
-		currentFocus = 0
 	IsDying = false
 
 func UpdateDerivedStats():
@@ -268,7 +252,6 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 
 func OnMapComplete():
 	ShowHealthBar(false)
-	IsDefending = false
 
 func OnTileUpdated(_tile : Tile):
 	if IsDying || Template == null || _tile == null:
@@ -405,10 +388,15 @@ func AddAbility(_ability : PackedScene):
 		push_error("Attempting to create a null ability. Unit: " + Template.DebugName)
 		return
 
+
 	# We don't validate if the ability is on the template at all because maybe there might be an item that grants a
 	# general use ability to any unit
 	var abilityInstance = _ability.instantiate() as Ability
 	if abilityInstance == null:
+		return
+
+	if abilityInstance is Item:
+		push_error("Attempting to add an item to the ability array. This is not allowed. Item: " + abilityInstance.internalName)
 		return
 
 	# don't allow for duplicates
@@ -462,6 +450,11 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 	else:
 		# If it's null then we're unequipping something from this slot
 		pass
+
+	item.Initialize(self)
+
+	# Set Map also gets called when a unit gets added to the map. This is just called here just in case a Unit gets an item mid map
+	if map != null: item.SetMap(map)
 
 	if ItemSlots[_slotIndex] == null:
 		if item != null:
@@ -528,7 +521,6 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	# If it's your units turn
 	if _currentTurn == UnitAllegiance:
 		# defending doesn't drop off until it's your turn again
-		IsDefending = false
 		for abl in Abilities:
 			abl.OnOwnerUnitTurnStart()
 
@@ -540,9 +532,6 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 	if visual != null:
 		visual.ResetAnimation()
-
-func Defend():
-	IsDefending = true
 
 func LockInMovement():
 	if PendingMove:
@@ -630,13 +619,6 @@ func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous :
 		OnModifyHealthTweenComplete(_netHealthChange, _result)
 	pass
 
-
-func ModifyFocus(_netFocusChange):
-	currentFocus += _netFocusChange
-	currentFocus = clamp(currentFocus, 0, GetWorkingStat(GameManager.GameSettings.MindStat))
-
-	healthBar.UpdateFocusUI()
-	OnStatUpdated.emit()
 
 func OnModifyHealthTweenComplete(_delta, _result : ActionStepResult):
 	# you have to disconnect this because the nethealth change is a bound variable
@@ -856,12 +838,6 @@ func HasHealAbility():
 			return true
 	return false
 
-func UpdateFocusUI():
-	focus_bar_parent.ClearEntries()
-	var maxFocus = GetWorkingStat(GameManager.GameSettings.MindStat)
-	for fIndex in maxFocus:
-		var entry = focus_bar_parent.CreateEntry(focusSlotPrefab)
-		entry.Toggle(currentFocus >= (fIndex + 1)) # +1 because it's an index
 
 func ShowAffinityRelation(_affinity : AffinityTemplate):
 	if _affinity == null:
@@ -938,7 +914,6 @@ func ToJSON():
 	var dict = {
 		"Template" : Template.resource_path,
 		"currentHealth" : currentHealth,
-		"currentFocus" : currentFocus,
 		"Level" : Level,
 		"Exp" : Exp,
 		"CanMove" : CanMove,
@@ -948,13 +923,13 @@ func ToJSON():
 		"Activated" : Activated,
 		"ExtraEXPGranted" : ExtraEXPGranted,
 		"Abilities" : PersistDataManager.ArrayToJSON(Abilities),
-		"ItemSlots" : PersistDataManager.ArrayToJSON(ItemSlots),
 		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects),
 		"Injured" : Injured,
 		"Submerged" : Submerged,
 		"IsBoss" : IsBoss
 	}
 
+	dict["ItemSlots"] = PersistDataManager.ArrayToJSON(ItemSlots)
 	if AI != null:
 		dict["AI"] = AI.resource_path
 		if AggroType != null:
@@ -1024,15 +999,18 @@ static func FromJSON(_dict : Dictionary):
 	var cedata = PersistDataManager.JSONToArray(_dict["CombatEffects"], Callable.create(CombatEffectInstance, "FromJSON"))
 	unitInstance.CombatEffects.assign(cedata)
 
-	var data = PersistDataManager.JSONToArray(_dict["ItemSlots"], Callable.create(Item, "FromJSON"))
-	unitInstance.ItemSlots.assign(data)
-	for item in unitInstance.ItemSlots:
-		if item == null:
-			continue
+	var elementIndex = 0
+	for itemElement in _dict["ItemSlots"]:
+		if itemElement != "NULL":
+			var elementAsDict = JSON.parse_string(itemElement)
+			var prefab = load(elementAsDict["prefab"]) as PackedScene
+			var newInstance = prefab.instantiate() as Item
+			unitInstance.EquipItem(elementIndex, newInstance)
+			if newInstance != null:
+				newInstance.FromJSON(elementAsDict)
 
-		# This technically throws an error but everything still works? So uhhh
-		unitInstance.itemsParent.add_child(item)
-		#item.reparent(unitInstance.itemsParent)
+		elementIndex += 1
+
 
 	if _dict.has("IsBoss"):
 		unitInstance.IsBoss = _dict["IsBoss"]
@@ -1042,7 +1020,6 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.CreateVisual()
 	# Set these after derived stats, so that health can actually be equal to the correct values
 	unitInstance.currentHealth = _dict["currentHealth"]
-	unitInstance.currentFocus = _dict["currentFocus"]
 
 	var updateActivated = func(_internalDict : Dictionary):
 		unitInstance.Activated = _internalDict["Activated"]

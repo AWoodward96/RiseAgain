@@ -53,7 +53,7 @@ script = ExtResource("4_ubaxs")
 
 [node name="ART_SlipNSlash" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_7xk4g")
-focusCost = 2
+abilityCooldown = 2
 executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_xn624"), SubResource("Resource_ag1gk"), SubResource("Resource_l02h2"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
 damageGrantsFocus = true
 internalName = "slipnslash"

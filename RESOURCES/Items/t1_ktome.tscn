@@ -2,23 +2,23 @@
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_xvi3j"]
 [ext_resource type="Texture2D" uid="uid://dskg55x1t4d4v" path="res://ART/Icons/Items/t1_ktome.png" id="2_jxl7x"]
-[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="3_xy037"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_aeydy"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_54ry3"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_kc4iv"]
 
-[sub_resource type="Resource" id="Resource_l81jo"]
+[sub_resource type="Resource" id="Resource_o1ltg"]
 script = ExtResource("4_aeydy")
 Template = ExtResource("5_54ry3")
 Value = 1
 
-[node name="ktome_t1" type="Node2D" node_paths=PackedStringArray("statData")]
+[node name="ktome_t1" type="Node2D" node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_xvi3j")
 internalName = "t1_ktome"
 loc_displayName = "item_t1_ktome_name"
 loc_displayDesc = "item_t1_ktome_desc"
 icon = ExtResource("2_jxl7x")
-statData = NodePath("HeldItemComponent")
+StatData = NodePath("ItemStatComponent")
 
-[node name="HeldItemComponent" type="Node2D" parent="."]
-script = ExtResource("3_xy037")
-StatsToGrant = Array[ExtResource("4_aeydy")]([SubResource("Resource_l81jo")])
+[node name="ItemStatComponent" type="Node2D" parent="."]
+script = ExtResource("6_kc4iv")
+GrantedStats = Array[ExtResource("4_aeydy")]([SubResource("Resource_o1ltg")])

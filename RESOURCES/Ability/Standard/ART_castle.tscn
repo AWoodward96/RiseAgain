@@ -72,8 +72,7 @@ metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
 [node name="ART_castle" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_0vxst")
-focusCost = 0
-isXFocusCost = true
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_kn2ih")]([SubResource("Resource_8047x"), SubResource("Resource_wck5u"), SubResource("Resource_cuqbw"), SubResource("Resource_rqtjn")])
 internalName = "castle"
 loc_displayName = "art_castle_name"

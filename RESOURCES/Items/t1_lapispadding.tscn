@@ -13,11 +13,11 @@ Value = 10
 
 [node name="t1_lapispadding" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_hd0a2")
+growthModifierData = NodePath("HeldItemStatGrowthModifier")
 internalName = "t1_lapispadding"
 loc_displayName = "item_t1_lapispadding_name"
 loc_displayDesc = "item_t1_lapispadding_desc"
 icon = ExtResource("2_dxq8q")
-growthModifierData = NodePath("HeldItemStatGrowthModifier")
 
 [node name="HeldItemStatGrowthModifier" type="Node2D" parent="."]
 script = ExtResource("5_ou6vn")

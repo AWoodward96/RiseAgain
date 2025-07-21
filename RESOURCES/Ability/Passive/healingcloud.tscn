@@ -44,7 +44,7 @@ metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 [node name="healingcloud" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "HealData")]
 script = ExtResource("1_7oiqh")
 type = 3
-focusCost = 0
+abilityCooldown = 0
 executionStack = Array[ExtResource("2_fe102")]([SubResource("Resource_xodfp"), SubResource("Resource_wbtb0"), SubResource("Resource_6nieg"), SubResource("Resource_vs4yg"), SubResource("Resource_m3hti")])
 passiveListeners = [NodePath("PassiveUnitDeathListener")]
 internalName = "healingcloud"

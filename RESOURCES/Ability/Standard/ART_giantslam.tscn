@@ -31,7 +31,7 @@ script = ExtResource("5_tfpsp")
 
 [node name="giantslam" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_3el8o")
-focusCost = 2
+abilityCooldown = 2
 executionStack = Array[ExtResource("2_un35b")]([SubResource("Resource_y50sq"), SubResource("Resource_1o5y1"), SubResource("Resource_50ujx"), SubResource("Resource_y5qi2")])
 internalName = "giantslam"
 loc_displayName = "art_giantslam_name"

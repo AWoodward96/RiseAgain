@@ -27,7 +27,7 @@ script = ExtResource("4_8p7s7")
 
 [node name="ART_daggerspray" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_twrak")
-focusCost = 2
+abilityCooldown = 2
 executionStack = Array[ExtResource("2_u3xn0")]([SubResource("Resource_1b6yg"), SubResource("Resource_xsqsi"), SubResource("Resource_5cjq5")])
 internalName = "daggerspray"
 loc_displayName = "art_daggerspray_name"
