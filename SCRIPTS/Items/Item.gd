@@ -1,12 +1,6 @@
 extends Ability
 class_name Item
 
-#@export_category("Meta Data")
-#@export var internalName : String
-#@export var loc_displayName : String
-#@export var loc_displayDesc : String
-#@export var icon : Texture2D
-
 @export_category("Item Data")
 @export var conditionalStatModifiers : ConditionalStatModComponent
 @export var growthModifierData : HeldItemStatGrowthModifier

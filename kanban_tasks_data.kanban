@@ -45,7 +45,8 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"70047452-a245-4e54-99f2-25628fa07330"
+				"70047452-a245-4e54-99f2-25628fa07330",
+				"8fd6e64a-75d7-4eb6-aee6-9f68b69c341c"
 			]
 		},
 		{
@@ -841,6 +842,13 @@
 		{
 			"uuid": "70047452-a245-4e54-99f2-25628fa07330",
 			"title": "Implement some new Items",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "8fd6e64a-75d7-4eb6-aee6-9f68b69c341c",
+			"title": "Stacking Effects",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

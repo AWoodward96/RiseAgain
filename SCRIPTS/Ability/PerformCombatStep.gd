@@ -33,7 +33,6 @@ func Enter(_actionLog : ActionLog):
 					damageStepResult = subActionRes.SubStepResult[log.subActionStackIndex] as PerformCombatStepResult
 
 
-		dealtDamage = true
 
 		damageStepResult.RollChance(Map.Current.mapRNG)
 		print(damageStepResult.ToString())
@@ -42,6 +41,12 @@ func Enter(_actionLog : ActionLog):
 			subActionRes.ExpGain += damageStepResult.ExpGain
 
 		if damageStepResult.Target != null:
+			# ignore any unit that's dying
+			if damageStepResult.Target.IsDying:
+				damageStepResult.Invalidate()
+				continue
+
+			dealtDamage = true
 			if useDefendAction:
 				damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
 
@@ -53,19 +58,22 @@ func Enter(_actionLog : ActionLog):
 						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, true)
 						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 
-				if damageStepResult.TileTargetData.Ignite > 0:
+				if damageStepResult.TileTargetData.Ignite > 0 && damageStepResult.TileTargetData.HitsEnvironment:
 					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
-				if damageStepResult.TileTargetData.Ignite > 0:
+				if damageStepResult.TileTargetData.Ignite > 0 && damageStepResult.TileTargetData.HitsEnvironment:
 					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 
 		else:
+			dealtDamage = true
+
 			# we hit a tile.
 			# We're doing this here instead of in the attack sequence bc sometimes an ability  doesn't use an attack action
-			log.grid.ModifyTileHealth(damageStepResult.HealthDelta, damageStepResult.TileTargetData.Tile)
+			if damageStepResult.TileTargetData.HitsEnvironment:
+				log.grid.ModifyTileHealth(damageStepResult.HealthDelta, damageStepResult.TileTargetData.Tile)
 
-			if damageStepResult.TileTargetData.Ignite > 0:
+			if damageStepResult.TileTargetData.Ignite > 0 && damageStepResult.TileTargetData.HitsEnvironment:
 				log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 
 	pass

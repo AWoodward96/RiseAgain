@@ -1,6 +1,7 @@
 class_name TileTargetedData
 
 var Tile : Tile
+var HitsEnvironment : bool = true
 var AOEMultiplier : float = 1
 var CritModifier : float = 0
 var AccuracyModifier : float = 0

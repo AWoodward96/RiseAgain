@@ -72,6 +72,7 @@ func ContainsPush():
 func QueueExpGains():
 	# Define a dictionary that is [UnitInstance]-[ExpGainedFromAction]
 	var expGains = {}
+	var expTotal = 0
 
 	# Go through all the action results and hide the targets health bars. Also, if the source of the result is an ally, tally up their exp gain
 	for result in actionStepResults:
@@ -84,6 +85,7 @@ func QueueExpGains():
 				expGains[result.Source] += result.ExpGain
 			else:
 				expGains[result.Source] = result.ExpGain
+			expTotal += result.ExpGain
 
 	# Do the same thing for response reults
 	for result in responseResults:
@@ -92,7 +94,9 @@ func QueueExpGains():
 				expGains[result.Source] += result.ExpGain
 			else:
 				expGains[result.Source] = result.ExpGain
+		expTotal += result.ExpGain
 
 	# Now that we know the total exp gained, give it
-	for unitInstance in expGains:
-		unitInstance.QueueExpGain(expGains[unitInstance])
+	if expTotal != 0:
+		for unitInstance in expGains:
+			unitInstance.QueueExpGain(expGains[unitInstance])

@@ -47,6 +47,7 @@ func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _ability : Abilit
 			tileData.CritModifier = shapedTile.get("CritModifier") if shapedTile.get("CritModifier") != null else 0
 			tileData.AccuracyModifier = shapedTile.get("AccuracyModifier") if shapedTile.get("AccuracyModifier") != null else 0
 			tileData.Ignite = shapedTile.get("Ignite") if shapedTile.get("Ignite") != null else 0
+			tileData.HitsEnvironment = shapedTile.get("HitsEnvironment") if shapedTile.get("HitsEnvironment") != null else true
 
 			if tile.IsWall && _stopShapeOnWall:
 				return retArray

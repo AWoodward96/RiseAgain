@@ -61,8 +61,11 @@ func btnGiveSpecificItem():
 		if template == null:
 			continue
 
-		unit.EquipItem(0, SpecificItem)
-		unit.EquipItem(1, SpecificItem2)
+		if SpecificItem != null:
+			unit.EquipItem(0, SpecificItem)
+
+		if SpecificItem2 != null:
+			unit.EquipItem(1, SpecificItem2)
 	pass
 
 func btnAutoWin():

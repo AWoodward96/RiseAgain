@@ -17,5 +17,10 @@ func PreviewResult(_map : Map):
 func Validate():
 	return true
 
+# If halfway through the execution stack we figure out that this actually isn't accurate, call Invalidate to invalidate the result
+func Invalidate():
+	ExpGain = 0
+	Kill = false
+
 func CancelPreview():
 	pass

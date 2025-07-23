@@ -171,12 +171,13 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	var defensiveStat = _damageData.DefensiveStat
 
 	var defensiveVal = 0
-	if _defendingUnit != null:
-		defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
-	defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
+	if !_damageData.TrueDamage:
+		if _defendingUnit != null:
+			defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
+		defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
 
 	var affinityMultiplier = 1
-	if _defendingUnit != null && _attackingUnit != null:
+	if _defendingUnit != null && _attackingUnit != null && !_damageData.TrueDamage:
 		affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
 	var vulnerabilityMultiplier = 1

@@ -19,6 +19,7 @@ func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _origin
 			tileData.CritModifier = coord.get("CritModifier") if coord.get("CritModifier") != null else 0
 			tileData.AccuracyModifier = coord.get("AccuracyModifier") if coord.get("AccuracyModifier") != null else 0
 			tileData.Ignite = coord.get("Ignite") if coord.get("Ignite") != null else 0
+			tileData.HitsEnvironment = coord.get("HitsEnvironment") if coord.get("HitsEnvironment") != null else true
 			returnedTileData.append(tileData)
 
 	return returnedTileData

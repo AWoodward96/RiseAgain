@@ -25,7 +25,6 @@ Stat = ExtResource("4_5kp8q")
 FlatValue = 1
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
-MultipliedByX = true
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_3x8qu"]
@@ -52,7 +51,6 @@ FlatValue = 0.0
 RelativeStat = ExtResource("8_3o0jt")
 ModType = 2
 Mod = 0.15
-MultiplyByX = true
 AffectedTargets = 0
 Turns = 1
 show_popup = true

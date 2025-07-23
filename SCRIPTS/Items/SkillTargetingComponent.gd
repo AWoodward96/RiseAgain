@@ -57,8 +57,6 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 		options.sort_custom(OrderTargets)
 	return options
 
-func GetBestActionOriginTile(_currentBest : Tile, _affectedTiles : Array[Tile]):
-	pass
 
 func GetDirectionalAttack(_unit : UnitInstance, _ability : Ability, _origin : Tile, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
 	return shapedTiles.GetTargetedTilesFromDirection(_unit, _ability, _grid, _origin, _directionIndex)
@@ -82,7 +80,7 @@ func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : G
 	return returnTiles
 
 func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[TileTargetedData]):
-	return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant == null || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant) && !o.Tile.Occupant.IsDying) || (o.Tile.Occupant == _unit && CanTargetSelf && !o.Tile.Occupant.IsDying) || (o.willPush))
+	return _options.filter(func(o : TileTargetedData) : return (o.Tile.Occupant == null && o.HitsEnvironment) || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant) && !o.Tile.Occupant.IsDying) || (o.Tile.Occupant == _unit && CanTargetSelf && !o.Tile.Occupant.IsDying) || (o.willPush))
 
 func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
 	return _options.filter(func(o : Tile) : return o.Occupant == null ||  (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant) && !o.Occupant.IsDying) || (o.Occupant == _unit && CanTargetSelf && !o.Occupant.IsDying))

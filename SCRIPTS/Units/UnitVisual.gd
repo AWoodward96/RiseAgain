@@ -65,7 +65,7 @@ func UpdateSubmerged(_submerged : bool):
 		if SubmergedParent != null:
 			SubmergedParent.visible = _submerged
 
-func PlayDamageAnimation():
+func PlayDamageAnimation(_autoReturnToIdle = true):
 	if AnimationWorkComplete:
 		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE, false, 1, false)
 		visual.material.set_shader_parameter("use_color_override", true)
@@ -79,6 +79,12 @@ func PlayDamageAnimation():
 		await get_tree().create_timer(0.05).timeout
 
 		visual.material.set_shader_parameter("use_color_override", false)
+
+
+		await get_tree().create_timer(2).timeout
+
+		if AnimationCTRL.current_animation == UnitSettingsTemplate.ANIM_TAKE_DAMAGE && _autoReturnToIdle:
+			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 1, false)
 
 
 

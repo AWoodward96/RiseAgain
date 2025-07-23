@@ -1,9 +1,7 @@
 extends PassiveListenerBase
 class_name TurnStartListener
 
-# Should be overwritten to implement actual functionality
-# There's no way to really know wtf should happen based on just the unit alone
-# So just take one-listener-per-ability approach. How hard could that be?
+@export var requireAffectedTilesToTrigger : bool = true
 
 func RegisterListener(_ability : Ability, _map : Map):
 	super(_ability, _map)
@@ -12,4 +10,18 @@ func RegisterListener(_ability : Ability, _map : Map):
 
 
 func TurnStart(_turn : GameSettingsTemplate.TeamID):
+	var owner = ability.ownerUnit
+	if owner.UnitAllegiance == _turn:
+		var passiveInstance = PassiveAbilityAction.Construct(ability.ownerUnit, ability)
+		passiveInstance.executionStack = ability.executionStack
+		passiveInstance.log.actionOriginTile = owner.CurrentTile
+
+		if ability.TargetingData != null:
+			passiveInstance.log.affectedTiles = ability.TargetingData.GetAffectedTiles(owner, Map.Current.grid, owner.CurrentTile)
+			if requireAffectedTilesToTrigger && passiveInstance.log.affectedTiles.size() == 0:
+				return
+
+		passiveInstance.BuildResults()
+		Map.Current.AppendPassiveAction(passiveInstance)
+		pass
 	pass

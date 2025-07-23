@@ -7,6 +7,7 @@ enum ModificationType { None, Additive, Multiplicative, Divisitive }
 @export var AgressiveStat : StatTemplate
 @export var AgressiveModType : ModificationType
 @export var AgressiveMod : float
+@export var TrueDamage : bool = false
 @export var DefensiveStat : StatTemplate
 @export var DefensiveModType : ModificationType
 @export var DefensiveMod : float
