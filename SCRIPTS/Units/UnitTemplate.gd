@@ -17,11 +17,6 @@ class_name UnitTemplate
 @export var GridSize : int = 1
 #@export var BaseClass : ClassTemplate
 
-@export_group("Palettes")
-@export var DefaultPalette : Texture2D
-@export var AllyPalette : PaletteSwapData
-@export var EnemyPalette : PaletteSwapData
-@export var NeutralPalette : PaletteSwapData
 
 @export_group("Audio")
 @export var FootstepGUID : String = ""
@@ -31,6 +26,7 @@ class_name UnitTemplate
 @export var loc_DisplayName : String
 @export var loc_Description : String
 @export var icon : Texture2D
+@export var unitMovementPreview : Texture2D
 @export var persistDataScript : Script
 
 

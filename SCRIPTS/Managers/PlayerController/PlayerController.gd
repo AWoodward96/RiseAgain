@@ -27,6 +27,7 @@ var ReticleQuintet : Control.LayoutPreset
 var CameraMovementComplete : bool
 
 var BlockMovementInput : bool
+var UnitMovedIntoShroud = false
 var CurrentTile : Tile :
 	get:
 		return currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
@@ -91,9 +92,12 @@ func _process(_delta):
 			# ShowInspectUI() check is also reffering to the hanging ui element in the combat hud
 			# If this behavior needs to be split - then do that but for now it actually works out fine
 			if CurrentTile.Occupant != null && ControllerState.ShowInspectUI():
-				if !CurrentTile.Occupant.Submerged || (CurrentTile.Occupant.Submerged && CurrentTile.Occupant.UnitAllegiance == GameManager.GameSettings.TeamID.ALLY):
-					if inspectUI == null:
-						inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
+				# check shrouded
+				if !CurrentTile.Occupant.ShroudedFromPlayer:
+					# check submerged
+					if !CurrentTile.Occupant.Submerged || (CurrentTile.Occupant.Submerged && CurrentTile.Occupant.UnitAllegiance == GameManager.GameSettings.TeamID.ALLY):
+						if inspectUI == null:
+							inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
 			else:
 				currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
 				if toggleThreat != null:

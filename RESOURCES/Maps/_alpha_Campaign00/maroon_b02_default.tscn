@@ -129,7 +129,6 @@ use_parent_material = true
 tile_set = ExtResource("4_71qsi")
 
 [node name="C0Map1Leafmap" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
 material = ExtResource("8_0nos4")
 position = Vector2(672, 416)

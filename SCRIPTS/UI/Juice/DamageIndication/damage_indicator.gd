@@ -23,6 +23,7 @@ var previewedHP # The hp value visible to the player. Gets ticked down over the 
 var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
 var previewHPTween : Tween
 var submerged : bool
+var assignedUnit : UnitInstance
 
 var normalDamage : int :
 	set(val):

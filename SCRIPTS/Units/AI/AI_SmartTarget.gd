@@ -36,7 +36,14 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		if aiflag.Descriptor != null:
 			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template.Descriptors.find(aiflag.Descriptor) != -1)
 
-		for u in filteredUnitsOnTeam:
+		for u : UnitInstance in filteredUnitsOnTeam:
+			if u == null:
+				continue
+
+			# Be nice. If we can't see the player, we can't attack them
+			if u.Shrouded && !u.CurrentTile.Shroud.Exposed[_unit.UnitAllegiance]:
+				continue
+
 			for weapon in weaponsAvailableForUse:
 				var newOption = EnemyAIOption.Construct(_unit, u, map, weapon) as EnemyAIOption
 				newOption.flagIndex = i

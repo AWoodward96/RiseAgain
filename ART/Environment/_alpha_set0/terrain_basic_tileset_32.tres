@@ -7,11 +7,11 @@
 [ext_resource type="Resource" uid="uid://ejdh6bdh2gf5" path="res://RESOURCES/TileMetaData/MaroonForest/MF_CorpseEater.tres" id="3_kj72c"]
 [ext_resource type="Texture2D" uid="uid://dwjwd2rsa38rs" path="res://ART/Environment/Other_Peoples/TX Tileset Wall.png" id="4_mu1cm"]
 [ext_resource type="Resource" uid="uid://dias0tebu50cn" path="res://RESOURCES/TileMetaData/MaroonForest/MF_CaveWall.tres" id="5_01mc4"]
-[ext_resource type="Texture2D" uid="uid://byny8bcl33q3a" path="res://ART/Environment/MaroonForest/Tile set_Spritesheet.png" id="5_b0aln"]
 [ext_resource type="Material" uid="uid://daa6vtt44bpnv" path="res://ART/Shaders/simple_shadow.tres" id="5_e86kp"]
 [ext_resource type="Texture2D" uid="uid://lr6uh8kj5fmy" path="res://ART/Environment/greyboxing_colors.png" id="5_jbuiq"]
 [ext_resource type="Texture2D" uid="uid://bx0a5woamx3j8" path="res://ART/Grid/tmp_fire_tiles.png" id="7_1ahre"]
 [ext_resource type="Resource" uid="uid://cv4qyupu316sy" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestructableRocks.tres" id="7_ea5tm"]
+[ext_resource type="Texture2D" uid="uid://byny8bcl33q3a" path="res://ART/Environment/MaroonForest/maroon_forest.png" id="8_5p7p4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gj2f4"]
 texture = ExtResource("1_7skec")
@@ -163,7 +163,7 @@ texture_region_size = Vector2i(32, 32)
 9:0/0/custom_data_0 = ExtResource("2_vbfp3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtim2"]
-texture = ExtResource("5_b0aln")
+texture = ExtResource("8_5p7p4")
 texture_region_size = Vector2i(32, 32)
 3:1/0 = 0
 3:1/0/terrain_set = 0

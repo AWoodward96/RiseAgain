@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://bb1mwj7pm4i5j" path="res://RESOURCES/TileMetaData/WhiteCoast/WC_Waterfall.tres" id="3_740cu"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="3_wcx6q"]
 [ext_resource type="Texture2D" uid="uid://bx0a5woamx3j8" path="res://ART/Grid/tmp_fire_tiles.png" id="4_740cu"]
-[ext_resource type="Texture2D" uid="uid://ctayd5134rdi8" path="res://ART/Environment/WhiteCoast/White Coast Biome_Tile Sets.png" id="5_740cu"]
+[ext_resource type="Texture2D" uid="uid://ctayd5134rdi8" path="res://ART/Environment/WhiteCoast/white_coast.png" id="5_740cu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahro0"]
 texture = ExtResource("2_cbxvo")

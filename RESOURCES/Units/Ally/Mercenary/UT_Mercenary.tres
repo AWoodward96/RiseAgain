@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://ub3y41eeets8"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://ub3y41eeets8"]
 
 [ext_resource type="PackedScene" uid="uid://t7o5840ctb3j" path="res://RESOURCES/Units/Ally/Mercenary/VIS_Mercenary.tscn" id="1_7knpf"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_apt4s"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_a62ql"]
 [ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="13_yicks"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_2vd0h"]
+[ext_resource type="Texture2D" uid="uid://duobiovdqyo71" path="res://ART/Units/Mercenary/Miranda_Palette_Proj_gray.png" id="18_r0b1h"]
 
 [sub_resource type="Resource" id="Resource_08ret"]
 script = ExtResource("2_7td1i")
@@ -98,6 +99,10 @@ script = ExtResource("2_7td1i")
 Template = ExtResource("10_rvsvh")
 Value = 10.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0b1h"]
+atlas = ExtResource("18_r0b1h")
+region = Rect2(0, 15, 100, 81)
+
 [resource]
 script = ExtResource("3_jfj4c")
 VisualPrefab = ExtResource("1_7knpf")
@@ -115,3 +120,4 @@ DebugName = "Mercenary"
 loc_DisplayName = "unit_mercenary_name"
 loc_Description = "unit_mercenary_desc"
 icon = ExtResource("2_3myko")
+unitMovementPreview = SubResource("AtlasTexture_r0b1h")

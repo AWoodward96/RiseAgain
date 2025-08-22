@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://i7m2hed1bp2d"]
+
+[ext_resource type="Script" uid="uid://o20btdqgwxaj" path="res://SCRIPTS/Universe/POI.gd" id="1_7687h"]
+[ext_resource type="Texture2D" uid="uid://bslf8k0b4x4ov" path="res://ART/UI/WorldMap/Icons_0.png" id="2_c1uc1"]
+
+[node name="MAROON_A1" type="Control" node_paths=PackedStringArray("VisualIcon", "UpLine", "RightLine", "DownLine", "LeftLine") groups=["MapPOI"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7687h")
+loc_title = null
+loc_description = null
+internal_name = null
+VisualIcon = NodePath("Visual")
+UpLine = NodePath("UpLine")
+RightLine = NodePath("RightLine")
+DownLine = NodePath("DownLine")
+LeftLine = NodePath("LeftLine")
+
+[node name="UpLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="RightLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="DownLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="LeftLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="Visual" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_c1uc1")
+flip_h = true
+hframes = 8
+vframes = 3
+frame = 7

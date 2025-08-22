@@ -45,7 +45,11 @@ func PreviewResult(_map : Map):
 			points.append(Vector2i(stack.Subject.CurrentTile.GlobalPosition) + positionalOffset)
 			points.append(Vector2i(stack.ResultingTile.GlobalPosition) + positionalOffset)
 			ctrl.movement_tracker.points = points
-			ctrl.movement_preview_sprite.texture = Source.Template.icon
+
+			if Source.Template.unitMovementPreview != null:
+				ctrl.movement_preview_sprite.texture = Source.Template.unitMovementPreview
+			else:
+				ctrl.movement_preview_sprite.texture = Source.Template.icon
 			ctrl.movement_preview_sprite.position = points[points.size() - 1]
 		else:
 			unit.PreviewModifiedTile(stack.ResultingTile)

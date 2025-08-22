@@ -6,6 +6,7 @@ class_name TileMetaData
 @export var Killbox : bool
 @export var Water : bool
 @export var FireSpreadChance : float = 0.5
+@export var Shroud : bool = false
 
 
 func OnUnitTraversed(_unitInstance : UnitInstance):

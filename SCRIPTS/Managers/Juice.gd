@@ -7,6 +7,10 @@ extends Node2D
 @export var abilityPopup : PackedScene
 @export var critPopup : PackedScene
 
+@export_category("Emotes")
+@export var AlertEmote : PackedScene
+@export var ShockEmote : PackedScene
+
 @export_category("Camera Settings")
 @export var cameraMoveSpeed = 10
 
@@ -98,6 +102,18 @@ func PlayShortRumble():
 
 func PlayHitRumble():
 	Input.start_joy_vibration(0, 0.3, 0.6, 0.25)
+
+func CreateAlertEmote(_unit : UnitInstance):
+	var popup = AlertEmote.instantiate()
+	popup.global_position = _unit.global_position
+	add_child(popup)
+	pass
+
+func CreateShockEmote(_unit : UnitInstance):
+	var popup = ShockEmote.instantiate()
+	popup.global_position = _unit.global_position
+	add_child(popup)
+	pass
 
 func ScreenShakeCombatStandard():
 	if Map.Current != null:

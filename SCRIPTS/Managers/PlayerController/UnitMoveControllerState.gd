@@ -10,6 +10,7 @@ func _Enter(_ctrl : PlayerController, data):
 
 	walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 	prevTile = ctrl.CurrentTile
+	ctrl.UnitMovedIntoShroud = false
 	StartMovementTracker()
 	currentGrid.ShowUnitActions(ctrl.selectedUnit)
 	UpdateTracker()
@@ -27,7 +28,7 @@ func _Execute(_delta):
 		if ctrl.forcedTileSelection != null && tile != ctrl.forcedTileSelection:
 			return
 
-		if ctrl.selectedUnit != null && ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == ctrl.selectedUnit):
+		if ctrl.selectedUnit != null && ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == ctrl.selectedUnit || (tile.Occupant != null && tile.Occupant.ShroudedFromPlayer)):
 			ctrl.selectedUnit.PendingMove = walkedPath.size() > 1	# the path starts with the units current tile - so check above 1
 			ctrl.selectedUnit.MoveCharacterToNode(walkedPath, tile)
 			EndMovementTracker()
@@ -39,7 +40,7 @@ func _Execute(_delta):
 
 
 	if InputManager.cancelDown:
-		if CutsceneManager.BlockCancelInput:
+		if CutsceneManager.BlockCancelInput || ctrl.UnitMovedIntoShroud:
 			return
 
 		if movementSelected:
@@ -49,6 +50,7 @@ func _Execute(_delta):
 
 			ctrl.selectedUnit.StopCharacterMovement()
 			currentGrid.SetUnitGridPosition(ctrl.selectedUnit, ctrl.selectedUnit.TurnStartTile.Position, true)
+			ctrl.selectedUnit.visual.UpdateShrouded()
 
 			StartMovementTracker()
 			currentGrid.ShowUnitActions(ctrl.selectedUnit)

@@ -29,4 +29,4 @@ script = ExtResource("4_3uwqy")
 FlatValue = 2
 ScalingStat = ExtResource("5_ri8mk")
 ScalingModType = 2
-ScalingMod = 0.25
+ScalingMod = 0.5

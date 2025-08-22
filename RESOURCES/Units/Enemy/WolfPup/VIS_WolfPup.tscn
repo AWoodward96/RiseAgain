@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ds4w7ttanxhhg"]
+[gd_scene load_steps=49 format=3 uid="uid://ds4w7ttanxhhg"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_u051s"]
 [ext_resource type="Texture2D" uid="uid://hq4kmipluqr1" path="res://ART/Icons/Units/wolfpup.png" id="2_dhyip"]
@@ -18,6 +18,9 @@ shader_parameter/palette_index = 1.0
 shader_parameter/tint = Color(1, 1, 1, 1)
 shader_parameter/grey_scale = false
 shader_parameter/grey_scale_offset = 0.25
+shader_parameter/hue = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/value = 1.0
 shader_parameter/use_color_override = false
 shader_parameter/color_override = Color(1, 0, 0, 1)
 
@@ -88,6 +91,30 @@ region = Rect2(96, 48, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_yy0ed"]
 atlas = ExtResource("3_u871h")
 region = Rect2(0, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5afqe"]
+atlas = ExtResource("3_u871h")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga0dh"]
+atlas = ExtResource("3_u871h")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djhno"]
+atlas = ExtResource("3_u871h")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2strp"]
+atlas = ExtResource("3_u871h")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oyj8"]
+atlas = ExtResource("3_u871h")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rryjq"]
+atlas = ExtResource("3_u871h")
+region = Rect2(0, 48, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlib1"]
 animations = [{
@@ -275,6 +302,34 @@ animations = [{
 }],
 "loop": true,
 "name": &"take_damage",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5afqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga0dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djhno")
+}],
+"loop": false,
+"name": &"use_item_in",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2strp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oyj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rryjq")
+}],
+"loop": false,
+"name": &"use_item_out",
 "speed": 6.0
 }]
 
@@ -890,8 +945,10 @@ material = SubResource("ShaderMaterial_qymfw")
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tlib1")
-animation = &"take_damage"
+animation = &"use_item_in"
 autoplay = "idle"
+frame = 2
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

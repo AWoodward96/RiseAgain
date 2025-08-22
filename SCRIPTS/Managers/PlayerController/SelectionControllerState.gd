@@ -34,7 +34,7 @@ func _Execute(_delta):
 							ctrl.EnterContextMenuState()
 						ctrl.reticleSelectSound.play()
 				else:
-					if !ctrl.selectedUnit.Submerged:
+					if !ctrl.selectedUnit.Submerged && !ctrl.selectedUnit.ShroudedFromPlayer:
 						currentGrid.ShowUnitActions(tile.Occupant)
 						ctrl.reticleSelectSound.play()
 

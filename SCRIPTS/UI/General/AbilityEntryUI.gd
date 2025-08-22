@@ -99,13 +99,13 @@ func Refresh(_ability : Ability):
 	UpdateSpeed(_ability)
 	UpdateUsages(_ability)
 	UpdateRange(_ability)
-
-	focusParent.visible = _ability.focusCost != 0 || (_ability.focusCost == 0 && _ability.isXFocusCost)
-	if focusCostText != null:
-		if _ability.isXFocusCost:
-			focusCostText.text = "X"
-		else:
-			focusCostText.text = "{AMT}".format({"AMT" : _ability.focusCost })
+#
+	#focusParent.visible = _ability.focusCost != 0 || (_ability.focusCost == 0 && _ability.isXFocusCost)
+	#if focusCostText != null:
+		#if _ability.isXFocusCost:
+			#focusCostText.text = "X"
+		#else:
+			#focusCostText.text = "{AMT}".format({"AMT" : _ability.focusCost })
 
 
 func UpdateTargeting(_ability : Ability):

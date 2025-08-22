@@ -159,6 +159,7 @@ end_cap_mode = 2
 [node name="MovementPreviewSprite" type="Sprite2D" parent="MovementTracker"]
 unique_name_in_owner = true
 visible = false
+top_level = true
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_g2hfv")
 

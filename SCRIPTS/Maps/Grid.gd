@@ -24,6 +24,7 @@ var map : Map
 var CellSize : int
 var ShowingThreat : bool
 
+var Shrouds : Array[ShroudInstance]
 var StartingPositions : Array[Vector2i]
 var CanvasModLayer : TileMapLayer
 
@@ -50,13 +51,11 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 			var bg_data = map.tilemap_bg.get_cell_tile_data(Vector2i(x,y))
 			if bg_data != null:
 				GridArr[index].BGTileData = bg_data.get_custom_data("MetaData") as TileMetaData
-				#GridArr[index].Killbox = bg_data.get_custom_data("Killbox")
 
 			if map.tilemap_water != null:
 				var water_data = map.tilemap_water.get_cell_tile_data(Vector2i(x,y))
 				if water_data != null:
 					GridArr[index].SubBGTileData = water_data.get_custom_data("MetaData") as TileMetaData
-					#GridArr[index].Killbox = GridArr[index].Killbox || water_data.get_custom_data("Killbox")
 
 			var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
 			if main_data:
@@ -67,8 +66,39 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 
 
 			GridArr[index].InitMetaData()
+
 			# The canvas mod has a shader that replaces any tile on it with a grid overlay - np
 			CanvasModLayer.set_cell(Vector2i(x,y), UITILEATLAS, BASEBLACKTILE)
+	RefreshShroud()
+
+func RefreshShroud():
+	var visited : Dictionary
+
+	for currentTile in GridArr:
+		if !currentTile.IsShroud:
+			continue
+
+		if visited.has(currentTile):
+			continue
+
+		var frontier : Array[Tile]
+		var clump : Array[Tile]
+		frontier.append(currentTile)
+
+		while(frontier.size() > 0):
+			var tile = frontier.pop_front()
+			var neighbors = GetAdjacentTiles(tile) as Array[Tile]
+			visited[tile] = true
+			clump.append(tile)
+
+			for neigh in neighbors:
+				if neigh.IsShroud && !visited.has(neigh) && !frontier.has(neigh):
+					frontier.append(neigh)
+
+				pass
+		# We should have a clump at this point
+		Shrouds.append(ShroudInstance.Construct(clump))
+
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	for x in Width:
@@ -113,7 +143,7 @@ func RefreshThreat(_units : Array[UnitInstance]):
 	map.tilemap_threat.clear()
 	var workingList : Array[Tile]
 	for u in _units:
-		if u == null || u.currentHealth <= 0:
+		if u == null || u.currentHealth <= 0 || u.ShroudedFromPlayer:
 			continue
 
 		var movement = GetCharacterMovementOptions(u, false)
@@ -216,11 +246,11 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 			if !tile.Traversable(_unit, unitHasFlying):
 				continue
 
-			if !CanUnitFitOnTile(_unit, tile, unitHasFlying, true):
+			if !CanUnitFitOnTile(_unit, tile, unitHasFlying, true, true):
 				continue
 
 			var occupant = tile.Occupant
-			if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance):
+			if (occupant == null) || (occupant != null && occupant.UnitAllegiance == _unit.UnitAllegiance) || (occupant != null && occupant.ShroudedFromPlayer):
 				if visited[current] + 1 > movement:
 					break
 				visited[tile] = visited[current] + 1
@@ -278,11 +308,53 @@ func SetUnitGridPosition(_unit : UnitInstance, _newPosition : Vector2i, _updateW
 				else:
 					push_error("Unit: {0} want's to end up on tile {1}, but it's currently occupied by {2}. If this is the intended behavior, ignore this, but otherwise this may be a problem.".format([_unit.Template.DebugName, str(_newPosition), GridArr[newIndex].Occupant.Template.DebugName]))
 
+	var shroud = null
+	if _unit.CurrentTile != null:
+		if _unit.CurrentTile.IsShroud:
+			shroud = _unit.CurrentTile.Shroud
+
 	_unit.CurrentTile = GridArr[GetGridArrIndex(_newPosition)]
 	_unit.OnTileUpdated(_unit.CurrentTile)
 
+	# call this after the current tile is updated so that the unit is at the correct 'CurrentTile'
+	if shroud != null:
+		shroud.UnitExited(_unit)
+
 	# See: UnitMoveAction for where the killbox gets checked
 	#_unit.CheckKillbox()
+
+func FindNearbyValidTile(_invalidTile : Tile, _originTile : Tile):
+	var frontier : Array[Tile]
+	frontier.append(_invalidTile)
+
+	var validTiles : Array[Tile]
+	while frontier.size() > 0 && validTiles.size() == 0:
+		var current = frontier.pop_front()
+		var neighbors = GetAdjacentTiles(current)
+		for neigh : Tile in neighbors:
+			if !neigh.IsWall && neigh.Occupant == null && !neigh.ActiveKillbox:
+				validTiles.append(neigh)
+			else:
+				frontier.append(neigh)
+
+	if validTiles.size() == 0:
+		push_error("FindNearbyValidTile found no valid nearby tiles. Is every single tile on the map full??")
+		return _originTile
+
+	var bestTile : Tile = null
+	var heuristic = 100
+	for option : Tile in validTiles:
+		var distance = GetManhattanDistance(option.Position, _originTile.Position)
+		if distance < heuristic:
+			bestTile = option
+			heuristic = distance
+
+	if bestTile == null:
+		bestTile = _originTile
+
+	return bestTile
+
+
 
 
 func GetGridArrIndex(_pos : Vector2i):
@@ -435,7 +507,7 @@ func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitI
 	# Note that this will take the rough path as well - so a movement path that is imper
 	return GetTilePath(_originUnit, _originUnit.CurrentTile, _destinationUnit.CurrentTile, false, true)
 
-func GetGreedyTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true):
+func GetGreedyTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true, _ignore_shrouded_units : bool = true):
 	var frontier = PriorityQueue_Tile.new()
 	frontier.Enqueue(TileQueue.Construct(_startingTile, 0))
 	var visited : Dictionary
@@ -469,7 +541,7 @@ func GetGreedyTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endi
 					continue
 
 
-				if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
+				if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls, _ignore_shrouded_units):
 					continue
 
 				if _unitInstance != null:
@@ -499,7 +571,7 @@ func GetGreedyTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endi
 	return returnMe
 
 
-func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true, _roughPath : bool = false):
+func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile : Tile, _different_teams_are_walls : bool = true, _roughPath : bool = false, _ignore_shrouded_units : bool = true):
 	var frontier = PriorityQueue_Tile.new()
 	frontier.Enqueue(TileQueue.Construct(_startingTile, 0))
 
@@ -531,7 +603,7 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 			if !nextTile.Traversable(_unitInstance, unitIsFlying):
 				continue
 
-			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls):
+			if !CanUnitFitOnTile(_unitInstance, nextTile, unitIsFlying, _different_teams_are_walls, _ignore_shrouded_units):
 				continue
 
 			if _unitInstance != null:
@@ -564,12 +636,12 @@ func GetTilePath(_unitInstance : UnitInstance, _startingTile : Tile, _endingTile
 	returnMe.reverse()
 	return returnMe
 
-func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying : bool, _opposingTeamIsWall : bool):
+func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying : bool, _opposingTeamIsWall : bool, _ignoreShroudedUnits = true):
 	if _unitInstance == null:
 		return true
 
 	if _unitInstance.Template.GridSize == 1:
-		return _tile.Occupant == null || (_tile.Occupant.UnitAllegiance == _unitInstance.UnitAllegiance) || !_opposingTeamIsWall
+		return _tile.Occupant == null || (_tile.Occupant.UnitAllegiance == _unitInstance.UnitAllegiance) || !_opposingTeamIsWall || (_tile.Occupant != null && _tile.Occupant.ShroudedFromPlayer && _ignoreShroudedUnits)
 
 	for i in range(0, _unitInstance.Template.GridSize):
 		for j in range(0, _unitInstance.Template.GridSize):
@@ -586,7 +658,10 @@ func CanUnitFitOnTile(_unitInstance : UnitInstance, _tile : Tile, _unitIsFlying 
 			# Case: There is a unit that doesn't match your allegience here
 			if _opposingTeamIsWall:
 				if tileFromSize.Occupant != null && (tileFromSize.Occupant.UnitAllegiance != _unitInstance.UnitAllegiance):
-					return false
+					if tileFromSize.Occupant.ShroudedFromPlayer && _ignoreShroudedUnits:
+						continue
+					else:
+						return false
 
 	return true
 

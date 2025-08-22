@@ -88,11 +88,12 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "uiParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
+uiParent = NodePath("VBoxContainer")
 combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
 healthBar = NodePath("VBoxContainer/HealthBarParent")

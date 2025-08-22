@@ -10,7 +10,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		map.RemoveUnitFromMap(unit, false)
 		return
 
-	var workingPath = map.grid.GetTilePath(unit, unit.CurrentTile, map.grid.GetTile(positionToMoveTo))
+	var workingPath = map.grid.GetTilePath(unit, unit.CurrentTile, map.grid.GetTile(positionToMoveTo), true, false, false)
 	workingPath.remove_at(0) # index 0 is the units current position
 
 	if !TruncatePathBasedOnMovement(workingPath, unit.GetUnitMovement()):

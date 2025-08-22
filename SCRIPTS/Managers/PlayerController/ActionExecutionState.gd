@@ -21,7 +21,7 @@ func _Enter(_ctrl : PlayerController, data):
 	AudioManager.IncrementIntensity()
 
 	if source != null:
-		source.LockInMovement()
+		source.LockInMovement(source.CurrentTile)
 
 	if log.ability != null:
 		log.ability.AbilityActionComplete.connect(PostActionComplete)

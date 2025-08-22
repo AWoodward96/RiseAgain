@@ -36,7 +36,18 @@ func RefreshAllegience():
 					sprite.modulate = GameManager.GameSettings.Alpha_EnemyUnitColor
 				GameSettingsTemplate.TeamID.NEUTRAL:
 					sprite.modulate = GameManager.GameSettings.Alpha_NeutralUnitColor
+	UpdateHueSaturationValue()
 
+func UpdateHueSaturationValue():
+	if AnimationWorkComplete && Map.Current != null:
+		if Map.Current.Biome != null:
+			visual.material.set_shader_parameter("hue", Map.Current.Biome.UnitHue)
+			visual.material.set_shader_parameter("saturation", Map.Current.Biome.UnitSaturation)
+			visual.material.set_shader_parameter("value", Map.Current.Biome.UnitValue)
+		else:
+			visual.material.set_shader_parameter("hue", 1)
+			visual.material.set_shader_parameter("saturation", 1)
+			visual.material.set_shader_parameter("value", 1)
 
 func SetActivated(_activated : bool):
 	if AnimationWorkComplete:
@@ -65,8 +76,30 @@ func UpdateSubmerged(_submerged : bool):
 		if SubmergedParent != null:
 			SubmergedParent.visible = _submerged
 
+func UpdateShrouded():
+	visible = !MyUnit.ShroudedFromPlayer
+	MyUnit.uiParent.visible = !MyUnit.ShroudedFromPlayer
+
+	if AnimationWorkComplete:
+		if MyUnit.Shrouded:
+			visual.material.set_shader_parameter("tint", GameManager.GameSettings.ShroudedTintModulate)
+		else:
+			visual.material.set_shader_parameter("tint", Color.WHITE)
+
+
+func PlayAlertedFromShroudAnimation():
+	visible = true
+	MyUnit.uiParent.visible = true
+	MyUnit.PlayAlertEmote()
+	await get_tree().create_timer(1).timeout
+	UpdateShrouded()
+
+
 func PlayDamageAnimation(_autoReturnToIdle = true):
 	if AnimationWorkComplete:
+		if MyUnit.ShroudedFromPlayer:
+			PlayAlertedFromShroudAnimation()
+
 		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE, false, 1, false)
 		visual.material.set_shader_parameter("use_color_override", true)
 		visual.material.set_shader_parameter("color_override", Color.RED)

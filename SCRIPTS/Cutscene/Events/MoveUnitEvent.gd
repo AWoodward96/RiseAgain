@@ -17,7 +17,7 @@ func Enter(_context : CutsceneContext):
 	var tile = Map.Current.grid.GetTile(unitAtPosition)
 	if tile != null && tile.Occupant != null:
 		unit = tile.Occupant
-		unit.MoveCharacterToNode(BuildRoute(), Map.Current.grid.GetTile(destination), speed, false, true)
+		unit.MoveCharacterToNode(BuildRoute(), Map.Current.grid.GetTile(destination), null, speed, null, true)
 
 	return true
 

@@ -57,6 +57,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var Alpha_EnemyUnitColor : Color
 @export var Alpha_NeutralUnitColor : Color
 @export var Alpha_DeactivatedModulate : Color
+@export var ShroudedTintModulate : Color
 
 @export_category("Ability Data")
 @export var AbilitiesCanMiss : bool = true

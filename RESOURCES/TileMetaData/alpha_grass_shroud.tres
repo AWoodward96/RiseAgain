@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileMetaData" load_steps=2 format=3 uid="uid://c4s58oi4r76rx"]
+
+[ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_b8lb4"]
+
+[resource]
+script = ExtResource("1_b8lb4")
+loc_name = "loc_grass"
+Health = -1
+Killbox = false
+Water = false
+FireSpreadChance = 0.5
+Shroud = true
+metadata/_custom_type_script = "uid://cj8ei3attrikd"

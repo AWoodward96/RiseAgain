@@ -33,7 +33,7 @@ func _Enter(_ctrl : PlayerController, _ability):
 
 					var filteredList = []
 					for t in log.availableTiles:
-						if t.Occupant != null || (t.Occupant == null && t.MaxHealth > 0):
+						if (t.Occupant != null && !t.Occupant.ShroudedFromPlayer) || (t.Occupant == null && t.MaxHealth > 0):
 							filteredList.append(t)
 
 					filteredList.sort_custom(func(a : Tile, b : Tile):
@@ -85,7 +85,7 @@ func _Enter(_ctrl : PlayerController, _ability):
 						log.availableTiles.append(t.Tile)
 					pass
 
-			if log.availableTiles.size() == 0:
+			if log.affectedTiles.size() == 0:
 				ctrl.combatHUD.ShowNoTargets(true)
 				#push_error("TargetingControllerState: No available tiles for selected action. Is your targeting script set up properly?")
 				return
@@ -143,16 +143,17 @@ func TileSelected():
 		if !res.Validate():
 			return
 
-	AudioManager.RaiseIntensity(3)
-	var validSimple = (log.actionOriginTile.Occupant != null || log.actionOriginTile.MaxHealth > 0) && targetingData.Type == SkillTargetingData.TargetingType.Simple
+	var validSimple = ((log.actionOriginTile.Occupant != null && !log.actionOriginTile.Occupant.ShroudedFromPlayer) || log.actionOriginTile.MaxHealth > 0) && targetingData.Type == SkillTargetingData.TargetingType.Simple
 	var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
 	if validSimple || validShapedFree || targetingData.Type == SkillTargetingData.TargetingType.SelfOnly:
 		targetSelected = true
 		# This will wait for the previous actions to be complete, and then do the stuff
 		source.QueueDelayedCombatAction(log)
+		AudioManager.RaiseIntensity(3)
 	elif targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional || targetingData.Type == SkillTargetingData.TargetingType.Global:
 		targetSelected = true
 		source.QueueDelayedCombatAction(log)
+		AudioManager.RaiseIntensity(3)
 		pass
 
 	ctrl.OnTileSelected.emit(log.actionOriginTile)
@@ -170,7 +171,7 @@ func StandardTargetingInput(_delta):
 	var filteredList : Array[Tile] = []
 	var unitsFound = []
 	for t in log.availableTiles:
-		if (t.Occupant != null && !unitsFound.has(t.Occupant)) || (t.Occupant == null && t.MaxHealth > 0):
+		if (t.Occupant != null && !unitsFound.has(t.Occupant) && !t.Occupant.ShroudedFromPlayer) || (t.Occupant == null && t.MaxHealth > 0):
 			filteredList.append(t)
 
 			# only allow one unit per target
@@ -198,6 +199,9 @@ func StandardTargetingInput(_delta):
 			direction = GameSettingsTemplate.Direction.Down
 		elif InputManager.inputDown[3]:
 			direction = GameSettingsTemplate.Direction.Left
+
+		# remove enshrouded units from this list
+
 
 		var newTile = currentGrid.GetBestTileFromDirection(currentTile, direction, filteredList)
 		if newTile != null:
@@ -329,6 +333,10 @@ func ShowCombatPreview():
 	for preview in allPreviews:
 		var previewAsDamageIndicator = preview as DamageIndicator
 		if previewAsDamageIndicator != null:
+			# Hide any unit that is currently shrouded from the player
+			if previewAsDamageIndicator.assignedUnit != null && previewAsDamageIndicator.assignedUnit.ShroudedFromPlayer:
+				continue
+
 			previewAsDamageIndicator.SetDisplayStyle(log.ability)
 			previewAsDamageIndicator.ShowPreview()
 	pass

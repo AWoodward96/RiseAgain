@@ -13,7 +13,7 @@ func _Enter(_ctrl : PlayerController, data):
 func UpdateInput(_delta):
 	# don't accept inputs heres
 	if InputManager.cancelDown:
-		if CutsceneManager.BlockCancelInput:
+		if CutsceneManager.BlockCancelInput || ctrl.UnitMovedIntoShroud:
 			return
 
 		if ctrl.unitInventoryOpen:
@@ -24,6 +24,7 @@ func UpdateInput(_delta):
 		# Done in this order, so that the Reticle is where the unit was hovering before cancel was called
 		ctrl.ForceReticlePosition(ctrl.selectedUnit.GridPosition)
 		currentGrid.SetUnitGridPosition(ctrl.selectedUnit, ctrl.selectedUnit.TurnStartTile.Position, true)
+		ctrl.selectedUnit.visual.UpdateShrouded()
 
 		if ctrl.selectedUnit.CanMove:
 			ctrl.EnterUnitMovementState()

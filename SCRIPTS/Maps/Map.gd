@@ -59,7 +59,6 @@ var teams = {}
 var enemyUnitsKilled = {}
 var playercontroller : PlayerController
 var currentTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
-var currentBiome : BiomeData
 
 var mapRNG : DeterministicRNG
 var grid : Grid

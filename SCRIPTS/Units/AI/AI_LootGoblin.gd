@@ -29,7 +29,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 						foundTileToLoot = true
 						var option = EnemyAIOption.Construct(_unit, null, map, null)
 						if _unit.CurrentTile != tile:
-							option.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, tile, true, true)
+							option.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, tile, true, true, false)
 							option.TruncatePathToMovement(option.roughPath)
 							selectedOption = option
 							selectedTarget = ge
@@ -44,7 +44,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 				map.RemoveUnitFromMap(unit, false)
 			else:
 				var escapeOption = EnemyAIOption.Construct(_unit, null, map, null)
-				escapeOption.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, escapeTile, true, true)
+				escapeOption.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, escapeTile, true, true, false)
 				escapeOption.TruncatePathToMovement(escapeOption.roughPath)
 				selectedOption = escapeOption
 				unit.MoveCharacterToNode(escapeOption.path, escapeOption.tileToMoveTo)

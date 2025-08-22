@@ -69,6 +69,10 @@ func ContainsPush():
 
 	return false
 
+func InvalidateAll():
+	for allResults in actionStepResults:
+		allResults.Invalidate()
+
 func QueueExpGains():
 	# Define a dictionary that is [UnitInstance]-[ExpGainedFromAction]
 	var expGains = {}

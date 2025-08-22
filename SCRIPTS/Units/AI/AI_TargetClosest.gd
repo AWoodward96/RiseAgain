@@ -160,7 +160,7 @@ func GetActionableTiles():
 func FilterTilesByPath(_actionableTiles : Array[Tile]):
 	var lowest = 1000000
 	for tile in _actionableTiles:
-		var path = grid.GetTilePath(unit, unit.CurrentTile, tile)
+		var path = grid.GetTilePath(unit, unit.CurrentTile, tile, true, false, false)
 		if path.size() < lowest && path.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
 			selectedTile = tile
 			selectedPath = path

@@ -1,9 +1,7 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=42 format=3 uid="uid://c0xfa5tbv14pu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://c0xfa5tbv14pu"]
 
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_rq8j1"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_aosco"]
-[ext_resource type="Script" uid="uid://b7dau72uewki1" path="res://SCRIPTS/Generic/PaletteSwapData.gd" id="2_ij3sq"]
-[ext_resource type="Texture2D" uid="uid://divctsdghfyi3" path="res://ART/Units/WildMage/allied_palette.png" id="3_g1poa"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_t6s7i"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_1mqxv"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_ij3sq"]
@@ -17,15 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://f6dnb20tfr50" path="res://RESOURCES/Ability/Equippable/mana_bolt.tscn" id="13_cc7r8"]
 [ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_obxju"]
 [ext_resource type="PackedScene" uid="uid://6bk65s2t5t5u" path="res://RESOURCES/Units/Ally/WildMage/VIS_WildMage.tscn" id="15_erwuk"]
-[ext_resource type="Texture2D" uid="uid://oihv05lvw50q" path="res://ART/Units/WildMage/enemy_palette.png" id="16_0188y"]
 [ext_resource type="Texture2D" uid="uid://dk6whh2weqyxi" path="res://ART/Icons/Units/wildmage.png" id="16_hqm1y"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="17_iubj1"]
-
-[sub_resource type="Resource" id="Resource_fnk75"]
-script = ExtResource("2_ij3sq")
-texture = ExtResource("3_g1poa")
-precision = 0.1
-metadata/_custom_type_script = "uid://b7dau72uewki1"
 
 [sub_resource type="Resource" id="Resource_vqqm1"]
 script = ExtResource("2_aosco")
@@ -71,24 +62,6 @@ Value = 0
 script = ExtResource("2_aosco")
 Template = ExtResource("11_7undg")
 Value = 4.0
-
-[sub_resource type="Resource" id="Resource_1mqxv"]
-metadata/__load_path__ = "res://ART/Units/WildMage/default_palette.png"
-
-[sub_resource type="Resource" id="Resource_b6nw1"]
-script = ExtResource("2_ij3sq")
-texture = ExtResource("16_0188y")
-precision = 0.1
-metadata/_custom_type_script = "uid://b7dau72uewki1"
-
-[sub_resource type="Resource" id="Resource_ij3sq"]
-metadata/__load_path__ = "res://ART/Units/WildMage/default_palette.png"
-
-[sub_resource type="Resource" id="Resource_7undg"]
-script = ExtResource("2_ij3sq")
-texture = SubResource("Resource_ij3sq")
-precision = 0.0
-metadata/_custom_type_script = "uid://b7dau72uewki1"
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_aosco")
@@ -137,10 +110,6 @@ Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_drain.tscn
 Tier1Abilities = Array[String](["uid://bo53wngqa8non", "res://RESOURCES/Ability/Standard/ART_darkfell.tscn"])
 Descriptors = Array[ExtResource("12_trwo8")]([])
 GridSize = 1
-DefaultPalette = SubResource("Resource_1mqxv")
-AllyPalette = SubResource("Resource_fnk75")
-EnemyPalette = SubResource("Resource_b6nw1")
-NeutralPalette = SubResource("Resource_7undg")
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "WildMage"
 loc_DisplayName = "unit_wildmage_name"

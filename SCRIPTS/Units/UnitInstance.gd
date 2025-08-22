@@ -6,6 +6,7 @@ signal OnCombatEffectsUpdated
 
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
+@export var uiParent : Control
 @export var combatEffectsParent : Node2D
 @export var itemsParent : Node2D
 @export var healthBar : UnitHealthBar
@@ -31,6 +32,7 @@ signal OnCombatEffectsUpdated
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
+var PreviousTraversedTile : Tile
 var Template : UnitTemplate
 var visual : UnitVisual # could be made generic, but probably not for now
 var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
@@ -108,12 +110,31 @@ var CanHeal : bool :
 	get:
 		return currentHealth < maxHealth
 
+var Shrouded : bool :
+	get:
+		if CurrentTile != null:
+			return CurrentTile.IsShroud
+		else:
+			return false
+
+var ShroudedFromPlayer : bool :
+	get:
+		if UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+			return false
+
+		if CurrentTile != null && CurrentTile.IsShroud:
+			# This is the only thing that matters. Is it shrouded for the Ally
+			return !CurrentTile.Shroud.Exposed[GameSettingsTemplate.TeamID.ALLY]
+		else:
+			return false
+
 func _ready():
 	ShowHealthBar(false)
 	healthBar.SetUnit(self)
 	HideDamagePreview()
 
 	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
+	damage_indicator.assignedUnit = self
 	health_bar_parent.scale = Vector2i(Template.GridSize, Template.GridSize)
 
 	name = "{0}_{1}_{2}".format({"0" : str(UnitAllegiance), "1" : Template.DebugName, "2" : str(randi() % 100000)})
@@ -262,6 +283,15 @@ func OnTileUpdated(_tile : Tile):
 			SetSubmerged(true)
 		elif Submerged && !_tile.OpenWater:
 			SetSubmerged(false)
+
+	if _tile.IsShroud && _tile.Shroud != null:
+		_tile.Shroud.UnitEntered(_tile, self)
+
+	if PreviousTraversedTile != null && PreviousTraversedTile.Shroud != null && (_tile.Shroud == null || _tile.Shroud != PreviousTraversedTile.Shroud):
+		PreviousTraversedTile.Shroud.UnitExited(self)
+
+	PreviousTraversedTile = _tile
+
 
 func SetSubmerged(_val : bool):
 	Submerged = _val
@@ -478,7 +508,7 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : int = -1, _moveFromAbility : bool = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false, _style : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal) :
+func MoveCharacterToNode(_route : Array[Tile], _tile : Tile,  _actionLog : ActionLog = null, _speedOverride : int = -1, _moveFromAbility = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false, _style : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal) :
 	if _route == null  || _route.size() == 0:
 		return
 
@@ -487,6 +517,7 @@ func MoveCharacterToNode(_route : Array[Tile], _tile : Tile, _speedOverride : in
 	action.DestinationTile = _tile
 	action.SpeedOverride = _speedOverride
 	action.MoveFromAbility = _moveFromAbility
+	action.Log = _actionLog
 	action.CutsceneMove = _cutsceneMove
 	action.AllowOccupantOverwrite = _allowOverwrite
 	action.AnimationStyle = _style
@@ -533,9 +564,9 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	if visual != null:
 		visual.ResetAnimation()
 
-func LockInMovement():
+func LockInMovement(_tile : Tile):
 	if PendingMove:
-		TurnStartTile = CurrentTile
+		TurnStartTile = _tile
 		CanMove = false
 
 func QueueEndTurn():
@@ -909,6 +940,11 @@ func PlayAttackAnimation(_dst : Vector2, _animSpeed : float = 1):
 			Vector2.LEFT:
 				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_LEFT, false, _animSpeed)
 
+func PlayAlertEmote():
+	Juice.CreateAlertEmote(self)
+
+func PlayShockEmote():
+	Juice.CreateShockEmote(self)
 
 func ToJSON():
 	var dict = {

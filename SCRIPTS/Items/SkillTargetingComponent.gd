@@ -50,6 +50,7 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 
 	options = FilterTilesByTargettingFlags(_unit, options)
 
+
 	if ability.IsHeal():
 		options = FilterByHeal(options)
 

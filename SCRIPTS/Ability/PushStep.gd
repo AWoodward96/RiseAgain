@@ -25,12 +25,12 @@ func Enter(_actionLog : ActionLog):
 			movement.append(unit.CurrentTile)
 			movement.append(stack.ResultingTile)
 			if unit == _actionLog.source:
-				unit.MoveCharacterToNode(movement, stack.ResultingTile, -1, false, false, true, UnitSettingsTemplate.MovementAnimationStyle.Pushed)
+				unit.MoveCharacterToNode(movement, stack.ResultingTile, _actionLog, -1, false, false, true, UnitSettingsTemplate.MovementAnimationStyle.Pushed)
 				unit.TurnStartTile = stack.ResultingTile
 				if res.willCollide && res.canDamageUser:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 			else:
-				unit.MoveCharacterToNode(movement, stack.ResultingTile, -1, false, false, true, UnitSettingsTemplate.MovementAnimationStyle.Pushed)
+				unit.MoveCharacterToNode(movement, stack.ResultingTile, _actionLog, -1, null, false, true, UnitSettingsTemplate.MovementAnimationStyle.Pushed)
 				if res.willCollide:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 

@@ -37,24 +37,28 @@ script = ExtResource("15_djo04")
 script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_gdmhh"]
 script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_ulfrr"]
 script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_olt3l"]
 script = ExtResource("20_babx1")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 
 [node name="C0_Map04" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]

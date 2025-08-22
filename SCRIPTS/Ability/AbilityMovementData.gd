@@ -43,7 +43,7 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _origin : Tile, _selectedTi
 
 func GetRoute_TargetTile(_origin : Tile, _destination : Tile):
 	var ar : Array[Tile] = []
-	if _destination.Occupant == null && !_destination.IsWall:
+	if (_destination.Occupant == null || (_destination.Occupant != null && _destination.Occupant.ShroudedFromPlayer)) && !_destination.IsWall:
 		destinationTile = _destination
 		ar.append(_origin)
 		ar.append(_destination)
@@ -79,7 +79,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 		route.append(workingTile)
 
 	# currently, workingTile should be the last tile added to the route
-	var occupantValidator = workingTile.Occupant == null || (workingTile.Occupant != null && workingTile.Occupant == _unit)
+	var occupantValidator = workingTile.Occupant == null || (workingTile.Occupant != null && workingTile.Occupant == _unit) || (workingTile.Occupant != null && workingTile.Occupant.ShroudedFromPlayer)
 	if !occupantValidator:
 		return []
 
@@ -87,7 +87,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 	return route
 
 
-func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Tile, _direction : GameSettingsTemplate.Direction, _speedOverride : int = -1, _animationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal):
+func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Tile, _direction : GameSettingsTemplate.Direction, _actionLog : ActionLog, _speedOverride : int = -1, _animationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal):
 	# Set the positional offset to zero because actual unit movement does not go through the center
 	positionalOffset = Vector2.ZERO
 	destinationTile = null
@@ -104,5 +104,5 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Ti
 		AbilityMovementType.InverseDirectional:
 			route = GetRoute_DirectionalRelative(_grid, _unit, _origin, _direction, true)
 
-	_unit.MoveCharacterToNode(route, destinationTile, _speedOverride, true, false, false, _animationStyle)
+	_unit.MoveCharacterToNode(route, destinationTile, _actionLog, _speedOverride, true, false, false, _animationStyle)
 	return route

@@ -16,6 +16,8 @@ var Killbox : bool
 var ActiveKillbox : bool
 var Water : bool
 var OpenWater : bool
+var IsShroud : bool
+var Shroud : ShroudInstance
 var OnFire : bool :
 	get:
 		return FireLevel > 0
@@ -37,12 +39,15 @@ var damageIndicator : DamageIndicator
 
 
 func InitMetaData():
+	IsShroud = false
+	Killbox = false
+	Water = false
+
 	if MainTileData != null:
 		MaxHealth = MainTileData.Health
 		Health = MainTileData.Health
+		IsShroud = MainTileData.Shroud
 
-	Killbox = false
-	Water = false
 	if BGTileData != null:
 		Killbox = BGTileData.Killbox
 		Water = BGTileData.Water

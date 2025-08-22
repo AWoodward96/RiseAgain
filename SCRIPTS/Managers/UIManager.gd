@@ -15,6 +15,7 @@ signal UIClosed(UI : FullscreenUI)
 @export var CampsiteRestedPopupPrefab : PackedScene
 @export var TradeUIPrefab : PackedScene
 @export var FullscreenNotifUI : PackedScene
+@export var WorldMapUI : PackedScene
 
 var CurrentInspectedElement : Control
 var InspectActive : bool = false

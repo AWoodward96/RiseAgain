@@ -1,8 +1,10 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://c2ke44okmibun"]
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://c2ke44okmibun"]
 
 [ext_resource type="Texture2D" uid="uid://bfe045sf8cs64" path="res://ART/Environment/_alpha_set0/terrain_basic.png" id="1_t5vry"]
 [ext_resource type="Resource" uid="uid://dkgajgdeqosxv" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestuctableTrees.tres" id="1_xnct5"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="2_nfkgl"]
+[ext_resource type="Material" uid="uid://dfgfxdctmuhpc" path="res://ART/Shaders/alpha_shroud_grass.tres" id="2_rf0b1"]
+[ext_resource type="Resource" uid="uid://c4s58oi4r76rx" path="res://RESOURCES/TileMetaData/alpha_grass_shroud.tres" id="2_u5cnj"]
 [ext_resource type="Texture2D" uid="uid://2r1jmihr5im0" path="res://ART/Grid/tmp_fire_tiles_64.png" id="3_yem1i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5q2h"]
@@ -244,6 +246,12 @@ texture_region_size = Vector2i(64, 64)
 13:8/0/custom_data_1 = 10
 8:0/0 = 0
 8:0/0/custom_data_2 = true
+4:10/0 = 0
+4:10/0/material = ExtResource("2_rf0b1")
+4:10/0/custom_data_0 = ExtResource("2_u5cnj")
+5:10/0 = 0
+5:10/0/material = ExtResource("2_rf0b1")
+5:10/0/custom_data_0 = ExtResource("2_u5cnj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30vyt"]
 texture = ExtResource("2_nfkgl")

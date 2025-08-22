@@ -7,6 +7,7 @@ var MovementIndex
 var MovementVelocity
 var SpeedOverride : int = -1
 var MoveFromAbility : bool = false
+var Log : ActionLog
 var CutsceneMove : bool = false
 var AllowOccupantOverwrite : bool = false
 var AnimationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal
@@ -31,8 +32,6 @@ func _Enter(_unit : UnitInstance, _map : Map):
 		unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
 		TravelVector = Route[1].GlobalPosition - Route[0].GlobalPosition
 		JumpStart = Route[0].GlobalPosition
-
-
 	pass
 
 func _Execute(_unit : UnitInstance, _delta):
@@ -74,7 +73,7 @@ func _Execute(_unit : UnitInstance, _delta):
 					unit.footstepsSound.stop()
 				# The units movement has been interrupted and we're good
 				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
-				unit.LockInMovement()
+				unit.LockInMovement(unit.CurrentTile)
 				return true
 			GameSettingsTemplate.TraversalResult.EndTurn:
 				if unit.footstepsSound != null:
@@ -90,27 +89,49 @@ func _Execute(_unit : UnitInstance, _delta):
 				return true
 
 		MovementIndex += 1
+
+		# Check for bonk on the next position
+		if MovementIndex < Route.size() && !Map.Current.grid.CanUnitFitOnTile(unit, Route[MovementIndex], unit.IsFlying, true, false):
+			# Get bonked loser
+			if Route[MovementIndex].Occupant != null:
+				Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
+
+			unit.PlayShockEmote()
+			if Log != null:
+				var curStep = Log.ability.executionStack[Log.actionStackIndex]
+				if curStep is AbilityMoveStep:
+					curStep.Bonked(Route[MovementIndex], Log)
+					return true
+
+			map.grid.SetUnitGridPosition(_unit, Route[MovementIndex - 1].Position, true, AllowOccupantOverwrite)
+			unit.LockInMovement(Route[MovementIndex - 1])
+			FinishMoving()
+			return true
+
 		if MovementIndex >= Route.size() :
-			if unit.footstepsSound != null:
-				unit.footstepsSound.stop()
-
-			unit.TryPlayIdleAnimation()
-
 			if DestinationTile != null:
 				map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, true, AllowOccupantOverwrite)
 			else:
 				push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
 
-			var diedToKillbox = _unit.CheckKillbox()
-			if isAlliedTeam && !CutsceneMove:
-				if diedToKillbox: # If it's true, then this unit's fucking dead lmao
-					map.playercontroller.EnterSelectionState()
-				elif !MoveFromAbility:
-					map.playercontroller.EnterContextMenuState()
+			FinishMoving()
 			return true
 		else:
 			TravelVector = Route[MovementIndex].GlobalPosition - Route[MovementIndex - 1].GlobalPosition
 	return false
+
+func FinishMoving():
+	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
+	if unit.footstepsSound != null:
+		unit.footstepsSound.stop()
+
+	unit.TryPlayIdleAnimation()
+	var diedToKillbox = unit.CheckKillbox()
+	if isAlliedTeam && !CutsceneMove:
+		if diedToKillbox: # If it's true, then this unit's fucking dead lmao
+			map.playercontroller.EnterSelectionState()
+		elif !MoveFromAbility:
+			map.playercontroller.EnterContextMenuState()
 
 func UpdateAnimations(_distance):
 	# dont update the animation when we're not moving

@@ -82,7 +82,7 @@ func Update():
 		var lowest = 1000000
 		var selectedPath
 		for tile in actionableTiles:
-			var workingPath = map.grid.GetTilePath(sourceUnit, sourceUnit.CurrentTile, tile)
+			var workingPath = map.grid.GetTilePath(sourceUnit, sourceUnit.CurrentTile, tile, true, false, false)
 			if workingPath.size() < lowest && workingPath.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
 				selectedPath = workingPath
 				selectedPath.remove_at(0) # Remove the first entry, because that is the current tile this unit is on
