@@ -17,9 +17,9 @@ var currentBastion : Bastion
 func _ready():
 	Root = self
 
-	if DEBUG_Campaign != null && DEBUG_ShowcaseMode && GameManager.CurrentCampaign == null:
-		#GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
-		GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(DEBUG_Campaign, []))
+	#if DEBUG_Campaign != null && DEBUG_ShowcaseMode && GameManager.CurrentCampaign == null:
+		##GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
+		#GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(DEBUG_Campaign, []))
 
 	if Debug_Cutscene != null:
 		CutsceneManager.QueueCutscene(Debug_Cutscene)

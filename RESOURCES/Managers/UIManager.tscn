@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b6e83bb58hsat" path="res://RESOURCES/UI/Campsite/campsite_rested_ui.tscn" id="11_jh1u2"]
 [ext_resource type="PackedScene" uid="uid://bbahoua1vgwbw" path="res://RESOURCES/UI/Trade/trade_ui.tscn" id="11_n4xjy"]
 [ext_resource type="PackedScene" uid="uid://qmut2pi3nuyt" path="res://RESOURCES/UI/FullscreenNotificationUI.tscn" id="13_wtqnq"]
-[ext_resource type="PackedScene" uid="uid://cwyswtqh2n0fu" path="res://RESOURCES/Universe/WorldMap/world_map.tscn" id="14_2vy6k"]
+[ext_resource type="PackedScene" uid="uid://pkegklqav3wx" path="res://RESOURCES/Universe/WorldMap/world_map_container.tscn" id="14_2vy6k"]
 
 [node name="UIManager" type="Node2D"]
 script = ExtResource("1_hai6o")
@@ -29,4 +29,4 @@ CampsiteUIPrefab = ExtResource("10_y6gir")
 CampsiteRestedPopupPrefab = ExtResource("11_jh1u2")
 TradeUIPrefab = ExtResource("11_n4xjy")
 FullscreenNotifUI = ExtResource("13_wtqnq")
-WorldMapUI = ExtResource("14_2vy6k")
+WorldMapFullscreenContainer = ExtResource("14_2vy6k")

@@ -23,25 +23,34 @@ enum POI_VisualStyle {
 
 @export_category("Neighbors")
 
-@export var Up : POI
-@export var Right : POI
-@export var Down : POI
-@export var Left : POI
+@export var AdjacentPOIs : Array[POIAdjacencyData]
 
-@export_category("Lines")
-@export var UpLine : Line2D
-@export var RightLine : Line2D
-@export var DownLine : Line2D
-@export var LeftLine : Line2D
+#@export var Up : POI
+#@export var Right : POI
+#@export var Down : POI
+#@export var Left : POI
+#
+#@export_category("Lines")
+#@export var UpLine : Line2D
+#@export var RightLine : Line2D
+#@export var DownLine : Line2D
+#@export var LeftLine : Line2D
 
 var selected = false
+var selectable = false
 
 
 func _process(delta):
-	UpdateLine(UpLine, Up)
-	UpdateLine(RightLine, Right)
-	UpdateLine(DownLine, Down)
-	UpdateLine(LeftLine, Left)
+	#UpdateLine(UpLine, Up)
+	#UpdateLine(RightLine, Right)
+	#UpdateLine(DownLine, Down)
+	#UpdateLine(LeftLine, Left)
+
+	AdjacentPOIs.clear()
+	var children = get_children()
+	for child in children:
+		if child is POIAdjacencyData:
+			AdjacentPOIs.append(child as POIAdjacencyData)
 
 	if VisualIcon != null:
 		if !selected:

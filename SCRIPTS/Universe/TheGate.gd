@@ -27,6 +27,8 @@ func SetInteractable(_bool : bool):
 	hasInteractable = true
 	if _bool:
 		UpdateUI()
+	else:
+		WorldMap.CloseUI()
 
 func _process(_delta: float) -> void:
 	if InputManager.cancelDown && hasInteractable:
@@ -34,13 +36,14 @@ func _process(_delta: float) -> void:
 		SetInteractable(false)
 
 func UpdateUI():
-	RouteEntryParent.ClearEntries()
-	for campTemplate in GameManager.GameSettings.CampaignManifest:
-		var entry = RouteEntryParent.CreateEntry(RouteEntryPrefab)
-		entry.Initialize(self, campTemplate)
-
-	RouteEntryParent.FocusFirst()
-	RefreshLoadout()
+	WorldMap.OpenWorldMapFullscreenUI(WorldMap.WorldMapUIState.NewCampaign)
+	#RouteEntryParent.ClearEntries()
+	#for campTemplate in GameManager.GameSettings.CampaignManifest:
+		#var entry = RouteEntryParent.CreateEntry(RouteEntryPrefab)
+		#entry.Initialize(self, campTemplate)
+#
+	#RouteEntryParent.FocusFirst()
+	#RefreshLoadout()
 	pass
 
 func RefreshLoadout():
@@ -51,9 +54,9 @@ func RefreshLoadout():
 		textRect.texture = unit.icon
 
 
-func CampaignSelected(_campaignTemplate : CampaignTemplate):
-	GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
-	pass
+#func CampaignSelected(_campaignTemplate : CampaignTemplate):
+	#GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(_campaignTemplate, PersistDataManager.universeData.bastionData.SelectedRoster))
+	#pass
 
 func OnShutdown():
 	UIParent.visible = false

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=38 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=39 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="15_gyih8"]
 [ext_resource type="Script" uid="uid://bqfp2b5gxqbgd" path="res://SCRIPTS/Universe/ResourceTemplate.gd" id="17_gb5h8"]
 [ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="18_pd04j"]
+[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="18_ygbce"]
 [ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="19_qup0j"]
 [ext_resource type="PackedScene" uid="uid://hosrqyrxnwxc" path="res://RESOURCES/Managers/canvas_modulate.tscn" id="23_14m44"]
 [ext_resource type="PackedScene" uid="uid://crldlj6agxmjg" path="res://RESOURCES/Universe/topdown_player_ctrl.tscn" id="24_jqxsc"]
@@ -54,6 +55,7 @@ CampaignInstancePrefab = ExtResource("11_1lydm")
 NumberOfRewardsInPostMap = 3
 DefaultLossState = SubResource("Resource_l1yyb")
 GridModulatePrefab = ExtResource("23_14m44")
+DefaultMapRewardTable = ExtResource("18_ygbce")
 BastionPrefab = ExtResource("10_q2hqg")
 GlobalResources = Array[ExtResource("17_gb5h8")]([ExtResource("18_pd04j"), ExtResource("19_qup0j")])
 PlayerControllerPrefab = ExtResource("7_77hq5")

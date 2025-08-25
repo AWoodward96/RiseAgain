@@ -7,9 +7,6 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7687h")
-loc_title = null
-loc_description = null
-internal_name = null
 VisualIcon = NodePath("Visual")
 UpLine = NodePath("UpLine")
 RightLine = NodePath("RightLine")

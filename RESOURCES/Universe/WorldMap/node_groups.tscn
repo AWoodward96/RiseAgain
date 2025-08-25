@@ -1,0 +1,146 @@
+[gd_scene load_steps=21 format=3 uid="uid://c13xbhqddt7yw"]
+
+[ext_resource type="PackedScene" uid="uid://i7m2hed1bp2d" path="res://RESOURCES/Universe/WorldMap/world_map_node.tscn" id="1_4at50"]
+[ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_8busk"]
+[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default.tscn" id="3_bceyu"]
+[ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="4_jbb77"]
+[ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_rd42m"]
+[ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="6_64xce"]
+[ext_resource type="PackedScene" uid="uid://t8g8du77bfim" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_abandonedcart.tscn" id="7_gkte6"]
+[ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="8_8tgql"]
+[ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="9_n21ex"]
+[ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_campsite_default.tscn" id="10_xlcc4"]
+
+[sub_resource type="Resource" id="Resource_1u4e8"]
+resource_name = "Maroon 1 Default"
+script = ExtResource("2_8busk")
+map = ExtResource("3_bceyu")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_4fp8y"]
+resource_name = "Maroon 1 Alt"
+script = ExtResource("2_8busk")
+map = ExtResource("4_jbb77")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_osrvf"]
+script = ExtResource("6_64xce")
+priorityMapOptions = Array[ExtResource("5_rd42m")]([])
+generalMapOptions = Array[ExtResource("2_8busk")]([SubResource("Resource_1u4e8"), SubResource("Resource_4fp8y")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_0cm5j"]
+script = ExtResource("2_8busk")
+map = ExtResource("7_gkte6")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_4qg23"]
+script = ExtResource("6_64xce")
+priorityMapOptions = Array[ExtResource("5_rd42m")]([])
+generalMapOptions = Array[ExtResource("2_8busk")]([SubResource("Resource_0cm5j")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_214de"]
+script = ExtResource("2_8busk")
+map = ExtResource("8_8tgql")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_cm8qb"]
+script = ExtResource("2_8busk")
+map = ExtResource("9_n21ex")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_frl1j"]
+script = ExtResource("6_64xce")
+priorityMapOptions = Array[ExtResource("5_rd42m")]([])
+generalMapOptions = Array[ExtResource("2_8busk")]([SubResource("Resource_214de"), SubResource("Resource_cm8qb")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_xetb1"]
+script = ExtResource("2_8busk")
+map = ExtResource("10_xlcc4")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_dctlb"]
+script = ExtResource("6_64xce")
+priorityMapOptions = Array[ExtResource("5_rd42m")]([])
+generalMapOptions = Array[ExtResource("2_8busk")]([SubResource("Resource_xetb1")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[node name="NodeGroups" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 942.0
+offset_top = 910.0
+offset_right = 942.0
+offset_bottom = 910.0
+
+[node name="MAROON_FOREST" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="MAROON_A1" parent="MAROON_FOREST" node_paths=PackedStringArray("Up", "Down") instance=ExtResource("1_4at50")]
+offset_left = -438.0
+offset_top = 165.0
+offset_right = -438.0
+offset_bottom = 165.0
+loc_title = "map_maroon_a1_title"
+loc_description = "map_maroon_a1_desc"
+internal_name = "maroon_a1"
+Maps = SubResource("Resource_osrvf")
+Up = NodePath("../MAROON_EVENT_1")
+Down = NodePath("../../BASTION")
+
+[node name="MAROON_EVENT_1" parent="MAROON_FOREST" node_paths=PackedStringArray("Up", "Down") instance=ExtResource("1_4at50")]
+offset_left = -471.0
+offset_top = 110.0
+offset_right = -471.0
+offset_bottom = 110.0
+loc_title = "map_maroon_event_1_title"
+loc_description = "map_maroon_event_1_desc"
+internal_name = "maroon_event_1"
+Maps = SubResource("Resource_4qg23")
+VisualStyle = 11
+Up = NodePath("../MAROON_A2")
+Down = NodePath("../MAROON_A1")
+
+[node name="MAROON_A2" parent="MAROON_FOREST" node_paths=PackedStringArray("Up", "Down") instance=ExtResource("1_4at50")]
+offset_left = -495.0
+offset_top = 66.0
+offset_right = -495.0
+offset_bottom = 66.0
+loc_title = "map_maroon_a2_title"
+loc_description = "map_maroon_a2_desc"
+internal_name = "maroon_a2"
+Maps = SubResource("Resource_frl1j")
+Up = NodePath("../MAROON_CAMPSITE")
+Down = NodePath("../MAROON_EVENT_1")
+
+[node name="MAROON_CAMPSITE" parent="MAROON_FOREST" node_paths=PackedStringArray("Down") instance=ExtResource("1_4at50")]
+offset_left = -534.0
+offset_top = 14.0
+offset_right = -534.0
+offset_bottom = 14.0
+loc_title = "map_maroon_campsite_1_title"
+loc_description = "map_maroon_campsite_1_desc"
+internal_name = "maroon_campsite_1"
+Maps = SubResource("Resource_dctlb")
+VisualStyle = 19
+Down = NodePath("../MAROON_A2")
+
+[node name="BASTION" parent="." node_paths=PackedStringArray("Up") instance=ExtResource("1_4at50")]
+offset_left = -382.0
+offset_top = 250.0
+offset_right = -382.0
+offset_bottom = 250.0
+loc_title = "map_bastion_title"
+loc_description = "map_bastion_desc"
+internal_name = "bastion"
+VisualStyle = 5
+StartingNode = true
+Up = NodePath("../MAROON_FOREST/MAROON_A1")

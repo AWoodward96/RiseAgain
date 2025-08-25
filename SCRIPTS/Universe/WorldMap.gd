@@ -1,5 +1,8 @@
 extends Control
-class_name WorldMap
+
+enum WorldMapUIState { NewCampaign, NextMap, Browsing }
+
+signal POISelected(_poi : POI)
 
 @export var offset : Control
 @export var lerpSpeed : float = 4
@@ -15,23 +18,30 @@ var startingPOIs : Array[POI]
 var currentCampaign : Campaign
 var currentlySelectedPOI : POI
 
+var state : WorldMapUIState = WorldMapUIState.Browsing
+var fullscreenHelperUI : CanvasLayer
 
 func _ready() -> void:
-	currentCampaign = GameManager.CurrentCampaign
 	BuildPOIArray()
+	visible = false
 
-	# If current Campaign is null, we're starting a new campaign
-	if currentCampaign == null:
-		InitNewCampaign()
-	else:
-		# Alternatively, I could try Map.Current == null, and see if it works
-		if Map.Current.MapState is VictoryState:
-			InitMapComplete()
-		else:
+
+func Open(_uiState : WorldMapUIState):
+	visible = true
+	currentCampaign = GameManager.CurrentCampaign
+	state = _uiState
+
+	match _uiState:
+		WorldMapUIState.NewCampaign:
+			InitNewCampaign()
+			pass
+		WorldMapUIState.NextMap:
+			InitNextMapSelection()
+			pass
+		WorldMapUIState.Browsing:
 			InitBrowsing()
-	# If currentCampaign is not null then we're continuing a campaign.
-	# If the current map is not complete, we're just browsing, if the current map is complete, then we need to select where we're going next
-	pass
+			pass
+
 
 func InitNewCampaign():
 	HoverStartingPOI()
@@ -40,8 +50,39 @@ func InitNewCampaign():
 func InitBrowsing():
 	pass
 
-func InitMapComplete():
+func InitNextMapSelection():
+	# Get the current campaign
+	HoverCurrentMapPOI()
+	UpdateForTraversal()
 	pass
+
+func UpdateForTraversal():
+	var currentCampaign = GameManager.CurrentCampaign
+	if currentCampaign == null:
+		return
+
+	for poi in allPOIS:
+		if poi != null:
+			poi.selectable = false
+
+
+	var adjacentPOIs = currentCampaign.currentPOI.AdjacentPOIs
+	for adjacencyData : POIAdjacencyData in adjacentPOIs:
+		if adjacencyData == null:
+			continue
+
+		if !adjacencyData.Traversable:
+			continue
+
+		if adjacencyData.Neighbor != null:
+			for ledgerEntry in currentCampaign.campaignLedger:
+				if ledgerEntry == adjacencyData.Neighbor.internal_name:
+					continue
+
+			if !adjacencyData.PassesRequirement():
+				continue
+
+		adjacencyData.Neighbor.selectable = true
 
 func BuildPOIArray():
 	allPOIS.clear()
@@ -54,6 +95,9 @@ func BuildPOIArray():
 				startingPOIs.append(child)
 
 func _process(_delta: float):
+	if !visible:
+		return
+
 	UpdateInputNavigation()
 	UpdateHoveredPOICenter(_delta)
 	UpdateHoveredPOIPanelPosition()
@@ -61,21 +105,36 @@ func _process(_delta: float):
 func UpdateInputNavigation():
 	if currentlySelectedPOI != null:
 		if InputManager.inputDown[0]:
-			if currentlySelectedPOI.Up != null:
-				HoverPOI(currentlySelectedPOI.Up, false)
+			var upNeighbor = GetNavigationOptionFromPOI(currentlySelectedPOI, GameSettingsTemplate.Direction.Up)
+			if upNeighbor != null:
+				HoverPOI(upNeighbor, false)
 
 		if InputManager.inputDown[1]:
-			if currentlySelectedPOI.Right != null:
-				HoverPOI(currentlySelectedPOI.Right, false)
+			var rightNeighbor = GetNavigationOptionFromPOI(currentlySelectedPOI, GameSettingsTemplate.Direction.Right)
+			if rightNeighbor != null:
+				HoverPOI(rightNeighbor, false)
 
 		if InputManager.inputDown[2]:
-			if currentlySelectedPOI.Down != null:
-				HoverPOI(currentlySelectedPOI.Down, false)
-
+			var downNeighbor = GetNavigationOptionFromPOI(currentlySelectedPOI, GameSettingsTemplate.Direction.Down)
+			if downNeighbor != null:
+				HoverPOI(downNeighbor, false)
 
 		if InputManager.inputDown[3]:
-			if currentlySelectedPOI.Left != null:
-				HoverPOI(currentlySelectedPOI.Left, false)
+			var leftNeighbor = GetNavigationOptionFromPOI(currentlySelectedPOI, GameSettingsTemplate.Direction.Left)
+			if leftNeighbor != null:
+				HoverPOI(leftNeighbor, false)
+
+	if InputManager.selectDown:
+		SelectPOI(currentlySelectedPOI)
+
+func GetNavigationOptionFromPOI(_poi : POI, _dir : GameSettingsTemplate.Direction):
+	if _poi == null:
+		return null
+
+	for adj : POIAdjacencyData in _poi.AdjacentPOIs:
+		if adj.Direction == _dir && adj.PassesRequirement():
+			return adj.Neighbor
+	return null
 
 func UpdateHoveredPOICenter(_delta, snap : bool = false):
 	if currentlySelectedPOI == null:
@@ -120,6 +179,9 @@ func HoverPOI(_poi : POI, _snapTo : bool):
 	UpdatePOIPanelText()
 
 func HoverCurrentMapPOI():
+	if GameManager.CurrentCampaign.currentPOI != null:
+		HoverPOI(currentCampaign.currentPOI, true)
+
 	pass
 
 func HoverStartingPOI():
@@ -127,6 +189,9 @@ func HoverStartingPOI():
 		if startingPOIs.size() == 1:
 			# Select the first one, and don't show the starting point selection screen
 			HoverPOI(startingPOIs[0], true)
+
+			GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(startingPOIs[0], []))
+			# immediately skip to the campaign selection
 		else:
 			ShowStartingPointSelection()
 	else:
@@ -134,11 +199,41 @@ func HoverStartingPOI():
 		return
 
 
+func SelectPOI(_poi : POI):
+	if _poi.selectable:
+		POISelected.emit(_poi)
+	pass
+
 func ShowStartingPointSelection():
 	HoverPOI(startingPOIs[0], true)
 
+func GetPOIFromID(_poiID : String):
+	for pois in allPOIS:
+		if pois.internal_name == _poiID:
+			return pois
 
-static func ShowWorldMap():
-	var instance = UIManager.WorldMapUI.instantiate()
-	GameManager.get_tree().root.add_child(instance)
-	return instance
+	push_error("Could not find POI: " + _poiID)
+	return null
+
+func ShowWorldMap(_parentContainer : Control, _worldMapState : WorldMapUIState):
+	self.reparent(_parentContainer)
+	size = _parentContainer.size
+	Open(_worldMapState)
+
+func OpenWorldMapFullscreenUI(_worldMapState : WorldMapUIState):
+	if fullscreenHelperUI != null:
+		return
+
+	var worldmapfullscreen = UIManager.WorldMapFullscreenContainer.instantiate()
+	get_tree().root.add_child(worldmapfullscreen)
+	ShowWorldMap(worldmapfullscreen.get_child(0), _worldMapState)
+	fullscreenHelperUI = worldmapfullscreen
+	return worldmapfullscreen
+
+
+
+func CloseUI():
+	if fullscreenHelperUI != null:
+		reparent(get_tree().root)
+		fullscreenHelperUI.queue_free()
+		visible = false
