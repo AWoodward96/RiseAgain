@@ -1,5 +1,5 @@
 @tool
-extends Control
+extends Line2D
 class_name POIAdjacencyData
 
 @export var Neighbor : POI
@@ -15,7 +15,6 @@ class_name POIAdjacencyData
 
 func RefreshName():
 	name = "{0}_{1}".format([GameSettingsTemplate.Direction.keys()[Direction], str(Traversable)])
-
 
 func PassesRequirement():
 	var passed = true

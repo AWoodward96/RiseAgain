@@ -56,11 +56,11 @@ void fragment() {
 		} else
 		{
 			new_color.rgb = hsv2rgb(rgb2hsv(new_color.rgb) * vec3(hue, saturation, value));
-			
+
 		}
 
 		COLOR = new_color * tint;
-		
+
 	}
 	else
 	{

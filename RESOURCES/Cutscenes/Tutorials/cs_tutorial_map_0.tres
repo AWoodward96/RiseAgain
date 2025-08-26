@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=221 format=3 uid="uid://co8lbhq0yd011"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=220 format=3 uid="uid://co8lbhq0yd011"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_y6up8"]
 [ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_6pvlw"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="3_citbk"]
 [ext_resource type="Script" uid="uid://2uw8x4g827x8" path="res://SCRIPTS/Cutscene/Events/InvisibleReticleEvent.gd" id="3_gcj32"]
 [ext_resource type="Script" uid="uid://cl5ml7e14etw6" path="res://SCRIPTS/Cutscene/Events/BlockSaveEvent.gd" id="3_xh0ul"]
-[ext_resource type="Resource" uid="uid://ddhgteb5cmmht" path="res://RESOURCES/Maps/Tutorial/tutorial_campaign.tres" id="4_3d2lw"]
 [ext_resource type="Script" uid="uid://b0s56ficl17m0" path="res://SCRIPTS/Cutscene/Events/DisableObjectiveUIEvent.gd" id="4_88s7x"]
 [ext_resource type="Script" uid="uid://q7dphejawhyx" path="res://SCRIPTS/Cutscene/Events/DisableWinconEvent.gd" id="4_w22et"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="5_g2ng1"]
@@ -74,7 +73,7 @@ metadata/_custom_type_script = "uid://q7dphejawhyx"
 
 [sub_resource type="Resource" id="Resource_fhwlb"]
 script = ExtResource("7_aouap")
-campaign = ExtResource("4_3d2lw")
+poiID = ""
 roster = Array[ExtResource("5_g2ng1")]([ExtResource("6_om1a3")])
 
 [sub_resource type="Resource" id="Resource_ybgik"]

@@ -8,6 +8,7 @@ signal FormationSelected
 @export var FormationButton : Button
 @export var ItemButton : Button
 @export var BlockInstantStartTimer : float = 1
+@export var FacadeAnimator : AnimationPlayer
 
 @export var mapObjectiveText : Label
 @export var optionalObjectiveLabel : Label
@@ -56,13 +57,18 @@ func _process(_delta):
 	else:
 		blockTimer += _delta
 
-func SetFormationMode(_enabled : bool):
-	MenuParent.visible = !_enabled
-	FormationParent.visible = _enabled
-	ctrl.BlockMovementInput = !_enabled
-	ctrl.reticle.visible = _enabled
-	if !_enabled:
+func SetFormationMode(_formationMode : bool):
+	ItemButton.disabled = _formationMode
+	FormationButton.disabled = _formationMode
+	if !_formationMode:
+		FacadeAnimator.play("ToMenu")
 		FormationButton.grab_focus()
+	else:
+		FacadeAnimator.play("ToFormation")
+
+	FormationParent.visible = _formationMode
+	ctrl.BlockMovementInput = !_formationMode
+	ctrl.reticle.visible = _formationMode
 
 func OnFormationButton():
 	SetFormationMode(true)

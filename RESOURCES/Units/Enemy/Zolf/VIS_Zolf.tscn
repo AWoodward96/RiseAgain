@@ -835,13 +835,12 @@ shape = SubResource("RectangleShape2D_4m7bv")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1sb1s")
-position = Vector2(236, 26)
+position = Vector2(32, 32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w1d2e")
-animation = &"use_item_out"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.418844
 offset = Vector2(0, -0.295)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

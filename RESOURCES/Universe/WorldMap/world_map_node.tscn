@@ -1,21 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://i7m2hed1bp2d"]
+[gd_scene load_steps=6 format=3 uid="uid://i7m2hed1bp2d"]
 
 [ext_resource type="Script" uid="uid://o20btdqgwxaj" path="res://SCRIPTS/Universe/POI.gd" id="1_7687h"]
+[ext_resource type="Texture2D" uid="uid://3nksfmjburie" path="res://ART/UI/Lines/linetex_dotted.png" id="2_b8erh"]
 [ext_resource type="Texture2D" uid="uid://bslf8k0b4x4ov" path="res://ART/UI/WorldMap/Icons_0.png" id="2_c1uc1"]
+[ext_resource type="Texture2D" uid="uid://gi66oped4ovm" path="res://ART/UI/Lines/linetex_full.png" id="2_dkg3c"]
+[ext_resource type="Texture2D" uid="uid://bw0iaqy6j7axy" path="res://ART/UI/Lines/linetex_dotted_tiny.png" id="3_hct3t"]
 
-[node name="MAROON_A1" type="Control" node_paths=PackedStringArray("VisualIcon", "UpLine", "RightLine", "DownLine", "LeftLine") groups=["MapPOI"]]
+[node name="MAROON_A1" type="Control" node_paths=PackedStringArray("VisualIcon") groups=["MapPOI"]]
+texture_repeat = 2
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7687h")
 VisualIcon = NodePath("Visual")
-UpLine = NodePath("UpLine")
-RightLine = NodePath("RightLine")
-DownLine = NodePath("DownLine")
-LeftLine = NodePath("LeftLine")
+LineDotted = ExtResource("2_b8erh")
+LineTiny = ExtResource("3_hct3t")
+LineFull = ExtResource("2_dkg3c")
 
 [node name="UpLine" type="Line2D" parent="."]
 visible = false
-points = PackedVector2Array(0, 0)
+texture = ExtResource("2_dkg3c")
+texture_mode = 1
 
 [node name="RightLine" type="Line2D" parent="."]
 visible = false

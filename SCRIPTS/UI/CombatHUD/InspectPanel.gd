@@ -119,7 +119,7 @@ func UpdateStatsUI():
 func _process(_delta):
 	if ctrl != null:
 		if ctrl.ControllerState.ShowInspectUI():
-			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null && ctrl.CurrentTile.Occupant.ShroudedFromPlayer && !Disabled && !GlobalDisable:
+			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null && !ctrl.CurrentTile.Occupant.ShroudedFromPlayer && !Disabled && !GlobalDisable:
 				visible = true
 				Update(ctrl.CurrentTile.Occupant)
 			else:

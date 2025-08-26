@@ -167,7 +167,7 @@ func UpdateObjectives():
 
 
 func OnTileChanged(_tile : Tile):
-	if _tile.Occupant == null || _tile.Occupant.ShroudedFromPlayer:
+	if _tile.Occupant == null || (_tile.Occupant != null && _tile.Occupant.ShroudedFromPlayer):
 		HideInspectUI()
 	else:
 		InspectUI.Disabled = false

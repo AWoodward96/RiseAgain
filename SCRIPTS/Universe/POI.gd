@@ -12,6 +12,7 @@ enum POI_VisualStyle {
 @export var loc_title : String
 @export var loc_description : String
 @export var internal_name : String
+@export var requirements : Array[RequirementBase] = []
 
 @export var Maps : MapBlock
 @export var VisualStyle : POI_VisualStyle = POI_VisualStyle.CombatMap
@@ -25,32 +26,27 @@ enum POI_VisualStyle {
 
 @export var AdjacentPOIs : Array[POIAdjacencyData]
 
-#@export var Up : POI
-#@export var Right : POI
-#@export var Down : POI
-#@export var Left : POI
-#
-#@export_category("Lines")
-#@export var UpLine : Line2D
-#@export var RightLine : Line2D
-#@export var DownLine : Line2D
-#@export var LeftLine : Line2D
+@export_category("Line Data")
+
+@export var LineDotted : Texture2D
+@export var LineTiny : Texture2D
+@export var LineFull : Texture2D
+@export var DefaultLineColor : Color = Color.WHITE
+@export var TraversedLineColor : Color = Color.DARK_CYAN
+
 
 var selected = false
 var selectable = false
 
 
-func _process(delta):
-	#UpdateLine(UpLine, Up)
-	#UpdateLine(RightLine, Right)
-	#UpdateLine(DownLine, Down)
-	#UpdateLine(LeftLine, Left)
 
-	AdjacentPOIs.clear()
-	var children = get_children()
-	for child in children:
-		if child is POIAdjacencyData:
-			AdjacentPOIs.append(child as POIAdjacencyData)
+func _process(delta):
+	if Engine.is_editor_hint():
+		AdjacentPOIs.clear()
+		var children = get_children()
+		for child in children:
+			if child is POIAdjacencyData:
+				AdjacentPOIs.append(child as POIAdjacencyData)
 
 	if VisualIcon != null:
 		if !selected:
@@ -58,18 +54,38 @@ func _process(delta):
 		else:
 			VisualIcon.frame = VisualStyle + 1
 
+func Refresh():
+	for adjacency in AdjacentPOIs:
+		if !adjacency.PassesRequirement() || adjacency.Neighbor == null:
+			continue
 
-func UpdateLine(_line2d : Line2D, _neighbor : POI):
-	if _line2d == null:
+		var traversed = false
+		if GameManager.CurrentCampaign != null:
+			traversed = GameManager.CurrentCampaign.campaignLedger.has(adjacency.Neighbor.internal_name)
+
+
+		UpdateLine(adjacency, traversed)
+	pass
+
+func UpdateLine(_neighborData : POIAdjacencyData, _traversed : bool):
+	if _neighborData == null:
 		return
 
-	if _neighbor == null:
-		_line2d.visible = false
+	if !_neighborData.Traversable:
+		_neighborData.visible = false
 		return
 
-	_line2d.visible = true
+	if _traversed:
+		_neighborData.texture = LineFull
+		_neighborData.default_color = TraversedLineColor
+	else:
+		_neighborData.default_color = DefaultLineColor
+		_neighborData.texture = LineDotted
 
-	_line2d.clear_points()
-	_line2d.add_point(Vector2.ZERO)
-	var dst = _neighbor.global_position - global_position
-	_line2d.add_point(dst)
+	_neighborData.visible = true
+	_neighborData.texture_mode = Line2D.LINE_TEXTURE_TILE
+
+	_neighborData.clear_points()
+	_neighborData.add_point(Vector2.ZERO)
+	var dst = _neighborData.Neighbor.global_position - global_position
+	_neighborData.add_point(dst)

@@ -1,70 +1,82 @@
-[gd_scene load_steps=27 format=3 uid="uid://dh70y8e0uaagu"]
+[gd_scene load_steps=52 format=3 uid="uid://dh70y8e0uaagu"]
 
 [ext_resource type="Script" uid="uid://cuyhkckfri4i7" path="res://SCRIPTS/Universe/WorldMap.gd" id="1_rl7wh"]
 [ext_resource type="Texture2D" uid="uid://cj1ebrnc2c1dj" path="res://ART/UI/WorldMap/RiseAgainMap_NoLabels.jpg" id="2_rj684"]
 [ext_resource type="PackedScene" uid="uid://i7m2hed1bp2d" path="res://RESOURCES/Universe/WorldMap/world_map_node.tscn" id="3_1qqkx"]
 [ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="4_2s53d"]
-[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default.tscn" id="5_0jkyx"]
-[ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="6_brko7"]
+[ext_resource type="PackedScene" uid="uid://g70ucf3btrt8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_alt1.tscn" id="5_3url7"]
+[ext_resource type="PackedScene" uid="uid://crf3nsxjbjrhb" path="res://RESOURCES/Maps/Tutorial/tutorial_a01_default.tscn" id="5_mjqff"]
+[ext_resource type="PackedScene" uid="uid://b1wafu4c325v1" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a01_default.tscn" id="6_ha4xq"]
 [ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="7_fodad"]
 [ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="8_2hqp7"]
-[ext_resource type="PackedScene" uid="uid://t8g8du77bfim" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_abandonedcart.tscn" id="9_euf0h"]
+[ext_resource type="PackedScene" uid="uid://4rtlps8m0j20" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_fallenlog.tscn" id="9_3url7"]
 [ext_resource type="Script" uid="uid://b0512m63jyeuw" path="res://SCRIPTS/Universe/POIAdjacencyData.gd" id="9_hw81d"]
-[ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="10_08qhw"]
-[ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="11_wg2dy"]
+[ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b03_default.tscn" id="10_5nky0"]
+[ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="11_ha4xq"]
+[ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b01_default.tscn" id="11_mjqff"]
+[ext_resource type="PackedScene" uid="uid://l37idahcw0k7" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_alt1.tscn" id="12_mjqff"]
 [ext_resource type="PackedScene" uid="uid://bmucnmn8tsjf8" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_campsite_default.tscn" id="12_wro5e"]
 [ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="13_0jkyx"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="13_3url7"]
 [ext_resource type="Texture2D" uid="uid://c15l7muofk0qs" path="res://ART/UI/Textures/parchment_2.png" id="13_fodad"]
 [ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="14_2hqp7"]
+[ext_resource type="Resource" uid="uid://dwvjo3jy73m3o" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_root.tres" id="14_ha4xq"]
+[ext_resource type="PackedScene" uid="uid://571bc5ftblmp" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b01_alt1.tscn" id="14_sk07h"]
+[ext_resource type="Script" uid="uid://c2efja0836lg1" path="res://SCRIPTS/Cutscene/Requirements/CutsceneCompleteReq.gd" id="15_mjqff"]
+[ext_resource type="PackedScene" uid="uid://cqy4h7qsy5itx" path="res://RESOURCES/Maps/Tutorial/tutorial_a02_default.tscn" id="21_gkqti"]
+[ext_resource type="PackedScene" uid="uid://p6uj5vrpd3mi" path="res://RESOURCES/Maps/Tutorial/tutorial_a03_default.tscn" id="21_uxwcx"]
+[ext_resource type="PackedScene" uid="uid://dwdq8rmb2bu2f" path="res://RESOURCES/Maps/Tutorial/tutorial_a04_default.tscn" id="23_v7ae0"]
 
-[sub_resource type="Resource" id="Resource_1u4e8"]
-resource_name = "Maroon 1 Default"
+[sub_resource type="Resource" id="Resource_cp0c3"]
+resource_name = "Maroon A01 Default"
 script = ExtResource("4_2s53d")
-map = ExtResource("5_0jkyx")
+map = ExtResource("6_ha4xq")
 weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
-[sub_resource type="Resource" id="Resource_4fp8y"]
-resource_name = "Maroon 1 Alt"
+[sub_resource type="Resource" id="Resource_4l4eh"]
+resource_name = "Maroon A1 Default"
 script = ExtResource("4_2s53d")
-map = ExtResource("6_brko7")
+map = ExtResource("5_3url7")
 weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
-[sub_resource type="Resource" id="Resource_osrvf"]
+[sub_resource type="Resource" id="Resource_yj20s"]
 script = ExtResource("8_2hqp7")
 priorityMapOptions = Array[ExtResource("7_fodad")]([])
-generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_1u4e8"), SubResource("Resource_4fp8y")])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_cp0c3"), SubResource("Resource_4l4eh")])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
-[sub_resource type="Resource" id="Resource_0cm5j"]
+[sub_resource type="Resource" id="Resource_ha4xq"]
 script = ExtResource("4_2s53d")
-map = ExtResource("9_euf0h")
+map = ExtResource("9_3url7")
 weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
-[sub_resource type="Resource" id="Resource_4qg23"]
+[sub_resource type="Resource" id="Resource_3url7"]
 script = ExtResource("8_2hqp7")
 priorityMapOptions = Array[ExtResource("7_fodad")]([])
-generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_0cm5j")])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_ha4xq")])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
-[sub_resource type="Resource" id="Resource_214de"]
+[sub_resource type="Resource" id="Resource_uxwcx"]
+resource_name = "A02 Default"
 script = ExtResource("4_2s53d")
-map = ExtResource("10_08qhw")
+map = ExtResource("11_ha4xq")
 weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
-[sub_resource type="Resource" id="Resource_cm8qb"]
+[sub_resource type="Resource" id="Resource_gkqti"]
+resource_name = "Maroon A02 alt"
 script = ExtResource("4_2s53d")
-map = ExtResource("11_wg2dy")
+map = ExtResource("12_mjqff")
 weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
-[sub_resource type="Resource" id="Resource_frl1j"]
+[sub_resource type="Resource" id="Resource_6jyj5"]
 script = ExtResource("8_2hqp7")
 priorityMapOptions = Array[ExtResource("7_fodad")]([])
-generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_214de"), SubResource("Resource_cm8qb")])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_uxwcx"), SubResource("Resource_gkqti")])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [sub_resource type="Resource" id="Resource_xetb1"]
@@ -77,6 +89,99 @@ metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 script = ExtResource("8_2hqp7")
 priorityMapOptions = Array[ExtResource("7_fodad")]([])
 generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_xetb1")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_v7ae0"]
+resource_name = "Maroon B01 Default"
+script = ExtResource("4_2s53d")
+map = ExtResource("11_mjqff")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_t5ijk"]
+resource_name = "Maroon B01 Alt"
+script = ExtResource("4_2s53d")
+map = ExtResource("14_sk07h")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_1bxj8"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_v7ae0"), SubResource("Resource_t5ijk")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_wgfem"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_ha4xq")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_f4kqm"]
+resource_name = "Maroon Finale"
+script = ExtResource("4_2s53d")
+map = ExtResource("10_5nky0")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_04up2"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_f4kqm")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_sk07h"]
+script = ExtResource("15_mjqff")
+Cutscene = ExtResource("14_ha4xq")
+NOT = true
+metadata/_custom_type_script = "uid://c2efja0836lg1"
+
+[sub_resource type="Resource" id="Resource_swl8c"]
+script = ExtResource("4_2s53d")
+map = ExtResource("5_mjqff")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_wuyvl"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_swl8c")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_i3133"]
+script = ExtResource("4_2s53d")
+map = ExtResource("21_gkqti")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_xvog4"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_i3133")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_qdi75"]
+script = ExtResource("4_2s53d")
+map = ExtResource("21_uxwcx")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_m7ch4"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_qdi75")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_3c0jm"]
+script = ExtResource("4_2s53d")
+map = ExtResource("23_v7ae0")
+weight = 1
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_b6nwn"]
+script = ExtResource("8_2hqp7")
+priorityMapOptions = Array[ExtResource("7_fodad")]([])
+generalMapOptions = Array[ExtResource("4_2s53d")]([SubResource("Resource_3c0jm")])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [node name="WorldMap" type="Control" node_paths=PackedStringArray("offset", "HoverPanelParent", "HoverPanelTitleLabel", "HoverPanelDescLabel")]
@@ -126,23 +231,15 @@ offset_bottom = 165.0
 loc_title = "map_maroon_a1_title"
 loc_description = "map_maroon_a1_desc"
 internal_name = "maroon_a1"
-Maps = SubResource("Resource_osrvf")
-AdjacentPOIs = [NodePath("../../BASTION/Up_true")]
+Maps = SubResource("Resource_yj20s")
+AdjacentPOIs = [NodePath("Up_true"), NodePath("Down_false")]
 
-[node name="Up_true" type="Control" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A1" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-anchors_preset = 0
-offset_top = 1.0
-offset_bottom = 1.0
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A1" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../MAROON_EVENT_1")
 metadata/_custom_type_script = "uid://b0512m63jyeuw"
 
-[node name="Down_false" type="Control" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A1" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-anchors_preset = 0
-offset_top = 1.0
-offset_bottom = 1.0
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A1" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../../BASTION")
 Direction = 2
@@ -157,20 +254,16 @@ offset_bottom = 110.0
 loc_title = "map_maroon_event_1_title"
 loc_description = "map_maroon_event_1_desc"
 internal_name = "maroon_event_1"
-Maps = SubResource("Resource_4qg23")
+Maps = SubResource("Resource_3url7")
 VisualStyle = 11
-AdjacentPOIs = [NodePath("../../BASTION/Up_true")]
+AdjacentPOIs = [NodePath("Up_true"), NodePath("Down_false")]
 
-[node name="Up_true" type="Control" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_1" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-anchors_preset = 0
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_1" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../MAROON_A2")
 metadata/_custom_type_script = "uid://b0512m63jyeuw"
 
-[node name="Down_false" type="Control" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_1" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-anchors_preset = 0
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_1" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../MAROON_A1")
 Direction = 2
@@ -185,26 +278,22 @@ offset_bottom = 66.0
 loc_title = "map_maroon_a2_title"
 loc_description = "map_maroon_a2_desc"
 internal_name = "maroon_a2"
-Maps = SubResource("Resource_frl1j")
-AdjacentPOIs = [NodePath("../../BASTION/Up_true")]
+Maps = SubResource("Resource_6jyj5")
+AdjacentPOIs = [NodePath("Up_true"), NodePath("Down_false")]
 
-[node name="Up_true" type="Control" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A2" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-anchors_preset = 0
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A2" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../MAROON_CAMPSITE")
 metadata/_custom_type_script = "uid://b0512m63jyeuw"
 
-[node name="Down_false" type="Control" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A2" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-anchors_preset = 0
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_A2" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../MAROON_EVENT_1")
 Direction = 2
 Traversable = false
 metadata/_custom_type_script = "uid://b0512m63jyeuw"
 
-[node name="MAROON_CAMPSITE" parent="Offset/NodeGroups/MAROON_FOREST" instance=ExtResource("3_1qqkx")]
+[node name="MAROON_CAMPSITE" parent="Offset/NodeGroups/MAROON_FOREST" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
 offset_left = -534.0
 offset_top = 14.0
 offset_right = -534.0
@@ -214,6 +303,196 @@ loc_description = "map_maroon_campsite_1_desc"
 internal_name = "maroon_campsite_1"
 Maps = SubResource("Resource_dctlb")
 VisualStyle = 19
+AdjacentPOIs = [NodePath("Down_false"), NodePath("Up_true")]
+
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_CAMPSITE" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_A2")
+Direction = 2
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_CAMPSITE" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_B1")
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="MAROON_B1" parent="Offset/NodeGroups/MAROON_FOREST" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -571.0
+offset_top = -30.0
+offset_right = -571.0
+offset_bottom = -30.0
+loc_title = "map_maroon_b1_title"
+loc_description = "map_maroon_b1_desc"
+internal_name = "maroon_b1"
+Maps = SubResource("Resource_1bxj8")
+AdjacentPOIs = [NodePath("Up_true"), NodePath("Down_false")]
+
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_B1" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_EVENT_2")
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_B1" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_CAMPSITE")
+Direction = 2
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="MAROON_EVENT_2" parent="Offset/NodeGroups/MAROON_FOREST" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -550.0
+offset_top = -89.0
+offset_right = -550.0
+offset_bottom = -89.0
+loc_title = "map_maroon_event_2_title"
+loc_description = "map_maroon_event_2_desc"
+internal_name = "maroon_event_2"
+Maps = SubResource("Resource_wgfem")
+VisualStyle = 11
+AdjacentPOIs = [NodePath("Up_true"), NodePath("Right_false"), NodePath("Down_false")]
+
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_B2")
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Right_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_B2")
+Direction = 1
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_EVENT_2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_B1")
+Direction = 2
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="MAROON_B2" parent="Offset/NodeGroups/MAROON_FOREST" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -477.0
+offset_top = -107.0
+offset_right = -477.0
+offset_bottom = -107.0
+loc_title = "map_maroon_b2_title"
+loc_description = "map_maroon_b2_desc"
+internal_name = "maroon_b2"
+Maps = SubResource("Resource_04up2")
+AdjacentPOIs = [NodePath("Left_false"), NodePath("Down_false")]
+
+[node name="Left_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_B2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_EVENT_2")
+Direction = 3
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Down_false" type="Line2D" parent="Offset/NodeGroups/MAROON_FOREST/MAROON_B2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../MAROON_EVENT_2")
+Direction = 2
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="TUTORIAL" type="Control" parent="Offset/NodeGroups"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TUTORIAL_A1" parent="Offset/NodeGroups/TUTORIAL" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -643.0
+offset_top = 339.0
+offset_right = -643.0
+offset_bottom = 339.0
+loc_title = "map_tutorial_a1_title"
+loc_description = "map_tutorial_a1_desc"
+internal_name = "tutorial_a1"
+requirements = Array[ExtResource("13_3url7")]([SubResource("Resource_sk07h")])
+Maps = SubResource("Resource_wuyvl")
+AdjacentPOIs = [NodePath("Right_true")]
+
+[node name="Right_true" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A1" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL_A2")
+Direction = 1
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="TUTORIAL_A2" parent="Offset/NodeGroups/TUTORIAL" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -584.0
+offset_top = 351.0
+offset_right = -584.0
+offset_bottom = 351.0
+loc_title = "map_tutorial_a2_title"
+loc_description = "map_tutorial_a2_desc"
+internal_name = "tutorial_a2"
+requirements = Array[ExtResource("13_3url7")]([SubResource("Resource_sk07h")])
+Maps = SubResource("Resource_xvog4")
+AdjacentPOIs = [NodePath("Left_false"), NodePath("Right_true")]
+
+[node name="Left_false" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL_A1")
+Direction = 3
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Right_true" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A2" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL_A3")
+Direction = 1
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="TUTORIAL_A3" parent="Offset/NodeGroups/TUTORIAL" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -529.0
+offset_top = 324.0
+offset_right = -529.0
+offset_bottom = 324.0
+loc_title = "map_tutorial_a3_title"
+loc_description = "map_tutorial_a3_desc"
+internal_name = "tutorial_a3"
+requirements = Array[ExtResource("13_3url7")]([SubResource("Resource_sk07h")])
+Maps = SubResource("Resource_m7ch4")
+AdjacentPOIs = [NodePath("Left_false"), NodePath("Right_true")]
+
+[node name="Left_false" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A3" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL_A2")
+Direction = 3
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Right_true" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A3" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL_A4")
+Direction = 1
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="TUTORIAL_A4" parent="Offset/NodeGroups/TUTORIAL" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
+offset_left = -457.0
+offset_top = 301.0
+offset_right = -457.0
+offset_bottom = 301.0
+loc_title = "map_tutorial_a4_title"
+loc_description = "map_tutorial_a4_desc"
+internal_name = "tutorial_a4"
+requirements = Array[ExtResource("13_3url7")]([SubResource("Resource_sk07h")])
+Maps = SubResource("Resource_b6nwn")
+AdjacentPOIs = [NodePath("Left_false"), NodePath("Right_true")]
+
+[node name="Left_false" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A4" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL_A3")
+Direction = 3
+Traversable = false
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Right_true" type="Line2D" parent="Offset/NodeGroups/TUTORIAL/TUTORIAL_A4" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../../BASTION")
+Direction = 1
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
 
 [node name="BASTION" parent="Offset/NodeGroups" node_paths=PackedStringArray("AdjacentPOIs") instance=ExtResource("3_1qqkx")]
 offset_left = -382.0
@@ -225,14 +504,18 @@ loc_description = "map_bastion_desc"
 internal_name = "bastion"
 VisualStyle = 5
 StartingNode = true
-AdjacentPOIs = [NodePath("Up_true")]
+AdjacentPOIs = [NodePath("Up_true"), NodePath("Left_false")]
 
-[node name="Up_true" type="Control" parent="Offset/NodeGroups/BASTION" node_paths=PackedStringArray("Neighbor")]
-physics_interpolation_mode = 0
-layout_mode = 3
-anchors_preset = 0
+[node name="Up_true" type="Line2D" parent="Offset/NodeGroups/BASTION" node_paths=PackedStringArray("Neighbor")]
 script = ExtResource("9_hw81d")
 Neighbor = NodePath("../../MAROON_FOREST/MAROON_A1")
+metadata/_custom_type_script = "uid://b0512m63jyeuw"
+
+[node name="Left_false" type="Line2D" parent="Offset/NodeGroups/BASTION" node_paths=PackedStringArray("Neighbor")]
+script = ExtResource("9_hw81d")
+Neighbor = NodePath("../../TUTORIAL/TUTORIAL_A4")
+Direction = 3
+Traversable = false
 metadata/_custom_type_script = "uid://b0512m63jyeuw"
 
 [node name="HoverPanel" type="Control" parent="."]

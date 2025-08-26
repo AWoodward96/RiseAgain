@@ -26,7 +26,6 @@ Stat = ExtResource("14_5ngqw")
 FlatValue = -2
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
-MultipliedByX = false
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_1prea"]
@@ -35,7 +34,6 @@ Stat = ExtResource("15_5ngqw")
 FlatValue = -1
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
-MultipliedByX = false
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_kg6y5"]

@@ -26,6 +26,7 @@ func _Execute(_delta):
 			if tile.Occupant != null && currentMap.startingPositions.has(tile.Position):
 				if tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
 					ctrl.selectedUnit = tile.Occupant
+					tile.Occupant.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 					formationUI.ShowSwapWithPanel(true)
 					currentGrid.ClearActions()
 				else:
@@ -41,6 +42,7 @@ func _Execute(_delta):
 					else:
 						currentGrid.SetUnitGridPosition(ctrl.selectedUnit, tile.Position, true)
 
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 			ctrl.ClearSelectionData()
 			formationUI.ShowSwapWithPanel(false)
 
@@ -49,6 +51,8 @@ func _Execute(_delta):
 	if InputManager.cancelDown:
 		if ctrl.selectedUnit == null:
 			formationUI.SetFormationMode(false)
+		else:
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 
 		ctrl.ClearSelectionData()
 		formationUI.ShowSwapWithPanel(false)

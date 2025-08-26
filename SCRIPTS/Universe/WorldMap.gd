@@ -45,6 +45,7 @@ func Open(_uiState : WorldMapUIState):
 
 func InitNewCampaign():
 	HoverStartingPOI()
+	RefreshAllPOIs()
 	pass
 
 func InitBrowsing():
@@ -53,6 +54,7 @@ func InitBrowsing():
 func InitNextMapSelection():
 	# Get the current campaign
 	HoverCurrentMapPOI()
+	RefreshAllPOIs()
 	UpdateForTraversal()
 	pass
 
@@ -82,7 +84,11 @@ func UpdateForTraversal():
 			if !adjacencyData.PassesRequirement():
 				continue
 
-		adjacencyData.Neighbor.selectable = true
+			adjacencyData.Neighbor.selectable = true
+		else:
+			var parent = adjacencyData.get_parent()
+			push_error("Adjacency: ", adjacencyData.name ," - child of ", parent.name, " doesn't have a neighbor. Fix")
+
 
 func BuildPOIArray():
 	allPOIS.clear()
@@ -166,6 +172,11 @@ func UpdatePOIPanelText():
 
 	HoverPanelTitleLabel.text = currentlySelectedPOI.loc_title
 	HoverPanelDescLabel.text = currentlySelectedPOI.loc_description
+
+func RefreshAllPOIs():
+	for poi in allPOIS:
+		if poi != null:
+			poi.Refresh()
 
 func HoverPOI(_poi : POI, _snapTo : bool):
 	if currentlySelectedPOI != null:
