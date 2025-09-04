@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://hb6jdkmwn5fv"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_xf4b5"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_xsrk5"]
+
+[resource]
+script = ExtResource("1_xsrk5")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_darkfell.tscn"
+StartsDiscoverable = true
+StartUnlocked = true
+Descriptors = Array[ExtResource("1_xf4b5")]([])

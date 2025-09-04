@@ -1,0 +1,246 @@
+[gd_scene load_steps=18 format=3 uid="uid://ba3vlpk5kjlh"]
+
+[ext_resource type="Script" uid="uid://bisc10d5pi8ku" path="res://SCRIPTS/Universe/Tavern/MealListingEntry.gd" id="1_3pykx"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_t05da"]
+[ext_resource type="FontFile" uid="uid://cp8af7y41yx1x" path="res://ART/Fonts/Ark 6.ttf" id="2_3pykx"]
+[ext_resource type="Texture2D" uid="uid://dq7qxasdckqsg" path="res://ART/Icons/Resources/food.png" id="3_vhd7l"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="4_n25pp"]
+[ext_resource type="Texture2D" uid="uid://b8qbi13lna3k8" path="res://ART/UI/locked_icon.png" id="6_vhd7l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q318w"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.411765, 0.376471, 0.368627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pykx"]
+bg_color = Color(0.678431, 0.623529, 0.545098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.235294, 0.223529, 0.196078, 1)
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pykx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2oyqt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0wkw"]
+font = ExtResource("1_t05da")
+font_color = Color(0.235294, 0.223529, 0.196078, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_q318w"]
+font = ExtResource("2_3pykx")
+font_color = Color(0.333333, 0.309804, 0.27451, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yd7et"]
+line_spacing = 0.0
+font = ExtResource("4_n25pp")
+font_size = 32
+font_color = Color(0.333333, 0.309804, 0.27451, 1)
+
+[sub_resource type="Animation" id="Animation_n25pp"]
+resource_name = "Locked"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LockedParent/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 8), Vector2(128, 0), Vector2(128, 9), Vector2(128, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_3pykx"]
+resource_name = "PurchaseFailed"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/PriceContainerOffset/PriceContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.139626, 0.0349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vhd7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/PriceContainerOffset/PriceContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LockedParent/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n25pp"]
+_data = {
+&"Locked": SubResource("Animation_n25pp"),
+&"PurchaseFailed": SubResource("Animation_3pykx"),
+&"RESET": SubResource("Animation_vhd7l")
+}
+
+[node name="MealListing" type="Panel" node_paths=PackedStringArray("MealTitle", "MealDesc", "MealIcon", "Cost", "MyButton", "LockedParent", "Animator")]
+custom_minimum_size = Vector2(320, 48)
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q318w")
+script = ExtResource("1_3pykx")
+MealTitle = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/MealTitle")
+MealDesc = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/MealDesc")
+MealIcon = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/TextureRect")
+Cost = NodePath("HBoxContainer/PriceContainerOffset/PriceContainer/FoodCost")
+MyButton = NodePath("Button")
+LockedParent = NodePath("LockedParent")
+Animator = NodePath("AnimationPlayer")
+CostCanPay = Color(0.333333, 0.309804, 0.27451, 1)
+CostCantPay = Color(0.33, 0.1782, 0.1782, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_3pykx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3pykx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_2oyqt")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MealTitle" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Grub"
+label_settings = SubResource("LabelSettings_y0wkw")
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.160784, 0.141176, 0.0941176, 1)
+
+[node name="MealDesc" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "+1% All Stat Growths"
+label_settings = SubResource("LabelSettings_q318w")
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PriceContainerOffset" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="PriceContainer" type="HBoxContainer" parent="HBoxContainer/PriceContainerOffset"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 140.0
+offset_bottom = 49.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PriceContainerOffset/PriceContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PriceContainerOffset/PriceContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_vhd7l")
+expand_mode = 1
+
+[node name="FoodCost" type="Label" parent="HBoxContainer/PriceContainerOffset/PriceContainer"]
+layout_mode = 2
+text = "ui_xNUM"
+label_settings = SubResource("LabelSettings_yd7et")
+
+[node name="Spacer2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n25pp")
+}
+
+[node name="LockedParent" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.286275)
+
+[node name="TextureRect" type="TextureRect" parent="LockedParent"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 40.0
+texture = ExtResource("6_vhd7l")
+
+[connection signal="pressed" from="Button" to="." method="OnButtonPressed"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://bjtxp4kdt5wvy"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=62 format=3 uid="uid://bjtxp4kdt5wvy"]
 
 [ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="1_tce1b"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pgscv"]
@@ -12,11 +12,28 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_ddobi"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_8a84f"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_l5q2i"]
-[ext_resource type="PackedScene" uid="uid://sk4xm5rs346c" path="res://RESOURCES/Ability/Equippable/lunar_lance.tscn" id="13_cuic2"]
-[ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_v0j6g"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_thk3g"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="14_juknm"]
 [ext_resource type="PackedScene" uid="uid://1f8h3j214nus" path="res://RESOURCES/Units/Ally/Knight/VIS_Knight.tscn" id="15_2ywwj"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_fg716"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="15_u054i"]
 [ext_resource type="Texture2D" uid="uid://da8e6v5th61vs" path="res://ART/Icons/Units/knight.png" id="16_3e3g6"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="16_wxlh0"]
+[ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="17_6i5t4"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="17_gaq1l"]
+[ext_resource type="Texture2D" uid="uid://dl5gn0wedpspr" path="res://ART/Icons/Ability/Equippable/lunar_lance.png" id="18_5uyvj"]
+[ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="18_6h1w4"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_1b14q"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="20_l8ccu"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_38ap0"]
+[ext_resource type="Resource" uid="uid://dx1alowpf74li" path="res://RESOURCES/TargetingShapes/lunar_lance_shape.tres" id="22_6regh"]
+[ext_resource type="Script" uid="uid://cnlspk1u6udgh" path="res://SCRIPTS/Ability/PlayAnimationStep.gd" id="23_owo7r"]
+[ext_resource type="PackedScene" uid="uid://x6vokynwesn0" path="res://RESOURCES/VFX/heal_vfx.tscn" id="24_mwdkl"]
+[ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="25_u5khj"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="26_7xjma"]
+[ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="27_4un8s"]
+[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="28_g2xjq"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="29_k703c"]
 
 [sub_resource type="Resource" id="Resource_geyf3"]
 script = ExtResource("2_pgscv")
@@ -63,6 +80,82 @@ script = ExtResource("2_pgscv")
 Template = ExtResource("11_8a84f")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_0qngs"]
+script = ExtResource("16_wxlh0")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_njyb8"]
+script = ExtResource("17_gaq1l")
+
+[sub_resource type="Resource" id="Resource_56t7s"]
+script = ExtResource("2_pgscv")
+Template = ExtResource("4_eic0y")
+Value = 4
+
+[sub_resource type="PackedScene" id="PackedScene_pwswn"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("lunar_lance", "Node2D", "script", "type", "abilityCooldown", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script", "Type", "shapedTiles", "stopShapeOnWall"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 1073741834, 8, 1073741835, 9, 1073741836, 10, 0, 1073741824, 0, 14, 13, -1, 2, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 4, 19, 13, 20, 14, 21, 15, 22, 16, 0, 1073741826, 0, 24, 23, -1, 4, 25, 17, 26, 18, 27, 19, 28, 20, 0),
+"variants": [ExtResource("14_juknm"), 1, 0, Array[ExtResource("15_u054i")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")]), "lunar_lance", "weap_lunar_lance_name", "weap_lunar_lance_desc", ExtResource("18_5uyvj"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_1b14q"), Array[ExtResource("2_pgscv")]([SubResource("Resource_56t7s")]), ExtResource("20_l8ccu"), ExtResource("4_eic0y"), ExtResource("5_4jjhj"), 0.0, ExtResource("21_38ap0"), 2, ExtResource("22_6regh"), true],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_tbbfs"]
+script = ExtResource("23_owo7r")
+AnimName = "use_item_in"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = true
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_0uc5p"]
+script = ExtResource("25_u5khj")
+VFXPrefab = ExtResource("24_mwdkl")
+metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
+
+[sub_resource type="Resource" id="Resource_vod3w"]
+script = ExtResource("26_7xjma")
+time = 0.75
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_dml4r"]
+script = ExtResource("27_4un8s")
+
+[sub_resource type="Resource" id="Resource_cf2ed"]
+script = ExtResource("23_owo7r")
+AnimName = "use_item_out"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = true
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_kf6lm"]
+script = ExtResource("23_owo7r")
+AnimName = "idle"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = false
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="PackedScene" id="PackedScene_77170"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("gauze", "Node2D", "script", "type", "abilityCooldown", "limitedUsage", "usageRestoredByCampfire", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "HealData", "HealComponent", "Node2D", "script", "FlatValue", "SkillTargetingData", "Node2D", "script", "TeamTargeting", "TargetRange", "Type", "CanTargetSelf"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 2, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 5, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 0),
+"variants": [ExtResource("14_juknm"), 2, 0, 3, 3, Array[ExtResource("15_u054i")]([SubResource("Resource_tbbfs"), SubResource("Resource_0uc5p"), SubResource("Resource_vod3w"), SubResource("Resource_dml4r"), SubResource("Resource_cf2ed"), SubResource("Resource_kf6lm")]), "gauze", "tact_gauze_name", "tact_gauze_desc", ExtResource("28_g2xjq"), NodePath("SkillTargetingData"), NodePath("HealComponent"), ExtResource("29_k703c"), 10.0, ExtResource("21_38ap0"), 0, Vector2i(0, 0), 3, true],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_cfnyk"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("3_mywxh")
@@ -105,12 +198,14 @@ VisualPrefab = ExtResource("15_2ywwj")
 BaseStats = Array[ExtResource("2_pgscv")]([SubResource("Resource_geyf3"), SubResource("Resource_nnsad"), SubResource("Resource_vcva1"), SubResource("Resource_rb7vm"), SubResource("Resource_0omq8"), SubResource("Resource_p77rl"), SubResource("Resource_avcmd"), SubResource("Resource_me2js"), SubResource("Resource_7vy1f")])
 StatGrowths = Array[ExtResource("2_pgscv")]([SubResource("Resource_cfnyk"), SubResource("Resource_6kq6i"), SubResource("Resource_i23ds"), SubResource("Resource_0vfk6"), SubResource("Resource_6556l"), SubResource("Resource_o4cw6"), SubResource("Resource_uxlcr")])
 Affinity = ExtResource("1_tce1b")
-StartingEquippedWeapon = ExtResource("13_cuic2")
-StartingTactical = ExtResource("14_v0j6g")
+StartingEquippedWeapon = SubResource("PackedScene_pwswn")
+StartingTactical = SubResource("PackedScene_77170")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_spearthrow.tscn"])
 Tier1Abilities = Array[String](["uid://owg3aes4dx8x", "uid://bd66sm3kjyqb5"])
 Descriptors = Array[ExtResource("12_l5q2i")]([])
+WeaponDescriptors = Array[ExtResource("12_l5q2i")]([ExtResource("17_6i5t4"), ExtResource("18_6h1w4")])
 GridSize = 1
+ResourceDrops = Array[ExtResource("13_thk3g")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "Knight"
 loc_DisplayName = "unit_knight_name"

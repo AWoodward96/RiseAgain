@@ -9,6 +9,7 @@ script = ExtResource("2_mt4qx")
 AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 2
+HitsEnvironment = true
 Position = Vector2i(0, -2)
 Multiplier = 1.0
 
@@ -17,6 +18,7 @@ script = ExtResource("2_mt4qx")
 AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 2
+HitsEnvironment = true
 Position = Vector2i(-1, -2)
 Multiplier = 1.0
 
@@ -25,6 +27,7 @@ script = ExtResource("2_mt4qx")
 AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 2
+HitsEnvironment = true
 Position = Vector2i(1, -2)
 Multiplier = 1.0
 

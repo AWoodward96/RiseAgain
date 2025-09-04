@@ -5,6 +5,7 @@ class_name UnitUsable
 @export var loc_displayName : String
 @export var loc_displayDesc : String
 @export var icon : Texture2D
+@export var descriptors : Array[DescriptorTemplate]
 
 @export var TargetingData : SkillTargetingData
 @export var UsableDamageData : DamageData

@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="7_fodad"]
 [ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="8_2hqp7"]
 [ext_resource type="PackedScene" uid="uid://4rtlps8m0j20" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_fallenlog.tscn" id="9_3url7"]
-[ext_resource type="Script" uid="uid://b0512m63jyeuw" path="res://SCRIPTS/Universe/POIAdjacencyData.gd" id="9_hw81d"]
+[ext_resource type="Script" uid="uid://b0512m63jyeuw" path="res://SCRIPTS/Universe/WorldMap/POIAdjacencyData.gd" id="9_hw81d"]
 [ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b03_default.tscn" id="10_5nky0"]
 [ext_resource type="PackedScene" uid="uid://oxwcsghwa4k3" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a02_default.tscn" id="11_ha4xq"]
 [ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b01_default.tscn" id="11_mjqff"]

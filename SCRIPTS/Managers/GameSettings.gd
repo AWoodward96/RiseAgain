@@ -18,9 +18,17 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 
 @export_category("Bastion Data")
 @export var BastionPrefab : PackedScene
+@export var TavernData : TavernBuildingTemplate
+@export var SmithyData : SmithyBuildingTemplate
 
 @export_category("Universe Data")
 @export var GlobalResources : Array[ResourceTemplate]
+@export var GoldResource : ResourceTemplate
+@export var WoodResource : ResourceTemplate
+@export var FoodResource : ResourceTemplate
+@export var OreResource : ResourceTemplate
+@export var ConcoctionResource : ResourceTemplate
+@export var GemstoneResource : ResourceTemplate
 
 @export_category("Unit Data")
 @export var PlayerControllerPrefab : PackedScene

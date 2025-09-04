@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://be144gxm2qt5i"]
+[gd_scene load_steps=17 format=3 uid="uid://be144gxm2qt5i"]
 
 [ext_resource type="Script" uid="uid://blsxgkwb651m5" path="res://SCRIPTS/Managers/UIManager.gd" id="1_hai6o"]
 [ext_resource type="PackedScene" uid="uid://wsk41q52641b" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.tscn" id="2_fjsnt"]
@@ -13,10 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://b6e83bb58hsat" path="res://RESOURCES/UI/Campsite/campsite_rested_ui.tscn" id="11_jh1u2"]
 [ext_resource type="PackedScene" uid="uid://bbahoua1vgwbw" path="res://RESOURCES/UI/Trade/trade_ui.tscn" id="11_n4xjy"]
 [ext_resource type="PackedScene" uid="uid://qmut2pi3nuyt" path="res://RESOURCES/UI/FullscreenNotificationUI.tscn" id="13_wtqnq"]
-[ext_resource type="PackedScene" uid="uid://pkegklqav3wx" path="res://RESOURCES/Universe/WorldMap/world_map_container.tscn" id="14_2vy6k"]
+[ext_resource type="PackedScene" uid="uid://c5i8xff3y8gud" path="res://RESOURCES/UI/confirm_purchase_ui.tscn" id="14_2vy6k"]
+[ext_resource type="PackedScene" uid="uid://c56vd64fw1a21" path="res://RESOURCES/UI/GenericEntrys/generic_32x32_texture_entry.tscn" id="15_lvcsi"]
+[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="16_lalar"]
 
-[node name="UIManager" type="Node2D"]
+[node name="UIManager" type="Node2D" node_paths=PackedStringArray("Canvas")]
 script = ExtResource("1_hai6o")
+Canvas = NodePath("Canvas")
 AlphaUnitSelection = ExtResource("2_fjsnt")
 AlphaFormationUI = ExtResource("3_36mek")
 CombatHUDUI = ExtResource("4_uspa4")
@@ -29,4 +32,8 @@ CampsiteUIPrefab = ExtResource("10_y6gir")
 CampsiteRestedPopupPrefab = ExtResource("11_jh1u2")
 TradeUIPrefab = ExtResource("11_n4xjy")
 FullscreenNotifUI = ExtResource("13_wtqnq")
-WorldMapFullscreenContainer = ExtResource("14_2vy6k")
+FullscreenConfirmPurchaseUI = ExtResource("14_2vy6k")
+Generic_32x32_Texture = ExtResource("15_lvcsi")
+Generic_StatBlockEntry = ExtResource("16_lalar")
+
+[node name="Canvas" type="CanvasLayer" parent="."]

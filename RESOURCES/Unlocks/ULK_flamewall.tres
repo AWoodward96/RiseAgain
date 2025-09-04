@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://yo3lpske7i62"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_6fmsn"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_ogqjl"]
+
+[resource]
+script = ExtResource("1_6fmsn")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_flamewall.tscn"
+StartsDiscoverable = true
+StartUnlocked = true
+Descriptors = Array[ExtResource("1_ogqjl")]([])

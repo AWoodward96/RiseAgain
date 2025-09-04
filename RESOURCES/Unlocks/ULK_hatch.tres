@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://dh0miuyt5ee2q"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_7m2pn"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_qk6um"]
+
+[resource]
+script = ExtResource("1_7m2pn")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_hatch.tscn"
+StartsDiscoverable = false
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_qk6um")]([])

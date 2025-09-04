@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MealTemplate" load_steps=6 format=3 uid="uid://cxn86rlf7i2ay"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_8y42p"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_4axdo"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="3_pb3sk"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_mahdp"]
+
+[sub_resource type="Resource" id="Resource_ywa03"]
+script = ExtResource("1_8y42p")
+ItemResource = ExtResource("2_4axdo")
+Amount = 99
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[resource]
+script = ExtResource("3_pb3sk")
+loc_title = "meal_notimplemented_title"
+loc_desc = "meal_notimplemented_desc"
+cost = Array[ExtResource("1_8y42p")]([SubResource("Resource_ywa03")])
+statGrowthMods = Array[ExtResource("4_mahdp")]([])
+statModifiers = Array[ExtResource("4_mahdp")]([])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

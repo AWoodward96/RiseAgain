@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=39 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=45 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
@@ -30,12 +30,18 @@
 [ext_resource type="Resource" uid="uid://cqjw06nl7jdy4" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_forest_campaign.tres" id="13_jbp28"]
 [ext_resource type="Script" uid="uid://rx6hw8y5t3o" path="res://SCRIPTS/Maps/Objectives/GameOverObjective.gd" id="13_k6h66"]
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="15_gyih8"]
-[ext_resource type="Script" uid="uid://bqfp2b5gxqbgd" path="res://SCRIPTS/Universe/ResourceTemplate.gd" id="17_gb5h8"]
 [ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="18_pd04j"]
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="18_ygbce"]
 [ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="19_qup0j"]
 [ext_resource type="PackedScene" uid="uid://hosrqyrxnwxc" path="res://RESOURCES/Managers/canvas_modulate.tscn" id="23_14m44"]
 [ext_resource type="PackedScene" uid="uid://crldlj6agxmjg" path="res://RESOURCES/Universe/topdown_player_ctrl.tscn" id="24_jqxsc"]
+[ext_resource type="Script" uid="uid://bqfp2b5gxqbgd" path="res://SCRIPTS/Universe/Resources/ResourceTemplate.gd" id="27_75bht"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="27_gydru"]
+[ext_resource type="Resource" uid="uid://bfsilhgf06rms" path="res://RESOURCES/Resources/Ore.tres" id="28_tq70j"]
+[ext_resource type="Resource" uid="uid://c4af23rldh8lh" path="res://RESOURCES/Resources/Gemstones.tres" id="29_s486h"]
+[ext_resource type="Resource" uid="uid://by0w0356xwmnc" path="res://RESOURCES/Resources/Concoctions.tres" id="30_75bht"]
+[ext_resource type="Resource" uid="uid://cko8hnks4se86" path="res://RESOURCES/Universe/Buildings/Smithy.tres" id="39_24hec"]
+[ext_resource type="Resource" uid="uid://87vbepmdhmjx" path="res://RESOURCES/Universe/Buildings/Tavern.tres" id="39_75bht"]
 
 [sub_resource type="Resource" id="Resource_l1yyb"]
 script = ExtResource("13_k6h66")
@@ -57,7 +63,15 @@ DefaultLossState = SubResource("Resource_l1yyb")
 GridModulatePrefab = ExtResource("23_14m44")
 DefaultMapRewardTable = ExtResource("18_ygbce")
 BastionPrefab = ExtResource("10_q2hqg")
-GlobalResources = Array[ExtResource("17_gb5h8")]([ExtResource("18_pd04j"), ExtResource("19_qup0j")])
+TavernData = ExtResource("39_75bht")
+SmithyData = ExtResource("39_24hec")
+GlobalResources = Array[ExtResource("27_75bht")]([ExtResource("18_pd04j"), ExtResource("19_qup0j"), ExtResource("27_gydru"), ExtResource("28_tq70j"), ExtResource("29_s486h"), ExtResource("30_75bht")])
+GoldResource = ExtResource("18_pd04j")
+WoodResource = ExtResource("19_qup0j")
+FoodResource = ExtResource("27_gydru")
+OreResource = ExtResource("28_tq70j")
+ConcoctionResource = ExtResource("30_75bht")
+GemstoneResource = ExtResource("29_s486h")
 PlayerControllerPrefab = ExtResource("7_77hq5")
 TopdownPlayerControllerPrefab = ExtResource("24_jqxsc")
 DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])

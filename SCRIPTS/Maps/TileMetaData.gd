@@ -7,6 +7,7 @@ class_name TileMetaData
 @export var Water : bool
 @export var FireSpreadChance : float = 0.5
 @export var Shroud : bool = false
+@export var DestructionRewards : Array[ResourceDef]
 
 
 func OnUnitTraversed(_unitInstance : UnitInstance):

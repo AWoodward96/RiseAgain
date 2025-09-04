@@ -42,6 +42,67 @@ func GetUnitPersistence(_unitTemplate : UnitTemplate):
 func IsStartingCutsceneCompleted():
 	return completedCutscenes.has(CutsceneManager.FTUE)
 
+func AddResource(_resourceDef : ResourceDef, _sourcePosition : Vector2, _autoPlayAquisitionAnimation : bool = true):
+	for res in resourceData:
+		if res.template == _resourceDef.ItemResource:
+			res.amount += _resourceDef.Amount
+
+	if _autoPlayAquisitionAnimation:
+		GameManager.GlobalUI.ShowResourceAcquisition(_sourcePosition)
+
+func AddResources(_arrayOfResources : Array[ResourceDef], _sourcePosition : Vector2, _autoPlayAquisitionAnimation : bool = true):
+	for res in _arrayOfResources:
+		AddResource(res, _sourcePosition, false)
+
+	if _autoPlayAquisitionAnimation:
+		GameManager.GlobalUI.ShowResourceAcquisition(_sourcePosition)
+
+func AddPackedResources(_packedResource : PackedResourceDef, _sourcePosition : Vector2, _autoPlayAquisitionAnimation : bool = true):
+	AddResources(_packedResource.cost, _sourcePosition, _autoPlayAquisitionAnimation)
+
+func GetResourceData(_resourceTemplate : ResourceTemplate):
+	for r in resourceData:
+		if r.template == _resourceTemplate:
+			return r
+
+	# debating this - I think if I have a strict set of resources then I should block adding new definitions
+	# This
+	push_error("Could not find resource: [", _resourceTemplate.resource_path, "] is this in error?")
+	return null
+
+func TryPayResourceCost(_cost : Array[ResourceDef], _success : Callable, _failure : Callable):
+	if HasResourceCost(_cost):
+		for c in _cost:
+			var persist = GetResourceData(c.ItemResource)
+			if persist != null:
+				persist.amount -= c.Amount
+
+		GameManager.GlobalUI.ShowResourcePayment(_cost)
+		_success.call()
+
+		# AutoSave if paid
+		Save()
+	else:
+		if _failure != null:
+			_failure.call()
+
+func TryPayPackedResourceCost(_packedResource : PackedResourceDef, _success : Callable, _failure : Callable):
+	return TryPayResourceCost(_packedResource.cost, _success, _failure)
+
+func HasResourceCost(_cost : Array[ResourceDef]):
+	for cost in _cost:
+		if cost == null || cost.ItemResource == null || cost.Amount <= 0:
+			continue
+
+		for res in resourceData:
+			if res.template == cost.ItemResource:
+				if res.amount < cost.Amount:
+					return false
+	return true
+
+func HasPackedResourceCost(_packedResource : PackedResourceDef):
+	return HasResourceCost(_packedResource.cost)
+
 func ToJSON():
 	var saveData = {
 		"resourceData" = PersistDataManager.ArrayToJSON(resourceData),
@@ -80,6 +141,9 @@ func FromJSON(_dict : Dictionary):
 
 	if _dict.has("mapPersistData"):
 		mapPersistData = JSON.parse_string(_dict["mapPersistData"])
+
+	# just in case I add a new resource - players don't have to delete their universe data
+	ValidateGlobalResource()
 	pass
 
 func LoadUnitPersistence():
@@ -107,6 +171,17 @@ func LoadUnitPersistence():
 			file_name = dir.get_next()
 
 	pass
+
+func ValidateGlobalResource():
+	for resource in GameManager.GameSettings.GlobalResources:
+		var persist = GetResourceData(resource)
+		if persist == null:
+			var newResourcePersist = ResourcePersistence.new()
+			newResourcePersist.template = resource
+			newResourcePersist.amount = 0
+			newResourcePersist.name = resource.internalName + PersistDataManager.PERSIST_DATA_SUFFIX
+			resourceData.append(newResourcePersist)
+			resourcePersistParent.add_child(newResourcePersist)
 
 func Save():
 	var save_file = FileAccess.open(PersistDataManager.GLOBAL_FILE, FileAccess.WRITE)

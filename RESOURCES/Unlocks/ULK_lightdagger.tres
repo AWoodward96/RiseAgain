@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://bxerpkf4jrh6r"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_byntk"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_yigql"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_k8ttx"]
+[ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="8_ymma7"]
+
+[resource]
+script = ExtResource("1_byntk")
+AbilityPath = "res://RESOURCES/Ability/Equippable/lightdagger.tscn"
+StartsDiscoverable = true
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_yigql")]([ExtResource("2_k8ttx"), ExtResource("8_ymma7")])

@@ -14,7 +14,10 @@ class_name UnitTemplate
 @export_file("*.tscn") var Tier0Abilities : Array[String]
 @export_file("*.tscn") var Tier1Abilities : Array[String]
 @export var Descriptors : Array[DescriptorTemplate]
+@export var WeaponDescriptors : Array[DescriptorTemplate]
 @export var GridSize : int = 1
+
+@export var ResourceDrops : Array[ResourceDef]
 #@export var BaseClass : ClassTemplate
 
 

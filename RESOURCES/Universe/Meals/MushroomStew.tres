@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MealTemplate" load_steps=8 format=3 uid="uid://dcog5hycake36"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_pmky3"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_163js"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_nebxf"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_nebxf"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_nebxf"]
+
+[sub_resource type="Resource" id="Resource_ywa03"]
+script = ExtResource("1_pmky3")
+ItemResource = ExtResource("2_nebxf")
+Amount = 5
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_nqd8f"]
+script = ExtResource("3_nebxf")
+Template = ExtResource("5_nebxf")
+Value = 10
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_163js")
+loc_title = "meal_mushroomstew_title"
+loc_desc = "meal_mushroomstew_desc"
+cost = Array[ExtResource("1_pmky3")]([SubResource("Resource_ywa03")])
+statGrowthMods = Array[ExtResource("3_nebxf")]([SubResource("Resource_nqd8f")])
+statModifiers = Array[ExtResource("3_nebxf")]([])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

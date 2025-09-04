@@ -6,6 +6,7 @@ static var CurrentCampaign : Campaign
 @export var UnitSettings : UnitSettingsTemplate
 @export var LocalizationSettings : LocSettings
 
+@export var GlobalUI : GlobalUIHelper
 @export var TutorialCutscene : CutsceneTemplate
 @export var LoadingScreenPrefab : PackedScene
 
@@ -28,7 +29,6 @@ func _process(_delta: float):
 
 	if Input.is_action_just_pressed("cheat"):
 		if csrUI != null:
-			remove_child(csrUI)
 			csrUI.queue_free()
 			csrUI = null
 			CSR.Open = false

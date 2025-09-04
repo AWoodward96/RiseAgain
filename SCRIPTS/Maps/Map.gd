@@ -25,6 +25,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var TileSize = 64
 @export var AutosaveEnabled : bool = true
 @export var Biome : BiomeData
+@export var RewardOverride : LootTable
 
 @export_category("Layers")
 @export var tilemap_bg : TileMapLayer
@@ -329,9 +330,14 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 			_context.AbilityData.kills += 1
 
 		if _context.Source != null && _context.Source.currentHealth > 0 && _context.Source.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+			# Add item drops
 			for item in _unitInstance.ItemSlots:
 				if item != null:
 					_context.Source.QueueAcquireLoot(item)
+
+			# add resource gain
+			if _unitInstance.UnitAllegiance == GameSettingsTemplate.TeamID.ENEMY && _unitInstance.Template.ResourceDrops.size() != 0:
+				PersistDataManager.universeData.AddResources(_unitInstance.Template.ResourceDrops, _unitInstance.CurrentTile.GlobalPosition)
 
 
 	# despawn any grid entities that this unit is the owner of

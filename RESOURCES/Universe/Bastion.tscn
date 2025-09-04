@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj0urxfuhjo0c"]
 
 [ext_resource type="Script" uid="uid://bwjdb6ohtij8j" path="res://SCRIPTS/Universe/Bastion.gd" id="1_o08lb"]
-[ext_resource type="PackedScene" uid="uid://c746nspjkmayl" path="res://RESOURCES/Universe/BastionEnvs/env_showcase_0.tscn" id="2_p662c"]
+[ext_resource type="PackedScene" uid="uid://61oi65hp3jdj" path="res://RESOURCES/Universe/BastionEnvs/env_1.tscn" id="2_p662c"]
 
 [node name="Bastion" type="Node2D"]
 script = ExtResource("1_o08lb")

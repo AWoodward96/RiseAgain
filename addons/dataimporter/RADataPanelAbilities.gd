@@ -83,6 +83,10 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 	if _data.has("IsHeal") && _data["IsHeal"]:
 		ModifyHealComponent(_ability, _data)
 
+	if _data.has("persistFilePath"):
+		ModifyUnlockableData(_ability, _data)
+
+
 	log += str("\n[color=green]Successfully modified Ability [/color]", _ability.internalName)
 	var toSave : PackedScene = PackedScene.new()
 	for c in _ability.get_children():
@@ -92,7 +96,7 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 
 	# See https://github.com/godotengine/godot/issues/30302#issuecomment-1140052274
 	toSave.take_over_path(_filePath)
-	var err = ResourceSaver.save(toSave, _filePath)
+	var err = ResourceSaver.save(toSave, _filePath, ResourceSaver.FLAG_CHANGE_PATH)
 	if err != OK:
 		log += str("\n[color=red]FAILED TO SAVE ABILITY AT PATH: [/color]", _filePath, "[color=red]ERROR CODE: [/color]", err)
 
@@ -167,6 +171,8 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 
 	if _data.has("Drain"): component.DamageAffectsUsersHealth = _data["Drain"]
 	if _data.has("DamageToHealthRatio"): component.DamageToHealthRatio = _data["DamageToHealthRatio"]
+	if _data.has("IsTrueDamage"): component.TrueDamage = _data["IsTrueDamage"]
+	if _data.has("CritModifier"): component.CritModifier = _data["CritModifier"] / 100
 
 	component.VulerableDescriptors.clear()
 	for i in range(0,1):
@@ -179,6 +185,39 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 				if index != -1:
 					var descriptor = ResourceLoader.load(vulnerabilityPathArray[index]) as DescriptorMultiplier
 					component.VulerableDescriptors.append(descriptor)
+
+func ModifyUnlockableData(_ability : Ability, _data):
+	var unlockable = load(_data["persistFilePath"]) as AbilityUnlockable
+	if unlockable == null:
+		unlockable = AbilityUnlockable.new()
+
+	unlockable.StartUnlocked = _data["startUnlocked"]
+	unlockable.StartsDiscoverable = _data["midRunDiscoverable"]
+	unlockable.AbilityPath = _data["filePath"]
+
+	# this handles both descriptors on the unlockable and on the ability
+	# they should match, only because I don't want to have to instantiate the ability to know what the descriptor is
+	_ability.descriptors.clear()
+	unlockable.Descriptors.clear()
+	if _data.has("descriptors"):
+		var descString = _data["descriptors"] as String
+		var split = descString.split(',')
+		for descriptorID in split:
+			var trimmed = descriptorID.strip_edges()
+			if !trimmed.is_empty():
+				var index = descriptorNameArray.find(trimmed)
+				if index != -1:
+					var foundDescriptorTemplate = ResourceLoader.load(descriptorPathArray[index]) as DescriptorTemplate
+					_ability.descriptors.append(foundDescriptorTemplate)
+					unlockable.Descriptors.append(foundDescriptorTemplate)
+				else:
+					log += str("\n[color=red]Could not find descriptor: [/color]", trimmed, "[color=red]Please ensure that the descriptor exists before importing[/color]")
+
+
+	var err = ResourceSaver.save(unlockable, _data["persistFilePath"])
+	if err != OK:
+		log += str("\n[color=red]FAILED TO SAVE UNLOCK DATA AT PATH: [/color]", _data["persistFilePath"], "[color=red]ERROR CODE: [/color]", err)
+
 
 func ModifyItemStatComponent(_ability : Ability, _data):
 	var children = _ability.get_children()
@@ -195,7 +234,6 @@ func ModifyItemStatComponent(_ability : Ability, _data):
 		component.name = "StatComponent"
 
 	_ability.StatData = component
-	if _data.has("BaseAccuracy"): component.BaseAccuracy = _data["BaseAccuracy"]
 
 	component.GrantedStats.clear()
 	if _data.has("Stat1") && _data.has("Stat1Val"):

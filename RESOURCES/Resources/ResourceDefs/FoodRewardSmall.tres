@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceDef" load_steps=3 format=3 uid="uid://bun14skcepxgl"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_bxl04"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="1_x07q2"]
+
+[resource]
+script = ExtResource("1_bxl04")
+ItemResource = ExtResource("1_x07q2")
+Amount = 10
+metadata/_custom_type_script = "uid://d2347uif1mrru"

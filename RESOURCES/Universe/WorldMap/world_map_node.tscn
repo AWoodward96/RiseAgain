@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://i7m2hed1bp2d"]
 
-[ext_resource type="Script" uid="uid://o20btdqgwxaj" path="res://SCRIPTS/Universe/POI.gd" id="1_7687h"]
+[ext_resource type="Script" uid="uid://o20btdqgwxaj" path="res://SCRIPTS/Universe/WorldMap/POI.gd" id="1_7687h"]
 [ext_resource type="Texture2D" uid="uid://3nksfmjburie" path="res://ART/UI/Lines/linetex_dotted.png" id="2_b8erh"]
 [ext_resource type="Texture2D" uid="uid://bslf8k0b4x4ov" path="res://ART/UI/WorldMap/Icons_0.png" id="2_c1uc1"]
 [ext_resource type="Texture2D" uid="uid://gi66oped4ovm" path="res://ART/UI/Lines/linetex_full.png" id="2_dkg3c"]

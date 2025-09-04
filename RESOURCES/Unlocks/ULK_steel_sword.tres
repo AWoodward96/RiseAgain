@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://ck2y0oj2cq5d0"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_enp5m"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_kjpgv"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_4i7hy"]
+[ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="3_r24hc"]
+
+[resource]
+script = ExtResource("1_enp5m")
+AbilityPath = "res://RESOURCES/Ability/Equippable/steel_sword.tscn"
+StartsDiscoverable = true
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_kjpgv")]([ExtResource("2_4i7hy"), ExtResource("3_r24hc")])

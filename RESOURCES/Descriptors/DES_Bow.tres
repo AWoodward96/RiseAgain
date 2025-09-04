@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=2 format=3 uid="uid://cx6d8skfrwms8"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_7onya"]
+
+[resource]
+script = ExtResource("1_7onya")
+loc_name = ""
+loc_description = ""
+metadata/_custom_type_script = "uid://bnehabjcbpysq"

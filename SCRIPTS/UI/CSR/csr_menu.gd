@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name CSR
 
 static var Open : bool = false
@@ -77,6 +77,12 @@ func btnBlockRetaliation():
 func btnSaveMap():
 	PersistDataManager.SaveMap()
 
+func btnAddFood():
+	var resourceDef = ResourceDef.new()
+	resourceDef.Amount = 50
+	resourceDef.ItemResource = GameManager.GameSettings.FoodResource
+	PersistDataManager.universeData.AddResource(resourceDef, Vector2.ZERO, true)
+
 func TestAbilitySelectionScreen():
 	var unit = GetCurrentHighlighedUnit() as UnitInstance
 	if unit != null:
@@ -85,8 +91,9 @@ func TestAbilitySelectionScreen():
 
 static func ShowMenu():
 	var csrMenu = UIManager.CSRUI.instantiate() as CSR
-	GameManager.add_child(csrMenu)
+	UIManager.OnUIOpened(csrMenu)
 	CSR.Open = true
+	# instance management is handled by the GameManager, because we return csrMenu here
 	return csrMenu
 
 

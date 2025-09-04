@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://cb205i5q5qxl6"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_7c84x"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_l6m6r"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_b3hqf"]
+[ext_resource type="Resource" uid="uid://d2d5roo837klh" path="res://RESOURCES/Descriptors/DES_Blunt.tres" id="9_f38qc"]
+
+[resource]
+script = ExtResource("1_l6m6r")
+AbilityPath = "res://RESOURCES/Ability/Equippable/morningstar.tscn"
+StartsDiscoverable = false
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_7c84x")]([ExtResource("2_b3hqf"), ExtResource("9_f38qc")])

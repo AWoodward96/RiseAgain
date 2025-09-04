@@ -362,12 +362,19 @@ func PerformLevelUp(_rng : DeterministicRNG, _levelIncrease = 1):
 	print("Level Up!")
 	Level += _levelIncrease
 
+	var meal = PersistDataManager.universeData.bastionData.ActiveMeal
 
 	var levelUpResult = {}
 	for i in _levelIncrease:
 		for growth in Template.StatGrowths:
 			var workingValue = growth.Value
 			var statIncrease = 0
+
+			if meal != null:
+				# check the meal for mods
+				for modifiers : StatDef in meal.statGrowthMods:
+					if modifiers.Template == growth.Template:
+						workingValue += modifiers.Value
 
 			# growths over 100 should be counted as garunteed stat growths
 			while workingValue >= 100:
@@ -726,6 +733,11 @@ func GetWorkingStat(_statTemplate : StatTemplate, _ignoreInjured : bool = false)
 
 	if unitPersistence != null:
 		current += unitPersistence.GetPrestiegeStatMod(_statTemplate)
+
+	if PersistDataManager.universeData.bastionData.ActiveMeal != null:
+		for mealStats in PersistDataManager.universeData.bastionData.ActiveMeal.statModifiers:
+			if mealStats.Template == _statTemplate:
+				current += mealStats.Value
 
 	if Injured && !_ignoreInjured:
 		if GameManager.GameSettings.InjuredAffectedStats.has(_statTemplate):

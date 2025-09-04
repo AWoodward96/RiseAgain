@@ -480,6 +480,9 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 
 func DestroyTerrain(_tile : Tile):
 	_tile.TerrainDestroyed = true
+	if _tile.MainTileData.DestructionRewards.size() > 0:
+		PersistDataManager.universeData.AddResources(_tile.MainTileData.DestructionRewards, (_tile.Position * CellSize) + Vector2i(CellSize / 2, CellSize / 2))
+
 	map.tilemap_main.set_cell(_tile.Position)
 	RefreshTilesCollision(_tile, map.currentTurn as int)
 

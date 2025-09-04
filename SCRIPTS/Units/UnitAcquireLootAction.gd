@@ -9,8 +9,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	waitingForUI = true
 
 	# Show the notification ui
-	var notificationUI = UIManager.FullscreenNotifUI.instantiate() as FullscreenNotificationUI
-	Map.Current.add_child(notificationUI)
+	var notificationUI = UIManager.OpenFullscreenUI(UIManager.FullscreenNotificationUI)
 
 	notificationUI.OnTimeout.connect(OnNotificationUIClear)
 	notificationUI.AddAutoTimeout(3)

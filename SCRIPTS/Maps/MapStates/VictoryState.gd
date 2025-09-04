@@ -15,7 +15,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 			AudioManager.PlayVictoryStinger()
 			if _map.Biome != null && _map.Biome.VictoryDelay > 0:
 				await GameManager.get_tree().create_timer(_map.Biome.VictoryDelay).timeout
-			
+
 			combatHUD.PlayVictoryBanner()
 			await combatHUD.BannerAnimComplete
 

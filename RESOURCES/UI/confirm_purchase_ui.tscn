@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5i8xff3y8gud"]
+
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_2swyf"]
+[ext_resource type="Script" uid="uid://ci22alqdg8lus" path="res://SCRIPTS/UI/General/ConfirmPurchaseFullscreenUI.gd" id="2_3e5q4"]
+[ext_resource type="PackedScene" uid="uid://bkktm0cwqep5n" path="res://RESOURCES/UI/GenericEntrys/resource_cost_entry.tscn" id="3_dhl1n"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_nwte5"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_dhl1n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xruh1"]
+font = ExtResource("4_dhl1n")
+font_size = 32
+
+[node name="ConfirmPurchaseUI" type="Control" node_paths=PackedStringArray("focusButton", "costEntryParent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2swyf")
+script = ExtResource("2_3e5q4")
+focusButton = NodePath("Panel/HBoxContainer/Cancel")
+costEntryParent = NodePath("Panel/MarginContainer/VBoxContainer/Cost")
+costEntryPrefab = ExtResource("3_dhl1n")
+Priority = 100
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.14032, 0.0944, 0.34902)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -100.0
+offset_right = 400.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Cost" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_nwte5")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "ui_confirm_purchase"
+label_settings = SubResource("LabelSettings_xruh1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 80.0
+offset_right = 144.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Cancel" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "ui_no"
+
+[node name="Confirm" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "ui_yes"
+
+[connection signal="pressed" from="Panel/HBoxContainer/Cancel" to="." method="OnDeny"]
+[connection signal="pressed" from="Panel/HBoxContainer/Confirm" to="." method="OnConfirm"]

@@ -108,6 +108,11 @@ BastionParent=""
 CampaignParent=""
 MainScene=""
 
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_subpixel_positioning=0
+
 [input]
 
 ui_accept={

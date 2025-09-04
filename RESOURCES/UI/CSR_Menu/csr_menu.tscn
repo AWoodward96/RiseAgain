@@ -3,14 +3,21 @@
 [ext_resource type="Script" uid="uid://d0v0ac02bpy6v" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
 [ext_resource type="PackedScene" uid="uid://bf3484ldvsvyh" path="res://RESOURCES/Items/t2_radientchestplate.tscn" id="2_5hj0h"]
 
-[node name="CSR" type="CanvasLayer" node_paths=PackedStringArray("FirstEntry")]
-layer = 100
+[node name="CSR" type="Control" node_paths=PackedStringArray("FirstEntry")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_508i1")
 FirstEntry = NodePath("PanelContainer/MarginContainer/GridContainer/AddAllAbilities")
 SpecificItem = ExtResource("2_5hj0h")
+Priority = 1000
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -84,6 +91,10 @@ text = "Clear Cutscene Data"
 layout_mode = 2
 text = "Mark Tutorial Complete"
 
+[node name="AddFood" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Add 50 Food"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
@@ -98,3 +109,4 @@ text = "Mark Tutorial Complete"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCampaignData" to="." method="ClearCampaignData"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCutsceneData" to="." method="ClearCutsceneData"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/MarkTutorialComplete" to="." method="btnMarkTutorialComplete"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddFood" to="." method="btnAddFood"]

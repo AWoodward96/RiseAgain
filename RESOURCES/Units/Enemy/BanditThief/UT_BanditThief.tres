@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=30 format=3 uid="uid://gxgcf4gmfjop"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=42 format=3 uid="uid://gxgcf4gmfjop"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_kffkv"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_0832t"]
@@ -11,10 +11,18 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_gq4q8"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_tuf3f"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_pytks"]
-[ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="12_22cjo"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_c1uvx"]
 [ext_resource type="PackedScene" uid="uid://dcktm0sx6c186" path="res://RESOURCES/Units/Enemy/BanditThief/VIS_BanditThief.tscn" id="13_0832t"]
 [ext_resource type="Texture2D" uid="uid://bvyggot1b2to8" path="res://ART/Icons/Units/banditthief.png" id="13_pngla"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="13_tuf3f"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="14_8npu7"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="14_pytks"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="15_22cjo"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="16_pngla"]
+[ext_resource type="Texture2D" uid="uid://cr2shx01wwgbb" path="res://ART/Icons/Ability/Equippable/iron_sword.png" id="17_8npu7"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="18_hn55p"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="19_png3n"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="20_mjduu"]
 
 [sub_resource type="Resource" id="Resource_hn55p"]
 script = ExtResource("2_0832t")
@@ -56,6 +64,32 @@ script = ExtResource("2_0832t")
 Template = ExtResource("10_tuf3f")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_0qngs"]
+script = ExtResource("15_22cjo")
+useAttackAction = true
+useDefendAction = true
+
+[sub_resource type="Resource" id="Resource_njyb8"]
+script = ExtResource("16_pngla")
+
+[sub_resource type="Resource" id="Resource_ecmbu"]
+script = ExtResource("2_0832t")
+Template = ExtResource("4_0ob28")
+Value = 4
+
+[sub_resource type="PackedScene" id="PackedScene_q5c2h"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("iron_sword", "Node2D", "script", "type", "abilityCooldown", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 1073741834, 8, 1073741835, 9, 1073741836, 10, 0, 1073741824, 0, 14, 13, -1, 2, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 4, 19, 13, 20, 14, 21, 15, 22, 16, 0, 1073741826, 0, 24, 23, -1, 1, 25, 17, 0),
+"variants": [ExtResource("13_tuf3f"), 1, 0, Array[ExtResource("14_pytks")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")]), "iron_sword", "weap_iron_sword_name", "weap_iron_sword_desc", ExtResource("17_8npu7"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("18_hn55p"), Array[ExtResource("2_0832t")]([SubResource("Resource_ecmbu")]), ExtResource("19_png3n"), ExtResource("4_0ob28"), ExtResource("5_xq8pm"), 0.0, ExtResource("20_mjduu")],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_toyr5"]
 script = ExtResource("2_0832t")
 Template = ExtResource("3_c1uvx")
@@ -93,11 +127,13 @@ VisualPrefab = ExtResource("13_0832t")
 BaseStats = Array[ExtResource("2_0832t")]([SubResource("Resource_hn55p"), SubResource("Resource_png3n"), SubResource("Resource_mjduu"), SubResource("Resource_ar38n"), SubResource("Resource_2otdi"), SubResource("Resource_ag8c0"), SubResource("Resource_gch5s"), SubResource("Resource_mudqi")])
 StatGrowths = Array[ExtResource("2_0832t")]([SubResource("Resource_toyr5"), SubResource("Resource_s220c"), SubResource("Resource_esaup"), SubResource("Resource_taear"), SubResource("Resource_udexy"), SubResource("Resource_j1wni")])
 Affinity = ExtResource("1_kffkv")
-StartingEquippedWeapon = ExtResource("12_22cjo")
+StartingEquippedWeapon = SubResource("PackedScene_q5c2h")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_pytks")]([])
+WeaponDescriptors = Array[ExtResource("11_pytks")]([])
 GridSize = 1
+ResourceDrops = Array[ExtResource("12_c1uvx")]([])
 FootstepGUID = ""
 DebugName = "BanditThief"
 loc_DisplayName = "unit_banditthief_name"

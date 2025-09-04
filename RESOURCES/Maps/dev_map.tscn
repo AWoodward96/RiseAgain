@@ -193,7 +193,7 @@ AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 
 [node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners"]
-position = Vector2(256, 192)
+position = Vector2(192, 320)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -203,52 +203,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_jydnc")
 UnitLevel = 2
 DeltaLevel = 0
-Position = Vector2i(4, 3)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup3" type="Sprite2D" parent="Spawners"]
-position = Vector2(256, 128)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(4, 2)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup4" type="Sprite2D" parent="Spawners"]
-position = Vector2(256, 64)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(4, 1)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup6" type="Sprite2D" parent="Spawners"]
-position = Vector2(128, 64)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(2, 1)
+Position = Vector2i(3, 5)
 AIBehavior = SubResource("Resource_hyg5s")
 AggroBehavior = SubResource("Resource_lsk74")
 
@@ -264,81 +219,6 @@ UnitToSpawn = ExtResource("12_jydnc")
 UnitLevel = 2
 DeltaLevel = 0
 Position = Vector2i(1, 1)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup8" type="Sprite2D" parent="Spawners"]
-position = Vector2(64, 128)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(1, 2)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup9" type="Sprite2D" parent="Spawners"]
-position = Vector2(128, 128)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(2, 2)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup10" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 128)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(3, 2)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup5" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 64)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(3, 1)
-AIBehavior = SubResource("Resource_hyg5s")
-AggroBehavior = SubResource("Resource_lsk74")
-
-[node name="Spawn_WolfPup2" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 192)
-texture = ExtResource("6_gfyht")
-centered = false
-hframes = 4
-vframes = 4
-frame = 2
-script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("12_jydnc")
-UnitLevel = 2
-DeltaLevel = 0
-Position = Vector2i(3, 3)
 AIBehavior = SubResource("Resource_hyg5s")
 AggroBehavior = SubResource("Resource_lsk74")
 

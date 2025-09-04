@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MealTemplate" load_steps=8 format=3 uid="uid://cm10yc6ku8l88"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_x8gx0"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_8i4wk"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_cuilo"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_8i4wk"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_8i4wk"]
+
+[sub_resource type="Resource" id="Resource_y057r"]
+script = ExtResource("1_x8gx0")
+ItemResource = ExtResource("2_8i4wk")
+Amount = 5
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_u1aph"]
+script = ExtResource("3_8i4wk")
+Template = ExtResource("5_8i4wk")
+Value = 10
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_cuilo")
+loc_title = "meal_hunterschicken_title"
+loc_desc = "meal_hunterschicken_desc"
+cost = Array[ExtResource("1_x8gx0")]([SubResource("Resource_y057r")])
+statGrowthMods = Array[ExtResource("3_8i4wk")]([SubResource("Resource_u1aph")])
+statModifiers = Array[ExtResource("3_8i4wk")]([])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

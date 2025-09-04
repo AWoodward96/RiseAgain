@@ -4,6 +4,7 @@ class_name RADataImporterPanel
 
 const Units_Dir = "res://RESOURCES/Units"
 const Items_Dir = "res://RESOURCES/Items"
+const Unlocks_DIR = "res://RESOURCES/Unlocks"
 const Ability_Dir = "res://RESOURCES/Ability"
 const AbilityWeapon_Dir = "res://RESOURCES/Ability/Equippable"
 const AbilityTactial_Dir = "res://RESOURCES/Ability/Tactical"
@@ -72,6 +73,7 @@ var vulnerabilityPathArray : Array[String]
 
 var shapedPrefabNameArray : Array[String]
 var shapedPrefabPathArray : Array[String]
+
 
 var log
 var cachedJSON

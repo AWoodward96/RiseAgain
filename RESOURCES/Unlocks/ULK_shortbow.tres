@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://cjuji04d0l7ru"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_2yl31"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_ctbvi"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_en7pv"]
+[ext_resource type="Resource" uid="uid://cx6d8skfrwms8" path="res://RESOURCES/Descriptors/DES_Bow.tres" id="4_3xk1f"]
+
+[resource]
+script = ExtResource("1_2yl31")
+AbilityPath = "res://RESOURCES/Ability/Equippable/shortbow.tscn"
+StartsDiscoverable = true
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_ctbvi")]([ExtResource("2_en7pv"), ExtResource("4_3xk1f")])

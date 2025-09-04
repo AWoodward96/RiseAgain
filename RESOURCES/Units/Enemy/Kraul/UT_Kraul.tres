@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=29 format=3 uid="uid://lg62tv8pvma7"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=30 format=3 uid="uid://lg62tv8pvma7"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_6eonn"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_cpwsp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_uvyoa"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_gxxs5"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_g8lhr"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_5vblj"]
 [ext_resource type="Texture2D" uid="uid://dyxi3ljbh2hnr" path="res://ART/Icons/Units/kraul.png" id="12_7tp3k"]
 [ext_resource type="PackedScene" uid="uid://burjhghcutqt3" path="res://RESOURCES/Units/Enemy/Kraul/VIS_Kraul.tscn" id="12_cpwsp"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_vpkiq"]
@@ -95,7 +96,9 @@ Affinity = ExtResource("1_6eonn")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_g8lhr")]([])
+WeaponDescriptors = Array[ExtResource("11_g8lhr")]([])
 GridSize = 1
+ResourceDrops = Array[ExtResource("12_5vblj")]([])
 FootstepGUID = ""
 DebugName = "Kraul"
 loc_DisplayName = "unit_kraul_name"

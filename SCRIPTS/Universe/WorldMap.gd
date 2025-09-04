@@ -1,4 +1,4 @@
-extends Control
+extends FullscreenUI
 
 enum WorldMapUIState { NewCampaign, NextMap, Browsing }
 
@@ -226,25 +226,14 @@ func GetPOIFromID(_poiID : String):
 	push_error("Could not find POI: " + _poiID)
 	return null
 
-func ShowWorldMap(_parentContainer : Control, _worldMapState : WorldMapUIState):
-	self.reparent(_parentContainer)
-	size = _parentContainer.size
-	Open(_worldMapState)
 
 func OpenWorldMapFullscreenUI(_worldMapState : WorldMapUIState):
 	if fullscreenHelperUI != null:
 		return
 
-	var worldmapfullscreen = UIManager.WorldMapFullscreenContainer.instantiate()
-	get_tree().root.add_child(worldmapfullscreen)
-	ShowWorldMap(worldmapfullscreen.get_child(0), _worldMapState)
-	fullscreenHelperUI = worldmapfullscreen
-	return worldmapfullscreen
-
-
+	UIManager.OnUIOpened(self)
+	Open(_worldMapState)
 
 func CloseUI():
-	if fullscreenHelperUI != null:
-		reparent(get_tree().root)
-		fullscreenHelperUI.queue_free()
-		visible = false
+	reparent(get_tree().root)
+	visible = false

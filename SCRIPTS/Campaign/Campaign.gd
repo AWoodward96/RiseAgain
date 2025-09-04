@@ -9,12 +9,6 @@ var campaignLedger : Array[String] # This uses the internal ID name to determine
 var currentPOI : POI
 
 var currentMap : Map
-var currentMapOption : MapOption
-#var currentMapBlock : MapBlock
-#var startingCampaignBlock : CampaignBlock
-#var currentCampaignBlock : CampaignBlock
-
-#var campaignBlockMapIndex : int
 var traversedPOIs : int
 
 var CampaignRng : DeterministicRNG
@@ -55,45 +49,10 @@ func GetNextMapOption():
 	# open up the map, if it's not already open
 	if WorldMap.fullscreenHelperUI == null:
 		WorldMap.OpenWorldMapFullscreenUI(WorldMap.WorldMapUIState.NextMap)
+	else:
+		WorldMap.Open(WorldMap.WorldMapUIState.NextMap)
 
-	print("Asking for the next map option")
 	WorldMap.POISelected.connect(OnPOISelected)
-	#WorldMap.RefreshCampaign()
-
-	# wait for world map selection?
-
-	#if campaignBlockMapIndex >= currentCampaignBlock.mapOptions.size():
-		#traversedCampaignBlocks += 1
-		#campaignBlockMapIndex = 0
-		#if currentCampaignTemplate.campaignBlockCap != -1 && traversedCampaignBlocks >= currentCampaignTemplate.campaignBlockCap && currentCampaignTemplate.campaignFinale != null:
-			## We in endgame
-			#currentCampaignBlock = currentCampaignTemplate.campaignFinale
-		#else:
-			#if currentCampaignBlock.nextCampaignBlocks.size() == 0:
-				## Well it's not.... easy to do anything here so just... end the map
-				#ReportCampaignResult(true)
-				#GameManager.ChangeGameState(BastionGameState.new(), null)
-				#return
-#
-			## if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
-			#var nextIndex = CampaignRng.NextInt(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
-			#currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
-#
-	#currentMapBlock = currentCampaignBlock.GetMapBlock(campaignBlockMapIndex)
-	#if currentMapBlock == null:
-		#push_error("Campaign: " , name, " - rolled a map block from the map options that is null somehow.")
-		#return
-#
-	#currentMapOption = currentMapBlock.GetMapFromBlock()
-	#if currentMap != null:
-		#currentMap.queue_free()
-#
-	#var newMap = currentMapOption.GetMap()
-	#if newMap == null:
-		#push_error("Campaign: " , name, " - Could not descern what the next map should be from index: ", campaignBlockMapIndex)
-		#return
-#
-	#currentMap = newMap.instantiate() as Map
 	pass
 
 func OnPOISelected(_poi : POI):
@@ -104,7 +63,6 @@ func OnPOISelected(_poi : POI):
 	if currentMap != null:
 		currentMap.queue_free()
 
-	currentMapOption = mapOption
 	var newMap = mapOption.GetMap()
 	if newMap == null:
 		GetNextMapOption()
@@ -143,8 +101,7 @@ func StartMap():
 
 	if currentMap.get_parent() != current_map_parent:
 		current_map_parent.add_child(currentMap)
-#
-	#campaignLedger.append(currentMapOption)
+
 	campaignLedger.append(currentPOI.internal_name)
 	GameManager.HideLoadingScreen()
 	PersistDataManager.SaveCampaign()
@@ -193,8 +150,8 @@ func RemoveEmptyRosterEntries():
 		i -= 1
 
 func GetMapRewardTable():
-	if currentMapOption != null && currentMapOption.rewardOverride != null:
-		return currentMapOption.rewardOverride
+	if currentMap.RewardOverride != null:
+		return currentMap.RewardOverride
 
 	return GameManager.GameSettings.DefaultMapRewardTable
 
@@ -254,8 +211,6 @@ func RefreshDifficultyLevel():
 			currentLevelDifficulty = u.Level
 
 func ReportCampaignResult(_victory : bool):
-	# TODO: Figure out where you're reporting your results too
-
 	# Tell the Bastion Persist Data that they need to generate a new set of tavern dwellers
 	GameManager.CurrentCampaign = null
 	PersistDataManager.ClearCampaign()
@@ -277,19 +232,12 @@ static func CreateNewCampaignInstance(_startingPOI : POI, _startingRoster : Arra
 
 func ToJSON():
 	var jsonDict = {
-		#"currentCampaignTemplate" = currentCampaignTemplate.resource_path,
 		"currentLevelDifficulty" = currentLevelDifficulty,
 		"StartingRosterTemplates" = PersistDataManager.ResourcePathToJSON(StartingRosterTemplates),
-		#"campaignBlockMapIndex" = campaignBlockMapIndex,
-		#"traversedCampaignBlocks" = traversedCampaignBlocks,
-		#"startingCampaignBlock" = startingCampaignBlock.resource_path,
-		#"currentCampaignBlock" = currentCampaignBlock.resource_path,
 		"currentPOI" = currentPOI.internal_name,
 		"startingPOI" = startingPOI.internal_name,
 		"campaignRNG" = CampaignRng.ToJSON(),
-		"currentMapOption" = currentMapOption.resource_path,
 		"campaignLedger" = campaignLedger,
-		#"currentMapBlock" = currentMapBlock.resource_path,
 		"Convoy" = PersistDataManager.ArrayToJSON(Convoy)
 	}
 
@@ -299,14 +247,7 @@ func ToJSON():
 
 static func FromJSON(_dict : Dictionary):
 	var campaign = GameManager.GameSettings.CampaignInstancePrefab.instantiate() as Campaign
-	#campaign.currentCampaignTemplate = load(_dict["currentCampaignTemplate"])
-	#campaign.campaignBlockMapIndex = PersistDataManager.LoadFromJSON("campaignBlockMapIndex", _dict)
-	#campaign.traversedCampaignBlocks = PersistDataManager.LoadFromJSON("traversedCampaignBlocks", _dict)
-	#campaign.startingCampaignBlock = load(_dict["startingCampaignBlock"])
-	#campaign.currentCampaignBlock = load(_dict["currentCampaignBlock"])
-	campaign.currentMapOption = load(_dict["currentMapOption"])
 	campaign.currentLevelDifficulty = _dict["currentLevelDifficulty"]
-	#campaign.currentMapBlock = load(_dict["currentMapBlock"])
 
 	PersistDataManager.JSONtoResourceFromPath(_dict["StartingRosterTemplates"], campaign.StartingRosterTemplates)
 
@@ -321,7 +262,7 @@ static func FromJSON(_dict : Dictionary):
 
 	campaign.CreateConvoyParent()
 
-
+	# Handle items in the convoy
 	for element in _dict["Convoy"]:
 		if element == "NULL":
 			continue
@@ -339,15 +280,7 @@ static func FromJSON(_dict : Dictionary):
 		campaign.ConvoyParent.add_child(newInstance)
 		campaign.Convoy.append(newInstance)
 
-	#var data = PersistDataManager.JSONToArray(_dict["Convoy"], Callable.create(Item, "FromJSON"))
-	#campaign.Convoy.assign(data)
-	#for item : Item in campaign.Convoy:
-		#if item == null:
-			#continue
-#
-		#item.reparent(campaign.ConvoyParent)
-		#campaign.ConvoyParent.add_child(item)
-
+	# Handle the seeded rng
 	if _dict.has("campaignRNG") && _dict["campaignRNG"] != null:
 		campaign.CampaignRng = DeterministicRNG.FromJSON(_dict["campaignRNG"])
 

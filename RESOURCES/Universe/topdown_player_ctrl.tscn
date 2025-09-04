@@ -8,14 +8,17 @@ radius = 20.0
 height = 62.0
 
 [node name="TopdownPlayerCTRL" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["Player"]]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_y6b2r")
 camera = NodePath("Camera2D")
 
 [node name="VisualParent" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-18, -48)
 
 [node name="Sprite2D" type="Sprite2D" parent="VisualParent"]
+y_sort_enabled = true
 texture = ExtResource("2_bkvkx")
 offset = Vector2(16, 16)
 

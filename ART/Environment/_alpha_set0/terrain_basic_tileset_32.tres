@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://cw2y83vld1yn4"]
+[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://cw2y83vld1yn4"]
 
 [ext_resource type="Resource" uid="uid://dum5iqty3hq5g" path="res://RESOURCES/TileMetaData/MaroonForest/MF_River.tres" id="1_3kalf"]
 [ext_resource type="Texture2D" uid="uid://b1ovua6g8svh3" path="res://ART/Environment/_alpha_set0/art_test_6.png" id="1_7skec"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dias0tebu50cn" path="res://RESOURCES/TileMetaData/MaroonForest/MF_CaveWall.tres" id="5_01mc4"]
 [ext_resource type="Material" uid="uid://daa6vtt44bpnv" path="res://ART/Shaders/simple_shadow.tres" id="5_e86kp"]
 [ext_resource type="Texture2D" uid="uid://lr6uh8kj5fmy" path="res://ART/Environment/greyboxing_colors.png" id="5_jbuiq"]
+[ext_resource type="Resource" uid="uid://bfdcxs1r1bsbg" path="res://RESOURCES/TileMetaData/MaroonForest/MF_PaleOak.tres" id="5_ng5ro"]
 [ext_resource type="Texture2D" uid="uid://bx0a5woamx3j8" path="res://ART/Grid/tmp_fire_tiles.png" id="7_1ahre"]
 [ext_resource type="Resource" uid="uid://cv4qyupu316sy" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestructableRocks.tres" id="7_ea5tm"]
 [ext_resource type="Texture2D" uid="uid://byny8bcl33q3a" path="res://ART/Environment/MaroonForest/maroon_forest.png" id="8_5p7p4"]
@@ -191,7 +192,7 @@ texture_region_size = Vector2i(32, 32)
 9:1/0/custom_data_0 = ExtResource("2_vbfp3")
 10:1/0 = 0
 10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-10:1/0/custom_data_0 = ExtResource("2_vbfp3")
+10:1/0/custom_data_0 = ExtResource("5_ng5ro")
 14:1/0 = 0
 14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 14:1/0/custom_data_0 = ExtResource("7_ea5tm")
@@ -239,7 +240,7 @@ texture_region_size = Vector2i(32, 32)
 9:2/0/custom_data_0 = ExtResource("2_vbfp3")
 10:2/0 = 0
 10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-10:2/0/custom_data_0 = ExtResource("2_vbfp3")
+10:2/0/custom_data_0 = ExtResource("5_ng5ro")
 14:2/0 = 0
 14:2/0/terrain_set = 1
 14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)

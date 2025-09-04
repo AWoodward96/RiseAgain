@@ -9,13 +9,16 @@ static var GLOBAL_DIRECTORY = "user://_GLOBAL/"
 static var SETTINGS_DIRECTORY = "user://_SETTINGS/"
 static var UNITS_DIRECTORY = "user://_GLOBAL/Units/"
 
-
 static var GLOBAL_FILE = "user://_GLOBAL/Universe.json"
 static var CAMPAIGN_FILE = "user://_RUN/Campaign.json"
 static var CAMPAIGN_CONVOY_DIRECTORY = "user://_RUN/Convoy/"
 static var MAP_FILE = "user://_RUN/Map.json"
 static var MAP_GRID_FILE = "user://_RUN/Grid.json"
 static var PERSIST_DATA_SUFFIX = "PersistData"
+
+
+static var UNLOCKS_DIRECTORY = "res://RESOURCES/Unlocks/"
+
 signal Initialized
 
 var universeData : UniversePersistence
@@ -174,6 +177,8 @@ func LoadArrayOfResourcesAsNodes(_pathFolder : String, _assignedArrayType : Arra
 
 func ClearCampaign():
 	campaign = null
+
+	universeData.bastionData.ActiveMeal = null
 	DirAccess.remove_absolute(CAMPAIGN_FILE)
 
 	# when we clear the campaign, we should also clear the map

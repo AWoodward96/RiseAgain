@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MealTemplate" load_steps=8 format=3 uid="uid://dkkqp5vkogs0r"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_iuunx"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_maulp"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_mirol"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_mirol"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_bp83n"]
+
+[sub_resource type="Resource" id="Resource_lts6m"]
+script = ExtResource("1_iuunx")
+ItemResource = ExtResource("2_mirol")
+Amount = 5
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_v618q"]
+script = ExtResource("3_mirol")
+Template = ExtResource("5_bp83n")
+Value = 2
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_maulp")
+loc_title = "meal_bloodsausage_title"
+loc_desc = "meal_bloodsausage_desc"
+cost = Array[ExtResource("1_iuunx")]([SubResource("Resource_lts6m")])
+statGrowthMods = Array[ExtResource("3_mirol")]([])
+statModifiers = Array[ExtResource("3_mirol")]([SubResource("Resource_v618q")])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="MealTemplate" load_steps=18 format=3 uid="uid://cdf87ppjyvi12"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_mngg7"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_pqbp4"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_svr1i"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_yubji"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_vfdqb"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_hx8gq"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_kc8x8"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_0kv34"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="9_eg1ku"]
+[ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_bdbae"]
+
+[sub_resource type="Resource" id="Resource_h2f8a"]
+script = ExtResource("1_mngg7")
+ItemResource = ExtResource("2_svr1i")
+Amount = 3
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_880fa"]
+resource_name = "ATK +3%"
+script = ExtResource("3_yubji")
+Template = ExtResource("5_vfdqb")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_igbi4"]
+resource_name = "DEF +3%"
+script = ExtResource("3_yubji")
+Template = ExtResource("6_hx8gq")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_5eqec"]
+resource_name = "SpATK +3%"
+script = ExtResource("3_yubji")
+Template = ExtResource("7_kc8x8")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_h5cak"]
+resource_name = "SpDEF +3%"
+script = ExtResource("3_yubji")
+Template = ExtResource("8_0kv34")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_a7ia3"]
+resource_name = "VIT +3%"
+script = ExtResource("3_yubji")
+Template = ExtResource("9_eg1ku")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_8oa5t"]
+resource_name = "LUCK +3%"
+script = ExtResource("3_yubji")
+Template = ExtResource("10_bdbae")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_pqbp4")
+loc_title = "meal_hotmeal_title"
+loc_desc = "meal_hotmeal_desc"
+cost = Array[ExtResource("1_mngg7")]([SubResource("Resource_h2f8a")])
+statGrowthMods = Array[ExtResource("3_yubji")]([SubResource("Resource_880fa"), SubResource("Resource_igbi4"), SubResource("Resource_5eqec"), SubResource("Resource_h5cak"), SubResource("Resource_a7ia3"), SubResource("Resource_8oa5t")])
+statModifiers = Array[ExtResource("3_yubji")]([])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

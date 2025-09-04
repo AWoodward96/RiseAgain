@@ -9,7 +9,7 @@ weap_magic_bolt_desc,A more advanced magic blast with good SpAttack.
 weap_magic_bolt_name,Magic Bolt
 weap_mana_bolt_desc,A weaker tome of magic.
 weap_mana_bolt_name,Mana Bolt
-weap_steel_bow_desc,"A more difficult to use bow, with decent accuracy and okay Attack."
+weap_steel_bow_desc,A strong reinforced bow cappable of powerful shots
 weap_steel_bow_name,Steel Bow
 weap_steel_sword_desc,A more difficult to use sword but good Attack. 
 weap_steel_sword_name,Steel Sword
@@ -414,3 +414,79 @@ item_t1_ceruleanplates_name,Cerulean Plates
 item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 campaign_white_coast,The White Coast
 ui_defeatboss,Defeat Boss
+ui_gameoverobjective,Survive
+item_t2_bitterblade_name,Bitter Blade
+item_t2_bitterblade_desc,TBD
+item_t2_vampblade_name,Bloodsucker
+item_t2_vampblade_desc,Heal for {HEAL_MOD}% of this Units {HEAL_STAT} on Kill.
+item_t2_radientchestplate_name,Radiance
+item_t2_radientchestplate_desc,Turn Start: Burn nearby Enemies for {DMG_AGGRESSIVEMOD}% of this Units {DMG_AGGRESSIVESTAT}
+res_food_name,Food
+res_food_desc,"Bits of Meat, Vegitables, and other ingredients. Can be used at the Tavern to cook meals for your party at the Bastion."
+loc_tavern_restraunt_name,The Egress
+loc_tavern_recipt_fluff_1,THE EGRESS\n1100 MELODY BLVD\nSOLARIA\n\nSALE:
+loc_tavern_recipt_fluff_2,THANK YOU AND\n SAFE TRAVELS
+loc_tavern_recipt_total,TOTAL:
+loc_est,EST
+loc_tavern_est_date,1204
+loc_menu_title,MENU
+ui_level_1,Level 1:
+ui_level_2,Level 2:
+ui_level_3,Level 3:
+ui_level_4,Level 4:
+ui_level_5,Level 5:
+meal_grub_title,Grub
+meal_grub_desc,+1% All Stat Growths
+meal_hotmeal_title,Hot Meal
+meal_hotmeal_desc,+3% All Stat Growths
+meal_largehotmeal_title,Large Hot Meal
+meal_largehotmeal_desc,+5% All Stat Growths
+meal_hunterschicken_title,Hunters Chicken
+meal_hunterschicken_desc,+10% ATK Growths
+meal_mushroomstew_title,Mushroom Stew
+meal_mushroomstew_desc,+10% SpATK Growths
+meal_notimplemented_title,TBD
+meal_notimplemented_desc,TBD
+ui_1x_text,1x {TEXT}
+tile_paleoak_name,Pale Oak
+meal_bloodsausage_title,Blood Sausage
+meal_bloodsausage_desc,+2 ATK to Party
+meal_steamedseafood_title,Steamed Fish Buns
+meal_steamedseafood_desc,+2 SPATK to Party
+meal_braisedshoulder_title,Braised Shoulder
+meal_braisedshoulder_desc,+1 DEF & +1 SPDEF to Party
+meal_steelcutoats_title,Almond Porridge
+meal_steelcutoats_desc,+2 VIT to Party
+meal_threecoursemeal_title,Three Course Meal
+meal_threecoursemeal_desc,+10% All Stat Growths
+meal_seafoodspread_title,Seafood Spread
+meal_seafoodspread_desc,"+1 VIT, +2 SpATK, +3% All Growths"
+meal_meatplatter_title,Meat Platter
+meal_meatplatter_desc,"+1 VIT, +2 ATK, +3% All Growths"
+weap_irondagger_name,Iron Dagger
+weap_irondagger_desc,A short dagger that can be thrown. +20% Crit Chance
+weap_steeldagger_name,Steel Dagger
+weap_steeldagger_desc,A sharper dagger for more lethal blows. +20% Crit Chance
+weap_lightdagger_name,Light Daggers
+weap_lightdagger_desc,Ethereal blades that can be thrown. Deals Physical Damage that scales with SpATK instead of ATK
+weap_shortbow_name,Short Bow
+weap_shortbow_desc,Has a shorter range that allows for counterattacks within melee range.
+weap_guardinglance_name,Guarding Lance
+weap_guardinglance_desc,A spear that allows for a balance of agressive and defensive plays.
+weap_blunt_name,Blunt Object
+weap_blunt_desc,Any sort of hard object that can be swung. Always does 5 Damage
+weap_morningstar_name,Morning Star
+weap_morningstar_desc,A blunt metal club with spikes. Always does 8 Damage.
+tact_regenerativetincture_name,Regenerative Tincture
+tact_regenerativetincture_desc,Heals the user 100 HP
+weap_guardingblade_name,Guarding Blade
+weap_guardingblade_desc,The hilt is designed to help defend and redirect damage.
+tact_heavypush_name,Heavy Shove
+tact_heavypush_desc,Pushes a Unit 2 Tiles in a direction.
+tact_kick_name,Kick
+tact_kick_desc,Pushes a Unit 1 Tile in a direction
+loc_smithy_title,Smithy:
+loc_canuse,Can Use:
+ui_confirm_purchase,Confirm Purchase?
+ui_yes,Yes
+ui_no,No

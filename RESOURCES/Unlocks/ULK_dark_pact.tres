@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=4 format=3 uid="uid://d00tdm4jby8ea"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_75jjv"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_c8pp2"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="5_mdaml"]
+
+[resource]
+script = ExtResource("1_c8pp2")
+AbilityPath = "res://RESOURCES/Ability/Equippable/dark_pact.tscn"
+StartsDiscoverable = false
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_75jjv")]([ExtResource("5_mdaml")])

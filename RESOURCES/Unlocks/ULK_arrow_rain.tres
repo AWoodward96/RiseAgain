@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://bwgrrm71j337g"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_71jd6"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_usncw"]
+
+[resource]
+script = ExtResource("1_usncw")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_arrow_rain.tscn"
+StartsDiscoverable = true
+StartUnlocked = true
+Descriptors = Array[ExtResource("1_71jd6")]([])

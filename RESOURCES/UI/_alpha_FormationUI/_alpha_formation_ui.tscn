@@ -392,6 +392,7 @@ anchor_bottom = 1.0
 offset_top = -8.0
 offset_right = 8.0
 grow_vertical = 0
+theme = ExtResource("4_s7a0i")
 
 [node name="FacadeAnimator" type="AnimationPlayer" parent="MenuParent"]
 root_node = NodePath("../Menu")

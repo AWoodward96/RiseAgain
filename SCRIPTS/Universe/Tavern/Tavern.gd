@@ -2,8 +2,6 @@ extends TopdownInteractable
 class_name Tavern
 
 
-# This is where the Player goes and sets off on a mission
-
 @export var UIParent : Node
 @export var Anim : AnimationPlayer
 @export var CharacterEntryParent : EntryList

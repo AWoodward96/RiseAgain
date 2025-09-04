@@ -5,6 +5,8 @@ class_name LocSettings
 
 static var Level_Num_Short = "ui_level_num_short"
 static var Level_Num = "ui_level_num"
+static var X_Num = "ui_xNUM"
+static var OneX_TEXT = "ui_1x_text"
 
 static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 
@@ -49,6 +51,13 @@ static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 @export var AbilitySpeedFastColor : Color
 @export var AbilitySpeedSlowText : String
 @export var AbilitySpeedSlowColor : Color
+
+@export var FastSpeedIcon : Texture2D
+@export var SlowSpeedIcon : Texture2D
+@export var ShapedFreeIcon : Texture2D
+@export var ShapedDirectionalIcon : Texture2D
+@export var GlobalIcon : Texture2D
+@export var SelfOnlyIcon : Texture2D
 
 
 @export_category("Context UI")

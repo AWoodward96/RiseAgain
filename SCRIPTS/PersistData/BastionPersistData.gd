@@ -11,8 +11,11 @@ var DayComplete : bool
 var UnitsInTavern : Array[UnitTemplate]		# Which units are in the tavern
 var UnitsInCampsite : Array[UnitTemplate]		# Which units are staying at the campsite. These are always equal to the last units you played with
 var SelectedRoster : Array[UnitTemplate]		# Wich units are you taking with you
-var TavernLevel : int = 0
+var CurrentTavernLevel : int = 0
+var CurrentSmithyLevel : int = 0
 var MaxUnitsInRosterAllowed : int = 2
+var ActiveMeal : MealTemplate
+
 
 func GenerateTavernOccupants(_availableSlots : int, _garunteedUnits : Array[UnitTemplate]):
 	# NOTE: At some point this is going to change - based on a bunch of conditions I don't know about yet
@@ -21,6 +24,7 @@ func GenerateTavernOccupants(_availableSlots : int, _garunteedUnits : Array[Unit
 	# In order for a unit to show up at the tavern, they need to be unlocked, and alive.
 	# If they aren't, then a 'husk' version of them will show up, that has no face, and no story, and has a worse stat growth then they usually do
 	# That way players can still use the content I have set up in the early game, and have something to look forward to later
+	# NOTE: Update, these might be replaced with Maggai Units? Not sure yet
 
 	var allUnits = GameManager.UnitSettings.AllyUnitManifest.duplicate()
 
@@ -75,6 +79,12 @@ func ToJSON():
 		"UnitsInCampsite" = PersistDataManager.ResourcePathToJSON(UnitsInCampsite),
 		"DayComplete" = DayComplete
 	}
+
+	if ActiveMeal != null:
+		returnDict["ActiveMeal"] = ActiveMeal.resource_path
+	else:
+		returnDict["ActiveMeal"] = "NULL"
+
 	return returnDict
 
 func FromJSON(_dict : Dictionary):
@@ -82,4 +92,9 @@ func FromJSON(_dict : Dictionary):
 	PersistDataManager.JSONtoResourceFromPath(_dict["SelectedRoster"], SelectedRoster)
 	PersistDataManager.JSONtoResourceFromPath(_dict["UnitsInCampsite"], UnitsInCampsite)
 	if _dict.has("DayComplete"): DayComplete = _dict["DayComplete"]
+
+	if _dict.has("ActiveMeal") && _dict["ActiveMeal"] != "NULL":
+		ActiveMeal = load(_dict["ActiveMeal"]) as MealTemplate
+
+
 	pass

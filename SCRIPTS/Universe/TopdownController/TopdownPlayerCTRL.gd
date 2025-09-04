@@ -8,6 +8,7 @@ static var BlockInputCounter : int = 0
 @export var camera : Camera2D
 
 var currentEnvironment : TopdownEnvironment
+var teleporting : bool
 
 func Initialize(_environment : TopdownEnvironment):
 	currentEnvironment = _environment
@@ -15,11 +16,13 @@ func Initialize(_environment : TopdownEnvironment):
 
 func UpdateCameraBounds():
 	var totalMapSize = currentEnvironment.size * currentEnvironment.tileSize
+	var mapOffset = currentEnvironment.offset * currentEnvironment.tileSize
 
-	camera.limit_left = 0
-	camera.limit_right = totalMapSize.x
-	camera.limit_top = 0
-	camera.limit_bottom = totalMapSize.y
+	camera.limit_left = mapOffset.x
+	camera.limit_right = totalMapSize.x + mapOffset.x
+	camera.limit_top = mapOffset.y
+	camera.limit_bottom = totalMapSize.y + mapOffset.y
+	camera.reset_smoothing()
 	pass
 
 func _process(_delta):
@@ -28,12 +31,12 @@ func _process(_delta):
 	elif BlockInputCounter < 0:
 		BlockInputCounter = 0
 
-	Move(_delta)
+	Move()
 	if CurrentInteractable != null && InputManager.selectDown:
 		CurrentInteractable.OnInteract()
 	pass
 
-func Move(_delta):
+func Move():
 	# It's really that easy!
 	var desiredVelocity = Vector2(InputManager.topdownHorizontal, InputManager.topdownVertical).normalized() * maximumSpeed
 
@@ -42,3 +45,29 @@ func Move(_delta):
 
 	# NOTE: Move and slize already uses DeltaTime - NO NEED TO MULTIPLY BY THAT AGAIN
 	move_and_slide()
+
+func UseTeleporter(_tp : TopdownTeleporter):
+	if _tp == null || _tp.Destination == null || teleporting:
+		return
+
+	BlockInputCounter += 1
+	teleporting = true
+
+	# lambdas op
+	GameManager.ShowLoadingScreen(0.5, func() :
+		position = _tp.Destination.global_position
+		if _tp.DestinationEnvironment != null:
+			currentEnvironment = _tp.DestinationEnvironment
+			UpdateCameraBounds()
+
+		await get_tree().create_timer(0.5).timeout
+
+		#camera.reset_smoothing()
+		# lambda inside of lambda, what's good
+		GameManager.HideLoadingScreen(0.3, func():
+			BlockInputCounter -= 1
+			teleporting = false
+			)
+		)
+
+	pass

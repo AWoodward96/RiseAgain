@@ -1,0 +1,201 @@
+[gd_scene load_steps=11 format=3 uid="uid://ds0pcu11x34vs"]
+
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_dmmxr"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_hj4ni"]
+[ext_resource type="Script" uid="uid://bf67oxatk44ck" path="res://SCRIPTS/Universe/Smithy/SmithyWeaponEntryUI.gd" id="1_hjuur"]
+[ext_resource type="PackedScene" uid="uid://bkktm0cwqep5n" path="res://RESOURCES/UI/GenericEntrys/resource_cost_entry.tscn" id="2_0bhbb"]
+[ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="3_dmmxr"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_dmmxr"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7c27l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_45xnl"]
+font = ExtResource("1_hj4ni")
+font_size = 24
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyni8"]
+font = ExtResource("1_hj4ni")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpibv"]
+font = ExtResource("1_hj4ni")
+font_size = 12
+
+[node name="SmithyWeaponEntry" type="Button" node_paths=PackedStringArray("weaponTitle", "weaponDesc", "weaponIcon", "statChangeEntryParent", "costParent", "canUseParent", "weaponDetailsParent")]
+custom_minimum_size = Vector2(0, 180)
+offset_right = 500.0
+offset_bottom = 140.0
+theme = ExtResource("1_dmmxr")
+script = ExtResource("1_hjuur")
+weaponTitle = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/weapon_title")
+weaponDesc = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/weapon_desc")
+weaponIcon = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/IconParent/Control/Icon")
+statChangeEntryParent = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/StatChanges")
+costParent = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/Panel/MarginContainer/CostParent")
+costEntry = ExtResource("2_0bhbb")
+canUseParent = NodePath("HBoxContainer/VBoxContainer/Panel/MarginContainer/CanUse/CanUseParent")
+weaponDetailsParent = NodePath("HBoxContainer/VBoxContainer/WeaponDetails2/HBoxContainer")
+canAffordColor = Color(0.9, 0.9, 0.9, 1)
+cantAffordColor = Color(1, 0.594, 0.58, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spacer" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="spacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="WeaponInfo" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="IconParent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent/Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("PlaceholderTexture2D_7c27l")
+expand_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dmmxr")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent/HBoxContainer"]
+layout_mode = 2
+
+[node name="TitleDescParent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent"]
+layout_mode = 2
+
+[node name="weapon_title" type="Label" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "weaponname"
+label_settings = SubResource("LabelSettings_45xnl")
+
+[node name="StatChanges" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_dmmxr")
+
+[node name="weapon_desc" type="Label" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent"]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
+size_flags_vertical = 3
+text = "weapondesc"
+label_settings = SubResource("LabelSettings_fyni8")
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer/WeaponInfo"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_type_variation = &"SubPanel2"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="CostParent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/Panel/MarginContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("4_dmmxr")
+
+[node name="WeaponDetails2" type="Panel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_type_variation = &"SubPanel2"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponDetails2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -16.0
+offset_right = -3.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_dmmxr")
+
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="CanUse" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer/CanUse"]
+layout_mode = 2
+text = "loc_canuse"
+label_settings = SubResource("LabelSettings_jpibv")
+
+[node name="CanUseParent" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer/CanUse"]
+layout_mode = 2
+script = ExtResource("4_dmmxr")
+
+[node name="spacer2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2

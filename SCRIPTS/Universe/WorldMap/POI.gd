@@ -40,7 +40,7 @@ var selectable = false
 
 
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		AdjacentPOIs.clear()
 		var children = get_children()

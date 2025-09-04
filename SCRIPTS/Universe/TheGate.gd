@@ -34,6 +34,7 @@ func _process(_delta: float) -> void:
 	if InputManager.cancelDown && hasInteractable:
 		TopDownPlayer.BlockInputCounter -= 1
 		SetInteractable(false)
+		WorldMap.CloseUI()
 
 func UpdateUI():
 	WorldMap.OpenWorldMapFullscreenUI(WorldMap.WorldMapUIState.NewCampaign)

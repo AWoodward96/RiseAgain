@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://ban0gyynywtal"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=34 format=3 uid="uid://ban0gyynywtal"]
 
 [ext_resource type="Resource" uid="uid://cw401rjsoo6be" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_ydurd"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="2_pddbs"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_f6kpa"]
 [ext_resource type="PackedScene" uid="uid://d108irg1t3j5n" path="res://RESOURCES/Units/Other/PrizedBuck/VIS_PrizedBuck.tscn" id="12_umh1e"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_ywkkh"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_lfs7p"]
+[ext_resource type="Resource" uid="uid://bun14skcepxgl" path="res://RESOURCES/Resources/ResourceDefs/FoodRewardSmall.tres" id="14_opkoe"]
 [ext_resource type="Texture2D" uid="uid://olxft3bee4j4" path="res://ART/Icons/Units/prizedbuck.png" id="14_vfof4"]
 
 [sub_resource type="Resource" id="Resource_4qoj7"]
@@ -106,7 +108,9 @@ Affinity = ExtResource("1_ydurd")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_f6kpa")]([])
+WeaponDescriptors = Array[ExtResource("12_f6kpa")]([])
 GridSize = 1
+ResourceDrops = Array[ExtResource("13_lfs7p")]([ExtResource("14_opkoe")])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "PrizedBuck"
 loc_DisplayName = "unit_prizedbuck_name"

@@ -101,6 +101,7 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	ImportWeapon(_unitTemplate, _data)
 	ImportTactical(_unitTemplate, _data)
 	ImportDescriptors(_unitTemplate, _data)
+	ImportWeaponDescriptors(_unitTemplate, _data)
 
 	# NOTE:
 	# Okay so it's tempting to put the flag: ResourceSaver.FLAG_BUNDLE_RESOURCES
@@ -182,3 +183,18 @@ func ImportDescriptors(_unitTemplate: UnitTemplate, _data):
 		if index != -1:
 			var descriptor = ResourceLoader.load(descriptorPathArray[index]) as DescriptorTemplate
 			_unitTemplate.Descriptors.append(descriptor)
+
+func ImportWeaponDescriptors(_unitTemplate : UnitTemplate, _data):
+	_unitTemplate.WeaponDescriptors.clear()
+	if _data.has("AllowedWeapons"):
+		var descString = _data["AllowedWeapons"] as String
+		var split = descString.split(',')
+		for descriptorID in split:
+			var trimmed = descriptorID.strip_edges()
+			if !trimmed.is_empty():
+				var index = descriptorNameArray.find(trimmed)
+				if index != -1:
+					var foundDescriptorTemplate = ResourceLoader.load(descriptorPathArray[index]) as DescriptorTemplate
+					_unitTemplate.WeaponDescriptors.append(foundDescriptorTemplate)
+				else:
+					log += str("\n[color=red]Could not find weapon descriptor: [/color]", trimmed, "[color=red]Please ensure that the descriptor exists before importing[/color]")

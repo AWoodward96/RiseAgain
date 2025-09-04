@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://f6dk5tomw0j2"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_dqjbm"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_end6o"]
+
+[resource]
+script = ExtResource("1_end6o")
+AbilityPath = "res://RESOURCES/Ability/Equippable/bomblauncher.tscn"
+StartsDiscoverable = false
+StartUnlocked = false
+Descriptors = Array[ExtResource("1_dqjbm")]([])

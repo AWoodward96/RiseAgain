@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="TavernBuildingTemplate" load_steps=24 format=3 uid="uid://87vbepmdhmjx"]
+
+[ext_resource type="Script" uid="uid://dhduwtb6q0cra" path="res://SCRIPTS/Universe/BastionBuildingLevelBase.gd" id="1_xnj28"]
+[ext_resource type="Script" uid="uid://b4yw43e3u0lmj" path="res://SCRIPTS/Universe/Tavern/TavernBuildingTemplate.gd" id="2_nfyvs"]
+[ext_resource type="Resource" uid="uid://ctgh43f2t0a6m" path="res://RESOURCES/Resources/ResourceDefs/BuildingUpgrade1.tres" id="2_r55c0"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="3_cumi8"]
+[ext_resource type="Resource" uid="uid://c1o1sarcb1glm" path="res://RESOURCES/Universe/Meals/Grub.tres" id="4_06m5i"]
+[ext_resource type="Script" uid="uid://ddlg01oenjva7" path="res://SCRIPTS/Universe/Tavern/TavernLevel.gd" id="5_sypis"]
+[ext_resource type="Resource" uid="uid://cdf87ppjyvi12" path="res://RESOURCES/Universe/Meals/HotMeal.tres" id="8_ghnbb"]
+[ext_resource type="Resource" uid="uid://dpe78sitkjo37" path="res://RESOURCES/Universe/Meals/LargeHotMeal.tres" id="9_ky6t8"]
+[ext_resource type="Resource" uid="uid://cm10yc6ku8l88" path="res://RESOURCES/Universe/Meals/HuntersChicken.tres" id="10_1xbi3"]
+[ext_resource type="Resource" uid="uid://dphjh84xl51cj" path="res://RESOURCES/Resources/ResourceDefs/BuildingUpgrade2.tres" id="10_xs3i4"]
+[ext_resource type="Resource" uid="uid://dcog5hycake36" path="res://RESOURCES/Universe/Meals/MushroomStew.tres" id="11_o6dag"]
+[ext_resource type="Resource" uid="uid://dkkqp5vkogs0r" path="res://RESOURCES/Universe/Meals/BloodSausage.tres" id="12_dnuw3"]
+[ext_resource type="Resource" uid="uid://b2nccqw85q853" path="res://RESOURCES/Universe/Meals/SteamedSeafood.tres" id="13_r55c0"]
+[ext_resource type="Resource" uid="uid://hsrywh8q4lv" path="res://RESOURCES/Universe/Meals/BraisedShoulder.tres" id="14_k87x4"]
+[ext_resource type="Resource" uid="uid://bxbwumosddie4" path="res://RESOURCES/Resources/ResourceDefs/BuildingUpgrade3.tres" id="15_eot6n"]
+[ext_resource type="Resource" uid="uid://cfpffvod7yru5" path="res://RESOURCES/Universe/Meals/SteelCutOats.tres" id="15_xs3i4"]
+[ext_resource type="Resource" uid="uid://dn125nal5w5o7" path="res://RESOURCES/Universe/Meals/ThreeCourseMeal.tres" id="16_xs3i4"]
+[ext_resource type="Resource" uid="uid://bkpeocjrs314w" path="res://RESOURCES/Universe/Meals/SeafoodSpread.tres" id="17_eot6n"]
+[ext_resource type="Resource" uid="uid://bl5khuhjuhxgg" path="res://RESOURCES/Universe/Meals/MeatPlatter.tres" id="18_jx3t5"]
+
+[sub_resource type="Resource" id="Resource_vene1"]
+script = ExtResource("5_sypis")
+UnlockedMeals = Array[ExtResource("3_cumi8")]([ExtResource("4_06m5i")])
+Resources = ExtResource("2_r55c0")
+metadata/_custom_type_script = "uid://ddlg01oenjva7"
+
+[sub_resource type="Resource" id="Resource_ky6t8"]
+script = ExtResource("5_sypis")
+UnlockedMeals = Array[ExtResource("3_cumi8")]([ExtResource("8_ghnbb"), ExtResource("9_ky6t8"), ExtResource("10_1xbi3"), ExtResource("11_o6dag")])
+Resources = ExtResource("2_r55c0")
+metadata/_custom_type_script = "uid://ddlg01oenjva7"
+
+[sub_resource type="Resource" id="Resource_77y3x"]
+script = ExtResource("5_sypis")
+UnlockedMeals = Array[ExtResource("3_cumi8")]([ExtResource("12_dnuw3"), ExtResource("13_r55c0"), ExtResource("14_k87x4"), ExtResource("15_xs3i4")])
+Resources = ExtResource("10_xs3i4")
+metadata/_custom_type_script = "uid://ddlg01oenjva7"
+
+[sub_resource type="Resource" id="Resource_u337f"]
+script = ExtResource("5_sypis")
+UnlockedMeals = Array[ExtResource("3_cumi8")]([ExtResource("16_xs3i4"), ExtResource("17_eot6n"), ExtResource("18_jx3t5")])
+Resources = ExtResource("15_eot6n")
+metadata/_custom_type_script = "uid://ddlg01oenjva7"
+
+[resource]
+script = ExtResource("2_nfyvs")
+Levels = Array[ExtResource("1_xnj28")]([SubResource("Resource_vene1"), SubResource("Resource_ky6t8"), SubResource("Resource_77y3x"), SubResource("Resource_u337f")])
+metadata/_custom_type_script = "uid://b4yw43e3u0lmj"

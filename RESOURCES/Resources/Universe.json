@@ -1,0 +1,24 @@
+{
+	"bastionData": {
+		"DayComplete": false,
+		"SelectedRoster": [],
+		"UnitsInCampsite": [],
+		"UnitsInTavern": [
+			"res://RESOURCES/Units/Ally/Archer/UT_Archer.tres",
+			"res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres",
+			"res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres"
+		]
+	},
+	"completedCutscenes": [
+		"res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_root.tres"
+	],
+	"mapPersistData": "{}",
+	"resourceData": [
+		"{\n\t\"amount\": 0,\n\t\"template\": \"res://RESOURCES/Resources/Gold.tres\"\n}",
+		"{\n\t\"amount\": 0,\n\t\"template\": \"res://RESOURCES/Resources/PaleWood.tres\"\n}",
+		"{\n\t\"amount\": 0,\n\t\"template\": \"res://RESOURCES/Resources/Food.tres\"\n}",
+		"{\n\t\"amount\": 0,\n\t\"template\": \"res://RESOURCES/Resources/Ore.tres\"\n}",
+		"{\n\t\"amount\": 0,\n\t\"template\": \"res://RESOURCES/Resources/Gemstones.tres\"\n}",
+		"{\n\t\"amount\": 0,\n\t\"template\": \"res://RESOURCES/Resources/Concoctions.tres\"\n}"
+	]
+}

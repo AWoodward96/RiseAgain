@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=30 format=3 uid="uid://txjfcstralf6"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=45 format=3 uid="uid://txjfcstralf6"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_vy8pt"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ieqod"]
@@ -11,10 +11,20 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_p1yub"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_f24kq"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_1j13p"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_h0e5d"]
 [ext_resource type="PackedScene" uid="uid://doxn71htn5rvr" path="res://RESOURCES/Units/Enemy/BanditBoss/VIS_BanditBoss.tscn" id="12_ieqod"]
-[ext_resource type="PackedScene" uid="uid://vlpjvct6tdeb" path="res://RESOURCES/Ability/Equippable/bomblauncher.tscn" id="12_ro8a3"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_vf3cb"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="13_kf6tu"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="14_2xa3j"]
 [ext_resource type="Texture2D" uid="uid://cjrp3ll0fhp7" path="res://ART/Icons/Units/banditboss.png" id="14_jeiil"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="15_p8mo6"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="16_e2cik"]
+[ext_resource type="PackedScene" uid="uid://dsjmls2c4362e" path="res://RESOURCES/GridEntities/ge_launcherbomb.tscn" id="17_k7r3a"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="18_pv12v"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_lowip"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="20_bgdu5"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_huiq2"]
+[ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="22_umk3d"]
 
 [sub_resource type="Resource" id="Resource_0hxi7"]
 script = ExtResource("2_ieqod")
@@ -56,6 +66,43 @@ script = ExtResource("2_ieqod")
 Template = ExtResource("10_f24kq")
 Value = 4.0
 
+[sub_resource type="Resource" id="Resource_ggq14"]
+script = ExtResource("15_p8mo6")
+OnActionOrigin = true
+OnSource = false
+OnSpecificPosition = false
+SpecificPosition = Vector2i(0, 0)
+Instant = false
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_b0j54"]
+script = ExtResource("16_e2cik")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_xidfr"]
+script = ExtResource("18_pv12v")
+GridEntityPrefab = ExtResource("17_k7r3a")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[sub_resource type="Resource" id="Resource_apn66"]
+script = ExtResource("2_ieqod")
+Template = ExtResource("4_jeiil")
+Value = 3
+
+[sub_resource type="PackedScene" id="PackedScene_85sgu"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("bomblauncher", "Node2D", "script", "type", "abilityCooldown", "ability_speed", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script", "TeamTargeting", "TargetRange", "Type", "CanTargetSelf", "shapedTiles"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 2, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 4, 20, 14, 21, 15, 22, 16, 23, 17, 0, 1073741826, 0, 25, 24, -1, 6, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 31, 23, 0),
+"variants": [ExtResource("13_kf6tu"), 1, 0, 2, Array[ExtResource("14_2xa3j")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_xidfr")]), true, "bomblauncher", "weap_bomblauncher_name", "weap_bomblauncher_desc", NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_lowip"), Array[ExtResource("2_ieqod")]([SubResource("Resource_apn66")]), ExtResource("20_bgdu5"), ExtResource("4_jeiil"), ExtResource("5_h0e5d"), 0.0, ExtResource("21_huiq2"), 2, Vector2i(1, 3), 1, true, ExtResource("22_umk3d")],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_bgdu5"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
@@ -93,11 +140,13 @@ VisualPrefab = ExtResource("12_ieqod")
 BaseStats = Array[ExtResource("2_ieqod")]([SubResource("Resource_0hxi7"), SubResource("Resource_kf6tu"), SubResource("Resource_2xa3j"), SubResource("Resource_p8mo6"), SubResource("Resource_e2cik"), SubResource("Resource_k7r3a"), SubResource("Resource_pv12v"), SubResource("Resource_lowip")])
 StatGrowths = Array[ExtResource("2_ieqod")]([SubResource("Resource_bgdu5"), SubResource("Resource_huiq2"), SubResource("Resource_umk3d"), SubResource("Resource_85sgu"), SubResource("Resource_g3q6i"), SubResource("Resource_5aln8")])
 Affinity = ExtResource("1_vy8pt")
-StartingTactical = ExtResource("12_ro8a3")
+StartingTactical = SubResource("PackedScene_85sgu")
 Tier0Abilities = Array[String](["uid://bysotjnllb6fb"])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_1j13p")]([])
+WeaponDescriptors = Array[ExtResource("11_1j13p")]([])
 GridSize = 1
+ResourceDrops = Array[ExtResource("12_h0e5d")]([])
 FootstepGUID = ""
 DebugName = "BanditBoss"
 loc_DisplayName = "unit_banditboss_name"

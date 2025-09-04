@@ -1,0 +1,112 @@
+[gd_resource type="Resource" script_class="SmithyBuildingTemplate" load_steps=33 format=3 uid="uid://cko8hnks4se86"]
+
+[ext_resource type="Script" uid="uid://dhduwtb6q0cra" path="res://SCRIPTS/Universe/BastionBuildingLevelBase.gd" id="1_wv1kf"]
+[ext_resource type="Script" uid="uid://dcc20s8ey720x" path="res://SCRIPTS/Universe/Smithy/SmithyBuildingTemplate.gd" id="2_jl2rv"]
+[ext_resource type="Script" uid="uid://cuwsjv1d8rofx" path="res://SCRIPTS/Universe/Smithy/SmithyBuildingLevel.gd" id="2_nrim2"]
+[ext_resource type="Script" uid="uid://dd35dsyll4ssp" path="res://SCRIPTS/Universe/Smithy/SmithyWeaponUnlockDef.gd" id="3_6ar7w"]
+[ext_resource type="Resource" uid="uid://ct85r2gistugn" path="res://RESOURCES/Resources/ResourceDefs/WeaponUnlockCost_Small.tres" id="4_g2js1"]
+[ext_resource type="Resource" uid="uid://ck2y0oj2cq5d0" path="res://RESOURCES/Unlocks/ULK_steel_sword.tres" id="5_uucux"]
+[ext_resource type="Resource" uid="uid://bef4kh2kjen6x" path="res://RESOURCES/Unlocks/ULK_steel_bow.tres" id="6_vybmh"]
+[ext_resource type="Resource" uid="uid://dqpj6uyywq7wn" path="res://RESOURCES/Unlocks/ULK_steeldagger.tres" id="7_57t8l"]
+[ext_resource type="Resource" uid="uid://dn5l4mv003m8i" path="res://RESOURCES/Unlocks/ULK_magic_bolt.tres" id="7_vybmh"]
+[ext_resource type="Resource" uid="uid://ctgh43f2t0a6m" path="res://RESOURCES/Resources/ResourceDefs/BuildingUpgrade1.tres" id="9_xflf3"]
+[ext_resource type="Resource" uid="uid://cjuji04d0l7ru" path="res://RESOURCES/Unlocks/ULK_shortbow.tres" id="10_ccpq3"]
+[ext_resource type="Resource" uid="uid://bxerpkf4jrh6r" path="res://RESOURCES/Unlocks/ULK_lightdagger.tres" id="11_edjp2"]
+[ext_resource type="Resource" uid="uid://cb205i5q5qxl6" path="res://RESOURCES/Unlocks/ULK_morningstar.tres" id="12_tsyrc"]
+[ext_resource type="Resource" uid="uid://b6aw66x2ket4s" path="res://RESOURCES/Unlocks/ULK_fireytome.tres" id="13_oe5s5"]
+[ext_resource type="Resource" uid="uid://bv0d1tghqclj1" path="res://RESOURCES/Unlocks/ULK_guardingblade.tres" id="14_0mco2"]
+[ext_resource type="Resource" uid="uid://dphjh84xl51cj" path="res://RESOURCES/Resources/ResourceDefs/BuildingUpgrade2.tres" id="14_edjp2"]
+[ext_resource type="Resource" uid="uid://bqqcy3c3fgo88" path="res://RESOURCES/Unlocks/ULK_guardinglance.tres" id="15_m1k2b"]
+[ext_resource type="Resource" uid="uid://uo8uhay1gotw" path="res://RESOURCES/Unlocks/ULK_taintedtome.tres" id="16_ccpq3"]
+
+[sub_resource type="Resource" id="Resource_g2js1"]
+resource_name = "Steel Sword"
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("5_uucux")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_1f0v8"]
+resource_name = "Steel Bow"
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("6_vybmh")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_ej6x7"]
+resource_name = "Steel Dagger"
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("7_57t8l")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_57t8l"]
+resource_name = "Magic Bolt"
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("7_vybmh")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_uucux"]
+script = ExtResource("2_nrim2")
+Unlocks = Array[ExtResource("3_6ar7w")]([SubResource("Resource_g2js1"), SubResource("Resource_1f0v8"), SubResource("Resource_ej6x7"), SubResource("Resource_57t8l")])
+metadata/_custom_type_script = "uid://cuwsjv1d8rofx"
+
+[sub_resource type="Resource" id="Resource_d6hp2"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("10_ccpq3")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_ve305"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("11_edjp2")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_g60ul"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("12_tsyrc")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_x7pu6"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("13_oe5s5")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_aduas"]
+script = ExtResource("2_nrim2")
+Unlocks = Array[ExtResource("3_6ar7w")]([SubResource("Resource_d6hp2"), SubResource("Resource_ve305"), SubResource("Resource_g60ul"), SubResource("Resource_x7pu6")])
+Resources = ExtResource("9_xflf3")
+metadata/_custom_type_script = "uid://cuwsjv1d8rofx"
+
+[sub_resource type="Resource" id="Resource_yc5eu"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("14_0mco2")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_6qqp7"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("15_m1k2b")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_edjp2"]
+script = ExtResource("3_6ar7w")
+unlockableTemplate = ExtResource("16_ccpq3")
+cost = ExtResource("4_g2js1")
+metadata/_custom_type_script = "uid://dd35dsyll4ssp"
+
+[sub_resource type="Resource" id="Resource_qto53"]
+script = ExtResource("2_nrim2")
+Unlocks = Array[ExtResource("3_6ar7w")]([SubResource("Resource_yc5eu"), SubResource("Resource_6qqp7"), SubResource("Resource_edjp2")])
+Resources = ExtResource("14_edjp2")
+metadata/_custom_type_script = "uid://cuwsjv1d8rofx"
+
+[resource]
+script = ExtResource("2_jl2rv")
+Levels = Array[ExtResource("1_wv1kf")]([SubResource("Resource_uucux"), SubResource("Resource_aduas"), SubResource("Resource_qto53")])
+metadata/_custom_type_script = "uid://dcc20s8ey720x"

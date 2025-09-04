@@ -14,6 +14,11 @@ func RefreshAnchor(_availableSlots : Array[Control.LayoutPreset]):
 		return null
 
 	show()
+	# block the top right cornor if the resourceUI is open
+	if _availableSlots.has(Control.LayoutPreset.PRESET_TOP_RIGHT) && GlobalUIHelper.IsShowingResourceUI:
+		var index = _availableSlots.find(Control.LayoutPreset.PRESET_TOP_RIGHT)
+		_availableSlots.remove_at(index)
+
 	for anchor in PreferredAnchor:
 		if _availableSlots.has(anchor):
 			set_anchors_and_offsets_preset(anchor)
