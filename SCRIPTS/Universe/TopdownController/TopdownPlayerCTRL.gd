@@ -54,7 +54,7 @@ func UseTeleporter(_tp : TopdownTeleporter):
 	teleporting = true
 
 	# lambdas op
-	GameManager.ShowLoadingScreen(0.5, func() :
+	UIManager.ShowLoadingScreen(0.5, func() :
 		position = _tp.Destination.global_position
 		if _tp.DestinationEnvironment != null:
 			currentEnvironment = _tp.DestinationEnvironment
@@ -64,7 +64,7 @@ func UseTeleporter(_tp : TopdownTeleporter):
 
 		#camera.reset_smoothing()
 		# lambda inside of lambda, what's good
-		GameManager.HideLoadingScreen(0.3, func():
+		UIManager.HideLoadingScreen(0.3, func():
 			BlockInputCounter -= 1
 			teleporting = false
 			)

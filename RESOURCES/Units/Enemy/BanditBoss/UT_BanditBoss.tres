@@ -152,3 +152,5 @@ DebugName = "BanditBoss"
 loc_DisplayName = "unit_banditboss_name"
 loc_Description = "unit_banditboss_desc"
 icon = ExtResource("14_jeiil")
+startUnlocked = true
+startNameKnown = true

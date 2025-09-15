@@ -17,6 +17,10 @@ func _ready():
 	if FirstEntry != null:
 		FirstEntry.grab_focus()
 
+func ReturnFocus():
+	if FirstEntry != null:
+		FirstEntry.grab_focus()
+
 func btnAllAbilitiesCost0():
 	AllAbilitiesCost0 = !AllAbilitiesCost0
 
@@ -83,6 +87,20 @@ func btnAddFood():
 	resourceDef.ItemResource = GameManager.GameSettings.FoodResource
 	PersistDataManager.universeData.AddResource(resourceDef, Vector2.ZERO, true)
 
+func btnAddGold():
+	var resourceDef = ResourceDef.new()
+	resourceDef.Amount = 50
+	resourceDef.ItemResource = GameManager.GameSettings.GoldResource
+	PersistDataManager.universeData.AddResource(resourceDef, Vector2.ZERO, true)
+
+func btnAddOreResource():
+	var resourceDef = ResourceDef.new()
+	resourceDef.Amount = 50
+	resourceDef.ItemResource = GameManager.GameSettings.OreResource
+	PersistDataManager.universeData.AddResource(resourceDef, Vector2.ZERO, true)
+
+
+
 func TestAbilitySelectionScreen():
 	var unit = GetCurrentHighlighedUnit() as UnitInstance
 	if unit != null:
@@ -95,6 +113,7 @@ static func ShowMenu():
 	CSR.Open = true
 	# instance management is handled by the GameManager, because we return csrMenu here
 	return csrMenu
+
 
 
 func TestSaveGame() -> void:

@@ -4,7 +4,7 @@ class_name BastionGameState
 var bastion : Bastion
 
 func Enter(_initData):
-	GameManager.HideLoadingScreen()
+	UIManager.HideLoadingScreen()
 	TopDownPlayer.BlockInputCounter = 0
 	var parentNode = GameManager.get_tree().get_first_node_in_group("BastionParent")
 	bastion = GameManager.GameSettings.BastionPrefab.instantiate() as Bastion

@@ -147,7 +147,6 @@ func RefreshThreat(_units : Array[UnitInstance]):
 			continue
 
 		var movement = GetCharacterMovementOptions(u, false)
-		movement = GetUniqueTiles(movement)
 
 		var unitRange = u.GetEffectiveAttackRange()
 		var threatRange = GetCharacterAttackOptions(u, movement, unitRange, false)
@@ -223,6 +222,8 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 	var unitHasFlying = _unit.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
 
 	var movement = _unit.GetUnitMovement()
+	# include the tile they're currently on as an option - always - even if it could literally kill them in some circumstances
+	returnList.append(GridArr[startingIndex])
 	frontier.append(GridArr[startingIndex])
 	visited[GridArr[startingIndex]] = 0
 
@@ -355,8 +356,6 @@ func FindNearbyValidTile(_invalidTile : Tile, _originTile : Tile):
 	return bestTile
 
 
-
-
 func GetGridArrIndex(_pos : Vector2i):
 	return _pos.y * Width + _pos.x
 
@@ -395,7 +394,7 @@ func GetAdjacentTiles(_tile : Tile):
 
 func GetCharacterAttackOptions(_unit : UnitInstance, _workingList : Array[Tile], _attackRange : Vector2i, _markTiles : bool = true) :
 	var returnArr : Array[Tile] = []
-	if _attackRange.x == 0:
+	if _attackRange.x <= 1:
 		# include the current tile
 		returnArr.append(_workingList[0])
 

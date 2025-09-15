@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=48 format=3 uid="uid://eyed7bxgka4g"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://eyed7bxgka4g"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_2gkof"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_gd10w"]
@@ -16,17 +16,8 @@
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2oydv"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="13_stfxg"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_ssbuv"]
-[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="15_i05xd"]
-[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_305eb"]
-[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="17_n5ybw"]
-[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_ufv82"]
-[ext_resource type="Texture2D" uid="uid://yqokd4g4dbxf" path="res://ART/Icons/Ability/Equippable/wolfbane.png" id="19_7q8nr"]
-[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_mfbvg"]
-[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="21_v3ai7"]
-[ext_resource type="Script" uid="uid://cavedmllfv7md" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="22_smy8g"]
-[ext_resource type="Resource" uid="uid://bugcne8hpbrlr" path="res://RESOURCES/Descriptors/Vulnerabilities/VULN_wolfbane.tres" id="23_cf74j"]
+[ext_resource type="Resource" uid="uid://bh3y3rtkai7q4" path="res://RESOURCES/Unlocks/ULK_wolfbane.tres" id="15_ssbuv"]
 [ext_resource type="Texture2D" uid="uid://bseonxdq2nqpy" path="res://ART/Icons/Units/wildnecromancer.png" id="23_i7foy"]
-[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="24_3ua1e"]
 
 [sub_resource type="Resource" id="Resource_edhhe"]
 script = ExtResource("2_qy2cs")
@@ -73,32 +64,6 @@ script = ExtResource("2_qy2cs")
 Template = ExtResource("10_6olnp")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_mflbd"]
-script = ExtResource("17_n5ybw")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_gq7j7"]
-script = ExtResource("18_ufv82")
-
-[sub_resource type="Resource" id="Resource_vlxdw"]
-script = ExtResource("2_qy2cs")
-Template = ExtResource("3_dhw6u")
-Value = 4
-
-[sub_resource type="PackedScene" id="PackedScene_qsp6i"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("wolfbane", "Node2D", "script", "type", "abilityCooldown", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageAffectsUsersHealth", "DamageToHealthRatio", "VulerableDescriptors", "TargetingData", "Node2D", "script"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 1073741834, 8, 1073741835, 9, 1073741836, 10, 0, 1073741824, 0, 14, 13, -1, 2, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 6, 19, 13, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
-"variants": [ExtResource("15_i05xd"), 1, 0, Array[ExtResource("16_305eb")]([SubResource("Resource_mflbd"), SubResource("Resource_gq7j7")]), "wolfbane", "weap_wolfbane_name", "weap_wolfbane_desc", ExtResource("19_7q8nr"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_mfbvg"), Array[ExtResource("2_qy2cs")]([SubResource("Resource_vlxdw")]), ExtResource("21_v3ai7"), ExtResource("3_dhw6u"), ExtResource("4_6q88s"), true, -0.5, Array[ExtResource("22_smy8g")]([ExtResource("23_cf74j")]), ExtResource("24_3ua1e")],
-"version": 3
-}
-
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("1_gd10w")
@@ -141,7 +106,7 @@ VisualPrefab = ExtResource("10_u3lpn")
 BaseStats = Array[ExtResource("2_qy2cs")]([SubResource("Resource_edhhe"), SubResource("Resource_gopix"), SubResource("Resource_1nkwt"), SubResource("Resource_e8xmq"), SubResource("Resource_8gqf5"), SubResource("Resource_3dnqf"), SubResource("Resource_0jwdw"), SubResource("Resource_53c4k"), SubResource("Resource_bb3rq")])
 StatGrowths = Array[ExtResource("2_qy2cs")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_2gkof")
-StartingEquippedWeapon = SubResource("PackedScene_qsp6i")
+StartingEquippedWeapon = ExtResource("15_ssbuv")
 Tier0Abilities = Array[String](["uid://bjkyhhnp44588"])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_2oydv")]([ExtResource("13_stfxg")])
@@ -153,3 +118,5 @@ DebugName = "WildNecromancer"
 loc_DisplayName = "unit_wildnecromancer_name"
 loc_Description = "unit_wildnecromancer_desc"
 icon = ExtResource("23_i7foy")
+startUnlocked = true
+startNameKnown = true

@@ -1,0 +1,437 @@
+[gd_scene load_steps=21 format=3 uid="uid://bk06veh2d7y28"]
+
+[ext_resource type="Script" uid="uid://cxl3qcqfcg8wk" path="res://SCRIPTS/UI/GlobalUI.gd" id="1_pogg0"]
+[ext_resource type="Theme" uid="uid://cp4bbeykxl8fe" path="res://RESOURCES/UI/Themes/moonsteel_theme.tres" id="2_jjaen"]
+[ext_resource type="Texture2D" uid="uid://bk60n8pjsbu3g" path="res://ART/Icons/Resources/coins.png" id="3_4ye6l"]
+[ext_resource type="Texture2D" uid="uid://dq7qxasdckqsg" path="res://ART/Icons/Resources/food.png" id="4_d0me7"]
+[ext_resource type="Texture2D" uid="uid://b1xh8lviepmfy" path="res://ART/Icons/Resources/wood.png" id="5_c7wjg"]
+[ext_resource type="Texture2D" uid="uid://bo43e7a3ccrpx" path="res://ART/Icons/Resources/ore.png" id="6_f1dnp"]
+[ext_resource type="Texture2D" uid="uid://fg04h7ce7dyf" path="res://ART/Icons/Resources/concoction.png" id="7_m6xbf"]
+[ext_resource type="Texture2D" uid="uid://if7va0ccagny" path="res://ART/Icons/Resources/gemstone.png" id="8_ajen3"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="9_jjaen"]
+
+[sub_resource type="Animation" id="Animation_38e3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-255, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w0jkb"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-255, -72)]
+}
+
+[sub_resource type="Animation" id="Animation_v7ul6"]
+resource_name = "hide"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.03333, 2.2, 2.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-255, 0), Vector2(-255, 0), Vector2(-255, 2), Vector2(-255, -72)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.73333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"UpdateIsShowing"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5xtn8"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-255, -72), Vector2(-255, 2), Vector2(-255, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"UpdateIsShowing"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfad0"]
+_data = {
+&"RESET": SubResource("Animation_38e3c"),
+&"default": SubResource("Animation_w0jkb"),
+&"hide": SubResource("Animation_v7ul6"),
+&"show": SubResource("Animation_5xtn8")
+}
+
+[sub_resource type="Animation" id="Animation_jjaen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pogg0"]
+resource_name = "show"
+length = 0.21
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ye6l"]
+_data = {
+&"RESET": SubResource("Animation_jjaen"),
+&"show": SubResource("Animation_pogg0")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pogg0"]
+bg_color = Color(0.6603, 0.676867, 0.71, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.91, 0.91, 0.91, 0.478431)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pogg0"]
+font = ExtResource("9_jjaen")
+outline_color = Color(0, 0, 0, 0)
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjaen"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.792933, 0.376, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="GlobalUI" type="Control" node_paths=PackedStringArray("ResourceParent", "ResourceAnimator", "PrimaryCurrenciesParent", "SecondaryCurrenciesParent", "GoldLabel", "FoodLabel", "OreLabel", "WoodLabel", "ConcoctionsLabel", "GemstonesLabel", "BurstSpritesParent", "DetailParent", "DetailSizer", "DetailLabel", "DetailHighlighter", "DetailAnimator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pogg0")
+ResourceParent = NodePath("ResourceUI")
+ResourceAnimator = NodePath("ResourceUI/AnimationPlayer")
+PrimaryCurrenciesParent = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel")
+SecondaryCurrenciesParent = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent")
+GoldLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer/GoldLabel")
+FoodLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer/FoodLabel")
+OreLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer/OreLabel")
+WoodLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer/WoodLabel")
+ConcoctionsLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer/ConcoctionLabel")
+GemstonesLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent/GemstoneText")
+BurstSpritesParent = NodePath("Burst")
+DetailParent = NodePath("DetailParent")
+DetailSizer = NodePath("DetailParent/TextResizingContainer")
+DetailLabel = NodePath("DetailParent/TextResizingContainer/MarginContainer/DetailLabel")
+DetailHighlighter = NodePath("DetailParent/Highlighter")
+DetailAnimator = NodePath("DetailParent/AnimationPlayer")
+Priority = 200
+TrackOnStack = false
+
+[node name="ResourceUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 1.0
+grow_horizontal = 0
+theme = ExtResource("2_jjaen")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResourceUI"]
+libraries = {
+&"": SubResource("AnimationLibrary_mfad0")
+}
+autoplay = "default"
+
+[node name="Offset" type="Control" parent="ResourceUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 32.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourceUI/Offset"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourceUI/Offset/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="MainCurrenciesPanel" type="Panel" parent="ResourceUI/Offset/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+theme = ExtResource("2_jjaen")
+
+[node name="MainCurrenciesMargin" type="MarginContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GoldContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoldTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("3_4ye6l")
+expand_mode = 1
+
+[node name="GoldLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="FoodContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="FoodTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("4_d0me7")
+expand_mode = 1
+
+[node name="FoodLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="WoodContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="WoodTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("5_c7wjg")
+expand_mode = 1
+
+[node name="WoodLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="OreContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="OreTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("6_f1dnp")
+expand_mode = 1
+
+[node name="OreLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="SecondaryCurrenciesParent" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="SecondaryCurrencies" type="Panel" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent"]
+custom_minimum_size = Vector2(137, 32)
+layout_mode = 2
+theme = ExtResource("2_jjaen")
+
+[node name="SecondaryCurrenciesMargin" type="MarginContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ConcoctionContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="ConcoctionIcon" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("7_m6xbf")
+expand_mode = 1
+
+[node name="ConcoctionLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="GemstoneParent" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="GemstoneIcon" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("8_ajen3")
+expand_mode = 1
+
+[node name="GemstoneText" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="Burst" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DetailParent" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DetailParent"]
+root_node = NodePath("../TextResizingContainer")
+libraries = {
+&"": SubResource("AnimationLibrary_4ye6l")
+}
+autoplay = "show"
+
+[node name="TextResizingContainer" type="PanelContainer" parent="DetailParent"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+offset_right = 25.0
+offset_bottom = 34.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pogg0")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="DetailParent/TextResizingContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="DetailLabel" type="Label" parent="DetailParent/TextResizingContainer/MarginContainer"]
+layout_mode = 2
+text = "two"
+label_settings = SubResource("LabelSettings_pogg0")
+
+[node name="Highlighter" type="Panel" parent="DetailParent"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jjaen")

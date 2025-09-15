@@ -158,7 +158,7 @@ func OnItemSentToConvoy(_item : Item, _index: int):
 	var campaign = GameManager.CurrentCampaign
 
 	currentUnit.EquipItem(_index, null)
-	campaign.AddItemToConvoy(_item)
+	campaign.Convoy.AddToConvoy(_item)
 
 	UpdateUnit1Panel(true)
 	UpdateConvoy()

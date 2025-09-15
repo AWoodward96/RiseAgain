@@ -8,8 +8,8 @@ class_name UnitTemplate
 
 @export var Affinity : AffinityTemplate
 
-@export var StartingEquippedWeapon : PackedScene
-@export var StartingTactical : PackedScene
+@export var StartingEquippedWeapon : AbilityUnlockable
+@export var StartingTactical : AbilityUnlockable
 
 @export_file("*.tscn") var Tier0Abilities : Array[String]
 @export_file("*.tscn") var Tier1Abilities : Array[String]
@@ -29,6 +29,8 @@ class_name UnitTemplate
 @export var loc_DisplayName : String
 @export var loc_Description : String
 @export var icon : Texture2D
+@export var startUnlocked : bool = true
+@export var startNameKnown : bool = true
 @export var unitMovementPreview : Texture2D
 @export var persistDataScript : Script
 

@@ -46,7 +46,7 @@ func ModifyItem(_item : Item, _filePath, _data):
 
 	if _data.has("internal_name"): _item.internalName = _data["internal_name"]
 	if _data.has("loc_name"): _item.loc_displayName = _data["loc_name"]
-	if _data.has("loc_desc"): _item.loc_displayDesc = _data["loc_desc"]
+	if _data.has("loc_desc"): _item.loc_effectDesc = _data["loc_desc"]
 
 	if _data.has("iconPath"):
 		if ResourceLoader.exists(_data["iconPath"]):

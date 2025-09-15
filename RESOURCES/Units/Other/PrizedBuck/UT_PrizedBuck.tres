@@ -116,3 +116,5 @@ DebugName = "PrizedBuck"
 loc_DisplayName = "unit_prizedbuck_name"
 loc_Description = "unit_prizedbuck_desc"
 icon = ExtResource("14_vfof4")
+startUnlocked = true
+startNameKnown = true

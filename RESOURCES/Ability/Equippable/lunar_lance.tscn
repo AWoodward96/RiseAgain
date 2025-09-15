@@ -31,7 +31,6 @@ script = ExtResource("1_5xil8")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_ohson")]([SubResource("Resource_0qngs"), SubResource("Resource_njyb8")])
-damageGrantsFocus = true
 internalName = "lunar_lance"
 loc_displayName = "weap_lunar_lance_name"
 loc_displayDesc = "weap_lunar_lance_desc"

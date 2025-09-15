@@ -54,6 +54,8 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 
 @export var FlyingDescriptor : DescriptorTemplate
 @export var AmphibiousDescriptor : DescriptorTemplate
+@export var WeaponDescriptor : DescriptorTemplate
+@export var TacticalDescriptor : DescriptorTemplate
 
 @export var CharacterTileMovemementSpeed : float = 100
 @export var AOEExpMultiplier : float = 0.5

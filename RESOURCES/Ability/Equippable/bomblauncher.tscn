@@ -44,7 +44,6 @@ type = 1
 abilityCooldown = 0
 ability_speed = 2
 executionStack = Array[ExtResource("2_pqj62")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_xidfr")])
-damageGrantsFocus = true
 internalName = "bomblauncher"
 loc_displayName = "weap_bomblauncher_name"
 loc_displayDesc = "weap_bomblauncher_desc"

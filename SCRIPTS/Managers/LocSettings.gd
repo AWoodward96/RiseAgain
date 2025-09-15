@@ -7,6 +7,7 @@ static var Level_Num_Short = "ui_level_num_short"
 static var Level_Num = "ui_level_num"
 static var X_Num = "ui_xNUM"
 static var OneX_TEXT = "ui_1x_text"
+static var Current_Max = "ui_current_max"
 
 static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 
@@ -53,11 +54,21 @@ static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 @export var AbilitySpeedSlowColor : Color
 
 @export var FastSpeedIcon : Texture2D
+@export var FastSpeedDescText : String
 @export var SlowSpeedIcon : Texture2D
+@export var SlowSpeedDescText : String
 @export var ShapedFreeIcon : Texture2D
+@export var ShapedFreeDescText : String
 @export var ShapedDirectionalIcon : Texture2D
+@export var ShapedDirectionalDescText : String
 @export var GlobalIcon : Texture2D
+@export var GlobalDescText : String
 @export var SelfOnlyIcon : Texture2D
+@export var SelfOnlyDescText : String
+
+@export_category("Bastion Localization")
+@export var prestiegeLevelNum : String = "ui_prestiegeLevelNum"
+@export var prestiegeExpValue : String = "ui_prestiegeExpValues"
 
 
 @export_category("Context UI")

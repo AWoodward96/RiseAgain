@@ -1,31 +1,42 @@
 extends Control
 class_name UnitEntryUI
 
-signal OnSelected(_element : Control, _unitTemplate : UnitTemplate)
+signal OnSelected(_element : UnitEntryUI, _unitTemplate : UnitTemplate)
 
+@export var useIcon : bool = true
 @export var icon : TextureRect
+@export var useVisualParent : bool = false
+@export var visualParent : Control
 @export var nameLabel : Label
-@export var hoverParent : Control
 
 var template : UnitTemplate
-var beingHovered : bool
+var createdVisual : UnitVisual
+
 
 func Initialize(_unitTemplate : UnitTemplate):
 	template = _unitTemplate
-	icon.texture = template.icon
+
+	if useIcon:
+		icon.texture = template.icon
+
+	if useVisualParent:
+		# hate this, but we're gonna merge 2d with control elements
+		createdVisual = _unitTemplate.VisualPrefab.instantiate() as UnitVisual
+		visualParent.add_child(createdVisual)
+		createdVisual.position = Vector2.ZERO
+		createdVisual.RefreshAllegience(GameSettingsTemplate.TeamID.ALLY)
+
 	nameLabel.text = _unitTemplate.loc_DisplayName
 
-func SetFocus(_bool : bool):
-	beingHovered = _bool
-	if hoverParent != null:
-		hoverParent.visible = _bool
+func OnFocus():
+	if useVisualParent && createdVisual != null:
+		createdVisual.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED, false)
+	pass
 
-func _on_focus_entered() -> void:
-	SetFocus(true)
+func OnUnfocus():
+	if useVisualParent && createdVisual != null:
+		createdVisual.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false)
+	pass
 
-func _on_focus_exited() -> void:
-	SetFocus(false)
-
-func _process(_delta: float) -> void:
-	if InputManager.selectDown && beingHovered && focus_mode != Control.FocusMode.FOCUS_NONE:
-		OnSelected.emit(self, template)
+func OnButtonPressed():
+	OnSelected.emit(self, template)

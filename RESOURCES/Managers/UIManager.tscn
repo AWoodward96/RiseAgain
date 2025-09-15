@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://be144gxm2qt5i"]
+[gd_scene load_steps=20 format=3 uid="uid://be144gxm2qt5i"]
 
 [ext_resource type="Script" uid="uid://blsxgkwb651m5" path="res://SCRIPTS/Managers/UIManager.gd" id="1_hai6o"]
 [ext_resource type="PackedScene" uid="uid://wsk41q52641b" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.tscn" id="2_fjsnt"]
+[ext_resource type="PackedScene" uid="uid://bk06veh2d7y28" path="res://RESOURCES/UI/global_ui.tscn" id="2_juonm"]
 [ext_resource type="PackedScene" uid="uid://cmfxqfg6s24dv" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.tscn" id="3_36mek"]
+[ext_resource type="PackedScene" uid="uid://po4nfl4dmthc" path="res://RESOURCES/UI/loading_screen.tscn" id="3_hc1jd"]
 [ext_resource type="PackedScene" uid="uid://cepwbmuwjb32l" path="res://RESOURCES/UI/_alpha_CombatHUD/_alpha_combat_hud.tscn" id="4_uspa4"]
 [ext_resource type="PackedScene" uid="uid://7krnno1cgacm" path="res://RESOURCES/UI/RewardsUI/rewards_ui.tscn" id="5_q3b02"]
 [ext_resource type="PackedScene" uid="uid://dxolfuwxyja2v" path="res://RESOURCES/UI/ExperienceGainUI/experience_gain_ui.tscn" id="6_em2g6"]
@@ -16,12 +18,16 @@
 [ext_resource type="PackedScene" uid="uid://c5i8xff3y8gud" path="res://RESOURCES/UI/confirm_purchase_ui.tscn" id="14_2vy6k"]
 [ext_resource type="PackedScene" uid="uid://c56vd64fw1a21" path="res://RESOURCES/UI/GenericEntrys/generic_32x32_texture_entry.tscn" id="15_lvcsi"]
 [ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="16_lalar"]
+[ext_resource type="PackedScene" uid="uid://cw7awguux054e" path="res://RESOURCES/UI/TeamManagementUI/team_management_ui.tscn" id="17_h4bp1"]
 
 [node name="UIManager" type="Node2D" node_paths=PackedStringArray("Canvas")]
+visible = false
 script = ExtResource("1_hai6o")
 Canvas = NodePath("Canvas")
+GlobalUI = ExtResource("2_juonm")
+LoadingScreenUI = ExtResource("3_hc1jd")
 AlphaUnitSelection = ExtResource("2_fjsnt")
-AlphaFormationUI = ExtResource("3_36mek")
+FormationUI = ExtResource("3_36mek")
 CombatHUDUI = ExtResource("4_uspa4")
 MapRewardUI = ExtResource("5_q3b02")
 ExperienceUI = ExtResource("6_em2g6")
@@ -33,6 +39,7 @@ CampsiteRestedPopupPrefab = ExtResource("11_jh1u2")
 TradeUIPrefab = ExtResource("11_n4xjy")
 FullscreenNotifUI = ExtResource("13_wtqnq")
 FullscreenConfirmPurchaseUI = ExtResource("14_2vy6k")
+TeamManagementFullscreenUI = ExtResource("17_h4bp1")
 Generic_32x32_Texture = ExtResource("15_lvcsi")
 Generic_StatBlockEntry = ExtResource("16_lalar")
 

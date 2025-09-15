@@ -10,14 +10,22 @@ class_name TavernMenuUI
 @export var ReciptMealIcon : TextureRect
 
 func _ready():
+	super()
 	ReturnFocus()
-	GameManager.GlobalUI.ShowResources()
 	TavernLevelLabel.text = tr(LocSettings.Level_Num).format({"NUM" = PersistDataManager.universeData.bastionData.CurrentTavernLevel + 1})
 
 	if PersistDataManager.universeData.bastionData.ActiveMeal != null:
 		UpdateRecipt()
 		ReciptAnimator.play("show")
 		pass
+
+func _exit_tree() -> void:
+	super()
+	UIManager.HideResources()
+
+func _enter_tree() -> void:
+	super()
+	UIManager.ShowResources()
 
 
 func UpdateRecipt():
@@ -63,8 +71,3 @@ func PurchaseFailed(_mealEntry : MealListingEntry):
 
 func ReturnFocus():
 	First.GrabFocus()
-
-
-func _exit_tree() -> void:
-	super()
-	GameManager.GlobalUI.HideResources()

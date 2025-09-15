@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqgwrfj1ilklu"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fovcp"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="2_oqof6"]
+
+[node name="regenerativetincture" type="Node2D" node_paths=PackedStringArray("HealData")]
+script = ExtResource("1_fovcp")
+type = 2
+abilityCooldown = 0
+limitedUsage = 1
+usageRestoredByCampfire = 1
+internalName = "regenerativetincture"
+loc_displayName = "tact_regenerativetincture_name"
+loc_displayDesc = "tact_regenerativetincture_desc"
+HealData = NodePath("HealComponent")
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("2_oqof6")
+FlatValue = 100.0

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 
 signal FormationSelected
 
@@ -74,8 +74,11 @@ func OnFormationButton():
 	SetFormationMode(true)
 
 func OnItemButton():
-	manageItemsPanel.visible = true
-	manageItemsPanel.Initialize(Map.Current, GameManager.CurrentCampaign)
+	# not sure how to actually do this
+	UIManager.OpenFullscreenUI(UIManager.TeamManagementFullscreenUI)
+
+	#manageItemsPanel.visible = true
+	#manageItemsPanel.Initialize(Map.Current, GameManager.CurrentCampaign)
 	pass
 
 func ShowSwapWithPanel(_val : bool):
@@ -83,3 +86,7 @@ func ShowSwapWithPanel(_val : bool):
 
 func OnManageItemsClosed():
 	ItemButton.grab_focus()
+
+func ReturnFocus():
+	FormationButton.grab_focus()
+	pass

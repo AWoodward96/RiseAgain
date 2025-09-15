@@ -23,14 +23,13 @@ script = ExtResource("4_q7evp")
 [sub_resource type="Resource" id="Resource_qtcqx"]
 script = ExtResource("4_e6rx8")
 Template = ExtResource("3_j8h7c")
-Value = 6
+Value = 4
 
 [node name="magic_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_ebpsu")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_ylls6")]([SubResource("Resource_xmptj"), SubResource("Resource_hdq0i")])
-damageGrantsFocus = true
 internalName = "magic_bolt"
 loc_displayName = "weap_magic_bolt_name"
 loc_displayDesc = "weap_magic_bolt_desc"
@@ -41,7 +40,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_uce2a")
-BaseAccuracy = 85.0
 GrantedStats = Array[ExtResource("4_e6rx8")]([SubResource("Resource_qtcqx")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

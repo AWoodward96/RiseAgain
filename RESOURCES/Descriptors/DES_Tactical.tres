@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=3 format=3 uid="uid://dlknnid1g0u1k"]
+
+[ext_resource type="Texture2D" uid="uid://c4n61wwn34s0w" path="res://ART/UI/tab_icons9.png" id="1_ni43c"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_ws3jv"]
+
+[resource]
+script = ExtResource("2_ws3jv")
+icon = ExtResource("1_ni43c")
+loc_name = "des_tactical"
+loc_description = ""
+metadata/_custom_type_script = "uid://bnehabjcbpysq"

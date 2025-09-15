@@ -10,14 +10,14 @@ func RegisterListener(_ability : Ability, _map : Map):
 
 
 func TurnStart(_turn : GameSettingsTemplate.TeamID):
-	var owner = ability.ownerUnit
-	if owner.UnitAllegiance == _turn:
+	var ownerUnit = ability.ownerUnit
+	if ownerUnit.UnitAllegiance == _turn:
 		var passiveInstance = PassiveAbilityAction.Construct(ability.ownerUnit, ability)
 		passiveInstance.executionStack = ability.executionStack
-		passiveInstance.log.actionOriginTile = owner.CurrentTile
+		passiveInstance.log.actionOriginTile = ownerUnit.CurrentTile
 
 		if ability.TargetingData != null:
-			passiveInstance.log.affectedTiles = ability.TargetingData.GetAffectedTiles(owner, Map.Current.grid, owner.CurrentTile)
+			passiveInstance.log.affectedTiles = ability.TargetingData.GetAffectedTiles(ownerUnit, Map.Current.grid, ownerUnit.CurrentTile)
 			if requireAffectedTilesToTrigger && passiveInstance.log.affectedTiles.size() == 0:
 				return
 

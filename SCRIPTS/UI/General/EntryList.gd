@@ -2,6 +2,9 @@ extends Control
 class_name EntryList
 
 # should be an array of whatever entries we're creating
+@export var beginningSpacer : Control
+@export var endingSpacer : Control
+
 var createdEntries : Array[Control]
 
 func ClearEntries():
@@ -23,6 +26,13 @@ func CreateEntry(_prefab : PackedScene):
 	var entry = _prefab.instantiate()
 	add_child(entry)
 	createdEntries.append(entry)
+
+	if endingSpacer != null:
+		move_child(endingSpacer, -1)
+
+	if beginningSpacer != null:
+		move_child(beginningSpacer, 0)
+
 	return entry
 
 func GetEntry(_index : int):

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=4 format=3 uid="uid://dn5l4mv003m8i"]
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://dn5l4mv003m8i"]
 
 [ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_mys7w"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_xe0vt"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_1mtgk"]
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="5_dhbuc"]
 
 [resource]
@@ -9,4 +10,4 @@ script = ExtResource("1_mys7w")
 AbilityPath = "res://RESOURCES/Ability/Equippable/magic_bolt.tscn"
 StartsDiscoverable = true
 StartUnlocked = false
-Descriptors = Array[ExtResource("1_xe0vt")]([ExtResource("5_dhbuc")])
+Descriptors = Array[ExtResource("1_xe0vt")]([ExtResource("5_dhbuc"), ExtResource("3_1mtgk")])

@@ -19,6 +19,26 @@ weap_zombie_claw_desc,Sharp deteriorating claws that cut.
 weap_zombie_claw_name,Zombie Claw
 weap_wolfbane_name,Wolfbane
 weap_wolfbane_desc,Heals the user for {DMG_DRAINPERC}% damage dealt. Deals double damage to Canines.
+weap_lunar_lance_name,Lance
+weap_lunar_lance_desc,A mysterious ethereal spear with a strange emblem on it. You've never seen anything like it.
+weap_bomblauncher_name,Explosive Crossbow
+weap_bomblauncher_desc,A crossbow designed to launch tiny bombs at a distance.
+weap_irondagger_name,Iron Dagger
+weap_irondagger_desc,A short dagger that can be thrown. +20% Crit Chance
+weap_steeldagger_name,Steel Dagger
+weap_steeldagger_desc,A sharper dagger for more lethal blows. +20% Crit Chance
+weap_lightdagger_name,Light Daggers
+weap_lightdagger_desc,Ethereal blades that can be thrown. Deals Physical Damage that scales with SpATK instead of ATK
+weap_shortbow_name,Short Bow
+weap_shortbow_desc,Has a shorter range that allows for counterattacks within melee range.
+weap_guardinglance_name,Guarding Lance
+weap_guardinglance_desc,A spear that allows for a balance of agressive and defensive plays.
+weap_blunt_name,Blunt Object
+weap_blunt_desc,Anythings a weapon when swung. Always does 5 Damage
+weap_morningstar_name,Morning Star
+weap_morningstar_desc,A blunt metal club with spikes. Always does 8 Damage.
+weap_guardingblade_name,Guarding Blade
+weap_guardingblade_desc,The hilt is designed to help defend and redirect damage.
 unit_adolescentwolf_desc,A young wolf not yet in its prime
 unit_adolescentwolf_name,Adolescent Wolf
 unit_adultwolf_desc,A terratorial hunting beast
@@ -26,7 +46,7 @@ unit_adultwolf_name,Wolf
 unit_adultzolf_desc,"It has a couple of extra limbs, and teeth... everywhere"
 unit_adultzolf_name,Zolf Chimera
 unit_archer_desc,"A crackshot with higher skill, but low defense and lower Attack"
-unit_archer_name,Elven Archer
+unit_archer_name,Hunter
 unit_corpsechimera_desc,A stiched together mass of dead human and wolf bodies. It shudders with dark magics
 unit_corpsechimera_name,Corpse Chimera
 unit_wildmage_desc,"A user of nature magics, with okay SpAttack but a higher Defense for scrapping"
@@ -53,6 +73,18 @@ unit_knight_desc,"A good defender with decent attack and high defense, but low m
 unit_knight_name,Knight
 unit_rogue_name,Rogue
 unit_rogue_desc,A high damage melee carry with good attack but low defense
+unit_roc_name,Roc
+unit_roc_desc,A terratorial bird with sharp claws. Hatches from Eggs.
+unit_bandit_name,Bandit
+unit_bandit_desc,A ruffian or an oppertunist looking to make a quick buck off of others misfortune.
+unit_banditarcher_name,Bandit Archer
+unit_banditarcher_desc,A sharpshooter making their living using their skills to harass travelers.
+unit_banditthief_name,Bandit Thief
+unit_banditthief_desc,"Smash, grab, and get out."
+unit_maws_name,Maws
+unit_maws_desc,A vicious amphibious creature that lurks and swarms those who stray too close to still waters.
+unit_banditboss_name,Bandit Boss
+unit_banditboss_desc,The leader of the bunch. You know him well.
 ui_health,Health
 ui_level_num,Level {NUM}
 ui_level_num_short,LvL {NUM}
@@ -86,144 +118,98 @@ ui_header_weapons,Weapons:
 ui_header_tactical,Tactical:
 ui_header_abilities,Abilities:
 ui_uses_label,Uses:
-tact_gauze_desc,Heals the user 10 HP
-tact_gauze_name,Petty Gauze
-stat_attack,Attack
-stat_attack_desc,Increases Physical Damage dealt to Enemies
-stat_attack_short,ATK
-stat_defense,Defense
-stat_defense_desc,Decreases Physical Damage taken from Enemies
-stat_defense_short,DEF
-stat_health,Health
-stat_health_desc,How much Damage a Unit can take before they die
-stat_health_short,HP
-stat_luck,Luck
-stat_luck_desc,TBD
-stat_luck_short,LCK
-stat_mind,Mind
-stat_mind_desc,"Increases Max Focus, which is used to cast Abilities"
-stat_mind_short,MND
-stat_movement,Movement
-stat_movement_desc,How many Tiles can a Unit Move during their turn
-stat_movement_short,MOV
-stat_skill,Skill
-stat_skill_desc,Increases the chance to hit an Enemy
-stat_skill_short,SKL
-stat_spattack,Special Attack
-stat_spattack_desc,Increases Magical Damage dealt to Enemies
-stat_spattack_short,SpATK
-stat_spdefense,Special Defense
-stat_spdefense_desc,Decreases Magical Damage taken from Enemies
-stat_spdefense_short,SpDEF
-stat_vitality,Vitality
-stat_vitality_desc,Increases Health
-stat_vitality_short,VIT
-opoj_any_neutral_alive,Opt: Any Neutral Unit left Alive
-opoj_prized_buck,Opt: Kill the Prized Buck
-item_t1_holywater_desc,{STAT1} +{GROWTH1}
-item_t1_holywater_name,Holy Tears
-item_t1_ktome_desc,{STAT1} +{GROWTH1}
-item_t1_ktome_name,Tome
-item_t1_nectar_desc,{STAT1} +{GROWTH1}
-item_t1_nectar_name,Golden Apple
-item_t1_polish_desc,{STAT1} +{GROWTH1}
-item_t1_polish_name,Armor Polish
-item_t1_skillbook_desc,{STAT1} +{GROWTH1}
-item_t1_skillbook_name,Skill Book
-item_t1_whetstone_desc,{STAT1} +{GROWTH1}
-item_t1_whetstone_name,Whetstone
-des_canine_desc,A slim dog-like creature with sharp teeth
-des_canine_name,Canine
-des_undead_desc,A dead creature that's been reanimated through magic.
-des_undead_name,Undead
-ce_armor,Armor
-ce_armor_desc,"This Unit has temporary Armor. When they take damage, Armor is reduced before Health."
-ce_def_down,Def Down
-ce_def_down_desc,This Unit has had their Defense reduced and will take more damage from Physical attacks
-ce_spdef_down,SpDef Down
-ce_spdef_down_desc,This Unit has had their SpDefense reduced and will take more damage from Magic attacks
-ce_stunned,Stunned
-ce_stunned_desc,This Unit is stunned and will lose their next turn
-passive_necroticcurse_name,Necrotic Curse
-passive_necroticcurse_desc,Every Neutral Unit this Unit kills is brought back as a Zombified version of themselves
-art_beamattack_name,Beam Attack!
-art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
-art_cleave_name,Great Cleave
-art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}.
-art_darkfell_name,Soul Cleave
-art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
-art_doubleshot_name,Repeater
-art_doubleshot_desc,Take a quick shot at an enemy dealing damage based on {DMG_AGGRESSIVESTAT}.
-art_drain_name,Life Drain
-art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
-art_fireball_name,Fireball
-art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nAfter killing 3 and 10 Units the area it hits grows bigger.
-art_heal_name,Heal
-art_heal_desc,Heal an Ally Unit equal to this Units {HEAL_STAT}
-art_heroicleap_name,Heroic Leap
-art_heroicleap_desc,"Leap into an area, dealing Physical Damage to nearby Enemies. Gain a Shield equal to {SHIELD_MOD}% of your max Health"
-art_lesserheal_name,Lesser Heal
-art_lesserheal_desc,"Heal an Ally Unit for {HEAL_FLAT} Health. Each time this is used, increase that value by 1."
-art_smite_name,Smite
-art_smite_desc,Deal Magic damage equal to {DMG_AGGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
-art_snareshot_name,Snare Shot
-art_snareshot_desc,Stuns an Enemy for {EFFECT_TURNS} turn(s).
-ce_energized_name,Energized
-ce_energized_desc,"The next time this unit goes to end their turn, remove this effect instead."
-art_slipnslash_name,Slip n Slash
-art_slipnslash_desc,"Dash forward and deal Physical damage based on {DMG_AGGRESSIVESTAT} to anything this Unit passes through. If this ability Kills, grant Energized for one turn."
-art_daggerspray_name,Dagger Spray
-art_daggerspray_desc,Throw three daggers in a line dealing Physical damage based on {DMG_AGGRESSIVESTAT}. The center Dagger always Crits.
-des_flying_name,Flying
-des_flying_desc,This Unit can fly over all Terrain.
-art_charge_name,Brazen Charge
-art_charge_desc,"Charge forward and push Units you collide with with you. If you collide with a wall or another Unit, deal Collision Damage to both."
 ui_select_a_route,Select a Campaign:
 ui_set_off,Set off ->
-campaign_maroon_forest,Maroon Forest
-campaign_mountain,Mountain Path
-res_gold_name,Gold
-res_gold_desc,Coins from days gone by. Can be exchanged for goods and services in the Bastion.
 ui_unit_in_campsite,Campsite
 ui_unit_in_tavern,Room {NUM}
-unit_roc_name,Roc
-unit_roc_desc,A terratorial bird with sharp claws. Hatches from Eggs.
-stat_dexterity,Dexterity
-stat_dexterity_short,DEX
-stat_dexterity_desc,Increases Physical Damage dealt by Abilities to Enemies
-stat_wisdom,Wisdom
-stat_wisdom_short,WIS
-stat_wisdom_desc,Increases Magical Damage dealt by Abilities to Enemies
-art_summonmine_name,Hunters Trap
-art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on {DMG_AGGRESSIVESTAT} and Stuns
-art_spearthrow_name,Throw Spear
-art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
-art_pushforward_name,Push Forward
-art_pushforward_desc,Grant yourself and Allies close to you +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and +{EFFECT_1_FLAT} {EFFECT_1_MODIFIEDSTAT}
-art_sacredground_name,Sacred Ground
-art_sacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
-art_graspingroots_name,Grasping Roots
-art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
-tile_deadtree_name,Dead Tree
-tile_river_name,River
-weap_lunar_lance_name,Lance
-weap_lunar_lance_desc,A mysterious ethereal spear with a strange emblem on it. You've never seen anything like it.
-tile_corpseeater_name,Corpse Eater Tree
-ui_notiledata_name,None
 ui_firedamage_amt,{NUM} HP/Turn
 ui_xNUM,x{NUM}
 ui_sacredgrounds_effectdesc,{NUM} Allied HP/Turn
 ui_graspingvines_effectdesc,{NUM} HP/Move
 ui_mine_effectdesc,{NUM} HP + Stun
-opoj_killunits,Opt: Kill Units {CUR}/{MAX}
-ui_survive,Survive Turns: {CUR}/{MAX}
-art_flamewall_name,Flame Wall
-art_flamewall_desc,"Ignites the ground in a line, dealing fire damage to all Units in the fire at the start of their turn."
 ui_nodamage,No Damage
-ce_pushforward_name,Push Forward
-ce_pushforward_desc,Grants +3 Move and +3 Attack
-tile_cavewall_name,Cave
-tile_rocks_name,Rocks
+ui_press_any_key,Press any key to continue
+ui_targeting_title,Targeting:
+ui_targeting_simple,Simple
+ui_targeting_directional,Directional
+ui_targeting_shaped,Simple Shaped
+ui_targeting_self,Self
+ui_uses_title,Uses:
+ui_speed_title,Speed:
+ui_speed_normal,Normal
+ui_speed_fast,Fast
+ui_speed_slow,Slow
+ui_targeting_global,Global
+ui_range_title,Range:
+ui_ability_title_shorthand,ABLY:
+ui_tactical_title_shorthand,TACT:
+ui_weapon_title_shorthand,WEAP:
+ui_exp,Exp:
+ui_battleprep_title,Battle Preperations
+ui_passive_title_shorthand,PASS
+ui_wait,Wait
+ui_openchest,Unlock
+ui_gotitem_concat,Acquired 
+ui_stoleitem_concat, was pilfered!
+ui_chest,Chest
+ui_but_it_was_sent_to_convoy,\n ... it was sent to the Convoy
+ui_something_in_the_water,There's something in the water...
+ui_submerged_unknown,? ? ?
+ui_defeatboss,Defeat Boss
+ui_gameoverobjective,Survive
+loc_tavern_restraunt_name,The Egress
+loc_tavern_recipt_fluff_1,THE EGRESS\n1100 MELODY BLVD\nSOLARIA\n\nSALE:
+loc_tavern_recipt_fluff_2,THANK YOU AND\n SAFE TRAVELS
+loc_tavern_recipt_total,TOTAL:
+loc_est,EST
+loc_tavern_est_date,1204
+loc_menu_title,MENU
+ui_level_1,Level 1:
+ui_level_2,Level 2:
+ui_level_3,Level 3:
+ui_level_4,Level 4:
+ui_level_5,Level 5:
+meal_grub_title,Grub
+meal_grub_desc,+1% All Stat Growths
+meal_hotmeal_title,Hot Meal
+meal_hotmeal_desc,+3% All Stat Growths
+meal_largehotmeal_title,Large Hot Meal
+meal_largehotmeal_desc,+5% All Stat Growths
+meal_hunterschicken_title,Hunters Chicken
+meal_hunterschicken_desc,+10% ATK Growths
+meal_mushroomstew_title,Mushroom Stew
+meal_mushroomstew_desc,+10% SpATK Growths
+meal_notimplemented_title,TBD
+meal_notimplemented_desc,TBD
+ui_1x_text,1x {TEXT}
+meal_bloodsausage_title,Blood Sausage
+meal_bloodsausage_desc,+2 ATK to Party
+meal_steamedseafood_title,Steamed Fish Buns
+meal_steamedseafood_desc,+2 SPATK to Party
+meal_braisedshoulder_title,Braised Shoulder
+meal_braisedshoulder_desc,+1 DEF & +1 SPDEF to Party
+meal_steelcutoats_title,Almond Porridge
+meal_steelcutoats_desc,+2 VIT to Party
+meal_threecoursemeal_title,Three Course Meal
+meal_threecoursemeal_desc,+10% All Stat Growths
+meal_seafoodspread_title,Seafood Spread
+meal_seafoodspread_desc,"+1 VIT, +2 SpATK, +3% All Growths"
+meal_meatplatter_title,Meat Platter
+meal_meatplatter_desc,"+1 VIT, +2 ATK, +3% All Growths"
+loc_smithy_title,Smithy:
+loc_canuse,Can Use:
+ui_confirm_purchase,Confirm Purchase?
+ui_yes,Yes
+ui_no,No
+ui_selfonly_desc,Self Only. This Ability can only target the User.
+ui_shapeddirectional_desc,Directional\nThis Weapon or Ability is used in one of the four cardinal directions.
+ui_shapedfree_desc,Shaped\nThe User selects a Tile and then damage is dealt to one or more Tiles based on the Shape of the Ability.
+ui_global_desc,Global\nThis Weapon or Ability targets all Units on the Map.
+ui_fastspeed_desc,Fast\nThis Weapon or Ability does not end the Users turn when used.
+ui_slowspeed_desc,"Slow\nThis Weapon or Ability creates a telegraph of where it will hit and then ends the Users turn. Then, at the start of the Users next turn, it goes off."
+detail_weapontitle,Weapon Name\nThe name of a Weapon or Ability that can be equipped and used by a Unit in a run.
+detail_weapondesc,Weapon Description\nA brief summary of what a Weapon or Ability does when used.
+ui_unlockcolon,Unlock:
 tut_map0_prompt0,Use [img=24x24]res://ART/UI/Inline/keyboard_up_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_down_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img] to move the Reticle.
 tut_map0_prompt0_controller,Use [img=24x24]res://ART/UI/Inline/controller_movement_button.png[/img] to move the Reticle.
 tut_map0_prompt1,Use [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to Select the Unit.
@@ -248,8 +234,6 @@ tut_map0_prompt12,Units gain EXP by performing actions in the game.
 tut_map0_prompt13,Once the EXP reaches 100 they will Level Up and get stronger.
 tut_map0_prompt14,Blue Units are Allies. Red Units are Enemies.
 tut_map0_prompt15,Hover the Reticle over the Knight.
-ce_unholyintruder_name,Unholy Intrusion
-ce_unholyintruder_desc,This Unit is tresspassing on sacred ground and has reduced ATK.
 tut_map0_prompt16,"That Knight looks injured, let's help them out."
 tut_abilities_lesserheal0,We can use the Ability [Lesser Heal] to heal the Knight.
 tut_abilities_lesserheal1,"Abilities are powerful actions that can turn the tide of battle, but require Mana to use."
@@ -301,7 +285,6 @@ tut_map2_prompt12,"Fire Affinity is weak to Water Affinity, Dark Affinity is wea
 tut_map2_prompt13,"You'll get a grasp for what's good against what by playing the game, but if you really need to know you can always Inspect a Unit and check this section down here."
 tut_map2_prompt14,"When you're done, press [img=48x24]res://ART/UI/Inline/keyboard_back_button.png[/img] to back out of the Inspect Screen."
 tut_map2_prompt14_controller,"When you're done, press [img=24x24]res://ART/UI/Inline/controller_back_button.png[/img] to back out of the Inspect Screen."
-ui_press_any_key,Press any key to continue
 tut_rewardsui_1,After every Map you'll have a set of three rewards to choose from.
 tut_rewardsui_2,"These can be Items that make your Units stronger, Units themselves, and more!"
 tut_rewardsui_3,"Right now we have a very small team, so let's select the Mercenary as our reward for this Map."
@@ -317,64 +300,99 @@ tut_fastspeed_3,"[img=24x24]res://ART/Icons/fast_speed.png[/img] Fast Speed Abil
 tut_complete0,"This is the last map in the Tutorial. Be careful, the training wheels have been removed, and Enemies deal a lot more damage now!"
 tut_complete1,"After you win or lose, you'll have the option of starting a real campaign with any of the Units in the game."
 tut_complete2,Good luck!
-ui_targeting_title,Targeting:
-ui_targeting_simple,Simple
-ui_targeting_directional,Directional
-ui_targeting_shaped,Simple Shaped
-ui_targeting_self,Self
-ui_uses_title,Uses:
-ui_speed_title,Speed:
-ui_speed_normal,Normal
-ui_speed_fast,Fast
-ui_speed_slow,Slow
-ui_targeting_global,Global
-ui_range_title,Range:
-ui_ability_title_shorthand,ABLY:
-ui_tactical_title_shorthand,TACT:
-ui_weapon_title_shorthand,WEAP:
-ui_exp,Exp:
-affinity_metal,Metal
-affinity_water,Water
-affinity_earth,Earth
-affinity_dark,Dark
-affinity_light,Light
-affinity_maggai,Wild
-affinity_grass,Nature
-affinity_fire,Fire
-art_castle_name,Castle
-art_castle_desc,Spend all of your Mana to grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield per Mana consumed
-ui_battleprep_title,Battle Preperations
-ui_passive_title_shorthand,PASS
-ui_wait,Wait
-ui_openchest,Unlock
-ui_gotitem_concat,Acquired 
-ui_stoleitem_concat, was pilfered!
-ui_chest,Chest
-ui_but_it_was_sent_to_convoy,\n ... it was sent to the Convoy
-des_amphibious_name,Amphibious
-des_amphibious_desc,Slimey and scaley. This Unit can survive in Water.
+tile_deadtree_name,Dead Tree
+tile_river_name,River
+tile_corpseeater_name,Corpse Eater Tree
+ui_notiledata_name,None
+tile_cavewall_name,Cave
+tile_rocks_name,Rocks
 tile_cliff_name,Cliff
 tile_waterfall_name,Waterfall
-art_arrow_rain_name,Arrow Rain
-art_arrow_rain_desc,"At the start of this Units next turn, deal damage to all Units in a 3x3 Square based on {DMG_AGGRESSIVESTAT}"
-ui_something_in_the_water,There's something in the water...
-ui_submerged_unknown,? ? ?
-art_maul_name,Maul
-art_maul_desc,This Unit jumps forward 2 Tiles and slashes the Units in front of them dealing damage based on {DMG_AGGRESSIVESTAT}. This Ability has an increased Crit chance.
-unit_bandit_name,Bandit
-unit_bandit_desc,A ruffian or an oppertunist looking to make a quick buck off of others misfortune.
-unit_banditarcher_name,Bandit Archer
-unit_banditarcher_desc,A sharpshooter making their living using their skills to harass travelers.
-unit_banditthief_name,Bandit Thief
-unit_banditthief_desc,"Smash, grab, and get out."
-unit_maws_name,Maws
-unit_maws_desc,A vicious amphibious creature that lurks and swarms those who stray too close to still waters.
-weap_bomblauncher_name,Explosive Crossbow
-weap_bomblauncher_desc,A crossbow designed to launch tiny bombs at a distance.
-art_heatbreak_name,Heat Break
-art_heatbreak_desc,"The user charges up a giant blast of superheated air. On their next turn, blast Units in front of them back and deal damage based on {DMG_AGGRESSIVESTAT}."
-unit_banditboss_name,Bandit Boss
-unit_banditboss_desc,The leader of the bunch. You know him well.
+tile_paleoak_name,Pale Oak
+tact_gauze_desc,Heals the user 10 HP
+tact_gauze_name,Petty Gauze
+tact_regenerativetincture_name,Regenerative Tincture
+tact_regenerativetincture_desc,Heals the user 100 HP
+tact_heavypush_name,Heavy Shove
+tact_heavypush_desc,Pushes a Unit 2 Tiles in a direction.
+tact_kick_name,Kick
+tact_kick_desc,Pushes a Unit 1 Tile in a direction
+stat_attack,Attack
+stat_attack_desc,Attack\nIncreases Physical Damage dealt to Enemies
+stat_attack_short,ATK
+stat_defense,Defense
+stat_defense_desc,Defense\nDecreases Physical Damage taken from Enemies
+stat_defense_short,DEF
+stat_health,Health
+stat_health_desc,Health\nHow much Damage a Unit can take before they die
+stat_health_short,HP
+stat_luck,Luck
+stat_luck_desc,TBD
+stat_luck_short,LCK
+stat_mind,Mind
+stat_mind_desc,"Increases Max Focus, which is used to cast Abilities"
+stat_mind_short,MND
+stat_movement,Movement
+stat_movement_desc,Movement\nHow many Tiles can a Unit Move during their turn
+stat_movement_short,MOV
+stat_skill,Skill
+stat_skill_desc,Increases the chance to hit an Enemy
+stat_skill_short,SKL
+stat_spattack,Special Attack
+stat_spattack_desc,Special Attack\nIncreases Magical Damage dealt to Enemies
+stat_spattack_short,SpATK
+stat_spdefense,Special Defense
+stat_spdefense_desc,Special Defense\nDecreases Magical Damage taken from Enemies
+stat_spdefense_short,SpDEF
+stat_vitality,Vitality
+stat_vitality_desc,Vitality\nIncreases Maximum Health
+stat_vitality_short,VIT
+stat_dexterity,Dexterity
+stat_dexterity_short,DEX
+stat_dexterity_desc,Increases Physical Damage dealt by Abilities to Enemies
+stat_wisdom,Wisdom
+stat_wisdom_short,WIS
+stat_wisdom_desc,Increases Magical Damage dealt by Abilities to Enemies
+res_gold_name,Gold
+res_gold_desc,Gold\nCoins from days gone by. Can be exchanged for goods and services in the Bastion.
+res_food_name,Food
+res_food_desc,"Food\nBits of Meat, Vegitables, and other ingredients. \nCan be used at the Tavern to cook meals for your party at the Bastion."
+res_ore_name,Metal Ore
+res_ore_desc,Metal Ore\nBits of unrefined metal. \nCan be used at the Smithy in the Bastion to make new Weapons.
+res_wood_name,Pale Wood
+res_wood_desc,Pale Wood\nGood quality hardwood. Difficult to come by after the Collapse.\nCan be used in the Bastion to upgrade buildings.
+opoj_any_neutral_alive,Opt: Any Neutral Unit left Alive
+opoj_prized_buck,Opt: Kill the Prized Buck
+opoj_killunits,Opt: Kill Units {CUR}/{MAX}
+ui_survive,Survive Turns: {CUR}/{MAX}
+item_t1_holywater_desc,{STAT1} +{GROWTH1}
+item_t1_holywater_name,Holy Tears
+item_t1_ktome_desc,{STAT1} +{GROWTH1}
+item_t1_ktome_name,Tome
+item_t1_nectar_desc,{STAT1} +{GROWTH1}
+item_t1_nectar_name,Golden Apple
+item_t1_polish_desc,{STAT1} +{GROWTH1}
+item_t1_polish_name,Armor Polish
+item_t1_skillbook_desc,{STAT1} +{GROWTH1}
+item_t1_skillbook_name,Skill Book
+item_t1_whetstone_desc,{STAT1} +{GROWTH1}
+item_t1_whetstone_name,Whetstone
+item_t1_rosepolish_name,Rose Polish
+item_t1_rosepolish_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_maroontome_name,Maroon Tome
+item_t1_maroontome_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_weightedbelt_name,Weighted Belt
+item_t1_weightedbelt_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_lapispadding_name,Lapis Shoulder Pads
+item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t1_ceruleanplates_name,Cerulean Plates
+item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+item_t2_bitterblade_name,Bitter Blade
+item_t2_bitterblade_desc,TBD
+item_t2_vampblade_name,Bloodsucker
+item_t2_vampblade_desc,Heal for {HEAL_MOD}% of this Units {HEAL_STAT} on Kill.
+item_t2_radientchestplate_name,Radiance
+item_t2_radientchestplate_desc,Turn Start: Burn nearby Enemies for {DMG_AGGRESSIVEMOD}% of this Units {DMG_AGGRESSIVESTAT}
 event_fallenlog_prompt,Your party comes across a cave with a log blocking the front. You hear whimpering coming from inside.
 event_fallenlog_d1,[bgcolor=333333][5 ATK][/bgcolor] Move the Log
 event_fallenlog_d1_result,"With great effort, your party manages to move the log to the side and rescue whoever is trapped within."
@@ -402,91 +420,108 @@ event_abandonedcart_d1_result3,"Unfortunately he doesn't have anything he can gi
 event_abandonedcart_d1_result4,As a reward he lets you pick an item from one of his wares for free!
 event_abandonedcart_d2_result_noinjured,"In a remarkable stroke of good luck, nobody was injured!"
 event_abandonedcart_d2_result3_injured,[color=#879ea3]{CONTEXTVAR}[/color] was Injured!
-item_t1_rosepolish_name,Rose Polish
-item_t1_rosepolish_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
-item_t1_maroontome_name,Maroon Tome
-item_t1_maroontome_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
-item_t1_weightedbelt_name,Weighted Belt
-item_t1_weightedbelt_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
-item_t1_lapispadding_name,Lapis Shoulder Pads
-item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
-item_t1_ceruleanplates_name,Cerulean Plates
-item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
+des_canine_desc,A slim dog-like creature with sharp teeth
+des_canine_name,Canine
+des_undead_desc,A dead creature that's been reanimated through magic.
+des_undead_name,Undead
+des_flying_name,Flying
+des_flying_desc,This Unit can fly over all Terrain.
+des_amphibious_name,Amphibious
+des_amphibious_desc,Slimey and scaley. This Unit can survive in Water.
+ce_armor,Armor
+ce_armor_desc,"This Unit has temporary Armor. When they take damage, Armor is reduced before Health."
+ce_def_down,Def Down
+ce_def_down_desc,This Unit has had their Defense reduced and will take more damage from Physical attacks
+ce_spdef_down,SpDef Down
+ce_spdef_down_desc,This Unit has had their SpDefense reduced and will take more damage from Magic attacks
+ce_stunned,Stunned
+ce_stunned_desc,This Unit is stunned and will lose their next turn
+passive_necroticcurse_name,Necrotic Curse
+passive_necroticcurse_desc,Every Neutral Unit this Unit kills is brought back as a Zombified version of themselves
+ce_energized_name,Energized
+ce_energized_desc,"The next time this unit goes to end their turn, remove this effect instead."
+ce_pushforward_name,Push Forward
+ce_pushforward_desc,Grants +3 Move and +3 Attack
+ce_unholyintruder_name,Unholy Intrusion
+ce_unholyintruder_desc,This Unit is tresspassing on sacred ground and has reduced ATK.
+campaign_maroon_forest,Maroon Forest
+campaign_mountain,Mountain Path
 campaign_white_coast,The White Coast
-ui_defeatboss,Defeat Boss
-ui_gameoverobjective,Survive
-item_t2_bitterblade_name,Bitter Blade
-item_t2_bitterblade_desc,TBD
-item_t2_vampblade_name,Bloodsucker
-item_t2_vampblade_desc,Heal for {HEAL_MOD}% of this Units {HEAL_STAT} on Kill.
-item_t2_radientchestplate_name,Radiance
-item_t2_radientchestplate_desc,Turn Start: Burn nearby Enemies for {DMG_AGGRESSIVEMOD}% of this Units {DMG_AGGRESSIVESTAT}
-res_food_name,Food
-res_food_desc,"Bits of Meat, Vegitables, and other ingredients. Can be used at the Tavern to cook meals for your party at the Bastion."
-loc_tavern_restraunt_name,The Egress
-loc_tavern_recipt_fluff_1,THE EGRESS\n1100 MELODY BLVD\nSOLARIA\n\nSALE:
-loc_tavern_recipt_fluff_2,THANK YOU AND\n SAFE TRAVELS
-loc_tavern_recipt_total,TOTAL:
-loc_est,EST
-loc_tavern_est_date,1204
-loc_menu_title,MENU
-ui_level_1,Level 1:
-ui_level_2,Level 2:
-ui_level_3,Level 3:
-ui_level_4,Level 4:
-ui_level_5,Level 5:
-meal_grub_title,Grub
-meal_grub_desc,+1% All Stat Growths
-meal_hotmeal_title,Hot Meal
-meal_hotmeal_desc,+3% All Stat Growths
-meal_largehotmeal_title,Large Hot Meal
-meal_largehotmeal_desc,+5% All Stat Growths
-meal_hunterschicken_title,Hunters Chicken
-meal_hunterschicken_desc,+10% ATK Growths
-meal_mushroomstew_title,Mushroom Stew
-meal_mushroomstew_desc,+10% SpATK Growths
-meal_notimplemented_title,TBD
-meal_notimplemented_desc,TBD
-ui_1x_text,1x {TEXT}
-tile_paleoak_name,Pale Oak
-meal_bloodsausage_title,Blood Sausage
-meal_bloodsausage_desc,+2 ATK to Party
-meal_steamedseafood_title,Steamed Fish Buns
-meal_steamedseafood_desc,+2 SPATK to Party
-meal_braisedshoulder_title,Braised Shoulder
-meal_braisedshoulder_desc,+1 DEF & +1 SPDEF to Party
-meal_steelcutoats_title,Almond Porridge
-meal_steelcutoats_desc,+2 VIT to Party
-meal_threecoursemeal_title,Three Course Meal
-meal_threecoursemeal_desc,+10% All Stat Growths
-meal_seafoodspread_title,Seafood Spread
-meal_seafoodspread_desc,"+1 VIT, +2 SpATK, +3% All Growths"
-meal_meatplatter_title,Meat Platter
-meal_meatplatter_desc,"+1 VIT, +2 ATK, +3% All Growths"
-weap_irondagger_name,Iron Dagger
-weap_irondagger_desc,A short dagger that can be thrown. +20% Crit Chance
-weap_steeldagger_name,Steel Dagger
-weap_steeldagger_desc,A sharper dagger for more lethal blows. +20% Crit Chance
-weap_lightdagger_name,Light Daggers
-weap_lightdagger_desc,Ethereal blades that can be thrown. Deals Physical Damage that scales with SpATK instead of ATK
-weap_shortbow_name,Short Bow
-weap_shortbow_desc,Has a shorter range that allows for counterattacks within melee range.
-weap_guardinglance_name,Guarding Lance
-weap_guardinglance_desc,A spear that allows for a balance of agressive and defensive plays.
-weap_blunt_name,Blunt Object
-weap_blunt_desc,Any sort of hard object that can be swung. Always does 5 Damage
-weap_morningstar_name,Morning Star
-weap_morningstar_desc,A blunt metal club with spikes. Always does 8 Damage.
-tact_regenerativetincture_name,Regenerative Tincture
-tact_regenerativetincture_desc,Heals the user 100 HP
-weap_guardingblade_name,Guarding Blade
-weap_guardingblade_desc,The hilt is designed to help defend and redirect damage.
-tact_heavypush_name,Heavy Shove
-tact_heavypush_desc,Pushes a Unit 2 Tiles in a direction.
-tact_kick_name,Kick
-tact_kick_desc,Pushes a Unit 1 Tile in a direction
-loc_smithy_title,Smithy:
-loc_canuse,Can Use:
-ui_confirm_purchase,Confirm Purchase?
-ui_yes,Yes
-ui_no,No
+affinity_metal,Metal
+affinity_water,Water
+affinity_earth,Earth
+affinity_dark,Dark
+affinity_light,Light
+affinity_maggai,Wild
+affinity_grass,Nature
+affinity_fire,Fire
+art_beamattack_name,Beam Attack!
+art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
+art_cleave_name,Great Cleave
+art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}.
+art_darkfell_name,Soul Cleave
+art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
+art_doubleshot_name,Repeater
+art_doubleshot_desc,Take a quick shot at an enemy dealing damage based on {DMG_AGGRESSIVESTAT}.
+art_drain_name,Life Drain
+art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
+art_fireball_name,Fireball
+art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nAfter killing 3 and 10 Units the area it hits grows bigger.
+art_heal_name,Heal
+art_heal_desc,Heal an Ally Unit equal to this Units {HEAL_STAT}
+art_heroicleap_name,Heroic Leap
+art_heroicleap_desc,"Leap into an area, dealing Physical Damage to nearby Enemies. Gain a Shield equal to {SHIELD_MOD}% of your max Health"
+art_lesserheal_name,Lesser Heal
+art_lesserheal_desc,"Heal an Ally Unit for {HEAL_FLAT} Health. Each time this is used, increase that value by 1."
+art_smite_name,Smite
+art_smite_desc,Deal Magic damage equal to {DMG_AGGRESSIVESTAT}.  \nDeals double damage to {DMG_VULNERABLE_DESC_0} Enemies.
+art_snareshot_name,Snare Shot
+art_snareshot_desc,Stuns an Enemy for {EFFECT_TURNS} turn(s).
+art_slipnslash_name,Slip n Slash
+art_slipnslash_desc,"Dash forward and deal Physical damage based on {DMG_AGGRESSIVESTAT} to anything this Unit passes through. If this ability Kills, grant Energized for one turn."
+art_daggerspray_name,Dagger Spray
+art_daggerspray_desc,Throw three daggers in a line dealing Physical damage based on {DMG_AGGRESSIVESTAT}. The center Dagger always Crits.
+art_charge_name,Brazen Charge
+art_charge_desc,"Charge forward and push Units you collide with with you. If you collide with a wall or another Unit, deal Collision Damage to both."
+art_summonmine_name,Hunters Trap
+art_summonmine_desc,Places a Trap that when stepped on does Physical damage based on {DMG_AGGRESSIVESTAT} and Stuns
+art_spearthrow_name,Throw Spear
+art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
+art_pushforward_name,Push Forward
+art_pushforward_desc,Grant yourself and Allies close to you +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and +{EFFECT_1_FLAT} {EFFECT_1_MODIFIEDSTAT}
+art_sacredground_name,Sacred Ground
+art_sacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
+art_graspingroots_name,Grasping Roots
+art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
+art_flamewall_name,Flame Wall
+art_flamewall_desc,"Ignites the ground in a line, dealing fire damage to all Units in the fire at the start of their turn."
+art_castle_name,Castle
+art_castle_desc,Spend all of your Mana to grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield per Mana consumed
+art_arrow_rain_name,Arrow Rain
+art_arrow_rain_desc,"At the start of this Units next turn, deal damage to all Units in a 3x3 Square based on {DMG_AGGRESSIVESTAT}"
+art_maul_name,Maul
+art_maul_desc,This Unit jumps forward 2 Tiles and slashes the Units in front of them dealing damage based on {DMG_AGGRESSIVESTAT}. This Ability has an increased Crit chance.
+art_heatbreak_name,Heat Break
+art_heatbreak_desc,"The user charges up a giant blast of superheated air. On their next turn, blast Units in front of them back and deal damage based on {DMG_AGGRESSIVESTAT}."
+weap_fireytome_name,Blazing Tome
+weap_fireytome_desc,Ignites the Target.
+weap_taintedtome_name,Tainted Tome
+weap_taintedtome_desc,Reduces Defenses in exchange for more SpAttack.
+ui_none,None
+ui_prestiegeLevelNum,Prestiege Lvl: {NUM}
+ui_prestiegeExpValues,Prestiege Exp: {CUR}/{MAX}
+weap_emping_name,Em'ping
+weap_emping_desc,Long range magic with low damage. Feels like you're getting poked with a sharp stick.
+ui_stats_gained_while_equipped,Stats gained while a Unit has this Equipped
+des_magic,Magic
+des_weapon,Weapons
+des_bow,Bows
+des_sword,Swords
+des_blunt,Blunt
+des_dagger,Daggers
+des_lance,Lances
+des_teeth,Teeth
+ui_swap_weapon_prompt,Swap [img=32x32]{WEAPONICON}[/img] {NAME} for:
+des_tactical,Tactical
+ui_no_weapons_in_library,No Weapons of [img]{ICON}[/img] type found.
+ui_no_weapons_in_convoy,No Weapons of [img]{ICON}[/img] type found in Convoy. 

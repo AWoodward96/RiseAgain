@@ -10,17 +10,28 @@ var MyUnit : UnitInstance
 
 var take_damage_step : int = 0
 
+func _ready():
+	# Sometimes visuals are used in UI's so I need an additional GetVisuals call in the Ready func so that I don't
+	# need an instance to display them
+	GetVisuals()
 
 func Initialize(_unit : UnitInstance) :
 	MyUnit = _unit
-	visual = get_node_or_null("Visual")
-	sprite = get_node_or_null("Sprite2D")
+	GetVisuals()
 	RefreshAllegience()
 
-func RefreshAllegience():
-	if MyUnit != null && visual != null:
+func GetVisuals():
+	visual = get_node_or_null("Visual")
+	sprite = get_node_or_null("Sprite2D")
+
+func RefreshAllegience(_override : GameSettingsTemplate.TeamID = -1):
+	var allegience = _override
+	if allegience == -1 && MyUnit != null:
+		allegience = MyUnit.UnitAllegiance
+
+	if visual != null:
 		if AnimationWorkComplete:
-			match MyUnit.UnitAllegiance:
+			match allegience:
 				GameSettingsTemplate.TeamID.ALLY:
 					visual.material.set_shader_parameter("palette_index", 1)
 				GameSettingsTemplate.TeamID.ENEMY:
@@ -29,7 +40,7 @@ func RefreshAllegience():
 					visual.material.set_shader_parameter("palette_index", 3)
 
 		else:
-			match MyUnit.UnitAllegiance:
+			match allegience:
 				GameSettingsTemplate.TeamID.ALLY:
 					sprite.modulate = GameManager.GameSettings.Alpha_AlliedUnitColor
 				GameSettingsTemplate.TeamID.ENEMY:

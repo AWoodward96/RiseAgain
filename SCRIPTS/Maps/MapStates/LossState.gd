@@ -16,7 +16,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 		combatHUD.PlayLossBanner()
 		await combatHUD.BannerAnimComplete
 
-	var signalCallback = GameManager.ShowLoadingScreen()
+	var signalCallback = UIManager.ShowLoadingScreen()
 	await signalCallback.ScreenObscured
 
 	if map.CurrentCampaign != null:

@@ -15,12 +15,9 @@ signal OnTileSelected(_tile)
 @export var reticleCancelSound : FmodEventEmitter2D
 @export var toggleThreat : FmodEventEmitter2D
 
-@onready var movement_tracker : Line2D = %MovementTracker
-@onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
-@onready var grid_entity_preview_sprite: Sprite2D = %GridEntityPreviewSprite
-@onready var vis_top_left: Sprite2D = $VisTopLeft
-@onready var vis_bottom_right: Sprite2D = $VisBottomRight
-@onready var desired_camera_pos: Sprite2D = $DesiredCameraPos
+@export var movement_tracker : Line2D #= %MovementTracker
+@export var movement_preview_sprite: Sprite2D #= %MovementPreviewSprite
+@export var grid_entity_preview_sprite: Sprite2D #= %GridEntityPreviewSprite
 
 var ControllerState : PlayerControllerState
 var ReticleQuintet : Control.LayoutPreset
@@ -159,7 +156,7 @@ func UpdateCameraPosition():
 	desiredCameraPosition += move
 	desiredCameraPosition.x = clamp(desiredCameraPosition.x, 0 + viewportHalf.x, totalMapSize.x - viewportHalf.x)
 	desiredCameraPosition.y = clamp(desiredCameraPosition.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
-	desired_camera_pos.global_position = desiredCameraPosition
+
 	#UpdateReticleQuintant()
 
 func UpdateScreenShake(_delta):
@@ -193,8 +190,6 @@ func UpdateReticleQuintant():
 	bottomright.x = clamp(bottomright.x, 0 + viewportHalfMinusPadding.x, totalMapSize.x - viewportHalfMinusPadding.x)
 	bottomright.y = clamp(bottomright.y, 0 + viewportHalfMinusPadding.y, totalMapSize.y - viewportHalfMinusPadding.y)
 
-	vis_top_left.global_position = topleft
-	vis_bottom_right.global_position = bottomright
 
 	if reticle.global_position.x <= topleft.x:
 		# Left side
@@ -299,9 +294,8 @@ func EnterGlobalContextState():
 
 func CreateCombatHUD():
 	if combatHUD == null:
-		combatHUD = UIManager.CombatHUDUI.instantiate() as CombatHUD
+		combatHUD = UIManager.OpenFullscreenUI(UIManager.CombatHUDUI)
 		combatHUD.Initialize(currentMap, CurrentTile)
-		add_child(combatHUD)
 
 	return combatHUD
 

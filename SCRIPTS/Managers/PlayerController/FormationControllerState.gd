@@ -6,9 +6,8 @@ var formationUI
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
-	formationUI = UIManager.AlphaFormationUI.instantiate()
+	formationUI = UIManager.OpenFullscreenUI(UIManager.FormationUI)
 	formationUI.Initialize(ctrl, currentMap)
-	ctrl.add_child(formationUI)
 	return formationUI
 
 func _Execute(_delta):

@@ -6,11 +6,8 @@ static var CurrentCampaign : Campaign
 @export var UnitSettings : UnitSettingsTemplate
 @export var LocalizationSettings : LocSettings
 
-@export var GlobalUI : GlobalUIHelper
 @export var TutorialCutscene : CutsceneTemplate
 @export var LoadingScreenPrefab : PackedScene
-
-
 
 var CurrentGameState : GameState
 var loadingScreen : LoadingScreen
@@ -37,23 +34,7 @@ func _process(_delta: float):
 
 	pass
 
-func CreateLoadingScreen():
-	loadingScreen = LoadingScreenPrefab.instantiate() as LoadingScreen
-	add_child(loadingScreen)
 
-func ShowLoadingScreen(_fadeTime = 1.5, lambda = null):
-	if loadingScreen == null:
-		CreateLoadingScreen()
-
-	loadingScreen.ShowLoadingScreen(_fadeTime, lambda)
-	return loadingScreen
-
-func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
-	if loadingScreen == null:
-		CreateLoadingScreen()
-
-	loadingScreen.HideLoadingScreen(_fadeTime, lambda)
-	return loadingScreen
 
 func PersistDataManagerFinished():
 	persistInitialized = true

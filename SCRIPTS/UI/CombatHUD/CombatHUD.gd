@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name CombatHUD
 
 signal BannerAnimComplete
@@ -19,9 +19,8 @@ signal BannerAnimComplete
 
 
 @export_category("Anchors")
-@onready var center_left_anchor = $CenterLeft
-@onready var top_left_anchor = $TopLeft
-@onready var top_right_anchor = $TopRight
+@export var center_left_anchor : Control
+@export var top_right_anchor : Control
 @export var AvailableUIAnchors : Array[Control.LayoutPreset]
 @export var BlankAnchor : AnchoredUIElement
 @export var PresetAnchoredUIElements : Array[AnchoredUIElement]
@@ -44,7 +43,7 @@ func _ready():
 		currentAnchoredUIElements.append(preset)
 
 func Initialize(_map : Map, _currentTile : Tile):
-	await self.ready
+	#await self.ready
 
 	map = _map
 	ctrl = map.playercontroller

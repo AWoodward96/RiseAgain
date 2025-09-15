@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds0pcu11x34vs"]
+[gd_scene load_steps=22 format=3 uid="uid://ds0pcu11x34vs"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_dmmxr"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_hj4ni"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bkktm0cwqep5n" path="res://RESOURCES/UI/GenericEntrys/resource_cost_entry.tscn" id="2_0bhbb"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="3_dmmxr"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_dmmxr"]
+[ext_resource type="Script" uid="uid://dert4f3wj4vgx" path="res://SCRIPTS/UI/DetailEntry.gd" id="6_iwu8o"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="8_raxaj"]
+[ext_resource type="Texture2D" uid="uid://b8qbi13lna3k8" path="res://ART/UI/locked_icon.png" id="9_c5bwg"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7c27l"]
 
@@ -16,64 +19,188 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tt2ax"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_fyni8"]
 font = ExtResource("1_hj4ni")
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5bwg"]
+font = ExtResource("8_raxaj")
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpibv"]
 font = ExtResource("1_hj4ni")
 font_size = 12
 
-[node name="SmithyWeaponEntry" type="Button" node_paths=PackedStringArray("weaponTitle", "weaponDesc", "weaponIcon", "statChangeEntryParent", "costParent", "canUseParent", "weaponDetailsParent")]
-custom_minimum_size = Vector2(0, 180)
+[sub_resource type="LabelSettings" id="LabelSettings_sxtjg"]
+font = ExtResource("1_hj4ni")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_sxtjg"]
+resource_name = "AlreadyUnlocked"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UnlockedParent/Offset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b027w"]
+resource_name = "LockedByLevel"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LockedParent/Offset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c5bwg"]
+resource_name = "NotEnoughResources"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.10472, 0.0349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tt2ax"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LockedParent/Offset:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UnlockedParent/Offset:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sxtjg"]
+_data = {
+&"AlreadyUnlocked": SubResource("Animation_sxtjg"),
+&"LockedByLevel": SubResource("Animation_b027w"),
+&"NotEnoughResources": SubResource("Animation_c5bwg"),
+&"RESET": SubResource("Animation_tt2ax")
+}
+
+[node name="SmithyWeaponEntry" type="Button" node_paths=PackedStringArray("costParent", "canUseParent", "lockedParent", "lockedText", "unlockedParent", "contentModulateParent", "nameLabel", "descLabel", "icon", "animator", "statChangeDetailParent", "statChangeEntryParent", "weaponRangeParent", "weaponRangeText", "weaponDetailsParent", "Details")]
+custom_minimum_size = Vector2(0, 170)
+offset_top = -1.0
 offset_right = 500.0
-offset_bottom = 140.0
+offset_bottom = 199.0
 theme = ExtResource("1_dmmxr")
+icon = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(64, 64),"layout_direction":0,"layout_mode":2,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":64.0,"offset_bottom":64.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":SubResource("PlaceholderTexture2D_7c27l"),"expand_mode":1,"stretch_mode":0,"flip_h":false,"flip_v":false,"script":null)
+
 script = ExtResource("1_hjuur")
-weaponTitle = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/weapon_title")
-weaponDesc = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/weapon_desc")
-weaponIcon = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/IconParent/Control/Icon")
-statChangeEntryParent = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/StatChanges")
-costParent = NodePath("HBoxContainer/VBoxContainer/WeaponInfo/Panel/MarginContainer/CostParent")
+costParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked/CostParent")
 costEntry = ExtResource("2_0bhbb")
-canUseParent = NodePath("HBoxContainer/VBoxContainer/Panel/MarginContainer/CanUse/CanUseParent")
-weaponDetailsParent = NodePath("HBoxContainer/VBoxContainer/WeaponDetails2/HBoxContainer")
+canUseParent = NodePath("ContentParent/VBoxContainer/Panel/MarginContainer/CanUse/CanUseParent")
+alreadyUnlockedModulate = Color(1, 1, 1, 0.611765)
 canAffordColor = Color(0.9, 0.9, 0.9, 1)
 cantAffordColor = Color(1, 0.594, 0.58, 1)
+lockedParent = NodePath("LockedParent")
+lockedText = NodePath("LockedParent/Offset/Label")
+unlockedParent = NodePath("UnlockedParent")
+contentModulateParent = NodePath("ContentParent")
+nameLabel = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/nameLabel")
+descLabel = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/descLabel")
+icon = NodePath("ContentParent/VBoxContainer/WeaponInfo/IconParent/Control/Icon")
+animator = NodePath("AnimationPlayer")
+statChangeDetailParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent")
+statChangeEntryParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent/StatChanges")
+weaponRangeParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range")
+weaponRangeText = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer/RangeText")
+weaponDetailsParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/Icons/TargetingAndSpeedIcons")
+Details = [NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/nameLabel"), NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/descLabel"), NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ContentParent" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="spacer" type="Control" parent="HBoxContainer"]
+[node name="spacer" type="Control" parent="ContentParent"]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentParent"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="spacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+[node name="spacer" type="Control" parent="ContentParent/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="WeaponInfo" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="WeaponInfo" type="HBoxContainer" parent="ContentParent/VBoxContainer"]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="IconParent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo"]
+[node name="IconParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent"]
+[node name="Control" type="Control" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent/Control"]
+[node name="Icon" type="TextureRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/Control"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 offset_right = 64.0
@@ -81,7 +208,7 @@ offset_bottom = 64.0
 texture = SubResource("PlaceholderTexture2D_7c27l")
 expand_mode = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent/Control"]
+[node name="NinePatchRect" type="NinePatchRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,66 +221,67 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/WeaponInfo/IconParent/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/HBoxContainer"]
 layout_mode = 2
 
-[node name="TitleDescParent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo"]
+[node name="TitleDescParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent"]
 layout_mode = 2
 
-[node name="weapon_title" type="Label" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
+[node name="nameLabel" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../../descLabel")
 text = "weaponname"
 label_settings = SubResource("LabelSettings_45xnl")
+script = ExtResource("6_iwu8o")
+tooltip = "detail_weapontitle"
 
-[node name="StatChanges" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
-layout_mode = 2
-script = ExtResource("4_dmmxr")
-
-[node name="weapon_desc" type="Label" parent="HBoxContainer/VBoxContainer/WeaponInfo/TitleDescParent"]
-custom_minimum_size = Vector2(200, 64)
-layout_mode = 2
-size_flags_vertical = 3
-text = "weapondesc"
-label_settings = SubResource("LabelSettings_fyni8")
-autowrap_mode = 2
-
-[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer/WeaponInfo"]
+[node name="Range" type="PanelContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_type_variation = &"SubPanel2"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-
-[node name="CostParent" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponInfo/Panel/MarginContainer"]
-custom_minimum_size = Vector2(64, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 4
-alignment = 1
+
+[node name="RangeTitleColon" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer"]
+layout_mode = 2
+text = "ui_range_title"
+label_settings = SubResource("LabelSettings_tt2ax")
+
+[node name="RangeText" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer"]
+layout_mode = 2
+text = "1 - 2"
+label_settings = SubResource("LabelSettings_tt2ax")
+
+[node name="WeaponDetails3" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent"]
+layout_mode = 2
+
+[node name="StatChangeDetailParent" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3"]
+layout_mode = 2
+script = ExtResource("6_iwu8o")
+tooltip = "ui_stats_gained_while_equipped"
+
+[node name="StatChanges" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent"]
+layout_mode = 2
 script = ExtResource("4_dmmxr")
 
-[node name="WeaponDetails2" type="Panel" parent="HBoxContainer/VBoxContainer"]
+[node name="Icons" type="Panel" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3"]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"SubPanel2"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/WeaponDetails2"]
+[node name="TargetingAndSpeedIcons" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/Icons"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -167,35 +295,177 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_dmmxr")
 
-[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 34)
+[node name="descLabel" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent"]
+custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
-theme_type_variation = &"SubPanel1"
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../HBoxContainer/nameLabel")
+text = "weapondesc"
+label_settings = SubResource("LabelSettings_fyni8")
+autowrap_mode = 2
+script = ExtResource("6_iwu8o")
+tooltip = "detail_weapondesc"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/WeaponInfo"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_type_variation = &"SubPanel2"
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Locked" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked"]
+layout_mode = 2
+text = "ui_unlockcolon"
+label_settings = SubResource("LabelSettings_c5bwg")
+
+[node name="CostParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("4_dmmxr")
+
+[node name="Panel" type="Panel" parent="ContentParent/VBoxContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/Panel"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 494.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 6
 
-[node name="CanUse" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer"]
+[node name="CanUse" type="HBoxContainer" parent="ContentParent/VBoxContainer/Panel/MarginContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer/CanUse"]
+[node name="Label" type="Label" parent="ContentParent/VBoxContainer/Panel/MarginContainer/CanUse"]
 layout_mode = 2
 text = "loc_canuse"
 label_settings = SubResource("LabelSettings_jpibv")
 
-[node name="CanUseParent" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Panel/MarginContainer/CanUse"]
+[node name="CanUseParent" type="HBoxContainer" parent="ContentParent/VBoxContainer/Panel/MarginContainer/CanUse"]
 layout_mode = 2
 script = ExtResource("4_dmmxr")
 
-[node name="spacer2" type="Control" parent="HBoxContainer"]
+[node name="spacer2" type="Control" parent="ContentParent"]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
+
+[node name="LockedParent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24, 0.22776, 0.1992, 0.796078)
+
+[node name="Offset" type="Control" parent="LockedParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LockedParent/Offset"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_c5bwg")
+
+[node name="Label" type="Label" parent="LockedParent/Offset"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 21.0
+offset_right = 151.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Locked Until Level 3"
+label_settings = SubResource("LabelSettings_sxtjg")
+horizontal_alignment = 1
+
+[node name="UnlockedParent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.949, 0.83, 0)
+
+[node name="Offset" type="Control" parent="UnlockedParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UnlockedParent/Offset"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 39.0
+offset_right = 99.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.472715
+text = "Unlocked!"
+label_settings = SubResource("LabelSettings_sxtjg")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sxtjg")
+}
+
+[connection signal="pressed" from="." to="." method="OnButtonPressed"]

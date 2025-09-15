@@ -3,6 +3,7 @@ class_name Campaign
 
 @export var current_map_parent : Node2D
 @export var UnitHoldingArea : Node2D
+@export var Convoy : ConvoyInstance
 
 var startingPOI : POI
 var campaignLedger : Array[String] # This uses the internal ID name to determine which node is which
@@ -16,9 +17,6 @@ var CampaignRng : DeterministicRNG
 var StartingRosterTemplates : Array[UnitTemplate]
 var CurrentRoster : Array[UnitInstance]
 var DeadUnits : Array[UnitTemplate]
-
-var ConvoyParent : Node2D
-var Convoy : Array[Item]
 
 var resumingCampaign : bool = false
 var currentLevelDifficulty : int
@@ -103,7 +101,7 @@ func StartMap():
 		current_map_parent.add_child(currentMap)
 
 	campaignLedger.append(currentPOI.internal_name)
-	GameManager.HideLoadingScreen()
+	UIManager.HideLoadingScreen()
 	PersistDataManager.SaveCampaign()
 
 func ResumeMap():
@@ -115,7 +113,7 @@ func ResumeMap():
 
 	currentMap.ResumeFromCampaign(self)
 	current_map_parent.add_child(currentMap)
-	GameManager.HideLoadingScreen()
+	UIManager.HideLoadingScreen()
 
 func CreateSquadInstance():
 	for unit in StartingRosterTemplates:
@@ -131,7 +129,7 @@ func MapComplete():
 			PersistDataManager.universeData.GrantPrestiegeExp(unit.Template, GameManager.UnitSettings.PrestiegeGrantedPerMap)
 
 	GetNextMapOption()
-	GameManager.HideLoadingScreen()
+	UIManager.HideLoadingScreen()
 
 func UnitInjured(_unitInstance : UnitInstance):
 	_unitInstance.reparent(UnitHoldingArea)
@@ -158,35 +156,6 @@ func GetMapRewardTable():
 func OnRosterSelected(_roster : Array[UnitTemplate], _levelOverride : int):
 	StartingRosterTemplates = _roster
 	debug_leveloverride = _levelOverride
-
-
-func AddItemToConvoy(_item : Item):
-	CreateConvoyParent()
-	ConvoyParent.add_child(_item)
-	Convoy.append(_item)
-
-func CreateConvoyParent():
-	if ConvoyParent == null:
-		# create a new one
-		ConvoyParent = Node2D.new()
-		ConvoyParent.name = "Convoy"
-		add_child(ConvoyParent)
-		ConvoyParent.visible = false # Should not be visible just in case there are visual effects on a prefab that might bleed through
-
-
-func RemoveItemFromConvoy(_item : Item, _unitToGiveTo : UnitInstance, _slotIndex : int):
-	var index = Convoy.find(_item)
-	if index == -1:
-		return
-
-	if _unitToGiveTo == null || _slotIndex < 0 || _slotIndex >= GameManager.GameSettings.ItemSlotsPerUnit:
-		return
-
-	var item = Convoy[index]
-	Convoy.remove_at(index)
-	ConvoyParent.remove_child(item)
-	_unitToGiveTo.EquipItem(_slotIndex, item)
-
 
 func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 0):
 	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
@@ -238,7 +207,7 @@ func ToJSON():
 		"startingPOI" = startingPOI.internal_name,
 		"campaignRNG" = CampaignRng.ToJSON(),
 		"campaignLedger" = campaignLedger,
-		"Convoy" = PersistDataManager.ArrayToJSON(Convoy)
+		"Convoy" = Convoy.ToJSON()
 	}
 
 	var children = UnitHoldingArea.get_children() as Array[UnitInstance]
@@ -251,7 +220,6 @@ static func FromJSON(_dict : Dictionary):
 
 	PersistDataManager.JSONtoResourceFromPath(_dict["StartingRosterTemplates"], campaign.StartingRosterTemplates)
 
-
 	campaign.currentPOI = WorldMap.GetPOIFromID(_dict["currentPOI"])
 	campaign.startingPOI = WorldMap.GetPOIFromID(_dict["startingPOI"])
 
@@ -260,25 +228,9 @@ static func FromJSON(_dict : Dictionary):
 	for string in _dict["campaignLedger"]:
 		campaign.campaignLedger.append(string)
 
-	campaign.CreateConvoyParent()
-
 	# Handle items in the convoy
-	for element in _dict["Convoy"]:
-		if element == "NULL":
-			continue
+	campaign.Convoy.FromJSON(_dict["Convoy"])
 
-		var elementAsDict = JSON.parse_string(element)
-		if elementAsDict == null:
-			continue
-
-		var prefab = load(elementAsDict["prefab"]) as PackedScene
-		if prefab == null:
-			continue
-
-		var newInstance = prefab.instantiate() as Item
-		newInstance.FromJSON(elementAsDict)
-		campaign.ConvoyParent.add_child(newInstance)
-		campaign.Convoy.append(newInstance)
 
 	# Handle the seeded rng
 	if _dict.has("campaignRNG") && _dict["campaignRNG"] != null:

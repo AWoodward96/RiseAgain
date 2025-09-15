@@ -4,6 +4,7 @@ class_name UnitUsable
 @export var internalName : String
 @export var loc_displayName : String
 @export var loc_displayDesc : String
+@export var loc_flavorDesc : String
 @export var icon : Texture2D
 @export var descriptors : Array[DescriptorTemplate]
 

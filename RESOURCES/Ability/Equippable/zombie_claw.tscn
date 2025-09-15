@@ -30,7 +30,6 @@ script = ExtResource("1_0llaf")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_ntjbe")]([SubResource("Resource_tlp3y"), SubResource("Resource_mqwq8")])
-damageGrantsFocus = true
 internalName = "zombie_claw"
 loc_displayName = "weap_zombie_claw_name"
 loc_displayDesc = "weap_zombie_claw_desc"
@@ -41,7 +40,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_r8nyx")
-BaseAccuracy = 80.0
 GrantedStats = Array[ExtResource("4_ddajl")]([SubResource("Resource_p0i1e")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

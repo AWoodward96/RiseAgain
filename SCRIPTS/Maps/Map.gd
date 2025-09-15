@@ -418,7 +418,7 @@ func RefreshThreat():
 
 func TryAddItemToConvoy(_item : Item):
 	if CurrentCampaign != null:
-		CurrentCampaign.AddItemToConvoy(_item)
+		CurrentCampaign.Convoy.AddToConvoy(_item)
 
 func _input(event):
 	# this eats button inputs funnily enough, so the CSR menu wont work if this is commented in

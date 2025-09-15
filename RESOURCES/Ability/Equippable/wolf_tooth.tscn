@@ -30,7 +30,6 @@ script = ExtResource("1_7vw3g")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_8bvfg")]([SubResource("Resource_md6lt"), SubResource("Resource_6ubox")])
-damageGrantsFocus = true
 internalName = "wolf_tooth"
 loc_displayName = "weap_wolf_tooth_name"
 loc_displayDesc = "weap_wolf_tooth_desc"
@@ -41,7 +40,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_4owtj")
-BaseAccuracy = 90.0
 GrantedStats = Array[ExtResource("4_tsgbl")]([SubResource("Resource_o6fyf")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

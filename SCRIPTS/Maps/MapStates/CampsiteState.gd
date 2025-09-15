@@ -28,7 +28,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	await campsite.OnRest
 
 
-	var screen = GameManager.ShowLoadingScreen()
+	var screen = UIManager.ShowLoadingScreen()
 	await screen.ScreenObscured
 
 	var restedUI = UIManager.CampsiteRestedPopupPrefab.instantiate()

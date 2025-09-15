@@ -23,7 +23,6 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_p650e"]
 script = ExtResource("3_8kx7m")
-WaitForStackFree = true
 SpeedOverride = -1
 AnimationStyle = 1
 

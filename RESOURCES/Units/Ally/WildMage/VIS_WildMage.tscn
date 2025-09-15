@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_iysls"]
 [ext_resource type="Texture2D" uid="uid://dlghwrfjw2te0" path="res://ART/Units/WildMage/thaligus.png" id="2_4j1bm"]
-[ext_resource type="Texture2D" uid="uid://dk6whh2weqyxi" path="res://ART/Icons/Units/wildmage.png" id="2_g7d8n"]
+[ext_resource type="Texture2D" uid="uid://dk6whh2weqyxi" path="res://ART/Icons/Units/old_wildmage.png" id="2_g7d8n"]
 [ext_resource type="Shader" uid="uid://cf720m26t7obl" path="res://RESOURCES/Units/Ally/WildMage/palette_swap_complex.gdshader" id="2_o2050"]
 [ext_resource type="Texture2D" uid="uid://d1memfxc57nnk" path="res://ART/Units/WildMage/thaligus_palette.png" id="3_o2050"]
 

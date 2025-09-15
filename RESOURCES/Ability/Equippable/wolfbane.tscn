@@ -32,7 +32,6 @@ script = ExtResource("1_2nsqj")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_c4rx7")]([SubResource("Resource_mflbd"), SubResource("Resource_gq7j7")])
-damageGrantsFocus = true
 internalName = "wolfbane"
 loc_displayName = "weap_wolfbane_name"
 loc_displayDesc = "weap_wolfbane_desc"
@@ -43,7 +42,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_0pyxx")
-BaseAccuracy = 100.0
 GrantedStats = Array[ExtResource("3_y35ns")]([SubResource("Resource_vlxdw")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

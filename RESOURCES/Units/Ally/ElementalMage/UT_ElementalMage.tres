@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=60 format=3 uid="uid://dhofh2o4b8tg4"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://dhofh2o4b8tg4"]
 
 [ext_resource type="PackedScene" uid="uid://dmih52nttd88v" path="res://RESOURCES/Units/Ally/ElementalMage/VIS_ElementalMage.tscn" id="1_f24il"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_f24q4"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_dbc0j"]
-[ext_resource type="Texture2D" uid="uid://bn2j7jkcgtx4u" path="res://ART/Icons/Units/elementalmage.png" id="2_fixur"]
+[ext_resource type="Texture2D" uid="uid://b38ovux5yoepl" path="res://ART/Icons/Units/elementalmage.png" id="2_fixur"]
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="2_rsivk"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_grtee"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="3_rke14"]
@@ -16,22 +16,9 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_te031"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_18x73"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_w741q"]
-[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="14_uwiqj"]
-[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="15_48avb"]
-[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="16_ttnja"]
-[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="17_23bqh"]
+[ext_resource type="Resource" uid="uid://coqesbkxpsemt" path="res://RESOURCES/Unlocks/ULK_mana_bolt.tres" id="14_fsfda"]
+[ext_resource type="Resource" uid="uid://bn2vvdjtrk201" path="res://RESOURCES/Unlocks/ULK_gauze.tres" id="15_mb8jk"]
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="17_ggk84"]
-[ext_resource type="Texture2D" uid="uid://bvowbij7bann8" path="res://ART/Icons/Ability/Equippable/mana_bolt.png" id="18_qypd2"]
-[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_2krbj"]
-[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="20_sqgvg"]
-[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_b2nxr"]
-[ext_resource type="Script" uid="uid://cnlspk1u6udgh" path="res://SCRIPTS/Ability/PlayAnimationStep.gd" id="22_pk5v6"]
-[ext_resource type="PackedScene" uid="uid://x6vokynwesn0" path="res://RESOURCES/VFX/heal_vfx.tscn" id="23_piiw3"]
-[ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="24_k2a1r"]
-[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="25_pp4ii"]
-[ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="26_oywkw"]
-[ext_resource type="Texture2D" uid="uid://c7win01b8qdik" path="res://ART/Icons/Ability/Tactical/gauze.png" id="27_vj0ru"]
-[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="28_io3hi"]
 
 [sub_resource type="Resource" id="Resource_sb7fm"]
 script = ExtResource("2_dbc0j")
@@ -78,82 +65,6 @@ script = ExtResource("2_dbc0j")
 Template = ExtResource("10_0vpda")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_rkook"]
-script = ExtResource("16_ttnja")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_k0yij"]
-script = ExtResource("17_23bqh")
-
-[sub_resource type="Resource" id="Resource_vmey2"]
-script = ExtResource("2_dbc0j")
-Template = ExtResource("5_thm0u")
-Value = 4
-
-[sub_resource type="PackedScene" id="PackedScene_4repf"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("mana_bolt", "Node2D", "script", "type", "abilityCooldown", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script", "TargetRange"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 1073741834, 8, 1073741835, 9, 1073741836, 10, 0, 1073741824, 0, 14, 13, -1, 2, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 4, 19, 13, 20, 14, 21, 15, 22, 16, 0, 1073741826, 0, 24, 23, -1, 2, 25, 17, 26, 18, 0),
-"variants": [ExtResource("14_uwiqj"), 1, 0, Array[ExtResource("15_48avb")]([SubResource("Resource_rkook"), SubResource("Resource_k0yij")]), "mana_bolt", "weap_mana_bolt_name", "weap_mana_bolt_desc", ExtResource("18_qypd2"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_2krbj"), Array[ExtResource("2_dbc0j")]([SubResource("Resource_vmey2")]), ExtResource("20_sqgvg"), ExtResource("5_thm0u"), ExtResource("6_5xmr1"), 0.0, ExtResource("21_b2nxr"), Vector2i(1, 2)],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_tbbfs"]
-script = ExtResource("22_pk5v6")
-AnimName = "use_item_in"
-Speed = 1.0
-Backwards = false
-WaitForAnimFinished = true
-metadata/_custom_type_script = "uid://cnlspk1u6udgh"
-
-[sub_resource type="Resource" id="Resource_0uc5p"]
-script = ExtResource("24_k2a1r")
-VFXPrefab = ExtResource("23_piiw3")
-metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
-
-[sub_resource type="Resource" id="Resource_vod3w"]
-script = ExtResource("25_pp4ii")
-time = 0.75
-metadata/_custom_type_script = "uid://d4hhypdwxek2y"
-
-[sub_resource type="Resource" id="Resource_dml4r"]
-script = ExtResource("26_oywkw")
-
-[sub_resource type="Resource" id="Resource_cf2ed"]
-script = ExtResource("22_pk5v6")
-AnimName = "use_item_out"
-Speed = 1.0
-Backwards = false
-WaitForAnimFinished = true
-metadata/_custom_type_script = "uid://cnlspk1u6udgh"
-
-[sub_resource type="Resource" id="Resource_kf6lm"]
-script = ExtResource("22_pk5v6")
-AnimName = "idle"
-Speed = 1.0
-Backwards = false
-WaitForAnimFinished = false
-metadata/_custom_type_script = "uid://cnlspk1u6udgh"
-
-[sub_resource type="PackedScene" id="PackedScene_77170"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("gauze", "Node2D", "script", "type", "abilityCooldown", "limitedUsage", "usageRestoredByCampfire", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "HealData", "HealComponent", "Node2D", "script", "FlatValue", "SkillTargetingData", "Node2D", "script", "TeamTargeting", "TargetRange", "Type", "CanTargetSelf"),
-"node_count": 3,
-"node_paths": [NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 2, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 5, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 0),
-"variants": [ExtResource("14_uwiqj"), 2, 0, 3, 3, Array[ExtResource("15_48avb")]([SubResource("Resource_tbbfs"), SubResource("Resource_0uc5p"), SubResource("Resource_vod3w"), SubResource("Resource_dml4r"), SubResource("Resource_cf2ed"), SubResource("Resource_kf6lm")]), "gauze", "tact_gauze_name", "tact_gauze_desc", ExtResource("27_vj0ru"), NodePath("SkillTargetingData"), NodePath("HealComponent"), ExtResource("28_io3hi"), 10.0, ExtResource("21_b2nxr"), 0, Vector2i(0, 0), 3, true],
-"version": 3
-}
-
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("1_f24q4")
@@ -195,8 +106,8 @@ VisualPrefab = ExtResource("1_f24il")
 BaseStats = Array[ExtResource("2_dbc0j")]([SubResource("Resource_sb7fm"), SubResource("Resource_bi4rj"), SubResource("Resource_4pp1j"), SubResource("Resource_sqsso"), SubResource("Resource_fqx0d"), SubResource("Resource_o83du"), SubResource("Resource_02vtt"), SubResource("Resource_qbcu2"), SubResource("Resource_qm2ju")])
 StatGrowths = Array[ExtResource("2_dbc0j")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("2_rsivk")
-StartingEquippedWeapon = SubResource("PackedScene_4repf")
-StartingTactical = SubResource("PackedScene_77170")
+StartingEquippedWeapon = ExtResource("14_fsfda")
+StartingTactical = ExtResource("15_mb8jk")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_fireball.tscn"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_flamewall.tscn", "res://RESOURCES/Ability/Standard/ART_beamattack.tscn"])
 Descriptors = Array[ExtResource("13_w741q")]([])
@@ -208,3 +119,5 @@ DebugName = "ElementalMage"
 loc_DisplayName = "unit_elementalmage_name"
 loc_Description = "unit_elementalmage_desc"
 icon = ExtResource("2_fixur")
+startUnlocked = true
+startNameKnown = true

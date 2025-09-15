@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b362cldejqkxn" path="res://RESOURCES/Units/Enemy/AdultWolf/VIS_AdultWolf.tscn" id="12_6etwq"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_57w4d"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_m6lwa"]
-[ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_o7rr2"]
+[ext_resource type="Resource" uid="uid://dpqb5rpiva2ho" path="res://RESOURCES/Unlocks/ULK_wolf_tooth.tres" id="15_m6lwa"]
 [ext_resource type="Texture2D" uid="uid://ddew6qrlip5o6" path="res://ART/Icons/Units/adultwolf.png" id="23_anudv"]
 
 [sub_resource type="Resource" id="Resource_6ajq1"]
@@ -106,7 +106,7 @@ VisualPrefab = ExtResource("12_6etwq")
 BaseStats = Array[ExtResource("2_7jtpq")]([SubResource("Resource_6ajq1"), SubResource("Resource_45ytr"), SubResource("Resource_cw2l8"), SubResource("Resource_b1tt2"), SubResource("Resource_e5ep0"), SubResource("Resource_e2hol"), SubResource("Resource_mp0eo"), SubResource("Resource_5j1xn"), SubResource("Resource_75art")])
 StatGrowths = Array[ExtResource("2_7jtpq")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
 Affinity = ExtResource("1_xh3m4")
-StartingEquippedWeapon = ExtResource("14_o7rr2")
+StartingEquippedWeapon = ExtResource("15_m6lwa")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_57w4d")]([ExtResource("10_b7vio")])
@@ -118,3 +118,5 @@ DebugName = "AdultWolf"
 loc_DisplayName = "unit_adultwolf_name"
 loc_Description = "unit_adultwolf_desc"
 icon = ExtResource("23_anudv")
+startUnlocked = true
+startNameKnown = true

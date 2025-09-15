@@ -59,7 +59,6 @@ func InitNextMapSelection():
 	pass
 
 func UpdateForTraversal():
-	var currentCampaign = GameManager.CurrentCampaign
 	if currentCampaign == null:
 		return
 

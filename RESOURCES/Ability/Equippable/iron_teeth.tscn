@@ -32,7 +32,6 @@ script = ExtResource("1_msyxe")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_m60bh")]([SubResource("Resource_bqel4"), SubResource("Resource_iwiic")])
-damageGrantsFocus = true
 internalName = "iron_teeth"
 loc_displayName = "weap_iron_teeth_name"
 loc_displayDesc = "weap_iron_teeth_desc"
@@ -43,7 +42,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("3_qx15y")
-BaseAccuracy = 90.0
 GrantedStats = Array[ExtResource("4_m60bh")]([SubResource("Resource_m60bh")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

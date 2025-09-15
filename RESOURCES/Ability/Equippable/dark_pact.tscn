@@ -30,7 +30,6 @@ script = ExtResource("1_i5kxd")
 type = 1
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_cpfex")]([SubResource("Resource_2fdp7"), SubResource("Resource_bjjjv")])
-damageGrantsFocus = true
 internalName = "dark_pact"
 loc_displayName = "weap_dark_pact_name"
 loc_displayDesc = "weap_dark_pact_desc"
@@ -41,7 +40,6 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_yqoy7")
-BaseAccuracy = 60.0
 GrantedStats = Array[ExtResource("4_rw3by")]([SubResource("Resource_7xaav")])
 
 [node name="DamageComponent" type="Node2D" parent="."]

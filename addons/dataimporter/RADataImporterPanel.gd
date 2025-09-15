@@ -74,6 +74,8 @@ var vulnerabilityPathArray : Array[String]
 var shapedPrefabNameArray : Array[String]
 var shapedPrefabPathArray : Array[String]
 
+var unlockableNameArray : Array[String]
+var unlockablePathArray : Array[String]
 
 var log
 var cachedJSON
@@ -144,6 +146,10 @@ func ConstructDescriptorMapping():
 func ConstructVulnerabilityMapping():
 	ConstructMapping(VulnerableDescriptors_Dir, vulnerabilityPathArray, vulnerabilityNameArray)
 
+func ConstructUnlockableMapping():
+	ConstructMapping(Unlocks_DIR, unlockablePathArray, unlockableNameArray)
+
+
 func ConstructUnitTableMapping():
 	# Has to be different to filter out the VIs
 	unitPathArray = GetAllFilesFromPath(Units_Dir)
@@ -182,3 +188,4 @@ func ConstructAllDataMappings():
 	ConstructDescriptorMapping()
 	ConstructAbilityMapping()
 	ConstructVulnerabilityMapping()
+	ConstructUnlockableMapping()

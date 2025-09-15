@@ -156,9 +156,9 @@ func ImportWeapon(_unitTemplate : UnitTemplate, _data):
 	if weap_as_stringname.is_empty():
 		return
 
-	var index = weaponNameArray.find(weap_as_stringname)
+	var index = unlockableNameArray.find(weap_as_stringname)
 	if index != -1:
-		var weapon = ResourceLoader.load(weaponPathArray[index]) as PackedScene
+		var weapon = ResourceLoader.load(unlockablePathArray[index]) as AbilityUnlockable
 		_unitTemplate.StartingEquippedWeapon = weapon
 
 func ImportTactical(_unitTemplate : UnitTemplate, _data):
@@ -166,9 +166,9 @@ func ImportTactical(_unitTemplate : UnitTemplate, _data):
 	if tactical_as_stringname.is_empty():
 		return
 
-	var index = tacticalNameArray.find(tactical_as_stringname)
+	var index = unlockableNameArray.find(tactical_as_stringname)
 	if index != -1:
-		var tactical = ResourceLoader.load(tacticalPathArray[index]) as PackedScene
+		var tactical = ResourceLoader.load(unlockablePathArray[index]) as AbilityUnlockable
 		_unitTemplate.StartingTactical = tactical
 
 func ImportDescriptors(_unitTemplate: UnitTemplate, _data):

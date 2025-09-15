@@ -92,7 +92,13 @@ font = ExtResource("8_rdfo2")
 [sub_resource type="LabelSettings" id="LabelSettings_dxpip"]
 font = ExtResource("8_rdfo2")
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "BlankAnchor", "PresetAnchoredUIElements", "TurnStartSound")]
+[node name="CombatHUD" type="Control" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "center_left_anchor", "top_right_anchor", "BlankAnchor", "PresetAnchoredUIElements", "TurnStartSound")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dux2t")
 AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
@@ -107,6 +113,8 @@ NoTargets = NodePath("TopCenter/NoTargets")
 TerrainInspectUI = NodePath("Full_NoMargin/TerrainInspectPanel")
 ObjectivePanelUI = NodePath("Full_NoMargin/Objective")
 TutorialPrompt = NodePath("Full_NoMargin/TutorialPrompt")
+center_left_anchor = NodePath("CenterLeft")
+top_right_anchor = NodePath("TopRight")
 AvailableUIAnchors = Array[int]([0, 1, 2, 3])
 BlankAnchor = NodePath("Full_NoMargin/PanelBlocker")
 PresetAnchoredUIElements = [NodePath("Full_NoMargin/TerrainInspectPanel"), NodePath("Full_NoMargin/InspectUnitPanel"), NodePath("Full_NoMargin/PanelBlocker"), NodePath("Full_NoMargin/Objective"), NodePath("Full_NoMargin/TutorialPrompt")]
@@ -114,7 +122,7 @@ TurnStartSound = NodePath("TurnStart")
 metadata/_edit_horizontal_guides_ = [-94.0]
 
 [node name="Full_NoMargin" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -964,7 +972,7 @@ patch_margin_bottom = 16
 layout_mode = 2
 
 [node name="TopLeft" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchor_left = 0.074
 anchor_top = 0.1
 anchor_right = 0.074
@@ -1214,7 +1222,7 @@ texture = ExtResource("9_140k7")
 expand_mode = 1
 
 [node name="TopRight" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchor_left = 0.902
 anchor_top = 0.1
 anchor_right = 0.902
@@ -1224,7 +1232,7 @@ offset_right = -159.92
 grow_horizontal = 0
 
 [node name="CenterLeft" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -1233,7 +1241,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BottomRight" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -1244,7 +1252,7 @@ grow_vertical = 0
 
 [node name="BottomLeft" type="Control" parent="."]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1291,7 +1299,7 @@ event_name = "event:/SFX/UI/UI_Paper_Small"
 event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"
 
 [node name="TopCenter" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

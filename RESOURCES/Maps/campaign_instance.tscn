@@ -1,14 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyq5ckgj34tlt"]
+[gd_scene load_steps=3 format=3 uid="uid://cyq5ckgj34tlt"]
 
 [ext_resource type="Script" uid="uid://m223pg2nksnv" path="res://SCRIPTS/Campaign/Campaign.gd" id="1_4iu5n"]
+[ext_resource type="Script" uid="uid://c82guqqbl8y2u" path="res://SCRIPTS/Campaign/ConvoyInstance.gd" id="2_otrmy"]
 
-[node name="CampaignInstance" type="Node2D" node_paths=PackedStringArray("current_map_parent", "UnitHoldingArea")]
+[node name="CampaignInstance" type="Node2D" node_paths=PackedStringArray("current_map_parent", "UnitHoldingArea", "Convoy")]
 script = ExtResource("1_4iu5n")
 current_map_parent = NodePath("CurrentMap")
 UnitHoldingArea = NodePath("UnitHoldingArea")
+Convoy = NodePath("ConvoyInstance")
 
 [node name="CurrentMap" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="UnitHoldingArea" type="Node2D" parent="."]
 visible = false
+
+[node name="ConvoyInstance" type="Node2D" parent="."]
+script = ExtResource("2_otrmy")
+metadata/_custom_type_script = "uid://c82guqqbl8y2u"

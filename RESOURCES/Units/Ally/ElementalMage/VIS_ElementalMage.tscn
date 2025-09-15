@@ -1,7 +1,7 @@
 [gd_scene load_steps=54 format=3 uid="uid://dmih52nttd88v"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_qfktn"]
-[ext_resource type="Texture2D" uid="uid://bn2j7jkcgtx4u" path="res://ART/Icons/Units/elementalmage.png" id="2_r3hk5"]
+[ext_resource type="Texture2D" uid="uid://bn2j7jkcgtx4u" path="res://ART/Icons/Units/wildmage.png" id="2_r3hk5"]
 [ext_resource type="Shader" uid="uid://cf720m26t7obl" path="res://RESOURCES/Units/Ally/WildMage/palette_swap_complex.gdshader" id="3_f7e7u"]
 [ext_resource type="Texture2D" uid="uid://b6sqiftahk77d" path="res://ART/Units/FireMage/Cindy_final_palette.png" id="4_63fo4"]
 [ext_resource type="Texture2D" uid="uid://8gwia4npedr2" path="res://ART/Units/FireMage/Cindy_final_gray.png" id="5_63fo4"]

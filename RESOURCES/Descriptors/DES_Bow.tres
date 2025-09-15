@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=2 format=3 uid="uid://cx6d8skfrwms8"]
+[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=3 format=3 uid="uid://cx6d8skfrwms8"]
 
+[ext_resource type="Texture2D" uid="uid://d4hi1jmo4f3qu" path="res://ART/UI/tab_icons5.png" id="1_5lemp"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_7onya"]
 
 [resource]
 script = ExtResource("1_7onya")
-loc_name = ""
+icon = ExtResource("1_5lemp")
+loc_name = "des_bow"
 loc_description = ""
 metadata/_custom_type_script = "uid://bnehabjcbpysq"

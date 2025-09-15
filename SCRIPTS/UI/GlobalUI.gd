@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name GlobalUIHelper
 
 static var IsShowingResourceUI : bool = false
@@ -21,6 +21,12 @@ static var IsShowingResourceUI : bool = false
 
 @export var BurstSpritesParent : Control
 
+@export var DetailParent : Control
+@export var DetailSizer : Control
+@export var DetailLabel : Label
+@export var DetailHighlighter : Panel
+@export var DetailAnimator : AnimationPlayer
+
 @export_category("Juice")
 @export var maxAquisitionBurstAmount : int = 15
 @export var maxPurchaseBurstAmount : int = 5
@@ -29,10 +35,14 @@ static var IsShowingResourceUI : bool = false
 @export var burstSpreadMin : int = 32
 @export var burstSpreadMax : int = 64
 
+
+func _ready():
+	DetailParent.visible = false
+
 var ShowResourceCount : int :
 	set(_val):
 		var prev = ShowResourceCount
-		ShowResourceCount = _val
+		ShowResourceCount = max(_val, 0)
 		if ShowResourceCount > 0:
 			if prev <= 0:
 				ResourceAnimator.play("show")
@@ -208,3 +218,31 @@ func ClearCreatedBursts(_createdBurst : Array[TextureRect]):
 
 func UpdateIsShowing(_showing : bool):
 	IsShowingResourceUI = _showing
+
+func ShowDetailOfElement(_detailElement : DetailEntry)	:
+	DetailLabel.text = _detailElement.tooltip
+
+	# for *some* fuckin reason, the size of an element doesn't get updated until two whole frames
+	# after the text is changed
+	# SOOOOOOOOO we just do this to get the correct DetailSizer size
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	DetailParent.visible = true
+	DetailParent.global_position = _detailElement.global_position + Vector2(0, -DetailSizer.size.y)
+	#we have to move the element first to know how much to offset it
+	var offset =  UIManager.GetOffsetRequiredToKeepElementOnScreen(DetailSizer)
+	DetailParent.global_position -= offset
+
+	if _detailElement.showHighlight:
+		DetailHighlighter.visible = true
+		DetailHighlighter.global_position = _detailElement.global_position
+		DetailHighlighter.size = _detailElement.size
+	else:
+		DetailHighlighter.visible = false
+	#DetailAnimator.stop()
+	#DetailAnimator.play("show")
+
+
+func HideDetail():
+	DetailParent.visible = false

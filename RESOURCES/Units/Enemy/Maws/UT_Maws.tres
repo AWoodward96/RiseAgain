@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://dudha4cqqspqf"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://dudha4cqqspqf"]
 
 [ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="1_bq2u5"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_8dov0"]
@@ -16,14 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://gjhjsx5ie5ib" path="res://ART/Icons/Units/maws.png" id="12_ybl6f"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_8cu53"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_gmg4r"]
-[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="14_ybl6f"]
-[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="15_8cu53"]
-[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="16_y8dmy"]
-[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="17_rjmvu"]
-[ext_resource type="Texture2D" uid="uid://dvuqajreaumg1" path="res://ART/Icons/Ability/Equippable/iron_teeth.png" id="18_shavg"]
-[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_qdbt3"]
-[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="20_uuntv"]
-[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_w8i8v"]
+[ext_resource type="Resource" uid="uid://d0pc0qqhit6v0" path="res://RESOURCES/Unlocks/ULK_iron_teeth.tres" id="14_gmg4r"]
 
 [sub_resource type="Resource" id="Resource_y8dmy"]
 script = ExtResource("2_8dov0")
@@ -65,34 +58,6 @@ script = ExtResource("2_8dov0")
 Template = ExtResource("10_k2agg")
 Value = 0
 
-[sub_resource type="Resource" id="Resource_bqel4"]
-script = ExtResource("16_y8dmy")
-useAttackAction = true
-useDefendAction = true
-metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
-
-[sub_resource type="Resource" id="Resource_iwiic"]
-script = ExtResource("17_rjmvu")
-metadata/_custom_type_script = "uid://bhmprn01s6vhi"
-
-[sub_resource type="Resource" id="Resource_m60bh"]
-script = ExtResource("2_8dov0")
-Template = ExtResource("4_ipmbt")
-Value = 3
-
-[sub_resource type="PackedScene" id="PackedScene_l55jw"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("iron_teeth", "Node2D", "script", "type", "abilityCooldown", "executionStack", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 1073741834, 8, 1073741835, 9, 1073741836, 10, 0, 1073741824, 0, 14, 13, -1, 2, 15, 11, 16, 12, 0, 1073741825, 0, 18, 17, -1, 4, 19, 13, 20, 14, 21, 15, 22, 16, 0, 1073741826, 0, 24, 23, -1, 1, 25, 17, 0),
-"variants": [ExtResource("14_ybl6f"), 1, 0, Array[ExtResource("15_8cu53")]([SubResource("Resource_bqel4"), SubResource("Resource_iwiic")]), "iron_teeth", "weap_iron_teeth_name", "weap_iron_teeth_desc", ExtResource("18_shavg"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_qdbt3"), Array[ExtResource("2_8dov0")]([SubResource("Resource_m60bh")]), ExtResource("20_uuntv"), ExtResource("4_ipmbt"), ExtResource("5_gmg4r"), 0.0, ExtResource("21_w8i8v")],
-"version": 3
-}
-
 [sub_resource type="Resource" id="Resource_7p4q4"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("3_pvb8s")
@@ -130,7 +95,7 @@ VisualPrefab = ExtResource("12_8dov0")
 BaseStats = Array[ExtResource("2_8dov0")]([SubResource("Resource_y8dmy"), SubResource("Resource_rjmvu"), SubResource("Resource_shavg"), SubResource("Resource_qdbt3"), SubResource("Resource_uuntv"), SubResource("Resource_w8i8v"), SubResource("Resource_l55jw"), SubResource("Resource_q4gto")])
 StatGrowths = Array[ExtResource("2_8dov0")]([SubResource("Resource_7p4q4"), SubResource("Resource_bc3ky"), SubResource("Resource_wa1o6"), SubResource("Resource_xlaf5"), SubResource("Resource_l6fcc"), SubResource("Resource_13jhf")])
 Affinity = ExtResource("1_bq2u5")
-StartingEquippedWeapon = SubResource("PackedScene_l55jw")
+StartingEquippedWeapon = ExtResource("14_gmg4r")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_m8u7j")]([ExtResource("12_ipmbt")])
@@ -142,3 +107,5 @@ DebugName = "Maws"
 loc_DisplayName = "unit_maws_name"
 loc_Description = "unit_maws_desc"
 icon = ExtResource("12_ybl6f")
+startUnlocked = true
+startNameKnown = true

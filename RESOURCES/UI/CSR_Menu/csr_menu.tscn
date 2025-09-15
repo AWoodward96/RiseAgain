@@ -95,6 +95,14 @@ text = "Mark Tutorial Complete"
 layout_mode = 2
 text = "Add 50 Food"
 
+[node name="AddGold" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Add 50 Gold"
+
+[node name="AddOre" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Add 50 Ore"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
@@ -110,3 +118,5 @@ text = "Add 50 Food"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/ClearCutsceneData" to="." method="ClearCutsceneData"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/MarkTutorialComplete" to="." method="btnMarkTutorialComplete"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddFood" to="." method="btnAddFood"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddGold" to="." method="btnAddGold"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddOre" to="." method="btnAddOreResource"]

@@ -210,7 +210,7 @@ func InitializeTier0Abilities():
 		return
 
 	for abilityPath in Template.Tier0Abilities:
-		AddAbility(load(abilityPath))
+		AddPackedAbility(load(abilityPath))
 
 func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 	CombatEffects.append(_combatEffectInstance)
@@ -268,8 +268,6 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 
 	CreateVisual()
 
-	# has to be after CreateVisual
-	#Activated = true
 
 func OnMapComplete():
 	ShowHealthBar(false)
@@ -413,18 +411,46 @@ func PerformLevelUp(_rng : DeterministicRNG, _levelIncrease = 1):
 
 
 func CreateStartingAbilities():
-	if Template.StartingEquippedWeapon != null:
-		AddAbility(Template.StartingEquippedWeapon)
+	var weapPath : String = ""
+	var tacPath : String = ""
+	if unitPersistence != null:
+		# loads the starting weapons and tacticals based on the persist data
+		weapPath = unitPersistence.EquippedStartingWeapon.AbilityPath
+		tacPath = unitPersistence.EquippedStartingTactical.AbilityPath
+	else:
+		# load the starting weapons and tacticals based on the template data
+		if Template.StartingEquippedWeapon != null: weapPath = Template.StartingEquippedWeapon.AbilityPath
+		if Template.StartingTactical != null: tacPath = Template.StartingTactical.AbilityPath
 
-	if Template.StartingTactical != null:
-		AddAbility(Template.StartingTactical)
+	if !weapPath.is_empty():
+		AddPackedAbility(load(weapPath))
 
+	if !tacPath.is_empty():
+		AddPackedAbility(load(tacPath))
 
-func AddAbility(_ability : PackedScene):
+func AddAbilityInstance(_abilityInstance : Ability):
+	_abilityInstance.Initialize(self)
+
+	if _abilityInstance.type == Ability.AbilityType.Weapon:
+		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
+		for abl in Abilities:
+			if abl.type == Ability.AbilityType.Weapon:
+				abilityParent.remove_child(abl)
+				if GameManager.CurrentCampaign != null:
+					GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
+				else:
+					abl.queue_free()
+
+		EquippedWeapon = _abilityInstance
+
+	abilityParent.add_child(_abilityInstance)
+	Abilities.append(_abilityInstance)
+	return _abilityInstance
+
+func AddPackedAbility(_ability : PackedScene):
 	if _ability == null:
 		push_error("Attempting to create a null ability. Unit: " + Template.DebugName)
 		return
-
 
 	# We don't validate if the ability is on the template at all because maybe there might be an item that grants a
 	# general use ability to any unit
@@ -436,25 +462,7 @@ func AddAbility(_ability : PackedScene):
 		push_error("Attempting to add an item to the ability array. This is not allowed. Item: " + abilityInstance.internalName)
 		return
 
-	# don't allow for duplicates
-	for abl in Abilities:
-		if abl == _ability:
-			return
-
-	abilityInstance.Initialize(self)
-
-	if abilityInstance.type == Ability.AbilityType.Weapon:
-		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
-		for abl in Abilities:
-			if abl.type == Ability.AbilityType.Weapon:
-				abilityParent.remove_child(abl)
-				abl.queue_free()
-
-		EquippedWeapon = abilityInstance
-
-	abilityParent.add_child(abilityInstance)
-	Abilities.append(abilityInstance)
-	return abilityInstance
+	AddAbilityInstance(abilityInstance)
 
 func TryEquipItem(_itemPrefabOrInstance):
 	var success = false
@@ -977,7 +985,15 @@ func ToJSON():
 		"IsBoss" : IsBoss
 	}
 
-	dict["ItemSlots"] = PersistDataManager.ArrayToJSON(ItemSlots)
+	var itemSlotsArray : Array[String]
+	for i in ItemSlots:
+		if i == null:
+			itemSlotsArray.append("NULL")
+		else:
+			itemSlotsArray.append(JSON.stringify(i.ToJSON()))
+	dict["ItemSlots"] = itemSlotsArray
+
+
 	if AI != null:
 		dict["AI"] = AI.resource_path
 		if AggroType != null:
@@ -1034,7 +1050,7 @@ static func FromJSON(_dict : Dictionary):
 	for element in _dict["Abilities"]:
 		var elementAsDict = JSON.parse_string(element)
 		var prefab = load(elementAsDict["prefab"]) as PackedScene
-		var newInstance = unitInstance.AddAbility(prefab)
+		var newInstance = unitInstance.AddPackedAbility(prefab)
 		if newInstance != null:
 			newInstance.FromJSON(elementAsDict)
 
@@ -1048,6 +1064,10 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.CombatEffects.assign(cedata)
 
 	var elementIndex = 0
+
+	for s in GameManager.GameSettings.ItemSlotsPerUnit:
+		unitInstance.ItemSlots.append(null)
+
 	for itemElement in _dict["ItemSlots"]:
 		if itemElement != "NULL":
 			var elementAsDict = JSON.parse_string(itemElement)
@@ -1056,6 +1076,7 @@ static func FromJSON(_dict : Dictionary):
 			unitInstance.EquipItem(elementIndex, newInstance)
 			if newInstance != null:
 				newInstance.FromJSON(elementAsDict)
+
 
 		elementIndex += 1
 

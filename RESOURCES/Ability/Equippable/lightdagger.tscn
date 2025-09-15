@@ -1,0 +1,43 @@
+[gd_scene load_steps=12 format=3 uid="uid://dvngr6fr6prr7"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_1qt3w"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_h7gq4"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_eg5yp"]
+[ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="4_12yhd"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="5_sbnga"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_bfqmm"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_1mbs3"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_cuanp"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="9_bsf6r"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_jx1t7"]
+
+[sub_resource type="Resource" id="Resource_1qt3w"]
+script = ExtResource("6_bfqmm")
+Template = ExtResource("7_1mbs3")
+Value = 2
+
+[node name="lightdagger" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_1qt3w")
+type = 1
+abilityCooldown = 0
+internalName = "lightdagger"
+loc_displayName = "weap_lightdagger_name"
+loc_displayDesc = "weap_lightdagger_desc"
+descriptors = Array[ExtResource("2_h7gq4")]([ExtResource("3_eg5yp"), ExtResource("4_12yhd")])
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("5_sbnga")
+GrantedStats = Array[ExtResource("6_bfqmm")]([SubResource("Resource_1qt3w")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("8_cuanp")
+AgressiveStat = ExtResource("7_1mbs3")
+DefensiveStat = ExtResource("9_bsf6r")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("10_jx1t7")
+TargetRange = Vector2i(1, 2)

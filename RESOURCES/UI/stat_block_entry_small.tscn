@@ -6,6 +6,7 @@
 [node name="StatBlockEntry_Small" type="HBoxContainer" node_paths=PackedStringArray("icon", "statIncreaseLabel")]
 offset_right = 32.0
 offset_bottom = 16.0
+size_flags_vertical = 4
 script = ExtResource("1_ksuy1")
 icon = NodePath("TextureRect")
 statIncreaseLabel = NodePath("Amount/Increase")
@@ -19,7 +20,6 @@ stretch_mode = 4
 
 [node name="Amount" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
 text = "07"
 
 [node name="Increase" type="Label" parent="Amount"]

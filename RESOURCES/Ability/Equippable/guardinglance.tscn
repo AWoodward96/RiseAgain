@@ -1,0 +1,62 @@
+[gd_scene load_steps=18 format=3 uid="uid://baknk5opc22rr"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0plmg"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_bod36"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_itrrn"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_axr80"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_gjl6l"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_3bf8w"]
+[ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="4_itrrn"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="5_axr80"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_3bf8w"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_xun2m"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_v2268"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_q3h1e"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_a8a76"]
+
+[sub_resource type="Resource" id="Resource_xun2m"]
+script = ExtResource("3_axr80")
+useAttackAction = true
+useDefendAction = true
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_v2268"]
+script = ExtResource("4_3bf8w")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_itrrn"]
+script = ExtResource("6_3bf8w")
+Template = ExtResource("7_xun2m")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_axr80"]
+script = ExtResource("6_3bf8w")
+Template = ExtResource("8_v2268")
+Value = 1
+
+[node name="guardinglance" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_0plmg")
+type = 1
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_itrrn")]([SubResource("Resource_xun2m"), SubResource("Resource_v2268")])
+internalName = "guardinglance"
+loc_displayName = "weap_guardinglance_name"
+loc_displayDesc = "weap_guardinglance_desc"
+descriptors = Array[ExtResource("2_bod36")]([ExtResource("3_gjl6l"), ExtResource("4_itrrn")])
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("5_axr80")
+GrantedStats = Array[ExtResource("6_3bf8w")]([SubResource("Resource_itrrn"), SubResource("Resource_axr80")])
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("9_q3h1e")
+AgressiveStat = ExtResource("7_xun2m")
+DefensiveStat = ExtResource("8_v2268")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("10_a8a76")
+TeamTargeting = 2
+Type = 2

@@ -13,16 +13,26 @@ class_name UnitPersistBase
 @export var PrestiegeStatMods : Array[StatDef]
 @export var UnallocatedPrestiege : int
 
+@export var EquippedStartingWeapon : AbilityUnlockable
+@export var EquippedStartingTactical : AbilityUnlockable
+
+var PrestiegeDisplayLevel : int :
+	get():
+		return PrestiegeLevel + 1
+
 
 func InitializeNew(_unitTemplate : UnitTemplate):
 	Template = _unitTemplate
 	Alive = true
-	Unlocked = false
-	NameKnown = false
+	Unlocked = _unitTemplate.startUnlocked
+	NameKnown = _unitTemplate.startNameKnown
 	PrestiegeEXP = 0
 	PrestiegeLevel = 0
 	UnallocatedPrestiege = 0
 	PrestiegeStatMods = []
+
+	EquippedStartingWeapon = _unitTemplate.StartingEquippedWeapon
+	EquippedStartingTactical = _unitTemplate.StartingTactical
 
 
 func GrantPrestiegeExp(_amount : int):
@@ -67,6 +77,30 @@ func GetPrestiegeStatMod(_statTemplate : StatTemplate):
 			return stat.Value
 	return 0
 
+func ChangeEquippedStartingWeapon(_abilityUnlockable : AbilityUnlockable):
+	var ulkPersist = PersistDataManager.universeData.GetUnlockablePersist(_abilityUnlockable)
+	if !ulkPersist.Unlocked:
+		return
+
+	if !_abilityUnlockable.Descriptors.has(GameManager.GameSettings.WeaponDescriptor):
+		push_error("Trying to equip a weapon via an AbilityUnlockable that does not have a DES_Weapon decriptor. This is not allowed. Blocked.")
+		return
+	EquippedStartingWeapon = _abilityUnlockable
+	Save()
+	pass
+
+func ChangeEquippedStartingTactical(_abilityUnlockable : AbilityUnlockable):
+	var ulkPersist = PersistDataManager.universeData.GetUnlockablePersist(_abilityUnlockable)
+	if !ulkPersist.Unlocked:
+		return
+
+	if !_abilityUnlockable.Descriptors.has(GameManager.GameSettings.TacticalDescriptor):
+		push_error("Trying to equip a weapon via an AbilityUnlockable that does not have a DES_Weapon decriptor. This is not allowed. Blocked.")
+		return
+	EquippedStartingTactical = _abilityUnlockable
+	Save()
+	pass
+
 func ToJSON():
 	var returnDict = {
 			"template" = Template.resource_path,
@@ -76,7 +110,9 @@ func ToJSON():
 			"prestiegeEXP" = PrestiegeEXP,
 			"prestiegeLevel" = PrestiegeLevel,
 			"unallocatedPrestiege" = UnallocatedPrestiege,
-			"prestiegeStatMods" = PersistDataManager.ArrayToJSON(PrestiegeStatMods)
+			"prestiegeStatMods" = PersistDataManager.ArrayToJSON(PrestiegeStatMods),
+			"equippedStartingTactical" = EquippedStartingTactical.resource_path,
+			"equippedStartingWeapon" = EquippedStartingWeapon.resource_path
 		}
 	return returnDict
 
@@ -88,6 +124,15 @@ func InitFromJSON(_dict : Dictionary):
 	PrestiegeEXP = PersistDataManager.LoadFromJSON("prestiegeEXP", _dict) as int
 	PrestiegeLevel = PersistDataManager.LoadFromJSON("prestiegeLevel", _dict) as int
 	UnallocatedPrestiege = PersistDataManager.LoadFromJSON("unallocatedPrestiege", _dict) as int
+
+	var weap  = load(_dict["equippedStartingWeapon"]) as AbilityUnlockable
+	if weap != null:
+		EquippedStartingWeapon = weap
+
+	var tact = load(_dict["equippedStartingTactical"]) as AbilityUnlockable
+	if tact != null:
+		EquippedStartingTactical = tact
+
 
 	# The load from JSON gives an array of string, which is coincidentally what we need to feed into JSONToArray
 	var statModString = PersistDataManager.LoadFromJSON("prestiegeStatMods", _dict)

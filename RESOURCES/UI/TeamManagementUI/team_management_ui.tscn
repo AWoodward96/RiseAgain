@@ -1,0 +1,663 @@
+[gd_scene load_steps=23 format=3 uid="uid://cw7awguux054e"]
+
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_ongyo"]
+[ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_j2esb"]
+[ext_resource type="Script" uid="uid://61aohaj7ekfm" path="res://SCRIPTS/UI/TeamManagement/TeamManagementFullscreenUI.gd" id="2_r1n1n"]
+[ext_resource type="Texture2D" uid="uid://c4byh05bdbx66" path="res://ART/UI/Textures/ui_parchment_panels8.png" id="3_r1n1n"]
+[ext_resource type="Script" uid="uid://cte8d0wum4u75" path="res://SCRIPTS/UI/TeamManagement/ShortInspectPanel.gd" id="3_siyje"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_fsc2t"]
+[ext_resource type="PackedScene" uid="uid://bca8dk1lnddcs" path="res://RESOURCES/UI/TeamManagementUI/team_management_unit_entry.tscn" id="7_fsc2t"]
+[ext_resource type="Script" uid="uid://c45asr0s1dd1u" path="res://SCRIPTS/UI/TeamManagement/TeamGridPanel.gd" id="7_p0hty"]
+[ext_resource type="PackedScene" uid="uid://df7pqlbgdf8pm" path="res://RESOURCES/UI/GenericEntrys/short_form_ability.tscn" id="8_lmtx5"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="9_siyje"]
+[ext_resource type="PackedScene" uid="uid://2rmdx6sgc55r" path="res://RESOURCES/UI/weapon_swap_panel.tscn" id="11_lmtx5"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="12_k2et2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_siyje"]
+font = ExtResource("4_fsc2t")
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.321569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2esb"]
+bg_color = Color(0.73, 0.67525, 0.5986, 0.701961)
+
+[sub_resource type="Animation" id="Animation_t4oa1"]
+resource_name = "EquipWeapon"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.15, 1.15), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-18, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_txrjc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1f4v1"]
+_data = {
+&"EquipWeapon": SubResource("Animation_t4oa1"),
+&"RESET": SubResource("Animation_txrjc")
+}
+
+[sub_resource type="Animation" id="Animation_siyje"]
+resource_name = "Inspect"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InspectAreaParent/InspectArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(624, 33), Vector2(624, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_lmtx5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InspectAreaParent/InspectArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(624, 33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwapOutWeapons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwapOutWeapons/AbilitySwapParent:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(460, 33)]
+}
+
+[sub_resource type="Animation" id="Animation_k2et2"]
+resource_name = "SwapWeapon"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InspectAreaParent/InspectArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(624, 33), Vector2(32, 33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwapOutWeapons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwapOutWeapons/AbilitySwapParent:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(460, 60), Vector2(460, 33)]
+}
+
+[sub_resource type="Animation" id="Animation_rl5e1"]
+resource_name = "Unswap"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InspectAreaParent/InspectArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, 33), Vector2(624, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwapOutWeapons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwapOutWeapons/AbilitySwapParent:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(460, 33), Vector2(460, 60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2et2"]
+_data = {
+&"Inspect": SubResource("Animation_siyje"),
+&"RESET": SubResource("Animation_lmtx5"),
+&"Swap": SubResource("Animation_k2et2"),
+&"Unswap": SubResource("Animation_rl5e1")
+}
+
+[node name="TeamManagementUI" type="Control" node_paths=PackedStringArray("animator", "shortInspectPanel", "inspectPanelVignette", "gridPanel", "weaponLibrary", "tacticalLibrary")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ongyo")
+script = ExtResource("2_r1n1n")
+animator = NodePath("AnimationPlayer")
+shortInspectPanel = NodePath("InspectAreaParent/InspectArea")
+inspectPanelVignette = NodePath("InspectAreaParent/Vignette")
+gridPanel = NodePath("SelectArea")
+weaponLibrary = NodePath("SwapOutWeapons/AbilitySwapParent/WeaponSwapPanel")
+tacticalLibrary = NodePath("SwapOutWeapons/AbilitySwapParent/TacticalSwapPanel")
+metadata/_edit_vertical_guides_ = [5.0]
+
+[node name="vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13, 0.1183, 0.091, 0.745098)
+
+[node name="SelectArea" type="Panel" parent="." node_paths=PackedStringArray("entryParent")]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 30.0
+offset_right = 602.0
+offset_bottom = 581.0
+script = ExtResource("7_p0hty")
+entryParent = NodePath("MarginContainer/GridContainer")
+entryPrefab = ExtResource("7_fsc2t")
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="SelectArea/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+script = ExtResource("9_siyje")
+
+[node name="OptionsArea" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 62.0
+offset_top = 478.0
+offset_right = 385.0
+offset_bottom = 626.0
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsArea/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="OptionsArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Manage Loadout"
+
+[node name="Button2" type="Button" parent="OptionsArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Trade Items"
+
+[node name="Button3" type="Button" parent="OptionsArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Manage Loadout"
+
+[node name="InspectAreaParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="ColorRect" parent="InspectAreaParent"]
+visible = false
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 640.0
+color = Color(0.16, 0.1504, 0.128, 0.545098)
+
+[node name="InspectArea" type="Panel" parent="InspectAreaParent" node_paths=PackedStringArray("nameLabel", "iconTexture", "animator", "weaponParent", "tacticalParent", "heldItemParents", "prestiegeParent", "prestiegeLevel", "prestiegeExp", "healthLevelParent", "levelLabel", "healthLabel")]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 33.0
+offset_right = 947.0
+offset_bottom = 452.0
+script = ExtResource("3_siyje")
+nameLabel = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/IconName/NameLabel")
+iconTexture = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/IconName/TextureRect")
+animator = NodePath("Animator")
+shortformAbilityPrefab = ExtResource("8_lmtx5")
+weaponParent = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot")
+tacticalParent = NodePath("MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot")
+heldItemParents = [NodePath("MainContent/VBoxContainer/HeldItems/HeldItemSlot1"), NodePath("MainContent/VBoxContainer/HeldItems/HeldItemSlot2"), NodePath("MainContent/VBoxContainer/HeldItems/HeldItemSlot3")]
+prestiegeParent = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege")
+prestiegeLevel = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege/prestiegeLevel")
+prestiegeExp = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege/ExpTitle")
+healthLevelParent = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth")
+levelLabel = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth/LevelLabel")
+healthLabel = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth/HealthContainer/HealthValue")
+
+[node name="MainContent" type="MarginContainer" parent="InspectAreaParent/InspectArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InspectAreaParent/InspectArea/MainContent"]
+layout_mode = 2
+
+[node name="InspectTitleParent" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer"]
+layout_mode = 2
+
+[node name="IconName" type="HBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/IconName"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_j2esb")
+expand_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/IconName/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_r1n1n")
+draw_center = false
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NameLabel" type="Label" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/IconName"]
+layout_mode = 2
+text = "Miranda Fellarm"
+label_settings = SubResource("LabelSettings_siyje")
+
+[node name="LevelHealth" type="HBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth"]
+layout_mode = 2
+text = "ui_level_num_short"
+
+[node name="Control" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthContainer" type="HBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth"]
+layout_mode = 2
+
+[node name="HealthTitle" type="Label" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth/HealthContainer"]
+layout_mode = 2
+text = "ui_health"
+
+[node name="HealthValue" type="Label" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/LevelHealth/HealthContainer"]
+layout_mode = 2
+text = "ui_current_max"
+
+[node name="Prestiege" type="HBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="prestiegeLevel" type="Label" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege"]
+layout_mode = 2
+text = "ui_prestiegeLevelNum"
+
+[node name="Control" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExpTitle" type="Label" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege"]
+layout_mode = 2
+text = "ui_prestiegeExpValues"
+
+[node name="Spacer5" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="WeaponAndTactical" type="VBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponSlotParent" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="WeaponSlot" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Weapon"
+
+[node name="TacticalSlotParent" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TacticalSlot" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_right = 303.0
+offset_bottom = 50.0
+theme_type_variation = &"Tactical"
+
+[node name="Spacer" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="DividingLine" type="ColorRect" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.65098, 0.607843, 0.521569, 1)
+
+[node name="Spacer2" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="HeldItems" type="VBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+
+[node name="HeldItemSlot1" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"Item"
+
+[node name="HeldItemSlot2" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"Item"
+
+[node name="HeldItemSlot3" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"Item"
+
+[node name="Spacer3" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Spacer4" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="StatusPanel" type="Panel" parent="InspectAreaParent/InspectArea"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -4.0
+offset_right = 150.0
+offset_bottom = 72.2
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"SubPanel2"
+
+[node name="MarginContainer" type="MarginContainer" parent="InspectAreaParent/InspectArea/StatusPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Status" type="Panel" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2esb")
+
+[node name="MarginContainer" type="MarginContainer" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Status/MarginContainer"]
+layout_mode = 2
+
+[node name="statustitle" type="Label" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Status/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Status:"
+
+[node name="Control" type="Control" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Status/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="statustitle2" type="Label" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Status/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Healthy"
+horizontal_alignment = 2
+
+[node name="Location" type="Panel" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2esb")
+
+[node name="MarginContainer" type="MarginContainer" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Location"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Location/MarginContainer"]
+layout_mode = 2
+
+[node name="statustitle" type="Label" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Location/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Location:"
+
+[node name="Control" type="Control" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Location/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="statustitle2" type="Label" parent="InspectAreaParent/InspectArea/StatusPanel/MarginContainer/VBoxContainer/Location/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Unknown"
+horizontal_alignment = 2
+
+[node name="Animator" type="AnimationPlayer" parent="InspectAreaParent/InspectArea"]
+libraries = {
+&"": SubResource("AnimationLibrary_1f4v1")
+}
+
+[node name="SwapOutWeapons" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AbilitySwapParent" type="Control" parent="SwapOutWeapons"]
+custom_minimum_size = Vector2(454, 553)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -287.0
+offset_right = 434.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponSwapPanel" parent="SwapOutWeapons/AbilitySwapParent" instance=ExtResource("11_lmtx5")]
+layout_mode = 0
+preInitializeMatchingULKs = true
+
+[node name="TacticalSwapPanel" parent="SwapOutWeapons/AbilitySwapParent" instance=ExtResource("11_lmtx5")]
+visible = false
+layout_mode = 0
+preInitializeMatchingULKs = true
+baseFilter = ExtResource("12_k2et2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k2et2")
+}
+
+[connection signal="pressed" from="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot" to="InspectAreaParent/InspectArea" method="OnWeaponSelected"]
+[connection signal="pressed" from="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot" to="InspectAreaParent/InspectArea" method="OnTacticalSelected"]

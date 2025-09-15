@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqquvx86hy7d8"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fmwdi"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_huigy"]
+
+[node name="kick" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_fmwdi")
+type = 2
+abilityCooldown = 0
+internalName = "kick"
+loc_displayName = "tact_kick_name"
+loc_displayDesc = "tact_kick_desc"
+TargetingData = NodePath("TargetingData")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("2_huigy")
+TeamTargeting = 2
+Type = 2

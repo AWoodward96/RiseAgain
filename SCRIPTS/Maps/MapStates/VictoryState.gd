@@ -47,7 +47,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 					await rewardUI.OnRewardSelected
 
 
-	var signalCallback = GameManager.ShowLoadingScreen()
+	var signalCallback = UIManager.ShowLoadingScreen()
 	await signalCallback.ScreenObscured
 
 	if map.CurrentCampaign != null:
@@ -68,7 +68,7 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 			# NOTE: if Unit is null, then the item has been sent to the convoy via a different sequence
 			# But if it's not null, it's handled here - lets gooo
 			if !_unit.TryEquipItem(_lootRewardEntry.ItemPrefab):
-				map.CurrentCampaign.AddItemToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
+				map.CurrentCampaign.Convoy.AddToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
 	pass
 
 func Exit():

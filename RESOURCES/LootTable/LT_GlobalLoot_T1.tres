@@ -5,21 +5,21 @@
 [ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="3_bkn66"]
 [ext_resource type="Resource" uid="uid://ckn2gmate3jr1" path="res://RESOURCES/LootTable/LT_AllUnits.tres" id="4_1srtq"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="4_ltjjo"]
-[ext_resource type="Resource" uid="uid://do8khiwrcp3he" path="res://RESOURCES/LootTable/LT_GrowthItems_T1.tres" id="4_oiesj"]
+[ext_resource type="Resource" uid="uid://dsafb0qrhogjm" path="res://RESOURCES/LootTable/LT_Steel_Weapons.tres" id="4_oiesj"]
 
-[sub_resource type="Resource" id="Resource_oiesj"]
+[sub_resource type="Resource" id="Resource_reosm"]
 script = ExtResource("2_dqy40")
 Table = ExtResource("3_bkn66")
 Weight = 0.75
 AccumulatedWeight = 0.75
 
-[sub_resource type="Resource" id="Resource_reosm"]
+[sub_resource type="Resource" id="Resource_4kdo1"]
 script = ExtResource("2_dqy40")
 Table = ExtResource("4_oiesj")
 Weight = 1.0
 AccumulatedWeight = 1.75
 
-[sub_resource type="Resource" id="Resource_4kdo1"]
+[sub_resource type="Resource" id="Resource_67ela"]
 script = ExtResource("2_dqy40")
 Table = ExtResource("4_1srtq")
 Weight = 0.1
@@ -28,5 +28,5 @@ AccumulatedWeight = 1.85
 [resource]
 resource_name = "LT_GlobalLoot_T1"
 script = ExtResource("4_ltjjo")
-Table = Array[ExtResource("1_gdk7a")]([SubResource("Resource_oiesj"), SubResource("Resource_reosm"), SubResource("Resource_4kdo1")])
+Table = Array[ExtResource("1_gdk7a")]([SubResource("Resource_reosm"), SubResource("Resource_4kdo1"), SubResource("Resource_67ela")])
 WeightSum = 1.85

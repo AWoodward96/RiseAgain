@@ -25,6 +25,7 @@ script = ExtResource("7_k6kxa")
 AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 0
+HitsEnvironment = true
 Position = Vector2i(0, 0)
 Multiplier = 1.0
 

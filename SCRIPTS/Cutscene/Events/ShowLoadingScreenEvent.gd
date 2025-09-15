@@ -10,9 +10,9 @@ var delta = 0
 func Enter(_context : CutsceneContext):
 	delta = 0
 	if Show:
-		GameManager.ShowLoadingScreen(FadeTime)
+		UIManager.ShowLoadingScreen(FadeTime)
 	else:
-		GameManager.HideLoadingScreen(FadeTime)
+		UIManager.HideLoadingScreen(FadeTime)
 	return true
 
 func Execute(_delta, _context : CutsceneContext):

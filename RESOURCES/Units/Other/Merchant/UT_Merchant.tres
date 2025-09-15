@@ -104,3 +104,5 @@ DebugName = "Merchant"
 loc_DisplayName = "unit_merchant_name"
 loc_Description = "unit_merchant_desc"
 icon = ExtResource("13_hfrcm")
+startUnlocked = true
+startNameKnown = true

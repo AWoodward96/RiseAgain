@@ -23,7 +23,7 @@ script = ExtResource("4_dngvr")
 [sub_resource type="Resource" id="Resource_ecmbu"]
 script = ExtResource("7_taltb")
 Template = ExtResource("8_dpbeg")
-Value = 4
+Value = 2
 
 [node name="iron_sword" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_3jge8")

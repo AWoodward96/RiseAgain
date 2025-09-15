@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://cj8exkuw57bup"]
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=4 format=3 uid="uid://cj8exkuw57bup"]
 
 [ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_jy3ur"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_vuv0o"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="2_ottxv"]
 
 [resource]
 script = ExtResource("1_jy3ur")
 AbilityPath = "res://RESOURCES/Ability/Tactical/regenerativetincture.tscn"
 StartsDiscoverable = false
 StartUnlocked = false
-Descriptors = Array[ExtResource("1_vuv0o")]([])
+Descriptors = Array[ExtResource("1_vuv0o")]([ExtResource("2_ottxv")])

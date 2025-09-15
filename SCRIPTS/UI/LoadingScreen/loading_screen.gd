@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name LoadingScreen
 
 signal ScreenObscured

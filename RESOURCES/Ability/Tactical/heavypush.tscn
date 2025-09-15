@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://tqe8slh050wb"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6pmtp"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_mngvt"]
+
+[node name="heavypush" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_6pmtp")
+type = 2
+abilityCooldown = 0
+limitedUsage = 3
+usageRestoredByCampfire = 3
+internalName = "heavypush"
+loc_displayName = "tact_heavypush_name"
+loc_displayDesc = "tact_heavypush_desc"
+TargetingData = NodePath("TargetingData")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("2_mngvt")
+TeamTargeting = 2
+Type = 2

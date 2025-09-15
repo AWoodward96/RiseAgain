@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://civyu43ep0hvd"]
+[gd_scene load_steps=8 format=3 uid="uid://civyu43ep0hvd"]
 
 [ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_uimmc"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_la0o7"]
+[ext_resource type="Script" uid="uid://dert4f3wj4vgx" path="res://SCRIPTS/UI/DetailEntry.gd" id="3_61gpj"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="3_3432u"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_dqcbo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3432u"]
-font = ExtResource("3_dqcbo")
+font = ExtResource("3_3432u")
 font_size = 32
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
@@ -16,7 +18,7 @@ font_color = Color(1, 0.987167, 0.23, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="StatBlockEntry" type="Panel" node_paths=PackedStringArray("icon", "statValue", "statIncreaseLabel")]
+[node name="StatBlockEntry" type="Panel" node_paths=PackedStringArray("icon", "statValue", "statIncreaseLabel", "detailElement")]
 custom_minimum_size = Vector2(96, 36)
 offset_right = 64.0
 offset_bottom = 36.0
@@ -25,6 +27,7 @@ script = ExtResource("1_uimmc")
 icon = NodePath("MarginContainer/HBoxContainer/TextureRect")
 statValue = NodePath("MarginContainer/HBoxContainer/Amount")
 statIncreaseLabel = NodePath("MarginContainer/HBoxContainer/Amount/Increase")
+detailElement = NodePath("MarginContainer/HBoxContainer/TextureRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -45,10 +48,11 @@ layout_mode = 2
 texture = ExtResource("2_la0o7")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("3_61gpj")
 
 [node name="Amount" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "222"
+text = "+1"
 label_settings = SubResource("LabelSettings_3432u")
 
 [node name="Increase" type="Label" parent="MarginContainer/HBoxContainer/Amount"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7gatmds02pyx"]
+[gd_scene load_steps=18 format=3 uid="uid://c7gatmds02pyx"]
 
 [ext_resource type="Script" uid="uid://6pki4qiai66s" path="res://SCRIPTS/Universe/Smithy/SmithyUI.gd" id="1_bvrpq"]
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_xpus1"]
@@ -16,6 +16,12 @@
 [sub_resource type="LabelSettings" id="LabelSettings_lkh4n"]
 font = ExtResource("1_y7gum")
 font_size = 48
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_atcrh"]
+font = ExtResource("1_y7gum")
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(0, 2)
@@ -42,7 +48,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="SmithyUI" type="Control" node_paths=PackedStringArray("Tabs", "TabBarUI")]
+[node name="SmithyUI" type="Control" node_paths=PackedStringArray("Tabs", "TabBarUI", "SmithyLevelNumber")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +59,7 @@ theme = ExtResource("1_xpus1")
 script = ExtResource("1_bvrpq")
 Tabs = [NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel"), NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel")]
 TabBarUI = NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/HBoxContainer/TabBar")
+SmithyLevelNumber = NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/SmithyLevel")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -100,6 +107,12 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "loc_smithy_title"
 label_settings = SubResource("LabelSettings_lkh4n")
+
+[node name="SmithyLevel" type="Label" parent="MenuParent/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+text = "ui_level_num"
+label_settings = SubResource("LabelSettings_atcrh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -172,13 +185,11 @@ size_flags_vertical = 2
 theme_override_constants/separation = 32
 script = ExtResource("9_txfqo")
 
-[node name="SmithyWeaponEntry" parent="MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("7_a2542")]
-layout_mode = 2
-
 [node name="MagicPanel" type="Panel" parent="MenuParent/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("smithyEntryParent")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"SubPanel1"
 script = ExtResource("6_bvrpq")
 smithyEntryPrefab = ExtResource("7_a2542")
 smithyEntryParent = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer")
@@ -204,11 +215,14 @@ vertical_scroll_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel/MarginContainer/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_right = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
+theme_override_constants/separation = 32
 script = ExtResource("9_txfqo")
