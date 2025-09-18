@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=106 format=3 uid="uid://cpvpwlannhcvy"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=108 format=3 uid="uid://cpvpwlannhcvy"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_as8j5"]
 [ext_resource type="Script" uid="uid://cl5ml7e14etw6" path="res://SCRIPTS/Cutscene/Events/BlockSaveEvent.gd" id="2_5hli6"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://shj5ir4baeua" path="res://SCRIPTS/Cutscene/Requirements/AbilitySelectionUIOpenReq.gd" id="25_l81t8"]
 [ext_resource type="Script" uid="uid://b4ojf7jfxwvws" path="res://SCRIPTS/Cutscene/Events/WaitMapCompleteEvent.gd" id="25_qu2ae"]
 [ext_resource type="Script" uid="uid://b5qgscwxgnauj" path="res://SCRIPTS/Cutscene/Events/WaitEvent.gd" id="26_2ph6a"]
+[ext_resource type="Script" uid="uid://b1vdds7kqxjfl" path="res://SCRIPTS/Cutscene/Events/BlockRewardSelectionEvent.gd" id="26_3s4ic"]
 [ext_resource type="Script" uid="uid://df6fa85k2o4mc" path="res://SCRIPTS/Cutscene/Requirements/RewardsUIOpenReq.gd" id="27_ggkgd"]
 [ext_resource type="Script" uid="uid://viog3mtjufcg" path="res://SCRIPTS/Cutscene/Events/ForceRewardSelectionEvent.gd" id="27_ijdbg"]
 [ext_resource type="Resource" uid="uid://740g1hlunqtw" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_map_2.tres" id="29_fx6hq"]
@@ -82,7 +83,7 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 script = ExtResource("2_aree0")
 show = true
 size = Vector2(280, 80)
-anchor = 7
+anchor = 8
 loc_text = "tut_map1_prompt2"
 loc_controller_text = "tut_map1_prompt2_controller"
 builtInFreeze = true
@@ -282,6 +283,7 @@ metadata/_custom_type_script = "uid://dpjk17wyac3d7"
 script = ExtResource("12_rl5iu")
 tileLocation = Vector2i(8, 5)
 clear = false
+autoUnblockSelectionInput = false
 metadata/_custom_type_script = "uid://drnfj0klsgqt3"
 
 [sub_resource type="Resource" id="Resource_qsm5h"]
@@ -405,6 +407,7 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 script = ExtResource("12_rl5iu")
 tileLocation = Vector2i(7, 5)
 clear = false
+autoUnblockSelectionInput = false
 metadata/_custom_type_script = "uid://drnfj0klsgqt3"
 
 [sub_resource type="Resource" id="Resource_lgjbj"]
@@ -514,6 +517,12 @@ builtInFreeze = false
 freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
+[sub_resource type="Resource" id="Resource_sivbj"]
+resource_name = "Make sure block reward is off"
+script = ExtResource("26_3s4ic")
+Block = false
+metadata/_custom_type_script = "uid://b1vdds7kqxjfl"
+
 [sub_resource type="Resource" id="Resource_0op13"]
 script = ExtResource("25_qu2ae")
 metadata/_custom_type_script = "uid://b4ojf7jfxwvws"
@@ -617,7 +626,7 @@ metadata/_custom_type_script = "uid://blymxiwp5gdv1"
 [resource]
 script = ExtResource("2_kudvx")
 startingRequirement = Array[ExtResource("3_aree0")]([])
-events = Array[ExtResource("1_as8j5")]([SubResource("Resource_3s4ic"), SubResource("Resource_rl5iu"), SubResource("Resource_iwrwi"), SubResource("Resource_grmkm"), SubResource("Resource_pkpvm"), SubResource("Resource_c26yq"), SubResource("Resource_yh745"), SubResource("Resource_4fc1w"), SubResource("Resource_6yhqv"), SubResource("Resource_1wmxj"), SubResource("Resource_c615t"), SubResource("Resource_33ivs"), SubResource("Resource_qyl0l"), SubResource("Resource_0op13"), SubResource("Resource_ow2pc"), SubResource("Resource_t8r81"), SubResource("Resource_i84b6"), SubResource("Resource_myx5l"), SubResource("Resource_aw8qe"), SubResource("Resource_7mmcq")])
+events = Array[ExtResource("1_as8j5")]([SubResource("Resource_3s4ic"), SubResource("Resource_rl5iu"), SubResource("Resource_iwrwi"), SubResource("Resource_grmkm"), SubResource("Resource_pkpvm"), SubResource("Resource_c26yq"), SubResource("Resource_yh745"), SubResource("Resource_4fc1w"), SubResource("Resource_6yhqv"), SubResource("Resource_1wmxj"), SubResource("Resource_c615t"), SubResource("Resource_33ivs"), SubResource("Resource_qyl0l"), SubResource("Resource_sivbj"), SubResource("Resource_0op13"), SubResource("Resource_ow2pc"), SubResource("Resource_t8r81"), SubResource("Resource_i84b6"), SubResource("Resource_myx5l"), SubResource("Resource_aw8qe"), SubResource("Resource_7mmcq")])
 repeatable = false
 autoComplete = true
 metadata/_custom_type_script = "uid://c10jnc1t5gw2i"

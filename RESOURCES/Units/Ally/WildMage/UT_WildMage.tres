@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=37 format=3 uid="uid://c0xfa5tbv14pu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://c0xfa5tbv14pu"]
 
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_rq8j1"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_aosco"]
@@ -11,8 +11,10 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_fnk75"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_b6nw1"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_7undg"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_g1poa"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_trwo8"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_aosco"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_b6bpw"]
 [ext_resource type="Resource" uid="uid://coqesbkxpsemt" path="res://RESOURCES/Unlocks/ULK_mana_bolt.tres" id="14_1mqxv"]
 [ext_resource type="PackedScene" uid="uid://6bk65s2t5t5u" path="res://RESOURCES/Units/Ally/WildMage/VIS_WildMage.tscn" id="15_erwuk"]
 [ext_resource type="Resource" uid="uid://bn2vvdjtrk201" path="res://RESOURCES/Unlocks/ULK_gauze.tres" id="15_ij3sq"]
@@ -66,6 +68,16 @@ script = ExtResource("2_aosco")
 Template = ExtResource("11_7undg")
 Value = 4.0
 
+[sub_resource type="Resource" id="Resource_0188y"]
+script = ExtResource("2_aosco")
+Template = ExtResource("12_g1poa")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_fnk75"]
+script = ExtResource("2_aosco")
+Template = ExtResource("13_b6bpw")
+Value = 1
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_aosco")
 Template = ExtResource("3_t6s7i")
@@ -101,11 +113,21 @@ script = ExtResource("2_aosco")
 Template = ExtResource("10_b6nw1")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_b6nw1"]
+script = ExtResource("2_aosco")
+Template = ExtResource("12_g1poa")
+Value = 20
+
+[sub_resource type="Resource" id="Resource_7undg"]
+script = ExtResource("2_aosco")
+Template = ExtResource("13_b6bpw")
+Value = 50
+
 [resource]
 script = ExtResource("17_iubj1")
 VisualPrefab = ExtResource("15_erwuk")
-BaseStats = Array[ExtResource("2_aosco")]([SubResource("Resource_vqqm1"), SubResource("Resource_rlts6"), SubResource("Resource_qaj51"), SubResource("Resource_qcbl1"), SubResource("Resource_8rwdr"), SubResource("Resource_daox4"), SubResource("Resource_l2wqf"), SubResource("Resource_qfpnr"), SubResource("Resource_tnrk0")])
-StatGrowths = Array[ExtResource("2_aosco")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_aosco")]([SubResource("Resource_vqqm1"), SubResource("Resource_rlts6"), SubResource("Resource_qaj51"), SubResource("Resource_qcbl1"), SubResource("Resource_8rwdr"), SubResource("Resource_daox4"), SubResource("Resource_l2wqf"), SubResource("Resource_qfpnr"), SubResource("Resource_tnrk0"), SubResource("Resource_0188y"), SubResource("Resource_fnk75")])
+StatGrowths = Array[ExtResource("2_aosco")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_b6nw1"), SubResource("Resource_7undg")])
 Affinity = ExtResource("1_rq8j1")
 StartingEquippedWeapon = ExtResource("14_1mqxv")
 StartingTactical = ExtResource("15_ij3sq")

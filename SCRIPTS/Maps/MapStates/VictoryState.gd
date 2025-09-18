@@ -23,14 +23,12 @@ func Enter(_map : Map, _ctrl : PlayerController):
 			# Start the reward selection process
 			var campaign = map.CurrentCampaign
 			var rewardTable = campaign.GetMapRewardTable() as LootTable
-			if rewardTable != null:
+			if rewardTable != null && !CutsceneManager.BlockRewardSelection:
 				# Roll the rewards for the rewardTable
 				var rewardArray = rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
 
 				# open the rewards ui
-				rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
-				map.add_child(rewardUI)
-
+				rewardUI = UIManager.OpenFullscreenUI(UIManager.MapRewardUI)
 				rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
 				await rewardUI.OnRewardSelected
 
@@ -40,9 +38,8 @@ func Enter(_map : Map, _ctrl : PlayerController):
 
 				if optionalObjectives.objective.CheckObjective(map):
 					var rewardArray = optionalObjectives.rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
-					rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
-					map.add_child(rewardUI)
 
+					rewardUI = UIManager.OpenFullscreenUI(UIManager.MapRewardUI)
 					rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
 					await rewardUI.OnRewardSelected
 

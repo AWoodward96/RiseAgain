@@ -101,6 +101,15 @@ func ChangeEquippedStartingTactical(_abilityUnlockable : AbilityUnlockable):
 	Save()
 	pass
 
+func UnEquipStartingWeapon():
+	EquippedStartingWeapon = null
+	Save()
+	pass
+
+func UnEquipStartingTactical():
+	EquippedStartingTactical = null
+	Save()
+
 func ToJSON():
 	var returnDict = {
 			"template" = Template.resource_path,
@@ -110,10 +119,11 @@ func ToJSON():
 			"prestiegeEXP" = PrestiegeEXP,
 			"prestiegeLevel" = PrestiegeLevel,
 			"unallocatedPrestiege" = UnallocatedPrestiege,
-			"prestiegeStatMods" = PersistDataManager.ArrayToJSON(PrestiegeStatMods),
-			"equippedStartingTactical" = EquippedStartingTactical.resource_path,
-			"equippedStartingWeapon" = EquippedStartingWeapon.resource_path
+			"prestiegeStatMods" = PersistDataManager.ArrayToJSON(PrestiegeStatMods)
 		}
+
+	returnDict["equippedStartingTactical"] = EquippedStartingTactical.resource_path if EquippedStartingTactical != null else PersistDataManager.NULLSTRING
+	returnDict["equippedStartingWeapon"] = EquippedStartingWeapon.resource_path if EquippedStartingWeapon != null else PersistDataManager.NULLSTRING
 	return returnDict
 
 # This is a seperate method than usual because this script can be inherrited
@@ -125,13 +135,25 @@ func InitFromJSON(_dict : Dictionary):
 	PrestiegeLevel = PersistDataManager.LoadFromJSON("prestiegeLevel", _dict) as int
 	UnallocatedPrestiege = PersistDataManager.LoadFromJSON("unallocatedPrestiege", _dict) as int
 
-	var weap  = load(_dict["equippedStartingWeapon"]) as AbilityUnlockable
-	if weap != null:
-		EquippedStartingWeapon = weap
+	if _dict["equippedStartingWeapon"] == PersistDataManager.NULLSTRING:
+		EquippedStartingWeapon = null
+	else:
+		var weap  = load(_dict["equippedStartingWeapon"]) as AbilityUnlockable
+		if weap != null:
+			EquippedStartingWeapon = weap
+		else:
+			push_error("Failed to load starting tactical at path: ", _dict["equippedStartingWeapon"])
+			EquippedStartingWeapon = null
 
-	var tact = load(_dict["equippedStartingTactical"]) as AbilityUnlockable
-	if tact != null:
-		EquippedStartingTactical = tact
+	if _dict["equippedStartingTactical"] == PersistDataManager.NULLSTRING:
+		EquippedStartingWeapon = null
+	else:
+		var tact = load(_dict["equippedStartingTactical"]) as AbilityUnlockable
+		if tact != null:
+			EquippedStartingTactical = tact
+		else:
+			push_error("Failed to load starting tactical at path: ", _dict["equippedStartingTactical"])
+			EquippedStartingTactical = null
 
 
 	# The load from JSON gives an array of string, which is coincidentally what we need to feed into JSONToArray

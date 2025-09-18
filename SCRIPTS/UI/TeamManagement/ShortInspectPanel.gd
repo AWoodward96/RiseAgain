@@ -3,6 +3,7 @@ class_name ShortInspectPanel
 
 signal WeaponSelectedForSwap(_ability : Ability)
 signal TacticalSelectedForSwap(_ability : Ability)
+signal ItemSelectedForSwap(_slot : int)
 
 @export var nameLabel : Label
 @export var iconTexture : TextureRect
@@ -34,6 +35,10 @@ var referencedTactical : Ability
 # and the bottom ones need to be cleaned up after this ui closes because they don't exist
 var instancedWeapon : Ability
 var instancedTactical : Ability
+
+func _ready():
+	for i in range(0, GameManager.GameSettings.ItemSlotsPerUnit):
+		heldItemParents[i].pressed.connect(OnItemEntrySelected.bind(i))
 
 func RefreshTemplate(_unit : UnitTemplate):
 	template = _unit
@@ -77,6 +82,8 @@ func CreateShortformAbilityEntries():
 	# Get the proper reference to both the weapon and the tactical depending on if we have a unit instance or not
 	if unitInstance != null:
 		# if it's an instance, they should already have them
+		referencedWeapon = null
+		referencedTactical = null
 		for abl in unitInstance.Abilities:
 			if abl.type == Ability.AbilityType.Weapon:
 				referencedWeapon = abl
@@ -121,12 +128,15 @@ func CreateShortformAbilityEntries():
 				itemEntry.Initialize(item)
 				heldItemParents[i].add_child(itemEntry)
 				createdShortformEntries.append(itemEntry)
+
+			heldItemParents[i].focus_mode = Control.FOCUS_ALL
 	else:
 		for parent in heldItemParents:
 			var emptyEntry = shortformAbilityPrefab.instantiate()
 			parent.add_child(emptyEntry)
 			emptyEntry.Initialize(null)
 			createdShortformEntries.append(emptyEntry)
+			parent.focus_mode = Control.FOCUS_NONE
 	pass
 
 func ReturnFocus():
@@ -140,12 +150,25 @@ func EnableFocus(_enabled : bool):
 		weaponParent.focus_mode = Control.FOCUS_NONE
 		tacticalParent.focus_mode = Control.FOCUS_NONE
 
+	for parent in heldItemParents:
+		if unitInstance != null:
+			if _enabled:
+				parent.focus_mode = Control.FOCUS_ALL
+			else:
+				parent.focus_mode = Control.FOCUS_NONE
+		else:
+			parent.focus_mode = Control.FOCUS_NONE
+
 func OnWeaponSelected():
 	WeaponSelectedForSwap.emit(referencedWeapon)
 	pass
 
 func OnTacticalSelected():
 	TacticalSelectedForSwap.emit(referencedTactical)
+	pass
+
+func OnItemEntrySelected(_itemSlotIndex : int):
+	ItemSelectedForSwap.emit(_itemSlotIndex)
 	pass
 
 func PlayEquipWeapon():

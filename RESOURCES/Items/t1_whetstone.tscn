@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="5_8ff5h"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_h5yl2"]
 
-[sub_resource type="Resource" id="Resource_25uer"]
+[sub_resource type="Resource" id="Resource_hodaj"]
 script = ExtResource("5_8ff5h")
 Template = ExtResource("4_mx0ga")
 Value = 1
@@ -21,4 +21,4 @@ StatData = NodePath("ItemStatComponent")
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("6_h5yl2")
-GrantedStats = Array[ExtResource("5_8ff5h")]([SubResource("Resource_25uer")])
+GrantedStats = Array[ExtResource("5_8ff5h")]([SubResource("Resource_hodaj")])

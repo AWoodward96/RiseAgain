@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://g6emosn4u7nk"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://g6emosn4u7nk"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_k71fh"]
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_wgq58"]
@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_o4ikq"]
 [ext_resource type="PackedScene" uid="uid://s8ig8e0g2cno" path="res://RESOURCES/Units/Enemy/Zolf/VIS_Zolf.tscn" id="11_0q5uh"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_hyt3s"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_ksm60"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_2w0or"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_bu1tt"]
 [ext_resource type="Resource" uid="uid://dpqb5rpiva2ho" path="res://RESOURCES/Unlocks/ULK_wolf_tooth.tres" id="15_bu1tt"]
 [ext_resource type="Texture2D" uid="uid://5jbvq4xfelsy" path="res://ART/Icons/Units/zolf.png" id="23_og07h"]
@@ -64,6 +66,16 @@ script = ExtResource("2_rbfec")
 Template = ExtResource("10_o4ikq")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_in0rf"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("12_ksm60")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_01dhn"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("13_2w0or")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("1_k71fh")
@@ -99,12 +111,22 @@ script = ExtResource("2_rbfec")
 Template = ExtResource("9_3qtqw")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_wcjrc"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("12_ksm60")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_o0giq"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("13_2w0or")
+Value = 10
+
 [resource]
 resource_name = "UT_Zolf"
 script = ExtResource("10_0ljpt")
 VisualPrefab = ExtResource("11_0q5uh")
-BaseStats = Array[ExtResource("2_rbfec")]([SubResource("Resource_70iv8"), SubResource("Resource_smv2l"), SubResource("Resource_afprk"), SubResource("Resource_556y8"), SubResource("Resource_wvvge"), SubResource("Resource_tbo4c"), SubResource("Resource_oa5eh"), SubResource("Resource_hemky"), SubResource("Resource_b5u4x")])
-StatGrowths = Array[ExtResource("2_rbfec")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_rbfec")]([SubResource("Resource_70iv8"), SubResource("Resource_smv2l"), SubResource("Resource_afprk"), SubResource("Resource_556y8"), SubResource("Resource_wvvge"), SubResource("Resource_tbo4c"), SubResource("Resource_oa5eh"), SubResource("Resource_hemky"), SubResource("Resource_b5u4x"), SubResource("Resource_in0rf"), SubResource("Resource_01dhn")])
+StatGrowths = Array[ExtResource("2_rbfec")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wcjrc"), SubResource("Resource_o0giq")])
 Affinity = ExtResource("1_wgq58")
 StartingEquippedWeapon = ExtResource("15_bu1tt")
 Tier0Abilities = Array[String]([])

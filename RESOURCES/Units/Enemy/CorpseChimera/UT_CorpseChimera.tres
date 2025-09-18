@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://crv54ls8tyldj"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://crv54ls8tyldj"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_6ahb0"]
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_enqqm"]
@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_ktqur"]
 [ext_resource type="PackedScene" uid="uid://ctnbgmoyj5gin" path="res://RESOURCES/Units/Enemy/CorpseChimera/VIS_CorpseChimera.tscn" id="11_pdfes"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2nnof"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_dv01u"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_0wn8q"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_0lu4m"]
 [ext_resource type="Resource" uid="uid://d00tdm4jby8ea" path="res://RESOURCES/Unlocks/ULK_dark_pact.tres" id="15_0lu4m"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="23_nob3t"]
@@ -64,6 +66,16 @@ script = ExtResource("2_gv3c6")
 Template = ExtResource("10_ktqur")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_j1fvy"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("12_dv01u")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_0yip1"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("13_0wn8q")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("1_6ahb0")
@@ -99,12 +111,22 @@ script = ExtResource("2_gv3c6")
 Template = ExtResource("9_yygrd")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_wsp8b"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("12_dv01u")
+Value = 10
+
+[sub_resource type="Resource" id="Resource_wfeti"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("13_0wn8q")
+Value = 30
+
 [resource]
 resource_name = "UT_CorpseChimera"
 script = ExtResource("10_411ei")
 VisualPrefab = ExtResource("11_pdfes")
-BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubResource("Resource_wv3us"), SubResource("Resource_rnj5o"), SubResource("Resource_4aku7"), SubResource("Resource_xwjvg"), SubResource("Resource_hs78b"), SubResource("Resource_gptug"), SubResource("Resource_wf3lf"), SubResource("Resource_luif0")])
-StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubResource("Resource_wv3us"), SubResource("Resource_rnj5o"), SubResource("Resource_4aku7"), SubResource("Resource_xwjvg"), SubResource("Resource_hs78b"), SubResource("Resource_gptug"), SubResource("Resource_wf3lf"), SubResource("Resource_luif0"), SubResource("Resource_j1fvy"), SubResource("Resource_0yip1")])
+StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wsp8b"), SubResource("Resource_wfeti")])
 Affinity = ExtResource("1_enqqm")
 StartingEquippedWeapon = ExtResource("15_0lu4m")
 Tier0Abilities = Array[String]([])

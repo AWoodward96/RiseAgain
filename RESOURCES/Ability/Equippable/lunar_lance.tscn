@@ -1,15 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://sk4xm5rs346c"]
+[gd_scene load_steps=18 format=3 uid="uid://sk4xm5rs346c"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5xil8"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohson"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_qjoex"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_2xqle"]
 [ext_resource type="Texture2D" uid="uid://dl5gn0wedpspr" path="res://ART/Icons/Ability/Equippable/lunar_lance.png" id="5_6tfgu"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="6_1suvu"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_30bv3"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="7_08kjx"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="7_hgs6n"]
+[ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="8_3i10j"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_rbqf4"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_i857f"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_bhowq"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_h3pcw"]
 [ext_resource type="Resource" uid="uid://dx1alowpf74li" path="res://RESOURCES/TargetingShapes/lunar_lance_shape.tres" id="12_56t7s"]
 
@@ -21,7 +23,7 @@ useDefendAction = true
 [sub_resource type="Resource" id="Resource_njyb8"]
 script = ExtResource("4_2xqle")
 
-[sub_resource type="Resource" id="Resource_56t7s"]
+[sub_resource type="Resource" id="Resource_gw24i"]
 script = ExtResource("7_08kjx")
 Template = ExtResource("8_rbqf4")
 Value = 4
@@ -35,18 +37,18 @@ internalName = "lunar_lance"
 loc_displayName = "weap_lunar_lance_name"
 loc_displayDesc = "weap_lunar_lance_desc"
 icon = ExtResource("5_6tfgu")
+descriptors = Array[ExtResource("6_1suvu")]([ExtResource("7_hgs6n"), ExtResource("8_3i10j")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_30bv3")
-GrantedStats = Array[ExtResource("7_08kjx")]([SubResource("Resource_56t7s")])
+GrantedStats = Array[ExtResource("7_08kjx")]([SubResource("Resource_gw24i")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_i857f")
 AgressiveStat = ExtResource("8_rbqf4")
-DefensiveStat = ExtResource("10_bhowq")
 DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]

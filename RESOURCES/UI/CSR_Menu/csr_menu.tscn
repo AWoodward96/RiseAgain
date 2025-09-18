@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://gneoqi5t7opg"]
+[gd_scene load_steps=6 format=3 uid="uid://gneoqi5t7opg"]
 
 [ext_resource type="Script" uid="uid://d0v0ac02bpy6v" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
 [ext_resource type="PackedScene" uid="uid://bf3484ldvsvyh" path="res://RESOURCES/Items/t2_radientchestplate.tscn" id="2_5hj0h"]
+[ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="3_qx6c7"]
+[ext_resource type="PackedScene" uid="uid://bhl2enqfwvt80" path="res://RESOURCES/Ability/Equippable/steel_sword.tscn" id="4_fhq2u"]
+[ext_resource type="PackedScene" uid="uid://bhxil20ufx2ma" path="res://RESOURCES/Ability/Equippable/morningstar.tscn" id="5_oxdib"]
 
 [node name="CSR" type="Control" node_paths=PackedStringArray("FirstEntry")]
 layout_mode = 3
@@ -13,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_508i1")
 FirstEntry = NodePath("PanelContainer/MarginContainer/GridContainer/AddAllAbilities")
 SpecificItem = ExtResource("2_5hj0h")
+TestItems = Array[PackedScene]([ExtResource("3_qx6c7"), ExtResource("2_5hj0h"), ExtResource("4_fhq2u"), ExtResource("5_oxdib")])
 Priority = 1000
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -46,6 +50,10 @@ text = "Abilities Cost 0"
 [node name="GivePredefinedItem" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Give Predefined Item to Allies"
+
+[node name="AddTestItemsToConvoy" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Add Test Items to Convoy"
 
 [node name="AlwaysCrit" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -106,6 +114,7 @@ text = "Add 50 Ore"
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddAllAbilities" to="." method="btnUnlockAllAbilities"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AbilitiesCost0" to="." method="btnAllAbilitiesCost0"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/GivePredefinedItem" to="." method="btnGiveSpecificItem"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AddTestItemsToConvoy" to="." method="AddTestItemsToConvoy"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/AlwaysCrit" to="." method="btnAlwaysCrit"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/NeverHit" to="." method="btnNeverHit"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/TestSaveGame" to="." method="TestSaveGame"]

@@ -4,6 +4,8 @@ var BlockUniverseSave : bool = false
 var BlockCampaignSave : bool = false
 var BlockMapSave : bool = false
 
+static var NULLSTRING = "NULL"
+
 static var IN_RUN_DIRECTORY = "user://_RUN/"
 static var GLOBAL_DIRECTORY = "user://_GLOBAL/"
 static var SETTINGS_DIRECTORY = "user://_SETTINGS/"

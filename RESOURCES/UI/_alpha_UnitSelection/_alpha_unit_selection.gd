@@ -7,6 +7,7 @@ signal OnRosterSelected(_squad : Array[UnitTemplate], _level : int)
 @export var RemainingSlotsText : Label
 @export var LevelOverride : LineEdit
 @export var UnlockAbilities : CheckButton
+@export var DebugOptionsParent : Control
 
 @onready var unitEntryParent = %UnitEntryParent
 @onready var squadEntryParent = %SquadEntryParent
@@ -22,6 +23,8 @@ func Initialize(_maxSquadSize : int):
 func _ready():
 	unitSettings = GameManager.UnitSettings
 	ReadyButton.pressed.connect(OnReadyButton)
+	if GameManager.GameSettings.ShowcaseMode:
+		DebugOptionsParent.visible = false
 	CreateUnitEntries()
 
 func _process(_delta):

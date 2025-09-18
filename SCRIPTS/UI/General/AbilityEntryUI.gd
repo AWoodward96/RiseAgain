@@ -8,8 +8,8 @@ class_name AbilityEntryUI
 @export var abilityNameText : Label
 @export var abilityDescriptionText : RichTextLabel
 @export var abilityIcon : TextureRect
-@export var focusParent : Control
-@export var focusCostText : Label
+@export var cooldownParent : Control
+@export var cooldownText : Label
 
 @export_category("Weapon Stats Granted")
 @export var StatsGrantedParent : EntryList
@@ -99,13 +99,10 @@ func Refresh(_ability : Ability):
 	UpdateSpeed(_ability)
 	UpdateUsages(_ability)
 	UpdateRange(_ability)
-#
-	#focusParent.visible = _ability.focusCost != 0 || (_ability.focusCost == 0 && _ability.isXFocusCost)
-	#if focusCostText != null:
-		#if _ability.isXFocusCost:
-			#focusCostText.text = "X"
-		#else:
-			#focusCostText.text = "{AMT}".format({"AMT" : _ability.focusCost })
+
+	cooldownParent.visible = _ability.abilityCooldown != 0
+	if cooldownText != null:
+		cooldownText.text = "{AMT}".format({"AMT" : _ability.abilityCooldown })
 
 
 func UpdateTargeting(_ability : Ability):
@@ -242,7 +239,5 @@ func FormatAbilityDescription(_ability : Ability):
 					dict["EFFECT_" + str(count) + "_MODIFIEDSTAT"] = tr(effect.Stat.loc_displayName)
 					if effect.DerivedFromStat != null:	dict["EFFECT_" + str(count) + "_DERIVEDSTAT"] = tr(effect.DerivedFromStat.loc_displayName)
 					count += 1
-
-
 
 	return dict

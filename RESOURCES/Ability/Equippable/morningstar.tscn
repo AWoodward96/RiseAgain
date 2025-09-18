@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhxil20ufx2ma"]
+[gd_scene load_steps=14 format=3 uid="uid://bhxil20ufx2ma"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0hq2p"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_88gfm"]
@@ -10,15 +10,14 @@
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="8_psn6u"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_vsu1t"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="10_s0rk5"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="11_nrni0"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="12_0nllg"]
 
-[sub_resource type="Resource" id="Resource_0hq2p"]
+[sub_resource type="Resource" id="Resource_y5bht"]
 script = ExtResource("6_l8hcr")
 Template = ExtResource("7_xcylp")
-Value = 1
+Value = 2
 
-[sub_resource type="Resource" id="Resource_88gfm"]
+[sub_resource type="Resource" id="Resource_0hq2p"]
 script = ExtResource("6_l8hcr")
 Template = ExtResource("8_psn6u")
 Value = 1
@@ -37,16 +36,14 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_0lebr")
-GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_0hq2p"), SubResource("Resource_88gfm")])
+GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_y5bht"), SubResource("Resource_0hq2p")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_vsu1t")
 FlatValue = 8.0
 AgressiveStat = ExtResource("10_s0rk5")
 AgressiveModType = 2
-TrueDamage = true
-DefensiveStat = ExtResource("11_nrni0")
-DefensiveModType = 2
+DamageType = 2
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("12_0nllg")

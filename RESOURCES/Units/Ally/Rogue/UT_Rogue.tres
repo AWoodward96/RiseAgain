@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=37 format=3 uid="uid://b58tp7xqbg5jr"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://b58tp7xqbg5jr"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_t7bl4"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_h8hmd"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_ydrqc"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_0ywe3"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_2d8m2"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_k8vvo"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_phm8c"]
 [ext_resource type="Resource" uid="uid://ulev1ijcfbhu" path="res://RESOURCES/Unlocks/ULK_irondagger.tres" id="14_odgh2"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_5b53c"]
@@ -66,6 +68,16 @@ script = ExtResource("2_jwwlf")
 Template = ExtResource("11_ydrqc")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_el350"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("12_2d8m2")
+Value = 2
+
+[sub_resource type="Resource" id="Resource_fpc5n"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("13_k8vvo")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_188ue"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("3_wfm6a")
@@ -101,16 +113,26 @@ script = ExtResource("2_jwwlf")
 Template = ExtResource("10_h8hmd")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_vki38"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("12_2d8m2")
+Value = 45
+
+[sub_resource type="Resource" id="Resource_tu417"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("13_k8vvo")
+Value = 15
+
 [resource]
 resource_name = "UT_Rogue"
 script = ExtResource("15_5b53c")
 VisualPrefab = ExtResource("15_wkala")
-BaseStats = Array[ExtResource("2_jwwlf")]([SubResource("Resource_oxnwj"), SubResource("Resource_io0w6"), SubResource("Resource_4y18v"), SubResource("Resource_oom0n"), SubResource("Resource_jtykb"), SubResource("Resource_43k8t"), SubResource("Resource_kyck7"), SubResource("Resource_grctv"), SubResource("Resource_txne1")])
-StatGrowths = Array[ExtResource("2_jwwlf")]([SubResource("Resource_188ue"), SubResource("Resource_23ok2"), SubResource("Resource_kfcwb"), SubResource("Resource_uuf7t"), SubResource("Resource_f0g1q"), SubResource("Resource_qan0l"), SubResource("Resource_yxw23")])
+BaseStats = Array[ExtResource("2_jwwlf")]([SubResource("Resource_oxnwj"), SubResource("Resource_io0w6"), SubResource("Resource_4y18v"), SubResource("Resource_oom0n"), SubResource("Resource_jtykb"), SubResource("Resource_43k8t"), SubResource("Resource_kyck7"), SubResource("Resource_grctv"), SubResource("Resource_txne1"), SubResource("Resource_el350"), SubResource("Resource_fpc5n")])
+StatGrowths = Array[ExtResource("2_jwwlf")]([SubResource("Resource_188ue"), SubResource("Resource_23ok2"), SubResource("Resource_kfcwb"), SubResource("Resource_uuf7t"), SubResource("Resource_f0g1q"), SubResource("Resource_qan0l"), SubResource("Resource_yxw23"), SubResource("Resource_vki38"), SubResource("Resource_tu417")])
 Affinity = ExtResource("1_t7bl4")
 StartingEquippedWeapon = ExtResource("14_odgh2")
 StartingTactical = ExtResource("15_hcbn3")
-Tier0Abilities = Array[String]([])
+Tier0Abilities = Array[String](["uid://blcieae5p0wwq"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_slipnslash.tscn", "res://RESOURCES/Ability/Standard/ART_daggerspray.tscn"])
 Descriptors = Array[ExtResource("12_0ywe3")]([])
 WeaponDescriptors = Array[ExtResource("12_0ywe3")]([ExtResource("17_2d8m2"), ExtResource("18_k8vvo")])

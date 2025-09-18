@@ -99,23 +99,67 @@ func FormatCenter(_string : String):
 	return "[center]" + _string + "[/center]"
 
 
-static func GetItemDescriptionMadlibs(_item : Item):
-	var returnDict = {}
+func FormatAbilityDescription(_ability : Ability):
+	var dict = {}
 
-	if _item.StatData != null:
+	if _ability.StatData != null:
 		var count = 1
-		for statgrowth in _item.StatData.GrantedStats:
-			returnDict["STAT" + str(count)] = _item.tr(statgrowth.Template.loc_displayName_short)
-			returnDict["GROWTH" + str(count)] = str(statgrowth.Value)
+		for statgrowth in _ability.StatData.GrantedStats:
+			dict["STAT" + str(count)] = _ability.tr(statgrowth.Template.loc_displayName_short)
+			dict["GROWTH" + str(count)] = str(statgrowth.Value)
 			count += 1
 
-	if _item.growthModifierData != null:
+	if  _ability is Item && _ability.growthModifierData != null:
 		var count = 1
-		for statgrowth in _item.growthModifierData.GrowthModifiers:
-			returnDict["STATGROWTHSTAT" + str(count)] = _item.tr(statgrowth.Template.loc_displayName_short)
-			returnDict[	"STATGROWTHPERC" + str(count)] = str(statgrowth.Value)
+		for statgrowth in _ability.growthModifierData.GrowthModifiers:
+			dict["STATGROWTHSTAT" + str(count)] = _ability.tr(statgrowth.Template.loc_displayName_short)
+			dict["STATGROWTHPERC" + str(count)] = str(statgrowth.Value)
 			count += 1
 
-		returnDict["GROWTHCOUNT"] = str(_item.growthModifierData.SuccessCount)
+		dict["GROWTHCOUNT"] = str(_ability.growthModifierData.SuccessCount)
 
-	return returnDict
+	# Get the damage-based data
+	if _ability.UsableDamageData != null:
+		if _ability.UsableDamageData.DamageAffectsUsersHealth:
+			dict["DMG_DRAINPERC"] = abs(_ability.UsableDamageData.DamageToHealthRatio * 100)
+
+		dict["DMG_AGGRESSIVESTAT"] = tr(_ability.UsableDamageData.AgressiveStat.loc_displayName_short)
+		dict["DMG_AGGRESSIVEMOD"] = _ability.UsableDamageData.AgressiveMod * 100
+
+		# Scale this up as needed. Format should be DMG_VULNERABLE_[DESC or MULT]_[Index]
+		if _ability.UsableDamageData.VulerableDescriptors.size() != 0:
+			var count = 0
+			for multiplier in _ability.UsableDamageData.VulerableDescriptors:
+				dict["DMG_VULNERABLE_DESC_" + str(count)] = tr(multiplier.Descriptor.loc_name)
+				dict["DMG_VULNERABLE_MULT_" + str(count)] = multiplier.Multiplier
+				count += 1
+
+	# Get the heal-based data
+	if _ability.HealData != null:
+		if _ability.HealData.ScalingStat != null:
+			dict["HEAL_STAT"]= tr(_ability.HealData.ScalingStat.loc_displayName)
+		dict["HEAL_MOD"] = _ability.HealData.ScalingMod * 100
+		dict["HEAL_FLAT"] = _ability.HealData.FlatValue
+
+	for stack in _ability.executionStack:
+		var combateffect = stack as ApplyEffectStep
+		if combateffect != null:
+			dict["EFFECT_TURNS"] = str(combateffect.CombatEffect.Turns)
+			var shield = combateffect.CombatEffect as ArmorEffect
+			if shield != null:
+				dict["SHIELD_FLAT"] = shield.FlatValue
+				dict["SHIELD_STAT"] = tr(shield.RelativeStat.loc_displayName)
+				dict["SHIELD_MOD"] = shield.Mod * 100
+
+			var statBuff = combateffect.CombatEffect as StatChangeEffect
+			if statBuff != null:
+				# Format should be EFFECT_[NUM]_[FLAT/PERC/DERIVEDSTAT] etc
+				var count = 0
+				for effect in statBuff.StatChanges:
+					dict["EFFECT_" + str(count) + "_FLAT"] = effect.FlatValue
+					dict["EFFECT_" + str(count) + "_PERC"] = effect.SignedPercentageValue
+					dict["EFFECT_" + str(count) + "_MODIFIEDSTAT"] = tr(effect.Stat.loc_displayName)
+					if effect.DerivedFromStat != null:	dict["EFFECT_" + str(count) + "_DERIVEDSTAT"] = tr(effect.DerivedFromStat.loc_displayName)
+					count += 1
+
+	return dict

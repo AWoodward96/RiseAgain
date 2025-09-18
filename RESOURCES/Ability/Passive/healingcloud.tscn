@@ -25,6 +25,8 @@ metadata/_custom_type_script = "uid://c8cj2607kxmat"
 [sub_resource type="Resource" id="Resource_wbtb0"]
 script = ExtResource("6_xodfp")
 VFXPrefab = ExtResource("5_xhm4w")
+PositionOnActionOrigin = true
+PositionOnSource = false
 metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
 
 [sub_resource type="Resource" id="Resource_6nieg"]

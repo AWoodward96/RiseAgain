@@ -25,8 +25,7 @@ func Enter(_context : CutsceneContext):
 	var rewardArray = Table.RollTable(rng, NumberOfPulls, true)
 
 	# open the rewards ui
-	rewardUI = UIManager.MapRewardUI.instantiate() as RewardsUI
-	CutsceneManager.add_child(rewardUI)
+	rewardUI = UIManager.OpenFullscreenUI(UIManager.MapRewardUI)
 
 	rewardUI.Initialize(rewardArray, Map.Current.CurrentCampaign, OnRewardsSelected)
 	return true

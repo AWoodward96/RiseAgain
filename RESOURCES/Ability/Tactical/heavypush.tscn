@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://tqe8slh050wb"]
+[gd_scene load_steps=5 format=3 uid="uid://tqe8slh050wb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6pmtp"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_ky3rc"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_mngvt"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="3_xes8y"]
 
 [node name="heavypush" type="Node2D" node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_6pmtp")
@@ -12,6 +14,7 @@ usageRestoredByCampfire = 3
 internalName = "heavypush"
 loc_displayName = "tact_heavypush_name"
 loc_displayDesc = "tact_heavypush_desc"
+descriptors = Array[ExtResource("2_ky3rc")]([ExtResource("3_xes8y")])
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

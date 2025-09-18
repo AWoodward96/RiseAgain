@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=14 format=3 uid="uid://dxmfykblv6h0t"]
+
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_oew6d"]
+[ext_resource type="PackedScene" uid="uid://bxiuhj8btbjy8" path="res://RESOURCES/Items/t2_bitterblade.tscn" id="2_ybnvy"]
+[ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="3_vo7fa"]
+[ext_resource type="PackedScene" uid="uid://bpb8l34cffsly" path="res://RESOURCES/Items/t2_vampblade.tscn" id="4_62h64"]
+[ext_resource type="PackedScene" uid="uid://bdci2cagpqgn3" path="res://RESOURCES/Items/t2_stonecarapace.tscn" id="5_gssa8"]
+[ext_resource type="PackedScene" uid="uid://bf3484ldvsvyh" path="res://RESOURCES/Items/t2_radientchestplate.tscn" id="6_t6vgh"]
+[ext_resource type="PackedScene" uid="uid://rya7lpnjs0yp" path="res://RESOURCES/Items/t2_spikedshoulderpad.tscn" id="7_6rl71"]
+[ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="8_dd6q1"]
+
+[sub_resource type="Resource" id="Resource_oew6d"]
+script = ExtResource("3_vo7fa")
+ItemPrefab = ExtResource("2_ybnvy")
+Weight = 1.0
+AccumulatedWeight = 1.0
+
+[sub_resource type="Resource" id="Resource_ybnvy"]
+script = ExtResource("3_vo7fa")
+ItemPrefab = ExtResource("4_62h64")
+Weight = 1.0
+AccumulatedWeight = 2.0
+
+[sub_resource type="Resource" id="Resource_vo7fa"]
+script = ExtResource("3_vo7fa")
+ItemPrefab = ExtResource("5_gssa8")
+Weight = 1.0
+AccumulatedWeight = 3.0
+
+[sub_resource type="Resource" id="Resource_62h64"]
+script = ExtResource("3_vo7fa")
+ItemPrefab = ExtResource("6_t6vgh")
+Weight = 1.0
+AccumulatedWeight = 4.0
+
+[sub_resource type="Resource" id="Resource_gssa8"]
+script = ExtResource("3_vo7fa")
+ItemPrefab = ExtResource("7_6rl71")
+Weight = 1.0
+AccumulatedWeight = 5.0
+
+[resource]
+resource_name = "LT_StatUpgrades_T2"
+script = ExtResource("8_dd6q1")
+Table = Array[ExtResource("1_oew6d")]([SubResource("Resource_oew6d"), SubResource("Resource_ybnvy"), SubResource("Resource_vo7fa"), SubResource("Resource_62h64"), SubResource("Resource_gssa8")])
+WeightSum = 5.0

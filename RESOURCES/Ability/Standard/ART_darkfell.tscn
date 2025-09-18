@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1y1fm3qowl1q"]
+[gd_scene load_steps=17 format=3 uid="uid://b1y1fm3qowl1q"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_85abs"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_tpvyo"]
@@ -11,8 +11,7 @@
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_6snke"]
 [ext_resource type="Resource" uid="uid://c2dfr4ubq82wn" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="10_wvxjb"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="11_vd06l"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="12_nmvwn"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="13_r8yim"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_t80f5"]
 
 [sub_resource type="Resource" id="Resource_bem5n"]
 script = ExtResource("3_ts628")
@@ -52,7 +51,6 @@ shapedTiles = ExtResource("10_wvxjb")
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("11_vd06l")
 FlatValue = 2.0
-AgressiveStat = ExtResource("12_nmvwn")
-DefensiveStat = ExtResource("13_r8yim")
+AgressiveStat = ExtResource("12_t80f5")
 DamageAffectsUsersHealth = true
 DamageToHealthRatio = -1.0

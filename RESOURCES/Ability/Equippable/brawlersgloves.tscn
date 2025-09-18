@@ -63,7 +63,7 @@ FlatValue = 4.0
 AgressiveStat = ExtResource("7_ctdgl")
 AgressiveModType = 2
 AgressiveMod = 0.5
-DefensiveStat = ExtResource("8_meuw2")
+DamageType = 2
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("11_he22q")

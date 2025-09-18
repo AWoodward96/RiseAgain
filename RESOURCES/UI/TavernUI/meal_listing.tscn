@@ -42,6 +42,7 @@ font_color = Color(0.333333, 0.309804, 0.27451, 1)
 shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yd7et"]
+resource_local_to_scene = true
 line_spacing = 0.0
 font = ExtResource("4_n25pp")
 font_size = 32

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=39 format=3 uid="uid://ub3y41eeets8"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=45 format=3 uid="uid://ub3y41eeets8"]
 
 [ext_resource type="PackedScene" uid="uid://t7o5840ctb3j" path="res://RESOURCES/Units/Ally/Mercenary/VIS_Mercenary.tscn" id="1_7knpf"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_apt4s"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_cvxbv"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_6s7on"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_rvsvh"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_11mif"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_6aoqw"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_a62ql"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_hngth"]
 [ext_resource type="Resource" uid="uid://lladuxhndxxy" path="res://RESOURCES/Unlocks/ULK_iron_sword.tres" id="14_in7tf"]
@@ -67,6 +69,16 @@ script = ExtResource("2_7td1i")
 Template = ExtResource("10_6s7on")
 Value = 5.0
 
+[sub_resource type="Resource" id="Resource_x0qyq"]
+script = ExtResource("2_7td1i")
+Template = ExtResource("12_11mif")
+Value = 2
+
+[sub_resource type="Resource" id="Resource_erkg2"]
+script = ExtResource("2_7td1i")
+Template = ExtResource("13_6aoqw")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("1_apt4s")
@@ -102,6 +114,16 @@ script = ExtResource("2_7td1i")
 Template = ExtResource("10_rvsvh")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_1h6pu"]
+script = ExtResource("2_7td1i")
+Template = ExtResource("12_11mif")
+Value = 30
+
+[sub_resource type="Resource" id="Resource_capay"]
+script = ExtResource("2_7td1i")
+Template = ExtResource("13_6aoqw")
+Value = 0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0b1h"]
 atlas = ExtResource("18_r0b1h")
 region = Rect2(0, 15, 100, 81)
@@ -109,8 +131,8 @@ region = Rect2(0, 15, 100, 81)
 [resource]
 script = ExtResource("3_jfj4c")
 VisualPrefab = ExtResource("1_7knpf")
-BaseStats = Array[ExtResource("2_7td1i")]([SubResource("Resource_08ret"), SubResource("Resource_rvwno"), SubResource("Resource_p2cfo"), SubResource("Resource_jqwxf"), SubResource("Resource_jf4rf"), SubResource("Resource_ijqvu"), SubResource("Resource_ojmux"), SubResource("Resource_c8r1a"), SubResource("Resource_oqblm")])
-StatGrowths = Array[ExtResource("2_7td1i")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_7td1i")]([SubResource("Resource_08ret"), SubResource("Resource_rvwno"), SubResource("Resource_p2cfo"), SubResource("Resource_jqwxf"), SubResource("Resource_jf4rf"), SubResource("Resource_ijqvu"), SubResource("Resource_ojmux"), SubResource("Resource_c8r1a"), SubResource("Resource_oqblm"), SubResource("Resource_x0qyq"), SubResource("Resource_erkg2")])
+StatGrowths = Array[ExtResource("2_7td1i")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_1h6pu"), SubResource("Resource_capay")])
 Affinity = ExtResource("2_tt2lv")
 StartingEquippedWeapon = ExtResource("14_in7tf")
 StartingTactical = ExtResource("15_xt3j1")

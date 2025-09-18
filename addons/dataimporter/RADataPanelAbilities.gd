@@ -130,7 +130,6 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 	_ability.UsableDamageData = component
 	if _data.has("Flat Value"): component.FlatValue = _data["Flat Value"]
 	if _data.has("Aggressive Mod"): component.AgressiveMod = _data["Aggressive Mod"]
-	if _data.has("Defensive Mod"): component.DefensiveMod = _data["Defensive Mod"]
 
 	if _data.has("Aggressive Stat"):
 		if _data["Aggressive Stat"].is_empty():
@@ -139,12 +138,14 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 			var template = ResourceLoader.load(stat_dict[_data["Aggressive Stat"]])
 			component.AgressiveStat = template
 
-	if _data.has("Defensive Stat"):
-		if _data["Defensive Stat"].is_empty():
-			component.DefensiveStat = null
-		else:
-			var template = ResourceLoader.load(stat_dict[_data["Defensive Stat"]])
-			component.DefensiveStat = template
+	if _data.has("DamageClassification"):
+		match _data["DamageClassification"]:
+			"Physical":
+				component.DamageType = DamageData.DamageClassification.Physical
+			"Magical":
+				component.DamageType = DamageData.DamageClassification.Magical
+			"True Damage":
+				component.DamageType = DamageData.DamageClassification.True
 
 	if _data.has("Aggressive Mod Type"):
 		match _data["Aggressive Mod Type"]:
@@ -157,21 +158,8 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 			"Divisitive":
 				component.AgressiveModType = DamageData.ModificationType.Divisitive
 
-	if _data.has("Defensive Mod Type"):
-		match _data["Defensive Mod Type"]:
-			"None":
-				component.DefensiveModType = DamageData.ModificationType.None
-			"Additive":
-				component.DefensiveModType = DamageData.ModificationType.Additive
-			"Multiplicative":
-				component.DefensiveModType = DamageData.ModificationType.Multiplicative
-			"Divisitive":
-				component.DefensiveModType = DamageData.ModificationType.Divisitive
-
-
 	if _data.has("Drain"): component.DamageAffectsUsersHealth = _data["Drain"]
 	if _data.has("DamageToHealthRatio"): component.DamageToHealthRatio = _data["DamageToHealthRatio"]
-	if _data.has("IsTrueDamage"): component.TrueDamage = _data["IsTrueDamage"]
 	if _data.has("CritModifier"): component.CritModifier = _data["CritModifier"] / 100
 
 	component.VulerableDescriptors.clear()
@@ -197,8 +185,8 @@ func ModifyUnlockableData(_ability : Ability, _data):
 
 	# this handles both descriptors on the unlockable and on the ability
 	# they should match, only because I don't want to have to instantiate the ability to know what the descriptor is
-	_ability.descriptors.clear()
-	unlockable.Descriptors.clear()
+	var abilityDesc : Array[DescriptorTemplate] = []
+	var ulkDesc : Array[DescriptorTemplate] = []
 	if _data.has("descriptors"):
 		var descString = _data["descriptors"] as String
 		var split = descString.split(',')
@@ -208,11 +196,12 @@ func ModifyUnlockableData(_ability : Ability, _data):
 				var index = descriptorNameArray.find(trimmed)
 				if index != -1:
 					var foundDescriptorTemplate = ResourceLoader.load(descriptorPathArray[index]) as DescriptorTemplate
-					_ability.descriptors.append(foundDescriptorTemplate)
-					unlockable.Descriptors.append(foundDescriptorTemplate)
+					abilityDesc.append(foundDescriptorTemplate)
+					ulkDesc.append(foundDescriptorTemplate)
 				else:
 					log += str("\n[color=red]Could not find descriptor: [/color]", trimmed, "[color=red]Please ensure that the descriptor exists before importing[/color]")
-
+		_ability.descriptors = abilityDesc
+		unlockable.Descriptors = ulkDesc
 
 	var err = ResourceSaver.save(unlockable, _data["persistFilePath"])
 	if err != OK:

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=3 uid="uid://dr64xsx6yrch2"]
+[gd_resource type="Theme" load_steps=36 format=3 uid="uid://dr64xsx6yrch2"]
 
 [ext_resource type="Texture2D" uid="uid://dxogp5gal7un" path="res://ART/UI/Textures/ui_parchment_binder.png" id="1_8r03o"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_54ko0"]
@@ -102,6 +102,14 @@ texture_margin_bottom = 5.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm7fa"]
+bg_color = Color(0.492, 0.5532, 0.6, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smeuy"]
+bg_color = Color(0.4264, 0.47944, 0.52, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgvm0"]
 bg_color = Color(0.4264, 0.47944, 0.52, 1)
@@ -265,7 +273,9 @@ EmptyPanel1/base_type = &"Panel"
 EmptyPanel1/styles/panel = SubResource("StyleBoxTexture_c4mu3")
 FormationPanel/base_type = &"Panel"
 FormationPanel/styles/panel = SubResource("StyleBoxTexture_7ub5x")
-Item/base_type = &"PanelContainer"
+Item/base_type = &"Button"
+Item/styles/focus = SubResource("StyleBoxFlat_hm7fa")
+Item/styles/normal = SubResource("StyleBoxFlat_smeuy")
 Item/styles/panel = SubResource("StyleBoxFlat_jgvm0")
 Label/colors/font_shadow_color = Color(0.16, 0.16, 0.16, 1)
 Label/font_sizes/font_size = 16

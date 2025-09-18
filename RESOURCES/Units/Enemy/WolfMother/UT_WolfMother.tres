@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://qtltk2i8ar11"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://qtltk2i8ar11"]
 
 [ext_resource type="Resource" uid="uid://cw401rjsoo6be" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_7y7ke"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_813ky"]
@@ -14,7 +14,9 @@
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_xh0v0"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_y1hu7"]
 [ext_resource type="PackedScene" uid="uid://dd0hi5md1y0q8" path="res://RESOURCES/Units/Enemy/WolfMother/VIS_WolfMother.tscn" id="12_f5ner"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_kdkjr"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_yylga"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_3iv0g"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_50kxg"]
 [ext_resource type="Resource" uid="uid://dpqb5rpiva2ho" path="res://RESOURCES/Unlocks/ULK_wolf_tooth.tres" id="15_50kxg"]
 [ext_resource type="Texture2D" uid="uid://dldom72alcqhn" path="res://ART/Icons/Units/wolfmother.png" id="23_347f6"]
@@ -64,6 +66,16 @@ script = ExtResource("2_ic2vg")
 Template = ExtResource("10_xh0v0")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_mldob"]
+script = ExtResource("2_ic2vg")
+Template = ExtResource("12_kdkjr")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_yr3mb"]
+script = ExtResource("2_ic2vg")
+Template = ExtResource("13_3iv0g")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_ic2vg")
 Template = ExtResource("1_813ky")
@@ -99,12 +111,22 @@ script = ExtResource("2_ic2vg")
 Template = ExtResource("9_ugwuk")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_s8ahc"]
+script = ExtResource("2_ic2vg")
+Template = ExtResource("12_kdkjr")
+Value = 20
+
+[sub_resource type="Resource" id="Resource_nl55r"]
+script = ExtResource("2_ic2vg")
+Template = ExtResource("13_3iv0g")
+Value = 10
+
 [resource]
 resource_name = "UT_WolfMother"
 script = ExtResource("10_y1hu7")
 VisualPrefab = ExtResource("12_f5ner")
-BaseStats = Array[ExtResource("2_ic2vg")]([SubResource("Resource_i7ud2"), SubResource("Resource_4mlcp"), SubResource("Resource_uvcah"), SubResource("Resource_6n7qq"), SubResource("Resource_x0iqu"), SubResource("Resource_vhf22"), SubResource("Resource_s5wu2"), SubResource("Resource_85her"), SubResource("Resource_ih3yn")])
-StatGrowths = Array[ExtResource("2_ic2vg")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_ic2vg")]([SubResource("Resource_i7ud2"), SubResource("Resource_4mlcp"), SubResource("Resource_uvcah"), SubResource("Resource_6n7qq"), SubResource("Resource_x0iqu"), SubResource("Resource_vhf22"), SubResource("Resource_s5wu2"), SubResource("Resource_85her"), SubResource("Resource_ih3yn"), SubResource("Resource_mldob"), SubResource("Resource_yr3mb")])
+StatGrowths = Array[ExtResource("2_ic2vg")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_s8ahc"), SubResource("Resource_nl55r")])
 Affinity = ExtResource("1_7y7ke")
 StartingEquippedWeapon = ExtResource("15_50kxg")
 Tier0Abilities = Array[String]([])

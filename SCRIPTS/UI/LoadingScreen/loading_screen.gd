@@ -4,6 +4,8 @@ class_name LoadingScreen
 signal ScreenObscured
 signal ScreenCleared
 
+static var Obscured : bool = false
+
 @export var Screen : ColorRect
 var tween : Tween
 
@@ -34,12 +36,14 @@ func HideLoadingScreen(_fadeTime = 1.5, lambda = null):
 
 
 func ObscureComplete(lambda):
+	Obscured = true
 	ScreenObscured.emit()
 
 	if lambda != null:
 		lambda.call()
 
 func ClearComplete(lambda):
+	Obscured = false
 	Screen.visible = false
 	ScreenCleared.emit()
 

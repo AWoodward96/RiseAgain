@@ -37,6 +37,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 
 @export var UIDisplayedStats : Array[StatTemplate]
 @export var LevelUpStats : Array[StatTemplate]
+@export var WISDEXDefenseModifier : float = 0.5
 @export var ItemSlotsPerUnit : int = 3
 
 @export var UniversalCritChance : int = 5
@@ -46,8 +47,10 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var MovementStat : StatTemplate
 @export var HealthStat : StatTemplate
 @export var AttackStat : StatTemplate
+@export var DexterityStat : StatTemplate
 @export var DefenseStat : StatTemplate
 @export var SpAttackStat : StatTemplate
+@export var WisdomStat : StatTemplate
 @export var SpDefenseStat : StatTemplate
 @export var LuckStat : StatTemplate
 @export var MindStat : StatTemplate
@@ -56,6 +59,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var AmphibiousDescriptor : DescriptorTemplate
 @export var WeaponDescriptor : DescriptorTemplate
 @export var TacticalDescriptor : DescriptorTemplate
+@export var HeldItemsDescriptor : DescriptorTemplate
 
 @export var CharacterTileMovemementSpeed : float = 100
 @export var AOEExpMultiplier : float = 0.5
@@ -87,6 +91,10 @@ const FireSpreadMaxLevel : int = 3
 @export var WeakAffinityMultiplier : float = 0.66
 @export var AffinityAccuracyModifier : int = 10
 @export var AllAffinities : Array[AffinityTemplate]
+
+@export_category("Showcase Mode")
+@export var ShowcaseMode : bool
+@export var ShowcaseStartingTavernLevel : int = 4
 
 
 static func GetVectorFromDirection(_dir : Direction):
@@ -180,16 +188,21 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 
 	agressiveVal = flatValue + _damageData.DoMod(agressiveVal, _damageData.AgressiveMod, _damageData.AgressiveModType)
 
-	var defensiveStat = _damageData.DefensiveStat
-
 	var defensiveVal = 0
-	if !_damageData.TrueDamage:
-		if _defendingUnit != null:
-			defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
-		defensiveVal = _damageData.DoMod(defensiveVal, _damageData.DefensiveMod, _damageData.DefensiveModType)
+	if _defendingUnit != null:
+		match _damageData.DamageType:
+			DamageData.DamageClassification.Physical:
+				defensiveVal = _defendingUnit.GetWorkingStat(DefenseStat) + floori((_defendingUnit.GetWorkingStat(DexterityStat) * WISDEXDefenseModifier))
+				pass
+			DamageData.DamageClassification.Magical:
+				defensiveVal = _defendingUnit.GetWorkingStat(SpDefenseStat) + floori((_defendingUnit.GetWorkingStat(WisdomStat) * WISDEXDefenseModifier))
+				pass
+			DamageData.DamageClassification.True:
+				# true damage has no defense
+				pass
 
 	var affinityMultiplier = 1
-	if _defendingUnit != null && _attackingUnit != null && !_damageData.TrueDamage:
+	if _defendingUnit != null && _attackingUnit != null && !_damageData.DamageType == DamageData.DamageClassification.True:
 		affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
 	var vulnerabilityMultiplier = 1
@@ -247,10 +260,10 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 	# Here's where I'd put crit bonuses on weapons
 	var critWeaponModifier = 0
 	if _attackerWeapon != null && _attackerWeapon.UsableDamageData != null:
-		critWeaponModifier = _attackerWeapon.UsableDamageData.CritModifier
+		critWeaponModifier = _attackerWeapon.UsableDamageData.CritModifier * 100
 
 	var tileCritModifier = 0
-	if _tileData !=null:
+	if _tileData != null:
 		tileCritModifier = _tileData.CritModifier * 100
 
 	return (_attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100

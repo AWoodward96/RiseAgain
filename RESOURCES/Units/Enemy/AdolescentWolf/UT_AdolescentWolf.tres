@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://druuu3tv4re06"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://druuu3tv4re06"]
 
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_bqdbj"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_qm2y0"]
@@ -15,9 +15,12 @@
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="10_fydjx"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_vyxpi"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_644si"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_n6gr5"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_1qlfw"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_6v6rf"]
 [ext_resource type="Resource" uid="uid://dpqb5rpiva2ho" path="res://RESOURCES/Unlocks/ULK_wolf_tooth.tres" id="15_nthln"]
 [ext_resource type="Resource" uid="uid://jwetuomlowq" path="res://RESOURCES/Descriptors/DES_Teeth.tres" id="17_6m4d0"]
+[ext_resource type="Resource" uid="uid://rynquponaejb" path="res://RESOURCES/Unlocks/ULK_howl.tres" id="18_csh4u"]
 [ext_resource type="Texture2D" uid="uid://c2kg7bpf1mqb0" path="res://ART/Icons/Units/adolescentwolf.png" id="23_ipfm4"]
 
 [sub_resource type="Resource" id="Resource_drfyp"]
@@ -65,6 +68,16 @@ script = ExtResource("3_pgxgp")
 Template = ExtResource("10_021g7")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_4kmau"]
+script = ExtResource("3_pgxgp")
+Template = ExtResource("12_n6gr5")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_wpxot"]
+script = ExtResource("3_pgxgp")
+Template = ExtResource("13_1qlfw")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("2_n5q5a")
@@ -100,13 +113,24 @@ script = ExtResource("3_pgxgp")
 Template = ExtResource("10_vyxpi")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_w6hw3"]
+script = ExtResource("3_pgxgp")
+Template = ExtResource("12_n6gr5")
+Value = 20
+
+[sub_resource type="Resource" id="Resource_ucx65"]
+script = ExtResource("3_pgxgp")
+Template = ExtResource("13_1qlfw")
+Value = 10
+
 [resource]
 script = ExtResource("1_qm2y0")
 VisualPrefab = ExtResource("9_ctp86")
-BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_drfyp"), SubResource("Resource_676dy"), SubResource("Resource_lslhn"), SubResource("Resource_iad1d"), SubResource("Resource_u60o3"), SubResource("Resource_sqpnh"), SubResource("Resource_gs6il"), SubResource("Resource_8msav"), SubResource("Resource_aarhc")])
-StatGrowths = Array[ExtResource("3_pgxgp")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("3_pgxgp")]([SubResource("Resource_drfyp"), SubResource("Resource_676dy"), SubResource("Resource_lslhn"), SubResource("Resource_iad1d"), SubResource("Resource_u60o3"), SubResource("Resource_sqpnh"), SubResource("Resource_gs6il"), SubResource("Resource_8msav"), SubResource("Resource_aarhc"), SubResource("Resource_4kmau"), SubResource("Resource_wpxot")])
+StatGrowths = Array[ExtResource("3_pgxgp")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_w6hw3"), SubResource("Resource_ucx65")])
 Affinity = ExtResource("1_bqdbj")
 StartingEquippedWeapon = ExtResource("15_nthln")
+StartingTactical = ExtResource("18_csh4u")
 Tier0Abilities = Array[String](["uid://dp0gbxwj2y26b"])
 Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_644si")]([ExtResource("10_fydjx")])

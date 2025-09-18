@@ -2,15 +2,18 @@ extends Node2D
 class_name DamageData
 
 enum ModificationType { None, Additive, Multiplicative, Divisitive }
+enum DamageClassification { Physical, Magical, True }
 
 @export var FlatValue : float
 @export var AgressiveStat : StatTemplate
 @export var AgressiveModType : ModificationType
 @export var AgressiveMod : float
-@export var TrueDamage : bool = false
-@export var DefensiveStat : StatTemplate
-@export var DefensiveModType : ModificationType
-@export var DefensiveMod : float
+@export var DamageType : DamageClassification = DamageClassification.Physical
+
+
+#@export var DefensiveStat : StatTemplate
+#@export var DefensiveModType : ModificationType
+#@export var DefensiveMod : float
 
 @export var DamageCantKill : bool = false
 

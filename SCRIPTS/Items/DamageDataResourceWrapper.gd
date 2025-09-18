@@ -1,6 +1,8 @@
 extends Resource
 class_name DamageDataResource
 
+## TODO: Figure out if this is used still? If not, delete?
+
 @export var FlatValue : float
 @export var AgressiveStat : StatTemplate
 @export var AgressiveModType : DamageData.ModificationType

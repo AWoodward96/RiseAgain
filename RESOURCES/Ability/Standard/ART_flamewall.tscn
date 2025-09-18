@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2u5bwkbvn04v"]
+[gd_scene load_steps=14 format=3 uid="uid://2u5bwkbvn04v"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_rde4d"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hfckr"]
@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_3ojy3"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_0p5cj"]
 [ext_resource type="Texture2D" uid="uid://bsm1vede77tu6" path="res://ART/Icons/Ability/Standard/flamewall.png" id="5_d82du"]
-[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_bexiy"]
-[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="7_hyenc"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="8_gc3ip"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_irwxn"]
 [ext_resource type="Resource" uid="uid://dijpp22v65c5v" path="res://RESOURCES/TargetingShapes/flamewall_shape.tres" id="10_gc3ip"]
 
@@ -38,10 +37,10 @@ UsableDamageData = NodePath("DamageData")
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("5_0p5cj")
-AgressiveStat = ExtResource("6_bexiy")
+AgressiveStat = ExtResource("8_gc3ip")
 AgressiveModType = 2
 AgressiveMod = 0.3
-DefensiveStat = ExtResource("7_hyenc")
+DamageType = 1
 DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

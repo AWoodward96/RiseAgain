@@ -2,6 +2,7 @@ extends Control
 class_name EquippableLibrary
 
 signal OnEquippableSelected(_equippable : AbilityUnlockable)
+signal OnUnequipSelected()
 
 const NOT_FOUND_LIBRARY = "ui_no_weapons_in_library"
 const NOT_FOUND_CONVOY = "ui_no_weapons_in_convoy"
@@ -11,9 +12,11 @@ const SWAP_WEAPON = "ui_swap_weapon_prompt"
 @export var swapHeaderLabel : RichTextLabel
 @export var entryParent : EntryList
 @export var entryPrefab : PackedScene
+@export var makeUnequipEntry : bool = false
+@export var unequipEntryPrefab : PackedScene
 @export var tabBar : TabBar
-@export var tabs : Array[DescriptorTemplate]
 @export var noEntriesFoundLabel : RichTextLabel
+@export var tabs : Array[DescriptorTemplate]
 
 
 ## This element will grab all ULK's based on this descriptor. Then it will be filtered down by the subfilter called in the Refresh
@@ -31,7 +34,7 @@ var lastFocusedElement : Control
 func _ready():
 	# We do this no matter what - I'm not sure if that's a good thing or not
 	if preInitializeMatchingULKs:
-		allULKsMatchingBaseFilter =  PersistDataManager.universeData.GetListOfUnlockData(true, [baseFilter])
+		allULKsMatchingBaseFilter =  PersistDataManager.universeData.GetListOfUnlockData(true, [baseFilter] as Array[DescriptorTemplate])
 
 	UIManager.FocusChanged.connect(OnFocusChanged)
 
@@ -87,7 +90,6 @@ func Refresh():
 	elif currentTabIndex >= tabs.size():
 		currentTabIndex = 0
 
-
 	if tabBar != null && tabs.size() > 0:
 		tabBar.current_tab = currentTabIndex
 		pass
@@ -105,24 +107,28 @@ func CreateEntriesFromConvoy():
 			list = GameManager.CurrentCampaign.Convoy.TacticalInventory
 		GameManager.GameSettings.WeaponDescriptor:
 			list = GameManager.CurrentCampaign.Convoy.GetWeaponsThatMatchDescriptor(tabs[currentTabIndex])
+		GameManager.GameSettings.HeldItemsDescriptor:
+			list = GameManager.CurrentCampaign.Convoy.ItemInventory
 
-
-	if list.size() == 0:
-		noEntriesFoundLabel.visible = true
-		var formatDict = {}
-		if tabs.size() > 0:
-			formatDict["ICON"] = tabs[currentTabIndex].icon.resource_path
-		elif baseFilter != null:
-			formatDict["ICON"] = baseFilter.icon.resource_path
-		noEntriesFoundLabel.text = tr(NOT_FOUND_CONVOY).format(formatDict)
-		return
-
-	noEntriesFoundLabel.visible = false
+	#if list.size() == 0:
+		#noEntriesFoundLabel.visible = true
+		#var formatDict = {}
+		#if tabs.size() > 0:
+			#formatDict["ICON"] = tabs[currentTabIndex].icon.resource_path
+		#elif baseFilter != null:
+			#formatDict["ICON"] = baseFilter.icon.resource_path
+		#noEntriesFoundLabel.text = tr(NOT_FOUND_CONVOY).format(formatDict)
+		#return
+#
+	#noEntriesFoundLabel.visible = false
 	for e in list:
 		var entry = entryParent.CreateEntry(entryPrefab)
 		entry.Initialize(e)
 		entry.OnPressed.connect(OnEntrySelected)
 
+
+	if makeUnequipEntry:
+		CreateUnequipEntry()
 	entryParent.FocusFirst()
 
 
@@ -134,19 +140,19 @@ func CreateEntriesFromULKs():
 	else:
 		subfilteredULKs = allULKsMatchingBaseFilter
 
-	if subfilteredULKs.size() == 0:
-		noEntriesFoundLabel.visible = true
-
-		var formatDict = {}
-		if tabs.size() > 0:
-			formatDict["ICON"] = tabs[currentTabIndex].icon.resource_path
-		elif baseFilter != null:
-			formatDict["ICON"] = baseFilter.icon.resource_path
-
-		noEntriesFoundLabel.text = tr(NOT_FOUND_LIBRARY).format(formatDict)
-		return
-
-	noEntriesFoundLabel.visible = false
+	#if subfilteredULKs.size() == 0:
+		#noEntriesFoundLabel.visible = true
+#
+		#var formatDict = {}
+		#if tabs.size() > 0:
+			#formatDict["ICON"] = tabs[currentTabIndex].icon.resource_path
+		#elif baseFilter != null:
+			#formatDict["ICON"] = baseFilter.icon.resource_path
+#
+		#noEntriesFoundLabel.text = tr(NOT_FOUND_LIBRARY).format(formatDict)
+		#return
+#
+	#noEntriesFoundLabel.visible = false
 
 	ClearInstancedAbilities()
 	entryParent.ClearEntries()
@@ -163,9 +169,11 @@ func CreateEntriesFromULKs():
 		instancedAbilities.append(ability)
 
 		var entry = entryParent.CreateEntry(entryPrefab)
-		entry.Initialize(ability)
-		entry.OnPressed.connect(OnEntrySelected.bind(ulk))
+		entry.Initialize(ability, ulk)
+		entry.OnPressed.connect(OnEntrySelected)
 
+	if makeUnequipEntry:
+		CreateUnequipEntry()
 	entryParent.FocusFirst()
 
 	pass
@@ -199,10 +207,18 @@ func Enable(_enabled : bool):
 		else:
 			e.focus_mode = Control.FOCUS_NONE
 
-func OnEntrySelected(_abilityEntry : NewAbilityEntryUI, _abilityUnlockable : AbilityUnlockable):
-	OnEquippableSelected.emit(_abilityUnlockable)
+func OnEntrySelected(_abilityEntry : NewAbilityEntryUI):
+	OnEquippableSelected.emit(_abilityEntry)
 	pass
 
+func CreateUnequipEntry():
+	if unequipEntryPrefab != null:
+		var entry = entryParent.CreateEntry(unequipEntryPrefab) as Button
+		entry.pressed.connect(UnequipButtonPressed)
+
+func UnequipButtonPressed():
+	OnUnequipSelected.emit()
+	pass
 
 func UpdateSubfilter(_filter : DescriptorTemplate):
 	# we have all the base filter, now we filter out based on the subfilter (probably like, Bow, or Sword, etc)

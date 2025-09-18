@@ -1,16 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://dp0gbxwj2y26b"]
+[gd_scene load_steps=23 format=3 uid="uid://dp0gbxwj2y26b"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6yhr7"]
 [ext_resource type="Texture2D" uid="uid://uxr60sgilonh" path="res://ART/Icons/Ability/Standard/maul.png" id="2_jsawa"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_laam4"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_p0no4"]
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_1g1qy"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_jsawa"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_rqvwo"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_1g1qy"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_lrpj3"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_8yxgm"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_k7bwb"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="9_p0no4"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="11_oybbw"]
 [ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="12_jhchw"]
 [ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="13_tv8hm"]
@@ -85,10 +84,9 @@ UsableDamageData = NodePath("DamageComponent")
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("2_laam4")
-AgressiveStat = ExtResource("3_jsawa")
+AgressiveStat = ExtResource("9_p0no4")
 AgressiveModType = 2
 AgressiveMod = 1.5
-DefensiveStat = ExtResource("4_lrpj3")
 DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name RewardsUI
 
 static var Instance : RewardsUI
@@ -52,6 +52,9 @@ func _process(_delta: float):
 
 	if InputManager.cancelDown && giveItemParent.visible:
 		giveItemParent.visible = false
+		for entry in rewardParent.createdEntries:
+			entry.focus_mode = Control.FOCUS_ALL
+
 		var index = allRewards.find(workingSelectedReward)
 		if index != -1:
 			var entry = rewardParent.GetEntry(index)
@@ -79,6 +82,9 @@ func OnEntrySelected(_reward : LootTableEntry, _index : int):
 func ShowGiveItemUI():
 	giveItemParent.visible = true
 	giveItemEntryList.ClearEntries()
+
+	for entry in rewardParent.createdEntries:
+		entry.focus_mode = Control.FOCUS_NONE
 
 	if workingSelectedReward is ItemRewardEntry:
 		var itemToBeRewarded = (workingSelectedReward as ItemRewardEntry).ItemPrefab.instantiate() as Item

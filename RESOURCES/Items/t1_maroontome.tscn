@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_phpi7"]
 script = ExtResource("4_6q3bx")
 Template = ExtResource("6_o2oo3")
-Value = 10
+Value = 25
 
 [node name="t1_maroontome" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_ydvky")

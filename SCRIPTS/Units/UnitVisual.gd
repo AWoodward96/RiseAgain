@@ -73,7 +73,10 @@ func SetActivated(_activated : bool):
 
 func PlayAnimation(_animString : String, _uniformTransition : bool, _animSpeed : float = 1, _fromEnd : bool = false):
 	if AnimationWorkComplete:
-		AnimationCTRL.play(_animString, -1, _animSpeed, _fromEnd)
+		if AnimationCTRL.has_animation(_animString):
+			AnimationCTRL.play(_animString, -1, _animSpeed, _fromEnd)
+		else:
+			push_error("Unit ", MyUnit.Template.DebugName, " does not have an animation for: ", _animString)
 		visual.speed_scale = _animSpeed
 
 

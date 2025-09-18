@@ -56,6 +56,11 @@ func GetNextMapOption():
 func OnPOISelected(_poi : POI):
 	WorldMap.POISelected.disconnect(OnPOISelected)
 
+	if _poi == WorldMap.bastionPOI:
+		ReportCampaignResult(true)
+		GameManager.ReturnToBastion()
+		return
+
 	# okay so we have the poi now we need to evaluate what the next map is
 	var mapOption = _poi.Maps.GetMapFromBlock()
 	if currentMap != null:
@@ -189,6 +194,13 @@ func ReportCampaignResult(_victory : bool):
 	# then clean up the campaign
 	currentMap.queue_free()
 	queue_free()
+
+func GetUnitFromTemplate(_unitTemplate : UnitTemplate):
+	for u in CurrentRoster:
+		if u.Template == _unitTemplate:
+			return u
+
+	return null
 
 static func CreateNewCampaignInstance(_startingPOI : POI, _startingRoster : Array[UnitTemplate]):
 	var campaignInstance = GameManager.GameSettings.CampaignInstancePrefab.instantiate() as Campaign

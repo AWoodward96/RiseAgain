@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv330r2gvm05j"]
+[gd_scene load_steps=15 format=3 uid="uid://cv330r2gvm05j"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fphlf"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_qs2f3"]
@@ -7,9 +7,8 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_gt72d"]
 [ext_resource type="Texture2D" uid="uid://c3j3s2tiyd5dy" path="res://ART/Icons/Ability/Standard/smite.png" id="5_f68oq"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_hroxl"]
-[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="8_18h0g"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_ipvti"]
-[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="9_0hq8k"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="9_c0xgb"]
 [ext_resource type="Script" uid="uid://cavedmllfv7md" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="10_f2836"]
 [ext_resource type="Resource" uid="uid://b5xj74xra4bf4" path="res://RESOURCES/Descriptors/Vulnerabilities/VULN_smite_undead.tres" id="11_83rja"]
 
@@ -43,6 +42,6 @@ TargetRange = Vector2i(1, 4)
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("8_ipvti")
-AgressiveStat = ExtResource("8_18h0g")
-DefensiveStat = ExtResource("9_0hq8k")
+AgressiveStat = ExtResource("9_c0xgb")
+DamageType = 1
 VulerableDescriptors = Array[ExtResource("10_f2836")]([ExtResource("11_83rja")])

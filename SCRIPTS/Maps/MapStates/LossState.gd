@@ -19,6 +19,7 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	var signalCallback = UIManager.ShowLoadingScreen()
 	await signalCallback.ScreenObscured
 
+	combatHUD.queue_free()
 	if map.CurrentCampaign != null:
 		map.CurrentCampaign.ReportCampaignResult(false)
 	else:

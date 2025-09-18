@@ -1,12 +1,19 @@
-[gd_scene load_steps=24 format=4 uid="uid://cqy4h7qsy5itx"]
+[gd_scene load_steps=35 format=4 uid="uid://cqy4h7qsy5itx"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_2fd4k"]
 [ext_resource type="Resource" uid="uid://bq7bqj332iog3" path="res://RESOURCES/Maps/Objectives/rout.tres" id="2_hx4mc"]
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="2_wo11x"]
+[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="3_31sid"]
 [ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="3_yf72p"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="4_0tdgg"]
+[ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="4_3lvfc"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="5_daxic"]
+[ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="5_dt847"]
+[ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="6_0heou"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="6_041do"]
+[ext_resource type="PackedScene" uid="uid://d1hq4h7k3ewlj" path="res://RESOURCES/Items/t1_polish.tscn" id="7_6uhag"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="7_mbbco"]
+[ext_resource type="Script" uid="uid://ctyhw0gbd17qw" path="res://SCRIPTS/Generic/LootTables/SpecificLootTable.gd" id="8_wfig4"]
 [ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="10_yf72p"]
 [ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="11_0tdgg"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="11_wo11x"]
@@ -19,13 +26,39 @@
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="15_0heou"]
 [ext_resource type="Script" uid="uid://cx7hr1gnxldm5" path="res://SCRIPTS/Units/AI/AggroRange.gd" id="15_0tdgg"]
 
+[sub_resource type="Resource" id="Resource_wfsir"]
+script = ExtResource("4_3lvfc")
+Unit = ExtResource("3_31sid")
+Weight = 1.0
+AccumulatedWeight = 0.0
+metadata/_custom_type_script = "uid://c624kc888mlih"
+
+[sub_resource type="Resource" id="Resource_rrlcb"]
+script = ExtResource("6_0heou")
+ItemPrefab = ExtResource("5_dt847")
+Weight = 1.0
+AccumulatedWeight = 0.0
+metadata/_custom_type_script = "uid://4xqdaqcl77e1"
+
+[sub_resource type="Resource" id="Resource_eyjaj"]
+script = ExtResource("6_0heou")
+ItemPrefab = ExtResource("7_6uhag")
+Weight = 1.0
+AccumulatedWeight = 0.0
+metadata/_custom_type_script = "uid://4xqdaqcl77e1"
+
+[sub_resource type="Resource" id="Resource_gobjb"]
+script = ExtResource("8_wfig4")
+Table = Array[ExtResource("2_wo11x")]([SubResource("Resource_wfsir"), SubResource("Resource_rrlcb"), SubResource("Resource_eyjaj")])
+WeightSum = -1.0
+metadata/_custom_type_script = "uid://ctyhw0gbd17qw"
+
 [sub_resource type="Resource" id="Resource_k6dnj"]
 script = ExtResource("11_0tdgg")
 Stat = ExtResource("12_daxic")
 FlatValue = -3
 DerivedFromUnit = 0
 SignedPercentageValue = 0.0
-MultipliedByX = false
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_3cf01"]
@@ -43,6 +76,7 @@ metadata/_custom_type_script = "uid://bk6cr5s2uypt4"
 script = ExtResource("15_0tdgg")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
@@ -54,6 +88,7 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 script = ExtResource("15_0tdgg")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
@@ -62,6 +97,7 @@ script = ExtResource("1_2fd4k")
 GridSize = Vector2i(18, 12)
 CameraStart = Vector2(4, 6)
 AutosaveEnabled = false
+RewardOverride = SubResource("Resource_gobjb")
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

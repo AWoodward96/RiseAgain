@@ -89,3 +89,11 @@ func UpdateStart(_delta):
 
 	infoHeld = Input.is_action_pressed("info")
 	infoDown = Input.is_action_just_pressed("info")
+
+### Sets SelectDown to false so that double inputs are not possible
+func ReleaseSelect():
+	selectDown = false
+
+### Sets cancelDown to false so that double inputs are not possible
+func ReleaseCancel():
+	cancelDown = false

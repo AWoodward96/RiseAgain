@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://0k7ihruc2q8y"]
+[gd_scene load_steps=13 format=3 uid="uid://0k7ihruc2q8y"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_tdc7e"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohxl5"]
@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bj46s4m3vnr0e" path="res://ART/Icons/Ability/Standard/spearthrow.png" id="5_55p6l"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_owh5c"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="7_2se6n"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_vk287"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="9_vhw76"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="8_3wle3"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_n0s6x"]
 
 [sub_resource type="Resource" id="Resource_xtavm"]
@@ -37,8 +36,10 @@ UsableDamageData = NodePath("DamageData")
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("7_2se6n")
-AgressiveStat = ExtResource("8_vk287")
-DefensiveStat = ExtResource("9_vhw76")
+FlatValue = 3.0
+AgressiveStat = ExtResource("8_3wle3")
+AgressiveModType = 2
+AgressiveMod = 1.25
 DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

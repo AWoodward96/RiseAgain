@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bysotjnllb6fb"]
+[gd_scene load_steps=12 format=3 uid="uid://bysotjnllb6fb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fxrtx"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_3bkcf"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_oeasa"]
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="3_likao"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_oeasa"]
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_yva3m"]
 [ext_resource type="PackedScene" uid="uid://wlfynlbay15t" path="res://RESOURCES/GridEntities/ge_heatbreak.tscn" id="4_bs4fn"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_likao"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_yva3m"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="7_yva3m"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="10_bs4fn"]
 
 [sub_resource type="Resource" id="Resource_t1f1k"]
@@ -33,8 +32,7 @@ UsableDamageData = NodePath("DamageComponent")
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("2_3bkcf")
-AgressiveStat = ExtResource("3_oeasa")
-DefensiveStat = ExtResource("4_likao")
+AgressiveStat = ExtResource("7_yva3m")
 DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]

@@ -117,6 +117,17 @@ var Shrouded : bool :
 		else:
 			return false
 
+var Stealthed : bool :
+	get:
+		return StealthedCount > 0
+
+
+var StealthedCount : int = 0 :
+	set(v):
+		StealthedCount = v
+		if StealthedCount < 0:
+			StealthedCount = 0
+
 var ShroudedFromPlayer : bool :
 	get:
 		if UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
@@ -219,6 +230,9 @@ func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 	UpdateDerivedStats()
 	RefreshHealthBarVisuals()
 
+	if _combatEffectInstance is StealthEffectInstance:
+		StealthedCount += 1
+
 	if _combatEffectInstance.Template.show_popup:
 		Juice.CreateEffectPopup(CurrentTile, _combatEffectInstance)
 
@@ -240,6 +254,9 @@ func UpdateCombatEffects():
 	OnCombatEffectsUpdated.emit()
 
 	for remove in slatedForRemoval:
+		if remove is StealthEffectInstance:
+			StealthedCount -= 1
+
 		CombatEffects.remove_at(CombatEffects.find(remove))
 		combatEffectsParent.remove_child(remove)
 		remove.queue_free()
@@ -433,15 +450,11 @@ func AddAbilityInstance(_abilityInstance : Ability):
 
 	if _abilityInstance.type == Ability.AbilityType.Weapon:
 		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
-		for abl in Abilities:
-			if abl.type == Ability.AbilityType.Weapon:
-				abilityParent.remove_child(abl)
-				if GameManager.CurrentCampaign != null:
-					GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
-				else:
-					abl.queue_free()
-
+		UnEquipWeapon()
 		EquippedWeapon = _abilityInstance
+	elif _abilityInstance.type == Ability.AbilityType.Tactical:
+		# Do the same for the tactical, but there's no 'equipped' variable to update
+		UnEquipTactical()
 
 	abilityParent.add_child(_abilityInstance)
 	Abilities.append(_abilityInstance)
@@ -463,6 +476,31 @@ func AddPackedAbility(_ability : PackedScene):
 		return
 
 	AddAbilityInstance(abilityInstance)
+
+func UnEquipWeapon():
+	for i in range(Abilities.size() -1, -1, -1):
+		var abl = Abilities[i]
+		if abl.type == Ability.AbilityType.Weapon:
+			abilityParent.remove_child(abl)
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
+			else:
+				abl.queue_free()
+			Abilities.remove_at(i)
+	EquippedWeapon = null
+
+
+func UnEquipTactical():
+	for i in range(Abilities.size() -1, -1, -1):
+		var abl = Abilities[i]
+		if abl.type == Ability.AbilityType.Tactical:
+			abilityParent.remove_child(abl)
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
+			else:
+				abl.queue_free()
+			Abilities.remove_at(i)
+
 
 func TryEquipItem(_itemPrefabOrInstance):
 	var success = false
@@ -496,10 +534,11 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		# If it's null then we're unequipping something from this slot
 		pass
 
-	item.Initialize(self)
+	if item != null:
+		item.Initialize(self)
 
-	# Set Map also gets called when a unit gets added to the map. This is just called here just in case a Unit gets an item mid map
-	if map != null: item.SetMap(map)
+		# Set Map also gets called when a unit gets added to the map. This is just called here just in case a Unit gets an item mid map
+		if map != null: item.SetMap(map)
 
 	if ItemSlots[_slotIndex] == null:
 		if item != null:
@@ -516,7 +555,13 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 	else:
 		itemsParent.remove_child(ItemSlots[_slotIndex])
-		itemsParent.add_child(item)
+		if GameManager.CurrentCampaign != null:
+			GameManager.CurrentCampaign.Convoy.AddToConvoy(ItemSlots[_slotIndex])
+
+
+		if item != null:
+			itemsParent.add_child(item)
+
 		ItemSlots[_slotIndex] = item
 		UpdateDerivedStats()
 		OnStatUpdated.emit()
@@ -982,7 +1027,8 @@ func ToJSON():
 		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects),
 		"Injured" : Injured,
 		"Submerged" : Submerged,
-		"IsBoss" : IsBoss
+		"IsBoss" : IsBoss,
+		"StealthedCount" : StealthedCount
 	}
 
 	var itemSlotsArray : Array[String]
@@ -1035,6 +1081,8 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
 	unitInstance.IsAggrod = _dict["IsAggrod"]
 	unitInstance.Submerged = _dict["Submerged"]
+	if _dict.has("StealthedCount"):
+		unitInstance.StealthedCount = _dict["StealthedCount"]
 
 	unitInstance.unitPersistence = PersistDataManager.universeData.GetUnitPersistence(unitInstance.Template)
 	var baseStatsDict = _dict["baseStats"]

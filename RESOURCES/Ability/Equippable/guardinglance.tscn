@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 [sub_resource type="Resource" id="Resource_itrrn"]
 script = ExtResource("6_3bf8w")
 Template = ExtResource("7_xun2m")
-Value = 1
+Value = 2
 
 [sub_resource type="Resource" id="Resource_axr80"]
 script = ExtResource("6_3bf8w")
@@ -54,7 +54,6 @@ GrantedStats = Array[ExtResource("6_3bf8w")]([SubResource("Resource_itrrn"), Sub
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_q3h1e")
 AgressiveStat = ExtResource("7_xun2m")
-DefensiveStat = ExtResource("8_v2268")
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("10_a8a76")

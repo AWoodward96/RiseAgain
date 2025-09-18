@@ -42,7 +42,6 @@ func OnAbilitySelected(_ability : PackedScene):
 	queue_free()
 
 static func Show(_root : Node2D, _abilities : Array[String]):
-	var ui = UIManager.AbilitySelectionUI.instantiate() as SelectAbilityUI
-	_root.add_child(ui)
+	var ui = UIManager.OpenFullscreenUI(UIManager.AbilitySelectionUI) as SelectAbilityUI
 	ui.Initialize(_abilities)
 	return ui

@@ -1,0 +1,83 @@
+[gd_scene load_steps=20 format=3 uid="uid://cjwh28cb6ybjt"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vg7c2"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_2kc73"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8rw6l"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="3_s2e84"]
+[ext_resource type="Script" uid="uid://cnlspk1u6udgh" path="res://SCRIPTS/Ability/PlayAnimationStep.gd" id="3_sw5es"]
+[ext_resource type="PackedScene" uid="uid://x6vokynwesn0" path="res://RESOURCES/VFX/heal_vfx.tscn" id="4_2pi3v"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_spab3"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="5_08ed0"]
+[ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="5_gi6qi"]
+[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="6_27vmx"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_xnolx"]
+[ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="7_tb7s4"]
+[ext_resource type="Texture2D" uid="uid://c8ieo5jwsw2gj" path="res://ART/Icons/Ability/Tactical/howl.png" id="8_sw5es"]
+
+[sub_resource type="Resource" id="Resource_2ovlu"]
+script = ExtResource("3_sw5es")
+AnimName = "use_item_in"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = false
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_3jv83"]
+script = ExtResource("5_gi6qi")
+VFXPrefab = ExtResource("4_2pi3v")
+PositionOnActionOrigin = true
+PositionOnSource = false
+metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
+
+[sub_resource type="Resource" id="Resource_tl8j3"]
+script = ExtResource("6_xnolx")
+time = 0.75
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_3qyng"]
+script = ExtResource("7_tb7s4")
+metadata/_custom_type_script = "uid://ct8lhn6f420te"
+
+[sub_resource type="Resource" id="Resource_r6ctp"]
+script = ExtResource("3_sw5es")
+AnimName = "use_item_out"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = true
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_3w1ko"]
+script = ExtResource("3_sw5es")
+AnimName = "idle"
+Speed = 1.0
+Backwards = false
+WaitForAnimFinished = false
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[node name="howl" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
+script = ExtResource("1_vg7c2")
+type = 2
+abilityCooldown = 0
+limitedUsage = 2
+usageRestoredByCampfire = 2
+executionStack = Array[ExtResource("2_8rw6l")]([SubResource("Resource_2ovlu"), SubResource("Resource_3jv83"), SubResource("Resource_tl8j3"), SubResource("Resource_3qyng"), SubResource("Resource_r6ctp"), SubResource("Resource_3w1ko")])
+internalName = "howl"
+loc_displayName = "tact_howl_name"
+loc_displayDesc = "tact_howl_desc"
+icon = ExtResource("8_sw5es")
+descriptors = Array[ExtResource("2_2kc73")]([ExtResource("3_s2e84")])
+TargetingData = NodePath("TargetingData")
+HealData = NodePath("HealComponent")
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("4_spab3")
+TeamTargeting = 0
+TargetRange = Vector2i(0, 0)
+Type = 3
+CanTargetSelf = true
+
+[node name="HealComponent" type="Node2D" parent="."]
+script = ExtResource("5_08ed0")
+ScalingStat = ExtResource("6_27vmx")
+ScalingModType = 2
+ScalingMod = 0.3

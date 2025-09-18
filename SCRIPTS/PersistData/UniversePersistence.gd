@@ -292,7 +292,7 @@ static func CreateNewUniversePersist():
 		universePersist.unlockPersistData[load] = load.CreatePersistData()
 
 
-	universePersist.bastionData = BastionPersistData.new()
+	universePersist.bastionData = BastionPersistData.CreateNew()
 	universePersist.bastionData.name = "BastionPersistData"
 	universePersist.add_child(universePersist.bastionData)
 	return universePersist

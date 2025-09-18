@@ -12,6 +12,7 @@ static var BlockRetaliation : bool = false
 @export var FirstEntry : Control
 @export var SpecificItem : PackedScene
 @export var SpecificItem2 : PackedScene
+@export var TestItems : Array[PackedScene]
 
 func _ready():
 	if FirstEntry != null:
@@ -48,7 +49,7 @@ static func UnlockAllAbilities():
 			continue
 
 		for abilityPath in template.Tier1Abilities:
-			unit.AddAbility(load(abilityPath))
+			unit.AddPackedAbility(load(abilityPath))
 	pass
 
 func btnGiveSpecificItem():
@@ -157,3 +158,12 @@ func GetCurrentHighlighedUnit():
 			return Map.Current.playercontroller.CurrentTile.Occupant
 
 	return null
+
+func AddTestItemsToConvoy():
+	if GameManager.CurrentCampaign != null:
+		for packed in TestItems:
+			if packed == null:
+				continue
+
+			var instance = packed.instantiate()
+			GameManager.CurrentCampaign.Convoy.AddToConvoy(instance)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=30 format=3 uid="uid://cs3bbmkpsr6uu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://cs3bbmkpsr6uu"]
 
 [ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Metal_Affinity.tres" id="1_3anym"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ruh1m"]
@@ -10,8 +10,10 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="8_byd46"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_ri8r6"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_uvumg"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="11_q0f5r"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_vvbq6"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_2utqv"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="12_4mxi4"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_mef65"]
 [ext_resource type="PackedScene" uid="uid://cufy1338gshuy" path="res://RESOURCES/Units/Other/Merchant/VIS_Merchant.tscn" id="12_ruh1m"]
 [ext_resource type="Texture2D" uid="uid://dlar8v1wwyxk7" path="res://ART/Icons/Units/merchant.png" id="13_hfrcm"]
@@ -56,6 +58,16 @@ script = ExtResource("2_ruh1m")
 Template = ExtResource("10_uvumg")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_byd46"]
+script = ExtResource("2_ruh1m")
+Template = ExtResource("11_q0f5r")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_ri8r6"]
+script = ExtResource("2_ruh1m")
+Template = ExtResource("12_4mxi4")
+Value = 4
+
 [sub_resource type="Resource" id="Resource_1ondd"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("3_hfrcm")
@@ -86,12 +98,22 @@ script = ExtResource("2_ruh1m")
 Template = ExtResource("9_ri8r6")
 Value = 0
 
+[sub_resource type="Resource" id="Resource_uvumg"]
+script = ExtResource("2_ruh1m")
+Template = ExtResource("11_q0f5r")
+Value = 40
+
+[sub_resource type="Resource" id="Resource_vvbq6"]
+script = ExtResource("2_ruh1m")
+Template = ExtResource("12_4mxi4")
+Value = 40
+
 [resource]
 resource_name = "UT_Merchant"
 script = ExtResource("12_mef65")
 VisualPrefab = ExtResource("12_ruh1m")
-BaseStats = Array[ExtResource("2_ruh1m")]([SubResource("Resource_yf4qt"), SubResource("Resource_38tme"), SubResource("Resource_61wed"), SubResource("Resource_am1pm"), SubResource("Resource_kdunh"), SubResource("Resource_0uer2"), SubResource("Resource_oarue"), SubResource("Resource_svil8")])
-StatGrowths = Array[ExtResource("2_ruh1m")]([SubResource("Resource_1ondd"), SubResource("Resource_l63yt"), SubResource("Resource_tm4r2"), SubResource("Resource_cdsbo"), SubResource("Resource_rl6a8"), SubResource("Resource_624ns")])
+BaseStats = Array[ExtResource("2_ruh1m")]([SubResource("Resource_yf4qt"), SubResource("Resource_38tme"), SubResource("Resource_61wed"), SubResource("Resource_am1pm"), SubResource("Resource_kdunh"), SubResource("Resource_0uer2"), SubResource("Resource_oarue"), SubResource("Resource_svil8"), SubResource("Resource_byd46"), SubResource("Resource_ri8r6")])
+StatGrowths = Array[ExtResource("2_ruh1m")]([SubResource("Resource_1ondd"), SubResource("Resource_l63yt"), SubResource("Resource_tm4r2"), SubResource("Resource_cdsbo"), SubResource("Resource_rl6a8"), SubResource("Resource_624ns"), SubResource("Resource_uvumg"), SubResource("Resource_vvbq6")])
 Affinity = ExtResource("1_3anym")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])

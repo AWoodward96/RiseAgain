@@ -1,31 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://7fg4mmpdber4"]
+[gd_scene load_steps=19 format=3 uid="uid://7fg4mmpdber4"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5uskg"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_6afjb"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_bwrxk"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_sgj8a"]
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="3_y06uc"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="4_6afjb"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="4_17t85"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_bwrxk"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_sgj8a"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_l6uhd"]
+[ext_resource type="Texture2D" uid="uid://sk028k207sq8" path="res://ART/Icons/Ability/Equippable/emping.png" id="5_sgj8a"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_l6uhd"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="10_pxuia"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="12_eaalh"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="13_n14hi"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="14_wfu67"]
 
-[node name="emping" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[sub_resource type="Resource" id="Resource_pxuia"]
+script = ExtResource("3_sgj8a")
+useAttackAction = true
+useDefendAction = true
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_eaalh"]
+script = ExtResource("4_l6uhd")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_n14hi"]
+script = ExtResource("13_n14hi")
+Template = ExtResource("10_pxuia")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_wfu67"]
+script = ExtResource("13_n14hi")
+Template = ExtResource("14_wfu67")
+Value = 1
+
+[node name="emping" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_5uskg")
 type = 1
 abilityCooldown = 0
+executionStack = Array[ExtResource("2_bwrxk")]([SubResource("Resource_pxuia"), SubResource("Resource_eaalh")])
 internalName = "emping"
 loc_displayName = "weap_emping_name"
 loc_displayDesc = "weap_emping_desc"
+icon = ExtResource("5_sgj8a")
 descriptors = Array[ExtResource("2_6afjb")]([ExtResource("3_y06uc"), ExtResource("4_6afjb")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("4_17t85")
-AgressiveStat = ExtResource("5_bwrxk")
-DefensiveStat = ExtResource("6_sgj8a")
+AgressiveStat = ExtResource("10_pxuia")
+DamageType = 1
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("7_l6uhd")
 TeamTargeting = 2
 TargetRange = Vector2i(1, 3)
+
+[node name="StatComponent" type="Node2D" parent="."]
+script = ExtResource("12_eaalh")
+GrantedStats = Array[ExtResource("13_n14hi")]([SubResource("Resource_n14hi"), SubResource("Resource_wfu67")])

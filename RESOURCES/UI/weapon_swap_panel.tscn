@@ -1,20 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://2rmdx6sgc55r"]
+[gd_scene load_steps=7 format=3 uid="uid://2rmdx6sgc55r"]
 
 [ext_resource type="Script" uid="uid://cvr85tg1s00l0" path="res://SCRIPTS/UI/General/EquippableLibrary.gd" id="1_ici3p"]
 [ext_resource type="PackedScene" uid="uid://dlyxs3ky3rum4" path="res://RESOURCES/UI/GenericEntrys/ability_entry_base.tscn" id="2_levyg"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_kf4gk"]
+[ext_resource type="PackedScene" uid="uid://n5iabomo0vk6" path="res://RESOURCES/UI/GenericEntrys/unequip_entry.tscn" id="3_levyg"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_qx7rl"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="5_n4h61"]
 
-[node name="WeaponSwapPanel" type="Panel" node_paths=PackedStringArray("swapHeaderLabel", "entryParent", "tabBar", "noEntriesFoundLabel")]
+[node name="WeaponSwapPanel" type="Panel" node_paths=PackedStringArray("swapHeaderLabel", "entryParent", "tabBar")]
 offset_right = 454.0
 offset_bottom = 553.0
 script = ExtResource("1_ici3p")
 swapHeaderLabel = NodePath("MarginContainer/VBoxContainer/Header/MarginContainer/RichTextLabel")
 entryParent = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer")
 entryPrefab = ExtResource("2_levyg")
+unequipEntryPrefab = ExtResource("3_levyg")
 tabBar = NodePath("MarginContainer/VBoxContainer/TabBar")
-noEntriesFoundLabel = NodePath("NoWeapons")
 baseFilter = ExtResource("3_kf4gk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -82,6 +83,7 @@ layout_mode = 2
 script = ExtResource("5_n4h61")
 
 [node name="NoWeapons" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 72.0
 offset_top = 247.0

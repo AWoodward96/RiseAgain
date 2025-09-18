@@ -180,6 +180,9 @@ func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x
 
 func UpdateReticleQuintant():
+	if !is_inside_tree():
+		return
+
 	# Basically, if the reticle is in the corners (determined by floatingElementPadding), return which corner it's in
 	# If it's not in a corner, return that it's in the Center somewhere
 	var viewportHalf = get_viewport_rect().size / 2

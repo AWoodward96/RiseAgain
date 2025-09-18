@@ -80,6 +80,8 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	ModifyUnitStat(_unitTemplate, stat_dict["Movement"], _data["Movement"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Luck"], _data["Luck"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Mind"], _data["Mind"])
+	ModifyUnitStat(_unitTemplate, stat_dict["Dexterity"], _data["Dexterity"])
+	ModifyUnitStat(_unitTemplate, stat_dict["Wisdom"], _data["Wisdom"])
 
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Vitality"], _data["gVitality"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Attack"], _data["gAttack"])
@@ -87,6 +89,8 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["SpAttack"], _data["gSpAttack"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["SpDefense"], _data["gSpDefense"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Luck"], _data["gLuck"])
+	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Dexterity"], _data["gDexterity"])
+	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Wisdom"], _data["gWisdom"])
 
 	if _data.has("internal_name"): _unitTemplate.DebugName = _data["internal_name"]
 

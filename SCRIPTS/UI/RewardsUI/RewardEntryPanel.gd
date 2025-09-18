@@ -34,7 +34,7 @@ func InitializeAsItem(_itemRewardEntry : ItemRewardEntry):
 
 	rewardIcon.texture = itemToBeRewarded.icon
 	rewardName.text = tr(itemToBeRewarded.loc_displayName)
-	rewardDesc.text = tr(itemToBeRewarded.loc_displayDesc).format(LocSettings.GetItemDescriptionMadlibs(itemToBeRewarded))
+	rewardDesc.text = tr(itemToBeRewarded.loc_displayDesc).format(GameManager.LocalizationSettings.FormatAbilityDescription(itemToBeRewarded))
 
 
 func InitializeAsUnit(_unitRewardEntry : SpecificUnitRewardEntry):

@@ -12,7 +12,6 @@ class_name AITargetClosest
 @export var RememberTarget : bool
 
 var targetUnit : UnitInstance
-var attacked : bool
 var weapon : UnitUsable
 
 var pathfindingOptions : Array[PathfindingOption]
@@ -120,6 +119,8 @@ func GetAllValidPaths():
 		var units = map.GetUnitsOnTeam(targetingFlags.Team)
 		if targetingFlags.Descriptor != null:
 			units = units.filter(func(x) : return x.Template.Descriptors.find(targetingFlags.Descriptor) != -1)
+
+		units = units.filter(func(x : UnitInstance) : return !x.Shrouded && !x.Stealthed)
 
 		allUnitsAbleToBeTargeted.append_array(units)
 

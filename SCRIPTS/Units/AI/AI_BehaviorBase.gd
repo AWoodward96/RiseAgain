@@ -30,6 +30,8 @@ func TruncatePathBasedOnMovement(_path, _currentMovement):
 	selectedPath = selectedPath.slice(0, _currentMovement)
 
 	var indexedSize = selectedPath.size() - 1
+	if indexedSize == -1:
+		return true
 	selectedTile = selectedPath[indexedSize]
 
 	if selectedTile.Occupant != null:

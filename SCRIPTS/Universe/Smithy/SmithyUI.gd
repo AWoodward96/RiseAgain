@@ -22,6 +22,10 @@ func _process(_delta):
 			elif InputManager.inputDown[3]:
 				SwitchTabs(currentTabIndex - 1)
 
+		if InputManager.cancelDown:
+			InputManager.ReleaseCancel()
+			queue_free()
+
 
 func SwitchTabs(_newTabIndex : int):
 	var i = _newTabIndex

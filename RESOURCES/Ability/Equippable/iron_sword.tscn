@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://crt2hqonneuuw"]
+[gd_scene load_steps=17 format=3 uid="uid://crt2hqonneuuw"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3jge8"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hdeun"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_dngvr"]
 [ext_resource type="Texture2D" uid="uid://cr2shx01wwgbb" path="res://ART/Icons/Ability/Equippable/iron_sword.png" id="5_lyu1s"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="6_jfrxw"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="6_ppjb7"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="7_taltb"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="7_tqhbl"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_dpbeg"]
+[ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="8_udj1w"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_ni0kk"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_f7mhm"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_j4lk0"]
 
 [sub_resource type="Resource" id="Resource_0qngs"]
@@ -20,10 +22,10 @@ useDefendAction = true
 [sub_resource type="Resource" id="Resource_njyb8"]
 script = ExtResource("4_dngvr")
 
-[sub_resource type="Resource" id="Resource_ecmbu"]
+[sub_resource type="Resource" id="Resource_ftc02"]
 script = ExtResource("7_taltb")
 Template = ExtResource("8_dpbeg")
-Value = 2
+Value = 4
 
 [node name="iron_sword" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_3jge8")
@@ -34,18 +36,18 @@ internalName = "iron_sword"
 loc_displayName = "weap_iron_sword_name"
 loc_displayDesc = "weap_iron_sword_desc"
 icon = ExtResource("5_lyu1s")
+descriptors = Array[ExtResource("6_ppjb7")]([ExtResource("7_tqhbl"), ExtResource("8_udj1w")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_jfrxw")
-GrantedStats = Array[ExtResource("7_taltb")]([SubResource("Resource_ecmbu")])
+GrantedStats = Array[ExtResource("7_taltb")]([SubResource("Resource_ftc02")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_ni0kk")
 AgressiveStat = ExtResource("8_dpbeg")
-DefensiveStat = ExtResource("10_f7mhm")
 DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]

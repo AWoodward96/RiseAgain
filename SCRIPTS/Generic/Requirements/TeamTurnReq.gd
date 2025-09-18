@@ -1,7 +1,7 @@
 extends RequirementBase
 class_name TeamTurnReq
 
-@export var teamTurn : GameSettingsTemplate.TeamID
+@export var teamTurn : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 
 func CheckRequirement(_genericData):
 	if Map.Current == null:

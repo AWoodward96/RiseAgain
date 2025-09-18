@@ -43,6 +43,10 @@ func import_data_from_json(_data):
 					var entry = ImportItemEntry(tableName, line)
 					if entry != null:
 						lootTable.Table.append(entry)
+				"Weapon":
+					var entry = ImportWeaponEntry(tableName, line)
+					if entry != null:
+						lootTable.Table.append(entry)
 				"LootTable":
 					var entry = ImportLootTableEntry(tableName, line)
 					if entry != null:
@@ -100,6 +104,19 @@ func ImportItemEntry(_tableName, _line):
 		return null
 	else:
 		itemEntry.ItemPrefab = ResourceLoader.load(itemPathArray[itemMapIndex]) as PackedScene
+		return itemEntry
+
+func ImportWeaponEntry(_tableName , _line):
+	var itemEntry = ItemRewardEntry.new()
+	itemEntry.Weight = _line["Weight"]
+
+	var itemName = _line["Data1"]
+	var itemMapIndex = weaponNameArray.find(itemName)
+	if itemMapIndex == -1:
+		log += str("\n[color=red]Could not find item ", itemName, " for an entry in table ", _tableName, " -- skipping entry[/color]")
+		return null
+	else:
+		itemEntry.ItemPrefab = ResourceLoader.load(weaponPathArray[itemMapIndex]) as PackedScene
 		return itemEntry
 
 func ImportSpecificUnitEntry(_tableName, _line):

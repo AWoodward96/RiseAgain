@@ -98,3 +98,9 @@ func FromJSON(_dict : Dictionary):
 
 
 	pass
+
+static func CreateNew():
+	var bastion = BastionPersistData.new()
+	if GameManager.GameSettings.ShowcaseMode:
+		bastion.CurrentTavernLevel = GameManager.GameSettings.ShowcaseStartingTavernLevel
+	return bastion

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=37 format=3 uid="uid://buh5fj1fbm8oa"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://buh5fj1fbm8oa"]
 
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_h436s"]
 [ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Metal_Affinity.tres" id="1_mg30n"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_qwdht"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_gfhek"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_my8s7"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_cg476"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_5us18"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_cs0gj"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_oca27"]
 [ext_resource type="Resource" uid="uid://dxpwmmeiast1f" path="res://RESOURCES/Unlocks/ULK_iron_bow.tres" id="14_x2x4r"]
@@ -66,6 +68,16 @@ script = ExtResource("2_pkkgr")
 Template = ExtResource("10_my8s7")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_26631"]
+script = ExtResource("2_pkkgr")
+Template = ExtResource("12_cg476")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_1gttw"]
+script = ExtResource("2_pkkgr")
+Template = ExtResource("13_5us18")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_pkkgr")
 Template = ExtResource("1_vkbtp")
@@ -101,11 +113,21 @@ script = ExtResource("2_pkkgr")
 Template = ExtResource("10_gfhek")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_y1wuf"]
+script = ExtResource("2_pkkgr")
+Template = ExtResource("12_cg476")
+Value = 45
+
+[sub_resource type="Resource" id="Resource_o8gg7"]
+script = ExtResource("2_pkkgr")
+Template = ExtResource("13_5us18")
+Value = 15
+
 [resource]
 script = ExtResource("1_h436s")
 VisualPrefab = ExtResource("8_hvc7e")
-BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_yoyw8"), SubResource("Resource_vvt6p"), SubResource("Resource_nwtxq"), SubResource("Resource_1buui"), SubResource("Resource_53bxk"), SubResource("Resource_ea3uv"), SubResource("Resource_1cnl2"), SubResource("Resource_shn85"), SubResource("Resource_n43fn")])
-StatGrowths = Array[ExtResource("2_pkkgr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_pkkgr")]([SubResource("Resource_yoyw8"), SubResource("Resource_vvt6p"), SubResource("Resource_nwtxq"), SubResource("Resource_1buui"), SubResource("Resource_53bxk"), SubResource("Resource_ea3uv"), SubResource("Resource_1cnl2"), SubResource("Resource_shn85"), SubResource("Resource_n43fn"), SubResource("Resource_26631"), SubResource("Resource_1gttw")])
+StatGrowths = Array[ExtResource("2_pkkgr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_y1wuf"), SubResource("Resource_o8gg7")])
 Affinity = ExtResource("1_mg30n")
 StartingEquippedWeapon = ExtResource("14_x2x4r")
 StartingTactical = ExtResource("15_3f07t")

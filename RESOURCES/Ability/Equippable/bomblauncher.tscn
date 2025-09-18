@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vlpjvct6tdeb"]
+[gd_scene load_steps=17 format=3 uid="uid://vlpjvct6tdeb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_022c1"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_jwuwu"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_apn66"]
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_logmo"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_logmo"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_xidfr"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_apn66"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="8_ggq14"]
 
@@ -33,7 +32,7 @@ script = ExtResource("4_logmo")
 GridEntityPrefab = ExtResource("3_47g6t")
 metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 
-[sub_resource type="Resource" id="Resource_apn66"]
+[sub_resource type="Resource" id="Resource_logmo"]
 script = ExtResource("3_pqj62")
 Template = ExtResource("4_47g6t")
 Value = 3
@@ -53,12 +52,11 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_jwuwu")
-GrantedStats = Array[ExtResource("3_pqj62")]([SubResource("Resource_apn66")])
+GrantedStats = Array[ExtResource("3_pqj62")]([SubResource("Resource_logmo")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_logmo")
 AgressiveStat = ExtResource("4_47g6t")
-DefensiveStat = ExtResource("6_xidfr")
 DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]

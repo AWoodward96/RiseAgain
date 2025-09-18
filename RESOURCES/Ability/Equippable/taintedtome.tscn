@@ -16,7 +16,7 @@
 [sub_resource type="Resource" id="Resource_25wgg"]
 script = ExtResource("5_5q6et")
 Template = ExtResource("6_pn0do")
-Value = 6
+Value = 8
 
 [sub_resource type="Resource" id="Resource_5ipa6"]
 script = ExtResource("5_5q6et")
@@ -47,7 +47,6 @@ GrantedStats = Array[ExtResource("5_5q6et")]([SubResource("Resource_25wgg"), Sub
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_xl7uc")
 AgressiveStat = ExtResource("10_sqjf8")
-DefensiveStat = ExtResource("7_wmo68")
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("11_icvji")

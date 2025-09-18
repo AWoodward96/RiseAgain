@@ -7,13 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
 [ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="6_omd1k"]
 
-[node name="SelectAnAbilityUI" type="CanvasLayer" node_paths=PackedStringArray("entryParent")]
-layer = 2
+[node name="SelectAnAbilityUI" type="Control" node_paths=PackedStringArray("entryParent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gmyer")
 entryParent = NodePath("MarginContainer/MarginContainer/VBoxContainer/AbilityEntryList")
 abilityEntryPrefab = ExtResource("3_rxhv0")
+Priority = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

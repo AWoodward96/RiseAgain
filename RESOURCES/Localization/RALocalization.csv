@@ -51,8 +51,8 @@ unit_corpsechimera_desc,A stiched together mass of dead human and wolf bodies. I
 unit_corpsechimera_name,Corpse Chimera
 unit_wildmage_desc,"A user of nature magics, with okay SpAttack but a higher Defense for scrapping"
 unit_wildmage_name,Wild Mage
-unit_elementalmage_desc,A user of nature magic with high SpAttack but low Defense and SpDefense
-unit_elementalmage_name,Elemental Mage
+unit_elementalmage_desc,A user of fire magic with high SpAttack but low Defense and SpDefense
+unit_elementalmage_name,Fire Mage
 unit_lightmage_desc,"Studier of holy arts, Light Mages can heal allies but have low agressive and defensive stats"
 unit_lightmage_name,Light Mage
 unit_mercenary_desc,A scrapper on the battlefield with high Health and okay Attack. Good for tanking.
@@ -146,7 +146,7 @@ ui_tactical_title_shorthand,TACT:
 ui_weapon_title_shorthand,WEAP:
 ui_exp,Exp:
 ui_battleprep_title,Battle Preperations
-ui_passive_title_shorthand,PASS
+ui_passive_title_shorthand,PASS:
 ui_wait,Wait
 ui_openchest,Unlock
 ui_gotitem_concat,Acquired 
@@ -236,10 +236,10 @@ tut_map0_prompt14,Blue Units are Allies. Red Units are Enemies.
 tut_map0_prompt15,Hover the Reticle over the Knight.
 tut_map0_prompt16,"That Knight looks injured, let's help them out."
 tut_abilities_lesserheal0,We can use the Ability [Lesser Heal] to heal the Knight.
-tut_abilities_lesserheal1,"Abilities are powerful actions that can turn the tide of battle, but require Mana to use."
-tut_abilities_lesserheal2,"1 Mana is gained at the start of every turn, and an additional Mana is gained when defeating an Enemy."
-tut_abilities_lesserheal3,"[Lesser Heal] costs 2 Mana, and has a special property that makes it get stronger every time you use it."
-tut_abilities_lesserheal4,Let's heal the Knight.
+tut_abilities_lesserheal1,"Abilities are powerful actions that can turn the tide of battle, but go on a cooldown after use."
+tut_abilities_lesserheal2,"[Lesser Heal] has a cooldown of 2 Turns, and has a special property that makes it get stronger every time you use it."
+tut_abilities_lesserheal3,Let's heal the Knight.
+,
 tut_weapons_knight0,The Knight is a defensive Melee Unit with a unique Weapon.
 tut_weapons_knight1,Move the Knight to the indicated Tile.
 tut_weapons_knight2,"When attacking with a Weapon, Unit's with a similar ranged Weapon can counter-attack."
@@ -296,7 +296,7 @@ tut_optionalobjectives_1,"Completing an optional objective will grant you a seco
 tut_fastspeed_0,"Select the Mercenary we picked up at the end of the last map, but don't move them anywhere."
 tut_fastspeed_1,The Mercenary has an ability called [Heroic Leap].
 tut_fastspeed_2,"[Heroic Leap] is a Fast Speed Ability, as denoted by the [img=24x24]res://ART/Icons/fast_speed.png[/img] icon."
-tut_fastspeed_3,"[img=24x24]res://ART/Icons/fast_speed.png[/img] Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana."
+tut_fastspeed_3,"[img=24x24]res://ART/Icons/fast_speed.png[/img] Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action."
 tut_complete0,"This is the last map in the Tutorial. Be careful, the training wheels have been removed, and Enemies deal a lot more damage now!"
 tut_complete1,"After you win or lose, you'll have the option of starting a real campaign with any of the Units in the game."
 tut_complete2,Good luck!
@@ -318,7 +318,7 @@ tact_heavypush_desc,Pushes a Unit 2 Tiles in a direction.
 tact_kick_name,Kick
 tact_kick_desc,Pushes a Unit 1 Tile in a direction
 stat_attack,Attack
-stat_attack_desc,Attack\nIncreases Physical Damage dealt to Enemies
+stat_attack_desc,Attack\nIncreases Physical Damage dealt to Enemies when attacking with Weapons
 stat_attack_short,ATK
 stat_defense,Defense
 stat_defense_desc,Defense\nDecreases Physical Damage taken from Enemies
@@ -339,7 +339,7 @@ stat_skill,Skill
 stat_skill_desc,Increases the chance to hit an Enemy
 stat_skill_short,SKL
 stat_spattack,Special Attack
-stat_spattack_desc,Special Attack\nIncreases Magical Damage dealt to Enemies
+stat_spattack_desc,Special Attack\nIncreases Magical Damage dealt to Enemies when attacking with Weapons
 stat_spattack_short,SpATK
 stat_spdefense,Special Defense
 stat_spdefense_desc,Special Defense\nDecreases Magical Damage taken from Enemies
@@ -388,11 +388,11 @@ item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color
 item_t1_ceruleanplates_name,Cerulean Plates
 item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 item_t2_bitterblade_name,Bitter Blade
-item_t2_bitterblade_desc,TBD
+item_t2_bitterblade_desc,{STAT1} +{GROWTH1}
 item_t2_vampblade_name,Bloodsucker
-item_t2_vampblade_desc,Heal for {HEAL_MOD}% of this Units {HEAL_STAT} on Kill.
+item_t2_vampblade_desc,{STAT1} +{GROWTH1}\nHeal for {HEAL_MOD}% of this Units {HEAL_STAT} on Kill.
 item_t2_radientchestplate_name,Radiance
-item_t2_radientchestplate_desc,Turn Start: Burn nearby Enemies for {DMG_AGGRESSIVEMOD}% of this Units {DMG_AGGRESSIVESTAT}
+item_t2_radientchestplate_desc,{STAT1} +{GROWTH1}\nTurn Start: Burn nearby Enemies for {DMG_AGGRESSIVEMOD}% of this Units {DMG_AGGRESSIVESTAT}
 event_fallenlog_prompt,Your party comes across a cave with a log blocking the front. You hear whimpering coming from inside.
 event_fallenlog_d1,[bgcolor=333333][5 ATK][/bgcolor] Move the Log
 event_fallenlog_d1_result,"With great effort, your party manages to move the log to the side and rescue whoever is trapped within."
@@ -489,14 +489,14 @@ art_spearthrow_name,Throw Spear
 art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
 art_pushforward_name,Push Forward
 art_pushforward_desc,Grant yourself and Allies close to you +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and +{EFFECT_1_FLAT} {EFFECT_1_MODIFIEDSTAT}
-art_sacredground_name,Sacred Ground
-art_sacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
+art_summonsacredground_name,Sacred Ground
+art_summonsacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
 art_graspingroots_name,Grasping Roots
 art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
 art_flamewall_name,Flame Wall
 art_flamewall_desc,"Ignites the ground in a line, dealing fire damage to all Units in the fire at the start of their turn."
 art_castle_name,Castle
-art_castle_desc,Spend all of your Mana to grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield per Mana consumed
+art_castle_desc,"Until the next turn, grant yourself +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and a {SHIELD_MOD}% {SHIELD_STAT} Shield."
 art_arrow_rain_name,Arrow Rain
 art_arrow_rain_desc,"At the start of this Units next turn, deal damage to all Units in a 3x3 Square based on {DMG_AGGRESSIVESTAT}"
 art_maul_name,Maul
@@ -525,3 +525,47 @@ ui_swap_weapon_prompt,Swap [img=32x32]{WEAPONICON}[/img] {NAME} for:
 des_tactical,Tactical
 ui_no_weapons_in_library,No Weapons of [img]{ICON}[/img] type found.
 ui_no_weapons_in_convoy,No Weapons of [img]{ICON}[/img] type found in Convoy. 
+map_maroon_a1_title,Maroon Forest Outskirts
+map_maroon_a1_desc,Dead tree's creek and sway in the dying light.
+map_maroon_event_1_title,Forest Clearing
+map_maroon_event_1_desc,A clearing in the woods. Anything could happen here.
+map_maroon_a2_title,Creaking Creek
+map_maroon_a2_desc,A silent stream wafts through.
+map_maroon_campsite_1_title,Campsite
+map_maroon_campsite_1_desc,Rest easy.
+map_maroon_b1_title,Maroon Deepwoods
+map_maroon_b1_desc,You hear the howls of battle.
+map_maroon_event_2_title,Cliffside
+map_maroon_event_2_desc,The mountains nearby make for a good roof overhead.
+map_maroon_b2_title,Maroon Finale
+map_maroon_b2_desc,This won't be easy.
+map_tutorial_a1_title,Burried Tomb
+map_tutorial_a1_desc,Journey's End. Tutorial 1.
+map_tutorial_a2_title,Outskirts
+map_tutorial_a2_desc,Leaving so soon? Tutorial 2.
+map_tutorial_a3_title,Riverside
+map_tutorial_a3_desc,Tutorial 3.
+map_tutorial_a4_title,Tutorial Finale
+map_tutorial_a4_desc,The real deal. Good luck!
+map_bastion_title,The Bastion
+map_bastion_desc,Homebase
+ui_unequip,Unequip
+des_item,Held Items
+des_unique_unequippable,Unique Unequippable
+tact_howl_name,Howl
+tact_howl_desc,Heal for 30% of this users Max HP
+ce_stealthed,Stealthed
+ce_stealthed_desc,This Unit cannot be seen by Enemy Units.
+passive_shroud_name,Assassins Shroud
+passive_shroud_desc,"When this Unit kills a Unit with their Weapon on their turn, gain [img=32x32]res://ART/Icons/Ability/Passive/shroud.png[/img] Stealthed for 1 Turn."
+ui_campaign_complete,Campaign Complete! Returning to Bastion.
+item_t1_prayerbeads_name,Prayer Beads
+item_t1_prayerbeads_desc,{STAT1} +{GROWTH1}
+item_t2_spikedshoulderpad_name,Spiked Shoulderpad
+item_t2_spikedshoulderpad_desc,{STAT1} +{GROWTH1}\nGain 2 additional ATK on Enemy Turns.
+stat_dexterity,Dexterity
+stat_dexterity_desc,Dexterity\nIncreases Damage when attacking with Physical Abilities. Also slightly decreases Physical Damage taken.
+stat_dexterity_short,DEX
+stat_wisdom,Wisdom
+stat_wisdom_desc,Wisdom\nIncreases Damage when attacking with Magical Abilities. Also slightly decreases Magical Damage taken.
+stat_wisdom_short,WIS

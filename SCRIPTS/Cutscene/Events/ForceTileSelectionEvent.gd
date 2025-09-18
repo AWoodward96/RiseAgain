@@ -3,6 +3,7 @@ class_name ForceTileSelectionEvent
 
 @export var tileLocation : Vector2i
 @export var clear : bool = false
+@export var autoUnblockSelectionInput : bool = false
 
 var referencedTile : Tile
 var executionComplete = false
@@ -20,6 +21,9 @@ func Enter(_context : CutsceneContext):
 	if referencedTile == null:
 		push_error("ForceTileSelectionEvent: Could not find a valid tile. Defaulting to accepting")
 		return true
+
+	if autoUnblockSelectionInput:
+		CutsceneManager.local_block_select_input = false
 
 	executionComplete = false
 	Map.Current.playercontroller.forcedTileSelection = referencedTile

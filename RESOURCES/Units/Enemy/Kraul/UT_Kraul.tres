@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=30 format=3 uid="uid://lg62tv8pvma7"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://lg62tv8pvma7"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_6eonn"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_cpwsp"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_uvyoa"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_gxxs5"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_g8lhr"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="11_kpxsb"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="12_4i7q3"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_5vblj"]
 [ext_resource type="Texture2D" uid="uid://dyxi3ljbh2hnr" path="res://ART/Icons/Units/kraul.png" id="12_7tp3k"]
 [ext_resource type="PackedScene" uid="uid://burjhghcutqt3" path="res://RESOURCES/Units/Enemy/Kraul/VIS_Kraul.tscn" id="12_cpwsp"]
@@ -56,6 +58,16 @@ script = ExtResource("2_cpwsp")
 Template = ExtResource("10_gxxs5")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_8cpcd"]
+script = ExtResource("2_cpwsp")
+Template = ExtResource("11_kpxsb")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_di8xs"]
+script = ExtResource("2_cpwsp")
+Template = ExtResource("12_4i7q3")
+Value = 1.0
+
 [sub_resource type="Resource" id="Resource_en8u8"]
 script = ExtResource("2_cpwsp")
 Template = ExtResource("3_5vblj")
@@ -86,12 +98,22 @@ script = ExtResource("2_cpwsp")
 Template = ExtResource("9_uvyoa")
 Value = 0
 
+[sub_resource type="Resource" id="Resource_uvyoa"]
+script = ExtResource("2_cpwsp")
+Template = ExtResource("11_kpxsb")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_gxxs5"]
+script = ExtResource("2_cpwsp")
+Template = ExtResource("12_4i7q3")
+Value = 10.0
+
 [resource]
 resource_name = "UT_Kraul"
 script = ExtResource("13_vpkiq")
 VisualPrefab = ExtResource("12_cpwsp")
-BaseStats = Array[ExtResource("2_cpwsp")]([SubResource("Resource_mnerb"), SubResource("Resource_cncgh"), SubResource("Resource_ybj8m"), SubResource("Resource_o6c7b"), SubResource("Resource_saq6j"), SubResource("Resource_c0w1m"), SubResource("Resource_16pkb"), SubResource("Resource_5505d")])
-StatGrowths = Array[ExtResource("2_cpwsp")]([SubResource("Resource_en8u8"), SubResource("Resource_8o7ln"), SubResource("Resource_15pll"), SubResource("Resource_hij44"), SubResource("Resource_sp7nq"), SubResource("Resource_agovv")])
+BaseStats = Array[ExtResource("2_cpwsp")]([SubResource("Resource_mnerb"), SubResource("Resource_cncgh"), SubResource("Resource_ybj8m"), SubResource("Resource_o6c7b"), SubResource("Resource_saq6j"), SubResource("Resource_c0w1m"), SubResource("Resource_16pkb"), SubResource("Resource_5505d"), SubResource("Resource_8cpcd"), SubResource("Resource_di8xs")])
+StatGrowths = Array[ExtResource("2_cpwsp")]([SubResource("Resource_en8u8"), SubResource("Resource_8o7ln"), SubResource("Resource_15pll"), SubResource("Resource_hij44"), SubResource("Resource_sp7nq"), SubResource("Resource_agovv"), SubResource("Resource_uvyoa"), SubResource("Resource_gxxs5")])
 Affinity = ExtResource("1_6eonn")
 Tier0Abilities = Array[String]([])
 Tier1Abilities = Array[String]([])
@@ -104,3 +126,5 @@ DebugName = "Kraul"
 loc_DisplayName = "unit_kraul_name"
 loc_Description = "unit_kraul_desc"
 icon = ExtResource("12_7tp3k")
+startUnlocked = true
+startNameKnown = true

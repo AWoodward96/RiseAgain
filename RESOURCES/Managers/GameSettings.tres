@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=47 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=50 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
@@ -40,6 +40,9 @@
 [ext_resource type="Resource" uid="uid://bfsilhgf06rms" path="res://RESOURCES/Resources/Ore.tres" id="28_tq70j"]
 [ext_resource type="Resource" uid="uid://c4af23rldh8lh" path="res://RESOURCES/Resources/Gemstones.tres" id="29_s486h"]
 [ext_resource type="Resource" uid="uid://by0w0356xwmnc" path="res://RESOURCES/Resources/Concoctions.tres" id="30_75bht"]
+[ext_resource type="Resource" uid="uid://qa3w3c552huo" path="res://RESOURCES/Descriptors/DES_Item.tres" id="32_o2wc7"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="37_t5v44"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="38_uisfa"]
 [ext_resource type="Resource" uid="uid://cko8hnks4se86" path="res://RESOURCES/Universe/Buildings/Smithy.tres" id="39_24hec"]
 [ext_resource type="Resource" uid="uid://87vbepmdhmjx" path="res://RESOURCES/Universe/Buildings/Tavern.tres" id="39_75bht"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="40_bq4ps"]
@@ -77,8 +80,9 @@ GemstoneResource = ExtResource("29_s486h")
 PlayerControllerPrefab = ExtResource("7_77hq5")
 TopdownPlayerControllerPrefab = ExtResource("24_jqxsc")
 DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])
-UIDisplayedStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
-LevelUpStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("5_ymlgt")])
+UIDisplayedStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("37_t5v44"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("38_uisfa"), ExtResource("8_qhahl"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
+LevelUpStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("37_t5v44"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("38_uisfa"), ExtResource("8_qhahl"), ExtResource("5_ymlgt")])
+WISDEXDefenseModifier = 0.3
 ItemSlotsPerUnit = 3
 UniversalCritChance = 5
 CritMultiplier = 2
@@ -95,6 +99,7 @@ FlyingDescriptor = ExtResource("15_gyih8")
 AmphibiousDescriptor = ExtResource("2_g5ylt")
 WeaponDescriptor = ExtResource("43_o2wc7")
 TacticalDescriptor = ExtResource("40_bq4ps")
+HeldItemsDescriptor = ExtResource("32_o2wc7")
 CharacterTileMovemementSpeed = 500.0
 AOEExpMultiplier = 0.66
 InjuredHealthDebuff = 0.3
@@ -117,3 +122,5 @@ StrongAffinityMultiplier = 1.2
 WeakAffinityMultiplier = 0.8
 AffinityAccuracyModifier = 10
 AllAffinities = Array[ExtResource("1_70bk6")]([ExtResource("2_cn2rw"), ExtResource("3_ygbce"), ExtResource("4_gydru"), ExtResource("5_tq70j"), ExtResource("6_5fwue"), ExtResource("7_s486h"), ExtResource("8_75bht"), ExtResource("9_24hec")])
+ShowcaseMode = true
+ShowcaseStartingTavernLevel = 4

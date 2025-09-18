@@ -91,21 +91,23 @@ func ShowPreviewDamage(_attackingUnit : UnitInstance, _weaponUsed : UnitUsable, 
 
 
 func GetAggressiveValFromItem(_item : Item, _attackingUnit : UnitInstance):
-	if _item == null || _item.UsableDamageData == null:
-		return -1
-
-	var damageDataFromWeapon = _item.UsableDamageData
-	var aggressiveStat = damageDataFromWeapon.AgressiveStat
-	var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
-	agressiveVal = damageDataFromWeapon.DoMod(agressiveVal,damageDataFromWeapon.AgressiveMod, damageDataFromWeapon.AgressiveModType)
-	return agressiveVal
+	#if _item == null || _item.UsableDamageData == null:
+		#return -1
+#
+	#var damageDataFromWeapon = _item.UsableDamageData
+	#var aggressiveStat = damageDataFromWeapon.AgressiveStat
+	#var agressiveVal = _attackingUnit.GetWorkingStat(aggressiveStat)
+	#agressiveVal = damageDataFromWeapon.DoMod(agressiveVal,damageDataFromWeapon.AgressiveMod, damageDataFromWeapon.AgressiveModType)
+	#return agressiveVal
+	return -1
 
 func GetDefensiveValFromItem(_itemBeingAttackedWith : Item, _defendingUnit : UnitInstance):
-	if _itemBeingAttackedWith == null || _itemBeingAttackedWith.UsableDamageData == null:
-		return -1
-
-	var damageDataFromWeapon = _itemBeingAttackedWith.UsableDamageData
-	var defensiveStat = damageDataFromWeapon.DefensiveStat
-	var defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
-	defensiveVal = damageDataFromWeapon.DoMod(defensiveVal, damageDataFromWeapon.DefensiveMod, damageDataFromWeapon.DefensiveModType)
-	return defensiveVal
+	#if _itemBeingAttackedWith == null || _itemBeingAttackedWith.UsableDamageData == null:
+		#return -1
+#
+	#var damageDataFromWeapon = _itemBeingAttackedWith.UsableDamageData
+	#var defensiveStat = damageDataFromWeapon.DefensiveStat
+	#var defensiveVal = _defendingUnit.GetWorkingStat(defensiveStat)
+	#defensiveVal = damageDataFromWeapon.DoMod(defensiveVal, damageDataFromWeapon.DefensiveMod, damageDataFromWeapon.DefensiveModType)
+	#return defensiveVal
+	return -1

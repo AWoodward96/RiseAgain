@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cw7awguux054e"]
+[gd_scene load_steps=25 format=3 uid="uid://cw7awguux054e"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_ongyo"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_j2esb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="9_siyje"]
 [ext_resource type="PackedScene" uid="uid://2rmdx6sgc55r" path="res://RESOURCES/UI/weapon_swap_panel.tscn" id="11_lmtx5"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="12_k2et2"]
+[ext_resource type="Resource" uid="uid://qa3w3c552huo" path="res://RESOURCES/Descriptors/DES_Item.tres" id="13_rl5e1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_siyje"]
 font = ExtResource("4_fsc2t")
@@ -24,6 +25,34 @@ shadow_color = Color(0, 0, 0, 0.321569)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2esb"]
 bg_color = Color(0.73, 0.67525, 0.5986, 0.701961)
 
+[sub_resource type="Animation" id="Animation_1f4v1"]
+resource_name = "EquipTactical"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-18, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_t4oa1"]
 resource_name = "EquipWeapon"
 length = 0.25
@@ -34,10 +63,10 @@ tracks/0/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlot
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.15, 1.15), Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(1.15, 1.15), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -78,9 +107,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1f4v1"]
 _data = {
+&"EquipTactical": SubResource("Animation_1f4v1"),
 &"EquipWeapon": SubResource("Animation_t4oa1"),
 &"RESET": SubResource("Animation_txrjc")
 }
@@ -228,7 +282,7 @@ _data = {
 &"Unswap": SubResource("Animation_rl5e1")
 }
 
-[node name="TeamManagementUI" type="Control" node_paths=PackedStringArray("animator", "shortInspectPanel", "inspectPanelVignette", "gridPanel", "weaponLibrary", "tacticalLibrary")]
+[node name="TeamManagementUI" type="Control" node_paths=PackedStringArray("animator", "shortInspectPanel", "inspectPanelVignette", "gridPanel", "weaponLibrary", "tacticalLibrary", "heldItemsLibrary")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,6 +297,7 @@ inspectPanelVignette = NodePath("InspectAreaParent/Vignette")
 gridPanel = NodePath("SelectArea")
 weaponLibrary = NodePath("SwapOutWeapons/AbilitySwapParent/WeaponSwapPanel")
 tacticalLibrary = NodePath("SwapOutWeapons/AbilitySwapParent/TacticalSwapPanel")
+heldItemsLibrary = NodePath("SwapOutWeapons/AbilitySwapParent/HeldItemsPanel")
 metadata/_edit_vertical_guides_ = [5.0]
 
 [node name="vignette" type="ColorRect" parent="."]
@@ -261,6 +316,7 @@ offset_top = 30.0
 offset_right = 602.0
 offset_bottom = 581.0
 script = ExtResource("7_p0hty")
+autoInitialize = false
 entryParent = NodePath("MarginContainer/GridContainer")
 entryPrefab = ExtResource("7_fsc2t")
 
@@ -347,7 +403,7 @@ animator = NodePath("Animator")
 shortformAbilityPrefab = ExtResource("8_lmtx5")
 weaponParent = NodePath("MainContent/VBoxContainer/WeaponAndTactical/WeaponSlotParent/WeaponSlot")
 tacticalParent = NodePath("MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent/TacticalSlot")
-heldItemParents = [NodePath("MainContent/VBoxContainer/HeldItems/HeldItemSlot1"), NodePath("MainContent/VBoxContainer/HeldItems/HeldItemSlot2"), NodePath("MainContent/VBoxContainer/HeldItems/HeldItemSlot3")]
+heldItemParents = [NodePath("MainContent/VBoxContainer/HeldItems/HeldItemParent1/HeldItemSlot1"), NodePath("MainContent/VBoxContainer/HeldItems/HeldItemParent2/HeldItemSlot2"), NodePath("MainContent/VBoxContainer/HeldItems/HeldItemParent3/HeldItemSlot3")]
 prestiegeParent = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege")
 prestiegeLevel = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege/prestiegeLevel")
 prestiegeExp = NodePath("MainContent/VBoxContainer/InspectTitleParent/MarginContainer/VBoxContainer/Prestiege/ExpTitle")
@@ -499,20 +555,41 @@ size_flags_vertical = 2
 [node name="HeldItems" type="VBoxContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
 layout_mode = 2
 
-[node name="HeldItemSlot1" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+[node name="HeldItemParent1" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_type_variation = &"Item"
 
-[node name="HeldItemSlot2" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+[node name="HeldItemSlot1" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems/HeldItemParent1"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+offset_right = 303.0
+offset_bottom = 50.0
 theme_type_variation = &"Item"
+language = "Item"
 
-[node name="HeldItemSlot3" type="PanelContainer" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+[node name="HeldItemParent2" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="HeldItemSlot2" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems/HeldItemParent2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_right = 303.0
+offset_bottom = 50.0
 theme_type_variation = &"Item"
+language = "Item"
+
+[node name="HeldItemParent3" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HeldItemSlot3" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems/HeldItemParent3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_right = 303.0
+offset_bottom = 50.0
+theme_type_variation = &"Item"
+language = "Item"
 
 [node name="Spacer3" type="Control" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer"]
 layout_mode = 2
@@ -647,12 +724,21 @@ grow_vertical = 2
 [node name="WeaponSwapPanel" parent="SwapOutWeapons/AbilitySwapParent" instance=ExtResource("11_lmtx5")]
 layout_mode = 0
 preInitializeMatchingULKs = true
+makeUnequipEntry = true
 
 [node name="TacticalSwapPanel" parent="SwapOutWeapons/AbilitySwapParent" instance=ExtResource("11_lmtx5")]
 visible = false
 layout_mode = 0
 preInitializeMatchingULKs = true
+makeUnequipEntry = true
 baseFilter = ExtResource("12_k2et2")
+
+[node name="HeldItemsPanel" parent="SwapOutWeapons/AbilitySwapParent" instance=ExtResource("11_lmtx5")]
+visible = false
+layout_mode = 0
+preInitializeMatchingULKs = true
+makeUnequipEntry = true
+baseFilter = ExtResource("13_rl5e1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

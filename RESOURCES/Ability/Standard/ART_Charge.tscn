@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqbqlsqcw17lo"]
+[gd_scene load_steps=14 format=3 uid="uid://dqbqlsqcw17lo"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_kiov8"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_whdyn"]
@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_w6f2a"]
 [ext_resource type="Texture2D" uid="uid://cnprc2tj8guy6" path="res://ART/Icons/Ability/Standard/charge.png" id="5_gbnod"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_sd4if"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_qgsot"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_m6l0l"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="8_qgsot"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_i7mej"]
 [ext_resource type="Resource" uid="uid://cwb6cm8lesq76" path="res://RESOURCES/TargetingShapes/charge_shape.tres" id="10_f2ypo"]
 
@@ -37,8 +36,7 @@ UsableDamageData = NodePath("DamageData")
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("6_sd4if")
-AgressiveStat = ExtResource("7_qgsot")
-DefensiveStat = ExtResource("8_m6l0l")
+AgressiveStat = ExtResource("8_qgsot")
 DamageToHealthRatio = 0.0
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

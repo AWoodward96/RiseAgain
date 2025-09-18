@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://rya7lpnjs0yp"]
+[gd_scene load_steps=13 format=3 uid="uid://rya7lpnjs0yp"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_hjs85"]
+[ext_resource type="Texture2D" uid="uid://ccnbuorfu06pb" path="res://ART/Icons/Items/t2_spikedshoulderpad.png" id="2_ppg3a"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_h82sf"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_yoyib"]
 [ext_resource type="Script" uid="uid://ddyf7e2u583ok" path="res://SCRIPTS/Items/ConditionalStatModifier.gd" id="5_4gp6g"]
@@ -9,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="7_a30m1"]
 [ext_resource type="Script" uid="uid://cw244jw4a0ttt" path="res://SCRIPTS/Generic/Requirements/TeamTurnReq.gd" id="8_uud7b"]
 
-[sub_resource type="Resource" id="Resource_h82sf"]
+[sub_resource type="Resource" id="Resource_a30m1"]
 script = ExtResource("3_h82sf")
 Template = ExtResource("4_yoyib")
 Value = 2
@@ -33,11 +34,12 @@ conditionalStatModifiers = NodePath("ConditionalStatModComponent")
 internalName = "t2_spikedshoulderpad"
 loc_displayName = "item_t2_spikedshoulderpad_name"
 loc_displayDesc = "item_t2_spikedshoulderpad_desc"
+icon = ExtResource("2_ppg3a")
 StatData = NodePath("ItemStatComponent")
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("5_ktnl4")
-GrantedStats = Array[ExtResource("3_h82sf")]([SubResource("Resource_h82sf")])
+GrantedStats = Array[ExtResource("3_h82sf")]([SubResource("Resource_a30m1")])
 
 [node name="ConditionalStatModComponent" type="Node2D" parent="."]
 script = ExtResource("5_4gp6g")

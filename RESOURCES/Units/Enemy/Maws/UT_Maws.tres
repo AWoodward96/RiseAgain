@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://dudha4cqqspqf"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=38 format=3 uid="uid://dudha4cqqspqf"]
 
 [ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="1_bq2u5"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_8dov0"]
@@ -10,9 +10,11 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="8_vsp00"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_xfc65"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_k2agg"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="11_0tn6n"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="11_m8u7j"]
 [ext_resource type="PackedScene" uid="uid://7klh46agp38n" path="res://RESOURCES/Units/Enemy/Maws/VIS_Maws.tscn" id="12_8dov0"]
 [ext_resource type="Resource" uid="uid://bklg4y7fnapff" path="res://RESOURCES/Descriptors/DES_Amphibious.tres" id="12_ipmbt"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="12_vsp00"]
 [ext_resource type="Texture2D" uid="uid://gjhjsx5ie5ib" path="res://ART/Icons/Units/maws.png" id="12_ybl6f"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_8cu53"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_gmg4r"]
@@ -58,6 +60,16 @@ script = ExtResource("2_8dov0")
 Template = ExtResource("10_k2agg")
 Value = 0
 
+[sub_resource type="Resource" id="Resource_xfc65"]
+script = ExtResource("2_8dov0")
+Template = ExtResource("11_0tn6n")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_k2agg"]
+script = ExtResource("2_8dov0")
+Template = ExtResource("12_vsp00")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_7p4q4"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("3_pvb8s")
@@ -88,12 +100,22 @@ script = ExtResource("2_8dov0")
 Template = ExtResource("9_xfc65")
 Value = 0
 
+[sub_resource type="Resource" id="Resource_m8u7j"]
+script = ExtResource("2_8dov0")
+Template = ExtResource("11_0tn6n")
+Value = 0
+
+[sub_resource type="Resource" id="Resource_ybl6f"]
+script = ExtResource("2_8dov0")
+Template = ExtResource("12_vsp00")
+Value = 10
+
 [resource]
 resource_name = "UT_Maws"
 script = ExtResource("13_8cu53")
 VisualPrefab = ExtResource("12_8dov0")
-BaseStats = Array[ExtResource("2_8dov0")]([SubResource("Resource_y8dmy"), SubResource("Resource_rjmvu"), SubResource("Resource_shavg"), SubResource("Resource_qdbt3"), SubResource("Resource_uuntv"), SubResource("Resource_w8i8v"), SubResource("Resource_l55jw"), SubResource("Resource_q4gto")])
-StatGrowths = Array[ExtResource("2_8dov0")]([SubResource("Resource_7p4q4"), SubResource("Resource_bc3ky"), SubResource("Resource_wa1o6"), SubResource("Resource_xlaf5"), SubResource("Resource_l6fcc"), SubResource("Resource_13jhf")])
+BaseStats = Array[ExtResource("2_8dov0")]([SubResource("Resource_y8dmy"), SubResource("Resource_rjmvu"), SubResource("Resource_shavg"), SubResource("Resource_qdbt3"), SubResource("Resource_uuntv"), SubResource("Resource_w8i8v"), SubResource("Resource_l55jw"), SubResource("Resource_q4gto"), SubResource("Resource_xfc65"), SubResource("Resource_k2agg")])
+StatGrowths = Array[ExtResource("2_8dov0")]([SubResource("Resource_7p4q4"), SubResource("Resource_bc3ky"), SubResource("Resource_wa1o6"), SubResource("Resource_xlaf5"), SubResource("Resource_l6fcc"), SubResource("Resource_13jhf"), SubResource("Resource_m8u7j"), SubResource("Resource_ybl6f")])
 Affinity = ExtResource("1_bq2u5")
 StartingEquippedWeapon = ExtResource("14_gmg4r")
 Tier0Abilities = Array[String]([])

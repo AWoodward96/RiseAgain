@@ -2,10 +2,12 @@ extends FullscreenUI
 
 enum WorldMapUIState { NewCampaign, NextMap, Browsing }
 
+
 signal POISelected(_poi : POI)
 
 @export var offset : Control
 @export var lerpSpeed : float = 4
+@export var bastionPOI : POI
 
 @export_category("Hover Panel")
 @export var HoverPanelParent : Control
@@ -20,6 +22,7 @@ var currentlySelectedPOI : POI
 
 var state : WorldMapUIState = WorldMapUIState.Browsing
 var fullscreenHelperUI : CanvasLayer
+var complete = false
 
 func _ready() -> void:
 	BuildPOIArray()
@@ -56,6 +59,23 @@ func InitNextMapSelection():
 	HoverCurrentMapPOI()
 	RefreshAllPOIs()
 	UpdateForTraversal()
+
+	var hasTraversable = false
+	for adjacents in currentCampaign.currentPOI.AdjacentPOIs:
+		if adjacents.Traversable:
+			hasTraversable = true
+
+	if !hasTraversable:
+		complete = true
+		var notif = UIManager.OpenFullscreenUI(UIManager.FullscreenNotifUI) as FullscreenNotificationUI
+		notif.AddTranlatedText("ui_campaign_complete")
+		notif.AddAutoTimeout(3)
+		notif.OnTimeout.connect(func() :
+			currentCampaign.ReportCampaignResult(true)
+			GameManager.ReturnToBastion()
+			)
+	else:
+		complete = false
 	pass
 
 func UpdateForTraversal():
@@ -100,7 +120,7 @@ func BuildPOIArray():
 				startingPOIs.append(child)
 
 func _process(_delta: float):
-	if !visible:
+	if !visible || complete:
 		return
 
 	UpdateInputNavigation()

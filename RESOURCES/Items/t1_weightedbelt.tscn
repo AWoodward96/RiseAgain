@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_by3d1"]
 script = ExtResource("4_rg1hd")
 Template = ExtResource("6_cs76l")
-Value = 10
+Value = 25
 
 [node name="t1_weightedbelt" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_o1i4e")

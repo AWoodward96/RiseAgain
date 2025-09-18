@@ -28,6 +28,13 @@ func _enter_tree() -> void:
 	UIManager.ShowResources()
 
 
+func _process(_delta: float) -> void:
+	if !IsInDetailState:
+		if InputManager.cancelDown:
+			InputManager.ReleaseCancel()
+			queue_free()
+
+
 func UpdateRecipt():
 	var meal = PersistDataManager.universeData.bastionData.ActiveMeal
 	if meal == null:

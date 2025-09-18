@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_jsndg"]
 script = ExtResource("4_qavet")
 Template = ExtResource("6_kakp1")
-Value = 10
+Value = 15
 
 [node name="t1_ceruleanplates" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_qd88g")

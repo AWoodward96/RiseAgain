@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvngr6fr6prr7"]
+[gd_scene load_steps=11 format=3 uid="uid://dvngr6fr6prr7"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_1qt3w"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_h7gq4"]
@@ -8,10 +8,9 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_bfqmm"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_1mbs3"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_cuanp"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="9_bsf6r"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_jx1t7"]
 
-[sub_resource type="Resource" id="Resource_1qt3w"]
+[sub_resource type="Resource" id="Resource_ah4tb"]
 script = ExtResource("6_bfqmm")
 Template = ExtResource("7_1mbs3")
 Value = 2
@@ -30,12 +29,12 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_sbnga")
-GrantedStats = Array[ExtResource("6_bfqmm")]([SubResource("Resource_1qt3w")])
+GrantedStats = Array[ExtResource("6_bfqmm")]([SubResource("Resource_ah4tb")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("8_cuanp")
 AgressiveStat = ExtResource("7_1mbs3")
-DefensiveStat = ExtResource("9_bsf6r")
+DamageType = 1
 DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=35 format=3 uid="uid://eyed7bxgka4g"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://eyed7bxgka4g"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_2gkof"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_gd10w"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_cje5r"]
 [ext_resource type="PackedScene" uid="uid://cg83y8wvfexv6" path="res://RESOURCES/Units/Enemy/WildNecromancer/VIS_WildNecromancer.tscn" id="10_u3lpn"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2oydv"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_4kqvc"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_2yo8r"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="13_stfxg"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_ssbuv"]
 [ext_resource type="Resource" uid="uid://bh3y3rtkai7q4" path="res://RESOURCES/Unlocks/ULK_wolfbane.tres" id="15_ssbuv"]
@@ -64,6 +66,16 @@ script = ExtResource("2_qy2cs")
 Template = ExtResource("10_6olnp")
 Value = 3.0
 
+[sub_resource type="Resource" id="Resource_or4mr"]
+script = ExtResource("2_qy2cs")
+Template = ExtResource("12_4kqvc")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_8lb4v"]
+script = ExtResource("2_qy2cs")
+Template = ExtResource("13_2yo8r")
+Value = 0
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("1_gd10w")
@@ -99,12 +111,22 @@ script = ExtResource("2_qy2cs")
 Template = ExtResource("9_x8qhl")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_tl6hk"]
+script = ExtResource("2_qy2cs")
+Template = ExtResource("12_4kqvc")
+Value = 40
+
+[sub_resource type="Resource" id="Resource_fad0h"]
+script = ExtResource("2_qy2cs")
+Template = ExtResource("13_2yo8r")
+Value = 10
+
 [resource]
 resource_name = "UT_WildNecromancer"
 script = ExtResource("10_cje5r")
 VisualPrefab = ExtResource("10_u3lpn")
-BaseStats = Array[ExtResource("2_qy2cs")]([SubResource("Resource_edhhe"), SubResource("Resource_gopix"), SubResource("Resource_1nkwt"), SubResource("Resource_e8xmq"), SubResource("Resource_8gqf5"), SubResource("Resource_3dnqf"), SubResource("Resource_0jwdw"), SubResource("Resource_53c4k"), SubResource("Resource_bb3rq")])
-StatGrowths = Array[ExtResource("2_qy2cs")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_qy2cs")]([SubResource("Resource_edhhe"), SubResource("Resource_gopix"), SubResource("Resource_1nkwt"), SubResource("Resource_e8xmq"), SubResource("Resource_8gqf5"), SubResource("Resource_3dnqf"), SubResource("Resource_0jwdw"), SubResource("Resource_53c4k"), SubResource("Resource_bb3rq"), SubResource("Resource_or4mr"), SubResource("Resource_8lb4v")])
+StatGrowths = Array[ExtResource("2_qy2cs")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_tl6hk"), SubResource("Resource_fad0h")])
 Affinity = ExtResource("1_2gkof")
 StartingEquippedWeapon = ExtResource("15_ssbuv")
 Tier0Abilities = Array[String](["uid://bjkyhhnp44588"])

@@ -24,6 +24,7 @@
 script = ExtResource("13_qleqt")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
@@ -44,6 +45,7 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 script = ExtResource("13_qleqt")
 TargetingFlags = 1
 RangeOverride = 0
+WeaponRangeAggros = true
 DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
@@ -157,7 +159,7 @@ AIBehavior = ExtResource("12_0tyxu")
 AggroBehavior = SubResource("Resource_daxic")
 
 [node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
-position = Vector2(576, 0)
+position = Vector2(576, 64)
 texture = ExtResource("7_aet5y")
 centered = false
 hframes = 4
@@ -167,7 +169,7 @@ script = ExtResource("8_wccwd")
 UnitToSpawn = ExtResource("14_p1y3o")
 UnitLevel = 1
 DeltaLevel = 0
-Position = Vector2i(9, 0)
+Position = Vector2i(9, 1)
 AIBehavior = SubResource("Resource_aet5y")
 AggroBehavior = SubResource("Resource_wccwd")
 

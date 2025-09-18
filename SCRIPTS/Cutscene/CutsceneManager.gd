@@ -71,6 +71,10 @@ var BlockEnterAction : bool :
 	get:
 		return local_block_enter_action && active_cutscene != null
 
+var BlockRewardSelection : bool :
+	get:
+		return local_block_reward_selection && active_cutscene != null
+
 
 
 var local_block_select_input : bool
@@ -86,6 +90,8 @@ var local_block_ability_context : bool
 var local_block_weapon_context : bool
 var local_block_tactical_context : bool
 var local_block_wait_context : bool
+
+var local_block_reward_selection : bool
 
 var active_cutscene : CutsceneTemplate
 var queued_cutscenes : Array[CutsceneTemplate]

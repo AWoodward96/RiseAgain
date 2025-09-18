@@ -10,12 +10,8 @@ func OnDeath(_unitThatDied : UnitInstance, _context : DamageStepResult):
 	if Map.Current == null:
 		return
 
-	# If this unit died to some unknown result - just ignore it
-	if _context == null:
-		return
-
-	# If it wasn't us that dealt the damage - go away
-	if _context.Source != ability.ownerUnit:
+	var passes = CheckRequirements(_unitThatDied, _context)
+	if !passes:
 		return
 
 	for u in UnitPairs:
@@ -47,12 +43,5 @@ func OnDeath(_unitThatDied : UnitInstance, _context : DamageStepResult):
 			newPassiveAction.executionStack.append(secondDelay)
 
 			map.AppendPassiveAction(newPassiveAction)
-
-			#var zombifiedUnit = map.CreateUnit(u.Unit2, _unitThatDied.Level)
-			#map.InitializeUnit(zombifiedUnit, _unitThatDied.GridPosition, GameSettingsTemplate.TeamID.ENEMY)
-			#zombifiedUnit.SetAI(SpawnedUnitAI, SpawnedUnitAggroBehavior)
-			## End the zombified Unit's turn so that it doesn't mess up the turn order
-			#zombifiedUnit.EndTurn()
-			#Juice.CreateEffectPopup(zombifiedUnit.CurrentTile, self)
 			return # Don't spawn more than one unit here
 	pass

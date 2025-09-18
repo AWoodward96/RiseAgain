@@ -17,6 +17,7 @@ signal OnPressed(_entry : NewAbilityEntryUI)
 @export var weaponDetailsParent : EntryList
 
 var ability : Ability
+var unlockable : AbilityUnlockable
 var persistData : UnlockablePersistData
 var lastAddedStatChangeEntry : Control
 var firstAddedWeaponIcon : Control
@@ -24,8 +25,9 @@ var firstAddedWeaponIcon : Control
 var speedEntry : DetailEntry
 var targetingTypeEntry : DetailEntry
 
-func Initialize(_ability : Ability):
+func Initialize(_ability : Ability, _optionalUnlockable : AbilityUnlockable = null):
 	ability = _ability
+	unlockable = _optionalUnlockable
 	UpdateMetaData()
 	AddWeaponRange()
 	AddWeaponSpeed()
@@ -44,7 +46,9 @@ func Initialize(_ability : Ability):
 
 func UpdateMetaData():
 	nameLabel.text = ability.loc_displayName
-	descLabel.text = ability.loc_displayDesc
+	var desc = tr(ability.loc_displayDesc)
+	var formatDict = GameManager.LocalizationSettings.FormatAbilityDescription(ability)
+	descLabel.text = desc.format(formatDict)
 	icon.texture = ability.icon
 	pass
 

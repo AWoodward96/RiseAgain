@@ -34,7 +34,6 @@ visible = false
 points = PackedVector2Array(0, 0)
 
 [node name="Visual" type="Sprite2D" parent="."]
-z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_c1uc1")
 flip_h = true

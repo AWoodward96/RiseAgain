@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://isaqeedfdh26"]
+
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_j2r4h"]
+[ext_resource type="Texture2D" uid="uid://boq02diyk4iwx" path="res://ART/VFX/Explosion_Crescent.png" id="2_j2r4h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_65ny1"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_32w8t"]
+offsets = PackedFloat32Array(0, 0.660287, 1)
+colors = PackedColorArray(1, 1, 1, 0.741176, 1, 1, 1, 0.854902, 1, 1, 1, 0)
+
+[node name="StealthCloudVFX" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
+script = ExtResource("1_j2r4h")
+emitOnReady = true
+cpuParticles = [NodePath("PoofRight"), NodePath("PoofLeft")]
+
+[node name="PoofRight" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_65ny1")
+position = Vector2(32, 32)
+emitting = false
+amount = 4
+texture = ExtResource("2_j2r4h")
+lifetime = 0.91
+one_shot = true
+explosiveness = 0.96
+randomness = 1.0
+emission_shape = 4
+emission_points = PackedVector2Array(32, 0, 32, 12, 32, -12)
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 64.0
+initial_velocity_max = 96.0
+color_ramp = SubResource("Gradient_32w8t")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="PoofLeft" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_65ny1")
+position = Vector2(32, 32)
+emitting = false
+amount = 4
+texture = ExtResource("2_j2r4h")
+lifetime = 0.91
+one_shot = true
+explosiveness = 0.96
+randomness = 1.0
+emission_shape = 4
+emission_points = PackedVector2Array(-32, 0, -32, 12, -32, -12)
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+direction = Vector2(-1, 0)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 64.0
+initial_velocity_max = 96.0
+color_ramp = SubResource("Gradient_32w8t")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

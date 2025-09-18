@@ -27,6 +27,7 @@ func _Execute(_delta):
 				if ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && isAllyTurn:
 					# This blocks the ability to cheese units that are mid-action
 					if ctrl.selectedUnit.IsStackFree:
+						InputManager.ReleaseSelect()
 						if ctrl.selectedUnit.CanMove:
 							ctrl.EnterUnitMovementState()
 							AudioManager.RaiseIntensity(1)
@@ -39,6 +40,7 @@ func _Execute(_delta):
 						ctrl.reticleSelectSound.play()
 
 		else:
+			InputManager.ReleaseSelect()
 			ctrl.EnterGlobalContextState()
 			ctrl.reticleSelectSound.play()
 		ctrl.OnTileSelected.emit(tile)

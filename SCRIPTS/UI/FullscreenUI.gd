@@ -1,6 +1,7 @@
 extends Control
 class_name FullscreenUI
 
+
 @export var Priority = 1
 @export var TrackOnStack = true
 
@@ -65,4 +66,5 @@ func EndShowDetails():
 			BlockedFocusables[i].focus_mode = BlockedFocusablesState[i]
 
 		LastFocusedElement.grab_focus()
+		InputManager.ReleaseCancel()
 	pass

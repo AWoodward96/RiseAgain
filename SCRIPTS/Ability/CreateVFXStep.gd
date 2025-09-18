@@ -2,6 +2,8 @@ extends ActionStep
 class_name CreateVFXStep
 
 @export var VFXPrefab : PackedScene
+@export var PositionOnActionOrigin : bool = true
+@export var PositionOnSource : bool
 
 
 func Enter(_actionLog : ActionLog):
@@ -9,5 +11,8 @@ func Enter(_actionLog : ActionLog):
 
 	var vfx = VFXPrefab.instantiate()
 	_actionLog.grid.map.add_child(vfx)
-	vfx.position = _actionLog.actionOriginTile.GlobalPosition
+	if PositionOnActionOrigin:
+		vfx.position = _actionLog.actionOriginTile.GlobalPosition
+	else:
+		vfx.position = log.sourceTile.GlobalPosition
 	return true

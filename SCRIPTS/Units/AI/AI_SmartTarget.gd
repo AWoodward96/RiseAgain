@@ -36,6 +36,8 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		if aiflag.Descriptor != null:
 			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template.Descriptors.find(aiflag.Descriptor) != -1)
 
+		filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x : UnitInstance) : return !x.Shrouded && !x.Stealthed)
+
 		for u : UnitInstance in filteredUnitsOnTeam:
 			if u == null:
 				continue

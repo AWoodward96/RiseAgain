@@ -117,7 +117,13 @@ func OnUIOpened(_ui : FullscreenUI):
 			Canvas.add_child(_ui)
 		else:
 			_ui.reparent(Canvas)
-		Canvas.move_child(_ui, OpenUIs.find(_ui))
+
+		var index = OpenUIs.find(_ui)
+		if Canvas.get_child_count() < index:
+			Canvas.move_child(_ui, -1)
+		else:
+			Canvas.move_child(_ui, index)
+
 
 	if CurrentInspectedElement != null:
 		CurrentInspectedElement.release_focus()

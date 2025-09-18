@@ -22,5 +22,5 @@ func Refresh(_item : Item):
 	if itemName != null: itemName.text = _item.loc_displayName
 	if itemDescription != null:
 		var string = tr(_item.loc_displayDesc)
-		string = string.format(LocSettings.GetItemDescriptionMadlibs(_item))
+		string = string.format(GameManager.LocalizationSettings.FormatAbilityDescription(_item))
 		itemDescription.text = string

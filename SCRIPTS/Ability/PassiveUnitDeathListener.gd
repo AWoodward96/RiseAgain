@@ -3,6 +3,9 @@ class_name PassiveUnitDeathListener
 
 @export var includeSelf : bool
 @export var reqKilledByUser : bool
+@export var reqKilledByWeapon : bool
+@export var reqOnEnemyTurn : bool
+@export var reqOnAlliedTurn : bool
 @export var descriptorFilter : DescriptorTemplate
 @export var triggerAbilityStack : bool = false
 
@@ -14,16 +17,7 @@ func RegisterListener(_ability : Ability, _map : Map):
 	pass
 
 func OnDeath(_unitThatDied : UnitInstance, _context : DamageStepResult):
-	var passes = true
-	if !includeSelf && _unitThatDied == ability.ownerUnit:
-		passes = false
-
-	if descriptorFilter != null:
-		if !_unitThatDied.Template.Descriptors.has(descriptorFilter):
-			passes = false
-
-	if reqKilledByUser && _context.Source != ability.ownerUnit:
-		passes = false
+	var passes = CheckRequirements(_unitThatDied, _context)
 
 	if passes && triggerAbilityStack:
 		var passiveInstance = PassiveAbilityAction.Construct(ability.ownerUnit, ability)
@@ -38,3 +32,38 @@ func OnDeath(_unitThatDied : UnitInstance, _context : DamageStepResult):
 		Map.Current.AppendPassiveAction(passiveInstance)
 
 	pass
+
+func CheckRequirements(_unitThatDied : UnitInstance, _context : DamageStepResult):
+	var passes = true
+	if _context == null:
+		passes = false
+		return passes
+
+	if !includeSelf && _unitThatDied == ability.ownerUnit:
+		passes = false
+
+	if descriptorFilter != null:
+		if !_unitThatDied.Template.Descriptors.has(descriptorFilter):
+			passes = false
+
+	if reqKilledByUser && _context.Source != ability.ownerUnit:
+		passes = false
+
+	if reqKilledByWeapon && _context.AbilityData == null || (_context.AbilityData != null && _context.AbilityData.type != Ability.AbilityType.Weapon):
+		passes = false
+
+	if reqOnAlliedTurn:
+		if ability.ownerUnit == null:
+			passes = false
+		else:
+			if ability.ownerUnit.UnitAllegiance != Map.Current.currentTurn:
+				passes = false
+
+	if reqOnEnemyTurn:
+		if ability.ownerUnit == null:
+			passes = false
+		else:
+			if ability.ownerUnit.UnitAllegiance == Map.Current.currentTurn:
+				passes = false
+
+	return passes

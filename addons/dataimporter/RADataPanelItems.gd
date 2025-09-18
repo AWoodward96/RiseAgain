@@ -1,7 +1,7 @@
 @tool
 extends RADataImporterPanel
 
-var instancedItem
+var instancedItem : Item
 
 func import_data_from_json(_data):
 	modifiedStack = GetAllFilesFromPath(Items_Dir)
@@ -27,7 +27,7 @@ func try_load_item(_path, line):
 	if ResourceLoader.exists(_path):
 		var item : PackedScene = PackedScene.new()
 		item = ResourceLoader.load(_path)
-		instancedItem = item.instantiate()
+		instancedItem = item.instantiate() as Item
 		return instancedItem as Item
 	else:
 		log += str("\n[color=orange]Failed to find Item at path: [/color]", _path, " - [color=orange]Creating new asset at that path[/color]")
@@ -46,7 +46,7 @@ func ModifyItem(_item : Item, _filePath, _data):
 
 	if _data.has("internal_name"): _item.internalName = _data["internal_name"]
 	if _data.has("loc_name"): _item.loc_displayName = _data["loc_name"]
-	if _data.has("loc_desc"): _item.loc_effectDesc = _data["loc_desc"]
+	if _data.has("loc_desc"): _item.loc_displayDesc = _data["loc_desc"]
 
 	if _data.has("iconPath"):
 		if ResourceLoader.exists(_data["iconPath"]):
@@ -67,7 +67,7 @@ func ModifyItem(_item : Item, _filePath, _data):
 
 	# See https://github.com/godotengine/godot/issues/30302#issuecomment-1140052274
 	toSave.take_over_path(_filePath)
-	var err = ResourceSaver.save(toSave, _filePath)
+	var err = ResourceSaver.save(toSave, _filePath, ResourceSaver.FLAG_CHANGE_PATH)
 	if err != OK:
 		log += str("\n[color=red]FAILED TO SAVE ITEM AT PATH: [/color]", _filePath, "[color=red]ERROR CODE: [/color]", err)
 

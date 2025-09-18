@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_0wjra"]
 script = ExtResource("4_20vul")
 Template = ExtResource("5_f21ey")
-Value = 10
+Value = 25
 
 [node name="rosepolish_t1" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_0wjra")

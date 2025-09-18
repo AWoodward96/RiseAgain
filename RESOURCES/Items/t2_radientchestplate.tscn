@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bf3484ldvsvyh"]
+[gd_scene load_steps=23 format=3 uid="uid://bf3484ldvsvyh"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_gybgy"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_djr7b"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_45i4p"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_kktqm"]
 [ext_resource type="Script" uid="uid://ti5l0tu2c64" path="res://SCRIPTS/Ability/TurnStartListener.gd" id="6_qcb2q"]
+[ext_resource type="Texture2D" uid="uid://btbnlqhy3v007" path="res://ART/Icons/Items/t2_radientchestplate.png" id="7_1p6p3"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_0rk80"]
 [ext_resource type="Resource" uid="uid://ckrx5xllkdcak" path="res://RESOURCES/TargetingShapes/radiantchestplate_shape.tres" id="13_djr7b"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="16_i2krh"]
@@ -40,12 +41,12 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("6_kktqm")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_qcb2q"]
+[sub_resource type="Resource" id="Resource_i2krh"]
 script = ExtResource("4_uw3xn")
 Template = ExtResource("5_vylks")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_5pvvb"]
+[sub_resource type="Resource" id="Resource_umh07"]
 script = ExtResource("4_uw3xn")
 Template = ExtResource("6_45i4p")
 Value = 1
@@ -57,13 +58,14 @@ passiveListeners = [NodePath("TurnStartListener")]
 internalName = "t2_radientchestplate"
 loc_displayName = "item_t2_radientchestplate_name"
 loc_displayDesc = "item_t2_radientchestplate_desc"
+icon = ExtResource("7_1p6p3")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 StatData = NodePath("ItemStatComponent")
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("3_d6ieq")
-GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_qcb2q"), SubResource("Resource_5pvvb")])
+GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_i2krh"), SubResource("Resource_umh07")])
 
 [node name="TurnStartListener" type="Node2D" parent="."]
 script = ExtResource("6_qcb2q")
@@ -80,6 +82,6 @@ script = ExtResource("16_i2krh")
 AgressiveStat = ExtResource("17_umh07")
 AgressiveModType = 2
 AgressiveMod = 0.1
-TrueDamage = true
+DamageType = 2
 CritModifier = -1.0
 metadata/_custom_type_script = "uid://dgqbu1rqkbira"

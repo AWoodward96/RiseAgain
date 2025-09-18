@@ -37,14 +37,15 @@ func GetWeaponsThatMatchDescriptor(_descriptorTemplate : DescriptorTemplate):
 
 
 func EquipWeaponFromConvoy(_unit : UnitInstance, _weapon : Ability):
-	if !WeaponInventory.has(_weapon):
+	var weaponIndex = WeaponInventory.find(_weapon)
+	if weaponIndex == -1:
 		push_error("Trying to equip a weapon from convoy that isn't in the convoy? That's super illegal.")
 		return
 
 	if _weapon.type != Ability.AbilityType.Weapon:
 		return
 
-	var descriptors = _weapon.descriptors
+	var descriptors = _weapon.descriptors.duplicate()
 	var indOfWeapon = descriptors.find(GameManager.GameSettings.WeaponDescriptor)
 	if indOfWeapon == -1:
 		push_error("Trying to equip a Weapon that lacks the weapon descriptor. This is not allowed")
@@ -60,8 +61,23 @@ func EquipWeaponFromConvoy(_unit : UnitInstance, _weapon : Ability):
 	if canEquip:
 		# This AddAbilityInstance automatically moves their equipped weapon to convoy
 		# Has to be removed first before it can be re-added or else we're gonna throw an error
+		WeaponInventory.remove_at(weaponIndex)
 		remove_child(_weapon)
 		_unit.AddAbilityInstance(_weapon)
+
+func EquipTacticalFromConvoy(_unit : UnitInstance, _tactical : Ability):
+	var tacIndex = TacticalInventory.find(_tactical)
+	if tacIndex == -1:
+		push_error("Trying to equip a tactical from convoy that isn't in the convoy? That's super illegal.")
+		return
+
+	if _tactical.type != Ability.AbilityType.Tactical:
+		return
+
+	TacticalInventory.remove_at(tacIndex)
+	remove_child(_tactical)
+	_unit.AddAbilityInstance(_tactical)
+
 
 func EquipItemFromConvoy(_unit : UnitInstance, _item : Item, _inventorySlot : int):
 	var index = ItemInventory.find(_item)

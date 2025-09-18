@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bpb8l34cffsly"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_213k1"]
-[ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_2qjh2"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_t0uq6"]
+[ext_resource type="Texture2D" uid="uid://ckrhe7d77g0cn" path="res://ART/Icons/Items/t2_vampblade.png" id="4_c3mvv"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_d5lbe"]
 [ext_resource type="Script" uid="uid://dwybkjr1cr223" path="res://SCRIPTS/Ability/PassiveUnitDeathListener.gd" id="5_2qjh2"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="6_dgep0"]
@@ -17,12 +17,12 @@
 script = ExtResource("9_hd3uk")
 metadata/_custom_type_script = "uid://ct8lhn6f420te"
 
-[sub_resource type="Resource" id="Resource_y68xy"]
+[sub_resource type="Resource" id="Resource_tftnf"]
 script = ExtResource("3_t0uq6")
 Template = ExtResource("4_d5lbe")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_su7t0"]
+[sub_resource type="Resource" id="Resource_fek4h"]
 script = ExtResource("3_t0uq6")
 Template = ExtResource("8_c3mvv")
 Value = 1
@@ -34,7 +34,7 @@ passiveListeners = [NodePath("PassiveUnitDeathListener")]
 internalName = "t2_vampblade"
 loc_displayName = "item_t2_vampblade_name"
 loc_displayDesc = "item_t2_vampblade_desc"
-icon = ExtResource("2_2qjh2")
+icon = ExtResource("4_c3mvv")
 TargetingData = NodePath("SkillTargetingData")
 StatData = NodePath("ItemStatComponent")
 HealData = NodePath("HealComponent")
@@ -60,4 +60,4 @@ metadata/_custom_type_script = "uid://bqu21cvg4s6wk"
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("13_tftnf")
-GrantedStats = Array[ExtResource("3_t0uq6")]([SubResource("Resource_y68xy"), SubResource("Resource_su7t0")])
+GrantedStats = Array[ExtResource("3_t0uq6")]([SubResource("Resource_tftnf"), SubResource("Resource_fek4h")])

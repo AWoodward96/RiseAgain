@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_bxl04")
 ItemResource = ExtResource("1_x07q2")
-Amount = 10
+Amount = 3
 metadata/_custom_type_script = "uid://d2347uif1mrru"

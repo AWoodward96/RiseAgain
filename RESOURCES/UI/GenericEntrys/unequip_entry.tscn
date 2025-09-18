@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://n5iabomo0vk6"]
+
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_i1bmp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds2to"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86, 0.817, 0.215, 1)
+
+[node name="AbilityEntryBase" type="Button"]
+self_modulate = Color(0.6764, 0.698693, 0.76, 1)
+custom_minimum_size = Vector2(0, 128)
+theme = ExtResource("1_i1bmp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ds2to")
+
+[node name="ContentParent" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ContentParent"]
+layout_mode = 2
+text = "ui_unequip"

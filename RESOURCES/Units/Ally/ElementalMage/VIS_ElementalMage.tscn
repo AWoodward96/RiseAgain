@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dmih52nttd88v"]
+[gd_scene load_steps=56 format=3 uid="uid://dmih52nttd88v"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_qfktn"]
 [ext_resource type="Texture2D" uid="uid://bn2j7jkcgtx4u" path="res://ART/Icons/Units/wildmage.png" id="2_r3hk5"]
@@ -795,6 +795,60 @@ tracks/1/keys = {
 "values": ["take_damage"]
 }
 
+[sub_resource type="Animation" id="Animation_cx60p"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["use_item_in"]
+}
+
+[sub_resource type="Animation" id="Animation_knpl3"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["use_item_out"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cx60p"]
 _data = {
 &"attack_down": SubResource("Animation_63fo4"),
@@ -811,7 +865,9 @@ _data = {
 &"run_right": SubResource("Animation_ijv14"),
 &"run_up": SubResource("Animation_5n6sr"),
 &"selected": SubResource("Animation_jyam2"),
-&"take_damage": SubResource("Animation_ux2b1")
+&"take_damage": SubResource("Animation_ux2b1"),
+&"use_item_in": SubResource("Animation_cx60p"),
+&"use_item_out": SubResource("Animation_knpl3")
 }
 
 [node name="visElementalMage" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
@@ -837,10 +893,8 @@ material = SubResource("ShaderMaterial_6rlt4")
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sdmmp")
-animation = &"use_item_out"
+animation = &"attack_down"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -22,7 +22,10 @@ const stat_dict = {
 	"Movement" : "res://RESOURCES/Stats/STAT_Movement.tres",
 	"Skill" : "res://RESOURCES/Stats/STAT_Skill.tres",
 	"Mind" : "res://RESOURCES/Stats/STAT_Mind.tres",
-	"Luck" : "res://RESOURCES/Stats/STAT_Luck.tres"
+	"Luck" : "res://RESOURCES/Stats/STAT_Luck.tres",
+	"Health" : "res://RESOURCES/Stats/STAT_Health.tres",
+	"Dexterity" : "res://RESOURCES/Stats/STAT_Dexterity.tres",
+	"Wisdom" : "res://RESOURCES/Stats/STAT_Wisdom.tres"
 }
 
 const affinity_dict = {
