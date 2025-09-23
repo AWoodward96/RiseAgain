@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://dkgajgdeqosxv" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestuctableTrees.tres" id="1_xnct5"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="2_nfkgl"]
 [ext_resource type="Material" uid="uid://dfgfxdctmuhpc" path="res://ART/Shaders/alpha_shroud_grass.tres" id="2_rf0b1"]
-[ext_resource type="Resource" uid="uid://c4s58oi4r76rx" path="res://RESOURCES/TileMetaData/alpha_grass_shroud.tres" id="2_u5cnj"]
+[ext_resource type="Resource" uid="uid://c4s58oi4r76rx" path="res://RESOURCES/TileMetaData/tall_grass_shroud.tres" id="2_u5cnj"]
 [ext_resource type="Texture2D" uid="uid://2r1jmihr5im0" path="res://ART/Grid/tmp_fire_tiles_64.png" id="3_yem1i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5q2h"]

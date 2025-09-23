@@ -143,6 +143,9 @@ func TileSelected():
 		if !res.Validate():
 			return
 
+	if log.actionOriginTile == null:
+		return
+
 	var validSimple = ((log.actionOriginTile.Occupant != null && !log.actionOriginTile.Occupant.ShroudedFromPlayer) || log.actionOriginTile.MaxHealth > 0) && targetingData.Type == SkillTargetingData.TargetingType.Simple
 	var validShapedFree = targetingData.Type == SkillTargetingData.TargetingType.ShapedFree
 	if validSimple || validShapedFree || targetingData.Type == SkillTargetingData.TargetingType.SelfOnly:

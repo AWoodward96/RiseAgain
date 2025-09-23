@@ -73,7 +73,7 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 
 func RefreshShroud():
 	var visited : Dictionary
-
+	Shrouds.clear()
 	for currentTile in GridArr:
 		if !currentTile.IsShroud:
 			continue
@@ -97,7 +97,7 @@ func RefreshShroud():
 
 				pass
 		# We should have a clump at this point
-		Shrouds.append(ShroudInstance.Construct(clump))
+		Shrouds.append(ShroudInstance.Construct(clump, map))
 
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
@@ -806,5 +806,6 @@ static func FromJSON(_dict, _map : Map):
 
 		canvasMod.set_cell(t.Position, UITILEATLAS, BASEBLACKTILE)
 
+	newGrid.RefreshShroud()
 
 	return newGrid

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://b58tp7xqbg5jr"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=44 format=3 uid="uid://b58tp7xqbg5jr"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_t7bl4"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cyunyo5s6o5oy" path="res://ART/Icons/Units/rogue.png" id="16_gnxnw"]
 [ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="17_2d8m2"]
 [ext_resource type="Resource" uid="uid://cx6d8skfrwms8" path="res://RESOURCES/Descriptors/DES_Bow.tres" id="18_k8vvo"]
+[ext_resource type="Texture2D" uid="uid://dqb3h4qw6mamd" path="res://ART/Icons/Units/rogue_movementpreview.png" id="23_k8vvo"]
 
 [sub_resource type="Resource" id="Resource_oxnwj"]
 script = ExtResource("2_jwwlf")
@@ -145,3 +146,4 @@ loc_Description = "unit_rogue_desc"
 icon = ExtResource("16_gnxnw")
 startUnlocked = true
 startNameKnown = true
+unitMovementPreview = ExtResource("23_k8vvo")

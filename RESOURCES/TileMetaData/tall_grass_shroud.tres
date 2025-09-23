@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TileMetaData" load_steps=3 format=3 uid="uid://c4s58oi4r76rx"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_rbmf8"]
+[ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="2_aol77"]
+
+[resource]
+script = ExtResource("2_aol77")
+loc_name = "tile_tall_grass"
+Health = -1
+Killbox = false
+Water = false
+FireSpreadChance = 0.5
+Shroud = true
+DestructionRewards = Array[ExtResource("1_rbmf8")]([])
+metadata/_custom_type_script = "uid://cj8ei3attrikd"

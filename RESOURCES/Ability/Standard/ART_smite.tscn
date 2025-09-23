@@ -42,6 +42,7 @@ TargetRange = Vector2i(1, 4)
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("8_ipvti")
+FlatValue = 3.0
 AgressiveStat = ExtResource("9_c0xgb")
 DamageType = 1
 VulerableDescriptors = Array[ExtResource("10_f2836")]([ExtResource("11_83rja")])

@@ -6,6 +6,7 @@ class_name TerrainInspectPanel
 @export var tile_health_parent : Control
 @export var tile_health : Label
 @export var tile_is_killbox_parent : Control
+@export var tile_is_shroud_parent : Control
 @export var fire_data_parent : Control
 @export var fire_level_label : Label
 @export var fire_damage_label : Label
@@ -47,6 +48,7 @@ func Update(_tile : Tile):
 		shouldShow = true
 
 	tile_is_killbox_parent.visible = _tile.ActiveKillbox
+	tile_is_shroud_parent.visible = _tile.IsShroud
 	UpdateFireData(_tile)
 	UpdateGridEntities(_tile)
 	Disabled = !shouldShow

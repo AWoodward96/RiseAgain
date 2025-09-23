@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cudvgus0ja3x6"
-path="res://.godot/imported/c_0_map_1_leafmap-export.png-ecf684239931fec10fc557b8f06bc789.ctex"
+uid="uid://hdp6g5qtiag7"
+path="res://.godot/imported/maroon_a01_alt2_leafmap.png-5f99879cafaf42e890e24fd10d85bb1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/Environment/MaroonForest/c_0_map_1_leafmap-export.png"
-dest_files=["res://.godot/imported/c_0_map_1_leafmap-export.png-ecf684239931fec10fc557b8f06bc789.ctex"]
+source_file="res://ART/Environment/MaroonForest/maroon_a01_alt2_leafmap.png"
+dest_files=["res://.godot/imported/maroon_a01_alt2_leafmap.png-5f99879cafaf42e890e24fd10d85bb1b.ctex"]
 
 [params]
 

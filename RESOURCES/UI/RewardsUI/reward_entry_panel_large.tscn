@@ -39,7 +39,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/Contents/IconParent"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("3_qtk21")
 expand_mode = 1
@@ -53,10 +53,10 @@ horizontal_alignment = 1
 clip_text = true
 
 [node name="RewardDesc" type="RichTextLabel" parent="MarginContainer/Contents"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_e5l3l")
-theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "This is a description of the item you'll be recieving"
 autowrap_mode = 2

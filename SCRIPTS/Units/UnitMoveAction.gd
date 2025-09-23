@@ -90,23 +90,25 @@ func _Execute(_unit : UnitInstance, _delta):
 
 		MovementIndex += 1
 
+
 		# Check for bonk on the next position
-		if MovementIndex < Route.size() && !Map.Current.grid.CanUnitFitOnTile(unit, Route[MovementIndex], unit.IsFlying, true, false):
-			# Get bonked loser
-			if Route[MovementIndex].Occupant != null:
-				Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
+		if  MovementIndex < Route.size() && !Map.Current.grid.CanUnitFitOnTile(unit, Route[MovementIndex], unit.IsFlying, true, false):
+			if (MoveFromAbility && MovementIndex == Route.size() - 1) || (!MoveFromAbility):
+				# Get bonked loser
+				if Route[MovementIndex].Occupant != null:
+					Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
 
-			unit.PlayShockEmote()
-			if Log != null:
-				var curStep = Log.ability.executionStack[Log.actionStackIndex]
-				if curStep is AbilityMoveStep:
-					curStep.Bonked(Route[MovementIndex], Log)
-					return true
+				unit.PlayShockEmote()
+				if Log != null:
+					var curStep = Log.ability.executionStack[Log.actionStackIndex]
+					if curStep is AbilityMoveStep:
+						curStep.Bonked(Route[MovementIndex], Log)
+						return true
 
-			map.grid.SetUnitGridPosition(_unit, Route[MovementIndex - 1].Position, true, AllowOccupantOverwrite)
-			unit.LockInMovement(Route[MovementIndex - 1])
-			FinishMoving()
-			return true
+				map.grid.SetUnitGridPosition(_unit, Route[MovementIndex - 1].Position, true, AllowOccupantOverwrite)
+				unit.LockInMovement(Route[MovementIndex - 1])
+				FinishMoving()
+				return true
 
 		if MovementIndex >= Route.size() :
 			if DestinationTile != null:

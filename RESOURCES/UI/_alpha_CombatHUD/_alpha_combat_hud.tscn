@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene load_steps=57 format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" uid="uid://y87ywuus8k6s" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="12_60paf"]
 [ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="13_6r2ue"]
 [ext_resource type="Texture2D" uid="uid://d0g2rta26msr7" path="res://ART/Icons/Ability/Equippable/magic_bolt.png" id="13_6rrfk"]
+[ext_resource type="Texture2D" uid="uid://0xabbr3vo1ja" path="res://ART/Icons/hides_vision.png" id="13_m3k6o"]
 [ext_resource type="PackedScene" uid="uid://k6a1bknwdhr" path="res://RESOURCES/UI/_alpha_CombatHUD/grid_entity_info_prefab.tscn" id="15_2krlt"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="15_ynng0"]
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="16_2y1mh"]
@@ -129,7 +130,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TerrainInspectPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("tile_name", "tile_health_parent", "tile_health", "tile_is_killbox_parent", "fire_data_parent", "fire_level_label", "fire_damage_label", "grid_entity_parent")]
+[node name="TerrainInspectPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("tile_name", "tile_health_parent", "tile_health", "tile_is_killbox_parent", "tile_is_shroud_parent", "fire_data_parent", "fire_level_label", "fire_damage_label", "grid_entity_parent")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -149,6 +150,7 @@ tile_name = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/TerrainNa
 tile_health_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer")
 tile_health = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer/HealthNumber")
 tile_is_killbox_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent")
+tile_is_shroud_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/ShroudParent")
 fire_data_parent = NodePath("VBoxContainer/OnFireInfo")
 fire_level_label = NodePath("VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer/FireLevel")
 fire_damage_label = NodePath("VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer/HealthLostPerTurn")
@@ -222,6 +224,21 @@ offset_bottom = 36.0
 texture = ExtResource("27_gwkwg")
 expand_mode = 1
 
+[node name="ShroudParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/ShroudParent"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+offset_left = 68.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 36.0
+texture = ExtResource("13_m3k6o")
+expand_mode = 1
+
 [node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
 layout_mode = 2
 texture = ExtResource("23_vm2kk")
@@ -279,6 +296,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("DefaultLayoutParent", "SubmergedLayoutParent", "icon", "injuredParent", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

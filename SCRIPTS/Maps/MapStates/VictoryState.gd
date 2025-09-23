@@ -47,6 +47,9 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	var signalCallback = UIManager.ShowLoadingScreen()
 	await signalCallback.ScreenObscured
 
+	if controller != null && controller.combatHUD != null:
+		controller.combatHUD.queue_free()
+
 	if map.CurrentCampaign != null:
 		map.CurrentCampaign.MapComplete()
 

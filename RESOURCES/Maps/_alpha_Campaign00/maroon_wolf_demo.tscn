@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="7_y2n5u"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="8_g3shn"]
 [ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="9_j37v2"]
-[ext_resource type="Texture2D" uid="uid://cudvgus0ja3x6" path="res://ART/Environment/MaroonForest/c_0_map_1_leafmap-export.png" id="10_u332u"]
+[ext_resource type="Texture2D" uid="uid://cudvgus0ja3x6" path="res://ART/Environment/MaroonForest/maroon_a02_alt1_leafmap.png" id="10_u332u"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="11_fjbig"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="12_va6nv"]
 [ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="13_6fyc4"]

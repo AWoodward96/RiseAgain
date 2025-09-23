@@ -3,6 +3,7 @@ class_name ShroudInstance
 
 var Tiles : Array[Tile]
 var Exposed : Dictionary
+var CurrentMap : Map
 
 func UnitEntered(_tile : Tile, _unit : UnitInstance):
 	var newAlert = false
@@ -13,8 +14,9 @@ func UnitEntered(_tile : Tile, _unit : UnitInstance):
 		for tile in Tiles:
 			# if there's a unit in these tiles, congrats you just got movement locked
 			if tile.Occupant != null && tile.Occupant.UnitAllegiance != _unit.UnitAllegiance:
-				Map.Current.playercontroller.UnitMovedIntoShroud = true
-				# play alert
+				if CurrentMap.playercontroller != null:
+					CurrentMap.playercontroller.UnitMovedIntoShroud = true
+
 
 	for tile in Tiles:
 		if tile.Occupant != null:
@@ -46,11 +48,14 @@ func UnitExited(_unit : UnitInstance):
 	pass
 
 
-static func Construct(_tiles : Array[Tile], _exposedAlly : bool = false, _exposedEnemy : bool = false, _exposedNeutral = false):
+static func Construct(_tiles : Array[Tile], _map : Map, _exposedAlly : bool = false, _exposedEnemy : bool = false, _exposedNeutral = false):
 	var newShroud = ShroudInstance.new()
+	newShroud.CurrentMap = _map
 	newShroud.Tiles = _tiles
 	for tile in newShroud.Tiles:
 		tile.Shroud = newShroud
+		if tile.Occupant != null:
+			newShroud.UnitEntered(tile, tile.Occupant)
 
 	newShroud.Exposed[GameSettingsTemplate.TeamID.ALLY] = _exposedAlly
 	newShroud.Exposed[GameSettingsTemplate.TeamID.ENEMY] = _exposedEnemy

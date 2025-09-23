@@ -169,7 +169,8 @@ func ToJSON():
 		"Killbox" = Killbox,
 		"ActiveKillbox" = ActiveKillbox,
 		"FireLevel" = FireLevel,
-		"TerrainDestroyed" = TerrainDestroyed
+		"TerrainDestroyed" = TerrainDestroyed,
+		"IsShroud" = IsShroud
 	}
 
 	if MainTileData != null:
@@ -193,6 +194,7 @@ static func FromJSON(_dict : Dictionary):
 	newTile.Killbox = _dict["Killbox"]
 	newTile.ActiveKillbox = _dict["ActiveKillbox"]
 	newTile.TerrainDestroyed = _dict["TerrainDestroyed"]
+	newTile.IsShroud = _dict["IsShroud"]
 
 	if _dict.has("FireLevel"):
 		newTile.FireLevel = _dict["FireLevel"]

@@ -24,7 +24,7 @@ abilityCooldown = 3
 executionStack = Array[ExtResource("2_flx47")]([SubResource("Resource_bn3se"), SubResource("Resource_tovoj")])
 internalName = "summonroots"
 loc_displayName = "art_graspingroots_name"
-loc_displayDesc = "art_summonroots_desc"
+loc_displayDesc = "art_graspingroots_desc"
 icon = ExtResource("5_x8nb5")
 TargetingData = NodePath("TargetingData")
 

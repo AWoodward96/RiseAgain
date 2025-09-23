@@ -19,7 +19,7 @@ centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"UnitAllyLibrary": ExtResource("3_xqiqc")
+&"UnitAllyLibrary": ExtResource("3_xqiqc")
 }
 autoplay = "Unactivated"
 

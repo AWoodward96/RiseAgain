@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://cw2y83vld1yn4"]
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://cw2y83vld1yn4"]
 
 [ext_resource type="Resource" uid="uid://dum5iqty3hq5g" path="res://RESOURCES/TileMetaData/MaroonForest/MF_River.tres" id="1_3kalf"]
 [ext_resource type="Texture2D" uid="uid://b1ovua6g8svh3" path="res://ART/Environment/_alpha_set0/art_test_6.png" id="1_7skec"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bx0a5woamx3j8" path="res://ART/Grid/tmp_fire_tiles.png" id="7_1ahre"]
 [ext_resource type="Resource" uid="uid://cv4qyupu316sy" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestructableRocks.tres" id="7_ea5tm"]
 [ext_resource type="Texture2D" uid="uid://byny8bcl33q3a" path="res://ART/Environment/MaroonForest/maroon_forest.png" id="8_5p7p4"]
+[ext_resource type="Resource" uid="uid://c4s58oi4r76rx" path="res://RESOURCES/TileMetaData/tall_grass_shroud.tres" id="9_sc21w"]
+[ext_resource type="Material" uid="uid://bhg13mo7n7rgd" path="res://ART/Shaders/maroon_shroud.tres" id="10_cb6ml"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gj2f4"]
 texture = ExtResource("1_7skec")
@@ -1044,6 +1046,20 @@ texture_region_size = Vector2i(32, 32)
 13:0/0/custom_data_0 = ExtResource("5_01mc4")
 11:2/0 = 0
 11:2/0/material = ExtResource("5_e86kp")
+23:2/0 = 0
+23:2/0/material = ExtResource("10_cb6ml")
+23:2/0/custom_data_0 = ExtResource("9_sc21w")
+23:1/0 = 0
+23:1/0/material = ExtResource("10_cb6ml")
+23:1/0/custom_data_0 = ExtResource("9_sc21w")
+24:1/0 = 0
+24:1/0/material = ExtResource("10_cb6ml")
+24:1/0/custom_data_0 = ExtResource("9_sc21w")
+24:2/0 = 0
+24:2/0/material = ExtResource("10_cb6ml")
+24:2/0/custom_data_0 = ExtResource("9_sc21w")
+24:3/0 = 0
+24:3/0/custom_data_0 = ExtResource("9_sc21w")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30vyt"]
 texture = ExtResource("2_ljnt0")

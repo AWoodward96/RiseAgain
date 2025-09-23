@@ -569,3 +569,4 @@ stat_dexterity_short,DEX
 stat_wisdom,Wisdom
 stat_wisdom_desc,Wisdom\nIncreases Damage when attacking with Magical Abilities. Also slightly decreases Magical Damage taken.
 stat_wisdom_short,WIS
+tile_tall_grass,Tall Grass
