@@ -41,7 +41,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_rb7vm"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("6_6itg3")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_0omq8"]
 script = ExtResource("2_pgscv")
@@ -61,7 +60,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_me2js"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("10_ddobi")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_7vy1f"]
 script = ExtResource("2_pgscv")
@@ -134,14 +132,9 @@ StartingEquippedWeapon = ExtResource("14_0i7oy")
 StartingTactical = ExtResource("15_w50h5")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_spearthrow.tscn"])
 Tier1Abilities = Array[String](["uid://owg3aes4dx8x", "uid://bd66sm3kjyqb5"])
-Descriptors = Array[ExtResource("12_l5q2i")]([])
 WeaponDescriptors = Array[ExtResource("12_l5q2i")]([ExtResource("17_6i5t4"), ExtResource("18_6h1w4")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_thk3g")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "Knight"
 loc_DisplayName = "unit_knight_name"
 loc_Description = "unit_knight_desc"
 icon = ExtResource("16_3e3g6")
-startUnlocked = true
-startNameKnown = true

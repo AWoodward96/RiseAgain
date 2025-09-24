@@ -33,7 +33,6 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_jo3bi"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("5_cqqlc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_1jiq7"]
 script = ExtResource("2_f28sa")
@@ -53,7 +52,6 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_wxqo8"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("9_j6srh")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_uojxp"]
 script = ExtResource("2_f28sa")
@@ -63,7 +61,6 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_4p7e1"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("11_cqqlc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_g0fyd"]
 script = ExtResource("2_f28sa")
@@ -98,12 +95,10 @@ Value = 20.0
 [sub_resource type="Resource" id="Resource_v481w"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("9_j6srh")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_j6srh"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("11_cqqlc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jlc3t"]
 script = ExtResource("2_f28sa")
@@ -120,15 +115,7 @@ Affinity = ExtResource("1_x8gvi")
 StartingEquippedWeapon = ExtResource("13_4n5ln")
 StartingTactical = ExtResource("14_40amp")
 Tier0Abilities = Array[String](["uid://cr3qojl35mikb"])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("11_vi8ql")]([])
-WeaponDescriptors = Array[ExtResource("11_vi8ql")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("12_4n5ln")]([])
-FootstepGUID = ""
 DebugName = "BanditArcher"
 loc_DisplayName = "unit_banditarcher_name"
 loc_Description = "unit_banditarcher_desc"
 icon = ExtResource("14_i4mv0")
-startUnlocked = true
-startNameKnown = true

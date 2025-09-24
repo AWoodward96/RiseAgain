@@ -24,5 +24,4 @@ loc_title = "meal_mushroomstew_title"
 loc_desc = "meal_mushroomstew_desc"
 cost = Array[ExtResource("1_pmky3")]([SubResource("Resource_ywa03")])
 statGrowthMods = Array[ExtResource("3_nebxf")]([SubResource("Resource_nqd8f")])
-statModifiers = Array[ExtResource("3_nebxf")]([])
 metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

@@ -75,4 +75,4 @@ stopShapeOnWall = true
 [node name="AbilityMovementComponent" type="Node2D" parent="."]
 script = ExtResource("11_smoxh")
 type = 1
-movementAmount = 4
+movementAmount = 3

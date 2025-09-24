@@ -8,7 +8,6 @@
 [sub_resource type="Resource" id="Resource_riyoq"]
 script = ExtResource("1_gm2d5")
 unitTemplate = ExtResource("2_u1u1c")
-number = 1
 loc_description = "opoj_prized_buck"
 
 [resource]

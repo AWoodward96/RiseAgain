@@ -24,7 +24,6 @@
 
 [sub_resource type="Resource" id="Resource_3va2l"]
 script = ExtResource("2_b4ggw")
-loc_description = ""
 metadata/_custom_type_script = "uid://rx6hw8y5t3o"
 
 [sub_resource type="Resource" id="Resource_yulnj"]
@@ -32,7 +31,6 @@ script = ExtResource("10_b5w76")
 tileToLoot = Array[Vector2i]([Vector2i(11, 7)])
 tryToEscape = true
 escapeRoute = Vector2i(16, 3)
-Flags = Array[ExtResource("9_lsk74")]([])
 metadata/_custom_type_script = "uid://3olxj2qvcrdo"
 
 [sub_resource type="Resource" id="Resource_xxpgp"]
@@ -46,13 +44,13 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 [sub_resource type="Resource" id="Resource_h368l"]
 script = ExtResource("14_3fyh8")
 
-[sub_resource type="Resource" id="Resource_hyg5s"]
-script = ExtResource("13_b4ggw")
-metadata/_custom_type_script = "uid://do0w73rdu2ar6"
-
 [sub_resource type="Resource" id="Resource_lsk74"]
 script = ExtResource("14_3fyh8")
 metadata/_custom_type_script = "uid://cp4af6ps3pafs"
+
+[sub_resource type="Resource" id="Resource_hyg5s"]
+script = ExtResource("13_b4ggw")
+metadata/_custom_type_script = "uid://do0w73rdu2ar6"
 
 [sub_resource type="Resource" id="Resource_b5w76"]
 script = ExtResource("14_3fyh8")
@@ -144,7 +142,7 @@ map = NodePath("../..")
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Spawn_healcap" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_HealCap" type="Sprite2D" parent="Spawners"]
 position = Vector2(704, 384)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -192,8 +190,8 @@ Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_h368l")
 
-[node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 320)
+[node name="DISABLED_Spawn_WolfPup2" type="Sprite2D" parent="Spawners"]
+position = Vector2(192, 512)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -202,11 +200,12 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_jydnc")
 DeltaLevel = 0
-Position = Vector2i(3, 5)
-AIBehavior = SubResource("Resource_hyg5s")
+Position = Vector2i(3, 8)
+Enabled = false
+AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="Spawn_WolfPup7" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_WolfPup3" type="Sprite2D" parent="Spawners"]
 position = Vector2(256, 192)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -218,6 +217,7 @@ UnitToSpawn = ExtResource("12_jydnc")
 UnitLevel = 2
 DeltaLevel = 0
 Position = Vector2i(4, 3)
+Enabled = false
 AIBehavior = SubResource("Resource_hyg5s")
 AggroBehavior = SubResource("Resource_lsk74")
 

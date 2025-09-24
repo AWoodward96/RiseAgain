@@ -3,7 +3,7 @@ class_name TargetingShapeLevel
 
 @export var leveledShapes : Array[ThresholdTargetingShape]
 
-func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile):
+func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile, _atRange : int):
 	var res = GetShapeFromLevel(_unit)
 	if res == null:
 		return []
@@ -24,13 +24,13 @@ func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _origin
 
 	return returnedTileData
 
-func GetCoords(_unit : UnitInstance, _ability : Ability):
+func GetCoords(_unit : UnitInstance, _ability : Ability, _atRange : int):
 	var res = GetShapeFromLevel(_unit)
 	if res == null:
 		return []
 	return res.TileCoordinates
 
-func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability):
+func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability, _atRange : int):
 	var res = GetShapeFromLevel(_unit)
 	if res == null:
 		return null

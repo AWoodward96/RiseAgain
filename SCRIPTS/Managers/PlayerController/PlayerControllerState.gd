@@ -25,8 +25,9 @@ func _Exit():
 	pass
 
 func UpdateInput(_delta):
-	if ctrl.BlockMovementInput || CutsceneManager.BlockMovementInput:
+	if ctrl.BlockMovementInput || CutsceneManager.BlockMovementInput || !currentMap.PreTurnComplete:
 		return
+
 
 	# If you press a directional button, move in that direction
 	# if you hold a directional button, move in that direction, and then after a certain amount of time

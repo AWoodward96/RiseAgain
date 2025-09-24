@@ -31,12 +31,10 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_ym0ui"]
 script = ExtResource("2_043p3")
 Template = ExtResource("3_qtcos")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_p5w7m"]
 script = ExtResource("2_043p3")
 Template = ExtResource("4_171sc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ea67d"]
 script = ExtResource("2_043p3")
@@ -61,7 +59,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_6t32p"]
 script = ExtResource("2_043p3")
 Template = ExtResource("10_61ylm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_y2efe"]
 script = ExtResource("2_043p3")
@@ -133,14 +130,9 @@ StartingEquippedWeapon = ExtResource("14_3mj8j")
 StartingTactical = ExtResource("15_3p2av")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_lesserheal.tscn"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_summonsacredground.tscn", "res://RESOURCES/Ability/Standard/ART_smite.tscn"])
-Descriptors = Array[ExtResource("13_yp22s")]([])
 WeaponDescriptors = Array[ExtResource("13_yp22s")]([ExtResource("17_6xcsf"), ExtResource("18_fus64")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_k5nhc")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "LightMage"
 loc_DisplayName = "unit_lightmage_name"
 loc_Description = "unit_lightmage_desc"
 icon = ExtResource("2_t1oku")
-startUnlocked = true
-startNameKnown = true

@@ -39,7 +39,6 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_6n7qq"]
 script = ExtResource("2_ic2vg")
 Template = ExtResource("5_31wn5")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_x0iqu"]
 script = ExtResource("2_ic2vg")
@@ -59,7 +58,6 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_85her"]
 script = ExtResource("2_ic2vg")
 Template = ExtResource("9_ugwuk")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ih3yn"]
 script = ExtResource("2_ic2vg")
@@ -74,7 +72,6 @@ Value = 4
 [sub_resource type="Resource" id="Resource_yr3mb"]
 script = ExtResource("2_ic2vg")
 Template = ExtResource("13_3iv0g")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_ic2vg")
@@ -129,16 +126,9 @@ BaseStats = Array[ExtResource("2_ic2vg")]([SubResource("Resource_i7ud2"), SubRes
 StatGrowths = Array[ExtResource("2_ic2vg")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_s8ahc"), SubResource("Resource_nl55r")])
 Affinity = ExtResource("1_7y7ke")
 StartingEquippedWeapon = ExtResource("15_50kxg")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_yylga")]([ExtResource("10_dbrfp")])
-WeaponDescriptors = Array[ExtResource("12_yylga")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_50kxg")]([])
 FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "WolfMother"
 loc_DisplayName = "unit_wolfmother_name"
 loc_Description = "unit_wolfmother_desc"
 icon = ExtResource("23_347f6")
-startUnlocked = true
-startNameKnown = true

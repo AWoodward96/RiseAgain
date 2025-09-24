@@ -37,17 +37,14 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_4y18v"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("5_yn44r")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_oom0n"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("6_o1jfj")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jtykb"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("7_8v775")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_43k8t"]
 script = ExtResource("2_jwwlf")
@@ -77,7 +74,6 @@ Value = 2
 [sub_resource type="Resource" id="Resource_fpc5n"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("13_k8vvo")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_188ue"]
 script = ExtResource("2_jwwlf")
@@ -133,17 +129,12 @@ StatGrowths = Array[ExtResource("2_jwwlf")]([SubResource("Resource_188ue"), SubR
 Affinity = ExtResource("1_t7bl4")
 StartingEquippedWeapon = ExtResource("14_odgh2")
 StartingTactical = ExtResource("15_hcbn3")
-Tier0Abilities = Array[String](["uid://blcieae5p0wwq"])
+Tier0Abilities = Array[String](["uid://blcieae5p0wwq", "uid://bpgrco5853tx"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_slipnslash.tscn", "res://RESOURCES/Ability/Standard/ART_daggerspray.tscn"])
-Descriptors = Array[ExtResource("12_0ywe3")]([])
 WeaponDescriptors = Array[ExtResource("12_0ywe3")]([ExtResource("17_2d8m2"), ExtResource("18_k8vvo")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_phm8c")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "Rogue"
 loc_DisplayName = "unit_rogue_name"
 loc_Description = "unit_rogue_desc"
 icon = ExtResource("16_gnxnw")
-startUnlocked = true
-startNameKnown = true
 unitMovementPreview = ExtResource("23_k8vvo")

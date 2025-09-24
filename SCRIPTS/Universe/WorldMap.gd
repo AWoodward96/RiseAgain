@@ -81,32 +81,32 @@ func InitNextMapSelection():
 func UpdateForTraversal():
 	if currentCampaign == null:
 		return
-
-	for poi in allPOIS:
-		if poi != null:
-			poi.selectable = false
-
-
-	var adjacentPOIs = currentCampaign.currentPOI.AdjacentPOIs
-	for adjacencyData : POIAdjacencyData in adjacentPOIs:
-		if adjacencyData == null:
-			continue
-
-		if !adjacencyData.Traversable:
-			continue
-
-		if adjacencyData.Neighbor != null:
-			for ledgerEntry in currentCampaign.campaignLedger:
-				if ledgerEntry == adjacencyData.Neighbor.internal_name:
-					continue
-
-			if !adjacencyData.PassesRequirement():
-				continue
-
-			adjacencyData.Neighbor.selectable = true
-		else:
-			var parent = adjacencyData.get_parent()
-			push_error("Adjacency: ", adjacencyData.name ," - child of ", parent.name, " doesn't have a neighbor. Fix")
+#
+	#for poi in allPOIS:
+		#if poi != null:
+			#poi.selectable = false
+#
+#
+	#var adjacentPOIs = currentCampaign.currentPOI.AdjacentPOIs
+	#for adjacencyData : POIAdjacencyData in adjacentPOIs:
+		#if adjacencyData == null:
+			#continue
+#
+		#if !adjacencyData.Traversable:
+			#continue
+#
+		#if adjacencyData.Neighbor != null:
+			#for ledgerEntry in currentCampaign.campaignLedger:
+				#if ledgerEntry == adjacencyData.Neighbor.internal_name:
+					#continue
+#
+			#if !adjacencyData.PassesRequirement():
+				#continue
+#
+			#adjacencyData.Neighbor.selectable = true
+		#else:
+			#var parent = adjacencyData.get_parent()
+			#push_error("Adjacency: ", adjacencyData.name ," - child of ", parent.name, " doesn't have a neighbor. Fix")
 
 
 func BuildPOIArray():
@@ -220,7 +220,7 @@ func HoverStartingPOI():
 			# Select the first one, and don't show the starting point selection screen
 			HoverPOI(startingPOIs[0], true)
 
-			GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(startingPOIs[0], []))
+			#GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(startingPOIs[0], []))
 			# immediately skip to the campaign selection
 		else:
 			ShowStartingPointSelection()

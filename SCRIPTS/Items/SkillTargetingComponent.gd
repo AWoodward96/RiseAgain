@@ -17,14 +17,14 @@ enum TargetingTeamFlag { AllyTeam, EnemyTeam, All, Empty }
 var ability : Ability
 
 
-func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
+func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile, _atRange : int = 0):
 	var addtionalTargetedTiles : Array[TileTargetedData]
 	match Type:
 		TargetingType.Simple:
 			addtionalTargetedTiles.append(_tile.AsTargetData())
 		TargetingType.ShapedFree:
 			if shapedTiles != null:
-				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, ability, _grid, _tile))
+				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, ability, _grid, _tile, _atRange))
 			addtionalTargetedTiles = FilterByTargettingFlags(_unit, addtionalTargetedTiles)
 			pass
 		TargetingType.ShapedDirectional:
@@ -37,8 +37,8 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile):
 
 	return addtionalTargetedTiles
 
-func GetAffectedTiles(_unit : UnitInstance, _grid : Grid, _tile : Tile):
-	var returnThis = GetAdditionalTileTargets(_unit, _grid, _tile)
+func GetAffectedTiles(_unit : UnitInstance, _grid : Grid, _tile : Tile, _atRange : int = 0):
+	var returnThis = GetAdditionalTileTargets(_unit, _grid, _tile, _atRange)
 	return returnThis
 
 func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
@@ -59,8 +59,8 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 	return options
 
 
-func GetDirectionalAttack(_unit : UnitInstance, _ability : Ability, _origin : Tile, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
-	return shapedTiles.GetTargetedTilesFromDirection(_unit, _ability, _grid, _origin, _directionIndex)
+func GetDirectionalAttack(_unit : UnitInstance, _ability : Ability, _origin : Tile, _atRange : int, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
+	return shapedTiles.GetTargetedTilesFromDirection(_unit, _ability, _grid, _origin, _directionIndex, _atRange)
 
 func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : GameSettingsTemplate.Direction):
 	var returnTiles : Array[TileTargetedData] = []
@@ -71,7 +71,7 @@ func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : G
 
 			if OnCorrectTeam(_sourceUnit, targetUnit):
 				if shapedTiles != null:
-					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, ability, _map.grid, targetUnit.CurrentTile, _directionIndex, false, true))
+					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, ability, _map.grid, targetUnit.CurrentTile, _directionIndex, 0, false, true))
 				else:
 					returnTiles.append(targetUnit.CurrentTile.AsTargetData())
 			else:

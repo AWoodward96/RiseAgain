@@ -50,20 +50,17 @@
 
 [sub_resource type="Resource" id="Resource_l1yyb"]
 script = ExtResource("13_k6h66")
-loc_description = ""
 
 [sub_resource type="Resource" id="Resource_qy6mm"]
 script = ExtResource("1_d0crg")
 ParentStat = ExtResource("3_buqcn")
 Ratio = 1.5
 Template = ExtResource("1_g1xjk")
-Value = 0
 
 [resource]
 script = ExtResource("1_wj702")
 CampaignManifest = Array[ExtResource("11_nhtav")]([ExtResource("13_jbp28"), ExtResource("8_rsajm")])
 CampaignInstancePrefab = ExtResource("11_1lydm")
-NumberOfRewardsInPostMap = 3
 DefaultLossState = SubResource("Resource_l1yyb")
 GridModulatePrefab = ExtResource("23_14m44")
 DefaultMapRewardTable = ExtResource("18_ygbce")
@@ -83,10 +80,7 @@ DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy
 UIDisplayedStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("37_t5v44"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("38_uisfa"), ExtResource("8_qhahl"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
 LevelUpStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("37_t5v44"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("38_uisfa"), ExtResource("8_qhahl"), ExtResource("5_ymlgt")])
 WISDEXDefenseModifier = 0.3
-ItemSlotsPerUnit = 3
-UniversalCritChance = 5
 CritMultiplier = 2
-CollisionDamageMultiplier = 1.5
 MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")
 AttackStat = ExtResource("5_pvcaj")
@@ -103,7 +97,6 @@ HeldItemsDescriptor = ExtResource("32_o2wc7")
 CharacterTileMovemementSpeed = 500.0
 AOEExpMultiplier = 0.66
 InjuredHealthDebuff = 0.3
-InjuredStatsDebuff = 0.2
 InjuredAffectedStats = Array[ExtResource("7_k5egf")]([ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("5_ymlgt"), ExtResource("7_tql1j"), ExtResource("8_qhahl")])
 OverLeveledEXPDebuff = 10
 Alpha_AlliedUnitColor = Color(0, 0.624744, 0.890521, 1)
@@ -115,12 +108,7 @@ AbilitiesCanMiss = false
 FirstAbilityBreakpoint = 2
 SecondAbilityBreakpoint = -1
 FireSpreadLevel = 4
-Level1FireDamage = -1
-Level2FireDamage = -3
-Level3FireDamage = -6
 StrongAffinityMultiplier = 1.2
 WeakAffinityMultiplier = 0.8
-AffinityAccuracyModifier = 10
 AllAffinities = Array[ExtResource("1_70bk6")]([ExtResource("2_cn2rw"), ExtResource("3_ygbce"), ExtResource("4_gydru"), ExtResource("5_tq70j"), ExtResource("6_5fwue"), ExtResource("7_s486h"), ExtResource("8_75bht"), ExtResource("9_24hec")])
 ShowcaseMode = true
-ShowcaseStartingTavernLevel = 4

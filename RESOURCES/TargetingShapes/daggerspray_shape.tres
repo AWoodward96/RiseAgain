@@ -1,36 +1,66 @@
-[gd_resource type="Resource" script_class="TargetingShape" load_steps=7 format=3 uid="uid://b40qcbkv4pluw"]
+[gd_resource type="Resource" script_class="TargetingShapeRange" load_steps=14 format=3 uid="uid://b40qcbkv4pluw"]
 
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_laeo4"]
+[ext_resource type="Script" uid="uid://d1xg8qidld8r6" path="res://SCRIPTS/TargetingShape/ThresholdTargetingShape.gd" id="1_670te"]
 [ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_271ah"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_cbwdm"]
+[ext_resource type="Script" uid="uid://biofxjvj46cir" path="res://SCRIPTS/TargetingShape/TargetingShapeRange.gd" id="3_38c2b"]
 
-[sub_resource type="Resource" id="Resource_1h23h"]
+[sub_resource type="Resource" id="Resource_k5ghg"]
 script = ExtResource("2_271ah")
-AccuracyModifier = 0.0
 CritModifier = 1.0
-Ignite = 0
-HitsEnvironment = true
-Position = Vector2i(0, -3)
-Multiplier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
 
-[sub_resource type="Resource" id="Resource_dwcip"]
-script = ExtResource("2_271ah")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
-Position = Vector2i(-1, -3)
-Multiplier = 1.0
+[sub_resource type="Resource" id="Resource_blv31"]
+script = ExtResource("1_670te")
+Threshold = 1
+TileCoordinates = Array[ExtResource("2_271ah")]([SubResource("Resource_k5ghg")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
 
-[sub_resource type="Resource" id="Resource_ddswc"]
+[sub_resource type="Resource" id="Resource_670te"]
 script = ExtResource("2_271ah")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
-Position = Vector2i(1, -3)
-Multiplier = 1.0
+CritModifier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_38c2b"]
+script = ExtResource("2_271ah")
+Position = Vector2i(1, 0)
+Multiplier = 0.67
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_jp5og"]
+script = ExtResource("2_271ah")
+Position = Vector2i(-1, 0)
+Multiplier = 0.67
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_48ko7"]
+script = ExtResource("1_670te")
+Threshold = 2
+TileCoordinates = Array[ExtResource("2_271ah")]([SubResource("Resource_670te"), SubResource("Resource_38c2b"), SubResource("Resource_jp5og")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
+
+[sub_resource type="Resource" id="Resource_m65ei"]
+script = ExtResource("2_271ah")
+CritModifier = 1.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_get2m"]
+script = ExtResource("2_271ah")
+Position = Vector2i(-2, 0)
+Multiplier = 0.67
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_w75nf"]
+script = ExtResource("2_271ah")
+Position = Vector2i(2, 0)
+Multiplier = 0.67
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_0cfpk"]
+script = ExtResource("1_670te")
+Threshold = 3
+TileCoordinates = Array[ExtResource("2_271ah")]([SubResource("Resource_m65ei"), SubResource("Resource_get2m"), SubResource("Resource_w75nf")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
 
 [resource]
-script = ExtResource("3_cbwdm")
-TileCoordinates = Array[ExtResource("1_laeo4")]([SubResource("Resource_1h23h"), SubResource("Resource_dwcip"), SubResource("Resource_ddswc")])
+script = ExtResource("3_38c2b")
+rangedShape = Array[ExtResource("1_670te")]([SubResource("Resource_blv31"), SubResource("Resource_48ko7"), SubResource("Resource_0cfpk")])

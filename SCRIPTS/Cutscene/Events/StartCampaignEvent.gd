@@ -1,17 +1,16 @@
 extends CutsceneEventBase
 class_name StartCampaignEvent
 
-#@export var campaign : CampaignTemplate
-@export var poiID : String
+@export var campaign : CampaignTemplate
+#@export var poiID : String
 @export var roster : Array[UnitTemplate]
 
 func Enter(_context : CutsceneContext):
-	var poi = WorldMap.GetPOIFromID(poiID)
-	if poi == null:
-		push_error("Could not find POI of ID: [", poiID, "] on the world map. Did you type it correctly?")
+	if campaign == null:
+		push_error("Could not start a null campaign.")
 		return true
 
-	GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(poi, roster))
+	GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(campaign, roster))
 	GameManager.CurrentCampaign.CreateSquadInstance()
-	GameManager.CurrentCampaign.OnPOISelected(WorldMap.GetPOIFromID(poiID))
+	#GameManager.CurrentCampaign.OnPOISelected(WorldMap.GetPOIFromID(poiID))
 	return true

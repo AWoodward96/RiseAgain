@@ -13,7 +13,7 @@ func _Enter(_playerController : PlayerController, _data):
 func _Execute(_delta):
 	super(_delta)
 
-	if InputManager.selectDown && !CutsceneManager.BlockSelectInput:
+	if InputManager.selectDown && !CutsceneManager.BlockSelectInput && currentMap.PreTurnComplete:
 		var isAllyTurn = currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY
 
 		var tile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())

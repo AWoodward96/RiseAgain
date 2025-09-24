@@ -10,7 +10,7 @@ AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 1
 HitsEnvironment = true
-Position = Vector2i(0, -1)
+Position = Vector2i(0, 0)
 Multiplier = 0.6
 
 [sub_resource type="Resource" id="Resource_ni7m6"]
@@ -19,7 +19,7 @@ AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 1
 HitsEnvironment = true
-Position = Vector2i(0, -2)
+Position = Vector2i(0, -1)
 Multiplier = 0.6
 
 [sub_resource type="Resource" id="Resource_7tywy"]
@@ -28,7 +28,7 @@ AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 1
 HitsEnvironment = true
-Position = Vector2i(0, -3)
+Position = Vector2i(0, -2)
 Multiplier = 0.6
 
 [sub_resource type="Resource" id="Resource_x0kv8"]
@@ -37,7 +37,7 @@ AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 2
 HitsEnvironment = true
-Position = Vector2i(0, -4)
+Position = Vector2i(0, -3)
 Multiplier = 1.0
 
 [resource]

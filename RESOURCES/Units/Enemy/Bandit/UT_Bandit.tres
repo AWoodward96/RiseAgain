@@ -53,7 +53,6 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_ep7qx"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("9_3rqm2")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_knmom"]
 script = ExtResource("2_n6pw7")
@@ -63,7 +62,6 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_04vgc"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("11_qc7vr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_obn8g"]
 script = ExtResource("2_n6pw7")
@@ -98,12 +96,10 @@ Value = 20.0
 [sub_resource type="Resource" id="Resource_hn8ig"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("9_3rqm2")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_3rqm2"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("11_qc7vr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_tdkho"]
 script = ExtResource("2_n6pw7")
@@ -119,16 +115,7 @@ StatGrowths = Array[ExtResource("2_n6pw7")]([SubResource("Resource_5p2uh"), SubR
 Affinity = ExtResource("1_gop6x")
 StartingEquippedWeapon = ExtResource("13_khmed")
 StartingTactical = ExtResource("14_dfkva")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("11_rmmrt")]([])
-WeaponDescriptors = Array[ExtResource("11_rmmrt")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("12_khmed")]([])
-FootstepGUID = ""
 DebugName = "Bandit"
 loc_DisplayName = "unit_bandit_name"
 loc_Description = "unit_bandit_desc"
 icon = ExtResource("14_287ng")
-startUnlocked = true
-startNameKnown = true

@@ -1,7 +1,7 @@
 extends Resource
 class_name GameSettingsTemplate
 
-enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4 }
+enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4, INVALID = -1 }
 enum Direction { Up, Right, Down, Left }
 enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 

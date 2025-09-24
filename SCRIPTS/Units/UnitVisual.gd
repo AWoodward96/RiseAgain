@@ -24,9 +24,9 @@ func GetVisuals():
 	visual = get_node_or_null("Visual")
 	sprite = get_node_or_null("Sprite2D")
 
-func RefreshAllegience(_override : GameSettingsTemplate.TeamID = -1):
+func RefreshAllegience(_override : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.INVALID):
 	var allegience = _override
-	if allegience == -1 && MyUnit != null:
+	if allegience == GameSettingsTemplate.TeamID.INVALID && MyUnit != null:
 		allegience = MyUnit.UnitAllegiance
 
 	if visual != null:

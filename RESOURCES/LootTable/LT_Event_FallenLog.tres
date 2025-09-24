@@ -10,13 +10,11 @@
 [sub_resource type="Resource" id="Resource_2m1iq"]
 script = ExtResource("3_kosf7")
 Table = ExtResource("2_hip7b")
-Weight = 1.0
 AccumulatedWeight = 1.0
 
 [sub_resource type="Resource" id="Resource_hip7b"]
 script = ExtResource("5_8o443")
 Unit = ExtResource("4_sqxpc")
-Weight = 1.0
 AccumulatedWeight = 2.0
 
 [resource]

@@ -7,6 +7,8 @@ var source
 var log : ActionLog
 var currentAbility : Ability
 var targetSelected : bool # To lock out double-attacks
+var shapedDirectionalRange : int = 0
+var prevShapedDirection : int
 
 func _Enter(_ctrl : PlayerController, _ability):
 	super(_ctrl, _ability)
@@ -64,13 +66,18 @@ func _Enter(_ctrl : PlayerController, _ability):
 					log.availableTiles.push_front(source.CurrentTile)
 					log.affectedTiles.append_array(targetingData.GetAdditionalTileTargets(source, currentGrid, log.availableTiles[0]))
 				SkillTargetingData.TargetingType.ShapedDirectional:
+					var range = log.ability.GetRange()
+					shapedDirectionalRange = range.x
 					# Shaped directional just uses the dict from the targeting data as the available tiles
 					log.actionDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
 					log.availableTiles = currentGrid.GetAdjacentTiles(source.CurrentTile)
-					log.affectedTiles = targetingData.GetDirectionalAttack(source, log.ability, source.CurrentTile, currentGrid, log.actionDirection)
+					log.affectedTiles = targetingData.GetDirectionalAttack(source, log.ability, source.CurrentTile, shapedDirectionalRange, currentGrid, log.actionDirection)
+					log.atRange = shapedDirectionalRange
 
 					# try and get the proper targeted tile based on the facing direction
-					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
+					var adj = currentGrid.GetTile(log.source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(log.actionDirection)))
+					ctrl.ShowShapedDirectionalHelper(adj, range, log.actionDirection)
+					var tile = currentGrid.GetTile(log.source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(log.actionDirection) * shapedDirectionalRange))
 					if tile != null:
 						log.actionOriginTile = tile
 				SkillTargetingData.TargetingType.Global:
@@ -115,7 +122,7 @@ func UpdateInput(_delta):
 			ShapedFreeTargetingInput(_delta)
 			pass
 		SkillTargetingData.TargetingType.ShapedDirectional, SkillTargetingData.TargetingType.Global:
-			# Note that global also uses the shaped directional targeting inpu, so that it contains a direction
+			# Note that global also uses the shaped directional targeting input, so that it contains a direction
 			ShapedDirectionalTargetingInput(_delta)
 			pass
 
@@ -285,29 +292,41 @@ func ShapedDirectionalTargetingInput(_delta):
 	if InputManager.inputDown[3] :
 		newShaped = 3
 
-	var targetTilePosition = source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(newShaped)
+	var range = log.ability.GetRange()
+	if newShaped == prevShapedDirection:
+		shapedDirectionalRange += 1
+		if shapedDirectionalRange > range.y:
+			shapedDirectionalRange = range.x
+
+	log.atRange = shapedDirectionalRange
+	var targetTilePosition = source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(newShaped) * shapedDirectionalRange)
 	var newTargetTile = currentGrid.GetTile(targetTilePosition)
 	if newTargetTile != null:
 		log.actionOriginTile = currentGrid.GetTile(targetTilePosition)
 		log.actionDirection = newShaped
 
 	if targetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		log.affectedTiles = targetingData.GetDirectionalAttack(source, log.ability, source.CurrentTile, currentGrid, log.actionDirection)
+		log.affectedTiles = targetingData.GetDirectionalAttack(source, log.ability, source.CurrentTile, shapedDirectionalRange, currentGrid, log.actionDirection)
 	elif targetingData.Type == SkillTargetingData.TargetingType.Global:
 		log.affectedTiles = targetingData.GetGlobalAttack(source, currentMap, log.actionDirection)
 		#TBD actually if this does anything special. We already actually have the targeted tiles
 		pass
 
-	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
 
+	var adjacentTile =  currentGrid.GetTile(source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(newShaped)))
+	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
+	ctrl.ShowShapedDirectionalHelper(adjacentTile, range, newShaped)
 	ShowAvailableTilesOnGrid()
 	ShowPreview()
+	prevShapedDirection = newShaped
 	pass
 
 func ClearPreview():
 	if log.actionOriginTile != null && log.actionOriginTile.Occupant != null:
 		log.actionOriginTile.Occupant.HideDamagePreview()
 		ctrl.combatHUD.ClearDamagePreviewUI()
+
+	ctrl.ClearShapedDirectionalHelper()
 
 	for res in log.actionStepResults:
 		res.CancelPreview()

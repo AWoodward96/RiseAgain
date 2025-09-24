@@ -22,22 +22,17 @@
 [sub_resource type="Resource" id="Resource_qp2j2"]
 script = ExtResource("4_7jm3y")
 loc_text = "event_abandonedcart_d2_result"
-instantaneous = false
-clearOnExit = true
 metadata/_custom_type_script = "uid://b83ex510b0d3c"
 
 [sub_resource type="Resource" id="Resource_limi1"]
 script = ExtResource("4_7jm3y")
 loc_text = "event_abandonedcart_d2_result2"
-instantaneous = false
-clearOnExit = true
 metadata/_custom_type_script = "uid://b83ex510b0d3c"
 
 [sub_resource type="Resource" id="Resource_e0vum"]
 script = ExtResource("6_limi1")
 Table = ExtResource("5_5jbqo")
 NumberOfPulls = 1
-SaveInContext = false
 metadata/_custom_type_script = "uid://cj0o5iaxm2vw7"
 
 [sub_resource type="Resource" id="Resource_b22g3"]
@@ -45,13 +40,10 @@ resource_name = "Success 65%"
 script = ExtResource("8_7jm3y")
 CutsceneStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_limi1"), SubResource("Resource_e0vum")])
 baseChance = 65
-modifiers = Array[ExtResource("7_qonlb")]([])
 metadata/_custom_type_script = "uid://mlop65be0i6i"
 
 [sub_resource type="Resource" id="Resource_qonlb"]
 script = ExtResource("9_5jbqo")
-usePosition = false
-unitAtPosition = Vector2i(0, 0)
 randomUnitInParty = true
 metadata/_custom_type_script = "uid://dcecpidnv62ns"
 
@@ -63,34 +55,25 @@ metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
 
 [sub_resource type="Resource" id="Resource_rrrhl"]
 script = ExtResource("11_e0vum")
-Strength = 8
-Duration = 0.5
-WaitTillComplete = false
 metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
 
 [sub_resource type="Resource" id="Resource_7jm3y"]
 script = ExtResource("4_7jm3y")
 loc_text = "event_abandonedcart_d2_result3"
-instantaneous = false
-clearOnExit = true
 metadata/_custom_type_script = "uid://b83ex510b0d3c"
 
 [sub_resource type="Resource" id="Resource_s1d26"]
 script = ExtResource("10_e80lf")
 ContextVariableName = "UnitInjuredName"
-NOT = false
 metadata/_custom_type_script = "uid://d3p0cjllyxbl6"
 
 [sub_resource type="Resource" id="Resource_vn5j2"]
 script = ExtResource("4_7jm3y")
 loc_text = "event_abandonedcart_d2_result3_injured"
-instantaneous = false
-clearOnExit = true
 metadata/_custom_type_script = "uid://b83ex510b0d3c"
 
 [sub_resource type="Resource" id="Resource_x7esl"]
 script = ExtResource("10_5jbqo")
-Lib = "CONTEXTVAR"
 CutsceneContextVariable = "UnitInjuredName"
 metadata/_custom_type_script = "uid://5k21572ri75"
 
@@ -102,10 +85,7 @@ metadata/_custom_type_script = "uid://cpajqbxayy16y"
 
 [sub_resource type="Resource" id="Resource_a0pb0"]
 script = ExtResource("4_7jm3y")
-loc_text = ""
 loc_madlib = SubResource("Resource_3aedh")
-instantaneous = false
-clearOnExit = true
 metadata/_custom_type_script = "uid://b83ex510b0d3c"
 
 [sub_resource type="Resource" id="Resource_e80lf"]
@@ -120,25 +100,21 @@ resource_name = "Fail 35%"
 script = ExtResource("8_7jm3y")
 CutsceneStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_qonlb"), SubResource("Resource_24a4x"), SubResource("Resource_rrrhl"), SubResource("Resource_7jm3y"), SubResource("Resource_e80lf")])
 baseChance = 35
-modifiers = Array[ExtResource("7_qonlb")]([])
 metadata/_custom_type_script = "uid://mlop65be0i6i"
 
 [sub_resource type="Resource" id="Resource_t2nsw"]
 script = ExtResource("9_e80lf")
 DecisionOptions = Array[ExtResource("4_ja0di")]([SubResource("Resource_b22g3"), SubResource("Resource_rr2j6")])
-clearOnExit = true
 metadata/_custom_type_script = "uid://c5aspb0cfbke2"
 
 [sub_resource type="Resource" id="Resource_offul"]
 script = ExtResource("10_t2nsw")
 loc_string = "event_abandonedcart_d2_preview1"
-mad_libs = Array[ExtResource("11_s1d26")]([])
 metadata/_custom_type_script = "uid://cpajqbxayy16y"
 
 [sub_resource type="Resource" id="Resource_5mcqi"]
 script = ExtResource("10_t2nsw")
 loc_string = "event_abandonedcart_d2_preview2"
-mad_libs = Array[ExtResource("11_s1d26")]([])
 metadata/_custom_type_script = "uid://cpajqbxayy16y"
 
 [resource]
@@ -146,7 +122,5 @@ resource_name = "Steal!"
 script = ExtResource("12_vn5j2")
 option_loc = "event_abandonedcart_d2"
 resultspreview_loc = Array[ExtResource("10_t2nsw")]([SubResource("Resource_offul"), SubResource("Resource_5mcqi")])
-hiddenRequirement = false
-requirements = Array[ExtResource("1_ja0di")]([])
 resultActionStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_qp2j2"), SubResource("Resource_t2nsw")])
 metadata/_custom_type_script = "uid://bxh0g23kritn8"

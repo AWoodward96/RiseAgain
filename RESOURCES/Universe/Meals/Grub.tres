@@ -65,5 +65,4 @@ loc_title = "meal_grub_title"
 loc_desc = "meal_grub_desc"
 cost = Array[ExtResource("1_w70fe")]([SubResource("Resource_dph6o")])
 statGrowthMods = Array[ExtResource("3_hcg41")]([SubResource("Resource_ek2ps"), SubResource("Resource_vv3c8"), SubResource("Resource_mcqaw"), SubResource("Resource_c1b0d"), SubResource("Resource_6vxj7"), SubResource("Resource_fuy8k")])
-statModifiers = Array[ExtResource("3_hcg41")]([])
 metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

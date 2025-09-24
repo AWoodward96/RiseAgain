@@ -15,7 +15,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Platform is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, Direction)
+	var newTiles = shapedTiles.GetTargetedTilesFromDirection(Source, null, CurrentMap.grid, Origin, Direction, 0)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue

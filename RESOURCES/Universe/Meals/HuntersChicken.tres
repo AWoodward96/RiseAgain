@@ -24,5 +24,4 @@ loc_title = "meal_hunterschicken_title"
 loc_desc = "meal_hunterschicken_desc"
 cost = Array[ExtResource("1_x8gx0")]([SubResource("Resource_y057r")])
 statGrowthMods = Array[ExtResource("3_8i4wk")]([SubResource("Resource_u1aph")])
-statModifiers = Array[ExtResource("3_8i4wk")]([])
 metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

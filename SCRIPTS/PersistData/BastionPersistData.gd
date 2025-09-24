@@ -77,7 +77,9 @@ func ToJSON():
 		"UnitsInTavern" = PersistDataManager.ResourcePathToJSON(UnitsInTavern),
 		"SelectedRoster" = PersistDataManager.ResourcePathToJSON(SelectedRoster),
 		"UnitsInCampsite" = PersistDataManager.ResourcePathToJSON(UnitsInCampsite),
-		"DayComplete" = DayComplete
+		"DayComplete" = DayComplete,
+		"CurrentTavernLevel" = CurrentTavernLevel,
+		"CurrentSmithyLevel" = CurrentSmithyLevel
 	}
 
 	if ActiveMeal != null:
@@ -96,7 +98,11 @@ func FromJSON(_dict : Dictionary):
 	if _dict.has("ActiveMeal") && _dict["ActiveMeal"] != "NULL":
 		ActiveMeal = load(_dict["ActiveMeal"]) as MealTemplate
 
+	CurrentTavernLevel = _dict["CurrentTavernLevel"]
+	if GameManager.GameSettings.ShowcaseMode && CurrentTavernLevel < GameManager.GameSettings.ShowcaseStartingTavernLevel:
+		CurrentTavernLevel = GameManager.GameSettings.ShowcaseStartingTavernLevel
 
+	CurrentSmithyLevel = _dict["CurrentSmithyLevel"]
 	pass
 
 static func CreateNew():

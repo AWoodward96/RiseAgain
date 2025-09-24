@@ -2,7 +2,6 @@ extends ActionStep
 class_name AbilityMoveStep
 
 
-
 #@export var WaitForStackFree : bool = true
 @export var SpeedOverride : int = -1
 @export var AnimationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal
@@ -13,7 +12,7 @@ func Enter(_actionLog : ActionLog):
 	if ability.MovementData == null:
 		return true
 
-	ability.MovementData.Move(log.grid, source, log.actionOriginTile, source.CurrentTile, log.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
+	ability.MovementData.Move(log.grid, source, log.actionOriginTile, source.CurrentTile, log.atRange, log.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
 	return true
 
 func Execute(_delta):
@@ -62,12 +61,13 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 
 
 
-	ability.MovementData.Move(_actionLog.grid, source, _actionLog.actionOriginTile, _invalidatedTile, _actionLog.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
+	ability.MovementData.Move(_actionLog.grid, source, _actionLog.actionOriginTile, _invalidatedTile, log.atRange, _actionLog.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
 	pass
 
 func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
 	var result = AbilityMoveResult.new()
 	result.unitUsable = _actionLog.ability
+	result.atRange = _actionLog.atRange
 	result.shapedDirection = _actionLog.actionDirection
 	result.TileTargetData = _actionLog.actionOriginTile.AsTargetData()
 	result.Source = _actionLog.source

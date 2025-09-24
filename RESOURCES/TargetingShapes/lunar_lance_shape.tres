@@ -10,7 +10,7 @@ AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 0
 HitsEnvironment = true
-Position = Vector2i(0, -1)
+Position = Vector2i(0, 0)
 Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_pm26c"]
@@ -19,7 +19,7 @@ AccuracyModifier = 0.0
 CritModifier = 0.0
 Ignite = 0
 HitsEnvironment = true
-Position = Vector2i(0, -2)
+Position = Vector2i(0, -1)
 Multiplier = 1.0
 
 [resource]

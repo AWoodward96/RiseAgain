@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitSettingsTemplate" load_steps=11 format=3 uid="uid://b4u6518tnwvj6"]
+[gd_resource type="Resource" script_class="UnitSettingsTemplate" load_steps=12 format=3 uid="uid://b4u6518tnwvj6"]
 
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_665j3"]
 [ext_resource type="Script" uid="uid://bkepgvus333qa" path="res://SCRIPTS/Managers/UnitSettings.gd" id="1_a2dt2"]
@@ -10,11 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://ri0c7iffkrao" path="res://RESOURCES/Units/UnitInstance.tscn" id="6_tjdwd"]
 [ext_resource type="Resource" uid="uid://b58tp7xqbg5jr" path="res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres" id="7_fphg7"]
 [ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="8_laijs"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="9_oyyno"]
 
 [resource]
 script = ExtResource("1_a2dt2")
 UnitInstancePrefab = ExtResource("6_tjdwd")
-AllyUnitManifest = Array[ExtResource("1_665j3")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5"), ExtResource("7_fphg7"), ExtResource("8_laijs")])
+AllyUnitManifest = Array[ExtResource("1_665j3")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5"), ExtResource("7_fphg7"), ExtResource("8_laijs"), ExtResource("9_oyyno")])
 BaseUnitPrestiegeCost = 40
 AdditionalUnitPrestiegeCost = 10
 PrestiegeGrantedPerMap = 10

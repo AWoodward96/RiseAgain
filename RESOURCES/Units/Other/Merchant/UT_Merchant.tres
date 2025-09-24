@@ -51,7 +51,6 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_oarue"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("9_ri8r6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_svil8"]
 script = ExtResource("2_ruh1m")
@@ -96,7 +95,6 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_624ns"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("9_ri8r6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_uvumg"]
 script = ExtResource("2_ruh1m")
@@ -115,16 +113,7 @@ VisualPrefab = ExtResource("12_ruh1m")
 BaseStats = Array[ExtResource("2_ruh1m")]([SubResource("Resource_yf4qt"), SubResource("Resource_38tme"), SubResource("Resource_61wed"), SubResource("Resource_am1pm"), SubResource("Resource_kdunh"), SubResource("Resource_0uer2"), SubResource("Resource_oarue"), SubResource("Resource_svil8"), SubResource("Resource_byd46"), SubResource("Resource_ri8r6")])
 StatGrowths = Array[ExtResource("2_ruh1m")]([SubResource("Resource_1ondd"), SubResource("Resource_l63yt"), SubResource("Resource_tm4r2"), SubResource("Resource_cdsbo"), SubResource("Resource_rl6a8"), SubResource("Resource_624ns"), SubResource("Resource_uvumg"), SubResource("Resource_vvbq6")])
 Affinity = ExtResource("1_3anym")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("11_vvbq6")]([])
-WeaponDescriptors = Array[ExtResource("11_vvbq6")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("12_2utqv")]([])
-FootstepGUID = ""
 DebugName = "Merchant"
 loc_DisplayName = "unit_merchant_name"
 loc_Description = "unit_merchant_desc"
 icon = ExtResource("13_hfrcm")
-startUnlocked = true
-startNameKnown = true

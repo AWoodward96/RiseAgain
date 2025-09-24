@@ -72,6 +72,12 @@ var currentPassiveAction : PassiveAbilityAction
 
 var standaloneUnitSelectionUI
 
+var PreTurnComplete : bool :
+	get():
+		if MapState is CombatState:
+			return MapState.preTurnComplete
+		else:
+			return true
 
 func _ready():
 	PreInitialize()

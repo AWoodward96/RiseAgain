@@ -159,21 +159,23 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 					if potentialTile.Occupant != null:
 						continue
 
+					var range = ability.GetRange()
 					for i in range(0,4):
-						var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, potentialTile, grid, i)
-						for t in directionalTiles:
-							if t.Tile.Occupant == targetUnit:
-								if ability.MovementData != null:
-									var evaluatedDestinationTile = ability.MovementData.PreviewMove(grid, sourceUnit, potentialTile, potentialTile, i)
-									if evaluatedDestinationTile == []:
-										continue
-									else:
-										pass
+						for atRange in range(range.x, range.y + 1):
+							var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, potentialTile, atRange, grid, i)
+							for t in directionalTiles:
+								if t.Tile.Occupant == targetUnit:
+									if ability.MovementData != null:
+										var evaluatedDestinationTile = ability.MovementData.PreviewMove(grid, sourceUnit, potentialTile, potentialTile, atRange, i)
+										if evaluatedDestinationTile == []:
+											continue
+										else:
+											pass
 
-								valid = true
-								direction = i as GameSettingsTemplate.Direction
-								SetValidAttack(potentialTile, targetUnit.CurrentTile)
-								return
+									valid = true
+									direction = i as GameSettingsTemplate.Direction
+									SetValidAttack(potentialTile, targetUnit.CurrentTile)
+									return
 						pass
 				pass
 
@@ -191,7 +193,7 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 			unitWillRetaliate = true
 
 	if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		tilesHitByAttack = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, tileToMoveTo, grid, direction)
+		tilesHitByAttack = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, tileToMoveTo, 0, grid, direction)
 	elif ability.TargetingData.Type == SkillTargetingData.TargetingType.Global:
 		tilesHitByAttack = ability.TargetingData.GetGlobalAttack(sourceUnit, map, direction)
 	else:

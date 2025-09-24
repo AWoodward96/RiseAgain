@@ -29,12 +29,10 @@ Value = 8.0
 [sub_resource type="Resource" id="Resource_wv3us"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("3_tog8l")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_rnj5o"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("4_ntgrw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_4aku7"]
 script = ExtResource("2_gv3c6")
@@ -44,7 +42,6 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_xwjvg"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("6_wqq0f")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hs78b"]
 script = ExtResource("2_gv3c6")
@@ -59,7 +56,6 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_wf3lf"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("9_yygrd")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_luif0"]
 script = ExtResource("2_gv3c6")
@@ -74,7 +70,6 @@ Value = 1
 [sub_resource type="Resource" id="Resource_0yip1"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("13_0wn8q")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_gv3c6")
@@ -129,16 +124,9 @@ BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubRes
 StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wsp8b"), SubResource("Resource_wfeti")])
 Affinity = ExtResource("1_enqqm")
 StartingEquippedWeapon = ExtResource("15_0lu4m")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_2nnof")]([ExtResource("10_1wq3p")])
-WeaponDescriptors = Array[ExtResource("12_2nnof")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_0lu4m")]([])
 FootstepGUID = "{460c67f6-fb5a-4d36-9649-06d2f8c0903c}"
 DebugName = "CorpseChimera"
 loc_DisplayName = "unit_corpsechimera_name"
 loc_Description = "unit_corpsechimera_desc"
 icon = ExtResource("23_nob3t")
-startUnlocked = true
-startNameKnown = true

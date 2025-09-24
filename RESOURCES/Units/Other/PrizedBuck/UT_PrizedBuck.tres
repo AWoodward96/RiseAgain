@@ -33,17 +33,14 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_5ny3n"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("5_qw7qt")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_k3ahv"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("6_50fwi")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_22t2p"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("7_cs0gm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_xmhvx"]
 script = ExtResource("3_8jwmx")
@@ -58,22 +55,18 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_21pee"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("10_tjfus")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_6vumn"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("11_jaxs6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jbryl"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("12_fk4an")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_lhvtd"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("13_c56dt")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_kbkqe"]
 script = ExtResource("3_8jwmx")
@@ -113,7 +106,6 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_trwsa"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("12_fk4an")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_qwndk"]
 script = ExtResource("3_8jwmx")
@@ -127,16 +119,9 @@ VisualPrefab = ExtResource("12_umh1e")
 BaseStats = Array[ExtResource("3_8jwmx")]([SubResource("Resource_4qoj7"), SubResource("Resource_5lj5l"), SubResource("Resource_5ny3n"), SubResource("Resource_k3ahv"), SubResource("Resource_22t2p"), SubResource("Resource_xmhvx"), SubResource("Resource_8bnc5"), SubResource("Resource_21pee"), SubResource("Resource_6vumn"), SubResource("Resource_jbryl"), SubResource("Resource_lhvtd")])
 StatGrowths = Array[ExtResource("3_8jwmx")]([SubResource("Resource_kbkqe"), SubResource("Resource_vl7x0"), SubResource("Resource_5xhq3"), SubResource("Resource_t7uy2"), SubResource("Resource_jof6e"), SubResource("Resource_sb22q"), SubResource("Resource_5lics"), SubResource("Resource_trwsa"), SubResource("Resource_qwndk")])
 Affinity = ExtResource("1_ydurd")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("12_f6kpa")]([])
-WeaponDescriptors = Array[ExtResource("12_f6kpa")]([])
-GridSize = 1
 ResourceDrops = Array[ExtResource("13_lfs7p")]([ExtResource("14_opkoe")])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "PrizedBuck"
 loc_DisplayName = "unit_prizedbuck_name"
 loc_Description = "unit_prizedbuck_desc"
 icon = ExtResource("14_vfof4")
-startUnlocked = true
-startNameKnown = true

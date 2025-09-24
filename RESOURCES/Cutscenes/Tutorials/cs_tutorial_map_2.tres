@@ -26,9 +26,6 @@
 
 [sub_resource type="Resource" id="Resource_p62lg"]
 script = ExtResource("5_ylls4")
-BlockUniverseSave = false
-BlockCampaignSave = false
-BlockMapSave = false
 metadata/_custom_type_script = "uid://cl5ml7e14etw6"
 
 [sub_resource type="Resource" id="Resource_trafc"]
@@ -44,7 +41,6 @@ metadata/_custom_type_script = "uid://cl5ml7e14etw6"
 
 [sub_resource type="Resource" id="Resource_awhy7"]
 script = ExtResource("6_d3ptn")
-NOT = false
 metadata/_custom_type_script = "uid://duv72omd4pxsp"
 
 [sub_resource type="Resource" id="Resource_d38lv"]
@@ -61,7 +57,6 @@ metadata/_custom_type_script = "uid://duv72omd4pxsp"
 [sub_resource type="Resource" id="Resource_ylls4"]
 script = ExtResource("7_x0f4a")
 requirements = Array[ExtResource("7_mtt1u")]([SubResource("Resource_u3cuo")])
-events = Array[ExtResource("1_5wonj")]([])
 metadata/_custom_type_script = "uid://dpjk17wyac3d7"
 
 [sub_resource type="Resource" id="Resource_d3ptn"]
@@ -74,24 +69,20 @@ metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_0ey82"]
 script = ExtResource("12_d3ptn")
-WaitTime = 1.0
 metadata/_custom_type_script = "uid://b5qgscwxgnauj"
 
 [sub_resource type="Resource" id="Resource_khk72"]
 resource_name = "There are a couple more tools at your disposal to know about."
 script = ExtResource("6_n1hf2")
-show = true
 size = Vector2(350, 160)
 anchor = 8
 loc_text = "tut_map2_prompt0"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_iuhfj"]
 script = ExtResource("11_csw0b")
-BlockMovementInput = false
 BlockSelectInput = true
 BlockCancelInput = true
 BlockInspectInput = true
@@ -100,12 +91,9 @@ metadata/_custom_type_script = "uid://8eww3y17ma8r"
 [sub_resource type="Resource" id="Resource_yidbf"]
 resource_name = "While not hovering anything, press [TAB]"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 5
 loc_text = "tut_map2_prompt1"
 loc_controller_text = "tut_map2_prompt1_controller"
-builtInFreeze = false
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
@@ -113,7 +101,6 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 script = ExtResource("7_v4y8g")
 Position = Vector2i(3, 5)
 PlaceTutorialReticle = true
-ClearReticleOnExit = false
 BlockSelect = true
 BlockCancel = true
 BlockInspect = true
@@ -124,7 +111,6 @@ script = ExtResource("11_csw0b")
 BlockMovementInput = true
 BlockSelectInput = true
 BlockCancelInput = true
-BlockInspectInput = false
 metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_x0f4a"]
@@ -134,29 +120,23 @@ metadata/_custom_type_script = "uid://d1adb2016l7p2"
 [sub_resource type="Resource" id="Resource_wowem"]
 script = ExtResource("12_csw0b")
 show = false
-position = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://plhqcirjhmjc"
 
 [sub_resource type="Resource" id="Resource_5wonj"]
 script = ExtResource("12_d3ptn")
-WaitTime = 1.0
 metadata/_custom_type_script = "uid://b5qgscwxgnauj"
 
 [sub_resource type="Resource" id="Resource_x85fq"]
 script = ExtResource("11_xcwv2")
 Position = Vector2i(7, 5)
-Instantaneous = false
 BuiltInWaitTime = 1.0
 metadata/_custom_type_script = "uid://bjyd8ud2hswpm"
 
 [sub_resource type="Resource" id="Resource_2q82g"]
 resource_name = "The Red Area now shows the Enemies Threat Range: Spaces where Enemies can attack you on their next turn."
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 7
 loc_text = "tut_map2_prompt2"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 3.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -164,24 +144,16 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_32y5q"]
 resource_name = "Use this to make safe decisions from turn to turn."
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
-anchor = 3
 loc_text = "tut_map2_prompt3"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_di2bk"]
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 7
 loc_text = "tut_map2_prompt4"
 loc_controller_text = "tut_map2_prompt4_controller"
-builtInFreeze = false
-freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_j1mkj"]
@@ -204,18 +176,13 @@ metadata/_custom_type_script = "uid://b5qgscwxgnauj"
 [sub_resource type="Resource" id="Resource_etnhs"]
 script = ExtResource("11_xcwv2")
 Position = Vector2i(3, 7)
-Instantaneous = false
 BuiltInWaitTime = 1.0
 metadata/_custom_type_script = "uid://bjyd8ud2hswpm"
 
 [sub_resource type="Resource" id="Resource_v6xx0"]
 resource_name = "Let's get some more information on the Zombie in front of us"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
-anchor = 3
 loc_text = "tut_map2_prompt5"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -223,9 +190,6 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_dncqw"]
 resource_name = "This time, hover over the Zombie and then press [TAB]"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
-anchor = 3
 loc_text = "tut_map2_prompt6"
 loc_controller_text = "tut_map2_prompt6_controller"
 builtInFreeze = true
@@ -236,7 +200,6 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 script = ExtResource("7_v4y8g")
 Position = Vector2i(3, 7)
 PlaceTutorialReticle = true
-ClearReticleOnExit = false
 BlockSelect = true
 BlockCancel = true
 BlockInspect = true
@@ -247,7 +210,6 @@ script = ExtResource("11_csw0b")
 BlockMovementInput = true
 BlockSelectInput = true
 BlockCancelInput = true
-BlockInspectInput = false
 metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_3eecv"]
@@ -265,11 +227,8 @@ metadata/_custom_type_script = "uid://8eww3y17ma8r"
 [sub_resource type="Resource" id="Resource_47b7y"]
 resource_name = "This is the Unit Inspect Screen"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 8
 loc_text = "tut_map2_prompt7"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -277,11 +236,9 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_nnrne"]
 resource_name = "There's a lot of information you can gleem from this screen:\\n-What Weapons a Unit is using\\n-What their stats are\\n-How their Abilities work (if they have any)"
 script = ExtResource("6_n1hf2")
-show = true
 size = Vector2(350, 160)
 anchor = 8
 loc_text = "tut_map2_prompt8"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 3.5
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -289,11 +246,8 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_ng8uo"]
 resource_name = "One important piece of information is the Units Affinity"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 7
 loc_text = "tut_map2_prompt10"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -301,11 +255,8 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_078nt"]
 resource_name = "Every Unit has a Color that refers to their Affinity. All Affinities are strong against something and weak to something else."
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 7
 loc_text = "tut_map2_prompt11"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 3.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -313,11 +264,8 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_tfded"]
 resource_name = "Fire Affinity is weak to Water Affinity, Dark Affinity is weak to Light Affinity, and so on and so on"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 7
 loc_text = "tut_map2_prompt12"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -325,11 +273,9 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_v3t3l"]
 resource_name = "You'll get a grasp for what's good against what by playing the game, but if you really need to know you can always Inspect a Unit and check this section down here"
 script = ExtResource("6_n1hf2")
-show = true
 size = Vector2(350, 80)
 anchor = 7
 loc_text = "tut_map2_prompt13"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 4.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -337,8 +283,6 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_kexdm"]
 resource_name = "You can change tabs to see more information on this Unit by pressing [A] or [D]"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 8
 loc_text = "tut_map2_prompt9"
 loc_controller_text = "tut_map2_prompt9_controller"
@@ -349,26 +293,16 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_4yhoj"]
 resource_name = "When you're done, press [Left Shift] to back out of the Inspect Screen"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
-anchor = 3
 loc_text = "tut_map2_prompt14"
 loc_controller_text = "tut_map2_prompt14_controller"
-builtInFreeze = false
-freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_gnget"]
 script = ExtResource("11_csw0b")
-BlockMovementInput = false
-BlockSelectInput = false
-BlockCancelInput = false
-BlockInspectInput = false
 metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_q1vkm"]
 script = ExtResource("14_xcwv2")
-NOT = false
 metadata/_custom_type_script = "uid://ctr8aa1mxxvhx"
 
 [sub_resource type="Resource" id="Resource_o111g"]
@@ -381,18 +315,11 @@ metadata/_custom_type_script = "uid://dpjk17wyac3d7"
 [sub_resource type="Resource" id="Resource_emml2"]
 script = ExtResource("6_n1hf2")
 show = false
-size = Vector2(280, 80)
-anchor = 3
-loc_text = ""
-loc_controller_text = ""
-builtInFreeze = false
-freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_je2x1"]
 script = ExtResource("12_csw0b")
 show = false
-position = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://plhqcirjhmjc"
 
 [sub_resource type="Resource" id="Resource_ggs4s"]
@@ -408,7 +335,6 @@ metadata/_custom_type_script = "uid://dpjk17wyac3d7"
 
 [sub_resource type="Resource" id="Resource_vdhd8"]
 script = ExtResource("15_d3ptn")
-TeamID = 1
 metadata/_custom_type_script = "uid://cq7odh02q3pvy"
 
 [sub_resource type="Resource" id="Resource_21snx"]
@@ -421,16 +347,12 @@ metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_d3u2v"]
 script = ExtResource("12_d3ptn")
-WaitTime = 1.0
 metadata/_custom_type_script = "uid://b5qgscwxgnauj"
 
 [sub_resource type="Resource" id="Resource_22x22"]
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 5
 loc_text = "tut_optionalobjectives_0"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 1.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -438,11 +360,8 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_8d01v"]
 resource_name = "Completing an optional objective will grant you a second set of rewards when you beat the Map, so try your best to accomplish it if you can"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 5
 loc_text = "tut_optionalobjectives_1"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -450,43 +369,25 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_5hg3k"]
 script = ExtResource("6_n1hf2")
 show = false
-size = Vector2(280, 80)
-anchor = 3
-loc_text = ""
-loc_controller_text = ""
-builtInFreeze = false
-freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_oa4fe"]
 script = ExtResource("11_csw0b")
-BlockMovementInput = false
-BlockSelectInput = false
-BlockCancelInput = false
-BlockInspectInput = false
 metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_nl1w5"]
 script = ExtResource("15_d3ptn")
-TeamID = 1
 metadata/_custom_type_script = "uid://cq7odh02q3pvy"
 
 [sub_resource type="Resource" id="Resource_6wrjp"]
 resource_name = "Select the Mercenary we picked up at the end of the last map"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 7
 loc_text = "tut_fastspeed_0"
-loc_controller_text = ""
-builtInFreeze = false
-freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_1yp7k"]
 script = ExtResource("11_csw0b")
-BlockMovementInput = false
-BlockSelectInput = false
 BlockCancelInput = true
 BlockInspectInput = true
 metadata/_custom_type_script = "uid://8eww3y17ma8r"
@@ -494,19 +395,13 @@ metadata/_custom_type_script = "uid://8eww3y17ma8r"
 [sub_resource type="Resource" id="Resource_ogb63"]
 script = ExtResource("17_2q82g")
 Unit = ExtResource("16_x85fq")
-Allegience = 1
-UseTutorialReticle = true
-ClearReticleAfterEvent = true
 metadata/_custom_type_script = "uid://cglhhbp52k0s2"
 
 [sub_resource type="Resource" id="Resource_1y754"]
 resource_name = "The Mercenary has an ability called [Heroic Leap]"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 8
 loc_text = "tut_fastspeed_1"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -514,11 +409,9 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_h4bnk"]
 resource_name = "[Heroic Leap] is a Fast Speed Ability, as denoted by the Lightning bolt icon"
 script = ExtResource("6_n1hf2")
-show = true
 size = Vector2(350, 120)
 anchor = 8
 loc_text = "tut_fastspeed_2"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
@@ -526,46 +419,30 @@ metadata/_custom_type_script = "uid://bj74wl8sujiky"
 [sub_resource type="Resource" id="Resource_01xx4"]
 resource_name = "Fast Speed Abilities don't end the Users turn when used, meaning you can use them as a free action as long as you have the Mana"
 script = ExtResource("6_n1hf2")
-show = true
-size = Vector2(280, 80)
 anchor = 8
 loc_text = "tut_fastspeed_3"
-loc_controller_text = ""
 builtInFreeze = true
 freezeDuration = 2.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_mebfv"]
 script = ExtResource("11_csw0b")
-BlockMovementInput = false
-BlockSelectInput = false
-BlockCancelInput = false
-BlockInspectInput = false
 metadata/_custom_type_script = "uid://8eww3y17ma8r"
 
 [sub_resource type="Resource" id="Resource_87arm"]
 script = ExtResource("6_n1hf2")
 show = false
-size = Vector2(280, 80)
-anchor = 3
-loc_text = ""
-loc_controller_text = ""
-builtInFreeze = false
-freezeDuration = 0.0
 metadata/_custom_type_script = "uid://bj74wl8sujiky"
 
 [sub_resource type="Resource" id="Resource_cicjx"]
 resource_name = "clear forced tile selection"
 script = ExtResource("18_32y5q")
-tileLocation = Vector2i(0, 0)
 clear = true
-autoUnblockSelectionInput = false
 metadata/_custom_type_script = "uid://drnfj0klsgqt3"
 
 [sub_resource type="Resource" id="Resource_tik0c"]
 script = ExtResource("18_2q82g")
 State = 3
-NOT = false
 metadata/_custom_type_script = "uid://dd7kyb1qm0iay"
 
 [sub_resource type="Resource" id="Resource_i7t65"]
@@ -585,8 +462,5 @@ metadata/_custom_type_script = "uid://blymxiwp5gdv1"
 
 [resource]
 script = ExtResource("29_vdhd8")
-startingRequirement = Array[ExtResource("7_mtt1u")]([])
 events = Array[ExtResource("1_5wonj")]([SubResource("Resource_d38lv"), SubResource("Resource_ylls4"), SubResource("Resource_d3ptn"), SubResource("Resource_0ey82"), SubResource("Resource_khk72"), SubResource("Resource_iuhfj"), SubResource("Resource_yidbf"), SubResource("Resource_csw0b"), SubResource("Resource_xcwv2"), SubResource("Resource_x0f4a"), SubResource("Resource_wowem"), SubResource("Resource_5wonj"), SubResource("Resource_x85fq"), SubResource("Resource_2q82g"), SubResource("Resource_32y5q"), SubResource("Resource_di2bk"), SubResource("Resource_j1mkj"), SubResource("Resource_mtt1u"), SubResource("Resource_4axw1"), SubResource("Resource_etnhs"), SubResource("Resource_v6xx0"), SubResource("Resource_dncqw"), SubResource("Resource_80chq"), SubResource("Resource_rqcnj"), SubResource("Resource_3eecv"), SubResource("Resource_o111g"), SubResource("Resource_5hxwu"), SubResource("Resource_vdhd8"), SubResource("Resource_21snx"), SubResource("Resource_d3u2v"), SubResource("Resource_22x22"), SubResource("Resource_8d01v"), SubResource("Resource_5hg3k"), SubResource("Resource_oa4fe"), SubResource("Resource_nl1w5"), SubResource("Resource_6wrjp"), SubResource("Resource_1yp7k"), SubResource("Resource_ogb63"), SubResource("Resource_i7t65"), SubResource("Resource_e7d2j"), SubResource("Resource_aslhy")])
-repeatable = false
-autoComplete = true
 metadata/_custom_type_script = "uid://c10jnc1t5gw2i"

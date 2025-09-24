@@ -33,17 +33,14 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_shavg"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("5_gmg4r")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_qdbt3"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("6_2jou7")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_uuntv"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("7_0tn6n")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_w8i8v"]
 script = ExtResource("2_8dov0")
@@ -53,22 +50,18 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_l55jw"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("9_xfc65")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_q4gto"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("10_k2agg")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_xfc65"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("11_0tn6n")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_k2agg"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("12_vsp00")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_7p4q4"]
 script = ExtResource("2_8dov0")
@@ -88,7 +81,6 @@ Value = 25.0
 [sub_resource type="Resource" id="Resource_xlaf5"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("6_2jou7")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_l6fcc"]
 script = ExtResource("2_8dov0")
@@ -98,12 +90,10 @@ Value = 25.0
 [sub_resource type="Resource" id="Resource_13jhf"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("9_xfc65")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_m8u7j"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("11_0tn6n")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ybl6f"]
 script = ExtResource("2_8dov0")
@@ -118,16 +108,8 @@ BaseStats = Array[ExtResource("2_8dov0")]([SubResource("Resource_y8dmy"), SubRes
 StatGrowths = Array[ExtResource("2_8dov0")]([SubResource("Resource_7p4q4"), SubResource("Resource_bc3ky"), SubResource("Resource_wa1o6"), SubResource("Resource_xlaf5"), SubResource("Resource_l6fcc"), SubResource("Resource_13jhf"), SubResource("Resource_m8u7j"), SubResource("Resource_ybl6f")])
 Affinity = ExtResource("1_bq2u5")
 StartingEquippedWeapon = ExtResource("14_gmg4r")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("11_m8u7j")]([ExtResource("12_ipmbt")])
-WeaponDescriptors = Array[ExtResource("11_m8u7j")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_gmg4r")]([])
-FootstepGUID = ""
 DebugName = "Maws"
 loc_DisplayName = "unit_maws_name"
 loc_Description = "unit_maws_desc"
 icon = ExtResource("12_ybl6f")
-startUnlocked = true
-startNameKnown = true

@@ -30,12 +30,10 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_bi4rj"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("3_grtee")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_4pp1j"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("4_urf7l")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_sqsso"]
 script = ExtResource("2_dbc0j")
@@ -60,7 +58,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_qbcu2"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("10_te031")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_qm2ju"]
 script = ExtResource("2_dbc0j")
@@ -70,7 +67,6 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_oomi1"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("12_ggk84")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_g7qvw"]
 script = ExtResource("2_dbc0j")
@@ -132,14 +128,9 @@ StartingEquippedWeapon = ExtResource("14_fsfda")
 StartingTactical = ExtResource("15_mb8jk")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_fireball.tscn"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_flamewall.tscn", "res://RESOURCES/Ability/Standard/ART_beamattack.tscn"])
-Descriptors = Array[ExtResource("13_w741q")]([])
 WeaponDescriptors = Array[ExtResource("13_w741q")]([ExtResource("17_ggk84")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_18x73")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "ElementalMage"
 loc_DisplayName = "unit_elementalmage_name"
 loc_Description = "unit_elementalmage_desc"
 icon = ExtResource("2_fixur")
-startUnlocked = true
-startNameKnown = true

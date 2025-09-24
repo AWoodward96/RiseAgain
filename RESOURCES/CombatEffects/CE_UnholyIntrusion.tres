@@ -9,15 +9,11 @@
 script = ExtResource("1_ipcew")
 Stat = ExtResource("2_iryat")
 FlatValue = -3
-DerivedFromUnit = 0
-SignedPercentageValue = 0.0
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [resource]
 script = ExtResource("4_trg4i")
 StatChanges = Array[ExtResource("1_ipcew")]([SubResource("Resource_k6dnj")])
-AffectedTargets = 0
-Turns = -1
 show_popup = false
 loc_name = "ce_unholyintruder_name"
 loc_desc = "ce_unholyintruder_desc"

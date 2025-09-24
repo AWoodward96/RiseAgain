@@ -16,6 +16,4 @@ script = ExtResource("3_pb3sk")
 loc_title = "meal_notimplemented_title"
 loc_desc = "meal_notimplemented_desc"
 cost = Array[ExtResource("1_8y42p")]([SubResource("Resource_ywa03")])
-statGrowthMods = Array[ExtResource("4_mahdp")]([])
-statModifiers = Array[ExtResource("4_mahdp")]([])
 metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

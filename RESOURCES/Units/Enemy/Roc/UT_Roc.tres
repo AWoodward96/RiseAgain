@@ -34,17 +34,14 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_xdv5d"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("5_o0erp")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_c60xi"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("6_63txm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_8agkh"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("7_d6jj5")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hb7yt"]
 script = ExtResource("2_3ts4j")
@@ -59,12 +56,10 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_op1d7"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("10_bfdyr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jxckb"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("11_2vv6v")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_2vxce"]
 script = ExtResource("2_3ts4j")
@@ -74,7 +69,6 @@ Value = 4
 [sub_resource type="Resource" id="Resource_evd06"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("13_g0pmc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_whflk"]
 script = ExtResource("2_3ts4j")
@@ -129,16 +123,9 @@ BaseStats = Array[ExtResource("2_3ts4j")]([SubResource("Resource_l056c"), SubRes
 StatGrowths = Array[ExtResource("2_3ts4j")]([SubResource("Resource_whflk"), SubResource("Resource_w8a63"), SubResource("Resource_6mgnq"), SubResource("Resource_frkow"), SubResource("Resource_0t7wq"), SubResource("Resource_bry0q"), SubResource("Resource_a1c8e"), SubResource("Resource_4unlv"), SubResource("Resource_kklqk")])
 Affinity = ExtResource("1_41g16")
 StartingEquippedWeapon = ExtResource("15_6705d")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_76hjn")]([ExtResource("13_xw7d6")])
-WeaponDescriptors = Array[ExtResource("12_76hjn")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_6705d")]([])
 FootstepGUID = "{b6992048-47c9-4b7c-a433-1e2649b0a7a5}"
 DebugName = "Roc"
 loc_DisplayName = "unit_roc_name"
 loc_Description = "unit_roc_desc"
 icon = ExtResource("16_qmiun")
-startUnlocked = true
-startNameKnown = true

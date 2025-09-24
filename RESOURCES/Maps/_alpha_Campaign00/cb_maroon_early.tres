@@ -16,81 +16,67 @@
 [sub_resource type="Resource" id="Resource_5bfw7"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("3_q48fm")
-weight = 1
 
 [sub_resource type="Resource" id="Resource_86wal"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("4_0s12q")
-weight = 1
 
 [sub_resource type="Resource" id="Resource_xavni"]
 resource_name = "Map 1"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_5bfw7"), SubResource("Resource_86wal")])
 
 [sub_resource type="Resource" id="Resource_r764v"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("6_1yia5")
-weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
 [sub_resource type="Resource" id="Resource_nqmn3"]
 resource_name = "Event 1"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_r764v")])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [sub_resource type="Resource" id="Resource_thphl"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("6_dof8u")
-weight = 1
 
 [sub_resource type="Resource" id="Resource_4s1ii"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("7_xk4vt")
-weight = 1
 
 [sub_resource type="Resource" id="Resource_f7ysl"]
 resource_name = "Map 2"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_thphl"), SubResource("Resource_4s1ii")])
 
 [sub_resource type="Resource" id="Resource_1yia5"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("6_g6goq")
-weight = 1
 metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
 
 [sub_resource type="Resource" id="Resource_3s71m"]
 resource_name = "Event 2"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_1yia5")])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [sub_resource type="Resource" id="Resource_dtbd4"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("7_ie7j4")
-weight = 1
 
 [sub_resource type="Resource" id="Resource_xrykd"]
 resource_name = "Map 3"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_dtbd4")])
 
 [sub_resource type="Resource" id="Resource_4dgbo"]
 script = ExtResource("2_pfvmt")
 map = ExtResource("9_xuuw2")
-weight = 1
 
 [sub_resource type="Resource" id="Resource_fmftn"]
 resource_name = "Campsite"
 script = ExtResource("1_cjmg3")
-priorityMapOptions = Array[ExtResource("5_fypxo")]([])
 generalMapOptions = Array[ExtResource("2_pfvmt")]([SubResource("Resource_4dgbo")])
 
 [resource]

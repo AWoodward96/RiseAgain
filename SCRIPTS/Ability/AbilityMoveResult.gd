@@ -4,6 +4,7 @@ class_name AbilityMoveResult
 var unitUsable : UnitUsable
 var shapedDirection : GameSettingsTemplate.Direction
 var ctrl : PlayerController
+var atRange : int = 0
 var resultingTile : Tile
 
 func PreviewResult(_map : Map):
@@ -11,7 +12,7 @@ func PreviewResult(_map : Map):
 	if ctrl == null:
 		return
 
-	var unitMovement = unitUsable.MovementData.PreviewMove(_map.grid, Source, Source.CurrentTile, TileTargetData.Tile, shapedDirection)
+	var unitMovement = unitUsable.MovementData.PreviewMove(_map.grid, Source, Source.CurrentTile, TileTargetData.Tile, atRange, shapedDirection)
 	if unitMovement.size() > 0:
 		ctrl.movement_tracker.visible = true
 		ctrl.movement_preview_sprite.visible = true

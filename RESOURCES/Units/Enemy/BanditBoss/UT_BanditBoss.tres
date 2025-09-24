@@ -61,7 +61,6 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_pv12v"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("9_p1yub")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_lowip"]
 script = ExtResource("2_ieqod")
@@ -71,7 +70,6 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_iseox"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("11_p8mo6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_23l18"]
 script = ExtResource("2_ieqod")
@@ -80,11 +78,6 @@ Value = 2
 
 [sub_resource type="Resource" id="Resource_ggq14"]
 script = ExtResource("15_p8mo6")
-OnActionOrigin = true
-OnSource = false
-OnSpecificPosition = false
-SpecificPosition = Vector2i(0, 0)
-Instant = false
 metadata/_custom_type_script = "uid://c8cj2607kxmat"
 
 [sub_resource type="Resource" id="Resource_b0j54"]
@@ -143,12 +136,10 @@ Value = 25.0
 [sub_resource type="Resource" id="Resource_5aln8"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("9_p1yub")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_fprfd"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("11_p8mo6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_b8oh7"]
 script = ExtResource("2_ieqod")
@@ -164,15 +155,7 @@ StatGrowths = Array[ExtResource("2_ieqod")]([SubResource("Resource_bgdu5"), SubR
 Affinity = ExtResource("1_vy8pt")
 StartingTactical = SubResource("PackedScene_85sgu")
 Tier0Abilities = Array[String](["uid://bysotjnllb6fb"])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("11_1j13p")]([])
-WeaponDescriptors = Array[ExtResource("11_1j13p")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("12_h0e5d")]([])
-FootstepGUID = ""
 DebugName = "BanditBoss"
 loc_DisplayName = "unit_banditboss_name"
 loc_Description = "unit_banditboss_desc"
 icon = ExtResource("14_jeiil")
-startUnlocked = true
-startNameKnown = true

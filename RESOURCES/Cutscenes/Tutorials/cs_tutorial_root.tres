@@ -33,7 +33,6 @@ metadata/_custom_type_script = "uid://bkbnnw2fvjt0h"
 script = ExtResource("5_ullrt")
 Conditions = Array[ExtResource("3_citbk")]([SubResource("Resource_ba8nt")])
 True = Array[ExtResource("1_y6up8")]([SubResource("Resource_rbyee"), SubResource("Resource_wwrin")])
-False = Array[ExtResource("1_y6up8")]([])
 metadata/_custom_type_script = "uid://cuheo7oad7i72"
 
 [sub_resource type="Resource" id="Resource_7toe5"]
@@ -55,7 +54,6 @@ metadata/_custom_type_script = "uid://bkbnnw2fvjt0h"
 script = ExtResource("5_ullrt")
 Conditions = Array[ExtResource("3_citbk")]([SubResource("Resource_7toe5")])
 True = Array[ExtResource("1_y6up8")]([SubResource("Resource_upsgr"), SubResource("Resource_0r2di")])
-False = Array[ExtResource("1_y6up8")]([])
 metadata/_custom_type_script = "uid://cuheo7oad7i72"
 
 [sub_resource type="Resource" id="Resource_cxpmf"]
@@ -77,7 +75,6 @@ metadata/_custom_type_script = "uid://bkbnnw2fvjt0h"
 script = ExtResource("5_ullrt")
 Conditions = Array[ExtResource("3_citbk")]([SubResource("Resource_cxpmf")])
 True = Array[ExtResource("1_y6up8")]([SubResource("Resource_u6b57"), SubResource("Resource_ccgfv")])
-False = Array[ExtResource("1_y6up8")]([])
 metadata/_custom_type_script = "uid://cuheo7oad7i72"
 
 [sub_resource type="Resource" id="Resource_ce8mr"]
@@ -99,31 +96,26 @@ metadata/_custom_type_script = "uid://bkbnnw2fvjt0h"
 script = ExtResource("5_ullrt")
 Conditions = Array[ExtResource("3_citbk")]([SubResource("Resource_ce8mr")])
 True = Array[ExtResource("1_y6up8")]([SubResource("Resource_0cy1j"), SubResource("Resource_3g2j0")])
-False = Array[ExtResource("1_y6up8")]([])
 metadata/_custom_type_script = "uid://cuheo7oad7i72"
 
 [sub_resource type="Resource" id="Resource_ae57w"]
 script = ExtResource("4_76rbs")
 Cutscene = ExtResource("3_wob3l")
-NOT = false
 metadata/_custom_type_script = "uid://c2efja0836lg1"
 
 [sub_resource type="Resource" id="Resource_iuoal"]
 script = ExtResource("4_76rbs")
 Cutscene = ExtResource("8_ba8nt")
-NOT = false
 metadata/_custom_type_script = "uid://c2efja0836lg1"
 
 [sub_resource type="Resource" id="Resource_mxa2o"]
 script = ExtResource("4_76rbs")
 Cutscene = ExtResource("9_owh4j")
-NOT = false
 metadata/_custom_type_script = "uid://c2efja0836lg1"
 
 [sub_resource type="Resource" id="Resource_xthae"]
 script = ExtResource("4_76rbs")
 Cutscene = ExtResource("10_rbyee")
-NOT = false
 metadata/_custom_type_script = "uid://c2efja0836lg1"
 
 [sub_resource type="Resource" id="Resource_8rt6v"]
@@ -132,19 +124,15 @@ metadata/_custom_type_script = "uid://b0nhkd1ubw5h"
 
 [sub_resource type="Resource" id="Resource_fkbbp"]
 script = ExtResource("12_7toe5")
-IsCampaignConsideredVictorious = true
 metadata/_custom_type_script = "uid://btll8vy86gdjd"
 
 [sub_resource type="Resource" id="Resource_a66jh"]
 script = ExtResource("5_ullrt")
 Conditions = Array[ExtResource("3_citbk")]([SubResource("Resource_ae57w"), SubResource("Resource_iuoal"), SubResource("Resource_mxa2o"), SubResource("Resource_xthae")])
 True = Array[ExtResource("1_y6up8")]([SubResource("Resource_8rt6v"), SubResource("Resource_fkbbp")])
-False = Array[ExtResource("1_y6up8")]([])
 metadata/_custom_type_script = "uid://cuheo7oad7i72"
 
 [resource]
 script = ExtResource("2_6pvlw")
-startingRequirement = Array[ExtResource("3_citbk")]([])
 events = Array[ExtResource("1_y6up8")]([SubResource("Resource_owh4j"), SubResource("Resource_ujpd5"), SubResource("Resource_raahw"), SubResource("Resource_w0dt4"), SubResource("Resource_a66jh")])
-repeatable = false
 autoComplete = false

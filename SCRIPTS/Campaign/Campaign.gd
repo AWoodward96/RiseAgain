@@ -5,12 +5,17 @@ class_name Campaign
 @export var UnitHoldingArea : Node2D
 @export var Convoy : ConvoyInstance
 
+var currentCampaignTemplate : CampaignTemplate
 var startingPOI : POI
-var campaignLedger : Array[String] # This uses the internal ID name to determine which node is which
+var campaignLedger : Array[MapOption]
 var currentPOI : POI
 
 var currentMap : Map
-var traversedPOIs : int
+var currentMapOption : MapOption
+var currentMapBlock : MapBlock
+var startingCampaignBlock : CampaignBlock
+var currentCampaignBlock : CampaignBlock
+var campaignBlockIndex : int
 
 var CampaignRng : DeterministicRNG
 
@@ -18,22 +23,34 @@ var StartingRosterTemplates : Array[UnitTemplate]
 var CurrentRoster : Array[UnitInstance]
 var DeadUnits : Array[UnitTemplate]
 
+var campaignBlockMapIndex : int
+var traversedCampaignBlocks : int
 var resumingCampaign : bool = false
 var currentLevelDifficulty : int
 var alphaTeamSelection
 var debug_leveloverride : int = 0
 
-func InitializeNewCampaign(_startingPOI : POI, _startingRoster : Array[UnitTemplate]):
+func InitializeNewCampaign(_campaignTemplate : CampaignTemplate, _startingRoster : Array[UnitTemplate]):
 	StartingRosterTemplates = _startingRoster
-	traversedPOIs = 0
+	currentCampaignTemplate = _campaignTemplate
+	campaignBlockMapIndex = 0
+	traversedCampaignBlocks = 0
 
 	CampaignRng = DeterministicRNG.Construct()
-	startingPOI = _startingPOI
-	currentPOI = _startingPOI
+	if currentCampaignTemplate.startingCampaignOptions.size() == 0:
+		push_error("Campaign: " , name, " - does not have a starting campaign block and will not function.")
+		return
+
+	startingCampaignBlock = currentCampaignTemplate.GetInitialCampaignBlock(CampaignRng)
+	currentCampaignBlock = startingCampaignBlock
 
 	GetNextMapOption()
 
 func StartCampaign():
+	if currentCampaignTemplate == null:
+		push_error("Attempting to start a campaign without preinitialization. No Current Campaign Template found")
+		return
+
 	UnitHoldingArea.visible = false
 
 	if currentMap != null:
@@ -44,37 +61,39 @@ func StartCampaign():
 			ResumeMap()
 
 func GetNextMapOption():
-	# open up the map, if it's not already open
-	if WorldMap.fullscreenHelperUI == null:
-		WorldMap.OpenWorldMapFullscreenUI(WorldMap.WorldMapUIState.NextMap)
-	else:
-		WorldMap.Open(WorldMap.WorldMapUIState.NextMap)
+	if campaignBlockMapIndex >= currentCampaignBlock.mapOptions.size():
+		traversedCampaignBlocks += 1
+		campaignBlockMapIndex = 0
+		if currentCampaignTemplate.campaignBlockCap != -1 && traversedCampaignBlocks >= currentCampaignTemplate.campaignBlockCap && currentCampaignTemplate.campaignFinale != null:
+			# We in endgame
+			currentCampaignBlock = currentCampaignTemplate.campaignFinale
+		else:
+			if currentCampaignBlock.nextCampaignBlocks.size() == 0:
+				# Well it's not.... easy to do anything here so just... end the map
+				ReportCampaignResult(true)
+				GameManager.ChangeGameState(BastionGameState.new(), null)
+				return
 
-	WorldMap.POISelected.connect(OnPOISelected)
-	pass
+			# if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
+			var nextIndex = CampaignRng.NextInt(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
+			currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
 
-func OnPOISelected(_poi : POI):
-	WorldMap.POISelected.disconnect(OnPOISelected)
-
-	if _poi == WorldMap.bastionPOI:
-		ReportCampaignResult(true)
-		GameManager.ReturnToBastion()
+	currentMapBlock = currentCampaignBlock.GetMapBlock(campaignBlockMapIndex)
+	if currentMapBlock == null:
+		push_error("Campaign: " , name, " - rolled a map block from the map options that is null somehow.")
 		return
 
-	# okay so we have the poi now we need to evaluate what the next map is
-	var mapOption = _poi.Maps.GetMapFromBlock()
+	currentMapOption = currentMapBlock.GetMapFromBlock()
+
 	if currentMap != null:
 		currentMap.queue_free()
 
-	var newMap = mapOption.GetMap()
+	var newMap = currentMapOption.GetMap()
 	if newMap == null:
 		GetNextMapOption()
 		return
 
 	currentMap = newMap.instantiate() as Map
-	currentPOI = _poi
-	WorldMap.CloseUI()
-	StartMap()
 	pass
 
 # Takes the current map option and starts it
@@ -105,7 +124,7 @@ func StartMap():
 	if currentMap.get_parent() != current_map_parent:
 		current_map_parent.add_child(currentMap)
 
-	campaignLedger.append(currentPOI.internal_name)
+	campaignLedger.append(currentMapOption)
 	UIManager.HideLoadingScreen()
 	PersistDataManager.SaveCampaign()
 
@@ -133,7 +152,14 @@ func MapComplete():
 		if unit.currentHealth > 0:
 			PersistDataManager.universeData.GrantPrestiegeExp(unit.Template, GameManager.UnitSettings.PrestiegeGrantedPerMap)
 
+	campaignBlockMapIndex += 1
 	GetNextMapOption()
+
+	if currentMap != null:
+		StartMap()
+	else:
+		# TODO: This should probably be
+		GameManager.ReturnToBastion()
 	UIManager.HideLoadingScreen()
 
 func UnitInjured(_unitInstance : UnitInstance):
@@ -202,21 +228,26 @@ func GetUnitFromTemplate(_unitTemplate : UnitTemplate):
 
 	return null
 
-static func CreateNewCampaignInstance(_startingPOI : POI, _startingRoster : Array[UnitTemplate]):
+static func CreateNewCampaignInstance(_campaignTemplate : CampaignTemplate, _startingRoster : Array[UnitTemplate]):
 	var campaignInstance = GameManager.GameSettings.CampaignInstancePrefab.instantiate() as Campaign
 	if campaignInstance == null:
 		return null
 
 	GameManager.CurrentCampaign = campaignInstance
-	campaignInstance.InitializeNewCampaign(_startingPOI, _startingRoster)
+	campaignInstance.InitializeNewCampaign(_campaignTemplate, _startingRoster)
 	return campaignInstance
 
 func ToJSON():
 	var jsonDict = {
+		"currentCampaignTemplate" = currentCampaignTemplate.resource_path,
 		"currentLevelDifficulty" = currentLevelDifficulty,
 		"StartingRosterTemplates" = PersistDataManager.ResourcePathToJSON(StartingRosterTemplates),
-		"currentPOI" = currentPOI.internal_name,
-		"startingPOI" = startingPOI.internal_name,
+		"campaignBlockMapIndex" = campaignBlockMapIndex,
+		"traversedCampaignBlocks" = traversedCampaignBlocks,
+		"startingCampaignBlock" = startingCampaignBlock.resource_path,
+		"currentCampaignBlock" = currentCampaignBlock.resource_path,
+		"currentMapOption" = currentMapOption.resource_path,
+		"currentMapBlock" = currentMapBlock.resource_path,
 		"campaignRNG" = CampaignRng.ToJSON(),
 		"campaignLedger" = campaignLedger,
 		"Convoy" = Convoy.ToJSON()
@@ -228,17 +259,20 @@ func ToJSON():
 
 static func FromJSON(_dict : Dictionary):
 	var campaign = GameManager.GameSettings.CampaignInstancePrefab.instantiate() as Campaign
-	campaign.currentLevelDifficulty = _dict["currentLevelDifficulty"]
+
 
 	PersistDataManager.JSONtoResourceFromPath(_dict["StartingRosterTemplates"], campaign.StartingRosterTemplates)
 
-	campaign.currentPOI = WorldMap.GetPOIFromID(_dict["currentPOI"])
-	campaign.startingPOI = WorldMap.GetPOIFromID(_dict["startingPOI"])
+	campaign.currentCampaignTemplate = load(_dict["currentCampaignTemplate"])
+	campaign.campaignBlockMapIndex = PersistDataManager.LoadFromJSON("campaignBlockMapIndex", _dict)
+	campaign.traversedCampaignBlocks = PersistDataManager.LoadFromJSON("traversedCampaignBlocks", _dict)
+	campaign.startingCampaignBlock = load(_dict["startingCampaignBlock"])
+	campaign.currentCampaignBlock = load(_dict["currentCampaignBlock"])
+	campaign.currentMapOption = load(_dict["currentMapOption"])
+	campaign.currentLevelDifficulty = _dict["currentLevelDifficulty"]
+	campaign.currentMapBlock = load(_dict["currentMapBlock"])
 
-	# Gotta load the ledger manually
-	campaign.campaignLedger.clear()
-	for string in _dict["campaignLedger"]:
-		campaign.campaignLedger.append(string)
+	PersistDataManager.JSONtoResourceFromPath(_dict["campaignLedger"], campaign.campaignLedger)
 
 	# Handle items in the convoy
 	campaign.Convoy.FromJSON(_dict["Convoy"])

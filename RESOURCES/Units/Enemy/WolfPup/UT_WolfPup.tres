@@ -34,17 +34,14 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_0sg4x"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("4_7icxw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_2k2yt"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("5_jasgv")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_k8354"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("6_trrxd")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_seakt"]
 script = ExtResource("2_ndbtr")
@@ -59,7 +56,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_1ht2i"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("10_v1ox2")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_asq6f"]
 script = ExtResource("2_ndbtr")
@@ -74,7 +70,6 @@ Value = 1
 [sub_resource type="Resource" id="Resource_00ypw"]
 script = ExtResource("2_ndbtr")
 Template = ExtResource("13_jr5rj")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_ndbtr")
@@ -128,16 +123,9 @@ BaseStats = Array[ExtResource("2_ndbtr")]([SubResource("Resource_ckqos"), SubRes
 StatGrowths = Array[ExtResource("2_ndbtr")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_3oamw"), SubResource("Resource_x26yk")])
 Affinity = ExtResource("1_rohrg")
 StartingEquippedWeapon = ExtResource("15_wtsgl")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_38fi3")]([ExtResource("10_ioa71")])
-WeaponDescriptors = Array[ExtResource("12_38fi3")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_wtsgl")]([])
 FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "WolfPup"
 loc_DisplayName = "unit_wolfpup_name"
 loc_Description = "unit_wolfpup_desc"
 icon = ExtResource("23_blehy")
-startUnlocked = true
-startNameKnown = true

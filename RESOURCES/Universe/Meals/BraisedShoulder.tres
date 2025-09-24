@@ -30,6 +30,5 @@ script = ExtResource("2_dos15")
 loc_title = "meal_braisedshoulder_title"
 loc_desc = "meal_braisedshoulder_desc"
 cost = Array[ExtResource("1_gfxt1")]([SubResource("Resource_chi0t")])
-statGrowthMods = Array[ExtResource("3_hnsj4")]([])
 statModifiers = Array[ExtResource("3_hnsj4")]([SubResource("Resource_ltar7"), SubResource("Resource_qqj1f")])
 metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

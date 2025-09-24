@@ -18,6 +18,7 @@ signal OnTileSelected(_tile)
 @export var movement_tracker : Line2D #= %MovementTracker
 @export var movement_preview_sprite: Sprite2D #= %MovementPreviewSprite
 @export var grid_entity_preview_sprite: Sprite2D #= %GridEntityPreviewSprite
+@export var shaped_directional_tracker : Line2D
 
 var ControllerState : PlayerControllerState
 var ReticleQuintet : Control.LayoutPreset
@@ -62,6 +63,7 @@ var currentShakeDuration : float
 var currentShakeDurationMax : float
 
 func Initialize(_map: Map):
+	shaped_directional_tracker.visible = false
 	currentMap = _map
 	currentGrid = _map.grid
 	tileSize = _map.TileSize
@@ -442,3 +444,31 @@ func ShowTutorialReticle(_pos : Vector2i):
 
 func HideTutorialReticle():
 	tutorialReticle.visible = false
+
+func ShowShapedDirectionalHelper(_startingTile : Tile, _range : Vector2i, _direction : GameSettingsTemplate.Direction):
+	# Don't bother if the range is the exact same
+	if _range.x == _range.y:
+		return
+
+	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_direction)
+	var offset = (_range.x - 1) * directionVector * currentGrid.CellSize # -1 because direction vector is already at length 1
+	shaped_directional_tracker.visible = true
+	var pos =  _startingTile.Position * currentGrid.CellSize
+	match _direction:
+		0:
+			pos += Vector2i(currentGrid.CellSize / 2, currentGrid.CellSize)
+		1:
+			pos += Vector2i(0, currentGrid.CellSize / 2)
+		2:
+			pos += Vector2i(currentGrid.CellSize / 2, 0)
+		3:
+			pos += Vector2i(currentGrid.CellSize, currentGrid.CellSize / 2)
+
+
+	shaped_directional_tracker.position = pos + offset
+	shaped_directional_tracker.clear_points()
+	shaped_directional_tracker.add_point(Vector2.ZERO)
+	shaped_directional_tracker.add_point(directionVector * (_range.y - _range.x + 1) * currentGrid.CellSize)
+
+func ClearShapedDirectionalHelper():
+	shaped_directional_tracker.visible = false

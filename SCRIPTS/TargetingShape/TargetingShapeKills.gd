@@ -3,7 +3,7 @@ class_name TargetingShapeKills
 
 @export var leveledShapes : Array[ThresholdTargetingShape]
 
-func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile):
+func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _originTile : Tile, _atRange : int):
 	var res = GetShapeFromKills(_ability)
 	if res == null:
 		return []
@@ -23,13 +23,13 @@ func GetTileData(_unit : UnitInstance, _ability : Ability, _grid : Grid, _origin
 
 	return returnedTileData
 
-func GetCoords(_unit : UnitInstance, _ability : Ability):
+func GetCoords(_unit : UnitInstance, _ability : Ability, _range : int):
 	var res = GetShapeFromKills(_ability)
 	if res == null:
 		return []
 	return res.TileCoordinates
 
-func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability):
+func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability, _range : int):
 	var res = GetShapeFromKills(_ability)
 	if res == null:
 		return null

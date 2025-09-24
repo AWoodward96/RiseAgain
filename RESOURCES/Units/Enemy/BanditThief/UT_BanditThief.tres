@@ -32,7 +32,6 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_mjduu"]
 script = ExtResource("2_0832t")
 Template = ExtResource("5_xq8pm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ar38n"]
 script = ExtResource("2_0832t")
@@ -52,7 +51,6 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_gch5s"]
 script = ExtResource("2_0832t")
 Template = ExtResource("9_gq4q8")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_mudqi"]
 script = ExtResource("2_0832t")
@@ -62,7 +60,6 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_h5aij"]
 script = ExtResource("2_0832t")
 Template = ExtResource("11_xq8pm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_x5y11"]
 script = ExtResource("2_0832t")
@@ -97,12 +94,10 @@ Value = 20.0
 [sub_resource type="Resource" id="Resource_j1wni"]
 script = ExtResource("2_0832t")
 Template = ExtResource("9_gq4q8")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_gq4q8"]
 script = ExtResource("2_0832t")
 Template = ExtResource("11_xq8pm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_tuf3f"]
 script = ExtResource("2_0832t")
@@ -117,16 +112,7 @@ BaseStats = Array[ExtResource("2_0832t")]([SubResource("Resource_hn55p"), SubRes
 StatGrowths = Array[ExtResource("2_0832t")]([SubResource("Resource_toyr5"), SubResource("Resource_s220c"), SubResource("Resource_esaup"), SubResource("Resource_taear"), SubResource("Resource_udexy"), SubResource("Resource_j1wni"), SubResource("Resource_gq4q8"), SubResource("Resource_tuf3f")])
 Affinity = ExtResource("1_kffkv")
 StartingEquippedWeapon = ExtResource("13_c1uvx")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("11_pytks")]([])
-WeaponDescriptors = Array[ExtResource("11_pytks")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("12_c1uvx")]([])
-FootstepGUID = ""
 DebugName = "BanditThief"
 loc_DisplayName = "unit_banditthief_name"
 loc_Description = "unit_banditthief_desc"
 icon = ExtResource("13_pngla")
-startUnlocked = true
-startNameKnown = true

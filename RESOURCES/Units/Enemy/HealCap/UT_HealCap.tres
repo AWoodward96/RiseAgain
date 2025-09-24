@@ -31,7 +31,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_rwfmq"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("5_t6x3g")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_27fya"]
 script = ExtResource("2_y3xvp")
@@ -41,7 +40,6 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_qyajh"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("7_gfxnt")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_k3o6q"]
 script = ExtResource("2_y3xvp")
@@ -51,7 +49,6 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_7ncay"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("9_bxnph")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jf1gk"]
 script = ExtResource("2_y3xvp")
@@ -61,12 +58,10 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_gfxnt"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("11_t6x3g")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ysayb"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("12_3g7ki")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_fegky"]
 script = ExtResource("2_y3xvp")
@@ -81,7 +76,6 @@ Value = 30.0
 [sub_resource type="Resource" id="Resource_xiax8"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("5_t6x3g")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ncrfs"]
 script = ExtResource("2_y3xvp")
@@ -91,17 +85,14 @@ Value = 50.0
 [sub_resource type="Resource" id="Resource_irvnf"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("7_gfxnt")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_lv3ly"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("9_bxnph")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_bxnph"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("11_t6x3g")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hfe2a"]
 script = ExtResource("2_y3xvp")
@@ -116,15 +107,7 @@ BaseStats = Array[ExtResource("2_y3xvp")]([SubResource("Resource_m1uct"), SubRes
 StatGrowths = Array[ExtResource("2_y3xvp")]([SubResource("Resource_fegky"), SubResource("Resource_0v4vg"), SubResource("Resource_xiax8"), SubResource("Resource_ncrfs"), SubResource("Resource_irvnf"), SubResource("Resource_lv3ly"), SubResource("Resource_bxnph"), SubResource("Resource_hfe2a")])
 Affinity = ExtResource("1_4fvcs")
 Tier0Abilities = Array[String](["uid://crgp0s3avbs4i"])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("11_pv884")]([])
-WeaponDescriptors = Array[ExtResource("11_pv884")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("12_gi3ry")]([])
-FootstepGUID = ""
 DebugName = "HealCap"
 loc_DisplayName = "unit_healcap_name"
 loc_Description = "unit_healcap_desc"
 icon = ExtResource("12_jbv3c")
-startUnlocked = true
-startNameKnown = true

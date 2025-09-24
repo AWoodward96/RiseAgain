@@ -10,7 +10,6 @@
 [sub_resource type="Resource" id="Resource_oiesj"]
 script = ExtResource("2_dqy40")
 Table = ExtResource("3_bkn66")
-Weight = 1.0
 AccumulatedWeight = 1.0
 
 [sub_resource type="Resource" id="Resource_reosm"]

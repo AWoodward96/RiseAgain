@@ -14,43 +14,36 @@
 [sub_resource type="Resource" id="Resource_dmxar"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("1_4v6xu")
-Weight = 1.0
 AccumulatedWeight = 1.0
 
 [sub_resource type="Resource" id="Resource_dp3md"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("4_dmxar")
-Weight = 1.0
 AccumulatedWeight = 2.0
 
 [sub_resource type="Resource" id="Resource_ha0yx"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("4_x450q")
-Weight = 1.0
 AccumulatedWeight = 3.0
 
 [sub_resource type="Resource" id="Resource_8ggyv"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("5_f3hp4")
-Weight = 1.0
 AccumulatedWeight = 4.0
 
 [sub_resource type="Resource" id="Resource_4ww77"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("6_kcbml")
-Weight = 1.0
 AccumulatedWeight = 5.0
 
 [sub_resource type="Resource" id="Resource_mil6f"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("7_edpnh")
-Weight = 1.0
 AccumulatedWeight = 6.0
 
 [sub_resource type="Resource" id="Resource_l4a38"]
 script = ExtResource("2_eremd")
 Unit = ExtResource("8_dmxar")
-Weight = 1.0
 AccumulatedWeight = 7.0
 
 [resource]

@@ -293,6 +293,11 @@ func OnTileUpdated(_tile : Tile):
 	if IsDying || Template == null || _tile == null:
 		return
 
+	# WARNING: This could backfire for me. Not sure. Updating current tile halway through the movement might suck
+	# Verify that this doesn't break everything over the next couple of days to make sure everything is still working
+	# as intended. This change was made to stop pop-outs surrounding interactions with Shroud
+	CurrentTile = _tile
+
 	if Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
 		if _tile.OpenWater && !Submerged:
 			SetSubmerged(true)

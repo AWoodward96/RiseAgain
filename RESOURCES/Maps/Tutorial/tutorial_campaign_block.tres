@@ -24,19 +24,15 @@
 
 [sub_resource type="Resource" id="Resource_kkxsi"]
 script = ExtResource("3_vfe4g")
-Priority = 1
 map = ExtResource("4_1w8i6")
 
 [sub_resource type="Resource" id="Resource_67q65"]
 script = ExtResource("1_rnm6s")
 priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_kkxsi")])
-generalMapOptions = Array[ExtResource("2_rfxen")]([])
 
 [sub_resource type="Resource" id="Resource_xpm3n"]
 script = ExtResource("8_nqbd1")
 Unit = ExtResource("7_xpm3n")
-Weight = 1.0
-AccumulatedWeight = 0.0
 metadata/_custom_type_script = "uid://c624kc888mlih"
 
 [sub_resource type="Resource" id="Resource_c0sfq"]
@@ -60,8 +56,6 @@ _bundled = {
 [sub_resource type="Resource" id="Resource_nqbd1"]
 script = ExtResource("10_ofof7")
 ItemPrefab = SubResource("PackedScene_yl5rs")
-Weight = 1.0
-AccumulatedWeight = 0.0
 metadata/_custom_type_script = "uid://4xqdaqcl77e1"
 
 [sub_resource type="Resource" id="Resource_hodaj"]
@@ -85,8 +79,6 @@ _bundled = {
 [sub_resource type="Resource" id="Resource_1kvpe"]
 script = ExtResource("10_ofof7")
 ItemPrefab = SubResource("PackedScene_bb5gj")
-Weight = 1.0
-AccumulatedWeight = 0.0
 metadata/_custom_type_script = "uid://4xqdaqcl77e1"
 
 [sub_resource type="Resource" id="Resource_ofof7"]
@@ -97,7 +89,6 @@ metadata/_custom_type_script = "uid://ctyhw0gbd17qw"
 
 [sub_resource type="Resource" id="Resource_06ain"]
 script = ExtResource("3_vfe4g")
-Priority = 1
 map = ExtResource("5_jnsty")
 rewardOverride = SubResource("Resource_ofof7")
 metadata/_custom_type_script = "uid://bhga6uu5rdson"
@@ -105,12 +96,10 @@ metadata/_custom_type_script = "uid://bhga6uu5rdson"
 [sub_resource type="Resource" id="Resource_chk5s"]
 script = ExtResource("1_rnm6s")
 priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_06ain")])
-generalMapOptions = Array[ExtResource("2_rfxen")]([])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [sub_resource type="Resource" id="Resource_q3vch"]
 script = ExtResource("3_vfe4g")
-Priority = 1
 map = ExtResource("13_xpm3n")
 rewardOverride = ExtResource("14_1kvpe")
 metadata/_custom_type_script = "uid://bhga6uu5rdson"
@@ -118,22 +107,18 @@ metadata/_custom_type_script = "uid://bhga6uu5rdson"
 [sub_resource type="Resource" id="Resource_kvft6"]
 script = ExtResource("1_rnm6s")
 priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_q3vch")])
-generalMapOptions = Array[ExtResource("2_rfxen")]([])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [sub_resource type="Resource" id="Resource_wbdsm"]
 script = ExtResource("3_vfe4g")
-Priority = 1
 map = ExtResource("14_nqbd1")
 metadata/_custom_type_script = "uid://bhga6uu5rdson"
 
 [sub_resource type="Resource" id="Resource_8kkt1"]
 script = ExtResource("1_rnm6s")
 priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_wbdsm")])
-generalMapOptions = Array[ExtResource("2_rfxen")]([])
 metadata/_custom_type_script = "uid://cu36n6t5whrim"
 
 [resource]
 script = ExtResource("2_ntku5")
 mapOptions = Array[ExtResource("1_rnm6s")]([SubResource("Resource_67q65"), SubResource("Resource_chk5s"), SubResource("Resource_kvft6"), SubResource("Resource_8kkt1")])
-nextCampaignBlocks = Array[String]([])

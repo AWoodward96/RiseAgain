@@ -46,7 +46,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_8rwdr"]
 script = ExtResource("2_aosco")
 Template = ExtResource("7_b6bpw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_daox4"]
 script = ExtResource("2_aosco")
@@ -61,7 +60,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_qfpnr"]
 script = ExtResource("2_aosco")
 Template = ExtResource("10_b6nw1")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_tnrk0"]
 script = ExtResource("2_aosco")
@@ -71,7 +69,6 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_0188y"]
 script = ExtResource("2_aosco")
 Template = ExtResource("12_g1poa")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_fnk75"]
 script = ExtResource("2_aosco")
@@ -133,14 +130,9 @@ StartingEquippedWeapon = ExtResource("14_1mqxv")
 StartingTactical = ExtResource("15_ij3sq")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_drain.tscn"])
 Tier1Abilities = Array[String](["uid://bo53wngqa8non", "res://RESOURCES/Ability/Standard/ART_darkfell.tscn"])
-Descriptors = Array[ExtResource("12_trwo8")]([])
 WeaponDescriptors = Array[ExtResource("12_trwo8")]([ExtResource("17_g1poa"), ExtResource("18_b6bpw")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_aosco")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "WildMage"
 loc_DisplayName = "unit_wildmage_name"
 loc_Description = "unit_wildmage_desc"
 icon = ExtResource("16_hqm1y")
-startUnlocked = true
-startNameKnown = true

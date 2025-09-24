@@ -34,17 +34,14 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_afprk"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("4_eh3xl")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_556y8"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("5_j4rka")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_wvvge"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("6_fjivr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_tbo4c"]
 script = ExtResource("2_rbfec")
@@ -59,7 +56,6 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_hemky"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("9_3qtqw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_b5u4x"]
 script = ExtResource("2_rbfec")
@@ -74,7 +70,6 @@ Value = 4
 [sub_resource type="Resource" id="Resource_01dhn"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("13_2w0or")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_rbfec")
@@ -114,7 +109,6 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_wcjrc"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("12_ksm60")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_o0giq"]
 script = ExtResource("2_rbfec")
@@ -129,16 +123,9 @@ BaseStats = Array[ExtResource("2_rbfec")]([SubResource("Resource_70iv8"), SubRes
 StatGrowths = Array[ExtResource("2_rbfec")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wcjrc"), SubResource("Resource_o0giq")])
 Affinity = ExtResource("1_wgq58")
 StartingEquippedWeapon = ExtResource("15_bu1tt")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_hyt3s")]([ExtResource("10_fgbow")])
-WeaponDescriptors = Array[ExtResource("12_hyt3s")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_bu1tt")]([])
 FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "Zolf"
 loc_DisplayName = "unit_zolf_name"
 loc_Description = "unit_zolf_desc"
 icon = ExtResource("23_og07h")
-startUnlocked = true
-startNameKnown = true

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://druuu3tv4re06"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=45 format=3 uid="uid://druuu3tv4re06"]
 
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_bqdbj"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_qm2y0"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://dpqb5rpiva2ho" path="res://RESOURCES/Unlocks/ULK_wolf_tooth.tres" id="15_nthln"]
 [ext_resource type="Resource" uid="uid://jwetuomlowq" path="res://RESOURCES/Descriptors/DES_Teeth.tres" id="17_6m4d0"]
 [ext_resource type="Resource" uid="uid://rynquponaejb" path="res://RESOURCES/Unlocks/ULK_howl.tres" id="18_csh4u"]
+[ext_resource type="Texture2D" uid="uid://j42xhhw3fm7p" path="res://ART/Units/Wolfs/Spritesheet_Wolf.png" id="23_1qlfw"]
 [ext_resource type="Texture2D" uid="uid://c2kg7bpf1mqb0" path="res://ART/Icons/Units/adolescentwolf.png" id="23_ipfm4"]
 
 [sub_resource type="Resource" id="Resource_drfyp"]
@@ -41,7 +42,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_iad1d"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("6_vk4tj")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_u60o3"]
 script = ExtResource("3_pgxgp")
@@ -61,7 +61,6 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_8msav"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("10_vyxpi")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_aarhc"]
 script = ExtResource("3_pgxgp")
@@ -76,7 +75,6 @@ Value = 4
 [sub_resource type="Resource" id="Resource_wpxot"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("13_1qlfw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("3_pgxgp")
@@ -123,6 +121,10 @@ script = ExtResource("3_pgxgp")
 Template = ExtResource("13_1qlfw")
 Value = 10
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_csh4u"]
+atlas = ExtResource("23_1qlfw")
+region = Rect2(0, 4, 46, 37)
+
 [resource]
 script = ExtResource("1_qm2y0")
 VisualPrefab = ExtResource("9_ctp86")
@@ -132,15 +134,11 @@ Affinity = ExtResource("1_bqdbj")
 StartingEquippedWeapon = ExtResource("15_nthln")
 StartingTactical = ExtResource("18_csh4u")
 Tier0Abilities = Array[String](["uid://dp0gbxwj2y26b"])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_644si")]([ExtResource("10_fydjx")])
 WeaponDescriptors = Array[ExtResource("12_644si")]([ExtResource("17_6m4d0")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_6v6rf")]([])
 FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "AdolescentWolf"
 loc_DisplayName = "unit_adolescentwolf_name"
 loc_Description = "unit_adolescentwolf_desc"
 icon = ExtResource("23_ipfm4")
-startUnlocked = true
-startNameKnown = true
+unitMovementPreview = SubResource("AtlasTexture_csh4u")

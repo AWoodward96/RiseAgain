@@ -70,7 +70,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Projectile is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shaped_tiles.GetTargetedTilesFromDirection(Source, SourceAbility, CurrentMap.grid, Origin, GameSettingsTemplate.Direction.Up, false, false, false)
+	var newTiles = shaped_tiles.GetTargetedTilesFromDirection(Source, SourceAbility, CurrentMap.grid, Origin, GameSettingsTemplate.Direction.Up, 0, false, false, false)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue

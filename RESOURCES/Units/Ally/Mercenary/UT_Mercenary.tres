@@ -42,7 +42,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_jqwxf"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("5_ctgt6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jf4rf"]
 script = ExtResource("2_7td1i")
@@ -62,7 +61,6 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_c8r1a"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("10_rvsvh")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_oqblm"]
 script = ExtResource("2_7td1i")
@@ -77,7 +75,6 @@ Value = 2
 [sub_resource type="Resource" id="Resource_erkg2"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("13_6aoqw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_7td1i")
@@ -122,7 +119,6 @@ Value = 30
 [sub_resource type="Resource" id="Resource_capay"]
 script = ExtResource("2_7td1i")
 Template = ExtResource("13_6aoqw")
-Value = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0b1h"]
 atlas = ExtResource("18_r0b1h")
@@ -138,15 +134,10 @@ StartingEquippedWeapon = ExtResource("14_in7tf")
 StartingTactical = ExtResource("15_xt3j1")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_heroicleap.tscn"])
 Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_cleave.tscn", "uid://dqbqlsqcw17lo"])
-Descriptors = Array[ExtResource("13_a62ql")]([])
 WeaponDescriptors = Array[ExtResource("13_a62ql")]([ExtResource("17_11mif"), ExtResource("18_6aoqw")])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_hngth")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "Mercenary"
 loc_DisplayName = "unit_mercenary_name"
 loc_Description = "unit_mercenary_desc"
 icon = ExtResource("2_3myko")
-startUnlocked = true
-startNameKnown = true
 unitMovementPreview = SubResource("AtlasTexture_r0b1h")

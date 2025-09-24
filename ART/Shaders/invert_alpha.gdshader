@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform float alpha = 1.0;
 
 void fragment()
 {
@@ -13,6 +14,6 @@ void fragment()
 	// Only invert the colors of the screen when our current pixel has an alpha value. Meaning it's opaque, not transparent
 	if(currentTexturePixel.a == 1.0)
 	{
-    	COLOR = vec4(1.0 - currentScreenPixel.rgb, currentScreenPixel.a);
+    	COLOR = vec4(1.0 - currentScreenPixel.rgb, alpha);
 	}
 }
