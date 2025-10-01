@@ -1,11 +1,11 @@
 extends ActionStepResult
-class_name RepeatPerFocusStepResult
+class_name RepeatStepResult
 
 var SubStepResult : Array[ActionStepResult]
-var FocusAmount : int
+var RepeatAmount : int
 
 func PreviewResult(_map : Map):
-	for i in FocusAmount:
+	for i in RepeatAmount:
 		for result in SubStepResult:
 			if result != null:
 				result.PreviewResult(_map)

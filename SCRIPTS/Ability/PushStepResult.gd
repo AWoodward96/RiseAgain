@@ -36,7 +36,7 @@ func PreviewResult(_map : Map):
 			elif willCollide && canDamageUser:
 				unit.damage_indicator.collisionDamage += HealthDelta
 
-			# TODO: Make a system for phantoms - showing where a unit might be after an action is performed
+			# show where a unit might be after an action is performed
 			ctrl.movement_tracker.visible = true
 			ctrl.movement_preview_sprite.visible = true
 			ctrl.movement_tracker.clear_points()
