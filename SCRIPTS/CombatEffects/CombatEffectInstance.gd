@@ -2,30 +2,41 @@ extends Node2D
 class_name CombatEffectInstance
 
 @export var TurnsRemaining : int
+@export var Stacks : int = 1
 
 var Template : CombatEffectTemplate
 var SourceUnit : UnitInstance
 var AffectedUnit : UnitInstance
 var AbilitySource : Ability
 
-static func Create(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _template : CombatEffectTemplate, _actionLog : ActionLog):
+static func Create(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _template : CombatEffectTemplate,  _abilitySource : Ability, _actionLog : ActionLog):
 	if _template == null || _affectedUnit == null:
 		return null
 
-	return _template.CreateInstance(_sourceUnit, _affectedUnit, _actionLog)
+	return _template.CreateInstance(_sourceUnit, _affectedUnit, _abilitySource, _actionLog)
 
 func IsExpired():
 	if TurnsRemaining == 0:
 		return true
 
+func OnEffectApplied():
+	pass
+
+func OnEffectRemoved():
+	pass
+
 func OnTurnStart():
+	pass
+
+func OnStackUpdated():
 	pass
 
 func ToJSON():
 	var dict = {
 			"type" : "CombatEffectInstance",
 			"TurnsRemaining" : TurnsRemaining,
-			"Template" : Template.resource_path
+			"Template" : Template.resource_path,
+			"Stacks" : Stacks
 		}
 
 	if SourceUnit != null:
@@ -45,6 +56,7 @@ func ToJSON():
 func InitFromJSON(_dict, _map : Map):
 	TurnsRemaining = int(_dict["TurnsRemaining"])
 	Template = load(_dict["Template"]) as CombatEffectTemplate
+	Stacks = _dict["Stacks"]
 
 	if _dict.has("SourceUnitPosition"):
 		var tile = _map.grid.GetTile(PersistDataManager.String_To_Vector2(_dict["SourceUnitPosition"]))
@@ -88,6 +100,8 @@ static func FromJSON(_dict : Dictionary):
 			combatEffectBase = CombatEffectInstance.new()
 		"StealthEffectInstance":
 			combatEffectBase = StealthEffectInstance.new()
+		"OnFireEffectInstance":
+			combatEffectBase = OnFireEffectInstance.new()
 
 	# Call Deferred is actually goated
 	# The Grid isn't gonna be fully initialized yet, so we defer this call so that the Occupants are set

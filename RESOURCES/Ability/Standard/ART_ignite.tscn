@@ -1,0 +1,48 @@
+[gd_scene load_steps=13 format=3 uid="uid://dy14a4a6l6ch5"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_j638n"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_4x1ql"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_upko1"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_lkblr"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_q75af"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_w3y1t"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_y7c1k"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_elfaj"]
+[ext_resource type="Resource" uid="uid://b65br6bvwdx44" path="res://RESOURCES/TargetingShapes/ignite_shape.tres" id="5_upko1"]
+
+[sub_resource type="Resource" id="Resource_oedr4"]
+script = ExtResource("3_q75af")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_3g63f"]
+script = ExtResource("4_w3y1t")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_x5vbv"]
+script = ExtResource("5_elfaj")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="ignite" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_j638n")
+abilityCooldown = 4
+executionStack = Array[ExtResource("2_upko1")]([SubResource("Resource_oedr4"), SubResource("Resource_3g63f"), SubResource("Resource_x5vbv")])
+internalName = "ignite"
+loc_displayName = "art_ignite_name"
+loc_displayDesc = "art_ignite_desc"
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("2_4x1ql")
+AgressiveStat = ExtResource("3_lkblr")
+AgressiveModType = 2
+DamageType = 1
+DamageToHealthRatio = ""
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("4_y7c1k")
+TeamTargeting = 2
+TargetRange = Vector2i(1, 3)
+Type = 1
+CanTargetSelf = true
+shapedTiles = ExtResource("5_upko1")

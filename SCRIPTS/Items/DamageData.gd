@@ -1,19 +1,15 @@
 extends Node2D
 class_name DamageData
 
-enum ModificationType { None, Additive, Multiplicative, Divisitive }
-enum DamageClassification { Physical, Magical, True }
+enum EModificationType { None, Additive, Multiplicative, Divisitive }
+enum EDamageClassification { Physical, Magical, True }
 
 @export var FlatValue : float
 @export var AgressiveStat : StatTemplate
-@export var AgressiveModType : ModificationType
+@export var AgressiveModType : EModificationType
 @export var AgressiveMod : float
-@export var DamageType : DamageClassification = DamageClassification.Physical
-
-
-#@export var DefensiveStat : StatTemplate
-#@export var DefensiveModType : ModificationType
-#@export var DefensiveMod : float
+@export var DamageType : EDamageClassification = EDamageClassification.Physical
+@export var Ignite : int = 0
 
 @export var DamageCantKill : bool = false
 
@@ -30,14 +26,14 @@ enum DamageClassification { Physical, Magical, True }
 @export_category("Vulnerability")
 @export var VulerableDescriptors : Array[DescriptorMultiplier]
 
-func DoMod(_val, _mod, _modType : DamageData.ModificationType):
+func DoMod(_val, _mod, _modType : DamageData.EModificationType):
 	match _modType:
-		DamageData.ModificationType.None:
+		DamageData.EModificationType.None:
 			pass
-		DamageData.ModificationType.Additive:
+		DamageData.EModificationType.Additive:
 			_val += _mod
-		DamageData.ModificationType.Multiplicative:
+		DamageData.EModificationType.Multiplicative:
 			_val = floori(_val * _mod)
-		DamageData.ModificationType.Divisitive:
+		DamageData.EModificationType.Divisitive:
 			_val = floori(_val / _mod)
 	return _val

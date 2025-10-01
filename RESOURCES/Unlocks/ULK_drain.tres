@@ -8,4 +8,3 @@ script = ExtResource("1_qog3e")
 AbilityPath = "res://RESOURCES/Ability/Standard/ART_drain.tscn"
 StartsDiscoverable = true
 StartUnlocked = true
-Descriptors = Array[ExtResource("1_3g665")]([])

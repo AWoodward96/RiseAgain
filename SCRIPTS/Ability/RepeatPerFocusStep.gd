@@ -1,6 +1,8 @@
 extends ActionStep
 class_name RepeatPerFocusStep
 
+# TODO: Delete
+
 @export var repeatStack : Array[ActionStep]
 
 var focusTotal = 0
@@ -31,16 +33,16 @@ func Execute(_delta):
 	return true
 
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
-	var result = RepeatPerFocusStepResult.new()
-	result.Source = _actionLog.source
-	result.Target = _specificTile.Tile.Occupant
-	result.TileTargetData = _specificTile
-	if _actionLog.source != null:
-		result.FocusAmount = _actionLog.source.currentFocus
+func GetResult(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):
+	#var result = RepeatPerFocusStepResult.new()
+	#result.Source = _actionLog.source
+	#result.Target = _specificTile.Tile.Occupant
+	#result.TileTargetData = _specificTile
+	#if _actionLog.source != null:
+		#result.FocusAmount = _actionLog.source.currentFocus
+#
+	#for step in repeatStack:
+		#var newResult = step.GetResult(_actionLog, _specificTile)
+		#result.SubStepResult.append(newResult)
 
-	for step in repeatStack:
-		var newResult = step.GetResult(_actionLog, _specificTile)
-		result.SubStepResult.append(newResult)
-
-	return result
+	return null

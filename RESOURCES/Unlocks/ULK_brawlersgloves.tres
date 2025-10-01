@@ -8,6 +8,4 @@
 [resource]
 script = ExtResource("1_vjs78")
 AbilityPath = "res://RESOURCES/Ability/Equippable/brawlersgloves.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_bgui3")]([ExtResource("2_bsrxl"), ExtResource("9_j2bif")])

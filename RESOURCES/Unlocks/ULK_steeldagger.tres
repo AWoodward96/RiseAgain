@@ -9,5 +9,4 @@
 script = ExtResource("1_820hn")
 AbilityPath = "res://RESOURCES/Ability/Equippable/steeldagger.tscn"
 StartsDiscoverable = true
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_6vrhf")]([ExtResource("2_2yokj"), ExtResource("8_awad0")])

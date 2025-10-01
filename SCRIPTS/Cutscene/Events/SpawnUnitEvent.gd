@@ -35,7 +35,7 @@ func Enter(_context : CutsceneContext):
 	loadedUnit.SetAI(aiBehavior, aggroBehavior)
 
 	for effect in preAppliedEffects:
-		var instance = effect.CreateInstance(loadedUnit, loadedUnit, null)
+		var instance = effect.CreateInstance(loadedUnit, loadedUnit, null, null)
 		loadedUnit.AddCombatEffect(instance)
 
 	return true

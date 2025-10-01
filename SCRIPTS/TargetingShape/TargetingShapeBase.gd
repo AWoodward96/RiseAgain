@@ -49,6 +49,10 @@ func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _ability : Abilit
 			tileData.CritModifier = shapedTile.get("CritModifier") if shapedTile.get("CritModifier") != null else 0
 			tileData.AccuracyModifier = shapedTile.get("AccuracyModifier") if shapedTile.get("AccuracyModifier") != null else 0
 			tileData.Ignite = shapedTile.get("Ignite") if shapedTile.get("Ignite") != null else 0
+
+			# Ability can be null bc of the GEWalkablePlatforms6
+			if _ability != null && tileData.Ignite == 0 && _ability.UsableDamageData != null:
+				tileData.Ignite = _ability.UsableDamageData.Ignite
 			tileData.HitsEnvironment = shapedTile.get("HitsEnvironment") if shapedTile.get("HitsEnvironment") != null else true
 
 			if tile.IsWall && _stopShapeOnWall:

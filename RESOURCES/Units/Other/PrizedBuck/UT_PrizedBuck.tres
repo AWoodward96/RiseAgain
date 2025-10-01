@@ -110,7 +110,7 @@ Template = ExtResource("12_fk4an")
 [sub_resource type="Resource" id="Resource_qwndk"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("13_c56dt")
-Value = 70
+Value = 70.0
 
 [resource]
 resource_name = "UT_PrizedBuck"

@@ -17,8 +17,6 @@
 
 [sub_resource type="Resource" id="Resource_md6lt"]
 script = ExtResource("3_0b8ky")
-useAttackAction = true
-useDefendAction = true
 
 [sub_resource type="Resource" id="Resource_6ubox"]
 script = ExtResource("4_07jnf")

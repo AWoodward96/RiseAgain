@@ -9,5 +9,4 @@
 script = ExtResource("1_enp5m")
 AbilityPath = "res://RESOURCES/Ability/Equippable/steel_sword.tscn"
 StartsDiscoverable = true
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_kjpgv")]([ExtResource("2_4i7hy"), ExtResource("3_r24hc")])

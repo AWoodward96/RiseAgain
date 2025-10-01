@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://gneoqi5t7opg"]
+[gd_scene load_steps=3 format=3 uid="uid://gneoqi5t7opg"]
 
 [ext_resource type="Script" uid="uid://d0v0ac02bpy6v" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
-[ext_resource type="PackedScene" uid="uid://bf3484ldvsvyh" path="res://RESOURCES/Items/t2_radientchestplate.tscn" id="2_5hj0h"]
-[ext_resource type="PackedScene" uid="uid://bgnnm5cfmf664" path="res://RESOURCES/Items/t1_whetstone.tscn" id="3_qx6c7"]
-[ext_resource type="PackedScene" uid="uid://bhl2enqfwvt80" path="res://RESOURCES/Ability/Equippable/steel_sword.tscn" id="4_fhq2u"]
-[ext_resource type="PackedScene" uid="uid://bhxil20ufx2ma" path="res://RESOURCES/Ability/Equippable/morningstar.tscn" id="5_oxdib"]
+[ext_resource type="PackedScene" uid="uid://bdci2cagpqgn3" path="res://RESOURCES/Items/t2_stonecarapace.tscn" id="3_dewqg"]
 
 [node name="CSR" type="Control" node_paths=PackedStringArray("FirstEntry")]
 layout_mode = 3
@@ -15,8 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_508i1")
 FirstEntry = NodePath("PanelContainer/MarginContainer/GridContainer/AddAllAbilities")
-SpecificItem = ExtResource("2_5hj0h")
-TestItems = Array[PackedScene]([ExtResource("3_qx6c7"), ExtResource("2_5hj0h"), ExtResource("4_fhq2u"), ExtResource("5_oxdib")])
+SpecificItem = ExtResource("3_dewqg")
+TestItems = Array[PackedScene]([ExtResource("3_dewqg")])
 Priority = 1000
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

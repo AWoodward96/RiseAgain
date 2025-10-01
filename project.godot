@@ -50,6 +50,7 @@ CutsceneManager="*res://RESOURCES/Managers/CutsceneManager.tscn"
 [debug]
 
 gdscript/warnings/shadowed_global_identifier=0
+gdscript/warnings/integer_division=0
 
 [dialogic]
 

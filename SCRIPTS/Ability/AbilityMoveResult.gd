@@ -36,6 +36,9 @@ func PreviewResult(_map : Map):
 		ctrl.movement_preview_sprite.visible = false
 		resultingTile = null
 
+	if resultingTile != null && resultingTile.ActiveKillbox:
+		Source.damage_indicator.SetHealthLevels(Source.currentHealth, Source.maxHealth)
+		Source.damage_indicator.normalDamage += -Source.currentHealth
 	pass
 
 func Validate():

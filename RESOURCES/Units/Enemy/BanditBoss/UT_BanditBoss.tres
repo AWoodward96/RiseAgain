@@ -74,7 +74,7 @@ Template = ExtResource("11_p8mo6")
 [sub_resource type="Resource" id="Resource_23l18"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("12_e2cik")
-Value = 2
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_ggq14"]
 script = ExtResource("15_p8mo6")
@@ -144,7 +144,7 @@ Template = ExtResource("11_p8mo6")
 [sub_resource type="Resource" id="Resource_b8oh7"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("12_e2cik")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_BanditBoss"

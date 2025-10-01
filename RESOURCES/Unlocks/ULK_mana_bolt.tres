@@ -8,6 +8,5 @@
 [resource]
 script = ExtResource("1_1fq25")
 AbilityPath = "res://RESOURCES/Ability/Equippable/mana_bolt.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
 Descriptors = Array[ExtResource("1_dx3ox")]([ExtResource("5_l5752"), ExtResource("3_sjj1p")])

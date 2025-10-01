@@ -16,8 +16,6 @@
 
 [sub_resource type="Resource" id="Resource_58cki"]
 script = ExtResource("3_b0gbb")
-useAttackAction = true
-useDefendAction = true
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
 [sub_resource type="Resource" id="Resource_nx74i"]

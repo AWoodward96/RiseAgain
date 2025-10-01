@@ -17,16 +17,11 @@
 [sub_resource type="Resource" id="Resource_2ovlu"]
 script = ExtResource("3_sw5es")
 AnimName = "use_item_in"
-Speed = 1.0
-Backwards = false
-WaitForAnimFinished = false
 metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [sub_resource type="Resource" id="Resource_3jv83"]
 script = ExtResource("5_gi6qi")
 VFXPrefab = ExtResource("4_2pi3v")
-PositionOnActionOrigin = true
-PositionOnSource = false
 metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
 
 [sub_resource type="Resource" id="Resource_tl8j3"]
@@ -41,17 +36,11 @@ metadata/_custom_type_script = "uid://ct8lhn6f420te"
 [sub_resource type="Resource" id="Resource_r6ctp"]
 script = ExtResource("3_sw5es")
 AnimName = "use_item_out"
-Speed = 1.0
-Backwards = false
 WaitForAnimFinished = true
 metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [sub_resource type="Resource" id="Resource_3w1ko"]
 script = ExtResource("3_sw5es")
-AnimName = "idle"
-Speed = 1.0
-Backwards = false
-WaitForAnimFinished = false
 metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [node name="howl" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]

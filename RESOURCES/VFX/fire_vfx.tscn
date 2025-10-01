@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://cq5kfjjnrcsfm"]
+
+[ext_resource type="Texture2D" uid="uid://53i46tsxjih" path="res://ART/Grid/fire_tiles.png" id="1_aig8r"]
+[ext_resource type="Script" uid="uid://dn53bboudatos" path="res://SCRIPTS/Generic/FireVFX.gd" id="2_yltk5"]
+[ext_resource type="Texture2D" uid="uid://bke1wpqtktshf" path="res://ART/VFX/4x4_particles.png" id="3_0wf3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_166fo"]
+atlas = ExtResource("1_aig8r")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36m7s"]
+atlas = ExtResource("1_aig8r")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhgdp"]
+atlas = ExtResource("1_aig8r")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0lrc"]
+atlas = ExtResource("1_aig8r")
+region = Rect2(40, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tawi8"]
+atlas = ExtResource("1_aig8r")
+region = Rect2(0, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caq0k"]
+atlas = ExtResource("1_aig8r")
+region = Rect2(40, 80, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vhgdp"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_166fo")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_36m7s")
+}],
+"loop": true,
+"name": &"level_1",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vhgdp")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_t0lrc")
+}],
+"loop": true,
+"name": &"level_2",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tawi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caq0k")
+}],
+"loop": true,
+"name": &"level_3",
+"speed": 6.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_166fo"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_36m7s"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.46417445, 0.7912772)
+colors = PackedColorArray(0.8784314, 0.7882353, 0.4745098, 1, 0.69411767, 0.3019608, 0.16862746, 1, 0.3764706, 0.13333334, 0.09019608, 1)
+
+[node name="FireVFX" type="Node2D" node_paths=PackedStringArray("particles", "animatedSprite")]
+script = ExtResource("2_yltk5")
+particles = NodePath("CPUParticles2D2")
+animatedSprite = NodePath("Fire")
+
+[node name="Fire" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vhgdp")
+animation = &"level_3"
+autoplay = "level_1"
+frame_progress = 0.5739289
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_166fo")
+position = Vector2(32, 38)
+amount = 16
+texture = ExtResource("3_0wf3w")
+lifetime = 0.75
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(40, 40)
+direction = Vector2(0, -1)
+spread = 22.5
+gravity = Vector2(0, 0)
+initial_velocity_min = 41.4
+initial_velocity_max = 41.45
+color_ramp = SubResource("Gradient_36m7s")
+anim_offset_max = 1.0

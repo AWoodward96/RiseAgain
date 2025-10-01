@@ -14,12 +14,10 @@
 
 [sub_resource type="Resource" id="Resource_cm87u"]
 script = ExtResource("3_xgcjy")
-PlayAtUnit = true
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_nsxhh"]
 script = ExtResource("3_yfucp")
-UseActionOrigin = true
 
 [sub_resource type="Resource" id="Resource_16vul"]
 script = ExtResource("4_kt1v7")

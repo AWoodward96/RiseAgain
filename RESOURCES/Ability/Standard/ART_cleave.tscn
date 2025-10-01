@@ -13,13 +13,10 @@
 
 [sub_resource type="Resource" id="Resource_q4876"]
 script = ExtResource("3_1jlk6")
-PlayAtUnit = true
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_6pi40"]
 script = ExtResource("3_8jwbh")
-useAttackAction = true
-useDefendAction = true
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("3_nycen")

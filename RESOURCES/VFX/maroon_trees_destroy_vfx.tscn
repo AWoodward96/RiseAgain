@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1le47nr1jt1g"]
+
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_qn0tn"]
+[ext_resource type="Texture2D" uid="uid://bh2ybepd84ihd" path="res://ART/VFX/maroon_deadtree_death_particles_2.png" id="2_qn0tn"]
+[ext_resource type="Texture2D" uid="uid://bke1wpqtktshf" path="res://ART/VFX/4x4_particles.png" id="4_skwjv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_skwjv"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_8squq"]
+offsets = PackedFloat32Array(0, 0.8062201, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8squq"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_frhte"]
+offsets = PackedFloat32Array(0, 0.8062201, 1)
+colors = PackedColorArray(0, 0, 0, 0.10980392, 0, 0, 0, 0.28235295, 0, 0, 0, 0)
+
+[node name="maroon_trees_destroy_vfx" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
+script = ExtResource("1_qn0tn")
+emitOnReady = true
+cpuParticles = [NodePath("Branches"), NodePath("TinyParts")]
+
+[node name="Branches" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_skwjv")
+position = Vector2(32, 56)
+scale = Vector2(2, 2)
+amount = 24
+texture = ExtResource("2_qn0tn")
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+particle_flag_align_y = true
+direction = Vector2(0, -5)
+spread = 92.25
+gravity = Vector2(0, 100)
+initial_velocity_min = 32.0
+initial_velocity_max = 100.0
+radial_accel_min = -64.0
+radial_accel_max = 64.0
+damping_min = 180.0
+damping_max = 200.0
+color_ramp = SubResource("Gradient_8squq")
+anim_offset_max = 1.0
+
+[node name="TinyParts" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8squq")
+position = Vector2(32, 56)
+scale = Vector2(2, 2)
+amount = 64
+texture = ExtResource("4_skwjv")
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 8.0
+particle_flag_align_y = true
+direction = Vector2(0, -5)
+spread = 92.25
+gravity = Vector2(0, 100)
+initial_velocity_min = 32.0
+initial_velocity_max = 100.0
+radial_accel_min = -64.0
+radial_accel_max = 64.0
+damping_min = 180.0
+damping_max = 200.0
+color_ramp = SubResource("Gradient_frhte")
+anim_offset_max = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

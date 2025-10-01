@@ -1,6 +1,9 @@
 extends Control
 class_name InspectableElement
 
+# TODO: Cleanup - probably delete?
+# The focus system already does this and I can design around this
+
 signal EntrySelected
 
 @export var SelectedParent : Control

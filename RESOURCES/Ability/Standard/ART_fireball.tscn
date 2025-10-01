@@ -9,17 +9,14 @@
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_o4g0r"]
 [ext_resource type="Texture2D" uid="uid://bty8oi4tn0t4j" path="res://ART/Icons/Ability/Standard/fireball.png" id="5_x4rkp"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="8_kv6yk"]
-[ext_resource type="Resource" uid="uid://ci72vlaqp5d5w" path="res://RESOURCES/TargetingShapes/fireball_kills_shape.tres" id="10_kdso7"]
+[ext_resource type="Resource" uid="uid://gxv2ghfwicf2" path="res://RESOURCES/TargetingShapes/fireball_shape.tres" id="10_kv6yk"]
 
 [sub_resource type="Resource" id="Resource_6eci6"]
 script = ExtResource("3_nvsye")
-PlayAtUnit = true
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_wdsyk"]
 script = ExtResource("3_qlocd")
-useAttackAction = true
-useDefendAction = true
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("3_tw6ek")
@@ -47,4 +44,4 @@ script = ExtResource("4_o4g0r")
 TargetRange = Vector2i(1, 3)
 Type = 1
 CanTargetSelf = true
-shapedTiles = ExtResource("10_kdso7")
+shapedTiles = ExtResource("10_kv6yk")

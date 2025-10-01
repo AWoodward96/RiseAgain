@@ -65,7 +65,7 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_j1fvy"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("12_dv01u")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_0yip1"]
 script = ExtResource("2_gv3c6")
@@ -109,12 +109,12 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_wsp8b"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("12_dv01u")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_wfeti"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("13_0wn8q")
-Value = 30
+Value = 30.0
 
 [resource]
 resource_name = "UT_CorpseChimera"

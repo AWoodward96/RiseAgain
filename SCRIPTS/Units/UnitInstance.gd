@@ -3,6 +3,7 @@ class_name UnitInstance
 
 signal OnStatUpdated
 signal OnCombatEffectsUpdated
+signal OnUnitDamaged(_result : DamageStepResult)
 
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
@@ -224,8 +225,36 @@ func InitializeTier0Abilities():
 		AddPackedAbility(load(abilityPath))
 
 func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
-	CombatEffects.append(_combatEffectInstance)
-	combatEffectsParent.add_child(_combatEffectInstance)
+	# If it's not stackable, don't try and stack it
+	if _combatEffectInstance.Template.StackableType != CombatEffectTemplate.EStackableType.None:
+		# but if it isssss, you need to know where you're stacking it
+		var matchingEffectType = null
+		for effect in CombatEffects:
+			var scriptType = _combatEffectInstance.get_script()
+			var effectScriptType = effect.get_script()
+			if scriptType == effectScriptType:
+				matchingEffectType = effect
+				break
+
+		# If we found it, then apply the stack
+		if matchingEffectType != null:
+			matchingEffectType.Stacks += _combatEffectInstance.Stacks
+			match matchingEffectType.Template.StackableType:
+				CombatEffectTemplate.EStackableType.AddTurns:
+					matchingEffectType.TurnsRemaining += _combatEffectInstance.TurnsRemaining
+				CombatEffectTemplate.EStackableType.ResetTurnCount:
+					matchingEffectType.TurnsRemaining = max(matchingEffectType.Template.Turns, _combatEffectInstance.Template.Turns)
+		else:
+			# If there's nothing to stack, ignore the rules, and just add the combat effect like normal
+			CombatEffects.append(_combatEffectInstance)
+			combatEffectsParent.add_child(_combatEffectInstance)
+			_combatEffectInstance.OnEffectApplied()
+
+	else:
+		CombatEffects.append(_combatEffectInstance)
+		combatEffectsParent.add_child(_combatEffectInstance)
+		_combatEffectInstance.OnEffectApplied()
+
 	UpdateCombatEffects()
 	UpdateDerivedStats()
 	RefreshHealthBarVisuals()
@@ -249,7 +278,14 @@ func UpdateCombatEffects():
 	var slatedForRemoval : Array[CombatEffectInstance]
 	for c in CombatEffects:
 		if c.IsExpired():
-			slatedForRemoval.append(c)
+			if c.Template.ExpirationType == CombatEffectTemplate.EExpirationType.Normal:
+				slatedForRemoval.append(c)
+			elif c.Template.ExpirationType == CombatEffectTemplate.EExpirationType.RemoveStack:
+				if c.Stacks > 1:
+					c.Stacks -= 1
+					c.TurnsRemaining = c.Template.Turns
+				else:
+					slatedForRemoval.append(c)
 
 	OnCombatEffectsUpdated.emit()
 
@@ -257,6 +293,7 @@ func UpdateCombatEffects():
 		if remove is StealthEffectInstance:
 			StealthedCount -= 1
 
+		remove.OnEffectRemoved()
 		CombatEffects.remove_at(CombatEffects.find(remove))
 		combatEffectsParent.remove_child(remove)
 		remove.queue_free()
@@ -686,7 +723,7 @@ func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 	else:
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
-func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous : bool = false):
+func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantaneous : bool = false):
 	if _netHealthChange <= 0:
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
@@ -703,20 +740,20 @@ func ModifyHealth(_netHealthChange, _result : DamageStepResult, _instantaneous :
 
 	if !_instantaneous:
 		ShowHealthBar(true)
-		healthBar.ModifyHealthOverTime(_netHealthChange)
 
 		# NOTE:
 		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
 		# You'll need to wait for one to be finished before the other one starts
 		if !healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
 			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
+		healthBar.ModifyHealthOverTime(_netHealthChange)
 
 	else:
 		OnModifyHealthTweenComplete(_netHealthChange, _result)
 	pass
 
 
-func OnModifyHealthTweenComplete(_delta, _result : ActionStepResult):
+func OnModifyHealthTweenComplete(_delta, _result : DamageStepResult):
 	# you have to disconnect this because the nethealth change is a bound variable
 	if healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
 		healthBar.HealthBarTweenCallback.disconnect(OnModifyHealthTweenComplete)
@@ -731,9 +768,17 @@ func OnModifyHealthTweenComplete(_delta, _result : ActionStepResult):
 	currentHealth = clampi(currentHealth + remainingDelta, 0, maxHealth)
 	RefreshHealthBarVisuals()
 
+	if remainingDelta < 0:
+		OnUnitDamaged.emit(_result)
+
 	# For AI enemies, check if this damage would aggro them
 	if _delta < 0 && AggroType is AggroOnDamage:
 		IsAggrod = true
+
+	if _result != null:
+		if _result.Ignite > 0:
+			Ignite(_result.Ignite, _result.Source, _result.AbilityData)
+
 
 	CheckDeath(_result)
 
@@ -867,6 +912,11 @@ func CheckKillbox():
 		ModifyHealth(-currentHealth - GetArmorAmount(), null, true)
 		return true
 	return false
+
+func Ignite(_fireLevel : int, _source : UnitInstance, _abilityData : Ability):
+	var combatEffect = GameManager.GameSettings.OnFireDebuff.CreateInstance(_source, self, _abilityData, null) as CombatEffectInstance
+	combatEffect.Stacks = _fireLevel
+	AddCombatEffect(combatEffect)
 
 func ShowHealthBar(_visible : bool):
 	health_bar_parent.visible = _visible

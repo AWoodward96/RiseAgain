@@ -8,6 +8,4 @@
 [resource]
 script = ExtResource("1_l6m6r")
 AbilityPath = "res://RESOURCES/Ability/Equippable/morningstar.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_7c84x")]([ExtResource("2_b3hqf"), ExtResource("9_f38qc")])

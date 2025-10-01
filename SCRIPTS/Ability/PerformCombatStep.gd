@@ -62,9 +62,6 @@ func Enter(_actionLog : ActionLog):
 					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
-				if damageStepResult.TileTargetData.Ignite > 0 && damageStepResult.TileTargetData.HitsEnvironment:
-					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
-
 		else:
 			dealtDamage = true
 
@@ -72,10 +69,6 @@ func Enter(_actionLog : ActionLog):
 			# We're doing this here instead of in the attack sequence bc sometimes an ability  doesn't use an attack action
 			if damageStepResult.TileTargetData.HitsEnvironment:
 				log.grid.ModifyTileHealth(damageStepResult.HealthDelta, damageStepResult.TileTargetData.Tile)
-
-			if damageStepResult.TileTargetData.Ignite > 0 && damageStepResult.TileTargetData.HitsEnvironment:
-				log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
-
 	pass
 
 func Execute(_delta):
@@ -164,7 +157,10 @@ func ConstructResult(_ability : Ability, _tile : TileTargetedData, _sourceTile :
 
 	return result
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
-	var returned = ConstructResult(_actionLog.ability, _specificTile, _actionLog.sourceTile, _actionLog.source, _specificTile.Tile.Occupant, _actionLog.affectedTiles)
-	BuildRetaliationResult(returned)
-	return returned
+func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):
+	var all : Array[PerformCombatStepResult]
+	for specificTile in _affectedTiles:
+		var returned = ConstructResult(_actionLog.ability, specificTile, _actionLog.sourceTile, _actionLog.source, specificTile.Tile.Occupant, _actionLog.affectedTiles)
+		BuildRetaliationResult(returned)
+		all.append(returned)
+	return all

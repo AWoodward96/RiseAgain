@@ -10,22 +10,17 @@
 script = ExtResource("1_k3tfc")
 Stat = ExtResource("2_rn7n0")
 FlatValue = 1
-DerivedFromUnit = 0
-SignedPercentageValue = 0.0
 
 [sub_resource type="Resource" id="Resource_yb416"]
 script = ExtResource("1_k3tfc")
 Stat = ExtResource("3_asbay")
 FlatValue = 2
-DerivedFromUnit = 0
-SignedPercentageValue = 0.0
 
 [resource]
 script = ExtResource("4_7fma4")
 StatChanges = Array[ExtResource("1_k3tfc")]([SubResource("Resource_osvxn"), SubResource("Resource_yb416")])
 AffectedTargets = 1
 Turns = 1
-show_popup = true
 loc_name = "ce_pushforward_name"
 loc_desc = "ce_pushforward_desc"
 loc_icon = ExtResource("4_sxg75")

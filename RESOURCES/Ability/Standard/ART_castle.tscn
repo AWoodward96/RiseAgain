@@ -23,16 +23,12 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 script = ExtResource("3_8047x")
 Stat = ExtResource("4_5kp8q")
 FlatValue = 1
-DerivedFromUnit = 0
-SignedPercentageValue = 0.0
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_3x8qu"]
 script = ExtResource("6_og4ws")
 StatChanges = Array[ExtResource("3_8047x")]([SubResource("Resource_cqvc4")])
-AffectedTargets = 0
 Turns = 1
-show_popup = true
 loc_name = "art_castle_name"
 loc_desc = "art_castle_desc"
 loc_icon = ExtResource("5_t53ly")
@@ -45,15 +41,11 @@ metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
 
 [sub_resource type="Resource" id="Resource_xiri8"]
 script = ExtResource("10_po7i1")
-UseDamageDealtAsValue = false
 UseSourceForStats = true
-FlatValue = 0.0
 RelativeStat = ExtResource("8_3o0jt")
 ModType = 2
 Mod = 0.15
-AffectedTargets = 0
 Turns = 1
-show_popup = true
 loc_name = "ce_armor"
 loc_desc = "ce_armor_desc"
 loc_icon = ExtResource("9_5yf1a")

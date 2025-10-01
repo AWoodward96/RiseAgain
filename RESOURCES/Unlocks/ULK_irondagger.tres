@@ -8,6 +8,5 @@
 [resource]
 script = ExtResource("1_ja44y")
 AbilityPath = "res://RESOURCES/Ability/Equippable/irondagger.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
 Descriptors = Array[ExtResource("1_1pbt1")]([ExtResource("2_r1g8n"), ExtResource("8_p7r6q")])

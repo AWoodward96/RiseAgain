@@ -6,192 +6,86 @@
 
 [sub_resource type="Resource" id="Resource_medm5"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_0qkml"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(0, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_4wr12"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(0, -2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_qycjt"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-1, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_ai26y"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(1, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_gjdv6"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-1, -2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_cfpi0"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(1, -2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_k2rlw"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(0, 1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_nk80d"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(0, 2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_58hpu"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(1, 1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_cqr6v"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(1, 2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_uoahi"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-1, 1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_m03fl"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-1, 2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_lyj4e"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-1, 0)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_5ew22"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-2, 0)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_4yf0h"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-2, 1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_ytmyw"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(-2, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_5fpju"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(1, 0)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_m6cy8"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(2, 0)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_6sfpu"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(2, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_l0l4n"]
 script = ExtResource("2_i1yhu")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(2, 1)
-Multiplier = 1.0
 
 [resource]
 script = ExtResource("3_pt3nr")

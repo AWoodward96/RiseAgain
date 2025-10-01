@@ -18,20 +18,18 @@
 
 [sub_resource type="Resource" id="Resource_gu54o"]
 script = ExtResource("3_3d382")
-useAttackAction = true
-useDefendAction = true
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
 [sub_resource type="Resource" id="Resource_n0hqu"]
 script = ExtResource("4_ioaqf")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_suvn7"]
+[sub_resource type="Resource" id="Resource_3d382"]
 script = ExtResource("6_ioaqf")
 Template = ExtResource("7_gu54o")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_3d382"]
+[sub_resource type="Resource" id="Resource_ioaqf"]
 script = ExtResource("6_ioaqf")
 Template = ExtResource("11_suvn7")
 Value = 1
@@ -52,7 +50,7 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_3d382")
-GrantedStats = Array[ExtResource("6_ioaqf")]([SubResource("Resource_suvn7"), SubResource("Resource_3d382")])
+GrantedStats = Array[ExtResource("6_ioaqf")]([SubResource("Resource_3d382"), SubResource("Resource_ioaqf")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("8_n0hqu")

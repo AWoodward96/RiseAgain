@@ -60,12 +60,12 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_byd46"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("11_q0f5r")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_ri8r6"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("12_4mxi4")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_1ondd"]
 script = ExtResource("2_ruh1m")
@@ -99,12 +99,12 @@ Template = ExtResource("9_ri8r6")
 [sub_resource type="Resource" id="Resource_uvumg"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("11_q0f5r")
-Value = 40
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_vvbq6"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("12_4mxi4")
-Value = 40
+Value = 40.0
 
 [resource]
 resource_name = "UT_Merchant"

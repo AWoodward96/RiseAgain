@@ -39,7 +39,6 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_b1tt2"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("5_kphwc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_e5ep0"]
 script = ExtResource("2_7jtpq")
@@ -59,7 +58,6 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_5j1xn"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("9_yrhgg")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_75art"]
 script = ExtResource("2_7jtpq")
@@ -69,12 +67,11 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_7hcxu"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("12_tplq7")
-Value = 3
+Value = 3.0
 
 [sub_resource type="Resource" id="Resource_7kiqm"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("13_tr5fr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_7jtpq")
@@ -114,12 +111,12 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_wj4k4"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("12_tplq7")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_3lhbq"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("13_tr5fr")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_AdultWolf"
@@ -129,16 +126,9 @@ BaseStats = Array[ExtResource("2_7jtpq")]([SubResource("Resource_6ajq1"), SubRes
 StatGrowths = Array[ExtResource("2_7jtpq")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wj4k4"), SubResource("Resource_3lhbq")])
 Affinity = ExtResource("1_xh3m4")
 StartingEquippedWeapon = ExtResource("15_m6lwa")
-Tier0Abilities = Array[String]([])
-Tier1Abilities = Array[String]([])
 Descriptors = Array[ExtResource("12_57w4d")]([ExtResource("10_b7vio")])
-WeaponDescriptors = Array[ExtResource("12_57w4d")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("14_m6lwa")]([])
 FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "AdultWolf"
 loc_DisplayName = "unit_adultwolf_name"
 loc_Description = "unit_adultwolf_desc"
 icon = ExtResource("23_anudv")
-startUnlocked = true
-startNameKnown = true

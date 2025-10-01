@@ -141,22 +141,22 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 	if _data.has("DamageClassification"):
 		match _data["DamageClassification"]:
 			"Physical":
-				component.DamageType = DamageData.DamageClassification.Physical
+				component.DamageType = DamageData.EDamageClassification.Physical
 			"Magical":
-				component.DamageType = DamageData.DamageClassification.Magical
+				component.DamageType = DamageData.EDamageClassification.Magical
 			"True Damage":
-				component.DamageType = DamageData.DamageClassification.True
+				component.DamageType = DamageData.EDamageClassification.True
 
 	if _data.has("Aggressive Mod Type"):
 		match _data["Aggressive Mod Type"]:
 			"None":
-				component.AgressiveModType = DamageData.ModificationType.None
+				component.AgressiveModType = DamageData.EModificationType.None
 			"Additive":
-				component.AgressiveModType = DamageData.ModificationType.Additive
+				component.AgressiveModType = DamageData.EModificationType.Additive
 			"Multiplicative":
-				component.AgressiveModType = DamageData.ModificationType.Multiplicative
+				component.AgressiveModType = DamageData.EModificationType.Multiplicative
 			"Divisitive":
-				component.AgressiveModType = DamageData.ModificationType.Divisitive
+				component.AgressiveModType = DamageData.EModificationType.Divisitive
 
 	if _data.has("Drain"): component.DamageAffectsUsersHealth = _data["Drain"]
 	if _data.has("DamageToHealthRatio"): component.DamageToHealthRatio = _data["DamageToHealthRatio"]
@@ -265,13 +265,13 @@ func ModifyHealComponent(_ability : Ability, _data):
 	if _data.has("HealScalingModType"):
 		match _data["HealScalingModType"]:
 			"None":
-				component.ScalingModType = DamageData.ModificationType.None
+				component.ScalingModType = DamageData.EModificationType.None
 			"Additive":
-				component.ScalingModType = DamageData.ModificationType.Additive
+				component.ScalingModType = DamageData.EModificationType.Additive
 			"Multiplicative":
-				component.ScalingModType = DamageData.ModificationType.Multiplicative
+				component.ScalingModType = DamageData.EModificationType.Multiplicative
 			"Divisitive":
-				component.ScalingModType = DamageData.ModificationType.Divisitive
+				component.ScalingModType = DamageData.EModificationType.Divisitive
 
 
 func ModifyTargetingComponent(_ability : Ability, _data):

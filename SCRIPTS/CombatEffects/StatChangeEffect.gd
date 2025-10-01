@@ -5,7 +5,7 @@ class_name StatChangeEffect
 
 @export var StatChanges : Array[StatChangeEffectTemplate]
 
-func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _actionLog : ActionLog):
+func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance,  _abilitySource : Ability, _actionLog : ActionLog):
 	if _affectedUnit.Template.Descriptors.count(ImmunityDescriptor) > 0:
 		return null
 
@@ -14,8 +14,7 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 	effectInstance.Template = self
 	effectInstance.SourceUnit = _sourceUnit
 	effectInstance.AffectedUnit = _affectedUnit
-	if _actionLog != null && _actionLog.ability != null:
-		effectInstance.AbilitySource = _actionLog.ability
+	effectInstance.AbilitySource = _abilitySource
 	effectInstance.TurnsRemaining = Turns
 
 	for effectTemplate in StatChanges:

@@ -8,4 +8,3 @@ script = ExtResource("1_vfmmm")
 AbilityPath = "res://RESOURCES/Ability/Standard/ART_summonsacredground.tscn"
 StartsDiscoverable = true
 StartUnlocked = true
-Descriptors = Array[ExtResource("1_vdqy4")]([])

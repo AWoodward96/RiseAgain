@@ -90,8 +90,8 @@ func AffectUnit(_unitInstance : UnitInstance, _relatedTile : TileTargetedData):
 		var newDamageStepResult = DamageStepResult.new()
 		newDamageStepResult.Source = Source
 		newDamageStepResult.AbilityData = SourceAbility
-
-		newDamageStepResult.HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damage_data, _relatedTile)
+		newDamageStepResult.Ignite = damage_data.Ignite
+		newDamageStepResult.HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damage_data, _relatedTile, SourceAbility)
 
 		_unitInstance.ModifyHealth(newDamageStepResult.HealthDelta, newDamageStepResult, true)
 
@@ -113,7 +113,7 @@ func GetLocalizedDescription(_tile : Tile):
 	var returnString = tr(localization_desc)
 	var madlibs = {}
 	if damage_data != null:
-		madlibs["NUM"] = -GameManager.GameSettings.DamageCalculation(Source, null, damage_data, tileData)
+		madlibs["NUM"] = -GameManager.GameSettings.DamageCalculation(Source, null, damage_data, tileData, SourceAbility)
 
 	if heal_data != null:
 		madlibs["NUM"] = GameManager.GameSettings.HealCalculation(heal_data, Source, tileData.AOEMultiplier)

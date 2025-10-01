@@ -6,21 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_s510u"]
 script = ExtResource("2_hpsk7")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_pm26c"]
 script = ExtResource("2_hpsk7")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 Position = Vector2i(0, -1)
-Multiplier = 1.0
 
 [resource]
 script = ExtResource("3_2mvki")

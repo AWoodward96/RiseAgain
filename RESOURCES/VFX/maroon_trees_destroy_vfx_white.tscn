@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://25c7essudusr"]
+
+[ext_resource type="PackedScene" uid="uid://d1le47nr1jt1g" path="res://RESOURCES/VFX/maroon_trees_destroy_vfx.tscn" id="1_vcbod"]
+
+[node name="maroon_trees_destroy_vfx" instance=ExtResource("1_vcbod")]

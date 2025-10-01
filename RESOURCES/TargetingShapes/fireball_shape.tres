@@ -1,24 +1,139 @@
-[gd_resource type="Resource" script_class="TargetingShapeLevel" load_steps=7 format=3 uid="uid://gxv2ghfwicf2"]
+[gd_resource type="Resource" script_class="TargetingShapeStats" load_steps=27 format=3 uid="uid://gxv2ghfwicf2"]
 
+[ext_resource type="Script" uid="uid://dey2eb5dlhg5j" path="res://SCRIPTS/TargetingShape/TargetingShapeStats.gd" id="1_jxjqi"]
 [ext_resource type="Script" uid="uid://d1xg8qidld8r6" path="res://SCRIPTS/TargetingShape/ThresholdTargetingShape.gd" id="1_no07u"]
-[ext_resource type="Script" uid="uid://7tpee6mmm65n" path="res://SCRIPTS/TargetingShape/TargetingShapeLevel.gd" id="2_f0uwk"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="2_e0k0m"]
 [ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_mhhkv"]
 
-[sub_resource type="Resource" id="Resource_jxrsc"]
-script = ExtResource("1_no07u")
-Threshold = 0
-TileCoordinates = Array[ExtResource("2_mhhkv")]([])
+[sub_resource type="Resource" id="Resource_3cxmt"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
 
-[sub_resource type="Resource" id="Resource_d8gfi"]
+[sub_resource type="Resource" id="Resource_cyeri"]
 script = ExtResource("1_no07u")
-Threshold = 0
-TileCoordinates = Array[ExtResource("2_mhhkv")]([])
+TileCoordinates = Array[ExtResource("2_mhhkv")]([SubResource("Resource_3cxmt")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
 
-[sub_resource type="Resource" id="Resource_hr0r4"]
+[sub_resource type="Resource" id="Resource_n75gi"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_kaf5n"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_1v7a6"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(-1, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_2u1ms"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(-1, 1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_pcxuu"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(1, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_3axa0"]
 script = ExtResource("1_no07u")
-Threshold = 0
-TileCoordinates = Array[ExtResource("2_mhhkv")]([])
+Threshold = 4
+TileCoordinates = Array[ExtResource("2_mhhkv")]([SubResource("Resource_n75gi"), SubResource("Resource_kaf5n"), SubResource("Resource_1v7a6"), SubResource("Resource_2u1ms"), SubResource("Resource_pcxuu")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
+
+[sub_resource type="Resource" id="Resource_jxjqi"]
+script = ExtResource("2_mhhkv")
+Ignite = 2
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_e0k0m"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(-1, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_jcn0a"]
+script = ExtResource("2_mhhkv")
+Ignite = 2
+Position = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_cafio"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(1, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_pi8y3"]
+script = ExtResource("2_mhhkv")
+Ignite = 2
+Position = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_ouvru"]
+script = ExtResource("2_mhhkv")
+Ignite = 2
+Position = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_po6m3"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(-1, 1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_yt1gs"]
+script = ExtResource("2_mhhkv")
+Ignite = 2
+Position = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_0tcvk"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_gv5ot"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(2, 2)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_oi110"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(2, -2)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_d32vj"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(-2, -2)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_o7fcf"]
+script = ExtResource("2_mhhkv")
+Ignite = 1
+Position = Vector2i(-2, 2)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_lb15e"]
+script = ExtResource("1_no07u")
+Threshold = 8
+TileCoordinates = Array[ExtResource("2_mhhkv")]([SubResource("Resource_jxjqi"), SubResource("Resource_e0k0m"), SubResource("Resource_jcn0a"), SubResource("Resource_cafio"), SubResource("Resource_pi8y3"), SubResource("Resource_ouvru"), SubResource("Resource_po6m3"), SubResource("Resource_yt1gs"), SubResource("Resource_0tcvk"), SubResource("Resource_gv5ot"), SubResource("Resource_oi110"), SubResource("Resource_d32vj"), SubResource("Resource_o7fcf")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
 
 [resource]
-script = ExtResource("2_f0uwk")
-leveledShapes = Array[ExtResource("1_no07u")]([SubResource("Resource_jxrsc"), SubResource("Resource_d8gfi"), SubResource("Resource_hr0r4")])
+script = ExtResource("1_jxjqi")
+stat = ExtResource("2_e0k0m")
+statsShapes = Array[ExtResource("1_no07u")]([SubResource("Resource_cyeri"), SubResource("Resource_3axa0"), SubResource("Resource_lb15e")])

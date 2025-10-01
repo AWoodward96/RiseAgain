@@ -59,6 +59,7 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 
 	DeltaValueChange = _deltaHealthChange
 	if DeltaValueChange == 0:
+		UpdateBarTweenComplete()
 		return # Nothing occurs early exit
 
 	UnitMaxHealth = Unit.maxHealth

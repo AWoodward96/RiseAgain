@@ -64,11 +64,12 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 	ability.MovementData.Move(_actionLog.grid, source, _actionLog.actionOriginTile, _invalidatedTile, log.atRange, _actionLog.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
 	pass
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):
+	# This only has one result, because it's moving the self
 	var result = AbilityMoveResult.new()
 	result.unitUsable = _actionLog.ability
 	result.atRange = _actionLog.atRange
 	result.shapedDirection = _actionLog.actionDirection
 	result.TileTargetData = _actionLog.actionOriginTile.AsTargetData()
 	result.Source = _actionLog.source
-	return result
+	return [result]

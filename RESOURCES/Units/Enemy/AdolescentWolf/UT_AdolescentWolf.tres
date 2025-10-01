@@ -70,7 +70,7 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_4kmau"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("12_n6gr5")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_wpxot"]
 script = ExtResource("3_pgxgp")
@@ -114,12 +114,12 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_w6hw3"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("12_n6gr5")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_ucx65"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("13_1qlfw")
-Value = 10
+Value = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csh4u"]
 atlas = ExtResource("23_1qlfw")

@@ -8,6 +8,4 @@
 [resource]
 script = ExtResource("1_c8pp2")
 AbilityPath = "res://RESOURCES/Ability/Equippable/dark_pact.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_75jjv")]([ExtResource("5_mdaml"), ExtResource("3_xaffh")])

@@ -7,75 +7,39 @@
 
 [sub_resource type="Resource" id="Resource_8be51"]
 script = ExtResource("2_2lrju")
-overrideActionDirection = false
-pushDirectionOverride = 0
-pushAmount = 1
 carryLimit = 1
-canDamageUser = false
 
 [sub_resource type="Resource" id="Resource_hdf5u"]
 script = ExtResource("3_hhr0n")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 pushInfo = SubResource("Resource_8be51")
 Position = Vector2i(0, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_gtgv2"]
 script = ExtResource("2_2lrju")
-overrideActionDirection = false
-pushDirectionOverride = 0
-pushAmount = 1
 carryLimit = 1
-canDamageUser = false
 
 [sub_resource type="Resource" id="Resource_8h257"]
 script = ExtResource("3_hhr0n")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 pushInfo = SubResource("Resource_gtgv2")
 Position = Vector2i(1, -1)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_su6b7"]
 script = ExtResource("2_2lrju")
-overrideActionDirection = false
-pushDirectionOverride = 0
-pushAmount = 1
 carryLimit = 1
-canDamageUser = false
 
 [sub_resource type="Resource" id="Resource_3pbcx"]
 script = ExtResource("3_hhr0n")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 pushInfo = SubResource("Resource_su6b7")
 Position = Vector2i(1, -2)
-Multiplier = 1.0
 
 [sub_resource type="Resource" id="Resource_kvv6a"]
 script = ExtResource("2_2lrju")
-overrideActionDirection = false
-pushDirectionOverride = 0
-pushAmount = 1
 carryLimit = 1
-canDamageUser = false
 
 [sub_resource type="Resource" id="Resource_d5g0l"]
 script = ExtResource("3_hhr0n")
-AccuracyModifier = 0.0
-CritModifier = 0.0
-Ignite = 0
-HitsEnvironment = true
 pushInfo = SubResource("Resource_kvv6a")
 Position = Vector2i(0, -2)
-Multiplier = 1.0
 
 [resource]
 script = ExtResource("4_0voxm")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhxil20ufx2ma"]
+[gd_scene load_steps=15 format=3 uid="uid://bhxil20ufx2ma"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0hq2p"]
+[ext_resource type="Texture2D" uid="uid://c7yl5nsgangtw" path="res://ART/Icons/Ability/Equippable/morningstar.png" id="2_0hq2p"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_88gfm"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_8np14"]
 [ext_resource type="Resource" uid="uid://d2d5roo837klh" path="res://RESOURCES/Descriptors/DES_Blunt.tres" id="4_gv3g6"]
@@ -12,12 +13,12 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="10_s0rk5"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="12_0nllg"]
 
-[sub_resource type="Resource" id="Resource_y5bht"]
+[sub_resource type="Resource" id="Resource_0hq2p"]
 script = ExtResource("6_l8hcr")
 Template = ExtResource("7_xcylp")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_0hq2p"]
+[sub_resource type="Resource" id="Resource_88gfm"]
 script = ExtResource("6_l8hcr")
 Template = ExtResource("8_psn6u")
 Value = 1
@@ -29,6 +30,7 @@ abilityCooldown = 0
 internalName = "morningstar"
 loc_displayName = "weap_morningstar_name"
 loc_displayDesc = "weap_morningstar_desc"
+icon = ExtResource("2_0hq2p")
 descriptors = Array[ExtResource("2_88gfm")]([ExtResource("3_8np14"), ExtResource("4_gv3g6")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
@@ -36,7 +38,7 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_0lebr")
-GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_y5bht"), SubResource("Resource_0hq2p")])
+GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_0hq2p"), SubResource("Resource_88gfm")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_vsu1t")

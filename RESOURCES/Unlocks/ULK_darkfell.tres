@@ -8,4 +8,3 @@ script = ExtResource("1_xsrk5")
 AbilityPath = "res://RESOURCES/Ability/Standard/ART_darkfell.tscn"
 StartsDiscoverable = true
 StartUnlocked = true
-Descriptors = Array[ExtResource("1_xf4b5")]([])

@@ -8,7 +8,7 @@ class_name TileMetaData
 @export var FireSpreadChance : float = 0.5
 @export var Shroud : bool = false
 @export var DestructionRewards : Array[ResourceDef]
-
+@export var DestructionVFXPrefab : PackedScene
 
 func OnUnitTraversed(_unitInstance : UnitInstance):
 	return false

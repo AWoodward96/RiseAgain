@@ -466,7 +466,7 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 
 	var event
 	if _tile.Health <= 0:
-		DestroyTerrain(_tile)
+		DestroyTerrain(_tile, true)
 		# We do it like this so that you can't retarget this tile anymore
 		_tile.MaxHealth = -1
 		_tile.Health = 0
@@ -477,32 +477,40 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 	event.start()
 
 
-func DestroyTerrain(_tile : Tile):
+func DestroyTerrain(_tile : Tile, _playVFX : bool):
 	_tile.TerrainDestroyed = true
-	if _tile.MainTileData.DestructionRewards.size() > 0:
-		PersistDataManager.universeData.AddResources(_tile.MainTileData.DestructionRewards, (_tile.Position * CellSize) + Vector2i(CellSize / 2, CellSize / 2))
+
+	if _tile.MainTileData != null:
+		if _tile.MainTileData.DestructionRewards.size() > 0:
+			PersistDataManager.universeData.AddResources(_tile.MainTileData.DestructionRewards, (_tile.Position * CellSize) + Vector2i(CellSize / 2, CellSize / 2))
+
+		if _tile.MainTileData.DestructionVFXPrefab != null && _playVFX:
+			var vfx = _tile.MainTileData.DestructionVFXPrefab.instantiate()
+			vfx.position = _tile.GlobalPosition
+			map.add_child(vfx)
 
 	map.tilemap_main.set_cell(_tile.Position)
 	RefreshTilesCollision(_tile, map.currentTurn as int)
 
 
 func IgniteTile(_tile : Tile, _fireLevel : int):
-	if _tile == null:
-		return
-
-	if _tile.FireLevel < _fireLevel:
-		_tile.FireLevel = _fireLevel
-
-	match _tile.FireLevel:
-		0:
-			map.tilemap_fire.set_cell(_tile.position)
-		1:
-			map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_1)
-		2:
-			map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_2)
-		3:
-			map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_3)
-
+	# TODO: Remove
+	#if _tile == null:
+		#return
+#
+	#if _tile.FireLevel < _fireLevel:
+		#_tile.FireLevel = _fireLevel
+#
+	#match _tile.FireLevel:
+		#0:
+			#map.tilemap_fire.set_cell(_tile.position)
+		#1:
+			#map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_1)
+		#2:
+			#map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_2)
+		#3:
+			#map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_3)
+	pass
 
 
 func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitInstance):
@@ -802,7 +810,7 @@ static func FromJSON(_dict, _map : Map):
 	newGrid.GridArr.assign(gridArrData)
 	for t in newGrid.GridArr:
 		if t.TerrainDestroyed:
-			newGrid.DestroyTerrain(t)
+			newGrid.DestroyTerrain(t, false)
 
 		canvasMod.set_cell(t.Position, UITILEATLAS, BASEBLACKTILE)
 

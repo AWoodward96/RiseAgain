@@ -14,7 +14,7 @@ enum DisplayStyle { Weapon, Ability}
 
 var ShouldShow : bool :
 	get:
-		return !(normalDamage == 0 && collisionDamage == 0 && healAmount == 0) || normalDamageModified
+		return !(normalDamage == 0 && collisionDamage == 0 && healAmount == 0) || normalDamageModified || effects.size() > 0
 
 var display_style : DisplayStyle
 var currentHP : int # Units current HP

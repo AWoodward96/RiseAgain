@@ -64,7 +64,7 @@ Template = ExtResource("11_2vv6v")
 [sub_resource type="Resource" id="Resource_2vxce"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("12_2hrwr")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_evd06"]
 script = ExtResource("2_3ts4j")
@@ -108,12 +108,12 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_4unlv"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("12_2hrwr")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_kklqk"]
 script = ExtResource("2_3ts4j")
 Template = ExtResource("13_g0pmc")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_Roc"

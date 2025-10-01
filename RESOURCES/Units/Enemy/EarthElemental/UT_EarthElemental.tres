@@ -32,17 +32,14 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_i6c8y"]
 script = ExtResource("2_50beg")
 Template = ExtResource("5_ca1g6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_50ob8"]
 script = ExtResource("2_50beg")
 Template = ExtResource("6_omxg1")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hvi8e"]
 script = ExtResource("2_50beg")
 Template = ExtResource("7_flprw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ddjmc"]
 script = ExtResource("2_50beg")
@@ -57,7 +54,6 @@ Value = 1
 [sub_resource type="Resource" id="Resource_6l8dp"]
 script = ExtResource("2_50beg")
 Template = ExtResource("10_v70dg")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_xhryc"]
 script = ExtResource("2_50beg")
@@ -67,12 +63,10 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_xk7wi"]
 script = ExtResource("2_50beg")
 Template = ExtResource("12_rkpo2")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_nwxjp"]
 script = ExtResource("2_50beg")
 Template = ExtResource("13_bapfb")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_towby"]
 script = ExtResource("2_50beg")
@@ -87,17 +81,14 @@ Value = 50.0
 [sub_resource type="Resource" id="Resource_o270h"]
 script = ExtResource("2_50beg")
 Template = ExtResource("5_ca1g6")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_85ajl"]
 script = ExtResource("2_50beg")
 Template = ExtResource("6_omxg1")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_ycaha"]
 script = ExtResource("2_50beg")
 Template = ExtResource("7_flprw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_q7iwy"]
 script = ExtResource("2_50beg")
@@ -107,12 +98,10 @@ Value = 10
 [sub_resource type="Resource" id="Resource_7im2a"]
 script = ExtResource("2_50beg")
 Template = ExtResource("10_v70dg")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_nou8e"]
 script = ExtResource("2_50beg")
 Template = ExtResource("12_rkpo2")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_1fdeq"]
 script = ExtResource("2_50beg")
@@ -127,15 +116,8 @@ BaseStats = Array[ExtResource("2_50beg")]([SubResource("Resource_7h4pr"), SubRes
 StatGrowths = Array[ExtResource("2_50beg")]([SubResource("Resource_towby"), SubResource("Resource_tperq"), SubResource("Resource_o270h"), SubResource("Resource_85ajl"), SubResource("Resource_ycaha"), SubResource("Resource_q7iwy"), SubResource("Resource_7im2a"), SubResource("Resource_nou8e"), SubResource("Resource_1fdeq")])
 Affinity = ExtResource("1_luvnh")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_giantslam.tscn"])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("12_mrmw8")]([])
-WeaponDescriptors = Array[ExtResource("12_mrmw8")]([])
 GridSize = 2
-ResourceDrops = Array[ExtResource("13_nchxn")]([])
-FootstepGUID = ""
 DebugName = "EarthElemental"
 loc_DisplayName = "unit_earthelemental_name"
 loc_Description = "unit_earthelemental_desc"
 icon = ExtResource("13_edjxl")
-startUnlocked = true
-startNameKnown = true

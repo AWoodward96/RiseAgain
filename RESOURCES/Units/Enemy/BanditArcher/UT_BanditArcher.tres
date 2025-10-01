@@ -65,7 +65,7 @@ Template = ExtResource("11_cqqlc")
 [sub_resource type="Resource" id="Resource_g0fyd"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("12_j5pf0")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_mpgea"]
 script = ExtResource("2_f28sa")
@@ -103,7 +103,7 @@ Template = ExtResource("11_cqqlc")
 [sub_resource type="Resource" id="Resource_jlc3t"]
 script = ExtResource("2_f28sa")
 Template = ExtResource("12_j5pf0")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_BanditArcher"

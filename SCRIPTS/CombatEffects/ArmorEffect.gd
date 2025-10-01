@@ -8,11 +8,11 @@ class_name ArmorEffect
 @export_group("Mod Data")
 @export var FlatValue : float
 @export var RelativeStat : StatTemplate
-@export var ModType : DamageData.ModificationType
+@export var ModType : DamageData.EModificationType
 @export var Mod : float
 
 
-func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _actionLog : ActionLog):
+func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _abilitySource : Ability, _actionLog : ActionLog):
 	if _affectedUnit.Template.Descriptors.count(ImmunityDescriptor) > 0:
 		return null
 
@@ -42,15 +42,15 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 			value += _affectedUnit.GetWorkingStat(RelativeStat)
 
 	# Check if this value should be scaled at all
-	if ModType != DamageData.ModificationType.None:
+	if ModType != DamageData.EModificationType.None:
 		match ModType:
-			DamageData.ModificationType.None:
+			DamageData.EModificationType.None:
 				pass
-			DamageData.ModificationType.Additive:
+			DamageData.EModificationType.Additive:
 				value += Mod
-			DamageData.ModificationType.Multiplicative:
+			DamageData.EModificationType.Multiplicative:
 				value = floori(value * Mod)
-			DamageData.ModificationType.Divisitive:
+			DamageData.EModificationType.Divisitive:
 				value = floori(value / Mod)
 
 

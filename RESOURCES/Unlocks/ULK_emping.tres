@@ -8,6 +8,5 @@
 [resource]
 script = ExtResource("3_jfocy")
 AbilityPath = "res://RESOURCES/Ability/Equippable/emping.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
 Descriptors = Array[ExtResource("1_f7330")]([ExtResource("2_1jx18"), ExtResource("3_1jx18")])

@@ -21,7 +21,10 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile, 
 	var addtionalTargetedTiles : Array[TileTargetedData]
 	match Type:
 		TargetingType.Simple:
-			addtionalTargetedTiles.append(_tile.AsTargetData())
+			var tileData = _tile.AsTargetData()
+			if ability.UsableDamageData != null:
+				tileData.Ignite = ability.UsableDamageData.Ignite
+			addtionalTargetedTiles.append(tileData)
 		TargetingType.ShapedFree:
 			if shapedTiles != null:
 				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, ability, _grid, _tile, _atRange))
@@ -30,7 +33,10 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile, 
 		TargetingType.ShapedDirectional:
 			pass
 		TargetingType.SelfOnly:
-			addtionalTargetedTiles = [_unit.CurrentTile.AsTargetData()]
+			var tileData = _unit.CurrentTile.AsTargetData()
+			if ability.UsableDamageData != null:
+				tileData.Ignite = ability.UsableDamageData.Ignite
+			addtionalTargetedTiles = [tileData]
 
 	if ability.IsHeal():
 		addtionalTargetedTiles = FilterByHeal(addtionalTargetedTiles)

@@ -65,7 +65,7 @@ func MoveAndDealDamage():
 		if t == null || t.Tile == null || t.Tile.Occupant == null:
 			continue
 
-		t.Tile.Occupant.ModifyHealth(-GameManager.GameSettings.DamageCalculation(Source, t.Tile.Occupant, damageData, t), null, false)
+		t.Tile.Occupant.ModifyHealth(-GameManager.GameSettings.DamageCalculation(Source, t.Tile.Occupant, damageData, t, SourceAbility), null, false)
 
 func Enter():
 	super()

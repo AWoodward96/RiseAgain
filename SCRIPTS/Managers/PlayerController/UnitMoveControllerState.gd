@@ -41,7 +41,7 @@ func _Execute(_delta):
 
 
 	if InputManager.cancelDown:
-		if CutsceneManager.BlockCancelInput || ctrl.UnitMovedIntoShroud:
+		if CutsceneManager.BlockCancelInput || ctrl.UnitMovedIntoShroud || !ctrl.selectedUnit.CanMove:
 			return
 
 		if movementSelected:

@@ -9,6 +9,4 @@
 [resource]
 script = ExtResource("1_k2pb8")
 AbilityPath = "res://RESOURCES/Ability/Equippable/iron_teeth.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_agwp6")]([ExtResource("2_io5u2"), ExtResource("7_cpwyc"), ExtResource("4_7ihna")])

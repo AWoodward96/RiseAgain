@@ -501,9 +501,6 @@ static func FromJSON(_dict : Dictionary, _assignedCampaign : Campaign):
 	var parsedString = PersistDataManager.GetJSONTextFromFile(PersistDataManager.MAP_GRID_FILE)
 	map.grid = Grid.FromJSON(parsedString, map)
 	map.grid.map = map
-	for t in map.grid.GridArr:
-		if t.OnFire:
-			map.grid.IgniteTile(t, t.FireLevel)
 
 	# get units killed
 	for keypair in _dict["enemyUnitsKilled"]:

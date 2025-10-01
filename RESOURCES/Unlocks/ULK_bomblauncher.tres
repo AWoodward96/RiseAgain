@@ -6,6 +6,3 @@
 [resource]
 script = ExtResource("1_end6o")
 AbilityPath = "res://RESOURCES/Ability/Equippable/bomblauncher.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
-Descriptors = Array[ExtResource("1_dqjbm")]([])

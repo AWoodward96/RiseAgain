@@ -13,7 +13,6 @@
 
 [sub_resource type="Resource" id="Resource_c6kj5"]
 script = ExtResource("3_m6l0l")
-PlayAtUnit = true
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_5kv6w"]

@@ -8,6 +8,5 @@
 [resource]
 script = ExtResource("1_jht60")
 AbilityPath = "res://RESOURCES/Ability/Equippable/blunt.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
 Descriptors = Array[ExtResource("1_w3qaw")]([ExtResource("2_72usi"), ExtResource("9_8nwq4")])

@@ -69,12 +69,12 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_83xpp"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("12_6i5t4")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_j23g5"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("13_6h1w4")
-Value = 2
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_cfnyk"]
 script = ExtResource("2_pgscv")
@@ -114,12 +114,12 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_n83y3"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("12_6i5t4")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_s5xx6"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("13_6h1w4")
-Value = 35
+Value = 35.0
 
 [resource]
 resource_name = "UT_Knight"

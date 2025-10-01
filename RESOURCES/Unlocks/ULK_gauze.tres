@@ -7,6 +7,5 @@
 [resource]
 script = ExtResource("1_0qjms")
 AbilityPath = "res://RESOURCES/Ability/Tactical/gauze.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
 Descriptors = Array[ExtResource("1_dgsdn")]([ExtResource("2_47ico")])

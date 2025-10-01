@@ -44,7 +44,6 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	_unit.position += dst
 
 	if sourceHealthDelta != 0:
-		# WARNING: I don't actually know the best way to process the source of this effect. Fix this later
 		unit.ModifyHealth(sourceHealthDelta, combatResults[0])
 
 	TimerLock = true

@@ -27,37 +27,30 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_r3biu"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("4_pqhac")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_vn80d"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("5_wjrgh")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_j0vu4"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("6_u6v6c")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_3jb66"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("7_kt1dk")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_bveuc"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("8_g3oqr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_3unnj"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("9_cm46p")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_lgsma"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("10_mbfmv")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_8tkpt"]
 script = ExtResource("2_vcd88")
@@ -67,12 +60,10 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_reqqq"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("12_n13oc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_wul63"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("13_e8tsd")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_m8k7y"]
 script = ExtResource("2_vcd88")
@@ -82,37 +73,30 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_7cchn"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("4_pqhac")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_l615q"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("5_wjrgh")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hppgb"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("6_u6v6c")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_54pvi"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("7_kt1dk")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_6bf8h"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("9_cm46p")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_olcme"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("10_mbfmv")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_4yfuy"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("12_n13oc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_dqcgs"]
 script = ExtResource("2_vcd88")
@@ -127,15 +111,8 @@ BaseStats = Array[ExtResource("2_vcd88")]([SubResource("Resource_0etaw"), SubRes
 StatGrowths = Array[ExtResource("2_vcd88")]([SubResource("Resource_m8k7y"), SubResource("Resource_7cchn"), SubResource("Resource_l615q"), SubResource("Resource_hppgb"), SubResource("Resource_54pvi"), SubResource("Resource_6bf8h"), SubResource("Resource_olcme"), SubResource("Resource_4yfuy"), SubResource("Resource_dqcgs")])
 Affinity = ExtResource("1_8oc7x")
 Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_hatch.tscn"])
-Tier1Abilities = Array[String]([])
-Descriptors = Array[ExtResource("12_543b7")]([])
-WeaponDescriptors = Array[ExtResource("12_543b7")]([])
-GridSize = 1
-ResourceDrops = Array[ExtResource("13_ihdc3")]([])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "RocEgg"
 loc_DisplayName = "unit_rocegg_name"
 loc_Description = "unit_rocegg_desc"
 icon = ExtResource("13_ds8ji")
-startUnlocked = true
-startNameKnown = true

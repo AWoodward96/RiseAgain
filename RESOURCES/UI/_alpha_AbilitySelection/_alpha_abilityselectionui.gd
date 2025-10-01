@@ -7,6 +7,13 @@ signal SelectionComplete(_packedScene : PackedScene)
 @export var entryParent : EntryList
 @export var abilityEntryPrefab : PackedScene
 
+@export_category("Unit Stat Container")
+@export var unitIcon : TextureRect
+@export var unitName : Label
+@export var unitStatEntry : PackedScene
+@export var unitStatParent : EntryList
+
+var currentUnit : UnitInstance
 
 func _ready() -> void:
 	if Instance != null:
@@ -23,7 +30,8 @@ func _exit_tree() -> void:
 		Instance = null
 	print("ABILITYSELECTIONUI: Exit tree end")
 
-func Initialize(_abilities : Array[String]):
+func Initialize(_unit : UnitInstance, _abilities : Array[String]):
+	currentUnit = _unit
 	entryParent.ClearEntries()
 	for abilityPath in _abilities:
 		var entry = entryParent.CreateEntry(abilityEntryPrefab)
@@ -34,6 +42,19 @@ func Initialize(_abilities : Array[String]):
 		entry.EntrySelected.connect(OnAbilitySelected.bind(packedScene))
 
 	entryParent.FocusFirst()
+	RefreshStats()
+
+func RefreshStats():
+	unitIcon.texture = currentUnit.Template.icon
+	unitName.text = currentUnit.Template.loc_DisplayName
+
+	unitStatParent.ClearEntries()
+	for stats in GameManager.GameSettings.LevelUpStats:
+		var entry = unitStatParent.CreateEntry(unitStatEntry) as StatBlockEntry
+		entry.Refresh(stats, currentUnit.GetWorkingStat(stats))
+
+
+	pass
 
 func OnAbilitySelected(_ability : PackedScene):
 	print("ABILITYSELECTIONUI: Ability Selected, UI will now close")
@@ -41,7 +62,7 @@ func OnAbilitySelected(_ability : PackedScene):
 	SelectionComplete.emit(_ability)
 	queue_free()
 
-static func Show(_root : Node2D, _abilities : Array[String]):
+static func Show(_unit : UnitInstance, _abilities : Array[String]):
 	var ui = UIManager.OpenFullscreenUI(UIManager.AbilitySelectionUI) as SelectAbilityUI
-	ui.Initialize(_abilities)
+	ui.Initialize(_unit, _abilities)
 	return ui

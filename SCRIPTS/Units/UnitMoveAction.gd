@@ -62,6 +62,7 @@ func _Execute(_unit : UnitInstance, _delta):
 				if unit.footstepsSound != null:
 					unit.footstepsSound.stop()
 
+				unit.LockInMovement(Route[Route.size() - 1])
 				if unit == null || unit.currentHealth <= 0:
 					# They fucking died lmao
 					if isAlliedTeam:

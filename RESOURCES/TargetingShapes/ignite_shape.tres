@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=9 format=3 uid="uid://b65br6bvwdx44"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_i65w0"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_3b731"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_ut1op"]
+
+[sub_resource type="Resource" id="Resource_feyon"]
+script = ExtResource("2_ut1op")
+Ignite = 2
+Multiplier = 0.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_keu1a"]
+script = ExtResource("2_ut1op")
+Ignite = 1
+Position = Vector2i(-1, 0)
+Multiplier = 0.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_rofit"]
+script = ExtResource("2_ut1op")
+Ignite = 1
+Position = Vector2i(1, 0)
+Multiplier = 0.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_p4eby"]
+script = ExtResource("2_ut1op")
+Ignite = 1
+Position = Vector2i(0, -1)
+Multiplier = 0.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_cofds"]
+script = ExtResource("2_ut1op")
+Ignite = 1
+Position = Vector2i(0, 1)
+Multiplier = 0.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[resource]
+script = ExtResource("2_3b731")
+TileCoordinates = Array[ExtResource("1_i65w0")]([SubResource("Resource_feyon"), SubResource("Resource_keu1a"), SubResource("Resource_rofit"), SubResource("Resource_p4eby"), SubResource("Resource_cofds")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"

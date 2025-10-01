@@ -2,7 +2,7 @@ extends CombatEffectTemplate
 class_name StealthEffectTemplate
 
 
-func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _actionLog : ActionLog):
+func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance,  _abilitySource : Ability, _actionLog : ActionLog):
 	if _affectedUnit.Template.Descriptors.count(ImmunityDescriptor) > 0:
 		return null
 

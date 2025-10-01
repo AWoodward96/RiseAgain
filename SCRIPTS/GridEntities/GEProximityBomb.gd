@@ -22,7 +22,7 @@ func OnUnitTraversed(_unitInstance : UnitInstance, _tile : Tile):
 	if Source == null:
 		newDamageStepResult.HealthDelta = defaultDamage
 	else:
-		newDamageStepResult.HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damageData, Origin.AsTargetData())
+		newDamageStepResult.HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, _unitInstance, damageData, Origin.AsTargetData(), SourceAbility)
 
 	CurrentMap.grid.SetUnitGridPosition(_unitInstance, Origin.Position, true, false)
 	_unitInstance.ModifyHealth(newDamageStepResult.HealthDelta, newDamageStepResult, true)
@@ -62,7 +62,7 @@ func GetLocalizedDescription(_tile : Tile):
 	if Source == null:
 		madlibs["NUM"] = defaultDamage
 	else:
-		madlibs["NUM"] = -GameManager.GameSettings.DamageCalculation(Source, null, damageData, Origin.AsTargetData())
+		madlibs["NUM"] = -GameManager.GameSettings.DamageCalculation(Source, null, damageData, Origin.AsTargetData(), SourceAbility)
 
 	return returnString.format(madlibs)
 

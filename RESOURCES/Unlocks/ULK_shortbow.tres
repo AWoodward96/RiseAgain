@@ -9,5 +9,4 @@
 script = ExtResource("1_2yl31")
 AbilityPath = "res://RESOURCES/Ability/Equippable/shortbow.tscn"
 StartsDiscoverable = true
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_ctbvi")]([ExtResource("2_en7pv"), ExtResource("4_3xk1f")])

@@ -68,7 +68,7 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_or4mr"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("12_4kqvc")
-Value = 4
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_8lb4v"]
 script = ExtResource("2_qy2cs")
@@ -112,12 +112,12 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_tl6hk"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("12_4kqvc")
-Value = 40
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_fad0h"]
 script = ExtResource("2_qy2cs")
 Template = ExtResource("13_2yo8r")
-Value = 10
+Value = 10.0
 
 [resource]
 resource_name = "UT_WildNecromancer"

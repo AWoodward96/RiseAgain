@@ -12,12 +12,6 @@ var AffectedTiles : Array[TileTargetedData]
 var RetaliationResult : DamageStepResult
 
 func PreCalculate():
-	## Target died somewhere in the process - return null
-	# NOTE: I had this commented out at some point because of an error I ran into -- not quite sure how to handle this at the moment
-	# So just.... bleh
-	#if Target == null:
-		#return
-
 	if AbilityData.IsDamage():
 		# Damage dealing with autoattacks can miss
 		HitRate = 100
@@ -31,7 +25,7 @@ func PreCalculate():
 		else:
 			CritRate = GameManager.GameSettings.CritRateCalculation(Source, AbilityData, Target, TileTargetData)
 
-		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, AbilityData.UsableDamageData, TileTargetData)
+		HealthDelta = -GameManager.GameSettings.DamageCalculation(Source, Target, AbilityData.UsableDamageData, TileTargetData, AbilityData)
 		Ignite = TileTargetData.Ignite
 
 		# calculate if the source unit heals or is hurt by this attack
@@ -122,11 +116,6 @@ func RollMiss(_rng : DeterministicRNG, _missThreshold : float):
 func RollCrit(_rng : DeterministicRNG, _critThreshold : float):
 	var val = _rng.NextFloat(0, 1)
 	Crit = val < _critThreshold
-
-func RollIgnite(_rng : DeterministicRNG):
-	var val = _rng.NextFloat(0, 1)
-	Ignite = val < TileTargetData.IgniteChance
-
 
 func PreviewResult(_map : Map):
 	PreCalculate()

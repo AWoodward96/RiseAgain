@@ -11,7 +11,6 @@
 script = ExtResource("1_ycfw3")
 Stat = ExtResource("2_43mb3")
 FlatValue = -2
-DerivedFromUnit = 0
 DerivedFromStat = ExtResource("2_2yocl")
 SignedPercentageValue = -0.25
 
@@ -19,7 +18,6 @@ SignedPercentageValue = -0.25
 script = ExtResource("1_ycfw3")
 Stat = ExtResource("3_d63bk")
 FlatValue = -2
-DerivedFromUnit = 0
 DerivedFromStat = ExtResource("2_2yocl")
 SignedPercentageValue = -0.25
 
@@ -28,7 +26,6 @@ script = ExtResource("3_kpp0i")
 StatChanges = Array[ExtResource("1_ycfw3")]([SubResource("Resource_8pnm6"), SubResource("Resource_ebs5i")])
 AffectedTargets = 1
 Turns = 2
-show_popup = true
 loc_name = "ce_def_down"
 loc_desc = "ce_def_down_desc"
 loc_icon = ExtResource("3_mk4mw")

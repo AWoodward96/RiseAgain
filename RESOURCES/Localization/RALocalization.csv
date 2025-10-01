@@ -570,3 +570,9 @@ stat_wisdom,Wisdom
 stat_wisdom_desc,Wisdom\nIncreases Damage when attacking with Magical Abilities. Also slightly decreases Magical Damage taken.
 stat_wisdom_short,WIS
 tile_tall_grass,Tall Grass
+ce_onfire,Burning!!!
+ce_onfire_desc,This Unit will take 3/5/10 damage at the start of their turn.
+art_ignite_name,Ignition
+art_ignite_desc,Ignite Units in a small area. Units in the center get double the stacks.
+art_inner_flame_name,Inner Flame
+art_inner_flame_desc,"While on Fire, your Attacks with a Weapon deal double damage. When used, Ignite self for 2."

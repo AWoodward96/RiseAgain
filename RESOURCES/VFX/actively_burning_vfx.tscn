@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs3nqerrxc8yu"]
+
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_13oum"]
+[ext_resource type="Texture2D" uid="uid://bke1wpqtktshf" path="res://ART/VFX/4x4_particles.png" id="2_w4i4l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_252qo"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_8u7ww"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 4.1110215), 0.0, 0.0, 0, 0, Vector2(0.77777785, 0.011665344), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8i6l0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.260181, 0.6334842)
+colors = PackedColorArray(0.8784314, 0.7882353, 0.4745098, 1, 0.69411767, 0.3019608, 0.16862746, 1, 0.3764706, 0.13333334, 0.09019608, 1)
+
+[node name="ActivelyBurningVFX" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
+scale = Vector2(2, 2)
+script = ExtResource("1_13oum")
+emitOnReady = true
+cpuParticles = [NodePath("CPUParticles2D")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_252qo")
+position = Vector2(16, 16)
+emitting = false
+amount = 64
+texture = ExtResource("2_w4i4l")
+one_shot = true
+explosiveness = 0.5
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 32.0
+initial_velocity_max = 48.0
+tangential_accel_min = -139.65
+tangential_accel_max = -139.65
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_8u7ww")
+color_ramp = SubResource("Gradient_8i6l0")
+anim_offset_max = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

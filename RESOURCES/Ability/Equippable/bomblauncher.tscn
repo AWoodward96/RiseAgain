@@ -15,11 +15,6 @@
 
 [sub_resource type="Resource" id="Resource_ggq14"]
 script = ExtResource("3_xidfr")
-OnActionOrigin = true
-OnSource = false
-OnSpecificPosition = false
-SpecificPosition = Vector2i(0, 0)
-Instant = false
 metadata/_custom_type_script = "uid://c8cj2607kxmat"
 
 [sub_resource type="Resource" id="Resource_b0j54"]

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=50 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=53 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
+[ext_resource type="Resource" uid="uid://mrduxitrfb4s" path="res://RESOURCES/Stats/STAT_AbilityDMGMod.tres" id="1_f57kq"]
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_g1xjk"]
 [ext_resource type="Script" uid="uid://m8blsl4h64hb" path="res://SCRIPTS/Managers/GameSettings.gd" id="1_wj702"]
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="2_cn2rw"]
@@ -46,7 +47,9 @@
 [ext_resource type="Resource" uid="uid://cko8hnks4se86" path="res://RESOURCES/Universe/Buildings/Smithy.tres" id="39_24hec"]
 [ext_resource type="Resource" uid="uid://87vbepmdhmjx" path="res://RESOURCES/Universe/Buildings/Tavern.tres" id="39_75bht"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="40_bq4ps"]
+[ext_resource type="Resource" uid="uid://1owdew6un3vm" path="res://RESOURCES/CombatEffects/CE_OnFire.tres" id="41_uisfa"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="43_o2wc7"]
+[ext_resource type="Resource" uid="uid://cgs0hjwleufo0" path="res://RESOURCES/Stats/STAT_WeaponDMGMod.tres" id="48_g7w1a"]
 
 [sub_resource type="Resource" id="Resource_l1yyb"]
 script = ExtResource("13_k6h66")
@@ -84,11 +87,15 @@ CritMultiplier = 2
 MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")
 AttackStat = ExtResource("5_pvcaj")
+DexterityStat = ExtResource("37_t5v44")
 DefenseStat = ExtResource("6_3kigw")
 SpAttackStat = ExtResource("7_tql1j")
+WisdomStat = ExtResource("38_uisfa")
 SpDefenseStat = ExtResource("8_qhahl")
 LuckStat = ExtResource("5_ymlgt")
 MindStat = ExtResource("11_t1n24")
+WeaponDMGModifierStat = ExtResource("48_g7w1a")
+AbilityDMGModifierStat = ExtResource("1_f57kq")
 FlyingDescriptor = ExtResource("15_gyih8")
 AmphibiousDescriptor = ExtResource("2_g5ylt")
 WeaponDescriptor = ExtResource("43_o2wc7")
@@ -107,6 +114,7 @@ ShroudedTintModulate = Color(0.65, 0.65, 0.65, 1)
 AbilitiesCanMiss = false
 FirstAbilityBreakpoint = 2
 SecondAbilityBreakpoint = -1
+OnFireDebuff = ExtResource("41_uisfa")
 FireSpreadLevel = 4
 StrongAffinityMultiplier = 1.2
 WeakAffinityMultiplier = 0.8

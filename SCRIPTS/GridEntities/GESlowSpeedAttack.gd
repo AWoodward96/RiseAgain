@@ -60,17 +60,22 @@ func UpdateGridEntity_TeamTurn(_delta : float):
 
 func BuildResults():
 	log.actionStepResults.clear()
-	for tile in log.affectedTiles:
-		var index = 0
-		for step in executionStack:
-			var result = step.GetResult(log, tile)
-			if result != null:
-				if result is ActionStepResult:
-					result.StepIndex = index
-					log.actionStepResults.append(result)
+	var index = 0
+	# Needs to be like this because the execution stack is not the abilities execution stack
+	# This is a grid entity, and the ability creates the entity, while the entity does the actual execution
+	for step in executionStack:
+		var resultsArr = step.GetResults(log, log.affectedTiles)
+		if resultsArr != null:
+			for res in resultsArr:
+				if res == null:
+					continue
+
+				if res is ActionStepResult:
+					res.StepIndex = index
+					log.actionStepResults.append(res)
 				else:
 					push_error("Ability Step: " + str(step.get_script()) + " - attached to ability " + SourceAbility.name + " has an improper ActionStepResult and cannot be previewed.")
-			index += 1
+		index += 1
 
 
 func ToJSON():

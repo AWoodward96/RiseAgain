@@ -201,12 +201,12 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 
 	for targetTile in tilesHitByAttack:
 		if targetTile.Tile.Occupant != null && ability.TargetingData.OnCorrectTeam(sourceUnit, targetTile.Tile.Occupant):
-			var thisDamage = GameManager.GameSettings.DamageCalculation(sourceUnit, targetTile.Tile.Occupant, ability.UsableDamageData, targetTile)
+			var thisDamage = GameManager.GameSettings.DamageCalculation(sourceUnit, targetTile.Tile.Occupant, ability.UsableDamageData, targetTile, ability)
 			damageAmount += thisDamage
 			if targetTile.Tile.Occupant.currentHealth <= thisDamage:
 				killCount += 1
 
-	damageAmount = GameManager.GameSettings.DamageCalculation(sourceUnit, targetUnit, ability.UsableDamageData, null)
+	damageAmount = GameManager.GameSettings.DamageCalculation(sourceUnit, targetUnit, ability.UsableDamageData, null, ability)
 	canDealDamage = damageAmount > 0 # This could cause some fuckyness with 'no damage' attacks but we'll see
 	canAttack = true
 

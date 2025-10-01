@@ -18,6 +18,7 @@ var Water : bool
 var OpenWater : bool
 var IsShroud : bool
 var Shroud : ShroudInstance
+
 var OnFire : bool :
 	get:
 		return FireLevel > 0
@@ -168,7 +169,6 @@ func ToJSON():
 		"MaxHealth" = MaxHealth,
 		"Killbox" = Killbox,
 		"ActiveKillbox" = ActiveKillbox,
-		"FireLevel" = FireLevel,
 		"TerrainDestroyed" = TerrainDestroyed,
 		"IsShroud" = IsShroud
 	}
@@ -195,9 +195,6 @@ static func FromJSON(_dict : Dictionary):
 	newTile.ActiveKillbox = _dict["ActiveKillbox"]
 	newTile.TerrainDestroyed = _dict["TerrainDestroyed"]
 	newTile.IsShroud = _dict["IsShroud"]
-
-	if _dict.has("FireLevel"):
-		newTile.FireLevel = _dict["FireLevel"]
 
 	if _dict.has("MainTileData"):
 		newTile.MainTileData = load(_dict["MainTileData"]) as TileMetaData

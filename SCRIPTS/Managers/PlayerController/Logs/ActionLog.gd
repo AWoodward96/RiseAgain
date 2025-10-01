@@ -1,5 +1,6 @@
 class_name ActionLog
 
+
 var source : UnitInstance
 var cachedSourceStats : Dictionary = {}
 var grid : Grid
@@ -48,17 +49,17 @@ func BuildStepResults():
 		return
 
 	actionStepResults.clear()
-	for tile in affectedTiles:
-		var index = 0
-		for step in ability.executionStack:
-			var result = step.GetResult(self, tile)
-			if result != null:
-				if result is ActionStepResult:
-					result.StepIndex = index
-					actionStepResults.append(result)
+	var index = 0
+	for step in ability.executionStack:
+		var resultsArr = step.GetResults(self, affectedTiles)
+		if resultsArr != null:
+			for res in resultsArr:
+				if res is ActionStepResult:
+					res.StepIndex = index
+					actionStepResults.append(res)
 				else:
 					push_error("Ability Step: " + str(step.get_script()) + " - attached to ability " + ability.name + " has an improper ActionStepResult and cannot be previewed.")
-			index += 1
+		index += 1
 
 func GetResultsFromActionIndex(_index : int):
 	return actionStepResults.filter(func(_res) : return _res.StepIndex == _index)

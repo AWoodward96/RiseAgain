@@ -17,9 +17,19 @@ func Enter(_actionLog : ActionLog):
 #func Execute(_delta):
 	#return true
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
+func GetResults(_actionLog : ActionLog, _availableTiles : Array[TileTargetedData]):
 	var preview = CreateGridEntityStepResult.new()
-	preview.TileTargetData = _specificTile
-	preview.Source = _actionLog.source
-	preview.prefab = GridEntityPrefab
-	return preview
+	var found = false
+	for tileTargetedData in _availableTiles:
+		if tileTargetedData.Tile == _actionLog.actionOriginTile:
+			preview.TileTargetData = tileTargetedData
+			preview.Source = _actionLog.source
+			preview.prefab = GridEntityPrefab
+			found = true
+			break
+
+	if !found:
+		preview.TileTargetData = _actionLog.actionOriginTile.AsTargetData()
+		preview.Source = _actionLog.source
+		preview.prefab = GridEntityPrefab
+	return [preview]

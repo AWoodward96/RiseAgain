@@ -7,6 +7,5 @@
 [resource]
 script = ExtResource("1_jmomp")
 AbilityPath = "res://RESOURCES/Ability/Tactical/kick.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
 Descriptors = Array[ExtResource("1_wmf0l")]([ExtResource("2_febck")])

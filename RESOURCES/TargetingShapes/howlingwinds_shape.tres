@@ -7,21 +7,14 @@
 
 [sub_resource type="Resource" id="Resource_ynuat"]
 script = ExtResource("2_17skd")
-overrideActionDirection = false
-pushDirectionOverride = 0
 pushAmount = 2
 carryLimit = 1
-canDamageUser = false
 
 [sub_resource type="Resource" id="Resource_dodim"]
 script = ExtResource("3_msuib")
 AccuracyModifier = 2.0
 CritModifier = -1.0
-Ignite = 0
-HitsEnvironment = true
 pushInfo = SubResource("Resource_ynuat")
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 
 [resource]
 script = ExtResource("4_diman")

@@ -3,7 +3,7 @@ class_name GameSettingsTemplate
 
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4, INVALID = -1 }
 enum Direction { Up, Right, Down, Left }
-enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
+enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3 }
 
 
 @export_category("Campaign Data")
@@ -54,6 +54,8 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var SpDefenseStat : StatTemplate
 @export var LuckStat : StatTemplate
 @export var MindStat : StatTemplate
+@export var WeaponDMGModifierStat : StatTemplate
+@export var AbilityDMGModifierStat : StatTemplate
 
 @export var FlyingDescriptor : DescriptorTemplate
 @export var AmphibiousDescriptor : DescriptorTemplate
@@ -80,6 +82,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3}
 @export var SecondAbilityBreakpoint : int # NOTE: NOT CURRENTLY IMPLEMENTED
 
 @export_category("Fire Data")
+@export var OnFireDebuff : CombatEffectTemplate
 const FireSpreadMaxLevel : int = 3
 @export var FireSpreadLevel : int = 3
 @export var Level1FireDamage : int = -1
@@ -177,7 +180,7 @@ static func AxisRound(_vector : Vector2):
 	# snaps to 4
 	return Vector2.RIGHT.rotated(round(_vector.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
 
-func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData):
+func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData, _ability : Ability):
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
 
@@ -191,18 +194,18 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	var defensiveVal = 0
 	if _defendingUnit != null:
 		match _damageData.DamageType:
-			DamageData.DamageClassification.Physical:
+			DamageData.EDamageClassification.Physical:
 				defensiveVal = _defendingUnit.GetWorkingStat(DefenseStat) + floori((_defendingUnit.GetWorkingStat(DexterityStat) * WISDEXDefenseModifier))
 				pass
-			DamageData.DamageClassification.Magical:
+			DamageData.EDamageClassification.Magical:
 				defensiveVal = _defendingUnit.GetWorkingStat(SpDefenseStat) + floori((_defendingUnit.GetWorkingStat(WisdomStat) * WISDEXDefenseModifier))
 				pass
-			DamageData.DamageClassification.True:
+			DamageData.EDamageClassification.True:
 				# true damage has no defense
 				pass
 
 	var affinityMultiplier = 1
-	if _defendingUnit != null && _attackingUnit != null && !_damageData.DamageType == DamageData.DamageClassification.True:
+	if _defendingUnit != null && _attackingUnit != null && !_damageData.DamageType == DamageData.EDamageClassification.True:
 		affinityMultiplier = _attackingUnit.Template.Affinity.GetAffinityDamageMultiplier(_defendingUnit.Template.Affinity)
 
 	var vulnerabilityMultiplier = 1
@@ -217,6 +220,15 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 		aoeMultiplier = _tileData.AOEMultiplier
 
 	var damageTotal = floori(max(agressiveVal - defensiveVal, 0) * affinityMultiplier * aoeMultiplier * vulnerabilityMultiplier)
+
+	# Ability and Weapon DMG Mod come into play after all the other modifiers and multipliers are done
+	# So even you're dealing 0 admage, you're actually dealing 2 damage
+	if _attackingUnit != null:
+		if _ability.type == Ability.AbilityType.Weapon:
+			damageTotal += _attackingUnit.GetWorkingStat(GameManager.GameSettings.WeaponDMGModifierStat)
+		elif _ability.type == Ability.AbilityType.Standard || _ability.type == Ability.AbilityType.Passive || _ability.type == Ability.AbilityType.Deathrattle:
+			damageTotal += _attackingUnit.GetWorkingStat(GameManager.GameSettings.AbilityDMGModifierStat)
+
 	if _damageData.DamageCantKill && _defendingUnit != null && damageTotal >= _defendingUnit.currentHealth:
 		damageTotal = _defendingUnit.currentHealth - 1
 

@@ -9,11 +9,17 @@ func Enter(_actionLog : ActionLog):
 	source.QueueHealAction(log)
 	pass
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
-	var result = HealStepResult.new()
-	result.AbilityData = _actionLog.ability
-	result.TileTargetData = _specificTile
-	result.Source = _actionLog.source
-	result.Target = _specificTile.Tile.Occupant
-	result.PreCalculate()
-	return result
+func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):
+	if _actionLog.ability.HealData == null:
+		return
+
+	var returnArray : Array[HealStepResult]
+	for tiles in _affectedTiles:
+		var result = HealStepResult.new()
+		result.AbilityData = _actionLog.ability
+		result.TileTargetData = tiles
+		result.Source = _actionLog.source
+		result.Target = tiles.Tile.Occupant
+		result.PreCalculate()
+		returnArray.append(result)
+	return returnArray

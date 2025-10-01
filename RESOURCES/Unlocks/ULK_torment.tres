@@ -8,6 +8,4 @@
 [resource]
 script = ExtResource("1_6gl85")
 AbilityPath = "res://RESOURCES/Ability/Equippable/torment.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_8qjdg")]([ExtResource("5_opywr"), ExtResource("3_8bf0h")])

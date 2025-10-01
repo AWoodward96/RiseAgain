@@ -16,16 +16,12 @@
 [sub_resource type="Resource" id="Resource_tbbfs"]
 script = ExtResource("3_cf2ed")
 AnimName = "use_item_in"
-Speed = 1.0
-Backwards = false
 WaitForAnimFinished = true
 metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [sub_resource type="Resource" id="Resource_0uc5p"]
 script = ExtResource("4_cf2ed")
 VFXPrefab = ExtResource("3_grjo6")
-PositionOnActionOrigin = true
-PositionOnSource = false
 metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
 
 [sub_resource type="Resource" id="Resource_vod3w"]
@@ -39,17 +35,11 @@ script = ExtResource("3_y4ca7")
 [sub_resource type="Resource" id="Resource_cf2ed"]
 script = ExtResource("3_cf2ed")
 AnimName = "use_item_out"
-Speed = 1.0
-Backwards = false
 WaitForAnimFinished = true
 metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [sub_resource type="Resource" id="Resource_kf6lm"]
 script = ExtResource("3_cf2ed")
-AnimName = "idle"
-Speed = 1.0
-Backwards = false
-WaitForAnimFinished = false
 metadata/_custom_type_script = "uid://cnlspk1u6udgh"
 
 [node name="gauze" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]

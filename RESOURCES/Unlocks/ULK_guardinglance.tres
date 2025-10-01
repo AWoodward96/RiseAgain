@@ -9,5 +9,4 @@
 script = ExtResource("1_tsoq0")
 AbilityPath = "res://RESOURCES/Ability/Equippable/guardinglance.tscn"
 StartsDiscoverable = true
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_r7g7b")]([ExtResource("2_7efdc"), ExtResource("6_n5bsn")])

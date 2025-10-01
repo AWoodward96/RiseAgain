@@ -17,7 +17,6 @@ Value = 2
 
 [sub_resource type="Resource" id="Resource_wbrx3"]
 script = ExtResource("8_uud7b")
-teamTurn = 1
 NOT = true
 metadata/_custom_type_script = "uid://cw244jw4a0ttt"
 

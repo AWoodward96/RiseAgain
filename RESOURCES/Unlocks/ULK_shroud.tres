@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("2_igr7c")
 AbilityPath = "res://RESOURCES/Ability/Passive/shroud.tscn"
-StartsDiscoverable = false
 StartUnlocked = true
-Descriptors = Array[ExtResource("1_e38hq")]([])

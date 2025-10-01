@@ -8,6 +8,4 @@
 [resource]
 script = ExtResource("1_ywhf4")
 AbilityPath = "res://RESOURCES/Ability/Equippable/fireytome.tscn"
-StartsDiscoverable = false
-StartUnlocked = false
 Descriptors = Array[ExtResource("1_tqhvf")]([ExtResource("5_gqb7d"), ExtResource("3_hq11f")])
