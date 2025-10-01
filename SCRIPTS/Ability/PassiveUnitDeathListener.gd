@@ -13,7 +13,8 @@ class_name PassiveUnitDeathListener
 
 func RegisterListener(_ability : Ability, _map : Map):
 	super(_ability, _map)
-	_map.OnUnitDied.connect(OnDeath)
+	if !_map.OnUnitDied.is_connected(OnDeath):
+		_map.OnUnitDied.connect(OnDeath)
 	pass
 
 func OnDeath(_unitThatDied : UnitInstance, _context : DamageStepResult):

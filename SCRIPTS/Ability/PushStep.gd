@@ -45,10 +45,15 @@ func Enter(_actionLog : ActionLog):
 
 
 
-func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
-	var result = PushStepResult.new()
-	result.Source = _actionLog.source
-	result.TileTargetData = _specificTile
-	result.canDamageUser = _specificTile.pushCanDamageUser
-	result.PreCalc()
-	return result
+func GetResults(_actionLog : ActionLog, _allTargetedTiles : Array[TileTargetedData]):
+	var returnArray : Array[PushStepResult]
+
+	for tile in _allTargetedTiles:
+		var result = PushStepResult.new()
+		result.Source = _actionLog.source
+		result.TileTargetData = tile
+		result.canDamageUser = tile.pushCanDamageUser
+		result.PreCalc()
+		returnArray.append(result)
+
+	return returnArray

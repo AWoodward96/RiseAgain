@@ -108,8 +108,8 @@ tile_set = ExtResource("4_lvx7e")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(384, 384)
-Position = Vector2i(6, 6)
+position = Vector2(192, 256)
+Position = Vector2i(3, 4)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
@@ -193,7 +193,7 @@ AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
 [node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
-position = Vector2(256, 192)
+position = Vector2(192, 384)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -203,7 +203,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("14_ox76s")
 UnitLevel = 2
 DeltaLevel = 0
-Position = Vector2i(4, 3)
+Position = Vector2i(3, 6)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 

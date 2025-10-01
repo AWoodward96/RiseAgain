@@ -37,7 +37,6 @@ script = ExtResource("2_4x1ql")
 AgressiveStat = ExtResource("3_lkblr")
 AgressiveModType = 2
 DamageType = 1
-DamageToHealthRatio = ""
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("4_y7c1k")

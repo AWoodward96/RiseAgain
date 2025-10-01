@@ -34,7 +34,7 @@ func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]
 		sourceResult.Target = _actionLog.source
 		sourceResult.Source = _actionLog.source
 
-		var sourceIndex = _affectedTiles.find_custom(func(x : TileTargetedData) : x.Tile == _actionLog.source.CurrentTile)
+		var sourceIndex = _affectedTiles.find_custom(func(x : TileTargetedData) : return x.Tile == _actionLog.source.CurrentTile)
 		if sourceIndex != -1:
 			sourceResult.TileTargetData = _affectedTiles[sourceIndex]
 		else:

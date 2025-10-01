@@ -388,7 +388,7 @@ item_t1_lapispadding_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color
 item_t1_ceruleanplates_name,Cerulean Plates
 item_t1_ceruleanplates_desc,{STATGROWTHSTAT1} Growth +{STATGROWTHPERC1}%. \n[color=#879ea3]Stats Gained: {GROWTHCOUNT}[/color]
 item_t2_bitterblade_name,Bitter Blade
-item_t2_bitterblade_desc,{STAT1} +{GROWTH1}
+item_t2_bitterblade_desc,{STAT1} +{GROWTH1}. Attacks with Weapons deal +2 Damage.
 item_t2_vampblade_name,Bloodsucker
 item_t2_vampblade_desc,{STAT1} +{GROWTH1}\nHeal for {HEAL_MOD}% of this Units {HEAL_STAT} on Kill.
 item_t2_radientchestplate_name,Radiance
@@ -489,8 +489,8 @@ art_spearthrow_name,Throw Spear
 art_spearthrow_desc,Throw your Spear at an Enemy dealing Physical Damage basted on {DMG_AGGRESSIVESTAT}
 art_pushforward_name,Push Forward
 art_pushforward_desc,Grant yourself and Allies close to you +{EFFECT_0_FLAT} {EFFECT_0_MODIFIEDSTAT} and +{EFFECT_1_FLAT} {EFFECT_1_MODIFIEDSTAT}
-art_summonsacredground_name,Sacred Ground
-art_summonsacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
+art_sacredground_name,Sacred Ground
+art_sacredground_desc,Blesses the ground in a large area for 3 Turns. Units that stand in the area gain Health at the start of their turn.
 art_graspingroots_name,Grasping Roots
 art_graspingroots_desc,Causes sharp and thorny vines to sproud in a large area for 3 Turns. Enemy Units take damage when walking through the area. This damage can't kill.
 art_flamewall_name,Flame Wall

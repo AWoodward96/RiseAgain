@@ -54,7 +54,6 @@ DamageType = 1
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("7_l6uhd")
-TeamTargeting = 2
 TargetRange = Vector2i(1, 3)
 
 [node name="StatComponent" type="Node2D" parent="."]

@@ -35,7 +35,7 @@ func _Enter(_ctrl : PlayerController, _ability):
 
 					var filteredList = []
 					for t in log.availableTiles:
-						if (t.Occupant != null && !t.Occupant.ShroudedFromPlayer) || (t.Occupant == null && t.MaxHealth > 0):
+						if (t.Occupant != null && !t.Occupant.ShroudedFromPlayer) || t.Occupant == null:
 							filteredList.append(t)
 
 					filteredList.sort_custom(func(a : Tile, b : Tile):

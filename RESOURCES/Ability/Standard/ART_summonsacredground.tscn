@@ -23,7 +23,7 @@ abilityCooldown = 5
 executionStack = Array[ExtResource("2_xwm4y")]([SubResource("Resource_kievn"), SubResource("Resource_tovoj")])
 internalName = "summonsacredground"
 loc_displayName = "art_sacredground_name"
-loc_displayDesc = "art_summonsacredground_desc"
+loc_displayDesc = "art_sacredground_desc"
 icon = ExtResource("5_00xii")
 TargetingData = NodePath("TargetingData")
 

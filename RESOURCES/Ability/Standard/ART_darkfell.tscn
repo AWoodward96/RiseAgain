@@ -29,7 +29,8 @@ script = ExtResource("7_k3t2n")
 
 [node name="ART_darkfell" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_85abs")
-abilityCooldown = 3
+abilityCooldown = 2
+ability_speed = 1
 executionStack = Array[ExtResource("2_tpvyo")]([SubResource("Resource_bem5n"), SubResource("Resource_m1d2h"), SubResource("Resource_muj8o"), SubResource("Resource_0uo1w")])
 internalName = "darkfell"
 loc_displayName = "art_darkfell_name"
@@ -47,7 +48,6 @@ shapedTiles = ExtResource("10_wvxjb")
 
 [node name="DamageData" type="Node2D" parent="."]
 script = ExtResource("11_vd06l")
-FlatValue = 2.0
+FlatValue = 4.0
 AgressiveStat = ExtResource("12_t80f5")
-DamageAffectsUsersHealth = true
-DamageToHealthRatio = -1.0
+DamageToHealthRatio = 0.0
