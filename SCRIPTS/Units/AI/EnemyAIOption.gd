@@ -20,6 +20,7 @@ var roughPath : Array[Tile] # Rough path is the direct path to the target unit, 
 var path : Array[Tile]		# The actual path, taking other units into consideration. This is what the enemy should use to move to a target
 var tilesHitByAttack : Array[TileTargetedData]
 var direction : GameSettingsTemplate.Direction
+var atRange : int = -1
 
 var targetUnit : UnitInstance
 var sourceUnit : UnitInstance
@@ -149,24 +150,24 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 						return
 			SkillTargetingData.TargetingType.ShapedDirectional:
 				# Go through all 4 directions and check to see if this directional attack will hit them
-				# This is... poorly optmized, and for bigger AOE's will prioritize the directional order over how many units are actually hit by the attack
+				# This is... poorly optimized, and for bigger AOE's will prioritize the directional order over how many units are actually hit by the attack
 				# but wtf ever
 
 				# oh and also it has to backtrack through the entire full path in order to determine which tile actually hits the player and
 				# god why did I do this? which fucking idiot thought this was a good idea (it was me it works shut up)
 				for potentialTile in _fullPath:
 					# No overlapping please
-					if potentialTile.Occupant != null:
+					if potentialTile.Occupant != null && potentialTile.Occupant != sourceUnit:
 						continue
 
 					var range = ability.GetRange()
 					for i in range(0,4):
-						for atRange in range(range.x, range.y + 1):
-							var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, potentialTile, atRange, grid, i)
+						for atRangeCounter in range(range.x, range.y + 1):
+							var directionalTiles = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, potentialTile, atRangeCounter, grid, i)
 							for t in directionalTiles:
 								if t.Tile.Occupant == targetUnit:
 									if ability.MovementData != null:
-										var evaluatedDestinationTile = ability.MovementData.PreviewMove(grid, sourceUnit, potentialTile, potentialTile, atRange, i)
+										var evaluatedDestinationTile = ability.MovementData.PreviewMove(grid, sourceUnit, potentialTile, potentialTile, atRangeCounter, i)
 										if evaluatedDestinationTile == []:
 											continue
 										else:
@@ -174,6 +175,7 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 
 									valid = true
 									direction = i as GameSettingsTemplate.Direction
+									atRange = atRangeCounter
 									SetValidAttack(potentialTile, targetUnit.CurrentTile)
 									return
 						pass
@@ -193,7 +195,7 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 			unitWillRetaliate = true
 
 	if ability.TargetingData.Type == SkillTargetingData.TargetingType.ShapedDirectional:
-		tilesHitByAttack = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, tileToMoveTo, 0, grid, direction)
+		tilesHitByAttack = ability.TargetingData.GetDirectionalAttack(sourceUnit, ability, tileToMoveTo, atRange, grid, direction)
 	elif ability.TargetingData.Type == SkillTargetingData.TargetingType.Global:
 		tilesHitByAttack = ability.TargetingData.GetGlobalAttack(sourceUnit, map, direction)
 	else:

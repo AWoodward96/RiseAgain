@@ -98,6 +98,7 @@ func TryCombat():
 		log.affectedTiles.append_array(selectedOption.tilesHitByAttack)
 		log.damageData = selectedOption.ability.UsableDamageData
 		log.actionDirection = selectedOption.direction
+		log.atRange = selectedOption.atRange
 		log.BuildStepResults()
 
 		# The unit still needs to get to their destination first, so queue it up as a sequence
