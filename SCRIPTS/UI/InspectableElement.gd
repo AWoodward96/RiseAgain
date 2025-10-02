@@ -2,6 +2,7 @@ extends Control
 class_name InspectableElement
 
 # TODO: Cleanup - probably delete?
+# Is used in EventOptionEntryUI, StatBlockEntryUI, AbilityEntryUI, and item_display_entry
 # The focus system already does this and I can design around this
 
 signal EntrySelected

@@ -83,11 +83,6 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3 
 
 @export_category("Fire Data")
 @export var OnFireDebuff : CombatEffectTemplate
-const FireSpreadMaxLevel : int = 3
-@export var FireSpreadLevel : int = 3
-@export var Level1FireDamage : int = -1
-@export var Level2FireDamage : int = -3
-@export var Level3FireDamage : int = -6
 
 @export_category("Affinity Data")
 @export var StrongAffinityMultiplier : float = 1.5
@@ -255,12 +250,6 @@ func HealCalculation(_healData : HealComponent, _source, _aoeMultiplier : float 
 	healAmount = floori(healAmount * _aoeMultiplier)
 	return healAmount
 
-func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
-	if CSR.NeverHit:
-		return 0
-	return 1
-	#return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
-
 func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
 	if _attacker == null || _defender == null:
 		# Cant crit what's not there
@@ -279,7 +268,6 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 		tileCritModifier = _tileData.CritModifier * 100
 
 	return (_attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
-	# return ((_attacker.GetWorkingStat(SkillStat) / 2.0) + _attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
 	return 10 + _healAmount
@@ -316,26 +304,6 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	equationResult = max(equationResult, 1)
 	return equationResult
 
-#func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):
-	#if _attacker == null:
-		#push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
-		#return 0
-#
-	#if _defender == null:
-		## If the defender doesn't exist - then don't even do this dance - just say you have 100% chance to hit
-		#return 1
-#
-	#var weaponAccuracy = 0
-	#if _weapon != null:
-		#weaponAccuracy = _weapon.GetAccuracy()
-#
-	#var affinityModifier = 0
-	#if _defender != null && _defender.Template != null:
-		#affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
-#
-	## Equation is:
-	## WeaponAcc + (Skill * 2) + (Luck / 2)
-	#return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat) / 2.0) + affinityModifier) / 100.0
 
 static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i, _direction : Direction):
 	match (_direction):
@@ -364,30 +332,3 @@ static func RollVariableChanceTable(_arrayOfVariableChance : Array[VariableChanc
 			return _arrayOfVariableChance[index]
 
 	return _arrayOfVariableChance[_arrayOfVariableChance.size() - 1]
-
-#func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
-	#if _defender == null:
-		#return 0
-#
-	#var affinityModifier = 0
-	#if _defender != null && _defender.Template != null:
-		#affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
-#
-	## Equation is:
-	## (Skill * 2) + (Luck)
-	#return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat) + affinityModifier) / 100.0
-
-func GetFireDamage(_dmgLevel : int):
-	if _dmgLevel <= 0:
-		return 0
-
-	match(_dmgLevel):
-		1:
-			return Level1FireDamage
-		2:
-			return Level2FireDamage
-		3:
-			return Level3FireDamage
-
-	if _dmgLevel >= 3:
-		return Level3FireDamage

@@ -19,12 +19,6 @@ var OpenWater : bool
 var IsShroud : bool
 var Shroud : ShroudInstance
 
-var OnFire : bool :
-	get:
-		return FireLevel > 0
-
-var FireLevel : int = 0
-
 var CanAttack: bool
 var CanMove: bool
 var CanBuff : bool

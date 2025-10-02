@@ -10,7 +10,7 @@ var turnBannerOpen : bool
 
 var preTurnUpdate : bool :
 	get:
-		return teamTurnUpdate || unitTurnUpdate || fireUpdate || nextSpawner != null
+		return teamTurnUpdate || unitTurnUpdate || nextSpawner != null
 
 var teamTurnUpdate : bool
 var unitTurnUpdate : bool
@@ -18,12 +18,8 @@ var preTurnComplete : bool
 var preTurnAvailableSpawners : Array[SpawnerBase]
 var nextSpawner : SpawnerBase
 
-
 var turnStartFocusSubject : Tile
 var turnStartFocusDelta : float
-
-var fireUpdate : bool
-var fireDamageTiles : Array[Tile]
 
 var IsAllyTurn : bool :
 	get :
@@ -67,9 +63,6 @@ func Update(_delta):
 			UpdateGridEntities(_delta)
 			return
 
-		if fireUpdate:
-			UpdateFireDamage(_delta)
-			return
 		return
 	elif !preTurnComplete:
 		# the preturn should be complete now, save the map
@@ -162,10 +155,6 @@ func EnterTeamTurnUpdate():
 			preTurnAvailableSpawners.append(s)
 
 
-	fireDamageTiles = map.grid.UpdateFireDamageTiles(map.currentTurn)
-	if fireDamageTiles.size() > 0:
-		fireUpdate = true
-
 func EnterUnitTurnUpdate():
 	unitTurnUpdate = true
 	for entities in map.gridEntities:
@@ -192,36 +181,6 @@ func UpdateTurnStartSpawn(_delta):
 			nextSpawner = null
 
 	pass
-
-func UpdateFireDamage(_delta):
-	if turnStartFocusSubject == null && fireDamageTiles.size() == 0:
-		fireUpdate = false
-		return
-
-	turnStartFocusDelta += _delta
-	if turnStartFocusDelta < 0:
-		return
-
-	if fireDamageTiles.size() > 0 && turnStartFocusSubject == null:
-		var pop = fireDamageTiles.pop_front() as Tile
-		if pop != null:
-			turnStartFocusSubject = pop
-			turnStartFocusDelta = 0
-			map.playercontroller.ForceCameraPosition(turnStartFocusSubject.Position)
-
-	if turnStartFocusDelta > 1:
-		match turnStartFocusSubject.FireLevel:
-			1:
-				if map.currentTurn == GameSettingsTemplate.TeamID.ALLY: map.grid.ModifyTileHealth(GameManager.GameSettings.Level1FireDamage, turnStartFocusSubject)
-				if turnStartFocusSubject.Occupant != null : turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level1FireDamage, null, true)
-			2:
-				if map.currentTurn == GameSettingsTemplate.TeamID.ALLY: map.grid.ModifyTileHealth(GameManager.GameSettings.Level2FireDamage, turnStartFocusSubject)
-				if turnStartFocusSubject.Occupant != null : turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level2FireDamage, null, true)
-			3:
-				if map.currentTurn == GameSettingsTemplate.TeamID.ALLY: map.grid.ModifyTileHealth(GameManager.GameSettings.Level3FireDamage, turnStartFocusSubject)
-				if turnStartFocusSubject.Occupant != null : turnStartFocusSubject.Occupant.ModifyHealth(GameManager.GameSettings.Level3FireDamage, null, true)
-		turnStartFocusSubject = null
-		turnStartFocusDelta = -0.5
 
 
 func UpdateGridEntities(_delta):

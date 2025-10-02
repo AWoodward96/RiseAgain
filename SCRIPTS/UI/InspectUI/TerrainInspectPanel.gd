@@ -49,24 +49,9 @@ func Update(_tile : Tile):
 
 	tile_is_killbox_parent.visible = _tile.ActiveKillbox
 	tile_is_shroud_parent.visible = _tile.IsShroud
-	UpdateFireData(_tile)
 	UpdateGridEntities(_tile)
 	Disabled = !shouldShow
 	return !Disabled
-
-func UpdateFireData(_tile : Tile):
-	fire_data_parent.visible = _tile.FireLevel > 0
-	if _tile.FireLevel > 0:
-		if !shouldShow:
-			# if false at this point, then there's no other information to show besides the fire info
-			# do the best you can to show the information anyway
-			tile_name.text = tr(no_name_loc)
-			tile_health_parent.visible = false
-			tile_is_killbox_parent.visible = false
-			shouldShow = true
-
-		fire_level_label.text = tr(fire_level_loc).format({"NUM" : str(_tile.FireLevel)})
-		fire_damage_label.text = tr(fire_damage_loc).format({"NUM" : str(GameManager.GameSettings.GetFireDamage(_tile.FireLevel))})
 
 func UpdateGridEntities(_tile : Tile):
 	if !shouldShow && _tile.GridEntities.size() > 0:

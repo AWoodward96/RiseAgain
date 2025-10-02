@@ -2,7 +2,6 @@ extends DamageStepResult
 class_name PerformCombatStepResult
 
 var SourceTile : Tile
-var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var CritRate : float		# The % the roll needs to be under in order for it to be a crit
 
 var MissVals : Vector2		# The log of which numbers we rolled
@@ -13,12 +12,6 @@ var RetaliationResult : DamageStepResult
 
 func PreCalculate():
 	if AbilityData.IsDamage():
-		# Damage dealing with autoattacks can miss
-		HitRate = 100
-		if AbilityData.type == Ability.AbilityType.Weapon || GameManager.GameSettings.AbilitiesCanMiss:
-			if Target != null:
-				HitRate = GameManager.GameSettings.HitRateCalculation(Source, AbilityData, Target, TileTargetData)
-
 		# No crits in cutscenes it fucks with everything
 		if CutsceneManager.active_cutscene != null:
 			CritRate = 0
@@ -40,7 +33,6 @@ func PreCalculate():
 
 
 func RollChance(_rng : DeterministicRNG):
-	RollMiss(_rng, HitRate)
 	RollCrit(_rng, CritRate)
 
 	if Crit:
@@ -87,31 +79,6 @@ func CalculateExpGain():
 	else:
 		# It's like a heal or something
 		ExpGain = GameManager.GameSettings.ExpFromHealCalculation(HealthDelta, Source, Target)
-
-func RollMiss(_rng : DeterministicRNG, _missThreshold : float):
-	var val1 = _rng.NextFloat(0, 1)
-	var val2 = _rng.NextFloat(0, 1)
-	MissVals = Vector2(val1, val2)
-	HitRate = _missThreshold
-
-	# -----------------------------------
-	# This is a calculation done in fire emblem, the game I'm trying to emulate closely
-	# Essentially, by averaging these two random variables we create a chance table where attacks with over 50% chance to hit
-	# are more likely to hit, and attacks with less than a 50% chance to hit are less likely to hit.
-	# ------------------------------------
-	# So if you have a 90% chance to hit, the real % chance is actually closer to 98% chance to hit.
-	# If you have a 65% chance to hit, you actually have a 75% chance to hit
-	# And vice versa, if you have a 30% chance to hit, your actual chance is closer to 18%
-	# A 10% chance to hit is much closer to a 2% chance.
-	# This encourages a subtle mentality for taking attacks above a displayed 75% chance to hit, because those are 87% or better odds
-	# I like this compromise in chances, because I don't think the game should be entirely run by real rng, like a game like XCOM is
-	# If you miss a high percentage play, that can still be devistating,
-	# but it should only occur rarely and hopefully you haven't banked too much off of it
-	MissAverage = (val1 + val2) / 2.0
-	print("Calculated Miss Average of: ", MissAverage, " at rate:", HitRate)
-	print("HitVals: ", MissVals)
-
-	Miss = MissAverage > _missThreshold
 
 func RollCrit(_rng : DeterministicRNG, _critThreshold : float):
 	var val = _rng.NextFloat(0, 1)

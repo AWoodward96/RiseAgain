@@ -17,4 +17,4 @@ func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
 	pass
 
 func ToJSON():
-	return "Base"
+	return "EventState"

@@ -324,7 +324,6 @@ func ShapedDirectionalTargetingInput(_delta):
 func ClearPreview():
 	if log.actionOriginTile != null && log.actionOriginTile.Occupant != null:
 		log.actionOriginTile.Occupant.HideDamagePreview()
-		ctrl.combatHUD.ClearDamagePreviewUI()
 
 	ctrl.ClearShapedDirectionalHelper()
 
@@ -343,7 +342,7 @@ func ShowPreview():
 	log.affectedTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
 	log.BuildStepResults()
 
-	# TODO: Figure out how this will be displayed via ui
+	# Preview the results
 	for result in log.actionStepResults:
 		result.PreviewResult(currentMap)
 

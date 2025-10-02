@@ -11,7 +11,6 @@ signal BannerAnimComplete
 @export var InspectUI : InspectPanel
 @export var InspectEffectsUI : GridEntryList
 @export var ContextUI : ContextMenu
-@export var DmgPreviewUI : DamagePreviewUI
 @export var NoTargets : Control
 @export var TerrainInspectUI : TerrainInspectPanel
 @export var ObjectivePanelUI : ObjectivePanel
@@ -117,13 +116,6 @@ func OnAnyActionSelected():
 
 func ShowNoTargets(_show : bool):
 	NoTargets.visible = _show
-
-func ShowDamagePreviewUI(_attacker : UnitInstance, _weapon : UnitUsable, _defender : UnitInstance, _targetData : TileTargetedData):
-	DmgPreviewUI.visible = true
-	DmgPreviewUI.ShowPreviewDamage(_attacker, _weapon, _defender, _targetData)
-
-func ClearDamagePreviewUI():
-	DmgPreviewUI.visible = false
 
 func ShowTutorialPrompt(_text : String, _anchor : Control.LayoutPreset):
 	TutorialPrompt.Disabled = false

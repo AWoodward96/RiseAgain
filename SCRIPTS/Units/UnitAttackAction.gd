@@ -6,12 +6,14 @@ var Log : ActionLog
 var ActionIndex : int
 var TimerLock : bool
 var IsRetaliation : bool = false
+var PlayGenericAttackAnimation : bool = true
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 
 	unit.affinityIcon.visible = false
-	unit.PlayPrepAnimation(TargetPosition - _unit.position)
+	if PlayGenericAttackAnimation:
+		unit.PlayPrepAnimation(TargetPosition - _unit.position)
 
 	var combatResults : Array[PerformCombatStepResult]
 	TimerLock = false
@@ -31,17 +33,24 @@ func _Enter(_unit : UnitInstance, _map : Map):
 
 		combatRes.Target.ShowHealthBar(true)
 
+
 	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
 
 	var sourceHealthDelta = 0
 	for result in combatResults:
 		sourceHealthDelta += result.SourceHealthDelta
 
+		if result.Target == null:
+			if result.TileTargetData.HitsEnvironment:
+				Log.grid.ModifyTileHealth(result.HealthDelta, result.TileTargetData.Tile)
 
-	_unit.PlayAttackAnimation(TargetPosition - _unit.position)
-	var dst = (TargetPosition - _unit.position).normalized()
-	dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)
-	_unit.position += dst
+
+	if PlayGenericAttackAnimation:
+		_unit.PlayAttackAnimation(TargetPosition - _unit.position)
+
+		var dst = (TargetPosition - _unit.position).normalized()
+		dst = dst * (Juice.combatSequenceAttackOffset * map.TileSize)
+		_unit.position += dst
 
 	if sourceHealthDelta != 0:
 		unit.ModifyHealth(sourceHealthDelta, combatResults[0])

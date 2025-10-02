@@ -430,28 +430,6 @@ func GetTilesWithinRange(_origin : Vector2i, _range : Vector2i, _includeOrigin =
 					returnArr.append(GridArr[position.y * Width + position.x])
 	return returnArr
 
-# Returns a list of units affected by the fire
-func UpdateFireDamageTiles(_allegience : GameSettingsTemplate.TeamID):
-	var affectedTiles : Array[Tile]
-	for t in GridArr:
-		if t.OnFire:
-			# Maybe increase the fire or decrease the fire
-			if _allegience == GameSettingsTemplate.TeamID.ALLY && t.FireLevel < GameSettingsTemplate.FireSpreadMaxLevel:
-				t.FireLevel += 1
-				IgniteTile(t, t.FireLevel)
-
-			if t.FireLevel >= GameManager.GameSettings.FireSpreadLevel:
-				var adjacent = GetAdjacentTiles(t)
-				for adj in adjacent:
-					if !adj.OnFire:
-						IgniteTile(adj, 1)
-
-			if t.Occupant != null && t.Occupant.UnitAllegiance == _allegience:
-				affectedTiles.append(t)
-			elif t.Health > 0 && t.MaxHealth > 0 && _allegience == GameSettingsTemplate.TeamID.ALLY:
-				affectedTiles.append(t)
-
-	return affectedTiles
 
 func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : bool = true):
 	if _tile.MaxHealth <= 0:
@@ -491,26 +469,6 @@ func DestroyTerrain(_tile : Tile, _playVFX : bool):
 
 	map.tilemap_main.set_cell(_tile.Position)
 	RefreshTilesCollision(_tile, map.currentTurn as int)
-
-
-func IgniteTile(_tile : Tile, _fireLevel : int):
-	# TODO: Remove
-	#if _tile == null:
-		#return
-#
-	#if _tile.FireLevel < _fireLevel:
-		#_tile.FireLevel = _fireLevel
-#
-	#match _tile.FireLevel:
-		#0:
-			#map.tilemap_fire.set_cell(_tile.position)
-		#1:
-			#map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_1)
-		#2:
-			#map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_2)
-		#3:
-			#map.tilemap_fire.set_cell(_tile.Position, FIRETILEATLAS, FIRETILE_3)
-	pass
 
 
 func GetPathBetweenTwoUnits(_originUnit : UnitInstance, _destinationUnit : UnitInstance):

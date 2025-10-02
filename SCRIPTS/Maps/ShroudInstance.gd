@@ -10,7 +10,8 @@ func UnitEntered(_tile : Tile, _unit : UnitInstance):
 	if !Exposed[_unit.UnitAllegiance]:
 		Exposed[_unit.UnitAllegiance] = true
 		newAlert = true
-		# TODO: Remove when a better idea is found
+
+		# Check for movement lock
 		for tile in Tiles:
 			# if there's a unit in these tiles, congrats you just got movement locked
 			if tile.Occupant != null && tile.Occupant.UnitAllegiance != _unit.UnitAllegiance:

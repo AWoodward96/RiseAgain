@@ -5,7 +5,6 @@ class_name PerformCombatStep
 @export var useDefendAction : bool = true
 
 var cooloff : float
-var dealtDamage : bool
 
 var waitForActionToFinish : bool
 var waitForPostActionToFinish : bool
@@ -15,11 +14,10 @@ var affectedTiles : Array[TileTargetedData]
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
 	cooloff = 0
-	dealtDamage = false
 
-	if useAttackAction:
+	#if useAttackAction:
 		# The attack will take the log - and will determine who they're 'striking' visually based on the log
-		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, false)
+	source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, useAttackAction, false)
 
 	# The defending units however, need the specific result to take damage from
 	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
@@ -27,7 +25,7 @@ func Enter(_actionLog : ActionLog):
 		var subActionRes = null
 		var damageStepResult = stack as PerformCombatStepResult
 		if damageStepResult == null:
-			subActionRes = stack as RepeatPerFocusStepResult
+			subActionRes = stack as RepeatStep
 			if subActionRes != null:
 				if subActionRes.SubStepResult[log.subActionStackIndex] is PerformCombatStepResult:
 					damageStepResult = subActionRes.SubStepResult[log.subActionStackIndex] as PerformCombatStepResult
@@ -46,7 +44,6 @@ func Enter(_actionLog : ActionLog):
 				damageStepResult.Invalidate()
 				continue
 
-			dealtDamage = true
 			if useDefendAction:
 				damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
 
@@ -55,27 +52,13 @@ func Enter(_actionLog : ActionLog):
 					if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
 						log.responseResults.append(retaliation)
 						retaliation.RollChance(Map.Current.mapRNG)
-						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, true)
+						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, true, true)
 						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
-
-				if damageStepResult.TileTargetData.Ignite > 0 && damageStepResult.TileTargetData.HitsEnvironment:
-					log.grid.IgniteTile(damageStepResult.TileTargetData.Tile, damageStepResult.TileTargetData.Ignite)
 			else:
 				damageStepResult.Target.DoCombat(damageStepResult)
-		else:
-			dealtDamage = true
-
-			# we hit a tile.
-			# We're doing this here instead of in the attack sequence bc sometimes an ability  doesn't use an attack action
-			if damageStepResult.TileTargetData.HitsEnvironment:
-				log.grid.ModifyTileHealth(damageStepResult.HealthDelta, damageStepResult.TileTargetData.Tile)
 	pass
 
 func Execute(_delta):
-	# If we didn't deal damage - just go next
-	if !dealtDamage:
-		return true
-
 	if AffectedUnitsClear():
 		cooloff += _delta
 		return cooloff > Juice.combatSequenceCooloffTimer

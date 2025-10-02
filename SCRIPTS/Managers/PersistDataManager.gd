@@ -240,7 +240,7 @@ func SaveMap():
 	pass
 
 
-static func String_To_Vector2i(_string : String):
+func String_To_Vector2i(_string : String):
 	if _string.is_empty():
 		return Vector2i.ZERO
 
@@ -251,7 +251,7 @@ static func String_To_Vector2i(_string : String):
 	var valuesArray = copy.split(", ") # space included bc of formatting
 	return Vector2i(int(valuesArray[0]), int(valuesArray[1]))
 
-static func String_To_Vector2(_string : String):
+func String_To_Vector2(_string : String):
 	if _string.is_empty():
 		return Vector2i.ZERO
 

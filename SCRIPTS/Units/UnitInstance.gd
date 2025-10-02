@@ -66,12 +66,12 @@ var Exp : int
 var ExtraEXPGranted : int = 0
 var IsDying : bool = false
 
-var AI # Only used by units initialized via a spawner
-var AggroType # Only used by units initialized via a spawner
+var AI : AIBehaviorBase # Only used by units initialized via a spawner
+var AggroType : AlwaysAggro # Only used by units initialized via a spawner
 var IsAggrod : bool = false
 
 var map : Map
-var currentHealth
+var currentHealth : int
 
 var takeDamageTween : Tween
 
@@ -923,10 +923,11 @@ func ShowHealthBar(_visible : bool):
 	if _visible:
 		healthBar.Refresh()
 
-func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _useRetaliation : bool = false):
+func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _playGenericAttackAnimation : bool = true, _useRetaliation : bool = false):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
 	attackAction.IsRetaliation = _useRetaliation
+	attackAction.PlayGenericAttackAnimation = _playGenericAttackAnimation
 
 	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
 	# This locks in which action is doing what and when
@@ -1036,7 +1037,7 @@ func TryPlayIdleAnimation():
 
 func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
 	if visual != null && visual.AnimationWorkComplete:
-		var round = GameManager.GameSettings.AxisRound(_dst)
+		var round = GameSettingsTemplate.AxisRound(_dst)
 		match round:
 			Vector2.UP:
 				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_UP, false, _animSpeed)
@@ -1049,7 +1050,7 @@ func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
 
 func PlayAttackAnimation(_dst : Vector2, _animSpeed : float = 1):
 	if visual != null && visual.AnimationWorkComplete:
-		var round = GameManager.GameSettings.AxisRound(_dst)
+		var round = GameSettingsTemplate.AxisRound(_dst)
 		match round:
 			Vector2.UP:
 				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_UP, false, _animSpeed)
