@@ -4,7 +4,7 @@ class_name AbilityMoveStep
 
 #@export var WaitForStackFree : bool = true
 @export var SpeedOverride : int = -1
-@export var AnimationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal
+@export var AnimationStyle : UnitSettingsTemplate.EMovementAnimationStyle = UnitSettingsTemplate.EMovementAnimationStyle.Normal
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
@@ -35,7 +35,6 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 	if _invalidatedTile.Occupant != null && _invalidatedTile.Occupant.Shrouded:
 		_invalidatedTile.Occupant.visual.PlayAlertedFromShroudAnimation()
 
-	# TODO: Make a method in grid to find the closest valid tile
 	var bestTile = _actionLog.grid.FindNearbyValidTile(_invalidatedTile, _actionLog.actionOriginTile)
 
 	# okay we should have the best tile after being bonked

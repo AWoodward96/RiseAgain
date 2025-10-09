@@ -39,8 +39,8 @@ weap_morningstar_name,Morning Star
 weap_morningstar_desc,A blunt metal club with spikes. Always does 8 Damage.
 weap_guardingblade_name,Guarding Blade
 weap_guardingblade_desc,The hilt is designed to help defend and redirect damage.
-unit_adolescentwolf_desc,A young wolf not yet in its prime
-unit_adolescentwolf_name,Adolescent Wolf
+unit_adolescentwolf_desc,A sharp eyed beast with sharp teeth and claws
+unit_adolescentwolf_name,Wolf
 unit_adultwolf_desc,A terratorial hunting beast
 unit_adultwolf_name,Wolf
 unit_adultzolf_desc,"It has a couple of extra limbs, and teeth... everywhere"
@@ -576,3 +576,19 @@ art_ignite_name,Ignition
 art_ignite_desc,Ignite Units in a small area. Units in the center get double the stacks.
 art_inner_flame_name,Inner Flame
 art_inner_flame_desc,"While on Fire, your Attacks with a Weapon deal double damage. When used, Ignite self for 2."
+ui_selectobjective_title,Select Objective:
+ui_continue,Continue
+ui_slots_remaining,{NUM} Slots Remaining
+ui_objective_title,Objective:
+ui_team_title,Team:
+ui_additional_info,Additional Info:
+ui_meals_title,Food:
+ui_no_food_title,No Meals Active
+ui_unit_bastion_status,Status: {STATUS} \nLocation: {LOCATION}
+ui_select_squad,Select Squadmates:
+ui_current_squad,Current Squad:
+ui_status_unknown,Unknown
+ui_status_healthy,Healthy
+ui_location_campsite,At Campsite
+ui_location_tavern,In Tavern
+ui_campaign_team_slots_title,Slots:

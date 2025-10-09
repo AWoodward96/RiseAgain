@@ -14,6 +14,7 @@ script = ExtResource("3_8d231")
 AccuracyModifier = 2.0
 CritModifier = -1.0
 pushInfo = SubResource("Resource_ynuat")
+Position = Vector2i(0, 1)
 
 [resource]
 script = ExtResource("2_3leuk")

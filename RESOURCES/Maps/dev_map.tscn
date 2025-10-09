@@ -193,7 +193,7 @@ AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
 [node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
-position = Vector2(192, 384)
+position = Vector2(128, 192)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -203,7 +203,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("14_ox76s")
 UnitLevel = 2
 DeltaLevel = 0
-Position = Vector2i(3, 6)
+Position = Vector2i(2, 3)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 

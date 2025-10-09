@@ -31,7 +31,7 @@ func _Execute(_delta):
 
 		if ctrl.selectedUnit != null && ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == ctrl.selectedUnit || (tile.Occupant != null && tile.Occupant.ShroudedFromPlayer)):
 			ctrl.selectedUnit.PendingMove = walkedPath.size() > 1	# the path starts with the units current tile - so check above 1
-			ctrl.selectedUnit.MoveCharacterToNode(walkedPath, tile)
+			ctrl.selectedUnit.MoveCharacterToNode(MovementData.Construct(walkedPath, tile))
 			EndMovementTracker()
 			movementSelected = true
 			ctrl.BlockMovementInput = true

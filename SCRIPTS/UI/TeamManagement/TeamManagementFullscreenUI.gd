@@ -38,7 +38,8 @@ func _ready():
 	shortInspectPanel.ItemSelectedForSwap.connect(OnItemSlotSelected)
 	shortInspectPanel.EnableFocus(false)
 
-	gridPanel.Refresh(currentUIMode)
+	gridPanel.panelType = currentUIMode
+	gridPanel.Refresh()
 	pass
 
 func _process(_delta):

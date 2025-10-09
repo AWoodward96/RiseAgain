@@ -66,7 +66,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# Because no other options are valid
 	selectedOption = options[0]
 
-	unit.MoveCharacterToNode(selectedOption.path, selectedOption.tileToMoveTo)
+	unit.MoveCharacterToNode(MovementData.Construct(selectedOption.path, selectedOption.tileToMoveTo))
 
 	# Moved trycombat to the runturn method
 	#TryCombat()

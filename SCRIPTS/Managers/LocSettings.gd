@@ -9,7 +9,13 @@ static var X_Num = "ui_xNUM"
 static var OneX_TEXT = "ui_1x_text"
 static var Current_Max = "ui_current_max"
 
+
 static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
+static var Status_Unknown = "ui_status_unknown"
+static var Status_Healthy = "ui_status_healthy"
+static var Status_Injured = "ui_status_injured"
+static var Location_Tavern = "ui_location_tavern"
+static var Location_Campsite = "ui_location_campsite"
 
 @export_category("Missing Info")
 @export var Missing_CombatEffectIcon : Texture2D

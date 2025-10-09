@@ -3,6 +3,7 @@ class_name UnitEntryUI
 
 signal OnSelected(_element : UnitEntryUI, _unitTemplate : UnitTemplate)
 
+@export var button : Button
 @export var useIcon : bool = true
 @export var icon : TextureRect
 @export var useVisualParent : bool = false
@@ -15,6 +16,9 @@ var createdVisual : UnitVisual
 
 func Initialize(_unitTemplate : UnitTemplate):
 	template = _unitTemplate
+	if template == null:
+		queue_free()
+		return
 
 	if useIcon:
 		icon.texture = template.icon
@@ -27,6 +31,10 @@ func Initialize(_unitTemplate : UnitTemplate):
 		createdVisual.RefreshAllegience(GameSettingsTemplate.TeamID.ALLY)
 
 	nameLabel.text = _unitTemplate.loc_DisplayName
+
+func PlayAnimation(_animationString : String):
+	if createdVisual != null:
+		createdVisual.PlayAnimation(_animationString, true)
 
 func OnFocus():
 	if useVisualParent && createdVisual != null:

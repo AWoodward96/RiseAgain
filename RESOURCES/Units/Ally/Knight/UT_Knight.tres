@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://bjtxp4kdt5wvy"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=45 format=3 uid="uid://bjtxp4kdt5wvy"]
 
 [ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="1_tce1b"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pgscv"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://da8e6v5th61vs" path="res://ART/Icons/Units/knight.png" id="16_3e3g6"]
 [ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="17_6i5t4"]
 [ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="18_6h1w4"]
+[ext_resource type="Texture2D" uid="uid://cxlc3jg1hdmmg" path="res://ART/Units/Knight/Karla.png" id="23_6h1w4"]
 
 [sub_resource type="Resource" id="Resource_geyf3"]
 script = ExtResource("2_pgscv")
@@ -121,6 +122,10 @@ script = ExtResource("2_pgscv")
 Template = ExtResource("13_6h1w4")
 Value = 35.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_83xpp"]
+atlas = ExtResource("23_6h1w4")
+region = Rect2(13, 0, 49, 46)
+
 [resource]
 resource_name = "UT_Knight"
 script = ExtResource("15_fg716")
@@ -130,7 +135,7 @@ StatGrowths = Array[ExtResource("2_pgscv")]([SubResource("Resource_cfnyk"), SubR
 Affinity = ExtResource("1_tce1b")
 StartingEquippedWeapon = ExtResource("14_0i7oy")
 StartingTactical = ExtResource("15_w50h5")
-Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_spearthrow.tscn"])
+Tier0Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_spearthrow.tscn", "uid://dot0hl1hdqkq7"])
 Tier1Abilities = Array[String](["uid://owg3aes4dx8x", "uid://bd66sm3kjyqb5"])
 WeaponDescriptors = Array[ExtResource("12_l5q2i")]([ExtResource("17_6i5t4"), ExtResource("18_6h1w4")])
 FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
@@ -138,3 +143,4 @@ DebugName = "Knight"
 loc_DisplayName = "unit_knight_name"
 loc_Description = "unit_knight_desc"
 icon = ExtResource("16_3e3g6")
+unitMovementPreview = SubResource("AtlasTexture_83xpp")

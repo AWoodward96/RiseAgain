@@ -48,8 +48,11 @@ func PreviewResult(_map : Map):
 
 			if Source.Template.unitMovementPreview != null:
 				ctrl.movement_preview_sprite.texture = Source.Template.unitMovementPreview
+				ctrl.movement_preview_sprite.scale = Vector2i(2,2)
 			else:
 				ctrl.movement_preview_sprite.texture = Source.Template.icon
+				ctrl.movement_preview_sprite.scale = Vector2i(0.125,0.125)
+
 			ctrl.movement_preview_sprite.position = points[points.size() - 1]
 		else:
 			unit.PreviewModifiedTile(stack.ResultingTile)

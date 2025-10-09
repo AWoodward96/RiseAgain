@@ -6,10 +6,14 @@ class_name CampaignTemplate
 @export var campaignBlockCap : int = -1
 @export var campaignFinale : CampaignBlock
 
+@export var requiredUnit : Array[UnitTemplate]
+@export var startingRosterSize : int = 2
+
 @export var MapRewardTable : LootTable # The loot table that the map will default to if not overwritten by the node itself
 
 @export_category("Meta Data")
 @export var loc_name : String
+@export var loc_desc : String
 @export var loc_icon : Texture2D
 
 

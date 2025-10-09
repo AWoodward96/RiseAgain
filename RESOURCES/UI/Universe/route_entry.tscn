@@ -46,14 +46,14 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/Control"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 88.0
 offset_bottom = 88.0
 texture = ExtResource("2_hf7rs")
 expand_mode = 1
 
 [node name="RouteName" type="Label" parent="MarginContainer/Control"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 120.0
 offset_top = 13.0
 offset_right = 459.0

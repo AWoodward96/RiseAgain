@@ -47,12 +47,12 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 				escapeOption.roughPath = map.grid.GetTilePath(_unit, _unit.CurrentTile, escapeTile, true, true, false)
 				escapeOption.TruncatePathToMovement(escapeOption.roughPath)
 				selectedOption = escapeOption
-				unit.MoveCharacterToNode(escapeOption.path, escapeOption.tileToMoveTo)
+				unit.MoveCharacterToNode(MovementData.Construct(escapeOption.path, escapeOption.tileToMoveTo))
 				unit.QueueEndTurn()
 		else:
 			super(_map, _unit)
 	else:
-		unit.MoveCharacterToNode(selectedOption.path, selectedOption.tileToMoveTo)
+		unit.MoveCharacterToNode(MovementData.Construct(selectedOption.path, selectedOption.tileToMoveTo))
 
 
 

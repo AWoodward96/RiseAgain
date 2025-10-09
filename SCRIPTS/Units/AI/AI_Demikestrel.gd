@@ -56,7 +56,9 @@ func MoveToNextLocation():
 	route.append(unit.CurrentTile)
 	var tile = map.grid.GetTile(locationCoordinates[nextLocation])
 	route.append(tile)
-	unit.MoveCharacterToNode(route, tile, null, unitSpeedOverride)
+	var movementData = MovementData.Construct(route, tile)
+	movementData.SpeedOverride = unitSpeedOverride
+	unit.MoveCharacterToNode(movementData)
 
 
 func PerformActionAtLocation():

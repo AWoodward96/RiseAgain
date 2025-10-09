@@ -158,7 +158,6 @@ func MapComplete():
 	if currentMap != null:
 		StartMap()
 	else:
-		# TODO: This should probably be
 		GameManager.ReturnToBastion()
 	UIManager.HideLoadingScreen()
 

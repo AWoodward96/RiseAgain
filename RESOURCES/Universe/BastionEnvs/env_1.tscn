@@ -1,11 +1,9 @@
-[gd_scene load_steps=37 format=4 uid="uid://61oi65hp3jdj"]
+[gd_scene load_steps=35 format=4 uid="uid://61oi65hp3jdj"]
 
 [ext_resource type="Script" uid="uid://co1th5xf2klm8" path="res://SCRIPTS/Universe/TopdownEnvironment.gd" id="1_bp5x6"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="2_y5i7m"]
 [ext_resource type="Texture2D" uid="uid://dmcwh6wwd5o05" path="res://ART/Environment/signpost.png" id="3_mrfn0"]
-[ext_resource type="Script" uid="uid://cnvgtyeptwc4f" path="res://SCRIPTS/Universe/TheGate.gd" id="3_ovcri"]
 [ext_resource type="Shader" uid="uid://wvlux66yr2d2" path="res://ART/Shaders/TopdownInteractableObjectShader.gdshader" id="4_1i6q3"]
-[ext_resource type="PackedScene" uid="uid://d15536g3bwgq0" path="res://RESOURCES/UI/Universe/route_entry.tscn" id="4_5x7nt"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="6_cldrg"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="7_ok3a8"]
 [ext_resource type="Script" uid="uid://cqc8ihfb4yd6f" path="res://SCRIPTS/Universe/Tavern/Tavern.gd" id="9_qtpfn"]
@@ -217,171 +215,6 @@ tile_set = ExtResource("2_y5i7m")
 position = Vector2(1715, 774)
 
 [node name="Interactables" type="Node2D" parent="."]
-
-[node name="SignPost" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "RouteEntryParent", "LoadoutEntryParent", "interactableArea", "visual")]
-position = Vector2(2688, 709)
-script = ExtResource("3_ovcri")
-UIParent = NodePath("UI")
-RouteEntryParent = NodePath("UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Routes/VBoxContainer")
-RouteEntryPrefab = ExtResource("4_5x7nt")
-LoadoutEntryParent = NodePath("UI/LoadoutParent/MarginContainer/HBoxContainer")
-LoadoutEntryPrefab = ExtResource("11_j58iv")
-interactableArea = NodePath("InteractableArea")
-visual = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Interactables/SignPost"]
-material = SubResource("ShaderMaterial_byjll")
-scale = Vector2(2, 2)
-texture = ExtResource("3_mrfn0")
-offset = Vector2(0, -16)
-
-[node name="InteractableArea" type="Area2D" parent="Interactables/SignPost"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SignPost/InteractableArea"]
-position = Vector2(6, 46.5)
-shape = SubResource("RectangleShape2D_f6jl8")
-
-[node name="UI" type="CanvasLayer" parent="Interactables/SignPost"]
-visible = false
-
-[node name="Margin" type="MarginContainer" parent="Interactables/SignPost/UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
-
-[node name="ColorRect" type="ColorRect" parent="Interactables/SignPost/UI/Margin"]
-layout_mode = 2
-color = Color(0.79, 0.79, 0.79, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="Interactables/SignPost/UI/Margin"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/SignPost/UI/Margin/MarginContainer"]
-layout_mode = 2
-
-[node name="Title" type="Control" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer/Title"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_cldrg")
-text = "ui_select_a_route"
-fit_content = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Routes" type="Control" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Routes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_ok3a8")
-
-[node name="Units" type="Control" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(192, 416)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Units"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FillSpace" type="Control" parent="Interactables/SignPost/UI/Margin/MarginContainer/VBoxContainer/HBoxContainer/Units/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="LoadoutParent" type="Control" parent="Interactables/SignPost/UI"]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -96.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Control" type="Control" parent="Interactables/SignPost/UI/LoadoutParent"]
-anchors_preset = 0
-offset_left = 8.0
-offset_top = -29.0
-offset_right = 136.0
-offset_bottom = 11.0
-
-[node name="ColorRect" type="ColorRect" parent="Interactables/SignPost/UI/LoadoutParent/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.87, 0.87, 0.87, 1)
-
-[node name="Label" type="Label" parent="Interactables/SignPost/UI/LoadoutParent/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Party"
-label_settings = ExtResource("13_xnyyx")
-vertical_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Interactables/SignPost/UI/LoadoutParent"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Interactables/SignPost/UI/LoadoutParent"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Interactables/SignPost/UI/LoadoutParent/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-script = ExtResource("7_ok3a8")
 
 [node name="Barracks" type="Node2D" parent="Interactables" node_paths=PackedStringArray("UIParent", "Anim", "PrestiegeBar", "PrestiegeBarLabel", "UnitEntryParent", "StatBlockEntryParent", "interactableArea", "visual")]
 position = Vector2(1027, 491)
@@ -809,7 +642,7 @@ layout_mode = 2
 
 [node name="DateLabel" type="RichTextLabel" parent="SubEnvironments/Tavern_Inside/TavernRegistry/UI/Root/PaperParent/MarginContainer/MainContent/TitleParent/HBoxContainer/Control"]
 custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
+layout_mode = 0
 offset_left = 13.0
 offset_top = 11.0
 offset_right = 77.0

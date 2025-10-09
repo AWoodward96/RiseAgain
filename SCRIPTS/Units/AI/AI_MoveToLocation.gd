@@ -17,7 +17,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		unit.QueueEndTurn()
 		return
 
-	unit.MoveCharacterToNode(selectedPath, selectedTile)
+	unit.MoveCharacterToNode(MovementData.Construct(selectedPath, selectedTile))
 	unit.QueueEndTurn()
 
 func RunTurn():

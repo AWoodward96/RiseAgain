@@ -5,27 +5,27 @@ var Route : Array[Tile]
 var DestinationTile : Tile
 var MovementIndex
 var MovementVelocity
-var SpeedOverride : int = -1
-var MoveFromAbility : bool = false
-var Log : ActionLog
-var CutsceneMove : bool = false
-var AllowOccupantOverwrite : bool = false
-var AnimationStyle : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal
 var TravelVector : Vector2 # The Vector representing movement from one point to the next
 var JumpStart : Vector2
 var JumpTimer : float = 0
+
+var movementData : MovementData
+var Log : ActionLog
 
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	MovementIndex = 0
 	JumpTimer = 0
+	Route = movementData.Route
+	DestinationTile = movementData.DestinationTile
+	Log = movementData.Log
 
 	# Maybe make a switch statement
-	match AnimationStyle:
-		UnitSettingsTemplate.MovementAnimationStyle.Normal:
+	match movementData.AnimationStyle:
+		UnitSettingsTemplate.EMovementAnimationStyle.Normal:
 			unit.footstepsSound.play()
-		UnitSettingsTemplate.MovementAnimationStyle.Jump:
+		UnitSettingsTemplate.EMovementAnimationStyle.Jump:
 			unit.LeapSound.play()
 
 	if Route.size() > 1:
@@ -39,8 +39,8 @@ func _Execute(_unit : UnitInstance, _delta):
 		return true
 
 	var speed = GameManager.GameSettings.CharacterTileMovemementSpeed
-	if SpeedOverride != -1:
-		speed = SpeedOverride
+	if movementData.SpeedOverride != -1:
+		speed = movementData.SpeedOverride
 
 	var destination = Route[MovementIndex].GlobalPosition
 	var distance = _unit.position.distance_squared_to(destination)
@@ -73,7 +73,7 @@ func _Execute(_unit : UnitInstance, _delta):
 				if unit.footstepsSound != null:
 					unit.footstepsSound.stop()
 				# The units movement has been interrupted and we're good
-				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
+				map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, movementData.AllowOccupantOverwrite)
 				unit.LockInMovement(unit.CurrentTile)
 				return true
 			GameSettingsTemplate.TraversalResult.EndTurn:
@@ -81,7 +81,7 @@ func _Execute(_unit : UnitInstance, _delta):
 					unit.footstepsSound.stop()
 
 				if unit != null && unit.currentHealth > 0 && !unit.IsDying:
-					map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, AllowOccupantOverwrite)
+					map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, movementData.AllowOccupantOverwrite)
 
 				unit.EndTurn()
 
@@ -93,27 +93,28 @@ func _Execute(_unit : UnitInstance, _delta):
 
 
 		# Check for bonk on the next position
-		if  MovementIndex < Route.size() && !Map.Current.grid.CanUnitFitOnTile(unit, Route[MovementIndex], unit.IsFlying, true, false):
-			if (MoveFromAbility && MovementIndex == Route.size() - 1) || (!MoveFromAbility):
-				# Get bonked loser
-				if Route[MovementIndex].Occupant != null:
-					Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
+		if !movementData.IsPush:
+			if  MovementIndex < Route.size() && !Map.Current.grid.CanUnitFitOnTile(unit, Route[MovementIndex], unit.IsFlying, true, false):
+				if (movementData.MoveFromAbility && MovementIndex == Route.size() - 1) || (!movementData.MoveFromAbility):
+					# Get bonked loser
+					if Route[MovementIndex].Occupant != null:
+						Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
 
-				unit.PlayShockEmote()
-				if Log != null:
-					var curStep = Log.ability.executionStack[Log.actionStackIndex]
-					if curStep is AbilityMoveStep:
-						curStep.Bonked(Route[MovementIndex], Log)
-						return true
+					unit.PlayShockEmote()
+					if movementData.Log != null:
+						var curStep = Log.ability.executionStack[Log.actionStackIndex]
+						if curStep is AbilityMoveStep:
+							curStep.Bonked(Route[MovementIndex], Log)
+							return true
 
-				map.grid.SetUnitGridPosition(_unit, Route[MovementIndex - 1].Position, true, AllowOccupantOverwrite)
-				unit.LockInMovement(Route[MovementIndex - 1])
-				FinishMoving()
-				return true
+					map.grid.SetUnitGridPosition(_unit, Route[MovementIndex - 1].Position, true, movementData.AllowOccupantOverwrite)
+					unit.LockInMovement(Route[MovementIndex - 1])
+					FinishMoving()
+					return true
 
 		if MovementIndex >= Route.size() :
 			if DestinationTile != null:
-				map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, true, AllowOccupantOverwrite)
+				map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, true, movementData.AllowOccupantOverwrite)
 			else:
 				push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
 
@@ -130,10 +131,10 @@ func FinishMoving():
 
 	unit.TryPlayIdleAnimation()
 	var diedToKillbox = unit.CheckKillbox()
-	if isAlliedTeam && !CutsceneMove:
+	if isAlliedTeam && !movementData.CutsceneMove:
 		if diedToKillbox: # If it's true, then this unit's fucking dead lmao
 			map.playercontroller.EnterSelectionState()
-		elif !MoveFromAbility:
+		elif !movementData.MoveFromAbility:
 			map.playercontroller.EnterContextMenuState()
 
 func UpdateAnimations(_distance):
@@ -141,12 +142,12 @@ func UpdateAnimations(_distance):
 	if _distance <= 0:
 		return
 
-	match AnimationStyle:
-		UnitSettingsTemplate.MovementAnimationStyle.Normal:
+	match movementData.AnimationStyle:
+		UnitSettingsTemplate.EMovementAnimationStyle.Normal:
 			unit.PlayAnimation(UnitSettingsTemplate.GetMovementAnimationFromVector(MovementVelocity))
-		UnitSettingsTemplate.MovementAnimationStyle.Pushed:
+		UnitSettingsTemplate.EMovementAnimationStyle.Pushed:
 			unit.PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
-		UnitSettingsTemplate.MovementAnimationStyle.Jump:
+		UnitSettingsTemplate.EMovementAnimationStyle.Jump:
 
 			if _distance > (TravelVector.length_squared() / 2):
 				if TravelVector.y < 0:
@@ -164,11 +165,11 @@ func UpdateAnimations(_distance):
 			pass
 
 func Move(_destination : Vector2, _distance : float, _speed : float, _delta : float):
-	match AnimationStyle:
-		UnitSettingsTemplate.MovementAnimationStyle.Normal, UnitSettingsTemplate.MovementAnimationStyle.Pushed:
+	match movementData.AnimationStyle:
+		UnitSettingsTemplate.EMovementAnimationStyle.Normal, UnitSettingsTemplate.EMovementAnimationStyle.Pushed:
 			MovementVelocity = (_destination - unit.position).normalized() * _speed
 			unit.position += MovementVelocity * _delta
-		UnitSettingsTemplate.MovementAnimationStyle.Jump:
+		UnitSettingsTemplate.EMovementAnimationStyle.Jump:
 			if JumpTimer <= 1:
 				var height = sin(PI * JumpTimer) * (JumpStart.distance_to(_destination) * 0.3)
 				unit.position = JumpStart.lerp(_destination, JumpTimer) - Vector2(0, height)

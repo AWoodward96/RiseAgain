@@ -708,7 +708,7 @@ func WalkBackPushStack(_tileData : TileTargetedData, _currentTile : Tile, _direc
 		var inverseIndex = (_tileData.pushStack.size() - 1) - index
 		_tileData.pushStack[index].ResultingTile = GetTile(_currentTile.Position + (inverseDirection * inverseIndex))
 		index -= 1
-		# man I wish it was easier to do deprecating for loops
+
 
 func GetBestTileFromDirection(_origin : Tile, _direction : GameSettingsTemplate.Direction, _filteredList : Array[Tile]):
 	var listCopy = _filteredList.duplicate()

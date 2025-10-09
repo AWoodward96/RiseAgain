@@ -98,7 +98,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 	# STEP FIVE:
 	# MOVE
-	unit.MoveCharacterToNode(selectedPath, selectedTile)
+	unit.MoveCharacterToNode(MovementData.Construct(selectedPath, selectedTile))
 
 	pass
 

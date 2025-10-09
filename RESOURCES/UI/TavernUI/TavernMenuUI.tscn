@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://yo6f2pumv2h2"]
+[gd_scene load_steps=40 format=3 uid="uid://yo6f2pumv2h2"]
 
 [ext_resource type="Script" uid="uid://cspokjnnx62v" path="res://SCRIPTS/Universe/Tavern/TavernMenuUI.gd" id="1_vak6y"]
 [ext_resource type="Texture2D" uid="uid://gue7iah3xywk" path="res://ART/UI/Textures/ui_slipofpaper.png" id="2_5jp7r"]
@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://cfpffvod7yru5" path="res://RESOURCES/Universe/Meals/SteelCutOats.tres" id="16_qck21"]
 [ext_resource type="Resource" uid="uid://bkpeocjrs314w" path="res://RESOURCES/Universe/Meals/SeafoodSpread.tres" id="17_1btrd"]
 [ext_resource type="Resource" uid="uid://bl5khuhjuhxgg" path="res://RESOURCES/Universe/Meals/MeatPlatter.tres" id="18_1btrd"]
+[ext_resource type="Script" uid="uid://c8sx452n00uw4" path="res://SCRIPTS/Universe/Tavern/CurrentActiveFoodPanel.gd" id="22_rg5my"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8yca"]
 texture = ExtResource("7_a7h6f")
@@ -152,7 +153,7 @@ _data = {
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oyqt"]
 texture = ExtResource("2_5jp7r")
 
-[node name="TavernMenuUI" type="Control" node_paths=PackedStringArray("First", "ReciptAnimator", "TavernLevelLabel", "ReciptMealTitleLabel", "ReciptMealDescLabel", "ReciptMealCostLabel", "ReciptMealIcon")]
+[node name="TavernMenuUI" type="Control" node_paths=PackedStringArray("First", "ReciptAnimator", "TavernLevelLabel", "ReciptPanel")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -164,10 +165,7 @@ script = ExtResource("1_vak6y")
 First = NodePath("MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Grub")
 ReciptAnimator = NodePath("RecieptAnimator")
 TavernLevelLabel = NodePath("MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/TavernLevel")
-ReciptMealTitleLabel = NodePath("ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer/PurchasedMealTitle")
-ReciptMealDescLabel = NodePath("ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer/PurchasedMealDesc")
-ReciptMealCostLabel = NodePath("ReciptOffset/Panel/MarginContainer/VBoxContainer/HBoxContainer/CostParent/FoodCost")
-ReciptMealIcon = NodePath("ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer2/TextureRect")
+ReciptPanel = NodePath("ReciptOffset/Panel")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -480,13 +478,18 @@ offset_top = -16.0
 offset_right = 16.0
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="ReciptOffset"]
+[node name="Panel" type="Panel" parent="ReciptOffset" node_paths=PackedStringArray("foodName", "foodDesc", "foodIcon", "foodCost")]
 layout_mode = 0
 offset_left = 26.0
 offset_top = -237.0
 offset_right = 213.5
 offset_bottom = 16.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2oyqt")
+script = ExtResource("22_rg5my")
+foodName = NodePath("MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer/PurchasedMealTitle")
+foodDesc = NodePath("MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer/PurchasedMealDesc")
+foodIcon = NodePath("MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer2/TextureRect")
+foodCost = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CostParent/FoodCost")
 
 [node name="MarginContainer" type="MarginContainer" parent="ReciptOffset/Panel"]
 layout_mode = 1

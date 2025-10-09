@@ -5,6 +5,7 @@ class_name UnitPersistBase
 
 @export var Alive : bool
 @export var Unlocked : bool
+@export var Injured : bool
 @export var NameKnown : bool
 
 @export var PrestiegeEXP : int
@@ -115,6 +116,7 @@ func ToJSON():
 			"template" = Template.resource_path,
 			"alive" = Alive,
 			"unlocked" = Unlocked,
+			"injured" = Injured,
 			"nameKnown" = NameKnown,
 			"prestiegeEXP" = PrestiegeEXP,
 			"prestiegeLevel" = PrestiegeLevel,
@@ -134,6 +136,7 @@ func InitFromJSON(_dict : Dictionary):
 	PrestiegeEXP = PersistDataManager.LoadFromJSON("prestiegeEXP", _dict) as int
 	PrestiegeLevel = PersistDataManager.LoadFromJSON("prestiegeLevel", _dict) as int
 	UnallocatedPrestiege = PersistDataManager.LoadFromJSON("unallocatedPrestiege", _dict) as int
+	Injured = PersistDataManager.LoadFromJSON("injured", _dict) as bool
 
 	if _dict["equippedStartingWeapon"] == PersistDataManager.NULLSTRING:
 		EquippedStartingWeapon = null

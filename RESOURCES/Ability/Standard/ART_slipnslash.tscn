@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="9_f4ctm"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_gb7p6"]
 [ext_resource type="Resource" uid="uid://d0xjc40ay5iaq" path="res://RESOURCES/TargetingShapes/slipnslash_shape.tres" id="10_okgaa"]
-[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_smoxh"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="11_smoxh"]
 [ext_resource type="Texture2D" uid="uid://p4rnfhj67wax" path="res://ART/Icons/Ability/Standard/slipnslash.png" id="11_ubeem"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="14_3icwe"]
 

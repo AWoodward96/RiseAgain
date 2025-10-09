@@ -5,10 +5,10 @@ class_name DamageDataResource
 
 @export var FlatValue : float
 @export var AgressiveStat : StatTemplate
-@export var AgressiveModType : DamageData.ModificationType
+@export var AgressiveModType : DamageData.EModificationType
 @export var AgressiveMod : float
 @export var DefensiveStat : StatTemplate
-@export var DefensiveModType : DamageData.ModificationType
+@export var DefensiveModType : DamageData.EModificationType
 @export var DefensiveMod : float
 
 
@@ -19,14 +19,14 @@ class_name DamageDataResource
 @export var DamageToHealthRatio : float = 0.5
 
 
-func DoMod(_val, _mod, _modType : DamageData.ModificationType):
+func DoMod(_val, _mod, _modType : DamageData.EModificationType):
 	match _modType:
-		DamageData.ModificationType.None:
+		DamageData.EModificationType.None:
 			pass
-		DamageData.ModificationType.Additive:
+		DamageData.EModificationType.Additive:
 			_val += _mod
-		DamageData.ModificationType.Multiplicative:
+		DamageData.EModificationType.Multiplicative:
 			_val = floori(_val * _mod)
-		DamageData.ModificationType.Divisitive:
+		DamageData.EModificationType.Divisitive:
 			_val = floori(_val / _mod)
 	return _val

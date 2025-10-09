@@ -1,0 +1,916 @@
+[gd_scene load_steps=25 format=3 uid="uid://c2q0t0564uh88"]
+
+[ext_resource type="Script" uid="uid://csabu7ygeyuxg" path="res://SCRIPTS/Universe/GateUI.gd" id="1_uy6tf"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_yf6m7"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_hadgg"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_ngpus"]
+[ext_resource type="Script" uid="uid://bbbs2jd5iktjc" path="res://SCRIPTS/UI/GateUI/ObjectiveSelectPanel.gd" id="3_rculo"]
+[ext_resource type="PackedScene" uid="uid://02uw6kxrx31n" path="res://RESOURCES/UI/Gate/unit_in_squad_entry.tscn" id="3_yyei6"]
+[ext_resource type="PackedScene" uid="uid://cldgt16yommoa" path="res://RESOURCES/UI/Gate/campaign_entry.tscn" id="4_ggfkn"]
+[ext_resource type="Script" uid="uid://c45asr0s1dd1u" path="res://SCRIPTS/UI/TeamManagement/TeamGridPanel.gd" id="5_a7rkm"]
+[ext_resource type="LabelSettings" uid="uid://dvudk4pbsuotf" path="res://RESOURCES/UI/LabelSettings/inspect_standard.tres" id="5_hadgg"]
+[ext_resource type="PackedScene" uid="uid://bca8dk1lnddcs" path="res://RESOURCES/UI/TeamManagementUI/team_management_unit_entry.tscn" id="6_hadgg"]
+[ext_resource type="PackedScene" uid="uid://bgbvvpmwbj0h6" path="res://RESOURCES/UI/Gate/unit_gate_entry.tscn" id="10_4usir"]
+[ext_resource type="Texture2D" uid="uid://dnrv84l38b3db" path="res://ART/Icons/Route/maroon_forest.png" id="11_i0giw"]
+[ext_resource type="Script" uid="uid://c8sx452n00uw4" path="res://SCRIPTS/Universe/Tavern/CurrentActiveFoodPanel.gd" id="12_fr007"]
+[ext_resource type="LabelSettings" uid="uid://dosrukx8jhu7l" path="res://RESOURCES/UI/LabelSettings/parchment_title.tres" id="12_yomgb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rculo"]
+font = ExtResource("3_hadgg")
+font_size = 24
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yyei6"]
+font = ExtResource("3_hadgg")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_i0giw"]
+font = ExtResource("3_hadgg")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_fr007"]
+font = ExtResource("3_hadgg")
+
+[sub_resource type="Animation" id="Animation_yomgb"]
+resource_name = "BackToTeamSelect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeamFormingParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-969, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeamFormingParent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ObjectiveSelectionPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-434, 76)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ObjectiveSelectionPanel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SummaryParent:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(981, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SummaryParent:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fr007"]
+resource_name = "ObjectiveSelect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeamFormingParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(792, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeamFormingParent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ObjectiveSelectionPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(44, 32)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ObjectiveSelectionPanel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SummaryParent:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1033, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SummaryParent:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i0giw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeamFormingParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(792, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeamFormingParent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ObjectiveSelectionPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 36)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ObjectiveSelectionPanel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SummaryParent:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SummaryParent:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4usir"]
+resource_name = "Summary"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectiveSelectionPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-434, 76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObjectiveSelectionPanel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TeamFormingParent:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1014, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TeamFormingParent:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SummaryParent:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SummaryParent:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yyei6"]
+resource_name = "TeamSelect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeamFormingParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(792, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TeamFormingParent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ObjectiveSelectionPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36, 76), Vector2(-354, 77)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ObjectiveSelectionPanel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SummaryParent:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1033, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SummaryParent:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4usir"]
+_data = {
+&"BackToTeamSelect": SubResource("Animation_yomgb"),
+&"ObjectiveSelect": SubResource("Animation_fr007"),
+&"RESET": SubResource("Animation_i0giw"),
+&"Summary": SubResource("Animation_4usir"),
+&"TeamSelect": SubResource("Animation_yyei6")
+}
+
+[node name="GateUI" type="Control" node_paths=PackedStringArray("Animator", "ObjectiveSelectionPanel", "AvailableUnitsPanel", "currentSquadParent", "continueButton", "slotsRemainingLabel", "objectiveTitleLabel", "objectiveDescLabel", "objectiveIcon", "summarySquadParent", "currentActiveFoodBuff", "embarkButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yf6m7")
+script = ExtResource("1_uy6tf")
+Animator = NodePath("Animator")
+ObjectiveSelectionPanel = NodePath("ObjectiveSelectionPanel")
+AvailableUnitsPanel = NodePath("TeamFormingParent/SelectArea")
+currentSquadParent = NodePath("TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer/VBoxContainer")
+currentSquadEntry = ExtResource("3_yyei6")
+continueButton = NodePath("TeamFormingParent/SelectArea/ContinueButton")
+slotsRemainingLabel = NodePath("TeamFormingParent/SelectArea/Label")
+objectiveTitleLabel = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2/ObjectiveTitle")
+objectiveDescLabel = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2/ObjectiveDesc")
+objectiveIcon = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/ObjectiveIcon")
+summarySquadParent = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer/HBoxContainer/GridContainer")
+summarySquadEntry = ExtResource("6_hadgg")
+currentActiveFoodBuff = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel")
+embarkButton = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer/Embark")
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22, 0.20383, 0.1738, 0.5921569)
+
+[node name="ObjectiveSelectionPanel" type="Panel" parent="." node_paths=PackedStringArray("entryParent")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 36.0
+offset_right = 368.0
+offset_bottom = 576.0
+theme = ExtResource("1_yf6m7")
+script = ExtResource("3_rculo")
+auto_initialize = true
+entryParent = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Scroll")
+entryPrefab = ExtResource("4_ggfkn")
+
+[node name="MarginContainer" type="MarginContainer" parent="ObjectiveSelectionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ObjectiveSelectionPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"SubPanel2"
+
+[node name="Label" type="Label" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_selectobjective_title"
+label_settings = SubResource("LabelSettings_rculo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="Scroll" type="VBoxContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+script = ExtResource("3_ngpus")
+
+[node name="TeamFormingParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 792.0
+offset_right = 791.99927
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="SelectArea" type="Panel" parent="TeamFormingParent" node_paths=PackedStringArray("entryParent")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 80.0
+offset_right = 659.0
+offset_bottom = 614.0
+script = ExtResource("5_a7rkm")
+autoInitialize = false
+entryParent = NodePath("MarginContainer/ScrollContainer/MarginContainer/GridContainer")
+entryPrefab = ExtResource("10_4usir")
+
+[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TeamFormingParent/SelectArea/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="TeamFormingParent/SelectArea/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 64
+columns = 2
+script = ExtResource("3_ngpus")
+
+[node name="CurrentSquad" type="Panel" parent="TeamFormingParent/SelectArea"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 0
+offset_left = 653.0
+offset_top = -56.0
+offset_right = 928.0
+offset_bottom = 349.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea/CurrentSquad"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"SubPanel2"
+
+[node name="Label" type="Label" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_current_squad"
+label_settings = ExtResource("5_hadgg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_ngpus")
+
+[node name="ContinueButton" type="Button" parent="TeamFormingParent/SelectArea"]
+layout_mode = 0
+offset_left = 677.0
+offset_top = 410.0
+offset_right = 909.0
+offset_bottom = 471.0
+text = "ui_continue"
+
+[node name="Label" type="Label" parent="TeamFormingParent/SelectArea"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 302.0
+offset_right = 901.0
+offset_bottom = 337.0
+text = "ui_slots_remaining"
+
+[node name="Panel" type="Panel" parent="TeamFormingParent/SelectArea"]
+layout_mode = 0
+offset_top = -56.0
+offset_right = 641.0
+offset_bottom = -2.0
+
+[node name="Label" type="Label" parent="TeamFormingParent/SelectArea/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 15.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_select_squad"
+label_settings = ExtResource("12_yomgb")
+
+[node name="SummaryParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SummaryParent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.5
+offset_top = -304.0
+offset_right = 359.5
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yf6m7")
+theme_type_variation = &"SubPanel4"
+
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ObjectiveContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer"]
+layout_mode = 2
+text = "ui_objective_title"
+label_settings = SubResource("LabelSettings_yyei6")
+
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.7294118, 0.6745098, 0.6, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="Panel" type="Panel" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_type_variation = &"SubPanel2"
+
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ObjectiveIcon" type="TextureRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_i0giw")
+expand_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectiveTitle" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Title Of stuffs"
+
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.7294118, 0.6745098, 0.6, 1)
+
+[node name="ObjectiveDesc" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Desc of Stuffs"
+
+[node name="TeamContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer"]
+layout_mode = 2
+text = "ui_team_title"
+label_settings = SubResource("LabelSettings_yyei6")
+
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.7294118, 0.6745098, 0.6, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer/HBoxContainer"]
+layout_mode = 2
+columns = 2
+script = ExtResource("3_ngpus")
+
+[node name="OtherInfoContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer"]
+layout_mode = 2
+text = "ui_additional_info"
+label_settings = SubResource("LabelSettings_i0giw")
+
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.7294118, 0.6745098, 0.6, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Meals" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals"]
+layout_mode = 2
+text = "ui_meals_title"
+label_settings = SubResource("LabelSettings_fr007")
+
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.7294118, 0.6745098, 0.6, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer" node_paths=PackedStringArray("foodName", "foodDesc", "foodIcon", "noActiveMealParent", "yesActiveMealParent")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"SubPanel3"
+script = ExtResource("12_fr007")
+foodName = NodePath("MarginContainer/YesMealsParent/VBoxContainer2/FoodName")
+foodDesc = NodePath("MarginContainer/YesMealsParent/VBoxContainer2/FoodDesc")
+foodIcon = NodePath("MarginContainer/YesMealsParent/VBoxContainer/TextureRect")
+noActiveMealParent = NodePath("Label")
+yesActiveMealParent = NodePath("MarginContainer/YesMealsParent")
+
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="YesMealsParent" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FoodName" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2"]
+layout_mode = 2
+text = "food_title"
+
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.44313726, 0.4117647, 0.34901962, 1)
+
+[node name="FoodDesc" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2"]
+layout_mode = 2
+text = "food_desc"
+
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel"]
+layout_mode = 0
+offset_left = 114.5
+offset_top = 24.0
+offset_right = 215.5
+offset_bottom = 40.0
+text = "ui_no_food_title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EmbarkContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Embark" type="Button" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+text = "Embark"
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4usir")
+}
+
+[connection signal="pressed" from="TeamFormingParent/SelectArea/ContinueButton" to="." method="OnContinueFromTeamSelect"]
+[connection signal="pressed" from="SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer/Embark" to="." method="OnEmabarkSelect"]

@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://dlev228ekvw8d" path="res://RESOURCES/TargetingShapes/heroicleap_shape.tres" id="7_n5ddh"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_42ld6"]
 [ext_resource type="Texture2D" uid="uid://osmj6jxl88kl" path="res://ART/Icons/Ability/Standard/heroicleap.png" id="8_mw0ad"]
-[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_anx3p"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="11_anx3p"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="13_4rprd"]
 
 [sub_resource type="Resource" id="Resource_5rliq"]

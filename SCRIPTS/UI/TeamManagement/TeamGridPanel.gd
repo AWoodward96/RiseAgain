@@ -1,26 +1,17 @@
-extends Control
+extends FocusEntryPanel
 class_name TeamGridPanel
 
 signal OnUnitSelected(_unitTemplate : UnitTemplate)
 
-
 @export var autoInitialize : bool = true
 @export var startWithFirstElementSelected : bool = true # just in case i want to reuse this element
-@export var entryParent : EntryList
-@export var entryPrefab : PackedScene
 
 @export var panelType : TeamManagementUI.UIMode = TeamManagementUI.UIMode.OutOfRun
 
+var sorting : Callable
 var unitTemplate : UnitTemplate
-var lastFocusedElement : Control
 
-func _ready() -> void:
-	if autoInitialize:
-		Refresh(panelType)
-	UIManager.FocusChanged.connect(OnFocusChanged)
-
-func Refresh(_type : TeamManagementUI.UIMode):
-	panelType = _type
+func Refresh():
 	var list = GetTeamList()
 	entryParent.ClearEntries()
 	for ut in list:
@@ -47,21 +38,17 @@ func GetTeamList():
 					units.append(unitInstances.Template)
 					pass
 
+	if sorting.is_valid():
+		units.sort_custom(sorting)
+
 	return units
 
-func ReturnFocus():
-	if lastFocusedElement != null:
-		lastFocusedElement.grab_focus()
-	else:
-		entryParent.FocusFirst()
+func UpdateRequiredUnits(_unitList : Array[UnitTemplate]):
+	for unitTempltae in _unitList:
+		for createdInstances in entryParent.createdEntries:
+			if createdInstances.template == unitTemplate && createdInstances.has_method("SetRequired"):
+				createdInstances.SetRequired(true)
 
-func EnableFocus(_enabled : bool):
-	if _enabled:
-		for entry in entryParent.createdEntries:
-			entry.focus_mode = Control.FOCUS_ALL
-	else:
-		for entry in entryParent.createdEntries:
-			entry.focus_mode = Control.FOCUS_NONE
 
 func OnFocusChanged(_element : Control):
 	var index = entryParent.createdEntries.find(_element)

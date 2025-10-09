@@ -24,13 +24,19 @@ func Enter(_actionLog : ActionLog):
 			var movement : Array[Tile]
 			movement.append(unit.CurrentTile)
 			movement.append(stack.ResultingTile)
+
+			var movementData = MovementData.Construct(movement, stack.ResultingTile)
+			movementData.AssignAbilityData(log.ability, log)
+			movementData.AllowOccupantOverwrite = true # What this is true?
+			movementData.IsPush = true
+			movementData.AnimationStyle = UnitSettingsTemplate.EMovementAnimationStyle.Pushed
 			if unit == _actionLog.source:
-				unit.MoveCharacterToNode(movement, stack.ResultingTile, _actionLog, -1, true, false, true, UnitSettingsTemplate.MovementAnimationStyle.Pushed)
+				unit.MoveCharacterToNode(movementData)
 				unit.TurnStartTile = stack.ResultingTile
 				if res.willCollide && res.canDamageUser:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 			else:
-				unit.MoveCharacterToNode(movement, stack.ResultingTile, _actionLog, -1, true, false, true, UnitSettingsTemplate.MovementAnimationStyle.Pushed)
+				unit.MoveCharacterToNode(movementData)
 				if res.willCollide:
 					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
 

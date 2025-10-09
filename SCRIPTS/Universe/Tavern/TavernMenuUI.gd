@@ -4,10 +4,7 @@ class_name TavernMenuUI
 @export var First : MealListingEntry
 @export var ReciptAnimator : AnimationPlayer
 @export var TavernLevelLabel : Label
-@export var ReciptMealTitleLabel : Label
-@export var ReciptMealDescLabel : Label
-@export var ReciptMealCostLabel : Label
-@export var ReciptMealIcon : TextureRect
+@export var ReciptPanel : CurrentActiveFoodPanel
 
 func _ready():
 	super()
@@ -15,7 +12,7 @@ func _ready():
 	TavernLevelLabel.text = tr(LocSettings.Level_Num).format({"NUM" = PersistDataManager.universeData.bastionData.CurrentTavernLevel + 1})
 
 	if PersistDataManager.universeData.bastionData.ActiveMeal != null:
-		UpdateRecipt()
+		ReciptPanel.Refresh()
 		ReciptAnimator.play("show")
 		pass
 
@@ -34,16 +31,6 @@ func _process(_delta: float) -> void:
 			InputManager.ReleaseCancel()
 			queue_free()
 
-
-func UpdateRecipt():
-	var meal = PersistDataManager.universeData.bastionData.ActiveMeal
-	if meal == null:
-		return
-
-	ReciptMealTitleLabel.text = tr(LocSettings.OneX_TEXT).format({"TEXT" = tr(meal.loc_title)})
-	ReciptMealDescLabel.text = meal.loc_desc
-	ReciptMealIcon.texture = meal.loc_icon
-	ReciptMealCostLabel.text = tr(LocSettings.X_Num).format({"NUM" = meal.cost[0].Amount})
 
 
 func TryPurchaseMeal(_mealEntry : MealListingEntry):
@@ -67,7 +54,7 @@ func TryPurchaseMeal(_mealEntry : MealListingEntry):
 
 func PurchaseSucess(_mealEntry : MealListingEntry):
 	PersistDataManager.universeData.bastionData.ActiveMeal = _mealEntry.Template
-	UpdateRecipt()
+	ReciptPanel.Refresh()
 	ReciptAnimator.play("show")
 
 	pass

@@ -21,7 +21,7 @@ axis_stretch_vertical = 1
 bg_color = Color(0.321569, 0.282353, 0.223529, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctu6u"]
-bg_color = Color(0.619608, 0.576471, 0.486275, 1)
+bg_color = Color(0.82, 0.7628733, 0.6396, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4

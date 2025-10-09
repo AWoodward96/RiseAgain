@@ -115,7 +115,6 @@ AbilitiesCanMiss = false
 FirstAbilityBreakpoint = 2
 SecondAbilityBreakpoint = -1
 OnFireDebuff = ExtResource("41_uisfa")
-FireSpreadLevel = 4
 StrongAffinityMultiplier = 1.2
 WeakAffinityMultiplier = 0.8
 AllAffinities = Array[ExtResource("1_70bk6")]([ExtResource("2_cn2rw"), ExtResource("3_ygbce"), ExtResource("4_gydru"), ExtResource("5_tq70j"), ExtResource("6_5fwue"), ExtResource("7_s486h"), ExtResource("8_75bht"), ExtResource("9_24hec")])

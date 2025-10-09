@@ -610,19 +610,12 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		return true
 
 
-func MoveCharacterToNode(_route : Array[Tile], _tile : Tile,  _actionLog : ActionLog = null, _speedOverride : int = -1, _moveFromAbility = false, _cutsceneMove : bool = false, _allowOverwrite : bool = false, _style : UnitSettingsTemplate.MovementAnimationStyle = UnitSettingsTemplate.MovementAnimationStyle.Normal) :
-	if _route == null  || _route.size() == 0:
+func MoveCharacterToNode(_movementData: MovementData) :
+	if _movementData == null || _movementData.Route == null  || _movementData.Route.size() == 0:
 		return
 
 	var action = UnitMoveAction.new()
-	action.Route = _route
-	action.DestinationTile = _tile
-	action.SpeedOverride = _speedOverride
-	action.MoveFromAbility = _moveFromAbility
-	action.Log = _actionLog
-	action.CutsceneMove = _cutsceneMove
-	action.AllowOccupantOverwrite = _allowOverwrite
-	action.AnimationStyle = _style
+	action.movementData = _movementData
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()

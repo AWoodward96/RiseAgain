@@ -12,7 +12,10 @@ const THREATLAYER : int = 0
 const FIRELAYER : int = 2
 
 signal OnUnitDied(_unitInstance : UnitInstance, _context : DamageStepResult)
+
+@warning_ignore("unused_signal") # These are used in other classes as a bus
 signal OnUnitTurnEnd(_unitInstance : UnitInstance)
+@warning_ignore("unused_signal")
 signal OnTurnStart(_turn : GameSettingsTemplate.TeamID)
 
 enum MAPSTATE { PreMap, Combat, PostMap }
