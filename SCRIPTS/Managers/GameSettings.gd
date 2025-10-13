@@ -15,6 +15,11 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3 
 @export_category("Map Data")
 @export var GridModulatePrefab : PackedScene
 @export var DefaultMapRewardTable : LootTable
+@export var DefaultMapGoldAmount : int = 250
+
+### % amount of how much gold is lost for every turn after par
+@export var GoldPercLostPerTurn : float = 0.1
+@export var MinimumGoldAmount : int = 100
 
 @export_category("Bastion Data")
 @export var BastionPrefab : PackedScene
@@ -303,6 +308,12 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	print("Evaluated Exp Gain At {0}. Scaling: {4} Damage Dealt: {1}. Level Dif {2}. Is AOE: {3}".format([equationResult, _damageDealt, X, _isAOE, scalingCalc]))
 	equationResult = max(equationResult, 1)
 	return equationResult
+
+func CalculatePar(_map : Map):
+	var reward = DefaultMapGoldAmount
+	var parDifference = _map.turnCount - _map.Par
+	var parMultiplier = GoldPercLostPerTurn * parDifference
+	return reward * (1 - parMultiplier)
 
 
 static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i, _direction : Direction):

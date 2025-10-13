@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://nwh6oj3sndyd"]
+
+[ext_resource type="Script" uid="uid://f7t75lhkwgef" path="res://SCRIPTS/UI/MapResultsUI/MapResultsUnitEntryMicro.gd" id="1_5tjv7"]
+[ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="3_naecn"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_2ud1b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_caqsh"]
+font = ExtResource("4_2ud1b")
+font_size = 20
+font_color = Color(0.81, 0.33210003, 0.33210003, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 1)
+
+[node name="MapResultMicroUnitEntry" type="Control" node_paths=PackedStringArray("visualParent", "bgColor", "injuredPopup", "iconDeadParent")]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5tjv7")
+visualParent = NodePath("VisParent")
+bgColor = NodePath("ColorRect")
+colorNormal = Color(0.30960003, 0.41996667, 0.43, 1)
+colorInjured = Color(0.49, 0.2548, 0.2548, 1)
+colorDead = Color(0.37, 0.36383334, 0.333, 1)
+injuredPopup = NodePath("Label")
+iconDeadParent = NodePath("Dead")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VisParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dead" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_naecn")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 71.0
+offset_right = 110.0
+offset_bottom = 99.0
+text = "ui_injured_alert"
+label_settings = SubResource("LabelSettings_caqsh")
+horizontal_alignment = 1
+vertical_alignment = 1

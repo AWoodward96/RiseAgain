@@ -21,7 +21,6 @@ func _ready():
 	if get_parent() == get_tree().root:
 		call_deferred("OpenDeferred")
 
-
 func OpenDeferred():
 	UIManager.OnUIOpened(self)
 

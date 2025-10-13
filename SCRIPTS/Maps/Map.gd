@@ -29,6 +29,8 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var AutosaveEnabled : bool = true
 @export var Biome : BiomeData
 @export var RewardOverride : LootTable
+@export var Par : int = 3
+
 
 @export_category("Layers")
 @export var tilemap_bg : TileMapLayer

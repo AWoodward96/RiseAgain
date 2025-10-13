@@ -1,27 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5i8xff3y8gud"]
+[gd_scene load_steps=5 format=3 uid="uid://dqricbt8mpxh3"]
 
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_2swyf"]
-[ext_resource type="Script" uid="uid://ci22alqdg8lus" path="res://SCRIPTS/UI/General/ConfirmPurchaseFullscreenUI.gd" id="2_3e5q4"]
-[ext_resource type="PackedScene" uid="uid://bkktm0cwqep5n" path="res://RESOURCES/UI/GenericEntrys/resource_cost_entry.tscn" id="3_dhl1n"]
-[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_nwte5"]
-[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_dhl1n"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_oab5o"]
+[ext_resource type="Script" uid="uid://buqbyuh35y0rc" path="res://SCRIPTS/UI/General/GenericConfirmUI.gd" id="2_jscfo"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="5_2blhi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xruh1"]
-font = ExtResource("4_dhl1n")
+font = ExtResource("5_2blhi")
 font_size = 32
 
-[node name="ConfirmPurchaseUI" type="Control" node_paths=PackedStringArray("focusButton", "costEntryParent")]
+[node name="GenericConfirmUI" type="Control" node_paths=PackedStringArray("focusButton", "contentLabel", "confirmButton", "cancelButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_2swyf")
-script = ExtResource("2_3e5q4")
+theme = ExtResource("1_oab5o")
+script = ExtResource("2_jscfo")
 focusButton = NodePath("Panel/HBoxContainer/Cancel")
-costEntryParent = NodePath("Panel/MarginContainer/VBoxContainer/Cost")
-costEntryPrefab = ExtResource("3_dhl1n")
+contentLabel = NodePath("Panel/MarginContainer/VBoxContainer/Label")
+confirmButton = NodePath("Panel/HBoxContainer/Confirm")
+cancelButton = NodePath("Panel/HBoxContainer/Cancel")
 Priority = 100
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -63,17 +62,14 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Cost" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("3_nwte5")
-
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(775, 132)
 layout_mode = 2
-text = "ui_confirm_purchase"
+text = "The sun will not set on you"
 label_settings = SubResource("LabelSettings_xruh1")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1

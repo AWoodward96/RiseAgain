@@ -894,7 +894,6 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lh3qm")
 animation = &"attack_down"
 autoplay = "idle"
-frame_progress = 0.9459075
 offset = Vector2(-5, 6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

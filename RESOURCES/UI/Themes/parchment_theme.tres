@@ -22,6 +22,11 @@ bg_color = Color(0.321569, 0.282353, 0.223529, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctu6u"]
 bg_color = Color(0.82, 0.7628733, 0.6396, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.9367, 0.8835, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4

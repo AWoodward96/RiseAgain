@@ -12,6 +12,7 @@ const AveragePixNullCharSize = 8
 @export var AlphaUnitSelection : PackedScene
 @export var FormationUI : PackedScene
 @export var CombatHUDUI : PackedScene
+@export var MapResultsUI : PackedScene
 @export var MapRewardUI : PackedScene
 @export var ExperienceUI : PackedScene
 @export var AbilitySelectionUI : PackedScene
@@ -21,6 +22,7 @@ const AveragePixNullCharSize = 8
 @export var CampsiteRestedPopupPrefab : PackedScene
 @export var TradeUIPrefab : PackedScene
 @export var FullscreenNotifUI : PackedScene
+@export var FullscreenConfirmUI : PackedScene
 @export var FullscreenConfirmPurchaseUI : PackedScene
 @export var TeamManagementFullscreenUI : PackedScene
 

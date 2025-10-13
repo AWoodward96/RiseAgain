@@ -592,3 +592,12 @@ ui_status_healthy,Healthy
 ui_location_campsite,At Campsite
 ui_location_tavern,In Tavern
 ui_campaign_team_slots_title,Slots:
+ui_map_complete,Map Complete!
+ui_turns_taken_title,Turns Taken:
+ui_enemies_slain,Enemies Slain:
+ui_main_objective_title,Main Objective:
+ui_optional_objective_title,Optional Objectives:
+ui_complete,Complete!
+ui_rewards_title,Rewards:
+ui_injured_alert,Injured!!
+ui_you_still_have_rewards,You still have map rewards to claim. Are you sure you want to continue? Any unclaimed rewards will be lost.
