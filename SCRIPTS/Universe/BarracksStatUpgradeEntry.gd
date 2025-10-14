@@ -8,14 +8,14 @@ class_name BarracksStatUpgradeEntry
 
 var template : StatTemplate
 var unitPersist : UnitPersistBase
-var Parent : Barracks
+var Parent : BarracksUI
 var baseStatValue : int
 var currentIncrease : int
 
 func ForceFocus():
 	MinusButton.grab_focus()
 
-func Initialize(_stat : StatTemplate, _unitTemplate : UnitTemplate, _unitPersistence : UnitPersistBase, _parent : Barracks):
+func Initialize(_stat : StatTemplate, _unitTemplate : UnitTemplate, _unitPersistence : UnitPersistBase, _parent : BarracksUI):
 	_parent.OnStatChangedFromPrestiege.connect(Refresh)
 	Parent = _parent
 	template = _stat
@@ -35,6 +35,11 @@ func Refresh():
 	StatBlockEntry.statValue.text = "%01.0d" % [(baseStatValue + currentIncrease)]
 	AllocatedUpgradeLabel.visible = currentIncrease > 0
 	AllocatedUpgradeLabel.text = "+" + str(currentIncrease)
+
+func EnableFocus(_enabled : bool):
+	MinusButton.focus_mode = Control.FOCUS_ALL if _enabled else Control.FOCUS_NONE
+	PlusButton.focus_mode = Control.FOCUS_ALL if _enabled else Control.FOCUS_NONE
+	pass
 
 func OnMinus():
 	if currentIncrease > 0:

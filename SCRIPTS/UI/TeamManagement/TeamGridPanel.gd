@@ -3,7 +3,6 @@ class_name TeamGridPanel
 
 signal OnUnitSelected(_unitTemplate : UnitTemplate)
 
-@export var autoInitialize : bool = true
 @export var startWithFirstElementSelected : bool = true # just in case i want to reuse this element
 
 @export var panelType : TeamManagementUI.UIMode = TeamManagementUI.UIMode.OutOfRun

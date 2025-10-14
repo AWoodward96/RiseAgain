@@ -51,17 +51,28 @@ func AddPrestiegePoint(_statTemplate : StatTemplate):
 	if UnallocatedPrestiege <= 0:
 		return
 
-	UnallocatedPrestiege -= 1
+	var cap = 0
+	for statCap in Template.PrestiegeCaps:
+		if statCap.Template == _statTemplate:
+			cap = statCap.Value
+			break
+
+	var needNew = true
 	for s in PrestiegeStatMods:
 		if s.Template == _statTemplate:
-			s.Value += 1
+			needNew = false
+			if s.Value < cap:
+				UnallocatedPrestiege -= 1
+				s.Value += 1
 			return
 
-	var newStatDef = StatDef.new()
-	newStatDef.Template = _statTemplate
-	newStatDef.Value = 1
-	PrestiegeStatMods.append(newStatDef)
-	Save()
+	if needNew && cap > 0:
+		var newStatDef = StatDef.new()
+		UnallocatedPrestiege -= 1
+		newStatDef.Template = _statTemplate
+		newStatDef.Value = 1
+		PrestiegeStatMods.append(newStatDef)
+		Save()
 
 func RemovePrestiegePoint(_statTemplate : StatTemplate):
 	for s in PrestiegeStatMods:

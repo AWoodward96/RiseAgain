@@ -5,6 +5,7 @@ class_name UnitTemplate
 @export var VisualPrefab : PackedScene
 @export var BaseStats : Array[StatDef]
 @export var StatGrowths : Array[StatDef]
+@export var PrestiegeCaps : Array[StatDef]
 
 @export var Affinity : AffinityTemplate
 

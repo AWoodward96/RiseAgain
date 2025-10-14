@@ -272,7 +272,7 @@ func CritRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable,
 	if _tileData != null:
 		tileCritModifier = _tileData.CritModifier * 100
 
-	return (_attacker.GetWorkingStat(LuckStat) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
+	return ((_attacker.GetWorkingStat(LuckStat) * 2) + 5 - _defender.GetWorkingStat(LuckStat) + critWeaponModifier + tileCritModifier) / 100
 
 func ExpFromHealCalculation(_healAmount : int, _source : UnitInstance, _target : UnitInstance):
 	return 10 + _healAmount
