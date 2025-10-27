@@ -36,62 +36,31 @@
 
 [sub_resource type="Resource" id="Resource_1u085"]
 script = ExtResource("18_1a3fn")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_jto7i"]
 script = ExtResource("18_1a3fn")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_8tche"]
 script = ExtResource("18_1a3fn")
-TargetingFlags = 1
 RangeOverride = 7
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_o8bys"]
 script = ExtResource("18_1a3fn")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_7jrpa"]
 script = ExtResource("18_1a3fn")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_e8n5s"]
 script = ExtResource("21_6rdws")
 TurnsToAggro = 1
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_wtpf7"]
 script = ExtResource("21_6rdws")
 TurnsToAggro = 2
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_cyewq"]
 script = ExtResource("21_6rdws")
 TurnsToAggro = 1
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_a8yum"]
 script = ExtResource("24_dkd1n")
@@ -105,6 +74,7 @@ script = ExtResource("1_dhlig")
 GridSize = Vector2i(16, 10)
 CameraStart = Vector2(3, 8)
 Biome = ExtResource("2_ln1np")
+Par = 6
 tilemap_bg = NodePath("BG")
 tilemap_water = NodePath("Water")
 tilemap_main = NodePath("Main")

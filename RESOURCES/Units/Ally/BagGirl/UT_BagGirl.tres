@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=39 format=3 uid="uid://bxdk56k5pewjb"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=47 format=3 uid="uid://bxdk56k5pewjb"]
 
 [ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="1_lp5r8"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_iwn7m"]
@@ -24,32 +24,32 @@
 [sub_resource type="Resource" id="Resource_eyqoj"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("3_ks1k3")
-Value = 6
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_28tnq"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("4_l2ac1")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_xrtl1"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("5_vpv74")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_ldeaj"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("6_xieq4")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_wk71h"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("7_mmgnp")
-Value = 1
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_83s5x"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("8_hs541")
-Value = 5
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_5gvf7"]
 script = ExtResource("2_iwn7m")
@@ -63,52 +63,90 @@ Value = 2
 [sub_resource type="Resource" id="Resource_7racm"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("11_dbxwe")
-Value = 2
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_c04en"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("12_rqosb")
+Value = 2.0
+
+[sub_resource type="Resource" id="Resource_ks1k3"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("3_ks1k3")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_l2ac1"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("4_l2ac1")
+
+[sub_resource type="Resource" id="Resource_vpv74"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("5_vpv74")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_xieq4"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("6_xieq4")
+
+[sub_resource type="Resource" id="Resource_mmgnp"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("7_mmgnp")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_hs541"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("9_aryhi")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_aryhi"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("11_dbxwe")
 Value = 2
+
+[sub_resource type="Resource" id="Resource_5upm8"]
+script = ExtResource("2_iwn7m")
+Template = ExtResource("12_rqosb")
+Value = 4
 
 [sub_resource type="Resource" id="Resource_voc0r"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("3_ks1k3")
-Value = 65
+Value = 65.0
 
 [sub_resource type="Resource" id="Resource_vtmhq"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("4_l2ac1")
-Value = 30
+Value = 30.0
 
 [sub_resource type="Resource" id="Resource_028lb"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("5_vpv74")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_f81f5"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("6_xieq4")
-Value = 30
+Value = 30.0
 
 [sub_resource type="Resource" id="Resource_va7lx"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("7_mmgnp")
-Value = 40
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_a5hll"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("9_aryhi")
-Value = 10
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_a15cu"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("11_dbxwe")
-Value = 20
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_cato4"]
 script = ExtResource("2_iwn7m")
 Template = ExtResource("12_rqosb")
-Value = 35
+Value = 35.0
 
 [resource]
 resource_name = "UT_BagGirl"
@@ -116,6 +154,7 @@ script = ExtResource("18_ps4bk")
 VisualPrefab = ExtResource("16_iwn7m")
 BaseStats = Array[ExtResource("2_iwn7m")]([SubResource("Resource_eyqoj"), SubResource("Resource_28tnq"), SubResource("Resource_xrtl1"), SubResource("Resource_ldeaj"), SubResource("Resource_wk71h"), SubResource("Resource_83s5x"), SubResource("Resource_5gvf7"), SubResource("Resource_oxfj5"), SubResource("Resource_7racm"), SubResource("Resource_c04en")])
 StatGrowths = Array[ExtResource("2_iwn7m")]([SubResource("Resource_voc0r"), SubResource("Resource_vtmhq"), SubResource("Resource_028lb"), SubResource("Resource_f81f5"), SubResource("Resource_va7lx"), SubResource("Resource_a5hll"), SubResource("Resource_a15cu"), SubResource("Resource_cato4")])
+PrestiegeCaps = Array[ExtResource("2_iwn7m")]([SubResource("Resource_ks1k3"), SubResource("Resource_l2ac1"), SubResource("Resource_vpv74"), SubResource("Resource_xieq4"), SubResource("Resource_mmgnp"), SubResource("Resource_hs541"), SubResource("Resource_aryhi"), SubResource("Resource_5upm8")])
 Affinity = ExtResource("1_lp5r8")
 StartingEquippedWeapon = ExtResource("15_ks1k3")
 StartingTactical = ExtResource("15_w5vxb")

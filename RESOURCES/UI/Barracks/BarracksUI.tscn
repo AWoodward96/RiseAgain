@@ -1,12 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwtx6eh85f8de"]
+[gd_scene load_steps=18 format=3 uid="uid://dwtx6eh85f8de"]
 
 [ext_resource type="Script" uid="uid://4ci5d5nuum3x" path="res://SCRIPTS/Universe/BarracksUI.gd" id="1_1xjpc"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_ing8u"]
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_j8ucu"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="2_1xjpc"]
 [ext_resource type="PackedScene" uid="uid://cflal3jirl4pa" path="res://RESOURCES/UI/Barracks/stat_block_entry_barracks.tscn" id="2_nu6vk"]
+[ext_resource type="LabelSettings" uid="uid://dosrukx8jhu7l" path="res://RESOURCES/UI/LabelSettings/parchment_title.tres" id="4_t516s"]
+[ext_resource type="Script" uid="uid://dert4f3wj4vgx" path="res://SCRIPTS/UI/DetailEntry.gd" id="5_etl4b"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="6_4i8ps"]
 [ext_resource type="Script" uid="uid://c45asr0s1dd1u" path="res://SCRIPTS/UI/TeamManagement/TeamGridPanel.gd" id="7_pq1bg"]
 [ext_resource type="PackedScene" uid="uid://bca8dk1lnddcs" path="res://RESOURCES/UI/TeamManagementUI/team_management_unit_entry.tscn" id="7_t516s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4i8ps"]
+font = ExtResource("6_4i8ps")
+font_size = 24
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dukkp"]
 font = ExtResource("1_ing8u")
@@ -164,7 +173,7 @@ _data = {
 &"Show": SubResource("Animation_hwwui")
 }
 
-[node name="BarracksUI" type="Control" node_paths=PackedStringArray("UnitPanel", "PrestiegeBar", "PrestiegeBarLabel", "StatBlockEntryParent", "Animator")]
+[node name="BarracksUI" type="Control" node_paths=PackedStringArray("CurrentUnitIcon", "CurrentUnitName", "UnitPanel", "PrestiegeBar", "PrestiegeBarLabel", "PrestiegePointsRemaining", "CurrentPrestiegeLevelLabel", "StatBlockEntryParent", "Animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,9 +182,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_j8ucu")
 script = ExtResource("1_1xjpc")
+CurrentUnitIcon = NodePath("Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/CurrentUnitIcon")
+CurrentUnitName = NodePath("Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer/CurrentUnitName")
 UnitPanel = NodePath("Root/PaperParent")
-PrestiegeBar = NodePath("Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar")
-PrestiegeBarLabel = NodePath("Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar/EXPLabel")
+PrestiegeBar = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar")
+PrestiegeBarLabel = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar/EXPLabel")
+PrestiegePointsRemaining = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2/unalocatedPoints")
+CurrentPrestiegeLevelLabel = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/prestiegeLevel")
 StatBlockEntryParent = NodePath("Root/ModParent/VBoxContainer/StatBuffs/MarginContainer/GridContainer")
 StatBlockEntryPrefab = ExtResource("2_nu6vk")
 Animator = NodePath("AnimationPlayer")
@@ -188,24 +201,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TableBG" type="ColorRect" parent="Root"]
+[node name="ModParent" type="PanelContainer" parent="Root"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.348417, 0.464839, 0.449028, 1)
-
-[node name="ModParent" type="Control" parent="Root"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+theme = ExtResource("1_j8ucu")
+theme_type_variation = &"SubPanel1"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/ModParent"]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="Root/ModParent/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_type_variation = &"SubPanel3"
+
+[node name="Label" type="Label" parent="Root/ModParent/VBoxContainer/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_barracks_upgrade_unit"
+label_settings = ExtResource("4_t516s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Root/ModParent/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/ModParent/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,11 +244,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PrestiegeLevel" type="Control" parent="Root/ModParent/VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentUnitIcon" type="TextureRect" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+
+[node name="CurrentUnitName" type="Label" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "unit_name"
+label_settings = ExtResource("4_t516s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/ModParent/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_etl4b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Root/ModParent/VBoxContainer/PrestiegeLevel"]
+[node name="Label" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "ui_current_prestiege_level_title"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="prestiegeLevel" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "num"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "ui_points_remaining_title"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="unalocatedPoints" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "num"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="PrestiegeLevel" type="Control" parent="Root/ModParent/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel"]
 custom_minimum_size = Vector2(600, 64)
 layout_mode = 1
 anchors_preset = 5
@@ -228,7 +313,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="EXPBar" type="ProgressBar" parent="Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect"]
+[node name="EXPBar" type="ProgressBar" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -242,7 +327,7 @@ grow_vertical = 2
 max_value = 1.0
 show_percentage = false
 
-[node name="EXPLabel" type="Label" parent="Root/ModParent/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar"]
+[node name="EXPLabel" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -260,7 +345,7 @@ label_settings = SubResource("LabelSettings_dukkp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/PrestiegeLevel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel"]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
@@ -276,13 +361,13 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Root/ModParent/VBoxContainer/PrestiegeLevel/HBoxContainer"]
+[node name="Button" type="Button" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_right = NodePath("../Button2")
 text = "Add 10"
 
-[node name="Button2" type="Button" parent="Root/ModParent/VBoxContainer/PrestiegeLevel/HBoxContainer"]
+[node name="Button2" type="Button" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Button")
@@ -290,7 +375,7 @@ focus_neighbor_right = NodePath("../Button3")
 text = "Add 50
 "
 
-[node name="Button3" type="Button" parent="Root/ModParent/VBoxContainer/PrestiegeLevel/HBoxContainer"]
+[node name="Button3" type="Button" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Button2")
@@ -321,12 +406,7 @@ columns = 2
 script = ExtResource("2_1xjpc")
 
 [node name="block_everything" type="ColorRect" parent="Root/ModParent"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 color = Color(0.25, 0.25, 0.25, 0.713726)
 
 [node name="PaperParent" type="Panel" parent="Root" node_paths=PackedStringArray("entryParent")]
@@ -354,11 +434,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 0
 
 [node name="MainContent" type="VBoxContainer" parent="Root/PaperParent/MarginContainer"]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Root/PaperParent/MarginContainer/MainContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/PaperParent/MarginContainer/MainContent/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_units_title"
+label_settings = ExtResource("4_t516s")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Root/PaperParent/MarginContainer/MainContent"]
 layout_mode = 2
@@ -369,6 +465,7 @@ vertical_scroll_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Root/PaperParent/MarginContainer/MainContent/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 16
 

@@ -58,6 +58,7 @@ script = ExtResource("1_7bh0y")
 GridSize = Vector2i(16, 10)
 CameraStart = Vector2(3, 8)
 Biome = ExtResource("2_02noj")
+Par = 7
 tilemap_bg = NodePath("BG")
 tilemap_water = NodePath("Water")
 tilemap_main = NodePath("Main")

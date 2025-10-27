@@ -32,15 +32,10 @@ script = ExtResource("15_pxa5v")
 
 [sub_resource type="Resource" id="Resource_ddp5s"]
 script = ExtResource("20_bm07k")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
 [sub_resource type="Resource" id="Resource_2n151"]
 script = ExtResource("22_vmpk3")
-Team = 1
 metadata/_custom_type_script = "uid://bsigkcdkaqxem"
 
 [sub_resource type="Resource" id="Resource_7sjrr"]
@@ -57,10 +52,6 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 
 [sub_resource type="Resource" id="Resource_74mn6"]
 script = ExtResource("20_bm07k")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
 [sub_resource type="Resource" id="Resource_815pd"]
@@ -69,23 +60,16 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 
 [sub_resource type="Resource" id="Resource_dwgyn"]
 script = ExtResource("20_bm07k")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_hkjcv"]
 script = ExtResource("20_bm07k")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [node name="white_a02_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_74mn6")
 GridSize = Vector2i(23, 14)
 CameraStart = Vector2(5, 8)
 Biome = ExtResource("2_7sjrr")
+Par = 8
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

@@ -28,10 +28,8 @@ script = ExtResource("15_ks74r")
 
 [node name="maroon_a01_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_4ana2")
-mapType = null
 GridSize = Vector2i(15, 10)
 CameraStart = Vector2(4, 4)
-TileSize = null
 AutosaveEnabled = null
 Biome = ExtResource("2_ahwtu")
 tilemap_bg = NodePath("BG")
@@ -40,19 +38,11 @@ tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
 WinCondition = ExtResource("2_643m3")
-OptionalObjectives = null
 squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
 
 [node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
-points = PackedVector2Array(0, 0, 960, 0, 960, 640, 0, 640, 0, 0)
-closed = true
-default_color = Color(1, 0, 0, 1)
-script = ExtResource("3_dcjwa")
-map = NodePath("..")
-
-[node name="DebugSize2" type="Line2D" parent="." node_paths=PackedStringArray("map")]
 points = PackedVector2Array(0, 0, 960, 0, 960, 640, 0, 640, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)

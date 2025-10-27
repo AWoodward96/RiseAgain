@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=22 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_ea6il"]
 [ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="4_ae3kp"]
 [ext_resource type="Texture2D" uid="uid://cjuonw20ub5yw" path="res://ART/UI/icon_has_loot.png" id="4_bcnfb"]
-[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://dilxnpnqkcann" path="res://ART/UI/icon_is_boss.png" id="5_6l8ji"]
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
@@ -88,16 +87,15 @@ font_size = 18
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "uiParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "uiParent", "healthBar", "affinityIcon", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
-uiParent = NodePath("VBoxContainer")
 combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
+uiParent = NodePath("VBoxContainer")
 healthBar = NodePath("VBoxContainer/HealthBarParent")
-focusSlotPrefab = ExtResource("4_kfodt")
 affinityIcon = NodePath("VBoxContainer/AffinityIcon")
 hasLootIcon = NodePath("HasLoot")
 isBossIcon = NodePath("Boss")

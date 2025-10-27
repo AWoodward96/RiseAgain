@@ -601,3 +601,8 @@ ui_complete,Complete!
 ui_rewards_title,Rewards:
 ui_injured_alert,Injured!!
 ui_you_still_have_rewards,You still have map rewards to claim. Are you sure you want to continue? Any unclaimed rewards will be lost.
+ui_barracks_upgrade_unit,Upgrade Unit:
+ui_points_remaining_title,Prestiege Points Remaining:
+ui_current_prestiege_level_title,Prestiege Level:
+ui_prestiege_level_detail,"Gain Prestiege EXP by having a unit survive a Map. After gaining a level, you can use a Prestiege Point to increase the Stats of a Unit."
+ui_units_title,Units:

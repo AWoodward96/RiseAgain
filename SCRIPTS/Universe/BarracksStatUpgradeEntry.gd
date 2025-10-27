@@ -5,12 +5,14 @@ class_name BarracksStatUpgradeEntry
 @export var MinusButton : Button
 @export var PlusButton : Button
 @export var AllocatedUpgradeLabel : Label
+@export var CurMaxLabel : Label
 
 var template : StatTemplate
 var unitPersist : UnitPersistBase
 var Parent : BarracksUI
 var baseStatValue : int
 var currentIncrease : int
+var cap : int
 
 func ForceFocus():
 	MinusButton.grab_focus()
@@ -24,6 +26,12 @@ func Initialize(_stat : StatTemplate, _unitTemplate : UnitTemplate, _unitPersist
 	StatBlockEntry.icon.texture = template.loc_icon
 	StatBlockEntry.statName.text = template.loc_displayName_short
 
+	cap = 0
+	for statCap in _unitTemplate.PrestiegeCaps:
+		if statCap.Template == _stat:
+			cap = statCap.Value
+			break
+
 	baseStatValue = _unitTemplate.GetBaseStat(_stat)
 	Refresh()
 
@@ -33,8 +41,10 @@ func Refresh():
 	PlusButton.disabled = unitPersist.UnallocatedPrestiege <= 0
 
 	StatBlockEntry.statValue.text = "%01.0d" % [(baseStatValue + currentIncrease)]
-	AllocatedUpgradeLabel.visible = currentIncrease > 0
-	AllocatedUpgradeLabel.text = "+" + str(currentIncrease)
+	CurMaxLabel.text = tr(LocSettings.Current_Max).format({"CUR" = currentIncrease, "MAX" = cap})
+
+	#AllocatedUpgradeLabel.visible = currentIncrease > 0
+	#AllocatedUpgradeLabel.text = "+" + str(currentIncrease)
 
 func EnableFocus(_enabled : bool):
 	MinusButton.focus_mode = Control.FOCUS_ALL if _enabled else Control.FOCUS_NONE

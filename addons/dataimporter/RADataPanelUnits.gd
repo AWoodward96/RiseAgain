@@ -79,7 +79,6 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	ModifyUnitStat(_unitTemplate, stat_dict["SpDefense"], _data["SpDefense"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Movement"], _data["Movement"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Luck"], _data["Luck"])
-	ModifyUnitStat(_unitTemplate, stat_dict["Mind"], _data["Mind"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Dexterity"], _data["Dexterity"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Wisdom"], _data["Wisdom"])
 
@@ -91,6 +90,18 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Luck"], _data["gLuck"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Dexterity"], _data["gDexterity"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Wisdom"], _data["gWisdom"])
+
+	print("Modifying prestiege caps for unit: " + _unitTemplate.DebugName)
+	print("The current size of this units pc array is: " + str(_unitTemplate.PrestiegeCaps.size()))
+	_unitTemplate.PrestiegeCaps.clear()
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcVitality", stat_dict["Vitality"], _data["pcVitality"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcAttack", stat_dict["Attack"], _data["pcAttack"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcDefense", stat_dict["Defense"], _data["pcDefense"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcSpAttack", stat_dict["SpAttack"], _data["pcSpAttack"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcSpDefense", stat_dict["SpDefense"], _data["pcSpDefense"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcLuck", stat_dict["Luck"], _data["pcLuck"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcDexterity", stat_dict["Dexterity"], _data["pcDexterity"])
+	ModifyUnitPrestiegeCaps(_unitTemplate, _unitTemplate.DebugName + "::pcWisdom", stat_dict["Wisdom"], _data["pcWisdom"])
 
 	if _data.has("internal_name"): _unitTemplate.DebugName = _data["internal_name"]
 
@@ -114,6 +125,7 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	# The UnitTemplates' scripts get replaced with a UnitTemplates#134crs34 cached script reference and it breaks everyhing to hell and back
 	# I think for now this works, as far as I can tell. The StatRefs get populated properly
 	log += str("\n[color=green]Successfully modified Template [/color]", _unitTemplate.DebugName)
+	_unitTemplate.take_over_path(_path)
 	var err = ResourceSaver.save(_unitTemplate, _path)
 	if err != OK:
 		log += str("\n[color=red]FAILED TO SAVE UNIT TEMPLATE AT PATH: [/color]", _path, "[color=red]ERROR CODE: [/color]", err)
@@ -154,6 +166,38 @@ func ModifyUnitStatGrowths(_unitTemplate : UnitTemplate, _statPath : String, _va
 			statDef.Template = statTemplate
 			statDef.Value = _value
 			_unitTemplate.StatGrowths.append(statDef)
+
+func ModifyUnitPrestiegeCaps(_unitTemplate : UnitTemplate, _savePath : String, _statPath : String, _value):
+	var statTemplate = load(_statPath) as StatTemplate
+	var newDef = StatDef.new()
+	if statTemplate != null:
+		newDef.Value = _value
+		newDef.Template = statTemplate
+		_unitTemplate.PrestiegeCaps.append(newDef)
+
+
+	#var statTemplate = load(_statPath) as StatTemplate
+	#print("statPath " + _statPath)
+	#var found = false
+	#print(" Wait is stat null???: " + statTemplate.loc_displayName)
+	#if statTemplate:
+		#for def in _unitTemplate.PrestiegeCaps:
+			##print("I'm unitTemplate " + _unitTemplate.DebugName + " and im looking at stat def: " + def.resource_path)
+			#if def.Template == statTemplate:
+				#def.Value = _value
+				#found = true
+				#print("I'm unitTemplate " + _unitTemplate.DebugName + " and I found the stat : " + statTemplate.resource_name + " in my prestiege cap array. How about that?")
+#
+#
+		#if !found:
+			#var statDef = StatDef.new()
+			#statDef.Template = statTemplate
+			#statDef.Value = _value
+			#statDef.take_over_path(_savePath)
+			#_unitTemplate.PrestiegeCaps.append(statDef)
+			#print("Making a new stat def at path: " + _savePath)
+			##ResourceSaver.save(statDef, _savePath)
+			##_unitTemplate.notify_property_list_changed()
 
 func ImportWeapon(_unitTemplate : UnitTemplate, _data):
 	var weap_as_stringname = _data["Base_Equipped_Weapon"]

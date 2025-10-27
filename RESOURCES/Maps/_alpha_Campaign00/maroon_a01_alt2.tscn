@@ -23,23 +23,16 @@ script = ExtResource("14_l46w5")
 
 [sub_resource type="Resource" id="Resource_dwgyn"]
 script = ExtResource("16_mqoap")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_hkjcv"]
 script = ExtResource("16_mqoap")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [node name="maroon_a01_alt2" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_nmrjm")
 GridSize = Vector2i(15, 10)
 CameraStart = Vector2(5, 4)
 Biome = ExtResource("2_eaqcd")
+Par = 4
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

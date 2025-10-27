@@ -14,7 +14,7 @@ font_size = 32
 font = ExtResource("3_4fdci")
 font_size = 32
 
-[node name="StatBlockEntry_Barracks" type="Control" node_paths=PackedStringArray("StatBlockEntry", "MinusButton", "PlusButton", "AllocatedUpgradeLabel")]
+[node name="StatBlockEntry_Barracks" type="Control" node_paths=PackedStringArray("StatBlockEntry", "MinusButton", "PlusButton", "AllocatedUpgradeLabel", "CurMaxLabel")]
 custom_minimum_size = Vector2(436, 72)
 layout_mode = 3
 anchors_preset = 0
@@ -25,6 +25,7 @@ StatBlockEntry = NodePath("MarginContainer/ParentHBox/StatBlockEntry_Inspect")
 MinusButton = NodePath("MarginContainer/ParentHBox/Minus/MinusButton")
 PlusButton = NodePath("MarginContainer/ParentHBox/Plus/PlusButton")
 AllocatedUpgradeLabel = NodePath("MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2/AllocatedUpgrades")
+CurMaxLabel = NodePath("MarginContainer/ParentHBox/VBoxContainer/CurMax")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -37,26 +38,6 @@ theme_override_constants/margin_bottom = 4
 
 [node name="ParentHBox" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="Minus" type="Control" parent="MarginContainer/ParentHBox"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="MinusButton" type="Button" parent="MarginContainer/ParentHBox/Minus"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "-"
 
 [node name="StatBlockEntry_Inspect" type="PanelContainer" parent="MarginContainer/ParentHBox" node_paths=PackedStringArray("icon", "statName", "statValue")]
 custom_minimum_size = Vector2(250, 64)
@@ -124,6 +105,7 @@ label_settings = SubResource("LabelSettings_k1xa7")
 horizontal_alignment = 1
 
 [node name="Control2" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="AllocatedUpgrades" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2"]
@@ -136,6 +118,35 @@ text = "+1"
 label_settings = ExtResource("5_yytrk")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Minus" type="Control" parent="MarginContainer/ParentHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="MinusButton" type="Button" parent="MarginContainer/ParentHBox/Minus"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_right = NodePath("../../Plus/PlusButton")
+text = "-"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ParentHBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="CurMax" type="Label" parent="MarginContainer/ParentHBox/VBoxContainer"]
+layout_mode = 2
+text = "CUR/MAX"
 
 [node name="Plus" type="Control" parent="MarginContainer/ParentHBox"]
 custom_minimum_size = Vector2(64, 64)
@@ -155,6 +166,7 @@ offset_right = 24.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../Minus/MinusButton")
 text = "+"
 
 [connection signal="pressed" from="MarginContainer/ParentHBox/Minus/MinusButton" to="." method="OnMinus"]

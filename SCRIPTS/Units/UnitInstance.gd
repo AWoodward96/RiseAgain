@@ -7,11 +7,11 @@ signal OnUnitDamaged(_result : DamageStepResult)
 
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
-@export var uiParent : Control
 @export var combatEffectsParent : Node2D
 @export var itemsParent : Node2D
+@export var uiParent : Control
+
 @export var healthBar : UnitHealthBar
-@export var focusSlotPrefab : PackedScene
 @export var affinityIcon: TextureRect
 @export var hasLootIcon : Node2D
 @export var isBossIcon : Node2D

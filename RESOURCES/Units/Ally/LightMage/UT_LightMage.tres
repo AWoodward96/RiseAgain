@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=43 format=3 uid="uid://2pfghhe6mjmc"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=51 format=3 uid="uid://2pfghhe6mjmc"]
 
 [ext_resource type="PackedScene" uid="uid://dcs78xo7fpefo" path="res://RESOURCES/Units/Ally/LightMage/VIS_LightMage.tscn" id="1_jpsjm"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_julpp"]
@@ -75,6 +75,44 @@ script = ExtResource("2_043p3")
 Template = ExtResource("13_fus64")
 Value = 1.0
 
+[sub_resource type="Resource" id="Resource_6xcsf"]
+script = ExtResource("2_043p3")
+Template = ExtResource("1_julpp")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_fus64"]
+script = ExtResource("2_043p3")
+Template = ExtResource("3_qtcos")
+
+[sub_resource type="Resource" id="Resource_7pawn"]
+script = ExtResource("2_043p3")
+Template = ExtResource("4_171sc")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_7f1ry"]
+script = ExtResource("2_043p3")
+Template = ExtResource("5_ys3kw")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_q16f1"]
+script = ExtResource("2_043p3")
+Template = ExtResource("6_ht3tj")
+Value = 2
+
+[sub_resource type="Resource" id="Resource_11eln"]
+script = ExtResource("2_043p3")
+Template = ExtResource("10_61ylm")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_yca56"]
+script = ExtResource("2_043p3")
+Template = ExtResource("12_6xcsf")
+
+[sub_resource type="Resource" id="Resource_wryaf"]
+script = ExtResource("2_043p3")
+Template = ExtResource("13_fus64")
+Value = 4
+
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_043p3")
 Template = ExtResource("1_julpp")
@@ -125,6 +163,7 @@ script = ExtResource("3_0b4is")
 VisualPrefab = ExtResource("1_jpsjm")
 BaseStats = Array[ExtResource("2_043p3")]([SubResource("Resource_bsid8"), SubResource("Resource_ym0ui"), SubResource("Resource_p5w7m"), SubResource("Resource_ea67d"), SubResource("Resource_vn017"), SubResource("Resource_o741j"), SubResource("Resource_2wwtx"), SubResource("Resource_6t32p"), SubResource("Resource_y2efe"), SubResource("Resource_6dsjs"), SubResource("Resource_rsuth")])
 StatGrowths = Array[ExtResource("2_043p3")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_imbxd"), SubResource("Resource_c725q")])
+PrestiegeCaps = Array[ExtResource("2_043p3")]([SubResource("Resource_6xcsf"), SubResource("Resource_fus64"), SubResource("Resource_7pawn"), SubResource("Resource_7f1ry"), SubResource("Resource_q16f1"), SubResource("Resource_11eln"), SubResource("Resource_yca56"), SubResource("Resource_wryaf")])
 Affinity = ExtResource("2_verca")
 StartingEquippedWeapon = ExtResource("14_3mj8j")
 StartingTactical = ExtResource("15_3p2av")

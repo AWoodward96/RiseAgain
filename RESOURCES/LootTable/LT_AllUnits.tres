@@ -1,49 +1,63 @@
 [gd_resource type="Resource" script_class="LootTable" load_steps=18 format=3 uid="uid://ckn2gmate3jr1"]
 
-[ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_4v6xu"]
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
 [ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="2_eremd"]
-[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/WildMage/UT_WildMage.tres" id="4_dmxar"]
-[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="4_x450q"]
-[ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="5_f3hp4"]
-[ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="6_kcbml"]
-[ext_resource type="Resource" uid="uid://b58tp7xqbg5jr" path="res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres" id="7_edpnh"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
-[ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="8_dmxar"]
+
+[sub_resource type="Resource" id="Resource_ki3nf"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/Archer/UT_Archer.tres"
 
 [sub_resource type="Resource" id="Resource_dmxar"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("1_4v6xu")
+Unit = SubResource("Resource_ki3nf")
 AccumulatedWeight = 1.0
+
+[sub_resource type="Resource" id="Resource_pw506"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/WildMage/UT_WildMage.tres"
 
 [sub_resource type="Resource" id="Resource_dp3md"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("4_dmxar")
+Unit = SubResource("Resource_pw506")
 AccumulatedWeight = 2.0
+
+[sub_resource type="Resource" id="Resource_80ayw"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres"
 
 [sub_resource type="Resource" id="Resource_ha0yx"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("4_x450q")
+Unit = SubResource("Resource_80ayw")
 AccumulatedWeight = 3.0
+
+[sub_resource type="Resource" id="Resource_8e6dp"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres"
 
 [sub_resource type="Resource" id="Resource_8ggyv"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("5_f3hp4")
+Unit = SubResource("Resource_8e6dp")
 AccumulatedWeight = 4.0
+
+[sub_resource type="Resource" id="Resource_lx3ge"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres"
 
 [sub_resource type="Resource" id="Resource_4ww77"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("6_kcbml")
+Unit = SubResource("Resource_lx3ge")
 AccumulatedWeight = 5.0
+
+[sub_resource type="Resource" id="Resource_wbon3"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres"
 
 [sub_resource type="Resource" id="Resource_mil6f"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("7_edpnh")
+Unit = SubResource("Resource_wbon3")
 AccumulatedWeight = 6.0
+
+[sub_resource type="Resource" id="Resource_edpnh"]
+metadata/__load_path__ = "res://RESOURCES/Units/Ally/Knight/UT_Knight.tres"
 
 [sub_resource type="Resource" id="Resource_l4a38"]
 script = ExtResource("2_eremd")
-Unit = ExtResource("8_dmxar")
+Unit = SubResource("Resource_edpnh")
 AccumulatedWeight = 7.0
 
 [resource]
