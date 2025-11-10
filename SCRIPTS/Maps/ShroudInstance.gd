@@ -33,7 +33,7 @@ func UnitExited(_unit : UnitInstance):
 
 	var hasAllyInShroud = false
 	for tile in Tiles:
-		if tile.Occupant != null && tile.Occupant.UnitAllegiance == _unit.UnitAllegiance:
+		if tile.Occupant != null && tile.Occupant.UnitAllegiance == _unit.UnitAllegiance && _unit != tile.Occupant:
 			hasAllyInShroud = true
 			break
 

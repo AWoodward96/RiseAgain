@@ -134,6 +134,18 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 					valid = true
 					SetValidAttack(_origin, targetUnit.CurrentTile)
 					return
+			# This is commented out because there's an edge case where abilities that hit
+			# tiles that are not directly in the center might fail to be checked by the code section above
+			# I opted to keep things simple for now, but if there is a new ability that really really needs this that
+			# can't be remedied by a custom option implementation - then this is here for that.
+			#SkillTargetingData.TargetingType.ShapedFree:
+				#var targetTiles = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, _origin)
+				#for t in targetTiles:
+					#if t.Tile.Occupant == targetUnit:
+						#valid = true
+						#SetValidAttack(_origin, _origin)
+						#return
+				#pass
 			SkillTargetingData.TargetingType.Global:
 				# So the deal with global, is that we don't know which direction does the most damage
 				# We'll ignore this until it comes up later and hate ourselves for not putting the work in now
@@ -176,7 +188,14 @@ func CheckIfMovementNeeded(_origin : Tile, _fullPath : Array[Tile]):
 									valid = true
 									direction = i as GameSettingsTemplate.Direction
 									atRange = atRangeCounter
-									SetValidAttack(potentialTile, targetUnit.CurrentTile)
+
+									# It is tempting to put the Attacked Tile as targetUnit.CurrentTile, but that would be incorrect
+									# In the event of an AOE attack, this attack might hit a unit that isn't being targeted by this ability
+									# So, the tile to attack (also known as the actionOrigin tile) needs to be the units current position, plus the direction, reletive to their size
+									var potentialPlusDirection = potentialTile.Position + GameSettingsTemplate.GetVectorFromDirection(i)
+									var potentialAccountingForSize = GameSettingsTemplate.GetOriginPositionFromDirection(sourceUnit.Template.GridSize, potentialPlusDirection, i)
+									var attackedTile = grid.GetTile(potentialAccountingForSize)
+									SetValidAttack(potentialTile, attackedTile)
 									return
 						pass
 				pass

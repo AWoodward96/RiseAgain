@@ -21,8 +21,8 @@ weap_wolfbane_name,Wolfbane
 weap_wolfbane_desc,Heals the user for {DMG_DRAINPERC}% damage dealt. Deals double damage to Canines.
 weap_lunar_lance_name,Lance
 weap_lunar_lance_desc,A mysterious ethereal spear with a strange emblem on it. You've never seen anything like it.
-weap_bomblauncher_name,Explosive Crossbow
-weap_bomblauncher_desc,A crossbow designed to launch tiny bombs at a distance.
+art_bomblauncher_name,Explosive Crossbow
+art_bomblauncher_desc,Throws three bombs at the nearest Enemy Units.
 weap_irondagger_name,Iron Dagger
 weap_irondagger_desc,A short dagger that can be thrown. +20% Crit Chance
 weap_steeldagger_name,Steel Dagger
@@ -606,3 +606,21 @@ ui_points_remaining_title,Prestiege Points Remaining:
 ui_current_prestiege_level_title,Prestiege Level:
 ui_prestiege_level_detail,"Gain Prestiege EXP by having a unit survive a Map. After gaining a level, you can use a Prestiege Point to increase the Stats of a Unit."
 ui_units_title,Units:
+art_egostrike_name,Ego Strike
+art_egostrike_desc,The Unit readys a huge slam that deals damage based on {DMG_AGGRESSIVESTAT} on the following turn.
+art_letsrumble_name,Let's Rumble!!
+art_letsrumble_desc,This Unit leaps into an area dealing damage based on {DMG_AGGRESSIVESTAT} and Slowing Units for 1 turn.
+art_nomorefun_name,No More Fun!
+art_nomorefun_desc,Deal Damage in a huge area around yourself dealing {DMG_AGGRESSIVESTAT} x2 and Slowing for 1 turn.
+ce_bossbroken,Break!!
+ce_bossbroken_effect,This Unit is Invulnerable until their next turn.
+ce_jadeshield,Jade Tail
+ce_jadeshield_effect,This Unit has a shield equal to the amount of damage they took last turn.
+item_t2_jadetail_name,Jade Tail
+item_t2_jadetail_desc,Turn Start: Gain a shield based on how much damage you took last turn.
+unit_malice_name,Malice
+unit_malice_desc,An Aspect. Run.
+art_lacerate_name,Lacerate
+art_lacerate_desc,Target the highest Health Unit. Deal 30% of their Current Health. This cannot target a Unit that is at Max Health.
+art_decimatus_name,Decimatus
+art_decimatus_desc,Teleport to an Enemy Unit below 50% their Max Health and slam the hammer down on them dealing damage based on {DMG_AGGRESSIVESTAT}

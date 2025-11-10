@@ -28,7 +28,6 @@ func PreviewResult(_map : Map):
 		if unit == null:
 			continue
 
-		unit.damage_indicator.SetHealthLevels(unit.currentHealth, unit.maxHealth)
 		if unit == Source:
 			# Prioritize death to killbox over other damage
 			if stack.ResultingTile != null && stack.ResultingTile.ActiveKillbox && !unit.IsFlying:
@@ -67,7 +66,6 @@ func PreviewResult(_map : Map):
 		var occupant = TileTargetData.pushCollision.Occupant
 		if occupant != null:
 			occupant.damage_indicator.collisionDamage += HealthDelta
-			occupant.damage_indicator.SetHealthLevels(occupant.currentHealth, occupant.maxHealth)
 		else:
 			TileTargetData.pushCollision.PreviewDamage(0, HealthDelta, 0)
 	pass

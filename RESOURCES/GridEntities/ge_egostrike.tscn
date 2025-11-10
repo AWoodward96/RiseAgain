@@ -1,0 +1,59 @@
+[gd_scene load_steps=18 format=4 uid="uid://jfai0ua2wl02"]
+
+[ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_evq7x"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_0rb2c"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_ed0sp"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_uam6u"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="5_pkib7"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="6_b0k7w"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_k13g5"]
+[ext_resource type="Resource" uid="uid://bylhdq2a1w743" path="res://RESOURCES/TargetingShapes/egostrike_shape.tres" id="8_evq7x"]
+[ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="10_mom4g"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="11_jgk8o"]
+
+[sub_resource type="Resource" id="Resource_e76h8"]
+script = ExtResource("3_ed0sp")
+OnActionOrigin = false
+OnSource = true
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_5bjtb"]
+script = ExtResource("4_uam6u")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_o5jkg"]
+script = ExtResource("3_ed0sp")
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_3seej"]
+script = ExtResource("5_pkib7")
+PlayAtUnit = false
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_c5tec"]
+script = ExtResource("4_uam6u")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_utjrs"]
+script = ExtResource("6_b0k7w")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_utcex"]
+script = ExtResource("7_k13g5")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="ge_egostrike" type="Node2D" node_paths=PackedStringArray("telegraphTilemap")]
+z_index = -5
+script = ExtResource("1_evq7x")
+executionStack = Array[ExtResource("2_0rb2c")]([SubResource("Resource_e76h8"), SubResource("Resource_5bjtb"), SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
+telegraphTilemap = NodePath("TileMapLayer")
+shapedTiles = ExtResource("8_evq7x")
+UpdatePerTeamTurn = true
+localization_icon = ExtResource("10_mom4g")
+localization_desc = "art_egostrike_name"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AgAAAAIAAAAAAP//AgAAAAIAAAABAP//AgAAAAIAAAD///7/AgAAAAIAAAAAAP7/AgAAAAIAAAABAP7/AgAAAAIAAAACAP7/AgAAAAIAAAACAP//AgAAAAIAAAABAP3/AgAAAAIAAAAAAP3/AgAAAAIAAAAAAPz/AgAAAAIAAAABAPz/AgAAAAIAAAA=")
+tile_set = ExtResource("11_jgk8o")

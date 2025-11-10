@@ -84,7 +84,6 @@ func OnOwnerUnitTurnStart():
 func _to_string():
 	return self.name
 
-
 func ToJSON():
 	var dict = {
 		"prefab" : self.scene_file_path,

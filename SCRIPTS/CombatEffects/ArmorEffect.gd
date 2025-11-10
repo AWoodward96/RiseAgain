@@ -4,6 +4,8 @@ class_name ArmorEffect
 @export_group("Armor Data")
 @export var UseDamageDealtAsValue : bool
 @export var UseSourceForStats : bool
+@export var UseDamageTakenThisTurn : bool
+@export var UseDamageTakenLastTurn : bool
 
 @export_group("Mod Data")
 @export var FlatValue : float
@@ -35,11 +37,20 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 			if results.Source == _sourceUnit && results.HealthDelta < 0: # HealthDelta is signed. Negative for damage
 				value += abs(results.HealthDelta)
 
+
 	if RelativeStat != null:
 		if UseSourceForStats && _sourceUnit != null:
 			value += _sourceUnit.GetWorkingStat(RelativeStat)
 		elif _affectedUnit != null:
 			value += _affectedUnit.GetWorkingStat(RelativeStat)
+
+	if UseDamageTakenThisTurn:
+		# - value because damage taken is a negative value
+		value += -_affectedUnit.DamageTakenThisTurn
+
+	if UseDamageTakenLastTurn:
+		# - value because damage taken is a negative value
+		value += -_affectedUnit.DamageTakenLastTurn
 
 	# Check if this value should be scaled at all
 	if ModType != DamageData.EModificationType.None:
@@ -53,6 +64,9 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 			DamageData.EModificationType.Divisitive:
 				value = floori(value / Mod)
 
+	# don't bother applying an effect if the value is less than 0
+	if value <= 0:
+		return null
 
 	armorInstance.ArmorValue = value
 

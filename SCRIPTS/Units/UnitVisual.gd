@@ -92,7 +92,7 @@ func UpdateSubmerged(_submerged : bool):
 
 func UpdateShrouded():
 	visible = !MyUnit.ShroudedFromPlayer
-	MyUnit.uiParent.visible = !MyUnit.ShroudedFromPlayer
+	MyUnit.damage_indicator.visible = !MyUnit.ShroudedFromPlayer
 
 	if AnimationWorkComplete:
 		if MyUnit.Shrouded:

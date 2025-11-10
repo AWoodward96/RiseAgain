@@ -41,13 +41,11 @@ UsableDamageData = NodePath("DamageComponent")
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("2_xseor")
-FlatValue = 3.0
 AgressiveStat = ExtResource("3_ifr6g")
-DamageToHealthRatio = 0.0
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("4_5wmo1")
-TargetRange = Vector2i(2, 4)
+TargetRange = Vector2i(2, 3)
 Type = 2
 shapedTiles = ExtResource("5_w7fya")
 

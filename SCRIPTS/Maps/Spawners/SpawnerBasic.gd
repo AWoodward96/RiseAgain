@@ -39,9 +39,15 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	level = max(level, 0)
 
 	var unit = _map.CreateUnit(UnitToSpawn, level + DeltaLevel)
-	_map.InitializeUnit(unit, Position, Allegiance)
+	_map.InitializeUnit(unit, Position, Allegiance, 1, ExtraHealthBars)
 	unit.SetAI(AIBehavior, AggroBehavior)
 	unit.ExtraEXPGranted = ExtraEXPGranted
+
+	for itemPath in GivenItems:
+		var loadedItem = load(itemPath) as PackedScene
+		if loadedItem != null:
+			unit.TryEquipItem(loadedItem)
+		pass
 
 	for effect in PreAppliedEffects:
 		var instance = effect.CreateInstance(unit, unit, null, null)
@@ -49,4 +55,6 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	if _map.CurrentCampaign != null && Allegiance == GameSettingsTemplate.TeamID.ALLY:
 		_map.CurrentCampaign.CurrentRoster.append(unit)
 
+
 	unit.IsBoss = Boss
+	unit.RefreshVisuals()

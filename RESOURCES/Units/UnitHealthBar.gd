@@ -1,10 +1,14 @@
 extends Control
 class_name UnitHealthBar
 
+signal HealthBarTweenCallback
+
 @export var HealthBar : ProgressBar
+@export var IncomingDamageBar : ProgressBar
 @export var ArmorBar : ProgressBar
 @export var InjuredBar : ProgressBar
 @export var HealthText : Label
+@export var ExtraHealthBarLabel : Label
 @export var HideTimer : Timer
 @export var InjuredParent : Control
 
@@ -23,7 +27,7 @@ class_name UnitHealthBar
 @export var EffectsIconPrefab : PackedScene
 
 var Unit : UnitInstance
-var UnitMaxHealth : int
+var AssignedTile : Tile
 var UpdateOverTime : bool
 var DeltaValueChange : int		# How much damage or healing is being dealt
 var DeltaHealth : int			# How much is our Health changing - signed
@@ -32,8 +36,23 @@ var DesiredHealthValue : int
 var StartingArmor : int
 
 var UpdateBarTween : Tween
+var MaxHealth : int :
+	get():
+		if Unit != null:
+			return Unit.maxHealth
+		elif AssignedTile != null:
+			return AssignedTile.MaxHealth
+		else:
+			return 0
+var CurrentHealth : int:
+	get():
+		if Unit != null:
+			return Unit.currentHealth
+		elif AssignedTile != null:
+			return AssignedTile.Health
+		else:
+			return 0
 
-signal HealthBarTweenCallback
 
 func SetUnit(_unit : UnitInstance):
 	if Unit != null:
@@ -50,11 +69,17 @@ func SetUnit(_unit : UnitInstance):
 	Refresh()
 	RefreshCombatEffects()
 
+func SetTile(_tile : Tile):
+	AssignedTile = _tile
+	if HideTimer != null && !HideTimer.timeout.is_connected(AutoHide):
+		HideTimer.timeout.connect(AutoHide)
+	Refresh()
+
 func AutoHide():
 	visible = false
 
 func ModifyHealthOverTime(_deltaHealthChange : int):
-	if Unit == null:
+	if Unit == null && AssignedTile == null:
 		return
 
 	DeltaValueChange = _deltaHealthChange
@@ -62,12 +87,13 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 		UpdateBarTweenComplete()
 		return # Nothing occurs early exit
 
-	UnitMaxHealth = Unit.maxHealth
 	DeltaArmor = 0
 	DeltaHealth = 0
 	var remainingDelta = DeltaValueChange
-	StartingArmor = Unit.GetArmorAmount()
-	var unitHealth = Unit.currentHealth
+	StartingArmor = 0
+	if Unit != null: StartingArmor = Unit.GetArmorAmount()
+	var health = CurrentHealth
+	var maxHealth = MaxHealth
 
 
 	if DeltaValueChange < 0:
@@ -94,29 +120,33 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 
 		if DeltaHealth != 0:
 			var healthBarMoveTime = Juice.HealthBarLossTime * abs(DeltaHealth as float / totalDelta as float)
-			UpdateBarTween.tween_method(UpdateHealthBarTween, unitHealth, unitHealth + DeltaHealth, healthBarMoveTime)
+			UpdateBarTween.tween_method(UpdateHealthBarTween, health, health + DeltaHealth, healthBarMoveTime)
 
 		UpdateBarTween.tween_callback(UpdateBarTweenComplete)
 	else:
 		UpdateBarTween = create_tween()
-		DeltaHealth = min(UnitMaxHealth - unitHealth, DeltaValueChange) # Either use the delta value change, or bring us up to full hp
-		UpdateBarTween.tween_method(UpdateHealthBarTween, unitHealth, unitHealth + DeltaHealth, Juice.HealthBarLossTime)
+		DeltaHealth = min(maxHealth - health, DeltaValueChange) # Either use the delta value change, or bring us up to full hp
+		UpdateBarTween.tween_method(UpdateHealthBarTween, health, health + DeltaHealth, Juice.HealthBarLossTime)
 		UpdateBarTween.tween_callback(UpdateBarTweenComplete)
 
 
 func UpdateArmorBarTween(value):
-	HealthText.text = str("%01.0d/%01.0d" % [clamp(Unit.currentHealth, 0, UnitMaxHealth), UnitMaxHealth])
+	HealthText.text = str("%01.0d/%01.0d" % [clamp(CurrentHealth, 0, MaxHealth), MaxHealth])
 	HealthText.text += str(" + %01.0d" % value)
-	HealthBar.value = clampf(Unit.currentHealth, 0, UnitMaxHealth) / UnitMaxHealth as float
-	ArmorBar.value = clampf(value, 0, StartingArmor) / UnitMaxHealth as float
-	HideTimer.start() # restart it so it doesn't hide itself
+	HealthBar.value = clampf(CurrentHealth, 0, MaxHealth) / MaxHealth as float
+	ArmorBar.value = clampf(value, 0, StartingArmor) / MaxHealth as float
+	if HideTimer != null: HideTimer.start() # restart it so it doesn't hide itself
 	pass
 
 func UpdateHealthBarTween(value):
-	HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, UnitMaxHealth), UnitMaxHealth])
-	HealthBar.value = clampf(value, 0, UnitMaxHealth) / UnitMaxHealth as float
-	HideTimer.start() # restart it so it doesn't hide itself
+	HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, MaxHealth), MaxHealth])
+	HealthBar.value = clampf(value, 0, MaxHealth) / MaxHealth as float
+	if HideTimer != null: HideTimer.start() # restart it so it doesn't hide itself
 	pass
+
+func RefreshIncomingDamageBar():
+	if IncomingDamageBar != null:
+		IncomingDamageBar.value = clampf(CurrentHealth, 0, MaxHealth) / MaxHealth as float
 
 func UpdateBarTweenComplete():
 	HealthBarTweenCallback.emit()
@@ -124,40 +154,66 @@ func UpdateBarTweenComplete():
 		HideTimer.start()
 
 func Refresh():
-	if Unit == null || Unit.Template == null:
+	if Unit == null && AssignedTile == null:
 		return
 
-	var armor = Unit.GetArmorAmount()
+
+	var armor = 0
+	if Unit != null:
+		StartingArmor = Unit.GetArmorAmount()
+
+	armor = StartingArmor
 
 	ArmorBar.visible = armor > 0
 
-	if HealthText != null: HealthText.text = "%01.0d/%01.0d" % [Unit.currentHealth, Unit.maxHealth]
-	if HealthBar != null: HealthBar.value = Unit.currentHealth / Unit.trueMaxHealth
+	if HealthText != null: HealthText.text = "%01.0d/%01.0d" % [CurrentHealth, MaxHealth]
+	if HealthBar != null:
+		if Unit != null:
+			HealthBar.value = Unit.currentHealth / Unit.trueMaxHealth
+		elif AssignedTile != null:
+			HealthBar.value = AssignedTile.Health / AssignedTile.MaxHealth
+
 	if InjuredBar != null:
-		InjuredBar.visible = Unit.Injured
-		InjuredBar.value = ((Unit.trueMaxHealth - Unit.maxHealth) / Unit.trueMaxHealth)
+		InjuredBar.visible = Unit != null && Unit.Injured
+		if Unit != null:
+			InjuredBar.value = ((Unit.trueMaxHealth - Unit.maxHealth) / Unit.trueMaxHealth)
 
 	if LevelLabel != null:
-		var lvlStr = tr(LevelLocalization)
-		LevelLabel.text = lvlStr.format({"NUM" : Unit.DisplayLevel })
+		LevelLabel.visible = Unit != null
+		if Unit != null:
+			var lvlStr = tr(LevelLocalization)
+			LevelLabel.text = lvlStr.format({"NUM" : Unit.DisplayLevel })
 
 	if armor > 0:
-		ArmorBar.value = armor as float / Unit.trueMaxHealth
-		HealthText.text += str(" + %01.0d" % armor)
+		ArmorBar.visible = Unit != null
+		if Unit != null:
+			ArmorBar.value = armor as float / Unit.trueMaxHealth
+			HealthText.text += str(" + %01.0d" % armor)
 
 	if ExpLabel != null:
-		var madlibs = {"NUM" : Unit.Exp, "CUR" : Unit.Exp, "MAX" : str(100)}
-		ExpLabel.text = tr(ExpLocalization).format(madlibs)
+		ExpLabel.visible = Unit != null
+		if Unit != null:
+			var madlibs = {"NUM" : Unit.Exp, "CUR" : Unit.Exp, "MAX" : str(100)}
+			ExpLabel.text = tr(ExpLocalization).format(madlibs)
 
 	if ExperienceBar != null:
-		ExperienceBar.value = Unit.Exp
+		ExperienceBar.visible = Unit != null
+		if Unit != null:
+			ExperienceBar.value = Unit.Exp
 
 	if InjuredParent != null:
-		InjuredParent.visible = Unit.Injured
+		InjuredParent.visible = Unit != null
+		if Unit != null:
+			InjuredParent.visible = Unit.Injured
+
+	if ExtraHealthBarLabel != null:
+		ExtraHealthBarLabel.visible = Unit != null && Unit.extraHealthBars > 0
+		if Unit != null:
+			ExtraHealthBarLabel.text = tr(LocSettings.X_Num).format({"NUM" = str(Unit.extraHealthBars)})
 	pass
 
 func RefreshCombatEffects():
-	if EffectsList == null:
+	if EffectsList == null || Unit == null:
 		return
 
 	EffectParent.visible = Unit.CombatEffects.size() > 0

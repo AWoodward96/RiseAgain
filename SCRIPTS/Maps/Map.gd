@@ -289,8 +289,8 @@ func AddGridEntity(_gridEntity : GridEntityBase):
 
 	gridEntityParent.add_child(_gridEntity)
 
-func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID, _healthPerc : float = 1):
-	_unitInstance.AddToMap(self, _position, _allegiance)
+func InitializeUnit(_unitInstance : UnitInstance, _position : Vector2i, _allegiance : GameSettingsTemplate.TeamID, _healthPerc : float = 1, _extraHealthBars : int = 0):
+	_unitInstance.AddToMap(self, _position, _allegiance, _extraHealthBars)
 	grid.SetUnitGridPosition(_unitInstance, _position, true)
 	AddUnitToRoster(_unitInstance, _allegiance)
 
@@ -352,15 +352,18 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 
 
 	# despawn any grid entities that this unit is the owner of
-	for ge in gridEntities:
-		if ge != null && ge.Source != null && ge.Source == _unitInstance:
-			ge.Expired = true
-	RemoveExpiredGridEntities()
+	RemoveEntitiesOwnedByUnit(_unitInstance)
 
 	# should happen before removal from the map for deathrattle effects
 	OnUnitDied.emit(_unitInstance, _context)
 	RemoveUnitFromMap(_unitInstance)
 	RefreshThreat()
+
+func RemoveEntitiesOwnedByUnit(_unitInstance : UnitInstance):
+	for ge in gridEntities:
+		if ge != null && ge.Source != null && ge.Source == _unitInstance:
+			ge.Expired = true
+	RemoveExpiredGridEntities()
 
 func RemoveExpiredGridEntities():
 	for i in range(gridEntities.size() - 1, -1, -1):

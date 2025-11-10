@@ -10,7 +10,7 @@ var selectedTarget : GEChest
 
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-	CommonStartTurn(_map, _unit)
+	CommonStartTurn()
 
 	# Check if there are any tiles left to loot.
 	# if there aren't, try to escape

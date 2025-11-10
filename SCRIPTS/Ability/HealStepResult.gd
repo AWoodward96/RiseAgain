@@ -15,7 +15,6 @@ func PreviewResult(_map : Map):
 		if HealthDelta > 0:
 			indicator.healAmount += HealthDelta
 
-		indicator.SetHealthLevels(Target.currentHealth, Target.maxHealth)
 	elif TileTargetData.Tile.Health != -1:
 		# Target may be a Tile we're hitting
 		var heal = 0

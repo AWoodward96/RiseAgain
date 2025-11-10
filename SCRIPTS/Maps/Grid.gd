@@ -15,7 +15,12 @@ const THREATTILE_3 = Vector2i(2,1)
 const FIRETILE_1 = Vector2i(0,0)
 const FIRETILE_2 = Vector2i(0,1)
 const FIRETILE_3 = Vector2i(0,2)
-const NEIGHBORS = [Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
+const NEIGHBORS : Array[Vector2i] = [Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
+
+# remember: thse coordinates should be where a 2x2 unit can stand RELATIVE TO ANOTHER UNIT
+# NOT, what are the tiels that are adjacent to a 2x2 unit
+const SIZE2X2_ADJACENTTILES : Array[Vector2i] = [Vector2i(-2, -1), Vector2i(-2, 0), Vector2i(0, 1), Vector2i(-1, 1), Vector2i(-1, -2), Vector2i(0, -2), Vector2i(1,0), Vector2i(1,-1)]
+
 
 var GridArr : Array[Tile]
 var Width: int
@@ -101,11 +106,25 @@ func RefreshShroud():
 
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
+	var allAlliedUnits : Array[UnitInstance] = []
+	if _allegience == GameSettingsTemplate.TeamID.ENEMY:
+		allAlliedUnits = map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
+
 	for x in Width:
 		for y in Height:
 			var index = y * Width + x
 			var currentTile = GridArr[index]
 			RefreshTilesCollision(currentTile, _allegience, _flying)
+
+			# Update the dijkstra map since we're already in here
+			if _allegience == GameSettingsTemplate.TeamID.ENEMY:
+				var currentManhattan = Width * Height
+				for unit in allAlliedUnits:
+					var newManhattan = GetManhattanDistance(currentTile.Position, unit.GridPosition)
+					if newManhattan < currentManhattan:
+						currentTile.playerDijkstra = newManhattan
+						currentManhattan = newManhattan
+
 
 func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
 	if _tile == null:
@@ -141,17 +160,7 @@ func ShowThreat(_show : bool, _units : Array[UnitInstance]):
 
 func RefreshThreat(_units : Array[UnitInstance]):
 	map.tilemap_threat.clear()
-	var workingList : Array[Tile]
-	for u in _units:
-		if u == null || u.currentHealth <= 0 || u.ShroudedFromPlayer:
-			continue
-
-		var movement = GetCharacterMovementOptions(u, false)
-
-		var unitRange = u.GetEffectiveAttackRange()
-		var threatRange = GetCharacterAttackOptions(u, movement, unitRange, false)
-		threatRange = GetUniqueTiles(threatRange)
-		workingList.append_array(threatRange)
+	var workingList = GetWorkingThreatList(_units)
 
 	for tile in workingList:
 		var numberOfAppearances = workingList.count(tile)
@@ -164,6 +173,20 @@ func RefreshThreat(_units : Array[UnitInstance]):
 				map.tilemap_threat.set_cell(tile.Position, UITILEATLAS, THREATTILE_2)
 			_:
 				map.tilemap_threat.set_cell(tile.Position, UITILEATLAS, THREATTILE_3)
+
+func GetWorkingThreatList(_units : Array[UnitInstance], _excludeShrouded : bool = true):
+	var workingList : Array[Tile]
+	for u in _units:
+		if u == null || u.currentHealth <= 0 || (_excludeShrouded && u.ShroudedFromPlayer):
+			continue
+
+		var movement = GetCharacterMovementOptions(u, false)
+
+		var unitRange = u.GetEffectiveAttackRange()
+		var threatRange = GetCharacterAttackOptions(u, movement, unitRange, false)
+		threatRange = GetUniqueTiles(threatRange)
+		workingList.append_array(threatRange)
+	return workingList
 
 static func GetUniqueTiles(_array : Array[Tile]):
 	var returnMe : Array[Tile] = []
@@ -744,6 +767,9 @@ func GetManhattanDistance(_gridPosition1 : Vector2i, _gridPosition2 : Vector2i):
 	var x = abs(_gridPosition1.x - _gridPosition2.x)
 	var y = abs(_gridPosition1.y - _gridPosition2.y)
 	return x + y
+
+
+
 
 func ToJSON():
 	var dict = {

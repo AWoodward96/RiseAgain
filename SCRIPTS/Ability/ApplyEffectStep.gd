@@ -12,7 +12,8 @@ func Enter(_actionLog : ActionLog):
 	# The effect result is just there to preview what the ability is doing, and when
 	if CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Source || CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Both:
 		var effect = CombatEffectInstance.Create(source, source, CombatEffect, _actionLog.ability, _actionLog)
-		source.AddCombatEffect(effect)
+		if effect != null:
+			source.AddCombatEffect(effect)
 
 	if CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Targets || CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Both:
 		var stepResults = _actionLog.GetResultsFromActionIndex(_actionLog.actionStackIndex)
@@ -20,7 +21,8 @@ func Enter(_actionLog : ActionLog):
 			if results.Target == null:
 				continue
 			var effect = CombatEffectInstance.Create(source, results.Target, CombatEffect, _actionLog.ability, _actionLog)
-			results.Target.AddCombatEffect(effect)
+			if effect != null:
+				results.Target.AddCombatEffect(effect)
 
 	return true
 

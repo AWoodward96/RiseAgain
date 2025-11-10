@@ -13,17 +13,16 @@ enum EDamageClassification { Physical, Magical, True }
 
 @export var DamageCantKill : bool = false
 
-@export_category("Drain")
+@export_category("Extra Data")
 @export var DamageAffectsUsersHealth : bool = false
 
 # Can be positive OR negative depending on if this heals or hurts the user of this ability
 # Negative heals, Positive hurts
 @export var DamageToHealthRatio : float = 0.5
 
-@export_category("Crit Modifier")
 @export_range(-1, 1) var CritModifier : float = 0
+@export_range(0, 1) var PercMaxHealthMod : float = 0
 
-@export_category("Vulnerability")
 @export var VulerableDescriptors : Array[DescriptorMultiplier]
 
 func DoMod(_val, _mod, _modType : DamageData.EModificationType):

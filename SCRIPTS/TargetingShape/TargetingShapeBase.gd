@@ -38,8 +38,6 @@ func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _ability : Abilit
 				pass
 
 		var relativePosition = originPosition + vector2i + offset
-
-
 		var specificDataAsComplex = specificData as Vector2iMultComplex
 
 		var tile = _grid.GetTile(relativePosition) as Tile

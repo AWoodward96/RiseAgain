@@ -102,6 +102,8 @@ static func FromJSON(_dict : Dictionary):
 			combatEffectBase = StealthEffectInstance.new()
 		"OnFireEffectInstance":
 			combatEffectBase = OnFireEffectInstance.new()
+		"InvulnerableEffectInstance":
+			combatEffectBase = InvulnerableEffectInstance.new()
 
 	# Call Deferred is actually goated
 	# The Grid isn't gonna be fully initialized yet, so we defer this call so that the Occupants are set

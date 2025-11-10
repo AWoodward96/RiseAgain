@@ -55,8 +55,11 @@ func UpdateGridEntity_TeamTurn(_delta : float):
 				if autoExpire:
 					Expired = true
 				return true
+		return false
 
-	return false
+	# If we somehow get here (which we have before) I'm a bit confused. Execution is complete, and expired should be true but like
+	# Whatever, return true - execution is complete
+	return true
 
 func BuildResults():
 	log.actionStepResults.clear()

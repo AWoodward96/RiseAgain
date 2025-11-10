@@ -37,7 +37,6 @@ func PreviewResult(_map : Map):
 		resultingTile = null
 
 	if resultingTile != null && resultingTile.ActiveKillbox:
-		Source.damage_indicator.SetHealthLevels(Source.currentHealth, Source.maxHealth)
 		Source.damage_indicator.normalDamage += -Source.currentHealth
 	pass
 

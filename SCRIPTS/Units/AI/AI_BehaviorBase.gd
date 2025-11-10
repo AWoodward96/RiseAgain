@@ -10,16 +10,18 @@ var attacked : bool = false
 var selectedPath : Array[Tile]
 var selectedTile : Tile
 
-func StartTurn(_map : Map, _unit : UnitInstance):
-	CommonStartTurn(_map, _unit)
-	pass
 
-func CommonStartTurn(_map : Map, _unit : UnitInstance):
+func Assigned(_unit : UnitInstance, _map : Map):
 	unit = _unit
 	map = _map
-	grid = map.grid
-	attacked = false
+	grid = _map.grid
 
+func StartTurn(_map : Map, _unit : UnitInstance):
+	# Should be overwritten
+	pass
+
+func CommonStartTurn():
+	attacked = false
 	unit.QueueTurnStartDelay()
 
 func RunTurn():

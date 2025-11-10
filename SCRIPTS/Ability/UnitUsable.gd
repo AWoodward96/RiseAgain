@@ -15,6 +15,7 @@ class_name UnitUsable
 @export var MovementData : AbilityMovementComponent
 @export var EffectData : CombatEffectComponent
 @export var SummonData : SummonUnitComponent
+@export var customAITargetingBehavior : Script
 
 var componentArray : Array[Node2D]
 var ownerUnit : UnitInstance

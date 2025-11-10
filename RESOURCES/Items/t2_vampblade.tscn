@@ -17,12 +17,12 @@
 script = ExtResource("9_hd3uk")
 metadata/_custom_type_script = "uid://ct8lhn6f420te"
 
-[sub_resource type="Resource" id="Resource_tftnf"]
+[sub_resource type="Resource" id="Resource_c3mvv"]
 script = ExtResource("3_t0uq6")
 Template = ExtResource("4_d5lbe")
 Value = 1
 
-[sub_resource type="Resource" id="Resource_fek4h"]
+[sub_resource type="Resource" id="Resource_tftnf"]
 script = ExtResource("3_t0uq6")
 Template = ExtResource("8_c3mvv")
 Value = 1
@@ -60,4 +60,4 @@ metadata/_custom_type_script = "uid://bqu21cvg4s6wk"
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("13_tftnf")
-GrantedStats = Array[ExtResource("3_t0uq6")]([SubResource("Resource_tftnf"), SubResource("Resource_fek4h")])
+GrantedStats = Array[ExtResource("3_t0uq6")]([SubResource("Resource_c3mvv"), SubResource("Resource_tftnf")])

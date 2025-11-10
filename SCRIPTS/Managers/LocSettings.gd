@@ -156,7 +156,7 @@ func FormatAbilityDescription(_ability : Ability):
 			var shield = combateffect.CombatEffect as ArmorEffect
 			if shield != null:
 				dict["SHIELD_FLAT"] = shield.FlatValue
-				dict["SHIELD_STAT"] = tr(shield.RelativeStat.loc_displayName)
+				if shield.RelativeStat != null: dict["SHIELD_STAT"] = tr(shield.RelativeStat.loc_displayName)
 				dict["SHIELD_MOD"] = shield.Mod * 100
 
 			var statBuff = combateffect.CombatEffect as StatChangeEffect
@@ -166,7 +166,7 @@ func FormatAbilityDescription(_ability : Ability):
 				for effect in statBuff.StatChanges:
 					dict["EFFECT_" + str(count) + "_FLAT"] = effect.FlatValue
 					dict["EFFECT_" + str(count) + "_PERC"] = effect.SignedPercentageValue
-					dict["EFFECT_" + str(count) + "_MODIFIEDSTAT"] = tr(effect.Stat.loc_displayName)
+					if effect.Stat != null: dict["EFFECT_" + str(count) + "_MODIFIEDSTAT"] = tr(effect.Stat.loc_displayName)
 					if effect.DerivedFromStat != null:	dict["EFFECT_" + str(count) + "_DERIVEDSTAT"] = tr(effect.DerivedFromStat.loc_displayName)
 					count += 1
 

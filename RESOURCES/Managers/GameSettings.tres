@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=53 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=55 format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_t1n24"]
 [ext_resource type="Resource" uid="uid://cqjw06nl7jdy4" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_forest_campaign.tres" id="13_jbp28"]
 [ext_resource type="Script" uid="uid://rx6hw8y5t3o" path="res://SCRIPTS/Maps/Objectives/GameOverObjective.gd" id="13_k6h66"]
+[ext_resource type="Script" uid="uid://lmvlw0wcjlx8" path="res://SCRIPTS/CombatEffects/InvulnerableEffectTemplate.gd" id="14_g7w1a"]
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="15_gyih8"]
 [ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="18_pd04j"]
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="18_ygbce"]
@@ -50,6 +51,13 @@
 [ext_resource type="Resource" uid="uid://1owdew6un3vm" path="res://RESOURCES/CombatEffects/CE_OnFire.tres" id="41_uisfa"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="43_o2wc7"]
 [ext_resource type="Resource" uid="uid://cgs0hjwleufo0" path="res://RESOURCES/Stats/STAT_WeaponDMGMod.tres" id="48_g7w1a"]
+
+[sub_resource type="Resource" id="Resource_cg2n8"]
+script = ExtResource("14_g7w1a")
+Turns = 1
+loc_name = "ce_bossbroken"
+loc_desc = "ce_bossbroken_effect"
+metadata/_custom_type_script = "uid://lmvlw0wcjlx8"
 
 [sub_resource type="Resource" id="Resource_l1yyb"]
 script = ExtResource("13_k6h66")
@@ -111,6 +119,7 @@ Alpha_EnemyUnitColor = Color(1, 0.290196, 0.211765, 1)
 Alpha_NeutralUnitColor = Color(1.29953e-06, 0.515744, 0.307277, 1)
 Alpha_DeactivatedModulate = Color(1, 1, 1, 0.537255)
 ShroudedTintModulate = Color(0.65, 0.65, 0.65, 1)
+BossHealthBarBrokenEffect = SubResource("Resource_cg2n8")
 AbilitiesCanMiss = false
 FirstAbilityBreakpoint = 2
 SecondAbilityBreakpoint = -1

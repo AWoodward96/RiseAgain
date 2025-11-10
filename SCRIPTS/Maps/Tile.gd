@@ -11,6 +11,7 @@ var TerrainDestroyed : bool
 
 var Health : int = -1
 var MaxHealth : int = -1
+var playerDijkstra : int = 0
 
 var Killbox : bool
 var ActiveKillbox : bool
@@ -103,7 +104,7 @@ func PreviewDamage(_normalDamage : int, _collisionDamage : int, _heal : int):
 
 	if damageIndicator == null:
 		damageIndicator = Juice.CreateDamageIndicator(self) as DamageIndicator
-		damageIndicator.SetHealthLevels(Health, MaxHealth)
+		damageIndicator.AssignOwner(self)
 
 	damageIndicator.normalDamage += _normalDamage
 	damageIndicator.collisionDamage += _collisionDamage

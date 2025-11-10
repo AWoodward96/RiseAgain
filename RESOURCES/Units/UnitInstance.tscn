@@ -1,15 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene load_steps=11 format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
-[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_ea6il"]
-[ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="4_ae3kp"]
 [ext_resource type="Texture2D" uid="uid://cjuonw20ub5yw" path="res://ART/UI/icon_has_loot.png" id="4_bcnfb"]
-[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
 [ext_resource type="Texture2D" uid="uid://dilxnpnqkcann" path="res://ART/UI/icon_is_boss.png" id="5_6l8ji"]
-[ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
-[ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="9_v7dhr"]
-[ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="10_pwwos"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6l8ji"]
 atlas = ExtResource("4_bcnfb")
@@ -55,50 +49,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6je4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrop1"]
-bg_color = Color(0.929412, 0.333333, 0.345098, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.8, 0.8, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0dhx"]
-bg_color = Color(0.38, 0.1444, 0.148327, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.8, 0.8, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5801"]
-bg_color = Color(0.82, 0.82, 0.82, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.8, 0.8, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_lypks"]
-font = ExtResource("3_ea6il")
-font_size = 18
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "uiParent", "healthBar", "affinityIcon", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damage_indicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
 combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
-uiParent = NodePath("VBoxContainer")
-healthBar = NodePath("VBoxContainer/HealthBarParent")
-affinityIcon = NodePath("VBoxContainer/AffinityIcon")
-hasLootIcon = NodePath("HasLoot")
-isBossIcon = NodePath("Boss")
+iconAnchors = NodePath("IconAnchors")
+damage_indicator = NodePath("DamageIndicator")
+hasLootIcon = NodePath("IconAnchors/HasLoot")
+isBossIcon = NodePath("IconAnchors/Boss")
 takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
@@ -141,144 +102,24 @@ event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
 event_name = "event:/SFX/Units/Generic/Jump_End"
 event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
 
-[node name="HasLoot" type="AnimatedSprite2D" parent="."]
+[node name="IconAnchors" type="Node2D" parent="."]
+
+[node name="HasLoot" type="AnimatedSprite2D" parent="IconAnchors"]
 visible = false
-position = Vector2(59, 58)
+position = Vector2(59, 7)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mmoxs")
 autoplay = "default"
 frame_progress = 0.326582
 
-[node name="Boss" type="AnimatedSprite2D" parent="."]
+[node name="Boss" type="AnimatedSprite2D" parent="IconAnchors"]
 visible = false
-position = Vector2(59, 43)
+position = Vector2(59, 21)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_166fo")
 autoplay = "default"
 frame_progress = 0.57805
 
 [node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-z_index = 5
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="spacer" type="Control" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="AffinityIcon" type="TextureRect" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("7_vnfmn")
-expand_mode = 1
-
-[node name="PositiveAffinity" type="TextureRect" parent="VBoxContainer/AffinityIcon"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 5.0
-offset_right = 21.0
-offset_bottom = 16.0
-texture = ExtResource("9_v7dhr")
-expand_mode = 1
-
-[node name="NegativeAffinity" type="TextureRect" parent="VBoxContainer/AffinityIcon"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 5.0
-offset_right = 21.0
-offset_bottom = 16.0
-texture = ExtResource("10_pwwos")
-expand_mode = 1
-
-[node name="HealthBarParent" type="Control" parent="VBoxContainer" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "HideTimer")]
-unique_name_in_owner = true
-visible = false
-z_index = 1
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 2
-script = ExtResource("4_ae3kp")
-HealthBar = NodePath("Offset/HealthBar")
-ArmorBar = NodePath("Offset/ArmorBar")
-InjuredBar = NodePath("Offset/InjuryBar")
-HealthText = NodePath("Offset/HP Val")
-HideTimer = NodePath("AutoHideTimer")
-
-[node name="Offset" type="Control" parent="VBoxContainer/HealthBarParent"]
-anchors_preset = 0
-
-[node name="FocusContainer" type="MarginContainer" parent="VBoxContainer/HealthBarParent/Offset"]
-layout_mode = 0
-offset_top = 7.0
-offset_right = 64.0
-offset_bottom = 13.0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="VBoxContainer/HealthBarParent/Offset/FocusContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("4_lg50f")
-
-[node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HealthBarParent/Offset"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 8.0
-theme_override_styles/background = SubResource("StyleBoxFlat_n6je4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_yrop1")
-max_value = 1.0
-value = 1.0
-show_percentage = false
-
-[node name="InjuryBar" type="ProgressBar" parent="VBoxContainer/HealthBarParent/Offset"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 8.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_w0dhx")
-max_value = 1.0
-fill_mode = 1
-show_percentage = false
-
-[node name="ArmorBar" type="ProgressBar" parent="VBoxContainer/HealthBarParent/Offset"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.631373)
-custom_minimum_size = Vector2(64, 8)
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 8.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_f5801")
-max_value = 1.0
-value = 0.84
-show_percentage = false
-
-[node name="HP Val" type="Label" parent="VBoxContainer/HealthBarParent/Offset"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 0
-offset_left = 13.0
-offset_top = -13.0
-offset_right = 54.0
-offset_bottom = 12.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 0
-text = "25/30"
-label_settings = SubResource("LabelSettings_lypks")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AutoHideTimer" type="Timer" parent="VBoxContainer/HealthBarParent"]
-wait_time = 1.5
 
 [editable path="DamageIndicator"]

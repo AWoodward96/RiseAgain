@@ -81,6 +81,8 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3 
 @export var Alpha_DeactivatedModulate : Color
 @export var ShroudedTintModulate : Color
 
+@export var BossHealthBarBrokenEffect : CombatEffectTemplate
+
 @export_category("Ability Data")
 @export var AbilitiesCanMiss : bool = true
 @export var FirstAbilityBreakpoint : int
@@ -180,7 +182,11 @@ static func AxisRound(_vector : Vector2):
 	# snaps to 4
 	return Vector2.RIGHT.rotated(round(_vector.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
 
+
 func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData, _ability : Ability):
+	if _defendingUnit != null && _defendingUnit.Invulnerable:
+		return 0
+
 	var flatValue = _damageData.FlatValue
 	var aggressiveStat = _damageData.AgressiveStat
 
@@ -203,6 +209,9 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 			DamageData.EDamageClassification.True:
 				# true damage has no defense
 				pass
+
+		if _damageData.PercMaxHealthMod != 0:
+			agressiveVal += _defendingUnit.maxHealth * _damageData.PercMaxHealthMod
 
 	var affinityMultiplier = 1
 	if _defendingUnit != null && _attackingUnit != null && !_damageData.DamageType == DamageData.EDamageClassification.True:

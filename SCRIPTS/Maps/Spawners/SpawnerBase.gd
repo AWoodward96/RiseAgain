@@ -18,6 +18,8 @@ const NodeSize : int = 64
 		OnEnableToggled()
 
 @export var Boss : bool = false
+@export_file("*.tscn") var GivenItems : Array[String]
+@export var ExtraHealthBars : int = 0
 @export var Allegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ENEMY
 @export var AIBehavior : AIBehaviorBase
 @export var AggroBehavior : AlwaysAggro

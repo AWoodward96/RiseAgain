@@ -358,7 +358,6 @@ func ShowCombatPreview():
 			if previewAsDamageIndicator.assignedUnit != null && previewAsDamageIndicator.assignedUnit.ShroudedFromPlayer:
 				continue
 
-			previewAsDamageIndicator.SetDisplayStyle(log.ability)
 			previewAsDamageIndicator.ShowPreview()
 	pass
 

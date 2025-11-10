@@ -5,4 +5,4 @@
 
 [resource]
 script = ExtResource("1_end6o")
-AbilityPath = "res://RESOURCES/Ability/Equippable/bomblauncher.tscn"
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_bomblauncher.tscn"

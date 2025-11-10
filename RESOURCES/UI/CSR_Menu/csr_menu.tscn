@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://gneoqi5t7opg"]
+[gd_scene load_steps=4 format=3 uid="uid://gneoqi5t7opg"]
 
 [ext_resource type="Script" uid="uid://d0v0ac02bpy6v" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
+[ext_resource type="PackedScene" uid="uid://cp2qfjogxikmj" path="res://RESOURCES/Items/t2_jadetail.tscn" id="2_dewqg"]
 [ext_resource type="PackedScene" uid="uid://bdci2cagpqgn3" path="res://RESOURCES/Items/t2_stonecarapace.tscn" id="3_dewqg"]
 
 [node name="CSR" type="Control" node_paths=PackedStringArray("FirstEntry")]
@@ -12,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_508i1")
 FirstEntry = NodePath("PanelContainer/MarginContainer/GridContainer/AddAllAbilities")
-SpecificItem = ExtResource("3_dewqg")
+SpecificItem = ExtResource("2_dewqg")
 TestItems = Array[PackedScene]([ExtResource("3_dewqg")])
 Priority = 1000
 

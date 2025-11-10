@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="4_h44x8"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_tfpsp"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_4djvw"]
-[ext_resource type="Resource" uid="uid://bxwbvxhh4bgye" path="res://RESOURCES/TargetingShapes/giantslam_shape.tres" id="7_8vf7y"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="9_c73n6"]
+[ext_resource type="Resource" uid="uid://bxwbvxhh4bgye" path="res://RESOURCES/TargetingShapes/giantslam_shape.tres" id="11_c73n6"]
 
 [sub_resource type="Resource" id="Resource_y50sq"]
 script = ExtResource("3_ro13n")
@@ -44,4 +44,4 @@ DamageToHealthRatio = 0.0
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("6_4djvw")
 Type = 2
-shapedTiles = ExtResource("7_8vf7y")
+shapedTiles = ExtResource("11_c73n6")

@@ -93,7 +93,6 @@ func PreviewResult(_map : Map):
 			Source.damage_indicator.normalDamage += SourceHealthDelta
 		elif SourceHealthDelta > 0:
 			Source.damage_indicator.healAmount += SourceHealthDelta
-		Source.damage_indicator.SetHealthLevels(Source.currentHealth, Source.maxHealth)
 
 	if Target != null:
 		var indicator = Target.damage_indicator
@@ -103,7 +102,6 @@ func PreviewResult(_map : Map):
 		elif HealthDelta > 0:
 			indicator.healAmount += HealthDelta
 
-		indicator.SetHealthLevels(Target.currentHealth, Target.maxHealth)
 		indicator.critChance = CritRate
 
 		Target.ShowAffinityRelation(Source.Template.Affinity)

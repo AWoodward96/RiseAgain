@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="7_a30m1"]
 [ext_resource type="Script" uid="uid://cw244jw4a0ttt" path="res://SCRIPTS/Generic/Requirements/TeamTurnReq.gd" id="8_uud7b"]
 
-[sub_resource type="Resource" id="Resource_a30m1"]
+[sub_resource type="Resource" id="Resource_ppg3a"]
 script = ExtResource("3_h82sf")
 Template = ExtResource("4_yoyib")
 Value = 2
@@ -38,7 +38,7 @@ StatData = NodePath("ItemStatComponent")
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("5_ktnl4")
-GrantedStats = Array[ExtResource("3_h82sf")]([SubResource("Resource_a30m1")])
+GrantedStats = Array[ExtResource("3_h82sf")]([SubResource("Resource_ppg3a")])
 
 [node name="ConditionalStatModComponent" type="Node2D" parent="."]
 script = ExtResource("5_4gp6g")

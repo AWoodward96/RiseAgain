@@ -161,6 +161,7 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 	if _data.has("Drain"): component.DamageAffectsUsersHealth = _data["Drain"]
 	if _data.has("DamageToHealthRatio"): component.DamageToHealthRatio = _data["DamageToHealthRatio"]
 	if _data.has("CritModifier"): component.CritModifier = _data["CritModifier"] / 100
+	if _data.has("PercMaxHealthMod"): component.PercMaxHealthMod = _data["PercMaxHealthMod"] / 100
 
 	component.VulerableDescriptors.clear()
 	for i in range(0,1):

@@ -9,10 +9,9 @@ signal OnUnitDamaged(_result : DamageStepResult)
 @export var abilityParent : Node2D
 @export var combatEffectsParent : Node2D
 @export var itemsParent : Node2D
-@export var uiParent : Control
+@export var iconAnchors : Node2D
+@export var damage_indicator: DamageIndicator
 
-@export var healthBar : UnitHealthBar
-@export var affinityIcon: TextureRect
 @export var hasLootIcon : Node2D
 @export var isBossIcon : Node2D
 
@@ -24,12 +23,7 @@ signal OnUnitDamaged(_result : DamageStepResult)
 @export var LeapSound : FmodEventEmitter2D
 @export var LandSound : FmodEventEmitter2D
 
-@onready var health_bar_parent = %HealthBarParent
 
-@onready var damage_indicator: DamageIndicator = $DamageIndicator
-@onready var positive_affinity: TextureRect = %PositiveAffinity
-
-@onready var negative_affinity: TextureRect = %NegativeAffinity
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
@@ -66,6 +60,9 @@ var Exp : int
 var ExtraEXPGranted : int = 0
 var IsDying : bool = false
 
+var DamageTakenThisTurn : int
+var DamageTakenLastTurn : int
+
 var AI : AIBehaviorBase # Only used by units initialized via a spawner
 var AggroType : AlwaysAggro # Only used by units initialized via a spawner
 var IsAggrod : bool = false
@@ -76,6 +73,8 @@ var currentHealth : int
 var takeDamageTween : Tween
 
 var unitPersistence : UnitPersistBase
+
+var extraHealthBars : int = 0
 
 var DisplayLevel : int :
 	get: return Level + 1
@@ -122,6 +121,12 @@ var Stealthed : bool :
 	get:
 		return StealthedCount > 0
 
+var Invulnerable : bool :
+	get:
+		for effect in CombatEffects:
+			if effect is InvulnerableEffectInstance && !effect.IsExpired():
+				return true
+		return false
 
 var StealthedCount : int = 0 :
 	set(v):
@@ -142,12 +147,11 @@ var ShroudedFromPlayer : bool :
 
 func _ready():
 	ShowHealthBar(false)
-	healthBar.SetUnit(self)
 	HideDamagePreview()
 
 	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
-	damage_indicator.assignedUnit = self
-	health_bar_parent.scale = Vector2i(Template.GridSize, Template.GridSize)
+	damage_indicator.AssignOwner(self)
+	iconAnchors.scale = Vector2i(Template.GridSize, Template.GridSize)
 
 	name = "{0}_{1}_{2}".format({"0" : str(UnitAllegiance), "1" : Template.DebugName, "2" : str(randi() % 100000)})
 
@@ -170,9 +174,6 @@ func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthP
 	currentHealth = roundi(maxHealth * _healthPerc)
 
 func RefreshVisuals():
-	if Template.Affinity != null:
-		affinityIcon.texture = Template.Affinity.loc_icon
-
 	footstepsSound.event_guid = AudioManager.DefaultFootstepGUID
 	if Template.FootstepGUID != "":
 		footstepsSound.event_guid = Template.FootstepGUID
@@ -225,6 +226,9 @@ func InitializeTier0Abilities():
 		AddPackedAbility(load(abilityPath))
 
 func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
+	if _combatEffectInstance == null:
+		return
+
 	# If it's not stackable, don't try and stack it
 	if _combatEffectInstance.Template.StackableType != CombatEffectTemplate.EStackableType.None:
 		# but if it isssss, you need to know where you're stacking it
@@ -257,7 +261,7 @@ func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 
 	UpdateCombatEffects()
 	UpdateDerivedStats()
-	RefreshHealthBarVisuals()
+	damage_indicator.healthbar.Refresh()
 
 	if _combatEffectInstance is StealthEffectInstance:
 		StealthedCount += 1
@@ -298,11 +302,12 @@ func UpdateCombatEffects():
 		combatEffectsParent.remove_child(remove)
 		remove.queue_free()
 
-func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTemplate.TeamID):
+func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTemplate.TeamID, _extraHealthBars : int = 0):
 	GridPosition = _gridLocation
 	map = _map
 	UnitAllegiance = _allegiance
 	IsDying = false
+	extraHealthBars = _extraHealthBars
 
 	facingDirection = GameSettingsTemplate.Direction.Down
 
@@ -358,10 +363,6 @@ func SetSubmerged(_val : bool):
 
 
 	visual.UpdateSubmerged(_val)
-	if Submerged:
-		affinityIcon.visible = false
-	else:
-		affinityIcon.visible = true
 
 
 func UpdateLoot():
@@ -373,6 +374,7 @@ func UpdateLoot():
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
 	IsAggrod = false
+	AI.Assigned(self, map)
 
 	if _aggro == null:
 		AggroType = AlwaysAggro.new()
@@ -633,6 +635,13 @@ func PopAction():
 		CurrentAction._Enter(self, map)
 
 func GetUnitMovement():
+	for effect in CombatEffects:
+		if effect == null:
+			continue
+
+		if (effect is RootEffectInstance || effect is StunEffectInstance) && !effect.IsExpired():
+			return 0
+
 	return GetWorkingStat(GameManager.GameSettings.MovementStat)
 
 func Activate(_currentTurn : GameSettingsTemplate.TeamID):
@@ -655,6 +664,8 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 
 	# for 'canceling' movement
 	TurnStartTile = CurrentTile
+	DamageTakenLastTurn = DamageTakenThisTurn
+	DamageTakenThisTurn = 0
 	PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 	if visual != null:
 		visual.ResetAnimation()
@@ -721,7 +732,9 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
 		var armor = GetArmorAmount()
-		Juice.CreateDamagePopup(min(_netHealthChange + armor, 0), map.grid.GetTileFromGlobalPosition(global_position))
+		var damageTaken = min(_netHealthChange + armor, 0)
+		DamageTakenThisTurn += damageTaken
+		Juice.CreateDamagePopup(damageTaken, map.grid.GetTileFromGlobalPosition(global_position))
 		if -_netHealthChange >= currentHealth:
 			takeLethalDamageSound.play()
 		else:
@@ -737,9 +750,7 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 		# NOTE:
 		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
 		# You'll need to wait for one to be finished before the other one starts
-		if !healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
-			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
-		healthBar.ModifyHealthOverTime(_netHealthChange)
+		damage_indicator.ShowCombatResult(_netHealthChange, OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
 
 	else:
 		OnModifyHealthTweenComplete(_netHealthChange, _result)
@@ -747,9 +758,6 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 
 
 func OnModifyHealthTweenComplete(_delta, _result : DamageStepResult):
-	# you have to disconnect this because the nethealth change is a bound variable
-	if healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
-		healthBar.HealthBarTweenCallback.disconnect(OnModifyHealthTweenComplete)
 
 	var remainingDelta = _delta
 	var armor = GetArmorAmount()
@@ -759,7 +767,6 @@ func OnModifyHealthTweenComplete(_delta, _result : DamageStepResult):
 		remainingDelta -= armorDamage
 
 	currentHealth = clampi(currentHealth + remainingDelta, 0, maxHealth)
-	RefreshHealthBarVisuals()
 
 	if remainingDelta < 0:
 		OnUnitDamaged.emit(_result)
@@ -789,9 +796,6 @@ func DealDamageToArmor(_damage : int):
 
 	UpdateCombatEffects()
 	pass
-
-func RefreshHealthBarVisuals():
-	healthBar.Refresh()
 
 func GetArmorAmount():
 	var armor = 0
@@ -853,11 +857,22 @@ func ApplyStatModifier(_statDef : StatDef):
 
 func CheckDeath(_context : DamageStepResult):
 	if currentHealth <= 0:
-		map.OnUnitDeath(self, _context)
+		if extraHealthBars > 0:
+			HealthBarBreak()
+		else:
+			map.OnUnitDeath(self, _context)
+
+func HealthBarBreak():
+	extraHealthBars -= 1
+	currentHealth = trueMaxHealth
+	AddCombatEffect(GameManager.GameSettings.BossHealthBarBrokenEffect.CreateInstance(self, self, null, null))
+	map.RemoveEntitiesOwnedByUnit(self)
+
+	pass
 
 func PlayDeathAnimation():
 	IsDying = true
-	affinityIcon.visible = false
+	damage_indicator.DeathState()
 	if visual != null && visual.AnimationWorkComplete:
 		deathSound.play()
 		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
@@ -912,9 +927,7 @@ func Ignite(_fireLevel : int, _source : UnitInstance, _abilityData : Ability):
 	AddCombatEffect(combatEffect)
 
 func ShowHealthBar(_visible : bool):
-	health_bar_parent.visible = _visible
-	if _visible:
-		healthBar.Refresh()
+	damage_indicator.ShowHealthBar(_visible)
 
 func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _playGenericAttackAnimation : bool = true, _useRetaliation : bool = false):
 	var attackAction = UnitAttackAction.new()
@@ -957,14 +970,8 @@ func QueueDelayedCombatAction(_log : ActionLog):
 	if CurrentAction == null:
 		PopAction()
 
-func ShowHealPreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
-	damage_indicator.visible = true
-	damage_indicator.PreviewHeal(_usable, _source, self, _targetedTileData)
-
 func HideDamagePreview():
-	damage_indicator.visible = false
-	damage_indicator.PreviewCanceled()
-	pass
+	damage_indicator.HidePreview()
 
 func GetEffectiveAttackRange():
 	if EquippedWeapon != null:
@@ -983,19 +990,8 @@ func HasHealAbility():
 			return true
 	return false
 
-
 func ShowAffinityRelation(_affinity : AffinityTemplate):
-	if _affinity == null:
-		positive_affinity.visible = false
-		negative_affinity.visible = false
-		return
-
-	# Chat, I love bitwise ops
-	if _affinity.strongAgainst & Template.Affinity.affinity:
-		negative_affinity.visible = true
-
-	if Template.Affinity.strongAgainst & _affinity.affinity:
-		positive_affinity.visible = true
+	damage_indicator.ShowAffinityRelations(_affinity)
 
 # Checks all the item slots and sees if the unit has any item equipped
 func HasAnyItem():
@@ -1077,7 +1073,8 @@ func ToJSON():
 		"Injured" : Injured,
 		"Submerged" : Submerged,
 		"IsBoss" : IsBoss,
-		"StealthedCount" : StealthedCount
+		"StealthedCount" : StealthedCount,
+		"extraHealthBars" : extraHealthBars
 	}
 
 	var itemSlotsArray : Array[String]
@@ -1120,12 +1117,13 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.ExtraEXPGranted = int(_dict["ExtraEXPGranted"])
 
 	if _dict.has("AI"):
-		unitInstance.AI = load(_dict["AI"]) as AIBehaviorBase
-		if _dict.has("AggroType"):
-			if _dict["AggroType"] == "":
-				unitInstance.AggroType = null
-			else:
-				unitInstance.AggroType = load(_dict["AggroType"]) as AlwaysAggro
+		var aiBehavior = load(_dict["AI"]) as AIBehaviorBase
+		var aggroType = load(_dict["AggroType"]) as AlwaysAggro
+		var updateAIBehavior = func(_behavior, _aggrotype):
+			unitInstance.SetAI(_behavior, _aggrotype)
+		updateAIBehavior.call_deferred(aiBehavior, aggroType)
+
+
 
 	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
 	unitInstance.IsAggrod = _dict["IsAggrod"]
@@ -1180,6 +1178,9 @@ static func FromJSON(_dict : Dictionary):
 
 	if _dict.has("IsBoss"):
 		unitInstance.IsBoss = _dict["IsBoss"]
+
+	if _dict.has("extraHealthBars"):
+		unitInstance.extraHealthBars = _dict["extraHealthBars"]
 
 
 	unitInstance.UpdateDerivedStats()

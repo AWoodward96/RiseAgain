@@ -59,3 +59,4 @@ AgressiveStat = ExtResource("13_4rprd")
 [node name="AbilityMovementData" type="Node2D" parent="."]
 script = ExtResource("11_anx3p")
 stoppedByWalls = false
+drawPath = false

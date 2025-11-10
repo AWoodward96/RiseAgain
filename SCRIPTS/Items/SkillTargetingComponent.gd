@@ -2,7 +2,15 @@ extends Node2D
 class_name SkillTargetingData
 
 enum TargetingType { Simple, ShapedFree, ShapedDirectional, SelfOnly, Global }
-enum TargetingTeamFlag { AllyTeam, EnemyTeam, All, Empty }
+enum TargetingTeamFlag {
+	## Units that are on this units team
+	AllyTeam,
+	## Units that are not on this units team
+	EnemyTeam,
+	## Units that are on either team
+	All,
+	## Only target spaces where there are no units
+	Empty }
 
 @export var TeamTargeting : TargetingTeamFlag = TargetingTeamFlag.EnemyTeam
 

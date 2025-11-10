@@ -64,7 +64,7 @@ func PostActionComplete():
 	if source != null:
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 
-		if log.ability.ability_speed == Ability.AbilitySpeed.Fast:
+		if log.ability.ability_speed == Ability.AbilitySpeed.Fast && log.ability.ownerUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
 			ctrl.EnterContextMenuState()
 
 	if currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY:
@@ -72,7 +72,6 @@ func PostActionComplete():
 	else:
 		ctrl.EnterOffTurnState()
 
-	#ctrl.OnCombatSequenceComplete.emit()
 
 func ToString():
 	return "ActionExecutionState"

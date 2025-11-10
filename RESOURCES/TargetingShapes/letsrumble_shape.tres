@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=15 format=3 uid="uid://dhqdi1ud3mefw"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_8kova"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_lsnij"]
+
+[sub_resource type="Resource" id="Resource_6iutu"]
+script = ExtResource("1_8kova")
+Position = Vector2i(2, 0)
+
+[sub_resource type="Resource" id="Resource_otiqe"]
+script = ExtResource("1_8kova")
+Position = Vector2i(2, -1)
+
+[sub_resource type="Resource" id="Resource_8kova"]
+script = ExtResource("1_8kova")
+Position = Vector2i(1, -1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_lsnij"]
+script = ExtResource("1_8kova")
+Position = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_k8qiw"]
+script = ExtResource("1_8kova")
+Position = Vector2i(-1, -1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_aqxig"]
+script = ExtResource("1_8kova")
+Position = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_46xi7"]
+script = ExtResource("1_8kova")
+Position = Vector2i(-1, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_o6lvp"]
+script = ExtResource("1_8kova")
+Position = Vector2i(-1, 2)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_4rpgr"]
+script = ExtResource("1_8kova")
+Position = Vector2i(0, 2)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_d6yyr"]
+script = ExtResource("1_8kova")
+Position = Vector2i(1, 2)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_y4y60"]
+script = ExtResource("1_8kova")
+Position = Vector2i(2, 2)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_h184f"]
+script = ExtResource("1_8kova")
+Position = Vector2i(2, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[resource]
+script = ExtResource("2_lsnij")
+TileCoordinates = Array[ExtResource("1_8kova")]([SubResource("Resource_6iutu"), SubResource("Resource_otiqe"), SubResource("Resource_8kova"), SubResource("Resource_lsnij"), SubResource("Resource_k8qiw"), SubResource("Resource_aqxig"), SubResource("Resource_46xi7"), SubResource("Resource_o6lvp"), SubResource("Resource_4rpgr"), SubResource("Resource_d6yyr"), SubResource("Resource_y4y60"), SubResource("Resource_h184f")])

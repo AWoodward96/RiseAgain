@@ -32,7 +32,7 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _origin : Tile, _selectedTi
 		AbilityMovementType.TargetTile:
 			# The TargetTile type is automatically not stopped by walls, as it would be too difficult to detect where
 			# the unit should stop moving in a Standard or ShapedFree target selection
-			return GetRoute_TargetTile(_unit.CurrentTile, _selectedTile)
+			return GetRoute_TargetTile(_unit, _unit.CurrentTile, _selectedTile)
 		AbilityMovementType.DirectionalRelative:
 			# Okay this one is a little harder
 			return GetRoute_DirectionalRelative(_grid, _unit, _origin, _atRange, _direction)
@@ -41,9 +41,11 @@ func PreviewMove(_grid : Grid, _unit : UnitInstance, _origin : Tile, _selectedTi
 
 	return []
 
-func GetRoute_TargetTile(_origin : Tile, _destination : Tile):
+func GetRoute_TargetTile(_unit : UnitInstance, _origin : Tile, _destination : Tile):
 	var ar : Array[Tile] = []
-	if (_destination.Occupant == null || (_destination.Occupant != null && _destination.Occupant.ShroudedFromPlayer)) && !_destination.IsWall:
+	if (_destination.Occupant == null ||
+		(_destination.Occupant != null && _destination.Occupant.ShroudedFromPlayer) ||
+		(_destination.Occupant == _unit)) && !_destination.IsWall:
 		destinationTile = _destination
 		ar.append(_origin)
 		ar.append(_destination)
@@ -97,7 +99,7 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Ti
 		AbilityMovementType.TargetTile:
 			# The TargetTile type is automatically not stopped by walls, as it would be too difficult to detect where
 			# the unit should stop moving in a Standard or ShapedFree target selection
-			route = GetRoute_TargetTile(_unit.CurrentTile, _selectedTile)
+			route = GetRoute_TargetTile(_unit, _unit.CurrentTile, _selectedTile)
 		AbilityMovementType.DirectionalRelative:
 			# Okay this one is a little harder
 			route = GetRoute_DirectionalRelative(_grid, _unit, _origin, _atRange, _direction)

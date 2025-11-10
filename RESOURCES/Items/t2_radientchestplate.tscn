@@ -21,14 +21,10 @@
 script = ExtResource("3_1p6p3")
 OnActionOrigin = false
 OnSource = true
-OnSpecificPosition = false
-SpecificPosition = Vector2i(0, 0)
-Instant = false
 metadata/_custom_type_script = "uid://c8cj2607kxmat"
 
 [sub_resource type="Resource" id="Resource_4bbon"]
 script = ExtResource("4_i2krh")
-PlayAtUnit = true
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_8ny3v"]
@@ -41,12 +37,12 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("6_kktqm")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_i2krh"]
+[sub_resource type="Resource" id="Resource_1p6p3"]
 script = ExtResource("4_uw3xn")
 Template = ExtResource("5_vylks")
 Value = 3
 
-[sub_resource type="Resource" id="Resource_umh07"]
+[sub_resource type="Resource" id="Resource_i2krh"]
 script = ExtResource("4_uw3xn")
 Template = ExtResource("6_45i4p")
 Value = 1
@@ -65,7 +61,7 @@ StatData = NodePath("ItemStatComponent")
 
 [node name="ItemStatComponent" type="Node2D" parent="."]
 script = ExtResource("3_d6ieq")
-GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_i2krh"), SubResource("Resource_umh07")])
+GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_1p6p3"), SubResource("Resource_i2krh")])
 
 [node name="TurnStartListener" type="Node2D" parent="."]
 script = ExtResource("6_qcb2q")

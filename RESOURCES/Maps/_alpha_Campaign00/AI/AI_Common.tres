@@ -7,5 +7,6 @@
 script = ExtResource("1_5k0gl")
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_8lskg")
 Flags = Array[ExtResource("1_5k0gl")]([SubResource("Resource_ipvm8")])

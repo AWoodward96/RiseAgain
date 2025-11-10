@@ -1,0 +1,52 @@
+[gd_scene load_steps=16 format=3 uid="uid://c6xs7nrvsx6f1"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_d50p3"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8oxjl"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_mluvc"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="3_reol2"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_yjgft"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_3rvrr"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_nlfvw"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="5_jgpnu"]
+[ext_resource type="PackedScene" uid="uid://jfai0ua2wl02" path="res://RESOURCES/GridEntities/ge_egostrike.tscn" id="6_idl65"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="7_sfe20"]
+[ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="11_8oxjl"]
+
+[sub_resource type="Resource" id="Resource_1s80t"]
+script = ExtResource("3_yjgft")
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_4nw8t"]
+script = ExtResource("4_3rvrr")
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_c52gr"]
+script = ExtResource("5_jgpnu")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_8oxjl"]
+script = ExtResource("7_sfe20")
+GridEntityPrefab = ExtResource("6_idl65")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[node name="egostrike" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_d50p3")
+abilityCooldown = 2
+ability_speed = 2
+executionStack = Array[ExtResource("2_8oxjl")]([SubResource("Resource_1s80t"), SubResource("Resource_4nw8t"), SubResource("Resource_c52gr"), SubResource("Resource_8oxjl")])
+internalName = "egostrike"
+loc_displayName = "art_egostrike_name"
+loc_displayDesc = "art_egostrike_desc"
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("2_mluvc")
+AgressiveStat = ExtResource("3_reol2")
+DamageToHealthRatio = ""
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("4_nlfvw")
+TeamTargeting = 2
+Type = 2
+shapedTiles = ExtResource("11_8oxjl")

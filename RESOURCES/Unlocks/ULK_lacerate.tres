@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://cjqguq1g3fgoy"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_2vxf0"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="2_x38oj"]
+
+[resource]
+script = ExtResource("2_x38oj")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_lacerate.tscn"

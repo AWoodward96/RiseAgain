@@ -7,7 +7,8 @@ var options : Array[EnemyAIOption]
 var selectedOption : EnemyAIOption
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-	CommonStartTurn(_map, _unit)
+	print("Entered Start Turn for: " + str(_unit.GridPosition))
+	CommonStartTurn()
 	options.clear()
 
 	selectedOption = null
@@ -47,7 +48,13 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 				continue
 
 			for weapon in weaponsAvailableForUse:
-				var newOption = EnemyAIOption.Construct(_unit, u, map, weapon) as EnemyAIOption
+
+				var newOption : EnemyAIOption
+				if weapon.customAITargetingBehavior != null:
+					newOption = weapon.customAITargetingBehavior.Construct(_unit, u, map, weapon)
+				else:
+					newOption = EnemyAIOption.Construct(_unit, u, map, weapon) as EnemyAIOption
+
 				newOption.flagIndex = i
 				newOption.totalFlags = Flags.size()
 				newOption.Update()
@@ -57,13 +64,14 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 					options.append(newOption)
 
 	if options.size() == 0:
+		print("No Options Found: " + str(unit.GridPosition))
 		unit.QueueEndTurn()
 		return
 
 	options.sort_custom(SortOptions)
 
 	# And what we're doing is.... the first option.
-	# Because no other options are valid
+	# Because we sorted the best option to the top
 	selectedOption = options[0]
 
 	unit.MoveCharacterToNode(MovementData.Construct(selectedOption.path, selectedOption.tileToMoveTo))

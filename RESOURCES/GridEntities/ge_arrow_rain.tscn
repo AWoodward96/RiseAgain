@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://8087q7pbgat6"]
+[gd_scene load_steps=19 format=4 uid="uid://8087q7pbgat6"]
 
 [ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_r2y3w"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_klyh5"]
@@ -10,14 +10,12 @@
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_utjrs"]
 [ext_resource type="Resource" uid="uid://b2528dgdj72fb" path="res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres" id="5_1fr0y"]
 [ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="6_dg8h7"]
+[ext_resource type="Texture2D" uid="uid://b2enme711jblo" path="res://ART/Grid/arrow_rain_telegraph.png" id="9_utcex"]
 
 [sub_resource type="Resource" id="Resource_e76h8"]
 script = ExtResource("3_1fr0y")
 OnActionOrigin = false
 OnSource = true
-OnSpecificPosition = false
-SpecificPosition = Vector2i(0, 0)
-Instant = false
 metadata/_custom_type_script = "uid://c8cj2607kxmat"
 
 [sub_resource type="Resource" id="Resource_5bjtb"]
@@ -27,11 +25,6 @@ metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
 [sub_resource type="Resource" id="Resource_o5jkg"]
 script = ExtResource("3_1fr0y")
-OnActionOrigin = true
-OnSource = false
-OnSpecificPosition = false
-SpecificPosition = Vector2i(0, 0)
-Instant = false
 metadata/_custom_type_script = "uid://c8cj2607kxmat"
 
 [sub_resource type="Resource" id="Resource_3seej"]
@@ -46,8 +39,6 @@ metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
 [sub_resource type="Resource" id="Resource_utjrs"]
 script = ExtResource("3_dg8h7")
-useAttackAction = true
-useDefendAction = true
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
 [sub_resource type="Resource" id="Resource_utcex"]
@@ -61,6 +52,7 @@ executionStack = Array[ExtResource("2_klyh5")]([SubResource("Resource_e76h8"), S
 telegraphTilemap = NodePath("TileMapLayer")
 shapedTiles = ExtResource("5_1fr0y")
 UpdatePerTeamTurn = true
+PreviewSprite = ExtResource("9_utcex")
 localization_icon = ExtResource("6_dg8h7")
 localization_desc = "art_arrow_rain_name"
 

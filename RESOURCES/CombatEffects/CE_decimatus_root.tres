@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RootEffectTemplate" load_steps=4 format=3 uid="uid://ccitm3a2u5efo"]
+
+[ext_resource type="Resource" uid="uid://by1l7sk8cxru4" path="res://RESOURCES/Descriptors/DES_Unstoppable.tres" id="1_n31lf"]
+[ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/summonroots.png" id="2_ovqxb"]
+[ext_resource type="Script" uid="uid://cgibh2nonagr" path="res://SCRIPTS/CombatEffects/RootEffectTemplate.gd" id="3_g1m6l"]
+
+[resource]
+script = ExtResource("3_g1m6l")
+AffectedTargets = 1
+Turns = 2
+ImmunityDescriptor = ExtResource("1_n31lf")
+loc_name = "ce_rooted"
+loc_desc = "ce_rooted_effect"
+loc_icon = ExtResource("2_ovqxb")
+metadata/_custom_type_script = "uid://cgibh2nonagr"
