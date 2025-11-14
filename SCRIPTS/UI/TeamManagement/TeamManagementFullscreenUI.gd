@@ -25,6 +25,7 @@ func _ready():
 	if GameManager.CurrentCampaign != null:
 		currentUIMode = TeamManagementUI.UIMode.InRun
 	UIManager.FocusChanged.connect(FocusChanged)
+
 	gridPanel.OnUnitSelected.connect(OnUnitSelected)
 	weaponLibrary.OnEquippableSelected.connect(OnWeaponSwapSelected)
 	weaponLibrary.OnUnequipSelected.connect(OnWeaponUnequipped)

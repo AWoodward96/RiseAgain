@@ -74,11 +74,7 @@ func OnFormationButton():
 	SetFormationMode(true)
 
 func OnItemButton():
-	# not sure how to actually do this
 	UIManager.OpenFullscreenUI(UIManager.TeamManagementFullscreenUI)
-
-	#manageItemsPanel.visible = true
-	#manageItemsPanel.Initialize(Map.Current, GameManager.CurrentCampaign)
 	pass
 
 func ShowSwapWithPanel(_val : bool):

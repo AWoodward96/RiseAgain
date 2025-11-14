@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dhmgrt2n36t3"]
+[gd_scene load_steps=35 format=4 uid="uid://dhmgrt2n36t3"]
 
 [ext_resource type="Script" uid="uid://co1th5xf2klm8" path="res://SCRIPTS/Universe/TopdownEnvironment.gd" id="1_if8ta"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="2_apqtq"]
@@ -85,6 +85,14 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dw0t6"]
+shader = ExtResource("6_eux4y")
+shader_parameter/enabled = false
+shader_parameter/width = 2
+shader_parameter/outline_color = Color(0.61, 0.935, 1, 1)
+shader_parameter/flickering_speed = 2.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_if8ta"]
 shader = ExtResource("6_eux4y")
 shader_parameter/enabled = false
 shader_parameter/width = 2
@@ -569,7 +577,8 @@ interactableArea = NodePath("InteractableArea")
 visual = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="SubEnvironments/TEMP_Barracks/Smithy"]
-material = SubResource("ShaderMaterial_dw0t6")
+material = SubResource("ShaderMaterial_if8ta")
+position = Vector2(0, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("7_dfxmx")
 offset = Vector2(0, -16)

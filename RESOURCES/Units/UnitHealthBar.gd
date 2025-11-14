@@ -123,6 +123,8 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 			UpdateBarTween.tween_method(UpdateHealthBarTween, health, health + DeltaHealth, healthBarMoveTime)
 
 		UpdateBarTween.tween_callback(UpdateBarTweenComplete)
+	elif DeltaValueChange == 0:
+		UpdateBarTweenComplete()
 	else:
 		UpdateBarTween = create_tween()
 		DeltaHealth = min(maxHealth - health, DeltaValueChange) # Either use the delta value change, or bring us up to full hp

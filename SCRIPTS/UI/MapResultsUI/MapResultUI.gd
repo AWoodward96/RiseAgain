@@ -21,8 +21,11 @@ signal ResultsComplete()
 @export var goldAcquiredLabel : Label
 @export var goldPerModifierLabel : Label
 
+@export var goldGoUpSound : FmodEventEmitter2D
+
 var map : Map
 var campaign : Campaign
+var parGoldGained : int
 
 func Initialize(_map : Map):
 	map = _map
@@ -78,10 +81,12 @@ func RefreshRewards():
 
 func RefreshPar():
 	turnCounterLabel.text = tr(LocSettings.Current_Max).format({"CUR" = map.turnCount, "MAX" = map.Par})
-	goldAcquiredLabel.text = "%+d" % GameManager.GameSettings.CalculatePar(map)
+	parGoldGained = GameManager.GameSettings.CalculatePar(map)
+	#goldAcquiredLabel.text = "%+d" % parGoldGained
 
 	var dif = (map.Par - map.turnCount) * GameManager.GameSettings.GoldPercLostPerTurn
 	goldPerModifierLabel.text = "%+d%%" % (dif * 100)
+	goldPerModifierLabel.visible = false
 	pass
 
 func ShowGoldAquisition():
@@ -90,6 +95,22 @@ func ShowGoldAquisition():
 	newResourceDef.Amount = GameManager.GameSettings.CalculatePar(map)
 	PersistDataManager.universeData.AddResource(newResourceDef, goldAcquiredLabel.global_position)
 	pass
+
+func TweenGoldGain():
+	var tweenedGain = get_tree().create_tween()
+	tweenedGain.tween_method(UpdateGoldGainLabel, 0, parGoldGained, 2.0)
+	tweenedGain.tween_callback(GoldGainComplete)
+
+	pass
+
+func UpdateGoldGainLabel(_cur : int):
+	goldGoUpSound.play()
+	goldAcquiredLabel.text = "%+d" % _cur
+
+func GoldGainComplete():
+	goldGoUpSound.stop()
+	goldPerModifierLabel.visible = true
+
 
 func ReturnFocus():
 	for rewards in rewardsEntryParent.createdEntries:

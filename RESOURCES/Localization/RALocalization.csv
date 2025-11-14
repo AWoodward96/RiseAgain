@@ -466,7 +466,7 @@ art_doubleshot_desc,Take a quick shot at an enemy dealing damage based on {DMG_A
 art_drain_name,Life Drain
 art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
 art_fireball_name,Fireball
-art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nAfter killing 3 and 10 Units the area it hits grows bigger.
+art_fireball_desc,Shoot a Fireball at a location dealing AOE damage equal to their {DMG_AGGRESSIVESTAT}. \nThe size of the AOE scales depending on this Units WIS.
 art_heal_name,Heal
 art_heal_desc,Heal an Ally Unit equal to this Units {HEAL_STAT}
 art_heroicleap_name,Heroic Leap
@@ -622,5 +622,26 @@ unit_malice_name,Malice
 unit_malice_desc,An Aspect. Run.
 art_lacerate_name,Lacerate
 art_lacerate_desc,Target the highest Health Unit. Deal 30% of their Current Health. This cannot target a Unit that is at Max Health.
-art_decimatus_name,Decimatus
-art_decimatus_desc,Teleport to an Enemy Unit below 50% their Max Health and slam the hammer down on them dealing damage based on {DMG_AGGRESSIVESTAT}
+art_decimatus_name,Annihilate
+art_decimatus_desc,Teleport to an Enemy Unit below 50% their Max Health and Root them before winding up for a devistating blow that deals damage based on {DMG_AGGRESSIVESTAT}
+ce_rooted,Rooted
+ce_rooted_effect,This Unit can not move.
+ui_viewcampsite,View Campsite
+ui_inspectteam,Inspect Team
+ui_rest,Rest
+event_whitecliffvault_prompt,The party comes across a strange door set into the cliffside wall.
+event_whitecliffvault_prompt_2,You could probably get it open if you tried hard enough.
+event_whitecliffvault_d1,Try to bust down the door.
+event_whitecliffvault_d1_result,"You gave it a decent thrashing, but the latch still holds."
+event_whitecliffvault_d1_sucess,"After wailing on the door, it finally opens."
+event_whitecliffvault_d2,[bgcolor=333333][Fire Mage][/bgcolor] Try and blow the door up.
+event_whitecliffvault_d2_result,"You tried your best, but even after tanking a fireball, the door holds."
+event_whitecliffvault_d2_sucess,"After the flames die down, the door finally creeks open."
+event_whitecliffvault_d3,[bgcolor=333333][Rogue][/bgcolor] Unlock.
+event_whitecliffvault_success,"Inside is a meager stash of resources, which you quietly pocket before moving on."
+event_whitecliffiron_prompt,The party stumbled upon an outcropping of iron ore.
+event_whitecliffiron_d1,Use weapons to harvest ore.
+event_whitecliffiron_d2,[bgcolor=333333][6 DEX][/bgcolor] Use raw strength.
+event_generic_leave,Leave.
+event_whitecliffiron_d1_preview1,Gain +25 Ore
+event_whitecliffiron_d2_preview1,Gain +60 Ore

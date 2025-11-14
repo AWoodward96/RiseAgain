@@ -12,31 +12,26 @@
 [sub_resource type="Resource" id="Resource_36f3x"]
 script = ExtResource("3_mcw1a")
 ItemPrefab = ExtResource("2_e62lm")
-Weight = 1.0
 AccumulatedWeight = 1.0
 
 [sub_resource type="Resource" id="Resource_e62lm"]
 script = ExtResource("3_mcw1a")
 ItemPrefab = ExtResource("4_umpq6")
-Weight = 1.0
 AccumulatedWeight = 2.0
 
 [sub_resource type="Resource" id="Resource_mcw1a"]
 script = ExtResource("3_mcw1a")
 ItemPrefab = ExtResource("5_kbl1q")
-Weight = 1.0
 AccumulatedWeight = 3.0
 
 [sub_resource type="Resource" id="Resource_umpq6"]
 script = ExtResource("3_mcw1a")
 ItemPrefab = ExtResource("6_c1kgo")
-Weight = 1.0
 AccumulatedWeight = 4.0
 
 [sub_resource type="Resource" id="Resource_kbl1q"]
 script = ExtResource("3_mcw1a")
 ItemPrefab = ExtResource("7_mt2pl")
-Weight = 1.0
 AccumulatedWeight = 5.0
 
 [resource]

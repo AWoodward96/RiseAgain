@@ -63,7 +63,7 @@ func UpdateHeader():
 		prestiegeParent.visible = false
 		healthLevelParent.visible = true
 		levelLabel.text = tr(LocSettings.Level_Num).format({"NUM" = unitInstance.DisplayLevel})
-		healthLabel.text = tr(LocSettings.Current_Max).format({"CUR" = unitInstance.currentHealth, "MAX" = unitInstance.maxHealth})
+		healthLabel.text = tr(LocSettings.Current_Max).format({"CUR" = unitInstance.currentHealth, "MAX" = "%d" %  unitInstance.maxHealth})
 	elif unitPersist != null:
 		prestiegeParent.visible = true
 		healthLevelParent.visible = false

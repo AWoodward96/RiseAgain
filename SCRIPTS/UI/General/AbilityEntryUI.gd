@@ -202,7 +202,7 @@ func FormatAbilityDescription(_ability : Ability):
 			dict["DMG_DRAINPERC"] = abs(_ability.UsableDamageData.DamageToHealthRatio * 100)
 
 		dict["DMG_AGGRESSIVESTAT"] = tr(_ability.UsableDamageData.AgressiveStat.loc_displayName_short)
-		dict["DMG_AGGRESSIVEMOD"] = _ability.UsableDamageData.AgressiveMod * 100
+		dict["DMG_AGGRESSIVEMOD"] = "%+d%%" % (_ability.UsableDamageData.AgressiveMod * 100)
 
 		# Scale this up as needed. Format should be DMG_VULNERABLE_[DESC or MULT]_[Index]
 		if _ability.UsableDamageData.VulerableDescriptors.size() != 0:
@@ -216,7 +216,7 @@ func FormatAbilityDescription(_ability : Ability):
 	if _ability.HealData != null:
 		if _ability.HealData.ScalingStat != null:
 			dict["HEAL_STAT"]= tr(_ability.HealData.ScalingStat.loc_displayName)
-		dict["HEAL_MOD"] = _ability.HealData.ScalingMod * 100
+		dict["HEAL_MOD"] = "%+d%%" % (_ability.HealData.ScalingMod * 100)
 		dict["HEAL_FLAT"] = _ability.HealData.FlatValue
 
 	for stack in _ability.executionStack:
@@ -227,7 +227,7 @@ func FormatAbilityDescription(_ability : Ability):
 			if shield != null:
 				dict["SHIELD_FLAT"] = shield.FlatValue
 				dict["SHIELD_STAT"] = tr(shield.RelativeStat.loc_displayName)
-				dict["SHIELD_MOD"] = shield.Mod * 100
+				dict["SHIELD_MOD"] =  "%+d%%" % (shield.Mod * 100)
 
 			var statBuff = combateffect.CombatEffect as StatChangeEffect
 			if statBuff != null:

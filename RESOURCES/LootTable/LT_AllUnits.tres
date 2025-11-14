@@ -1,67 +1,53 @@
 [gd_resource type="Resource" script_class="LootTable" load_steps=18 format=3 uid="uid://ckn2gmate3jr1"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
+[ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="2_dmxar"]
 [ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="2_eremd"]
+[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/WildMage/UT_WildMage.tres" id="4_dp3md"]
+[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="5_ha0yx"]
+[ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="6_8ggyv"]
+[ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="7_4ww77"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
+[ext_resource type="Resource" uid="uid://b58tp7xqbg5jr" path="res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres" id="8_mil6f"]
+[ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="9_l4a38"]
 
-[sub_resource type="Resource" id="Resource_ki3nf"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/Archer/UT_Archer.tres"
-
-[sub_resource type="Resource" id="Resource_dmxar"]
+[sub_resource type="Resource" id="Resource_3phjb"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_ki3nf")
+Unit = ExtResource("2_dmxar")
 AccumulatedWeight = 1.0
 
-[sub_resource type="Resource" id="Resource_pw506"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/WildMage/UT_WildMage.tres"
-
-[sub_resource type="Resource" id="Resource_dp3md"]
+[sub_resource type="Resource" id="Resource_82nro"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_pw506")
+Unit = ExtResource("4_dp3md")
 AccumulatedWeight = 2.0
 
-[sub_resource type="Resource" id="Resource_80ayw"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres"
-
-[sub_resource type="Resource" id="Resource_ha0yx"]
+[sub_resource type="Resource" id="Resource_17ufk"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_80ayw")
+Unit = ExtResource("5_ha0yx")
 AccumulatedWeight = 3.0
 
-[sub_resource type="Resource" id="Resource_8e6dp"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres"
-
-[sub_resource type="Resource" id="Resource_8ggyv"]
+[sub_resource type="Resource" id="Resource_3pbw8"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_8e6dp")
+Unit = ExtResource("6_8ggyv")
 AccumulatedWeight = 4.0
 
-[sub_resource type="Resource" id="Resource_lx3ge"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres"
-
-[sub_resource type="Resource" id="Resource_4ww77"]
+[sub_resource type="Resource" id="Resource_hucu6"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_lx3ge")
+Unit = ExtResource("7_4ww77")
 AccumulatedWeight = 5.0
 
-[sub_resource type="Resource" id="Resource_wbon3"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres"
-
-[sub_resource type="Resource" id="Resource_mil6f"]
+[sub_resource type="Resource" id="Resource_ikynv"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_wbon3")
+Unit = ExtResource("8_mil6f")
 AccumulatedWeight = 6.0
 
-[sub_resource type="Resource" id="Resource_edpnh"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/Knight/UT_Knight.tres"
-
-[sub_resource type="Resource" id="Resource_l4a38"]
+[sub_resource type="Resource" id="Resource_h2n3x"]
 script = ExtResource("2_eremd")
-Unit = SubResource("Resource_edpnh")
+Unit = ExtResource("9_l4a38")
 AccumulatedWeight = 7.0
 
 [resource]
 resource_name = "LT_AllUnits"
 script = ExtResource("7_n3dlo")
-Table = Array[ExtResource("1_05tkr")]([SubResource("Resource_dmxar"), SubResource("Resource_dp3md"), SubResource("Resource_ha0yx"), SubResource("Resource_8ggyv"), SubResource("Resource_4ww77"), SubResource("Resource_mil6f"), SubResource("Resource_l4a38")])
+Table = Array[ExtResource("1_05tkr")]([SubResource("Resource_3phjb"), SubResource("Resource_82nro"), SubResource("Resource_17ufk"), SubResource("Resource_3pbw8"), SubResource("Resource_hucu6"), SubResource("Resource_ikynv"), SubResource("Resource_h2n3x")])
 WeightSum = 7.0

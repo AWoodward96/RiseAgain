@@ -15,7 +15,7 @@ var lacerateTarget : EnemyAIOption
 var decimateTarget : EnemyAIOption
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-	CommonStartTurn()
+	CommonStartTurn(_map, _unit)
 	GetReferences()
 	lacerateTarget = null
 	decimateTarget = null

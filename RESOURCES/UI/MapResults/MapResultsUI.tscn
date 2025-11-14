@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddg1bmb8sq6fk"]
+[gd_scene load_steps=17 format=3 uid="uid://ddg1bmb8sq6fk"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_oxknd"]
 [ext_resource type="Script" uid="uid://diqjlqa36ayyy" path="res://SCRIPTS/UI/MapResultsUI/MapResultUI.gd" id="2_8w417"]
@@ -26,7 +26,204 @@ shadow_color = Color(0, 0, 0, 1)
 font = ExtResource("5_ap4rj")
 font_size = 32
 
-[node name="MapResultsUI" type="Control" node_paths=PackedStringArray("mapName", "continueButton", "mainObjectiveParent", "optionalObjectiveParent", "squadEntryParent", "rewardsEntryParent", "turnCounterLabel", "goldAcquiredLabel", "goldPerModifierLabel")]
+[sub_resource type="Animation" id="Animation_8w417"]
+resource_name = "Run"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/MarginContainer/VBoxContainer/SquadResult:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/MarginContainer/VBoxContainer/RewardsContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RevealSectionSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.9, 1.4, 2.4, 3.9, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_one_shot"
+}, {
+"args": [],
+"method": &"play_one_shot"
+}, {
+"args": [],
+"method": &"play_one_shot"
+}, {
+"args": [],
+"method": &"play_one_shot"
+}, {
+"args": [],
+"method": &"play_one_shot"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.4666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"TweenGoldGain"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e7u50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/MarginContainer/VBoxContainer/SquadResult:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/MarginContainer/VBoxContainer/RewardsContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2w58"]
+_data = {
+&"RESET": SubResource("Animation_e7u50"),
+&"Run": SubResource("Animation_8w417")
+}
+
+[node name="MapResultsUI" type="Control" node_paths=PackedStringArray("mapName", "continueButton", "mainObjectiveParent", "optionalObjectiveParent", "squadEntryParent", "rewardsEntryParent", "turnCounterLabel", "goldAcquiredLabel", "goldPerModifierLabel", "goldGoUpSound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,16 +234,17 @@ theme = ExtResource("1_oxknd")
 script = ExtResource("2_8w417")
 mapName = NodePath("Panel/MarginContainer/VBoxContainer/HeaderContainer/Panel2/MapNameLabel")
 continueButton = NodePath("Panel/MarginContainer/VBoxContainer/MarginContainer2/ContinueButton")
-mainObjectiveParent = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/VBoxContainer/MainObjectiveParent")
-optionalObjectiveParent = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/VBoxContainer3/OptionalObjectiveParent")
+mainObjectiveParent = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective/MainObjectiveParent")
+optionalObjectiveParent = NodePath("Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective/OptionalObjectiveParent")
 objectivePrefab = ExtResource("3_e7u50")
 squadEntryParent = NodePath("Panel/MarginContainer/VBoxContainer/SquadResult/MarginContainer/SquadEntryParent")
 squadEntryPrefab = ExtResource("4_8w417")
 rewardsEntryParent = NodePath("Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards/Panel/MarginContainer/HBoxContainer")
 rewardsEntryPrefab = ExtResource("5_8w417")
 turnCounterLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent/TurnsTakenLabel")
-goldAcquiredLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/HBoxContainer/GoldAquired")
-goldPerModifierLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/HBoxContainer/GoldAquired/PercReductionOrGain")
+goldAcquiredLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/GoldAquired")
+goldPerModifierLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/GoldAquired/PercReductionOrGain")
+goldGoUpSound = NodePath("GoldGoUpSound")
 
 [node name="vignette" type="ColorRect" parent="."]
 layout_mode = 1
@@ -136,16 +334,16 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
+[node name="MainObjective" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective"]
 layout_mode = 2
 text = "ui_main_objective_title"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="MainObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/VBoxContainer"]
+[node name="MainObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective"]
 layout_mode = 2
 script = ExtResource("6_hcvw8")
 
@@ -154,16 +352,16 @@ custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
+[node name="SideObjective" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/VBoxContainer3"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective"]
 layout_mode = 2
 text = "ui_optional_objective_title"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="OptionalObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/VBoxContainer3"]
+[node name="OptionalObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective"]
 layout_mode = 2
 script = ExtResource("6_hcvw8")
 
@@ -199,32 +397,32 @@ layout_mode = 2
 text = "{NUM}"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer"]
+[node name="GoldObtained" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/VBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_03t5t")
 expand_mode = 1
 
-[node name="GoldAquired" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="GoldAquired" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained"]
 layout_mode = 2
 text = "250"
 label_settings = SubResource("LabelSettings_0sj78")
 
-[node name="PercReductionOrGain" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/HBoxContainer/GoldAquired"]
+[node name="PercReductionOrGain" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/GoldAquired"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = -8.0
-offset_right = 104.0
-offset_bottom = 8.0
+offset_left = 49.0
+offset_top = -10.0
+offset_right = 113.0
+offset_bottom = 6.0
 text = "-20%"
 vertical_alignment = 1
 
@@ -321,5 +519,19 @@ theme_override_constants/margin_right = 256
 [node name="ContinueButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "Continue"
+
+[node name="ResultsAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q2w58")
+}
+autoplay = "Run"
+
+[node name="RevealSectionSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/UI_Select_Standard"
+event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"
+
+[node name="GoldGoUpSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/UI/Level_Up/Exp_Gain"
+event_guid = "{729fc7f1-685c-40d3-a040-28da2748b1a7}"
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/ContinueButton" to="." method="OnContinueButton"]

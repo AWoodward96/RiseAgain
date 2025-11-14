@@ -1,0 +1,458 @@
+[gd_scene load_steps=34 format=3 uid="uid://yyqfnwbgvf4f"]
+
+[ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_l2sg2"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_gciqr"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_uhr0n"]
+[ext_resource type="Texture2D" uid="uid://bbwruy6f6ev66" path="res://ART/Environment/WhiteCoast/Vault_Doors.png" id="5_oryed"]
+[ext_resource type="PackedScene" uid="uid://cndmf0hcxrc30" path="res://RESOURCES/VFX/explosion_vfx.tscn" id="6_tn43n"]
+
+[sub_resource type="Resource" id="Resource_a0pxv"]
+script = ExtResource("2_gciqr")
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_mm1kg"]
+script = ExtResource("2_gciqr")
+Position = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_2phmk"]
+script = ExtResource("2_gciqr")
+Position = Vector2i(2, 0)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_cxcns"]
+script = ExtResource("2_gciqr")
+Position = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_ch1mh"]
+script = ExtResource("2_gciqr")
+Position = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_eilox"]
+script = ExtResource("2_gciqr")
+Position = Vector2i(2, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_vltvb"]
+script = ExtResource("3_uhr0n")
+TileCoordinates = Array[ExtResource("2_gciqr")]([SubResource("Resource_a0pxv"), SubResource("Resource_mm1kg"), SubResource("Resource_2phmk"), SubResource("Resource_cxcns"), SubResource("Resource_ch1mh"), SubResource("Resource_eilox")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[sub_resource type="Animation" id="Animation_oryed"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["damage_1"]
+}
+
+[sub_resource type="Animation" id="Animation_l2sg2"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["damage_2"]
+}
+
+[sub_resource type="Animation" id="Animation_gciqr"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["damage_3"]
+}
+
+[sub_resource type="Animation" id="Animation_uhr0n"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["damage_4"]
+}
+
+[sub_resource type="Animation" id="Animation_4muqd"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["default"]
+}
+
+[sub_resource type="Animation" id="Animation_5rlmr"]
+resource_name = "explode"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Explosion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Emit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_22ss2"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["open_force"]
+}
+
+[sub_resource type="Animation" id="Animation_tn43n"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["open_obliterate"]
+}
+
+[sub_resource type="Animation" id="Animation_75tka"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/DoorAnimation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/DoorAnimation:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["open_unlock"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Unlocked")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_one_shot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nw3ax"]
+resource_name = "damage"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TakeDamage")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_one_shot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vsbch"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nw3ax"]
+_data = {
+&"RESET": SubResource("Animation_vsbch"),
+&"damage": SubResource("Animation_nw3ax"),
+&"damage_1": SubResource("Animation_oryed"),
+&"damage_2": SubResource("Animation_l2sg2"),
+&"damage_3": SubResource("Animation_gciqr"),
+&"damage_4": SubResource("Animation_uhr0n"),
+&"default": SubResource("Animation_4muqd"),
+&"explode": SubResource("Animation_5rlmr"),
+&"open_force": SubResource("Animation_22ss2"),
+&"open_obliterate": SubResource("Animation_tn43n"),
+&"open_unlock": SubResource("Animation_75tka")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oryed"]
+atlas = ExtResource("5_oryed")
+region = Rect2(160, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gciqr"]
+atlas = ExtResource("5_oryed")
+region = Rect2(320, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhr0n"]
+atlas = ExtResource("5_oryed")
+region = Rect2(480, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4muqd"]
+atlas = ExtResource("5_oryed")
+region = Rect2(640, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2sg2"]
+atlas = ExtResource("5_oryed")
+region = Rect2(0, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ss2"]
+atlas = ExtResource("5_oryed")
+region = Rect2(800, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn43n"]
+atlas = ExtResource("5_oryed")
+region = Rect2(1120, 0, 160, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75tka"]
+atlas = ExtResource("5_oryed")
+region = Rect2(960, 0, 160, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gciqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oryed")
+}],
+"loop": true,
+"name": &"damage_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gciqr")
+}],
+"loop": true,
+"name": &"damage_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhr0n")
+}],
+"loop": true,
+"name": &"damage_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4muqd")
+}],
+"loop": true,
+"name": &"damage_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2sg2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ss2")
+}],
+"loop": true,
+"name": &"open_force",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn43n")
+}],
+"loop": true,
+"name": &"open_obliterate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75tka")
+}],
+"loop": true,
+"name": &"open_unlock",
+"speed": 5.0
+}]
+
+[node name="ge_whitecliffvault_event" type="Node2D" node_paths=PackedStringArray("Animator")]
+script = ExtResource("1_l2sg2")
+shapedTiles = SubResource("Resource_vltvb")
+Animator = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nw3ax")
+}
+
+[node name="parent" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="DoorAnimation" type="AnimatedSprite2D" parent="parent"]
+z_index = -1
+position = Vector2(80, 64)
+sprite_frames = SubResource("SpriteFrames_gciqr")
+animation = &"open_unlock"
+
+[node name="TakeDamage" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Combat_TakeDamage_Standard"
+event_guid = "{0f552edb-29ad-4bdf-bb22-bfdd97ba4b91}"
+
+[node name="Unlocked" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Combat_TakeDamage_Kill"
+event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
+
+[node name="VFX_Explosion" parent="." instance=ExtResource("6_tn43n")]
+position = Vector2(155, 192)
+emitOnReady = false

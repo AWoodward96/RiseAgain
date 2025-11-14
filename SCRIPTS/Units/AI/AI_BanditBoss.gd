@@ -26,7 +26,7 @@ var bombOptions : Array[EnemyAIOption]
 var selectedLeapTarget : EnemyAIOption
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-	CommonStartTurn()
+	CommonStartTurn(_map, _unit)
 	GetReferences()
 	leapOptions.clear()
 	bombOptions.clear()

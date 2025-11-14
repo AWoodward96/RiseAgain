@@ -316,7 +316,6 @@ offset_top = 30.0
 offset_right = 602.0
 offset_bottom = 581.0
 script = ExtResource("7_p0hty")
-autoInitialize = false
 entryParent = NodePath("MarginContainer/GridContainer")
 entryPrefab = ExtResource("7_fsc2t")
 
@@ -534,7 +533,7 @@ layout_mode = 2
 
 [node name="TacticalSlot" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/WeaponAndTactical/TacticalSlotParent"]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
 offset_right = 303.0
 offset_bottom = 50.0
 theme_type_variation = &"Tactical"
@@ -561,7 +560,7 @@ layout_mode = 2
 
 [node name="HeldItemSlot1" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems/HeldItemParent1"]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
 offset_right = 303.0
 offset_bottom = 50.0
 theme_type_variation = &"Item"
@@ -573,7 +572,7 @@ layout_mode = 2
 
 [node name="HeldItemSlot2" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems/HeldItemParent2"]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
 offset_right = 303.0
 offset_bottom = 50.0
 theme_type_variation = &"Item"
@@ -585,7 +584,7 @@ layout_mode = 2
 
 [node name="HeldItemSlot3" type="Button" parent="InspectAreaParent/InspectArea/MainContent/VBoxContainer/HeldItems/HeldItemParent3"]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 0
 offset_right = 303.0
 offset_bottom = 50.0
 theme_type_variation = &"Item"

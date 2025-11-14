@@ -16,6 +16,7 @@ func CanStart(_context):
 		if res && req.NOT || !res && !req.NOT:
 			return false
 
+	index = -1
 	return true
 
 

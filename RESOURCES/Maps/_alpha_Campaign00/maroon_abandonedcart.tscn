@@ -19,6 +19,7 @@ mapType = 2
 GridSize = Vector2i(15, 10)
 CameraStart = Vector2(5, 4)
 Biome = ExtResource("2_v3b5r")
+Par = 0
 tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_threat = NodePath("Threat")

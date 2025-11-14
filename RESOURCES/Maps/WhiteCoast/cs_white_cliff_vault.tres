@@ -1,0 +1,478 @@
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=98 format=3 uid="uid://b7dd51rshxpoq"]
+
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_i3gd1"]
+[ext_resource type="Script" uid="uid://btelna5gwsy4x" path="res://SCRIPTS/Cutscene/Events/LoadMapPersistToContextEvent.gd" id="2_ahh4x"]
+[ext_resource type="Resource" uid="uid://b23tbbr6smnpq" path="res://RESOURCES/Maps/WhiteCoast/cs_update_vault_visual.tres" id="3_4qacm"]
+[ext_resource type="Script" uid="uid://bytfo8gi5ovob" path="res://SCRIPTS/Cutscene/SubCutsceneEventBlock.gd" id="4_3iuqv"]
+[ext_resource type="Script" uid="uid://dc4u7cqup7fpr" path="res://SCRIPTS/Cutscene/Events/MoveUnitEvent.gd" id="5_sy58p"]
+[ext_resource type="Script" uid="uid://b5qgscwxgnauj" path="res://SCRIPTS/Cutscene/Events/WaitEvent.gd" id="6_r8hsv"]
+[ext_resource type="Script" uid="uid://b83ex510b0d3c" path="res://SCRIPTS/Cutscene/Events/ShowEventPrompt.gd" id="7_nc1qd"]
+[ext_resource type="Script" uid="uid://bxh0g23kritn8" path="res://SCRIPTS/Cutscene/Events/EventDecision.gd" id="8_0r3vg"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="9_5jv3o"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="10_t1dww"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="11_log0r"]
+[ext_resource type="Script" uid="uid://c8dhapjjauqq4" path="res://SCRIPTS/Generic/Requirements/StatCheckReq.gd" id="12_yyekr"]
+[ext_resource type="Script" uid="uid://da4yql22oex5i" path="res://SCRIPTS/Generic/Requirements/CutsceneContextThresholdReq.gd" id="13_wbtd5"]
+[ext_resource type="Script" uid="uid://kxrofjibgj2t" path="res://SCRIPTS/Cutscene/Events/ModifyContextVariable.gd" id="14_kcht4"]
+[ext_resource type="Script" uid="uid://cuheo7oad7i72" path="res://SCRIPTS/Cutscene/Events/IfEvent.gd" id="15_mcr4m"]
+[ext_resource type="Script" uid="uid://bsnlo2wjaj6uu" path="res://SCRIPTS/Cutscene/Events/PlayGridEntityAnimationEvent.gd" id="16_yo6pl"]
+[ext_resource type="Script" uid="uid://dwb8tfveoy3fe" path="res://SCRIPTS/Cutscene/Events/ScreenShakeEvent.gd" id="17_sqimm"]
+[ext_resource type="Script" uid="uid://dfq20krg4iajv" path="res://SCRIPTS/Cutscene/Events/MarkEventMapCompleteEvent.gd" id="18_nk6g8"]
+[ext_resource type="Script" uid="uid://cpajqbxayy16y" path="res://SCRIPTS/Generic/MadLibLoc.gd" id="19_p2kre"]
+[ext_resource type="Script" uid="uid://c52b2lkessydf" path="res://SCRIPTS/Generic/Requirements/UnitInPartyReq.gd" id="20_rgjo4"]
+[ext_resource type="Script" uid="uid://dalk3vyucbgsu" path="res://SCRIPTS/Cutscene/Events/ShowEventDecision.gd" id="21_kc8x3"]
+[ext_resource type="Resource" uid="uid://dgc5gevhut62h" path="res://RESOURCES/Resources/ResourceDefs/WhiteCliffVaultReward.tres" id="22_4qacm"]
+[ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="22_ddd23"]
+[ext_resource type="Script" uid="uid://bf7oawyxfy0lx" path="res://SCRIPTS/Cutscene/Events/GrantResourcesEvent.gd" id="27_yyekr"]
+
+[sub_resource type="Resource" id="Resource_01eub"]
+script = ExtResource("2_ahh4x")
+PersistVariableString = "WhiteVaultDamage"
+ContextVariableString = "WhiteVaultDamage"
+metadata/_custom_type_script = "uid://btelna5gwsy4x"
+
+[sub_resource type="Resource" id="Resource_pb1lu"]
+script = ExtResource("4_3iuqv")
+Cutscene = ExtResource("3_4qacm")
+metadata/_custom_type_script = "uid://bytfo8gi5ovob"
+
+[sub_resource type="Resource" id="Resource_ctldy"]
+script = ExtResource("5_sy58p")
+unitAtPosition = Vector2i(2, 6)
+route = Array[Vector2i]([Vector2i(3, 6), Vector2i(4, 6), Vector2i(4, 7), Vector2i(5, 7), Vector2i(6, 7)])
+destination = Vector2i(6, 7)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_6diqw"]
+script = ExtResource("5_sy58p")
+unitAtPosition = Vector2i(3, 7)
+route = Array[Vector2i]([Vector2i(4, 7), Vector2i(5, 7), Vector2i(6, 7), Vector2i(7, 7), Vector2i(8, 7), Vector2i(8, 6)])
+destination = Vector2i(8, 6)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_3ttbv"]
+script = ExtResource("5_sy58p")
+unitAtPosition = Vector2i(1, 7)
+route = Array[Vector2i]([Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7), Vector2i(4, 7), Vector2i(5, 7), Vector2i(6, 7), Vector2i(7, 7), Vector2i(7, 6)])
+destination = Vector2i(7, 6)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_ulndk"]
+script = ExtResource("6_r8hsv")
+WaitTime = 1.5
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_4yfb2"]
+script = ExtResource("7_nc1qd")
+loc_text = "event_whitecliffvault_prompt"
+clearOnExit = false
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_fibb6"]
+script = ExtResource("7_nc1qd")
+loc_text = "event_whitecliffvault_prompt_2"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_uofhp"]
+script = ExtResource("11_log0r")
+Template = ExtResource("10_t1dww")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_2yadm"]
+script = ExtResource("12_yyekr")
+StatCheck = SubResource("Resource_uofhp")
+metadata/_custom_type_script = "uid://c8dhapjjauqq4"
+
+[sub_resource type="Resource" id="Resource_6s818"]
+script = ExtResource("13_wbtd5")
+ContextVariableName = "WhiteVaultDamage"
+Threshold = 4
+NOT = true
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_xnf2t"]
+script = ExtResource("14_kcht4")
+variableName = "WhiteVaultDamage"
+modType = 1
+mod = 1
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_i6ik2"]
+script = ExtResource("13_wbtd5")
+ContextVariableName = "WhiteVaultDamage"
+Threshold = 4
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_sbw2t"]
+script = ExtResource("14_kcht4")
+variableName = "Destroyed"
+mod = 1
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_mrpgi"]
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_i6ik2")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_sbw2t")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_m6xr4"]
+script = ExtResource("4_3iuqv")
+Cutscene = ExtResource("3_4qacm")
+metadata/_custom_type_script = "uid://bytfo8gi5ovob"
+
+[sub_resource type="Resource" id="Resource_gq1fc"]
+script = ExtResource("16_yo6pl")
+Position = Vector2i(5, 1)
+AnimString = "damage"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_kfaps"]
+script = ExtResource("17_sqimm")
+Duration = 0.25
+WaitTillComplete = true
+metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
+
+[sub_resource type="Resource" id="Resource_41kfi"]
+script = ExtResource("6_r8hsv")
+WaitTime = 0.25
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_a7x74"]
+resource_name = "ATK > 3 = +1"
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_2yadm"), SubResource("Resource_6s818")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_xnf2t"), SubResource("Resource_mrpgi"), SubResource("Resource_m6xr4"), SubResource("Resource_gq1fc"), SubResource("Resource_kfaps"), SubResource("Resource_41kfi")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_d5ju8"]
+script = ExtResource("11_log0r")
+Template = ExtResource("10_t1dww")
+Value = 5
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_jphqr"]
+script = ExtResource("12_yyekr")
+StatCheck = SubResource("Resource_d5ju8")
+metadata/_custom_type_script = "uid://c8dhapjjauqq4"
+
+[sub_resource type="Resource" id="Resource_6udgc"]
+script = ExtResource("14_kcht4")
+variableName = "WhiteVaultDamage"
+modType = 1
+mod = 1
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_6a6gc"]
+script = ExtResource("4_3iuqv")
+Cutscene = ExtResource("3_4qacm")
+metadata/_custom_type_script = "uid://bytfo8gi5ovob"
+
+[sub_resource type="Resource" id="Resource_tsdob"]
+script = ExtResource("17_sqimm")
+Duration = 0.25
+WaitTillComplete = true
+metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
+
+[sub_resource type="Resource" id="Resource_xx55q"]
+script = ExtResource("6_r8hsv")
+WaitTime = 0.15
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_sk2pr"]
+resource_name = "ATK > 5 = +1"
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_jphqr"), SubResource("Resource_6s818")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_6udgc"), SubResource("Resource_mrpgi"), SubResource("Resource_6a6gc"), SubResource("Resource_gq1fc"), SubResource("Resource_tsdob"), SubResource("Resource_xx55q")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_pspjx"]
+script = ExtResource("11_log0r")
+Template = ExtResource("10_t1dww")
+Value = 8
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_fevht"]
+script = ExtResource("12_yyekr")
+StatCheck = SubResource("Resource_pspjx")
+metadata/_custom_type_script = "uid://c8dhapjjauqq4"
+
+[sub_resource type="Resource" id="Resource_aen3e"]
+script = ExtResource("14_kcht4")
+variableName = "WhiteVaultDamage"
+modType = 1
+mod = 2
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_ocyjo"]
+script = ExtResource("4_3iuqv")
+Cutscene = ExtResource("3_4qacm")
+metadata/_custom_type_script = "uid://bytfo8gi5ovob"
+
+[sub_resource type="Resource" id="Resource_2sdoq"]
+script = ExtResource("17_sqimm")
+Strength = 15
+WaitTillComplete = true
+metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
+
+[sub_resource type="Resource" id="Resource_g08e4"]
+script = ExtResource("6_r8hsv")
+WaitTime = 0.5
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_i78i0"]
+resource_name = "ATK > 8 = +2"
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_fevht"), SubResource("Resource_6s818")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_aen3e"), SubResource("Resource_mrpgi"), SubResource("Resource_ocyjo"), SubResource("Resource_2sdoq"), SubResource("Resource_gq1fc"), SubResource("Resource_g08e4")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_xguxd"]
+script = ExtResource("13_wbtd5")
+ContextVariableName = "WhiteVaultDamage"
+Type = 1
+Threshold = 5
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_ovp5q"]
+script = ExtResource("7_nc1qd")
+loc_text = "event_whitecliffvault_d1_result"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_uykeo"]
+script = ExtResource("2_ahh4x")
+Function = 1
+PersistVariableString = "WhiteVaultDamage"
+ContextVariableString = "WhiteVaultDamage"
+autoSave = true
+metadata/_custom_type_script = "uid://btelna5gwsy4x"
+
+[sub_resource type="Resource" id="Resource_4o2kc"]
+script = ExtResource("18_nk6g8")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_3w8fu"]
+resource_name = "Check if failed"
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_xguxd")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_ovp5q"), SubResource("Resource_uykeo"), SubResource("Resource_4o2kc")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_33wxl"]
+resource_name = "Bust Down the Door"
+script = ExtResource("8_0r3vg")
+option_loc = "event_whitecliffvault_d1"
+resultActionStack = Array[ExtResource("1_i3gd1")]([SubResource("Resource_a7x74"), SubResource("Resource_sk2pr"), SubResource("Resource_i78i0"), SubResource("Resource_3w8fu")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_fbsn6"]
+script = ExtResource("20_rgjo4")
+UnitTemplateRef = "uid://dhofh2o4b8tg4"
+metadata/_custom_type_script = "uid://c52b2lkessydf"
+
+[sub_resource type="Resource" id="Resource_f2k75"]
+script = ExtResource("14_kcht4")
+variableName = "WhiteVaultDamage"
+modType = 1
+mod = 3
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_jay14"]
+script = ExtResource("13_wbtd5")
+ContextVariableName = "WhiteVaultDamage"
+Threshold = 4
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_uydkx"]
+script = ExtResource("14_kcht4")
+variableName = "Obliterated"
+mod = 1
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_kcqja"]
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_jay14")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_uydkx")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_avl4o"]
+script = ExtResource("16_yo6pl")
+Position = Vector2i(5, 1)
+AnimString = "explode"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_oby6r"]
+script = ExtResource("4_3iuqv")
+Cutscene = ExtResource("3_4qacm")
+metadata/_custom_type_script = "uid://bytfo8gi5ovob"
+
+[sub_resource type="Resource" id="Resource_8tdap"]
+script = ExtResource("17_sqimm")
+Strength = 12
+Duration = 1.0
+WaitTillComplete = true
+metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
+
+[sub_resource type="Resource" id="Resource_q8bio"]
+script = ExtResource("13_wbtd5")
+ContextVariableName = "WhiteVaultDamage"
+Type = 1
+Threshold = 5
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_lqac5"]
+script = ExtResource("7_nc1qd")
+loc_text = "event_whitecliffvault_d2_result"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_6wo1e"]
+script = ExtResource("2_ahh4x")
+Function = 1
+PersistVariableString = "WhiteVaultDamage"
+ContextVariableString = "WhiteVaultDamage"
+autoSave = true
+metadata/_custom_type_script = "uid://btelna5gwsy4x"
+
+[sub_resource type="Resource" id="Resource_qufrb"]
+script = ExtResource("18_nk6g8")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_h5opy"]
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_q8bio")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_lqac5"), SubResource("Resource_6wo1e"), SubResource("Resource_qufrb")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_4kkij"]
+resource_name = "Blow It Up With Fire Mage"
+script = ExtResource("8_0r3vg")
+option_loc = "event_whitecliffvault_d2"
+requirements = Array[ExtResource("9_5jv3o")]([SubResource("Resource_fbsn6")])
+resultActionStack = Array[ExtResource("1_i3gd1")]([SubResource("Resource_f2k75"), SubResource("Resource_kcqja"), SubResource("Resource_avl4o"), SubResource("Resource_oby6r"), SubResource("Resource_8tdap"), SubResource("Resource_h5opy")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_io0dx"]
+script = ExtResource("20_rgjo4")
+UnitTemplateRef = "uid://b58tp7xqbg5jr"
+metadata/_custom_type_script = "uid://c52b2lkessydf"
+
+[sub_resource type="Resource" id="Resource_08sea"]
+script = ExtResource("14_kcht4")
+variableName = "WhiteVaultDamage"
+modType = 1
+mod = 10
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_7e3ix"]
+script = ExtResource("14_kcht4")
+variableName = "UnlockedWithAssassin"
+mod = 1
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_jp4q5"]
+script = ExtResource("4_3iuqv")
+Cutscene = ExtResource("3_4qacm")
+metadata/_custom_type_script = "uid://bytfo8gi5ovob"
+
+[sub_resource type="Resource" id="Resource_pyvfj"]
+resource_name = "Unlock with Assassin"
+script = ExtResource("8_0r3vg")
+option_loc = "event_whitecliffvault_d3"
+hiddenRequirement = true
+requirements = Array[ExtResource("9_5jv3o")]([SubResource("Resource_io0dx")])
+resultActionStack = Array[ExtResource("1_i3gd1")]([SubResource("Resource_08sea"), SubResource("Resource_7e3ix"), SubResource("Resource_jp4q5")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_4qacm"]
+script = ExtResource("18_nk6g8")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_od1ue"]
+resource_name = "leave"
+script = ExtResource("8_0r3vg")
+option_loc = "event_generic_leave"
+resultActionStack = Array[ExtResource("1_i3gd1")]([SubResource("Resource_4qacm")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_dx6fk"]
+script = ExtResource("21_kc8x3")
+DecisionOptions = Array[ExtResource("8_0r3vg")]([SubResource("Resource_33wxl"), SubResource("Resource_4kkij"), SubResource("Resource_pyvfj"), SubResource("Resource_od1ue")])
+metadata/_custom_type_script = "uid://dalk3vyucbgsu"
+
+[sub_resource type="Resource" id="Resource_ps82o"]
+script = ExtResource("13_wbtd5")
+ContextVariableName = "WhiteVaultDamage"
+Threshold = 4
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_yekxr"]
+script = ExtResource("5_sy58p")
+unitAtPosition = Vector2i(6, 7)
+route = Array[Vector2i]([Vector2i(6, 6), Vector2i(6, 5)])
+destination = Vector2i(6, 5)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_sr700"]
+script = ExtResource("5_sy58p")
+unitAtPosition = Vector2i(8, 6)
+route = Array[Vector2i]([Vector2i(7, 6), Vector2i(7, 5)])
+destination = Vector2i(7, 5)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_84w16"]
+script = ExtResource("5_sy58p")
+unitAtPosition = Vector2i(7, 6)
+route = Array[Vector2i]([Vector2i(7, 6), Vector2i(8, 5)])
+destination = Vector2i(8, 5)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_lmk5r"]
+script = ExtResource("14_kcht4")
+variableName = "WhiteVaultDamage"
+metadata/_custom_type_script = "uid://kxrofjibgj2t"
+
+[sub_resource type="Resource" id="Resource_3reth"]
+script = ExtResource("2_ahh4x")
+Function = 1
+PersistVariableString = "WhiteVaultDamage"
+ContextVariableString = "WhiteVaultDamage"
+autoSave = true
+metadata/_custom_type_script = "uid://btelna5gwsy4x"
+
+[sub_resource type="Resource" id="Resource_e24cb"]
+script = ExtResource("7_nc1qd")
+loc_text = "event_whitecliffvault_success"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_sqimm"]
+script = ExtResource("27_yyekr")
+resources = ExtResource("22_4qacm")
+tileCoordinate = Vector2i(7, 3)
+metadata/_custom_type_script = "uid://bf7oawyxfy0lx"
+
+[sub_resource type="Resource" id="Resource_3iuqv"]
+script = ExtResource("6_r8hsv")
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_f07va"]
+script = ExtResource("18_nk6g8")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_5xs2y"]
+script = ExtResource("15_mcr4m")
+Conditions = Array[ExtResource("9_5jv3o")]([SubResource("Resource_ps82o")])
+True = Array[ExtResource("1_i3gd1")]([SubResource("Resource_yekxr"), SubResource("Resource_sr700"), SubResource("Resource_84w16"), SubResource("Resource_lmk5r"), SubResource("Resource_3reth"), SubResource("Resource_e24cb"), SubResource("Resource_sqimm"), SubResource("Resource_3iuqv"), SubResource("Resource_f07va")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[resource]
+script = ExtResource("22_ddd23")
+events = Array[ExtResource("1_i3gd1")]([SubResource("Resource_01eub"), SubResource("Resource_pb1lu"), SubResource("Resource_ctldy"), SubResource("Resource_6diqw"), SubResource("Resource_3ttbv"), SubResource("Resource_ulndk"), SubResource("Resource_4yfb2"), SubResource("Resource_fibb6"), SubResource("Resource_dx6fk"), SubResource("Resource_5xs2y")])
+repeatable = true
+autoComplete = false
+metadata/_custom_type_script = "uid://c10jnc1t5gw2i"

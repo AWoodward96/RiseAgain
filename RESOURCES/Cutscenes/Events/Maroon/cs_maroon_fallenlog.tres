@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=46 format=3 uid="uid://dua4qmfiwwx5k"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=45 format=3 uid="uid://dua4qmfiwwx5k"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_s24kc"]
 [ext_resource type="Script" uid="uid://c1pptsi31e0yp" path="res://SCRIPTS/Cutscene/Events/ShowLoadingScreenEvent.gd" id="2_68pnt"]
@@ -102,12 +102,9 @@ requirements = Array[ExtResource("3_68pnt")]([SubResource("Resource_vtfwg")])
 resultActionStack = Array[ExtResource("1_s24kc")]([SubResource("Resource_dga0r"), SubResource("Resource_m23vm"), SubResource("Resource_sgqpi"), SubResource("Resource_g8itf"), SubResource("Resource_7goiu"), SubResource("Resource_el2l1")])
 metadata/_custom_type_script = "uid://bxh0g23kritn8"
 
-[sub_resource type="Resource" id="Resource_a864u"]
-metadata/__load_path__ = "res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres"
-
 [sub_resource type="Resource" id="Resource_223oc"]
 script = ExtResource("7_jjlug")
-UnitTemplateRef = SubResource("Resource_a864u")
+UnitTemplateRef = "uid://dhofh2o4b8tg4"
 metadata/_custom_type_script = "uid://c52b2lkessydf"
 
 [sub_resource type="Resource" id="Resource_ijche"]

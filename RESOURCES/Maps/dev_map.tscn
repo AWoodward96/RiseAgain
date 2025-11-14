@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cab65o5qhlejd"]
+[gd_scene load_steps=31 format=4 uid="uid://cab65o5qhlejd"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_yneqe"]
 [ext_resource type="Script" uid="uid://rx6hw8y5t3o" path="res://SCRIPTS/Maps/Objectives/GameOverObjective.gd" id="2_b4ggw"]
@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="12_jydnc"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="12_msltj"]
 [ext_resource type="Resource" uid="uid://txjfcstralf6" path="res://RESOURCES/Units/Enemy/BanditBoss/UT_BanditBoss.tres" id="12_ox76s"]
-[ext_resource type="Script" uid="uid://db46030yg7m1p" path="res://SCRIPTS/Units/AI/AI_BanditBoss.gd" id="13_rg0w7"]
+[ext_resource type="Resource" uid="uid://5vbfg1su17r1" path="res://RESOURCES/Maps/WhiteCoast/bandit_boss_ai.tres" id="13_b4ggw"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="14_3fyh8"]
 [ext_resource type="Resource" uid="uid://cumiifymklah6" path="res://RESOURCES/Units/Enemy/Malice/UT_Malice.tres" id="14_jydnc"]
 [ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="14_ox76s"]
@@ -36,19 +36,6 @@ metadata/_custom_type_script = "uid://3olxj2qvcrdo"
 [sub_resource type="Resource" id="Resource_xxpgp"]
 script = ExtResource("14_3fyh8")
 metadata/_custom_type_script = "uid://cp4af6ps3pafs"
-
-[sub_resource type="Resource" id="Resource_jydnc"]
-script = ExtResource("9_lsk74")
-metadata/_custom_type_script = "uid://bsigkcdkaqxem"
-
-[sub_resource type="Resource" id="Resource_hyg5s"]
-script = ExtResource("13_rg0w7")
-LeapAbilityRef = "letsrumble"
-SlamAbilityRef = "egostrike"
-BombAbilityRef = "bomblauncher"
-ExplodeAbilityRef = "nomorefun"
-Flags = Array[ExtResource("9_lsk74")]([SubResource("Resource_jydnc")])
-metadata/_custom_type_script = "uid://db46030yg7m1p"
 
 [sub_resource type="Resource" id="Resource_b4ggw"]
 script = ExtResource("14_3fyh8")
@@ -182,7 +169,7 @@ Enabled = false
 Boss = true
 GivenItems = Array[String](["uid://cp2qfjogxikmj"])
 ExtraHealthBars = 2
-AIBehavior = SubResource("Resource_hyg5s")
+AIBehavior = ExtResource("13_b4ggw")
 AggroBehavior = SubResource("Resource_b4ggw")
 
 [node name="Spawn_Malice" type="Sprite2D" parent="Spawners"]
@@ -232,8 +219,8 @@ Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="DISABLED_Spawn_WolfPup" type="Sprite2D" parent="Spawners"]
-position = Vector2(448, 128)
+[node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners"]
+position = Vector2(576, 128)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -244,13 +231,12 @@ TurnsToSpawn = Array[int]([1])
 UnitToSpawn = ExtResource("12_jydnc")
 UnitLevel = 1
 DeltaLevel = 0
-Position = Vector2i(7, 2)
-Enabled = false
+Position = Vector2i(9, 2)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_b5w76")
 
-[node name="DISABLED_Spawn_WolfPup5" type="Sprite2D" parent="Spawners"]
-position = Vector2(384, 192)
+[node name="Spawn_WolfPup2" type="Sprite2D" parent="Spawners"]
+position = Vector2(640, 128)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -259,8 +245,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_jydnc")
 UnitLevel = 2
-Position = Vector2i(6, 3)
-Enabled = false
+Position = Vector2i(10, 2)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_vv3ax")
 

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="PackedResourceDef" load_steps=11 format=3 uid="uid://dgc5gevhut62h"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_ohc1i"]
+[ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="2_44hkn"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="3_f5k1b"]
+[ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="4_1c8ma"]
+[ext_resource type="Resource" uid="uid://bfsilhgf06rms" path="res://RESOURCES/Resources/Ore.tres" id="5_l7jws"]
+[ext_resource type="Script" uid="uid://covm8hlm2glqx" path="res://SCRIPTS/Universe/Resources/PackedResourceDef.gd" id="6_o7yhq"]
+
+[sub_resource type="Resource" id="Resource_wbtd5"]
+script = ExtResource("1_ohc1i")
+ItemResource = ExtResource("2_44hkn")
+Amount = 1000
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_kcht4"]
+script = ExtResource("1_ohc1i")
+ItemResource = ExtResource("3_f5k1b")
+Amount = 10
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_mcr4m"]
+script = ExtResource("1_ohc1i")
+ItemResource = ExtResource("4_1c8ma")
+Amount = 30
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_5jv3o"]
+script = ExtResource("1_ohc1i")
+ItemResource = ExtResource("5_l7jws")
+Amount = 20
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[resource]
+script = ExtResource("6_o7yhq")
+cost = Array[ExtResource("1_ohc1i")]([SubResource("Resource_wbtd5"), SubResource("Resource_kcht4"), SubResource("Resource_mcr4m"), SubResource("Resource_5jv3o")])
+metadata/_custom_type_script = "uid://covm8hlm2glqx"

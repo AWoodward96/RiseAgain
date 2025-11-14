@@ -1,0 +1,181 @@
+[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=33 format=3 uid="uid://b23tbbr6smnpq"]
+
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_bsom0"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="2_tcfho"]
+[ext_resource type="Script" uid="uid://da4yql22oex5i" path="res://SCRIPTS/Generic/Requirements/CutsceneContextThresholdReq.gd" id="3_1c4oa"]
+[ext_resource type="Script" uid="uid://bsnlo2wjaj6uu" path="res://SCRIPTS/Cutscene/Events/PlayGridEntityAnimationEvent.gd" id="4_ca0al"]
+[ext_resource type="Script" uid="uid://cuheo7oad7i72" path="res://SCRIPTS/Cutscene/Events/IfEvent.gd" id="5_v55v8"]
+[ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="6_bs10r"]
+
+[sub_resource type="Resource" id="Resource_pb1lu"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "WhiteVaultDamage"
+Type = 2
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_6a6gc"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "default"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_ocyjo"]
+resource_name = "If 0 Damage"
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_pb1lu")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_6a6gc")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_mrpgi"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "WhiteVaultDamage"
+Type = 2
+Threshold = 1
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_sbw2t"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "damage_1"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_6s818"]
+resource_name = "If 1 Damage"
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_mrpgi")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_sbw2t")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_gq1fc"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "WhiteVaultDamage"
+Type = 2
+Threshold = 2
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_avl4o"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "damage_2"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_8tdap"]
+resource_name = "If 2 Damage"
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_gq1fc")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_avl4o")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_oby6r"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "WhiteVaultDamage"
+Type = 2
+Threshold = 3
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_jay14"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "damage_3"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_kcqja"]
+resource_name = "If 3 Damage"
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_oby6r")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_jay14")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_uydkx"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "WhiteVaultDamage"
+Type = 2
+Threshold = 4
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_q8bio"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "damage_4"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_h5opy"]
+resource_name = "If 4 Damage"
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_uydkx")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_q8bio")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_qufrb"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "WhiteVaultDamage"
+Threshold = 4
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_jp4q5"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "Destroyed"
+Type = 2
+Threshold = 1
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_08sea"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "open_force"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_f07va"]
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_jp4q5")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_08sea")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_bsom0"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "Obliterated"
+Type = 2
+Threshold = 1
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_tcfho"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "open_obliterate"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_1c4oa"]
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_bsom0")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_tcfho")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_ca0al"]
+script = ExtResource("3_1c4oa")
+ContextVariableName = "UnlockedWithAssassin"
+Type = 2
+Threshold = 1
+metadata/_custom_type_script = "uid://da4yql22oex5i"
+
+[sub_resource type="Resource" id="Resource_bs10r"]
+script = ExtResource("4_ca0al")
+Position = Vector2i(5, 1)
+AnimString = "open_unlock"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_v55v8"]
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_ca0al")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_bs10r")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_yekxr"]
+script = ExtResource("5_v55v8")
+Conditions = Array[ExtResource("2_tcfho")]([SubResource("Resource_qufrb")])
+True = Array[ExtResource("1_bsom0")]([SubResource("Resource_f07va"), SubResource("Resource_1c4oa"), SubResource("Resource_v55v8")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[resource]
+script = ExtResource("6_bs10r")
+events = Array[ExtResource("1_bsom0")]([SubResource("Resource_ocyjo"), SubResource("Resource_6s818"), SubResource("Resource_8tdap"), SubResource("Resource_kcqja"), SubResource("Resource_h5opy"), SubResource("Resource_yekxr")])
+metadata/_custom_type_script = "uid://c10jnc1t5gw2i"

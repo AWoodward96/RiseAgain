@@ -7,8 +7,8 @@ var options : Array[EnemyAIOption]
 var selectedOption : EnemyAIOption
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-	print("Entered Start Turn for: " + str(_unit.GridPosition))
-	CommonStartTurn()
+	super(_map, _unit)
+	CommonStartTurn(_map, _unit)
 	options.clear()
 
 	selectedOption = null
@@ -64,7 +64,6 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 					options.append(newOption)
 
 	if options.size() == 0:
-		print("No Options Found: " + str(unit.GridPosition))
 		unit.QueueEndTurn()
 		return
 

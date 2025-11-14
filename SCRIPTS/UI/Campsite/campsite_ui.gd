@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 class_name CampsiteUI
 
 signal OnRest
@@ -9,18 +9,21 @@ signal OnRest
 @export var InspectButton : Button
 @export var RestButton : Button
 
-@export var itemsPanel : ManageItemsPanel
-
-func _ready():
-	RestButton.grab_focus()
-
+var inspectUI
+var lastButton
 
 func Initialize():
 	#UIParent.visible = true
 	ViewButton.disabled = true
 	InspectButton.disabled = false
 	RestButton.disabled = false
-	itemsPanel.OnClose.connect(OnManageItemsClosed)
+	pass
+
+func ReturnFocus():
+	if inspectUI != null:
+		inspectUI.ReturnFocus()
+	else:
+		InspectButton.grab_focus()
 	pass
 
 
@@ -28,8 +31,8 @@ func btn_View():
 	pass
 
 func btn_Inspect():
-	itemsPanel.visible = true
-	itemsPanel.Initialize(Map.Current, GameManager.CurrentCampaign)
+	inspectUI = UIManager.OpenFullscreenUI(UIManager.TeamManagementFullscreenUI)
+#	ui.Initialize()
 	pass
 
 
@@ -37,13 +40,11 @@ func OnManageItemsClosed():
 	InspectButton.grab_focus()
 
 func btn_Rest():
-
 	OnRest.emit()
 	queue_free()
 	pass
 
 static func ShowUI():
-	var ui = UIManager.CampsiteUIPrefab.instantiate() as CampsiteUI
+	var ui = UIManager.OpenFullscreenUI(UIManager.CampsiteUIPrefab)
 	ui.Initialize()
-	GameManager.add_child(ui)
 	return ui

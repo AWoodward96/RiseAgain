@@ -4,7 +4,6 @@ class_name CampaignTemplate
 @export_category("Campaign Information")
 @export var startingCampaignOptions : Array[CampaignBlock] # Just use duplicate entries if you want a 'weighted list'
 @export var campaignBlockCap : int = -1
-@export var campaignFinale : CampaignBlock
 
 @export var requiredUnit : Array[UnitTemplate]
 @export var startingRosterSize : int = 2

@@ -88,4 +88,5 @@ func _process(_delta: float) -> void:
 			EnableStatBlockFocus(false)
 			Animator.play("FocusEntries")
 		else:
-			TopDownPlayer.BlockInputCounter -= 1
+			InputManager.ReleaseCancel()
+			queue_free()

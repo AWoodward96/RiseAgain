@@ -374,7 +374,6 @@ func UpdateLoot():
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
 	IsAggrod = false
-	AI.Assigned(self, map)
 
 	if _aggro == null:
 		AggroType = AlwaysAggro.new()
@@ -476,8 +475,8 @@ func CreateStartingAbilities():
 	var tacPath : String = ""
 	if unitPersistence != null:
 		# loads the starting weapons and tacticals based on the persist data
-		weapPath = unitPersistence.EquippedStartingWeapon.AbilityPath
-		tacPath = unitPersistence.EquippedStartingTactical.AbilityPath
+		if unitPersistence.EquippedStartingWeapon != null: weapPath = unitPersistence.EquippedStartingWeapon.AbilityPath
+		if unitPersistence.EquippedStartingTactical != null: tacPath = unitPersistence.EquippedStartingTactical.AbilityPath
 	else:
 		# load the starting weapons and tacticals based on the template data
 		if Template.StartingEquippedWeapon != null: weapPath = Template.StartingEquippedWeapon.AbilityPath

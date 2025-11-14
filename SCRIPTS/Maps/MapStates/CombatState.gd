@@ -249,7 +249,6 @@ func UpdateOffTurn(_delta):
 			return
 
 		currentUnitsTurn = pop as UnitInstance
-		print("Starting Units Turn at: " + str(currentUnitsTurn.GridPosition))
 		if currentUnitsTurn != null:
 			# If for some reason this unit is not activated then just go to the next unit
 			if !currentUnitsTurn.Activated:
@@ -272,13 +271,11 @@ func UpdateOffTurn(_delta):
 				currentUnitsTurn = null
 	else:
 		if !currentUnitsTurn.Activated:
-			print("Execution complete for turn - Activated False: " + str(currentUnitsTurn.GridPosition))
 			currentUnitsTurn = null
 			return
 
 		currentUnitsTurn.AI.RunTurn()
 		if !currentUnitsTurn.Activated && currentUnitsTurn.IsStackFree:
-			print("Execution complete for turn: " + str(currentUnitsTurn.GridPosition))
 			currentUnitsTurn = null
 
 func UpdateEnemyTurn(_delta):

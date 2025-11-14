@@ -11,16 +11,20 @@ var selectedPath : Array[Tile]
 var selectedTile : Tile
 
 
-func Assigned(_unit : UnitInstance, _map : Map):
+
+
+func StartTurn(_map : Map, _unit : UnitInstance):
+
+	pass
+
+func CommonStartTurn(_map : Map, _unit : UnitInstance):
+	# Because Behaviors are Resources, and because common Behaviors are shared between units
+	# It's really important to manually set these at the start of each turn, or else you'll get some wonkyness
+
 	unit = _unit
 	map = _map
 	grid = _map.grid
 
-func StartTurn(_map : Map, _unit : UnitInstance):
-	# Should be overwritten
-	pass
-
-func CommonStartTurn():
 	attacked = false
 	unit.QueueTurnStartDelay()
 

@@ -125,8 +125,8 @@ func ShowCombatResult(_netHealthChange, _complete : Callable):
 	ShowHealthBar(true)
 	death_indicator.visible = false
 	crit_chance_label.visible = false
-	healthbar.ModifyHealthOverTime(_netHealthChange)
 	healthBarTweenCallable = _complete
+	healthbar.ModifyHealthOverTime(_netHealthChange)
 
 func HealthbarTweenComplete():
 	if !healthBarTweenCallable.is_null():

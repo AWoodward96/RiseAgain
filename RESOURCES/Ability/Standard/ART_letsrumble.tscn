@@ -62,7 +62,6 @@ customAITargetingBehavior = ExtResource("10_qo1sr")
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("2_dthvd")
 AgressiveStat = ExtResource("3_5qj0n")
-DamageToHealthRatio = ""
 
 [node name="TargetingData" type="Node2D" parent="."]
 script = ExtResource("4_wselu")
