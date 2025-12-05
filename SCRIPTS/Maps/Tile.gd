@@ -4,7 +4,8 @@ var GlobalPosition
 var Position
 var IsWall
 
-var MainTileData : TileMetaData 	# For the 'main' tile - or anything that sits on top of the bg
+var MainTileData : TileMetaData 	# For the 'main' tile - or anything that sits on top of the bg like a wall
+var DestructableData : TileMetaData # Similar to main, but specifically for tiles that are destructable
 var BGTileData : TileMetaData		# For the 'bg' tile - which can never be null
 var SubBGTileData : TileMetaData	# For the 'water' or other tiles that hide behind the BG - this CAN be null
 var TerrainDestroyed : bool
@@ -40,8 +41,6 @@ func InitMetaData():
 	Water = false
 
 	if MainTileData != null:
-		MaxHealth = MainTileData.Health
-		Health = MainTileData.Health
 		IsShroud = MainTileData.Shroud
 
 	if BGTileData != null:
@@ -51,6 +50,11 @@ func InitMetaData():
 	if SubBGTileData != null:
 		Killbox = Killbox || SubBGTileData.Killbox
 		Water = Water || SubBGTileData.Water
+
+	if DestructableData != null:
+		IsShroud = Shroud || DestructableData.Shroud
+		MaxHealth = DestructableData.Health
+		Health = DestructableData.Health
 
 	RefreshActiveKillbox()
 

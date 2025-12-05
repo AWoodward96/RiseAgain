@@ -890,7 +890,7 @@ shape = SubResource("RectangleShape2D_4m7bv")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_6rlt4")
-position = Vector2(32, 32)
+position = Vector2(32, 24)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sdmmp")
 animation = &"attack_down"

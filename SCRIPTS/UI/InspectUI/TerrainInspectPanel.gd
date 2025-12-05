@@ -24,12 +24,16 @@ var createdGridEntityInfos : Array[Control]
 
 func Update(_tile : Tile):
 	shouldShow = false
-	if _tile.MainTileData != null && _tile.MaxHealth > 0 && _tile.Health > 0:
+	if _tile.DestructableData != null && _tile.MaxHealth > 0 && _tile.Health > 0:
 		tile_health_parent.visible = true
-		tile_name.text = tr(_tile.MainTileData.loc_name)
+		tile_name.text = tr(_tile.DestructableData.loc_name)
 		tile_health.text = str(_tile.Health)
 		shouldShow = true
-	elif _tile.MainTileData != null && _tile.MaxHealth <= 0 && !_tile.TerrainDestroyed:
+	elif _tile.DestructableData != null && _tile.MaxHealth <= 0 && !_tile.TerrainDestroyed:
+		tile_health_parent.visible = false
+		tile_name.text = tr(_tile.DestructableData.loc_name)
+		shouldShow = true
+	elif _tile.MainTileData != null:
 		tile_health_parent.visible = false
 		tile_name.text = tr(_tile.MainTileData.loc_name)
 		shouldShow = true

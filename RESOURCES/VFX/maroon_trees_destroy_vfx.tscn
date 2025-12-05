@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1le47nr1jt1g"]
 
 [ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_qn0tn"]
-[ext_resource type="Texture2D" uid="uid://bh2ybepd84ihd" path="res://ART/VFX/maroon_deadtree_death_particles_2.png" id="2_qn0tn"]
+[ext_resource type="Texture2D" uid="uid://r7argonbh6k7" path="res://ART/VFX/maroon_deadtree_death_particles_4.png" id="2_jetpr"]
 [ext_resource type="Texture2D" uid="uid://bke1wpqtktshf" path="res://ART/VFX/4x4_particles.png" id="4_skwjv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_skwjv"]
@@ -35,7 +35,7 @@ position = Vector2(32, 56)
 scale = Vector2(2, 2)
 emitting = false
 amount = 16
-texture = ExtResource("2_qn0tn")
+texture = ExtResource("2_jetpr")
 one_shot = true
 explosiveness = 1.0
 emission_shape = 1

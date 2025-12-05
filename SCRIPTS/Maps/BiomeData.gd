@@ -13,3 +13,14 @@ class_name BiomeData
 @export var UnitHue : float = 1
 @export var UnitSaturation : float = 1
 @export var UnitValue : float = 1
+@export var GrayscaleUnitOffset : float = 0
+
+@export_category("Environmental Effects")
+@export var DirectionalLight : PackedScene
+@export var UnitLight : PackedScene
+@export var ReticleLight : PackedScene
+@export var Particles : PackedScene
+
+@export_category("Audio Data")
+@export var AmbienceNoise : FastNoiseLite
+@export var AmbienceSpeed : float = 5

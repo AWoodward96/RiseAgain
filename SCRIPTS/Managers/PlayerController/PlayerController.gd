@@ -47,6 +47,8 @@ var desiredCameraPosition : Vector2 = Vector2(0,0)
 var lastItemFilter
 var totalMapSize
 
+var envLight : Node2D
+
 # UIs
 var formationUI
 var combatHUD : CombatHUD
@@ -69,6 +71,13 @@ func Initialize(_map: Map):
 	tileSize = _map.TileSize
 	tileHalfSize = tileSize / 2
 	UpdateCameraBounds()
+
+	if envLight != null:
+		envLight.queue_free()
+
+	if _map.Biome != null && _map.Biome.ReticleLight != null:
+		envLight = _map.Biome.ReticleLight.instantiate()
+		reticle.add_child(envLight)
 
 
 	# Both of these methods just refresh the objective ui

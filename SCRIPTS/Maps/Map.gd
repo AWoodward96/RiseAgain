@@ -6,10 +6,12 @@ static var Current : Map
 const SUBBGLAYER : int = -6
 const BGLAYER : int = -5
 const MAINLAYER : int = -5
+const DESTRUCTABLELAYER : int = 0
 const EXTRALAYER : int = -4
 const UILAYER : int = -3
 const THREATLAYER : int = 0
 const FIRELAYER : int = 2
+const UI_LIGHTMASK : int = 20
 
 signal OnUnitDied(_unitInstance : UnitInstance, _context : DamageStepResult)
 
@@ -36,6 +38,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var tilemap_bg : TileMapLayer
 @export var tilemap_water : TileMapLayer
 @export var tilemap_main : TileMapLayer
+@export var tilemap_destructable : TileMapLayer
 @export var tilemap_threat : TileMapLayer
 @export var tilemap_fire : TileMapLayer
 @export var tilemap_UI : TileMapLayer
@@ -111,8 +114,26 @@ func PreInitialize():
 	if tilemap_bg != null: tilemap_bg.z_index = BGLAYER
 	if tilemap_fire != null: tilemap_fire.z_index = FIRELAYER
 	if tilemap_main != null: tilemap_main.z_index = MAINLAYER
-	if tilemap_UI != null: tilemap_UI.z_index = UILAYER
-	if tilemap_threat != null: tilemap_threat.z_index = THREATLAYER
+	if tilemap_destructable != null :
+		tilemap_destructable.z_index = DESTRUCTABLELAYER
+		tilemap_destructable.y_sort_enabled = true
+		y_sort_enabled = true
+
+	if tilemap_UI != null:
+		tilemap_UI.z_index = UILAYER
+		tilemap_UI.light_mask = UI_LIGHTMASK # to keep light from affecting ui tiles
+
+	if tilemap_threat != null:
+		tilemap_threat.z_index = THREATLAYER
+		tilemap_threat.light_mask = UI_LIGHTMASK # to keep light from affecting threat
+
+
+	if Biome != null:
+		if Biome.DirectionalLight != null:
+			add_child(Biome.DirectionalLight.instantiate())
+
+		if Biome.Particles != null:
+			add_child(Biome.Particles.instantiate())
 
 	AudioManager.UpdateBiomeData(Biome)
 
@@ -437,9 +458,10 @@ func TryAddItemToConvoy(_item : Item):
 func _input(event):
 	# this eats button inputs funnily enough, so the CSR menu wont work if this is commented in
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var mousePos = get_global_mouse_position()
-		var tile_pos = tilemap_main.local_to_map(mousePos)
-		OnTileClicked(tile_pos)
+		if tilemap_main != null:
+			var mousePos = get_global_mouse_position()
+			var tile_pos = tilemap_main.local_to_map(mousePos)
+			OnTileClicked(tile_pos)
 
 func OnTileClicked(a_tilePosition : Vector2i) :
 	if grid.PositionIsInGridBounds(a_tilePosition) :

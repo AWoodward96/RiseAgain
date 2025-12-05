@@ -1161,6 +1161,7 @@ _data = {
 }
 
 [node name="visMercenary" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+y_sort_enabled = true
 script = ExtResource("1_0u6q6")
 AnimationCTRL = NodePath("AnimationPlayer")
 AnimationWorkComplete = true
@@ -1179,6 +1180,7 @@ texture = ExtResource("2_iq8xo")
 centered = false
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_33jkh")
 position = Vector2(32, 16)
 scale = Vector2(2, 2)

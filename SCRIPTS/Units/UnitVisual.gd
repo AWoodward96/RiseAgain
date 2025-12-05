@@ -8,21 +8,32 @@ var sprite : Sprite2D
 var visual : AnimatedSprite2D
 var MyUnit : UnitInstance
 
+var greyscale_base : float = 0
 var take_damage_step : int = 0
+var envPointLight : Node2D
 
 func _ready():
 	# Sometimes visuals are used in UI's so I need an additional GetVisuals call in the Ready func so that I don't
 	# need an instance to display them
 	GetVisuals()
+	if visual != null && AnimationWorkComplete:
+		greyscale_base = visual.material.get_shader_parameter("grey_scale_offset")
 
 func Initialize(_unit : UnitInstance) :
 	MyUnit = _unit
 	GetVisuals()
 	RefreshAllegience()
+	RefreshFlying()
 
 func GetVisuals():
 	visual = get_node_or_null("Visual")
 	sprite = get_node_or_null("Sprite2D")
+
+	if visual != null:
+		visual.y_sort_enabled = true
+	if sprite != null:
+		sprite.y_sort_enabled = true
+	y_sort_enabled = true
 
 func RefreshAllegience(_override : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.INVALID):
 	var allegience = _override
@@ -50,15 +61,26 @@ func RefreshAllegience(_override : GameSettingsTemplate.TeamID = GameSettingsTem
 	UpdateHueSaturationValue()
 
 func UpdateHueSaturationValue():
-	if AnimationWorkComplete && Map.Current != null:
+	if Map.Current != null:
+		if AnimationWorkComplete:
+			if Map.Current.Biome != null:
+				visual.material.set_shader_parameter("hue", Map.Current.Biome.UnitHue)
+				visual.material.set_shader_parameter("saturation", Map.Current.Biome.UnitSaturation)
+				visual.material.set_shader_parameter("value", Map.Current.Biome.UnitValue)
+				visual.material.set_shader_parameter("grey_scale_offset", greyscale_base + Map.Current.Biome.GrayscaleUnitOffset)
+			else:
+				visual.material.set_shader_parameter("hue", 1)
+				visual.material.set_shader_parameter("saturation", 1)
+				visual.material.set_shader_parameter("value", 1)
+
 		if Map.Current.Biome != null:
-			visual.material.set_shader_parameter("hue", Map.Current.Biome.UnitHue)
-			visual.material.set_shader_parameter("saturation", Map.Current.Biome.UnitSaturation)
-			visual.material.set_shader_parameter("value", Map.Current.Biome.UnitValue)
-		else:
-			visual.material.set_shader_parameter("hue", 1)
-			visual.material.set_shader_parameter("saturation", 1)
-			visual.material.set_shader_parameter("value", 1)
+			if envPointLight != null:
+				envPointLight.queue_free()
+
+			if Map.Current.Biome.UnitLight != null:
+				envPointLight = Map.Current.Biome.UnitLight.instantiate()
+				add_child(envPointLight)
+
 
 func SetActivated(_activated : bool):
 	if AnimationWorkComplete:
@@ -89,6 +111,12 @@ func UpdateSubmerged(_submerged : bool):
 	else:
 		if SubmergedParent != null:
 			SubmergedParent.visible = _submerged
+
+func RefreshFlying():
+	if AnimationWorkComplete:
+		visual.z_index = 1 if MyUnit.IsFlying else 0
+	else:
+		sprite.z_index = 1 if MyUnit.IsFlying else 0
 
 func UpdateShrouded():
 	visible = !MyUnit.ShroudedFromPlayer

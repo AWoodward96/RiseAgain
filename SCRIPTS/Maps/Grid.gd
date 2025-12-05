@@ -62,13 +62,22 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 				if water_data != null:
 					GridArr[index].SubBGTileData = water_data.get_custom_data("MetaData") as TileMetaData
 
-			var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
-			if main_data:
-				if main_data.get_collision_polygons_count(0) > 0 :
-					GridArr[index].IsWall = true
 
-				GridArr[index].MainTileData = main_data.get_custom_data("MetaData") as TileMetaData
+			if map.tilemap_main != null:
+				var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
+				if main_data:
+					if main_data.get_collision_polygons_count(0) > 0 :
+						GridArr[index].IsWall = true
 
+					GridArr[index].MainTileData = main_data.get_custom_data("MetaData") as TileMetaData
+
+			if map.tilemap_destructable != null:
+				var destructable_data = map.tilemap_destructable.get_cell_tile_data(Vector2i(x,y))
+				if destructable_data:
+					if destructable_data.get_collision_polygons_count(0) > 0:
+						GridArr[index].IsWall = true
+
+					GridArr[index].DestructableData = destructable_data.get_custom_data("MetaData") as TileMetaData
 
 			GridArr[index].InitMetaData()
 
@@ -105,7 +114,7 @@ func RefreshShroud():
 		Shrouds.append(ShroudInstance.Construct(clump, map))
 
 
-func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
+func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID):
 	var allAlliedUnits : Array[UnitInstance] = []
 	if _allegience == GameSettingsTemplate.TeamID.ENEMY:
 		allAlliedUnits = map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
@@ -114,7 +123,7 @@ func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : boo
 		for y in Height:
 			var index = y * Width + x
 			var currentTile = GridArr[index]
-			RefreshTilesCollision(currentTile, _allegience, _flying)
+			RefreshTilesCollision(currentTile, _allegience)
 
 			# Update the dijkstra map since we're already in here
 			if _allegience == GameSettingsTemplate.TeamID.ENEMY:
@@ -126,17 +135,26 @@ func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID, _flying : boo
 						currentManhattan = newManhattan
 
 
-func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.TeamID, _flying : bool = false):
+func RefreshTilesCollision(_tile : Tile, _allegience : GameSettingsTemplate.TeamID):
 	if _tile == null:
 		return
 
 	var x = _tile.Position.x
 	var y = _tile.Position.y
-	var main_data = map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
+
+	var main_data = null
+	var destructable_data = null
+
+	if map.tilemap_main != null: main_data =  map.tilemap_main.get_cell_tile_data(Vector2i(x,y))
+	if map.tilemap_destructable != null: destructable_data = map.tilemap_destructable.get_cell_tile_data(Vector2i(x,y))
 
 	_tile.IsWall = false
 	if main_data:
 		if main_data.get_collision_polygons_count(0) > 0 :
+			_tile.IsWall = true
+
+	if destructable_data:
+		if destructable_data.get_collision_polygons_count(0) > 0 && _tile.Health > 0:
 			_tile.IsWall = true
 
 	_tile.RefreshActiveKillbox()
@@ -473,16 +491,16 @@ func ModifyTileHealth(_healthDelta : int, _tile : Tile, _showDamageNumbers : boo
 func DestroyTerrain(_tile : Tile, _playVFX : bool):
 	_tile.TerrainDestroyed = true
 
-	if _tile.MainTileData != null:
-		if _tile.MainTileData.DestructionRewards.size() > 0:
-			PersistDataManager.universeData.AddResources(_tile.MainTileData.DestructionRewards, (_tile.Position * CellSize) + Vector2i(CellSize / 2, CellSize / 2))
+	if _tile.DestructableData != null:
+		if _tile.DestructableData.DestructionRewards.size() > 0:
+			PersistDataManager.universeData.AddResources(_tile.DestructableData.DestructionRewards, (_tile.Position * CellSize) + Vector2i(CellSize / 2, CellSize / 2))
 
-		if _tile.MainTileData.DestructionVFXPrefab != null && _playVFX:
-			var vfx = _tile.MainTileData.DestructionVFXPrefab.instantiate()
+		if _tile.DestructableData.DestructionVFXPrefab != null && _playVFX:
+			var vfx = _tile.DestructableData.DestructionVFXPrefab.instantiate()
 			vfx.position = _tile.GlobalPosition
 			map.add_child(vfx)
 
-	map.tilemap_main.set_cell(_tile.Position)
+	map.tilemap_destructable.set_cell(_tile.Position)
 	RefreshTilesCollision(_tile, map.currentTurn as int)
 
 

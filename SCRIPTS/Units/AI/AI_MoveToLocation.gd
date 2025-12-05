@@ -5,6 +5,7 @@ class_name AIMoveToLocation
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
+	CommonStartTurn(_map, _unit)
 
 	if unit.GridPosition == positionToMoveTo:
 		map.RemoveUnitFromMap(unit, false)

@@ -21,9 +21,12 @@ const INTENSITY_CAP : float = 5.0
 var localIntensity : float = 0
 var localFalloff : float = 0
 var currentBiome : BiomeData
+var ambienceDT : float
 
 var musicFadeOutTween : Tween
 var ambienceFadeOutTween : Tween
+
+
 
 # Commenting this out bc I don't think I want this to go down anymore
 # May revisit this system at a later date, but for now I'm not sure
@@ -71,11 +74,18 @@ func _process(delta: float):
 	if localFalloff > 0:
 		localFalloff -= delta
 
+	if currentBiome.AmbienceNoise != null:
+		ambienceDT += delta * currentBiome.AmbienceSpeed
+		var ambienceRandom = currentBiome.AmbienceNoise.get_noise_1d(ambienceDT)
+		AmbiencePlayer.volume = 1 + ambienceRandom
+
 
 func UpdateBiomeData(_biomeData : BiomeData):
 	currentBiome = _biomeData
 	if _biomeData == null:
 		return
+
+	ambienceDT = 0
 
 	if _biomeData.AmbienceID != "{00000000-0000-0000-0000-000000000000}":
 		if AmbiencePlayer.event_guid != _biomeData.AmbienceID:
@@ -96,6 +106,7 @@ func UpdateBiomeData(_biomeData : BiomeData):
 			MusicPlayer.play()
 	else:
 		FadeOutMusic()
+
 
 func PlayVictoryStinger():
 	if currentBiome == null:
