@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_x603r"]
 [ext_resource type="Resource" uid="uid://domjhjr7vmd4a" path="res://RESOURCES/TargetingShapes/nomorefun_shape.tres" id="8_laqrf"]
 [ext_resource type="Texture2D" uid="uid://b2enme711jblo" path="res://ART/Grid/arrow_rain_telegraph.png" id="9_i2hxp"]
-[ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="10_1it7c"]
+[ext_resource type="Texture2D" uid="uid://bq1qg6ahjd440" path="res://ART/Icons/Ability/Standard/nomorefun.png" id="10_laqrf"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="11_go5bl"]
 
 [sub_resource type="Resource" id="Resource_e76h8"]
@@ -53,7 +53,7 @@ telegraphTilemap = NodePath("TileMapLayer")
 shapedTiles = ExtResource("8_laqrf")
 UpdatePerTeamTurn = true
 PreviewSprite = ExtResource("9_i2hxp")
-localization_icon = ExtResource("10_1it7c")
+localization_icon = ExtResource("10_laqrf")
 localization_desc = "art_nomorefun_name"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

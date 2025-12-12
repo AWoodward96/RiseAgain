@@ -1,6 +1,8 @@
 extends Node2D
 class_name UnitVisual
 
+signal AnimationDealDamageCallback
+
 @export var AnimationCTRL : AnimationPlayer
 @export var AnimationWorkComplete : bool = false
 @export var SubmergedParent : Node2D
@@ -88,7 +90,7 @@ func SetActivated(_activated : bool):
 	else:
 		if _activated:
 			sprite.self_modulate = Color.WHITE
-			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 0, false)
+			MyUnit.TryPlayIdleAnimation()
 		else:
 			sprite.self_modulate = GameManager.GameSettings.Alpha_DeactivatedModulate
 
@@ -137,13 +139,17 @@ func PlayAlertedFromShroudAnimation():
 	await get_tree().create_timer(1).timeout
 	UpdateShrouded()
 
+func AnimationDealDamage():
+	AnimationDealDamageCallback.emit()
 
 func PlayDamageAnimation(_autoReturnToIdle = true):
 	if AnimationWorkComplete:
 		if MyUnit.ShroudedFromPlayer:
 			PlayAlertedFromShroudAnimation()
 
-		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE, false, 1, false)
+		if !MyUnit.UsingSlowSpeedAbility:
+			PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE, false, 1, false)
+
 		visual.material.set_shader_parameter("use_color_override", true)
 		visual.material.set_shader_parameter("color_override", Color.RED)
 
@@ -159,7 +165,7 @@ func PlayDamageAnimation(_autoReturnToIdle = true):
 
 		await get_tree().create_timer(2).timeout
 
-		if AnimationCTRL.current_animation == UnitSettingsTemplate.ANIM_TAKE_DAMAGE && _autoReturnToIdle:
+		if AnimationCTRL.current_animation == UnitSettingsTemplate.ANIM_TAKE_DAMAGE && _autoReturnToIdle && !MyUnit.UsingSlowSpeedAbility:
 			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 1, false)
 
 

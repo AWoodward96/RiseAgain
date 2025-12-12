@@ -1,6 +1,8 @@
 extends Resource
 class_name GameSettingsTemplate
 
+
+static var TILESIZE : int = 64
 enum TeamID { ALLY = 1, ENEMY = 2, NEUTRAL = 4, INVALID = -1 }
 enum Direction { Up, Right, Down, Left }
 enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3 }
@@ -314,8 +316,10 @@ func ExpFromKillCalculation(_damageDealt : int, _source : UnitInstance, _target 
 	if _isAOE:
 		equationResult = equationResult * GameManager.GameSettings.AOEExpMultiplier
 
+	# cap this at 100, because if X > 8 then holy fuck you can jump in some levels
+	equationResult = clamp(equationResult, 1, 100)
+
 	print("Evaluated Exp Gain At {0}. Scaling: {4} Damage Dealt: {1}. Level Dif {2}. Is AOE: {3}".format([equationResult, _damageDealt, X, _isAOE, scalingCalc]))
-	equationResult = max(equationResult, 1)
 	return equationResult
 
 func CalculatePar(_map : Map):

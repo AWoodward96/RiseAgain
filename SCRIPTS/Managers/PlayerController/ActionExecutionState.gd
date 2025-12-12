@@ -17,7 +17,6 @@ func _Enter(_ctrl : PlayerController, data):
 	ctrl.reticle.visible = false
 	ctrl.BlockMovementInput = true
 
-
 	AudioManager.IncrementIntensity()
 
 	if source != null:

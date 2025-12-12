@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="6_vmhrq"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_rmrud"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="8_8xkrf"]
-[ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="9_hr2k6"]
 [ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="9_nct4d"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="10_b5bbe"]
 [ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="10_vmhrq"]
+[ext_resource type="Texture2D" uid="uid://c8rgr46ijn12k" path="res://ART/Icons/Ability/Standard/bomblauncher.png" id="11_nct4d"]
 [ext_resource type="Shader" uid="uid://cn5td7o70mh5v" path="res://RESOURCES/GridEntities/GridEntityHighlight.gdshader" id="13_nct4d"]
 [ext_resource type="Texture2D" uid="uid://bl4kcxevb7xpv" path="res://ART/GridEntities/launcher_bomb.png" id="13_rmrud"]
 
@@ -31,7 +31,6 @@ metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
 [sub_resource type="Resource" id="Resource_utjrs"]
 script = ExtResource("6_vmhrq")
-useAttackAction = false
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
 [sub_resource type="Resource" id="Resource_utcex"]
@@ -119,7 +118,7 @@ executionStack = Array[ExtResource("2_eyes5")]([SubResource("Resource_o5jkg"), S
 telegraphTilemap = NodePath("TileMapLayer")
 shapedTiles = SubResource("Resource_t83xg")
 UpdatePerTeamTurn = true
-localization_icon = ExtResource("9_hr2k6")
+localization_icon = ExtResource("11_nct4d")
 localization_desc = "art_bomblauncher_name"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

@@ -176,6 +176,7 @@ func Move(_destination : Vector2, _distance : float, _speed : float, _delta : fl
 				JumpTimer += _delta / 1
 			else:
 				unit.LandSound.play()
+				unit.position = _destination
 			pass
 
 func _Exit():

@@ -2,6 +2,7 @@ extends PassiveListenerBase
 class_name PassiveUnitDeathListener
 
 @export var includeSelf : bool
+@export var reqOnlyOnSelfDeath : bool
 @export var reqKilledByUser : bool
 @export var reqKilledByWeapon : bool
 @export var reqOnEnemyTurn : bool
@@ -41,6 +42,9 @@ func CheckRequirements(_unitThatDied : UnitInstance, _context : DamageStepResult
 		return passes
 
 	if !includeSelf && _unitThatDied == ability.ownerUnit:
+		passes = false
+
+	if reqOnlyOnSelfDeath && _unitThatDied != ability.ownerUnit:
 		passes = false
 
 	if descriptorFilter != null:

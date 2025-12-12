@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=52 format=3 uid="uid://txjfcstralf6"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=37 format=3 uid="uid://txjfcstralf6"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_vy8pt"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_ieqod"]
@@ -16,18 +16,8 @@
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_h0e5d"]
 [ext_resource type="PackedScene" uid="uid://doxn71htn5rvr" path="res://RESOURCES/Units/Enemy/BanditBoss/VIS_BanditBoss.tscn" id="12_ieqod"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_vf3cb"]
-[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="13_kf6tu"]
-[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="14_2xa3j"]
 [ext_resource type="Texture2D" uid="uid://cjrp3ll0fhp7" path="res://ART/Icons/Units/banditboss.png" id="14_jeiil"]
 [ext_resource type="Resource" uid="uid://dcxjuftthcd2x" path="res://RESOURCES/Unlocks/ULK_blunt.tres" id="15_e2cik"]
-[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="15_p8mo6"]
-[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="16_e2cik"]
-[ext_resource type="PackedScene" uid="uid://dsjmls2c4362e" path="res://RESOURCES/GridEntities/ge_launcherbomb.tscn" id="17_k7r3a"]
-[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="18_pv12v"]
-[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="19_lowip"]
-[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="20_bgdu5"]
-[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="21_huiq2"]
-[ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="22_umk3d"]
 
 [sub_resource type="Resource" id="Resource_0hxi7"]
 script = ExtResource("2_ieqod")
@@ -78,38 +68,6 @@ script = ExtResource("2_ieqod")
 Template = ExtResource("12_e2cik")
 Value = 2.0
 
-[sub_resource type="Resource" id="Resource_ggq14"]
-script = ExtResource("15_p8mo6")
-metadata/_custom_type_script = "uid://c8cj2607kxmat"
-
-[sub_resource type="Resource" id="Resource_b0j54"]
-script = ExtResource("16_e2cik")
-time = 0.5
-metadata/_custom_type_script = "uid://d4hhypdwxek2y"
-
-[sub_resource type="Resource" id="Resource_xidfr"]
-script = ExtResource("18_pv12v")
-GridEntityPrefab = ExtResource("17_k7r3a")
-metadata/_custom_type_script = "uid://chqum0vfdwrt7"
-
-[sub_resource type="Resource" id="Resource_apn66"]
-script = ExtResource("2_ieqod")
-Template = ExtResource("4_jeiil")
-Value = 3
-
-[sub_resource type="PackedScene" id="PackedScene_85sgu"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("bomblauncher", "Node2D", "script", "type", "abilityCooldown", "ability_speed", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script", "TeamTargeting", "TargetRange", "Type", "CanTargetSelf", "shapedTiles"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 2, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 4, 20, 14, 21, 15, 22, 16, 23, 17, 0, 1073741826, 0, 25, 24, -1, 6, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 31, 23, 0),
-"variants": [ExtResource("13_kf6tu"), 1, 0, 2, Array[ExtResource("14_2xa3j")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_xidfr")]), true, "bomblauncher", "weap_bomblauncher_name", "weap_bomblauncher_desc", NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("19_lowip"), Array[ExtResource("2_ieqod")]([SubResource("Resource_apn66")]), ExtResource("20_bgdu5"), ExtResource("4_jeiil"), ExtResource("5_h0e5d"), 0.0, ExtResource("21_huiq2"), 2, Vector2i(1, 3), 1, true, ExtResource("22_umk3d")],
-"version": 3
-}
-
 [sub_resource type="Resource" id="Resource_bgdu5"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
@@ -157,8 +115,7 @@ BaseStats = Array[ExtResource("2_ieqod")]([SubResource("Resource_0hxi7"), SubRes
 StatGrowths = Array[ExtResource("2_ieqod")]([SubResource("Resource_bgdu5"), SubResource("Resource_huiq2"), SubResource("Resource_umk3d"), SubResource("Resource_85sgu"), SubResource("Resource_g3q6i"), SubResource("Resource_5aln8"), SubResource("Resource_fprfd"), SubResource("Resource_b8oh7")])
 Affinity = ExtResource("1_vy8pt")
 StartingEquippedWeapon = ExtResource("15_e2cik")
-StartingTactical = SubResource("PackedScene_85sgu")
-Tier0Abilities = Array[String](["uid://vlpjvct6tdeb", "uid://bmnt8dm1yjmy8", "uid://bxhhl5qkaojly", "uid://c6xs7nrvsx6f1", "uid://b7f1m6vpdgchf"])
+Tier0Abilities = Array[String](["uid://vlpjvct6tdeb", "uid://bxhhl5qkaojly", "uid://c6xs7nrvsx6f1", "uid://b7f1m6vpdgchf"])
 GridSize = 2
 DebugName = "BanditBoss"
 loc_DisplayName = "unit_banditboss_name"

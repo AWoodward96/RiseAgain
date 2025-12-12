@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://vlpjvct6tdeb"]
+[gd_scene load_steps=17 format=3 uid="uid://vlpjvct6tdeb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7k132"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_jnndm"]
 [ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_j3csn"]
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_870y1"]
 [ext_resource type="PackedScene" uid="uid://dsjmls2c4362e" path="res://RESOURCES/GridEntities/ge_launcherbomb.tscn" id="5_fuvay"]
+[ext_resource type="Script" uid="uid://cnlspk1u6udgh" path="res://SCRIPTS/Ability/PlayAnimationStep.gd" id="5_jnndm"]
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="6_bps40"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="7_0h1cp"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_elhho"]
+[ext_resource type="Texture2D" uid="uid://c8rgr46ijn12k" path="res://ART/Icons/Ability/Standard/bomblauncher.png" id="8_j3csn"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_ngqtq"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="10_moevg"]
 
@@ -20,6 +22,12 @@ script = ExtResource("4_870y1")
 time = 0.5
 metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
+[sub_resource type="Resource" id="Resource_jnndm"]
+script = ExtResource("5_jnndm")
+AnimName = "throw_bomb"
+WaitForAnimFinished = true
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
 [sub_resource type="Resource" id="Resource_xidfr"]
 script = ExtResource("6_bps40")
 GridEntityPrefab = ExtResource("5_fuvay")
@@ -29,10 +37,11 @@ metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 script = ExtResource("1_7k132")
 abilityCooldown = 0
 ability_speed = 1
-executionStack = Array[ExtResource("2_jnndm")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_xidfr")])
+executionStack = Array[ExtResource("2_jnndm")]([SubResource("Resource_ggq14"), SubResource("Resource_b0j54"), SubResource("Resource_jnndm"), SubResource("Resource_xidfr")])
 internalName = "bomblauncher"
 loc_displayName = "art_bomblauncher_name"
 loc_displayDesc = "art_bomblauncher_desc"
+icon = ExtResource("8_j3csn")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

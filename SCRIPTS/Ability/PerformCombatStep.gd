@@ -1,7 +1,8 @@
 extends ActionStep
 class_name PerformCombatStep
 
-@export var useAttackAction : bool = true
+
+@export var useGenericAttackStyle : bool = true # If true, use the generics
 @export var useDefendAction : bool = true
 
 var cooloff : float
@@ -9,15 +10,18 @@ var cooloff : float
 var waitForActionToFinish : bool
 var waitForPostActionToFinish : bool
 var affectedTiles : Array[TileTargetedData]
+var retaliationResults : Array[DamageStepResult]
+var retaliationComplete : bool = false
 
 
 func Enter(_actionLog : ActionLog):
 	super(_actionLog)
 	cooloff = 0
 
-	#if useAttackAction:
-		# The attack will take the log - and will determine who they're 'striking' visually based on the log
-	source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, useAttackAction, false)
+	var style = ability.animationStyle
+	if useGenericAttackStyle && style == null:
+		style = GameManager.UnitSettings.GenericAttackAnimation
+
 
 	# The defending units however, need the specific result to take damage from
 	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
@@ -31,13 +35,14 @@ func Enter(_actionLog : ActionLog):
 					damageStepResult = subActionRes.SubStepResult[log.subActionStackIndex] as PerformCombatStepResult
 
 
-
 		damageStepResult.RollChance(Map.Current.mapRNG)
 		print(damageStepResult.ToString())
 
 		if subActionRes != null:
 			subActionRes.ExpGain += damageStepResult.ExpGain
 
+		retaliationResults.clear()
+		retaliationComplete = false
 		if damageStepResult.Target != null:
 			# ignore any unit that's dying
 			if damageStepResult.Target.IsDying:
@@ -45,21 +50,35 @@ func Enter(_actionLog : ActionLog):
 				continue
 
 			if useDefendAction:
-				damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
+				#damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
 
 				if damageStepResult.RetaliationResult != null:
 					var retaliation = damageStepResult.RetaliationResult
 					if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
 						log.responseResults.append(retaliation)
 						retaliation.RollChance(Map.Current.mapRNG)
-						retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, true, true)
-						retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
+						retaliationResults.append(retaliation)
+						#retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, retaliation.AbilityData.animationStyle, true)
+						#retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:
-				damageStepResult.Target.DoCombat(damageStepResult)
+				pass
+				#damageStepResult.Target.DoCombat(damageStepResult)
+
+	source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, style, false)
 	pass
 
 func Execute(_delta):
 	if AffectedUnitsClear():
+		if !retaliationComplete:
+			retaliationComplete = true
+			for retaliation in retaliationResults:
+				var retaliationStyle = retaliation.AbilityData.animationStyle
+				if retaliationStyle == null:
+					retaliationStyle = GameManager.UnitSettings.GenericAttackAnimation
+
+				retaliation.Source.QueueAttackSequence(retaliation.Target.global_position,log, retaliationStyle, true)
+			return false
+
 		cooloff += _delta
 		return cooloff > Juice.combatSequenceCooloffTimer
 
@@ -86,6 +105,9 @@ func WillRetaliate(_result : PerformCombatStepResult):
 	if defendingUnit.EquippedWeapon == null:
 		return false
 
+	if defendingUnit.UsingSlowSpeedAbility:
+		return false
+
 	for ce in defendingUnit.CombatEffects:
 		if ce is StunEffectInstance:
 			return false
@@ -98,10 +120,12 @@ func WillRetaliate(_result : PerformCombatStepResult):
 	if range == Vector2i.ZERO:
 		return false
 
-	var combatDistance = defendingUnit.map.grid.GetManhattanDistance(_result.SourceTile.Position, defendingUnit.GridPosition)
-	# so basically, if the weapon this unit is holding, has a max range
-	if range.x <= combatDistance && range.y >= combatDistance:
-		return true
+	for i in range(0, defendingUnit.Template.GridSize):
+		for j in range(0, defendingUnit.Template.GridSize):
+			var combatDistance = defendingUnit.map.grid.GetManhattanDistance(_result.SourceTile.Position, defendingUnit.GridPosition + Vector2i(i, j))
+			# so basically, if the weapon this unit is holding, has a max range
+			if range.x <= combatDistance && range.y >= combatDistance:
+				return true
 
 	return false
 
@@ -119,10 +143,17 @@ func BuildRetaliationResult(_result : PerformCombatStepResult):
 func AffectedUnitsClear():
 	var r = true
 	for u in log.actionStepResults:
-		if u.Target == null:
+		if u.Source == null:
 			continue
 
-		if !u.Target.IsStackFree:
+		if !u.Source.IsStackFree:
+			r = false
+
+	for u in retaliationResults:
+		if u.Source == null:
+			continue
+
+		if !u.Source.IsStackFree:
 			r = false
 
 	return r

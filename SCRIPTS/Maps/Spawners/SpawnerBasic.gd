@@ -31,14 +31,14 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 		return
 
 	var level = UnitLevel
-	if _map.CurrentCampaign != null:
-		# Go with whichever one is higher at the moment
-		level = max(_map.CurrentCampaign.currentLevelDifficulty, UnitLevel)
+	#if _map.CurrentCampaign != null:
+		## Go with whichever one is higher at the moment
+		#level = max(_map.CurrentCampaign.currentLevelDifficulty, UnitLevel)
 
 	# No negative levels plz
-	level = max(level, 0)
+	level = max(level + DeltaLevel, 0)
 
-	var unit = _map.CreateUnit(UnitToSpawn, level + DeltaLevel)
+	var unit = _map.CreateUnit(UnitToSpawn, level)
 	_map.InitializeUnit(unit, Position, Allegiance, 1, ExtraHealthBars)
 	unit.SetAI(AIBehavior, AggroBehavior)
 	unit.ExtraEXPGranted = ExtraEXPGranted

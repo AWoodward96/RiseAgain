@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dbwdpln02d513"]
+
+[node name="white_directional_lights" type="DirectionalLight2D"]
+energy = 0.1
+blend_mode = 1

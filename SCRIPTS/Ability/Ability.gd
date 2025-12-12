@@ -21,6 +21,8 @@ enum AbilitySpeed { Normal, Fast, Slow }
 @export var executionStack : Array[ActionStep]
 @export var passiveListeners : Array[PassiveListenerBase]
 
+@export var animationStyle : CombatAnimationStyleTemplate
+
 var remainingCooldown : int = 0
 var remainingUsages : int = 0
 var kills : int = 0
@@ -60,6 +62,9 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 			else:
 				if ability_speed != AbilitySpeed.Fast:
 					_actionLog.source.QueueEndTurn()
+
+				if ability_speed == AbilitySpeed.Slow:
+					ownerUnit.UsingSlowSpeedAbility = true
 
 				AbilityActionComplete.emit()
 

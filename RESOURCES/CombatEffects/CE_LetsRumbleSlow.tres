@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="StatChangeEffect" load_steps=6 format=3 uid="uid://b68i1vyfgx87o"]
+
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_sdar7"]
+[ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="2_c5uvx"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="3_71n4o"]
+[ext_resource type="Texture2D" uid="uid://34hpwo1cqifn" path="res://ART/Icons/slowed_icon.png" id="3_c5uvx"]
+
+[sub_resource type="Resource" id="Resource_e28kq"]
+script = ExtResource("1_sdar7")
+Stat = ExtResource("2_c5uvx")
+FlatValue = -2
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[resource]
+script = ExtResource("3_71n4o")
+StatChanges = Array[ExtResource("1_sdar7")]([SubResource("Resource_e28kq")])
+AffectedTargets = 1
+Turns = 3
+loc_name = "ce_slowed"
+loc_desc = "ce_slowed_effect"
+loc_icon = ExtResource("3_c5uvx")
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"

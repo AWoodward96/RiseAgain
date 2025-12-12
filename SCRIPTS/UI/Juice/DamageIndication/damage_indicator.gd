@@ -91,7 +91,7 @@ func ShowPreview():
 		entry.label.text = template.loc_name
 
 	if !submerged:
-		ShowHealthBar(true)
+		ShowHealthBar(true, false)
 		healthbar.RefreshIncomingDamageBar()
 		healthbar.ModifyHealthOverTime(normalDamage + collisionDamage + healAmount)
 
@@ -116,10 +116,13 @@ func SetSubmerged(_bool : bool):
 	submerged = _bool
 	affinityIcon.visible = !_bool
 
-func ShowHealthBar(_visible : bool):
+func ShowHealthBar(_visible : bool, _autohide : bool = true):
 	healthbar.visible = _visible
 	if _visible:
-		healthbar.Refresh()
+		healthbar.Refresh(_autohide)
+
+func AutoHide():
+	ShowHealthBar(false)
 
 func ShowCombatResult(_netHealthChange, _complete : Callable):
 	ShowHealthBar(true)
@@ -144,6 +147,9 @@ func HideCombatClutter():
 	death_indicator.visible = false
 	crit_chance_label.visible = false
 	pass
+
+func ShowCombatClutter():
+	affinityIcon.visible = true
 
 func HidePreview():
 	healthbar.visible = false

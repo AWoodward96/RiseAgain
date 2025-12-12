@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="6_b0k7w"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_k13g5"]
 [ext_resource type="Resource" uid="uid://bylhdq2a1w743" path="res://RESOURCES/TargetingShapes/egostrike_shape.tres" id="8_evq7x"]
-[ext_resource type="Texture2D" uid="uid://drc46accelypb" path="res://ART/Icons/Ability/Standard/arrow_rain.png" id="10_mom4g"]
+[ext_resource type="Texture2D" uid="uid://c3vam4qsjiifu" path="res://ART/Icons/Ability/Standard/egostrike.png" id="9_7we2v"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="11_jgk8o"]
 
 [sub_resource type="Resource" id="Resource_e76h8"]
@@ -38,6 +38,7 @@ metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
 [sub_resource type="Resource" id="Resource_utjrs"]
 script = ExtResource("6_b0k7w")
+useGenericAttackStyle = false
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
 [sub_resource type="Resource" id="Resource_utcex"]
@@ -51,7 +52,7 @@ executionStack = Array[ExtResource("2_0rb2c")]([SubResource("Resource_e76h8"), S
 telegraphTilemap = NodePath("TileMapLayer")
 shapedTiles = ExtResource("8_evq7x")
 UpdatePerTeamTurn = true
-localization_icon = ExtResource("10_mom4g")
+localization_icon = ExtResource("9_7we2v")
 localization_desc = "art_egostrike_name"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

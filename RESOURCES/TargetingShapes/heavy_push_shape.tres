@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TargetingShape" load_steps=7 format=3 uid="uid://dfgct7hrrdmnw"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_7q51j"]
+[ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="2_0ccj4"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="3_mgkky"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="4_lw870"]
+
+[sub_resource type="Resource" id="Resource_sudk6"]
+script = ExtResource("2_0ccj4")
+pushAmount = 3
+carryLimit = 1
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_fxvey"]
+script = ExtResource("3_mgkky")
+HitsEnvironment = false
+pushInfo = SubResource("Resource_sudk6")
+Position = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[resource]
+script = ExtResource("4_lw870")
+TileCoordinates = Array[ExtResource("1_7q51j")]([SubResource("Resource_fxvey")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"

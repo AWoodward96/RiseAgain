@@ -8,6 +8,7 @@ signal HealthBarTweenCallback
 @export var ArmorBar : ProgressBar
 @export var InjuredBar : ProgressBar
 @export var HealthText : Label
+@export var ExtraHealthBarParent : Control
 @export var ExtraHealthBarLabel : Label
 @export var HideTimer : Timer
 @export var InjuredParent : Control
@@ -63,20 +64,13 @@ func SetUnit(_unit : UnitInstance):
 	if !Unit.OnCombatEffectsUpdated.is_connected(RefreshCombatEffects):
 		Unit.OnCombatEffectsUpdated.connect(RefreshCombatEffects)
 
-	if HideTimer != null && !HideTimer.timeout.is_connected(AutoHide):
-		HideTimer.timeout.connect(AutoHide)
-
 	Refresh()
 	RefreshCombatEffects()
 
 func SetTile(_tile : Tile):
 	AssignedTile = _tile
-	if HideTimer != null && !HideTimer.timeout.is_connected(AutoHide):
-		HideTimer.timeout.connect(AutoHide)
 	Refresh()
 
-func AutoHide():
-	visible = false
 
 func ModifyHealthOverTime(_deltaHealthChange : int):
 	if Unit == null && AssignedTile == null:
@@ -137,13 +131,11 @@ func UpdateArmorBarTween(value):
 	HealthText.text += str(" + %01.0d" % value)
 	HealthBar.value = clampf(CurrentHealth, 0, MaxHealth) / MaxHealth as float
 	ArmorBar.value = clampf(value, 0, StartingArmor) / MaxHealth as float
-	if HideTimer != null: HideTimer.start() # restart it so it doesn't hide itself
 	pass
 
 func UpdateHealthBarTween(value):
 	HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, MaxHealth), MaxHealth])
 	HealthBar.value = clampf(value, 0, MaxHealth) / MaxHealth as float
-	if HideTimer != null: HideTimer.start() # restart it so it doesn't hide itself
 	pass
 
 func RefreshIncomingDamageBar():
@@ -152,10 +144,8 @@ func RefreshIncomingDamageBar():
 
 func UpdateBarTweenComplete():
 	HealthBarTweenCallback.emit()
-	if HideTimer != null:
-		HideTimer.start()
 
-func Refresh():
+func Refresh(_autohide : bool = true):
 	if Unit == null && AssignedTile == null:
 		return
 
@@ -208,11 +198,16 @@ func Refresh():
 		if Unit != null:
 			InjuredParent.visible = Unit.Injured
 
+	if ExtraHealthBarParent != null:
+		ExtraHealthBarParent.visible = Unit != null && Unit.extraHealthBars > 0
+
 	if ExtraHealthBarLabel != null:
 		ExtraHealthBarLabel.visible = Unit != null && Unit.extraHealthBars > 0
 		if Unit != null:
 			ExtraHealthBarLabel.text = tr(LocSettings.X_Num).format({"NUM" = str(Unit.extraHealthBars)})
-	pass
+
+	if _autohide && HideTimer != null:
+		HideTimer.start()
 
 func RefreshCombatEffects():
 	if EffectsList == null || Unit == null:

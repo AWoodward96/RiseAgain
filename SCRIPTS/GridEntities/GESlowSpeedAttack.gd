@@ -19,6 +19,7 @@ func Enter():
 	log = ActionLog.Construct(CurrentMap.grid, Source, SourceAbility)
 	log.actionOriginTile = Origin
 	log.affectedTiles = tiles
+	log.actionDirection = Direction
 	BuildResults()
 	log.actionStackIndex = -1
 

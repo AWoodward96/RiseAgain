@@ -20,6 +20,10 @@ func Enter(_actionLog : ActionLog):
 		for results in stepResults:
 			if results.Target == null:
 				continue
+
+			if results.Target.IsDying || results.Target.currentHealth <= 0:
+				continue
+
 			var effect = CombatEffectInstance.Create(source, results.Target, CombatEffect, _actionLog.ability, _actionLog)
 			if effect != null:
 				results.Target.AddCombatEffect(effect)

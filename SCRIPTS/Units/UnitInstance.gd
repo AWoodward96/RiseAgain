@@ -29,7 +29,7 @@ var GridPosition : Vector2i
 var CurrentTile : Tile
 var PreviousTraversedTile : Tile
 var Template : UnitTemplate
-var visual : UnitVisual # could be made generic, but probably not for now
+var visual : UnitVisual
 var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 var ItemSlots : Array[Item]
 var Abilities : Array[Ability]
@@ -45,6 +45,7 @@ var MovementVelocity : Vector2
 var CanMove : bool
 var PendingMove : bool
 var Injured : bool = false
+var UsingSlowSpeedAbility : bool = false
 
 var ActionStack : Array[UnitActionBase]
 var CurrentAction : UnitActionBase
@@ -660,13 +661,14 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 
 		TriggerTurnStartEffects()
 		UpdateCombatEffects()
+		UsingSlowSpeedAbility = false
 
 	# for 'canceling' movement
 	TurnStartTile = CurrentTile
 	DamageTakenLastTurn = DamageTakenThisTurn
 	DamageTakenThisTurn = 0
-	PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
-	if visual != null:
+	TryPlayIdleAnimation()
+	if visual != null && !UsingSlowSpeedAbility:
 		visual.ResetAnimation()
 
 func LockInMovement(_tile : Tile):
@@ -928,11 +930,11 @@ func Ignite(_fireLevel : int, _source : UnitInstance, _abilityData : Ability):
 func ShowHealthBar(_visible : bool):
 	damage_indicator.ShowHealthBar(_visible)
 
-func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _playGenericAttackAnimation : bool = true, _useRetaliation : bool = false):
+func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _animationStyle : CombatAnimationStyleTemplate, _useRetaliation : bool = false):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
 	attackAction.IsRetaliation = _useRetaliation
-	attackAction.PlayGenericAttackAnimation = _playGenericAttackAnimation
+	attackAction.AnimationStyle = _animationStyle
 
 	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
 	# This locks in which action is doing what and when
@@ -944,12 +946,13 @@ func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _playGenericA
 		PopAction()
 
 func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : DamageStepResult):
-	var defendAction = UnitDefendAction.new()
-	defendAction.SourcePosition = _damageSourcePosition
-	defendAction.Result = _result
-	ActionStack.append(defendAction)
-	if CurrentAction == null:
-		PopAction()
+	#var defendAction = UnitDefendAction.new()
+	#defendAction.SourcePosition = _damageSourcePosition
+	#defendAction.Result = _result
+	#ActionStack.append(defendAction)
+	#if CurrentAction == null:
+		#PopAction()
+	pass
 
 func QueueHealAction(_log : ActionLog):
 	var healAction = UnitHealAction.new()
@@ -1020,11 +1023,11 @@ func PlayAnimation(_animString : String, _smoothTransition : bool = false, _anim
 # Should check to see if now's actually when we should return to idle.
 # Is currently just a wrapping method
 func TryPlayIdleAnimation():
-	if visual != null:
+	if visual != null && !UsingSlowSpeedAbility:
 		PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 
 func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
-	if visual != null && visual.AnimationWorkComplete:
+	if visual != null && visual.AnimationWorkComplete && !UsingSlowSpeedAbility:
 		var round = GameSettingsTemplate.AxisRound(_dst)
 		match round:
 			Vector2.UP:
@@ -1073,8 +1076,12 @@ func ToJSON():
 		"Submerged" : Submerged,
 		"IsBoss" : IsBoss,
 		"StealthedCount" : StealthedCount,
-		"extraHealthBars" : extraHealthBars
+		"extraHealthBars" : extraHealthBars,
+		"UsingSlowSpeedAbility" : UsingSlowSpeedAbility
 	}
+
+	if UsingSlowSpeedAbility && visual.AnimationWorkComplete:
+		dict["SlowSpeedAnimationString"] = visual.AnimationCTRL.current_animation
 
 	var itemSlotsArray : Array[String]
 	for i in ItemSlots:
@@ -1112,8 +1119,15 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.UnitAllegiance = _dict["UnitAllegience"]
 	unitInstance.CanMove = _dict["CanMove"]
 	unitInstance.Injured = _dict["Injured"]
+	unitInstance.UsingSlowSpeedAbility = _dict["UsingSlowSpeedAbility"]
 
 	unitInstance.ExtraEXPGranted = int(_dict["ExtraEXPGranted"])
+
+	if unitInstance.UsingSlowSpeedAbility && _dict.has("SlowSpeedAnimationString"):
+		var updateSlowSpeedAnimation = func(_internalDict : Dictionary):
+			unitInstance.visual.PlayAnimation(_dict["SlowSpeedAnimationString"])
+		updateSlowSpeedAnimation.call_deferred(_dict)
+		pass
 
 	if _dict.has("AI"):
 		var aiBehavior = load(_dict["AI"]) as AIBehaviorBase

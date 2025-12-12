@@ -34,7 +34,7 @@ weap_shortbow_desc,Has a shorter range that allows for counterattacks within mel
 weap_guardinglance_name,Guarding Lance
 weap_guardinglance_desc,A spear that allows for a balance of agressive and defensive plays.
 weap_blunt_name,Blunt Object
-weap_blunt_desc,Anythings a weapon when swung. Always does 5 Damage
+weap_blunt_desc,Anything can be a weapon when swung hard enough. Always does 5 Damage
 weap_morningstar_name,Morning Star
 weap_morningstar_desc,A blunt metal club with spikes. Always does 8 Damage.
 weap_guardingblade_name,Guarding Blade
@@ -645,3 +645,5 @@ event_whitecliffiron_d2,[bgcolor=333333][6 DEX][/bgcolor] Use raw strength.
 event_generic_leave,Leave.
 event_whitecliffiron_d1_preview1,Gain +25 Ore
 event_whitecliffiron_d2_preview1,Gain +60 Ore
+ce_slowed,Slowed
+ce_slowed_effect,This Unit has reduced Movement.

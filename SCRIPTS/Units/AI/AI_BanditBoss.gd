@@ -103,6 +103,7 @@ func Decision_UseBombs():
 			newOption.UpdateWeight()
 			bombOptions.append(newOption)
 
+	unit.visual.PlayAnimation("pull_bomb", false)
 
 	bombOptions.sort_custom(SortOptions)
 
@@ -128,11 +129,11 @@ func RunTurn():
 				state = EBanditBossState.Smash
 				TryCombat()
 				leapAbility.AbilityActionComplete.connect(LeapComplete)
-				#unit.QueueEndTurn()
 				pass
 			EBanditBossState.Smash:
 				if ReadyToSmash:
 					ReadyToSmash = false
+
 					var newOption = EnemyAIOption.Construct(unit, selectedLeapTarget.targetUnit, map, slamAbility) as EnemyAIOption
 					newOption.totalFlags = Flags.size()
 					newOption.Update()

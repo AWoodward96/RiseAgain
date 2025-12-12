@@ -31,6 +31,8 @@ static var ANIM_JUMP_BACK_DOWN = "jump_back_down"
 @export var AdditionalUnitPrestiegeCost : int = 10
 @export var PrestiegeGrantedPerMap : int = 10
 
+@export var GenericAttackAnimation : AnimationStyleTemplate
+
 
 
 func GetPrestiegeBreakpoint(_currentLevel : int):
