@@ -1,35 +1,9 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=12 format=3 uid="uid://dsafb0qrhogjm"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=3 format=3 uid="uid://dsafb0qrhogjm"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_8xysg"]
-[ext_resource type="PackedScene" uid="uid://bhl2enqfwvt80" path="res://RESOURCES/Ability/Equippable/steel_sword.tscn" id="2_f7nkr"]
-[ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="3_cyd3y"]
-[ext_resource type="PackedScene" uid="uid://bnphn1vxuyakx" path="res://RESOURCES/Ability/Equippable/steel_bow.tscn" id="4_66ew7"]
-[ext_resource type="PackedScene" uid="uid://mbareux7y73r" path="res://RESOURCES/Ability/Equippable/magic_bolt.tscn" id="5_k6rme"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="5_viryb"]
-[ext_resource type="PackedScene" uid="uid://c7j4sdrt4lpho" path="res://RESOURCES/Ability/Equippable/steeldagger.tscn" id="6_b0jqm"]
-
-[sub_resource type="Resource" id="Resource_f7nkr"]
-script = ExtResource("3_cyd3y")
-ItemPrefab = ExtResource("2_f7nkr")
-AccumulatedWeight = 1.0
-
-[sub_resource type="Resource" id="Resource_cyd3y"]
-script = ExtResource("3_cyd3y")
-ItemPrefab = ExtResource("4_66ew7")
-AccumulatedWeight = 2.0
-
-[sub_resource type="Resource" id="Resource_66ew7"]
-script = ExtResource("3_cyd3y")
-ItemPrefab = ExtResource("5_k6rme")
-AccumulatedWeight = 3.0
-
-[sub_resource type="Resource" id="Resource_k6rme"]
-script = ExtResource("3_cyd3y")
-ItemPrefab = ExtResource("6_b0jqm")
-AccumulatedWeight = 4.0
 
 [resource]
 resource_name = "LT_Steel_Weapons"
 script = ExtResource("5_viryb")
-Table = Array[ExtResource("1_8xysg")]([SubResource("Resource_f7nkr"), SubResource("Resource_cyd3y"), SubResource("Resource_66ew7"), SubResource("Resource_k6rme")])
 WeightSum = 4.0

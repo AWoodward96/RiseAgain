@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bdslgjv74suwb"]
+[gd_scene load_steps=56 format=3 uid="uid://bdslgjv74suwb"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_o6eg6"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_hggkb"]
@@ -494,6 +494,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apb73"]
+resource_local_to_scene = true
 shader = ExtResource("3_2goy8")
 shader_parameter/palette = ExtResource("4_1mlwr")
 shader_parameter/palette_count = 4.0
@@ -506,6 +507,30 @@ shader_parameter/saturation = 1.0
 shader_parameter/value = 1.0
 shader_parameter/use_color_override = false
 shader_parameter/color_override = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmwsu"]
+atlas = ExtResource("3_1wpwn")
+region = Rect2(90, 45, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abonu"]
+atlas = ExtResource("3_1wpwn")
+region = Rect2(45, 45, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvim6"]
+atlas = ExtResource("3_1wpwn")
+region = Rect2(135, 45, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjpjj"]
+atlas = ExtResource("3_1wpwn")
+region = Rect2(0, 45, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olqvy"]
+atlas = ExtResource("3_1wpwn")
+region = Rect2(45, 45, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic8pk"]
+atlas = ExtResource("3_1wpwn")
+region = Rect2(90, 45, 45, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8ycp"]
 atlas = ExtResource("3_1wpwn")
@@ -601,6 +626,34 @@ region = Rect2(135, 225, 45, 45)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_apb73"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmwsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abonu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvim6")
+}],
+"loop": false,
+"name": &"arrow_rain",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjpjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olqvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic8pk")
+}],
+"loop": false,
+"name": &"arrow_rain_prep",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i8ycp")
@@ -865,8 +918,10 @@ material = SubResource("ShaderMaterial_apb73")
 position = Vector2(32, 19)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_apb73")
-animation = &"attack_down"
+animation = &"arrow_rain"
 autoplay = "idle"
+frame = 2
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

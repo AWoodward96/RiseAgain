@@ -40,6 +40,9 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	for u in units:
 		u.Rest()
 
+	if GameManager.CurrentCampaign != null:
+		GameManager.CurrentCampaign.OnRest()
+
 
 
 	if map.CurrentCampaign != null:

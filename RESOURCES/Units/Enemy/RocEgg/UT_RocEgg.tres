@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=39 format=3 uid="uid://by00pi1y5u8eg"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=47 format=3 uid="uid://by00pi1y5u8eg"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_8oc7x"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_vcd88"]
@@ -62,6 +62,38 @@ script = ExtResource("2_vcd88")
 Template = ExtResource("12_n13oc")
 
 [sub_resource type="Resource" id="Resource_wul63"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("13_e8tsd")
+
+[sub_resource type="Resource" id="Resource_n13oc"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("3_cgq4l")
+
+[sub_resource type="Resource" id="Resource_e8tsd"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("4_pqhac")
+
+[sub_resource type="Resource" id="Resource_0rjpc"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("5_wjrgh")
+
+[sub_resource type="Resource" id="Resource_3eouq"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("6_u6v6c")
+
+[sub_resource type="Resource" id="Resource_38soh"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("7_kt1dk")
+
+[sub_resource type="Resource" id="Resource_qnbsw"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("10_mbfmv")
+
+[sub_resource type="Resource" id="Resource_0wn8d"]
+script = ExtResource("2_vcd88")
+Template = ExtResource("12_n13oc")
+
+[sub_resource type="Resource" id="Resource_jkykh"]
 script = ExtResource("2_vcd88")
 Template = ExtResource("13_e8tsd")
 

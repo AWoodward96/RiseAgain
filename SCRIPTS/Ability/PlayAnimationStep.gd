@@ -2,6 +2,7 @@ extends ActionStep
 class_name PlayAnimationStep
 
 @export var AnimName : String = "idle"
+@export var FallbackAnimName : String = "use_item_in"
 @export var Speed : float = 1.0
 @export var Backwards : bool = false
 @export var WaitForAnimFinished : bool = false

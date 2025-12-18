@@ -14,35 +14,14 @@ func RollTable(rng : DeterministicRNG, _numberOfRewards : int, _duplicateProtect
 	var infiniteProtection = 0
 	while rewardArray.size() < _numberOfRewards:
 		var reward = Roll(rng)
-		if _duplicateProtections:
-			# don't allow for the same units in the party
-			if reward is SpecificUnitRewardEntry:
-				var specificUnitRewardEntry = reward as SpecificUnitRewardEntry
-				var currentCampaign = GameManager.CurrentCampaign
-				var isUnique = true
-				if currentCampaign != null:
-					for u in currentCampaign.CurrentRoster:
-						# Ignore the dead units on your team. The campaign cleans them up later
-						if u == null:
-							continue
 
-						if u.Template == specificUnitRewardEntry.Unit:
-							isUnique = false
-							break
-
-					for u in currentCampaign.DeadUnits:
-						if u != null && u == specificUnitRewardEntry.Unit:
-							isUnique = false
-							break
-
-				if !isUnique:
-					continue
-
-			var index = rewardArray.find(reward)
-			if index == -1: # should be -1 if there is no duplicates
+		if reward != null:
+			if _duplicateProtections:
+				var index = rewardArray.find(reward)
+				if index == -1: # should be -1 if there is no duplicates
+					rewardArray.append(reward)
+			else:
 				rewardArray.append(reward)
-		else:
-			rewardArray.append(reward)
 
 		# this will hopefully break us out
 		infiniteProtection += 1
@@ -57,13 +36,12 @@ func Roll(rng : DeterministicRNG):
 		rng = DeterministicRNG.Construct()
 
 	if WeightSum == -1:
-		push_error("WEIGHT SUM IS INVALID FOR ", self.resource_name, " IF YOU SEE THIS AT RUNTIME THEN YOU'RE PROBABLY FUCKED LMAO. GOOD LUCK!")
 		return null
 
 	var rolledValue = rng.NextFloat(0, WeightSum)
 	print("Loot Table Rolled: ", rolledValue)
 	for entry in Table:
-		if entry.AccumulatedWeight > rolledValue:
+		if entry.AccumulatedWeight > rolledValue && entry.AccumulatedWeight != -1:
 			if entry is NestedLootTableEntry:
 				if entry.Table.WeightSum == -1:
 					entry.Table.ReCalcWeightSum()
@@ -72,11 +50,19 @@ func Roll(rng : DeterministicRNG):
 			else:
 				return entry
 
+	# If we get here then we somehow traversed the whole table without finding anything. Return null and try again
+	return null
+
 
 func ReCalcWeightSum(_lootTable : LootTable):
 	_lootTable.WeightSum = 0
 	for e in _lootTable.Table:
 		if e == null:
+			continue
+
+		if !e.LootRequirement.CheckRequirement(e):
+			# This is to indicate that this entry is invalid - because it doesn't pass the requirement
+			e.AccumulatedWeight = -1
 			continue
 
 		_lootTable.WeightSum += e.Weight

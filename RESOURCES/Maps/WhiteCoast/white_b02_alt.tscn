@@ -242,7 +242,7 @@ GivenItems = Array[String](["uid://cp2qfjogxikmj"])
 AIBehavior = ExtResource("24_f18rt")
 AggroBehavior = SubResource("Resource_hkjcv")
 
-[node name="Spawn_Bandit9" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_Bandit" type="Sprite2D" parent="Spawners"]
 position = Vector2(128, 768)
 texture = ExtResource("11_xvyv1")
 centered = false
@@ -252,13 +252,14 @@ frame = 2
 script = ExtResource("25_ckjw5")
 TurnsToSpawn = Array[int]([4])
 UnitToSpawn = ExtResource("13_3sj7q")
-UnitLevel = 5
+UnitLevel = 4
 DeltaLevel = 0
 Position = Vector2i(2, 12)
+Enabled = false
 AIBehavior = ExtResource("14_6q6cj")
 AggroBehavior = SubResource("Resource_6gesr")
 
-[node name="Spawn_BanditArcher3" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_BanditArcher" type="Sprite2D" parent="Spawners"]
 position = Vector2(64, 832)
 texture = ExtResource("11_xvyv1")
 centered = false
@@ -268,13 +269,14 @@ frame = 2
 script = ExtResource("25_ckjw5")
 TurnsToSpawn = Array[int]([4])
 UnitToSpawn = ExtResource("22_6611q")
-UnitLevel = 5
+UnitLevel = 4
 DeltaLevel = 0
 Position = Vector2i(1, 13)
+Enabled = false
 AIBehavior = ExtResource("14_6q6cj")
 AggroBehavior = SubResource("Resource_6gesr")
 
-[node name="Spawn_Bandit11" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_Bandit2" type="Sprite2D" parent="Spawners"]
 position = Vector2(192, 832)
 texture = ExtResource("11_xvyv1")
 centered = false
@@ -284,9 +286,10 @@ frame = 2
 script = ExtResource("25_ckjw5")
 TurnsToSpawn = Array[int]([4])
 UnitToSpawn = ExtResource("13_3sj7q")
-UnitLevel = 5
+UnitLevel = 4
 DeltaLevel = 0
 Position = Vector2i(3, 13)
+Enabled = false
 AIBehavior = ExtResource("14_6q6cj")
 AggroBehavior = SubResource("Resource_6gesr")
 

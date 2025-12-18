@@ -24,23 +24,17 @@
 script = ExtResource("13_3w238")
 Stat = ExtResource("14_5ngqw")
 FlatValue = -2
-DerivedFromUnit = 0
-SignedPercentageValue = 0.0
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_1prea"]
 script = ExtResource("13_3w238")
 Stat = ExtResource("15_5ngqw")
 FlatValue = -1
-DerivedFromUnit = 0
-SignedPercentageValue = 0.0
 metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
 
 [sub_resource type="Resource" id="Resource_kg6y5"]
 script = ExtResource("16_k6dnj")
 StatChanges = Array[ExtResource("13_3w238")]([SubResource("Resource_8me8o"), SubResource("Resource_1prea")])
-AffectedTargets = 0
-Turns = -1
 show_popup = false
 loc_name = "ce_unholyintruder_name"
 loc_desc = "ce_unholyintruder_desc"

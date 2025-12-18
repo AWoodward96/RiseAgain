@@ -10,14 +10,16 @@ var inCampsite : bool
 var inTavern : bool
 
 
+
 func Initialize(_unitTemplate : UnitTemplate):
 	super(_unitTemplate)
 
+	var showcaseMode = GameManager.GameSettings.ShowcaseMode
 	var persistData = PersistDataManager.universeData.GetUnitPersistence(_unitTemplate)
 	if persistData == null || (persistData != null && !persistData.Unlocked):
 		# Shade the entire sprite black to show that we haven't unlocked this unit yet
 		# We also should probably, like, rename the entry so that it says unknown but I'll get to that in a sec
-		if createdVisual != null:
+		if createdVisual != null && !showcaseMode:
 			createdVisual.visual.material.set_shader_parameter("use_color_override", true)
 			createdVisual.visual.material.set_shader_parameter("color_override", Color.BLACK)
 
@@ -27,7 +29,8 @@ func Initialize(_unitTemplate : UnitTemplate):
 		}
 		statusText.text = tr("ui_unit_bastion_status").format(format)
 
-		if button != null: button.disabled = true
+		if !showcaseMode:
+			if button != null: button.disabled = true
 
 	else:
 		inCampsite = PersistDataManager.universeData.bastionData.UnitsInCampsite.has(_unitTemplate)
@@ -50,7 +53,11 @@ func Initialize(_unitTemplate : UnitTemplate):
 			format["STATUS"] = tr(LocSettings.Status_Healthy)
 
 
-		if button != null: button.disabled = !(inCampsite || inTavern)
+		if button != null:
+			if showcaseMode:
+				button.disabled = false
+			else:
+				button.disabled = !(inCampsite || inTavern)
 
 		statusText.text = tr("ui_unit_bastion_status").format(format)
 		pass

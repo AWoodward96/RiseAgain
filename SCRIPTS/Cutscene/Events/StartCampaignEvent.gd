@@ -11,6 +11,5 @@ func Enter(_context : CutsceneContext):
 		return true
 
 	GameManager.StartCampaign(Campaign.CreateNewCampaignInstance(campaign, roster))
-	GameManager.CurrentCampaign.CreateSquadInstance()
 	#GameManager.CurrentCampaign.OnPOISelected(WorldMap.GetPOIFromID(poiID))
 	return true

@@ -91,10 +91,8 @@ func Update(_delta):
 			GameSettingsTemplate.TeamID.ALLY:
 				if map.teams.has(GameSettingsTemplate.TeamID.NEUTRAL) && map.teams[GameSettingsTemplate.TeamID.NEUTRAL].size() > 0:
 					nextTurn = GameSettingsTemplate.TeamID.NEUTRAL
-				elif map.teams.has(GameSettingsTemplate.TeamID.ENEMY):
-					nextTurn = GameSettingsTemplate.TeamID.ENEMY
 				else:
-					nextTurn = GameSettingsTemplate.TeamID.ALLY
+					nextTurn = GameSettingsTemplate.TeamID.ENEMY
 			GameSettingsTemplate.TeamID.ENEMY:
 				# only increment the turn count at the end of the enemy's turn
 				map.turnCount += 1

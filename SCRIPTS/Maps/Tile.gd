@@ -168,8 +168,7 @@ func ToJSON():
 		"MaxHealth" = MaxHealth,
 		"Killbox" = Killbox,
 		"ActiveKillbox" = ActiveKillbox,
-		"TerrainDestroyed" = TerrainDestroyed,
-		"IsShroud" = IsShroud
+		"TerrainDestroyed" = TerrainDestroyed
 	}
 
 	if MainTileData != null:
@@ -193,7 +192,6 @@ static func FromJSON(_dict : Dictionary):
 	newTile.Killbox = _dict["Killbox"]
 	newTile.ActiveKillbox = _dict["ActiveKillbox"]
 	newTile.TerrainDestroyed = _dict["TerrainDestroyed"]
-	newTile.IsShroud = _dict["IsShroud"]
 
 	if _dict.has("MainTileData"):
 		newTile.MainTileData = load(_dict["MainTileData"]) as TileMetaData
@@ -204,4 +202,5 @@ static func FromJSON(_dict : Dictionary):
 	if _dict.has("SubBGTileData"):
 		newTile.SubBGTileData = load(_dict["SubBGTileData"]) as TileMetaData
 
+	newTile.InitMetaData()
 	return newTile

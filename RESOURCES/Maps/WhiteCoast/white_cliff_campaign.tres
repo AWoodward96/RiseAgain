@@ -10,6 +10,7 @@
 [resource]
 script = ExtResource("3_bqlod")
 startingCampaignOptions = Array[ExtResource("4_bdvax")]([ExtResource("6_bqlod")])
+startingRosterSize = 3
 MapRewardTable = ExtResource("1_gxh3s")
 loc_name = "campaign_white_coast"
 loc_icon = ExtResource("2_s5apg")

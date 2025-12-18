@@ -16,7 +16,6 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_rr3r1"]
 script = ExtResource("3_8sdtm")
-useAttackAction = false
 useDefendAction = false
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
@@ -25,6 +24,7 @@ script = ExtResource("5_owh5c")
 [node name="ART_SpearThrow" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_tdc7e")
 abilityCooldown = 2
+ability_speed = 1
 executionStack = Array[ExtResource("2_ohxl5")]([SubResource("Resource_xtavm"), SubResource("Resource_rr3r1"), SubResource("Resource_5cjq5")])
 internalName = "spearthrow"
 loc_displayName = "art_spearthrow_name"

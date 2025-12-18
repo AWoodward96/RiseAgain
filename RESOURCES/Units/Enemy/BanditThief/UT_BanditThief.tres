@@ -60,6 +60,7 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_h5aij"]
 script = ExtResource("2_0832t")
 Template = ExtResource("11_xq8pm")
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_x5y11"]
 script = ExtResource("2_0832t")
@@ -98,6 +99,7 @@ Template = ExtResource("9_gq4q8")
 [sub_resource type="Resource" id="Resource_gq4q8"]
 script = ExtResource("2_0832t")
 Template = ExtResource("11_xq8pm")
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_tuf3f"]
 script = ExtResource("2_0832t")

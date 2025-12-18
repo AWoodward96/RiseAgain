@@ -16,6 +16,7 @@ var currentMapBlock : MapBlock
 var startingCampaignBlock : CampaignBlock
 var currentCampaignBlock : CampaignBlock
 var campaignBlockIndex : int
+var teamSizeLimit = 3
 
 var CampaignRng : DeterministicRNG
 
@@ -35,6 +36,7 @@ func InitializeNewCampaign(_campaignTemplate : CampaignTemplate, _startingRoster
 	currentCampaignTemplate = _campaignTemplate
 	campaignBlockMapIndex = 0
 	traversedCampaignBlocks = 0
+	teamSizeLimit = _campaignTemplate.startingTeamSizeLimit
 
 	CampaignRng = DeterministicRNG.Construct()
 	if currentCampaignTemplate.startingCampaignOptions.size() == 0:
@@ -108,15 +110,15 @@ func StartMap():
 	currentMap.PreInitialize()
 
 	# If there is no Roster, pull up the selection UI to force one. This should not occur in normal gameplay tbh
-	if CurrentRoster.size() == 0:
-		var ui = UIManager.AlphaUnitSelection.instantiate()
-		ui.Initialize(currentMap.startingPositions.size())
-		ui.OnRosterSelected.connect(OnRosterSelected)
-		add_child(ui)
-
-		#waits until that UI is closed, when the squad is all selected
-		await ui.OnRosterSelected
-		CreateSquadInstance()
+	#if CurrentRoster.size() == 0:
+		#var ui = UIManager.AlphaUnitSelection.instantiate()
+		#ui.Initialize(currentMap.startingPositions.size())
+		#ui.OnRosterSelected.connect(OnRosterSelected)
+		#add_child(ui)
+#
+		##waits until that UI is closed, when the squad is all selected
+		#await ui.OnRosterSelected
+		#CreateSquadInstance()
 
 	var MapRNGSeed = CampaignRng.NextInt(0, 10000000)
 	currentMap.InitializeFromCampaign(self, CurrentRoster, MapRNGSeed)
@@ -227,6 +229,9 @@ func GetUnitFromTemplate(_unitTemplate : UnitTemplate):
 
 	return null
 
+func OnRest():
+	teamSizeLimit += 1
+
 static func CreateNewCampaignInstance(_campaignTemplate : CampaignTemplate, _startingRoster : Array[UnitTemplate]):
 	var campaignInstance = GameManager.GameSettings.CampaignInstancePrefab.instantiate() as Campaign
 	if campaignInstance == null:
@@ -249,7 +254,8 @@ func ToJSON():
 		"currentMapBlock" = currentMapBlock.resource_path,
 		"campaignRNG" = CampaignRng.ToJSON(),
 		"campaignLedger" = campaignLedger,
-		"Convoy" = Convoy.ToJSON()
+		"Convoy" = Convoy.ToJSON(),
+		"teamSizeLimit" = teamSizeLimit
 	}
 
 	var children = UnitHoldingArea.get_children() as Array[UnitInstance]
@@ -270,6 +276,7 @@ static func FromJSON(_dict : Dictionary):
 	campaign.currentMapOption = load(_dict["currentMapOption"])
 	campaign.currentLevelDifficulty = _dict["currentLevelDifficulty"]
 	campaign.currentMapBlock = load(_dict["currentMapBlock"])
+	campaign.teamSizeLimit = PersistDataManager.LoadFromJSON("teamSizeLimit", _dict)
 
 	PersistDataManager.JSONtoResourceFromPath(_dict["campaignLedger"], campaign.campaignLedger)
 

@@ -20,33 +20,10 @@ func Enter(_map : Map, _ctrl : PlayerController):
 			await combatHUD.BannerAnimComplete
 
 		if map.CurrentCampaign != null:
-			var resultsUI = UIManager.OpenFullscreenUI(UIManager.MapResultsUI) as MapResultUI
-			resultsUI.Initialize(_map)
-			await resultsUI.ResultsComplete
-
-
-			## Start the reward selection process
-			#var campaign = map.CurrentCampaign
-			#var rewardTable = campaign.GetMapRewardTable() as LootTable
-			#if rewardTable != null && !CutsceneManager.BlockRewardSelection:
-				## Roll the rewards for the rewardTable
-				#var rewardArray = rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
-#
-				## open the rewards ui
-				#rewardUI = UIManager.OpenFullscreenUI(UIManager.MapRewardUI)
-				#rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
-				#await rewardUI.OnRewardSelected
-#
-			#for optionalObjectives in map.OptionalObjectives:
-				#if optionalObjectives.objective == null:
-					#continue
-#
-				#if optionalObjectives.objective.CheckObjective(map):
-					#var rewardArray = optionalObjectives.rewardTable.RollTable(campaign.CampaignRng, GameManager.GameSettings.NumberOfRewardsInPostMap)
-#
-					#rewardUI = UIManager.OpenFullscreenUI(UIManager.MapRewardUI)
-					#rewardUI.Initialize(rewardArray, map.CurrentCampaign, OnRewardsSelected)
-					#await rewardUI.OnRewardSelected
+			if !CutsceneManager.BlockRewardSelection:
+				var resultsUI = UIManager.OpenFullscreenUI(UIManager.MapResultsUI) as MapResultUI
+				resultsUI.Initialize(_map)
+				await resultsUI.ResultsComplete
 
 
 	var signalCallback = UIManager.ShowLoadingScreen()

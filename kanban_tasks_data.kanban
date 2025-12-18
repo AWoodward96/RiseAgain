@@ -43,9 +43,9 @@
 			"uuid": "0e58efb7-a4b2-4b17-bf21-1d0e9bb58e25",
 			"title": "Doing",
 			"tasks": [
-				"70047452-a245-4e54-99f2-25628fa07330",
-				"8fd6e64a-75d7-4eb6-aee6-9f68b69c341c",
-				"1eceed80-12e8-4349-8120-320b1ee4e515"
+				"f1acc9b5-55b1-4be8-a52c-f4e2cdc9d2b0",
+				"192a57d9-8d6c-4201-b9b8-a0364fbfb3e3",
+				"004a4c80-6d3d-4da1-8d8b-42567e1fd0de"
 			]
 		},
 		{
@@ -53,12 +53,16 @@
 			"title": "Done",
 			"tasks": [
 				"b7a690c2-e9f8-41b8-a201-9603bd9a9a75",
+				"70047452-a245-4e54-99f2-25628fa07330",
 				"63559e54-664b-4bd9-95ef-b9ce33f1f122",
+				"8fd6e64a-75d7-4eb6-aee6-9f68b69c341c",
 				"aaa08c6f-ca52-4b2c-afa4-63e6e9e4912d",
+				"1eceed80-12e8-4349-8120-320b1ee4e515",
 				"98025ce6-4593-41bd-80f1-9b4fd50fbfa2",
 				"09f531bd-2d11-40e7-8858-27239bac3649",
 				"30a4749b-e705-4e4f-9cf9-6302ae04815e",
 				"073acedc-08f2-476c-bf21-67837a146552",
+				"b20362e5-83b3-4994-8130-299e0326c0e1",
 				"7f0dd652-fcea-4387-bd98-f376c66bac51",
 				"51323a20-858a-4e6b-aad5-fb236254c03c",
 				"5ca57162-7819-47a7-b294-ac3ecbd27f8a",
@@ -123,7 +127,6 @@
 			"tasks": [
 				"8c6ef764-233f-4c58-8039-a4816bffbdc2",
 				"74755431-829a-4027-92df-f9210e878e79",
-				"b20362e5-83b3-4994-8130-299e0326c0e1",
 				"78f0911a-a452-474e-bfca-5d4dc191c07e"
 			]
 		}
@@ -857,6 +860,27 @@
 		{
 			"uuid": "1eceed80-12e8-4349-8120-320b1ee4e515",
 			"title": "Ability UI needs updating to fix the cooldown issue",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "f1acc9b5-55b1-4be8-a52c-f4e2cdc9d2b0",
+			"title": "BREAK: Divide the cast into Classes",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "192a57d9-8d6c-4201-b9b8-a0364fbfb3e3",
+			"title": "BREAK: Create Generics for all Classes",
+			"description": "",
+			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
+			"steps": []
+		},
+		{
+			"uuid": "004a4c80-6d3d-4da1-8d8b-42567e1fd0de",
+			"title": "BREAK: Brainstorm Class Promotions",
 			"description": "",
 			"category": "c405d7cd-bc19-4fb7-8874-b94d457cb851",
 			"steps": []

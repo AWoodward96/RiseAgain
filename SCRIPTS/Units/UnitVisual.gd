@@ -109,7 +109,11 @@ func ResetAnimation():
 
 func UpdateSubmerged(_submerged : bool):
 	if AnimationWorkComplete:
-		pass
+		if SubmergedParent != null:
+			SubmergedParent.visible = _submerged
+
+		if visual != null:
+			visual.visible = !_submerged
 	else:
 		if SubmergedParent != null:
 			SubmergedParent.visible = _submerged

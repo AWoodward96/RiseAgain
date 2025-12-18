@@ -7,6 +7,7 @@ class_name CampaignTemplate
 
 @export var requiredUnit : Array[UnitTemplate]
 @export var startingRosterSize : int = 2
+@export var startingTeamSizeLimit : int = 3
 
 @export var MapRewardTable : LootTable # The loot table that the map will default to if not overwritten by the node itself
 

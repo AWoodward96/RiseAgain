@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d23g88rbe10v8" path="res://RESOURCES/Maps/WhiteCoast/white_b01_default.tscn" id="3_0pelg"]
 [ext_resource type="PackedScene" uid="uid://cj87iis4evtes" path="res://RESOURCES/Maps/WhiteCoast/white_vault_event.tscn" id="3_lwwvk"]
 [ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="4_0pelg"]
-[ext_resource type="PackedScene" uid="uid://dhucmo8waljh4" path="res://RESOURCES/Maps/WhiteCoast/white_b02_default.tscn" id="6_0pelg"]
+[ext_resource type="PackedScene" uid="uid://bepsjfx2xky78" path="res://RESOURCES/Maps/WhiteCoast/white_b02_alt.tscn" id="6_0pelg"]
 
 [sub_resource type="Resource" id="Resource_wlhrd"]
 script = ExtResource("2_58um0")

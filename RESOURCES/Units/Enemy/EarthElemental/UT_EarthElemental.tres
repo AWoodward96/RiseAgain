@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=39 format=3 uid="uid://4dmxhtxvfe8d"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=47 format=3 uid="uid://4dmxhtxvfe8d"]
 
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_luvnh"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_50beg"]
@@ -65,6 +65,38 @@ script = ExtResource("2_50beg")
 Template = ExtResource("12_rkpo2")
 
 [sub_resource type="Resource" id="Resource_nwxjp"]
+script = ExtResource("2_50beg")
+Template = ExtResource("13_bapfb")
+
+[sub_resource type="Resource" id="Resource_rkpo2"]
+script = ExtResource("2_50beg")
+Template = ExtResource("3_qblo7")
+
+[sub_resource type="Resource" id="Resource_bapfb"]
+script = ExtResource("2_50beg")
+Template = ExtResource("4_clsg0")
+
+[sub_resource type="Resource" id="Resource_pyja1"]
+script = ExtResource("2_50beg")
+Template = ExtResource("5_ca1g6")
+
+[sub_resource type="Resource" id="Resource_ax4tt"]
+script = ExtResource("2_50beg")
+Template = ExtResource("6_omxg1")
+
+[sub_resource type="Resource" id="Resource_v8lea"]
+script = ExtResource("2_50beg")
+Template = ExtResource("7_flprw")
+
+[sub_resource type="Resource" id="Resource_ql8pr"]
+script = ExtResource("2_50beg")
+Template = ExtResource("10_v70dg")
+
+[sub_resource type="Resource" id="Resource_5pa2x"]
+script = ExtResource("2_50beg")
+Template = ExtResource("12_rkpo2")
+
+[sub_resource type="Resource" id="Resource_8xb32"]
 script = ExtResource("2_50beg")
 Template = ExtResource("13_bapfb")
 

@@ -25,36 +25,25 @@ metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 
 [sub_resource type="Resource" id="Resource_daxic"]
 script = ExtResource("15_3hy5d")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
 [sub_resource type="Resource" id="Resource_rl67q"]
 script = ExtResource("18_7us7y")
 TurnsToAggro = 2
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 metadata/_custom_type_script = "uid://di1yqkv0ulmb4"
 
 [sub_resource type="Resource" id="Resource_hx4mc"]
 script = ExtResource("15_3hy5d")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 metadata/_custom_type_script = "uid://cx7hr1gnxldm5"
 
-[node name="tutorial_a04_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="tutorial_a04_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_destructable", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_0jrnp")
 GridSize = Vector2i(21, 15)
 CameraStart = Vector2(3, 3)
 tilemap_bg = NodePath("BG")
 tilemap_water = NodePath("Water")
 tilemap_main = NodePath("Main")
+tilemap_destructable = NodePath("Destructables")
 tilemap_threat = NodePath("Threat")
 tilemap_fire = NodePath("Fire")
 tilemap_UI = NodePath("UI")
@@ -93,7 +82,14 @@ tile_set = ExtResource("6_4tnnt")
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAALAAUAAQAUAAMAAAALAAYAAQAUAAQAAAAMAAUAAQAVAAMAAAAMAAYAAQAVAAQAAAAHAAkAAQASAAMAAAAHAAoAAQASAAQAAAAIAAkAAQATAAMAAAAIAAoAAQATAAQAAAAEAAQAAQASAAEAAAAEAAUAAQASAAIAAAAFAAQAAQATAAEAAAAFAAUAAQATAAIAAAASAAYAAQASAAsAAAASAAcAAQASAAwAAAATAAYAAQATAAsAAAATAAcAAQATAAwAAAAUAAYAAQAUAAsAAAAUAAcAAQAUAAwAAAARAAYAAQARAAsAAAARAAcAAQARAAwAAAANAAYAAQAIAAIAAAANAAUAAQAJAAIAAAAAAAUAAQAJAAEAAAABAAUAAQAHAAIAAAACAAUAAQAHAAIAAAADAAUAAQAIAAIAAAADAAQAAQAIAAIAAAAGAAQAAQAIAAIAAAAIAAgAAQAJAAEAAAAJAAkAAQAIAAIAAAAGAAoAAQAHAAIAAAAKAAYAAQAIAAIAAAALAAQAAQAHAAEAAAAMAAcAAQAJAAEAAAA=")
+tile_map_data = PackedByteArray("AAASAAYAAQASAAsAAAASAAcAAQASAAwAAAATAAYAAQATAAsAAAATAAcAAQATAAwAAAAUAAYAAQAUAAsAAAAUAAcAAQAUAAwAAAARAAYAAQARAAsAAAARAAcAAQARAAwAAAALAAQAAQAHAAEAAAAEAAQAAQASAAEAAAAEAAUAAQASAAIAAAAFAAQAAQATAAEAAAAFAAUAAQATAAIAAAAHAAkAAQASAAMAAAAHAAoAAQASAAQAAAAIAAkAAQATAAMAAAAIAAoAAQATAAQAAAALAAUAAQAUAAMAAAALAAYAAQAUAAQAAAAMAAUAAQAVAAMAAAAMAAYAAQAVAAQAAAA=")
+tile_set = ExtResource("6_4tnnt")
+
+[node name="Destructables" type="TileMapLayer" parent="."]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAASAAYAAQASAAsAAAASAAcAAQASAAwAAAATAAYAAQATAAsAAAATAAcAAQATAAwAAAAUAAYAAQAUAAsAAAAUAAcAAQAUAAwAAAARAAYAAQARAAsAAAARAAcAAQARAAwAAAANAAYAAQAIAAIAAAANAAUAAQAJAAIAAAAAAAUAAQAJAAEAAAABAAUAAQAHAAIAAAACAAUAAQAHAAIAAAADAAUAAQAIAAIAAAADAAQAAQAIAAIAAAAGAAQAAQAIAAIAAAAIAAgAAQAJAAEAAAAJAAkAAQAIAAIAAAAGAAoAAQAHAAIAAAAKAAYAAQAIAAIAAAALAAQAAQAHAAEAAAAMAAcAAQAJAAEAAAA=")
 tile_set = ExtResource("6_4tnnt")
 
 [node name="Extra" type="TileMapLayer" parent="."]
