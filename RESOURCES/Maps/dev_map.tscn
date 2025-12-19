@@ -164,7 +164,7 @@ Position = Vector2i(11, 6)
 AIBehavior = SubResource("Resource_yulnj")
 AggroBehavior = SubResource("Resource_xxpgp")
 
-[node name="Spawn_BanditBoss" type="Sprite2D" parent="Spawners"]
+[node name="DISABLED_Spawn_BanditBoss2" type="Sprite2D" parent="Spawners"]
 position = Vector2(384, 128)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -175,6 +175,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_ox76s")
 DeltaLevel = 0
 Position = Vector2i(6, 2)
+Enabled = false
 Boss = true
 GivenItems = Array[String](["uid://cp2qfjogxikmj"])
 ExtraHealthBars = 2
@@ -214,8 +215,8 @@ Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="DISABLED_Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
-position = Vector2(128, 128)
+[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
+position = Vector2(704, 128)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -225,8 +226,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("14_ox76s")
 UnitLevel = 2
 DeltaLevel = 0
-Position = Vector2i(2, 2)
-Enabled = false
+Position = Vector2i(11, 2)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 

@@ -51,7 +51,7 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 	if targetingData != null:
 		if targetingData.Type == SkillTargetingData.TargetingType.Simple || targetingData.Type == SkillTargetingData.TargetingType.ShapedFree:
 			_actionLog.affectedTiles = targetingData.GetAffectedTiles(_actionLog.source, _actionLog.grid, bestTile)
-			_actionLog.affectedTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
+			_actionLog.affectedTiles = SkillTargetingData.FilterByTargettingFlags(targetingData.Type, targetingData.TeamTargeting, targetingData.CanTargetSelf, source, log.affectedTiles)
 			_actionLog.BuildStepResults()
 
 		# Shaped directionals lock in the damage/affected tiles before the movement

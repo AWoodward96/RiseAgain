@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ri0c7iffkrao" path="res://RESOURCES/Units/UnitInstance.tscn" id="6_tjdwd"]
 [ext_resource type="Resource" uid="uid://b58tp7xqbg5jr" path="res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres" id="7_fphg7"]
 [ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="8_laijs"]
-[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="9_oyyno"]
+[ext_resource type="Resource" uid="uid://bxdk56k5pewjb" path="res://RESOURCES/Units/Ally/BagGirl/UT_BagGirl.tres" id="9_ha8sr"]
 [ext_resource type="Script" uid="uid://barfg6ccbfuwo" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_GenericAttack.gd" id="10_ha8sr"]
 
 [sub_resource type="Resource" id="Resource_lycg1"]
@@ -20,6 +20,6 @@ metadata/_custom_type_script = "uid://barfg6ccbfuwo"
 [resource]
 script = ExtResource("1_a2dt2")
 UnitInstancePrefab = ExtResource("6_tjdwd")
-AllyUnitManifest = Array[ExtResource("1_665j3")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5"), ExtResource("7_fphg7"), ExtResource("8_laijs"), ExtResource("9_oyyno")])
+AllyUnitManifest = Array[ExtResource("1_665j3")]([ExtResource("1_fb7ip"), ExtResource("2_3wj7i"), ExtResource("3_784br"), ExtResource("4_qg1gr"), ExtResource("5_ms0k5"), ExtResource("7_fphg7"), ExtResource("8_laijs"), ExtResource("9_ha8sr")])
 BaseUnitPrestiegeCost = 40
 GenericAttackAnimation = SubResource("Resource_lycg1")

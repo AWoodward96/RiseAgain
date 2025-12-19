@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tqe8slh050wb"]
+[gd_scene load_steps=10 format=3 uid="uid://tqe8slh050wb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6pmtp"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_dc3ot"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_mngvt"]
 [ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="3_bhrgj"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="3_xes8y"]
+[ext_resource type="Texture2D" uid="uid://dgpu4dx8k1brh" path="res://ART/Icons/Ability/Tactical/heavypush.png" id="4_bhrgj"]
 [ext_resource type="Resource" uid="uid://dfgct7hrrdmnw" path="res://RESOURCES/TargetingShapes/heavy_push_shape.tres" id="5_xes8y"]
 
 [sub_resource type="Resource" id="Resource_xb68x"]
@@ -22,6 +23,7 @@ executionStack = Array[ExtResource("2_dc3ot")]([SubResource("Resource_xb68x")])
 internalName = "heavypush"
 loc_displayName = "tact_heavypush_name"
 loc_displayDesc = "tact_heavypush_desc"
+icon = ExtResource("4_bhrgj")
 descriptors = Array[ExtResource("2_ky3rc")]([ExtResource("3_xes8y")])
 TargetingData = NodePath("TargetingData")
 

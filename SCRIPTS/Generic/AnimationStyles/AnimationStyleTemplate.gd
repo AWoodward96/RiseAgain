@@ -11,6 +11,7 @@ static var TIMEOUT : float = 10
 signal PerformDamageCallback
 
 @export var HasStandardWindup : bool = true
+@export var HasStandardCooloff : bool = true
 var direction : Vector2
 var initialDirection : Vector2
 var source : UnitInstance

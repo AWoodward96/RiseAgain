@@ -1,9 +1,60 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=3 format=3 uid="uid://glpuxla0d30c"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=18 format=3 uid="uid://glpuxla0d30c"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_gdk7a"]
+[ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="2_4kdo1"]
+[ext_resource type="Script" uid="uid://c6bs11unvxfne" path="res://SCRIPTS/Generic/LootTables/NestedLootTableEntry.gd" id="3_67ela"]
+[ext_resource type="Resource" uid="uid://dxmfykblv6h0t" path="res://RESOURCES/LootTable/LT_StatUpgrades_T2.tres" id="4_kol6s"]
 [ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="4_ltjjo"]
+[ext_resource type="Resource" uid="uid://ckn2gmate3jr1" path="res://RESOURCES/LootTable/LT_AllUnits.tres" id="5_i8pvq"]
+[ext_resource type="Resource" uid="uid://do8khiwrcp3he" path="res://RESOURCES/LootTable/LT_GrowthItems_T1.tres" id="6_ji2nl"]
+[ext_resource type="Resource" uid="uid://dsafb0qrhogjm" path="res://RESOURCES/LootTable/LT_Steel_Weapons.tres" id="7_by7of"]
+[ext_resource type="Resource" uid="uid://c7w27qmhiqg5t" path="res://RESOURCES/Requirements/LTR_NotAtPartySizeLimit.tres" id="7_kol6s"]
+[ext_resource type="Resource" uid="uid://6tyqyartqjjm" path="res://RESOURCES/Requirements/LTR_NoGrowthItems.tres" id="8_i8pvq"]
+
+[sub_resource type="Resource" id="Resource_kol6s"]
+script = ExtResource("3_67ela")
+Table = ExtResource("2_4kdo1")
+AccumulatedWeight = 1.0
+
+[sub_resource type="Resource" id="Resource_i8pvq"]
+script = ExtResource("3_67ela")
+Table = ExtResource("4_kol6s")
+Weight = 0.3
+AccumulatedWeight = 1.3
+
+[sub_resource type="Resource" id="Resource_ji2nl"]
+script = ExtResource("3_67ela")
+Table = ExtResource("5_i8pvq")
+Weight = 0.1
+AccumulatedWeight = 1.4
+
+[sub_resource type="Resource" id="Resource_by7of"]
+script = ExtResource("3_67ela")
+Table = ExtResource("6_ji2nl")
+Weight = 0.1
+AccumulatedWeight = 1.5000000000000002
+
+[sub_resource type="Resource" id="Resource_nx57c"]
+script = ExtResource("3_67ela")
+Table = ExtResource("5_i8pvq")
+AccumulatedWeight = 2.5
+LootRequirement = ExtResource("7_kol6s")
+
+[sub_resource type="Resource" id="Resource_n5efd"]
+script = ExtResource("3_67ela")
+Table = ExtResource("6_ji2nl")
+Weight = 0.5
+AccumulatedWeight = 3.0
+LootRequirement = ExtResource("8_i8pvq")
+
+[sub_resource type="Resource" id="Resource_odog7"]
+script = ExtResource("3_67ela")
+Table = ExtResource("7_by7of")
+Weight = 0.3
+AccumulatedWeight = 3.3
 
 [resource]
 resource_name = "LT_GlobalLoot_T1"
 script = ExtResource("4_ltjjo")
+Table = Array[ExtResource("1_gdk7a")]([SubResource("Resource_kol6s"), SubResource("Resource_i8pvq"), SubResource("Resource_ji2nl"), SubResource("Resource_by7of"), SubResource("Resource_nx57c"), SubResource("Resource_n5efd"), SubResource("Resource_odog7")])
 WeightSum = 3.3

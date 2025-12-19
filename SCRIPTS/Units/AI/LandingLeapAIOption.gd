@@ -25,10 +25,13 @@ func Update():
 	var selectedTile : Tile = null
 	var affectedTiles : Array[TileTargetedData] = []
 	for tile in adjacentTiles:
+		if !grid.CanUnitFitOnTile(sourceUnit, tile, sourceUnit.IsFlying, true, false):
+			continue
+
 		var localAffectedTiles = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, tile, 0)
 		var localHit = 0
 		for hitTile in localAffectedTiles:
-			if hitTile.Tile.Occupant != null && ability.TargetingData.OnCorrectTeam(sourceUnit, hitTile.Tile.Occupant):
+			if hitTile.Tile.Occupant != null && SkillTargetingData.OnCorrectTeam(ability.TargetingData.Type, ability.TargetingData.TeamTargeting, sourceUnit, hitTile.Tile.Occupant):
 				localHit += 1
 
 		if localHit > unitsHit:

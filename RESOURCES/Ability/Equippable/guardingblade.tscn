@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://3xr2ipnjy6rn"]
+[gd_scene load_steps=19 format=3 uid="uid://3xr2ipnjy6rn"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_4bw7d"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_j8r70"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_ok8ns"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_aok76"]
 [ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="4_up4tj"]
+[ext_resource type="Texture2D" uid="uid://cxl5qpvyl5bgm" path="res://ART/Icons/Ability/Equippable/guardingblade.png" id="5_aok76"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="5_ok8ns"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_aok76"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_rf2fd"]
@@ -40,6 +41,7 @@ executionStack = Array[ExtResource("2_up4tj")]([SubResource("Resource_rf2fd"), S
 internalName = "guardingblade"
 loc_displayName = "weap_guardingblade_name"
 loc_displayDesc = "weap_guardingblade_desc"
+icon = ExtResource("5_aok76")
 descriptors = Array[ExtResource("2_j8r70")]([ExtResource("3_ddiuu"), ExtResource("4_up4tj")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")

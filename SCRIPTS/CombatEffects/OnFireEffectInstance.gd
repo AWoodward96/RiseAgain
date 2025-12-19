@@ -19,21 +19,13 @@ func OnEffectRemoved():
 
 func OnTurnStart():
 	var newPassiveAction = PassiveAbilityAction.Construct(AbilitySource.ownerUnit, AbilitySource) as PassiveAbilityAction
-	newPassiveAction.log.actionOriginTile = AffectedUnit.CurrentTile
+
 	var tiles : Array[TileTargetedData]
 	tiles.append(AffectedUnit.CurrentTile.AsTargetData())
-	newPassiveAction.log.affectedTiles = tiles
-	newPassiveAction.log.source = SourceUnit
-	newPassiveAction.log.ability = AbilitySource
+	newPassiveAction.AssignAffectedTiles(AffectedUnit.CurrentTile, tiles)
+	newPassiveAction.AddCameraFocusStep()
+	newPassiveAction.AddDelayStep()
 
-	var cameraFocusStep = FocusCameraStep.new()
-	cameraFocusStep.Instant = false
-	newPassiveAction.executionStack.append(cameraFocusStep)
-
-
-	var delay = DelayStep.new()
-	delay.time = 0.5
-	newPassiveAction.executionStack.append(delay)
 
 	var createVFX = CreateVFXStep.new()
 	createVFX.VFXPrefab = Template.ActivelyOnFire
@@ -46,12 +38,9 @@ func OnTurnStart():
 	combatStep.Targeting = CombatEffectTemplate.EEffectTargetType.Targets
 	newPassiveAction.executionStack.append(combatStep)
 
-	var secondDelay = DelayStep.new()
-	secondDelay.time = 0.5
-	newPassiveAction.executionStack.append(secondDelay)
+	newPassiveAction.AddDelayStep()
 
-	var expGain = GainExpStep.new()
-	newPassiveAction.executionStack.append(expGain)
+	newPassiveAction.AddGainEXPStep()
 
 	newPassiveAction.BuildResults()
 	Map.Current.AppendPassiveAction(newPassiveAction)

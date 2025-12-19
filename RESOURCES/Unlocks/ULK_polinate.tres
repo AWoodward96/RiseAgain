@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://nr31vspwpi3h"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_xbk5d"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="2_o00q6"]
+
+[resource]
+script = ExtResource("2_o00q6")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_polinate.tscn"
+StartsDiscoverable = true
+StartUnlocked = true

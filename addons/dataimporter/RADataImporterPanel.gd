@@ -12,6 +12,7 @@ const AbilityStandard_Dir = "res://RESOURCES/Ability/Standard"
 const Descriptors_Dir = "res://RESOURCES/Descriptors"
 const VulnerableDescriptors_Dir = "res://RESOURCES/Descriptors/Vulnerabilities"
 const LootTable_Dir = "res://RESOURCES/LootTable"
+const Requirements_Dir = "res://RESOURCES/Requirements"
 const TargetingShapes_Dir = "res://RESOURCES/TargetingShapes"
 const stat_dict = {
 	"Vitality" : "res://RESOURCES/Stats/STAT_Vitality.tres",
@@ -55,6 +56,9 @@ var itemPathArray : Array[String]
 
 var lootTableArray : Array[String]
 var lootTablePathArray : Array[String]
+
+var requirementsArray : Array[String]
+var requirementsPathArray : Array[String]
 
 var unitNameArray : Array[String]
 var unitPathArray : Array[String]
@@ -142,6 +146,7 @@ func ConstructAbilityMapping():
 
 func ConstructLootTableMapping():
 	ConstructMapping(LootTable_Dir, lootTablePathArray, lootTableArray)
+	ConstructMapping(Requirements_Dir, requirementsPathArray, requirementsArray)
 
 func ConstructDescriptorMapping():
 	ConstructMapping(Descriptors_Dir, descriptorPathArray, descriptorNameArray)

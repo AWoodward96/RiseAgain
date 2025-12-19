@@ -63,6 +63,16 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 	if _data.has("AbilityCooldown"): _ability.abilityCooldown = int(_data["AbilityCooldown"])
 	if _data.has("UsageRestoredByCampfire"): _ability.usageRestoredByCampfire = int(_data["UsageRestoredByCampfire"])
 
+	if _data.has("Speed"):
+		match _data["Speed"]:
+			"Normal":
+				_ability.ability_speed = Ability.AbilitySpeed.Normal
+			"Fast":
+				_ability.ability_speed = Ability.AbilitySpeed.Fast
+			"Slow":
+				_ability.ability_speed = Ability.AbilitySpeed.Slow
+
+
 	if _data.has("iconPath"):
 		if ResourceLoader.exists(_data["iconPath"]):
 			var texture = ResourceLoader.load(_data["iconPath"]) as CompressedTexture2D

@@ -42,3 +42,18 @@ func GetBaseStat(_statTemplate : StatTemplate):
 			return def.Value
 
 	return 0
+
+func CanUseWeapon(_weapon : Ability):
+	var weaponDescriptor = _weapon.descriptors.duplicate()
+	var indexOfWeaponsDescriptor = weaponDescriptor.find(GameManager.GameSettings.WeaponDescriptor)
+	if indexOfWeaponsDescriptor == -1:
+		push_error("Weapon asking if it can be equipped is lacking the weapon descriptor. This should not happen, and indicates an improperly setup Ability. Please investigate. Weapon: ", _weapon.internalName)
+		return false
+
+	weaponDescriptor.remove_at(indexOfWeaponsDescriptor)
+	var canEquip = false
+	for availableEquip in WeaponDescriptors:
+		if weaponDescriptor.has(availableEquip):
+			canEquip = true
+
+	return canEquip

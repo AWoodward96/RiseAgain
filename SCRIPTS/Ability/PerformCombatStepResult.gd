@@ -62,7 +62,7 @@ func CalculateExpGain():
 	if AbilityData != null && AbilityData.TargetingData != null:
 		var targetsHit = 0
 		for tileData in AffectedTiles:
-			if tileData.Tile.Occupant != null && AbilityData.TargetingData.OnCorrectTeam(Source, tileData.Tile.Occupant):
+			if tileData.Tile.Occupant != null && SkillTargetingData.OnCorrectTeam(AbilityData.TargetingData.Type, AbilityData.TargetingData.TeamTargeting, Source, tileData.Tile.Occupant):
 				targetsHit += 1
 
 		isAOE = targetsHit > 1

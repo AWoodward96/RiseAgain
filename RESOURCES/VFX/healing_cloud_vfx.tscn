@@ -16,6 +16,7 @@ colors = PackedColorArray(0, 0.473317, 0.237782, 1, 0.4788, 0.76, 0.581907, 1, 0
 
 [node name="HealingCloudVFX" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
 script = ExtResource("1_jrtoe")
+emitOnReady = true
 cpuParticles = [NodePath("CPUParticles2D")]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StatChangeEffect" load_steps=6 format=3 uid="uid://chs6a6geerc0d"]
+
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_14l7r"]
+[ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="2_3gi3s"]
+[ext_resource type="Texture2D" uid="uid://cospj5rlljpy6" path="res://ART/Icons/Ability/Tactical/sprint.png" id="3_dwpmv"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="4_y30um"]
+
+[sub_resource type="Resource" id="Resource_4eoox"]
+script = ExtResource("1_14l7r")
+Stat = ExtResource("2_3gi3s")
+FlatValue = 3
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[resource]
+script = ExtResource("4_y30um")
+StatChanges = Array[ExtResource("1_14l7r")]([SubResource("Resource_4eoox")])
+Turns = 1
+loc_name = "tact_sprint_name"
+loc_desc = "tact_sprint_desc"
+loc_icon = ExtResource("3_dwpmv")
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"

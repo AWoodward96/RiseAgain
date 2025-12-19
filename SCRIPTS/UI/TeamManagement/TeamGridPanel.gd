@@ -1,8 +1,8 @@
 extends FocusEntryPanel
 class_name TeamGridPanel
 
-signal OnUnitSelected(_unitTemplate : UnitTemplate)
-signal OnHoverChanged(_unitTemplate : UnitTemplate)
+signal OnUnitSelected(_element, _unitTemplate : UnitTemplate)
+signal OnHoverChanged(_element, _unitTemplate : UnitTemplate)
 
 @export var startWithFirstElementSelected : bool = true # just in case i want to reuse this element
 
@@ -55,9 +55,9 @@ func OnFocusChanged(_element : Control):
 	if index != -1:
 		lastFocusedElement = _element
 		unitTemplate = entryParent.createdEntries[index].template
-		OnHoverChanged.emit(unitTemplate)
+		OnHoverChanged.emit(_element, unitTemplate)
 	pass
 
 func EntrySelected(_entry : Control, _template : UnitTemplate):
-	OnUnitSelected.emit(_template)
+	OnUnitSelected.emit(_entry, _template)
 	pass

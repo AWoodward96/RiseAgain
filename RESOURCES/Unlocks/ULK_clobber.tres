@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://r270a6fmp1m1"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_hfq3p"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="2_nmcm7"]
+
+[resource]
+script = ExtResource("2_nmcm7")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_clobber.tscn"
+StartsDiscoverable = true
+StartUnlocked = true

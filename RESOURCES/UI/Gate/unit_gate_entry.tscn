@@ -19,6 +19,7 @@ script = ExtResource("1_d6m5n")
 useStatusData = true
 statusText = NodePath("UnitStatusPanel/MarginContainer/VBoxContainer/StatusText")
 requiredUnitColor = Color(0.1882353, 0.76862746, 1, 1)
+inRosterColor = Color(0.77, 0.7238, 0.67759997, 1)
 button = NodePath(".")
 useIcon = false
 useVisualParent = true

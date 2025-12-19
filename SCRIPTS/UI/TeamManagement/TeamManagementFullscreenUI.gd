@@ -75,7 +75,7 @@ func ReturnFocus():
 		elif inItemSwap:
 			heldItemsLibrary.ReturnFocus()
 
-func OnUnitSelected(_unitTemplate : UnitTemplate):
+func OnUnitSelected(_element, _unitTemplate : UnitTemplate):
 	currentSelectedUnit = _unitTemplate
 	EnterInspectSelection()
 	pass

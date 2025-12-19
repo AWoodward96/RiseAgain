@@ -12,6 +12,7 @@ const INFINITE_LOOP_PROTECTION = 1000
 func RollTable(rng : DeterministicRNG, _numberOfRewards : int, _duplicateProtections : bool = true):
 	var rewardArray : Array[LootTableEntry]
 	var infiniteProtection = 0
+	ReCalcWeightSum(self)
 	while rewardArray.size() < _numberOfRewards:
 		var reward = Roll(rng)
 
@@ -41,11 +42,12 @@ func Roll(rng : DeterministicRNG):
 	var rolledValue = rng.NextFloat(0, WeightSum)
 	print("Loot Table Rolled: ", rolledValue)
 	for entry in Table:
-		if entry.AccumulatedWeight > rolledValue && entry.AccumulatedWeight != -1:
-			if entry is NestedLootTableEntry:
-				if entry.Table.WeightSum == -1:
-					entry.Table.ReCalcWeightSum()
+		if entry.AccumulatedWeight == -1:
+			continue
 
+		if entry.AccumulatedWeight > rolledValue:
+			if entry is NestedLootTableEntry:
+				entry.Table.ReCalcWeightSum(entry.Table)
 				return entry.Table.Roll(rng)
 			else:
 				return entry
@@ -60,7 +62,7 @@ func ReCalcWeightSum(_lootTable : LootTable):
 		if e == null:
 			continue
 
-		if !e.LootRequirement.CheckRequirement(e):
+		if e.LootRequirement != null && !e.LootRequirement.CheckRequirement(e):
 			# This is to indicate that this entry is invalid - because it doesn't pass the requirement
 			e.AccumulatedWeight = -1
 			continue

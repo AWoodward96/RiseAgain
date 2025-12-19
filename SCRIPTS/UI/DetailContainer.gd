@@ -9,6 +9,8 @@ func BeginShowDetails():
 		return false
 
 	for d in Details:
+		if d == null:
+			continue
 		d.EnableFocus()
 
 	UIManager.GlobalUIInstance.ShowDetailOfElement(Details[0])

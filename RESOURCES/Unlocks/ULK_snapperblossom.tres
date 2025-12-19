@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=3 format=3 uid="uid://cxpkui5qak8ym"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_p1n1m"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="2_qpwnm"]
+
+[resource]
+script = ExtResource("2_qpwnm")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_snapperblossom.tscn"
+StartsDiscoverable = true
+StartUnlocked = true

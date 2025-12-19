@@ -647,3 +647,15 @@ event_whitecliffiron_d1_preview1,Gain +25 Ore
 event_whitecliffiron_d2_preview1,Gain +60 Ore
 ce_slowed,Slowed
 ce_slowed_effect,This Unit has reduced Movement.
+item_t2_stonecarapace_name,Stone-Shell Figurine
+item_t2_stonecarapace_desc,After taking physical damage increase defense. After taking magic damage increase spdefense by 1. Resets at start of your turn.
+tact_sprint_name,Sprint
+tact_sprint_desc,Gain 3 Movement this turn.
+art_polinate_name,Pollinate
+art_polinate_desc,"Heal an ally based on {HEAL_STAT}. At the start of the next 2 turns, heal them again."
+art_clobber_name,Clobber
+art_clobber_desc,Clobber the enemy with the currently equipped Weapon three times.
+art_snapperblossom_name,Snap Blossom
+art_snapperblossom_desc,"Give an Ally a Snap Blossom. It shields an Ally based on {DMG_AGGRESSIVESTAT}. The next time they are attacked, the Blossom explodes and deals damage to surrounding enemies based on {DMG_AGGRESSIVESTAT}"
+unit_baggirl_name,Bag Girl
+unit_baggirl_desc,A courior and connesuer of plants and ingredients. Buffs allies and uses her many bags as blunt weapons.

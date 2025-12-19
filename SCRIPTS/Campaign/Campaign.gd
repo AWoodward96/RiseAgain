@@ -278,7 +278,8 @@ static func FromJSON(_dict : Dictionary):
 	campaign.currentMapBlock = load(_dict["currentMapBlock"])
 	campaign.teamSizeLimit = PersistDataManager.LoadFromJSON("teamSizeLimit", _dict)
 
-	PersistDataManager.JSONtoResourceFromPath(_dict["campaignLedger"], campaign.campaignLedger)
+	# TODO: Remove the campaign ledger if it has no functional use in the game
+	#PersistDataManager.JSONtoResourceFromPath(_dict["campaignLedger"], campaign.campaignLedger)
 
 	# Handle items in the convoy
 	campaign.Convoy.FromJSON(_dict["Convoy"])

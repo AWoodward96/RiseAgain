@@ -69,4 +69,4 @@ CanTargetSelf = true
 script = ExtResource("5_08ed0")
 ScalingStat = ExtResource("6_27vmx")
 ScalingModType = 2
-ScalingMod = 0.3
+ScalingMod = 0.667

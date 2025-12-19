@@ -130,16 +130,19 @@ func CampaignSelected(_campaignTemplate : CampaignTemplate):
 	EnterTeamSelect()
 	pass
 
-func UnitSelected(_unitTemplate : UnitTemplate):
+func UnitSelected(_element, _unitTemplate : UnitTemplate):
 	var roster = PersistDataManager.universeData.bastionData.SelectedRoster
 	var index = roster.find(_unitTemplate)
 	if index == -1:
 		if selectedCampaign.startingRosterSize > roster.size():
 			roster.append(_unitTemplate)
+			if _element != null: _element.SetInRoster(true)
 	else:
 		var foundInReq = selectedCampaign.requiredUnit.find(_unitTemplate)
 		if foundInReq == -1:
 			roster.remove_at(index)
+			if _element != null: _element.SetInRoster(false)
+
 
 	PersistDataManager.universeData.bastionData.SelectedRoster = roster
 	RefreshSquad()

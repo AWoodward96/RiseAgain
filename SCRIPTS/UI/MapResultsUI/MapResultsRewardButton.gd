@@ -40,6 +40,10 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 		if _unit != null:
 			# NOTE: if Unit is null, then the item has been sent to the convoy via a different sequence
 			# But if it's not null, it's handled here - lets gooo
-			if !_unit.TryEquipItem(_lootRewardEntry.ItemPrefab):
-				map.CurrentCampaign.Convoy.AddToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
+			var weaponCheck = _lootRewardEntry.ItemPrefab.instantiate() as Ability
+			if weaponCheck.type == Ability.AbilityType.Weapon:
+				_unit.AddAbilityInstance(weaponCheck)
+			elif weaponCheck is Item:
+				if !_unit.TryEquipItem(_lootRewardEntry.ItemPrefab):
+					map.CurrentCampaign.Convoy.AddToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
 	pass

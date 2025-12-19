@@ -339,7 +339,7 @@ func ClearPreview():
 func ShowPreview():
 	# Filter out the tiles that have incorrect targeting on them
 	# The hard removal of specific tiles may not be what we want here - but we'll seeeeeeeeeeeeee
-	log.affectedTiles = targetingData.FilterByTargettingFlags(source, log.affectedTiles)
+	log.affectedTiles = SkillTargetingData.FilterByTargettingFlags(targetingData.Type, targetingData.TeamTargeting, targetingData.CanTargetSelf, source, log.affectedTiles)
 	log.BuildStepResults()
 
 	# Preview the results

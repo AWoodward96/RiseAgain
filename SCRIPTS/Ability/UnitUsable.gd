@@ -9,7 +9,12 @@ class_name UnitUsable
 @export var descriptors : Array[DescriptorTemplate]
 
 @export var TargetingData : SkillTargetingData
-@export var UsableDamageData : DamageData
+@export var UsableDamageData : DamageData :
+	get:
+		if UsableDamageData != null && UsableDamageData.UseWeaponDataInstead && ownerUnit != null && ownerUnit.EquippedWeapon != null:
+			return ownerUnit.EquippedWeapon.UsableDamageData
+
+		return UsableDamageData
 @export var StatData : ItemStatComponent
 @export var HealData : HealComponent
 @export var MovementData : AbilityMovementComponent

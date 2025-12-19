@@ -104,6 +104,10 @@ static func FromJSON(_dict : Dictionary):
 			combatEffectBase = OnFireEffectInstance.new()
 		"InvulnerableEffectInstance":
 			combatEffectBase = InvulnerableEffectInstance.new()
+		"TurnStartHealEffectInstance":
+			combatEffectBase = TurnStartHealEffectInstance.new()
+		"SnapBlossomEffectInstance":
+			combatEffectBase = SnapBlossomEffectInstance.new()
 
 	# Call Deferred is actually goated
 	# The Grid isn't gonna be fully initialized yet, so we defer this call so that the Occupants are set

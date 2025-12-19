@@ -38,30 +38,39 @@ func import_data_from_json(_data):
 
 		lootTable.Table.clear()
 		for line in lootTableData[tableIndex]:
+			var entry : LootTableEntry = null
 			match line["LootType"]:
 				"Item":
-					var entry = ImportItemEntry(tableName, line)
-					if entry != null:
-						lootTable.Table.append(entry)
+					entry = ImportItemEntry(tableName, line)
 				"Weapon":
-					var entry = ImportWeaponEntry(tableName, line)
-					if entry != null:
-						lootTable.Table.append(entry)
+					entry = ImportWeaponEntry(tableName, line)
 				"LootTable":
-					var entry = ImportLootTableEntry(tableName, line)
-					if entry != null:
-						lootTable.Table.append(entry)
+					entry = ImportLootTableEntry(tableName, line)
 				"SpecificUnit":
-					var entry = ImportSpecificUnitEntry(tableName, line)
-					if entry != null:
-						lootTable.Table.append(entry)
+					entry = ImportSpecificUnitEntry(tableName, line)
+
+			## load the requirements
+			if line["Requirement"] != "" && entry != null:
+				var pathIndex = requirementsArray.find(line["Requirement"])
+				if pathIndex != -1:
+					# loads a Resource of type MultiRequirement to a variable. lootTableReqPathArray[pathIndex] is a String path to the MultiRequirement resource
+					entry.LootRequirement = ResourceLoader.load(requirementsPathArray[pathIndex]) as RequirementBase
+				else:
+					log += str("\n[color=red]Could not find LootTableReq ", line["Requirement"], " for an entry in table ", tableName, " -- skipping it[/color]")
+
+
+			if entry != null:
+				lootTable.Table.append(entry)
+			else:
+				log += str("\n[color=red]Entry is null: ", line)
+
 			pass
 
 		ReCalcWeightSum(lootTable)
 
 		tableIndex += 1
 		log += str("\n[color=green]Successfully modified Template [/color]", lootTable.resource_name, "[color=green] At path: [/color]", path)
-		var err = ResourceSaver.save(lootTable, path)
+		var err = ResourceSaver.save(lootTable)
 		if err != OK:
 			log += str("\n[color=red]FAILED TO SAVE LOOT TABLE AT PATH: [/color]", path, "[color=red]ERROR CODE: [/color]", err)
 
@@ -96,6 +105,7 @@ func ReCalcWeightSum(_lootTable : LootTable):
 func ImportItemEntry(_tableName, _line):
 	var itemEntry = ItemRewardEntry.new()
 	itemEntry.Weight = _line["Weight"]
+
 
 	var itemName = _line["Data1"]
 	var itemMapIndex = itemNameArray.find(itemName)
@@ -144,6 +154,7 @@ func ImportLootTableEntry(_tableName, _line):
 	else:
 		lootTableEntry.Table = ResourceLoader.load(lootTablePathArray[lootTableIndex]) as LootTable
 		return lootTableEntry
+
 
 func ConstructPathFromTableName(_tableName : String):
 	return str(LootTable_Dir, "/", _tableName, ".tres")

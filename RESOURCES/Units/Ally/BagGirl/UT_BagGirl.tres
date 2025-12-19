@@ -15,9 +15,9 @@
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="13_f57hy"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_kcqs3"]
 [ext_resource type="Resource" uid="uid://dcxjuftthcd2x" path="res://RESOURCES/Unlocks/ULK_blunt.tres" id="15_ks1k3"]
-[ext_resource type="Resource" uid="uid://bn2vvdjtrk201" path="res://RESOURCES/Unlocks/ULK_gauze.tres" id="15_w5vxb"]
 [ext_resource type="Resource" uid="uid://d2d5roo837klh" path="res://RESOURCES/Descriptors/DES_Blunt.tres" id="16_cvcgv"]
 [ext_resource type="PackedScene" uid="uid://dxnle1lfyeoe4" path="res://RESOURCES/Units/Ally/BagGirl/VIS_BagGirl.tscn" id="16_iwn7m"]
+[ext_resource type="Resource" uid="uid://cftyj3plyshst" path="res://RESOURCES/Unlocks/ULK_sprint.tres" id="16_ks1k3"]
 [ext_resource type="Texture2D" uid="uid://c1o2rcp1rsxdt" path="res://ART/Icons/Units/baggirl.png" id="17_ev16q"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="18_ps4bk"]
 
@@ -157,7 +157,9 @@ StatGrowths = Array[ExtResource("2_iwn7m")]([SubResource("Resource_voc0r"), SubR
 PrestiegeCaps = Array[ExtResource("2_iwn7m")]([SubResource("Resource_ks1k3"), SubResource("Resource_l2ac1"), SubResource("Resource_vpv74"), SubResource("Resource_xieq4"), SubResource("Resource_mmgnp"), SubResource("Resource_hs541"), SubResource("Resource_aryhi"), SubResource("Resource_5upm8")])
 Affinity = ExtResource("1_lp5r8")
 StartingEquippedWeapon = ExtResource("15_ks1k3")
-StartingTactical = ExtResource("15_w5vxb")
+StartingTactical = ExtResource("16_ks1k3")
+Tier0Abilities = Array[String](["uid://dovjeble1x4wx"])
+Tier1Abilities = Array[String](["uid://cq8gkroer2hb6", "uid://6k33vbc2a4au"])
 WeaponDescriptors = Array[ExtResource("13_f57hy")]([ExtResource("16_cvcgv")])
 DebugName = "BagGirl"
 loc_DisplayName = "unit_baggirl_name"

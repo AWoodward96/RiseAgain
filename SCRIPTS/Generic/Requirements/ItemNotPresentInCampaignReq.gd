@@ -25,4 +25,12 @@ func CheckRequirement(_genericData):
 			if ability.internalName == bannedName:
 				return false
 
+		for unit in GameManager.CurrentCampaign.CurrentRoster:
+			for item in unit.ItemSlots:
+				if item == null:
+					continue
+
+				if item.internalName == bannedName:
+					return false
+
 	return true

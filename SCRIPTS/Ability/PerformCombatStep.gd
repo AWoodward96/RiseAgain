@@ -23,6 +23,8 @@ func Enter(_actionLog : ActionLog):
 		style = GameManager.UnitSettings.GenericAttackAnimation
 
 
+	# Sometimes a unit can die mid-combat to do an effect, so this variable is a flag to check to make sure we should actually attack or not
+	var canAttack : bool = false
 	# The defending units however, need the specific result to take damage from
 	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
 	for stack in results:
@@ -43,12 +45,14 @@ func Enter(_actionLog : ActionLog):
 
 		retaliationResults.clear()
 		retaliationComplete = false
+
 		if damageStepResult.Target != null:
 			# ignore any unit that's dying
 			if damageStepResult.Target.IsDying:
 				damageStepResult.Invalidate()
 				continue
 
+			canAttack = true
 			if useDefendAction:
 				#damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
 
@@ -58,13 +62,11 @@ func Enter(_actionLog : ActionLog):
 						log.responseResults.append(retaliation)
 						retaliation.RollChance(Map.Current.mapRNG)
 						retaliationResults.append(retaliation)
-						#retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, log, retaliation.AbilityData.animationStyle, true)
-						#retaliation.Target.QueueDefenseSequence(retaliation.Source.global_position, retaliation)
 			else:
 				pass
-				#damageStepResult.Target.DoCombat(damageStepResult)
 
-	source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, style, false)
+	if canAttack:
+		source.QueueAttackSequence(log.actionOriginTile.GlobalPosition, log, style, false)
 	pass
 
 func Execute(_delta):
@@ -80,7 +82,11 @@ func Execute(_delta):
 			return false
 
 		cooloff += _delta
-		return cooloff > Juice.combatSequenceCooloffTimer
+		# cooloff if the animation calls for it. Return true if it doesn't
+		if (ability.animationStyle == null && GameManager.UnitSettings.GenericAttackAnimation.HasStandardCooloff )|| (ability.animationStyle != null && ability.animationStyle.HasStandardCooloff):
+			return cooloff > Juice.combatSequenceCooloffTimer
+		else:
+			return true
 
 	return false
 

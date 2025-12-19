@@ -106,7 +106,11 @@ func JSONtoResourceFromPath(_array, _assignedArrayType : Array):
 	_assignedArrayType.clear()
 	var temp = []
 	for path in _array:
-		temp.append(load(path))
+		var loadedFile = load(path)
+		if loadedFile == null:
+			push_error("Could not load resource at path: ", path)
+		else:
+			temp.append(load(path))
 
 	_assignedArrayType.assign(temp)
 

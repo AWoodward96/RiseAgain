@@ -37,7 +37,7 @@ func GetAdditionalTileTargets(_unit : UnitInstance, _grid : Grid, _tile : Tile, 
 		TargetingType.ShapedFree:
 			if shapedTiles != null:
 				addtionalTargetedTiles.append_array(shapedTiles.GetTileData(_unit, ability, _grid, _tile, _atRange))
-			addtionalTargetedTiles = FilterByTargettingFlags(_unit, addtionalTargetedTiles)
+			addtionalTargetedTiles = FilterByTargettingFlags(Type, TeamTargeting, CanTargetSelf, _unit, addtionalTargetedTiles)
 			pass
 		TargetingType.ShapedDirectional:
 			pass
@@ -63,11 +63,12 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 	else:
 		options = _grid.GetCharacterAttackOptions(_unit, [_unit.CurrentTile], TargetRange)
 
-	options = FilterTilesByTargettingFlags(_unit, options)
+	options = FilterTilesByTargettingFlags(Type, TeamTargeting, CanTargetSelf, _unit, options)
 
 
 	if ability.IsHeal():
-		options = FilterByHeal(options)
+		if !ability.HealData.IgnoreCanHealCheck:
+			options = FilterByHeal(options)
 
 	if options.size() > 1 && _sort:
 		options.sort_custom(OrderTargets)
@@ -87,7 +88,7 @@ func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : G
 			if targetUnit == null:
 				continue
 
-			if OnCorrectTeam(_sourceUnit, targetUnit):
+			if OnCorrectTeam(Type, TeamTargeting, _sourceUnit, targetUnit):
 				if shapedTiles != null:
 					returnTiles.append_array(shapedTiles.GetTargetedTilesFromDirection(_sourceUnit, ability, _map.grid, targetUnit.CurrentTile, _directionIndex, 0, false, true))
 				else:
@@ -98,11 +99,6 @@ func GetGlobalAttack(_sourceUnit : UnitInstance, _map : Map, _directionIndex : G
 
 	return returnTiles
 
-func FilterByTargettingFlags(_unit : UnitInstance, _options : Array[TileTargetedData]):
-	return _options.filter(func(o : TileTargetedData) : return (o.Tile.Occupant == null && o.HitsEnvironment) || (o.Tile.Occupant != null && OnCorrectTeam(_unit, o.Tile.Occupant) && !o.Tile.Occupant.IsDying && ((o.Tile.Occupant != _unit) || (o.Tile.Occupant == _unit && CanTargetSelf))) || (o.willPush))
-
-func FilterTilesByTargettingFlags(_unit : UnitInstance, _options : Array[Tile]):
-	return _options.filter(func(o : Tile) : return o.Occupant == null ||  (o.Occupant != null && OnCorrectTeam(_unit, o.Occupant) && !o.Occupant.IsDying) || (o.Occupant == _unit && CanTargetSelf && !o.Occupant.IsDying))
 
 func FilterByHeal(_options : Array):
 	if _options[0] is Tile:
@@ -111,14 +107,6 @@ func FilterByHeal(_options : Array):
 		return _options.filter(func(o : TileTargetedData) : return o.Tile.Occupant != null && o.Tile.Occupant.CanHeal)
 	return _options
 
-func OnCorrectTeam(_thisUnit : UnitInstance, _otherUnit : UnitInstance):
-	if Type == TargetingType.SelfOnly:
-		return _thisUnit == _otherUnit
-
-	if TeamTargeting == TargetingTeamFlag.Empty:
-		return _otherUnit == null
-
-	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && TeamTargeting == TargetingTeamFlag.EnemyTeam) || TeamTargeting == TargetingTeamFlag.All
 
 # Orders the Tiles based on if they're currently occupied by another unit
 func OrderTargets(a : Tile, b : Tile) -> bool:
@@ -141,3 +129,19 @@ func OrderTargets(a : Tile, b : Tile) -> bool:
 		return aHealth < bHealth
 
 	return false
+
+
+static func FilterByTargettingFlags(_type : TargetingType, _teamTargeting : TargetingTeamFlag, _canTargetSelf : bool, _unit : UnitInstance, _options : Array[TileTargetedData]):
+	return _options.filter(func(o : TileTargetedData) : return (o.Tile.Occupant == null && o.HitsEnvironment) || (o.Tile.Occupant != null && OnCorrectTeam(_type, _teamTargeting, _unit, o.Tile.Occupant) && !o.Tile.Occupant.IsDying && ((o.Tile.Occupant != _unit) || (o.Tile.Occupant == _unit && _canTargetSelf))) || (o.willPush))
+
+static func FilterTilesByTargettingFlags(_type : TargetingType, _teamTargeting : TargetingTeamFlag, _canTargetSelf : bool, _unit : UnitInstance, _options : Array[Tile]):
+	return _options.filter(func(o : Tile) : return o.Occupant == null ||  (o.Occupant != null && OnCorrectTeam(_type, _teamTargeting, _unit, o.Occupant) && !o.Occupant.IsDying) || (o.Occupant == _unit && _canTargetSelf && !o.Occupant.IsDying))
+
+static func OnCorrectTeam(_type : TargetingType, _teamTargeting : TargetingTeamFlag, _thisUnit : UnitInstance, _otherUnit : UnitInstance):
+	if _type == TargetingType.SelfOnly:
+		return _thisUnit == _otherUnit
+
+	if _teamTargeting == TargetingTeamFlag.Empty:
+		return _otherUnit == null
+
+	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && _teamTargeting == TargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && _teamTargeting == TargetingTeamFlag.EnemyTeam) || _teamTargeting == TargetingTeamFlag.All

@@ -26,11 +26,21 @@ func Initialize(_reward : LootTableEntry, _index : int):
 	pass
 
 func InitializeAsItem(_itemRewardEntry : ItemRewardEntry):
-	rewardType.text = "Type: Item"
-	var itemToBeRewarded = _itemRewardEntry.ItemPrefab.instantiate() as Item
+	var itemToBeRewarded = _itemRewardEntry.ItemPrefab.instantiate() as UnitUsable
+
 	if itemToBeRewarded == null:
-		push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
+		push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate.")
 		return
+
+	if itemToBeRewarded is Item:
+		rewardType.text = "Type: Item"
+	elif itemToBeRewarded is Ability:
+		if itemToBeRewarded.type == Ability.AbilityType.Weapon:
+			rewardType.text = "Type: Weapon"
+		else:
+			rewardType.text = "Type: Ability"
+
+
 
 	rewardIcon.texture = itemToBeRewarded.icon
 	rewardName.text = tr(itemToBeRewarded.loc_displayName)

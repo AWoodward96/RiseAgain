@@ -23,6 +23,7 @@ enum EDamageClassification { Physical, Magical, True }
 @export_range(-1, 1) var CritModifier : float = 0
 @export_range(0, 1) var PercMaxHealthMod : float = 0
 
+@export var UseWeaponDataInstead : bool = false
 @export var VulerableDescriptors : Array[DescriptorMultiplier]
 
 func DoMod(_val, _mod, _modType : DamageData.EModificationType):

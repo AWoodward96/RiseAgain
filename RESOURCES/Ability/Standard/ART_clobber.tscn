@@ -1,0 +1,58 @@
+[gd_scene load_steps=17 format=3 uid="uid://6k33vbc2a4au"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_q33ai"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_j3qrs"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_u1pgf"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_1htgx"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="3_e2u3t"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_ja0qb"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_e2u3t"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_u1pgf"]
+[ext_resource type="Script" uid="uid://barfg6ccbfuwo" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_GenericAttack.gd" id="6_dxc4o"]
+[ext_resource type="Texture2D" uid="uid://d1k21vge2iknw" path="res://ART/Icons/Ability/Standard/clobber.png" id="7_dxc4o"]
+
+[sub_resource type="Resource" id="Resource_qtcne"]
+script = ExtResource("3_e2u3t")
+time = 0.25
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_dxc4o"]
+script = ExtResource("3_1htgx")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_6dios"]
+script = ExtResource("3_1htgx")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_ko6or"]
+script = ExtResource("3_1htgx")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_qyelb"]
+script = ExtResource("4_e2u3t")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_5e5hn"]
+script = ExtResource("6_dxc4o")
+HasStandardWindup = false
+metadata/_custom_type_script = "uid://barfg6ccbfuwo"
+
+[node name="clobber" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_q33ai")
+abilityCooldown = 4
+executionStack = Array[ExtResource("2_u1pgf")]([SubResource("Resource_qtcne"), SubResource("Resource_dxc4o"), SubResource("Resource_6dios"), SubResource("Resource_ko6or"), SubResource("Resource_qyelb")])
+animationStyle = SubResource("Resource_5e5hn")
+internalName = "clobber"
+loc_displayName = "art_clobber_name"
+loc_displayDesc = "art_clobber_desc"
+icon = ExtResource("7_dxc4o")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource("2_j3qrs")
+AgressiveStat = ExtResource("3_ja0qb")
+UseWeaponDataInstead = true
+
+[node name="TargetingData" type="Node2D" parent="."]
+script = ExtResource("4_u1pgf")

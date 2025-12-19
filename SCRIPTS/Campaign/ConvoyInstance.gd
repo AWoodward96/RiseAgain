@@ -45,20 +45,7 @@ func EquipWeaponFromConvoy(_unit : UnitInstance, _weapon : Ability):
 	if _weapon.type != Ability.AbilityType.Weapon:
 		return
 
-	var descriptors = _weapon.descriptors.duplicate()
-	var indOfWeapon = descriptors.find(GameManager.GameSettings.WeaponDescriptor)
-	if indOfWeapon == -1:
-		push_error("Trying to equip a Weapon that lacks the weapon descriptor. This is not allowed")
-		return
-
-	descriptors.remove_at(indOfWeapon)
-	var canEquip = false
-	for availableEquip in _unit.Template.WeaponDescriptors:
-		if descriptors.has(availableEquip):
-			canEquip = true
-			break
-
-	if canEquip:
+	if _unit.Template.CanUseWeapon(_weapon):
 		# This AddAbilityInstance automatically moves their equipped weapon to convoy
 		# Has to be removed first before it can be re-added or else we're gonna throw an error
 		WeaponInventory.remove_at(weaponIndex)

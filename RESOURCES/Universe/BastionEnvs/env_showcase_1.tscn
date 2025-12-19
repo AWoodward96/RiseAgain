@@ -251,7 +251,7 @@ position = Vector2(191.5, 63.5)
 shape = SubResource("RectangleShape2D_uqvao")
 
 [node name="TavernRegistry" type="Node2D" parent="SubEnvironments/Tavern_Inside" node_paths=PackedStringArray("UIParent", "Anim", "CharacterEntryParent", "LoadoutEntryParent", "interactableArea", "visual")]
-position = Vector2(559, 511)
+position = Vector2(3107, 728)
 script = ExtResource("17_l6p3b")
 UIParent = NodePath("UI")
 Anim = NodePath("UI/AnimationPlayer")

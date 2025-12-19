@@ -106,18 +106,6 @@ func PerformDamage():
 	if sourceHealthDelta != 0:
 		unit.ModifyHealth(sourceHealthDelta, combatResults[0])
 
-#func QueueRetaliation():
-	#if !IsRetaliation:
-		#if !retaliationQueued:
-			#retaliationQueued = true
-#
-			#for combatRes in combatResults:
-				#var retaliation = combatRes.RetaliationResult
-				#if retaliation != null && retaliation.Source != null && retaliation.Source.currentHealth > 0 && !combatRes.Kill:
-					#retaliation.Source.QueueAttackSequence(retaliation.Target.global_position, Log, retaliation.AbilityData.animationStyle, true)
-#
-		#pass
-
 func _Exit():
 	if unit != null:
 		unit.TryPlayIdleAnimation()

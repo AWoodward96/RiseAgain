@@ -5,6 +5,7 @@ class_name BastionUnitEntry
 @export var useStatusData : bool = false
 @export var statusText : Label
 @export var requiredUnitColor : Color
+@export var inRosterColor : Color
 
 var inCampsite : bool
 var inTavern : bool
@@ -36,8 +37,10 @@ func Initialize(_unitTemplate : UnitTemplate):
 		inCampsite = PersistDataManager.universeData.bastionData.UnitsInCampsite.has(_unitTemplate)
 		inTavern = PersistDataManager.universeData.bastionData.UnitsInTavern.has(_unitTemplate)
 
-		if !inCampsite && !inTavern && createdVisual != null:
-			createdVisual.SetActivated(false)
+		# if we're not in showcase mode, set the visual to greyscale to indicate usage
+		if !showcaseMode:
+			if !inCampsite && !inTavern && createdVisual != null:
+				createdVisual.SetActivated(false)
 
 		var format = {}
 		if inTavern:
@@ -70,3 +73,9 @@ func SetRequired(_bool : bool):
 		nameLabel.label_settings.font_color = requiredUnitColor
 	else:
 		nameLabel.label_settings.font_color = Color.WHITE
+
+func SetInRoster(_bool : bool):
+	if _bool:
+		modulate = inRosterColor
+	else:
+		modulate = Color.WHITE

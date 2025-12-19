@@ -70,7 +70,7 @@ Template = ExtResource("1_g1xjk")
 
 [resource]
 script = ExtResource("1_wj702")
-CampaignManifest = Array[ExtResource("11_nhtav")]([ExtResource("13_jbp28"), ExtResource("8_rsajm")])
+CampaignManifest = Array[ExtResource("11_nhtav")]([ExtResource("8_rsajm"), ExtResource("13_jbp28")])
 CampaignInstancePrefab = ExtResource("11_1lydm")
 DefaultLossState = SubResource("Resource_l1yyb")
 GridModulatePrefab = ExtResource("23_14m44")

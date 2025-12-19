@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvngr6fr6prr7"]
+[gd_scene load_steps=12 format=3 uid="uid://dvngr6fr6prr7"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_1qt3w"]
+[ext_resource type="Texture2D" uid="uid://dq71k6rmyfs41" path="res://ART/Icons/Ability/Equippable/lightdagger.png" id="2_1qt3w"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_h7gq4"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_eg5yp"]
 [ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="4_12yhd"]
@@ -22,6 +23,7 @@ abilityCooldown = 0
 internalName = "lightdagger"
 loc_displayName = "weap_lightdagger_name"
 loc_displayDesc = "weap_lightdagger_desc"
+icon = ExtResource("2_1qt3w")
 descriptors = Array[ExtResource("2_h7gq4")]([ExtResource("3_eg5yp"), ExtResource("4_12yhd")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dji5l3d4ur0fh"]
+[gd_scene load_steps=19 format=3 uid="uid://dji5l3d4ur0fh"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7ustl"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_aq3qa"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="4_ivyfi"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_pthjs"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="5_17fsu"]
+[ext_resource type="Texture2D" uid="uid://tyba0740f2m6" path="res://ART/Icons/Ability/Equippable/fireytome.png" id="5_pthjs"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_pthjs"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="7_8n11e"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="7_17fsu"]
@@ -40,6 +41,7 @@ executionStack = Array[ExtResource("2_ivyfi")]([SubResource("Resource_8n11e"), S
 internalName = "fireytome"
 loc_displayName = "weap_fireytome_name"
 loc_displayDesc = "weap_fireytome_desc"
+icon = ExtResource("5_pthjs")
 descriptors = Array[ExtResource("2_aq3qa")]([ExtResource("3_h5saj"), ExtResource("7_17fsu")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")

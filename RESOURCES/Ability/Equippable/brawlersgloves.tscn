@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmpu33wdq4fbq"]
+[gd_scene load_steps=21 format=3 uid="uid://bmpu33wdq4fbq"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_wut23"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_iknsx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_c71ca"]
 [ext_resource type="Resource" uid="uid://d2d5roo837klh" path="res://RESOURCES/Descriptors/DES_Blunt.tres" id="4_qs2wa"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="5_3poly"]
+[ext_resource type="Texture2D" uid="uid://dq2ojph6svsu" path="res://ART/Icons/Ability/Equippable/brawlersgloves.png" id="5_c71ca"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_c71ca"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_ctdgl"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_meuw2"]
@@ -46,6 +47,7 @@ executionStack = Array[ExtResource("2_qs2wa")]([SubResource("Resource_ctdgl"), S
 internalName = "brawlersgloves"
 loc_displayName = "weap_brawlersgloves_name"
 loc_displayDesc = "weap_brawlersgloves_desc"
+icon = ExtResource("5_c71ca")
 descriptors = Array[ExtResource("2_iknsx")]([ExtResource("3_5d0jy"), ExtResource("4_qs2wa")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")

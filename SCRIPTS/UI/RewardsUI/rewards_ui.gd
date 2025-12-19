@@ -86,17 +86,21 @@ func ShowGiveItemUI():
 	for entry in rewardParent.createdEntries:
 		entry.focus_mode = Control.FOCUS_NONE
 
-	if workingSelectedReward is ItemRewardEntry:
-		var itemToBeRewarded = (workingSelectedReward as ItemRewardEntry).ItemPrefab.instantiate() as Item
-		if itemToBeRewarded == null:
-			push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
-			return
-		giveItemIcon.texture = itemToBeRewarded.icon
+	var itemToBeRewarded = (workingSelectedReward as ItemRewardEntry).ItemPrefab.instantiate() as Ability
+	if itemToBeRewarded == null:
+		push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
+		return
+	giveItemIcon.texture = itemToBeRewarded.icon
 
 
 	for unit in campaign.CurrentRoster:
 		if unit == null:
 			continue
+
+		if itemToBeRewarded.type == Ability.AbilityType.Weapon:
+			if !unit.Template.CanUseWeapon(itemToBeRewarded):
+				continue
+
 
 		var entry = giveItemEntryList.CreateEntry(giveItemEntryPrefab)
 		entry.Initialize(unit.Template)

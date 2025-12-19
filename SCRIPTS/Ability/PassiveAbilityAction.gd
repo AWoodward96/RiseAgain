@@ -45,10 +45,40 @@ func BuildResults():
 					push_error("Ability Step: " + str(step.get_script()) + " - attached to ability " + ability.name + " has an improper ActionStepResult and cannot be previewed.")
 		index += 1
 
+func AssignAffectedTiles(_originTile : Tile, affectedTiles : Array[TileTargetedData]):
+	log.actionOriginTile = _originTile
+	log.affectedTiles = affectedTiles
+	pass
+
+func AddCameraFocusStep(_instant : bool = false):
+	var cameraFocusStep = FocusCameraStep.new()
+	cameraFocusStep.Instant = _instant
+	executionStack.append(cameraFocusStep)
+	pass
+
+func AddPlayAbilityPopup():
+	executionStack.append(PlayAbilityPopupStep.new())
+	pass
+
+func AddDelayStep(_delayTime : float = 0.5):
+	var delay = DelayStep.new()
+	delay.time = _delayTime
+	executionStack.append(delay)
+
+func AddHealStep():
+	var healStep = HealStep.new()
+	executionStack.append(healStep)
+
+func AddGainEXPStep():
+	executionStack.append(GainExpStep.new())
+	pass
+
 static func Construct(_source : UnitInstance, _abilitySource : Ability, _priority : int = 0):
 	var newAction = PassiveAbilityAction.new()
 	newAction.log = ActionLog.Construct(Map.Current.grid, _source, _abilitySource)
 	newAction.log.actionStackIndex = -1
+	newAction.log.source = _source
+	newAction.log.ability = _abilitySource
 	newAction.priority = _priority
 	# In some instances, this may turn into a null - we'll deal with that when we get there
 	newAction.ability = _abilitySource

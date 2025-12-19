@@ -532,7 +532,6 @@ offset_top = 80.0
 offset_right = 659.0
 offset_bottom = 614.0
 script = ExtResource("5_a7rkm")
-autoInitialize = false
 entryParent = NodePath("MarginContainer/ScrollContainer/MarginContainer/GridContainer")
 entryPrefab = ExtResource("10_4usir")
 

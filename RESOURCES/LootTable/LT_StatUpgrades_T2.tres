@@ -43,4 +43,5 @@ AccumulatedWeight = 6.0
 [resource]
 resource_name = "LT_StatUpgrades_T2"
 script = ExtResource("8_dd6q1")
+Table = Array[ExtResource("1_oew6d")]([SubResource("Resource_ybnvy"), SubResource("Resource_vo7fa"), SubResource("Resource_62h64"), SubResource("Resource_gssa8"), SubResource("Resource_t6vgh"), SubResource("Resource_6rl71")])
 WeightSum = 6.0

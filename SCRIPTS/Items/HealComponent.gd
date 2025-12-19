@@ -7,6 +7,7 @@ class_name HealComponent
 @export var ScalingMod : float
 
 @export var ScalesWithUsage : bool = false
+@export var IgnoreCanHealCheck : bool = false
 
 var ability : Ability
 

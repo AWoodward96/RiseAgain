@@ -31,13 +31,13 @@ func ShowUnitData(_unitTemplate : UnitTemplate):
 	unitSelected = true
 
 	UnitPanel.EnableFocus(false)
-	UpdatePanelData(_unitTemplate)
+	UpdatePanelData(null, _unitTemplate)
 	EnableStatBlockFocus(true)
 	Animator.play("FocusMods")
 	var first = StatBlockEntryParent.GetEntry(0)
 	first.ForceFocus()
 
-func UpdatePanelData(_unitTemplate : UnitTemplate):
+func UpdatePanelData(_element, _unitTemplate : UnitTemplate):
 	unitTemplate = _unitTemplate
 	unitPersist = PersistDataManager.universeData.GetUnitPersistence(unitTemplate) as UnitPersistBase
 	if unitPersist == null:

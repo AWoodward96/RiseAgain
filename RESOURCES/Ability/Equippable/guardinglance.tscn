@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://baknk5opc22rr"]
+[gd_scene load_steps=20 format=3 uid="uid://baknk5opc22rr"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0plmg"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_bod36"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_gjl6l"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_3bf8w"]
 [ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="4_itrrn"]
+[ext_resource type="Texture2D" uid="uid://bymqol5nm2vnf" path="res://ART/Icons/Ability/Equippable/guardinglance.png" id="5_3bf8w"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="5_axr80"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_3bf8w"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_xun2m"]
@@ -41,6 +42,7 @@ executionStack = Array[ExtResource("2_itrrn")]([SubResource("Resource_xun2m"), S
 internalName = "guardinglance"
 loc_displayName = "weap_guardinglance_name"
 loc_displayDesc = "weap_guardinglance_desc"
+icon = ExtResource("5_3bf8w")
 descriptors = Array[ExtResource("2_bod36")]([ExtResource("3_gjl6l"), ExtResource("4_itrrn")])
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")

@@ -8,4 +8,4 @@ func CheckRequirement(_genericData):
 	if GameManager.CurrentCampaign == null:
 		return true
 
-	return GameManager.CurrentCampaign.CurrentRoster.size() + OpenSlots <= GameManager.CurrentCampaign.TeamSizeLimit
+	return GameManager.CurrentCampaign.CurrentRoster.size() + OpenSlots <= GameManager.CurrentCampaign.teamSizeLimit

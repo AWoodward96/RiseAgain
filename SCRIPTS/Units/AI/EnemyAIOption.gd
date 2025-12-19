@@ -221,7 +221,7 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 		tilesHitByAttack = ability.TargetingData.GetAffectedTiles(sourceUnit, grid, tileToAttack)
 
 	for targetTile in tilesHitByAttack:
-		if targetTile.Tile.Occupant != null && ability.TargetingData.OnCorrectTeam(sourceUnit, targetTile.Tile.Occupant):
+		if targetTile.Tile.Occupant != null && SkillTargetingData.OnCorrectTeam(ability.TargetingData.Type, ability.TargetingData.TeamTargeting, sourceUnit, targetTile.Tile.Occupant):
 			var thisDamage = GameManager.GameSettings.DamageCalculation(sourceUnit, targetTile.Tile.Occupant, ability.UsableDamageData, targetTile, ability)
 			damageAmount += thisDamage
 			if targetTile.Tile.Occupant.currentHealth <= thisDamage:
