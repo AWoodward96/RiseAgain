@@ -26,6 +26,9 @@ func CheckRequirement(_genericData):
 				return false
 
 		for unit in GameManager.CurrentCampaign.CurrentRoster:
+			if unit == null:
+				continue
+
 			for item in unit.ItemSlots:
 				if item == null:
 					continue

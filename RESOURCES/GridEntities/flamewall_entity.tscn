@@ -10,7 +10,6 @@
 [node name="FlameWallEntity" type="Node2D" node_paths=PackedStringArray("damage_data")]
 script = ExtResource("1_rymhw")
 shaped_tiles = ExtResource("2_o5a81")
-team_targeting = 2
 damage_interval = 1
 interruptionType = 1
 damage_data = NodePath("DamageData")

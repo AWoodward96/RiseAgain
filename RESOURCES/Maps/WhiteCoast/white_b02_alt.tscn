@@ -239,6 +239,7 @@ DeltaLevel = 3
 Position = Vector2i(7, 3)
 Boss = true
 GivenItems = Array[String](["uid://cp2qfjogxikmj"])
+ExtraHealthBars = 1
 AIBehavior = ExtResource("24_f18rt")
 AggroBehavior = SubResource("Resource_hkjcv")
 

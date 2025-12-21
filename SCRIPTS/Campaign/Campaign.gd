@@ -198,6 +198,9 @@ func AddUnitToRoster(_unitTemplate : UnitTemplate, _levelOverride = 0):
 
 func IsUnitInRoster(_unitTemplate : UnitTemplate):
 	for u in CurrentRoster:
+		if u == null:
+			continue
+
 		if u.Template == _unitTemplate:
 			return true
 

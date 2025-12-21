@@ -51,11 +51,18 @@ func RefreshObjectives():
 func RefreshUnits():
 	if GameManager.CurrentCampaign != null:
 		for unit in GameManager.CurrentCampaign.CurrentRoster:
+			# TODO Should show a dead icon
+			if unit == null:
+				continue
+
 			var entry = squadEntryParent.CreateEntry(squadEntryPrefab)
 			entry.Initialize(unit)
 			pass
 	else:
 		for unit in map.teams[GameSettingsTemplate.TeamID.ALLY]:
+			if unit == null:
+				continue
+
 			var entry = squadEntryParent.CreateEntry(squadEntryPrefab)
 			entry.Initialize(unit)
 			pass
