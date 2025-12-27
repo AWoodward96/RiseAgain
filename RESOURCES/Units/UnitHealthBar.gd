@@ -126,16 +126,24 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 		UpdateBarTween.tween_callback(UpdateBarTweenComplete)
 
 
+
 func UpdateArmorBarTween(value):
-	HealthText.text = str("%01.0d/%01.0d" % [clamp(CurrentHealth, 0, MaxHealth), MaxHealth])
-	HealthText.text += str(" + %01.0d" % value)
-	HealthBar.value = clampf(CurrentHealth, 0, MaxHealth) / MaxHealth as float
-	ArmorBar.value = clampf(value, 0, StartingArmor) / MaxHealth as float
+	if Unit.Submerged:
+		HealthText.text = tr(LocSettings.Health_Submerged)
+		ArmorBar.value = 0
+	else:
+		HealthText.text = str("%01.0d/%01.0d" % [clamp(CurrentHealth, 0, MaxHealth), MaxHealth])
+		HealthText.text += str(" + %01.0d" % value)
+		HealthBar.value = clampf(CurrentHealth, 0, MaxHealth) / MaxHealth as float
+		ArmorBar.value = clampf(value, 0, StartingArmor) / MaxHealth as float
 	pass
 
 func UpdateHealthBarTween(value):
-	HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, MaxHealth), MaxHealth])
-	HealthBar.value = clampf(value, 0, MaxHealth) / MaxHealth as float
+	if Unit.Submerged:
+		HealthText.text = tr(LocSettings.Health_Submerged)
+	else:
+		HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, MaxHealth), MaxHealth])
+		HealthBar.value = clampf(value, 0, MaxHealth) / MaxHealth as float
 	pass
 
 func RefreshIncomingDamageBar():
@@ -149,7 +157,6 @@ func Refresh(_autohide : bool = true):
 	if Unit == null && AssignedTile == null:
 		return
 
-
 	var armor = 0
 	if Unit != null:
 		StartingArmor = Unit.GetArmorAmount()
@@ -158,10 +165,20 @@ func Refresh(_autohide : bool = true):
 
 	ArmorBar.visible = armor > 0
 
-	if HealthText != null: HealthText.text = "%01.0d/%01.0d" % [CurrentHealth, MaxHealth]
+	if HealthText != null:
+		if Unit != null:
+			if !Unit.Submerged:
+				HealthText.text = "%01.0d/%01.0d" % [CurrentHealth, MaxHealth]
+			else:
+				HealthText.text = tr(LocSettings.Health_Submerged)
+
+
 	if HealthBar != null:
 		if Unit != null:
-			HealthBar.value = Unit.currentHealth / Unit.trueMaxHealth
+			if Unit.Submerged:
+				HealthBar.value = 1
+			else:
+				HealthBar.value = Unit.currentHealth / Unit.trueMaxHealth
 		elif AssignedTile != null:
 			HealthBar.value = AssignedTile.Health / AssignedTile.MaxHealth
 
@@ -179,8 +196,11 @@ func Refresh(_autohide : bool = true):
 	if armor > 0:
 		ArmorBar.visible = Unit != null
 		if Unit != null:
-			ArmorBar.value = armor as float / Unit.trueMaxHealth
-			HealthText.text += str(" + %01.0d" % armor)
+			if Unit.Submerged:
+				ArmorBar.value = 0
+			else:
+				ArmorBar.value = armor as float / Unit.trueMaxHealth
+				HealthText.text += str(" + %01.0d" % armor)
 
 	if ExpLabel != null:
 		ExpLabel.visible = Unit != null

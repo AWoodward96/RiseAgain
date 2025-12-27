@@ -227,6 +227,7 @@ UnitToSpawn = ExtResource("14_ox76s")
 UnitLevel = 2
 DeltaLevel = 0
 Position = Vector2i(11, 2)
+GivenItems = Array[String](["uid://cp2qfjogxikmj", "uid://cp2qfjogxikmj"])
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 

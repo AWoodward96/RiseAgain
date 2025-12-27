@@ -38,7 +38,7 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	# No negative levels plz
 	level = max(level + DeltaLevel, 0)
 
-	var unit = _map.CreateUnit(UnitToSpawn, level)
+	var unit = _map.CreateUnit(UnitToSpawn, level) as UnitInstance
 	_map.InitializeUnit(unit, Position, Allegiance, 1, ExtraHealthBars)
 	unit.SetAI(AIBehavior, AggroBehavior)
 	unit.ExtraEXPGranted = ExtraEXPGranted
@@ -48,6 +48,9 @@ func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 		if loadedItem != null:
 			unit.TryEquipItem(loadedItem)
 		pass
+
+	# Because if you equip a vitality item, you don't gain the hp
+	unit.currentHealth = unit.maxHealth
 
 	for effect in PreAppliedEffects:
 		var instance = effect.CreateInstance(unit, unit, null, null)

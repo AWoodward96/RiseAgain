@@ -164,6 +164,7 @@ animations = [{
 scale = Vector2(2, 2)
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_l1hej")
 animation = &"full"
 autoplay = "full"

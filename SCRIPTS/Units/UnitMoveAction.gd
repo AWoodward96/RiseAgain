@@ -3,6 +3,7 @@ class_name UnitMoveAction
 
 var Route : Array[Tile]
 var DestinationTile : Tile
+var TilesMoved : int = 0
 var MovementIndex
 var MovementVelocity
 var TravelVector : Vector2 # The Vector representing movement from one point to the next
@@ -17,6 +18,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 	MovementIndex = 0
 	JumpTimer = 0
+	TilesMoved = 0
 	Route = movementData.Route
 	DestinationTile = movementData.DestinationTile
 	Log = movementData.Log

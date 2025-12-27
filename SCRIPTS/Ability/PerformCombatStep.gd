@@ -3,7 +3,6 @@ class_name PerformCombatStep
 
 
 @export var useGenericAttackStyle : bool = true # If true, use the generics
-@export var useDefendAction : bool = true
 
 var cooloff : float
 
@@ -26,6 +25,7 @@ func Enter(_actionLog : ActionLog):
 	# Sometimes a unit can die mid-combat to do an effect, so this variable is a flag to check to make sure we should actually attack or not
 	var canAttack : bool = false
 	# The defending units however, need the specific result to take damage from
+	retaliationResults.clear()
 	var results = log.GetResultsFromActionIndex(log.actionStackIndex)
 	for stack in results:
 		var subActionRes = null
@@ -43,7 +43,6 @@ func Enter(_actionLog : ActionLog):
 		if subActionRes != null:
 			subActionRes.ExpGain += damageStepResult.ExpGain
 
-		retaliationResults.clear()
 		retaliationComplete = false
 
 		if damageStepResult.Target != null:
@@ -53,15 +52,12 @@ func Enter(_actionLog : ActionLog):
 				continue
 
 			canAttack = true
-			if useDefendAction:
-				#damageStepResult.Target.QueueDefenseSequence(source.global_position, damageStepResult)
-
-				if damageStepResult.RetaliationResult != null:
-					var retaliation = damageStepResult.RetaliationResult
-					if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
-						log.responseResults.append(retaliation)
-						retaliation.RollChance(Map.Current.mapRNG)
-						retaliationResults.append(retaliation)
+			if damageStepResult.RetaliationResult != null:
+				var retaliation = damageStepResult.RetaliationResult
+				if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:
+					log.responseResults.append(retaliation)
+					retaliation.RollChance(Map.Current.mapRNG)
+					retaliationResults.append(retaliation)
 			else:
 				pass
 

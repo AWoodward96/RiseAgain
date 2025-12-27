@@ -170,6 +170,11 @@ func UnitInjured(_unitInstance : UnitInstance):
 
 func RegisterUnitDeath(_unitInstance : UnitInstance):
 	DeadUnits.append(_unitInstance.Template)
+
+	if CurrentRoster.has(_unitInstance):
+		var index = CurrentRoster.find(_unitInstance)
+		CurrentRoster.remove_at(index)
+
 	_unitInstance.queue_free()
 
 func RemoveEmptyRosterEntries():

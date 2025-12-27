@@ -26,7 +26,7 @@ script = ExtResource("15_ks74r")
 [sub_resource type="Resource" id="Resource_hkjcv"]
 script = ExtResource("15_ks74r")
 
-[node name="maroon_a01_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_destructable", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="maroon_a01_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_destructable", "tilemap_threat", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 y_sort_enabled = true
 script = ExtResource("1_4ana2")
 GridSize = Vector2i(15, 10)
@@ -36,7 +36,6 @@ tilemap_bg = NodePath("BG")
 tilemap_main = NodePath("Main")
 tilemap_destructable = NodePath("Destructables")
 tilemap_threat = NodePath("Threat")
-tilemap_fire = NodePath("")
 tilemap_UI = NodePath("UI")
 WinCondition = ExtResource("2_643m3")
 squadParent = NodePath("Squads")

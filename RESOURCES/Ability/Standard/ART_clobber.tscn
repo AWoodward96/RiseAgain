@@ -35,6 +35,7 @@ metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 [sub_resource type="Resource" id="Resource_5e5hn"]
 script = ExtResource("6_dxc4o")
 HasStandardWindup = false
+HasStandardCooloff = false
 metadata/_custom_type_script = "uid://barfg6ccbfuwo"
 
 [node name="clobber" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]

@@ -74,6 +74,7 @@ func ShowPreview():
 
 	healthbar.visible = true
 
+
 	# Abilities can crit too however - so get that in there
 	if crit_chance_label != null:
 		crit_chance_label.text = str(clamp(critChance, 0, 1) * 100) + "%"
@@ -90,10 +91,9 @@ func ShowPreview():
 		entry.texture.texture = template.loc_icon
 		entry.label.text = template.loc_name
 
-	if !submerged:
-		ShowHealthBar(true, false)
-		healthbar.RefreshIncomingDamageBar()
-		healthbar.ModifyHealthOverTime(normalDamage + collisionDamage + healAmount)
+	ShowHealthBar(true, false)
+	healthbar.RefreshIncomingDamageBar()
+	healthbar.ModifyHealthOverTime(normalDamage + collisionDamage + healAmount)
 
 func ShowAffinityRelations(_affinity : AffinityTemplate):
 	if _affinity == null || assignedUnit == null:

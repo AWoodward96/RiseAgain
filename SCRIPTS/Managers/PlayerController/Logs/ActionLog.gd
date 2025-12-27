@@ -18,6 +18,9 @@ var actionStepResults : Array[ActionStepResult]
 # for units defending or responding to the initial attack
 var responseResults : Array[ActionStepResult]
 
+# TODO: Create an array or a dict of MovementData to track which units are moving where for the unit move action
+
+
 var ability : Ability
 var actionStackIndex : int
 var subActionStackIndex : int

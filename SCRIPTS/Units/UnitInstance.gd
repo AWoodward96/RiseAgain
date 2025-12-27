@@ -43,6 +43,7 @@ var MovementIndex : int
 var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
 var CanMove : bool
+var MovementExpended : int = -1
 var PendingMove : bool
 var Injured : bool = false
 var UsingSlowSpeedAbility : bool = false
@@ -671,10 +672,13 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	if visual != null && !UsingSlowSpeedAbility:
 		visual.ResetAnimation()
 
-func LockInMovement(_tile : Tile):
+func LockInMovement(_tile : Tile, _movementExpended : int = -1):
 	if PendingMove:
 		TurnStartTile = _tile
 		CanMove = false
+
+		# if -1, it means all movement
+		MovementExpended = _movementExpended
 
 func QueueEndTurn():
 	var endTurn = UnitEndTurnAction.new()
@@ -735,7 +739,12 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 		var armor = GetArmorAmount()
 		var damageTaken = min(_netHealthChange + armor, 0)
 		DamageTakenThisTurn += damageTaken
-		Juice.CreateDamagePopup(damageTaken, map.grid.GetTileFromGlobalPosition(global_position))
+
+		# basically, if the unit ONLY gets ignited, it'll show the "ignite" and "no damage" right on top of each other
+		# This if check is to ignore that scenario
+		if !(damageTaken == 0 && _result.Ignite != 0):
+			Juice.CreateDamagePopup(damageTaken, map.grid.GetTileFromGlobalPosition(global_position))
+
 		if -_netHealthChange >= currentHealth:
 			takeLethalDamageSound.play()
 		else:
