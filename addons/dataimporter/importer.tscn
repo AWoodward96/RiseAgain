@@ -31,10 +31,9 @@ theme_override_constants/margin_bottom = 0
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
-current_tab = 3
+current_tab = 0
 
 [node name="Units" type="Panel" parent="MarginContainer/TabContainer" node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
-visible = false
 layout_mode = 2
 script = ExtResource("2_fm6kx")
 sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")
@@ -95,7 +94,6 @@ text = "Import"
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
-editable = false
 
 [node name="Panel" type="Panel" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
@@ -271,6 +269,7 @@ grow_vertical = 2
 bbcode_enabled = true
 
 [node name="Localization" type="Panel" parent="MarginContainer/TabContainer" node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
+visible = false
 layout_mode = 2
 script = ExtResource("5_vbuby")
 sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")

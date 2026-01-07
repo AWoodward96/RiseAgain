@@ -19,10 +19,27 @@ func Initialize(_reward : LootTableEntry, _index : int):
 		InitializeAsItem(reward as ItemRewardEntry)
 		return
 
+	if reward is WeaponRewardEntry:
+		InitializeAsWeapon(reward as WeaponRewardEntry)
+		return
+
 	if reward is SpecificUnitRewardEntry:
 		InitializeAsUnit(reward as SpecificUnitRewardEntry)
 		return
 
+	pass
+
+func InitializeAsWeapon(_weaponRewardEntry : WeaponRewardEntry):
+	var weapon = _weaponRewardEntry.GetWeaponInstance()
+	if weapon == null:
+		push_error("Weapon to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate.")
+		return
+
+	# TODO: Gotta fix this man it's not a good look
+	rewardType.text = "Type: Weapon"
+	rewardIcon.texture = weapon.icon
+	rewardName.text = tr(weapon.loc_displayName)
+	rewardDesc.text = tr(weapon.loc_displayDesc).format(GameManager.LocalizationSettings.FormatAbilityDescription(weapon))
 	pass
 
 func InitializeAsItem(_itemRewardEntry : ItemRewardEntry):

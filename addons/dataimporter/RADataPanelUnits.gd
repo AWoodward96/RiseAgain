@@ -125,8 +125,12 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	# The UnitTemplates' scripts get replaced with a UnitTemplates#134crs34 cached script reference and it breaks everyhing to hell and back
 	# I think for now this works, as far as I can tell. The StatRefs get populated properly
 	log += str("\n[color=green]Successfully modified Template [/color]", _unitTemplate.DebugName)
+
+	# I can't tell if this is necessary or not anymore. We're flying blind. A test project shows no change in functionality here
 	_unitTemplate.take_over_path(_path)
-	var err = ResourceSaver.save(_unitTemplate, _path)
+
+	# Don't pass the _path into this save call btw? It, for some reason, messes up references in arrays?
+	var err = ResourceSaver.save(_unitTemplate)
 	if err != OK:
 		log += str("\n[color=red]FAILED TO SAVE UNIT TEMPLATE AT PATH: [/color]", _path, "[color=red]ERROR CODE: [/color]", err)
 

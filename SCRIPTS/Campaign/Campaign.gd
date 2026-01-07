@@ -66,19 +66,16 @@ func GetNextMapOption():
 	if campaignBlockMapIndex >= currentCampaignBlock.mapOptions.size():
 		traversedCampaignBlocks += 1
 		campaignBlockMapIndex = 0
-		if currentCampaignTemplate.campaignBlockCap != -1 && traversedCampaignBlocks >= currentCampaignTemplate.campaignBlockCap && currentCampaignTemplate.campaignFinale != null:
-			# We in endgame
-			currentCampaignBlock = currentCampaignTemplate.campaignFinale
-		else:
-			if currentCampaignBlock.nextCampaignBlocks.size() == 0:
-				# Well it's not.... easy to do anything here so just... end the map
-				ReportCampaignResult(true)
-				GameManager.ChangeGameState(BastionGameState.new(), null)
-				return
 
-			# if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
-			var nextIndex = CampaignRng.NextInt(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
-			currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
+		if currentCampaignBlock.nextCampaignBlocks.size() == 0:
+			# Well it's not.... easy to do anything here so just... end the map
+			ReportCampaignResult(true)
+			GameManager.ChangeGameState(BastionGameState.new(), null)
+			return
+
+		# if we're traversed each map option in the current campaign block, we need to initialize the next campaign block
+		var nextIndex = CampaignRng.NextInt(0, currentCampaignBlock.nextCampaignBlocks.size() - 1)
+		currentCampaignBlock = load(currentCampaignBlock.nextCampaignBlocks[nextIndex]) as CampaignBlock
 
 	currentMapBlock = currentCampaignBlock.GetMapBlock(campaignBlockMapIndex)
 	if currentMapBlock == null:
@@ -144,6 +141,9 @@ func ResumeMap():
 func CreateSquadInstance():
 	for unit in StartingRosterTemplates:
 		AddUnitToRoster(unit, debug_leveloverride)
+
+func IsFinale():
+	return campaignBlockMapIndex >= currentCampaignBlock.mapOptions.size() && currentCampaignBlock.nextCampaignBlocks.size() == 0
 
 func MapComplete():
 	# Persist the current roster between maps
@@ -228,6 +228,7 @@ func ReportCampaignResult(_victory : bool):
 
 	# then clean up the campaign
 	currentMap.queue_free()
+	currentMap = null
 	queue_free()
 
 func GetUnitFromTemplate(_unitTemplate : UnitTemplate):

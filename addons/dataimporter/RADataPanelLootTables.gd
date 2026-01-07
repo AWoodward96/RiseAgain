@@ -117,17 +117,17 @@ func ImportItemEntry(_tableName, _line):
 		return itemEntry
 
 func ImportWeaponEntry(_tableName , _line):
-	var itemEntry = ItemRewardEntry.new()
-	itemEntry.Weight = _line["Weight"]
+	var weaponEntry = WeaponRewardEntry.new()
+	weaponEntry.Weight = _line["Weight"]
 
 	var itemName = _line["Data1"]
-	var itemMapIndex = weaponNameArray.find(itemName)
+	var itemMapIndex = unlockableNameArray.find(itemName)
 	if itemMapIndex == -1:
 		log += str("\n[color=red]Could not find item ", itemName, " for an entry in table ", _tableName, " -- skipping entry[/color]")
 		return null
 	else:
-		itemEntry.ItemPrefab = ResourceLoader.load(weaponPathArray[itemMapIndex]) as PackedScene
-		return itemEntry
+		weaponEntry.ItemUnlockable = ResourceLoader.load(unlockablePathArray[itemMapIndex]) as AbilityUnlockable
+		return weaponEntry
 
 func ImportSpecificUnitEntry(_tableName, _line):
 	var specificUnitEntry = SpecificUnitRewardEntry.new()

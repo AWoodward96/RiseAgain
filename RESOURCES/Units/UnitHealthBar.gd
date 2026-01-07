@@ -128,7 +128,7 @@ func ModifyHealthOverTime(_deltaHealthChange : int):
 
 
 func UpdateArmorBarTween(value):
-	if Unit.Submerged:
+	if Unit != null && Unit.Submerged:
 		HealthText.text = tr(LocSettings.Health_Submerged)
 		ArmorBar.value = 0
 	else:
@@ -139,7 +139,7 @@ func UpdateArmorBarTween(value):
 	pass
 
 func UpdateHealthBarTween(value):
-	if Unit.Submerged:
+	if Unit != null && Unit.Submerged:
 		HealthText.text = tr(LocSettings.Health_Submerged)
 	else:
 		HealthText.text = str("%01.0d/%01.0d" % [clamp(value, 0, MaxHealth), MaxHealth])

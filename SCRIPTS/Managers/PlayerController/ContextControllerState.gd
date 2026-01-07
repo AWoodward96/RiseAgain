@@ -1,6 +1,7 @@
 extends PlayerControllerState
 class_name ContextControllerState
 
+
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 	reticle.visible = false

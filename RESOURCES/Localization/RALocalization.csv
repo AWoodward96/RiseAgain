@@ -656,6 +656,7 @@ art_polinate_desc,"Heal an ally based on {HEAL_STAT}. At the start of the next 2
 art_clobber_name,Clobber
 art_clobber_desc,Clobber the enemy with the currently equipped Weapon three times.
 art_snapperblossom_name,Snap Blossom
-art_snapperblossom_desc,"Give an Ally a Snap Blossom. It shields an Ally based on {DMG_AGGRESSIVESTAT}. The next time they are attacked, the Blossom explodes and deals damage to surrounding enemies based on {DMG_AGGRESSIVESTAT}"
+art_snapperblossom_desc,Give an Ally a Snap Blossom. It shields an Ally based on {DMG_AGGRESSIVESTAT}. When the Shield expires or runs out the Blossom explodes and deals damage to surrounding enemies based on {DMG_AGGRESSIVESTAT}.
 unit_baggirl_name,Bag Girl
 unit_baggirl_desc,A courior and connesuer of plants and ingredients. Buffs allies and uses her many bags as blunt weapons.
+ui_flamewall_effectdesc,Fire!!

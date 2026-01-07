@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="MultiRequirement" load_steps=8 format=3 uid="uid://cur7jhu8c2fcg"]
+[gd_resource type="Resource" script_class="MultiRequirement" load_steps=11 format=3 uid="uid://cur7jhu8c2fcg"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_g870j"]
 [ext_resource type="Script" uid="uid://50fucpl3xpxs" path="res://SCRIPTS/Generic/Requirements/ItemNotPresentInCampaignReq.gd" id="2_ax2fa"]
 [ext_resource type="Script" uid="uid://cgvauu1tug0qj" path="res://SCRIPTS/Generic/Requirements/MultiRequirement.gd" id="2_jnp8p"]
 [ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="3_f6tgf"]
 [ext_resource type="Script" uid="uid://du4qefex3coo4" path="res://SCRIPTS/Generic/Requirements/UnitInPartyCanUseWeaponTypeReq.gd" id="4_io65u"]
+[ext_resource type="Script" uid="uid://c885804tc7tkx" path="res://SCRIPTS/Generic/Requirements/UnlockableReq.gd" id="5_qukrg"]
+[ext_resource type="Resource" uid="uid://ck2y0oj2cq5d0" path="res://RESOURCES/Unlocks/ULK_steel_sword.tres" id="6_oud58"]
 
 [sub_resource type="Resource" id="Resource_6r4li"]
 script = ExtResource("2_ax2fa")
@@ -16,7 +18,13 @@ script = ExtResource("4_io65u")
 WeaponType = ExtResource("3_f6tgf")
 metadata/_custom_type_script = "uid://du4qefex3coo4"
 
+[sub_resource type="Resource" id="Resource_6owns"]
+script = ExtResource("5_qukrg")
+unlockable = ExtResource("6_oud58")
+useMidRunDiscoverable = true
+metadata/_custom_type_script = "uid://c885804tc7tkx"
+
 [resource]
 script = ExtResource("2_jnp8p")
-requirements = Array[ExtResource("1_g870j")]([SubResource("Resource_6r4li"), SubResource("Resource_dxu3j")])
+requirements = Array[ExtResource("1_g870j")]([SubResource("Resource_6r4li"), SubResource("Resource_dxu3j"), SubResource("Resource_6owns")])
 metadata/_custom_type_script = "uid://cgvauu1tug0qj"

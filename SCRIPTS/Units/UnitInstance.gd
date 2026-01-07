@@ -38,13 +38,14 @@ var EquippedWeapon : Ability
 var Submerged : bool = false
 var IsBoss : bool = false
 
-
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
-var CanMove : bool
-var MovementExpended : int = -1
-var PendingMove : bool
+var CanMove : bool						# Or, has this unit (not) moved this turn yet?
+var PendingMovementExpended : int = 0	# The amount of tiles a Unit has moved this turn - not locked in yet - because the player can still cancel out
+var MovementExpended : int = 0			# The amount of tiles a Unit has definitively moved this turn and cant cancel out of
+var PendingMove : bool					# Is a movement currently in process (like the player has selected a tile for this unit to move to and they are actively moving there)
+
 var Injured : bool = false
 var UsingSlowSpeedAbility : bool = false
 
@@ -267,6 +268,12 @@ func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 
 	if _combatEffectInstance is StealthEffectInstance:
 		StealthedCount += 1
+
+	if _combatEffectInstance is StatChangeEffectInstance:
+		var changes = _combatEffectInstance.GetEffects()
+		for c in changes:
+			if c.Stat == GameManager.GameSettings.MovementStat && c.Value > 0:
+				ReEnableMovement()
 
 	if _combatEffectInstance.Template.show_popup:
 		Juice.CreateEffectPopup(CurrentTile, _combatEffectInstance)
@@ -643,13 +650,15 @@ func GetUnitMovement():
 		if (effect is RootEffectInstance || effect is StunEffectInstance) && !effect.IsExpired():
 			return 0
 
-	return GetWorkingStat(GameManager.GameSettings.MovementStat)
+	return GetWorkingStat(GameManager.GameSettings.MovementStat) - MovementExpended
 
 func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	# Turns on this unit to let them take their turn
 	Activated = true
 	CanMove = true
 	PendingMove = false
+	MovementExpended = 0
+	PendingMovementExpended = 0
 	CurrentAction = null
 	ActionStack.clear()
 
@@ -672,13 +681,19 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	if visual != null && !UsingSlowSpeedAbility:
 		visual.ResetAnimation()
 
-func LockInMovement(_tile : Tile, _movementExpended : int = -1):
+func LockInMovement(_tile : Tile):
 	if PendingMove:
 		TurnStartTile = _tile
 		CanMove = false
+		# Here's where the amount of tiles moved get's locked in. At this point, this amount of movement has been expended
+		MovementExpended = PendingMovementExpended
 
-		# if -1, it means all movement
-		MovementExpended = _movementExpended
+func ReEnableMovement():
+	var movement = GetUnitMovement()
+	if movement > 0:
+		TurnStartTile = CurrentTile
+		CanMove = true
+		PendingMove = false
 
 func QueueEndTurn():
 	var endTurn = UnitEndTurnAction.new()
@@ -768,7 +783,6 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 
 
 func OnModifyHealthTweenComplete(_delta, _result : DamageStepResult):
-
 	var remainingDelta = _delta
 	var armor = GetArmorAmount()
 	if _delta < 0 && armor > 0:
@@ -1086,7 +1100,8 @@ func ToJSON():
 		"IsBoss" : IsBoss,
 		"StealthedCount" : StealthedCount,
 		"extraHealthBars" : extraHealthBars,
-		"UsingSlowSpeedAbility" : UsingSlowSpeedAbility
+		"UsingSlowSpeedAbility" : UsingSlowSpeedAbility,
+		"MovementExpended" : MovementExpended
 	}
 
 	if UsingSlowSpeedAbility && visual.AnimationWorkComplete:
@@ -1129,6 +1144,7 @@ static func FromJSON(_dict : Dictionary):
 	unitInstance.CanMove = _dict["CanMove"]
 	unitInstance.Injured = _dict["Injured"]
 	unitInstance.UsingSlowSpeedAbility = _dict["UsingSlowSpeedAbility"]
+	unitInstance.MovementExpended = _dict["MovementExpended"]
 
 	unitInstance.ExtraEXPGranted = int(_dict["ExtraEXPGranted"])
 
@@ -1210,10 +1226,11 @@ static func FromJSON(_dict : Dictionary):
 	# Set these after derived stats, so that health can actually be equal to the correct values
 	unitInstance.currentHealth = _dict["currentHealth"]
 
-	var updateActivated = func(_internalDict : Dictionary):
+	var deferredVisualUpdate = func(_internalDict : Dictionary):
 		unitInstance.Activated = _internalDict["Activated"]
-	updateActivated.call_deferred(_dict)
+		unitInstance.visual.UpdateSubmerged(unitInstance.Submerged)
 
+	deferredVisualUpdate.call_deferred(_dict)
 
 	unitInstance.RefreshVisuals()
 	return unitInstance

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk06veh2d7y28"]
+[gd_scene load_steps=22 format=3 uid="uid://bk06veh2d7y28"]
 
 [ext_resource type="Script" uid="uid://cxl3qcqfcg8wk" path="res://SCRIPTS/UI/GlobalUI.gd" id="1_pogg0"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="2_4ye6l"]
 [ext_resource type="Theme" uid="uid://cp4bbeykxl8fe" path="res://RESOURCES/UI/Themes/moonsteel_theme.tres" id="2_jjaen"]
 [ext_resource type="Texture2D" uid="uid://bk60n8pjsbu3g" path="res://ART/Icons/Resources/coins.png" id="3_4ye6l"]
 [ext_resource type="Texture2D" uid="uid://dq7qxasdckqsg" path="res://ART/Icons/Resources/food.png" id="4_d0me7"]
@@ -209,7 +210,7 @@ anchor_right = 1.0
 offset_left = -1.0
 offset_bottom = 1.0
 grow_horizontal = 0
-theme = ExtResource("2_jjaen")
+theme = ExtResource("2_4ye6l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ResourceUI"]
 libraries = {
@@ -393,7 +394,6 @@ text = "10"
 horizontal_alignment = 2
 
 [node name="Burst" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

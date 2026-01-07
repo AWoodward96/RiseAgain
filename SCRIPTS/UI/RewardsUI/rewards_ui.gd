@@ -76,7 +76,7 @@ func OnEntrySelected(_reward : LootTableEntry, _index : int):
 		OnRewardSelected.emit(_reward, null)
 		return
 
-	if _reward is ItemRewardEntry:
+	if _reward is ItemRewardEntry || _reward is WeaponRewardEntry:
 		ShowGiveItemUI()
 
 func ShowGiveItemUI():
@@ -86,10 +86,23 @@ func ShowGiveItemUI():
 	for entry in rewardParent.createdEntries:
 		entry.focus_mode = Control.FOCUS_NONE
 
-	var itemToBeRewarded = (workingSelectedReward as ItemRewardEntry).ItemPrefab.instantiate() as Ability
-	if itemToBeRewarded == null:
-		push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
-		return
+	var weaponMode = false
+	var itemToBeRewarded = null
+	if workingSelectedReward is ItemRewardEntry:
+		weaponMode = false
+		itemToBeRewarded = (workingSelectedReward as ItemRewardEntry).ItemPrefab.instantiate() as Ability
+		if itemToBeRewarded == null:
+			push_error("Item to be rewarded in item reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
+			return
+	elif workingSelectedReward is WeaponRewardEntry:
+		weaponMode = true
+		itemToBeRewarded = workingSelectedReward.GetWeaponInstance()
+		if itemToBeRewarded == null:
+			push_error("Weapon to be rewarded in weapon reward entry is null. This should not happen, and indicates an improperly setup loot table. Please investigate")
+			return
+		pass
+
+
 	giveItemIcon.texture = itemToBeRewarded.icon
 
 
@@ -97,7 +110,7 @@ func ShowGiveItemUI():
 		if unit == null:
 			continue
 
-		if itemToBeRewarded.type == Ability.AbilityType.Weapon:
+		if weaponMode:
 			if !unit.Template.CanUseWeapon(itemToBeRewarded):
 				continue
 

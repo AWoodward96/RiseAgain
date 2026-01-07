@@ -35,15 +35,16 @@ func OnRewardsSelected(_lootRewardEntry : LootTableEntry, _unit : UnitInstance):
 		map.CurrentCampaign.AddUnitToRoster(_lootRewardEntry.Unit)
 		return
 
-	if _lootRewardEntry is ItemRewardEntry :
+	if _lootRewardEntry is ItemRewardEntry || _lootRewardEntry is WeaponRewardEntry :
 		# Default to giving the first person in the roster the item
 		if _unit != null:
 			# NOTE: if Unit is null, then the item has been sent to the convoy via a different sequence
 			# But if it's not null, it's handled here - lets gooo
-			var weaponCheck = _lootRewardEntry.ItemPrefab.instantiate() as Ability
-			if weaponCheck.type == Ability.AbilityType.Weapon:
-				_unit.AddAbilityInstance(weaponCheck)
-			elif weaponCheck is Item:
+			if _lootRewardEntry is WeaponRewardEntry :
+				_unit.AddAbilityInstance(_lootRewardEntry.GetWeaponInstance())
+			elif _lootRewardEntry is ItemRewardEntry:
 				if !_unit.TryEquipItem(_lootRewardEntry.ItemPrefab):
 					map.CurrentCampaign.Convoy.AddToConvoy(_lootRewardEntry.ItemPrefab.instantiate())
+
+
 	pass

@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="MultiRequirement" load_steps=8 format=3 uid="uid://d0ka51mx36ji3"]
+[gd_resource type="Resource" script_class="MultiRequirement" load_steps=11 format=3 uid="uid://d0ka51mx36ji3"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_84ayo"]
 [ext_resource type="Script" uid="uid://50fucpl3xpxs" path="res://SCRIPTS/Generic/Requirements/ItemNotPresentInCampaignReq.gd" id="2_xei67"]
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="3_ch1p1"]
 [ext_resource type="Script" uid="uid://du4qefex3coo4" path="res://SCRIPTS/Generic/Requirements/UnitInPartyCanUseWeaponTypeReq.gd" id="4_8lorx"]
 [ext_resource type="Script" uid="uid://cgvauu1tug0qj" path="res://SCRIPTS/Generic/Requirements/MultiRequirement.gd" id="5_fxubw"]
+[ext_resource type="Script" uid="uid://c885804tc7tkx" path="res://SCRIPTS/Generic/Requirements/UnlockableReq.gd" id="5_lbmfx"]
+[ext_resource type="Resource" uid="uid://dn5l4mv003m8i" path="res://RESOURCES/Unlocks/ULK_magic_bolt.tres" id="6_jnrfi"]
 
 [sub_resource type="Resource" id="Resource_6r4li"]
 script = ExtResource("2_xei67")
@@ -16,7 +18,13 @@ script = ExtResource("4_8lorx")
 WeaponType = ExtResource("3_ch1p1")
 metadata/_custom_type_script = "uid://du4qefex3coo4"
 
+[sub_resource type="Resource" id="Resource_vbcff"]
+script = ExtResource("5_lbmfx")
+unlockable = ExtResource("6_jnrfi")
+useMidRunDiscoverable = true
+metadata/_custom_type_script = "uid://c885804tc7tkx"
+
 [resource]
 script = ExtResource("5_fxubw")
-requirements = Array[ExtResource("1_84ayo")]([SubResource("Resource_6r4li"), SubResource("Resource_dxu3j")])
+requirements = Array[ExtResource("1_84ayo")]([SubResource("Resource_6r4li"), SubResource("Resource_dxu3j"), SubResource("Resource_vbcff")])
 metadata/_custom_type_script = "uid://cgvauu1tug0qj"
