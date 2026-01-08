@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_5aprs"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_gfyht"]
 [ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_vt2ms"]
-[ext_resource type="Resource" uid="uid://cb51ipfqroolr" path="res://RESOURCES/Units/Enemy/HealCap/UT_HealCap.tres" id="8_rg0w7"]
+[ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="8_jydnc"]
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="9_lsk74"]
 [ext_resource type="Script" uid="uid://3olxj2qvcrdo" path="res://SCRIPTS/Units/AI/AI_LootGoblin.gd" id="10_b5w76"]
 [ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="12_jydnc"]
@@ -149,18 +149,18 @@ map = NodePath("../..")
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Spawn_HealCap" type="Sprite2D" parent="Spawners"]
-position = Vector2(704, 384)
+[node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
+position = Vector2(768, 192)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("8_rg0w7")
+UnitToSpawn = ExtResource("8_jydnc")
 UnitLevel = 1
 DeltaLevel = 0
-Position = Vector2i(11, 6)
+Position = Vector2i(12, 3)
 AIBehavior = SubResource("Resource_yulnj")
 AggroBehavior = SubResource("Resource_xxpgp")
 

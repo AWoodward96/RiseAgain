@@ -45,13 +45,13 @@ func Enter(_actionLog : ActionLog):
 
 		retaliationComplete = false
 
+		canAttack = true
 		if damageStepResult.Target != null:
 			# ignore any unit that's dying
 			if damageStepResult.Target.IsDying:
 				damageStepResult.Invalidate()
 				continue
 
-			canAttack = true
 			if damageStepResult.RetaliationResult != null:
 				var retaliation = damageStepResult.RetaliationResult
 				if retaliation.Source != null && retaliation.Source.currentHealth > 0 && !damageStepResult.Kill:

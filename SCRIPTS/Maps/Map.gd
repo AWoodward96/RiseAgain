@@ -369,7 +369,13 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 
 			# add resource gain
 			if _unitInstance.UnitAllegiance == GameSettingsTemplate.TeamID.ENEMY && _unitInstance.Template.ResourceDrops.size() != 0:
-				PersistDataManager.universeData.AddResources(_unitInstance.Template.ResourceDrops, _unitInstance.CurrentTile.GlobalPosition)
+				# remember camera space != global space. So convert this tile position to screen space before passing it in to the function that's gonna
+				# create the pips on the globa ui
+				var burstPosition = _unitInstance.CurrentTile.GlobalPosition
+				var cameraPosition = playercontroller.camera.position - (playercontroller.camera.get_viewport_rect().size / 2)
+				burstPosition -= cameraPosition
+
+				PersistDataManager.universeData.AddResources(_unitInstance.Template.ResourceDrops, burstPosition)
 
 
 	# despawn any grid entities that this unit is the owner of

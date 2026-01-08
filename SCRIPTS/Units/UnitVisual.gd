@@ -138,7 +138,7 @@ func UpdateShrouded():
 
 func PlayAlertedFromShroudAnimation():
 	visible = true
-	MyUnit.uiParent.visible = true
+
 	MyUnit.PlayAlertEmote()
 	await get_tree().create_timer(1).timeout
 	UpdateShrouded()
