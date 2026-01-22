@@ -1,8 +1,8 @@
 [gd_scene load_steps=34 format=3 uid="uid://yyqfnwbgvf4f"]
 
 [ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_l2sg2"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_gciqr"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_uhr0n"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_gciqr"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_uhr0n"]
 [ext_resource type="Texture2D" uid="uid://bbwruy6f6ev66" path="res://ART/Environment/WhiteCoast/Vault_Doors.png" id="5_oryed"]
 [ext_resource type="PackedScene" uid="uid://cndmf0hcxrc30" path="res://RESOURCES/VFX/explosion_vfx.tscn" id="6_tn43n"]
 

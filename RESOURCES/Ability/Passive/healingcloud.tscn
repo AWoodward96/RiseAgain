@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crgp0s3avbs4i"]
+[gd_scene load_steps=19 format=3 uid="uid://crgp0s3avbs4i"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7oiqh"]
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="2_cnvxg"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ddcgn74t12axm" path="res://RESOURCES/VFX/healing_cloud_vfx.tscn" id="5_xhm4w"]
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_xhm4w"]
 [ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="6_xodfp"]
+[ext_resource type="Resource" uid="uid://yqpddrucgtar" path="res://RESOURCES/Ability/TargetingTemplates/healingcloud_targeting.tres" id="9_4ws2j"]
 [ext_resource type="Resource" uid="uid://b2528dgdj72fb" path="res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres" id="12_v5pb2"]
 
 [sub_resource type="Resource" id="Resource_xodfp"]
@@ -46,6 +47,7 @@ passiveListeners = [NodePath("PassiveUnitDeathListener")]
 internalName = "healingcloud"
 loc_displayName = "passive_healingcloud_name"
 loc_displayDesc = "passive_healingcloud_desc"
+TargetingTemplate = ExtResource("9_4ws2j")
 TargetingData = NodePath("TargetingData")
 HealData = NodePath("HealComponent")
 

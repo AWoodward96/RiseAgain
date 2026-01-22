@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxhhl5qkaojly"]
+[gd_scene load_steps=20 format=3 uid="uid://bxhhl5qkaojly"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_k7wt7"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_0usqo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="7_nokfh"]
 [ext_resource type="Texture2D" uid="uid://bq1qg6ahjd440" path="res://ART/Icons/Ability/Standard/nomorefun.png" id="9_1nl5q"]
 [ext_resource type="Script" uid="uid://d2kv0hjonny5c" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_SimpleSingle.gd" id="9_r6auu"]
+[ext_resource type="Resource" uid="uid://i6wgman54uei" path="res://RESOURCES/Ability/TargetingTemplates/nomorefun_targeting.tres" id="10_1nl5q"]
 
 [sub_resource type="Resource" id="Resource_11nsq"]
 script = ExtResource("3_proj2")
@@ -47,6 +48,7 @@ internalName = "nomorefun"
 loc_displayName = "art_nomorefun_name"
 loc_displayDesc = "art_nomorefun_desc"
 icon = ExtResource("9_1nl5q")
+TargetingTemplate = ExtResource("10_1nl5q")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

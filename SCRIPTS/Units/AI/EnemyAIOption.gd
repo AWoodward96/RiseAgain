@@ -209,7 +209,7 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	if ability != null:
 		targetUnitRange = ability.GetRange()
 
-	if ability.type == Ability.AbilityType.Weapon:
+	if ability.type == Ability.EAbilityType.Weapon:
 		if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
 			unitWillRetaliate = true
 
@@ -237,7 +237,7 @@ func UpdateWeight():
 
 	# This means, the further away the unit is, the lower the priority it is.
 	# IE: Closer = better
-	if ability.type == Ability.AbilityType.Standard:
+	if ability.type == Ability.EAbilityType.Standard:
 		weight += ABILITY_TIER_AMOUNT
 
 	# if path is 0 then there's no route to this unit, so don't prioritize this

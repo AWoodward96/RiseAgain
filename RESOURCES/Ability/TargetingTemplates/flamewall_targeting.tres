@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TargetingGEFree" load_steps=2 format=3 uid="uid://blwscrixwaxc5"]
+
+[ext_resource type="Script" uid="uid://xpxfkw71nwhb" path="res://SCRIPTS/Targeting/TargetingGEFree.gd" id="1_mymie"]
+
+[resource]
+script = ExtResource("1_mymie")
+gridEntityPrefab = "res://RESOURCES/GridEntities/flamewall_entity.tscn"
+shapePrefabRef = "res://RESOURCES/TargetingShapes/generic_single.tres"
+canRotate = true
+TargetRange = Vector2i(1, 3)

@@ -11,6 +11,10 @@ static var CurrentInputSchmeme : ControllerScheme = ControllerScheme.Keyboard
 var inputDown : Array[bool] = [false, false, false, false]
 var inputHeld : Array[bool] = [false, false, false, false]
 
+var bumpInputDown : Array[bool] = [false , false] # Left, Right
+var bumpInputHeld : Array[bool] = [false , false] # Left, Right
+
+
 var topdownVertical : float
 var topdownHorizontal: float
 
@@ -49,9 +53,10 @@ func _input(event: InputEvent) -> void:
 func UpdateInputArrays(_delta):
 	inputAnyDown = false
 	inputAnyHeld = false
-	inputDown = [false, false, false, false]
-	inputHeld = [false, false, false, false]
-
+	inputDown = [false, false, false, false] # Up, Right, Down, Left
+	inputHeld = [false, false, false, false] # Up, Right, Down, Left
+	bumpInputDown = [false , false] # Left, Right
+	bumpInputHeld = [false , false] # Left, Right
 
 	if Input.is_action_pressed("up") : inputHeld[0] = true
 	if Input.is_action_pressed("right") : inputHeld[1] = true
@@ -62,10 +67,22 @@ func UpdateInputArrays(_delta):
 	if Input.is_action_just_pressed("down"): inputDown[2] = true
 	if Input.is_action_just_pressed("left"): inputDown[3] = true
 
+	if Input.is_action_pressed("bump_left") :
+		bumpInputHeld[0] = true
+	if Input.is_action_pressed("bump_right") :
+		bumpInputHeld[1] = true
+	if Input.is_action_just_pressed("bump_left") :
+		bumpInputDown[0] = true
+	if Input.is_action_just_pressed("bump_right") :
+		bumpInputDown[1] = true
+
 	topdownHorizontal =  Input.get_action_strength("right") - Input.get_action_strength("left")
 	topdownVertical = Input.get_action_strength("down") - Input.get_action_strength("up")
 
 	inputAnyDown = inputDown.any(func(v) : return v)
+	inputAnyDown = inputAnyDown || bumpInputDown.any(func(v) : return v)
+
+	# Not including the bumps in this
 	inputAnyHeld = inputHeld.any(func(v) : return v)
 
 	if inputAnyHeld :

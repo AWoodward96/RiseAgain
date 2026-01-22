@@ -20,6 +20,7 @@ signal OnTileSelected(_tile)
 @export var grid_entity_preview_sprite: Sprite2D #= %GridEntityPreviewSprite
 @export var shaped_directional_tracker : Line2D
 
+var CameraZoom : float = 1
 var ControllerState : PlayerControllerState
 var ReticleQuintet : Control.LayoutPreset
 var CameraMovementComplete : bool
@@ -114,6 +115,19 @@ func _process(_delta):
 	if InputManager.cancelDown && inspectUI != null:
 		inspectUI.queue_free()
 		inspectUI = null
+
+	# Comment back in if you need to test out zooming again.
+	#if Input.is_action_just_pressed("zoom_in"):
+		#CameraZoom += 1
+	#if Input.is_action_just_pressed("zoom_out"):
+		#CameraZoom -= 1
+
+	#CameraZoom = clampf(CameraZoom, 0, 2)
+#
+	#var zoomMax = Vector2(15 * 64, 10 * 64)
+	#var zoomCurrent = Vector2((15 - CameraZoom) * 64, (10 - CameraZoom) * 64)
+	#var zoomFloat = zoomMax / zoomCurrent
+	#camera.zoom	= zoomFloat
 
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
 	CameraMovementComplete = camera.global_position.distance_to(desiredCameraPosition) < 0.1
@@ -345,7 +359,7 @@ func UpdateContextUI():
 	# Then do the standard abilities
 	if !CutsceneManager.BlockAbilityContextMenuOption:
 		for ability in selectedUnit.Abilities:
-			if ability.type == Ability.AbilityType.Standard:
+			if ability.type == Ability.EAbilityType.Standard:
 				# Block if focus cost can't be met - or if the ability has a limited usage
 				var canCast = (ability.remainingCooldown <= 0 || CSR.AllAbilitiesCost0)
 				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
@@ -356,7 +370,7 @@ func UpdateContextUI():
 	# Then do tacticals
 	if !CutsceneManager.BlockTacticalContextMenuOption:
 		for ability in selectedUnit.Abilities:
-			if ability.type == Ability.AbilityType.Tactical:
+			if ability.type == Ability.EAbilityType.Tactical:
 				## Block if focus cost can't be met - or if the ability has a limited usage
 				var canCast = (ability.remainingCooldown <= 0 || CSR.AllAbilitiesCost0)
 				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))

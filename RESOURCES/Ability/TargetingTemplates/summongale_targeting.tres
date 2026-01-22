@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TargetingShapedFree" load_steps=2 format=3 uid="uid://bbff5gnw0xmh4"]
+
+[ext_resource type="Script" uid="uid://b33ndaqe2bkqv" path="res://SCRIPTS/Targeting/TargetingShapedFree.gd" id="1_as0kq"]
+
+[resource]
+script = ExtResource("1_as0kq")
+TeamTargeting = 0

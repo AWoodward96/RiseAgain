@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cffxim7u21avy"]
+[gd_scene load_steps=19 format=3 uid="uid://cffxim7u21avy"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7vw3g"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_4owtj"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_81734"]
 [ext_resource type="Resource" uid="uid://bkfhw2nixyffl" path="res://RESOURCES/Descriptors/DES_Animal.tres" id="8_tw6xe"]
 [ext_resource type="Resource" uid="uid://jwetuomlowq" path="res://RESOURCES/Descriptors/DES_Teeth.tres" id="9_bktjk"]
+[ext_resource type="Resource" uid="uid://cm7b7tj0rnc6g" path="res://RESOURCES/Ability/TargetingTemplates/wolf_tooth_targeting.tres" id="10_b8xi8"]
 
 [sub_resource type="Resource" id="Resource_md6lt"]
 script = ExtResource("3_0b8ky")
@@ -21,7 +22,7 @@ script = ExtResource("3_0b8ky")
 [sub_resource type="Resource" id="Resource_6ubox"]
 script = ExtResource("4_07jnf")
 
-[sub_resource type="Resource" id="Resource_go2ac"]
+[sub_resource type="Resource" id="Resource_b8xi8"]
 script = ExtResource("4_tsgbl")
 Template = ExtResource("3_olmah")
 Value = 2
@@ -36,13 +37,14 @@ loc_displayName = "weap_wolf_tooth_name"
 loc_displayDesc = "weap_wolf_tooth_desc"
 icon = ExtResource("2_wxyba")
 descriptors = Array[ExtResource("6_b8xi8")]([ExtResource("7_45dxm"), ExtResource("8_tw6xe"), ExtResource("9_bktjk")])
+TargetingTemplate = ExtResource("10_b8xi8")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_4owtj")
-GrantedStats = Array[ExtResource("4_tsgbl")]([SubResource("Resource_go2ac")])
+GrantedStats = Array[ExtResource("4_tsgbl")]([SubResource("Resource_b8xi8")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_q8pqc")

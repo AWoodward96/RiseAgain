@@ -35,7 +35,7 @@ func GetSpecificData(_index : int, _unit : UnitInstance, _ability : Ability, _ra
 	if res == null:
 		return null
 
-	return res[_index]
+	return res.TileCoordinates[_index]
 
 func GetShapeFromStat(_statVal : int):
 	var res : ThresholdTargetingShape

@@ -42,6 +42,7 @@ enum MAPTYPE { Standard, Campsite, Event }
 @export var tilemap_threat : TileMapLayer
 @export var tilemap_fire : TileMapLayer
 @export var tilemap_UI : TileMapLayer
+@export var has_destrutable_visible_obfuscation : bool = false # If true, then the Units
 
 @export_category("Objectives")
 @export var WinCondition : MapObjective
@@ -331,8 +332,6 @@ func InitializeGrid():
 	if Biome != null:
 		grid.CanvasModLayer.material.set_shader_parameter("grid_color", Biome.GridColor)
 
-
-
 func ChangeMapState(_newState : MapStateBase):
 	if MapState != null:
 		MapState.Exit()
@@ -376,7 +375,6 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 				burstPosition -= cameraPosition
 
 				PersistDataManager.universeData.AddResources(_unitInstance.Template.ResourceDrops, burstPosition)
-
 
 	# despawn any grid entities that this unit is the owner of
 	RemoveEntitiesOwnedByUnit(_unitInstance)

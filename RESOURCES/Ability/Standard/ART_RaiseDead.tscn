@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnhnmdp8kwdpc"]
+[gd_scene load_steps=17 format=3 uid="uid://dnhnmdp8kwdpc"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fuk4q"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_muggo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dcnnvbyqv45ll" path="res://ART/Icons/Ability/Standard/raisedead.png" id="5_bv7d7"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_bc5dy"]
 [ext_resource type="Script" uid="uid://deq7lqalqcgnh" path="res://SCRIPTS/Items/SummonUnitComponent.gd" id="7_n2vcp"]
+[ext_resource type="Resource" uid="uid://mqynuui8lhbf" path="res://RESOURCES/Ability/TargetingTemplates/raisedead_targeting.tres" id="7_seqts"]
 [ext_resource type="Resource" uid="uid://7mx1nucm5v" path="res://RESOURCES/Units/Enemy/Zombie/UT_Zombie.tres" id="8_jv71w"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="9_c5b41"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="10_ecwqc"]
@@ -33,6 +34,7 @@ internalName = "raisedead"
 loc_displayName = "art_raisedead_name"
 loc_displayDesc = "art_raisedead_desc"
 icon = ExtResource("5_bv7d7")
+TargetingTemplate = ExtResource("7_seqts")
 TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

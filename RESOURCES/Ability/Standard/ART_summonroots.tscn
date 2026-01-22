@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo53wngqa8non"]
+[gd_scene load_steps=12 format=3 uid="uid://bo53wngqa8non"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_bn3se"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_flx47"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_3ef5x"]
 [ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/summonroots.png" id="5_x8nb5"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_01leg"]
+[ext_resource type="Resource" uid="uid://blc65pjaf8yao" path="res://RESOURCES/Ability/TargetingTemplates/summonroots_targeting.tres" id="7_bn3se"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="7_cq2cf"]
 
 [sub_resource type="Resource" id="Resource_bn3se"]
@@ -25,6 +26,7 @@ internalName = "summonroots"
 loc_displayName = "art_graspingroots_name"
 loc_displayDesc = "art_graspingroots_desc"
 icon = ExtResource("5_x8nb5")
+TargetingTemplate = ExtResource("7_bn3se")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

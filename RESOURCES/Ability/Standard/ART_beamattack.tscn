@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cda7sx7yotn65"]
+[gd_scene load_steps=15 format=3 uid="uid://cda7sx7yotn65"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_er7fc"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_a85nj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_mapok"]
 [ext_resource type="Texture2D" uid="uid://dyxxey7f8swu8" path="res://ART/Icons/Ability/Standard/beamattack.png" id="5_72bqf"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_phafs"]
+[ext_resource type="Resource" uid="uid://bt8x1ss216kgu" path="res://RESOURCES/Ability/TargetingTemplates/beamattack_targeting.tres" id="7_elqp0"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="8_siv5v"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_1oo8k"]
 [ext_resource type="Resource" uid="uid://c5kdn4uveq50d" path="res://RESOURCES/TargetingShapes/beam_attack_shape.tres" id="10_8gc70"]
@@ -29,6 +30,7 @@ internalName = "beamattack"
 loc_displayName = "art_beamattack_name"
 loc_displayDesc = "art_beamattack_desc"
 icon = ExtResource("5_72bqf")
+TargetingTemplate = ExtResource("7_elqp0")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

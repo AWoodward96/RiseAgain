@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tqgdcty0bba5"]
+[gd_scene load_steps=15 format=3 uid="uid://tqgdcty0bba5"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_826b6"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_078wy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="3_yfy6k"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_o4g0r"]
 [ext_resource type="Texture2D" uid="uid://bty8oi4tn0t4j" path="res://ART/Icons/Ability/Standard/fireball.png" id="5_x4rkp"]
+[ext_resource type="Resource" uid="uid://ba1lnor8qhy7g" path="res://RESOURCES/Ability/TargetingTemplates/fireball_targeting.tres" id="7_nvsye"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="8_kv6yk"]
 [ext_resource type="Resource" uid="uid://gxv2ghfwicf2" path="res://RESOURCES/TargetingShapes/fireball_shape.tres" id="10_kv6yk"]
 
@@ -29,6 +30,7 @@ internalName = "fireball"
 loc_displayName = "art_fireball_name"
 loc_displayDesc = "art_fireball_desc"
 icon = ExtResource("5_x4rkp")
+TargetingTemplate = ExtResource("7_nvsye")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

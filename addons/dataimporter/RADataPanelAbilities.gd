@@ -47,13 +47,13 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 	if _data.has("item_type"):
 		match _data["item_type"]:
 			"Equippable":
-				_ability.type = Ability.AbilityType.Weapon
+				_ability.type = Ability.EAbilityType.Weapon
 			"Standard":
-				_ability.type = Ability.AbilityType.Standard
+				_ability.type = Ability.EAbilityType.Standard
 			"Tactical":
-				_ability.type = Ability.AbilityType.Tactical
+				_ability.type = Ability.EAbilityType.Tactical
 			"Passive":
-				_ability.type = Ability.AbilityType.Passive
+				_ability.type = Ability.EAbilityType.Passive
 
 
 	if _data.has("internal_name"): _ability.internalName = _data["internal_name"]
@@ -66,11 +66,11 @@ func ModifyAbility(_ability : Ability, _filePath, _data):
 	if _data.has("Speed"):
 		match _data["Speed"]:
 			"Normal":
-				_ability.ability_speed = Ability.AbilitySpeed.Normal
+				_ability.ability_speed = Ability.EAbilitySpeed.Normal
 			"Fast":
-				_ability.ability_speed = Ability.AbilitySpeed.Fast
+				_ability.ability_speed = Ability.EAbilitySpeed.Fast
 			"Slow":
-				_ability.ability_speed = Ability.AbilitySpeed.Slow
+				_ability.ability_speed = Ability.EAbilitySpeed.Slow
 
 
 	if _data.has("iconPath"):
@@ -170,8 +170,8 @@ func ModifyDamageDataComponent(_ability : Ability, _data):
 
 	if _data.has("Drain"): component.DamageAffectsUsersHealth = _data["Drain"]
 	if _data.has("DamageToHealthRatio"): component.DamageToHealthRatio = _data["DamageToHealthRatio"]
-	if _data.has("CritModifier"): component.CritModifier = _data["CritModifier"] / 100
-	if _data.has("PercMaxHealthMod"): component.PercMaxHealthMod = _data["PercMaxHealthMod"] / 100
+	if _data.has("CritModifier"): component.CritModifier = _data["CritModifier"] as float / 100
+	if _data.has("PercMaxHealthMod"): component.PercMaxHealthMod = _data["PercMaxHealthMod"] as float / 100
 
 	component.VulerableDescriptors.clear()
 	for i in range(0,1):
@@ -286,29 +286,56 @@ func ModifyHealComponent(_ability : Ability, _data):
 
 
 func ModifyTargetingComponent(_ability : Ability, _data):
-	var children = _ability.get_children()
-	var component : SkillTargetingData
-	for child in children:
-		if child is SkillTargetingData:
-			component = child as SkillTargetingData
-			break
+	if !_data["TargetType"] != "":
+		return
 
-	if component == null:
-		log += str("\n[color=green]No SkillTargetingData detected for item: [/color]", _ability.internalName ," [color=green]Creating a new one.[/color]")
-		component = SkillTargetingData.new()
-		_ability.add_child(component)
-		component.name = "TargetingData"
+	var targetingPath = AbilityTargeting_Dir + "/" + _ability.internalName + "_targeting.tres"
 
-	_ability.TargetingData = component
+	var component
+	if ResourceLoader.exists(targetingPath):
+		match _data["TargetType"]:
+			"Simple":
+				component = ResourceLoader.load(targetingPath) as TargetingSimple
+			"ShapedFree":
+				component = ResourceLoader.load(targetingPath) as TargetingShapedFree
+			"ShapedDirectional":
+				component = ResourceLoader.load(targetingPath) as TargetingShapedDirectional
+			"SelfOnly":
+				component = ResourceLoader.load(targetingPath) as TargetingSelfOnly
+			"Global":
+				component = ResourceLoader.load(targetingPath) as TargetingGlobalSimple
+			"GEFree":
+				component = ResourceLoader.load(targetingPath) as TargetingGEFree
+			"GEDirectional":
+				component = ResourceLoader.load(targetingPath) as TargetingGEDirectional
+	else:
+		match _data["TargetType"]:
+			"Simple":
+				component = TargetingSimple.new()
+			"ShapedFree":
+				component = TargetingShapedFree.new()
+			"ShapedDirectional":
+				component = TargetingShapedDirectional.new()
+			"SelfOnly":
+				component = TargetingSelfOnly.new()
+			"Global":
+				component = TargetingGlobalSimple.new()
+			"GEFree":
+				component = TargetingGEFree.new()
+			"GEDirectional":
+				component = TargetingGEDirectional.new()
 
-	if _data.has("CanTargetSelf"): component.CanTargetSelf = _data["CanTargetSelf"]
+
+
+	if !ImportFieldIsNull(_data, "CanTargetSelf") && component.get("CanTargetSelf") != null:
+		component.CanTargetSelf = _data["CanTargetSelf"]
 
 	var range : Vector2i
-	if _data.has("MinRange"): range.x = _data["MinRange"]
-	if _data.has("MaxRange"): range.y = _data["MaxRange"]
+	if !ImportFieldIsNull(_data, "MinRange"): range.x = _data["MinRange"]
+	if !ImportFieldIsNull(_data, "MaxRange"): range.y = _data["MaxRange"]
 	component.TargetRange = range
 
-	if _data.has("TeamTargeting"):
+	if !ImportFieldIsNull(_data, "TeamTargeting"):
 		match _data["TeamTargeting"]:
 			"Enemy":
 				component.TeamTargeting = SkillTargetingData.TargetingTeamFlag.EnemyTeam
@@ -319,25 +346,31 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 			"Empty":
 				component.TeamTargeting = SkillTargetingData.TargetingTeamFlag.Empty
 
-	if _data.has("TargetType"):
-		match _data["TargetType"]:
-			"Simple":
-				component.Type = SkillTargetingData.TargetingType.Simple
-			"ShapedFree":
-				component.Type = SkillTargetingData.TargetingType.ShapedFree
-			"ShapedDirectional":
-				component.Type = SkillTargetingData.TargetingType.ShapedDirectional
-			"SelfOnly":
-				component.Type = SkillTargetingData.TargetingType.SelfOnly
-			"Global":
-				component.Type = SkillTargetingData.TargetingType.Global
 
-	if _data.has("ShapedPrefab"):
+
+	if !ImportFieldIsNull(_data, "ShapedPrefab"):
 		var shape_as_string = _data["ShapedPrefab"]
 		if !shape_as_string.is_empty():
 			var index = shapedPrefabNameArray.find(shape_as_string)
 			if index != -1:
-				var shape = ResourceLoader.load(shapedPrefabPathArray[index]) as TargetingShapeBase
-				component.shapedTiles = shape
+				if component.get("shapePrefabRef") != null:
+					component.shapePrefabRef = shapedPrefabPathArray[index]
+
+
+	if !ImportFieldIsNull(_data, "CanRotate") && component.get("canRotate") != null:
+		if _data["CanRotate"] is bool:
+			component.canRotate = _data["CanRotate"]
+
+	if !ImportFieldIsNull(_data, "GridEntityRef")  && component.get("gridEntityPrefab") != null:
+		component.gridEntityPrefab = _data["GridEntityRef"]
+
+	if !ImportFieldIsNull(_data, "StopShapeOnWall") && component.get("stopShapeOnWall") != null:
+		component.stopShapeOnWall = _data["StopShapeOnWall"]
+
+
+	_ability.TargetingTemplate = component
+	var err = ResourceSaver.save(component, targetingPath)
+	if err != OK:
+		log += str("\n[color=red]FAILED TO SAVE ABILITY TARGETING AT PATH: [/color]", targetingPath, "[color=red]ERROR CODE: [/color]", err)
 
 	pass

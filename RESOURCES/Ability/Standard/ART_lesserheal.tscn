@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://do6j0afq7345v"]
+[gd_scene load_steps=13 format=3 uid="uid://do6j0afq7345v"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_jaewu"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_r6uyf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bk3hhnq4ujca8" path="res://ART/Icons/Ability/Standard/lesserheal.png" id="5_an4uy"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnb1s"]
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="7_70oey"]
+[ext_resource type="Resource" uid="uid://dbsixxe05na1r" path="res://RESOURCES/Ability/TargetingTemplates/lesserheal_targeting.tres" id="7_p2qqm"]
 
 [sub_resource type="Resource" id="Resource_p2qqm"]
 script = ExtResource("3_s01fl")
@@ -27,6 +28,7 @@ internalName = "lesserheal"
 loc_displayName = "art_lesserheal_name"
 loc_displayDesc = "art_lesserheal_desc"
 icon = ExtResource("5_an4uy")
+TargetingTemplate = ExtResource("7_p2qqm")
 TargetingData = NodePath("SkillTargetingData")
 HealData = NodePath("HealComponent")
 

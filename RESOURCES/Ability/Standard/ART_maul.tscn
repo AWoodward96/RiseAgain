@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dp0gbxwj2y26b"]
+[gd_scene load_steps=20 format=3 uid="uid://dp0gbxwj2y26b"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6yhr7"]
 [ext_resource type="Texture2D" uid="uid://uxr60sgilonh" path="res://ART/Icons/Ability/Standard/maul.png" id="2_jsawa"]
@@ -7,20 +7,26 @@
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_1g1qy"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_rqvwo"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_1g1qy"]
+[ext_resource type="Script" uid="uid://be1x2gl2441x5" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_Leap.gd" id="4_p0no4"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_8yxgm"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_k7bwb"]
+[ext_resource type="Resource" uid="uid://b5q01s0br532d" path="res://RESOURCES/Ability/TargetingTemplates/maul_targeting.tres" id="8_s37xj"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="9_p0no4"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="11_oybbw"]
-[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="12_jhchw"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="13_tv8hm"]
+[ext_resource type="Resource" uid="uid://cuwdyvau7cjho" path="res://RESOURCES/TargetingShapes/maul_shape.tres" id="12_p0no4"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="14_2kkgi"]
 
 [sub_resource type="Resource" id="Resource_k7bwb"]
 script = ExtResource("3_1g1qy")
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
+[sub_resource type="Resource" id="Resource_rqvwo"]
+script = ExtResource("4_p0no4")
+UseFootsteps = false
+metadata/_custom_type_script = "uid://be1x2gl2441x5"
+
 [sub_resource type="Resource" id="Resource_a18b1"]
 script = ExtResource("3_rqvwo")
+MovementAnimationStyle = SubResource("Resource_rqvwo")
 AnimationStyle = 1
 metadata/_custom_type_script = "uid://cm68c4p601pk"
 
@@ -32,28 +38,6 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("5_k7bwb")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_gq0em"]
-script = ExtResource("12_jhchw")
-CritModifier = 0.33
-metadata/_custom_type_script = "uid://c54w6gm64x8wu"
-
-[sub_resource type="Resource" id="Resource_56qcq"]
-script = ExtResource("12_jhchw")
-CritModifier = 0.33
-Position = Vector2i(-1, 0)
-metadata/_custom_type_script = "uid://c54w6gm64x8wu"
-
-[sub_resource type="Resource" id="Resource_h7rub"]
-script = ExtResource("12_jhchw")
-CritModifier = 0.33
-Position = Vector2i(1, 0)
-metadata/_custom_type_script = "uid://c54w6gm64x8wu"
-
-[sub_resource type="Resource" id="Resource_r1dpk"]
-script = ExtResource("13_tv8hm")
-TileCoordinates = Array[ExtResource("11_oybbw")]([SubResource("Resource_gq0em"), SubResource("Resource_56qcq"), SubResource("Resource_h7rub")])
-metadata/_custom_type_script = "uid://ofdutqbqnjrf"
-
 [node name="maul" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_6yhr7")
 abilityCooldown = 2
@@ -62,6 +46,7 @@ internalName = "maul"
 loc_displayName = "art_maul_name"
 loc_displayDesc = "art_maul_desc"
 icon = ExtResource("2_jsawa")
+TargetingTemplate = ExtResource("8_s37xj")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
@@ -77,7 +62,7 @@ script = ExtResource("5_8yxgm")
 TeamTargeting = 2
 TargetRange = Vector2i(2, 3)
 Type = 2
-shapedTiles = SubResource("Resource_r1dpk")
+shapedTiles = ExtResource("12_p0no4")
 stopShapeOnWall = true
 
 [node name="AbilityMovementComponent" type="Node2D" parent="."]

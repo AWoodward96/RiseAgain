@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingShapedFree" load_steps=2 format=3 uid="uid://bvl0ucsrbtgxt"]
+
+[ext_resource type="Script" uid="uid://b33ndaqe2bkqv" path="res://SCRIPTS/Targeting/TargetingShapedFree.gd" id="1_ahkqk"]
+
+[resource]
+script = ExtResource("1_ahkqk")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/heroicleap_shape.tres"
+TargetRange = Vector2i(1, 4)

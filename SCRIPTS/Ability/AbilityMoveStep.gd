@@ -4,6 +4,7 @@ class_name AbilityMoveStep
 
 #@export var WaitForStackFree : bool = true
 @export var SpeedOverride : int = -1
+@export var MovementAnimationStyle : MovementAnimationStyleTemplate
 @export var AnimationStyle : UnitSettingsTemplate.EMovementAnimationStyle = UnitSettingsTemplate.EMovementAnimationStyle.Normal
 
 func Enter(_actionLog : ActionLog):
@@ -12,13 +13,10 @@ func Enter(_actionLog : ActionLog):
 	if ability.MovementData == null:
 		return true
 
-	ability.MovementData.Move(log.grid, source, log.actionOriginTile, source.CurrentTile, log.atRange, log.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
+	ability.MovementData.Move(log.grid, source, log.actionOriginTile, source.CurrentTile, log.atRange, log.actionDirection, _actionLog, SpeedOverride, MovementAnimationStyle)
 	return true
 
 func Execute(_delta):
-	#if !WaitForStackFree:
-		#return true
-
 	if log.source.IsStackFree:
 		# force the turnstart tile to be where they end up because that's the breaks
 		log.source.TurnStartTile = ability.MovementData.destinationTile
@@ -60,7 +58,7 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 
 
 
-	ability.MovementData.Move(_actionLog.grid, source, _actionLog.actionOriginTile, _invalidatedTile, log.atRange, _actionLog.actionDirection, _actionLog, SpeedOverride, AnimationStyle)
+	ability.MovementData.Move(_actionLog.grid, source, _actionLog.actionOriginTile, _invalidatedTile, log.atRange, _actionLog.actionDirection, _actionLog, SpeedOverride, MovementAnimationStyle)
 	pass
 
 func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpgrco5853tx"]
+[gd_scene load_steps=15 format=3 uid="uid://bpgrco5853tx"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_twrak"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_u3xn0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_8p7s7"]
 [ext_resource type="Texture2D" uid="uid://c0l0mkghce4r7" path="res://ART/Icons/Ability/Standard/daggerspray.png" id="5_aqj45"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_7kqmr"]
+[ext_resource type="Resource" uid="uid://8uetrp4jtgn4" path="res://RESOURCES/Ability/TargetingTemplates/daggerspray_targeting.tres" id="7_65c8c"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="8_aqj45"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_qfkqn"]
 [ext_resource type="Resource" uid="uid://b40qcbkv4pluw" path="res://RESOURCES/TargetingShapes/daggerspray_shape.tres" id="10_tucw4"]
@@ -29,6 +30,7 @@ internalName = "daggerspray"
 loc_displayName = "art_daggerspray_name"
 loc_displayDesc = "art_daggerspray_desc"
 icon = ExtResource("5_aqj45")
+TargetingTemplate = ExtResource("7_65c8c")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

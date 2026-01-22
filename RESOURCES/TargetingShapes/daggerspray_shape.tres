@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TargetingShapeRange" load_steps=14 format=3 uid="uid://b40qcbkv4pluw"]
 
-[ext_resource type="Script" uid="uid://d1xg8qidld8r6" path="res://SCRIPTS/TargetingShape/ThresholdTargetingShape.gd" id="1_670te"]
-[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="2_271ah"]
-[ext_resource type="Script" uid="uid://biofxjvj46cir" path="res://SCRIPTS/TargetingShape/TargetingShapeRange.gd" id="3_38c2b"]
+[ext_resource type="Script" uid="uid://d1xg8qidld8r6" path="res://SCRIPTS/Targeting/Shapes/ThresholdTargetingShape.gd" id="1_670te"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="2_271ah"]
+[ext_resource type="Script" uid="uid://biofxjvj46cir" path="res://SCRIPTS/Targeting/Shapes/TargetingShapeRange.gd" id="3_38c2b"]
 
 [sub_resource type="Resource" id="Resource_k5ghg"]
 script = ExtResource("2_271ah")

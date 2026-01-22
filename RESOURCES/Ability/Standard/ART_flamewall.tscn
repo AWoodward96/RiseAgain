@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2u5bwkbvn04v"]
+[gd_scene load_steps=16 format=3 uid="uid://2u5bwkbvn04v"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_rde4d"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hfckr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bsm1vede77tu6" path="res://ART/Icons/Ability/Standard/flamewall.png" id="5_d82du"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="8_gc3ip"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_irwxn"]
+[ext_resource type="Resource" uid="uid://blwscrixwaxc5" path="res://RESOURCES/Ability/TargetingTemplates/flamewall_targeting.tres" id="8_k4avo"]
 [ext_resource type="Resource" uid="uid://dijpp22v65c5v" path="res://RESOURCES/TargetingShapes/flamewall_shape.tres" id="10_gc3ip"]
 
 [sub_resource type="Resource" id="Resource_k4avo"]
@@ -32,6 +33,7 @@ internalName = "flamewall"
 loc_displayName = "art_flamewall_name"
 loc_displayDesc = "art_flamewall_desc"
 icon = ExtResource("5_d82du")
+TargetingTemplate = ExtResource("8_k4avo")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

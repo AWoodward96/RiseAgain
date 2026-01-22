@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnqkq4ytoe6sq"]
+[gd_scene load_steps=19 format=3 uid="uid://cnqkq4ytoe6sq"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_msyxe"]
 [ext_resource type="Texture2D" uid="uid://dvuqajreaumg1" path="res://ART/Icons/Ability/Equippable/iron_teeth.png" id="2_18cp6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://bkfhw2nixyffl" path="res://RESOURCES/Descriptors/DES_Animal.tres" id="8_f6byc"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_iwiic"]
 [ext_resource type="Resource" uid="uid://jwetuomlowq" path="res://RESOURCES/Descriptors/DES_Teeth.tres" id="9_554qg"]
+[ext_resource type="Resource" uid="uid://deexp5k1htasd" path="res://RESOURCES/Ability/TargetingTemplates/iron_teeth_targeting.tres" id="10_iwiic"]
 
 [sub_resource type="Resource" id="Resource_bqel4"]
 script = ExtResource("3_cfioe")
@@ -38,6 +39,7 @@ loc_displayName = "weap_iron_teeth_name"
 loc_displayDesc = "weap_iron_teeth_desc"
 icon = ExtResource("2_18cp6")
 descriptors = Array[ExtResource("6_iwiic")]([ExtResource("7_22csk"), ExtResource("8_f6byc"), ExtResource("9_554qg")])
+TargetingTemplate = ExtResource("10_iwiic")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")

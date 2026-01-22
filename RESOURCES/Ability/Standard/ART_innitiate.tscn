@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dot0hl1hdqkq7"]
+[gd_scene load_steps=17 format=3 uid="uid://dot0hl1hdqkq7"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_f7vji"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_7a8tr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://t6b0eyk1d8yd" path="res://RESOURCES/TargetingShapes/innitiate_shape.tres" id="5_w7fya"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_iemot"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="6_xseor"]
+[ext_resource type="Resource" uid="uid://boh6by4rvsmkc" path="res://RESOURCES/Ability/TargetingTemplates/innitiate_targeting.tres" id="7_1ilc4"]
 
 [sub_resource type="Resource" id="Resource_6dtti"]
 script = ExtResource("3_1ilc4")
@@ -36,6 +37,7 @@ executionStack = Array[ExtResource("2_7a8tr")]([SubResource("Resource_6dtti"), S
 internalName = "innitiate"
 loc_displayName = "art_innitiate_name"
 loc_displayDesc = "art_innitiate_desc"
+TargetingTemplate = ExtResource("7_1ilc4")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

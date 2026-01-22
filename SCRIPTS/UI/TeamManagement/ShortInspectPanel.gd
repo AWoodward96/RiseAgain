@@ -85,9 +85,9 @@ func CreateShortformAbilityEntries():
 		referencedWeapon = null
 		referencedTactical = null
 		for abl in unitInstance.Abilities:
-			if abl.type == Ability.AbilityType.Weapon:
+			if abl.type == Ability.EAbilityType.Weapon:
 				referencedWeapon = abl
-			if abl.type == Ability.AbilityType.Tactical:
+			if abl.type == Ability.EAbilityType.Tactical:
 				referencedTactical = abl
 	else:
 		# if it's not an instance, you should grab it from persistence

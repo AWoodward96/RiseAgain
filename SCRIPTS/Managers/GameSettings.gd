@@ -184,6 +184,43 @@ static func AxisRound(_vector : Vector2):
 	# snaps to 4
 	return Vector2.RIGHT.rotated(round(_vector.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
 
+## Or Rotate Direction Counterclockwise
+static func RotateDirectionLeft(_direction : Direction):
+	match(_direction):
+		Direction.Up:
+			return Direction.Left
+		Direction.Right:
+			return Direction.Up
+		Direction.Down:
+			return Direction.Right # Counterclockwise
+		Direction.Left:
+			return Direction.Down
+
+## Or Rotate Direction Clockwise
+static func RotateDirectionRight(_direction : Direction):
+	match(_direction):
+		Direction.Up:
+			return Direction.Right
+		Direction.Right:
+			return Direction.Down
+		Direction.Down:
+			return Direction.Left # Clockwise
+		Direction.Left:
+			return Direction.Up
+
+static func GetRotationalOffset(_direction : Direction):
+	match _direction:
+		GameSettingsTemplate.Direction.Up:
+			return Vector2.ZERO
+		GameSettingsTemplate.Direction.Left:
+			return Vector2(0, 1) * GameSettingsTemplate.TILESIZE
+		GameSettingsTemplate.Direction.Down:
+			return Vector2(1, 1) * GameSettingsTemplate.TILESIZE
+		GameSettingsTemplate.Direction.Right:
+			return Vector2(1, 0) * GameSettingsTemplate.TILESIZE
+
+	return Vector2.ZERO
+
 
 func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInstance, _damageData : DamageData, _tileData : TileTargetedData, _ability : Ability):
 	if _defendingUnit != null && _defendingUnit.Invulnerable:
@@ -235,9 +272,9 @@ func DamageCalculation(_attackingUnit : UnitInstance, _defendingUnit : UnitInsta
 	# Ability and Weapon DMG Mod come into play after all the other modifiers and multipliers are done
 	# So even you're dealing 0 admage, you're actually dealing 2 damage
 	if _attackingUnit != null:
-		if _ability.type == Ability.AbilityType.Weapon:
+		if _ability.type == Ability.EAbilityType.Weapon:
 			damageTotal += _attackingUnit.GetWorkingStat(GameManager.GameSettings.WeaponDMGModifierStat)
-		elif _ability.type == Ability.AbilityType.Standard || _ability.type == Ability.AbilityType.Passive || _ability.type == Ability.AbilityType.Deathrattle:
+		elif _ability.type == Ability.EAbilityType.Standard || _ability.type == Ability.EAbilityType.Passive || _ability.type == Ability.EAbilityType.Deathrattle:
 			damageTotal += _attackingUnit.GetWorkingStat(GameManager.GameSettings.AbilityDMGModifierStat)
 
 	if _damageData.DamageCantKill && _defendingUnit != null && damageTotal >= _defendingUnit.currentHealth:

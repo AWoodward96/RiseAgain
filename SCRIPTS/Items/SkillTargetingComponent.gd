@@ -76,7 +76,7 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid, _sort : bool = true):
 
 
 func GetDirectionalAttack(_unit : UnitInstance, _ability : Ability, _origin : Tile, _atRange : int, _grid : Grid, _directionIndex : GameSettingsTemplate.Direction):
-	if _ability.ability_speed == Ability.AbilitySpeed.Slow && slowSpeedShapedTiles != null:
+	if _ability.ability_speed == Ability.EAbilitySpeed.Slow && slowSpeedShapedTiles != null:
 		return slowSpeedShapedTiles.GetTargetedTilesFromDirection(_unit, _ability, _grid, _origin, _directionIndex, _atRange)
 	else:
 		return shapedTiles.GetTargetedTilesFromDirection(_unit, _ability, _grid, _origin, _directionIndex, _atRange)

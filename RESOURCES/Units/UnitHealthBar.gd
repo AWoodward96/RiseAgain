@@ -69,7 +69,7 @@ func SetUnit(_unit : UnitInstance):
 
 func SetTile(_tile : Tile):
 	AssignedTile = _tile
-	Refresh()
+	Refresh(false)
 
 
 func ModifyHealthOverTime(_deltaHealthChange : int):

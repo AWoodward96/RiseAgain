@@ -7,11 +7,8 @@ class_name AnimationStyleTemplate
 
 static var TIMEOUT : float = 10
 
-# called when the style should deal the damage
-signal PerformDamageCallback
 
-@export var HasStandardWindup : bool = true
-@export var HasStandardCooloff : bool = true
+
 var direction : Vector2
 var initialDirection : Vector2
 var source : UnitInstance
@@ -32,7 +29,6 @@ func Prepare(_direction : Vector2, _source : UnitInstance, _data):
 
 ## Called to begin the attack sequence. Should only be called once, similar to Prepare.
 func Enter():
-	PerformDamageCallback.emit()
 	pass
 
 ## Called to execute any effects that happen over time.

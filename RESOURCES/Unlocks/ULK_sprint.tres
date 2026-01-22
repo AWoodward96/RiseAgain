@@ -7,5 +7,4 @@
 [resource]
 script = ExtResource("3_2fg77")
 AbilityPath = "res://RESOURCES/Ability/Tactical/sprint.tscn"
-StartUnlocked = true
 Descriptors = Array[ExtResource("1_q7bxy")]([ExtResource("2_najkg")])

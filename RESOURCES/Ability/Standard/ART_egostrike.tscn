@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6xs7nrvsx6f1"]
+[gd_scene load_steps=22 format=3 uid="uid://c6xs7nrvsx6f1"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_d50p3"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8oxjl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="7_sfe20"]
 [ext_resource type="Script" uid="uid://d2kv0hjonny5c" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_SimpleSingle.gd" id="9_3rvrr"]
 [ext_resource type="Texture2D" uid="uid://c3vam4qsjiifu" path="res://ART/Icons/Ability/Standard/egostrike.png" id="9_jgpnu"]
+[ext_resource type="Resource" uid="uid://b3dik30gyokw1" path="res://RESOURCES/Ability/TargetingTemplates/egostrike_targeting.tres" id="10_idl65"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="11_8oxjl"]
 [ext_resource type="Resource" uid="uid://bylhdq2a1w743" path="res://RESOURCES/TargetingShapes/egostrike_shape.tres" id="14_jgpnu"]
 
@@ -55,6 +56,7 @@ internalName = "egostrike"
 loc_displayName = "art_egostrike_name"
 loc_displayDesc = "art_egostrike_desc"
 icon = ExtResource("9_jgpnu")
+TargetingTemplate = ExtResource("10_idl65")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 customAITargetingBehavior = SubResource("GDScript_3rvrr")

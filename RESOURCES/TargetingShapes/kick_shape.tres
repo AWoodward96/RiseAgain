@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="TargetingShape" load_steps=7 format=3 uid="uid://b45q6xh0ptyf"]
 
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_2kup1"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_5ytkb"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_2kup1"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="2_5ytkb"]
 [ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="2_xg5dn"]
-[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/TargetingShape/Vector2iMultComplex.gd" id="3_q0l8g"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="3_q0l8g"]
 
 [sub_resource type="Resource" id="Resource_2mjci"]
 script = ExtResource("2_xg5dn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqquvx86hy7d8"]
+[gd_scene load_steps=11 format=3 uid="uid://dqquvx86hy7d8"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fmwdi"]
 [ext_resource type="Texture2D" uid="uid://bf8jras3uc7hl" path="res://ART/Icons/Ability/Tactical/kick.png" id="2_0wr8g"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="3_0wr8g"]
 [ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="3_sw0bh"]
 [ext_resource type="Resource" uid="uid://b45q6xh0ptyf" path="res://RESOURCES/TargetingShapes/kick_shape.tres" id="6_j266d"]
+[ext_resource type="Resource" uid="uid://cs7btmvlh1cbx" path="res://RESOURCES/Ability/TargetingTemplates/kick_targeting.tres" id="7_sw0bh"]
 
 [sub_resource type="Resource" id="Resource_5mn3e"]
 script = ExtResource("3_sw0bh")
@@ -23,6 +24,7 @@ loc_displayName = "tact_kick_name"
 loc_displayDesc = "tact_kick_desc"
 icon = ExtResource("2_0wr8g")
 descriptors = Array[ExtResource("2_2hnoi")]([ExtResource("3_0wr8g")])
+TargetingTemplate = ExtResource("7_sw0bh")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

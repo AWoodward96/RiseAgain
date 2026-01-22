@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0qc3l1oeux5k"]
+[gd_scene load_steps=18 format=3 uid="uid://b0qc3l1oeux5k"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_37t73"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_rhblp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_govat"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_rvdvx"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_see0a"]
+[ext_resource type="Resource" uid="uid://b32cekq0wgn8c" path="res://RESOURCES/Ability/TargetingTemplates/shortbow_targeting.tres" id="9_ebkdn"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_pq3xx"]
 
 [sub_resource type="Resource" id="Resource_govat"]
@@ -22,7 +23,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("4_ebkdn")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_pi8q5"]
+[sub_resource type="Resource" id="Resource_ebkdn"]
 script = ExtResource("6_govat")
 Template = ExtResource("7_rvdvx")
 Value = 2
@@ -37,13 +38,14 @@ loc_displayName = "weap_shortbow_name"
 loc_displayDesc = "weap_shortbow_desc"
 icon = ExtResource("5_tnqrr")
 descriptors = Array[ExtResource("2_xic6m")]([ExtResource("3_rhblp"), ExtResource("4_tnqrr")])
+TargetingTemplate = ExtResource("9_ebkdn")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_ebkdn")
-GrantedStats = Array[ExtResource("6_govat")]([SubResource("Resource_pi8q5")])
+GrantedStats = Array[ExtResource("6_govat")]([SubResource("Resource_ebkdn")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("8_see0a")

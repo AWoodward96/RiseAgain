@@ -7,7 +7,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 	# Lets make it happen baby
 	for ability in _unit.Abilities:
-		if ability.type == Ability.AbilityType.Standard:
+		if ability.type == Ability.EAbilityType.Standard:
 			if _unit.currentFocus >= ability.focusCost:
 				var log = ActionLog.Construct(map.grid, ability.ownerUnit, ability)
 				log.affectedTiles = ability.TargetingData.GetAffectedTiles(ability.ownerUnit, map.grid, ability.ownerUnit.CurrentTile)

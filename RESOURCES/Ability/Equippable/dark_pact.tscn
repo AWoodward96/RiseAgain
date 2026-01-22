@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckws6uec0c8oh"]
+[gd_scene load_steps=18 format=3 uid="uid://ckws6uec0c8oh"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_i5kxd"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_cpfex"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="7_0gygg"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_4s0em"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="8_lfxx3"]
+[ext_resource type="Resource" uid="uid://kkcmcqhyltd5" path="res://RESOURCES/Ability/TargetingTemplates/dark_pact_targeting.tres" id="9_g3sim"]
 
 [sub_resource type="Resource" id="Resource_2fdp7"]
 script = ExtResource("3_468m6")
@@ -20,7 +21,7 @@ script = ExtResource("3_468m6")
 [sub_resource type="Resource" id="Resource_bjjjv"]
 script = ExtResource("4_h6d8k")
 
-[sub_resource type="Resource" id="Resource_kfjh4"]
+[sub_resource type="Resource" id="Resource_g3sim"]
 script = ExtResource("4_rw3by")
 Template = ExtResource("3_5koyg")
 Value = 4
@@ -35,13 +36,14 @@ loc_displayName = "weap_dark_pact_name"
 loc_displayDesc = "weap_dark_pact_desc"
 icon = ExtResource("5_7ip17")
 descriptors = Array[ExtResource("6_g3sim")]([ExtResource("7_0gygg"), ExtResource("8_lfxx3")])
+TargetingTemplate = ExtResource("9_g3sim")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_yqoy7")
-GrantedStats = Array[ExtResource("4_rw3by")]([SubResource("Resource_kfjh4")])
+GrantedStats = Array[ExtResource("4_rw3by")]([SubResource("Resource_g3sim")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_ripui")

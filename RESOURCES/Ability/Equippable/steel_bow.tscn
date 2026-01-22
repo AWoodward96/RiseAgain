@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnphn1vxuyakx"]
+[gd_scene load_steps=18 format=3 uid="uid://bnphn1vxuyakx"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_8sl2l"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_4jlfa"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="7_qnr8s"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_xkm8v"]
 [ext_resource type="Resource" uid="uid://cx6d8skfrwms8" path="res://RESOURCES/Descriptors/DES_Bow.tres" id="8_xssn7"]
+[ext_resource type="Resource" uid="uid://ctgwqrtud8axu" path="res://RESOURCES/Ability/TargetingTemplates/steel_bow_targeting.tres" id="9_pqcsc"]
 
 [sub_resource type="Resource" id="Resource_3us1r"]
 script = ExtResource("3_b2ojx")
@@ -20,7 +21,7 @@ script = ExtResource("3_b2ojx")
 [sub_resource type="Resource" id="Resource_ku5yt"]
 script = ExtResource("4_30xxt")
 
-[sub_resource type="Resource" id="Resource_gonc5"]
+[sub_resource type="Resource" id="Resource_pqcsc"]
 script = ExtResource("5_bewrp")
 Template = ExtResource("4_ydbij")
 Value = 6
@@ -35,13 +36,14 @@ loc_displayName = "weap_steel_bow_name"
 loc_displayDesc = "weap_steel_bow_desc"
 icon = ExtResource("2_tu0mj")
 descriptors = Array[ExtResource("6_pqcsc")]([ExtResource("7_qnr8s"), ExtResource("8_xssn7")])
+TargetingTemplate = ExtResource("9_pqcsc")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("3_t6gdh")
-GrantedStats = Array[ExtResource("5_bewrp")]([SubResource("Resource_gonc5")])
+GrantedStats = Array[ExtResource("5_bewrp")]([SubResource("Resource_pqcsc")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("6_jsy7w")

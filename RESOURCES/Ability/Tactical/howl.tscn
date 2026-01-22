@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjwh28cb6ybjt"]
+[gd_scene load_steps=22 format=3 uid="uid://cjwh28cb6ybjt"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vg7c2"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_2kc73"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_xnolx"]
 [ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="7_tb7s4"]
 [ext_resource type="Texture2D" uid="uid://c8ieo5jwsw2gj" path="res://ART/Icons/Ability/Tactical/howl.png" id="8_sw5es"]
+[ext_resource type="Resource" uid="uid://dljnbuho6etc1" path="res://RESOURCES/Descriptors/DES_Unique_Unequippable.tres" id="11_gi6qi"]
+[ext_resource type="Resource" uid="uid://cmdjehxsglujq" path="res://RESOURCES/Ability/TargetingTemplates/howl_targeting.tres" id="12_gi6qi"]
 
 [sub_resource type="Resource" id="Resource_2ovlu"]
 script = ExtResource("3_sw5es")
@@ -49,12 +51,14 @@ type = 2
 abilityCooldown = 0
 limitedUsage = 2
 usageRestoredByCampfire = 2
+ability_speed = 1
 executionStack = Array[ExtResource("2_8rw6l")]([SubResource("Resource_2ovlu"), SubResource("Resource_3jv83"), SubResource("Resource_tl8j3"), SubResource("Resource_3qyng"), SubResource("Resource_r6ctp"), SubResource("Resource_3w1ko")])
 internalName = "howl"
 loc_displayName = "tact_howl_name"
 loc_displayDesc = "tact_howl_desc"
 icon = ExtResource("8_sw5es")
-descriptors = Array[ExtResource("2_2kc73")]([ExtResource("3_s2e84")])
+descriptors = Array[ExtResource("2_2kc73")]([ExtResource("3_s2e84"), ExtResource("11_gi6qi")])
+TargetingTemplate = ExtResource("12_gi6qi")
 TargetingData = NodePath("TargetingData")
 HealData = NodePath("HealComponent")
 

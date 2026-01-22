@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TargetingSimple" load_steps=2 format=3 uid="uid://dpdj0djf1cjqo"]
+
+[ext_resource type="Script" uid="uid://erjip53lacvi" path="res://SCRIPTS/Targeting/TargetingSimple.gd" id="1_js2cm"]
+
+[resource]
+script = ExtResource("1_js2cm")
+TargetRange = Vector2i(2, 3)

@@ -9,6 +9,7 @@ const Ability_Dir = "res://RESOURCES/Ability"
 const AbilityWeapon_Dir = "res://RESOURCES/Ability/Equippable"
 const AbilityTactial_Dir = "res://RESOURCES/Ability/Tactical"
 const AbilityStandard_Dir = "res://RESOURCES/Ability/Standard"
+const AbilityTargeting_Dir = "res://RESOURCES/Ability/TargetingTemplates"
 const Descriptors_Dir = "res://RESOURCES/Descriptors"
 const VulnerableDescriptors_Dir = "res://RESOURCES/Descriptors/Vulnerabilities"
 const LootTable_Dir = "res://RESOURCES/LootTable"
@@ -197,3 +198,17 @@ func ConstructAllDataMappings():
 	ConstructAbilityMapping()
 	ConstructVulnerabilityMapping()
 	ConstructUnlockableMapping()
+
+func ImportFieldIsNull(_data, _key : String):
+	# I hate this but ya know - it happens
+	if !_data.has(_key):
+		return true
+
+	var typeEnum : Variant.Type = typeof(_data[_key])
+	match(typeEnum):
+		Variant.Type.TYPE_NIL:
+			return true
+		Variant.Type.TYPE_STRING:
+			return _data[_key] == ""
+		_:
+			return false

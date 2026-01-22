@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bd66sm3kjyqb5"]
+[gd_scene load_steps=14 format=3 uid="uid://bd66sm3kjyqb5"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_stemp"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ogjtm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_rlmwd"]
 [ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/pushforward.png" id="6_gmwg4"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_rpv43"]
+[ext_resource type="Resource" uid="uid://lgsn5mm6wips" path="res://RESOURCES/Ability/TargetingTemplates/pushforward_targeting.tres" id="8_3gex7"]
 [ext_resource type="Resource" uid="uid://5aehkg35rm1d" path="res://RESOURCES/TargetingShapes/push_forward_shape.tres" id="8_umevs"]
 
 [sub_resource type="Resource" id="Resource_3gex7"]
@@ -30,6 +31,7 @@ internalName = "pushforward"
 loc_displayName = "art_pushforward_name"
 loc_displayDesc = "art_pushforward_desc"
 icon = ExtResource("6_gmwg4")
+TargetingTemplate = ExtResource("8_3gex7")
 TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

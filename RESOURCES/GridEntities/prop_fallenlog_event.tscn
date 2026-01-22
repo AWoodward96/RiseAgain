@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_tudn3"]
 [ext_resource type="Texture2D" uid="uid://c8t6102i2v87a" path="res://ART/VFX/cloud_vfx_2.png" id="2_dkvcv"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_lyc2n"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_7mwco"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_lyc2n"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_7mwco"]
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="3_lyc2n"]
 [ext_resource type="PackedScene" uid="uid://cndmf0hcxrc30" path="res://RESOURCES/VFX/explosion_vfx.tscn" id="6_6o3i8"]
 

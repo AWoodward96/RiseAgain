@@ -20,8 +20,8 @@ signal OnUnitDamaged(_result : DamageStepResult)
 @export var takeLethalDamageSound : FmodEventEmitter2D
 @export var footstepsSound : FmodEventEmitter2D
 @export var deathSound : FmodEventEmitter2D
-@export var LeapSound : FmodEventEmitter2D
-@export var LandSound : FmodEventEmitter2D
+@export var leapSound : FmodEventEmitter2D
+@export var landSound : FmodEventEmitter2D
 
 
 
@@ -500,11 +500,11 @@ func CreateStartingAbilities():
 func AddAbilityInstance(_abilityInstance : Ability):
 	_abilityInstance.Initialize(self)
 
-	if _abilityInstance.type == Ability.AbilityType.Weapon:
+	if _abilityInstance.type == Ability.EAbilityType.Weapon:
 		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
 		UnEquipWeapon()
 		EquippedWeapon = _abilityInstance
-	elif _abilityInstance.type == Ability.AbilityType.Tactical:
+	elif _abilityInstance.type == Ability.EAbilityType.Tactical:
 		# Do the same for the tactical, but there's no 'equipped' variable to update
 		UnEquipTactical()
 
@@ -532,7 +532,7 @@ func AddPackedAbility(_ability : PackedScene):
 func UnEquipWeapon():
 	for i in range(Abilities.size() -1, -1, -1):
 		var abl = Abilities[i]
-		if abl.type == Ability.AbilityType.Weapon:
+		if abl.type == Ability.EAbilityType.Weapon:
 			abilityParent.remove_child(abl)
 			if GameManager.CurrentCampaign != null:
 				GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
@@ -545,7 +545,7 @@ func UnEquipWeapon():
 func UnEquipTactical():
 	for i in range(Abilities.size() -1, -1, -1):
 		var abl = Abilities[i]
-		if abl.type == Ability.AbilityType.Tactical:
+		if abl.type == Ability.EAbilityType.Tactical:
 			abilityParent.remove_child(abl)
 			if GameManager.CurrentCampaign != null:
 				GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
@@ -1188,7 +1188,7 @@ static func FromJSON(_dict : Dictionary):
 			newInstance.FromJSON(elementAsDict)
 
 	for abl in unitInstance.Abilities:
-		if abl.type == Ability.AbilityType.Weapon:
+		if abl.type == Ability.EAbilityType.Weapon:
 			unitInstance.EquippedWeapon = abl
 			break
 

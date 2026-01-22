@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cg2bul2ropcg4"]
+[gd_scene load_steps=18 format=3 uid="uid://cg2bul2ropcg4"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_yk4c8"]
 [ext_resource type="Texture2D" uid="uid://bn36kolmwh5xb" path="res://ART/Icons/Ability/Equippable/torment.png" id="2_61skm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="7_dtdgd"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_jg1o0"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="8_q23ge"]
+[ext_resource type="Resource" uid="uid://c1futmffqo2lj" path="res://RESOURCES/Ability/TargetingTemplates/torment_targeting.tres" id="9_qvqjd"]
 
 [sub_resource type="Resource" id="Resource_xbfd0"]
 script = ExtResource("3_m5vrv")
@@ -20,7 +21,7 @@ script = ExtResource("3_m5vrv")
 [sub_resource type="Resource" id="Resource_8u237"]
 script = ExtResource("4_cjfaa")
 
-[sub_resource type="Resource" id="Resource_ph32l"]
+[sub_resource type="Resource" id="Resource_qvqjd"]
 script = ExtResource("3_0888o")
 Template = ExtResource("4_a7oiq")
 Value = 2
@@ -35,13 +36,14 @@ loc_displayName = "weap_torment_name"
 loc_displayDesc = "weap_torment_desc"
 icon = ExtResource("2_61skm")
 descriptors = Array[ExtResource("6_qvqjd")]([ExtResource("7_dtdgd"), ExtResource("8_q23ge")])
+TargetingTemplate = ExtResource("9_qvqjd")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_y6ksq")
-GrantedStats = Array[ExtResource("3_0888o")]([SubResource("Resource_ph32l")])
+GrantedStats = Array[ExtResource("3_0888o")]([SubResource("Resource_qvqjd")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_c6u4v")

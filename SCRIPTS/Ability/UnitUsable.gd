@@ -8,6 +8,7 @@ class_name UnitUsable
 @export var icon : Texture2D
 @export var descriptors : Array[DescriptorTemplate]
 
+@export var TargetingTemplate : TargetingDataBase
 @export var TargetingData : SkillTargetingData
 @export var UsableDamageData : DamageData :
 	get:
@@ -38,20 +39,6 @@ func Initialize(_unitOwner : UnitInstance):
 func SetMap(_map : Map):
 	map = _map
 	playerController = map.playercontroller
-
-func ShowRangePreview(_sorted : bool = true):
-	if map == null:
-		return
-
-	if TargetingData == null:
-		map.grid.ClearActions()
-		return
-
-	var availableTargets = TargetingData.GetTilesInRange(ownerUnit, map.grid, _sorted)
-	for t in availableTargets:
-		t.CanAttack = true
-
-	map.grid.ShowActions()
 
 func GetRange():
 	if TargetingData != null:

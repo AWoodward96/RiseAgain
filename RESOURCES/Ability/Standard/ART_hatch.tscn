@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl6oykv0h4h7v"]
+[gd_scene load_steps=17 format=3 uid="uid://dl6oykv0h4h7v"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_etbtn"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_kp30w"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://deq7lqalqcgnh" path="res://SCRIPTS/Items/SummonUnitComponent.gd" id="5_34uen"]
 [ext_resource type="Texture2D" uid="uid://cuu3qactu7v72" path="res://ART/Icons/Ability/Standard/hatch.png" id="5_steap"]
 [ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="6_whm4m"]
+[ext_resource type="Resource" uid="uid://dpu43vn80tnms" path="res://RESOURCES/Ability/TargetingTemplates/hatch_targeting.tres" id="7_cm87u"]
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="7_tcjl5"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="8_i6vqd"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_v1s51"]
@@ -34,6 +35,7 @@ internalName = "hatch"
 loc_displayName = "art_hatch_name"
 loc_displayDesc = "art_hatch_desc"
 icon = ExtResource("5_steap")
+TargetingTemplate = ExtResource("7_cm87u")
 TargetingData = NodePath("SkillTargetingData")
 SummonData = NodePath("SummonUnitComponent")
 

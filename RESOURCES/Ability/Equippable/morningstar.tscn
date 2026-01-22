@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhxil20ufx2ma"]
+[gd_scene load_steps=21 format=3 uid="uid://bhxil20ufx2ma"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0hq2p"]
 [ext_resource type="Texture2D" uid="uid://c7yl5nsgangtw" path="res://ART/Icons/Ability/Equippable/morningstar.png" id="2_0hq2p"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="6_l8hcr"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_xcylp"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="8_psn6u"]
+[ext_resource type="Resource" uid="uid://dql3cgk7r3ht0" path="res://RESOURCES/Ability/TargetingTemplates/morningstar_targeting.tres" id="9_0lebr"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_vsu1t"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="10_s0rk5"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="12_0nllg"]
@@ -24,12 +25,12 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("4_l8hcr")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_0hq2p"]
+[sub_resource type="Resource" id="Resource_0lebr"]
 script = ExtResource("6_l8hcr")
 Template = ExtResource("7_xcylp")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_88gfm"]
+[sub_resource type="Resource" id="Resource_l8hcr"]
 script = ExtResource("6_l8hcr")
 Template = ExtResource("8_psn6u")
 Value = 1
@@ -44,13 +45,14 @@ loc_displayName = "weap_morningstar_name"
 loc_displayDesc = "weap_morningstar_desc"
 icon = ExtResource("2_0hq2p")
 descriptors = Array[ExtResource("2_88gfm")]([ExtResource("3_8np14"), ExtResource("4_gv3g6")])
+TargetingTemplate = ExtResource("9_0lebr")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_0lebr")
-GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_0hq2p"), SubResource("Resource_88gfm")])
+GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_0lebr"), SubResource("Resource_l8hcr")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_vsu1t")

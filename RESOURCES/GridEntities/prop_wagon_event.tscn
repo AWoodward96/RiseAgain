@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://cj1m4e845a2s8"]
 
 [ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_xyrwh"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_5br7r"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_tph87"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_5br7r"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_tph87"]
 [ext_resource type="PackedScene" uid="uid://cndmf0hcxrc30" path="res://RESOURCES/VFX/explosion_vfx.tscn" id="5_fxhok"]
 [ext_resource type="Texture2D" uid="uid://cc1llst66uu1j" path="res://ART/Environment/Props/Wagon.png" id="6_xyrwh"]
 

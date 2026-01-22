@@ -14,7 +14,7 @@ enum AbilityMovementType { TargetTile, DirectionalRelative, InverseDirectional }
 ## If True, the route tries to draw a path from the unit's current position to the destination.
 ## If False, the route just uses the start and end position - no inbetween. Good for jumping.
 ## If False, stoppedByWalls is not used
-@export var drawPath : bool = true # Should
+@export var drawPath : bool = true
 @export var movementAmount : int
 
 var positionalOffset : Vector2
@@ -59,7 +59,9 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 	if _inverse:
 		directionVector = GameSettingsTemplate.GetInverseVectorFromDirection(_direction)
 
-	var workingTile = _grid.GetTile(_origin.Position + directionVector * _atRange)
+
+
+	var workingTile = _origin
 	route.append(_origin)
 	if drawPath:
 		for i in movementAmount:
@@ -72,6 +74,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 				route.append(tile)
 				workingTile = tile
 	else:
+		workingTile = _grid.GetTile(_origin.Position + directionVector * _atRange)
 		var tmp = _grid.GetTile(workingTile.Position + (directionVector * movementAmount))
 		if tmp.IsWall && !_unit.IsFlying:
 			# units can't get stuck in walls plz
@@ -89,7 +92,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 	return route
 
 
-func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Tile, _atRange : int, _direction : GameSettingsTemplate.Direction, _actionLog : ActionLog, _speedOverride : int = -1, _animationStyle : UnitSettingsTemplate.EMovementAnimationStyle = UnitSettingsTemplate.EMovementAnimationStyle.Normal):
+func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Tile, _atRange : int, _direction : GameSettingsTemplate.Direction, _actionLog : ActionLog, _speedOverride : int = -1, _animationStyle : MovementAnimationStyleTemplate = null):
 	# Set the positional offset to zero because actual unit movement does not go through the center
 	positionalOffset = Vector2.ZERO
 	destinationTile = null
@@ -106,8 +109,7 @@ func Move(_grid : Grid, _unit : UnitInstance, _selectedTile : Tile, _origin : Ti
 		AbilityMovementType.InverseDirectional:
 			route = GetRoute_DirectionalRelative(_grid, _unit, _origin, _atRange, _direction, true)
 
-	var movementData = MovementData.Construct(route, destinationTile)
+	var movementData = MovementData.Construct(route, destinationTile, _animationStyle)
 	movementData.AssignAbilityData(_actionLog.ability, _actionLog)
-	movementData.AnimationStyle = _animationStyle
 	_unit.MoveCharacterToNode(movementData)
 	return route

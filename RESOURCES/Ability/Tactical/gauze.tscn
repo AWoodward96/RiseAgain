@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dl6qxjh1aw8tj"]
+[gd_scene load_steps=20 format=3 uid="uid://dl6qxjh1aw8tj"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3yni1"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_lu14u"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_0uc5p"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="9_kf6lm"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="10_vod3w"]
+[ext_resource type="Resource" uid="uid://dpn3k8xxmieyt" path="res://RESOURCES/Ability/TargetingTemplates/gauze_targeting.tres" id="11_vod3w"]
 
 [sub_resource type="Resource" id="Resource_tbbfs"]
 script = ExtResource("3_cf2ed")
@@ -54,6 +55,7 @@ loc_displayName = "tact_gauze_name"
 loc_displayDesc = "tact_gauze_desc"
 icon = ExtResource("4_4ievu")
 descriptors = Array[ExtResource("9_kf6lm")]([ExtResource("10_vod3w")])
+TargetingTemplate = ExtResource("11_vod3w")
 TargetingData = NodePath("SkillTargetingData")
 HealData = NodePath("HealComponent")
 

@@ -226,10 +226,6 @@ func ClearActions() :
 
 func ShowActions() :
 	for n in GridArr :
-		# TODO: Do a run or two to see if this being commented out is a problem
-		#if n.Occupant != null :
-			#continue
-
 		if n.InRange :
 			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, RANGETILE)
 
@@ -242,7 +238,6 @@ func ShowActions() :
 
 		if n.CanBuff :
 			map.tilemap_UI.set_cell(n.Position, UITILEATLAS, BUFFTILE)
-
 
 
 func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true) :

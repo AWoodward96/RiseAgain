@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingShapedDirectional" load_steps=2 format=3 uid="uid://3adf8yaies5d"]
+
+[ext_resource type="Script" uid="uid://ueq48l24frax" path="res://SCRIPTS/Targeting/TargetingShapedDirectional.gd" id="1_yjmlt"]
+
+[resource]
+script = ExtResource("1_yjmlt")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/lunar_lance_shape.tres"
+TeamTargeting = 2

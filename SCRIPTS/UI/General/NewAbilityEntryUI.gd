@@ -67,11 +67,11 @@ func AddWeaponRange():
 
 func AddWeaponSpeed():
 	match(ability.ability_speed):
-		Ability.AbilitySpeed.Fast:
+		Ability.EAbilitySpeed.Fast:
 			speedEntry = weaponDetailsParent.CreateEntry(UIManager.Generic_32x32_Texture)
 			speedEntry.texture = GameManager.LocalizationSettings.FastSpeedIcon
 			speedEntry.tooltip = GameManager.LocalizationSettings.FastSpeedDescText
-		Ability.AbilitySpeed.Slow:
+		Ability.EAbilitySpeed.Slow:
 			speedEntry = weaponDetailsParent.CreateEntry(UIManager.Generic_32x32_Texture)
 			speedEntry.texture = GameManager.LocalizationSettings.SlowSpeedIcon
 			speedEntry.tooltip = GameManager.LocalizationSettings.SlowSpeedDescText

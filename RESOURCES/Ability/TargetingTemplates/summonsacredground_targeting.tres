@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TargetingGEFree" load_steps=2 format=3 uid="uid://dmi0onysgvros"]
+
+[ext_resource type="Script" uid="uid://xpxfkw71nwhb" path="res://SCRIPTS/Targeting/TargetingGEFree.gd" id="1_5xrsd"]
+
+[resource]
+script = ExtResource("1_5xrsd")
+gridEntityPrefab = "res://RESOURCES/GridEntities/sacred_ground_entity.tscn"
+shapePrefabRef = "res://RESOURCES/TargetingShapes/generic_single.tres"
+TargetRange = Vector2i(1, 3)
+TeamTargeting = 0

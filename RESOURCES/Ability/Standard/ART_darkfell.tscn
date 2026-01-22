@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1y1fm3qowl1q"]
+[gd_scene load_steps=18 format=3 uid="uid://b1y1fm3qowl1q"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_85abs"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_tpvyo"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_k3t2n"]
 [ext_resource type="Texture2D" uid="uid://cinqp4oq3vxq4" path="res://ART/Icons/Ability/Standard/darkfell.png" id="8_npdv1"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_6snke"]
+[ext_resource type="Resource" uid="uid://dn0rm4k13mpi3" path="res://RESOURCES/Ability/TargetingTemplates/darkfell_targeting.tres" id="9_ts628"]
 [ext_resource type="Resource" uid="uid://c2dfr4ubq82wn" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="10_wvxjb"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="11_vd06l"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_t80f5"]
@@ -36,6 +37,7 @@ internalName = "darkfell"
 loc_displayName = "art_darkfell_name"
 loc_displayDesc = "art_darkfell_desc"
 icon = ExtResource("8_npdv1")
+TargetingTemplate = ExtResource("9_ts628")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

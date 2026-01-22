@@ -30,22 +30,22 @@ func OnVisiblityChanged():
 func Refresh():
 	# First make the weapon
 	for abl in unit.Abilities:
-		if abl.type == Ability.AbilityType.Weapon:
+		if abl.type == Ability.EAbilityType.Weapon:
 			var entry = AbilityParent.CreateEntry(AbilityPrefab) as AbilityEntryUI
 			entry.Refresh(abl)
 
 	for abl in unit.Abilities:
-		if abl.type == Ability.AbilityType.Passive:
+		if abl.type == Ability.EAbilityType.Passive:
 			var entry = AbilityParent.CreateEntry(AbilityPrefab) as AbilityEntryUI
 			entry.Refresh(abl)
 
 	for abl in unit.Abilities:
-		if abl.type == Ability.AbilityType.Tactical:
+		if abl.type == Ability.EAbilityType.Tactical:
 			var entry = AbilityParent.CreateEntry(AbilityPrefab) as AbilityEntryUI
 			entry.Refresh(abl)
 
 	for abl in unit.Abilities:
-		if abl.type == Ability.AbilityType.Standard:
+		if abl.type == Ability.EAbilityType.Standard:
 			var entry = AbilityParent.CreateEntry(AbilityPrefab) as AbilityEntryUI
 			entry.Refresh(abl)
 

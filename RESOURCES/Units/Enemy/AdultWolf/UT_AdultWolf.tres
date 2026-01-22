@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=49 format=3 uid="uid://btjy0lp33oaqu"]
+[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://btjy0lp33oaqu"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_5h2gd"]
 [ext_resource type="Resource" uid="uid://cw401rjsoo6be" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_xh3m4"]
@@ -70,38 +70,6 @@ Template = ExtResource("12_tplq7")
 Value = 3.0
 
 [sub_resource type="Resource" id="Resource_7kiqm"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("13_tr5fr")
-
-[sub_resource type="Resource" id="Resource_tplq7"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("1_5h2gd")
-
-[sub_resource type="Resource" id="Resource_tr5fr"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("3_o4gdo")
-
-[sub_resource type="Resource" id="Resource_yjdpy"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("4_xtf7a")
-
-[sub_resource type="Resource" id="Resource_hqgs2"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("5_kphwc")
-
-[sub_resource type="Resource" id="Resource_bl4fi"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("6_kjdlt")
-
-[sub_resource type="Resource" id="Resource_h1w1n"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("9_yrhgg")
-
-[sub_resource type="Resource" id="Resource_iqm6c"]
-script = ExtResource("2_7jtpq")
-Template = ExtResource("12_tplq7")
-
-[sub_resource type="Resource" id="Resource_tx0vb"]
 script = ExtResource("2_7jtpq")
 Template = ExtResource("13_tr5fr")
 

@@ -47,14 +47,14 @@ func Refresh(_ability : Ability):
 		return
 
 	match _ability.type:
-		Ability.AbilityType.Standard:
+		Ability.EAbilityType.Standard:
 			if Background != null:
 				Background.texture = AbilityBG
 
 			if abilityTypeHeader != null:
 				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypeAbilityTextShorthand
 				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypeAbilityColor
-		Ability.AbilityType.Weapon:
+		Ability.EAbilityType.Weapon:
 			if Background != null:
 				Background.texture = WeaponBG
 
@@ -70,14 +70,14 @@ func Refresh(_ability : Ability):
 						entry.statValue.text = str(stats.Value)
 						entry.icon.texture = stats.Template.loc_icon
 
-		Ability.AbilityType.Tactical:
+		Ability.EAbilityType.Tactical:
 			if Background != null:
 				Background.texture = TacticalBG
 
 			if abilityTypeHeader != null:
 				abilityTypeHeader.text = GameManager.LocalizationSettings.AbilityTypeTacticalTextShorthand
 				abilityTypeHeader.modulate = GameManager.LocalizationSettings.AbilityTypeTacticalColor
-		Ability.AbilityType.Passive:
+		Ability.EAbilityType.Passive:
 			if Background != null:
 				Background.texture = PassiveBG
 
@@ -173,22 +173,22 @@ func UpdateSpeed(_ability : Ability):
 	if speedText == null:
 		return
 
-	if _ability.type == Ability.AbilityType.Passive:
+	if _ability.type == Ability.EAbilityType.Passive:
 		speedParent.visible = false
 		return
 
 	speedParent.visible = true
 
 	match _ability.ability_speed:
-		Ability.AbilitySpeed.Normal:
+		Ability.EAbilitySpeed.Normal:
 			speedText.text = GameManager.LocalizationSettings.AbilitySpeedNormalText
 			speedText.modulate = GameManager.LocalizationSettings.AbilitySpeedNormalColor
 			pass
-		Ability.AbilitySpeed.Fast:
+		Ability.EAbilitySpeed.Fast:
 			speedText.text = GameManager.LocalizationSettings.AbilitySpeedFastText
 			speedText.modulate = GameManager.LocalizationSettings.AbilitySpeedFastColor
 			pass
-		Ability.AbilitySpeed.Slow:
+		Ability.EAbilitySpeed.Slow:
 			speedText.text = GameManager.LocalizationSettings.AbilitySpeedSlowText
 			speedText.modulate = GameManager.LocalizationSettings.AbilitySpeedSlowColor
 			pass

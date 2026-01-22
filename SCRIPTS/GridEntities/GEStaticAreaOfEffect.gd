@@ -70,7 +70,7 @@ func UpdatePositionOnGrid():
 		push_error("Grid Entity Projectile is missing their shaped tiles. " + self.name)
 		return
 
-	var newTiles = shaped_tiles.GetTargetedTilesFromDirection(Source, SourceAbility, CurrentMap.grid, Origin, GameSettingsTemplate.Direction.Up, 0, false, false, false)
+	var newTiles = shaped_tiles.GetTargetedTilesFromDirection(Source, SourceAbility, CurrentMap.grid, Origin, Direction, 0, false, false, false)
 	for t in tiles:
 		if t == null || t.Tile == null:
 			continue
@@ -83,6 +83,10 @@ func UpdatePositionOnGrid():
 			continue
 
 		t.Tile.AddEntity(self)
+
+	if Origin != null:
+		position = Origin.GlobalPosition + GameSettingsTemplate.GetRotationalOffset(Direction)
+		rotation = deg_to_rad(90 * Direction)
 	pass
 
 func AffectUnit(_unitInstance : UnitInstance, _relatedTile : TileTargetedData):
@@ -160,7 +164,6 @@ func ToJSON():
 
 func InitFromJSON(_dict : Dictionary):
 	super(_dict)
-	position = Origin.GlobalPosition
 	remaining_duration = int(_dict["remaining_duration"])
 	UpdatePositionOnGrid()
 	pass

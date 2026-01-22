@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TargetingSelfOnly" load_steps=2 format=3 uid="uid://dpn3k8xxmieyt"]
+
+[ext_resource type="Script" uid="uid://dfyjf5ace0cpy" path="res://SCRIPTS/Targeting/TargetingSelfOnly.gd" id="1_sbobx"]
+
+[resource]
+script = ExtResource("1_sbobx")
+TargetRange = Vector2i(0, 0)
+TeamTargeting = 0
+CanTargetSelf = true

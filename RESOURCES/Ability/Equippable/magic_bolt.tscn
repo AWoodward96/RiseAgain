@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mbareux7y73r"]
+[gd_scene load_steps=18 format=3 uid="uid://mbareux7y73r"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_ebpsu"]
 [ext_resource type="Texture2D" uid="uid://d0g2rta26msr7" path="res://ART/Icons/Ability/Equippable/magic_bolt.png" id="2_joapb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="7_5fnbk"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_lhpqm"]
 [ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="8_exro5"]
+[ext_resource type="Resource" uid="uid://bh4m68b2lb00a" path="res://RESOURCES/Ability/TargetingTemplates/magic_bolt_targeting.tres" id="9_a0mp3"]
 
 [sub_resource type="Resource" id="Resource_xmptj"]
 script = ExtResource("3_smfj1")
@@ -20,7 +21,7 @@ script = ExtResource("3_smfj1")
 [sub_resource type="Resource" id="Resource_hdq0i"]
 script = ExtResource("4_q7evp")
 
-[sub_resource type="Resource" id="Resource_r6j6k"]
+[sub_resource type="Resource" id="Resource_a0mp3"]
 script = ExtResource("4_e6rx8")
 Template = ExtResource("3_j8h7c")
 Value = 6
@@ -35,13 +36,14 @@ loc_displayName = "weap_magic_bolt_name"
 loc_displayDesc = "weap_magic_bolt_desc"
 icon = ExtResource("2_joapb")
 descriptors = Array[ExtResource("6_a0mp3")]([ExtResource("7_5fnbk"), ExtResource("8_exro5")])
+TargetingTemplate = ExtResource("9_a0mp3")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_uce2a")
-GrantedStats = Array[ExtResource("4_e6rx8")]([SubResource("Resource_r6j6k")])
+GrantedStats = Array[ExtResource("4_e6rx8")]([SubResource("Resource_a0mp3")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_lfpmp")

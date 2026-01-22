@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy7k2387t0527"]
+[gd_scene load_steps=23 format=3 uid="uid://cy7k2387t0527"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_kixon"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_5q6et"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_pn0do"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_wmo68"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_3xlkp"]
+[ext_resource type="Resource" uid="uid://cf47q1am6s5vc" path="res://RESOURCES/Ability/TargetingTemplates/taintedtome_targeting.tres" id="9_wmo68"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_xl7uc"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="10_sqjf8"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_icvji"]
@@ -25,17 +26,17 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("4_wmo68")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_25wgg"]
+[sub_resource type="Resource" id="Resource_wmo68"]
 script = ExtResource("5_5q6et")
 Template = ExtResource("6_pn0do")
 Value = 8
 
-[sub_resource type="Resource" id="Resource_5ipa6"]
+[sub_resource type="Resource" id="Resource_sqjf8"]
 script = ExtResource("5_5q6et")
 Template = ExtResource("7_wmo68")
 Value = -2
 
-[sub_resource type="Resource" id="Resource_llsyd"]
+[sub_resource type="Resource" id="Resource_icvji"]
 script = ExtResource("5_5q6et")
 Template = ExtResource("8_3xlkp")
 Value = -2
@@ -50,13 +51,14 @@ loc_displayName = "weap_taintedtome_name"
 loc_displayDesc = "weap_taintedtome_desc"
 icon = ExtResource("5_pn0do")
 descriptors = Array[ExtResource("2_25wgg")]([ExtResource("3_5ipa6"), ExtResource("4_25wgg")])
+TargetingTemplate = ExtResource("9_wmo68")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("4_llsyd")
-GrantedStats = Array[ExtResource("5_5q6et")]([SubResource("Resource_25wgg"), SubResource("Resource_5ipa6"), SubResource("Resource_llsyd")])
+GrantedStats = Array[ExtResource("5_5q6et")]([SubResource("Resource_wmo68"), SubResource("Resource_sqjf8"), SubResource("Resource_icvji")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_xl7uc")

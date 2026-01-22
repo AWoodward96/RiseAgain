@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crt2hqonneuuw"]
+[gd_scene load_steps=18 format=3 uid="uid://crt2hqonneuuw"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3jge8"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hdeun"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_dpbeg"]
 [ext_resource type="Resource" uid="uid://cqklmsvguwsb1" path="res://RESOURCES/Descriptors/DES_Sword.tres" id="8_udj1w"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_ni0kk"]
+[ext_resource type="Resource" uid="uid://0bk70qoed6q5" path="res://RESOURCES/Ability/TargetingTemplates/iron_sword_targeting.tres" id="9_ppjb7"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_j4lk0"]
 
 [sub_resource type="Resource" id="Resource_0qngs"]
@@ -20,7 +21,7 @@ script = ExtResource("3_d2k4u")
 [sub_resource type="Resource" id="Resource_njyb8"]
 script = ExtResource("4_dngvr")
 
-[sub_resource type="Resource" id="Resource_ftc02"]
+[sub_resource type="Resource" id="Resource_ppjb7"]
 script = ExtResource("7_taltb")
 Template = ExtResource("8_dpbeg")
 Value = 4
@@ -35,13 +36,14 @@ loc_displayName = "weap_iron_sword_name"
 loc_displayDesc = "weap_iron_sword_desc"
 icon = ExtResource("5_lyu1s")
 descriptors = Array[ExtResource("6_ppjb7")]([ExtResource("7_tqhbl"), ExtResource("8_udj1w")])
+TargetingTemplate = ExtResource("9_ppjb7")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("6_jfrxw")
-GrantedStats = Array[ExtResource("7_taltb")]([SubResource("Resource_ftc02")])
+GrantedStats = Array[ExtResource("7_taltb")]([SubResource("Resource_ppjb7")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_ni0kk")

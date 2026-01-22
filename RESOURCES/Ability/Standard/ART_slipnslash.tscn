@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://puxbxe6g34j8"]
+[gd_scene load_steps=26 format=3 uid="uid://puxbxe6g34j8"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7xk4g"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_mbdvn"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://d0xjc40ay5iaq" path="res://RESOURCES/TargetingShapes/slipnslash_shape.tres" id="10_okgaa"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="11_smoxh"]
 [ext_resource type="Texture2D" uid="uid://p4rnfhj67wax" path="res://ART/Icons/Ability/Standard/slipnslash.png" id="11_ubeem"]
+[ext_resource type="Resource" uid="uid://d3tgnqa2qg4um" path="res://RESOURCES/Ability/TargetingTemplates/slipnslash_targeting.tres" id="13_apckt"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="14_3icwe"]
 
 [sub_resource type="Resource" id="Resource_xn624"]
@@ -52,6 +53,7 @@ internalName = "slipnslash"
 loc_displayName = "art_slipnslash_name"
 loc_displayDesc = "art_slipnslash_desc"
 icon = ExtResource("11_ubeem")
+TargetingTemplate = ExtResource("13_apckt")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementComponent")
@@ -70,4 +72,4 @@ stopShapeOnWall = true
 [node name="AbilityMovementComponent" type="Node2D" parent="."]
 script = ExtResource("11_smoxh")
 type = 1
-movementAmount = 3
+movementAmount = 4

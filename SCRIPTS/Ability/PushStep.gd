@@ -34,11 +34,11 @@ func Enter(_actionLog : ActionLog):
 				unit.MoveCharacterToNode(movementData)
 				unit.TurnStartTile = stack.ResultingTile
 				if res.willCollide && res.canDamageUser:
-					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
+					unit.ModifyHealth(res.HealthDelta, res)
 			else:
 				unit.MoveCharacterToNode(movementData)
 				if res.willCollide:
-					unit.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
+					unit.ModifyHealth(res.HealthDelta, res)
 
 			pass
 

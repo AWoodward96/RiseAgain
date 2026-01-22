@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dovjeble1x4wx"]
+[gd_scene load_steps=10 format=3 uid="uid://dovjeble1x4wx"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_ipcmu"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8vki3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="3_yfhna"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="4_epwwx"]
 [ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="4_fvgrd"]
+[ext_resource type="Resource" uid="uid://7cuk3u1j12en" path="res://RESOURCES/Ability/TargetingTemplates/polinate_targeting.tres" id="5_8vki3"]
 
 [sub_resource type="Resource" id="Resource_bt47x"]
 script = ExtResource("4_fvgrd")
@@ -21,6 +22,7 @@ executionStack = Array[ExtResource("2_8vki3")]([SubResource("Resource_bt47x")])
 internalName = "polinate"
 loc_displayName = "art_polinate_name"
 loc_displayDesc = "art_polinate_desc"
+TargetingTemplate = ExtResource("5_8vki3")
 TargetingData = NodePath("TargetingData")
 HealData = NodePath("HealComponent")
 
@@ -32,7 +34,7 @@ CanTargetSelf = true
 
 [node name="HealComponent" type="Node2D" parent="."]
 script = ExtResource("3_yfhna")
-FlatValue = 2
+FlatValue = 2.0
 ScalingStat = ExtResource("4_epwwx")
 ScalingModType = 2
 ScalingMod = 1.25

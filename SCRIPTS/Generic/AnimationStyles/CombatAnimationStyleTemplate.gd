@@ -1,6 +1,10 @@
 extends AnimationStyleTemplate
 class_name CombatAnimationStyleTemplate
 
+# called when the style should deal the damage
+signal PerformDamageCallback
+@export var HasStandardWindup : bool = true
+@export var HasStandardCooloff : bool = true
 
 var isRetaliation : bool = false
 var unitTargets : Array[UnitInstance]
@@ -15,6 +19,9 @@ func Prepare(_direction : Vector2, _source : UnitInstance, _data):
 			if damageStepResult != null && damageStepResult.Target != null:
 				unitTargets.append(damageStepResult.Target)
 
+func Enter():
+	super()
+	PerformDamageCallback.emit()
 
 func PlayPrepAnimations():
 	if source.damage_indicator != null:

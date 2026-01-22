@@ -8,25 +8,17 @@ func Enter(_actionLog : ActionLog):
 	if CombatEffect == null:
 		return true
 
-	# This step doesn't use the apply effect result for it's logic - it does it all on it's own.
-	# The effect result is just there to preview what the ability is doing, and when
-	if CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Source || CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Both:
-		var effect = CombatEffectInstance.Create(source, source, CombatEffect, _actionLog.ability, _actionLog)
+	var stepResults = _actionLog.GetResultsFromActionIndex(_actionLog.actionStackIndex)
+	for results in stepResults:
+		if results.Target == null:
+			continue
+
+		if results.Target.IsDying || results.Target.currentHealth <= 0:
+			continue
+
+		var effect = CombatEffectInstance.Create(source, results.Target, CombatEffect, _actionLog.ability, _actionLog)
 		if effect != null:
-			source.AddCombatEffect(effect)
-
-	if CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Targets || CombatEffect.AffectedTargets == CombatEffect.EEffectTargetType.Both:
-		var stepResults = _actionLog.GetResultsFromActionIndex(_actionLog.actionStackIndex)
-		for results in stepResults:
-			if results.Target == null:
-				continue
-
-			if results.Target.IsDying || results.Target.currentHealth <= 0:
-				continue
-
-			var effect = CombatEffectInstance.Create(source, results.Target, CombatEffect, _actionLog.ability, _actionLog)
-			if effect != null:
-				results.Target.AddCombatEffect(effect)
+			results.Target.AddCombatEffect(effect)
 
 	return true
 

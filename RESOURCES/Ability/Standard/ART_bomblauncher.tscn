@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vlpjvct6tdeb"]
+[gd_scene load_steps=18 format=3 uid="uid://vlpjvct6tdeb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7k132"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_jnndm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="7_0h1cp"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_elhho"]
 [ext_resource type="Texture2D" uid="uid://c8rgr46ijn12k" path="res://ART/Icons/Ability/Standard/bomblauncher.png" id="8_j3csn"]
+[ext_resource type="Resource" uid="uid://51hnt607yjck" path="res://RESOURCES/Ability/TargetingTemplates/bomblauncher_targeting.tres" id="9_870y1"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_ngqtq"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="10_moevg"]
 
@@ -42,6 +43,7 @@ internalName = "bomblauncher"
 loc_displayName = "art_bomblauncher_name"
 loc_displayDesc = "art_bomblauncher_desc"
 icon = ExtResource("8_j3csn")
+TargetingTemplate = ExtResource("9_870y1")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

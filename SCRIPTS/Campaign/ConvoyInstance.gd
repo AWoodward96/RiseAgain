@@ -16,9 +16,9 @@ func AddToConvoy(_unitUsable : Ability):
 
 	if _unitUsable is Item:
 		ItemInventory.append(_unitUsable as Item)
-	elif _unitUsable.type == Ability.AbilityType.Weapon:
+	elif _unitUsable.type == Ability.EAbilityType.Weapon:
 		WeaponInventory.append(_unitUsable)
-	elif _unitUsable.type == Ability.AbilityType.Tactical:
+	elif _unitUsable.type == Ability.EAbilityType.Tactical:
 		TacticalInventory.append(_unitUsable)
 	else:
 		push_error("Could not add usable to Convoy: ", _unitUsable.internalName)
@@ -42,7 +42,7 @@ func EquipWeaponFromConvoy(_unit : UnitInstance, _weapon : Ability):
 		push_error("Trying to equip a weapon from convoy that isn't in the convoy? That's super illegal.")
 		return
 
-	if _weapon.type != Ability.AbilityType.Weapon:
+	if _weapon.type != Ability.EAbilityType.Weapon:
 		return
 
 	if _unit.Template.CanUseWeapon(_weapon):
@@ -58,7 +58,7 @@ func EquipTacticalFromConvoy(_unit : UnitInstance, _tactical : Ability):
 		push_error("Trying to equip a tactical from convoy that isn't in the convoy? That's super illegal.")
 		return
 
-	if _tactical.type != Ability.AbilityType.Tactical:
+	if _tactical.type != Ability.EAbilityType.Tactical:
 		return
 
 	TacticalInventory.remove_at(tacIndex)

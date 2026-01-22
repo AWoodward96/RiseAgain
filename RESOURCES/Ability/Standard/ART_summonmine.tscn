@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwie83u2l24t0"]
+[gd_scene load_steps=14 format=3 uid="uid://bwie83u2l24t0"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_d3qc6"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_x4owp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dkqrtalgsk7nm" path="res://ART/Icons/Ability/Standard/summonmine.png" id="5_oak7k"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_pnxer"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="7_dbsdj"]
+[ext_resource type="Resource" uid="uid://burx687jg34cu" path="res://RESOURCES/Ability/TargetingTemplates/summonmine_targeting.tres" id="7_yor0f"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_d2asf"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="10_yor0f"]
 
@@ -28,6 +29,7 @@ internalName = "summonmine"
 loc_displayName = "art_summonmine_name"
 loc_displayDesc = "art_summonmine_desc"
 icon = ExtResource("5_oak7k")
+TargetingTemplate = ExtResource("7_yor0f")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

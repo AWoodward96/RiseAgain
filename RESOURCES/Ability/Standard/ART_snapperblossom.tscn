@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq8gkroer2hb6"]
+[gd_scene load_steps=14 format=3 uid="uid://cq8gkroer2hb6"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_67bum"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_2oxas"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d3jbvtj86neol" path="res://SCRIPTS/CombatEffects/SnapBlossomEffectTemplate.gd" id="5_yi5f3"]
 [ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_fjwi2"]
 [ext_resource type="PackedScene" uid="uid://ddcgn74t12axm" path="res://RESOURCES/VFX/healing_cloud_vfx.tscn" id="8_fjwi2"]
+[ext_resource type="Resource" uid="uid://cyehhc7we5nhf" path="res://RESOURCES/Ability/TargetingTemplates/snapperblossom_targeting.tres" id="9_fjwi2"]
 
 [sub_resource type="Resource" id="Resource_h0j48"]
 script = ExtResource("5_yi5f3")
@@ -32,11 +33,13 @@ metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
 [node name="snapperblossom" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_67bum")
 abilityCooldown = 4
+ability_speed = 1
 executionStack = Array[ExtResource("2_2oxas")]([SubResource("Resource_4sqob")])
 internalName = "snapperblossom"
 loc_displayName = "art_snapperblossom_name"
 loc_displayDesc = "art_snapperblossom_desc"
 icon = ExtResource("3_tuxvi")
+TargetingTemplate = ExtResource("9_fjwi2")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

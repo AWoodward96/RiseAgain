@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr3qojl35mikb"]
+[gd_scene load_steps=20 format=3 uid="uid://cr3qojl35mikb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_8c66l"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_en8oo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://b2528dgdj72fb" path="res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres" id="6_umu6g"]
 [ext_resource type="Script" uid="uid://d2kv0hjonny5c" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_SimpleSingle.gd" id="8_tp58g"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="10_0gchn"]
+[ext_resource type="Resource" uid="uid://omqydrq7rsmt" path="res://RESOURCES/Ability/TargetingTemplates/arrow_rain_targeting.tres" id="10_hx5hy"]
 
 [sub_resource type="Resource" id="Resource_hx5hy"]
 script = ExtResource("3_0gchn")
@@ -49,6 +50,7 @@ internalName = "arrow_rain"
 loc_displayName = "art_arrow_rain_name"
 loc_displayDesc = "art_arrow_rain_desc"
 icon = ExtResource("5_umu6g")
+TargetingTemplate = ExtResource("10_hx5hy")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

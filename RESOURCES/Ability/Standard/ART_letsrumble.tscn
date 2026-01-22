@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7f1m6vpdgchf"]
+[gd_scene load_steps=22 format=3 uid="uid://b7f1m6vpdgchf"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_wj3ie"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_dthvd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://d2kv0hjonny5c" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_SimpleSingle.gd" id="6_wbubi"]
 [ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="9_i5lxd"]
 [ext_resource type="Texture2D" uid="uid://dc8rm432mxvs0" path="res://ART/Icons/Ability/Standard/letsrumble.png" id="9_qo1sr"]
+[ext_resource type="Resource" uid="uid://b6ky0nrq66ldn" path="res://RESOURCES/Ability/TargetingTemplates/letsrumble_targeting.tres" id="10_k0y5t"]
 [ext_resource type="Script" uid="uid://clfh4hciv4fye" path="res://SCRIPTS/Units/AI/LandingLeapAIOption.gd" id="10_qo1sr"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="14_dulje"]
 
@@ -51,6 +52,7 @@ internalName = "letsrumble"
 loc_displayName = "art_letsrumble_name"
 loc_displayDesc = "art_letsrumble_desc"
 icon = ExtResource("9_qo1sr")
+TargetingTemplate = ExtResource("10_k0y5t")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 customAITargetingBehavior = ExtResource("10_qo1sr")

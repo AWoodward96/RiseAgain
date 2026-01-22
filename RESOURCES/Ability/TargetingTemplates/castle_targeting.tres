@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TargetingTeleportAdjacent" load_steps=2 format=3 uid="uid://c5o2go20x3g11"]
+
+[ext_resource type="Script" uid="uid://cpjwgxsprbavr" path="res://SCRIPTS/Targeting/TargetingTeleportAdjacent.gd" id="1_sb68g"]
+
+[resource]
+script = ExtResource("1_sb68g")
+TargetRange = Vector2i(1, 4)
+TeamTargeting = 0
+CanTargetTerrain = false

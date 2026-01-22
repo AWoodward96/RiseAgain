@@ -9,15 +9,15 @@ signal AbilityActionComplete
 #	All Equippables should have the Damage Grants Focus bool set to true - but it's available as an option to be false for any edge cases
 # Tactical: A utility focused Ability that every Unit can use
 # Passive, HealdItem, Deathrattle: Too be implemented
-enum AbilityType { Standard, Weapon, Tactical, Passive, HeldItem, Deathrattle }
-enum AbilitySpeed { Normal, Fast, Slow }
+enum EAbilityType { Standard, Weapon, Tactical, Passive, HeldItem, Deathrattle }
+enum EAbilitySpeed { Normal, Fast, Slow }
 
-@export var type : AbilityType
+@export var type : EAbilityType
 @export var abilityCooldown : int = 1
 @export var limitedUsage : int = -1 # -1 means there is no limited usage
 @export var usageRestoredByCampfire : int = 0
 
-@export var ability_speed : AbilitySpeed = AbilitySpeed.Normal
+@export var ability_speed : EAbilitySpeed = EAbilitySpeed.Normal
 @export var executionStack : Array[ActionStep]
 @export var passiveListeners : Array[PassiveListenerBase]
 
@@ -60,10 +60,10 @@ func TryExecute(_actionLog : ActionLog, _delta : float):
 			if _actionLog.actionStackIndex < executionStack.size():
 				executionStack[_actionLog.actionStackIndex ].Enter(_actionLog)
 			else:
-				if ability_speed != AbilitySpeed.Fast:
+				if ability_speed != EAbilitySpeed.Fast:
 					_actionLog.source.QueueEndTurn()
 
-				if ability_speed == AbilitySpeed.Slow:
+				if ability_speed == EAbilitySpeed.Slow:
 					ownerUnit.UsingSlowSpeedAbility = true
 
 				AbilityActionComplete.emit()

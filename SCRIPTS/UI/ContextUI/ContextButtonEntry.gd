@@ -41,11 +41,11 @@ func Initialize(_locTitle : String, _enabled : bool, _callback : Callable):
 
 func AddAbility(_ability : Ability):
 	match (_ability.type):
-		Ability.AbilityType.Standard:
+		Ability.EAbilityType.Standard:
 			bg_color_fill.color = ability_color
-		Ability.AbilityType.Tactical:
+		Ability.EAbilityType.Tactical:
 			bg_color_fill.color = tactical_color
-		Ability.AbilityType.Weapon:
+		Ability.EAbilityType.Weapon:
 			bg_color_fill.color = weapon_color
 
 	AddCooldown(_ability.abilityCooldown, _ability.remainingCooldown)
@@ -53,7 +53,7 @@ func AddAbility(_ability : Ability):
 	if _ability.limitedUsage != -1:
 		AddUsage(_ability.remainingUsages)
 
-	fast_speed_parent.visible = _ability.ability_speed == Ability.AbilitySpeed.Fast
+	fast_speed_parent.visible = _ability.ability_speed == Ability.EAbilitySpeed.Fast
 
 func AddCooldown(_cooldown : int, _remainingCooldown : int):
 	cooldown_parent.visible = _cooldown > 0

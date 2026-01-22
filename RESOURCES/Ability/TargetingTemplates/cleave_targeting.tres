@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingShapedDirectional" load_steps=2 format=3 uid="uid://vqegud3j0866"]
+
+[ext_resource type="Script" uid="uid://ueq48l24frax" path="res://SCRIPTS/Targeting/TargetingShapedDirectional.gd" id="1_hjfjs"]
+
+[resource]
+script = ExtResource("1_hjfjs")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/cleave_shape.tres"
+TargetRange = Vector2i(0, 0)

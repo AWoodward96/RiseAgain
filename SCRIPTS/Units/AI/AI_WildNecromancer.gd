@@ -21,7 +21,7 @@ func Decision_RaiseDead():
 	# first find raise dead
 	var raiseDead : Ability
 	for ability in unit.Abilities:
-		if ability.type == Ability.AbilityType.Standard:
+		if ability.type == Ability.EAbilityType.Standard:
 			# This should be it - otherwise we've messed up
 			raiseDead = ability as Ability
 			break

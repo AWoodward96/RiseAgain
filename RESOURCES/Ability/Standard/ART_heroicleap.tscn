@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgpijng0n124p"]
+[gd_scene load_steps=23 format=3 uid="uid://dgpijng0n124p"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_8kx7m"]
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_vi17b"]
+[ext_resource type="Script" uid="uid://be1x2gl2441x5" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_Leap.gd" id="4_5rliq"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_kgbqm"]
 [ext_resource type="Resource" uid="uid://w4pf17p2i0wg" path="res://RESOURCES/CombatEffects/CE_Armor_HeroicLeap.tres" id="5_octw8"]
@@ -12,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dlev228ekvw8d" path="res://RESOURCES/TargetingShapes/heroicleap_shape.tres" id="7_n5ddh"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_42ld6"]
 [ext_resource type="Texture2D" uid="uid://osmj6jxl88kl" path="res://ART/Icons/Ability/Standard/heroicleap.png" id="8_mw0ad"]
+[ext_resource type="Resource" uid="uid://bvl0ucsrbtgxt" path="res://RESOURCES/Ability/TargetingTemplates/heroicleap_targeting.tres" id="10_vi17b"]
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="11_anx3p"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="13_4rprd"]
 
@@ -19,8 +21,14 @@
 script = ExtResource("3_vi17b")
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
+[sub_resource type="Resource" id="Resource_ghbu2"]
+script = ExtResource("4_5rliq")
+UseFootsteps = false
+metadata/_custom_type_script = "uid://be1x2gl2441x5"
+
 [sub_resource type="Resource" id="Resource_p650e"]
 script = ExtResource("3_8kx7m")
+MovementAnimationStyle = SubResource("Resource_ghbu2")
 AnimationStyle = 1
 
 [sub_resource type="Resource" id="Resource_khgxx"]
@@ -42,6 +50,7 @@ internalName = "heroicleap"
 loc_displayName = "art_heroicleap_name"
 loc_displayDesc = "art_heroicleap_desc"
 icon = ExtResource("8_mw0ad")
+TargetingTemplate = ExtResource("10_vi17b")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementData")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bhol0valbc8x7"]
 
 [ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_eidty"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="2_eypsa"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="3_nrhsi"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_eypsa"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_nrhsi"]
 [ext_resource type="Texture2D" uid="uid://b7lpsoid8sj6o" path="res://ART/Environment/WhiteCoast/logbridge_1x3.png" id="4_eidty"]
 [ext_resource type="TileSet" uid="uid://klf2tpkgl4h3" path="res://ART/Environment/WhiteCoast/whitecoast_tileset.tres" id="5_eypsa"]
 

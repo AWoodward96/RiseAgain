@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmnt8dm1yjmy8"]
+[gd_scene load_steps=17 format=3 uid="uid://bmnt8dm1yjmy8"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3el8o"]
 [ext_resource type="Texture2D" uid="uid://7777cejys0n7" path="res://ART/Icons/Ability/Standard/giantslam.png" id="2_m85vw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="4_h44x8"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_tfpsp"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_4djvw"]
+[ext_resource type="Resource" uid="uid://doly6ktnkoj1h" path="res://RESOURCES/Ability/TargetingTemplates/giantslam_targeting.tres" id="8_ro13n"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="9_c73n6"]
 [ext_resource type="Resource" uid="uid://bxwbvxhh4bgye" path="res://RESOURCES/TargetingShapes/giantslam_shape.tres" id="11_c73n6"]
 
@@ -33,6 +34,7 @@ internalName = "giantslam"
 loc_displayName = "art_giantslam_name"
 loc_displayDesc = "art_giantslam_desc"
 icon = ExtResource("2_m85vw")
+TargetingTemplate = ExtResource("8_ro13n")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

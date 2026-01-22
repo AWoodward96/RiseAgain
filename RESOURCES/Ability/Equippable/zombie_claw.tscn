@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtc3xv5u5h2cd"]
+[gd_scene load_steps=15 format=3 uid="uid://dtc3xv5u5h2cd"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0llaf"]
 [ext_resource type="Texture2D" uid="uid://bky2a1nautc31" path="res://ART/Icons/Ability/Equippable/zombie_claw.png" id="2_6oonq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_ddajl"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_s73wt"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_bf711"]
+[ext_resource type="Resource" uid="uid://b4tblhphk648m" path="res://RESOURCES/Ability/TargetingTemplates/zombie_claw_targeting.tres" id="6_p0i1e"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_00gcs"]
 
 [sub_resource type="Resource" id="Resource_tlp3y"]
@@ -17,7 +18,7 @@ script = ExtResource("3_3qxtp")
 [sub_resource type="Resource" id="Resource_mqwq8"]
 script = ExtResource("4_s73wt")
 
-[sub_resource type="Resource" id="Resource_ao5qx"]
+[sub_resource type="Resource" id="Resource_p0i1e"]
 script = ExtResource("4_ddajl")
 Template = ExtResource("3_4ycm5")
 Value = 3
@@ -31,13 +32,14 @@ internalName = "zombie_claw"
 loc_displayName = "weap_zombie_claw_name"
 loc_displayDesc = "weap_zombie_claw_desc"
 icon = ExtResource("2_6oonq")
+TargetingTemplate = ExtResource("6_p0i1e")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("2_r8nyx")
-GrantedStats = Array[ExtResource("4_ddajl")]([SubResource("Resource_ao5qx")])
+GrantedStats = Array[ExtResource("4_ddajl")]([SubResource("Resource_p0i1e")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("5_bf711")

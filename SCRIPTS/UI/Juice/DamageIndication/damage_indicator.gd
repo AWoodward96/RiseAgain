@@ -74,7 +74,6 @@ func ShowPreview():
 
 	healthbar.visible = true
 
-
 	# Abilities can crit too however - so get that in there
 	if crit_chance_label != null:
 		crit_chance_label.text = str(clamp(critChance, 0, 1) * 100) + "%"

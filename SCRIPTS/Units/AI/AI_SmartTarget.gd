@@ -19,7 +19,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	var hasWeaponToUse = false
 	var weaponsAvailableForUse : Array[UnitUsable]
 	for a in unit.Abilities:
-		if a.type != Ability.AbilityType.Tactical && a.IsDamage():
+		if a.type != Ability.EAbilityType.Tactical && a.IsDamage():
 			if a.remainingCooldown <= 0 || a.abilityCooldown == 0:
 				weaponsAvailableForUse.append(a)
 				hasWeaponToUse = true

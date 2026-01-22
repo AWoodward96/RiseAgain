@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://diegks43t77gp"]
+[gd_scene load_steps=13 format=3 uid="uid://diegks43t77gp"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_642os"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_hevbh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="3_yacot"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_erx74"]
 [ext_resource type="Texture2D" uid="uid://beygxl5ituj5r" path="res://ART/Icons/Ability/Standard/howlingwinds.png" id="5_nk1fm"]
+[ext_resource type="Resource" uid="uid://2ojaw0txujcm" path="res://RESOURCES/Ability/TargetingTemplates/howlingwinds_targeting.tres" id="7_4kttm"]
 
 [sub_resource type="Resource" id="Resource_4kttm"]
 script = ExtResource("3_6ve2i")
@@ -27,6 +28,7 @@ internalName = "howlingwinds"
 loc_displayName = "art_howlingwinds_name"
 loc_displayDesc = "art_howlingwinds_desc"
 icon = ExtResource("5_nk1fm")
+TargetingTemplate = ExtResource("7_4kttm")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

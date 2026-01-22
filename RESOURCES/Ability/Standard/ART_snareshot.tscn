@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cowl7jp74hd6j"]
+[gd_scene load_steps=11 format=3 uid="uid://cowl7jp74hd6j"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_qrlnf"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hgu7s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b2s1f01511cjj" path="res://RESOURCES/CombatEffects/CE_Debuff_Stunned.tres" id="3_78h65"]
 [ext_resource type="Texture2D" uid="uid://cuj00bwwtw4n" path="res://ART/Icons/Ability/Standard/snareshot.png" id="5_05l1q"]
 [ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_42rmg"]
+[ext_resource type="Resource" uid="uid://cwh0rock3nkcd" path="res://RESOURCES/Ability/TargetingTemplates/snareshot_targeting.tres" id="7_5cjyv"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_8fewi"]
 
 [sub_resource type="Resource" id="Resource_5cjyv"]
@@ -25,6 +26,7 @@ internalName = "snareshot"
 loc_displayName = "art_snareshot_name"
 loc_displayDesc = "art_snareshot_desc"
 icon = ExtResource("5_05l1q")
+TargetingTemplate = ExtResource("7_5cjyv")
 TargetingData = NodePath("SkillTargetingData")
 
 [node name="SkillTargetingData" type="Node2D" parent="."]

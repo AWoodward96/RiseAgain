@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="TargetingSimple" load_steps=2 format=3 uid="uid://b4tblhphk648m"]
+
+[ext_resource type="Script" uid="uid://erjip53lacvi" path="res://SCRIPTS/Targeting/TargetingSimple.gd" id="1_sb03h"]
+
+[resource]
+script = ExtResource("1_sb03h")

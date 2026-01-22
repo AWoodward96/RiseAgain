@@ -54,7 +54,7 @@ func CheckRequirements(_unitThatDied : UnitInstance, _context : DamageStepResult
 	if reqKilledByUser && _context.Source != ability.ownerUnit:
 		passes = false
 
-	if reqKilledByWeapon && _context.AbilityData == null || (_context.AbilityData != null && _context.AbilityData.type != Ability.AbilityType.Weapon):
+	if reqKilledByWeapon && _context.AbilityData == null || (_context.AbilityData != null && _context.AbilityData.type != Ability.EAbilityType.Weapon):
 		passes = false
 
 	if reqOnAlliedTurn:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://baknk5opc22rr"]
+[gd_scene load_steps=21 format=3 uid="uid://baknk5opc22rr"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0plmg"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_bod36"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_xun2m"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_v2268"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_q3h1e"]
+[ext_resource type="Resource" uid="uid://3adf8yaies5d" path="res://RESOURCES/Ability/TargetingTemplates/guardinglance_targeting.tres" id="9_xun2m"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_a8a76"]
 [ext_resource type="Resource" uid="uid://dx1alowpf74li" path="res://RESOURCES/TargetingShapes/lunar_lance_shape.tres" id="14_axr80"]
 
@@ -24,12 +25,12 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("4_3bf8w")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_axr80"]
+[sub_resource type="Resource" id="Resource_q3h1e"]
 script = ExtResource("6_3bf8w")
 Template = ExtResource("7_xun2m")
 Value = 2
 
-[sub_resource type="Resource" id="Resource_3bf8w"]
+[sub_resource type="Resource" id="Resource_a8a76"]
 script = ExtResource("6_3bf8w")
 Template = ExtResource("8_v2268")
 Value = 1
@@ -44,13 +45,14 @@ loc_displayName = "weap_guardinglance_name"
 loc_displayDesc = "weap_guardinglance_desc"
 icon = ExtResource("5_3bf8w")
 descriptors = Array[ExtResource("2_bod36")]([ExtResource("3_gjl6l"), ExtResource("4_itrrn")])
+TargetingTemplate = ExtResource("9_xun2m")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="."]
 script = ExtResource("5_axr80")
-GrantedStats = Array[ExtResource("6_3bf8w")]([SubResource("Resource_axr80"), SubResource("Resource_3bf8w")])
+GrantedStats = Array[ExtResource("6_3bf8w")]([SubResource("Resource_q3h1e"), SubResource("Resource_a8a76")])
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource("9_q3h1e")

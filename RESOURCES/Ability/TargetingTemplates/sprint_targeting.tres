@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingSelfOnly" load_steps=2 format=3 uid="uid://b7lvrcfn6f0il"]
+
+[ext_resource type="Script" uid="uid://dfyjf5ace0cpy" path="res://SCRIPTS/Targeting/TargetingSelfOnly.gd" id="1_heen4"]
+
+[resource]
+script = ExtResource("1_heen4")
+TeamTargeting = 0
+CanTargetSelf = true

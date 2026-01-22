@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnwracq246buh"]
+[gd_scene load_steps=14 format=3 uid="uid://dnwracq246buh"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_dc21f"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8qvs7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/Standard/drain.png" id="4_0dyo2"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_i7j3j"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_abdv2"]
+[ext_resource type="Resource" uid="uid://bhkvrx1yewvyh" path="res://RESOURCES/Ability/TargetingTemplates/drain_targeting.tres" id="7_v32xm"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="9_bd8gg"]
 
 [sub_resource type="Resource" id="Resource_rs7f4"]
@@ -28,6 +29,7 @@ internalName = "drain"
 loc_displayName = "art_drain_name"
 loc_displayDesc = "art_drain_desc"
 icon = ExtResource("4_0dyo2")
+TargetingTemplate = ExtResource("7_v32xm")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 

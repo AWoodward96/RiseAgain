@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TargetingGEFree" load_steps=2 format=3 uid="uid://omqydrq7rsmt"]
+
+[ext_resource type="Script" uid="uid://xpxfkw71nwhb" path="res://SCRIPTS/Targeting/TargetingGEFree.gd" id="1_kbh7j"]
+
+[resource]
+script = ExtResource("1_kbh7j")
+gridEntityPrefab = "res://RESOURCES/GridEntities/ge_arrow_rain.tscn"
+shapePrefabRef = "res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres"
+TargetRange = Vector2i(1, 6)
+TeamTargeting = 2
+CanTargetSelf = true

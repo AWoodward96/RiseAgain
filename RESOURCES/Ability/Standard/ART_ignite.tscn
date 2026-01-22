@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy14a4a6l6ch5"]
+[gd_scene load_steps=15 format=3 uid="uid://dy14a4a6l6ch5"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_j638n"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_4x1ql"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_elfaj"]
 [ext_resource type="Resource" uid="uid://b65br6bvwdx44" path="res://RESOURCES/TargetingShapes/ignite_shape.tres" id="5_upko1"]
 [ext_resource type="Texture2D" uid="uid://dkvn4icd0oafg" path="res://ART/Icons/Ability/Standard/ignite.png" id="6_q75af"]
+[ext_resource type="Resource" uid="uid://d1f40jrc8f840" path="res://RESOURCES/Ability/TargetingTemplates/ignite_targeting.tres" id="7_w3y1t"]
 
 [sub_resource type="Resource" id="Resource_oedr4"]
 script = ExtResource("3_q75af")
@@ -26,11 +27,13 @@ metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 [node name="ignite" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_j638n")
 abilityCooldown = 4
+ability_speed = 1
 executionStack = Array[ExtResource("2_upko1")]([SubResource("Resource_oedr4"), SubResource("Resource_3g63f"), SubResource("Resource_x5vbv")])
 internalName = "ignite"
 loc_displayName = "art_ignite_name"
 loc_displayDesc = "art_ignite_desc"
 icon = ExtResource("6_q75af")
+TargetingTemplate = ExtResource("7_w3y1t")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

@@ -93,11 +93,11 @@ func WillRetaliate(_result : PerformCombatStepResult):
 	if _result.Source == null:
 		return false
 
-	if _result.AbilityData.type == Ability.AbilityType.Standard:
+	if _result.AbilityData.type == Ability.EAbilityType.Standard:
 		# This is a normal ability, and no retaliation is available
 		return false
 
-	if _result.Kill && _result.AbilityData.type != Ability.AbilityType.Weapon:
+	if _result.Kill && _result.AbilityData.type != Ability.EAbilityType.Weapon:
 		return false
 
 	var defendingUnit = _result.Target

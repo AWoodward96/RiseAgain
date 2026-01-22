@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjeovpy83spym"]
+[gd_scene load_steps=12 format=3 uid="uid://bjeovpy83spym"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7kqy1"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_xwm4y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2775q6xpieqp" path="res://ART/Icons/Ability/Standard/summonsacredground.png" id="5_00xii"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_m70wh"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="7_em5lm"]
+[ext_resource type="Resource" uid="uid://dmi0onysgvros" path="res://RESOURCES/Ability/TargetingTemplates/summonsacredground_targeting.tres" id="7_kievn"]
 
 [sub_resource type="Resource" id="Resource_kievn"]
 script = ExtResource("3_s1dxt")
@@ -25,6 +26,7 @@ internalName = "summonsacredground"
 loc_displayName = "art_sacredground_name"
 loc_displayDesc = "art_sacredground_desc"
 icon = ExtResource("5_00xii")
+TargetingTemplate = ExtResource("7_kievn")
 TargetingData = NodePath("TargetingData")
 
 [node name="TargetingData" type="Node2D" parent="."]

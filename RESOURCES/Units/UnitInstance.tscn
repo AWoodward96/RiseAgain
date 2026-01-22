@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damage_indicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damage_indicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "leapSound", "landSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
@@ -64,8 +64,8 @@ takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
 deathSound = NodePath("Audio/Death")
-LeapSound = NodePath("Audio/LeapWoosh")
-LandSound = NodePath("Audio/Land")
+leapSound = NodePath("Audio/LeapWoosh")
+landSound = NodePath("Audio/Land")
 
 [node name="Visual" type="Node2D" parent="."]
 y_sort_enabled = true

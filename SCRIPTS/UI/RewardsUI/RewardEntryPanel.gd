@@ -52,7 +52,7 @@ func InitializeAsItem(_itemRewardEntry : ItemRewardEntry):
 	if itemToBeRewarded is Item:
 		rewardType.text = "Type: Item"
 	elif itemToBeRewarded is Ability:
-		if itemToBeRewarded.type == Ability.AbilityType.Weapon:
+		if itemToBeRewarded.type == Ability.EAbilityType.Weapon:
 			rewardType.text = "Type: Weapon"
 		else:
 			rewardType.text = "Type: Ability"

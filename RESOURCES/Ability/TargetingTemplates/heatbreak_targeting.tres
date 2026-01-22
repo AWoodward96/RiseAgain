@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TargetingGEDirectional" load_steps=2 format=3 uid="uid://hvs6ppp6h0hj"]
+
+[ext_resource type="Script" uid="uid://c3vat8y54r6dq" path="res://SCRIPTS/Targeting/TargetingGEDirectional.gd" id="1_a5twr"]
+
+[resource]
+script = ExtResource("1_a5twr")
+gridEntityPrefab = "res://RESOURCES/GridEntities/ge_heatbreak.tscn"
+shapePrefabRef = "res://RESOURCES/TargetingShapes/generic_single.tres"
+canRotate = true
+TeamTargeting = 2

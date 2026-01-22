@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bysotjnllb6fb"]
+[gd_scene load_steps=13 format=3 uid="uid://bysotjnllb6fb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fxrtx"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_3bkcf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_yva3m"]
 [ext_resource type="PackedScene" uid="uid://wlfynlbay15t" path="res://RESOURCES/GridEntities/ge_heatbreak.tscn" id="4_bs4fn"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_yva3m"]
+[ext_resource type="Resource" uid="uid://hvs6ppp6h0hj" path="res://RESOURCES/Ability/TargetingTemplates/heatbreak_targeting.tres" id="6_bs4fn"]
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="7_yva3m"]
 [ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="10_bs4fn"]
 
@@ -22,10 +23,12 @@ metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 [node name="heatbreak" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_fxrtx")
 abilityCooldown = 5
+ability_speed = 2
 executionStack = Array[ExtResource("2_oeasa")]([SubResource("Resource_t1f1k"), SubResource("Resource_yva3m")])
 internalName = "heatbreak"
 loc_displayName = "art_heatbreak_name"
 loc_displayDesc = "art_heatbreak_desc"
+TargetingTemplate = ExtResource("6_bs4fn")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 

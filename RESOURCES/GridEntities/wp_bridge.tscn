@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://eerys1o8nkjh"]
 
 [ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_g5sjn"]
-[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="3_sbnqw"]
-[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="4_40ksf"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="3_sbnqw"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="4_40ksf"]
 [ext_resource type="Texture2D" uid="uid://bhdxyctga6qdi" path="res://ART/GridEntities/Bridge.png" id="4_fl50e"]
 
 [sub_resource type="Resource" id="Resource_ntpqj"]
