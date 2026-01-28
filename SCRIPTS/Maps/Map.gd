@@ -384,6 +384,7 @@ func OnUnitDeath(_unitInstance : UnitInstance, _context : DamageStepResult):
 	RemoveUnitFromMap(_unitInstance)
 	RefreshThreat()
 
+
 func RemoveEntitiesOwnedByUnit(_unitInstance : UnitInstance):
 	for ge in gridEntities:
 		if ge != null && ge.Source != null && ge.Source == _unitInstance:
@@ -458,6 +459,19 @@ func RefreshThreat():
 func TryAddItemToConvoy(_item : Item):
 	if CurrentCampaign != null:
 		CurrentCampaign.Convoy.AddToConvoy(_item)
+
+func UpdateObscure(_prevTile : Tile, _newTile : Tile):
+	if _prevTile == _newTile:
+		return
+
+	if tilemap_destructable != null && tilemap_destructable is ObscurableTilemapLayer:
+		if _newTile != null:
+			tilemap_destructable.RegisterTile(_newTile.ObscureParent)
+		if _prevTile != null:
+			tilemap_destructable.DeregisterTile(_prevTile.ObscureParent)
+		pass
+	pass
+
 
 func _input(event):
 	# this eats button inputs funnily enough, so the CSR menu wont work if this is commented in

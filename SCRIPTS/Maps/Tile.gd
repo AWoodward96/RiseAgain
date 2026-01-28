@@ -6,6 +6,7 @@ var IsWall
 
 var MainTileData : TileMetaData 	# For the 'main' tile - or anything that sits on top of the bg like a wall
 var DestructableData : TileMetaData # Similar to main, but specifically for tiles that are destructable
+var Godot_DestructableData : TileData
 var BGTileData : TileMetaData		# For the 'bg' tile - which can never be null
 var SubBGTileData : TileMetaData	# For the 'water' or other tiles that hide behind the BG - this CAN be null
 var TerrainDestroyed : bool
@@ -33,6 +34,8 @@ var popupStack : Array[Node2D]
 var popingOffPopups : bool = false
 
 var damageIndicator : DamageIndicator
+var ObscureParent : Tile # The tile that is obscuring this tile
+var ObscureAlpha : float = 1
 
 
 func InitMetaData():
@@ -168,7 +171,7 @@ func ToJSON():
 		"MaxHealth" = MaxHealth,
 		"Killbox" = Killbox,
 		"ActiveKillbox" = ActiveKillbox,
-		"TerrainDestroyed" = TerrainDestroyed
+		"TerrainDestroyed" = TerrainDestroyed,
 	}
 
 	if MainTileData != null:
@@ -179,6 +182,7 @@ func ToJSON():
 
 	if SubBGTileData != null:
 		dict["SubBGTileData"] = SubBGTileData.resource_path
+
 
 	return dict
 

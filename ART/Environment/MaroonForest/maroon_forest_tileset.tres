@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=66 format=3 uid="uid://5adtesnqpsrs"]
+[gd_resource type="TileSet" load_steps=76 format=3 uid="uid://5adtesnqpsrs"]
 
 [ext_resource type="Texture2D" uid="uid://ckxn0xq7u8xrh" path="res://ART/Environment/MaroonForest/Maroon_Forest_2.png" id="1_2vmgl"]
 [ext_resource type="Resource" uid="uid://dias0tebu50cn" path="res://RESOURCES/TileMetaData/MaroonForest/MF_CaveWall.tres" id="2_ge1vi"]
@@ -10,6 +10,36 @@
 [ext_resource type="Resource" uid="uid://dum5iqty3hq5g" path="res://RESOURCES/TileMetaData/MaroonForest/MF_River.tres" id="6_0gvio"]
 [ext_resource type="Shader" uid="uid://dog2q0i4lb0gf" path="res://ART/Shaders/wavy.gdshader" id="7_sv86j"]
 [ext_resource type="Texture2D" uid="uid://je4dlnp2cpq8" path="res://ART/Environment/MaroonForest/Maroon_Forest_2_2.png" id="8_a63ke"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_rjfad"]
+tile_data = PackedInt32Array(0, 1, 10, 65536, 1, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vinik"]
+tile_data = PackedInt32Array(0, 524289, 10, 65536, 524289, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_qix8i"]
+tile_data = PackedInt32Array(0, 589825, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_0gvio"]
+tile_data = PackedInt32Array(0, 655361, 10, 65536, 655361, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_sv86j"]
+tile_data = PackedInt32Array(0, 65537, 10, 65536, 65537, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_a63ke"]
+tile_data = PackedInt32Array(0, 131073, 10, 65536, 131073, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_rbsrg"]
+tile_data = PackedInt32Array(0, 196609, 10, 1, 262145, 10, 65537, 262145, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_bqly7"]
+tile_data = PackedInt32Array(0, 327681, 10, 65536, 327681, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ausxv"]
+tile_data = PackedInt32Array(0, 393217, 10, 65536, 393217, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_65ibk"]
+tile_data = PackedInt32Array(0, 458753, 11)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c30pw"]
 texture = ExtResource("1_2vmgl")
@@ -401,41 +431,6 @@ texture_region_size = Vector2i(32, 32)
 4:5/0 = 0
 3:5/0 = 0
 2:5/0 = 0
-6:0/size_in_atlas = Vector2i(1, 2)
-6:0/next_alternative_id = 2
-6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, 16)
-6:0/0/y_sort_origin = -16
-6:0/0/terrain_set = 0
-6:0/0/terrain = 1
-6:0/0/probability = 0.5
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-6:0/0/terrains_peering_bit/right_side = 2
-6:0/0/terrains_peering_bit/bottom_right_corner = 2
-6:0/0/terrains_peering_bit/bottom_side = 2
-6:0/0/terrains_peering_bit/bottom_left_corner = 2
-6:0/0/terrains_peering_bit/left_side = 2
-6:0/0/terrains_peering_bit/top_left_corner = 2
-6:0/0/terrains_peering_bit/top_side = 2
-6:0/0/terrains_peering_bit/top_right_corner = 2
-6:0/0/custom_data_0 = ExtResource("3_rjfad")
-6:0/1 = 1
-6:0/1/flip_h = true
-6:0/1/texture_origin = Vector2i(0, 16)
-6:0/1/y_sort_origin = -16
-6:0/1/terrain_set = 0
-6:0/1/terrain = 2
-6:0/1/probability = 0.5
-6:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-6:0/1/terrains_peering_bit/right_side = 2
-6:0/1/terrains_peering_bit/bottom_right_corner = 2
-6:0/1/terrains_peering_bit/bottom_side = 2
-6:0/1/terrains_peering_bit/bottom_left_corner = 2
-6:0/1/terrains_peering_bit/left_side = 2
-6:0/1/terrains_peering_bit/top_left_corner = 2
-6:0/1/terrains_peering_bit/top_side = 2
-6:0/1/terrains_peering_bit/top_right_corner = 2
-6:0/1/custom_data_0 = ExtResource("3_rjfad")
 7:0/size_in_atlas = Vector2i(1, 2)
 7:0/0 = 0
 7:0/0/texture_origin = Vector2i(0, 16)
@@ -986,6 +981,61 @@ texture_region_size = Vector2i(32, 32)
 21:7/1/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_u8ixa")
 21:7/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 21:7/1/custom_data_0 = ExtResource("2_ge1vi")
+6:0/size_in_atlas = Vector2i(1, 2)
+6:0/next_alternative_id = 2
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 16)
+6:0/0/y_sort_origin = -16
+6:0/0/terrain_set = 0
+6:0/0/terrain = 1
+6:0/0/probability = 0.5
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0/terrains_peering_bit/right_side = 2
+6:0/0/terrains_peering_bit/bottom_right_corner = 2
+6:0/0/terrains_peering_bit/bottom_side = 2
+6:0/0/terrains_peering_bit/bottom_left_corner = 2
+6:0/0/terrains_peering_bit/left_side = 2
+6:0/0/terrains_peering_bit/top_left_corner = 2
+6:0/0/terrains_peering_bit/top_side = 2
+6:0/0/terrains_peering_bit/top_right_corner = 2
+6:0/0/custom_data_0 = ExtResource("3_rjfad")
+6:0/1 = 1
+6:0/1/flip_h = true
+6:0/1/texture_origin = Vector2i(0, 16)
+6:0/1/y_sort_origin = -16
+6:0/1/terrain_set = 0
+6:0/1/terrain = 2
+6:0/1/probability = 0.5
+6:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/1/terrains_peering_bit/right_side = 2
+6:0/1/terrains_peering_bit/bottom_right_corner = 2
+6:0/1/terrains_peering_bit/bottom_side = 2
+6:0/1/terrains_peering_bit/bottom_left_corner = 2
+6:0/1/terrains_peering_bit/left_side = 2
+6:0/1/terrains_peering_bit/top_left_corner = 2
+6:0/1/terrains_peering_bit/top_side = 2
+6:0/1/terrains_peering_bit/top_right_corner = 2
+6:0/1/custom_data_0 = ExtResource("3_rjfad")
+0:10/0 = 0
+0:10/0/y_sort_origin = -32
+0:11/0 = 0
+1:11/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+2:11/0 = 0
+4:10/0 = 0
+4:11/0 = 0
+3:10/0 = 0
+5:10/0 = 0
+5:11/0 = 0
+6:10/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:10/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+10:10/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -1004,3 +1054,13 @@ custom_data_layer_0/name = "MetaData"
 custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_c30pw")
 sources/1 = SubResource("TileSetAtlasSource_hy2gy")
+pattern_0 = SubResource("TileMapPattern_rjfad")
+pattern_1 = SubResource("TileMapPattern_vinik")
+pattern_2 = SubResource("TileMapPattern_qix8i")
+pattern_3 = SubResource("TileMapPattern_0gvio")
+pattern_4 = SubResource("TileMapPattern_sv86j")
+pattern_5 = SubResource("TileMapPattern_a63ke")
+pattern_6 = SubResource("TileMapPattern_rbsrg")
+pattern_7 = SubResource("TileMapPattern_bqly7")
+pattern_8 = SubResource("TileMapPattern_ausxv")
+pattern_9 = SubResource("TileMapPattern_65ibk")

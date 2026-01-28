@@ -9,6 +9,8 @@ class_name TileMetaData
 @export var Shroud : bool = false
 @export var DestructionRewards : Array[ResourceDef]
 @export var DestructionVFXPrefab : PackedScene
+@export var Obscures : bool = false
+@export var ObscureOffset : Vector2i = Vector2i(0, -1)
 
 func OnUnitTraversed(_unitInstance : UnitInstance):
 	return false

@@ -344,9 +344,11 @@ func OnTileUpdated(_tile : Tile):
 	if IsDying || Template == null || _tile == null:
 		return
 
-	# WARNING: This could backfire for me. Not sure. Updating current tile halway through the movement might suck
+
+	# This could backfire for me. Not sure. Updating current tile halway through the movement might suck?
 	# Verify that this doesn't break everything over the next couple of days to make sure everything is still working
 	# as intended. This change was made to stop pop-outs surrounding interactions with Shroud
+	# Update: Yeah I think it's fine actually. Nothing's breaking.
 	CurrentTile = _tile
 
 	if Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
@@ -360,6 +362,9 @@ func OnTileUpdated(_tile : Tile):
 
 	if PreviousTraversedTile != null && PreviousTraversedTile.Shroud != null && (_tile.Shroud == null || _tile.Shroud != PreviousTraversedTile.Shroud):
 		PreviousTraversedTile.Shroud.UnitExited(self)
+
+	if !ShroudedFromPlayer:
+		map.UpdateObscure(PreviousTraversedTile, CurrentTile)
 
 	PreviousTraversedTile = _tile
 
@@ -919,7 +924,10 @@ func PlayDeathAnimation():
 
 
 func DeathAnimComplete():
-	if  UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+	if CurrentTile.ObscureParent != null:
+		map.UpdateObscure(CurrentTile, null)
+
+	if UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
 		if !Injured:
 			Injured = true
 			if GameManager.CurrentCampaign != null:
@@ -934,6 +942,7 @@ func DeathAnimComplete():
 
 	else:
 		map.QueueUnitForRemoval(self)
+
 
 func CheckKillbox():
 	if CurrentTile.ActiveKillbox && !IsFlying:

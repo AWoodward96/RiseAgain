@@ -9,3 +9,4 @@ script = ExtResource("1_q832u")
 loc_name = "tile_deadtree_name"
 Health = 5
 DestructionVFXPrefab = ExtResource("2_ftfei")
+Obscures = true

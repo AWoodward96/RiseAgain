@@ -77,12 +77,20 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 					if destructable_data.get_collision_polygons_count(0) > 0:
 						GridArr[index].IsWall = true
 
+					GridArr[index].Godot_DestructableData = destructable_data
 					GridArr[index].DestructableData = destructable_data.get_custom_data("MetaData") as TileMetaData
+					if destructable_data.material != null:
+						var clone = destructable_data.material.duplicate()
+						clone.resource_local_to_scene = true
+						destructable_data.material = clone
+
 
 			GridArr[index].InitMetaData()
 
 			# The canvas mod has a shader that replaces any tile on it with a grid overlay - np
 			CanvasModLayer.set_cell(Vector2i(x,y), UITILEATLAS, BASEBLACKTILE)
+
+	RefreshObscure()
 	RefreshShroud()
 
 func RefreshShroud():
@@ -113,6 +121,17 @@ func RefreshShroud():
 		# We should have a clump at this point
 		Shrouds.append(ShroudInstance.Construct(clump, map))
 
+func RefreshObscure():
+	for t in GridArr:
+		if t.DestructableData != null && t.DestructableData.Obscures:
+			var offset = t.Position + t.DestructableData.ObscureOffset
+			# We have to do a manual check here because GetTile gets a validation check
+			if offset.y < 0 || offset.x < 0 || offset.y >= Height || offset.x >= Width:
+				continue
+
+			var tile = GetTile(t.Position + t.DestructableData.ObscureOffset)
+			if tile != null && tile != t: # Check against itself because we don't want 0,0 to obscure the tile
+				tile.ObscureParent = t
 
 func RefreshGridForTurn(_allegience : GameSettingsTemplate.TeamID):
 	var allAlliedUnits : Array[UnitInstance] = []
@@ -803,6 +822,7 @@ static func FromJSON(_dict, _map : Map):
 
 		canvasMod.set_cell(t.Position, UITILEATLAS, BASEBLACKTILE)
 
+	newGrid.RefreshObscure()
 	newGrid.RefreshShroud()
 
 	return newGrid

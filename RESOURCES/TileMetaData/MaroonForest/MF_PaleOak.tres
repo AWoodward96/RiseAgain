@@ -17,3 +17,4 @@ loc_name = "tile_paleoak_name"
 Health = 5
 DestructionRewards = Array[ExtResource("1_iu2qw")]([SubResource("Resource_bk8tf")])
 DestructionVFXPrefab = ExtResource("3_kdeof")
+Obscures = true

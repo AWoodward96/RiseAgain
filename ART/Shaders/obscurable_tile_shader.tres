@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dj5itu6rd2p0p"]
+
+[ext_resource type="Shader" uid="uid://bufsqr42jk6sh" path="res://ART/Shaders/obstructed_tile_shader.gdshader" id="1_o7wsv"]
+
+[sub_resource type="Gradient" id="Gradient_o7wsv"]
+offsets = PackedFloat32Array(0.9118644, 1)
+colors = PackedColorArray(0, 0, 0, 0.23529412, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kvjij"]
+gradient = SubResource("Gradient_o7wsv")
+width = 96
+height = 128
+fill = 1
+fill_from = Vector2(0.5, -0.447)
+fill_to = Vector2(1.145, 0.412)
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_o7wsv")
+shader_parameter/obscure = true
+shader_parameter/alpha_texture = SubResource("GradientTexture2D_kvjij")
+shader_parameter/y_cutoff = 1.0
+shader_parameter/blend_strength = 0.0
