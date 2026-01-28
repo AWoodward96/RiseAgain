@@ -38,6 +38,7 @@ func Execute(_delta, _destination : Vector2):
 
 	if source.visual.AnimationWorkComplete:
 		source.visual.visual.flip_h = travelVector.x < 0
+	return true
 
 func Exit():
 	if source != null && source.visual.AnimationWorkComplete:

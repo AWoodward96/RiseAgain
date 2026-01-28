@@ -355,7 +355,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wfp6k")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_wfp6k")
 }],
 "loop": false,
@@ -363,7 +363,7 @@ animations = [{
 "speed": 6.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_kgogj")
 }, {
 "duration": 1.0,
@@ -410,30 +410,6 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_cub47"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-5, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_8fgcp"]
 length = 0.5
@@ -848,7 +824,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_rfxcq"]
-length = 0.5
+length = 0.8333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -873,21 +849,8 @@ tracks/1/keys = {
 "update": 1,
 "values": ["teleport_in"]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_ty18b"]
-length = 0.6666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -895,7 +858,7 @@ tracks/0/path = NodePath("Visual:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"times": PackedFloat32Array(0, 0.5, 0.6666667, 0.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -911,30 +874,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["teleport_out"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visual:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visual:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(-5, -5), Vector2(-5, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_eu8l1"]
@@ -1035,12 +974,12 @@ centered = false
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_8fgcp")
-position = Vector2(32, 16)
+position = Vector2(32, 24)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lh3qm")
-animation = &"idle"
+animation = &"teleport_in"
 autoplay = "idle"
-offset = Vector2(-5, 0)
+offset = Vector2(-5, -5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://owg3aes4dx8x"]
+[gd_scene load_steps=18 format=3 uid="uid://owg3aes4dx8x"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0vxst"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_kn2ih"]
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_kn2ih"]
+[ext_resource type="Script" uid="uid://dxfbnttfjbwxk" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_Teleport.gd" id="4_0vxst"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="4_t53ly"]
 [ext_resource type="Resource" uid="uid://dlanlcc14wi8m" path="res://RESOURCES/CombatEffects/CE_Armor_Castle.tres" id="5_pxpc5"]
 [ext_resource type="Texture2D" uid="uid://dydtjejbmqduh" path="res://ART/Icons/Ability/Standard/castle.png" id="5_t53ly"]
@@ -17,8 +18,17 @@ script = ExtResource("3_kn2ih")
 PlayAtUnit = false
 metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
+[sub_resource type="Resource" id="Resource_kn2ih"]
+script = ExtResource("4_0vxst")
+invisibleTime = 0.5
+outAnimationString = "teleport_out"
+UseFootsteps = false
+PreperationAnimString = "teleport_in"
+metadata/_custom_type_script = "uid://dxfbnttfjbwxk"
+
 [sub_resource type="Resource" id="Resource_og4ws"]
 script = ExtResource("4_t53ly")
+MovementAnimationStyle = SubResource("Resource_kn2ih")
 AnimationStyle = 2
 metadata/_custom_type_script = "uid://cm68c4p601pk"
 

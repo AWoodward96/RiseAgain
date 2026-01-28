@@ -62,6 +62,9 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 	pass
 
 func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):
+	if _actionLog.actionOriginTile == null:
+		return []
+
 	# This only has one result, because it's moving the self
 	var result = AbilityMoveResult.new()
 	result.unitUsable = _actionLog.ability

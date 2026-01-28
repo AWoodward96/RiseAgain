@@ -275,7 +275,7 @@ AIBehavior = SubResource("Resource_hyg5s")
 AggroBehavior = SubResource("Resource_lsk74")
 
 [node name="Spawn_Roc" type="Sprite2D" parent="Spawners"]
-position = Vector2(450, 257)
+position = Vector2(448, 256)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4

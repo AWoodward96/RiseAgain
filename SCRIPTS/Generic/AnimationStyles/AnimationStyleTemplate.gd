@@ -8,7 +8,6 @@ class_name AnimationStyleTemplate
 static var TIMEOUT : float = 10
 
 
-
 var direction : Vector2
 var initialDirection : Vector2
 var source : UnitInstance

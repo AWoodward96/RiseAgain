@@ -33,7 +33,12 @@ func EnterTargetTeleport():
 		if TeleportAvailables.size() > 0:
 			log.actionOriginTile = TeleportAvailables[0]
 			ctrl.ForceReticlePosition(TeleportAvailables[0].Position)
-	ShowPreview()
+
+	if TeleportAvailables.size() == 0:
+		ShowAvailableTilesOnGrid()
+		ctrl.combatHUD.ShowNoTargets(true)
+	else:
+		ShowPreview()
 
 func EnterTargetAction():
 	ClearPreview()
@@ -47,7 +52,13 @@ func EnterTargetAction():
 	ctrl.ForceReticlePosition(ActionAvailables[0].Position)
 	log.affectedTiles.clear()
 	log.affectedTiles.append_array(GetAffectedTiles(source, ActionAvailables[0]))
-	ShowPreview()
+
+	if ActionAvailables.size() == 0:
+		ShowAvailableTilesOnGrid()
+		ctrl.combatHUD.ShowNoTargets(true)
+	else:
+		ShowPreview()
+
 	pass
 
 func GetTilesInRange(_unit : UnitInstance, _grid : Grid):

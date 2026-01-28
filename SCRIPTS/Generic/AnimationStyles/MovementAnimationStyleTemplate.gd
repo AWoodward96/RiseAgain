@@ -70,3 +70,8 @@ func PlayVFX(_packedVFX: PackedScene):
 func Exit():
 	if source != null:
 		source.footstepsSound.stop()
+
+### A check to see if we can finish the movement animation. Not important for the default animation,
+### but for teleporting and other more complex moves, it's pretty important
+func AnimationComplete():
+	return true
