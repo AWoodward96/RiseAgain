@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cndmf0hcxrc30"]
+[gd_scene format=3 uid="uid://cndmf0hcxrc30"]
 
 [ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_c6ond"]
 [ext_resource type="Texture2D" uid="uid://dhtvsakidi6wf" path="res://ART/VFX/Explosion_Cloud_Huge.png" id="2_c6ond"]
@@ -96,14 +96,14 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.151934, 0.30663, 1)
 colors = PackedColorArray(0.75, 0.1425, 0.1425, 1, 1, 0.896, 0.22, 1, 0.85, 0.581117, 0.2295, 1, 1, 1, 1, 0)
 
-[node name="VFX_Explosion" type="Node2D" node_paths=PackedStringArray("cpuParticles", "gpuParticles", "sounds")]
+[node name="VFX_Explosion" type="Node2D" unique_id=1797061475 node_paths=PackedStringArray("cpuParticles", "gpuParticles", "sounds")]
 script = ExtResource("1_c6ond")
 emitOnReady = true
 cpuParticles = [NodePath("ExplosionFlash")]
 gpuParticles = [NodePath("Debris")]
 sounds = [NodePath("FmodEventEmitter2D")]
 
-[node name="Smoke" type="GPUParticles2D" parent="."]
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=1955516883]
 material = SubResource("CanvasItemMaterial_ru4gq")
 emitting = false
 texture = ExtResource("2_c6ond")
@@ -112,7 +112,7 @@ trail_sections = 2
 trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_bjvl4")
 
-[node name="LargePoof" type="GPUParticles2D" parent="."]
+[node name="LargePoof" type="GPUParticles2D" parent="." unique_id=1523443259]
 material = SubResource("CanvasItemMaterial_rdh0h")
 emitting = false
 sub_emitter = NodePath("../Smoke")
@@ -121,7 +121,7 @@ one_shot = true
 explosiveness = 0.7
 process_material = SubResource("ParticleProcessMaterial_24uom")
 
-[node name="Debris" type="GPUParticles2D" parent="."]
+[node name="Debris" type="GPUParticles2D" parent="." unique_id=1183678209]
 material = SubResource("CanvasItemMaterial_njsxa")
 rotation = -1.5708
 emitting = false
@@ -132,7 +132,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_a7wvd")
 
-[node name="ExplosionFlash" type="CPUParticles2D" parent="."]
+[node name="ExplosionFlash" type="CPUParticles2D" parent="." unique_id=2107779329]
 material = SubResource("CanvasItemMaterial_bmqof")
 emitting = false
 amount = 16
@@ -155,6 +155,6 @@ anim_speed_max = 2.0
 anim_offset_min = 0.1
 anim_offset_max = 0.1
 
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=1116655726]
 event_name = "event:/SFX/Generic/Generic_Explosion"
 event_guid = "{eb1258da-6064-4ed8-bc5f-01c30010a001}"

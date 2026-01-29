@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MealTemplate" load_steps=18 format=3 uid="uid://dn125nal5w5o7"]
+[gd_resource type="Resource" script_class="MealTemplate" format=3 uid="uid://dn125nal5w5o7"]
 
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_yij8v"]
 [ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_mlhsk"]

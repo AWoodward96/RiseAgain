@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://crsjkw4aj1usd"]
+[gd_scene format=3 uid="uid://crsjkw4aj1usd"]
 
 [ext_resource type="Script" uid="uid://dppeoqv43qhoh" path="res://SCRIPTS/UI/MapResultsUI/MapResultsRewardButton.gd" id="1_gegab"]
 [ext_resource type="Texture2D" uid="uid://u86xqrnixbd1" path="res://ART/Environment/chest1.png" id="2_onoip"]
 [ext_resource type="Texture2D" uid="uid://bf3d7ufif0scc" path="res://ART/Environment/chest2.png" id="3_51kiv"]
 
-[node name="RewardButton" type="Button" node_paths=PackedStringArray("closedVis", "openedVis")]
+[node name="RewardButton" type="Button" unique_id=559181297 node_paths=PackedStringArray("closedVis", "openedVis")]
 custom_minimum_size = Vector2(70, 70)
 script = ExtResource("1_gegab")
 closedVis = NodePath("visuals/closed")
 openedVis = NodePath("visuals/open")
 
-[node name="visuals" type="Control" parent="."]
+[node name="visuals" type="Control" parent="." unique_id=1831127125]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="closed" type="TextureRect" parent="visuals"]
+[node name="closed" type="TextureRect" parent="visuals" unique_id=33084381]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
@@ -26,7 +26,7 @@ offset_right = 67.0
 offset_bottom = 67.0
 texture = ExtResource("2_onoip")
 
-[node name="open" type="TextureRect" parent="visuals"]
+[node name="open" type="TextureRect" parent="visuals" unique_id=1015771882]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0

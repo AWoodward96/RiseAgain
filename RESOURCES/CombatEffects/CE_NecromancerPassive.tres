@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WildNecroPassive" load_steps=17 format=3 uid="uid://dk6nu2fomck5p"]
+[gd_resource type="Resource" script_class="WildNecroPassive" format=3 uid="uid://dk6nu2fomck5p"]
 
 [ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="1_eva2r"]
 [ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="2_xx4p3"]

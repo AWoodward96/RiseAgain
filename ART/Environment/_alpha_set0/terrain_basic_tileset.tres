@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://c2ke44okmibun"]
+[gd_resource type="TileSet" format=3 uid="uid://c2ke44okmibun"]
 
 [ext_resource type="Texture2D" uid="uid://bfe045sf8cs64" path="res://ART/Environment/_alpha_set0/terrain_basic.png" id="1_t5vry"]
 [ext_resource type="Resource" uid="uid://dkgajgdeqosxv" path="res://RESOURCES/TileMetaData/MaroonForest/MF_DestuctableTrees.tres" id="1_xnct5"]

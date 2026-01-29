@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dl6oykv0h4h7v"]
+[gd_scene format=3 uid="uid://dl6oykv0h4h7v"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_etbtn"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_kp30w"]
@@ -26,7 +26,7 @@ script = ExtResource("4_kt1v7")
 [sub_resource type="Resource" id="Resource_y7gbo"]
 script = ExtResource("8_i6vqd")
 
-[node name="Hatch" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "SummonData")]
+[node name="Hatch" type="Node2D" unique_id=1456223771 node_paths=PackedStringArray("passiveListeners", "TargetingData", "SummonData")]
 script = ExtResource("1_etbtn")
 abilityCooldown = 3
 executionStack = Array[ExtResource("2_kp30w")]([SubResource("Resource_cm87u"), SubResource("Resource_nsxhh"), SubResource("Resource_16vul")])
@@ -39,13 +39,13 @@ TargetingTemplate = ExtResource("7_cm87u")
 TargetingData = NodePath("SkillTargetingData")
 SummonData = NodePath("SummonUnitComponent")
 
-[node name="SummonUnitComponent" type="Node2D" parent="."]
+[node name="SummonUnitComponent" type="Node2D" parent="." unique_id=972171955]
 script = ExtResource("5_34uen")
 UnitToSummon = ExtResource("6_whm4m")
 AI = ExtResource("7_tcjl5")
 AggroBehavior = SubResource("Resource_y7gbo")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1079618592]
 script = ExtResource("9_v1s51")
 TeamTargeting = 0
 Type = 3

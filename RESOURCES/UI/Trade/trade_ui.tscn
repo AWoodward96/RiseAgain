@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbahoua1vgwbw"]
+[gd_scene format=3 uid="uid://bbahoua1vgwbw"]
 
 [ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="1_mbt6g"]
 [ext_resource type="Script" uid="uid://by51jcvx5o6sw" path="res://SCRIPTS/UI/Trade/trade_ui.gd" id="1_rrqi0"]
@@ -29,7 +29,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("2_swnhn")
 font_color = Color(0, 0, 0, 1)
 
-[node name="TradeUI" type="CanvasLayer" node_paths=PackedStringArray("unit2Parent", "unitSelectionParent", "unitSelectionEntryList", "convoyParent", "convoyNoItems", "convoyList", "moveWhereParent", "moveWhereIcon", "moveWhereLabel", "unit1Icon", "unit1Name", "unit1ItemEntryList", "unit2Icon", "unit2Name", "unit2ItemEntryList")]
+[node name="TradeUI" type="CanvasLayer" unique_id=1308531101 node_paths=PackedStringArray("unit2Parent", "unitSelectionParent", "unitSelectionEntryList", "convoyParent", "convoyNoItems", "convoyList", "moveWhereParent", "moveWhereIcon", "moveWhereLabel", "unit1Icon", "unit1Name", "unit1ItemEntryList", "unit2Icon", "unit2Name", "unit2ItemEntryList")]
 layer = 3
 script = ExtResource("1_rrqi0")
 unit2Parent = NodePath("MarginContainer/HBoxContainer/Unit2")
@@ -50,7 +50,7 @@ unit2Icon = NodePath("MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title/Un
 unit2Name = NodePath("MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title/Unit2Name")
 unit2ItemEntryList = NodePath("MarginContainer/HBoxContainer/Unit2/VBoxContainer/UnitInventorySlots/ItemEntryParent")
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=1342822882]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.036, 0.0374, 0.12, 0.388235)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=543382132]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -69,14 +69,14 @@ theme_override_constants/margin_top = 128
 theme_override_constants/margin_right = 128
 theme_override_constants/margin_bottom = 128
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1379255481]
 layout_mode = 2
 
-[node name="Unit1" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Unit1" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1282592996]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit1"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit1" unique_id=1337557798]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6, 0.6, 0.6, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit1" unique_id=954825004]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,11 +93,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer"]
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer" unique_id=1844353925]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title" unique_id=1028292721]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +107,7 @@ offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Unit1Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title"]
+[node name="Unit1Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title" unique_id=1356740326]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 10.0
@@ -116,7 +116,7 @@ offset_bottom = 50.0
 texture = ExtResource("1_mbt6g")
 expand_mode = 1
 
-[node name="Unit1Name" type="Label" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title"]
+[node name="Unit1Name" type="Label" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/Title" unique_id=1842913197]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 11.0
@@ -126,12 +126,12 @@ text = "Unit Name"
 label_settings = SubResource("LabelSettings_x1m75")
 vertical_alignment = 1
 
-[node name="UnitInventorySlots" type="Control" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer"]
+[node name="UnitInventorySlots" type="Control" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer" unique_id=1545685371]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ItemEntryParent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/UnitInventorySlots"]
+[node name="ItemEntryParent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit1/VBoxContainer/UnitInventorySlots" unique_id=1476579943]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,11 +142,11 @@ theme_override_constants/separation = 16
 alignment = 1
 script = ExtResource("4_ufvat")
 
-[node name="Spacing" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Spacing" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1761160280]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Spacing"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Spacing" unique_id=1960419745]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,7 +154,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Spacing"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Spacing" unique_id=1782391211]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -169,12 +169,12 @@ label_settings = SubResource("LabelSettings_xnr4q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Unit2" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Unit2" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1670844228]
 visible = false
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit2"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit2" unique_id=984421495]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,7 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6, 0.546, 0.546, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit2" unique_id=558862596]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,11 +191,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer"]
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer" unique_id=1685546557]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title" unique_id=1510029714]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -205,7 +205,7 @@ offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Unit2Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title"]
+[node name="Unit2Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title" unique_id=1313260757]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 10.0
@@ -214,7 +214,7 @@ offset_bottom = 50.0
 texture = ExtResource("1_mbt6g")
 expand_mode = 1
 
-[node name="Unit2Name" type="Label" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title"]
+[node name="Unit2Name" type="Label" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/Title" unique_id=472841606]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 11.0
@@ -224,12 +224,12 @@ text = "Unit Name"
 label_settings = SubResource("LabelSettings_x1m75")
 vertical_alignment = 1
 
-[node name="UnitInventorySlots" type="Control" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer"]
+[node name="UnitInventorySlots" type="Control" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer" unique_id=289793493]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ItemEntryParent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/UnitInventorySlots"]
+[node name="ItemEntryParent" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Unit2/VBoxContainer/UnitInventorySlots" unique_id=1589725358]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,12 +240,12 @@ theme_override_constants/separation = 16
 alignment = 1
 script = ExtResource("4_ufvat")
 
-[node name="Convoy" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Convoy" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1534848868]
 visible = false
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Convoy"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Convoy" unique_id=1978875655]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,7 +254,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.546, 0.6, 0.5964, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Convoy"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Convoy" unique_id=101429416]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -262,11 +262,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer"]
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer" unique_id=1002687129]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title" unique_id=91217011]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,7 +276,7 @@ offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Unit2Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title"]
+[node name="Unit2Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title" unique_id=1220038380]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 10.0
@@ -285,7 +285,7 @@ offset_bottom = 50.0
 texture = ExtResource("8_4fotp")
 expand_mode = 1
 
-[node name="Unit2Name" type="Label" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title"]
+[node name="Unit2Name" type="Label" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/Title" unique_id=1057758022]
 layout_mode = 0
 offset_left = 57.0
 offset_top = 11.0
@@ -295,12 +295,12 @@ text = "Convoy"
 label_settings = SubResource("LabelSettings_x1m75")
 vertical_alignment = 1
 
-[node name="ItemsInConvoy" type="Control" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer"]
+[node name="ItemsInConvoy" type="Control" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer" unique_id=1457649525]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy" unique_id=994093749]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,7 +310,7 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="UnitSelectionEntryList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy/ScrollContainer"]
+[node name="UnitSelectionEntryList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Convoy/VBoxContainer/ItemsInConvoy/ScrollContainer" unique_id=366206529]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -318,7 +318,7 @@ theme_override_constants/separation = 8
 alignment = 1
 script = ExtResource("4_ufvat")
 
-[node name="NoItems" type="Label" parent="MarginContainer/HBoxContainer/Convoy"]
+[node name="NoItems" type="Label" parent="MarginContainer/HBoxContainer/Convoy" unique_id=923145496]
 layout_mode = 0
 offset_top = 64.0
 offset_right = 320.0
@@ -329,11 +329,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="UnitSelection" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="UnitSelection" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1799809337]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/UnitSelection"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/UnitSelection" unique_id=451058890]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,7 +342,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.4812, 0.468, 0.6, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UnitSelection"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UnitSelection" unique_id=1372605363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -350,11 +350,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer"]
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer" unique_id=1240181326]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Title"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Title" unique_id=551204568]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -365,7 +365,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.792, 0.74, 1, 1)
 
-[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Title"]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Title" unique_id=1979980774]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 11.0
@@ -375,12 +375,12 @@ text = "ui_select_a_unit"
 label_settings = SubResource("LabelSettings_x1m75")
 vertical_alignment = 1
 
-[node name="Units" type="Control" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer"]
+[node name="Units" type="Control" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer" unique_id=932503317]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units" unique_id=628534361]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -390,7 +390,7 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="UnitSelectionEntryList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units/ScrollContainer"]
+[node name="UnitSelectionEntryList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UnitSelection/VBoxContainer/Units/ScrollContainer" unique_id=1180593263]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -398,7 +398,7 @@ theme_override_constants/separation = 8
 alignment = 1
 script = ExtResource("4_ufvat")
 
-[node name="MoveWhere" type="Control" parent="."]
+[node name="MoveWhere" type="Control" parent="." unique_id=1064182982]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -407,7 +407,7 @@ offset_top = 512.0
 offset_right = 836.0
 offset_bottom = 576.0
 
-[node name="ColorRect" type="ColorRect" parent="MoveWhere"]
+[node name="ColorRect" type="ColorRect" parent="MoveWhere" unique_id=1231537295]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -418,7 +418,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.25, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="MoveWhere"]
+[node name="ColorRect2" type="ColorRect" parent="MoveWhere" unique_id=412162530]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -429,7 +429,7 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MoveWhere"]
+[node name="TextureRect" type="TextureRect" parent="MoveWhere" unique_id=1201568197]
 layout_mode = 0
 offset_left = 207.0
 offset_top = 8.0
@@ -438,7 +438,7 @@ offset_bottom = 48.0
 texture = ExtResource("8_xljgp")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MoveWhere"]
+[node name="Label" type="Label" parent="MoveWhere" unique_id=407633365]
 layout_mode = 0
 offset_left = 253.0
 offset_top = 8.0

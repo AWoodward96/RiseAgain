@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=51 format=3 uid="uid://2pfghhe6mjmc"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://2pfghhe6mjmc"]
 
 [ext_resource type="PackedScene" uid="uid://dcs78xo7fpefo" path="res://RESOURCES/Units/Ally/LightMage/VIS_LightMage.tscn" id="1_jpsjm"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_julpp"]

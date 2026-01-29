@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvngr6fr6prr7"]
+[gd_scene format=3 uid="uid://dvngr6fr6prr7"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_1qt3w"]
 [ext_resource type="Texture2D" uid="uid://dq71k6rmyfs41" path="res://ART/Icons/Ability/Equippable/lightdagger.png" id="2_1qt3w"]
@@ -17,7 +17,7 @@ script = ExtResource("6_bfqmm")
 Template = ExtResource("7_1mbs3")
 Value = 2
 
-[node name="lightdagger" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="lightdagger" type="Node2D" unique_id=1780501662 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_1qt3w")
 type = 1
 abilityCooldown = 0
@@ -31,16 +31,16 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=727428704]
 script = ExtResource("5_sbnga")
 GrantedStats = Array[ExtResource("6_bfqmm")]([SubResource("Resource_h7gq4")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=934430743]
 script = ExtResource("8_cuanp")
 AgressiveStat = ExtResource("7_1mbs3")
 DamageType = 1
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=507211889]
 script = ExtResource("10_jx1t7")
 TargetRange = Vector2i(1, 2)

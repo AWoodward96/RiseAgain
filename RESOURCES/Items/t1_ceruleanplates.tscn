@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://nh5crhgwrqae"]
+[gd_scene format=3 uid="uid://nh5crhgwrqae"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_qd88g"]
 [ext_resource type="Texture2D" uid="uid://cni0tytc7us2p" path="res://ART/Icons/Items/t1_ceruleanplates.png" id="2_036x3"]
@@ -11,7 +11,7 @@ script = ExtResource("4_qavet")
 Template = ExtResource("6_kakp1")
 Value = 15
 
-[node name="t1_ceruleanplates" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
+[node name="t1_ceruleanplates" type="Node2D" unique_id=203390652 node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_qd88g")
 growthModifierData = NodePath("HeldItemComponent2")
 internalName = "t1_ceruleanplates"
@@ -19,7 +19,7 @@ loc_displayName = "item_t1_ceruleanplates_name"
 loc_displayDesc = "item_t1_ceruleanplates_desc"
 icon = ExtResource("2_036x3")
 
-[node name="HeldItemComponent2" type="Node2D" parent="."]
+[node name="HeldItemComponent2" type="Node2D" parent="." unique_id=197469481]
 script = ExtResource("5_e6dbj")
 GrowthModifiers = Array[ExtResource("4_qavet")]([SubResource("Resource_jsndg")])
 metadata/_custom_type_script = "uid://bbatkxmu5myen"

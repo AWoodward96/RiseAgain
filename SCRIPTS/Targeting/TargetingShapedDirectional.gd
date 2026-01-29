@@ -16,6 +16,7 @@ func BeginTargeting(_log : ActionLog, _ctrl : PlayerController):
 	log.availableTiles = currentGrid.GetAdjacentTiles(source.CurrentTile)
 	log.affectedTiles.append_array(GetAffectedTiles(source, source.CurrentTile, shapedDirectionalRange, log.actionDirection))
 	log.atRange = shapedDirectionalRange
+	direction = log.actionDirection
 
 	# try and get the proper targeted tile based on the facing direction
 	var adj = currentGrid.GetTile(log.source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(log.actionDirection)))

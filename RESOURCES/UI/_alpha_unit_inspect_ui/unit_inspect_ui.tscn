@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dn07slodp7juh"]
+[gd_scene format=3 uid="uid://dn07slodp7juh"]
 
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="1_17hjj"]
 [ext_resource type="Script" uid="uid://dbkl27w85f8am" path="res://SCRIPTS/UI/InspectUI/unit_inspect_ui.gd" id="1_olrmn"]
@@ -111,7 +111,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("3_jmhyu")
 font_color = Color(0, 0, 0, 1)
 
-[node name="UnitInspectUI" type="CanvasLayer" node_paths=PackedStringArray("portrait", "nameText", "descriptionText", "classSprite", "affinityIcon", "unitHealthBar", "strongAgainstEntryList", "weakAgainstEntryList")]
+[node name="UnitInspectUI" type="CanvasLayer" unique_id=132113164 node_paths=PackedStringArray("portrait", "nameText", "descriptionText", "classSprite", "affinityIcon", "unitHealthBar", "strongAgainstEntryList", "weakAgainstEntryList")]
 layer = 10
 script = ExtResource("1_olrmn")
 portrait = NodePath("MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/PortraitBG/Portrait")
@@ -125,7 +125,7 @@ strongAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/MarginCon
 weakAgainstEntryList = NodePath("MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer/WeakContainer")
 metadata/_edit_vertical_guides_ = [-171.0]
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1784041239]
 modulate = Color(0.290196, 0.235294, 0.227451, 1)
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,51 +136,51 @@ texture = ExtResource("3_hynhx")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1089931083]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="MarginContainer" parent="MarginContainer"]
+[node name="Panel" type="MarginContainer" parent="MarginContainer" unique_id=740391326]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel" unique_id=1054693709]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer" unique_id=73145323]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer" unique_id=1682088741]
 layout_mode = 2
 color = Color(0.6, 0.4804, 0.444, 0.45098)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer" unique_id=860265942]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="StatsAndName" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer"]
+[node name="StatsAndName" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer" unique_id=1764029881]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
-[node name="PortraitBG" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName"]
+[node name="PortraitBG" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" unique_id=798966628]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 texture = SubResource("GradientTexture2D_kv6a2")
 expand_mode = 1
 
-[node name="Portrait" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/PortraitBG"]
+[node name="Portrait" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/PortraitBG" unique_id=588881141]
 visible = false
 custom_minimum_size = Vector2(224, 224)
-layout_mode = 2
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 240.0
@@ -188,7 +188,7 @@ offset_bottom = 240.0
 texture = ExtResource("1_17hjj")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/PortraitBG"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/PortraitBG" unique_id=413230458]
 layout_mode = 0
 offset_right = 255.0
 offset_bottom = 255.0
@@ -198,30 +198,30 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="NameAndAffinityContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName"]
+[node name="NameAndAffinityContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" unique_id=1631565337]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer" unique_id=1651779176]
 layout_mode = 2
 color = Color(0.77, 0.6468, 0.539, 0.592157)
 
-[node name="NameAndAffinity" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer"]
+[node name="NameAndAffinity" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer" unique_id=61769401]
 layout_mode = 2
 
-[node name="ClassSprite" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer/NameAndAffinity"]
+[node name="ClassSprite" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer/NameAndAffinity" unique_id=162175127]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("2_ccy33")
 expand_mode = 1
 
-[node name="Name" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer/NameAndAffinity"]
+[node name="Name" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer/NameAndAffinity" unique_id=479268472]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jmhyu")
 theme_override_font_sizes/font_size = 16
 text = "Karla of the Full Moon"
 label_settings = ExtResource("7_l1uge")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/NameAndAffinityContainer" unique_id=792372573]
 layout_mode = 2
 texture = ExtResource("8_hynhx")
 patch_margin_left = 2
@@ -229,7 +229,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "InjuredParent", "LevelLabel", "ExpLabel")]
+[node name="HealthBarParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" unique_id=54203026 node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "InjuredParent", "LevelLabel", "ExpLabel")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(64, 48)
@@ -244,7 +244,7 @@ LevelLocalization = "ui_num"
 ExpLabel = NodePath("../ExpAndLevel/MarginContainer/HBoxContainer/ExpNum")
 ExpLocalization = "ui_current_max"
 
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent" unique_id=767314927]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 16)
 layout_mode = 1
@@ -260,7 +260,7 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="InjuredBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
+[node name="InjuredBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent" unique_id=1310257496]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 16)
 layout_mode = 1
@@ -276,7 +276,7 @@ value = 0.3
 fill_mode = 1
 show_percentage = false
 
-[node name="ArmorBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
+[node name="ArmorBar" type="ProgressBar" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent" unique_id=1677044311]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 16)
 layout_mode = 1
@@ -292,7 +292,7 @@ max_value = 1.0
 value = 0.84
 show_percentage = false
 
-[node name="HP Val" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent"]
+[node name="HP Val" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/HealthBarParent" unique_id=1709486720]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 1
@@ -315,22 +315,22 @@ label_settings = SubResource("LabelSettings_s1uql")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExpAndLevel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName"]
+[node name="ExpAndLevel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" unique_id=1741933745]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel" unique_id=2080143536]
 layout_mode = 2
 color = Color(0.81, 0.6804, 0.567, 0.596078)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel" unique_id=1079465799]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer" unique_id=1854689769]
 layout_mode = 2
 
-[node name="ExpLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer"]
+[node name="ExpLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer" unique_id=1537066589]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -338,28 +338,28 @@ text = "ui_exp"
 label_settings = ExtResource("12_bf6h3")
 vertical_alignment = 1
 
-[node name="ExpNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer"]
+[node name="ExpNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer" unique_id=1165309068]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "{NUM}"
 label_settings = ExtResource("7_l1uge")
 
-[node name="Space" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer"]
+[node name="Space" type="Control" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer" unique_id=2080553646]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LevelLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer" unique_id=226019362]
 layout_mode = 2
 text = "ui_level_short"
 label_settings = ExtResource("12_bf6h3")
 
-[node name="LevelNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer"]
+[node name="LevelNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel/MarginContainer/HBoxContainer" unique_id=2087554130]
 layout_mode = 2
 text = "{NUM}"
 label_settings = ExtResource("7_l1uge")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/ExpAndLevel" unique_id=625194656]
 layout_mode = 2
 texture = ExtResource("8_hynhx")
 patch_margin_left = 2
@@ -367,13 +367,13 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" unique_id=1147352646]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Description" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/MarginContainer"]
+[node name="Description" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/MarginContainer" unique_id=1881791541]
 custom_minimum_size = Vector2(252, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_psqrf")
@@ -381,57 +381,57 @@ theme_override_font_sizes/font_size = 16
 text = "Studier of holy arts, Light Mages can heal allies but have low agressive and defensive stats"
 autowrap_mode = 2
 
-[node name="Affinity" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName"]
+[node name="Affinity" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName" unique_id=985052998]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity" unique_id=904062055]
 layout_mode = 2
 alignment = 2
 
-[node name="AffinityLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/HBoxContainer"]
+[node name="AffinityLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/HBoxContainer" unique_id=2052691626]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("3_jmhyu")
 text = "Affinity:"
 
-[node name="ThisUnitsAffinity" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/HBoxContainer" instance=ExtResource("7_prn4o")]
+[node name="ThisUnitsAffinity" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/HBoxContainer" unique_id=2042038951 instance=ExtResource("7_prn4o")]
 layout_mode = 2
 stretch_mode = 5
 
-[node name="AffinityContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity"]
+[node name="AffinityContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity" unique_id=1968405779]
 layout_mode = 2
 size_flags_horizontal = 8
 columns = 2
 
-[node name="StrongLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer"]
+[node name="StrongLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer" unique_id=1078323443]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("3_jmhyu")
 text = "Strong Against:
 "
 
-[node name="StrongContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer"]
+[node name="StrongContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer" unique_id=1662672697]
 layout_mode = 2
 size_flags_horizontal = 8
 script = ExtResource("5_vhggx")
 
-[node name="WeakLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer"]
+[node name="WeakLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer" unique_id=1576508960]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jmhyu")
 text = "Weak Against:"
 
-[node name="WeakContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer"]
+[node name="WeakContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MarginContainer/MarginContainer/StatsAndName/Affinity/AffinityContainer" unique_id=1708479061]
 layout_mode = 2
 script = ExtResource("5_vhggx")
 
-[node name="MultipanelParent" type="Control" parent="MarginContainer/Panel/HBoxContainer" node_paths=PackedStringArray("controls")]
+[node name="MultipanelParent" type="Control" parent="MarginContainer/Panel/HBoxContainer" unique_id=464509887 node_paths=PackedStringArray("controls")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("13_sw8vr")
 controls = [NodePath("StatMultipanel"), NodePath("InventoryMultipanel"), NodePath("AbilitiesMultipanel")]
 
-[node name="LeftBlink" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent"]
+[node name="LeftBlink" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" unique_id=455549082]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -441,7 +441,7 @@ offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="RightBlink" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent"]
+[node name="RightBlink" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" unique_id=477455474]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -454,7 +454,7 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="StatMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" node_paths=PackedStringArray("InspectUI", "statBlockEntryList", "effectsList", "noEffectsLabel")]
+[node name="StatMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" unique_id=1434499488 node_paths=PackedStringArray("InspectUI", "statBlockEntryList", "effectsList", "noEffectsLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -472,15 +472,15 @@ effectsList = NodePath("VBox/CombatEffectsContainer/MarginContainer/CombatEffect
 effectsIconPrefab = ExtResource("9_tejvk")
 noEffectsLabel = NodePath("VBox/CombatEffectsContainer/NoEffectsLabel")
 
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel"]
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel" unique_id=730940200]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StatsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+[node name="StatsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox" unique_id=143531560]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader" unique_id=627654514]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -489,7 +489,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.72, 0.47448, 0.2736, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader/ColorRect"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader/ColorRect" unique_id=361938224]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -501,34 +501,34 @@ label_settings = SubResource("LabelSettings_hw2ym")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox" unique_id=1467631767]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer" unique_id=731421904]
 layout_mode = 2
 color = Color(0.55, 0.440367, 0.407, 0.588235)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer" unique_id=2007933199]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer/MarginContainer" unique_id=851313465]
 layout_mode = 2
 
-[node name="StatGridContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="StatGridContainer" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/MarginContainer/MarginContainer/VBoxContainer" unique_id=1850604181]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 script = ExtResource("5_vhggx")
 
-[node name="StatsHeader2" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+[node name="StatsHeader2" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox" unique_id=103133875]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader2"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader2" unique_id=763574913]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -537,7 +537,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.4176, 0.48312, 0.72, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader2/ColorRect"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/StatsHeader2/ColorRect" unique_id=1986228754]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -549,11 +549,11 @@ label_settings = SubResource("LabelSettings_qjsgv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CombatEffectsContainer" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox"]
+[node name="CombatEffectsContainer" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox" unique_id=2110175202]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer" unique_id=239230221]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -562,7 +562,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.55, 0.440367, 0.407, 0.588235)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer" unique_id=445135821]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -574,14 +574,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="CombatEffects" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer/MarginContainer"]
+[node name="CombatEffects" type="GridContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer/MarginContainer" unique_id=1116288206]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 script = ExtResource("5_vhggx")
 
-[node name="NoEffectsLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer"]
+[node name="NoEffectsLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/StatMultipanel/VBox/CombatEffectsContainer" unique_id=1328038910]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -593,7 +593,7 @@ label_settings = SubResource("LabelSettings_831br")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventoryMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" node_paths=PackedStringArray("InspectUI", "itemSlotEntryList")]
+[node name="InventoryMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" unique_id=389916430 node_paths=PackedStringArray("InspectUI", "itemSlotEntryList")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -608,15 +608,15 @@ InspectUI = NodePath("../../../../..")
 itemSlotEntryList = NodePath("VBox/InventoryPanel/InventorySlotEntryList")
 itemSlotEntry = ExtResource("4_fpfg1")
 
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel"]
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel" unique_id=2031853729]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StatsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox"]
+[node name="StatsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox" unique_id=1762105360]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/StatsHeader"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/StatsHeader" unique_id=96001915]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -625,7 +625,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.59, 0.348985, 0.2537, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/StatsHeader/ColorRect"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/StatsHeader/ColorRect" unique_id=959259026]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -638,11 +638,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="InventoryPanel" type="Panel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox"]
+[node name="InventoryPanel" type="Panel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox" unique_id=182848379]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 
-[node name="InventorySlotEntryList" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/InventoryPanel"]
+[node name="InventorySlotEntryList" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/InventoryMultipanel/VBox/InventoryPanel" unique_id=920233858]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -656,7 +656,7 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 script = ExtResource("5_vhggx")
 
-[node name="AbilitiesMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" node_paths=PackedStringArray("InspectUI", "AbilityParent", "Scroll")]
+[node name="AbilitiesMultipanel" type="MarginContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent" unique_id=359905602 node_paths=PackedStringArray("InspectUI", "AbilityParent", "Scroll")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -672,15 +672,15 @@ AbilityPrefab = ExtResource("18_4saab")
 AbilityParent = NodePath("VBox/ScrollContainer/VBoxContainer")
 Scroll = NodePath("VBox/ScrollContainer")
 
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel"]
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel" unique_id=871596268]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WeaponsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+[node name="WeaponsHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox" unique_id=402208795]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/WeaponsHeader"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/WeaponsHeader" unique_id=596774976]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,7 +689,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.371405, 0.59, 0.2537, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/WeaponsHeader/ColorRect"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/WeaponsHeader/ColorRect" unique_id=145598203]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -702,22 +702,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox" unique_id=1747403909]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/ScrollContainer" unique_id=764640447]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_vhggx")
 
-[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox" unique_id=444400464]
 visible = false
 custom_minimum_size = Vector2(0, 122.14)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon" unique_id=1823722510]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -725,9 +725,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WeaponPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon" node_paths=PackedStringArray("weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText")]
+[node name="WeaponPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon" unique_id=1466783742 node_paths=PackedStringArray("weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText")]
 custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
+layout_mode = 0
 offset_top = 4.0
 offset_right = 604.0
 offset_bottom = 132.0
@@ -740,14 +740,14 @@ weaponDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
 statBlockEntry = NodePath("Weapon/VBoxContainer2/StatBlockEntry")
 accuracyText = NodePath("Weapon/VBoxContainer2/HBoxContainer/AccuracyNum")
 
-[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel"]
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel" unique_id=1999682155]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon" unique_id=84896350]
 custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
+layout_mode = 0
 offset_left = 8.0
 offset_top = 10.0
 offset_right = 72.0
@@ -757,8 +757,8 @@ size_flags_vertical = 4
 texture = ExtResource("19_76bpb")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon" unique_id=1824542425]
+layout_mode = 0
 offset_left = 108.0
 offset_top = 15.0
 offset_right = 392.0
@@ -766,13 +766,13 @@ offset_bottom = 107.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
 
-[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer"]
+[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer" unique_id=1533607305]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "WeaponName"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="WeapDesc" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer"]
+[node name="WeapDesc" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer" unique_id=2119623575]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -780,8 +780,8 @@ text = "WeaponDescription"
 label_settings = SubResource("LabelSettings_qwtwy")
 autowrap_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon"]
-layout_mode = 2
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon" unique_id=1570350114]
+layout_mode = 0
 offset_left = 406.0
 offset_top = 13.0
 offset_right = 700.0
@@ -789,26 +789,26 @@ offset_bottom = 102.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2" unique_id=1805769442]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="AccuracyLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2/HBoxContainer"]
+[node name="AccuracyLabel" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2/HBoxContainer" unique_id=855431722]
 layout_mode = 2
 text = "ui_accuracy_label"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="AccuracyNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2/HBoxContainer"]
+[node name="AccuracyNum" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2/HBoxContainer" unique_id=729061792]
 layout_mode = 2
 text = "{NUM}"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="StatBlockEntry" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2" instance=ExtResource("20_sy8c7")]
+[node name="StatBlockEntry" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel/Weapon/VBoxContainer2" unique_id=68694839 instance=ExtResource("20_sy8c7")]
 custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="NoWeaponsText" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel"]
+[node name="NoWeaponsText" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/Weapon/WeaponPanel" unique_id=1593171488]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "ui_no_weapon_long"
@@ -816,15 +816,15 @@ label_settings = SubResource("LabelSettings_2u5kn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TacticalParent" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+[node name="TacticalParent" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox" unique_id=911888852]
 visible = false
 layout_mode = 2
 
-[node name="TacticalHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent"]
+[node name="TacticalHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent" unique_id=1617642454]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/TacticalHeader"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/TacticalHeader" unique_id=1744582833]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -833,7 +833,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.50563, 0.59, 0.4602, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/TacticalHeader/ColorRect"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/TacticalHeader/ColorRect" unique_id=120884775]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -846,11 +846,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Tactical" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent"]
+[node name="Tactical" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent" unique_id=1114217813]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical" unique_id=317299189]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -858,9 +858,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TacticalPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical" node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "usageLeft")]
+[node name="TacticalPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical" unique_id=1582985488 node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "usageLeft")]
 custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
+layout_mode = 0
 offset_right = 604.0
 offset_bottom = 128.0
 script = ExtResource("21_5d6pf")
@@ -869,13 +869,13 @@ abilityDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
 abilityIcon = NodePath("Weapon/TextureRect")
 usageLeft = NodePath("Weapon/HBoxContainer/Num")
 
-[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel"]
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel" unique_id=1579341530]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon" unique_id=290945106]
 custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
+layout_mode = 0
 offset_left = 8.0
 offset_top = 10.0
 offset_right = 72.0
@@ -885,8 +885,8 @@ size_flags_vertical = 4
 texture = ExtResource("19_76bpb")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon" unique_id=1842215362]
+layout_mode = 0
 offset_left = 108.0
 offset_top = 15.0
 offset_right = 392.0
@@ -894,13 +894,13 @@ offset_bottom = 107.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
 
-[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/VBoxContainer"]
+[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/VBoxContainer" unique_id=125774553]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "WeaponName"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="WeapDesc" type="RichTextLabel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/VBoxContainer"]
+[node name="WeapDesc" type="RichTextLabel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/VBoxContainer" unique_id=1847475466]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -909,34 +909,34 @@ theme_override_fonts/normal_font = ExtResource("3_jmhyu")
 text = "Test"
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon" unique_id=1779765427]
 layout_mode = 0
 offset_left = 421.0
 offset_right = 603.0
 offset_bottom = 60.0
 
-[node name="UsesLeft" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/HBoxContainer"]
+[node name="UsesLeft" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/HBoxContainer" unique_id=220481686]
 layout_mode = 2
 text = "ui_uses_label"
 label_settings = SubResource("LabelSettings_8mixy")
 horizontal_alignment = 1
 
-[node name="Num" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/HBoxContainer"]
+[node name="Num" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/TacticalParent/Tactical/TacticalPanel/Weapon/HBoxContainer" unique_id=428052609]
 layout_mode = 2
 text = "1"
 label_settings = SubResource("LabelSettings_8mixy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AbilityParent" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox"]
+[node name="AbilityParent" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox" unique_id=1598910515]
 visible = false
 layout_mode = 2
 
-[node name="AbilityHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent"]
+[node name="AbilityHeader" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent" unique_id=1743090182]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/AbilityHeader"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/AbilityHeader" unique_id=496714107]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -945,7 +945,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.50563, 0.59, 0.4602, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/AbilityHeader/ColorRect"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/AbilityHeader/ColorRect" unique_id=222500020]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -958,11 +958,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Ability" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent"]
+[node name="Ability" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent" unique_id=1642739028]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability" unique_id=2100473749]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -970,25 +970,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AbilityPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability" node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "focusCostText", "rangeText")]
+[node name="AbilityPanel" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability" unique_id=714396458 node_paths=PackedStringArray("abilityNameText", "abilityDescriptionText", "abilityIcon", "rangeText")]
 custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
+layout_mode = 0
 offset_right = 604.0
 offset_bottom = 128.0
 script = ExtResource("21_5d6pf")
 abilityNameText = NodePath("Weapon/VBoxContainer/WeapName")
 abilityDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
 abilityIcon = NodePath("Weapon/TextureRect")
-focusCostText = NodePath("Weapon/Control/FocusCostParent/FocusCost")
 rangeText = NodePath("Weapon/Control/RangeParent/HBoxContainer/RangeAmt")
 
-[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel"]
+[node name="Weapon" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel" unique_id=253988902]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon" unique_id=1369510539]
 custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
+layout_mode = 0
 offset_left = 8.0
 offset_top = 10.0
 offset_right = 72.0
@@ -998,8 +997,8 @@ size_flags_vertical = 4
 texture = ExtResource("19_76bpb")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon" unique_id=1273011587]
+layout_mode = 0
 offset_left = 108.0
 offset_top = 15.0
 offset_right = 392.0
@@ -1007,13 +1006,13 @@ offset_bottom = 107.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
 
-[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/VBoxContainer"]
+[node name="WeapName" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/VBoxContainer" unique_id=1266848697]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "WeaponName"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="WeapDesc" type="RichTextLabel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/VBoxContainer"]
+[node name="WeapDesc" type="RichTextLabel" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/VBoxContainer" unique_id=1601857981]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1022,16 +1021,15 @@ theme_override_fonts/normal_font = ExtResource("3_jmhyu")
 text = "Test"
 autowrap_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon"]
+[node name="Control" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon" unique_id=326987824]
 custom_minimum_size = Vector2(0, 32)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 427.0
 offset_top = 4.0
 offset_right = 620.0
 offset_bottom = 102.0
 
-[node name="FocusCostParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control"]
+[node name="FocusCostParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control" unique_id=910964683]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 4
@@ -1044,17 +1042,17 @@ offset_bottom = -7.0
 grow_vertical = 2
 size_flags_horizontal = 0
 
-[node name="FocusIcon" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/FocusCostParent"]
+[node name="FocusIcon" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/FocusCostParent" unique_id=1273802067]
 custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
+layout_mode = 0
 offset_left = 8.0
 offset_right = 40.0
 offset_bottom = 32.0
 texture = ExtResource("22_5kv6e")
 expand_mode = 1
 
-[node name="FocusCost" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/FocusCostParent"]
-layout_mode = 2
+[node name="FocusCost" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/FocusCostParent" unique_id=1997755123]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 4.0
 offset_right = 95.0
@@ -1062,7 +1060,7 @@ offset_bottom = 27.0
 text = "{AMT}"
 label_settings = SubResource("LabelSettings_d75mn")
 
-[node name="RangeParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control"]
+[node name="RangeParent" type="Control" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control" unique_id=290168025]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 6
@@ -1077,26 +1075,26 @@ offset_bottom = 52.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent" unique_id=565719331]
 layout_mode = 0
 offset_left = -1.0
 offset_top = -6.0
 offset_right = 169.0
 offset_bottom = 26.0
 
-[node name="RangeIcon" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent/HBoxContainer"]
+[node name="RangeIcon" type="TextureRect" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent/HBoxContainer" unique_id=854262292]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("23_murkn")
 expand_mode = 1
 
-[node name="RangeAmt" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent/HBoxContainer"]
+[node name="RangeAmt" type="Label" parent="MarginContainer/Panel/HBoxContainer/MultipanelParent/AbilitiesMultipanel/VBox/AbilityParent/Ability/AbilityPanel/Weapon/Control/RangeParent/HBoxContainer" unique_id=1077392312]
 layout_mode = 2
 text = "ui_range_amount"
 label_settings = SubResource("LabelSettings_dkw7e")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=89316741]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

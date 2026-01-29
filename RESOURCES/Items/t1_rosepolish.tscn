@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://i763t3u3306k"]
+[gd_scene format=3 uid="uid://i763t3u3306k"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_0wjra"]
 [ext_resource type="Texture2D" uid="uid://v4sbwlg38sm1" path="res://ART/Icons/Items/t1_rosepolish.png" id="2_f21ey"]
@@ -11,7 +11,7 @@ script = ExtResource("4_20vul")
 Template = ExtResource("5_f21ey")
 Value = 25
 
-[node name="rosepolish_t1" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
+[node name="rosepolish_t1" type="Node2D" unique_id=2028361626 node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_0wjra")
 growthModifierData = NodePath("HeldItemStatGrowthModifier")
 internalName = "t1_rosepolish"
@@ -19,6 +19,6 @@ loc_displayName = "item_t1_rosepolish_name"
 loc_displayDesc = "item_t1_rosepolish_desc"
 icon = ExtResource("2_f21ey")
 
-[node name="HeldItemStatGrowthModifier" type="Node2D" parent="."]
+[node name="HeldItemStatGrowthModifier" type="Node2D" parent="." unique_id=687974132]
 script = ExtResource("3_0wjra")
 GrowthModifiers = Array[ExtResource("4_20vul")]([SubResource("Resource_0wjra")])

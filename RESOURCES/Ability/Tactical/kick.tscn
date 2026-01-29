@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqquvx86hy7d8"]
+[gd_scene format=3 uid="uid://dqquvx86hy7d8"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fmwdi"]
 [ext_resource type="Texture2D" uid="uid://bf8jras3uc7hl" path="res://ART/Icons/Ability/Tactical/kick.png" id="2_0wr8g"]
@@ -14,7 +14,7 @@
 script = ExtResource("3_sw0bh")
 metadata/_custom_type_script = "uid://45lb6jb6lb6n"
 
-[node name="kick" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="kick" type="Node2D" unique_id=1891793338 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_fmwdi")
 type = 2
 abilityCooldown = 0
@@ -27,7 +27,7 @@ descriptors = Array[ExtResource("2_2hnoi")]([ExtResource("3_0wr8g")])
 TargetingTemplate = ExtResource("7_sw0bh")
 TargetingData = NodePath("TargetingData")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=2030184380]
 script = ExtResource("2_huigy")
 TeamTargeting = 2
 Type = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cy7k2387t0527"]
+[gd_scene format=3 uid="uid://cy7k2387t0527"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_kixon"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_5q6et"]
@@ -41,7 +41,7 @@ script = ExtResource("5_5q6et")
 Template = ExtResource("8_3xlkp")
 Value = -2
 
-[node name="taintedtome" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="taintedtome" type="Node2D" unique_id=217092888 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_kixon")
 type = 1
 abilityCooldown = 0
@@ -56,14 +56,14 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=736960090]
 script = ExtResource("4_llsyd")
 GrantedStats = Array[ExtResource("5_5q6et")]([SubResource("Resource_wmo68"), SubResource("Resource_sqjf8"), SubResource("Resource_icvji")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1079614494]
 script = ExtResource("9_xl7uc")
 AgressiveStat = ExtResource("10_sqjf8")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1428709532]
 script = ExtResource("11_icvji")
 TargetRange = Vector2i(1, 2)

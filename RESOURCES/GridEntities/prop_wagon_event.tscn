@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cj1m4e845a2s8"]
+[gd_scene format=3 uid="uid://cj1m4e845a2s8"]
 
 [ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_xyrwh"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_5br7r"]
@@ -8,38 +8,31 @@
 
 [sub_resource type="Resource" id="Resource_a0pxv"]
 script = ExtResource("2_5br7r")
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_mm1kg"]
 script = ExtResource("2_5br7r")
 Position = Vector2i(1, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_2phmk"]
 script = ExtResource("2_5br7r")
 Position = Vector2i(2, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_cxcns"]
 script = ExtResource("2_5br7r")
 Position = Vector2i(0, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_ch1mh"]
 script = ExtResource("2_5br7r")
 Position = Vector2i(1, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_eilox"]
 script = ExtResource("2_5br7r")
 Position = Vector2i(2, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_vltvb"]
@@ -145,26 +138,24 @@ _data = {
 &"result_trap": SubResource("Animation_xyrwh")
 }
 
-[node name="prop_wagon_event" type="Node2D" node_paths=PackedStringArray("Animator")]
+[node name="prop_wagon_event" type="Node2D" unique_id=2025272844 node_paths=PackedStringArray("Animator")]
 y_sort_enabled = true
 script = ExtResource("1_xyrwh")
 shapedTiles = SubResource("Resource_vltvb")
 Animator = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tph87")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=411080603]
+libraries/ = SubResource("AnimationLibrary_tph87")
 
-[node name="parent" type="Node2D" parent="."]
+[node name="parent" type="Node2D" parent="." unique_id=1197813132]
 position = Vector2(96, 64)
 
-[node name="wagon" type="Sprite2D" parent="parent"]
+[node name="wagon" type="Sprite2D" parent="parent" unique_id=905838046]
 z_index = -1
 position = Vector2(32, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("6_xyrwh")
 hframes = 2
 
-[node name="VFX_Explosion" parent="parent" instance=ExtResource("5_fxhok")]
+[node name="VFX_Explosion" parent="parent" unique_id=2011413585 instance=ExtResource("5_fxhok")]
 emitOnReady = false

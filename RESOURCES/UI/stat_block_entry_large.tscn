@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d055qo5032qd8"]
+[gd_scene format=3 uid="uid://d055qo5032qd8"]
 
 [ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_j570s"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_r6dku"]
 
-[node name="StatBlockEntry_Large" type="PanelContainer" node_paths=PackedStringArray("icon", "statName", "statValue")]
+[node name="StatBlockEntry_Large" type="PanelContainer" unique_id=260062621 node_paths=PackedStringArray("icon", "statName", "statValue")]
 custom_minimum_size = Vector2(250, 40)
 offset_right = 149.0
 offset_bottom = 40.0
@@ -12,22 +12,22 @@ icon = NodePath("MarginContainer/HBoxContainer/TextureRect")
 statName = NodePath("MarginContainer/HBoxContainer/StatBlockLabel")
 statValue = NodePath("MarginContainer/HBoxContainer/StatBlockLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=23305293]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1834616990]
 layout_mode = 2
 
-[node name="StatBlockLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="StatBlockLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=140863118]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "ui_statblock_label_large"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=596556426]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_r6dku")

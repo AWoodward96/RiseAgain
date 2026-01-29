@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq8gkroer2hb6"]
+[gd_scene format=3 uid="uid://cq8gkroer2hb6"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_67bum"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_2oxas"]
@@ -30,7 +30,7 @@ script = ExtResource("6_fjwi2")
 CombatEffect = SubResource("Resource_h0j48")
 metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
 
-[node name="snapperblossom" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="snapperblossom" type="Node2D" unique_id=2019252574 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_67bum")
 abilityCooldown = 4
 ability_speed = 1
@@ -43,12 +43,12 @@ TargetingTemplate = ExtResource("9_fjwi2")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=673075290]
 script = ExtResource("2_y0hba")
 AgressiveStat = ExtResource("3_em755")
 DamageType = 1
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1444250545]
 script = ExtResource("4_6hdn0")
 TeamTargeting = 0
 TargetRange = Vector2i(1, 3)

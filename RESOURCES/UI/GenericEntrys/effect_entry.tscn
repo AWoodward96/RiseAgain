@@ -1,23 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1laxqelcbhi8"]
+[gd_scene format=3 uid="uid://d1laxqelcbhi8"]
 
 [ext_resource type="Script" uid="uid://oud5dwmv3adr" path="res://SCRIPTS/Generic/EffectEntry.gd" id="1_tj3ed"]
 [ext_resource type="Texture2D" uid="uid://d0ecls1kw7y8t" path="res://ART/Icons/Stats/icon_defense_down.png" id="2_364o0"]
 [ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="3_jthyj"]
 
-[node name="EffectEntry" type="HBoxContainer" node_paths=PackedStringArray("texture", "label")]
+[node name="EffectEntry" type="HBoxContainer" unique_id=1718893796 node_paths=PackedStringArray("texture", "label")]
 custom_minimum_size = Vector2(0, 16)
 script = ExtResource("1_tj3ed")
 texture = NodePath("TextureRect")
 label = NodePath("Label")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=101656882]
 z_index = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("2_364o0")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1358145255]
 z_index = 1
 layout_mode = 2
 text = "Def Down"

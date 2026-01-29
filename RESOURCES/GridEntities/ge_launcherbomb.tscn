@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsjmls2c4362e"]
+[gd_scene format=3 uid="uid://dsjmls2c4362e"]
 
 [ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_uhcw7"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_eyes5"]
@@ -111,7 +111,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="ge_launcherbomb" type="Node2D" node_paths=PackedStringArray("telegraphTilemap")]
+[node name="ge_launcherbomb" type="Node2D" unique_id=1001145225 node_paths=PackedStringArray("telegraphTilemap")]
 z_index = -5
 script = ExtResource("1_uhcw7")
 executionStack = Array[ExtResource("2_eyes5")]([SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
@@ -121,11 +121,11 @@ UpdatePerTeamTurn = true
 localization_icon = ExtResource("11_nct4d")
 localization_desc = "art_bomblauncher_name"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1019872157]
 tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 tile_set = ExtResource("10_b5bbe")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2054169612]
 z_index = 10
 z_as_relative = false
 y_sort_enabled = true

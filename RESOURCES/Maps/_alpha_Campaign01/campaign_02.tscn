@@ -1,20 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7m8r8wh7mgsk"]
+[gd_scene format=3 uid="uid://c7m8r8wh7mgsk"]
 
 [ext_resource type="Script" uid="uid://m223pg2nksnv" path="res://SCRIPTS/Campaign/Campaign.gd" id="1_d5lrr"]
-[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="2_bd61j"]
-[ext_resource type="Texture2D" uid="uid://duq4qf5n0vf6a" path="res://ART/Icons/Route/mountain_path.png" id="3_bamy5"]
 
-[node name="Campaign02" type="Node2D" node_paths=PackedStringArray("ledger_root", "current_map_parent", "UnitHoldingArea")]
+[node name="Campaign02" type="Node2D" unique_id=685317496 node_paths=PackedStringArray("current_map_parent", "UnitHoldingArea")]
 script = ExtResource("1_d5lrr")
-AutoProceed = true
-MapRewardTable = ExtResource("2_bd61j")
-loc_name = "campaign_mountain"
-loc_icon = ExtResource("3_bamy5")
-ledger_root = NodePath("")
 current_map_parent = NodePath("CurrentMap")
 UnitHoldingArea = NodePath("UnitHoldingArea")
 
-[node name="CurrentMap" type="Node2D" parent="."]
+[node name="CurrentMap" type="Node2D" parent="." unique_id=1385047426]
 unique_name_in_owner = true
 
-[node name="UnitHoldingArea" type="Node2D" parent="."]
+[node name="UnitHoldingArea" type="Node2D" parent="." unique_id=1386006191]

@@ -41,6 +41,9 @@ func SetMap(_map : Map):
 	playerController = map.playercontroller
 
 func GetRange():
+	if TargetingTemplate != null:
+		return TargetingTemplate.TargetRange
+
 	if TargetingData != null:
 		return TargetingData.TargetRange
 	return Vector2i(0, 0)

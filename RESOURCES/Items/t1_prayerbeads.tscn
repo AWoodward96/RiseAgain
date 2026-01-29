@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdtf0c5rumums"]
+[gd_scene format=3 uid="uid://cdtf0c5rumums"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_gb2xl"]
 [ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_kabcu"]
@@ -11,7 +11,7 @@ script = ExtResource("3_omh6i")
 Template = ExtResource("4_vlm2u")
 Value = 1
 
-[node name="t1_prayerbeads" type="Node2D" node_paths=PackedStringArray("StatData")]
+[node name="t1_prayerbeads" type="Node2D" unique_id=1823699306 node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_gb2xl")
 internalName = "t1_prayerbeads"
 loc_displayName = "item_t1_prayerbeads_name"
@@ -19,6 +19,6 @@ loc_displayDesc = "item_t1_prayerbeads_desc"
 icon = ExtResource("2_omh6i")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1930171716]
 script = ExtResource("2_kabcu")
 GrantedStats = Array[ExtResource("3_omh6i")]([SubResource("Resource_kabcu")])

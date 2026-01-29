@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TurnStartHealEffectTemplate" load_steps=3 format=3 uid="uid://by02ciie3036t"]
+[gd_resource type="Resource" script_class="TurnStartHealEffectTemplate" format=3 uid="uid://by02ciie3036t"]
 
 [ext_resource type="Texture2D" uid="uid://dhkfti7sc4pb1" path="res://ART/Icons/Ability/Standard/pollinate.png" id="1_c3axu"]
 [ext_resource type="Script" uid="uid://baiypq4lffugb" path="res://SCRIPTS/CombatEffects/TurnStartHealEffectTemplate.gd" id="2_k861u"]

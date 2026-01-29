@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgpijng0n124p"]
+[gd_scene format=3 uid="uid://dgpijng0n124p"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
@@ -41,7 +41,7 @@ CombatEffect = ExtResource("5_octw8")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_isldo")
 
-[node name="ART_HeroicLeap" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
+[node name="ART_HeroicLeap" type="Node2D" unique_id=1393385494 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_a52ru")
 abilityCooldown = 3
 ability_speed = 1
@@ -55,17 +55,17 @@ TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1526562292]
 script = ExtResource("6_mtb8i")
 TargetRange = Vector2i(1, 4)
 Type = 1
 shapedTiles = ExtResource("7_n5ddh")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=2055508297]
 script = ExtResource("8_42ld6")
 AgressiveStat = ExtResource("13_4rprd")
 
-[node name="AbilityMovementData" type="Node2D" parent="."]
+[node name="AbilityMovementData" type="Node2D" parent="." unique_id=1620004690]
 script = ExtResource("11_anx3p")
 stoppedByWalls = false
 drawPath = false

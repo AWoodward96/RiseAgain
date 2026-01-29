@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cflal3jirl4pa"]
+[gd_scene format=3 uid="uid://cflal3jirl4pa"]
 
 [ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_owhuc"]
 [ext_resource type="Script" uid="uid://n7vt2tqk58f8" path="res://SCRIPTS/Universe/BarracksStatUpgradeEntry.gd" id="1_rc87r"]
@@ -14,7 +14,7 @@ font_size = 32
 font = ExtResource("3_4fdci")
 font_size = 32
 
-[node name="StatBlockEntry_Barracks" type="Control" node_paths=PackedStringArray("StatBlockEntry", "MinusButton", "PlusButton", "AllocatedUpgradeLabel", "CurMaxLabel")]
+[node name="StatBlockEntry_Barracks" type="Control" unique_id=1241046932 node_paths=PackedStringArray("StatBlockEntry", "MinusButton", "PlusButton", "AllocatedUpgradeLabel", "CurMaxLabel")]
 custom_minimum_size = Vector2(436, 72)
 layout_mode = 3
 anchors_preset = 0
@@ -27,7 +27,7 @@ PlusButton = NodePath("MarginContainer/ParentHBox/Plus/PlusButton")
 AllocatedUpgradeLabel = NodePath("MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2/AllocatedUpgrades")
 CurMaxLabel = NodePath("MarginContainer/ParentHBox/VBoxContainer/CurMax")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=953339043]
 layout_mode = 0
 offset_right = 308.0
 offset_bottom = 64.0
@@ -36,10 +36,10 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ParentHBox" type="HBoxContainer" parent="MarginContainer"]
+[node name="ParentHBox" type="HBoxContainer" parent="MarginContainer" unique_id=2060194863]
 layout_mode = 2
 
-[node name="StatBlockEntry_Inspect" type="PanelContainer" parent="MarginContainer/ParentHBox" node_paths=PackedStringArray("icon", "statName", "statValue")]
+[node name="StatBlockEntry_Inspect" type="PanelContainer" parent="MarginContainer/ParentHBox" unique_id=1594955996 node_paths=PackedStringArray("icon", "statName", "statValue")]
 custom_minimum_size = Vector2(250, 64)
 layout_mode = 2
 script = ExtResource("1_owhuc")
@@ -47,21 +47,21 @@ icon = NodePath("MarginContainer/HBoxContainer/Control/HBoxContainer/TextureRect
 statName = NodePath("MarginContainer/HBoxContainer/Control/HBoxContainer/StatBlockName")
 statValue = NodePath("MarginContainer/HBoxContainer/StatBlockValue")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect" unique_id=903276540]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer" unique_id=325381940]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer" unique_id=774819960]
 custom_minimum_size = Vector2(152, 0)
 layout_mode = 2
 
-[node name="Bg" type="ColorRect" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control"]
+[node name="Bg" type="ColorRect" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control" unique_id=547352823]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.42, 0.42, 0.42, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control" unique_id=406665530]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -84,31 +84,31 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control/HBoxContainer" unique_id=1036074337]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("2_3rx0x")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="StatBlockName" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control/HBoxContainer"]
+[node name="StatBlockName" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control/HBoxContainer" unique_id=908985703]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "ui_text"
 label_settings = SubResource("LabelSettings_f0bsc")
 
-[node name="StatBlockValue" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+[node name="StatBlockValue" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer" unique_id=390600624]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "ui_value"
 label_settings = SubResource("LabelSettings_k1xa7")
 horizontal_alignment = 1
 
-[node name="Control2" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer"]
+[node name="Control2" type="Control" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer" unique_id=458394972]
 visible = false
 layout_mode = 2
 
-[node name="AllocatedUpgrades" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2"]
+[node name="AllocatedUpgrades" type="Label" parent="MarginContainer/ParentHBox/StatBlockEntry_Inspect/MarginContainer/HBoxContainer/Control2" unique_id=659637268]
 layout_mode = 0
 offset_left = -33.0
 offset_top = -4.0
@@ -119,11 +119,11 @@ label_settings = ExtResource("5_yytrk")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Minus" type="Control" parent="MarginContainer/ParentHBox"]
+[node name="Minus" type="Control" parent="MarginContainer/ParentHBox" unique_id=1792001531]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="MinusButton" type="Button" parent="MarginContainer/ParentHBox/Minus"]
+[node name="MinusButton" type="Button" parent="MarginContainer/ParentHBox/Minus" unique_id=1208228302]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -140,19 +140,19 @@ grow_vertical = 2
 focus_neighbor_right = NodePath("../../Plus/PlusButton")
 text = "-"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ParentHBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ParentHBox" unique_id=1817775415]
 layout_mode = 2
 alignment = 1
 
-[node name="CurMax" type="Label" parent="MarginContainer/ParentHBox/VBoxContainer"]
+[node name="CurMax" type="Label" parent="MarginContainer/ParentHBox/VBoxContainer" unique_id=480370297]
 layout_mode = 2
 text = "CUR/MAX"
 
-[node name="Plus" type="Control" parent="MarginContainer/ParentHBox"]
+[node name="Plus" type="Control" parent="MarginContainer/ParentHBox" unique_id=1105956782]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="PlusButton" type="Button" parent="MarginContainer/ParentHBox/Plus"]
+[node name="PlusButton" type="Button" parent="MarginContainer/ParentHBox/Plus" unique_id=828530341]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = 8

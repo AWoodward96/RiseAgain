@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=50 format=3 uid="uid://dhofh2o4b8tg4"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://dhofh2o4b8tg4"]
 
 [ext_resource type="PackedScene" uid="uid://dmih52nttd88v" path="res://RESOURCES/Units/Ally/ElementalMage/VIS_ElementalMage.tscn" id="1_f24il"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_f24q4"]

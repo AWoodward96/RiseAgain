@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjkyhhnp44588"]
+[gd_scene format=3 uid="uid://bjkyhhnp44588"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vd6b5"]
 [ext_resource type="Texture2D" uid="uid://dxd72mb5gjmsh" path="res://ART/Icons/Ability/Passive/necroticcurse.png" id="2_vd6b5"]
@@ -37,7 +37,7 @@ Unit2 = ExtResource("6_cy5f2")
 script = ExtResource("12_jmu1h")
 metadata/_custom_type_script = "uid://cp4af6ps3pafs"
 
-[node name="NecroticCurse" type="Node2D" node_paths=PackedStringArray("passiveListeners")]
+[node name="NecroticCurse" type="Node2D" unique_id=487170033 node_paths=PackedStringArray("passiveListeners")]
 script = ExtResource("1_vd6b5")
 type = 3
 abilityCooldown = 0
@@ -47,7 +47,7 @@ loc_displayName = "passive_necroticcurse_name"
 loc_displayDesc = "passive_necroticcurse_desc"
 icon = ExtResource("2_vd6b5")
 
-[node name="PassiveUnitDeathListener" type="Node2D" parent="."]
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=186965167]
 script = ExtResource("3_66wk3")
 UnitPairs = Array[ExtResource("4_ngpvk")]([SubResource("Resource_ais6r"), SubResource("Resource_as0qu"), SubResource("Resource_mox3i"), SubResource("Resource_ic254")])
 SpawnedUnitAI = ExtResource("11_c2qeq")

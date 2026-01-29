@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AISmartTarget" load_steps=5 format=3 uid="uid://dcia5mwta8mpi"]
+[gd_resource type="Resource" script_class="AISmartTarget" format=3 uid="uid://dcia5mwta8mpi"]
 
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="1_gdws1"]
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="2_uwqut"]

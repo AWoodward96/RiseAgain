@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bg1xup1qjwpl3"]
+[gd_scene format=4 uid="uid://bg1xup1qjwpl3"]
 
 [ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_jr46n"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_gmtnm"]
@@ -8,26 +8,21 @@
 
 [sub_resource type="Resource" id="Resource_gmtnm"]
 script = ExtResource("2_gmtnm")
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_g3t0t"]
 script = ExtResource("2_gmtnm")
 Position = Vector2i(1, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_o4h0q"]
 script = ExtResource("2_gmtnm")
 Position = Vector2i(1, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_nlggq"]
 script = ExtResource("2_gmtnm")
 Position = Vector2i(0, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_8jvxw"]
@@ -35,19 +30,19 @@ script = ExtResource("3_g3t0t")
 TileCoordinates = Array[ExtResource("2_gmtnm")]([SubResource("Resource_gmtnm"), SubResource("Resource_g3t0t"), SubResource("Resource_o4h0q"), SubResource("Resource_nlggq")])
 metadata/_custom_type_script = "uid://ofdutqbqnjrf"
 
-[node name="Bridge" type="Node2D"]
+[node name="Bridge" type="Node2D" unique_id=208759154]
 z_index = -5
 script = ExtResource("1_jr46n")
 shapedTiles = SubResource("Resource_8jvxw")
 ui_invisible = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=712720536]
 visible = false
 position = Vector2(62, 61)
 scale = Vector2(2, 2)
 texture = ExtResource("4_jr46n")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=567522957]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAAAAQAGAAsAAAABAAAAAQAHAAsAAAABAAEAAQAHAAwAAAAAAAEAAQAGAAwAAAD//wAAAQAFAAsAAAD//wEAAQAFAAwAAAACAAAAAQAIAAsAAAACAAEAAQAIAAwAAAA=")
 tile_set = ExtResource("5_gmtnm")

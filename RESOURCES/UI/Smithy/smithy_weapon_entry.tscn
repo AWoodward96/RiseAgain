@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ds0pcu11x34vs"]
+[gd_scene format=3 uid="uid://ds0pcu11x34vs"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_dmmxr"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_hj4ni"]
@@ -133,13 +133,13 @@ _data = {
 &"RESET": SubResource("Animation_tt2ax")
 }
 
-[node name="SmithyWeaponEntry" type="Button" node_paths=PackedStringArray("costParent", "canUseParent", "lockedParent", "lockedText", "unlockedParent", "contentModulateParent", "nameLabel", "descLabel", "icon", "animator", "statChangeDetailParent", "statChangeEntryParent", "weaponRangeParent", "weaponRangeText", "weaponDetailsParent", "Details")]
+[node name="SmithyWeaponEntry" type="Button" unique_id=667920026 node_paths=PackedStringArray("costParent", "canUseParent", "lockedParent", "lockedText", "unlockedParent", "contentModulateParent", "nameLabel", "descLabel", "icon", "animator", "statChangeDetailParent", "statChangeEntryParent", "weaponRangeParent", "weaponRangeText", "weaponDetailsParent", "Details")]
 custom_minimum_size = Vector2(0, 170)
 offset_top = -1.0
 offset_right = 500.0
 offset_bottom = 199.0
 theme = ExtResource("1_dmmxr")
-icon = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(64, 64),"layout_direction":0,"layout_mode":2,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":64.0,"offset_bottom":64.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":SubResource("PlaceholderTexture2D_7c27l"),"expand_mode":1,"stretch_mode":0,"flip_h":false,"flip_v":false,"script":null)
+icon = Object(TextureRect,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(64, 64),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":64.0,"offset_bottom":64.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"pivot_offset_ratio":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"focus_behavior_recursive":0,"mouse_filter":1,"mouse_behavior_recursive":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"accessibility_name":"","accessibility_description":"","accessibility_live":0,"accessibility_controls_nodes":Array[NodePath]([]),"accessibility_described_by_nodes":Array[NodePath]([]),"accessibility_labeled_by_nodes":Array[NodePath]([]),"accessibility_flow_to_nodes":Array[NodePath]([]),"theme":null,"theme_type_variation":&"","texture":SubResource("PlaceholderTexture2D_7c27l"),"expand_mode":1,"stretch_mode":0,"flip_h":false,"flip_v":false,"script":null)
 
 script = ExtResource("1_hjuur")
 costParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked/CostParent")
@@ -163,7 +163,7 @@ weaponRangeText = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescPare
 weaponDetailsParent = NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/Icons/TargetingAndSpeedIcons")
 Details = [NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/nameLabel"), NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/descLabel"), NodePath("ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent")]
 
-[node name="ContentParent" type="HBoxContainer" parent="."]
+[node name="ContentParent" type="HBoxContainer" parent="." unique_id=1296552742]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -174,41 +174,41 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="spacer" type="Control" parent="ContentParent"]
+[node name="spacer" type="Control" parent="ContentParent" unique_id=819161508]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentParent"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentParent" unique_id=414436793]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="spacer" type="Control" parent="ContentParent/VBoxContainer"]
+[node name="spacer" type="Control" parent="ContentParent/VBoxContainer" unique_id=1046831999]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="WeaponInfo" type="HBoxContainer" parent="ContentParent/VBoxContainer"]
+[node name="WeaponInfo" type="HBoxContainer" parent="ContentParent/VBoxContainer" unique_id=435106861]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="IconParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo"]
+[node name="IconParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo" unique_id=1516679856]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Control" type="Control" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent"]
+[node name="Control" type="Control" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent" unique_id=684452843]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/Control"]
+[node name="Icon" type="TextureRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/Control" unique_id=1297500153]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 texture = SubResource("PlaceholderTexture2D_7c27l")
 expand_mode = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/Control"]
+[node name="NinePatchRect" type="NinePatchRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/Control" unique_id=1777911638]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -221,20 +221,20 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent" unique_id=403182383]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ContentParent/VBoxContainer/WeaponInfo/IconParent/HBoxContainer" unique_id=273243354]
 layout_mode = 2
 
-[node name="TitleDescParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo"]
+[node name="TitleDescParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo" unique_id=1695750803]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent" unique_id=569862337]
 layout_mode = 2
 
-[node name="nameLabel" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
+[node name="nameLabel" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer" unique_id=1976861004]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_bottom = NodePath("../../descLabel")
@@ -243,45 +243,45 @@ label_settings = SubResource("LabelSettings_45xnl")
 script = ExtResource("6_iwu8o")
 tooltip = "detail_weapontitle"
 
-[node name="Range" type="PanelContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer"]
+[node name="Range" type="PanelContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer" unique_id=439234003]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_type_variation = &"SubPanel2"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range" unique_id=870093720]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="RangeTitleColon" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer"]
+[node name="RangeTitleColon" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer" unique_id=871339606]
 layout_mode = 2
 text = "ui_range_title"
 label_settings = SubResource("LabelSettings_tt2ax")
 
-[node name="RangeText" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer"]
+[node name="RangeText" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/HBoxContainer/Range/HBoxContainer" unique_id=894439891]
 layout_mode = 2
 text = "1 - 2"
 label_settings = SubResource("LabelSettings_tt2ax")
 
-[node name="WeaponDetails3" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent"]
+[node name="WeaponDetails3" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent" unique_id=1100238424]
 layout_mode = 2
 
-[node name="StatChangeDetailParent" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3"]
+[node name="StatChangeDetailParent" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3" unique_id=278214189]
 layout_mode = 2
 script = ExtResource("6_iwu8o")
 tooltip = "ui_stats_gained_while_equipped"
 
-[node name="StatChanges" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent"]
+[node name="StatChanges" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/StatChangeDetailParent" unique_id=1139514962]
 layout_mode = 2
 script = ExtResource("4_dmmxr")
 
-[node name="Icons" type="Panel" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3"]
+[node name="Icons" type="Panel" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3" unique_id=413895519]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"SubPanel2"
 
-[node name="TargetingAndSpeedIcons" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/Icons"]
+[node name="TargetingAndSpeedIcons" type="HBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent/WeaponDetails3/Icons" unique_id=609753549]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -295,7 +295,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_dmmxr")
 
-[node name="descLabel" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent"]
+[node name="descLabel" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/TitleDescParent" unique_id=986295239]
 custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 size_flags_vertical = 3
@@ -306,17 +306,17 @@ autowrap_mode = 2
 script = ExtResource("6_iwu8o")
 tooltip = "detail_weapondesc"
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/WeaponInfo"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/WeaponInfo" unique_id=441301380]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_override_constants/margin_bottom = 8
 
-[node name="Panel" type="Panel" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer"]
+[node name="Panel" type="Panel" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer" unique_id=163524108]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_type_variation = &"SubPanel2"
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel" unique_id=406479373]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,15 +328,15 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Locked" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer"]
+[node name="Locked" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer" unique_id=1738644987]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked"]
+[node name="Label" type="Label" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked" unique_id=957461332]
 layout_mode = 2
 text = "ui_unlockcolon"
 label_settings = SubResource("LabelSettings_c5bwg")
 
-[node name="CostParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked"]
+[node name="CostParent" type="VBoxContainer" parent="ContentParent/VBoxContainer/WeaponInfo/MarginContainer/Panel/MarginContainer/Locked" unique_id=581939205]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -344,14 +344,14 @@ size_flags_vertical = 4
 alignment = 1
 script = ExtResource("4_dmmxr")
 
-[node name="Panel" type="Panel" parent="ContentParent/VBoxContainer"]
+[node name="Panel" type="Panel" parent="ContentParent/VBoxContainer" unique_id=595441392]
 show_behind_parent = true
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 theme_type_variation = &"SubPanel1"
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/Panel"]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="ContentParent/VBoxContainer/Panel" unique_id=669224380]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 4.0
 offset_right = 494.0
@@ -361,25 +361,25 @@ grow_vertical = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 6
 
-[node name="CanUse" type="HBoxContainer" parent="ContentParent/VBoxContainer/Panel/MarginContainer"]
+[node name="CanUse" type="HBoxContainer" parent="ContentParent/VBoxContainer/Panel/MarginContainer" unique_id=1009898748]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="ContentParent/VBoxContainer/Panel/MarginContainer/CanUse"]
+[node name="Label" type="Label" parent="ContentParent/VBoxContainer/Panel/MarginContainer/CanUse" unique_id=1684404660]
 layout_mode = 2
 text = "loc_canuse"
 label_settings = SubResource("LabelSettings_jpibv")
 
-[node name="CanUseParent" type="HBoxContainer" parent="ContentParent/VBoxContainer/Panel/MarginContainer/CanUse"]
+[node name="CanUseParent" type="HBoxContainer" parent="ContentParent/VBoxContainer/Panel/MarginContainer/CanUse" unique_id=2128274699]
 layout_mode = 2
 script = ExtResource("4_dmmxr")
 
-[node name="spacer2" type="Control" parent="ContentParent"]
+[node name="spacer2" type="Control" parent="ContentParent" unique_id=928447132]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 
-[node name="LockedParent" type="ColorRect" parent="."]
+[node name="LockedParent" type="ColorRect" parent="." unique_id=1713902740]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -388,7 +388,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.24, 0.22776, 0.1992, 0.796078)
 
-[node name="Offset" type="Control" parent="LockedParent"]
+[node name="Offset" type="Control" parent="LockedParent" unique_id=1550573139]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -396,7 +396,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="LockedParent/Offset"]
+[node name="TextureRect" type="TextureRect" parent="LockedParent/Offset" unique_id=1815624845]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -411,7 +411,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_c5bwg")
 
-[node name="Label" type="Label" parent="LockedParent/Offset"]
+[node name="Label" type="Label" parent="LockedParent/Offset" unique_id=91750860]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -428,7 +428,7 @@ text = "Locked Until Level 3"
 label_settings = SubResource("LabelSettings_sxtjg")
 horizontal_alignment = 1
 
-[node name="UnlockedParent" type="ColorRect" parent="."]
+[node name="UnlockedParent" type="ColorRect" parent="." unique_id=580528506]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -437,7 +437,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.949, 0.83, 0)
 
-[node name="Offset" type="Control" parent="UnlockedParent"]
+[node name="Offset" type="Control" parent="UnlockedParent" unique_id=1269897227]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -445,7 +445,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UnlockedParent/Offset"]
+[node name="Label" type="Label" parent="UnlockedParent/Offset" unique_id=1347940619]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -463,9 +463,7 @@ text = "Unlocked!"
 label_settings = SubResource("LabelSettings_sxtjg")
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_sxtjg")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=29205974]
+libraries/ = SubResource("AnimationLibrary_sxtjg")
 
 [connection signal="pressed" from="." to="." method="OnButtonPressed"]

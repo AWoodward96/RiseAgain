@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7ci676xl78sm"]
+[gd_scene format=3 uid="uid://b7ci676xl78sm"]
 
 [ext_resource type="Script" uid="uid://cxby0m8r0m8la" path="res://RESOURCES/UI/MapObjectivePanel.gd" id="1_l2pes"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_gf1h0"]
@@ -10,14 +10,14 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="Optional1" type="Panel" node_paths=PackedStringArray("objectiveText", "completedParent")]
+[node name="Optional1" type="Panel" unique_id=1630114564 node_paths=PackedStringArray("objectiveText", "completedParent")]
 custom_minimum_size = Vector2(0, 48)
 theme_type_variation = &"SubPanel3"
 script = ExtResource("1_l2pes")
 objectiveText = NodePath("MarginContainer/OptionalObjective")
 completedParent = NodePath("MarginContainer/OptionalObjective/OptionalObjectiveComplete")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=440634777]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,11 +29,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 2
 
-[node name="OptionalObjective" type="Label" parent="MarginContainer"]
+[node name="OptionalObjective" type="Label" parent="MarginContainer" unique_id=1730735056]
 layout_mode = 2
 text = "Slay All Enemies"
 
-[node name="OptionalObjectiveComplete" type="Label" parent="MarginContainer/OptionalObjective"]
+[node name="OptionalObjectiveComplete" type="Label" parent="MarginContainer/OptionalObjective" unique_id=1182606451]
 layout_mode = 0
 offset_left = 268.0
 offset_top = -24.0

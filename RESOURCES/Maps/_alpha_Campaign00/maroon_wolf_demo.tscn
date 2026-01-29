@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c3wejxre08pq2"]
+[gd_scene format=4 uid="uid://c3wejxre08pq2"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_pik88"]
 [ext_resource type="Resource" uid="uid://dm5toftpq6eup" path="res://RESOURCES/Maps/BiomeData/Maroon_Forest_Standard.tres" id="2_wka0b"]
@@ -26,48 +26,24 @@
 
 [sub_resource type="Resource" id="Resource_1u085"]
 script = ExtResource("18_jyqfc")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_jto7i"]
 script = ExtResource("18_jyqfc")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_8tche"]
 script = ExtResource("18_jyqfc")
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_e8n5s"]
 script = ExtResource("21_cfbar")
 TurnsToAggro = 1
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_wtpf7"]
 script = ExtResource("21_cfbar")
 TurnsToAggro = 2
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_cyewq"]
 script = ExtResource("21_cfbar")
 TurnsToAggro = 1
-TargetingFlags = 1
-RangeOverride = 0
-WeaponRangeAggros = true
-DamageAggros = true
 
 [sub_resource type="Resource" id="Resource_ceg4b"]
 script = ExtResource("24_n1a7j")
@@ -76,7 +52,7 @@ positionToMoveTo = Vector2i(11, 0)
 [sub_resource type="Resource" id="Resource_hrfmh"]
 script = ExtResource("20_lo64v")
 
-[node name="maroon_wolf_showcase" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="maroon_wolf_showcase" type="Node2D" unique_id=503846854 node_paths=PackedStringArray("tilemap_bg", "tilemap_water", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_pik88")
 GridSize = Vector2i(16, 10)
 CameraStart = Vector2(3, 8)
@@ -93,68 +69,68 @@ squadParent = NodePath("Squads")
 StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
 
-[node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
+[node name="DebugSize" type="Line2D" parent="." unique_id=237685310 node_paths=PackedStringArray("map")]
 points = PackedVector2Array(0, 0, 1024, 0, 1024, 640, 0, 640, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
 script = ExtResource("6_8xuxs")
 map = NodePath("..")
 
-[node name="Water" type="TileMapLayer" parent="."]
+[node name="Water" type="TileMapLayer" parent="." unique_id=1661325645]
 z_index = -6
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAGAAMAAAAEAAcAAAAHAAMAAAAEAAcAAAAHAAQAAQANAAwAAAAIAAQAAAAEAAcAAAAJAAQAAAAEAAcAAAAKAAQAAAAEAAcAAAALAAQAAAAEAAcAAAAMAAQAAAAEAAcAAAANAAQAAAAEAAcAAAAOAAQAAAAEAAcAAAAPAAQAAAAEAAcAAAAAAAUAAQANAAwAAAABAAUAAQANAAwAAAACAAUAAQANAAwAAAADAAUAAQANAAwAAAAEAAUAAQANAAwAAAAFAAYAAAAEAAcAAAAGAAYAAAAEAAcAAAAHAAYAAAAEAAcAAAAIAAYAAAAEAAcAAAAJAAYAAAAEAAcAAAAKAAYAAAAEAAcAAAALAAYAAAAEAAcAAAAMAAYAAAAEAAcAAAANAAYAAAAEAAcAAAANAAcAAAAEAAcAAAAOAAcAAAAEAAcAAAAPAAcAAAAEAAcAAAAAAAQAAQANAAwAAAABAAQAAQANAAwAAAAEAAQAAQANAAwAAAAFAAQAAQANAAwAAAAGAAQAAQANAAwAAAAGAAUAAQANAAwAAAAFAAUAAQANAAwAAAAHAAUAAQANAAwAAAAIAAUAAQANAAwAAAAJAAUAAQANAAwAAAAKAAUAAQANAAwAAAANAAUAAQANAAwAAAAOAAUAAQANAAwAAAAPAAUAAQANAAwAAAAPAAYAAQANAAwAAAAOAAYAAQANAAwAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAACAAAAAAAGAAAAAAACAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAACAAAAAAAHAAIAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAACAAAAAAABAAAAAAAAAAEAAAAAAAAAAAABAAEAAAACAAAAAAACAAEAAAAAAAAAAAAAAAIAAAABAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAACAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAACAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAABAAAAAAALAAMAAAAEAAcAAAAMAAAAAAACAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAOAAIAAAAAAAAAAAAMAAMAAAAEAAcAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAABAAAAAAAPAAMAAAACAAAAAAAIAAMAAAABAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAEAAcAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAABAAAAAAABAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAkAAAABAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAkAAAACAAAAAAAJAAgAAAABAAAAAAAJAAcAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAACAAAAAAAIAAcAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAcAAAABAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAACAAAAAAAGAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAPAAkAAAABAAAAAAAPAAgAAAABAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAAAAAMAAAAEAAcAAAABAAMAAAAEAAcAAAACAAMAAAAEAAcAAAADAAMAAAAEAAcAAAAEAAMAAAAEAAcAAAAFAAMAAAAEAAcAAAALAAUAAQANAAwAAAAMAAUAAQANAAwAAAADAAQAAQANAAwAAAACAAQAAQANAAwAAAAEAAYAAAAEAAcAAAA=")
 tile_set = ExtResource("7_y2n5u")
 
-[node name="BG" type="TileMapLayer" parent="."]
+[node name="BG" type="TileMapLayer" parent="." unique_id=1998270669]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAMAAQAPAAgAAAABAAMAAQAPAAgAAAACAAMAAQAPAAgAAAADAAMAAQAPAAgAAAAEAAMAAQAPAAgAAAAFAAMAAQAPAAgAAAAGAAMAAQAPAAgAAAAHAAMAAQAPAAgAAAAIAAQAAQAOAAoAAAAJAAQAAQAPAAgAAAAKAAQAAQAPAAgAAAALAAQAAQAPAAgAAAAMAAQAAQAPAAgAAAANAAQAAQAPAAgAAAAOAAQAAQAPAAgAAAAPAAQAAQAPAAgAAAAAAAUAAQAOAAsAAAABAAUAAQAOAAsAAAACAAUAAQAOAAsAAAADAAUAAQAPAAkAAAAEAAYAAQAPAAsAAAAFAAYAAQAPAAsAAAAGAAYAAQAPAAsAAAAHAAYAAQAPAAsAAAAIAAYAAQAPAAsAAAAJAAYAAQAPAAsAAAAKAAYAAQAPAAsAAAALAAYAAQAPAAsAAAAMAAYAAQAPAAsAAAANAAYAAQAPAAkAAAANAAcAAQANAAsAAAAOAAcAAQAPAAsAAAAPAAcAAQAPAAsAAAAEAAAAAQADAAIAAAAEAAEAAQAFAAIAAAAEAAIAAQAEAAEAAAAFAAAAAQAFAAIAAAAFAAEAAQAFAAEAAAAFAAIAAQADAAEAAAAGAAAAAQAEAAEAAAAGAAEAAQAFAAEAAAAGAAIAAQAFAAEAAAAHAAAAAQAFAAIAAAAHAAEAAQAFAAIAAAAHAAIAAQAFAAIAAAAAAAAAAQAEAAEAAAABAAAAAQAFAAIAAAACAAAAAQAFAAIAAAAAAAEAAQADAAEAAAABAAEAAQADAAIAAAACAAEAAQAEAAEAAAAAAAIAAQAFAAEAAAABAAIAAQAFAAIAAAACAAIAAQAFAAIAAAADAAAAAQAFAAEAAAADAAEAAQAFAAIAAAADAAIAAQAEAAEAAAAIAAAAAQAFAAIAAAAIAAEAAQAFAAIAAAAIAAIAAQAEAAEAAAAJAAAAAQAFAAIAAAAKAAAAAQAEAAIAAAALAAAAAQADAAEAAAAJAAEAAQAEAAIAAAAKAAEAAQAFAAEAAAALAAEAAQAEAAEAAAAJAAIAAQAEAAIAAAAKAAIAAQAEAAIAAAALAAIAAQADAAIAAAAJAAMAAQAEAAIAAAAKAAMAAQAFAAEAAAALAAMAAQADAAEAAAAMAAAAAQADAAIAAAANAAAAAQAEAAEAAAAOAAAAAQAEAAIAAAAMAAEAAQAEAAEAAAANAAEAAQAFAAIAAAAOAAEAAQADAAEAAAAMAAIAAQAEAAIAAAANAAIAAQADAAEAAAAOAAIAAQAEAAIAAAAMAAMAAQADAAIAAAANAAMAAQAFAAEAAAAOAAMAAQAFAAEAAAAPAAIAAQAEAAIAAAAPAAEAAQAEAAEAAAAPAAAAAQADAAEAAAAPAAMAAQAFAAIAAAAIAAMAAQAQAAgAAAADAAkAAQAFAAIAAAADAAgAAQADAAEAAAADAAcAAQAEAAEAAAADAAYAAQANAAsAAAACAAkAAQADAAEAAAACAAgAAQADAAEAAAACAAcAAQAFAAIAAAACAAYAAQAFAAIAAAABAAkAAQAFAAEAAAABAAgAAQAFAAIAAAABAAcAAQAEAAEAAAABAAYAAQAEAAEAAAAAAAkAAQAEAAIAAAAAAAgAAQAFAAEAAAAAAAcAAQAEAAIAAAAAAAYAAQAFAAEAAAAMAAkAAQAFAAIAAAAMAAgAAQAEAAEAAAAMAAcAAQAEAAEAAAALAAkAAQAFAAEAAAALAAgAAQADAAIAAAALAAcAAQADAAEAAAAKAAkAAQADAAEAAAAKAAgAAQADAAIAAAAKAAcAAQADAAEAAAAJAAkAAQAEAAEAAAAJAAgAAQAEAAEAAAAJAAcAAQADAAIAAAAIAAkAAQAEAAEAAAAIAAgAAQADAAIAAAAIAAcAAQAFAAEAAAAHAAkAAQAEAAIAAAAHAAgAAQAEAAIAAAAHAAcAAQADAAEAAAAGAAkAAQAEAAEAAAAGAAgAAQAEAAEAAAAGAAcAAQAEAAIAAAAFAAkAAQAEAAEAAAAFAAgAAQADAAEAAAAFAAcAAQADAAEAAAAEAAkAAQADAAEAAAAEAAgAAQADAAEAAAAEAAcAAQAFAAIAAAAPAAkAAQAFAAIAAAAPAAgAAQAEAAIAAAAOAAkAAQADAAIAAAAOAAgAAQADAAEAAAANAAkAAQAFAAEAAAANAAgAAQADAAIAAAA=")
 tile_set = ExtResource("7_y2n5u")
 
-[node name="Main" type="TileMapLayer" parent="."]
+[node name="Main" type="TileMapLayer" parent="." unique_id=431572134]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAKAAAAAQAAAAgAAAAJAAAAAQAJAAIAAAAGAAAAAQAJAAIAAAAFAAAAAQAVAAMAAAAEAAAAAQAUAAMAAAADAAAAAQAIAAEAAAACAAAAAQAHAAEAAAABAAAAAQATAAEAAAAAAAAAAQASAAEAAAAKAAEAAQACAAkAAAAJAAEAAQAAAAcAAAAGAAEAAQAIAAIAAAAFAAEAAQAVAAQAAAAEAAEAAQAUAAQAAAABAAEAAQATAAIAAAAAAAEAAQASAAIAAAAPAAEAAQAVAAQAAAAPAAAAAQAVAAMAAAAOAAEAAQAUAAQAAAAOAAAAAQAUAAMAAAAPAAkAAQAJAAEAAAAOAAkAAQAHAAIAAAANAAkAAQAIAAEAAAAMAAkAAQAJAAIAAAALAAkAAQAJAAIAAAAKAAkAAQAIAAEAAAAJAAkAAQAIAAEAAAAIAAkAAQAIAAIAAAAHAAkAAQAHAAEAAAABAAkAAQAJAAEAAAAAAAkAAQAIAAIAAAAAAAgAAQACAAoAAAAAAAcAAQAAAAsAAAAHAAEAAQAUAAIAAAAIAAEAAQAVAAIAAAAIAAAAAQAVAAEAAAAHAAAAAQAUAAEAAAANAAAAAQADAAgAAAANAAEAAQADAAgAAAAKAAIAAQAAAAsAAAANAAIAAQADAAoAAAALAAAAAQAAAAsAAAAMAAAAAQAAAAsAAAAMAAEAAQAAAAsAAAAMAAIAAQABAAgAAAALAAIAAQAAAAsAAAALAAEAAQAAAAsAAAAIAAgAAQAJAAIAAAAIAAcAAQAIAAIAAAAKAAMAAQACAAoAAAALAAMAAQACAAoAAAAMAAMAAQADAAoAAAACAAYAAQADAAcAAAADAAcAAQABAAcAAAAEAAcAAQACAAcAAAAFAAcAAQACAAcAAAAJAAIAAQAAAAgAAAAJAAMAAQAAAAoAAAALAAcAAQAAAAsAAAALAAYAAQABAAcAAAAMAAYAAQADAAcAAAAMAAcAAQADAAgAAAAMAAgAAQADAAoAAAALAAgAAQABAAoAAAAKAAgAAQAAAAoAAAAKAAcAAQAAAAgAAAAKAAYAAQAAAAcAAAACAAcAAQABAAkAAAABAAgAAQACAAoAAAABAAcAAQAAAAsAAAABAAYAAQACAAcAAAAAAAYAAQACAAcAAAAGAAcAAQACAAcAAAAHAAcAAQADAAcAAAADAAgAAQACAAoAAAACAAgAAQABAAoAAAAEAAgAAQABAAoAAAAFAAgAAQABAAoAAAAGAAgAAQABAAoAAAAHAAgAAQADAAoAAAACAAkAAQAHAAIAAAADAAkAAQAJAAEAAAAEAAkAAQAIAAIAAAAFAAkAAQAHAAEAAAAGAAkAAQAIAAEAAAAKAP//AQAAAAcAAAALAP//AQABAAcAAAAMAP//AQACAAcAAAANAP//AQADAAcAAAAIAAYAAQAIAAEAAAA=")
 tile_set = ExtResource("7_y2n5u")
 
-[node name="Fire" type="TileMapLayer" parent="."]
+[node name="Fire" type="TileMapLayer" parent="." unique_id=2037879339]
 z_index = -2
 scale = Vector2(2, 2)
 tile_set = ExtResource("7_y2n5u")
 
-[node name="Threat" type="TileMapLayer" parent="."]
+[node name="Threat" type="TileMapLayer" parent="." unique_id=2050008938]
 use_parent_material = true
 tile_set = ExtResource("8_g3shn")
 navigation_enabled = false
 
-[node name="UI" type="TileMapLayer" parent="."]
+[node name="UI" type="TileMapLayer" parent="." unique_id=1390752192]
 z_index = -3
 use_parent_material = true
 tile_set = ExtResource("8_g3shn")
 
-[node name="C0Map1Leafmap" type="Sprite2D" parent="."]
+[node name="C0Map1Leafmap" type="Sprite2D" parent="." unique_id=793635920]
 z_index = 1
 material = ExtResource("9_j37v2")
 position = Vector2(512, 320)
 scale = Vector2(2, 2)
 texture = ExtResource("10_u332u")
 
-[node name="StartingPositions" type="Node2D" parent="."]
+[node name="StartingPositions" type="Node2D" parent="." unique_id=556320932]
 unique_name_in_owner = true
 
-[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("11_fjbig")]
+[node name="StartingPositionHelper" parent="StartingPositions" unique_id=94733470 node_paths=PackedStringArray("map") instance=ExtResource("11_fjbig")]
 position = Vector2(704, 128)
 Position = Vector2i(11, 2)
 map = NodePath("../..")
 
-[node name="Spawners" type="Node2D" parent="."]
+[node name="Spawners" type="Node2D" parent="." unique_id=1602728761]
 unique_name_in_owner = true
 
-[node name="Spawn_Bridge" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Bridge" type="Sprite2D" parent="Spawners" unique_id=2141010264]
 position = Vector2(320, 192)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -165,7 +141,7 @@ script = ExtResource("13_6fyc4")
 GridEntityPrefab = ExtResource("14_g7mde")
 Position = Vector2i(5, 3)
 
-[node name="Spawn_Bridge2" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Bridge2" type="Sprite2D" parent="Spawners" unique_id=1903502724]
 position = Vector2(704, 192)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -176,7 +152,7 @@ script = ExtResource("13_6fyc4")
 GridEntityPrefab = ExtResource("14_g7mde")
 Position = Vector2i(11, 3)
 
-[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Wolf Pup" type="Sprite2D" parent="Spawners" unique_id=702697766]
 position = Vector2(960, 192)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -191,7 +167,7 @@ Allegiance = 4
 AIBehavior = ExtResource("17_27dmo")
 AggroBehavior = SubResource("Resource_1u085")
 
-[node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners" unique_id=1936847099]
 position = Vector2(768, 64)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -205,7 +181,7 @@ Position = Vector2i(12, 1)
 AIBehavior = ExtResource("17_27dmo")
 AggroBehavior = SubResource("Resource_jto7i")
 
-[node name="Spawn_Wolf Pup6" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Wolf Pup6" type="Sprite2D" parent="Spawners" unique_id=1010127016]
 position = Vector2(704, 64)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -220,7 +196,7 @@ Allegiance = 1
 AIBehavior = ExtResource("17_27dmo")
 AggroBehavior = SubResource("Resource_8tche")
 
-[node name="Spawn_Wolf Pup7" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Wolf Pup7" type="Sprite2D" parent="Spawners" unique_id=610839963]
 position = Vector2(640, 448)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -234,7 +210,7 @@ Position = Vector2i(10, 7)
 AIBehavior = ExtResource("17_27dmo")
 AggroBehavior = SubResource("Resource_e8n5s")
 
-[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_AdolescentWolf" type="Sprite2D" parent="Spawners" unique_id=1319269094]
 position = Vector2(640, 192)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -248,7 +224,7 @@ Position = Vector2i(10, 3)
 AIBehavior = ExtResource("17_27dmo")
 AggroBehavior = SubResource("Resource_wtpf7")
 
-[node name="Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners" unique_id=1644279493]
 position = Vector2(768, 192)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -263,7 +239,7 @@ Allegiance = 1
 AIBehavior = ExtResource("17_27dmo")
 AggroBehavior = SubResource("Resource_cyewq")
 
-[node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_PrizedBuck" type="Sprite2D" parent="Spawners" unique_id=1714872962]
 position = Vector2(0, 512)
 texture = ExtResource("12_va6nv")
 centered = false
@@ -276,6 +252,6 @@ Position = Vector2i(0, 8)
 AIBehavior = SubResource("Resource_ceg4b")
 AggroBehavior = SubResource("Resource_hrfmh")
 
-[node name="Variants" type="Node2D" parent="."]
+[node name="Variants" type="Node2D" parent="." unique_id=583859054]
 
-[node name="Squads" type="Node2D" parent="."]
+[node name="Squads" type="Node2D" parent="." unique_id=393393343]

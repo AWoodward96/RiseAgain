@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpecificLootTable" load_steps=9 format=3 uid="uid://uq0w3nwxd8a"]
+[gd_resource type="Resource" script_class="SpecificLootTable" format=3 uid="uid://uq0w3nwxd8a"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_2m1iq"]
 [ext_resource type="Resource" uid="uid://ckn2gmate3jr1" path="res://RESOURCES/LootTable/LT_AllUnits.tres" id="2_2m1iq"]

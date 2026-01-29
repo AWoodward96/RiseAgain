@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://fgulsonfegwc"]
+[gd_scene format=3 uid="uid://fgulsonfegwc"]
 
 [ext_resource type="Script" uid="uid://dgehid3y061rd" path="res://SCRIPTS/GridEntities/GEStaticAreaOfEffect.gd" id="1_rymhw"]
 [ext_resource type="Resource" uid="uid://dijpp22v65c5v" path="res://RESOURCES/TargetingShapes/flamewall_shape.tres" id="2_o5a81"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cshn5ytjqp8ps" path="res://ART/temp_flamewall.png" id="5_rymhw"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_kw844"]
 
-[node name="FlameWallEntity" type="Node2D" node_paths=PackedStringArray("damage_data")]
+[node name="FlameWallEntity" type="Node2D" unique_id=1909437585 node_paths=PackedStringArray("damage_data")]
 script = ExtResource("1_rymhw")
 shaped_tiles = ExtResource("2_o5a81")
 damage_interval = 1
@@ -17,13 +17,13 @@ UpdatePerTeamTurn = true
 localization_icon = ExtResource("3_o5a81")
 localization_desc = "ui_flamewall_effectdesc"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=545272888]
 z_index = -2
 scale = Vector2(2, 2)
 texture = ExtResource("5_rymhw")
 offset = Vector2(16, 16)
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=1784787031]
 script = ExtResource("5_o0hsu")
 AgressiveStat = ExtResource("6_kw844")
 AgressiveModType = 2

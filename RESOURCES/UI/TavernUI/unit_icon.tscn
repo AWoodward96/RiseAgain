@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://hkrdforcue3c"]
+[gd_scene format=3 uid="uid://hkrdforcue3c"]
 
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="1_g3vjk"]
 
-[node name="UnitIcon" type="TextureRect"]
+[node name="UnitIcon" type="TextureRect" unique_id=2126371771]
 custom_minimum_size = Vector2(64, 64)
 texture = ExtResource("1_g3vjk")
 expand_mode = 1

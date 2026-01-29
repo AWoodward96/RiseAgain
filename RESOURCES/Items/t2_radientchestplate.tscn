@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bf3484ldvsvyh"]
+[gd_scene format=3 uid="uid://bf3484ldvsvyh"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_gybgy"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_djr7b"]
@@ -29,8 +29,6 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 
 [sub_resource type="Resource" id="Resource_8ny3v"]
 script = ExtResource("5_umh07")
-useAttackAction = false
-useDefendAction = false
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
 [sub_resource type="Resource" id="Resource_1phwj"]
@@ -47,7 +45,7 @@ script = ExtResource("4_uw3xn")
 Template = ExtResource("6_45i4p")
 Value = 1
 
-[node name="t2_radientchestplate" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "UsableDamageData", "StatData")]
+[node name="t2_radientchestplate" type="Node2D" unique_id=721903277 node_paths=PackedStringArray("passiveListeners", "TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_gybgy")
 executionStack = Array[ExtResource("2_djr7b")]([SubResource("Resource_pgvvs"), SubResource("Resource_4bbon"), SubResource("Resource_8ny3v"), SubResource("Resource_1phwj")])
 passiveListeners = [NodePath("TurnStartListener")]
@@ -59,21 +57,21 @@ TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1467199634]
 script = ExtResource("3_d6ieq")
 GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_1p6p3"), SubResource("Resource_i2krh")])
 
-[node name="TurnStartListener" type="Node2D" parent="."]
+[node name="TurnStartListener" type="Node2D" parent="." unique_id=54108235]
 script = ExtResource("6_qcb2q")
 metadata/_custom_type_script = "uid://ti5l0tu2c64"
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1258728569]
 script = ExtResource("8_0rk80")
 Type = 1
 shapedTiles = ExtResource("13_djr7b")
 metadata/_custom_type_script = "uid://bqu21cvg4s6wk"
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=1347851746]
 script = ExtResource("16_i2krh")
 AgressiveStat = ExtResource("17_umh07")
 AgressiveModType = 2

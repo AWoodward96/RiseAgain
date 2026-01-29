@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://civyu43ep0hvd"]
+[gd_scene format=3 uid="uid://civyu43ep0hvd"]
 
 [ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_uimmc"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_la0o7"]
@@ -18,7 +18,7 @@ font_color = Color(1, 0.987167, 0.23, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="StatBlockEntry" type="Panel" node_paths=PackedStringArray("icon", "statValue", "statIncreaseLabel", "detailElement")]
+[node name="StatBlockEntry" type="Panel" unique_id=1006032742 node_paths=PackedStringArray("icon", "statValue", "statIncreaseLabel", "detailElement")]
 custom_minimum_size = Vector2(96, 36)
 offset_right = 64.0
 offset_bottom = 36.0
@@ -29,8 +29,8 @@ statValue = NodePath("MarginContainer/HBoxContainer/Amount")
 statIncreaseLabel = NodePath("MarginContainer/HBoxContainer/Amount/Increase")
 detailElement = NodePath("MarginContainer/HBoxContainer/TextureRect")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=882950396]
+layout_mode = 0
 offset_right = 85.0
 offset_bottom = 32.0
 theme_override_constants/margin_left = 5
@@ -38,11 +38,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=760160899]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1522561130]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_la0o7")
@@ -50,14 +50,14 @@ expand_mode = 1
 stretch_mode = 4
 script = ExtResource("3_61gpj")
 
-[node name="Amount" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Amount" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2097383483]
 layout_mode = 2
 text = "+1"
 label_settings = SubResource("LabelSettings_3432u")
 
-[node name="Increase" type="Label" parent="MarginContainer/HBoxContainer/Amount"]
+[node name="Increase" type="Label" parent="MarginContainer/HBoxContainer/Amount" unique_id=287361184]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 16.0
 offset_top = -15.0
 offset_right = 36.0

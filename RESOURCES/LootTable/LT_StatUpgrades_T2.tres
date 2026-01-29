@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=16 format=3 uid="uid://dxmfykblv6h0t"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://dxmfykblv6h0t"]
 
 [ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_oew6d"]
 [ext_resource type="PackedScene" uid="uid://bxiuhj8btbjy8" path="res://RESOURCES/Items/t2_bitterblade.tscn" id="2_ybnvy"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5i8xff3y8gud"]
+[gd_scene format=3 uid="uid://c5i8xff3y8gud"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_2swyf"]
 [ext_resource type="Script" uid="uid://ci22alqdg8lus" path="res://SCRIPTS/UI/General/ConfirmPurchaseFullscreenUI.gd" id="2_3e5q4"]
@@ -10,7 +10,7 @@
 font = ExtResource("4_dhl1n")
 font_size = 32
 
-[node name="ConfirmPurchaseUI" type="Control" node_paths=PackedStringArray("focusButton", "costEntryParent")]
+[node name="ConfirmPurchaseUI" type="Control" unique_id=520683474 node_paths=PackedStringArray("focusButton", "costEntryParent")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ costEntryParent = NodePath("Panel/MarginContainer/VBoxContainer/Cost")
 costEntryPrefab = ExtResource("3_dhl1n")
 Priority = 100
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1875476709]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16, 0.14032, 0.0944, 0.34902)
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1058125864]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,7 +47,7 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=121382363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,23 +59,23 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1352315944]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Cost" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Cost" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=569537875]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_nwte5")
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1550360434]
 layout_mode = 2
 text = "ui_confirm_purchase"
 label_settings = SubResource("LabelSettings_xruh1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1498627388]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,14 +90,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="Cancel" type="Button" parent="Panel/HBoxContainer"]
+[node name="Cancel" type="Button" parent="Panel/HBoxContainer" unique_id=881183084]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "ui_no"
 icon_alignment = 1
 expand_icon = true
 
-[node name="Confirm" type="Button" parent="Panel/HBoxContainer"]
+[node name="Confirm" type="Button" parent="Panel/HBoxContainer" unique_id=27937995]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "ui_yes"

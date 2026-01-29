@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=44 format=3 uid="uid://lg62tv8pvma7"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://lg62tv8pvma7"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_6eonn"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_cpwsp"]
@@ -66,38 +66,6 @@ Value = 1.0
 script = ExtResource("2_cpwsp")
 Template = ExtResource("12_4i7q3")
 Value = 1.0
-
-[sub_resource type="Resource" id="Resource_kpxsb"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("3_5vblj")
-
-[sub_resource type="Resource" id="Resource_4i7q3"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("4_rp5r5")
-
-[sub_resource type="Resource" id="Resource_g8lhr"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("5_kpxsb")
-
-[sub_resource type="Resource" id="Resource_7tp3k"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("6_4i7q3")
-
-[sub_resource type="Resource" id="Resource_vpkiq"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("7_8cpcd")
-
-[sub_resource type="Resource" id="Resource_05oah"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("9_uvyoa")
-
-[sub_resource type="Resource" id="Resource_837wf"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("11_kpxsb")
-
-[sub_resource type="Resource" id="Resource_j2pbe"]
-script = ExtResource("2_cpwsp")
-Template = ExtResource("12_4i7q3")
 
 [sub_resource type="Resource" id="Resource_en8u8"]
 script = ExtResource("2_cpwsp")

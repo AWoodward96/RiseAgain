@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo53wngqa8non"]
+[gd_scene format=3 uid="uid://bo53wngqa8non"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_bn3se"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_flx47"]
@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 script = ExtResource("4_3ef5x")
 GridEntityPrefab = ExtResource("3_gsr8n")
 
-[node name="ART_summonroots" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="ART_summonroots" type="Node2D" unique_id=1517051413 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_bn3se")
 abilityCooldown = 5
 executionStack = Array[ExtResource("2_flx47")]([SubResource("Resource_bn3se"), SubResource("Resource_tovoj")])
@@ -29,7 +29,7 @@ icon = ExtResource("5_x8nb5")
 TargetingTemplate = ExtResource("7_bn3se")
 TargetingData = NodePath("TargetingData")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=388444009]
 script = ExtResource("6_01leg")
 TeamTargeting = 2
 TargetRange = Vector2i(1, 3)

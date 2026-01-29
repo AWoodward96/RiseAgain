@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpb8l34cffsly"]
+[gd_scene format=3 uid="uid://bpb8l34cffsly"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_213k1"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_t0uq6"]
@@ -27,7 +27,7 @@ script = ExtResource("3_t0uq6")
 Template = ExtResource("8_c3mvv")
 Value = 1
 
-[node name="t2_vampblade" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "StatData", "HealData")]
+[node name="t2_vampblade" type="Node2D" unique_id=276953826 node_paths=PackedStringArray("passiveListeners", "TargetingData", "StatData", "HealData")]
 script = ExtResource("1_213k1")
 executionStack = Array[ExtResource("6_dgep0")]([SubResource("Resource_6oqpg")])
 passiveListeners = [NodePath("PassiveUnitDeathListener")]
@@ -39,25 +39,25 @@ TargetingData = NodePath("SkillTargetingData")
 StatData = NodePath("ItemStatComponent")
 HealData = NodePath("HealComponent")
 
-[node name="PassiveUnitDeathListener" type="Node2D" parent="."]
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=685422945]
 script = ExtResource("5_2qjh2")
 reqKilledByUser = true
 triggerAbilityStack = true
 metadata/_custom_type_script = "uid://dwybkjr1cr223"
 
-[node name="HealComponent" type="Node2D" parent="."]
+[node name="HealComponent" type="Node2D" parent="." unique_id=890563498]
 script = ExtResource("7_gq2fy")
 ScalingStat = ExtResource("7_lce1q")
 ScalingModType = 2
 ScalingMod = 0.1
 metadata/_custom_type_script = "uid://my6pk2oy4yv6"
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1167457267]
 script = ExtResource("11_hd3uk")
 TeamTargeting = 0
 Type = 3
 metadata/_custom_type_script = "uid://bqu21cvg4s6wk"
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=239948688]
 script = ExtResource("13_tftnf")
 GrantedStats = Array[ExtResource("3_t0uq6")]([SubResource("Resource_c3mvv"), SubResource("Resource_tftnf")])

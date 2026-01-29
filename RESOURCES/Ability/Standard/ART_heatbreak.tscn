@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bysotjnllb6fb"]
+[gd_scene format=3 uid="uid://bysotjnllb6fb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fxrtx"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_3bkcf"]
@@ -20,7 +20,7 @@ script = ExtResource("3_likao")
 GridEntityPrefab = ExtResource("4_bs4fn")
 metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 
-[node name="heatbreak" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="heatbreak" type="Node2D" unique_id=1259181849 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_fxrtx")
 abilityCooldown = 5
 ability_speed = 2
@@ -32,12 +32,12 @@ TargetingTemplate = ExtResource("6_bs4fn")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1521207116]
 script = ExtResource("2_3bkcf")
 AgressiveStat = ExtResource("7_yva3m")
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1651641042]
 script = ExtResource("5_yva3m")
 TeamTargeting = 2
 Type = 2

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignTemplate" load_steps=8 format=3 uid="uid://cqjw06nl7jdy4"]
+[gd_resource type="Resource" script_class="CampaignTemplate" format=3 uid="uid://cqjw06nl7jdy4"]
 
 [ext_resource type="Script" uid="uid://bjwkg4cb6y7vw" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="1_1ik6p"]
 [ext_resource type="Texture2D" uid="uid://dnrv84l38b3db" path="res://ART/Icons/Route/maroon_forest.png" id="1_8wexp"]

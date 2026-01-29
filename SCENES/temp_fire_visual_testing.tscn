@@ -1,8 +1,7 @@
-[gd_scene load_steps=73 format=3 uid="uid://kqo4cuha58fq"]
+[gd_scene format=3 uid="uid://kqo4cuha58fq"]
 
 [ext_resource type="Texture2D" uid="uid://2r1jmihr5im0" path="res://ART/Grid/tmp_fire_tiles_64.png" id="1_ajc33"]
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_sodqj"]
-[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="2_nwu8q"]
 [ext_resource type="Texture2D" uid="uid://cjuonw20ub5yw" path="res://ART/UI/icon_has_loot.png" id="4_41o3b"]
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="4_l6a3e"]
 [ext_resource type="Texture2D" uid="uid://dilxnpnqkcann" path="res://ART/UI/icon_is_boss.png" id="5_ed2jv"]
@@ -944,14 +943,14 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=314434292]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2118387449]
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_v6mkp")
 frame_progress = 0.12772955
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimatedSprite2D"]
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimatedSprite2D" unique_id=1535825707]
 position = Vector2(-1, -2)
 emission_shape = 3
 emission_rect_extents = Vector2(32, 32)
@@ -961,46 +960,43 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 41.4
 initial_velocity_max = 41.45
 
-[node name="UnitInstance" type="Node2D" parent="." node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "LeapSound", "LandSound")]
+[node name="UnitInstance" type="Node2D" parent="." unique_id=950540613 node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound")]
 y_sort_enabled = true
 script = ExtResource("1_sodqj")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
 combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
-focusSlotPrefab = ExtResource("2_nwu8q")
 hasLootIcon = NodePath("HasLoot")
 isBossIcon = NodePath("Boss")
 takeDamageSound = NodePath("Audio/TakeDamage")
 takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
 footstepsSound = NodePath("Audio/FootSteps")
 deathSound = NodePath("Audio/Death")
-LeapSound = NodePath("Audio/LeapWoosh")
-LandSound = NodePath("Audio/Land")
 
-[node name="Visual" type="Node2D" parent="UnitInstance"]
+[node name="Visual" type="Node2D" parent="UnitInstance" unique_id=452477296]
 y_sort_enabled = true
 
-[node name="visKnight" type="Node2D" parent="UnitInstance/Visual" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="visKnight" type="Node2D" parent="UnitInstance/Visual" unique_id=453428911 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("4_l6a3e")
 AnimationCTRL = NodePath("AnimationPlayer")
 AnimationWorkComplete = true
 
-[node name="Area2D" type="Area2D" parent="UnitInstance/Visual/visKnight"]
+[node name="Area2D" type="Area2D" parent="UnitInstance/Visual/visKnight" unique_id=1197615522]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UnitInstance/Visual/visKnight/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnitInstance/Visual/visKnight/Area2D" unique_id=335726862]
 visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")
 
-[node name="Sprite2D" type="Sprite2D" parent="UnitInstance/Visual/visKnight"]
+[node name="Sprite2D" type="Sprite2D" parent="UnitInstance/Visual/visKnight" unique_id=810688780]
 visible = false
 modulate = Color(0, 0.624744, 0.890521, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_wvql6")
 centered = false
 
-[node name="Visual" type="AnimatedSprite2D" parent="UnitInstance/Visual/visKnight"]
+[node name="Visual" type="AnimatedSprite2D" parent="UnitInstance/Visual/visKnight" unique_id=887377816]
 material = SubResource("ShaderMaterial_txt21")
 position = Vector2(32, 16)
 scale = Vector2(2, 2)
@@ -1009,44 +1005,42 @@ animation = &"attack_down"
 autoplay = "idle"
 offset = Vector2(-5, 6)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UnitInstance/Visual/visKnight"]
-libraries = {
-&"": SubResource("AnimationLibrary_nyw57")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UnitInstance/Visual/visKnight" unique_id=1421919119]
+libraries/ = SubResource("AnimationLibrary_nyw57")
 
-[node name="Abilities" type="Node2D" parent="UnitInstance"]
+[node name="Abilities" type="Node2D" parent="UnitInstance" unique_id=1505328992]
 
-[node name="Items" type="Node2D" parent="UnitInstance"]
+[node name="Items" type="Node2D" parent="UnitInstance" unique_id=1993434516]
 
-[node name="Effects" type="Node2D" parent="UnitInstance"]
+[node name="Effects" type="Node2D" parent="UnitInstance" unique_id=2130616640]
 
-[node name="Audio" type="Node2D" parent="UnitInstance"]
+[node name="Audio" type="Node2D" parent="UnitInstance" unique_id=1240938073]
 
-[node name="TakeDamage" type="FmodEventEmitter2D" parent="UnitInstance/Audio"]
+[node name="TakeDamage" type="FmodEventEmitter2D" parent="UnitInstance/Audio" unique_id=2025217620]
 event_name = "event:/SFX/Combat_TakeDamage_Standard"
 event_guid = "{0f552edb-29ad-4bdf-bb22-bfdd97ba4b91}"
 
-[node name="TakeLethalDamage" type="FmodEventEmitter2D" parent="UnitInstance/Audio"]
+[node name="TakeLethalDamage" type="FmodEventEmitter2D" parent="UnitInstance/Audio" unique_id=608633035]
 event_name = "event:/SFX/Combat_TakeDamage_Kill"
 event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 
-[node name="FootSteps" type="FmodEventEmitter2D" parent="UnitInstance/Audio"]
+[node name="FootSteps" type="FmodEventEmitter2D" parent="UnitInstance/Audio" unique_id=837673554]
 event_name = "event:/SFX/Units/Generic/Footsteps_Common"
 event_guid = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 
-[node name="Death" type="FmodEventEmitter2D" parent="UnitInstance/Audio"]
+[node name="Death" type="FmodEventEmitter2D" parent="UnitInstance/Audio" unique_id=576251393]
 event_name = "event:/SFX/Combat_Death"
 event_guid = "{e1fc6f52-a891-47fe-ba9c-ac9e8d8a9e5b}"
 
-[node name="LeapWoosh" type="FmodEventEmitter2D" parent="UnitInstance/Audio"]
+[node name="LeapWoosh" type="FmodEventEmitter2D" parent="UnitInstance/Audio" unique_id=1367563916]
 event_name = "event:/SFX/Units/Generic/Jump_Start"
 event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
 
-[node name="Land" type="FmodEventEmitter2D" parent="UnitInstance/Audio"]
+[node name="Land" type="FmodEventEmitter2D" parent="UnitInstance/Audio" unique_id=2113631394]
 event_name = "event:/SFX/Units/Generic/Jump_End"
 event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
 
-[node name="HasLoot" type="AnimatedSprite2D" parent="UnitInstance"]
+[node name="HasLoot" type="AnimatedSprite2D" parent="UnitInstance" unique_id=842620687]
 visible = false
 position = Vector2(59, 58)
 scale = Vector2(2, 2)
@@ -1054,7 +1048,7 @@ sprite_frames = SubResource("SpriteFrames_mmoxs")
 autoplay = "default"
 frame_progress = 0.326582
 
-[node name="Boss" type="AnimatedSprite2D" parent="UnitInstance"]
+[node name="Boss" type="AnimatedSprite2D" parent="UnitInstance" unique_id=1352517866]
 visible = false
 position = Vector2(59, 43)
 scale = Vector2(2, 2)
@@ -1062,7 +1056,7 @@ sprite_frames = SubResource("SpriteFrames_166fo")
 autoplay = "default"
 frame_progress = 0.57805
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1044316951]
 material = SubResource("CanvasItemMaterial_l6a3e")
 position = Vector2(30, 33)
 emitting = false

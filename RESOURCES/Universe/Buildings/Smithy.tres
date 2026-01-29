@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SmithyBuildingTemplate" load_steps=33 format=3 uid="uid://cko8hnks4se86"]
+[gd_resource type="Resource" script_class="SmithyBuildingTemplate" format=3 uid="uid://cko8hnks4se86"]
 
 [ext_resource type="Script" uid="uid://dhduwtb6q0cra" path="res://SCRIPTS/Universe/BastionBuildingLevelBase.gd" id="1_wv1kf"]
 [ext_resource type="Script" uid="uid://dcc20s8ey720x" path="res://SCRIPTS/Universe/Smithy/SmithyBuildingTemplate.gd" id="2_jl2rv"]

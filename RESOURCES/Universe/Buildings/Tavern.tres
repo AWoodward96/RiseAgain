@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TavernBuildingTemplate" load_steps=24 format=3 uid="uid://87vbepmdhmjx"]
+[gd_resource type="Resource" script_class="TavernBuildingTemplate" format=3 uid="uid://87vbepmdhmjx"]
 
 [ext_resource type="Script" uid="uid://dhduwtb6q0cra" path="res://SCRIPTS/Universe/BastionBuildingLevelBase.gd" id="1_xnj28"]
 [ext_resource type="Script" uid="uid://b4yw43e3u0lmj" path="res://SCRIPTS/Universe/Tavern/TavernBuildingTemplate.gd" id="2_nfyvs"]

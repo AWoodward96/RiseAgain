@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=55 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" format=3 uid="uid://bwy7m4cuq5x0f"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
 [ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]

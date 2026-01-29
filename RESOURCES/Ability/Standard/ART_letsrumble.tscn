@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b7f1m6vpdgchf"]
+[gd_scene format=3 uid="uid://b7f1m6vpdgchf"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_wj3ie"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_dthvd"]
@@ -42,7 +42,7 @@ ExecutionAnimString = "lets_rumble"
 HasStandardWindup = false
 metadata/_custom_type_script = "uid://d2kv0hjonny5c"
 
-[node name="letsrumble" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="letsrumble" type="Node2D" unique_id=1338770477 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_wj3ie")
 abilityCooldown = 2
 ability_speed = 1
@@ -57,18 +57,18 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 customAITargetingBehavior = ExtResource("10_qo1sr")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1033497854]
 script = ExtResource("2_dthvd")
 AgressiveStat = ExtResource("3_5qj0n")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1511872460]
 script = ExtResource("4_wselu")
 TeamTargeting = 2
 TargetRange = Vector2i(1, 6)
 Type = 1
 shapedTiles = ExtResource("5_ivcpd")
 
-[node name="AbilityMovementComponent" type="Node2D" parent="."]
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=1873780632]
 script = ExtResource("14_dulje")
 stoppedByWalls = false
 drawPath = false

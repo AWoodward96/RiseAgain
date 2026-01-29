@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectiveReward" load_steps=8 format=3 uid="uid://da3o0kjhor1b0"]
+[gd_resource type="Resource" script_class="ObjectiveReward" format=3 uid="uid://da3o0kjhor1b0"]
 
 [ext_resource type="Script" uid="uid://cs3g4pw3uf30e" path="res://SCRIPTS/Maps/Objectives/ObjectiveUnitsLeftAlive.gd" id="1_0ysnn"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="2_a2q3y"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba6ls0pu4git6"]
+[gd_scene format=3 uid="uid://ba6ls0pu4git6"]
 
 [ext_resource type="Script" uid="uid://b3rwui87fbvch" path="res://SCRIPTS/Universe/Tavern/TavernCharacterEntry.gd" id="1_qb2uk"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_sacn2"]
 [ext_resource type="LabelSettings" uid="uid://klboyvialx7" path="res://RESOURCES/Theme/TavernText.tres" id="3_8nmqy"]
 
-[node name="CharacterEntry" type="Control" node_paths=PackedStringArray("characterIcon", "characterName", "characterStatus", "characterRoom", "characterInParty", "selectedParent")]
+[node name="CharacterEntry" type="Control" unique_id=1167583948 node_paths=PackedStringArray("characterIcon", "characterName", "characterStatus", "characterRoom", "characterInParty", "selectedParent")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 3
 anchors_preset = 0
@@ -17,7 +17,7 @@ characterRoom = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/RoomLabel
 characterInParty = NodePath("MarginContainer/VBoxContainer2/HBoxContainer/CheckBox")
 selectedParent = NodePath("SelectParent")
 
-[node name="SelectParent" type="ColorRect" parent="."]
+[node name="SelectParent" type="ColorRect" parent="." unique_id=443024568]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.95, 0.921183, 0.817, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1919465423]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -39,49 +39,49 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=702409432]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2" unique_id=1865658616]
 layout_mode = 2
 
-[node name="ID2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="ID2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1522330085]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2/HBoxContainer/ID2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2/HBoxContainer/ID2" unique_id=1834117099]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("2_sacn2")
 expand_mode = 1
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer/ID2"]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer/ID2" unique_id=453750172]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "UnitName"
 label_settings = ExtResource("3_8nmqy")
 
-[node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1959907250]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Status"
 label_settings = ExtResource("3_8nmqy")
 
-[node name="RoomLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="RoomLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=554767592]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Room 3"
 label_settings = ExtResource("3_8nmqy")
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1823163473]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 flat = true
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2" unique_id=1459093304]
 layout_mode = 2
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PackedResourceDef" load_steps=7 format=3 uid="uid://ct85r2gistugn"]
+[gd_resource type="Resource" script_class="PackedResourceDef" format=3 uid="uid://ct85r2gistugn"]
 
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_68xkv"]
 [ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="2_as2rt"]

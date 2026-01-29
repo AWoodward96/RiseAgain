@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6k33vbc2a4au"]
+[gd_scene format=3 uid="uid://6k33vbc2a4au"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_q33ai"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_j3qrs"]
@@ -39,7 +39,7 @@ HasStandardWindup = false
 HasStandardCooloff = false
 metadata/_custom_type_script = "uid://barfg6ccbfuwo"
 
-[node name="clobber" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="clobber" type="Node2D" unique_id=761348580 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_q33ai")
 abilityCooldown = 4
 executionStack = Array[ExtResource("2_u1pgf")]([SubResource("Resource_qtcne"), SubResource("Resource_dxc4o"), SubResource("Resource_6dios"), SubResource("Resource_ko6or"), SubResource("Resource_qyelb")])
@@ -52,10 +52,10 @@ TargetingTemplate = ExtResource("8_6dios")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1940953605]
 script = ExtResource("2_j3qrs")
 AgressiveStat = ExtResource("3_ja0qb")
 UseWeaponDataInstead = true
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=761285707]
 script = ExtResource("4_u1pgf")

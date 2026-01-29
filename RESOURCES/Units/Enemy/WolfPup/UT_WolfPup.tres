@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://ba7d8xyuy5mgm"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://ba7d8xyuy5mgm"]
 
 [ext_resource type="PackedScene" uid="uid://ds4w7ttanxhhg" path="res://RESOURCES/Units/Enemy/WolfPup/VIS_WolfPup.tscn" id="1_2ldp6"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_pk4jk"]

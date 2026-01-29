@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://xxwr7ra1wkdx"]
+[gd_scene format=3 uid="uid://xxwr7ra1wkdx"]
 
 [ext_resource type="Texture2D" uid="uid://demx5rt8ialcl" path="res://ART/VFX/maroon_falling_leaves.png" id="1_k1ey8"]
 
@@ -31,7 +31,7 @@ hue_variation_min = -0.08000002
 hue_variation_max = 0.10999998
 anim_offset_max = 1.0
 
-[node name="Maroon_Leaves" type="GPUParticles2D"]
+[node name="Maroon_Leaves" type="GPUParticles2D" unique_id=1634548340]
 z_index = 1
 material = SubResource("CanvasItemMaterial_ig3lp")
 scale = Vector2(2, 2)

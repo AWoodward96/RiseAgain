@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PackedResourceDef" load_steps=9 format=3 uid="uid://ctgh43f2t0a6m"]
+[gd_resource type="Resource" script_class="PackedResourceDef" format=3 uid="uid://ctgh43f2t0a6m"]
 
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_g83mt"]
 [ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="2_10vmf"]

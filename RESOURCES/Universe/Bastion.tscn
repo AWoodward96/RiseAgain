@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj0urxfuhjo0c"]
+[gd_scene format=3 uid="uid://cj0urxfuhjo0c"]
 
 [ext_resource type="Script" uid="uid://bwjdb6ohtij8j" path="res://SCRIPTS/Universe/Bastion.gd" id="1_o08lb"]
 [ext_resource type="PackedScene" uid="uid://dhmgrt2n36t3" path="res://RESOURCES/Universe/BastionEnvs/env_showcase_1.tscn" id="2_p662c"]
 
-[node name="Bastion" type="Node2D"]
+[node name="Bastion" type="Node2D" unique_id=2108317069]
 script = ExtResource("1_o08lb")
 defaultEnvironment = ExtResource("2_p662c")
 
-[node name="EnvironmentParent" type="Node2D" parent="."]
+[node name="EnvironmentParent" type="Node2D" parent="." unique_id=1234663481]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dji5l3d4ur0fh"]
+[gd_scene format=3 uid="uid://dji5l3d4ur0fh"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7ustl"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_aq3qa"]
@@ -34,7 +34,7 @@ script = ExtResource("5_17fsu")
 Template = ExtResource("11_17fsu")
 Value = 1
 
-[node name="fireytome" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="fireytome" type="Node2D" unique_id=1586779119 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_7ustl")
 type = 1
 abilityCooldown = 0
@@ -49,16 +49,16 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=988675393]
 script = ExtResource("4_ivyfi")
 GrantedStats = Array[ExtResource("5_17fsu")]([SubResource("Resource_tf3ew"), SubResource("Resource_8xti5")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=804145995]
 script = ExtResource("7_8n11e")
 AgressiveStat = ExtResource("6_pthjs")
 DamageType = 1
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=43250934]
 script = ExtResource("9_tf3ew")
 TeamTargeting = 2
 TargetRange = Vector2i(1, 2)

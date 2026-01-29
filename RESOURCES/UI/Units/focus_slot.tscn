@@ -1,31 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b86wbdh3gr6j1"]
+[gd_scene format=3 uid="uid://b86wbdh3gr6j1"]
 
 [ext_resource type="Script" uid="uid://bo1gkbl7wr1ae" path="res://SCRIPTS/UI/Units/focus_slot.gd" id="1_iuqte"]
 
-[node name="FocusSlot" type="MarginContainer" node_paths=PackedStringArray("on_state", "off_state")]
+[node name="FocusSlot" type="MarginContainer" unique_id=1608346975 node_paths=PackedStringArray("on_state", "off_state")]
 size_flags_horizontal = 3
 script = ExtResource("1_iuqte")
 on_state = NodePath("MarginContainer/OnState")
 off_state = NodePath("MarginContainer/OffState")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1594839582]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.2, 0.2, 0.2, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=86921739]
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
-[node name="OnState" type="ColorRect" parent="MarginContainer"]
+[node name="OnState" type="ColorRect" parent="MarginContainer" unique_id=2074263437]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.3549, 0.3549, 0.91, 1)
 
-[node name="OffState" type="ColorRect" parent="MarginContainer"]
+[node name="OffState" type="ColorRect" parent="MarginContainer" unique_id=2113848419]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.351, 0.351, 0.45, 1)

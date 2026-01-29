@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ResourceTemplate" load_steps=3 format=3 uid="uid://c4af23rldh8lh"]
+[gd_resource type="Resource" script_class="ResourceTemplate" format=3 uid="uid://c4af23rldh8lh"]
 
 [ext_resource type="Texture2D" uid="uid://if7va0ccagny" path="res://ART/Icons/Resources/gemstone.png" id="1_1ql1j"]
 [ext_resource type="Script" uid="uid://bqfp2b5gxqbgd" path="res://SCRIPTS/Universe/Resources/ResourceTemplate.gd" id="2_b14ce"]

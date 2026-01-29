@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://crgp0s3avbs4i"]
+[gd_scene format=3 uid="uid://crgp0s3avbs4i"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7oiqh"]
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="2_cnvxg"]
@@ -38,7 +38,7 @@ script = ExtResource("6_xhm4w")
 time = 0.5
 metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 
-[node name="healingcloud" type="Node2D" node_paths=PackedStringArray("passiveListeners", "TargetingData", "HealData")]
+[node name="healingcloud" type="Node2D" unique_id=654116408 node_paths=PackedStringArray("passiveListeners", "TargetingData", "HealData")]
 script = ExtResource("1_7oiqh")
 type = 3
 abilityCooldown = 0
@@ -51,18 +51,18 @@ TargetingTemplate = ExtResource("9_4ws2j")
 TargetingData = NodePath("TargetingData")
 HealData = NodePath("HealComponent")
 
-[node name="HealComponent" type="Node2D" parent="."]
+[node name="HealComponent" type="Node2D" parent="." unique_id=1292027391]
 script = ExtResource("2_cnvxg")
 FlatValue = 4.0
 
-[node name="PassiveUnitDeathListener" type="Node2D" parent="."]
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=337692005]
 script = ExtResource("3_cnvxg")
 includeSelf = true
 reqOnlyOnSelfDeath = true
 triggerAbilityStack = true
 metadata/_custom_type_script = "uid://dwybkjr1cr223"
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=29141236]
 script = ExtResource("4_dte8y")
 TeamTargeting = 2
 TargetRange = Vector2i(0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnciao5hfmnai"]
+[gd_scene format=3 uid="uid://dnciao5hfmnai"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_np2pb"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_2h6ll"]
@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://d4hhypdwxek2y"
 script = ExtResource("6_vmw1l")
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
-[node name="lacerate" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="lacerate" type="Node2D" unique_id=1706925531 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_np2pb")
 abilityCooldown = 2
 executionStack = Array[ExtResource("2_2h6ll")]([SubResource("Resource_a4yb5"), SubResource("Resource_ynhpk"), SubResource("Resource_t70il"), SubResource("Resource_0w1wk")])
@@ -39,14 +39,14 @@ TargetingTemplate = ExtResource("7_7bx5y")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=271449357]
 script = ExtResource("2_7ubmb")
 AgressiveStat = ExtResource("3_sj2in")
 AgressiveModType = 2
 DamageType = 2
 PercMaxHealthMod = 0.3
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=2146274206]
 script = ExtResource("4_pmgds")
 TeamTargeting = 2
 Type = 4

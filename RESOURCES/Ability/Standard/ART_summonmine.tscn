@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwie83u2l24t0"]
+[gd_scene format=3 uid="uid://bwie83u2l24t0"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_d3qc6"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_x4owp"]
@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 script = ExtResource("3_6bboh")
 GridEntityPrefab = ExtResource("3_oobre")
 
-[node name="ART_SummonMine" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_SummonMine" type="Node2D" unique_id=1665127556 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_d3qc6")
 abilityCooldown = 2
 ability_speed = 1
@@ -33,13 +33,13 @@ TargetingTemplate = ExtResource("7_yor0f")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1890336692]
 script = ExtResource("6_pnxer")
 TeamTargeting = 3
 TargetRange = Vector2i(1, 3)
 Type = 1
 shapedTiles = ExtResource("7_dbsdj")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=337432658]
 script = ExtResource("9_d2asf")
 AgressiveStat = ExtResource("10_yor0f")

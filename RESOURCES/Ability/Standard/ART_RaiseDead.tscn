@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnhnmdp8kwdpc"]
+[gd_scene format=3 uid="uid://dnhnmdp8kwdpc"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fuk4q"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_muggo"]
@@ -26,7 +26,7 @@ script = ExtResource("4_ree2d")
 [sub_resource type="Resource" id="Resource_qqiev"]
 script = ExtResource("10_ecwqc")
 
-[node name="ART_RaiseDead" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="ART_RaiseDead" type="Node2D" unique_id=862501224 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_fuk4q")
 abilityCooldown = 3
 executionStack = Array[ExtResource("2_muggo")]([SubResource("Resource_hgqot"), SubResource("Resource_lu3qr"), SubResource("Resource_5cjq5")])
@@ -37,11 +37,11 @@ icon = ExtResource("5_bv7d7")
 TargetingTemplate = ExtResource("7_seqts")
 TargetingData = NodePath("SkillTargetingData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1801080038]
 script = ExtResource("6_bc5dy")
 TeamTargeting = 0
 
-[node name="SummonUnitComponent" type="Node2D" parent="."]
+[node name="SummonUnitComponent" type="Node2D" parent="." unique_id=290816358]
 script = ExtResource("7_n2vcp")
 UnitToSummon = ExtResource("8_jv71w")
 AI = ExtResource("9_c5b41")

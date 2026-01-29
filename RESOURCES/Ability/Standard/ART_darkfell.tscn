@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1y1fm3qowl1q"]
+[gd_scene format=3 uid="uid://b1y1fm3qowl1q"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_85abs"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_tpvyo"]
@@ -28,7 +28,7 @@ CombatEffect = ExtResource("4_5dy2x")
 [sub_resource type="Resource" id="Resource_0uo1w"]
 script = ExtResource("7_k3t2n")
 
-[node name="ART_darkfell" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_darkfell" type="Node2D" unique_id=1582349027 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_85abs")
 abilityCooldown = 2
 ability_speed = 1
@@ -41,14 +41,14 @@ TargetingTemplate = ExtResource("9_ts628")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=850873598]
 script = ExtResource("9_6snke")
 TargetRange = Vector2i(0, 0)
 Type = 1
 CanTargetSelf = true
 shapedTiles = ExtResource("10_wvxjb")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=1166739296]
 script = ExtResource("11_vd06l")
 FlatValue = 4.0
 AgressiveStat = ExtResource("12_t80f5")

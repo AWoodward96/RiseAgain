@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b362cldejqkxn"]
+[gd_scene format=3 uid="uid://b362cldejqkxn"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_ssn08"]
 [ext_resource type="Texture2D" uid="uid://ddew6qrlip5o6" path="res://ART/Icons/Units/adultwolf.png" id="2_pwxou"]
@@ -8,26 +8,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
 
-[node name="AdultWolf" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="AdultWolf" type="Node2D" unique_id=954769537 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("1_ssn08")
 AnimationCTRL = NodePath("AnimationPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1602649805]
 modulate = Color(1, 0.290196, 0.211765, 1)
 texture = ExtResource("2_pwxou")
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"UnitEnemyLibrary": ExtResource("3_3lbek"),
-&"UnitNeutralLibrary": ExtResource("4_bfsfu")
-}
-autoplay = "Unactivated"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1240921500]
+libraries/UnitEnemyLibrary = ExtResource("3_3lbek")
+libraries/UnitNeutralLibrary = ExtResource("4_bfsfu")
+autoplay = &"Unactivated"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=948005489]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=503288048]
 visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")

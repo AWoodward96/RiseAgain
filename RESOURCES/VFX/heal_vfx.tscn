@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://x6vokynwesn0"]
+[gd_scene format=3 uid="uid://x6vokynwesn0"]
 
 [ext_resource type="Texture2D" uid="uid://wgumx3wvkygy" path="res://ART/VFX/generic_heal_orb.png" id="1_h8mpt"]
 
@@ -160,10 +160,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="HealVFX" type="Node2D"]
+[node name="HealVFX" type="Node2D" unique_id=1601813274]
 scale = Vector2(2, 2)
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=273029229]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_l1hej")
 animation = &"full"
@@ -172,12 +172,12 @@ frame = 10
 frame_progress = 1.0
 offset = Vector2(16, 0)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=461603769]
 wait_time = 1.2
 one_shot = true
 autostart = true
 
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=174638902]
 event_name = "event:/SFX/Abilities/Abilities_Gauze"
 event_guid = "{40aba1bc-6cdf-4289-8d77-cef00e023e58}"
 autoplay = true

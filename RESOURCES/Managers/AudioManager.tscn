@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://blflaq5aj5hj0"]
+[gd_scene format=3 uid="uid://blflaq5aj5hj0"]
 
 [ext_resource type="Script" uid="uid://qdhrokouto6p" path="res://SCRIPTS/Managers/AudioManager.gd" id="1_2b4sn"]
 
-[node name="AudioManager" type="Node2D" node_paths=PackedStringArray("AmbiencePlayer", "MusicPlayer")]
+[node name="AudioManager" type="Node2D" unique_id=1806242265 node_paths=PackedStringArray("AmbiencePlayer", "MusicPlayer")]
 script = ExtResource("1_2b4sn")
 DefaultFootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 GetItem = "event:/SFX/Action/action_itemgot"
@@ -10,19 +10,19 @@ ItemStolen = "event:/SFX/Action/action_itemstolen"
 AmbiencePlayer = NodePath("Environment/Ambience")
 MusicPlayer = NodePath("Environment/Music")
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1304270101]
 bank_paths = ["res://AUDIO/Desktop/Master.strings.bank", "res://AUDIO/Desktop/Master.bank", "res://AUDIO/Desktop/SFX.bank", "res://AUDIO/Desktop/Music.bank", "res://AUDIO/Desktop/UI.bank"]
 
-[node name="Environment" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="." unique_id=1257069605]
 
-[node name="Ambience" type="FmodEventEmitter2D" parent="Environment"]
+[node name="Ambience" type="FmodEventEmitter2D" parent="Environment" unique_id=2049793743]
 event_name = "event:/tutorial_event_0"
 event_guid = "{1c3095a3-9673-43d4-ab26-94422a80028b}"
 "fmod_parameters/Parameter 1/id" = -6163031330771002062
 "fmod_parameters/Parameter 1" = 0.0
 "fmod_parameters/Parameter 1/variant_type" = 3
 
-[node name="Music" type="FmodEventEmitter2D" parent="Environment"]
+[node name="Music" type="FmodEventEmitter2D" parent="Environment" unique_id=201197582]
 event_name = "event:/tutorial_event_0"
 event_guid = "{1c3095a3-9673-43d4-ab26-94422a80028b}"
 "fmod_parameters/Parameter 1/id" = -6163031330771002062

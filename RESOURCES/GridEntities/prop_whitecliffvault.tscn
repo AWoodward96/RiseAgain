@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://yyqfnwbgvf4f"]
+[gd_scene format=3 uid="uid://yyqfnwbgvf4f"]
 
 [ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_l2sg2"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_gciqr"]
@@ -39,6 +39,27 @@ metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 script = ExtResource("3_uhr0n")
 TileCoordinates = Array[ExtResource("2_gciqr")]([SubResource("Resource_a0pxv"), SubResource("Resource_mm1kg"), SubResource("Resource_2phmk"), SubResource("Resource_cxcns"), SubResource("Resource_ch1mh"), SubResource("Resource_eilox")])
 metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[sub_resource type="Animation" id="Animation_vsbch"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_nw3ax"]
+resource_name = "damage"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TakeDamage")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_one_shot"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_oryed"]
 length = 0.2
@@ -291,27 +312,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_nw3ax"]
-resource_name = "damage"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TakeDamage")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_one_shot"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_vsbch"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nw3ax"]
 _data = {
 &"RESET": SubResource("Animation_vsbch"),
@@ -426,33 +426,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ge_whitecliffvault_event" type="Node2D" node_paths=PackedStringArray("Animator")]
+[node name="ge_whitecliffvault_event" type="Node2D" unique_id=459808992 node_paths=PackedStringArray("Animator")]
 script = ExtResource("1_l2sg2")
 shapedTiles = SubResource("Resource_vltvb")
 Animator = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nw3ax")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=948548127]
+libraries/ = SubResource("AnimationLibrary_nw3ax")
 
-[node name="parent" type="Node2D" parent="."]
+[node name="parent" type="Node2D" parent="." unique_id=1181914974]
 scale = Vector2(2, 2)
 
-[node name="DoorAnimation" type="AnimatedSprite2D" parent="parent"]
+[node name="DoorAnimation" type="AnimatedSprite2D" parent="parent" unique_id=186672374]
 z_index = -1
 position = Vector2(80, 64)
 sprite_frames = SubResource("SpriteFrames_gciqr")
 animation = &"open_unlock"
 
-[node name="TakeDamage" type="FmodEventEmitter2D" parent="."]
+[node name="TakeDamage" type="FmodEventEmitter2D" parent="." unique_id=181708771]
 event_name = "event:/SFX/Combat_TakeDamage_Standard"
 event_guid = "{0f552edb-29ad-4bdf-bb22-bfdd97ba4b91}"
 
-[node name="Unlocked" type="FmodEventEmitter2D" parent="."]
+[node name="Unlocked" type="FmodEventEmitter2D" parent="." unique_id=1462644096]
 event_name = "event:/SFX/Combat_TakeDamage_Kill"
 event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 
-[node name="VFX_Explosion" parent="." instance=ExtResource("6_tn43n")]
+[node name="VFX_Explosion" parent="." unique_id=2120401757 instance=ExtResource("6_tn43n")]
 position = Vector2(155, 192)
 emitOnReady = false

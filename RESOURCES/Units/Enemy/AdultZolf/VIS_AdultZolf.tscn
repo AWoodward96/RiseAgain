@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://drja2u27ujrp0"]
+[gd_scene format=3 uid="uid://drja2u27ujrp0"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_0g54l"]
 [ext_resource type="Texture2D" uid="uid://i63qlruqqjwh" path="res://ART/Icons/Units/adultzolf.png" id="2_fqihn"]
@@ -814,27 +814,27 @@ _data = {
 &"take_damage": SubResource("Animation_kfbiv")
 }
 
-[node name="VIS_AdultZolf" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="VIS_AdultZolf" type="Node2D" unique_id=1923588618 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("1_0g54l")
 AnimationCTRL = NodePath("AnimationPlayer")
 AnimationWorkComplete = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=955468019]
 visible = false
 modulate = Color(1, 0.290196, 0.211765, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_fqihn")
 centered = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=860722757]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=337073560]
 visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1334842642]
 material = SubResource("ShaderMaterial_1wemh")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hb8p8")
@@ -844,7 +844,5 @@ frame = 2
 frame_progress = 1.0
 offset = Vector2(16, 16)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pqajh")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1268388433]
+libraries/ = SubResource("AnimationLibrary_pqajh")

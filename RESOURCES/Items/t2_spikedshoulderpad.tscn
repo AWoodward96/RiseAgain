@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rya7lpnjs0yp"]
+[gd_scene format=3 uid="uid://rya7lpnjs0yp"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_hjs85"]
 [ext_resource type="Texture2D" uid="uid://ccnbuorfu06pb" path="res://ART/Icons/Items/t2_spikedshoulderpad.png" id="2_ppg3a"]
@@ -27,7 +27,7 @@ Template = ExtResource("4_yoyib")
 Value = 2
 metadata/_custom_type_script = "uid://fu4c00vwvoc1"
 
-[node name="t2_spikedshoulderpad" type="Node2D" node_paths=PackedStringArray("conditionalStatModifiers", "StatData")]
+[node name="t2_spikedshoulderpad" type="Node2D" unique_id=1922404281 node_paths=PackedStringArray("conditionalStatModifiers", "StatData")]
 script = ExtResource("1_hjs85")
 conditionalStatModifiers = NodePath("ConditionalStatModComponent")
 internalName = "t2_spikedshoulderpad"
@@ -36,11 +36,11 @@ loc_displayDesc = "item_t2_spikedshoulderpad_desc"
 icon = ExtResource("2_ppg3a")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1341232742]
 script = ExtResource("5_ktnl4")
 GrantedStats = Array[ExtResource("3_h82sf")]([SubResource("Resource_ppg3a")])
 
-[node name="ConditionalStatModComponent" type="Node2D" parent="."]
+[node name="ConditionalStatModComponent" type="Node2D" parent="." unique_id=945845671]
 script = ExtResource("5_4gp6g")
 StatsToGrant = Array[ExtResource("6_ppg3a")]([SubResource("Resource_5g4su")])
 metadata/_custom_type_script = "uid://ddyf7e2u583ok"

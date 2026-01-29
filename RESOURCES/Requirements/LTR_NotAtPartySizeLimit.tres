@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MultiRequirement" load_steps=5 format=3 uid="uid://c7w27qmhiqg5t"]
+[gd_resource type="Resource" script_class="MultiRequirement" format=3 uid="uid://c7w27qmhiqg5t"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_jukf1"]
 [ext_resource type="Script" uid="uid://bgs85bu1mixlb" path="res://SCRIPTS/Generic/Requirements/PartlyLimitReq.gd" id="2_rikud"]

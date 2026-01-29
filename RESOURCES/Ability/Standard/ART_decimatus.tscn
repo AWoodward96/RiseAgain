@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cykm3j635sjew"]
+[gd_scene format=3 uid="uid://cykm3j635sjew"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_w8kak"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_n538a"]
@@ -39,7 +39,7 @@ script = ExtResource("10_lldy4")
 GridEntityPrefab = ExtResource("10_4glab")
 metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 
-[node name="decimatus" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="decimatus" type="Node2D" unique_id=2077781804 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_w8kak")
 abilityCooldown = 2
 executionStack = Array[ExtResource("2_qsvpx")]([SubResource("Resource_4glab"), SubResource("Resource_et4xw"), SubResource("Resource_xv500"), SubResource("Resource_4b8nu"), SubResource("Resource_60ob7")])
@@ -50,13 +50,13 @@ TargetingTemplate = ExtResource("10_et4xw")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1480842006]
 script = ExtResource("2_n538a")
 AgressiveStat = ExtResource("3_l11dk")
 AgressiveModType = 2
 AgressiveMod = 2.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1167364414]
 script = ExtResource("4_tjtpc")
 TeamTargeting = 2
 Type = 2

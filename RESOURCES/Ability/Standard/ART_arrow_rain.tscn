@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr3qojl35mikb"]
+[gd_scene format=3 uid="uid://cr3qojl35mikb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_8c66l"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_en8oo"]
@@ -40,7 +40,7 @@ script = ExtResource("8_tp58g")
 ExecutionAnimString = "arrow_rain"
 metadata/_custom_type_script = "uid://d2kv0hjonny5c"
 
-[node name="arrow_rain" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="arrow_rain" type="Node2D" unique_id=707065184 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_8c66l")
 abilityCooldown = 2
 ability_speed = 2
@@ -54,14 +54,14 @@ TargetingTemplate = ExtResource("10_hx5hy")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=335244313]
 script = ExtResource("2_en8oo")
 AgressiveStat = ExtResource("10_0gchn")
 AgressiveModType = 2
 AgressiveMod = 2.0
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1270728411]
 script = ExtResource("5_erduy")
 TeamTargeting = 2
 TargetRange = Vector2i(1, 6)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://crkqcam887vhh"]
+[gd_scene format=3 uid="uid://crkqcam887vhh"]
 
 [sub_resource type="Gradient" id="Gradient_u15bi"]
 offsets = PackedFloat32Array(0, 0.44092828, 0.73839664)
@@ -11,9 +11,9 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Offset" type="Node2D"]
+[node name="Offset" type="Node2D" unique_id=1150194137]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1365276455]
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 energy = 1.25

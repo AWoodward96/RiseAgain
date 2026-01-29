@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dovjeble1x4wx"]
+[gd_scene format=3 uid="uid://dovjeble1x4wx"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_ipcmu"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8vki3"]
@@ -14,7 +14,7 @@ script = ExtResource("4_fvgrd")
 CombatEffect = ExtResource("3_epwwx")
 metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
 
-[node name="polinate" type="Node2D" node_paths=PackedStringArray("TargetingData", "HealData")]
+[node name="polinate" type="Node2D" unique_id=837136166 node_paths=PackedStringArray("TargetingData", "HealData")]
 script = ExtResource("1_ipcmu")
 abilityCooldown = 3
 ability_speed = 1
@@ -26,13 +26,13 @@ TargetingTemplate = ExtResource("5_8vki3")
 TargetingData = NodePath("TargetingData")
 HealData = NodePath("HealComponent")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1287310166]
 script = ExtResource("2_i2psw")
 TeamTargeting = 0
 TargetRange = Vector2i(1, 3)
 CanTargetSelf = true
 
-[node name="HealComponent" type="Node2D" parent="."]
+[node name="HealComponent" type="Node2D" parent="." unique_id=319542489]
 script = ExtResource("3_yfhna")
 FlatValue = 2.0
 ScalingStat = ExtResource("4_epwwx")

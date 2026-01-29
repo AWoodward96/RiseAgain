@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StatChangeEffect" load_steps=9 format=3 uid="uid://fv3aw7d7xp6f"]
+[gd_resource type="Resource" script_class="StatChangeEffect" format=3 uid="uid://fv3aw7d7xp6f"]
 
 [ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_ycfw3"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="2_2yocl"]

@@ -1,6 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://daa6vtt44bpnv"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://daa6vtt44bpnv"]
 
-[ext_resource type="Shader" path="res://ART/Shaders/simple_shadow.gdshader" id="1_k7b4o"]
+[ext_resource type="Shader" uid="uid://hrltwuksu4x1" path="res://ART/Shaders/simple_shadow.gdshader" id="1_k7b4o"]
 
 [resource]
 shader = ExtResource("1_k7b4o")
+shader_parameter/use_screen_uv = false
+shader_parameter/shadow_offset = Vector2(-10, -10)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)

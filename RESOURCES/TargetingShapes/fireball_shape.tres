@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TargetingShapeStats" load_steps=27 format=3 uid="uid://gxv2ghfwicf2"]
+[gd_resource type="Resource" script_class="TargetingShapeStats" format=3 uid="uid://gxv2ghfwicf2"]
 
 [ext_resource type="Script" uid="uid://dey2eb5dlhg5j" path="res://SCRIPTS/Targeting/Shapes/TargetingShapeStats.gd" id="1_jxjqi"]
 [ext_resource type="Script" uid="uid://d1xg8qidld8r6" path="res://SCRIPTS/Targeting/Shapes/ThresholdTargetingShape.gd" id="1_no07u"]

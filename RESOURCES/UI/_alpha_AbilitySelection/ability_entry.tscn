@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://co7lel8ngy6or"]
+[gd_scene format=3 uid="uid://co7lel8ngy6or"]
 
 [ext_resource type="Script" uid="uid://dsclb6hje7yvq" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="1_opl86"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="2_16e7i"]
@@ -60,7 +60,7 @@ metadata/_snap_enabled = true
 font = ExtResource("2_16e7i")
 font_size = 32
 
-[node name="AbilityEntry" type="PanelContainer" node_paths=PackedStringArray("Background", "abilityTypeHeader", "abilityNameText", "abilityDescriptionText", "abilityIcon", "cooldownParent", "cooldownText", "StatsGrantedParent", "usesParent", "usageLeft", "rangeParent", "rangeText", "targetingParent", "targetingTypeText", "speedParent", "speedText", "SelectedParent", "FocusSound", "SelectedSound")]
+[node name="AbilityEntry" type="PanelContainer" unique_id=239758953 node_paths=PackedStringArray("Background", "abilityTypeHeader", "abilityNameText", "abilityDescriptionText", "abilityIcon", "cooldownParent", "cooldownText", "StatsGrantedParent", "usesParent", "usageLeft", "rangeParent", "rangeText", "targetingParent", "targetingTypeText", "speedParent", "speedText", "SelectedParent", "FocusSound", "SelectedSound")]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(576, 160)
 offset_right = 770.0
@@ -93,81 +93,81 @@ SelectedParent = NodePath("Base/Selected")
 FocusSound = NodePath("Focused")
 SelectedSound = NodePath("Selected")
 
-[node name="Base" type="MarginContainer" parent="."]
+[node name="Base" type="MarginContainer" parent="." unique_id=1977005598]
 layout_mode = 2
 
-[node name="Selected" type="ColorRect" parent="Base"]
+[node name="Selected" type="ColorRect" parent="Base" unique_id=1728313988]
 visible = false
 layout_mode = 2
 color = Color(1, 0.966667, 0, 0.898039)
 
-[node name="MarginContainer" type="MarginContainer" parent="Base"]
+[node name="MarginContainer" type="MarginContainer" parent="Base" unique_id=104858171]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="BG" type="TextureRect" parent="Base/MarginContainer"]
+[node name="BG" type="TextureRect" parent="Base/MarginContainer" unique_id=1751992386]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_16e7i")
 
-[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer" unique_id=1358481442]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Base/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Base/MarginContainer/MarginContainer" unique_id=1514896678]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TitleContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="TitleContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=1550640950]
 layout_mode = 2
 
-[node name="Bg" type="ColorRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer"]
+[node name="Bg" type="ColorRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer" unique_id=136578898]
 layout_mode = 2
 color = Color(0.22, 0.22, 0.22, 0.517647)
 
-[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer" unique_id=963795694]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="TitleContainer" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer"]
+[node name="TitleContainer" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer" unique_id=1716405493]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="AbilityType" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer"]
+[node name="AbilityType" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=1752407867]
 layout_mode = 2
 text = "ABL:"
 label_settings = SubResource("LabelSettings_em1u0")
 
-[node name="AbilityIcon" type="TextureRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer"]
+[node name="AbilityIcon" type="TextureRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=2030722793]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_bmu0w")
 expand_mode = 1
 
-[node name="AbilityName" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer"]
+[node name="AbilityName" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=1685025438]
 layout_mode = 2
 text = "ability_name"
 label_settings = ExtResource("3_2np0u")
 
-[node name="Control" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer"]
+[node name="Control" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=664313597]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CooldownParent" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer"]
+[node name="CooldownParent" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=252664705]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="CooldownIcon" type="TextureRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent"]
+[node name="CooldownIcon" type="TextureRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent" unique_id=1657476940]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 6
@@ -183,7 +183,7 @@ grow_vertical = 2
 texture = ExtResource("6_ergra")
 expand_mode = 1
 
-[node name="CooldownText" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent"]
+[node name="CooldownText" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent" unique_id=1910601297]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -200,11 +200,11 @@ text = "1"
 label_settings = ExtResource("5_hl217")
 horizontal_alignment = 2
 
-[node name="Stats_Granted" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer"]
+[node name="Stats_Granted" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=1590039250]
 layout_mode = 2
 script = ExtResource("7_em1u0")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer" unique_id=1162187704]
 layout_mode = 2
 texture = ExtResource("5_6wtur")
 patch_margin_left = 4
@@ -212,83 +212,83 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Range_Targeting_Speed" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Range_Targeting_Speed" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=861441677]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="ColorRect" type="ColorRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed"]
+[node name="ColorRect" type="ColorRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed" unique_id=1245411737]
 layout_mode = 2
 color = Color(0.44, 0.44, 0.44, 0.313726)
 
-[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed"]
+[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed" unique_id=294801184]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer" unique_id=78723463]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Targeting" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer"]
+[node name="Targeting" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=307519769]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TargetingTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting"]
+[node name="TargetingTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting" unique_id=1477079282]
 layout_mode = 2
 text = "ui_targeting_title"
 label_settings = ExtResource("7_icv2n")
 vertical_alignment = 2
 
-[node name="TargetingDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting"]
+[node name="TargetingDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting" unique_id=1744646178]
 custom_minimum_size = Vector2(0, 17)
 layout_mode = 2
 text = "directional"
 label_settings = ExtResource("8_em1u0")
 vertical_alignment = 1
 
-[node name="Range" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer"]
+[node name="Range" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=26784155]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RangeTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range"]
+[node name="RangeTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range" unique_id=175113973]
 layout_mode = 2
 text = "ui_range_title"
 label_settings = ExtResource("7_icv2n")
 
-[node name="RangeDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range"]
+[node name="RangeDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range" unique_id=343007620]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "range"
 label_settings = ExtResource("8_em1u0")
 
-[node name="Speed" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer"]
+[node name="Speed" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=1212511635]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed"]
+[node name="SpeedTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed" unique_id=458360543]
 layout_mode = 2
 text = "ui_speed_title"
 label_settings = ExtResource("7_icv2n")
 
-[node name="SpeedDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed"]
+[node name="SpeedDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed" unique_id=807619743]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "speed"
 label_settings = ExtResource("8_em1u0")
 
-[node name="Uses" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer"]
+[node name="Uses" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=564895381]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UsesTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses"]
+[node name="UsesTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses" unique_id=1183470671]
 layout_mode = 2
 text = "ui_uses_title"
 label_settings = ExtResource("7_icv2n")
 
-[node name="UsesDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses"]
+[node name="UsesDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses" unique_id=1708657151]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -296,7 +296,7 @@ text = "2"
 label_settings = ExtResource("8_em1u0")
 vertical_alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed" unique_id=2071200271]
 layout_mode = 2
 texture = ExtResource("8_16e7i")
 patch_margin_left = 4
@@ -304,11 +304,11 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Seperator" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Seperator" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=1525497059]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="AbilityDescription" type="RichTextLabel" parent="Base/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="AbilityDescription" type="RichTextLabel" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=488843107]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("8_hl217")
 theme_override_font_sizes/normal_font_size = 16
@@ -316,7 +316,7 @@ bbcode_enabled = true
 text = "Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})"
 fit_content = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer" unique_id=385819095]
 layout_mode = 2
 texture = ExtResource("7_hl217")
 patch_margin_left = 16
@@ -324,10 +324,10 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="Focused" type="FmodEventEmitter2D" parent="."]
+[node name="Focused" type="FmodEventEmitter2D" parent="." unique_id=1333872727]
 event_name = "event:/SFX/UI/UI_Move_Standard"
 event_guid = "{9e237bb9-a830-4ce7-bde8-fdf81456e26c}"
 
-[node name="Selected" type="FmodEventEmitter2D" parent="."]
+[node name="Selected" type="FmodEventEmitter2D" parent="." unique_id=1849247792]
 event_name = "event:/SFX/UI/UI_Select_Standard"
 event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"

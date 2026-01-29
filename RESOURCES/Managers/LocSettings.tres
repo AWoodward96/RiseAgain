@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LocSettings" load_steps=9 format=3 uid="uid://ctv538x46ffve"]
+[gd_resource type="Resource" script_class="LocSettings" format=3 uid="uid://ctv538x46ffve"]
 
 [ext_resource type="Texture2D" uid="uid://cqfmfp2ff63yf" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons2.png" id="1_1tq0s"]
 [ext_resource type="Texture2D" uid="uid://cg7gnaihhqagy" path="res://ART/Icons/Missing/missing_combateffect_icon.png" id="1_5tmtt"]
@@ -12,7 +12,6 @@
 [resource]
 script = ExtResource("1_46x2a")
 Missing_CombatEffectIcon = ExtResource("1_5tmtt")
-Missing_CombatEffectName = ""
 HealColor = Color(0.580392, 0.878431, 0.537255, 1)
 DamageColor = Color(0.901961, 0.635294, 0.635294, 1)
 CritColor = Color(0.878431, 0.788235, 0.47451, 1)
@@ -54,8 +53,3 @@ GlobalIcon = ExtResource("2_t47jl")
 GlobalDescText = "ui_global_desc"
 SelfOnlyIcon = ExtResource("4_0od6g")
 SelfOnlyDescText = "ui_selfonly_desc"
-waitAction = "ui_wait"
-openChestAction = "ui_openchest"
-gotItemConcat = "ui_gotitem_concat"
-stoleItemConcat = "ui_stoleitem_concat"
-butSentToConvoyConcat = "ui_but_it_was_sent_to_convoy"

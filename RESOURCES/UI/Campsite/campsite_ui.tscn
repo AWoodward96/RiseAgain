@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnsp2jieynl7x"]
+[gd_scene format=3 uid="uid://cnsp2jieynl7x"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_0nvyf"]
 [ext_resource type="Script" uid="uid://b0td0w4ri6sy8" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
@@ -9,7 +9,7 @@ shader = ExtResource("1_dlrih")
 shader_parameter/outerRadius = 1.962
 shader_parameter/MainAlpha = 0.789
 
-[node name="CampsiteUI" type="Control" node_paths=PackedStringArray("Vignette", "ViewButton", "InspectButton", "RestButton")]
+[node name="CampsiteUI" type="Control" unique_id=466026091 node_paths=PackedStringArray("Vignette", "ViewButton", "InspectButton", "RestButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ InspectButton = NodePath("UI/MarginContainer/VBoxContainer/Inspect")
 RestButton = NodePath("UI/MarginContainer/VBoxContainer/Rest")
 metadata/_custom_type_script = "uid://csvawibmpoykc"
 
-[node name="Vignette" type="ColorRect" parent="."]
+[node name="Vignette" type="ColorRect" parent="." unique_id=1048748509]
 material = SubResource("ShaderMaterial_bl6de")
 layout_mode = 1
 anchors_preset = 15
@@ -33,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UI" type="Panel" parent="."]
+[node name="UI" type="Panel" parent="." unique_id=1201832478]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -43,7 +43,7 @@ offset_right = 224.0
 offset_bottom = 319.0
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=56391870]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,11 +53,11 @@ grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=310593668]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="View" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+[node name="View" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=750558497]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 focus_next = NodePath("../Inspect")
@@ -65,14 +65,14 @@ focus_previous = NodePath("../Rest")
 disabled = true
 text = "ui_viewcampsite"
 
-[node name="Inspect" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Inspect" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=704266805]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 focus_next = NodePath("../Rest")
 focus_previous = NodePath("../View")
 text = "ui_inspectteam"
 
-[node name="Rest" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Rest" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=987848248]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 focus_next = NodePath("../View")

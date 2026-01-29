@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bfsgpxbdr67nx"]
+[gd_scene format=4 uid="uid://bfsgpxbdr67nx"]
 
 [ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_si7xq"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_krkgk"]
@@ -44,7 +44,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("7_d0yk0")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[node name="ge_decimatus" type="Node2D" node_paths=PackedStringArray("telegraphTilemap")]
+[node name="ge_decimatus" type="Node2D" unique_id=53845192 node_paths=PackedStringArray("telegraphTilemap")]
 z_index = -5
 script = ExtResource("1_si7xq")
 executionStack = Array[ExtResource("2_krkgk")]([SubResource("Resource_e76h8"), SubResource("Resource_5bjtb"), SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
@@ -54,6 +54,6 @@ UpdatePerTeamTurn = true
 localization_icon = ExtResource("9_hsgaw")
 localization_desc = "art_decimatus_name"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=583060754]
 tile_map_data = PackedByteArray("AAD/////AgAAAAIAAAAAAP//AgAAAAIAAAABAP//AgAAAAIAAAD///7/AgAAAAIAAAAAAP7/AgAAAAIAAAABAP7/AgAAAAIAAAD///3/AgAAAAIAAAAAAP3/AgAAAAIAAAABAP3/AgAAAAIAAAD///z/AgAAAAIAAAAAAPz/AgAAAAIAAAABAPz/AgAAAAIAAAA=")
 tile_set = ExtResource("10_mcuyp")

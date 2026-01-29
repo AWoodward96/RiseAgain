@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=41 format=3 uid="uid://dt5vofrnbdu6c"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://dt5vofrnbdu6c"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_cf4s8"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_mcvtx"]

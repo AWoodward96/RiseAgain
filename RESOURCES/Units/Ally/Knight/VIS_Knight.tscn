@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://1f8h3j214nus"]
+[gd_scene format=3 uid="uid://1f8h3j214nus"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_hr2ox"]
 [ext_resource type="Texture2D" uid="uid://da8e6v5th61vs" path="res://ART/Icons/Units/knight.png" id="2_g35un"]
@@ -954,25 +954,25 @@ _data = {
 &"use_item_out": SubResource("Animation_ccvmo")
 }
 
-[node name="visKnight" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="visKnight" type="Node2D" unique_id=1540175379 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("1_hr2ox")
 AnimationCTRL = NodePath("AnimationPlayer")
 AnimationWorkComplete = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=299353256]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=805862047]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=483789043]
 visible = false
 modulate = Color(0, 0.624744, 0.890521, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_g35un")
 centered = false
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=599062022]
 material = SubResource("ShaderMaterial_8fgcp")
 position = Vector2(32, 24)
 scale = Vector2(2, 2)
@@ -981,7 +981,5 @@ animation = &"teleport_in"
 autoplay = "idle"
 offset = Vector2(-5, -5)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nyw57")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138086024]
+libraries/ = SubResource("AnimationLibrary_nyw57")

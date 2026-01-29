@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://drb4mgh4ul82l"]
+[gd_scene format=4 uid="uid://drb4mgh4ul82l"]
 
 [ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_sm8my"]
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_gle52"]
@@ -7,74 +7,61 @@
 
 [sub_resource type="Resource" id="Resource_gle52"]
 script = ExtResource("2_gle52")
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_mhy40"]
 script = ExtResource("2_gle52")
 Position = Vector2i(1, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_fynly"]
 script = ExtResource("2_gle52")
 Position = Vector2i(2, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_nhbl8"]
 script = ExtResource("2_gle52")
 Position = Vector2i(0, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_a702u"]
 script = ExtResource("2_gle52")
 Position = Vector2i(1, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_faarx"]
 script = ExtResource("2_gle52")
 Position = Vector2i(2, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_gmy48"]
 script = ExtResource("2_gle52")
 Position = Vector2i(5, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_gssol"]
 script = ExtResource("2_gle52")
 Position = Vector2i(6, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_b14dw"]
 script = ExtResource("2_gle52")
 Position = Vector2i(7, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_hvu45"]
 script = ExtResource("2_gle52")
 Position = Vector2i(5, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_gp570"]
 script = ExtResource("2_gle52")
 Position = Vector2i(6, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_tmoh5"]
 script = ExtResource("2_gle52")
 Position = Vector2i(7, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_q6k0s"]
@@ -82,13 +69,13 @@ script = ExtResource("3_mhy40")
 TileCoordinates = Array[ExtResource("2_gle52")]([SubResource("Resource_gle52"), SubResource("Resource_mhy40"), SubResource("Resource_fynly"), SubResource("Resource_nhbl8"), SubResource("Resource_a702u"), SubResource("Resource_faarx"), SubResource("Resource_gmy48"), SubResource("Resource_gssol"), SubResource("Resource_b14dw"), SubResource("Resource_hvu45"), SubResource("Resource_gp570"), SubResource("Resource_tmoh5")])
 metadata/_custom_type_script = "uid://ofdutqbqnjrf"
 
-[node name="Bridge" type="Node2D"]
+[node name="Bridge" type="Node2D" unique_id=465340782]
 z_index = -5
 script = ExtResource("1_sm8my")
 shapedTiles = SubResource("Resource_q6k0s")
 ui_invisible = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2057136179]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAAAAQAFAAsAAAAAAAEAAQAFAAwAAAABAAAAAQAHAAsAAAABAAEAAQAHAAwAAAACAAAAAQAIAAsAAAACAAEAAQAIAAwAAAAGAAAAAQAHAAsAAAAGAAEAAQAHAAwAAAAHAAAAAQAIAAsAAAAHAAEAAQAIAAwAAAAFAAAAAQAFAAsAAAAFAAEAAQAFAAwAAAA=")
 tile_set = ExtResource("4_sm8my")

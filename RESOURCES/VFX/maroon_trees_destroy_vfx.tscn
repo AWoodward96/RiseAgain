@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1le47nr1jt1g"]
+[gd_scene format=3 uid="uid://d1le47nr1jt1g"]
 
 [ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_qn0tn"]
 [ext_resource type="Texture2D" uid="uid://r7argonbh6k7" path="res://ART/VFX/maroon_deadtree_death_particles_4.png" id="2_jetpr"]
@@ -24,12 +24,12 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.8062201, 1)
 colors = PackedColorArray(0, 0, 0, 0.10980392, 0, 0, 0, 0.28235295, 0, 0, 0, 0)
 
-[node name="maroon_trees_destroy_vfx" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
+[node name="maroon_trees_destroy_vfx" type="Node2D" unique_id=817583065 node_paths=PackedStringArray("cpuParticles")]
 script = ExtResource("1_qn0tn")
 emitOnReady = true
 cpuParticles = [NodePath("Branches"), NodePath("TinyParts")]
 
-[node name="Branches" type="CPUParticles2D" parent="."]
+[node name="Branches" type="CPUParticles2D" parent="." unique_id=1133950573]
 material = SubResource("CanvasItemMaterial_skwjv")
 position = Vector2(32, 56)
 scale = Vector2(2, 2)
@@ -53,7 +53,7 @@ damping_max = 200.0
 color_ramp = SubResource("Gradient_8squq")
 anim_offset_max = 1.0
 
-[node name="TinyParts" type="CPUParticles2D" parent="."]
+[node name="TinyParts" type="CPUParticles2D" parent="." unique_id=4103576]
 material = SubResource("CanvasItemMaterial_8squq")
 position = Vector2(32, 56)
 scale = Vector2(2, 2)
@@ -77,7 +77,7 @@ damping_max = 200.0
 color_ramp = SubResource("Gradient_frhte")
 anim_offset_max = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1954785727]
 wait_time = 2.0
 autostart = true
 

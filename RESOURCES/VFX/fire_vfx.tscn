@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq5kfjjnrcsfm"]
+[gd_scene format=3 uid="uid://cq5kfjjnrcsfm"]
 
 [ext_resource type="Texture2D" uid="uid://53i46tsxjih" path="res://ART/Grid/fire_tiles.png" id="1_aig8r"]
 [ext_resource type="Script" uid="uid://dn53bboudatos" path="res://SCRIPTS/Generic/FireVFX.gd" id="2_yltk5"]
@@ -75,12 +75,12 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.46417445, 0.7912772)
 colors = PackedColorArray(0.8784314, 0.7882353, 0.4745098, 1, 0.69411767, 0.3019608, 0.16862746, 1, 0.3764706, 0.13333334, 0.09019608, 1)
 
-[node name="FireVFX" type="Node2D" node_paths=PackedStringArray("particles", "animatedSprite")]
+[node name="FireVFX" type="Node2D" unique_id=1353238721 node_paths=PackedStringArray("particles", "animatedSprite")]
 script = ExtResource("2_yltk5")
 particles = NodePath("CPUParticles2D2")
 animatedSprite = NodePath("Fire")
 
-[node name="Fire" type="AnimatedSprite2D" parent="."]
+[node name="Fire" type="AnimatedSprite2D" parent="." unique_id=1839176170]
 z_index = -1
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
@@ -89,7 +89,7 @@ animation = &"level_3"
 autoplay = "level_1"
 frame_progress = 0.5739289
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=428885023]
 material = SubResource("CanvasItemMaterial_166fo")
 position = Vector2(32, 38)
 amount = 16

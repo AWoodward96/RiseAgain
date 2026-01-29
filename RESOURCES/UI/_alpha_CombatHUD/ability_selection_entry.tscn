@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctnhuq1c5q3tg"]
+[gd_scene format=3 uid="uid://ctnhuq1c5q3tg"]
 
 [ext_resource type="Script" uid="uid://kekrmw0o554e" path="res://SCRIPTS/UI/CombatHUD/ContextAbilityEntry.gd" id="1_c1qlp"]
 [ext_resource type="Texture2D" uid="uid://b5x51xfnbjnh7" path="res://ART/UI/ui_ability_icon_placeholder.png" id="2_qt2j5"]
 
-[node name="AbilitySelectionEntry" type="HBoxContainer"]
+[node name="AbilitySelectionEntry" type="HBoxContainer" unique_id=843960325]
 custom_minimum_size = Vector2(0, 32)
 script = ExtResource("1_c1qlp")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1814978798]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 texture = ExtResource("2_qt2j5")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=906421463]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3

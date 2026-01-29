@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TargetingShape" load_steps=11 format=3 uid="uid://dlev228ekvw8d"]
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://dlev228ekvw8d"]
 
 [ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_pbd4f"]
 [ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="2_a6jtd"]

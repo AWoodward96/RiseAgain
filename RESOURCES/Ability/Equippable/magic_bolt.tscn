@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mbareux7y73r"]
+[gd_scene format=3 uid="uid://mbareux7y73r"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_ebpsu"]
 [ext_resource type="Texture2D" uid="uid://d0g2rta26msr7" path="res://ART/Icons/Ability/Equippable/magic_bolt.png" id="2_joapb"]
@@ -26,7 +26,7 @@ script = ExtResource("4_e6rx8")
 Template = ExtResource("3_j8h7c")
 Value = 6
 
-[node name="magic_bolt" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="magic_bolt" type="Node2D" unique_id=836707927 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_ebpsu")
 type = 1
 abilityCooldown = 0
@@ -41,16 +41,16 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=526964194]
 script = ExtResource("2_uce2a")
 GrantedStats = Array[ExtResource("4_e6rx8")]([SubResource("Resource_a0mp3")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=655885146]
 script = ExtResource("5_lfpmp")
 AgressiveStat = ExtResource("3_j8h7c")
 DamageType = 1
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=52387513]
 script = ExtResource("7_lhpqm")
 TargetRange = Vector2i(1, 2)

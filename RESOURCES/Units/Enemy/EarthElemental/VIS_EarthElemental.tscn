@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6sxj0k1xxj6i"]
+[gd_scene format=3 uid="uid://c6sxj0k1xxj6i"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_4yr5o"]
 [ext_resource type="Texture2D" uid="uid://dwc3osfxurjhi" path="res://ART/Icons/Units/earthelemental.png" id="2_xwr3m"]
@@ -7,26 +7,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
 
-[node name="VIS_AdultZolf" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="VIS_AdultZolf" type="Node2D" unique_id=1084122460 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("1_4yr5o")
 AnimationCTRL = NodePath("AnimationPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190205918]
 modulate = Color(1, 0.290196, 0.211765, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_xwr3m")
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"UnitEnemyLibrary": ExtResource("3_jphu6")
-}
-autoplay = "Unactivated"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1433506236]
+libraries/UnitEnemyLibrary = ExtResource("3_jphu6")
+autoplay = &"Unactivated"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=423369210]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=317175758]
 visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")

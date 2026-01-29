@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=36 format=3 uid="uid://dr64xsx6yrch2"]
+[gd_resource type="Theme" format=3 uid="uid://dr64xsx6yrch2"]
 
 [ext_resource type="Texture2D" uid="uid://dxogp5gal7un" path="res://ART/UI/Textures/ui_parchment_binder.png" id="1_8r03o"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_54ko0"]

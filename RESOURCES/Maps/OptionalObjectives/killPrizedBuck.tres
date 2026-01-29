@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectiveReward" load_steps=6 format=3 uid="uid://8pqnjdx0myv4"]
+[gd_resource type="Resource" script_class="ObjectiveReward" format=3 uid="uid://8pqnjdx0myv4"]
 
 [ext_resource type="Script" uid="uid://bcac5eyemremk" path="res://SCRIPTS/Maps/Objectives/ObjectivesUnitsKilled.gd" id="1_gm2d5"]
 [ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="2_u1u1c"]

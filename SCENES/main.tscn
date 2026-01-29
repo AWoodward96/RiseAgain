@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c76vc288ovh8q"]
+[gd_scene format=3 uid="uid://c76vc288ovh8q"]
 
 [ext_resource type="Script" uid="uid://821pl6iihp24" path="res://SCENES/main.gd" id="1_q6lq6"]
 [ext_resource type="Resource" uid="uid://ddhgteb5cmmht" path="res://RESOURCES/Maps/Tutorial/tutorial_campaign.tres" id="2_pgmeu"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("BastionParent", "CampaignParent") groups=["MainScene"]]
+[node name="Main" type="Node2D" unique_id=1931595791 node_paths=PackedStringArray("BastionParent", "CampaignParent") groups=["MainScene"]]
 script = ExtResource("1_q6lq6")
 DEBUG_Campaign = ExtResource("2_pgmeu")
 BastionParent = NodePath("BastionParent")
 CampaignParent = NodePath("CampaignParent")
 
-[node name="BastionParent" type="Node2D" parent="." groups=["BastionParent"]]
+[node name="BastionParent" type="Node2D" parent="." unique_id=1760613527 groups=["BastionParent"]]
 
-[node name="CampaignParent" type="Node2D" parent="." groups=["CampaignParent"]]
+[node name="CampaignParent" type="Node2D" parent="." unique_id=1945042036 groups=["CampaignParent"]]

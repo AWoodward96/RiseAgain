@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kni2112pjkcj"]
+[gd_scene format=3 uid="uid://kni2112pjkcj"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_blgba"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_4t6om"]
@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("5_a1yuy")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[node name="inner_flame" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="inner_flame" type="Node2D" unique_id=1298794111 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_blgba")
 abilityCooldown = 0
 ability_speed = 1
@@ -35,13 +35,13 @@ TargetingTemplate = ExtResource("6_rvcbq")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1508627814]
 script = ExtResource("2_4t6om")
 AgressiveStat = ExtResource("3_ajlyq")
 AgressiveModType = 2
 DamageType = 1
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1399909647]
 script = ExtResource("4_pdly8")
 TeamTargeting = 0
 Type = 3

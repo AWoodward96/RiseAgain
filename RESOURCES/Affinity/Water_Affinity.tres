@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AffinityTemplate" load_steps=3 format=3 uid="uid://dyikir407kwph"]
+[gd_resource type="Resource" script_class="AffinityTemplate" format=3 uid="uid://dyikir407kwph"]
 
 [ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_rl7un"]
 [ext_resource type="Texture2D" uid="uid://x0ukijbyxtwy" path="res://ART/Icons/Affinity/water_affinity_icon.png" id="1_w0y6t"]

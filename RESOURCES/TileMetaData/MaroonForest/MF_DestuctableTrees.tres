@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TileMetaData" load_steps=4 format=3 uid="uid://dkgajgdeqosxv"]
+[gd_resource type="Resource" script_class="TileMetaData" format=3 uid="uid://dkgajgdeqosxv"]
 
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_7di6k"]
 [ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_q832u"]

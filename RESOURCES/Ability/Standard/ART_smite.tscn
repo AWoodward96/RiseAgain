@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv330r2gvm05j"]
+[gd_scene format=3 uid="uid://cv330r2gvm05j"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_fphlf"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_qs2f3"]
@@ -23,7 +23,7 @@ script = ExtResource("3_bhc1n")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_gt72d")
 
-[node name="ART_smite" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_smite" type="Node2D" unique_id=1312819231 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_fphlf")
 abilityCooldown = 2
 executionStack = Array[ExtResource("2_qs2f3")]([SubResource("Resource_2h5a0"), SubResource("Resource_v3o1y"), SubResource("Resource_5cjq5")])
@@ -35,11 +35,11 @@ TargetingTemplate = ExtResource("7_gums5")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1022995503]
 script = ExtResource("6_hroxl")
 TargetRange = Vector2i(1, 4)
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=1719886727]
 script = ExtResource("8_ipvti")
 FlatValue = 3.0
 AgressiveStat = ExtResource("9_c0xgb")

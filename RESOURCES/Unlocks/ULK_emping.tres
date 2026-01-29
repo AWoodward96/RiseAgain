@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://otgeq4vg63uk"]
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://otgeq4vg63uk"]
 
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_f7330"]
 [ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="2_1jx18"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhxil20ufx2ma"]
+[gd_scene format=3 uid="uid://bhxil20ufx2ma"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0hq2p"]
 [ext_resource type="Texture2D" uid="uid://c7yl5nsgangtw" path="res://ART/Icons/Ability/Equippable/morningstar.png" id="2_0hq2p"]
@@ -35,7 +35,7 @@ script = ExtResource("6_l8hcr")
 Template = ExtResource("8_psn6u")
 Value = 1
 
-[node name="morningstar" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="morningstar" type="Node2D" unique_id=1814007564 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_0hq2p")
 type = 1
 abilityCooldown = 0
@@ -50,16 +50,16 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=124203406]
 script = ExtResource("5_0lebr")
 GrantedStats = Array[ExtResource("6_l8hcr")]([SubResource("Resource_0lebr"), SubResource("Resource_l8hcr")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=135967948]
 script = ExtResource("9_vsu1t")
 FlatValue = 8.0
 AgressiveStat = ExtResource("10_s0rk5")
 AgressiveModType = 2
 DamageType = 2
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1513600674]
 script = ExtResource("12_0nllg")

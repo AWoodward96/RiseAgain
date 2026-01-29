@@ -32,7 +32,7 @@ config/name="RiseAgain_Proto01"
 run/main_scene="res://SCENES/main.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="RiseAgain"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -41,7 +41,7 @@ GameManager="*res://RESOURCES/Managers/GameManager.tscn"
 WorldMap="*res://RESOURCES/Universe/WorldMap/WorldMap.tscn"
 PersistDataManager="*res://RESOURCES/Managers/PersistDataManager.tscn"
 UIManager="*res://RESOURCES/Managers/UIManager.tscn"
-FmodManager="*res://addons/fmod/FmodManager.gd"
+FmodManager="*uid://cds10pm7hwn3p"
 AudioManager="*res://RESOURCES/Managers/AudioManager.tscn"
 InputManager="*res://SCRIPTS/Managers/InputManager.gd"
 Juice="*res://RESOURCES/Managers/Juice.tscn"

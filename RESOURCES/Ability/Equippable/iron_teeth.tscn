@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnqkq4ytoe6sq"]
+[gd_scene format=3 uid="uid://cnqkq4ytoe6sq"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_msyxe"]
 [ext_resource type="Texture2D" uid="uid://dvuqajreaumg1" path="res://ART/Icons/Ability/Equippable/iron_teeth.png" id="2_18cp6"]
@@ -29,7 +29,7 @@ script = ExtResource("4_m60bh")
 Template = ExtResource("5_cfioe")
 Value = 3
 
-[node name="iron_teeth" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="iron_teeth" type="Node2D" unique_id=866243039 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_msyxe")
 type = 1
 abilityCooldown = 0
@@ -44,14 +44,14 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=2102263725]
 script = ExtResource("3_qx15y")
 GrantedStats = Array[ExtResource("4_m60bh")]([SubResource("Resource_22csk")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1393282261]
 script = ExtResource("6_xlwq3")
 AgressiveStat = ExtResource("5_cfioe")
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1938152106]
 script = ExtResource("8_iwiic")

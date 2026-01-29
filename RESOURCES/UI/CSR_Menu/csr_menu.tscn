@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://gneoqi5t7opg"]
+[gd_scene format=3 uid="uid://gneoqi5t7opg"]
 
 [ext_resource type="Script" uid="uid://d0v0ac02bpy6v" path="res://SCRIPTS/UI/CSR/csr_menu.gd" id="1_508i1"]
 [ext_resource type="PackedScene" uid="uid://cp2qfjogxikmj" path="res://RESOURCES/Items/t2_jadetail.tscn" id="2_dewqg"]
 [ext_resource type="PackedScene" uid="uid://bdci2cagpqgn3" path="res://RESOURCES/Items/t2_stonecarapace.tscn" id="3_dewqg"]
 
-[node name="CSR" type="Control" node_paths=PackedStringArray("FirstEntry")]
+[node name="CSR" type="Control" unique_id=326171932 node_paths=PackedStringArray("FirstEntry")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ SpecificItem = ExtResource("2_dewqg")
 TestItems = Array[PackedScene]([ExtResource("3_dewqg")])
 Priority = 1000
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1974193416]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 15
@@ -26,86 +26,86 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=995348398]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer" unique_id=2044986578]
 layout_mode = 2
 columns = 2
 
-[node name="AddAllAbilities" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AddAllAbilities" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=568386459]
 layout_mode = 2
 text = "Add All Abilities"
 
-[node name="AbilitiesCost0" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AbilitiesCost0" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=319045998]
 layout_mode = 2
 text = "Abilities Cost 0"
 
-[node name="GivePredefinedItem" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="GivePredefinedItem" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1006842359]
 layout_mode = 2
 text = "Give Predefined Item to Allies"
 
-[node name="AddTestItemsToConvoy" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AddTestItemsToConvoy" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=333771537]
 layout_mode = 2
 text = "Add Test Items to Convoy"
 
-[node name="AlwaysCrit" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AlwaysCrit" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1034422950]
 layout_mode = 2
 text = "Always Crit"
 
-[node name="NeverHit" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="NeverHit" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=2044965709]
 layout_mode = 2
 text = "Never Hit"
 
-[node name="TestSaveGame" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="TestSaveGame" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1780206944]
 layout_mode = 2
 text = "Force Save Game"
 
-[node name="SaveMap" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="SaveMap" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=189975386]
 layout_mode = 2
 text = "Save Map"
 
-[node name="AutoWin" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AutoWin" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1463347093]
 layout_mode = 2
 text = "Auto Win"
 
-[node name="AutoLose" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AutoLose" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1496696928]
 layout_mode = 2
 text = "Auto Lose"
 
-[node name="ShowAbility" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="ShowAbility" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=753329982]
 layout_mode = 2
 text = "Show Ability Selection"
 
-[node name="DamageEveryone" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="DamageEveryone" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1579243700]
 layout_mode = 2
 text = "Deal 1 Damage to Target"
 
-[node name="ClearCampaignData" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="ClearCampaignData" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1878104485]
 layout_mode = 2
 text = "Clear Campaign Data"
 
-[node name="ClearCutsceneData" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="ClearCutsceneData" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1004626128]
 layout_mode = 2
 text = "Clear Cutscene Data"
 
-[node name="MarkTutorialComplete" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="MarkTutorialComplete" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=87687575]
 layout_mode = 2
 text = "Mark Tutorial Complete"
 
-[node name="AddFood" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AddFood" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1750714601]
 layout_mode = 2
 text = "Add 50 Food"
 
-[node name="AddGold" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AddGold" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1360393090]
 layout_mode = 2
 text = "Add 50 Gold"
 
-[node name="AddOre" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+[node name="AddOre" type="Button" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1162618303]
 layout_mode = 2
 text = "Add 50 Ore"
 

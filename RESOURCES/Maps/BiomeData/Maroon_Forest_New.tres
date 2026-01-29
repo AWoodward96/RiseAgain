@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BiomeData" load_steps=7 format=3 uid="uid://knn4tt544y50"]
+[gd_resource type="Resource" script_class="BiomeData" format=3 uid="uid://knn4tt544y50"]
 
 [ext_resource type="PackedScene" uid="uid://ml7melymonpr" path="res://RESOURCES/Maps/_alpha_Campaign00/EnvironmentalPrefabs/maroon_directional_light.tscn" id="1_3ms0p"]
 [ext_resource type="Script" uid="uid://jtmse3fkm1gn" path="res://SCRIPTS/Maps/BiomeData.gd" id="1_qm6v8"]

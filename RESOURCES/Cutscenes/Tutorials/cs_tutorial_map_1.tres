@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=108 format=3 uid="uid://cpvpwlannhcvy"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" format=3 uid="uid://cpvpwlannhcvy"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_as8j5"]
 [ext_resource type="Script" uid="uid://cl5ml7e14etw6" path="res://SCRIPTS/Cutscene/Events/BlockSaveEvent.gd" id="2_5hli6"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AIWildNecromancer" load_steps=6 format=3 uid="uid://cwpcdl6jod428"]
+[gd_resource type="Resource" script_class="AIWildNecromancer" format=3 uid="uid://cwpcdl6jod428"]
 
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="1_kjgyx"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="2_2lq0l"]

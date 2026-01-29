@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ctnbgmoyj5gin"]
+[gd_scene format=3 uid="uid://ctnbgmoyj5gin"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_k0q2b"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="2_2y86i"]
@@ -866,32 +866,30 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="VIS_CorpseChimera" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="VIS_CorpseChimera" type="Node2D" unique_id=867692730 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("1_k0q2b")
 AnimationCTRL = NodePath("AnimationPlayer")
 AnimationWorkComplete = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=229357740]
 visible = false
 modulate = Color(1, 0.290196, 0.211765, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_2y86i")
 centered = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1949935151]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=335639126]
 visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yppm3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=220655865]
+libraries/ = SubResource("AnimationLibrary_yppm3")
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1008927136]
 material = SubResource("ShaderMaterial_oyg5p")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wu407")

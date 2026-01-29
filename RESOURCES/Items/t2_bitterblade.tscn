@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxiuhj8btbjy8"]
+[gd_scene format=3 uid="uid://bxiuhj8btbjy8"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_g7y8y"]
 [ext_resource type="Texture2D" uid="uid://cfj3kh6p51747" path="res://ART/Icons/Items/t2_bitterblade.png" id="2_rps2v"]
@@ -11,7 +11,7 @@ script = ExtResource("4_ujf6g")
 Template = ExtResource("5_xdtvq")
 Value = 2
 
-[node name="t2_bitterblade" type="Node2D" node_paths=PackedStringArray("StatData")]
+[node name="t2_bitterblade" type="Node2D" unique_id=1997550003 node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_g7y8y")
 internalName = "t2_bitterblade"
 loc_displayName = "item_t2_bitterblade_name"
@@ -19,6 +19,6 @@ loc_displayDesc = "item_t2_bitterblade_desc"
 icon = ExtResource("2_rps2v")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=132815474]
 script = ExtResource("3_rps2v")
 GrantedStats = Array[ExtResource("4_ujf6g")]([SubResource("Resource_rps2v")])

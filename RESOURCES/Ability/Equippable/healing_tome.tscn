@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgtng3hy3kia5"]
+[gd_scene format=3 uid="uid://dgtng3hy3kia5"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_yarmj"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_4wqr7"]
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="3_cu1av"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_abep2"]
 
-[node name="healing_tome" type="Node2D"]
+[node name="healing_tome" type="Node2D" unique_id=348612549]
 script = ExtResource("1_yarmj")
 internalName = "healing_tome"
 loc_displayName = "item_healing_tome_name"
 loc_displayDesc = "item_healing_tome_desc"
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1566395002]
 script = ExtResource("2_4wqr7")
 TeamTargeting = 0
 
-[node name="HealComponent" type="Node2D" parent="."]
+[node name="HealComponent" type="Node2D" parent="." unique_id=2023438945]
 script = ExtResource("3_cu1av")
 FlatValue = 6.0
 ScalingStat = ExtResource("4_abep2")

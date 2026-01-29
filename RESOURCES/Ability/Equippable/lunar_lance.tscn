@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://sk4xm5rs346c"]
+[gd_scene format=3 uid="uid://sk4xm5rs346c"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5xil8"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ohson"]
@@ -21,7 +21,7 @@ script = ExtResource("3_qjoex")
 [sub_resource type="Resource" id="Resource_njyb8"]
 script = ExtResource("4_2xqle")
 
-[node name="lunar_lance" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="lunar_lance" type="Node2D" unique_id=453309214 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_5xil8")
 type = 1
 abilityCooldown = 0
@@ -36,15 +36,15 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=1366464627]
 script = ExtResource("6_30bv3")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1212424455]
 script = ExtResource("9_i857f")
 AgressiveStat = ExtResource("8_rbqf4")
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1550142139]
 script = ExtResource("11_h3pcw")
 Type = 2
 shapedTiles = ExtResource("12_56t7s")

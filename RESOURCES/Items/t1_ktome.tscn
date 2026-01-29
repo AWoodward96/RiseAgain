@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://6644i1yes1rk"]
+[gd_scene format=3 uid="uid://6644i1yes1rk"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_xvi3j"]
 [ext_resource type="Texture2D" uid="uid://dskg55x1t4d4v" path="res://ART/Icons/Items/t1_ktome.png" id="2_jxl7x"]
@@ -11,7 +11,7 @@ script = ExtResource("4_aeydy")
 Template = ExtResource("5_54ry3")
 Value = 1
 
-[node name="ktome_t1" type="Node2D" node_paths=PackedStringArray("StatData")]
+[node name="ktome_t1" type="Node2D" unique_id=1374102577 node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_xvi3j")
 internalName = "t1_ktome"
 loc_displayName = "item_t1_ktome_name"
@@ -19,6 +19,6 @@ loc_displayDesc = "item_t1_ktome_desc"
 icon = ExtResource("2_jxl7x")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1612577214]
 script = ExtResource("6_kc4iv")
 GrantedStats = Array[ExtResource("4_aeydy")]([SubResource("Resource_l81jo")])

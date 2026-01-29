@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TargetingShapedFree" load_steps=2 format=3 uid="uid://lgsn5mm6wips"]
+[gd_resource type="Resource" script_class="TargetingShapedFree" format=3 uid="uid://lgsn5mm6wips"]
 
 [ext_resource type="Script" uid="uid://b33ndaqe2bkqv" path="res://SCRIPTS/Targeting/TargetingShapedFree.gd" id="1_1uuw3"]
 

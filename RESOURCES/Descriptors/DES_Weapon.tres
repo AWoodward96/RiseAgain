@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=3 format=3 uid="uid://brpjjqf0ut8u2"]
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://brpjjqf0ut8u2"]
 
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_ak1mn"]
 [ext_resource type="Texture2D" uid="uid://bi730gfh0mf1f" path="res://ART/UI/tab_icons1.png" id="1_npraw"]
@@ -7,5 +7,4 @@
 script = ExtResource("1_ak1mn")
 icon = ExtResource("1_npraw")
 loc_name = "des_weapons"
-loc_description = ""
 metadata/_custom_type_script = "uid://bnehabjcbpysq"

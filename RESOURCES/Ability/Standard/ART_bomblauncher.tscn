@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vlpjvct6tdeb"]
+[gd_scene format=3 uid="uid://vlpjvct6tdeb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7k132"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_jnndm"]
@@ -34,7 +34,7 @@ script = ExtResource("6_bps40")
 GridEntityPrefab = ExtResource("5_fuvay")
 metadata/_custom_type_script = "uid://chqum0vfdwrt7"
 
-[node name="bomblauncher" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="bomblauncher" type="Node2D" unique_id=399610557 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_7k132")
 abilityCooldown = 0
 ability_speed = 1
@@ -47,12 +47,12 @@ TargetingTemplate = ExtResource("9_870y1")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1270781344]
 script = ExtResource("7_0h1cp")
 AgressiveStat = ExtResource("8_elhho")
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1495877856]
 script = ExtResource("9_ngqtq")
 TeamTargeting = 2
 TargetRange = Vector2i(1, 3)

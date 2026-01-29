@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bca8dk1lnddcs"]
+[gd_scene format=3 uid="uid://bca8dk1lnddcs"]
 
 [ext_resource type="Script" uid="uid://8pnlkrxqpeow" path="res://SCRIPTS/UI/General/simple_unit_entry.gd" id="1_7gf00"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_7gf00"]
@@ -11,7 +11,7 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.545098)
 
-[node name="UnitEntry" type="Button" node_paths=PackedStringArray("visualParent", "nameLabel")]
+[node name="UnitEntry" type="Button" unique_id=2074636368 node_paths=PackedStringArray("visualParent", "nameLabel")]
 custom_minimum_size = Vector2(256, 64)
 size_flags_vertical = 4
 script = ExtResource("1_7gf00")
@@ -20,7 +20,7 @@ useVisualParent = true
 visualParent = NodePath("MarginContainer/HBoxContainer/VisualElementParent")
 nameLabel = NodePath("MarginContainer/HBoxContainer/NameLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=501036130]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,15 +32,15 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1034206806]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VisualElementParent" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="VisualElementParent" type="Control" parent="MarginContainer/HBoxContainer" unique_id=921410286]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1994016010]
 layout_mode = 2
 text = "Miranda"
 label_settings = SubResource("LabelSettings_j2esb")

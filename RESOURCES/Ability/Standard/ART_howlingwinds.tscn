@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://diegks43t77gp"]
+[gd_scene format=3 uid="uid://diegks43t77gp"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_642os"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_hevbh"]
@@ -20,7 +20,7 @@ script = ExtResource("3_yacot")
 [sub_resource type="Resource" id="Resource_ajh08"]
 script = ExtResource("4_erx74")
 
-[node name="howlingwinds" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="howlingwinds" type="Node2D" unique_id=132820778 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_642os")
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_wkpf1")]([SubResource("Resource_4kttm"), SubResource("Resource_kkayp"), SubResource("Resource_ajh08")])
@@ -31,7 +31,7 @@ icon = ExtResource("5_nk1fm")
 TargetingTemplate = ExtResource("7_4kttm")
 TargetingData = NodePath("TargetingData")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1748094869]
 script = ExtResource("2_hevbh")
 TargetRange = Vector2i(0, 0)
 Type = 4

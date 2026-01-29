@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=2 format=3 uid="uid://cxpcx3rapq312"]
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://cxpcx3rapq312"]
 
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_fmgcg"]
 
 [resource]
 script = ExtResource("1_fmgcg")
-loc_name = ""
-loc_description = ""

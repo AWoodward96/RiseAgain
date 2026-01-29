@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dot0hl1hdqkq7"]
+[gd_scene format=3 uid="uid://dot0hl1hdqkq7"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_f7vji"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_7a8tr"]
@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("6_iemot")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[node name="innitiate" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="innitiate" type="Node2D" unique_id=723665258 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_f7vji")
 abilityCooldown = 3
 ability_speed = 1
@@ -41,17 +41,17 @@ TargetingTemplate = ExtResource("7_1ilc4")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=399950937]
 script = ExtResource("2_xseor")
 AgressiveStat = ExtResource("3_ifr6g")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1423354462]
 script = ExtResource("4_5wmo1")
 TargetRange = Vector2i(2, 3)
 Type = 2
 shapedTiles = ExtResource("5_w7fya")
 
-[node name="AbilityMovementComponent" type="Node2D" parent="."]
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=1358709987]
 script = ExtResource("6_xseor")
 type = 1
 drawPath = false

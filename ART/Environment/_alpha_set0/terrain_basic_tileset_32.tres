@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://cw2y83vld1yn4"]
+[gd_resource type="TileSet" format=3 uid="uid://cw2y83vld1yn4"]
 
 [ext_resource type="Resource" uid="uid://dum5iqty3hq5g" path="res://RESOURCES/TileMetaData/MaroonForest/MF_River.tres" id="1_3kalf"]
 [ext_resource type="Texture2D" uid="uid://b1ovua6g8svh3" path="res://ART/Environment/_alpha_set0/art_test_6.png" id="1_7skec"]

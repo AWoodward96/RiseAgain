@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://pkegklqav3wx"]
 
-[node name="WorldMapContainer" type="CanvasLayer"]
+[node name="WorldMapContainer" type="CanvasLayer" unique_id=1062184350]
 
-[node name="WorldMapContainerContainer" type="Control" parent="."]
+[node name="WorldMapContainerContainer" type="Control" parent="." unique_id=1621085597]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dp0gbxwj2y26b"]
+[gd_scene format=3 uid="uid://dp0gbxwj2y26b"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6yhr7"]
 [ext_resource type="Texture2D" uid="uid://uxr60sgilonh" path="res://ART/Icons/Ability/Standard/maul.png" id="2_jsawa"]
@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("5_k7bwb")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[node name="maul" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="maul" type="Node2D" unique_id=1354074974 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_6yhr7")
 abilityCooldown = 2
 executionStack = Array[ExtResource("2_p0no4")]([SubResource("Resource_k7bwb"), SubResource("Resource_a18b1"), SubResource("Resource_r5wa8"), SubResource("Resource_ucxb0")])
@@ -50,14 +50,14 @@ TargetingTemplate = ExtResource("8_s37xj")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=388439727]
 script = ExtResource("2_laam4")
 AgressiveStat = ExtResource("9_p0no4")
 AgressiveModType = 2
 AgressiveMod = 1.5
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1100549616]
 script = ExtResource("5_8yxgm")
 TeamTargeting = 2
 TargetRange = Vector2i(2, 3)
@@ -65,7 +65,7 @@ Type = 2
 shapedTiles = ExtResource("12_p0no4")
 stopShapeOnWall = true
 
-[node name="AbilityMovementComponent" type="Node2D" parent="."]
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=1807473470]
 script = ExtResource("14_2kkgi")
 type = 1
 stoppedByWalls = false

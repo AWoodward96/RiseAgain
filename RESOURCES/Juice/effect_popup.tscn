@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckf4unljro6gn"]
+[gd_scene format=3 uid="uid://ckf4unljro6gn"]
 
 [ext_resource type="Script" uid="uid://drgv2pkyf56k5" path="res://SCRIPTS/UI/Juice/DamageIndication/effect_popup.gd" id="1_p7oov"]
 [ext_resource type="Texture2D" uid="uid://yqokd4g4dbxf" path="res://ART/Icons/Ability/Equippable/wolfbane.png" id="2_8spsc"]
@@ -147,23 +147,23 @@ _data = {
 &"Run": SubResource("Animation_pkacr")
 }
 
-[node name="EffectPopup" type="Node2D" node_paths=PackedStringArray("sprite", "text")]
+[node name="EffectPopup" type="Node2D" unique_id=1746825641 node_paths=PackedStringArray("sprite", "text")]
 z_index = 10
 script = ExtResource("1_p7oov")
 sprite = NodePath("Node2D/Sprite2D")
 text = NodePath("Node2D/EffectName")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=2040767488]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -16)
 scale = Vector2(0.1, 0.1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1099114357]
 position = Vector2(-23.3, 24.85)
 scale = Vector2(0.075, 0.075)
 texture = ExtResource("2_8spsc")
 
-[node name="EffectName" type="Label" parent="Node2D"]
+[node name="EffectName" type="Label" parent="Node2D" unique_id=1114747414]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -181,9 +181,7 @@ text = "Cursed Life"
 label_settings = SubResource("LabelSettings_2etss")
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1529832916]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_5d1jg")
-}
-autoplay = "Run"
+libraries/ = SubResource("AnimationLibrary_5d1jg")
+autoplay = &"Run"

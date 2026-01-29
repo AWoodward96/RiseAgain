@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5ge0dn8wtstb"]
+[gd_scene format=3 uid="uid://b5ge0dn8wtstb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_5p40p"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_avuim"]
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("3_ru3jp")
 
-[node name="ART_DoubleShot" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_DoubleShot" type="Node2D" unique_id=1806348706 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_5p40p")
 ability_speed = 1
 executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_ab2ka"), SubResource("Resource_5arvb"), SubResource("Resource_5cjq5")])
@@ -34,13 +34,13 @@ TargetingTemplate = ExtResource("7_5arvb")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=683267864]
 script = ExtResource("5_fbic6")
 AgressiveStat = ExtResource("6_e48nk")
 AgressiveModType = 2
 AgressiveMod = 0.75
 DamageToHealthRatio = 0.0
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1620356997]
 script = ExtResource("8_p4cl1")
 TargetRange = Vector2i(1, 3)

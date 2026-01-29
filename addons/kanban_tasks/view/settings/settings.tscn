@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh1yunmhipirg"]
+[gd_scene format=3 uid="uid://dh1yunmhipirg"]
 
 [ext_resource type="Script" uid="uid://ckvfd6fp4mck8" path="res://addons/kanban_tasks/view/settings/settings.gd" id="1_4eaw3"]
 [ext_resource type="PackedScene" uid="uid://due07vdflx4o" path="res://addons/kanban_tasks/view/settings/general/general.tscn" id="1_dk7pg"]
 [ext_resource type="PackedScene" uid="uid://b2likgss81t0s" path="res://addons/kanban_tasks/view/settings/categories/categories.tscn" id="3_iycb0"]
 [ext_resource type="PackedScene" uid="uid://dapkpnkm8sow8" path="res://addons/kanban_tasks/view/settings/stages/stages.tscn" id="4_okolg"]
 
-[node name="Settings" type="AcceptDialog"]
+[node name="Settings" type="AcceptDialog" unique_id=1525649847]
+oversampling_override = 1.0
 title = "Settings"
 size = Vector2i(800, 400)
 visible = true
 theme_type_variation = &"EditorSettingsDialog"
 script = ExtResource("1_4eaw3")
 
-[node name="Settings" type="TabContainer" parent="."]
+[node name="Settings" type="TabContainer" parent="." unique_id=524563600]
 custom_minimum_size = Vector2(600, 300)
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,17 +24,21 @@ offset_right = -8.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
 
-[node name="General" parent="Settings" instance=ExtResource("1_dk7pg")]
+[node name="General" parent="Settings" unique_id=385369671 instance=ExtResource("1_dk7pg")]
 unique_name_in_owner = true
 layout_mode = 2
+metadata/_tab_index = 0
 
-[node name="Categories" parent="Settings" instance=ExtResource("3_iycb0")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
-[node name="Stages" parent="Settings" instance=ExtResource("4_okolg")]
+[node name="Categories" parent="Settings" unique_id=1938702066 instance=ExtResource("3_iycb0")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Stages" parent="Settings" unique_id=1906213750 instance=ExtResource("4_okolg")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AISmartTarget" load_steps=4 format=3 uid="uid://be6wwr3ymjar2"]
+[gd_resource type="Resource" script_class="AISmartTarget" format=3 uid="uid://be6wwr3ymjar2"]
 
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="1_5k0gl"]
 [ext_resource type="Script" uid="uid://r6ab8m1cxqrv" path="res://SCRIPTS/Units/AI/AI_SmartTarget.gd" id="2_8lskg"]

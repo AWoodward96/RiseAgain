@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://caqjnk7qlllww"]
+[gd_scene format=3 uid="uid://caqjnk7qlllww"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vtmyb"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_js4wy"]
@@ -27,7 +27,7 @@ script = ExtResource("7_k6kxa")
 script = ExtResource("8_3ym3h")
 TileCoordinates = Array[ExtResource("6_h7vi5")]([SubResource("Resource_yvmxb")])
 
-[node name="summongale" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="summongale" type="Node2D" unique_id=232739879 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_vtmyb")
 abilityCooldown = 0
 executionStack = Array[ExtResource("2_js4wy")]([SubResource("Resource_34thx"), SubResource("Resource_enlx2")])
@@ -38,7 +38,7 @@ icon = ExtResource("5_8polg")
 TargetingTemplate = ExtResource("7_34thx")
 TargetingData = NodePath("TargetingData")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=2043607161]
 script = ExtResource("2_nit5m")
 TeamTargeting = 0
 Type = 1

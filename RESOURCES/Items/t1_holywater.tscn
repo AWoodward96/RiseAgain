@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://k7p2s1qa26kq"]
+[gd_scene format=3 uid="uid://k7p2s1qa26kq"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_c2fsk"]
 [ext_resource type="Texture2D" uid="uid://cc3t70rtmwmym" path="res://ART/Icons/Items/t1_holywater.png" id="2_4nh6a"]
@@ -11,7 +11,7 @@ script = ExtResource("4_3elek")
 Template = ExtResource("5_k88vi")
 Value = 1
 
-[node name="holywater_t1" type="Node2D" node_paths=PackedStringArray("StatData")]
+[node name="holywater_t1" type="Node2D" unique_id=571018697 node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_c2fsk")
 internalName = "t1_holywater"
 loc_displayName = "item_t1_holywater_name"
@@ -19,6 +19,6 @@ loc_displayDesc = "item_t1_holywater_desc"
 icon = ExtResource("2_4nh6a")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1911169721]
 script = ExtResource("6_ac1lj")
 GrantedStats = Array[ExtResource("4_3elek")]([SubResource("Resource_h8pt6")])

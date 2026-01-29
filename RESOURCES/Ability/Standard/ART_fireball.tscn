@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tqgdcty0bba5"]
+[gd_scene format=3 uid="uid://tqgdcty0bba5"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_826b6"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_078wy"]
@@ -22,7 +22,7 @@ script = ExtResource("3_qlocd")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("3_tw6ek")
 
-[node name="ART_Fireball" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_Fireball" type="Node2D" unique_id=228978359 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_826b6")
 abilityCooldown = 3
 executionStack = Array[ExtResource("2_078wy")]([SubResource("Resource_6eci6"), SubResource("Resource_wdsyk"), SubResource("Resource_5cjq5")])
@@ -34,14 +34,14 @@ TargetingTemplate = ExtResource("7_nvsye")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=415120436]
 script = ExtResource("3_yfy6k")
 FlatValue = 2.0
 AgressiveStat = ExtResource("8_kv6yk")
 DamageType = 1
 DamageToHealthRatio = 0.0
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=2117946136]
 script = ExtResource("4_o4g0r")
 TargetRange = Vector2i(1, 3)
 Type = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene format=3 uid="uid://cepwbmuwjb32l"]
 
 [ext_resource type="Script" uid="uid://y87ywuus8k6s" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
@@ -82,7 +82,7 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="LabelSettings" id="LabelSettings_c51qu"]
 font = ExtResource("8_rdfo2")
 
-[node name="CombatHUD" type="Control" node_paths=PackedStringArray("InspectUI", "ContextUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "center_left_anchor", "top_right_anchor", "BlankAnchor", "PresetAnchoredUIElements", "TurnStartSound")]
+[node name="CombatHUD" type="Control" unique_id=412136889 node_paths=PackedStringArray("InspectUI", "ContextUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "center_left_anchor", "top_right_anchor", "BlankAnchor", "PresetAnchoredUIElements", "TurnStartSound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +109,7 @@ PresetAnchoredUIElements = [NodePath("Full_NoMargin/TerrainInspectPanel"), NodeP
 TurnStartSound = NodePath("TurnStart")
 metadata/_edit_horizontal_guides_ = [-94.0]
 
-[node name="Full_NoMargin" type="Control" parent="."]
+[node name="Full_NoMargin" type="Control" parent="." unique_id=819854491]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +117,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TerrainInspectPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("tile_name", "tile_health_parent", "tile_health", "tile_is_killbox_parent", "tile_is_shroud_parent", "fire_data_parent", "fire_level_label", "fire_damage_label", "grid_entity_parent")]
+[node name="TerrainInspectPanel" type="MarginContainer" parent="Full_NoMargin" unique_id=2001937079 node_paths=PackedStringArray("tile_name", "tile_health_parent", "tile_health", "tile_is_killbox_parent", "tile_is_shroud_parent", "fire_data_parent", "fire_level_label", "fire_damage_label", "grid_entity_parent")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -149,59 +149,59 @@ no_name_loc = "ui_notiledata_name"
 PreferredAnchor = Array[int]([2, 3])
 AvailableAnchors = Array[int]([2, 3, 0, 1])
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel" unique_id=630003963]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer"]
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer" unique_id=1909536053]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin" unique_id=546020386]
 layout_mode = 2
 color = Color(0.16, 0.1088, 0.118187, 1)
 
-[node name="Content" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin" unique_id=759267404]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content" unique_id=1531514028]
 layout_mode = 2
 
-[node name="TerrainName" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+[node name="TerrainName" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=513816047]
 layout_mode = 2
 text = "Dead Tree"
 label_settings = SubResource("LabelSettings_r1gep")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Divider" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+[node name="Divider" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=1653645977]
 layout_mode = 2
 texture = ExtResource("24_cm1b8")
 
-[node name="HealthContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+[node name="HealthContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=1695380463]
 layout_mode = 2
 
-[node name="HealthLabel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer"]
+[node name="HealthLabel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer" unique_id=1964539034]
 layout_mode = 2
 text = "ui_health"
 label_settings = ExtResource("25_gcwxk")
 
-[node name="HealthNumber" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer"]
+[node name="HealthNumber" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer" unique_id=662197942]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "{NUM}"
 label_settings = ExtResource("25_gcwxk")
 horizontal_alignment = 2
 
-[node name="KillboxParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+[node name="KillboxParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=950535518]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent"]
+[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent" unique_id=1058832293]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_left = 68.0
@@ -211,12 +211,12 @@ offset_bottom = 36.0
 texture = ExtResource("27_gwkwg")
 expand_mode = 1
 
-[node name="ShroudParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer"]
+[node name="ShroudParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=456732731]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/ShroudParent"]
+[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/ShroudParent" unique_id=662308058]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_left = 68.0
@@ -226,7 +226,7 @@ offset_bottom = 36.0
 texture = ExtResource("13_m3k6o")
 expand_mode = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin" unique_id=394902846]
 layout_mode = 2
 texture = ExtResource("23_vm2kk")
 region_rect = Rect2(0, 0, 80, 64)
@@ -235,47 +235,47 @@ patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="OnFireInfo" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer"]
+[node name="OnFireInfo" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer" unique_id=13850157]
 visible = false
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo" unique_id=1400496778]
 layout_mode = 2
 color = Color(0.36, 0.1296, 0.16416, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo"]
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo" unique_id=88885908]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer" unique_id=1308610011]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=672628839]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("13_6r2ue")
 expand_mode = 1
 
-[node name="FireLevel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+[node name="FireLevel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=1307562919]
 layout_mode = 2
 text = "x2"
 label_settings = ExtResource("25_gcwxk")
 
-[node name="Space" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+[node name="Space" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=161232919]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="HealthLostPerTurn" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer"]
+[node name="HealthLostPerTurn" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=839489323]
 layout_mode = 2
 text = "-6 Hp/Turn"
 label_settings = ExtResource("25_gcwxk")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo" unique_id=209430756]
 layout_mode = 2
 texture = ExtResource("25_lfimk")
 patch_margin_left = 2
@@ -283,7 +283,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("DefaultLayoutParent", "SubmergedLayoutParent", "icon", "injuredParent", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
+[node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" unique_id=132320427 node_paths=PackedStringArray("DefaultLayoutParent", "SubmergedLayoutParent", "icon", "injuredParent", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -313,18 +313,18 @@ Priority = 2
 PreferredAnchor = Array[int]([2, 3])
 AvailableAnchors = Array[int]([2, 3, 0, 1])
 
-[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel"]
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel" unique_id=179020794]
 layout_mode = 2
 
-[node name="Content" type="VBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin"]
+[node name="Content" type="VBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin" unique_id=1944066205]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Injured" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content"]
+[node name="Injured" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=1661285705]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured" unique_id=2141268103]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,7 +333,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.058, 0.0792999, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured"]
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured" unique_id=1365274418]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -345,14 +345,14 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured/MarginContainer"]
+[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured/MarginContainer" unique_id=897624094]
 layout_mode = 2
 text = "Injured"
 label_settings = SubResource("LabelSettings_dq8tc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured" unique_id=1108433058]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -365,7 +365,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
+[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=579326167 node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
 custom_minimum_size = Vector2(260, 108)
 layout_mode = 2
 script = ExtResource("12_60paf")
@@ -381,7 +381,7 @@ EffectParent = NodePath("../EffectsParent")
 EffectsList = NodePath("../EffectsParent/MarginContainer/ActiveEffects")
 EffectsIconPrefab = ExtResource("10_4ar5q")
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1728403357]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -390,7 +390,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.24, 0.1968, 0.20328, 1)
 
-[node name="Default_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+[node name="Default_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1232972010]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -398,7 +398,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=852882224]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
@@ -407,7 +407,7 @@ offset_bottom = 55.0
 texture = ExtResource("25_a6jy8")
 expand_mode = 2
 
-[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon"]
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon" unique_id=1049866512]
 layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
@@ -419,14 +419,14 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon"]
+[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon" unique_id=2040173651]
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
 texture = ExtResource("21_m3k6o")
 expand_mode = 2
 
-[node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=2005294352]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 44.0
@@ -436,7 +436,7 @@ pivot_offset = Vector2(22, -2)
 texture = ExtResource("21_tmp02")
 expand_mode = 1
 
-[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/Affinity"]
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/Affinity" unique_id=2073294745]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -449,7 +449,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1792374041]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 2.0
@@ -459,7 +459,7 @@ text = "[UnitName]"
 label_settings = SubResource("LabelSettings_n4mcp")
 vertical_alignment = 1
 
-[node name="Level" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="Level" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1066575000]
 layout_mode = 0
 offset_left = 206.0
 offset_top = 2.0
@@ -470,7 +470,7 @@ label_settings = SubResource("LabelSettings_n4mcp")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=959373327]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 0
 offset_left = 64.0
@@ -481,7 +481,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
 show_percentage = false
 
-[node name="InjuredBar" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="InjuredBar" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1654320922]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 0
 offset_left = 64.0
@@ -494,7 +494,7 @@ value = 0.3
 fill_mode = 1
 show_percentage = false
 
-[node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=2092870718]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 0
 offset_left = 64.0
@@ -505,7 +505,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
 max_value = 1.0
 show_percentage = false
 
-[node name="HealthText" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="HealthText" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1689792083]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 0
 offset_left = 128.0
@@ -517,7 +517,7 @@ label_settings = SubResource("LabelSettings_y7ooe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EXP" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="EXP" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1913135301]
 custom_minimum_size = Vector2(132, 1)
 layout_mode = 0
 offset_left = 64.0
@@ -529,7 +529,7 @@ step = 1.0
 value = 23.0
 show_percentage = false
 
-[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=837329458]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -544,7 +544,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("24_cm1b8")
 
-[node name="ImportantStats" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout"]
+[node name="ImportantStats" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1862686199]
 anchors_preset = 0
 offset_left = 5.0
 offset_top = 71.0
@@ -552,7 +552,7 @@ offset_right = 251.0
 offset_bottom = 103.0
 pivot_offset = Vector2(4, 26)
 
-[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats"]
+[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=742487543]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -566,7 +566,7 @@ theme_override_constants/h_separation = 24
 columns = 4
 script = ExtResource("10_fkj7h")
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=794203268]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -575,69 +575,69 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32, 0.2784, 0.294347, 1)
 
-[node name="Glance" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats"]
+[node name="Glance" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=199229497]
 layout_mode = 0
 offset_right = 244.0
 offset_bottom = 32.0
 theme_override_constants/separation = 8
 
-[node name="Atk" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance"]
+[node name="Atk" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=362094263]
 layout_mode = 2
 
-[node name="AttackIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk"]
+[node name="AttackIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk" unique_id=514892101]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("15_ynng0")
 expand_mode = 1
 
-[node name="AttackNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk"]
+[node name="AttackNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk" unique_id=1076857052]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Def" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance"]
+[node name="Def" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=1406131755]
 layout_mode = 2
 
-[node name="DefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def"]
+[node name="DefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def" unique_id=1266487991]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("16_2y1mh")
 expand_mode = 1
 
-[node name="DefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def"]
+[node name="DefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def" unique_id=1385882133]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Def2" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance"]
+[node name="Def2" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=433842600]
 layout_mode = 2
 
-[node name="SpDefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2"]
+[node name="SpDefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2" unique_id=1564966014]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("17_qifey")
 expand_mode = 1
 
-[node name="SpDefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2"]
+[node name="SpDefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2" unique_id=1061557367]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Move" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance"]
+[node name="Move" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=47472796]
 layout_mode = 2
 
-[node name="MoveIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move"]
+[node name="MoveIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move" unique_id=159663581]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("18_pubiv")
 expand_mode = 1
 
-[node name="MoveNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move"]
+[node name="MoveNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move" unique_id=1102731428]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats"]
+[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=851103714]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -650,7 +650,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Submerged_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+[node name="Submerged_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=366191322]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -659,7 +659,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout"]
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1277190224]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
@@ -668,7 +668,7 @@ offset_bottom = 55.0
 texture = ExtResource("29_dq8tc")
 expand_mode = 2
 
-[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon"]
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon" unique_id=2028092732]
 layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
@@ -680,7 +680,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon"]
+[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon" unique_id=1052123937]
 visible = false
 layout_mode = 0
 offset_right = 48.0
@@ -688,7 +688,7 @@ offset_bottom = 48.0
 texture = ExtResource("21_m3k6o")
 expand_mode = 2
 
-[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout"]
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1364763130]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 19.0
@@ -698,7 +698,7 @@ text = "ui_submerged_unknown"
 label_settings = SubResource("LabelSettings_n4mcp")
 vertical_alignment = 1
 
-[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout"]
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1926475335]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -713,7 +713,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("24_cm1b8")
 
-[node name="SecondPanel" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout"]
+[node name="SecondPanel" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=515214118]
 anchors_preset = 0
 offset_left = 5.0
 offset_top = 71.0
@@ -721,7 +721,7 @@ offset_right = 251.0
 offset_bottom = 103.0
 pivot_offset = Vector2(4, 26)
 
-[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel"]
+[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=130238617]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -735,7 +735,7 @@ theme_override_constants/h_separation = 24
 columns = 4
 script = ExtResource("10_fkj7h")
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=734232898]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -744,7 +744,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32, 0.2784, 0.294347, 1)
 
-[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel"]
+[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=1154400805]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -758,7 +758,7 @@ label_settings = SubResource("LabelSettings_foman")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel"]
+[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=1442110284]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -771,7 +771,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1268307635]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -784,11 +784,11 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 
-[node name="EffectsParent" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content"]
+[node name="EffectsParent" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=202466333]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=1424203992]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -797,7 +797,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.196078, 0.168627, 0.172549, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent"]
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=1985870198]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -809,12 +809,12 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="ActiveEffects" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent/MarginContainer"]
+[node name="ActiveEffects" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent/MarginContainer" unique_id=527792059]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 script = ExtResource("10_fkj7h")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=466536539]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -827,7 +827,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="PanelBlocker" type="Control" parent="Full_NoMargin"]
+[node name="PanelBlocker" type="Control" parent="Full_NoMargin" unique_id=195823759]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -835,7 +835,7 @@ script = ExtResource("29_g8xya")
 Priority = 100
 AvailableAnchors = Array[int]([0, 1, 2, 3])
 
-[node name="Objective" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText")]
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin" unique_id=182303933 node_paths=PackedStringArray("ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText")]
 visible = false
 layout_mode = 0
 offset_right = 283.0
@@ -851,32 +851,32 @@ OptionalObjectiveText = NodePath("VBoxContainer/OptionalObjective/Content/Option
 PreferredAnchor = Array[int]([0, 1])
 AvailableAnchors = Array[int]([0, 1])
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/Objective"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/Objective" unique_id=997822265]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="Objective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer"]
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=375599674]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=1952116541]
 layout_mode = 2
 color = Color(0.31, 0.31, 0.31, 1)
 
-[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/Objective"]
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=27161384]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="MainObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/Objective/Content"]
+[node name="MainObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/Objective/Content" unique_id=1494161381]
 layout_mode = 2
 text = "Route: X Remaining"
 label_settings = SubResource("LabelSettings_j302s")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=997505746]
 layout_mode = 2
 texture = ExtResource("24_6ybxf")
 patch_margin_left = 16
@@ -884,27 +884,27 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="OptionalObjective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer"]
+[node name="OptionalObjective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=182898072]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective"]
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=1316717706]
 layout_mode = 2
 color = Color(0.23, 0.23, 0.23, 1)
 
-[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective"]
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=994516167]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="OptionalObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective/Content"]
+[node name="OptionalObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective/Content" unique_id=1675298125]
 layout_mode = 2
 text = "Opt: Any Neutral Unit left Alive"
 label_settings = SubResource("LabelSettings_j302s")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=1303539354]
 layout_mode = 2
 texture = ExtResource("23_vm2kk")
 patch_margin_left = 16
@@ -912,10 +912,10 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/Objective"]
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/Objective" unique_id=495431541]
 layout_mode = 2
 
-[node name="TutorialPrompt" type="MarginContainer" parent="Full_NoMargin" node_paths=PackedStringArray("PromptLabel")]
+[node name="TutorialPrompt" type="MarginContainer" parent="Full_NoMargin" unique_id=595275759 node_paths=PackedStringArray("PromptLabel")]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -938,35 +938,35 @@ PreferredAnchor = Array[int]([3])
 AvailableAnchors = Array[int]([3, 7, 8])
 Disabled = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TutorialPrompt"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TutorialPrompt" unique_id=178141377]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="Objective" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer"]
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer" unique_id=317637299]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_top = 0
 
-[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective"]
+[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective" unique_id=1470844538]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_cd1a5")
 
-[node name="Content" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective"]
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective" unique_id=1904666616]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 16
 
-[node name="Prompt" type="Label" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective/Content"]
+[node name="Prompt" type="Label" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective/Content" unique_id=777203750]
 layout_mode = 2
 text = "Use WASD to move the Reticle."
 label_settings = SubResource("LabelSettings_j302s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective" unique_id=1705144845]
 layout_mode = 2
 texture = ExtResource("24_6ybxf")
 patch_margin_left = 16
@@ -974,10 +974,10 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt"]
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt" unique_id=591061686]
 layout_mode = 2
 
-[node name="TopLeft" type="Control" parent="."]
+[node name="TopLeft" type="Control" parent="." unique_id=876975646]
 layout_mode = 1
 anchor_left = 0.074
 anchor_top = 0.1
@@ -986,7 +986,7 @@ anchor_bottom = 0.1
 offset_left = -7.04
 offset_right = -7.04
 
-[node name="TopRight" type="Control" parent="."]
+[node name="TopRight" type="Control" parent="." unique_id=736816497]
 layout_mode = 1
 anchor_left = 0.902
 anchor_top = 0.1
@@ -996,7 +996,7 @@ offset_left = -159.92
 offset_right = -159.92
 grow_horizontal = 0
 
-[node name="CenterLeft" type="Control" parent="."]
+[node name="CenterLeft" type="Control" parent="." unique_id=663107129]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1005,7 +1005,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BottomRight" type="Control" parent="."]
+[node name="BottomRight" type="Control" parent="." unique_id=730048295]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1015,7 +1015,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="BottomLeft" type="Control" parent="."]
+[node name="BottomLeft" type="Control" parent="." unique_id=1790698622]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -1023,7 +1023,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent", "OnShowSound")]
+[node name="ContextMenu" type="Control" parent="." unique_id=355297885 node_paths=PackedStringArray("entryParent", "OnShowSound")]
 anchors_preset = 0
 size_flags_horizontal = 0
 script = ExtResource("10_5gr1e")
@@ -1031,26 +1031,26 @@ entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
 entryPrefab = ExtResource("11_aar1f")
 OnShowSound = NodePath("OnShow")
 
-[node name="PanelContainer" type="MarginContainer" parent="ContextMenu"]
+[node name="PanelContainer" type="MarginContainer" parent="ContextMenu" unique_id=1730427635]
 layout_mode = 0
 offset_right = 224.0
 offset_bottom = 32.0
 
-[node name="ColorRect" type="ColorRect" parent="ContextMenu/PanelContainer"]
+[node name="ColorRect" type="ColorRect" parent="ContextMenu/PanelContainer" unique_id=437632918]
 layout_mode = 2
 color = Color(0.16, 0.1488, 0.1488, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer" unique_id=371150375]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer" unique_id=181834366]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="ContextMenu/PanelContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="ContextMenu/PanelContainer" unique_id=1807541935]
 layout_mode = 2
 texture = ExtResource("24_6ybxf")
 patch_margin_left = 16
@@ -1058,11 +1058,11 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="OnShow" type="FmodEventEmitter2D" parent="ContextMenu"]
+[node name="OnShow" type="FmodEventEmitter2D" parent="ContextMenu" unique_id=1916266057]
 event_name = "event:/SFX/UI/UI_Paper_Small"
 event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"
 
-[node name="TopCenter" type="Control" parent="."]
+[node name="TopCenter" type="Control" parent="." unique_id=707782370]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1071,13 +1071,13 @@ offset_left = -21.0
 offset_right = -21.0
 grow_horizontal = 2
 
-[node name="NoTargets" type="Control" parent="TopCenter"]
+[node name="NoTargets" type="Control" parent="TopCenter" unique_id=1853854442]
 anchors_preset = 0
 offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="TopCenter/NoTargets"]
+[node name="ColorRect" type="ColorRect" parent="TopCenter/NoTargets" unique_id=1351079248]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1086,7 +1086,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.13, 0.13, 1)
 
-[node name="Label" type="Label" parent="TopCenter/NoTargets"]
+[node name="Label" type="Label" parent="TopCenter/NoTargets" unique_id=1527889538]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1102,7 +1102,7 @@ grow_vertical = 2
 text = "No Targets Found"
 label_settings = SubResource("LabelSettings_c51qu")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TopCenter/NoTargets"]
+[node name="NinePatchRect" type="NinePatchRect" parent="TopCenter/NoTargets" unique_id=1643807216]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1115,6 +1115,6 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="TurnStart" type="FmodEventEmitter2D" parent="."]
+[node name="TurnStart" type="FmodEventEmitter2D" parent="." unique_id=2095900370]
 event_name = "event:/SFX/UI/UI_Turn_Start"
 event_guid = "{0c576d34-7726-4c30-a6f7-e3633fee61e2}"

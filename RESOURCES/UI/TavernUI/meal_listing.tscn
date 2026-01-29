@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ba3vlpk5kjlh"]
+[gd_scene format=3 uid="uid://ba3vlpk5kjlh"]
 
 [ext_resource type="Script" uid="uid://bisc10d5pi8ku" path="res://SCRIPTS/Universe/Tavern/MealListingEntry.gd" id="1_3pykx"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_t05da"]
@@ -15,6 +15,8 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.411765, 0.376471, 0.368627, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pykx"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pykx"]
 bg_color = Color(0.678431, 0.623529, 0.545098, 1)
 border_width_left = 1
@@ -26,8 +28,6 @@ expand_margin_left = 8.0
 expand_margin_top = 4.0
 expand_margin_right = 8.0
 expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pykx"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2oyqt"]
 
@@ -114,7 +114,7 @@ _data = {
 &"RESET": SubResource("Animation_vhd7l")
 }
 
-[node name="MealListing" type="Panel" node_paths=PackedStringArray("MealTitle", "MealDesc", "MealIcon", "Cost", "MyButton", "LockedParent", "Animator")]
+[node name="MealListing" type="Panel" unique_id=751028507 node_paths=PackedStringArray("MealTitle", "MealDesc", "MealIcon", "Cost", "MyButton", "LockedParent", "Animator")]
 custom_minimum_size = Vector2(320, 48)
 size_flags_horizontal = 0
 mouse_filter = 2
@@ -130,17 +130,17 @@ Animator = NodePath("AnimationPlayer")
 CostCanPay = Color(0.333333, 0.309804, 0.27451, 1)
 CostCantPay = Color(0.33, 0.1782, 0.1782, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=2114474283]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_3pykx")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3pykx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3pykx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1261365463]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,84 +148,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1880234199]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=1732249162]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer" unique_id=2056608358]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=530493508]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_2oyqt")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer" unique_id=292069326]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MealTitle" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="MealTitle" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2036201179]
 layout_mode = 2
 text = "Grub"
 label_settings = SubResource("LabelSettings_y0wkw")
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1874405458]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.160784, 0.141176, 0.0941176, 1)
 
-[node name="MealDesc" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="MealDesc" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1772141955]
 layout_mode = 2
 text = "+1% All Stat Growths"
 label_settings = SubResource("LabelSettings_q318w")
 
-[node name="Spacer" type="Control" parent="HBoxContainer"]
+[node name="Spacer" type="Control" parent="HBoxContainer" unique_id=1276088625]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PriceContainerOffset" type="Control" parent="HBoxContainer"]
+[node name="PriceContainerOffset" type="Control" parent="HBoxContainer" unique_id=1117926084]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="PriceContainer" type="HBoxContainer" parent="HBoxContainer/PriceContainerOffset"]
-layout_mode = 2
+[node name="PriceContainer" type="HBoxContainer" parent="HBoxContainer/PriceContainerOffset" unique_id=1195111636]
+layout_mode = 0
 offset_left = 4.0
 offset_right = 140.0
 offset_bottom = 49.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PriceContainerOffset/PriceContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PriceContainerOffset/PriceContainer" unique_id=1542501326]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PriceContainerOffset/PriceContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PriceContainerOffset/PriceContainer/VBoxContainer" unique_id=719447437]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_vhd7l")
 expand_mode = 1
 
-[node name="FoodCost" type="Label" parent="HBoxContainer/PriceContainerOffset/PriceContainer"]
+[node name="FoodCost" type="Label" parent="HBoxContainer/PriceContainerOffset/PriceContainer" unique_id=18181601]
 layout_mode = 2
 text = "ui_xNUM"
 label_settings = SubResource("LabelSettings_yd7et")
 
-[node name="Spacer2" type="Control" parent="HBoxContainer"]
+[node name="Spacer2" type="Control" parent="HBoxContainer" unique_id=1989925205]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_n25pp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=513850848]
+libraries/ = SubResource("AnimationLibrary_n25pp")
 
-[node name="LockedParent" type="ColorRect" parent="."]
+[node name="LockedParent" type="ColorRect" parent="." unique_id=1647905385]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -235,9 +233,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.286275)
 
-[node name="TextureRect" type="TextureRect" parent="LockedParent"]
+[node name="TextureRect" type="TextureRect" parent="LockedParent" unique_id=496167233]
 custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
+layout_mode = 0
 offset_left = 128.0
 offset_top = 8.0
 offset_right = 160.0

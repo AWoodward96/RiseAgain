@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://klf2tpkgl4h3"]
+[gd_resource type="TileSet" format=3 uid="uid://klf2tpkgl4h3"]
 
 [ext_resource type="Resource" uid="uid://q4fb4cnynts0" path="res://RESOURCES/TileMetaData/WhiteCoast/WC_StillWater.tres" id="1_l011b"]
 [ext_resource type="Texture2D" uid="uid://b531bhnitvytq" path="res://ART/Environment/WhiteCoast/development_set.png" id="2_cbxvo"]

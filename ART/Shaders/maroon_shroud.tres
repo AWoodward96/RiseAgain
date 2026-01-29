@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bhg13mo7n7rgd"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bhg13mo7n7rgd"]
 
 [ext_resource type="Shader" uid="uid://bj8vu31v14v6d" path="res://ART/Shaders/tree_sway.gdshader" id="1_olaaf"]
 

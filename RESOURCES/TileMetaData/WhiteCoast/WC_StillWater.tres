@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="TileMetaData" load_steps=2 format=3 uid="uid://q4fb4cnynts0"]
+[gd_resource type="Resource" script_class="TileMetaData" format=3 uid="uid://q4fb4cnynts0"]
 
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_b1vbl"]
 [ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_pdx73"]
 
 [resource]
 script = ExtResource("1_pdx73")
 loc_name = "tile_river_name"
-Health = -1
 Killbox = true
 Water = true
-FireSpreadChance = 0.5
 metadata/_custom_type_script = "uid://cj8ei3attrikd"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CutsceneTemplate" load_steps=21 format=3 uid="uid://bm7oqtrrevt4i"]
+[gd_resource type="Resource" script_class="CutsceneTemplate" format=3 uid="uid://bm7oqtrrevt4i"]
 
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_v1wxr"]
 [ext_resource type="Script" uid="uid://c257k143e3xng" path="res://SCRIPTS/Cutscene/Events/DebugLogEvent.gd" id="2_b3ty7"]
@@ -29,8 +29,6 @@ debug = "Reached through the requirement"
 
 [sub_resource type="Resource" id="Resource_ybofo"]
 script = ExtResource("4_p66r0")
-Coord = Vector2i(0, 0)
-NOT = false
 
 [sub_resource type="Resource" id="Resource_gqh1q"]
 script = ExtResource("6_s4lim")
@@ -54,11 +52,9 @@ script = ExtResource("5_46pc7")
 unitTemplate = ExtResource("6_x2p4t")
 atSpecificCoord = true
 specificCoord = Vector2i(4, 4)
-NOT = false
 
 [resource]
 script = ExtResource("2_u1be4")
 startingRequirement = Array[ExtResource("3_7oxe7")]([SubResource("Resource_xk8xy")])
 events = Array[ExtResource("1_v1wxr")]([SubResource("Resource_oh4qr"), SubResource("Resource_4arkc"), SubResource("Resource_4yx8i"), SubResource("Resource_gqh1q"), SubResource("Resource_bhbd5"), SubResource("Resource_0cpdh"), SubResource("Resource_thqjs")])
 repeatable = true
-autoComplete = true

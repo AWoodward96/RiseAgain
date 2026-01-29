@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1oe3af1kkup5"]
+[gd_scene format=3 uid="uid://b1oe3af1kkup5"]
 
 [sub_resource type="Gradient" id="Gradient_v8n7w"]
 offsets = PackedFloat32Array(0, 0.39029536, 0.6413502)
@@ -11,9 +11,9 @@ height = 160
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Offset" type="Node2D"]
+[node name="Offset" type="Node2D" unique_id=1215965214]
 
-[node name="maroon_unitlight" type="PointLight2D" parent="."]
+[node name="maroon_unitlight" type="PointLight2D" parent="." unique_id=887194634]
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 energy = 1.35

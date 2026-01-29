@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7850ynb8vsrl"]
+[gd_scene format=3 uid="uid://b7850ynb8vsrl"]
 
 [ext_resource type="Script" uid="uid://cvuvblt057f7i" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
 [ext_resource type="Texture2D" uid="uid://db37hp17pcctg" path="res://ART/Icons/cooldown_icon.png" id="2_4cgg7"]
@@ -18,7 +18,7 @@ font = ExtResource("3_tvrtu")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ContextButtonEntry" type="MarginContainer" node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "cooldown_parent", "cooldown_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
+[node name="ContextButtonEntry" type="MarginContainer" unique_id=769369456 node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "cooldown_parent", "cooldown_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
 custom_minimum_size = Vector2(0, 32)
 focus_mode = 2
 mouse_filter = 0
@@ -40,15 +40,15 @@ OnFocus = NodePath("OnFocus")
 OnSelect = NodePath("OnSelect")
 OnSelectDeny = NodePath("OnSelectDeny")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=928439028]
 layout_mode = 2
 color = Color(0.183, 0.22395, 0.3, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=671802051]
 visible = false
 layout_mode = 2
 
-[node name="StandardButton" type="MarginContainer" parent="."]
+[node name="StandardButton" type="MarginContainer" parent="." unique_id=1203747444]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -56,21 +56,21 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StandardButton"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StandardButton" unique_id=239650132]
 layout_mode = 2
 
-[node name="Cooldown" type="Control" parent="StandardButton/HBoxContainer"]
+[node name="Cooldown" type="Control" parent="StandardButton/HBoxContainer" unique_id=1944495779]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="StandardButton/HBoxContainer/Cooldown"]
+[node name="TextureRect" type="TextureRect" parent="StandardButton/HBoxContainer/Cooldown" unique_id=1962899566]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("2_4cgg7")
 expand_mode = 1
 
-[node name="CooldownLabel" type="Label" parent="StandardButton/HBoxContainer/Cooldown"]
+[node name="CooldownLabel" type="Label" parent="StandardButton/HBoxContainer/Cooldown" unique_id=689211029]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,11 +85,11 @@ label_settings = ExtResource("3_4cgg7")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label" type="Panel" parent="StandardButton/HBoxContainer"]
+[node name="Label" type="Panel" parent="StandardButton/HBoxContainer" unique_id=1834680445]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ActionText" type="Label" parent="StandardButton/HBoxContainer/Label"]
+[node name="ActionText" type="Label" parent="StandardButton/HBoxContainer/Label" unique_id=637676130]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,27 +102,27 @@ label_settings = SubResource("LabelSettings_glskh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FastSpeed" type="Control" parent="StandardButton/HBoxContainer"]
+[node name="FastSpeed" type="Control" parent="StandardButton/HBoxContainer" unique_id=2023008009]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="StandardButton/HBoxContainer/FastSpeed"]
+[node name="TextureRect" type="TextureRect" parent="StandardButton/HBoxContainer/FastSpeed" unique_id=975073883]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("4_3hivy")
 expand_mode = 1
 
-[node name="Uses" type="Control" parent="StandardButton/HBoxContainer"]
+[node name="Uses" type="Control" parent="StandardButton/HBoxContainer" unique_id=637014489]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="StandardButton/HBoxContainer/Uses"]
+[node name="Panel" type="Panel" parent="StandardButton/HBoxContainer/Uses" unique_id=1027598020]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="UsesRemaining" type="Label" parent="StandardButton/HBoxContainer/Uses"]
+[node name="UsesRemaining" type="Label" parent="StandardButton/HBoxContainer/Uses" unique_id=1222224813]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,7 +135,7 @@ label_settings = SubResource("LabelSettings_s44bi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=670645657]
 layout_mode = 2
 texture = ExtResource("4_5k861")
 patch_margin_left = 2
@@ -143,16 +143,16 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Disabled" type="ColorRect" parent="."]
+[node name="Disabled" type="ColorRect" parent="." unique_id=507141961]
 visible = false
 layout_mode = 2
 color = Color(0.0592, 0.056, 0.08, 0.537255)
 
-[node name="FocusParent" type="Control" parent="."]
+[node name="FocusParent" type="Control" parent="." unique_id=460898047]
 visible = false
 layout_mode = 2
 
-[node name="Focused" type="ColorRect" parent="FocusParent"]
+[node name="Focused" type="ColorRect" parent="FocusParent" unique_id=1012999229]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +161,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.203922)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="FocusParent"]
+[node name="NinePatchRect" type="NinePatchRect" parent="FocusParent" unique_id=1149662126]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -174,15 +174,15 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="OnFocus" type="FmodEventEmitter2D" parent="."]
+[node name="OnFocus" type="FmodEventEmitter2D" parent="." unique_id=1929982947]
 event_name = "event:/SFX/UI/UI_Move_Standard"
 event_guid = "{9e237bb9-a830-4ce7-bde8-fdf81456e26c}"
 
-[node name="OnSelect" type="FmodEventEmitter2D" parent="."]
+[node name="OnSelect" type="FmodEventEmitter2D" parent="." unique_id=477025118]
 event_name = "event:/SFX/UI/UI_Select_Standard"
 event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"
 
-[node name="OnSelectDeny" type="FmodEventEmitter2D" parent="."]
+[node name="OnSelectDeny" type="FmodEventEmitter2D" parent="." unique_id=1999876427]
 event_name = "event:/SFX/UI/UI_DisabledPress"
 event_guid = "{84eb9be5-9156-406c-8407-7a414c121185}"
 

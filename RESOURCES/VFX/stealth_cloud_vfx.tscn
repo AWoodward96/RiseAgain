@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://isaqeedfdh26"]
+[gd_scene format=3 uid="uid://isaqeedfdh26"]
 
 [ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_j2r4h"]
 [ext_resource type="Texture2D" uid="uid://boq02diyk4iwx" path="res://ART/VFX/Explosion_Crescent.png" id="2_j2r4h"]
@@ -13,12 +13,12 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.660287, 1)
 colors = PackedColorArray(1, 1, 1, 0.741176, 1, 1, 1, 0.854902, 1, 1, 1, 0)
 
-[node name="StealthCloudVFX" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
+[node name="StealthCloudVFX" type="Node2D" unique_id=646580831 node_paths=PackedStringArray("cpuParticles")]
 script = ExtResource("1_j2r4h")
 emitOnReady = true
 cpuParticles = [NodePath("PoofRight"), NodePath("PoofLeft")]
 
-[node name="PoofRight" type="CPUParticles2D" parent="."]
+[node name="PoofRight" type="CPUParticles2D" parent="." unique_id=1097878613]
 material = SubResource("CanvasItemMaterial_65ny1")
 position = Vector2(32, 32)
 emitting = false
@@ -40,7 +40,7 @@ color_ramp = SubResource("Gradient_32w8t")
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[node name="PoofLeft" type="CPUParticles2D" parent="."]
+[node name="PoofLeft" type="CPUParticles2D" parent="." unique_id=721597443]
 material = SubResource("CanvasItemMaterial_65ny1")
 position = Vector2(32, 32)
 emitting = false
@@ -63,7 +63,7 @@ color_ramp = SubResource("Gradient_32w8t")
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=23907453]
 wait_time = 3.0
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

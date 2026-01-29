@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://be144gxm2qt5i"]
+[gd_scene format=3 uid="uid://be144gxm2qt5i"]
 
 [ext_resource type="Script" uid="uid://blsxgkwb651m5" path="res://SCRIPTS/Managers/UIManager.gd" id="1_hai6o"]
 [ext_resource type="PackedScene" uid="uid://wsk41q52641b" path="res://RESOURCES/UI/_alpha_UnitSelection/_alpha_unit_selection.tscn" id="2_fjsnt"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cw7awguux054e" path="res://RESOURCES/UI/TeamManagementUI/team_management_ui.tscn" id="17_h4bp1"]
 [ext_resource type="PackedScene" uid="uid://dqricbt8mpxh3" path="res://RESOURCES/UI/generic_confirm_ui.tscn" id="17_r2t5y"]
 
-[node name="UIManager" type="Node2D" node_paths=PackedStringArray("Canvas")]
+[node name="UIManager" type="Node2D" unique_id=647834996 node_paths=PackedStringArray("Canvas")]
 visible = false
 script = ExtResource("1_hai6o")
 Canvas = NodePath("Canvas")
@@ -47,4 +47,4 @@ TeamManagementFullscreenUI = ExtResource("17_h4bp1")
 Generic_32x32_Texture = ExtResource("15_lvcsi")
 Generic_StatBlockEntry = ExtResource("16_lalar")
 
-[node name="Canvas" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="." unique_id=104333025]

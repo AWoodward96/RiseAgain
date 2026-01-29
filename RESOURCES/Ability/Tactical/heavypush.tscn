@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tqe8slh050wb"]
+[gd_scene format=3 uid="uid://tqe8slh050wb"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6pmtp"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_dc3ot"]
@@ -14,7 +14,7 @@
 script = ExtResource("3_bhrgj")
 metadata/_custom_type_script = "uid://45lb6jb6lb6n"
 
-[node name="heavypush" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="heavypush" type="Node2D" unique_id=341148685 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_6pmtp")
 type = 2
 abilityCooldown = 0
@@ -29,7 +29,7 @@ descriptors = Array[ExtResource("2_ky3rc")]([ExtResource("3_xes8y")])
 TargetingTemplate = ExtResource("7_xb68x")
 TargetingData = NodePath("TargetingData")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=707918405]
 script = ExtResource("2_mngvt")
 TeamTargeting = 2
 Type = 2

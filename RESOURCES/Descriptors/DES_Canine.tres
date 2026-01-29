@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=3 format=3 uid="uid://chhs0iw5jfswx"]
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://chhs0iw5jfswx"]
 
 [ext_resource type="Texture2D" uid="uid://qjuv5km0xhjn" path="res://ART/Icons/Descriptors/canine_icon.png" id="1_ha46f"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_7cafx"]

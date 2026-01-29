@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cls83uyoykivy"]
+[gd_scene format=3 uid="uid://cls83uyoykivy"]
 
 [ext_resource type="Script" uid="uid://djvjsoy5dfdeb" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
 [ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ctv538x46ffve" path="res://RESOURCES/Managers/LocSettings.tres" id="4_4gcm7"]
 [ext_resource type="PackedScene" uid="uid://po4nfl4dmthc" path="res://RESOURCES/UI/loading_screen.tscn" id="7_5jmon"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node2D" unique_id=2100154189]
 script = ExtResource("1_4phlr")
 GameSettings = ExtResource("2_e6gc7")
 UnitSettings = ExtResource("3_d1hgw")

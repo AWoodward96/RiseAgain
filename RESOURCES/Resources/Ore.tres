@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ResourceTemplate" load_steps=3 format=3 uid="uid://bfsilhgf06rms"]
+[gd_resource type="Resource" script_class="ResourceTemplate" format=3 uid="uid://bfsilhgf06rms"]
 
 [ext_resource type="Texture2D" uid="uid://bo43e7a3ccrpx" path="res://ART/Icons/Resources/ore.png" id="1_5cwpv"]
 [ext_resource type="Script" uid="uid://bqfp2b5gxqbgd" path="res://SCRIPTS/Universe/Resources/ResourceTemplate.gd" id="2_ncahr"]

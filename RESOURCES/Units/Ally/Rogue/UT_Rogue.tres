@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=52 format=3 uid="uid://b58tp7xqbg5jr"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://b58tp7xqbg5jr"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_t7bl4"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]

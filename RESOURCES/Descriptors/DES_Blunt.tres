@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DescriptorTemplate" load_steps=3 format=3 uid="uid://d2d5roo837klh"]
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://d2d5roo837klh"]
 
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_q5ph0"]
 [ext_resource type="Texture2D" uid="uid://bpjalkx17fqlk" path="res://ART/UI/tab_icons6.png" id="1_w75le"]
@@ -7,5 +7,4 @@
 script = ExtResource("1_q5ph0")
 icon = ExtResource("1_w75le")
 loc_name = "des_blunt"
-loc_description = ""
 metadata/_custom_type_script = "uid://bnehabjcbpysq"

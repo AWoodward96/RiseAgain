@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://box3su6g0xsd3"]
+[gd_scene format=4 uid="uid://box3su6g0xsd3"]
 
 [ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_tudn3"]
 [ext_resource type="Texture2D" uid="uid://c8t6102i2v87a" path="res://ART/VFX/cloud_vfx_2.png" id="2_dkvcv"]
@@ -9,38 +9,31 @@
 
 [sub_resource type="Resource" id="Resource_a0pxv"]
 script = ExtResource("2_lyc2n")
-Position = Vector2i(0, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_mm1kg"]
 script = ExtResource("2_lyc2n")
 Position = Vector2i(1, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_2phmk"]
 script = ExtResource("2_lyc2n")
 Position = Vector2i(2, 0)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_cxcns"]
 script = ExtResource("2_lyc2n")
 Position = Vector2i(0, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_ch1mh"]
 script = ExtResource("2_lyc2n")
 Position = Vector2i(1, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_eilox"]
 script = ExtResource("2_lyc2n")
 Position = Vector2i(2, 1)
-Multiplier = 1.0
 metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
 
 [sub_resource type="Resource" id="Resource_vltvb"]
@@ -233,20 +226,18 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="ge_fallenlog_event" type="Node2D" node_paths=PackedStringArray("Animator")]
+[node name="ge_fallenlog_event" type="Node2D" unique_id=460216625 node_paths=PackedStringArray("Animator")]
 script = ExtResource("1_tudn3")
 shapedTiles = SubResource("Resource_vltvb")
 Animator = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_f8uco")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1654966987]
+libraries/ = SubResource("AnimationLibrary_f8uco")
 
-[node name="parent" type="Node2D" parent="."]
+[node name="parent" type="Node2D" parent="." unique_id=754599626]
 position = Vector2(96, 64)
 
-[node name="LandingParticle" type="CPUParticles2D" parent="parent"]
+[node name="LandingParticle" type="CPUParticles2D" parent="parent" unique_id=627226408]
 material = SubResource("CanvasItemMaterial_uvwpj")
 emitting = false
 amount = 7
@@ -267,19 +258,19 @@ damping_max = 100.0
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[node name="TileMapLayer" type="TileMapLayer" parent="parent"]
+[node name="TileMapLayer" type="TileMapLayer" parent="parent" unique_id=1122436077]
 position = Vector2(-96, -64)
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAAAAQAVAAsAAAAAAAEAAQAVAAwAAAABAAAAAQAWAAsAAAABAAEAAQAWAAwAAAACAAAAAQAXAAsAAAACAAEAAQAXAAwAAAA=")
 tile_set = ExtResource("3_lyc2n")
 
-[node name="VFX_Explosion" parent="parent" instance=ExtResource("6_6o3i8")]
+[node name="VFX_Explosion" parent="parent" unique_id=232173267 instance=ExtResource("6_6o3i8")]
 emitOnReady = false
 
-[node name="Woosh" type="FmodEventEmitter2D" parent="."]
+[node name="Woosh" type="FmodEventEmitter2D" parent="." unique_id=2037432815]
 event_name = "event:/SFX/Units/Generic/Jump_Start"
 event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
 
-[node name="Land" type="FmodEventEmitter2D" parent="."]
+[node name="Land" type="FmodEventEmitter2D" parent="." unique_id=1108310626]
 event_name = "event:/SFX/Combat_TakeDamage_Kill"
 event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"

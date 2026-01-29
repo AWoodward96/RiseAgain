@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddg1bmb8sq6fk"]
+[gd_scene format=3 uid="uid://ddg1bmb8sq6fk"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_oxknd"]
 [ext_resource type="Script" uid="uid://diqjlqa36ayyy" path="res://SCRIPTS/UI/MapResultsUI/MapResultUI.gd" id="2_8w417"]
@@ -223,7 +223,7 @@ _data = {
 &"Run": SubResource("Animation_8w417")
 }
 
-[node name="MapResultsUI" type="Control" node_paths=PackedStringArray("mapName", "continueButton", "mainObjectiveParent", "optionalObjectiveParent", "squadEntryParent", "rewardsEntryParent", "turnCounterLabel", "goldAcquiredLabel", "goldPerModifierLabel", "goldGoUpSound")]
+[node name="MapResultsUI" type="Control" unique_id=839025324 node_paths=PackedStringArray("mapName", "continueButton", "mainObjectiveParent", "optionalObjectiveParent", "squadEntryParent", "rewardsEntryParent", "turnCounterLabel", "goldAcquiredLabel", "goldPerModifierLabel", "goldGoUpSound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +246,7 @@ goldAcquiredLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainD
 goldPerModifierLabel = NodePath("Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/GoldAquired/PercReductionOrGain")
 goldGoUpSound = NodePath("GoldGoUpSound")
 
-[node name="vignette" type="ColorRect" parent="."]
+[node name="vignette" type="ColorRect" parent="." unique_id=1837833033]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -255,7 +255,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.54509807)
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1104196627]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -269,7 +269,7 @@ offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=642643803]
 layout_mode = 0
 offset_right = 720.0
 offset_bottom = 608.0
@@ -280,19 +280,19 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=953714701]
 layout_mode = 2
 
-[node name="HeaderContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="HeaderContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1067661781]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer"]
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer" unique_id=1798374681]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_type_variation = &"SubPanel1"
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer/Panel"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer/Panel" unique_id=835689748]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -304,14 +304,14 @@ label_settings = ExtResource("4_q2w58")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel2" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer"]
+[node name="Panel2" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer" unique_id=1099382935]
 visible = false
 custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"SubPanel4"
 
-[node name="MapNameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer/Panel2"]
+[node name="MapNameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HeaderContainer/Panel2" unique_id=123011239]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -323,101 +323,101 @@ label_settings = SubResource("LabelSettings_5c04y")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer" unique_id=2141966563]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="ObjectiveData" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ObjectiveData" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1849123337]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData" unique_id=1130994247]
 layout_mode = 2
 
-[node name="MainObjective" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
+[node name="MainObjective" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer" unique_id=1848161157]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective" unique_id=2053262542]
 layout_mode = 2
 text = "ui_main_objective_title"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="MainObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective"]
+[node name="MainObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/MainObjective" unique_id=2006222947]
 layout_mode = 2
 script = ExtResource("6_hcvw8")
 
-[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer" unique_id=171383037]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="SideObjective" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer"]
+[node name="SideObjective" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer" unique_id=1946679225]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective" unique_id=8087153]
 layout_mode = 2
 text = "ui_optional_objective_title"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="OptionalObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective"]
+[node name="OptionalObjectiveParent" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ObjectiveData/HBoxContainer/SideObjective" unique_id=546789711]
 layout_mode = 2
 script = ExtResource("6_hcvw8")
 
-[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer" unique_id=1230017450]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="TurnsAndSlainData" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="TurnsAndSlainData" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=793489109]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_right = 24
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData" unique_id=811504773]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer" unique_id=737633924]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TurnsParent" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer"]
+[node name="TurnsParent" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer" unique_id=1341754680]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent" unique_id=383844781]
 layout_mode = 2
 text = "ui_turns_taken_title"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="TurnsTakenLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent"]
+[node name="TurnsTakenLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/TurnsParent" unique_id=2080818026]
 layout_mode = 2
 text = "{NUM}"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="GoldObtained" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer"]
+[node name="GoldObtained" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer" unique_id=1706050300]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained" unique_id=1813058191]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/VBoxContainer" unique_id=1621553691]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("7_03t5t")
 expand_mode = 1
 
-[node name="GoldAquired" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained"]
+[node name="GoldAquired" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained" unique_id=1150929773]
 layout_mode = 2
 text = "250"
 label_settings = SubResource("LabelSettings_0sj78")
 
-[node name="PercReductionOrGain" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/GoldAquired"]
+[node name="PercReductionOrGain" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer/GoldObtained/GoldAquired" unique_id=484765481]
 layout_mode = 0
 offset_left = 49.0
 offset_top = -10.0
@@ -426,111 +426,109 @@ offset_bottom = 6.0
 text = "-20%"
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer" unique_id=434959718]
 visible = false
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer" unique_id=1103809679]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer2" unique_id=1462324811]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=875078411]
 layout_mode = 2
 text = "ui_enemies_slain"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/TurnsAndSlainData/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1659248963]
 layout_mode = 2
 text = "{NUM}"
 label_settings = SubResource("LabelSettings_yjqj3")
 
-[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer" unique_id=1052841236]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="SquadResult" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="SquadResult" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1269595950]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SquadResult"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SquadResult" unique_id=1313661262]
 layout_mode = 2
 text = "ui_current_squad"
 label_settings = SubResource("LabelSettings_yjqj3")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/SquadResult"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/SquadResult" unique_id=907174146]
 layout_mode = 2
 theme_override_constants/margin_bottom = 32
 
-[node name="SquadEntryParent" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SquadResult/MarginContainer"]
+[node name="SquadEntryParent" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SquadResult/MarginContainer" unique_id=775758653]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 script = ExtResource("6_hcvw8")
 
-[node name="ColorRect4" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ColorRect4" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer" unique_id=2001565124]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.3647059, 0.33333334, 0.27450982, 1)
 
-[node name="RewardsContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="RewardsContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1387530581]
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
-[node name="Rewards" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer"]
+[node name="Rewards" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer" unique_id=1529927349]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards" unique_id=507363433]
 layout_mode = 2
 text = "ui_rewards_title"
 label_settings = SubResource("LabelSettings_yjqj3")
 horizontal_alignment = 1
 
-[node name="Panel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards"]
+[node name="Panel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards" unique_id=192267432]
 layout_mode = 2
 theme_type_variation = &"SubPanel1"
 script = ExtResource("8_by6cj")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards/Panel" unique_id=684442201]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards/Panel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/RewardsContainer/Rewards/Panel/MarginContainer" unique_id=1894298818]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 script = ExtResource("6_hcvw8")
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer" unique_id=1949312502]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=47925549]
 layout_mode = 2
 theme_override_constants/margin_left = 256
 theme_override_constants/margin_right = 256
 
-[node name="ContinueButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="ContinueButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2" unique_id=1826331697]
 layout_mode = 2
 text = "Continue"
 
-[node name="ResultsAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_q2w58")
-}
-autoplay = "Run"
+[node name="ResultsAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1152336047]
+libraries/ = SubResource("AnimationLibrary_q2w58")
+autoplay = &"Run"
 
-[node name="RevealSectionSound" type="FmodEventEmitter2D" parent="."]
+[node name="RevealSectionSound" type="FmodEventEmitter2D" parent="." unique_id=897744607]
 event_name = "event:/SFX/UI/UI_Select_Standard"
 event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"
 
-[node name="GoldGoUpSound" type="FmodEventEmitter2D" parent="."]
+[node name="GoldGoUpSound" type="FmodEventEmitter2D" parent="." unique_id=1447723127]
 event_name = "event:/SFX/UI/Level_Up/Exp_Gain"
 event_guid = "{729fc7f1-685c-40d3-a040-28da2748b1a7}"
 

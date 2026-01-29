@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="OnFireEffectTemplate" load_steps=6 format=3 uid="uid://1owdew6un3vm"]
+[gd_resource type="Resource" script_class="OnFireEffectTemplate" format=3 uid="uid://1owdew6un3vm"]
 
 [ext_resource type="Script" uid="uid://cny6x03m1td6y" path="res://SCRIPTS/CombatEffects/OnFireEffectTemplate.gd" id="1_hivo3"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="1_pjo25"]

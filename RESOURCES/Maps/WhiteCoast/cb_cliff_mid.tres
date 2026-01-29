@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignBlock" load_steps=14 format=3 uid="uid://c8xsy67xxs2n0"]
+[gd_resource type="Resource" script_class="CampaignBlock" format=3 uid="uid://c8xsy67xxs2n0"]
 
 [ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_yfph6"]
 [ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_58um0"]

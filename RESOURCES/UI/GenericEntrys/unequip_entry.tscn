@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://n5iabomo0vk6"]
+[gd_scene format=3 uid="uid://n5iabomo0vk6"]
 
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_i1bmp"]
 
@@ -9,13 +9,13 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.86, 0.817, 0.215, 1)
 
-[node name="AbilityEntryBase" type="Button"]
+[node name="AbilityEntryBase" type="Button" unique_id=1018064979]
 self_modulate = Color(0.6764, 0.698693, 0.76, 1)
 custom_minimum_size = Vector2(0, 128)
 theme = ExtResource("1_i1bmp")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ds2to")
 
-[node name="ContentParent" type="HBoxContainer" parent="."]
+[node name="ContentParent" type="HBoxContainer" parent="." unique_id=605603797]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,6 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="ContentParent"]
+[node name="Label" type="Label" parent="ContentParent" unique_id=358407156]
 layout_mode = 2
 text = "ui_unequip"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6xs7nrvsx6f1"]
+[gd_scene format=3 uid="uid://c6xs7nrvsx6f1"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_d50p3"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_8oxjl"]
@@ -46,7 +46,7 @@ script/source = "extends EnemyAIOption
 class_name DirectionalAttackAIOption
 "
 
-[node name="egostrike" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="egostrike" type="Node2D" unique_id=446134889 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_d50p3")
 abilityCooldown = 2
 ability_speed = 2
@@ -61,11 +61,11 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 customAITargetingBehavior = SubResource("GDScript_3rvrr")
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=574758200]
 script = ExtResource("2_mluvc")
 AgressiveStat = ExtResource("3_reol2")
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=850631181]
 script = ExtResource("4_nlfvw")
 TeamTargeting = 2
 Type = 2

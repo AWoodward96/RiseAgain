@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://puxbxe6g34j8"]
+[gd_scene format=3 uid="uid://puxbxe6g34j8"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7xk4g"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_mbdvn"]
@@ -45,7 +45,7 @@ stackIfPassed = Array[ExtResource("2_mbdvn")]([SubResource("Resource_vrtqr")])
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_ubaxs")
 
-[node name="ART_SlipNSlash" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
+[node name="ART_SlipNSlash" type="Node2D" unique_id=137744911 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_7xk4g")
 abilityCooldown = 2
 executionStack = Array[ExtResource("2_mbdvn")]([SubResource("Resource_xn624"), SubResource("Resource_ag1gk"), SubResource("Resource_l02h2"), SubResource("Resource_utxsf"), SubResource("Resource_5cjq5")])
@@ -58,18 +58,18 @@ TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementComponent")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=1500818005]
 script = ExtResource("6_qf6m3")
 AgressiveStat = ExtResource("14_3icwe")
 DamageToHealthRatio = 0.0
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=2072899130]
 script = ExtResource("9_gb7p6")
 Type = 2
 shapedTiles = ExtResource("10_okgaa")
 stopShapeOnWall = true
 
-[node name="AbilityMovementComponent" type="Node2D" parent="."]
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=2056919160]
 script = ExtResource("11_smoxh")
 type = 1
 movementAmount = 4

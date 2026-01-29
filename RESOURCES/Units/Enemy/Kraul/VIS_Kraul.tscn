@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://burjhghcutqt3"]
+[gd_scene format=3 uid="uid://burjhghcutqt3"]
 
 [ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_inasi"]
 [ext_resource type="Texture2D" uid="uid://dyxi3ljbh2hnr" path="res://ART/Icons/Units/kraul.png" id="2_no7ke"]
@@ -7,26 +7,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
 size = Vector2(64, 64)
 
-[node name="VIS_Kraul" type="Node2D" node_paths=PackedStringArray("AnimationCTRL")]
+[node name="VIS_Kraul" type="Node2D" unique_id=283140014 node_paths=PackedStringArray("AnimationCTRL")]
 script = ExtResource("1_inasi")
 AnimationCTRL = NodePath("AnimationPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=384127587]
 modulate = Color(1, 0.290196, 0.211765, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_no7ke")
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"UnitEnemyLibrary": ExtResource("3_qwrr1")
-}
-autoplay = "Unactivated"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1374920368]
+libraries/UnitEnemyLibrary = ExtResource("3_qwrr1")
+autoplay = &"Unactivated"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=416194152]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1961337513]
 visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_4m7bv")

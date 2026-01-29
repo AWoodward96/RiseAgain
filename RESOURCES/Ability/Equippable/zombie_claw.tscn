@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtc3xv5u5h2cd"]
+[gd_scene format=3 uid="uid://dtc3xv5u5h2cd"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0llaf"]
 [ext_resource type="Texture2D" uid="uid://bky2a1nautc31" path="res://ART/Icons/Ability/Equippable/zombie_claw.png" id="2_6oonq"]
@@ -23,7 +23,7 @@ script = ExtResource("4_ddajl")
 Template = ExtResource("3_4ycm5")
 Value = 3
 
-[node name="zombie_claw" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="zombie_claw" type="Node2D" unique_id=1818965494 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_0llaf")
 type = 1
 abilityCooldown = 0
@@ -37,14 +37,14 @@ TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=792316822]
 script = ExtResource("2_r8nyx")
 GrantedStats = Array[ExtResource("4_ddajl")]([SubResource("Resource_p0i1e")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1105492453]
 script = ExtResource("5_bf711")
 AgressiveStat = ExtResource("3_4ycm5")
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=203256046]
 script = ExtResource("7_00gcs")

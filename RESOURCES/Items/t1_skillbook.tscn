@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyj7myy0hwsqy"]
+[gd_scene format=3 uid="uid://cyj7myy0hwsqy"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_txydk"]
 [ext_resource type="Texture2D" uid="uid://b8ijhtyw1jdib" path="res://ART/Icons/Items/t1_skillbook.png" id="2_5sff6"]
@@ -11,7 +11,7 @@ script = ExtResource("4_mgn58")
 Template = ExtResource("5_mgn58")
 Value = 1
 
-[node name="skillbook_t1" type="Node2D" node_paths=PackedStringArray("StatData")]
+[node name="skillbook_t1" type="Node2D" unique_id=1497747344 node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_txydk")
 internalName = "t1_skillbook"
 loc_displayName = "item_t1_skillbook_name"
@@ -19,6 +19,6 @@ loc_displayDesc = "item_t1_skillbook_desc"
 icon = ExtResource("2_5sff6")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=705829904]
 script = ExtResource("6_3sxj6")
 GrantedStats = Array[ExtResource("4_mgn58")]([SubResource("Resource_mgn58")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpgrco5853tx"]
+[gd_scene format=3 uid="uid://bpgrco5853tx"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_twrak"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_u3xn0"]
@@ -22,7 +22,7 @@ script = ExtResource("3_bc7t5")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_8p7s7")
 
-[node name="ART_daggerspray" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_daggerspray" type="Node2D" unique_id=500353069 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_twrak")
 abilityCooldown = 2
 executionStack = Array[ExtResource("2_u3xn0")]([SubResource("Resource_1b6yg"), SubResource("Resource_xsqsi"), SubResource("Resource_5cjq5")])
@@ -34,13 +34,13 @@ TargetingTemplate = ExtResource("7_65c8c")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=567456788]
 script = ExtResource("6_7kqmr")
 FlatValue = 2.0
 AgressiveStat = ExtResource("8_aqj45")
 DamageToHealthRatio = 0.0
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=2098169614]
 script = ExtResource("9_qfkqn")
 TargetRange = Vector2i(1, 3)
 Type = 2

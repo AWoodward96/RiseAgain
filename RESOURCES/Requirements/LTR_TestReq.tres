@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RequirementBase" load_steps=2 format=3 uid="uid://d2whrksoiypte"]
+[gd_resource type="Resource" script_class="RequirementBase" format=3 uid="uid://d2whrksoiypte"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_ahlgf"]
 

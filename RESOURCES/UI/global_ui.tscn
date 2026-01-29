@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk06veh2d7y28"]
+[gd_scene format=3 uid="uid://bk06veh2d7y28"]
 
 [ext_resource type="Script" uid="uid://cxl3qcqfcg8wk" path="res://SCRIPTS/UI/GlobalUI.gd" id="1_pogg0"]
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="2_4ye6l"]
@@ -175,7 +175,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="GlobalUI" type="Control" node_paths=PackedStringArray("ResourceParent", "ResourceAnimator", "PrimaryCurrenciesParent", "SecondaryCurrenciesParent", "GoldLabel", "FoodLabel", "OreLabel", "WoodLabel", "ConcoctionsLabel", "GemstonesLabel", "BurstSpritesParent", "DetailParent", "DetailSizer", "DetailLabel", "DetailHighlighter", "DetailAnimator")]
+[node name="GlobalUI" type="Control" unique_id=643097697 node_paths=PackedStringArray("ResourceParent", "ResourceAnimator", "PrimaryCurrenciesParent", "SecondaryCurrenciesParent", "GoldLabel", "FoodLabel", "OreLabel", "WoodLabel", "ConcoctionsLabel", "GemstonesLabel", "BurstSpritesParent", "DetailParent", "DetailSizer", "DetailLabel", "DetailHighlighter", "DetailAnimator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,7 +202,7 @@ DetailAnimator = NodePath("DetailParent/AnimationPlayer")
 Priority = 200
 TrackOnStack = false
 
-[node name="ResourceUI" type="Control" parent="."]
+[node name="ResourceUI" type="Control" parent="." unique_id=305157197]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -212,13 +212,11 @@ offset_bottom = 1.0
 grow_horizontal = 0
 theme = ExtResource("2_4ye6l")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ResourceUI"]
-libraries = {
-&"": SubResource("AnimationLibrary_mfad0")
-}
-autoplay = "default"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResourceUI" unique_id=1945132777]
+libraries/ = SubResource("AnimationLibrary_mfad0")
+autoplay = &"default"
 
-[node name="Offset" type="Control" parent="ResourceUI"]
+[node name="Offset" type="Control" parent="ResourceUI" unique_id=1865102710]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -227,22 +225,22 @@ offset_left = -256.0
 offset_bottom = 32.0
 grow_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="ResourceUI/Offset"]
+[node name="MarginContainer" type="MarginContainer" parent="ResourceUI/Offset" unique_id=1099867135]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 64.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ResourceUI/Offset/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourceUI/Offset/MarginContainer" unique_id=704387928]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 0
 
-[node name="MainCurrenciesPanel" type="Panel" parent="ResourceUI/Offset/MarginContainer/VBoxContainer"]
+[node name="MainCurrenciesPanel" type="Panel" parent="ResourceUI/Offset/MarginContainer/VBoxContainer" unique_id=974101890]
 custom_minimum_size = Vector2(256, 32)
 layout_mode = 2
 theme = ExtResource("2_jjaen")
 
-[node name="MainCurrenciesMargin" type="MarginContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel"]
+[node name="MainCurrenciesMargin" type="MarginContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel" unique_id=77015767]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,95 +252,95 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin"]
+[node name="VBoxContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin" unique_id=1695268737]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="GoldContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+[node name="GoldContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer" unique_id=861903109]
 layout_mode = 2
 
-[node name="GoldTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+[node name="GoldTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer" unique_id=39651486]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("3_4ye6l")
 expand_mode = 1
 
-[node name="GoldLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+[node name="GoldLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer" unique_id=511068762]
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer" unique_id=173708752]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 color = Color(0.0509804, 0.168627, 0.270588, 1)
 
-[node name="FoodContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+[node name="FoodContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer" unique_id=1402037711]
 layout_mode = 2
 
-[node name="FoodTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+[node name="FoodTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer" unique_id=1624396355]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("4_d0me7")
 expand_mode = 1
 
-[node name="FoodLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+[node name="FoodLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer" unique_id=519365750]
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer" unique_id=1537651414]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 color = Color(0.0509804, 0.168627, 0.270588, 1)
 
-[node name="WoodContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+[node name="WoodContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer" unique_id=1190174048]
 layout_mode = 2
 
-[node name="WoodTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+[node name="WoodTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer" unique_id=1654237075]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("5_c7wjg")
 expand_mode = 1
 
-[node name="WoodLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+[node name="WoodLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer" unique_id=520917695]
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer" unique_id=1932580287]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 color = Color(0.0509804, 0.168627, 0.270588, 1)
 
-[node name="OreContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+[node name="OreContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer" unique_id=1683536417]
 layout_mode = 2
 
-[node name="OreTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer"]
+[node name="OreTexture" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer" unique_id=867829398]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("6_f1dnp")
 expand_mode = 1
 
-[node name="OreLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer"]
+[node name="OreLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer" unique_id=1092544138]
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
 
-[node name="SecondaryCurrenciesParent" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer"]
+[node name="SecondaryCurrenciesParent" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer" unique_id=610011236]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="SecondaryCurrencies" type="Panel" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent"]
+[node name="SecondaryCurrencies" type="Panel" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent" unique_id=426634633]
 custom_minimum_size = Vector2(137, 32)
 layout_mode = 2
 theme = ExtResource("2_jjaen")
 
-[node name="SecondaryCurrenciesMargin" type="MarginContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies"]
+[node name="SecondaryCurrenciesMargin" type="MarginContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies" unique_id=809194218]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -354,63 +352,61 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin"]
+[node name="VBoxContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin" unique_id=644650740]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ConcoctionContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer"]
+[node name="ConcoctionContainer" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer" unique_id=626041954]
 layout_mode = 2
 
-[node name="ConcoctionIcon" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+[node name="ConcoctionIcon" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer" unique_id=47540645]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("7_m6xbf")
 expand_mode = 1
 
-[node name="ConcoctionLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+[node name="ConcoctionLabel" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer" unique_id=1634875454]
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+[node name="ColorRect" type="ColorRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer" unique_id=745537888]
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 color = Color(0.0509804, 0.168627, 0.270588, 1)
 
-[node name="GemstoneParent" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer"]
+[node name="GemstoneParent" type="HBoxContainer" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer" unique_id=1391860405]
 layout_mode = 2
 
-[node name="GemstoneIcon" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent"]
+[node name="GemstoneIcon" type="TextureRect" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent" unique_id=1004715202]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("8_ajen3")
 expand_mode = 1
 
-[node name="GemstoneText" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent"]
+[node name="GemstoneText" type="Label" parent="ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent" unique_id=1406338545]
 custom_minimum_size = Vector2(21, 0)
 layout_mode = 2
 text = "10"
 horizontal_alignment = 2
 
-[node name="Burst" type="Control" parent="."]
+[node name="Burst" type="Control" parent="." unique_id=553154213]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DetailParent" type="Control" parent="."]
+[node name="DetailParent" type="Control" parent="." unique_id=1956569583]
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DetailParent"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DetailParent" unique_id=2116022140]
 root_node = NodePath("../TextResizingContainer")
-libraries = {
-&"": SubResource("AnimationLibrary_4ye6l")
-}
-autoplay = "show"
+libraries/ = SubResource("AnimationLibrary_4ye6l")
+autoplay = &"show"
 
-[node name="TextResizingContainer" type="PanelContainer" parent="DetailParent"]
+[node name="TextResizingContainer" type="PanelContainer" parent="DetailParent" unique_id=169344395]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 1
 offset_right = 25.0
@@ -418,25 +414,25 @@ offset_bottom = 34.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pogg0")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="DetailParent/TextResizingContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="DetailParent/TextResizingContainer" unique_id=1253023926]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="DetailLabel" type="Label" parent="DetailParent/TextResizingContainer/MarginContainer"]
+[node name="DetailLabel" type="Label" parent="DetailParent/TextResizingContainer/MarginContainer" unique_id=844171021]
 layout_mode = 2
 text = "two"
 label_settings = SubResource("LabelSettings_pogg0")
 
-[node name="Highlighter" type="Panel" parent="DetailParent"]
+[node name="Highlighter" type="Panel" parent="DetailParent" unique_id=366599244]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jjaen")
 
-[node name="InputInstructions" type="Control" parent="."]
+[node name="InputInstructions" type="Control" parent="." unique_id=883786532]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -445,7 +441,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="InputInstructions"]
+[node name="ColorRect" type="ColorRect" parent="InputInstructions" unique_id=954111124]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -453,7 +449,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="InputInstructions"]
+[node name="PanelContainer" type="PanelContainer" parent="InputInstructions" unique_id=1988510993]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -465,20 +461,20 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="InputInstructions/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="InputInstructions/PanelContainer" unique_id=690104810]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InputInstructions/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InputInstructions/PanelContainer/MarginContainer" unique_id=445875777]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="InputInstructions/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="InputInstructions/PanelContainer/MarginContainer/HBoxContainer" unique_id=385429778]
 layout_mode = 2
 text = "ButtonName:"
 
-[node name="ButtonAction" type="Label" parent="InputInstructions/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="ButtonAction" type="Label" parent="InputInstructions/PanelContainer/MarginContainer/HBoxContainer" unique_id=1208376146]
 layout_mode = 2
 text = "{ACTION}"

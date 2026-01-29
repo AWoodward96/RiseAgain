@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=53 format=3 uid="uid://bjtxp4kdt5wvy"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://bjtxp4kdt5wvy"]
 
 [ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="1_tce1b"]
 [ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_pgscv"]

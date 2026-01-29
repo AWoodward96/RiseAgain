@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://mf4x1agfi458"]
+[gd_scene format=4 uid="uid://mf4x1agfi458"]
 
 [ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_laqrf"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_j1j4d"]
@@ -45,7 +45,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("7_x603r")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[node name="ge_nomorefun" type="Node2D" node_paths=PackedStringArray("telegraphTilemap")]
+[node name="ge_nomorefun" type="Node2D" unique_id=778009515 node_paths=PackedStringArray("telegraphTilemap")]
 z_index = -5
 script = ExtResource("1_laqrf")
 executionStack = Array[ExtResource("2_j1j4d")]([SubResource("Resource_e76h8"), SubResource("Resource_5bjtb"), SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
@@ -56,6 +56,6 @@ PreviewSprite = ExtResource("9_i2hxp")
 localization_icon = ExtResource("10_laqrf")
 localization_desc = "art_nomorefun_name"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1543033034]
 tile_map_data = PackedByteArray("AAD/////AgAAAAIAAAD//wAAAgAAAAIAAAD//wEAAgAAAAIAAAAAAP//AgAAAAIAAAABAP//AgAAAAIAAAD+/wEAAgAAAAIAAAD+/wAAAgAAAAIAAAD+////AgAAAAIAAAD+//7/AgAAAAIAAAD///7/AgAAAAIAAAAAAP7/AgAAAAIAAAABAP7/AgAAAAIAAAACAP7/AgAAAAIAAAADAP7/AgAAAAIAAAADAP//AgAAAAIAAAACAP//AgAAAAIAAAADAAAAAgAAAAIAAAADAAEAAgAAAAIAAAACAAEAAgAAAAIAAAACAAAAAgAAAAIAAAACAAIAAgAAAAIAAAACAAMAAgAAAAIAAAADAAIAAgAAAAIAAAADAAMAAgAAAAIAAAABAAMAAgAAAAIAAAAAAAMAAgAAAAIAAAD//wMAAgAAAAIAAAD+/wMAAgAAAAIAAAD+/wIAAgAAAAIAAAD//wIAAgAAAAIAAAAAAAIAAgAAAAIAAAABAAIAAgAAAAIAAAA=")
 tile_set = ExtResource("11_go5bl")

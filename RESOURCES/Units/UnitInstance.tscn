@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene format=3 uid="uid://ri0c7iffkrao"]
 
 [ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damage_indicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "leapSound", "landSound")]
+[node name="UnitInstance" type="Node2D" unique_id=987706858 node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damage_indicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "leapSound", "landSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
@@ -67,44 +67,44 @@ deathSound = NodePath("Audio/Death")
 leapSound = NodePath("Audio/LeapWoosh")
 landSound = NodePath("Audio/Land")
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="Visual" type="Node2D" parent="." unique_id=2046939046]
 y_sort_enabled = true
 
-[node name="Abilities" type="Node2D" parent="."]
+[node name="Abilities" type="Node2D" parent="." unique_id=729322257]
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=903512886]
 
-[node name="Effects" type="Node2D" parent="."]
+[node name="Effects" type="Node2D" parent="." unique_id=991917755]
 
-[node name="Audio" type="Node2D" parent="."]
+[node name="Audio" type="Node2D" parent="." unique_id=89174539]
 
-[node name="TakeDamage" type="FmodEventEmitter2D" parent="Audio"]
+[node name="TakeDamage" type="FmodEventEmitter2D" parent="Audio" unique_id=1589636217]
 event_name = "event:/SFX/Combat_TakeDamage_Standard"
 event_guid = "{0f552edb-29ad-4bdf-bb22-bfdd97ba4b91}"
 
-[node name="TakeLethalDamage" type="FmodEventEmitter2D" parent="Audio"]
+[node name="TakeLethalDamage" type="FmodEventEmitter2D" parent="Audio" unique_id=1983530337]
 event_name = "event:/SFX/Combat_TakeDamage_Kill"
 event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 
-[node name="FootSteps" type="FmodEventEmitter2D" parent="Audio"]
+[node name="FootSteps" type="FmodEventEmitter2D" parent="Audio" unique_id=779828725]
 event_name = "event:/SFX/Units/Generic/Footsteps_Common"
 event_guid = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 
-[node name="Death" type="FmodEventEmitter2D" parent="Audio"]
+[node name="Death" type="FmodEventEmitter2D" parent="Audio" unique_id=1174782280]
 event_name = "event:/SFX/Combat_Death"
 event_guid = "{e1fc6f52-a891-47fe-ba9c-ac9e8d8a9e5b}"
 
-[node name="LeapWoosh" type="FmodEventEmitter2D" parent="Audio"]
+[node name="LeapWoosh" type="FmodEventEmitter2D" parent="Audio" unique_id=1750867151]
 event_name = "event:/SFX/Units/Generic/Jump_Start"
 event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
 
-[node name="Land" type="FmodEventEmitter2D" parent="Audio"]
+[node name="Land" type="FmodEventEmitter2D" parent="Audio" unique_id=149337830]
 event_name = "event:/SFX/Units/Generic/Jump_End"
 event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
 
-[node name="IconAnchors" type="Node2D" parent="."]
+[node name="IconAnchors" type="Node2D" parent="." unique_id=1333229779]
 
-[node name="HasLoot" type="AnimatedSprite2D" parent="IconAnchors"]
+[node name="HasLoot" type="AnimatedSprite2D" parent="IconAnchors" unique_id=1243322046]
 visible = false
 position = Vector2(59, 7)
 scale = Vector2(2, 2)
@@ -112,7 +112,7 @@ sprite_frames = SubResource("SpriteFrames_mmoxs")
 autoplay = "default"
 frame_progress = 0.326582
 
-[node name="Boss" type="AnimatedSprite2D" parent="IconAnchors"]
+[node name="Boss" type="AnimatedSprite2D" parent="IconAnchors" unique_id=230055080]
 visible = false
 position = Vector2(59, 21)
 scale = Vector2(2, 2)
@@ -120,6 +120,6 @@ sprite_frames = SubResource("SpriteFrames_166fo")
 autoplay = "default"
 frame_progress = 0.57805
 
-[node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
+[node name="DamageIndicator" parent="." unique_id=1598895247 instance=ExtResource("2_e4h56")]
 
 [editable path="DamageIndicator"]

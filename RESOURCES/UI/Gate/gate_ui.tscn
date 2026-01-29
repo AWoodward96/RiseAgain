@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c2q0t0564uh88"]
+[gd_scene format=3 uid="uid://c2q0t0564uh88"]
 
 [ext_resource type="Script" uid="uid://csabu7ygeyuxg" path="res://SCRIPTS/Universe/GateUI.gd" id="1_uy6tf"]
 [ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_yf6m7"]
@@ -418,7 +418,7 @@ _data = {
 &"TeamSelect": SubResource("Animation_yyei6")
 }
 
-[node name="GateUI" type="Control" node_paths=PackedStringArray("Animator", "ObjectiveSelectionPanel", "AvailableUnitsPanel", "currentSquadParent", "continueButton", "slotsRemainingLabel", "objectiveTitleLabel", "objectiveDescLabel", "objectiveIcon", "summarySquadParent", "currentActiveFoodBuff", "embarkButton")]
+[node name="GateUI" type="Control" unique_id=953603253 node_paths=PackedStringArray("Animator", "ObjectiveSelectionPanel", "AvailableUnitsPanel", "currentSquadParent", "continueButton", "slotsRemainingLabel", "objectiveTitleLabel", "objectiveDescLabel", "objectiveIcon", "summarySquadParent", "currentActiveFoodBuff", "embarkButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -442,7 +442,7 @@ summarySquadEntry = ExtResource("6_hadgg")
 currentActiveFoodBuff = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel")
 embarkButton = NodePath("SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer/Embark")
 
-[node name="Vignette" type="ColorRect" parent="."]
+[node name="Vignette" type="ColorRect" parent="." unique_id=215596274]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -451,7 +451,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.22, 0.20383, 0.1738, 0.5921569)
 
-[node name="ObjectiveSelectionPanel" type="Panel" parent="." node_paths=PackedStringArray("entryParent")]
+[node name="ObjectiveSelectionPanel" type="Panel" parent="." unique_id=1815012538 node_paths=PackedStringArray("entryParent")]
 layout_mode = 0
 offset_left = 36.0
 offset_top = 36.0
@@ -463,7 +463,7 @@ auto_initialize = true
 entryParent = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Scroll")
 entryPrefab = ExtResource("4_ggfkn")
 
-[node name="MarginContainer" type="MarginContainer" parent="ObjectiveSelectionPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="ObjectiveSelectionPanel" unique_id=570280203]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -475,15 +475,15 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ObjectiveSelectionPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ObjectiveSelectionPanel/MarginContainer" unique_id=1211829718]
 layout_mode = 2
 
-[node name="Header" type="Panel" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer"]
+[node name="Header" type="Panel" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer" unique_id=1990969016]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"SubPanel2"
 
-[node name="Label" type="Label" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/Header"]
+[node name="Label" type="Label" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/Header" unique_id=1217592650]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -495,26 +495,26 @@ label_settings = SubResource("LabelSettings_rculo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer" unique_id=534964151]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1891621357]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="Scroll" type="VBoxContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="Scroll" type="VBoxContainer" parent="ObjectiveSelectionPanel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=758894486]
 layout_mode = 2
 theme_override_constants/separation = 64
 script = ExtResource("3_ngpus")
 
-[node name="TeamFormingParent" type="Control" parent="."]
+[node name="TeamFormingParent" type="Control" parent="." unique_id=1388881471]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -525,7 +525,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"SubPanel1"
 
-[node name="SelectArea" type="Panel" parent="TeamFormingParent" node_paths=PackedStringArray("entryParent")]
+[node name="SelectArea" type="Panel" parent="TeamFormingParent" unique_id=1545776002 node_paths=PackedStringArray("entryParent")]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 80.0
@@ -535,7 +535,7 @@ script = ExtResource("5_a7rkm")
 entryParent = NodePath("MarginContainer/ScrollContainer/MarginContainer/GridContainer")
 entryPrefab = ExtResource("10_4usir")
 
-[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea"]
+[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea" unique_id=1974499792]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -547,21 +547,21 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TeamFormingParent/SelectArea/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TeamFormingParent/SelectArea/MarginContainer" unique_id=295954934]
 layout_mode = 2
 size_flags_horizontal = 4
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea/MarginContainer/ScrollContainer" unique_id=737854692]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="GridContainer" type="GridContainer" parent="TeamFormingParent/SelectArea/MarginContainer/ScrollContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="TeamFormingParent/SelectArea/MarginContainer/ScrollContainer/MarginContainer" unique_id=1293461040]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 16
@@ -569,7 +569,7 @@ theme_override_constants/v_separation = 64
 columns = 2
 script = ExtResource("3_ngpus")
 
-[node name="CurrentSquad" type="Panel" parent="TeamFormingParent/SelectArea"]
+[node name="CurrentSquad" type="Panel" parent="TeamFormingParent/SelectArea" unique_id=1198863609]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 0
 offset_left = 653.0
@@ -577,7 +577,7 @@ offset_top = -56.0
 offset_right = 928.0
 offset_bottom = 349.0
 
-[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea/CurrentSquad"]
+[node name="MarginContainer" type="MarginContainer" parent="TeamFormingParent/SelectArea/CurrentSquad" unique_id=693218718]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -589,15 +589,15 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer" unique_id=194520282]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer" unique_id=499902252]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_type_variation = &"SubPanel2"
 
-[node name="Label" type="Label" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer/Panel" unique_id=1576267409]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -609,12 +609,12 @@ label_settings = ExtResource("5_hadgg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TeamFormingParent/SelectArea/CurrentSquad/MarginContainer/VBoxContainer" unique_id=1067048557]
 layout_mode = 2
 theme_override_constants/separation = 16
 script = ExtResource("3_ngpus")
 
-[node name="ContinueButton" type="Button" parent="TeamFormingParent/SelectArea"]
+[node name="ContinueButton" type="Button" parent="TeamFormingParent/SelectArea" unique_id=561392043]
 layout_mode = 0
 offset_left = 677.0
 offset_top = 410.0
@@ -622,7 +622,7 @@ offset_right = 909.0
 offset_bottom = 471.0
 text = "ui_continue"
 
-[node name="Label" type="Label" parent="TeamFormingParent/SelectArea"]
+[node name="Label" type="Label" parent="TeamFormingParent/SelectArea" unique_id=903286738]
 layout_mode = 0
 offset_left = 680.0
 offset_top = 302.0
@@ -630,13 +630,13 @@ offset_right = 901.0
 offset_bottom = 337.0
 text = "ui_slots_remaining"
 
-[node name="Panel" type="Panel" parent="TeamFormingParent/SelectArea"]
+[node name="Panel" type="Panel" parent="TeamFormingParent/SelectArea" unique_id=1797320908]
 layout_mode = 0
 offset_top = -56.0
 offset_right = 641.0
 offset_bottom = -2.0
 
-[node name="Label" type="Label" parent="TeamFormingParent/SelectArea/Panel"]
+[node name="Label" type="Label" parent="TeamFormingParent/SelectArea/Panel" unique_id=31206267]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -649,7 +649,7 @@ grow_vertical = 2
 text = "ui_select_squad"
 label_settings = ExtResource("12_yomgb")
 
-[node name="SummaryParent" type="Control" parent="."]
+[node name="SummaryParent" type="Control" parent="." unique_id=1611552586]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -659,7 +659,7 @@ offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="SummaryParent"]
+[node name="Panel" type="Panel" parent="SummaryParent" unique_id=1333190638]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -673,7 +673,7 @@ offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel" unique_id=923910185]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -685,48 +685,48 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer" unique_id=176724763]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer" unique_id=1464697697]
 layout_mode = 2
 theme = ExtResource("1_yf6m7")
 theme_type_variation = &"SubPanel4"
 
-[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer" unique_id=1012771564]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=2100127694]
 layout_mode = 2
 
-[node name="ObjectiveContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ObjectiveContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2103794878]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer"]
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer" unique_id=1716180944]
 layout_mode = 2
 text = "ui_objective_title"
 label_settings = SubResource("LabelSettings_yyei6")
 
-[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer"]
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer" unique_id=1882774147]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.7294118, 0.6745098, 0.6, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer" unique_id=1055024377]
 layout_mode = 2
 theme_override_constants/margin_left = 128
 theme_override_constants/margin_right = 128
 
-[node name="Panel" type="Panel" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer" unique_id=1726281491]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme_type_variation = &"SubPanel2"
 
-[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel" unique_id=294604058]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -738,95 +738,95 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer" unique_id=1877737915]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=1790377606]
 layout_mode = 2
 alignment = 1
 
-[node name="ObjectiveIcon" type="TextureRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ObjectiveIcon" type="TextureRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1920238215]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("11_i0giw")
 expand_mode = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer" unique_id=223898727]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ObjectiveTitle" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ObjectiveTitle" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1688457183]
 layout_mode = 2
 text = "Title Of stuffs"
 
-[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=735897820]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.7294118, 0.6745098, 0.6, 1)
 
-[node name="ObjectiveDesc" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ObjectiveDesc" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ObjectiveContainer/MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1732797333]
 layout_mode = 2
 text = "Desc of Stuffs"
 
-[node name="TeamContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TeamContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=702481513]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer"]
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer" unique_id=756720423]
 layout_mode = 2
 text = "ui_team_title"
 label_settings = SubResource("LabelSettings_yyei6")
 
-[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer"]
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer" unique_id=1809762123]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.7294118, 0.6745098, 0.6, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer" unique_id=1224798178]
 layout_mode = 2
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer/HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TeamContainer/HBoxContainer" unique_id=13743257]
 layout_mode = 2
 columns = 2
 script = ExtResource("3_ngpus")
 
-[node name="OtherInfoContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+[node name="OtherInfoContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer" unique_id=1040437882]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer"]
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer" unique_id=1122350815]
 layout_mode = 2
 text = "ui_additional_info"
 label_settings = SubResource("LabelSettings_i0giw")
 
-[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer"]
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer" unique_id=147015658]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 color = Color(0.7294118, 0.6745098, 0.6, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer" unique_id=372304028]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Meals" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer"]
+[node name="Meals" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer" unique_id=966603904]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals"]
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals" unique_id=1909698510]
 layout_mode = 2
 text = "ui_meals_title"
 label_settings = SubResource("LabelSettings_fr007")
 
-[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals"]
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals" unique_id=1915557627]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.7294118, 0.6745098, 0.6, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals" unique_id=1170382092]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer" node_paths=PackedStringArray("foodName", "foodDesc", "foodIcon", "noActiveMealParent", "yesActiveMealParent")]
+[node name="Panel" type="Panel" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer" unique_id=221120424 node_paths=PackedStringArray("foodName", "foodDesc", "foodIcon", "noActiveMealParent", "yesActiveMealParent")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"SubPanel3"
@@ -837,7 +837,7 @@ foodIcon = NodePath("MarginContainer/YesMealsParent/VBoxContainer/TextureRect")
 noActiveMealParent = NodePath("Label")
 yesActiveMealParent = NodePath("MarginContainer/YesMealsParent")
 
-[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel" unique_id=657418870]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 1
 anchors_preset = 15
@@ -851,35 +851,35 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="YesMealsParent" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer"]
+[node name="YesMealsParent" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer" unique_id=1167691990]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent" unique_id=528092923]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer" unique_id=1081326702]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent" unique_id=1784508718]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FoodName" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2"]
+[node name="FoodName" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2" unique_id=1392407664]
 layout_mode = 2
 text = "food_title"
 
-[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2"]
+[node name="ColorRect" type="ColorRect" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2" unique_id=1681901370]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.44313726, 0.4117647, 0.34901962, 1)
 
-[node name="FoodDesc" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2"]
+[node name="FoodDesc" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel/MarginContainer/YesMealsParent/VBoxContainer2" unique_id=890533008]
 layout_mode = 2
 text = "food_desc"
 
-[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel"]
+[node name="Label" type="Label" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer/Meals/MarginContainer/Panel" unique_id=770081819]
 layout_mode = 0
 offset_left = 114.5
 offset_top = 24.0
@@ -889,27 +889,25 @@ text = "ui_no_food_title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/OtherInfoContainer/HBoxContainer" unique_id=2022518473]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Spacer" type="Control" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+[node name="Spacer" type="Control" parent="SummaryParent/Panel/MarginContainer/VBoxContainer" unique_id=134000321]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="EmbarkContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer"]
+[node name="EmbarkContainer" type="HBoxContainer" parent="SummaryParent/Panel/MarginContainer/VBoxContainer" unique_id=1497559879]
 layout_mode = 2
 alignment = 1
 
-[node name="Embark" type="Button" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer"]
+[node name="Embark" type="Button" parent="SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer" unique_id=1144084931]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 2
 text = "Embark"
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4usir")
-}
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1780435091]
+libraries/ = SubResource("AnimationLibrary_4usir")
 
 [connection signal="pressed" from="TeamFormingParent/SelectArea/ContinueButton" to="." method="OnContinueFromTeamSelect"]
 [connection signal="pressed" from="SummaryParent/Panel/MarginContainer/VBoxContainer/EmbarkContainer/Embark" to="." method="OnEmabarkSelect"]

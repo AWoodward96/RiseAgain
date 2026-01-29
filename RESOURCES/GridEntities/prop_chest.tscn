@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwl3gpxdre6gk"]
+[gd_scene format=3 uid="uid://cwl3gpxdre6gk"]
 
 [ext_resource type="Script" uid="uid://cvcugr0oaoiu" path="res://SCRIPTS/GridEntities/GEChest.gd" id="1_mtde5"]
 [ext_resource type="Texture2D" uid="uid://p8dgy52suhsr" path="res://ART/Environment/temp_chest.png" id="2_7gcw2"]
@@ -32,7 +32,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="prop_chest" type="Node2D" node_paths=PackedStringArray("visual", "unlockSound")]
+[node name="prop_chest" type="Node2D" unique_id=823887267 node_paths=PackedStringArray("visual", "unlockSound")]
 scale = Vector2(2, 2)
 script = ExtResource("1_mtde5")
 loot = ExtResource("2_jn04q")
@@ -41,12 +41,12 @@ unlockSound = NodePath("Unlock")
 localization_icon = ExtResource("3_jn04q")
 localization_desc = "ui_chest"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=628919754]
 z_index = -1
 position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_47ren")
 autoplay = "default"
 
-[node name="Unlock" type="FmodEventEmitter2D" parent="."]
+[node name="Unlock" type="FmodEventEmitter2D" parent="." unique_id=924924047]
 event_name = "event:/SFX/Action/action_unlock"
 event_guid = "{3f23ebf2-1af1-4e4b-9791-970f89faa969}"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AISmartTarget" load_steps=6 format=3 uid="uid://cxr5y6clktnni"]
+[gd_resource type="Resource" script_class="AISmartTarget" format=3 uid="uid://cxr5y6clktnni"]
 
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="1_2amd1"]
 [ext_resource type="Resource" uid="uid://chhs0iw5jfswx" path="res://RESOURCES/Descriptors/DES_Canine.tres" id="1_ovbds"]

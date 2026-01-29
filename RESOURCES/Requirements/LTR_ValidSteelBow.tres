@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MultiRequirement" load_steps=11 format=3 uid="uid://cccpmepx44wdf"]
+[gd_resource type="Resource" script_class="MultiRequirement" format=3 uid="uid://cccpmepx44wdf"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_j85pq"]
 [ext_resource type="Script" uid="uid://50fucpl3xpxs" path="res://SCRIPTS/Generic/Requirements/ItemNotPresentInCampaignReq.gd" id="2_mr6vm"]

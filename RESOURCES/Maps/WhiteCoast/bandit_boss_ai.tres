@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AIBanditBoss" load_steps=4 format=3 uid="uid://5vbfg1su17r1"]
+[gd_resource type="Resource" script_class="AIBanditBoss" format=3 uid="uid://5vbfg1su17r1"]
 
 [ext_resource type="Script" uid="uid://bsigkcdkaqxem" path="res://SCRIPTS/Units/AI/AITargetingFlag.gd" id="1_0gtdk"]
 [ext_resource type="Script" uid="uid://db46030yg7m1p" path="res://SCRIPTS/Units/AI/AI_BanditBoss.gd" id="2_ye7b5"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://blcieae5p0wwq"]
+[gd_scene format=3 uid="uid://blcieae5p0wwq"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_g7asa"]
 [ext_resource type="Script" uid="uid://dwybkjr1cr223" path="res://SCRIPTS/Ability/PassiveUnitDeathListener.gd" id="2_cay78"]
@@ -26,7 +26,7 @@ script = ExtResource("5_w4u6n")
 CombatEffect = ExtResource("6_h2hlq")
 metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
 
-[node name="shroud" type="Node2D" node_paths=PackedStringArray("passiveListeners")]
+[node name="shroud" type="Node2D" unique_id=334329888 node_paths=PackedStringArray("passiveListeners")]
 script = ExtResource("1_g7asa")
 type = 3
 abilityCooldown = 0
@@ -37,7 +37,7 @@ loc_displayName = "passive_shroud_name"
 loc_displayDesc = "passive_shroud_desc"
 icon = ExtResource("6_w4u6n")
 
-[node name="PassiveUnitDeathListener" type="Node2D" parent="."]
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=1044966052]
 script = ExtResource("2_cay78")
 reqKilledByUser = true
 reqKilledByWeapon = true

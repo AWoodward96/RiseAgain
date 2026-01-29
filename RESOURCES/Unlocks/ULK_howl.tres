@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://rynquponaejb"]
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://rynquponaejb"]
 
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_1duja"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="2_mbwjx"]

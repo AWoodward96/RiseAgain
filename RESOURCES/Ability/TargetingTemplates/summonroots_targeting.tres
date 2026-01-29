@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TargetingGEFree" load_steps=2 format=3 uid="uid://blc65pjaf8yao"]
+[gd_resource type="Resource" script_class="TargetingGEFree" format=3 uid="uid://blc65pjaf8yao"]
 
 [ext_resource type="Script" uid="uid://xpxfkw71nwhb" path="res://SCRIPTS/Targeting/TargetingGEFree.gd" id="1_6mmh0"]
 

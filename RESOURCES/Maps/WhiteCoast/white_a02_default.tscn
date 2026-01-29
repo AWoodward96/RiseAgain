@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bul8d2khh2vmc"]
+[gd_scene format=4 uid="uid://bul8d2khh2vmc"]
 
 [ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_74mn6"]
 [ext_resource type="Resource" uid="uid://b85vbvqpusrko" path="res://RESOURCES/Maps/BiomeData/White_Cliffs_Standard.tres" id="2_7sjrr"]
@@ -60,7 +60,7 @@ script = ExtResource("20_bm07k")
 [sub_resource type="Resource" id="Resource_hkjcv"]
 script = ExtResource("20_bm07k")
 
-[node name="white_a02_default" type="Node2D" node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+[node name="white_a02_default" type="Node2D" unique_id=1884400697 node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 script = ExtResource("1_74mn6")
 GridSize = Vector2i(20, 12)
 CameraStart = Vector2(5, 4)
@@ -77,56 +77,56 @@ StartingPositionsParent = NodePath("StartingPositions")
 SpawnersParent = NodePath("Spawners")
 metadata/_edit_horizontal_guides_ = [-93.0]
 
-[node name="DebugSize" type="Line2D" parent="." node_paths=PackedStringArray("map")]
+[node name="DebugSize" type="Line2D" parent="." unique_id=1874461204 node_paths=PackedStringArray("map")]
 points = PackedVector2Array(0, 0, 1280, 0, 1280, 768, 0, 768, 0, 0)
 closed = true
 default_color = Color(1, 0, 0, 1)
 script = ExtResource("4_4xe1i")
 map = NodePath("..")
 
-[node name="BG" type="TileMapLayer" parent="."]
+[node name="BG" type="TileMapLayer" parent="." unique_id=5827555]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAQAAQAUAAQAAAAAAAUAAQAIAAQAAAABAAQAAQAUAAQAAAABAAUAAQAIAAMAAAACAAQAAQAUAAQAAAACAAUAAQAJAAMAAAAAAAYAAQAIAAMAAAABAAYAAQAJAAQAAAACAAYAAQAJAAMAAAADAAQAAQAUAAIAAAADAAUAAQASAAQAAAADAAYAAQAIAAMAAAAEAAUAAQATAAQAAAAEAAYAAQAIAAQAAAAFAAUAAQATAAQAAAAFAAYAAQAKAAQAAAAGAAQAAQATAAIAAAAGAAUAAQAVAAQAAAAGAAYAAQAKAAQAAAAHAAAAAQAVAAIAAAAHAAEAAQAVAAIAAAAHAAIAAQAVAAIAAAAHAAMAAQAVAAIAAAAHAAQAAQAVAAQAAAAHAAUAAQAIAAMAAAAHAAYAAQAIAAQAAAAIAAUAAQAIAAQAAAAIAAYAAQAKAAQAAAAJAAUAAQAIAAMAAAAJAAYAAQAJAAMAAAAKAAUAAQAKAAMAAAAKAAYAAQAIAAMAAAALAAUAAQAIAAMAAAALAAYAAQAJAAMAAAAMAAUAAQAKAAQAAAAMAAYAAQAIAAMAAAANAAUAAQAIAAQAAAANAAYAAQAKAAQAAAAOAAUAAQAIAAQAAAAOAAYAAQAJAAQAAAAPAAUAAQAIAAMAAAAPAAYAAQAJAAQAAAAQAAUAAQAIAAMAAAAQAAYAAQAIAAMAAAARAAUAAQAIAAMAAAARAAYAAQAKAAQAAAAAAAAAAQAXAAIAAAAAAAEAAQAXAAIAAAAAAAIAAQAXAAIAAAAAAAMAAQAXAAIAAAABAAAAAQAXAAIAAAABAAEAAQAXAAIAAAABAAIAAQAXAAIAAAABAAMAAQAXAAIAAAACAAAAAQAXAAIAAAACAAEAAQAXAAIAAAACAAIAAQAXAAIAAAACAAMAAQAXAAIAAAADAAAAAQAXAAIAAAADAAEAAQAXAAIAAAADAAIAAQAXAAIAAAADAAMAAQAXAAIAAAAEAAAAAQAXAAIAAAAEAAEAAQAXAAIAAAAEAAIAAQAXAAIAAAAEAAMAAQAXAAIAAAAFAAAAAQAXAAIAAAAFAAEAAQAXAAIAAAAFAAIAAQAXAAIAAAAFAAMAAQAXAAIAAAAGAAAAAQAXAAIAAAAGAAEAAQAXAAIAAAAGAAIAAQAXAAIAAAAGAAMAAQAXAAIAAAAEAAQAAQAXAAIAAAAFAAQAAQAXAAIAAAAAAAgAAQAKAAMAAAAAAAkAAQAEAAcAAAAAAAoAAQAEAAcAAAABAAgAAQAKAAQAAAABAAkAAQAEAAcAAAABAAoAAQAFAAgAAAACAAgAAQAIAAQAAAACAAkAAQAJAAQAAAACAAoAAQAFAAgAAAADAAgAAQAKAAQAAAADAAkAAQAIAAMAAAADAAoAAQAFAAgAAAAEAAgAAQAJAAQAAAAEAAkAAQAJAAMAAAAEAAoAAQAEAAcAAAAFAAgAAQAJAAMAAAAFAAkAAQAIAAMAAAAFAAoAAQAKAAMAAAAGAAgAAQAJAAQAAAAGAAkAAQAJAAQAAAAGAAoAAQAJAAQAAAAHAAgAAQAJAAQAAAAHAAkAAQAIAAQAAAAHAAoAAQAKAAMAAAAIAAgAAQAJAAQAAAAIAAkAAQAIAAQAAAAIAAoAAQAKAAMAAAAJAAgAAQAKAAMAAAAJAAkAAQAKAAQAAAAJAAoAAQAJAAQAAAAKAAgAAQAJAAMAAAAKAAkAAQAJAAMAAAAKAAoAAQAKAAQAAAALAAgAAQAKAAMAAAALAAkAAQAKAAQAAAALAAoAAQAIAAQAAAAMAAgAAQAKAAQAAAAMAAkAAQAKAAQAAAAMAAoAAQAKAAMAAAANAAgAAQAKAAQAAAANAAkAAQAKAAMAAAANAAoAAQAKAAQAAAAOAAgAAQAIAAQAAAAOAAkAAQAJAAQAAAAOAAoAAQAKAAQAAAAPAAgAAQAJAAQAAAAPAAkAAQAIAAMAAAAPAAoAAQAJAAQAAAAQAAgAAQAJAAMAAAAQAAkAAQAJAAMAAAAQAAoAAQAJAAQAAAARAAgAAQAJAAQAAAARAAkAAQAKAAMAAAARAAoAAQAKAAMAAAAAAAsAAQAEAAcAAAABAAsAAAABAAEAAAACAAsAAAACAAEAAAADAAsAAAACAAEAAAAEAAsAAQAEAAcAAAAFAAsAAQADAAcAAAAJAAsAAQAIAAMAAAAKAAsAAQAIAAQAAAALAAsAAQAJAAQAAAAMAAsAAQAJAAMAAAANAAsAAQAJAAMAAAAOAAsAAQAJAAMAAAAPAAsAAQAIAAQAAAAQAAsAAQAIAAQAAAARAAsAAQAJAAQAAAARAAcAAQAKAAQAAAAQAAcAAQAIAAQAAAAPAAcAAQAKAAQAAAAOAAcAAQAKAAMAAAANAAcAAQAIAAMAAAAMAAcAAQAKAAMAAAALAAcAAQAKAAQAAAAKAAcAAQAJAAMAAAAJAAcAAQAKAAQAAAAIAAcAAQAIAAQAAAAHAAcAAQAKAAQAAAAGAAcAAQAJAAQAAAAFAAcAAQAIAAMAAAAEAAcAAQAKAAQAAAADAAcAAQAIAAMAAAACAAcAAQAJAAMAAAABAAcAAQAIAAMAAAAAAAcAAQAJAAMAAAASAAkAAQAJAAMAAAAIAAQAAQAJAAMAAAAKAAAAAQAIAAMAAAAKAAEAAQAKABgAAAAKAAIAAQAJAAMAAAAKAAMAAAALAAAAAAALAAAAAQAKAAMAAAALAAEAAQAMABgAAAALAAIAAQAMABgAAAALAAMAAQAIAAMAAAALAAQAAQAKAAMAAAAMAAAAAQAKAAQAAAAMAAEAAQAMABgAAAAMAAIAAQAMABgAAAAMAAMAAQAJAAMAAAAMAAQAAQAMABgAAAANAAAAAQAMABgAAAANAAEAAQALABkAAAANAAIAAQALABgAAAANAAMAAQAIAAQAAAANAAQAAQAIAAMAAAAOAAAAAQAMABgAAAAOAAEAAQAMABgAAAAOAAIAAQAKABgAAAAOAAMAAQAMABgAAAAOAAQAAQAIAAMAAAAPAAAAAQALABgAAAAPAAEAAQALABkAAAAPAAIAAQAMABgAAAAPAAMAAQALABkAAAAPAAQAAQALABgAAAAQAAAAAQAMABgAAAAQAAEAAQALABkAAAAQAAIAAQALABgAAAAQAAMAAQAMABgAAAAQAAQAAQALABkAAAARAAAAAQAMABgAAAARAAEAAQAMABkAAAARAAIAAQALABkAAAARAAMAAQALABkAAAARAAQAAQALABkAAAASAAMAAQAJAAQAAAASAAQAAQAIAAQAAAATAAAAAQAJAAMAAAATAAEAAQAIAAMAAAATAAIAAQAKAAMAAAATAAMAAQAKAAQAAAATAAQAAQAIAAQAAAAIAAAAAQAKAAMAAAAJAAEAAQAIAAQAAAASAAcAAQAJAAMAAAATAAcAAQAJAAQAAAATAAgAAQAIAAMAAAATAAYAAQAIAAMAAAASAAYAAQAKAAMAAAASAAUAAQAIAAQAAAASAAgAAQAJAAMAAAATAAUAAQAIAAMAAAASAAIAAQAKAAMAAAASAAEAAQAIAAMAAAASAAAAAQAIAAQAAAAKAAQAAQAIAAMAAAAJAAQAAQAKAAMAAAAJAAMAAQAJAAQAAAAJAAIAAQAIAAQAAAAIAAIAAQAKAAMAAAAIAAMAAQAKAAMAAAAIAAEAAQAIAAMAAAAJAAAAAQAIAAMAAAASAAsAAQAJAAMAAAATAAsAAQAJAAMAAAAGAAsAAQAIAAMAAAAHAAsAAQAIAAMAAAAIAAsAAQAIAAMAAAA=")
 tile_set = ExtResource("5_2n151")
 
-[node name="Path" type="TileMapLayer" parent="."]
+[node name="Path" type="TileMapLayer" parent="." unique_id=183774568]
 z_index = -5
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABAAoAAQAIAAYAAAACAAoAAQAIAAYAAAADAAoAAQAIAAYAAAACAAsAAQAIAAcAAAADAAsAAQAIAAcAAAAJAAUAAQAaAAgAAAAIAAUAAQAYAAYAAAAIAAYAAQAaAAgAAAACAAYAAQAZAAgAAAADAAYAAQAZAAgAAAAEAAYAAQAZAAgAAAAFAAYAAQAZAAgAAAAGAAYAAQAZAAgAAAAHAAYAAQAZAAgAAAABAAYAAQAXAAgAAAABAAUAAQAZAAYAAAAAAAUAAQAZAAgAAAACAAUAAQAYAAIAAAAHAAUAAQAYAAIAAAAIAAQAAQAYAAIAAAARAAMAAQAJAAQAAAARAAEAAQAJAAQAAAARAAIAAQAJAAQAAAAIAAAAAQAaAAYAAAAIAAEAAQAaAAYAAAAIAAIAAQAaAAYAAAAIAAMAAQAYAAcAAAAJAAQAAQAaAAcAAAAJAAMAAQAaAAUAAAA=")
 tile_set = ExtResource("5_2n151")
 
-[node name="Main" type="TileMapLayer" parent="."]
+[node name="Main" type="TileMapLayer" parent="." unique_id=45108041]
 z_index = -5
 use_parent_material = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAQAAQASAA4AAAABAAQAAQAMAA4AAAACAAQAAQAOAA4AAAAAAAMAAQASAA0AAAACAAMAAQAOAA0AAAABAAMAAQAMAA0AAAABAAoAAQAEAAgAAAABAAsAAQAIAAcAAAACAAoAAQAEAAcAAAACAAsAAQAEAAgAAAADAAoAAQAEAAcAAAADAAsAAQAEAAgAAAAAAAgAAQAEAAYAAAAAAAkAAQAEAAcAAAAAAAoAAQAEAAgAAAABAAgAAQAEAAYAAAABAAkAAQAEAAcAAAACAAkAAQAEAAYAAAADAAkAAQAEAAYAAAAEAAkAAQAEAAYAAAAEAAoAAQAEAAcAAAAEAAsAAQAEAAgAAAAFAAoAAQAEAAYAAAAFAAsAAQAEAAcAAAAKAP//AQAKABIAAAAKAAAAAQAKABMAAAAKAAMAAQAKABYAAAALAP//AQALABIAAAALAAAAAQALABMAAAALAAMAAQAKABUAAAALAAQAAQAKABYAAAAMAP//AQAMABIAAAAMAAAAAQAMABMAAAANAP//AQAMABIAAAANAAAAAQAMABMAAAANAAQAAQAQABYAAAAOAP//AQAMABIAAAAOAAAAAQAMABMAAAAOAAgAAQAEAAcAAAAPAP//AQAMABIAAAAPAAAAAQAMABMAAAAPAAQAAQARABYAAAAPAAgAAQAEAAcAAAAQAAgAAQAEAAcAAAAQAAkAAQAFAAgAAAARAAgAAQAEAAcAAAARAAkAAQAFAAgAAAAKAAIAAQAKABUAAAALAAIAAQAZABcAAAAMAAMAAQALABUAAAAMAAQAAQALABYAAAANAAMAAQAQABUAAAAQAP//AQAMABIAAAAQAAAAAQANABMAAAAQAAMAAQASABUAAAAQAAQAAQASABYAAAARAP//AQAOABIAAAARAAAAAQAOABMAAAARAAEAAQAOABQAAAARAAIAAQAOABQAAAARAAMAAQAOABUAAAARAAQAAQAOABYAAAASAAgAAQAEAAcAAAASAAkAAQAEAAcAAAASAAoAAQAFAAgAAAATAAgAAQAEAAcAAAATAAkAAQAEAAcAAAATAAoAAQAFAAgAAAAKAAEAAQAKABQAAAAIAAcAAQAEAAYAAAAJAAcAAQAEAAYAAAAKAAcAAQAEAAYAAAALAAcAAQAGAAYAAAAOAAcAAQAEAAYAAAAPAAcAAQAEAAYAAAAQAAcAAQAEAAYAAAARAAcAAQAEAAYAAAASAAcAAQAEAAYAAAATAAcAAQAEAAYAAAALAAgAAQAGAAcAAAAKAAgAAQAEAAcAAAAJAAgAAQAEAAcAAAAIAAgAAQAEAAcAAAAHAAcAAQACAAYAAAAHAAgAAQACAAcAAAALAAkAAQAGAAgAAAAKAAkAAQAEAAgAAAA=")
 tile_set = ExtResource("5_2n151")
 
-[node name="Extra" type="TileMapLayer" parent="."]
+[node name="Extra" type="TileMapLayer" parent="." unique_id=809051917]
 z_index = -4
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABAAoAAQAIAAYAAAACAAoAAQAIAAYAAAADAAoAAQAIAAYAAAACAAsAAQAIAAcAAAADAAsAAQAIAAcAAAASAP//AQABAAoAAAASAAAAAQABAAsAAAASAAEAAQABAAwAAAASAAIAAQABAA0AAAATAP//AQACAAoAAAATAAAAAQACAAsAAAATAAEAAQACAAwAAAATAAIAAQACAA0AAAAUAP//AQADAAoAAAAUAAAAAQADAAsAAAAUAAEAAQADAAwAAAAUAAIAAQADAA0AAAA=")
 tile_set = ExtResource("5_2n151")
 
-[node name="Threat" type="TileMapLayer" parent="."]
+[node name="Threat" type="TileMapLayer" parent="." unique_id=1149978985]
 z_index = -2
 use_parent_material = true
 tile_set = ExtResource("6_bh0rw")
 navigation_enabled = false
 
-[node name="Fire" type="TileMapLayer" parent="."]
+[node name="Fire" type="TileMapLayer" parent="." unique_id=305328440]
 z_index = -2
 scale = Vector2(2, 2)
 tile_set = ExtResource("7_ccyxn")
 
-[node name="UI" type="TileMapLayer" parent="."]
+[node name="UI" type="TileMapLayer" parent="." unique_id=708151215]
 z_index = -3
 use_parent_material = true
 tile_set = ExtResource("6_bh0rw")
 
-[node name="C0Map0Leafmap" type="Sprite2D" parent="."]
+[node name="C0Map0Leafmap" type="Sprite2D" parent="." unique_id=163514471]
 visible = false
 z_index = 1
 material = ExtResource("8_q0hdm")
@@ -134,33 +134,33 @@ position = Vector2(480, 288)
 scale = Vector2(2, 2)
 texture = ExtResource("9_xmcga")
 
-[node name="StartingPositions" type="Node2D" parent="."]
+[node name="StartingPositions" type="Node2D" parent="." unique_id=710319357]
 unique_name_in_owner = true
 
-[node name="StartingPositionHelper" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
+[node name="StartingPositionHelper" parent="StartingPositions" unique_id=1731794996 node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
 position = Vector2(128, 384)
 Position = Vector2i(2, 6)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper2" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
+[node name="StartingPositionHelper2" parent="StartingPositions" unique_id=1578236905 node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
 position = Vector2(192, 320)
 Position = Vector2i(3, 5)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper3" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
+[node name="StartingPositionHelper3" parent="StartingPositions" unique_id=1500674683 node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
 position = Vector2(64, 320)
 Position = Vector2i(1, 5)
 map = NodePath("../..")
 
-[node name="StartingPositionHelper4" parent="StartingPositions" node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
+[node name="StartingPositionHelper4" parent="StartingPositions" unique_id=380493623 node_paths=PackedStringArray("map") instance=ExtResource("10_rmejf")]
 position = Vector2(192, 384)
 Position = Vector2i(3, 6)
 map = NodePath("../..")
 
-[node name="Spawners" type="Node2D" parent="."]
+[node name="Spawners" type="Node2D" parent="." unique_id=294795971]
 unique_name_in_owner = true
 
-[node name="Spawn_Maws" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Maws" type="Sprite2D" parent="Spawners" unique_id=105893465]
 position = Vector2(192, 128)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -174,7 +174,7 @@ Position = Vector2i(3, 2)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_bbkis")
 
-[node name="Chest_1" type="Sprite2D" parent="Spawners"]
+[node name="Chest_1" type="Sprite2D" parent="Spawners" unique_id=540136398]
 position = Vector2(768, 64)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -185,7 +185,7 @@ script = ExtResource("16_smidf")
 GridEntityPrefab = ExtResource("17_a1cur")
 Position = Vector2i(12, 1)
 
-[node name="Spawn_Maws2" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Maws2" type="Sprite2D" parent="Spawners" unique_id=1059472976]
 position = Vector2(320, 64)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -199,7 +199,7 @@ Position = Vector2i(5, 1)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_bbkis")
 
-[node name="Spawn_Maws3" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Maws3" type="Sprite2D" parent="Spawners" unique_id=319797435]
 position = Vector2(576, 640)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -214,7 +214,7 @@ Position = Vector2i(9, 10)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_xg6bq")
 
-[node name="Spawn_Maws4" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Maws4" type="Sprite2D" parent="Spawners" unique_id=409579138]
 position = Vector2(640, 640)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -229,7 +229,7 @@ Position = Vector2i(10, 10)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_xg6bq")
 
-[node name="Spawn_Bandit2" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Bandit2" type="Sprite2D" parent="Spawners" unique_id=1448558236]
 position = Vector2(832, 320)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -244,7 +244,7 @@ Position = Vector2i(13, 5)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_ddp5s")
 
-[node name="Spawn_BanditThief" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_BanditThief" type="Sprite2D" parent="Spawners" unique_id=2103966580]
 position = Vector2(1088, 640)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -260,7 +260,7 @@ Position = Vector2i(17, 10)
 AIBehavior = SubResource("Resource_hfpli")
 AggroBehavior = SubResource("Resource_qwx01")
 
-[node name="Spawn_BanditArcher" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_BanditArcher" type="Sprite2D" parent="Spawners" unique_id=1955512278]
 position = Vector2(896, 128)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -275,7 +275,7 @@ Position = Vector2i(14, 2)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_dwgyn")
 
-[node name="Spawn_Bandit" type="Sprite2D" parent="Spawners"]
+[node name="Spawn_Bandit" type="Sprite2D" parent="Spawners" unique_id=755041840]
 position = Vector2(1024, 320)
 texture = ExtResource("11_jfckp")
 centered = false
@@ -289,6 +289,6 @@ Position = Vector2i(16, 5)
 AIBehavior = ExtResource("14_lmulf")
 AggroBehavior = SubResource("Resource_hkjcv")
 
-[node name="Variants" type="Node2D" parent="."]
+[node name="Variants" type="Node2D" parent="." unique_id=2104191785]
 
-[node name="Squads" type="Node2D" parent="."]
+[node name="Squads" type="Node2D" parent="." unique_id=1033099889]

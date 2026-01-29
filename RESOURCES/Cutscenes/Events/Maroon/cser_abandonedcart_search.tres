@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventDecision" load_steps=37 format=3 uid="uid://w0e20lhua0r3"]
+[gd_resource type="Resource" script_class="EventDecision" format=3 uid="uid://w0e20lhua0r3"]
 
 [ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_rmab2"]
 [ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="2_vct4s"]

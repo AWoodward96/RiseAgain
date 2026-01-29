@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cowl7jp74hd6j"]
+[gd_scene format=3 uid="uid://cowl7jp74hd6j"]
 
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_qrlnf"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_hgu7s"]
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 script = ExtResource("6_42rmg")
 CombatEffect = ExtResource("3_78h65")
 
-[node name="ART_snareshot" type="Node2D" node_paths=PackedStringArray("TargetingData")]
+[node name="ART_snareshot" type="Node2D" unique_id=2142992395 node_paths=PackedStringArray("TargetingData")]
 script = ExtResource("1_qrlnf")
 abilityCooldown = 2
 ability_speed = 1
@@ -29,6 +29,6 @@ icon = ExtResource("5_05l1q")
 TargetingTemplate = ExtResource("7_5cjyv")
 TargetingData = NodePath("SkillTargetingData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=636121873]
 script = ExtResource("9_8fewi")
 TargetRange = Vector2i(1, 4)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CampaignTemplate" load_steps=7 format=3 uid="uid://dcucv6vauy0dy"]
+[gd_resource type="Resource" script_class="CampaignTemplate" format=3 uid="uid://dcucv6vauy0dy"]
 
 [ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="1_gxh3s"]
 [ext_resource type="Texture2D" uid="uid://duq4qf5n0vf6a" path="res://ART/Icons/Route/mountain_path.png" id="2_s5apg"]

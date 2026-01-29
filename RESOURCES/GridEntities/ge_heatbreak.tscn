@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://wlfynlbay15t"]
+[gd_scene format=4 uid="uid://wlfynlbay15t"]
 
 [ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_ki6dk"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_rut70"]
@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 script = ExtResource("7_ml4ie")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[node name="ge_heatbreak" type="Node2D" node_paths=PackedStringArray("telegraphTilemap")]
+[node name="ge_heatbreak" type="Node2D" unique_id=1889010354 node_paths=PackedStringArray("telegraphTilemap")]
 z_index = -5
 script = ExtResource("1_ki6dk")
 executionStack = Array[ExtResource("2_rut70")]([SubResource("Resource_ki6dk"), SubResource("Resource_rut70"), SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_cbua2"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
@@ -59,6 +59,6 @@ UpdatePerTeamTurn = true
 localization_icon = ExtResource("9_1q36f")
 localization_desc = "art_arrow_rain_name"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=756967451]
 tile_map_data = PackedByteArray("AAD/////AgAAAAIAAAAAAP//AgAAAAIAAAABAP//AgAAAAIAAAD//wAAAgAAAAIAAAAAAAAAAgAAAAIAAAABAAAAAgAAAAIAAAA=")
 tile_set = ExtResource("10_ghvk2")

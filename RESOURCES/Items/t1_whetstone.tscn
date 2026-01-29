@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgnnm5cfmf664"]
+[gd_scene format=3 uid="uid://bgnnm5cfmf664"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_agn71"]
 [ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/t1_whetstone.png" id="2_0l20q"]
@@ -11,7 +11,7 @@ script = ExtResource("5_8ff5h")
 Template = ExtResource("4_mx0ga")
 Value = 1
 
-[node name="whetstone_t1" type="Node2D" node_paths=PackedStringArray("StatData")]
+[node name="whetstone_t1" type="Node2D" unique_id=2079311808 node_paths=PackedStringArray("StatData")]
 script = ExtResource("1_agn71")
 internalName = "t1_whetstone"
 loc_displayName = "item_t1_whetstone_name"
@@ -19,6 +19,6 @@ loc_displayDesc = "item_t1_whetstone_desc"
 icon = ExtResource("2_0l20q")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1143184529]
 script = ExtResource("6_h5yl2")
 GrantedStats = Array[ExtResource("5_8ff5h")]([SubResource("Resource_hodaj")])

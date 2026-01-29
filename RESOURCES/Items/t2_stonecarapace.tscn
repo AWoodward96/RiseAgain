@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdci2cagpqgn3"]
+[gd_scene format=3 uid="uid://bdci2cagpqgn3"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_2ai5r"]
 [ext_resource type="Texture2D" uid="uid://icw5bhvcgk1b" path="res://ART/Icons/Items/t2_stonecarapace.png" id="2_4g3m4"]
@@ -57,7 +57,7 @@ script = ExtResource("12_em0k2")
 CombatEffect = SubResource("Resource_qhsa7")
 metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
 
-[node name="t2_stonecarapace" type="Node2D" node_paths=PackedStringArray("passiveListeners", "StatData")]
+[node name="t2_stonecarapace" type="Node2D" unique_id=1955254573 node_paths=PackedStringArray("passiveListeners", "StatData")]
 script = ExtResource("1_2ai5r")
 passiveListeners = [NodePath("PhysicalListener"), NodePath("MagicalListener")]
 internalName = "t2_stonecarapace"
@@ -66,17 +66,17 @@ loc_displayDesc = "item_t2_stonecarapace_desc"
 icon = ExtResource("2_4g3m4")
 StatData = NodePath("ItemStatComponent")
 
-[node name="ItemStatComponent" type="Node2D" parent="."]
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=150811132]
 script = ExtResource("3_4g3m4")
 GrantedStats = Array[ExtResource("4_u1js6")]([SubResource("Resource_02oc8"), SubResource("Resource_adqk6")])
 
-[node name="PhysicalListener" type="Node2D" parent="."]
+[node name="PhysicalListener" type="Node2D" parent="." unique_id=1142831203]
 script = ExtResource("7_u1js6")
 executionStack = Array[ExtResource("8_qhsa7")]([SubResource("Resource_87kcn"), SubResource("Resource_yfw2u")])
 useDamageTypeReq = true
 metadata/_custom_type_script = "uid://xuab03ypkvce"
 
-[node name="MagicalListener" type="Node2D" parent="."]
+[node name="MagicalListener" type="Node2D" parent="." unique_id=253665677]
 script = ExtResource("7_u1js6")
 executionStack = Array[ExtResource("8_qhsa7")]([SubResource("Resource_87kcn"), SubResource("Resource_vtny4")])
 useDamageTypeReq = true

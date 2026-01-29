@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TargetingGlobalSimple" load_steps=2 format=3 uid="uid://2ojaw0txujcm"]
+[gd_resource type="Resource" script_class="TargetingGlobalSimple" format=3 uid="uid://2ojaw0txujcm"]
 
 [ext_resource type="Script" uid="uid://doh1pkd4gldyd" path="res://SCRIPTS/Targeting/TargetingGlobalSimple.gd" id="1_07j02"]
 

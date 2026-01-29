@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddcgn74t12axm"]
+[gd_scene format=3 uid="uid://ddcgn74t12axm"]
 
 [ext_resource type="Texture2D" uid="uid://c8t6102i2v87a" path="res://ART/VFX/cloud_vfx_2.png" id="1_cqaaw"]
 [ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_jrtoe"]
@@ -14,12 +14,12 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.378556, 0.68709, 1)
 colors = PackedColorArray(0, 0.473317, 0.237782, 1, 0.4788, 0.76, 0.581907, 1, 0.196333, 0, 0.31, 1, 0.633333, 0, 1, 0)
 
-[node name="HealingCloudVFX" type="Node2D" node_paths=PackedStringArray("cpuParticles")]
+[node name="HealingCloudVFX" type="Node2D" unique_id=755102587 node_paths=PackedStringArray("cpuParticles")]
 script = ExtResource("1_jrtoe")
 emitOnReady = true
 cpuParticles = [NodePath("CPUParticles2D")]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=2087274363]
 material = SubResource("CanvasItemMaterial_jrtoe")
 position = Vector2(32, 32)
 emitting = false
@@ -38,7 +38,7 @@ color_ramp = SubResource("Gradient_lj54a")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=949704732]
 wait_time = 3.0
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

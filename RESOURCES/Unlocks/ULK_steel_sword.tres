@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AbilityUnlockable" load_steps=5 format=3 uid="uid://ck2y0oj2cq5d0"]
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://ck2y0oj2cq5d0"]
 
 [ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_enp5m"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_kjpgv"]

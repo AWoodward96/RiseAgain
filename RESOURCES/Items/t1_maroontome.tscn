@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://qe114j5trg4f"]
+[gd_scene format=3 uid="uid://qe114j5trg4f"]
 
 [ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_ydvky"]
 [ext_resource type="Texture2D" uid="uid://dp165mc6h0h78" path="res://ART/Icons/Items/t1_maroontome.png" id="2_1pvdp"]
@@ -11,7 +11,7 @@ script = ExtResource("4_6q3bx")
 Template = ExtResource("6_o2oo3")
 Value = 25
 
-[node name="t1_maroontome" type="Node2D" node_paths=PackedStringArray("growthModifierData")]
+[node name="t1_maroontome" type="Node2D" unique_id=1032454007 node_paths=PackedStringArray("growthModifierData")]
 script = ExtResource("1_ydvky")
 growthModifierData = NodePath("HeldItemStatGrowthModifier")
 internalName = "t1_maroontome"
@@ -19,6 +19,6 @@ loc_displayName = "item_t1_maroontome_name"
 loc_displayDesc = "item_t1_maroontome_desc"
 icon = ExtResource("2_1pvdp")
 
-[node name="HeldItemStatGrowthModifier" type="Node2D" parent="."]
+[node name="HeldItemStatGrowthModifier" type="Node2D" parent="." unique_id=1942139894]
 script = ExtResource("5_xxg6k")
 GrowthModifiers = Array[ExtResource("4_6q3bx")]([SubResource("Resource_phpi7")])
