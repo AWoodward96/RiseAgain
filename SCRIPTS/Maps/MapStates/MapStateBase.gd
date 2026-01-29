@@ -13,3 +13,9 @@ func Exit():
 
 func Update(_delta):
 	pass
+
+func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
+	pass
+
+func ToJSON():
+	return "Base"

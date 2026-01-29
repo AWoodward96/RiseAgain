@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dot0hl1hdqkq7"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_f7vji"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_7a8tr"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_xseor"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_1ilc4"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="3_ifr6g"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_5wmo1"]
+[ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="4_qj5kc"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="5_paa6q"]
+[ext_resource type="Resource" uid="uid://t6b0eyk1d8yd" path="res://RESOURCES/TargetingShapes/innitiate_shape.tres" id="5_w7fya"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_iemot"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="6_xseor"]
+[ext_resource type="Resource" uid="uid://boh6by4rvsmkc" path="res://RESOURCES/Ability/TargetingTemplates/innitiate_targeting.tres" id="7_1ilc4"]
+
+[sub_resource type="Resource" id="Resource_6dtti"]
+script = ExtResource("3_1ilc4")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_xmu7l"]
+script = ExtResource("4_qj5kc")
+metadata/_custom_type_script = "uid://cm68c4p601pk"
+
+[sub_resource type="Resource" id="Resource_0wm2v"]
+script = ExtResource("5_paa6q")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_bna5w"]
+script = ExtResource("6_iemot")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="innitiate" type="Node2D" unique_id=723665258 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_f7vji")
+abilityCooldown = 3
+ability_speed = 1
+executionStack = Array[ExtResource("2_7a8tr")]([SubResource("Resource_6dtti"), SubResource("Resource_xmu7l"), SubResource("Resource_0wm2v"), SubResource("Resource_bna5w")])
+internalName = "innitiate"
+loc_displayName = "art_innitiate_name"
+loc_displayDesc = "art_innitiate_desc"
+TargetingTemplate = ExtResource("7_1ilc4")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=399950937]
+script = ExtResource("2_xseor")
+AgressiveStat = ExtResource("3_ifr6g")
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1423354462]
+script = ExtResource("4_5wmo1")
+TargetRange = Vector2i(2, 3)
+Type = 2
+shapedTiles = ExtResource("5_w7fya")
+
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=1358709987]
+script = ExtResource("6_xseor")
+type = 1
+drawPath = false
+metadata/_custom_type_script = "uid://dosuyr8paidkx"

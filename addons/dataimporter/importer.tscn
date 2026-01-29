@@ -1,0 +1,441 @@
+[gd_scene format=3 uid="uid://b7gh8fujha7w2"]
+
+[ext_resource type="Script" uid="uid://coqjb4rapbjcy" path="res://addons/dataimporter/RADataImporter.gd" id="1_06tae"]
+[ext_resource type="Script" uid="uid://dx4vf2aavp36g" path="res://addons/dataimporter/RADataPanelUnits.gd" id="2_fm6kx"]
+[ext_resource type="Script" uid="uid://c3qpl51gnyf8c" path="res://addons/dataimporter/RADataPanelItems.gd" id="3_62nqr"]
+[ext_resource type="Script" uid="uid://cavfhf45pgrgw" path="res://addons/dataimporter/RADataPanelAbilities.gd" id="4_2mxhq"]
+[ext_resource type="Script" uid="uid://bffsgejeemf3y" path="res://addons/dataimporter/RADataPanelLootTables.gd" id="4_mpfc1"]
+[ext_resource type="Script" uid="uid://7kl3ws86ryon" path="res://addons/dataimporter/RADataPanelLocalization.gd" id="5_vbuby"]
+
+[node name="DataImporter" type="Control" unique_id=597325032 node_paths=PackedStringArray("Panels")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06tae")
+Panels = [NodePath("MarginContainer/TabContainer/Units"), NodePath("MarginContainer/TabContainer/Items"), NodePath("MarginContainer/TabContainer/Loot Tables"), NodePath("MarginContainer/TabContainer/Localization"), NodePath("MarginContainer/TabContainer/Abilities")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=820227963]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 0
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=1853789849]
+layout_mode = 2
+current_tab = 0
+
+[node name="Units" type="Panel" parent="MarginContainer/TabContainer" unique_id=216431669 node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
+layout_mode = 2
+script = ExtResource("2_fm6kx")
+sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")
+sheetName = NodePath("MarginContainer/VBoxContainer/Forms/SheetNameEdit")
+previewText = NodePath("MarginContainer/VBoxContainer/ImportPreviewPanel")
+errorPanel = NodePath("MarginContainer/VBoxContainer/Panel/RichTextLabel")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Units" unique_id=131690645]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 486.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Units/MarginContainer" unique_id=746303836]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Forms" type="HBoxContainer" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer" unique_id=1673124845]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Forms" unique_id=1176934824]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sheet ID:"
+
+[node name="SheetIDEdit" type="LineEdit" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Forms" unique_id=517372805]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "1IyTGpFYuhHUwnPDt-Pqtb8WTc-ebx3xPaAZqHuw3vzc"
+secret = true
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Forms" unique_id=1237020315]
+layout_mode = 2
+text = "Sheet Name:"
+
+[node name="SheetNameEdit" type="LineEdit" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Forms" unique_id=633800054]
+layout_mode = 2
+text = "Units"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer" unique_id=1939550720]
+layout_mode = 2
+
+[node name="PollButton" type="Button" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Buttons" unique_id=1011294004]
+layout_mode = 2
+text = "Poll Google Sheets"
+
+[node name="ImportButton" type="Button" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Buttons" unique_id=1587588346]
+layout_mode = 2
+text = "Import"
+
+[node name="ImportPreviewPanel" type="TextEdit" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer" unique_id=254242527]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer" unique_id=378546874]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Panel" unique_id=1652469436]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="Items" type="Panel" parent="MarginContainer/TabContainer" unique_id=947893984 node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
+visible = false
+layout_mode = 2
+script = ExtResource("3_62nqr")
+sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")
+sheetName = NodePath("MarginContainer/VBoxContainer/Forms/SheetNameEdit")
+previewText = NodePath("MarginContainer/VBoxContainer/ImportPreviewPanel")
+errorPanel = NodePath("MarginContainer/VBoxContainer/Panel/RichTextLabel")
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Items" unique_id=1047209958]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 523.0
+offset_bottom = 802.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Items/MarginContainer" unique_id=1061491]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Forms" type="HBoxContainer" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer" unique_id=1019695739]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Forms" unique_id=257905952]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sheet ID:"
+
+[node name="SheetIDEdit" type="LineEdit" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Forms" unique_id=1018500112]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "1IyTGpFYuhHUwnPDt-Pqtb8WTc-ebx3xPaAZqHuw3vzc"
+secret = true
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Forms" unique_id=1723178187]
+layout_mode = 2
+text = "Sheet Name:"
+
+[node name="SheetNameEdit" type="LineEdit" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Forms" unique_id=624094601]
+layout_mode = 2
+text = "Items"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer" unique_id=234655302]
+layout_mode = 2
+
+[node name="PollButton" type="Button" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Buttons" unique_id=2078658875]
+layout_mode = 2
+text = "Poll Google Sheets"
+
+[node name="ImportButton" type="Button" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Buttons" unique_id=380995676]
+layout_mode = 2
+text = "Import"
+
+[node name="ImportPreviewPanel" type="TextEdit" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer" unique_id=622816493]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer" unique_id=574030261]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Panel" unique_id=1732539336]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="Abilities" type="Panel" parent="MarginContainer/TabContainer" unique_id=765048045 node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
+visible = false
+layout_mode = 2
+script = ExtResource("4_2mxhq")
+sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")
+sheetName = NodePath("MarginContainer/VBoxContainer/Forms/SheetNameEdit")
+previewText = NodePath("MarginContainer/VBoxContainer/ImportPreviewPanel")
+errorPanel = NodePath("MarginContainer/VBoxContainer/Panel/RichTextLabel")
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Abilities" unique_id=1418567171]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 523.0
+offset_bottom = 802.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Abilities/MarginContainer" unique_id=1667591154]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Forms" type="HBoxContainer" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer" unique_id=615209158]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Forms" unique_id=395261965]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sheet ID:"
+
+[node name="SheetIDEdit" type="LineEdit" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Forms" unique_id=46053220]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "1IyTGpFYuhHUwnPDt-Pqtb8WTc-ebx3xPaAZqHuw3vzc"
+secret = true
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Forms" unique_id=1785809866]
+layout_mode = 2
+text = "Sheet Name:"
+
+[node name="SheetNameEdit" type="LineEdit" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Forms" unique_id=1299949926]
+layout_mode = 2
+text = "Abilities"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer" unique_id=1860706373]
+layout_mode = 2
+
+[node name="PollButton" type="Button" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Buttons" unique_id=924393402]
+layout_mode = 2
+text = "Poll Google Sheets"
+
+[node name="ImportButton" type="Button" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Buttons" unique_id=1077417666]
+layout_mode = 2
+text = "Import"
+
+[node name="ImportPreviewPanel" type="TextEdit" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer" unique_id=1909611097]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer" unique_id=1309301474]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Panel" unique_id=506211412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="Localization" type="Panel" parent="MarginContainer/TabContainer" unique_id=1721912983 node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_vbuby")
+sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")
+sheetName = NodePath("MarginContainer/VBoxContainer/Forms/SheetNameEdit")
+previewText = NodePath("MarginContainer/VBoxContainer/ImportPreviewPanel")
+errorPanel = NodePath("MarginContainer/VBoxContainer/Panel/RichTextLabel")
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Localization" unique_id=1545647048]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 523.0
+offset_bottom = 802.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Localization/MarginContainer" unique_id=1208572934]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Forms" type="HBoxContainer" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer" unique_id=1110974903]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Forms" unique_id=230197072]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sheet ID:"
+
+[node name="SheetIDEdit" type="LineEdit" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Forms" unique_id=945967438]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "1IyTGpFYuhHUwnPDt-Pqtb8WTc-ebx3xPaAZqHuw3vzc"
+secret = true
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Forms" unique_id=837652854]
+layout_mode = 2
+text = "Sheet Name:"
+
+[node name="SheetNameEdit" type="LineEdit" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Forms" unique_id=1161893796]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Localization"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer" unique_id=281084648]
+layout_mode = 2
+
+[node name="PollButton" type="Button" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Buttons" unique_id=99150626]
+layout_mode = 2
+text = "Poll Google Sheets"
+
+[node name="ImportButton" type="Button" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Buttons" unique_id=1462681744]
+layout_mode = 2
+text = "Import"
+
+[node name="ImportPreviewPanel" type="TextEdit" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer" unique_id=120848702]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer" unique_id=662741140]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Panel" unique_id=654557571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="Loot Tables" type="Panel" parent="MarginContainer/TabContainer" unique_id=77369151 node_paths=PackedStringArray("sheetID", "sheetName", "previewText", "errorPanel")]
+visible = false
+layout_mode = 2
+script = ExtResource("4_mpfc1")
+sheetID = NodePath("MarginContainer/VBoxContainer/Forms/SheetIDEdit")
+sheetName = NodePath("MarginContainer/VBoxContainer/Forms/SheetNameEdit")
+previewText = NodePath("MarginContainer/VBoxContainer/ImportPreviewPanel")
+errorPanel = NodePath("MarginContainer/VBoxContainer/Panel/RichTextLabel")
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Loot Tables" unique_id=1532695111]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 523.0
+offset_bottom = 802.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer" unique_id=1282332600]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Forms" type="HBoxContainer" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer" unique_id=930297083]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Forms" unique_id=552373541]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sheet ID:"
+
+[node name="SheetIDEdit" type="LineEdit" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Forms" unique_id=2078431227]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "1IyTGpFYuhHUwnPDt-Pqtb8WTc-ebx3xPaAZqHuw3vzc"
+secret = true
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Forms" unique_id=1280793419]
+layout_mode = 2
+text = "Sheet Name:"
+
+[node name="SheetNameEdit" type="LineEdit" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Forms" unique_id=2034466686]
+layout_mode = 2
+text = "LootTables"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer" unique_id=741000595]
+layout_mode = 2
+
+[node name="PollButton" type="Button" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Buttons" unique_id=2024312995]
+layout_mode = 2
+text = "Poll Google Sheets"
+
+[node name="ImportButton" type="Button" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Buttons" unique_id=1826025578]
+layout_mode = 2
+text = "Import"
+
+[node name="ImportPreviewPanel" type="TextEdit" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer" unique_id=1729210645]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+
+[node name="Panel" type="Panel" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer" unique_id=587993779]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Panel" unique_id=604338515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[connection signal="pressed" from="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Buttons/PollButton" to="MarginContainer/TabContainer/Units" method="OnPollButtton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Units/MarginContainer/VBoxContainer/Buttons/ImportButton" to="MarginContainer/TabContainer/Units" method="OnImportButton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Buttons/PollButton" to="MarginContainer/TabContainer/Items" method="OnPollButtton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Items/MarginContainer/VBoxContainer/Buttons/ImportButton" to="MarginContainer/TabContainer/Items" method="OnImportButton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Buttons/PollButton" to="MarginContainer/TabContainer/Abilities" method="OnPollButtton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Abilities/MarginContainer/VBoxContainer/Buttons/ImportButton" to="MarginContainer/TabContainer/Abilities" method="OnImportButton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Buttons/PollButton" to="MarginContainer/TabContainer/Localization" method="OnPollButtton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Localization/MarginContainer/VBoxContainer/Buttons/ImportButton" to="MarginContainer/TabContainer/Localization" method="OnImportButton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Buttons/PollButton" to="MarginContainer/TabContainer/Loot Tables" method="OnPollButtton"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Loot Tables/MarginContainer/VBoxContainer/Buttons/ImportButton" to="MarginContainer/TabContainer/Loot Tables" method="OnImportButton"]

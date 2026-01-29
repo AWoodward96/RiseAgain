@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bahkfl6jb6vf3"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_hd0a2"]
+[ext_resource type="Texture2D" uid="uid://5ihtgs0ww1xs" path="res://ART/Icons/Items/t1_lapispadding.png" id="2_dxq8q"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_wp53i"]
+[ext_resource type="Script" uid="uid://bbatkxmu5myen" path="res://SCRIPTS/Items/HeldItemStatGrowthModifier.gd" id="5_ou6vn"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_o5yvn"]
+
+[sub_resource type="Resource" id="Resource_k3422"]
+script = ExtResource("4_wp53i")
+Template = ExtResource("6_o5yvn")
+Value = 15
+
+[node name="t1_lapispadding" type="Node2D" unique_id=2120863436 node_paths=PackedStringArray("growthModifierData")]
+script = ExtResource("1_hd0a2")
+growthModifierData = NodePath("HeldItemStatGrowthModifier")
+internalName = "t1_lapispadding"
+loc_displayName = "item_t1_lapispadding_name"
+loc_displayDesc = "item_t1_lapispadding_desc"
+icon = ExtResource("2_dxq8q")
+
+[node name="HeldItemStatGrowthModifier" type="Node2D" parent="." unique_id=343637065]
+script = ExtResource("5_ou6vn")
+GrowthModifiers = Array[ExtResource("4_wp53i")]([SubResource("Resource_k3422")])

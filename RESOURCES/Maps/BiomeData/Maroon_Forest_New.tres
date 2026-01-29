@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BiomeData" format=3 uid="uid://knn4tt544y50"]
+
+[ext_resource type="PackedScene" uid="uid://ml7melymonpr" path="res://RESOURCES/Maps/_alpha_Campaign00/EnvironmentalPrefabs/maroon_directional_light.tscn" id="1_3ms0p"]
+[ext_resource type="Script" uid="uid://jtmse3fkm1gn" path="res://SCRIPTS/Maps/BiomeData.gd" id="1_qm6v8"]
+[ext_resource type="PackedScene" uid="uid://xxwr7ra1wkdx" path="res://RESOURCES/Maps/_alpha_Campaign00/EnvironmentalPrefabs/maroon_leaves.tscn" id="2_i6b7n"]
+[ext_resource type="PackedScene" uid="uid://crkqcam887vhh" path="res://RESOURCES/Maps/_alpha_Campaign00/EnvironmentalPrefabs/maroon_reticle_light.tscn" id="3_1caet"]
+[ext_resource type="PackedScene" uid="uid://b1oe3af1kkup5" path="res://RESOURCES/Maps/_alpha_Campaign00/EnvironmentalPrefabs/maroon_unit_light.tscn" id="3_i6b7n"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qm6v8"]
+frequency = 0.0026
+fractal_gain = 0.0
+
+[resource]
+script = ExtResource("1_qm6v8")
+AmbienceID = "{00e98ecf-4c74-4486-8773-1a4b04092164}"
+MusicID = "{7415619a-94b3-4f0e-a3da-32919593b5b1}"
+VictoryStinger = "{97bf097a-1484-450d-bbfc-8d6ca02014dd}"
+LossStinger = "{00cb14b6-6b8b-467e-985d-6c4445550ea0}"
+VictoryDelay = 1.5
+GridColor = Color(0.08, 0.0584, 0.0584, 0.235294)
+UnitSaturation = 0.8
+UnitValue = 0.5
+GrayscaleUnitOffset = 0.1
+DirectionalLight = ExtResource("1_3ms0p")
+UnitLight = ExtResource("3_i6b7n")
+ReticleLight = ExtResource("3_1caet")
+Particles = ExtResource("2_i6b7n")
+AmbienceNoise = SubResource("FastNoiseLite_qm6v8")
+metadata/_custom_type_script = "uid://jtmse3fkm1gn"

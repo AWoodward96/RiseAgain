@@ -4,17 +4,77 @@ var GlobalPosition
 var Position
 var IsWall
 
+var MainTileData : TileMetaData 	# For the 'main' tile - or anything that sits on top of the bg like a wall
+var DestructableData : TileMetaData # Similar to main, but specifically for tiles that are destructable
+var Godot_DestructableData : TileData
+var BGTileData : TileMetaData		# For the 'bg' tile - which can never be null
+var SubBGTileData : TileMetaData	# For the 'water' or other tiles that hide behind the BG - this CAN be null
+var TerrainDestroyed : bool
+
 var Health : int = -1
 var MaxHealth : int = -1
+var playerDijkstra : int = 0
+
 var Killbox : bool
+var ActiveKillbox : bool
+var Water : bool
+var OpenWater : bool
+var IsShroud : bool
+var Shroud : ShroudInstance
 
 var CanAttack: bool
 var CanMove: bool
+var CanBuff : bool
 var InRange : bool
 var Occupant : UnitInstance
 
-var popupStack : Array[Node]
+var GridEntities : Array[GridEntityBase]
+
+var popupStack : Array[Node2D]
 var popingOffPopups : bool = false
+
+var damageIndicator : DamageIndicator
+var ObscureParent : Tile # The tile that is obscuring this tile
+var ObscureAlpha : float = 1
+
+
+func InitMetaData():
+	IsShroud = false
+	Killbox = false
+	Water = false
+
+	if MainTileData != null:
+		IsShroud = MainTileData.Shroud
+
+	if BGTileData != null:
+		Killbox = BGTileData.Killbox
+		Water = BGTileData.Water
+
+	if SubBGTileData != null:
+		Killbox = Killbox || SubBGTileData.Killbox
+		Water = Water || SubBGTileData.Water
+
+	if DestructableData != null:
+		IsShroud = Shroud || DestructableData.Shroud
+		MaxHealth = DestructableData.Health
+		Health = DestructableData.Health
+
+	RefreshActiveKillbox()
+
+
+# Handles what happens if a unit steps on this tile
+# Returns true or false - if true then the unit's movement has been interrupted
+func OnUnitTraversed(_unitInstance : UnitInstance):
+	var result = GameSettingsTemplate.TraversalResult.OK
+	for ge in GridEntities:
+		# Since multiple GE's can be stacked on top of one another, each one needs to be checked to see if traversal
+		# has interrupted their movement
+		var nextResult = ge.OnUnitTraversed(_unitInstance, self)
+		if int(result) < int(nextResult):
+			result = nextResult
+
+	_unitInstance.OnTileUpdated(self)
+	return result
 
 func AsTargetData():
 	var target = TileTargetedData.new()
@@ -25,15 +85,17 @@ func AsTargetData():
 func PlayPopupDeffered():
 	popingOffPopups = true
 
-	var nextPopup = popupStack.pop_front()
+	var nextPopup = popupStack.pop_front() as Node2D
 	while(nextPopup != null):
 		nextPopup.visible = true
-		await nextPopup.get_tree().create_timer(Juice.combatPopupCooldown)
+		var anim = nextPopup.find_child("AnimationPlayer") as AnimationPlayer
+		if anim != null:
+			anim.active = true
+		await nextPopup.get_tree().create_timer(Juice.combatPopupCooldown).timeout
 		nextPopup = popupStack.pop_front()
 
+
 	popingOffPopups = false
-#
-	#pass
 
 
 func QueuePopup(_node : Node):
@@ -42,3 +104,107 @@ func QueuePopup(_node : Node):
 	if !popingOffPopups:
 		PlayPopupDeffered()
 	pass
+
+func PreviewDamage(_normalDamage : int, _collisionDamage : int, _heal : int):
+	if Health == 0 || Health == -1:
+		return false
+
+	if damageIndicator == null:
+		damageIndicator = Juice.CreateDamageIndicator(self) as DamageIndicator
+		damageIndicator.AssignOwner(self)
+
+	damageIndicator.normalDamage += _normalDamage
+	damageIndicator.collisionDamage += _collisionDamage
+	damageIndicator.healAmount += _heal
+	return true
+
+func CancelPreview():
+	if damageIndicator != null:
+		damageIndicator.queue_free()
+	damageIndicator = null
+
+func AddEntity(_gridEntity : GridEntityBase):
+	if !GridEntities.has(_gridEntity):
+		GridEntities.append(_gridEntity)
+	RefreshActiveKillbox()
+
+func RemoveEntity(_gridEntity : GridEntityBase):
+	if GridEntities.has(_gridEntity):
+		var index = GridEntities.find(_gridEntity)
+		GridEntities.remove_at(index)
+	RefreshActiveKillbox()
+
+func RefreshActiveKillbox():
+	var hasPlatform = false
+	for e in GridEntities:
+		if e == null:
+			continue
+
+		if e is GEWalkablePlatform:
+			hasPlatform = true
+			break
+
+	ActiveKillbox = Killbox && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform
+	OpenWater = Water && (MaxHealth == -1 || MaxHealth != -1 && Health <= 0) && !hasPlatform
+
+
+func Traversable(_unit : UnitInstance, _isFlying : bool):
+	if !_isFlying:
+		if IsWall:
+			return false
+
+		if ActiveKillbox:
+			if OpenWater && _unit.Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
+				return true
+
+			return false
+
+	return true
+
+
+func ToJSON():
+	var dict = {
+		"GlobalPosition" = GlobalPosition,
+		"Position" = Position,
+		"IsWall" = IsWall,
+		"Health" = Health,
+		"MaxHealth" = MaxHealth,
+		"Killbox" = Killbox,
+		"ActiveKillbox" = ActiveKillbox,
+		"TerrainDestroyed" = TerrainDestroyed,
+	}
+
+	if MainTileData != null:
+		dict["MainTileData"] = MainTileData.resource_path
+
+	if BGTileData != null:
+		dict["BGTileData"] = BGTileData.resource_path
+
+	if SubBGTileData != null:
+		dict["SubBGTileData"] = SubBGTileData.resource_path
+
+
+	return dict
+
+static func FromJSON(_dict : Dictionary):
+	var newTile = Tile.new()
+	newTile.GlobalPosition =  PersistDataManager.String_To_Vector2(_dict["GlobalPosition"])
+	newTile.Position = PersistDataManager.String_To_Vector2i(_dict["Position"])
+	newTile.IsWall = _dict["IsWall"]
+	newTile.Health = _dict["Health"]
+	newTile.MaxHealth = _dict["MaxHealth"]
+	newTile.Killbox = _dict["Killbox"]
+	newTile.ActiveKillbox = _dict["ActiveKillbox"]
+	newTile.TerrainDestroyed = _dict["TerrainDestroyed"]
+
+	if _dict.has("MainTileData"):
+		newTile.MainTileData = load(_dict["MainTileData"]) as TileMetaData
+
+	if _dict.has("BGTileData"):
+		newTile.BGTileData = load(_dict["BGTileData"]) as TileMetaData
+
+	if _dict.has("SubBGTileData"):
+		newTile.SubBGTileData = load(_dict["SubBGTileData"]) as TileMetaData
+
+	newTile.InitMetaData()
+	return newTile

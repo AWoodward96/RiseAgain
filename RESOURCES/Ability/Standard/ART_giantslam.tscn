@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bmnt8dm1yjmy8"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_3el8o"]
+[ext_resource type="Texture2D" uid="uid://7777cejys0n7" path="res://ART/Icons/Ability/Standard/giantslam.png" id="2_m85vw"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_un35b"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="3_i2ir4"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_pr2qf"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_ro13n"]
+[ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="4_h44x8"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_tfpsp"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_4djvw"]
+[ext_resource type="Resource" uid="uid://doly6ktnkoj1h" path="res://RESOURCES/Ability/TargetingTemplates/giantslam_targeting.tres" id="8_ro13n"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="9_c73n6"]
+[ext_resource type="Resource" uid="uid://bxwbvxhh4bgye" path="res://RESOURCES/TargetingShapes/giantslam_shape.tres" id="11_c73n6"]
+
+[sub_resource type="Resource" id="Resource_y50sq"]
+script = ExtResource("3_ro13n")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_1o5y1"]
+script = ExtResource("3_pr2qf")
+
+[sub_resource type="Resource" id="Resource_50ujx"]
+script = ExtResource("4_h44x8")
+
+[sub_resource type="Resource" id="Resource_y5qi2"]
+script = ExtResource("5_tfpsp")
+
+[node name="giantslam" type="Node2D" unique_id=1266476344 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_3el8o")
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_un35b")]([SubResource("Resource_y50sq"), SubResource("Resource_1o5y1"), SubResource("Resource_50ujx"), SubResource("Resource_y5qi2")])
+internalName = "giantslam"
+loc_displayName = "art_giantslam_name"
+loc_displayDesc = "art_giantslam_desc"
+icon = ExtResource("2_m85vw")
+TargetingTemplate = ExtResource("8_ro13n")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1791136496]
+script = ExtResource("3_i2ir4")
+AgressiveStat = ExtResource("9_c73n6")
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1890090733]
+script = ExtResource("6_4djvw")
+Type = 2
+shapedTiles = ExtResource("11_c73n6")

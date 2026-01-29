@@ -3,13 +3,13 @@ extends Control
 @export var table : LootTable
 @export var parent : Control
 
-var rng : RandomNumberGenerator
+var rng : DeterministicRNG
 
 func _ready():
-	rng = RandomNumberGenerator.new()
+	rng = DeterministicRNG.Construct()
 
 func OnRollPressed():
-	table.ReCalcWeightSum()
+	table.ReCalcWeightSum(table)
 	var result = table.Roll(rng)
 
 	var label = Label.new()

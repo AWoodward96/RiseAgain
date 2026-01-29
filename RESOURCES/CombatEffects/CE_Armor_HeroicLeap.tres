@@ -1,18 +1,14 @@
-[gd_resource type="Resource" script_class="ArmorEffect" load_steps=4 format=3 uid="uid://w4pf17p2i0wg"]
+[gd_resource type="Resource" script_class="ArmorEffect" format=3 uid="uid://w4pf17p2i0wg"]
 
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_jsqe8"]
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="2_4br1d"]
+[ext_resource type="Script" uid="uid://0q4rq73mdmc" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="2_4br1d"]
 [ext_resource type="Texture2D" uid="uid://jjucjm0kw2ay" path="res://ART/Icons/temp_shield.png" id="2_yrbes"]
 
 [resource]
 script = ExtResource("2_4br1d")
-UseDamageDealtAsValue = false
-UseSourceForStats = false
-FlatValue = 0.0
 RelativeStat = ExtResource("1_jsqe8")
 ModType = 2
 Mod = 0.3
-AffectedTargets = 0
 Turns = 1
 loc_name = "ce_armor"
 loc_desc = "ce_armor_desc"

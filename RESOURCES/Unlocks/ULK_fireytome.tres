@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://b6aw66x2ket4s"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_tqhvf"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_ywhf4"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_hq11f"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="5_gqb7d"]
+
+[resource]
+script = ExtResource("1_ywhf4")
+AbilityPath = "res://RESOURCES/Ability/Equippable/fireytome.tscn"
+Descriptors = Array[ExtResource("1_tqhvf")]([ExtResource("5_gqb7d"), ExtResource("3_hq11f")])

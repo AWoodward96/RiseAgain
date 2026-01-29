@@ -1,54 +1,90 @@
 class_name ActionLog
 
-enum ActionType { Item, Ability }
 
 var source : UnitInstance
+var cachedSourceStats : Dictionary = {}
 var grid : Grid
 var availableTiles : Array[Tile] # The working tiles that are available when you select targeting. Updated via the Item or Abilities PollTargets
 var actionOriginTile : Tile # The tile that this action is actually centered on. Sort of like the PlayerControllers CurrentTile
 							# It's the single tile that the Player selected during targeting
 
 var actionDirection : GameSettingsTemplate.Direction
+var atRange : int = 0
 var sourceTile : Tile		# Where this action is coming from. Is usually Source.CurrentTile, but might not be
 var affectedTiles : Array[TileTargetedData] # This is an array in case of aoe. Here are all of the tiles that were hit by this action. Could be one, could be many
 
-var actionResults : Array[ActionResult]
+var actionStepResults : Array[ActionStepResult]
 
 # for units defending or responding to the initial attack
-var responseResults : Array[ActionResult]
+var responseResults : Array[ActionStepResult]
 
-var actionType : ActionType
-var item : Item
+# TODO: Create an array or a dict of MovementData to track which units are moving where for the unit move action
+
+
 var ability : Ability
-var abilityStackIndex : int
+var actionStackIndex : int
+var subActionStackIndex : int
 
 var damageData : DamageData
 
 var canRetaliate : bool = true
 
-var moveSelf : bool = false
-
 static func Construct(_grid : Grid, _unitSource : UnitInstance, _itemOrAbility):
 	var new = ActionLog.new()
 	new.grid = _grid
 	new.source = _unitSource
-	if _itemOrAbility is Item:
-		new.item = _itemOrAbility
-		new.actionType = ActionLog.ActionType.Item
-	elif _itemOrAbility is Ability:
-		new.ability = _itemOrAbility
-		new.actionType = ActionLog.ActionType.Ability
+	new.ability = _itemOrAbility
 	new.sourceTile = _unitSource.CurrentTile
 	new.damageData = _itemOrAbility.UsableDamageData
+	new.ConstructCachedStats()
 	return new
 
+
+func ConstructCachedStats():
+	if source == null:
+		return
+
+	for pair in source.baseStats:
+		cachedSourceStats[pair] = source.GetWorkingStat(pair)
+
+func BuildStepResults():
+	if ability == null:
+		return
+
+	actionStepResults.clear()
+	var index = 0
+	for step in ability.executionStack:
+		var resultsArr = step.GetResults(self, affectedTiles)
+		if resultsArr != null:
+			for res in resultsArr:
+				if res is ActionStepResult:
+					res.StepIndex = index
+					actionStepResults.append(res)
+				else:
+					push_error("Ability Step: " + str(step.get_script()) + " - attached to ability " + ability.name + " has an improper ActionStepResult and cannot be previewed.")
+		index += 1
+
+func GetResultsFromActionIndex(_index : int):
+	return actionStepResults.filter(func(_res) : return _res.StepIndex == _index)
+
+func ContainsPush():
+	for targetedTiles in affectedTiles:
+		if targetedTiles.willPush:
+			return true
+
+	return false
+
+func InvalidateAll():
+	for allResults in actionStepResults:
+		allResults.Invalidate()
 
 func QueueExpGains():
 	# Define a dictionary that is [UnitInstance]-[ExpGainedFromAction]
 	var expGains = {}
+	var expTotal = 0
 
 	# Go through all the action results and hide the targets health bars. Also, if the source of the result is an ally, tally up their exp gain
-	for result in actionResults:
+	for result in actionStepResults:
 		if result.Target != null:
 			result.Target.ShowHealthBar(false)
 
@@ -58,6 +94,7 @@ func QueueExpGains():
 				expGains[result.Source] += result.ExpGain
 			else:
 				expGains[result.Source] = result.ExpGain
+			expTotal += result.ExpGain
 
 	# Do the same thing for response reults
 	for result in responseResults:
@@ -66,7 +103,9 @@ func QueueExpGains():
 				expGains[result.Source] += result.ExpGain
 			else:
 				expGains[result.Source] = result.ExpGain
+		expTotal += result.ExpGain
 
 	# Now that we know the total exp gained, give it
-	for unitInstance in expGains:
-		unitInstance.QueueExpGain(expGains[unitInstance])
+	if expTotal != 0:
+		for unitInstance in expGains:
+			unitInstance.QueueExpGain(expGains[unitInstance])

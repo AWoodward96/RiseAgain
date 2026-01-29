@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://bxwbvxhh4bgye"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_v62f6"]
+[ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="2_2lrju"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="3_hhr0n"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="4_0voxm"]
+
+[sub_resource type="Resource" id="Resource_8be51"]
+script = ExtResource("2_2lrju")
+carryLimit = 1
+
+[sub_resource type="Resource" id="Resource_hdf5u"]
+script = ExtResource("3_hhr0n")
+pushInfo = SubResource("Resource_8be51")
+Position = Vector2i(0, -1)
+
+[sub_resource type="Resource" id="Resource_gtgv2"]
+script = ExtResource("2_2lrju")
+carryLimit = 1
+
+[sub_resource type="Resource" id="Resource_8h257"]
+script = ExtResource("3_hhr0n")
+pushInfo = SubResource("Resource_gtgv2")
+Position = Vector2i(1, -1)
+
+[sub_resource type="Resource" id="Resource_su6b7"]
+script = ExtResource("2_2lrju")
+carryLimit = 1
+
+[sub_resource type="Resource" id="Resource_3pbcx"]
+script = ExtResource("3_hhr0n")
+pushInfo = SubResource("Resource_su6b7")
+Position = Vector2i(1, -2)
+
+[sub_resource type="Resource" id="Resource_kvv6a"]
+script = ExtResource("2_2lrju")
+carryLimit = 1
+
+[sub_resource type="Resource" id="Resource_d5g0l"]
+script = ExtResource("3_hhr0n")
+pushInfo = SubResource("Resource_kvv6a")
+Position = Vector2i(0, -2)
+
+[resource]
+script = ExtResource("4_0voxm")
+TileCoordinates = Array[ExtResource("1_v62f6")]([SubResource("Resource_hdf5u"), SubResource("Resource_8h257"), SubResource("Resource_3pbcx"), SubResource("Resource_d5g0l")])

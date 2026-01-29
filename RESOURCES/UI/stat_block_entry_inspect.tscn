@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://clcpfyfw63n4t"]
+[gd_scene format=3 uid="uid://clcpfyfw63n4t"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_18h31"]
+[ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_18h31"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_kr58k"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="3_ke3td"]
 
@@ -12,40 +12,51 @@ font_size = 32
 font = ExtResource("3_ke3td")
 font_size = 32
 
-[node name="StatBlockEntry_Inspect" type="PanelContainer" node_paths=PackedStringArray("icon", "statName", "statValue")]
+[node name="StatBlockEntry_Inspect" type="MarginContainer" unique_id=1811794977 node_paths=PackedStringArray("icon", "statName", "statValue", "SelectedParent")]
 custom_minimum_size = Vector2(250, 64)
+offset_right = 292.0
+offset_bottom = 64.0
+focus_mode = 2
 script = ExtResource("1_18h31")
 icon = NodePath("MarginContainer/HBoxContainer/Control/HBoxContainer/TextureRect")
 statName = NodePath("MarginContainer/HBoxContainer/Control/HBoxContainer/StatBlockName")
 statValue = NodePath("MarginContainer/HBoxContainer/StatBlockValue")
+SelectedParent = NodePath("Selected")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Selected" type="ColorRect" parent="." unique_id=924637600]
+visible = false
+layout_mode = 2
+color = Color(1, 0.866667, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1901855157]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=1861562525]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1047160366]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1469110181]
 custom_minimum_size = Vector2(152, 0)
 layout_mode = 2
 
-[node name="Bg" type="ColorRect" parent="MarginContainer/HBoxContainer/Control"]
+[node name="Bg" type="ColorRect" parent="MarginContainer/HBoxContainer/Control" unique_id=1966590204]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.42, 0.42, 0.42, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Control" unique_id=601545562]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -56,20 +67,20 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Control/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Control/HBoxContainer" unique_id=954572944]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("2_kr58k")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="StatBlockName" type="Label" parent="MarginContainer/HBoxContainer/Control/HBoxContainer"]
+[node name="StatBlockName" type="Label" parent="MarginContainer/HBoxContainer/Control/HBoxContainer" unique_id=599356807]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "ui_text"
 label_settings = SubResource("LabelSettings_f0bsc")
 
-[node name="StatBlockValue" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="StatBlockValue" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1542482565]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "ui_value"

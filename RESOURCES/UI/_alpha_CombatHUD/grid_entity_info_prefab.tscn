@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://k6a1bknwdhr"]
+
+[ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="1_mucif"]
+[ext_resource type="Script" uid="uid://rwhybefsddn1" path="res://SCRIPTS/UI/CombatHUD/GridEntityCombatHUDEntry.gd" id="1_tt21h"]
+[ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="2_hnnjj"]
+[ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="3_k55we"]
+
+[node name="GridEntityInfo" type="MarginContainer" unique_id=210756462 node_paths=PackedStringArray("ownerIcon", "icon", "loc_label")]
+custom_minimum_size = Vector2(0, 24)
+script = ExtResource("1_tt21h")
+ownerIcon = NodePath("MarginContainer/HBoxContainer/OwnerSizing/OwnerIcon")
+icon = NodePath("MarginContainer/HBoxContainer/SizingSux/AbilityIcon")
+loc_label = NodePath("MarginContainer/HBoxContainer/Effect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1578368222]
+layout_mode = 2
+color = Color(0.35472, 0.36, 0.2808, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=898441808]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=628771352]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="OwnerSizing" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1849253567]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="OwnerIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/OwnerSizing" unique_id=167666305]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_mucif")
+expand_mode = 1
+
+[node name="SizingSux" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1467464509]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="AbilityIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/SizingSux" unique_id=1919088304]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_mucif")
+expand_mode = 1
+
+[node name="Space" type="Control" parent="MarginContainer/HBoxContainer" unique_id=964989059]
+visible = false
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Effect" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1919390987]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-6 Hp/Turn"
+label_settings = ExtResource("2_hnnjj")
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=982692416]
+layout_mode = 2
+texture = ExtResource("3_k55we")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2

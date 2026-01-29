@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://dyqjde7flmxpp"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_is73u"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_u4fny"]
+
+[resource]
+script = ExtResource("1_is73u")
+AbilityPath = "res://RESOURCES/Ability/Passive/healingcloud.tscn"

@@ -1,0 +1,482 @@
+[gd_scene format=3 uid="uid://dwtx6eh85f8de"]
+
+[ext_resource type="Script" uid="uid://4ci5d5nuum3x" path="res://SCRIPTS/Universe/BarracksUI.gd" id="1_1xjpc"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_ing8u"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_j8ucu"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="2_1xjpc"]
+[ext_resource type="PackedScene" uid="uid://cflal3jirl4pa" path="res://RESOURCES/UI/Barracks/stat_block_entry_barracks.tscn" id="2_nu6vk"]
+[ext_resource type="LabelSettings" uid="uid://dosrukx8jhu7l" path="res://RESOURCES/UI/LabelSettings/parchment_title.tres" id="4_t516s"]
+[ext_resource type="Script" uid="uid://dert4f3wj4vgx" path="res://SCRIPTS/UI/DetailEntry.gd" id="5_etl4b"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="6_4i8ps"]
+[ext_resource type="Script" uid="uid://c45asr0s1dd1u" path="res://SCRIPTS/UI/TeamManagement/TeamGridPanel.gd" id="7_pq1bg"]
+[ext_resource type="PackedScene" uid="uid://bca8dk1lnddcs" path="res://RESOURCES/UI/TeamManagementUI/team_management_unit_entry.tscn" id="7_t516s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4i8ps"]
+font = ExtResource("6_4i8ps")
+font_size = 24
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dukkp"]
+font = ExtResource("1_ing8u")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_w1egs"]
+resource_name = "FocusEntries"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/PaperParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/ModParent/block_everything:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/PaperParent:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_163fs"]
+resource_name = "FocusMods"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/PaperParent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-300, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/ModParent/block_everything:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/PaperParent:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_crhww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/PaperParent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/ModParent/block_everything:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Root/PaperParent:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hwwui"]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.217638, 0.125),
+"update": 0,
+"values": [Vector2(0, -640), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beymq"]
+_data = {
+&"FocusEntries": SubResource("Animation_w1egs"),
+&"FocusMods": SubResource("Animation_163fs"),
+&"RESET": SubResource("Animation_crhww"),
+&"Show": SubResource("Animation_hwwui")
+}
+
+[node name="BarracksUI" type="Control" unique_id=846232718 node_paths=PackedStringArray("CurrentUnitIcon", "CurrentUnitName", "UnitPanel", "PrestiegeBar", "PrestiegeBarLabel", "PrestiegePointsRemaining", "CurrentPrestiegeLevelLabel", "StatBlockEntryParent", "Animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j8ucu")
+script = ExtResource("1_1xjpc")
+CurrentUnitIcon = NodePath("Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/CurrentUnitIcon")
+CurrentUnitName = NodePath("Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer/CurrentUnitName")
+UnitPanel = NodePath("Root/PaperParent")
+PrestiegeBar = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar")
+PrestiegeBarLabel = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar/EXPLabel")
+PrestiegePointsRemaining = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2/unalocatedPoints")
+CurrentPrestiegeLevelLabel = NodePath("Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/prestiegeLevel")
+StatBlockEntryParent = NodePath("Root/ModParent/VBoxContainer/StatBuffs/MarginContainer/GridContainer")
+StatBlockEntryPrefab = ExtResource("2_nu6vk")
+Animator = NodePath("AnimationPlayer")
+
+[node name="Root" type="Control" parent="." unique_id=428339287]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModParent" type="PanelContainer" parent="Root" unique_id=1084384449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j8ucu")
+theme_type_variation = &"SubPanel1"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/ModParent" unique_id=375711403]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="Root/ModParent/VBoxContainer" unique_id=544683643]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_type_variation = &"SubPanel3"
+
+[node name="Label" type="Label" parent="Root/ModParent/VBoxContainer/Header" unique_id=614931200]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_barracks_upgrade_unit"
+label_settings = ExtResource("4_t516s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Root/ModParent/VBoxContainer" unique_id=1635882785]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/ModParent/VBoxContainer/Panel" unique_id=1728739851]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer" unique_id=1404599572]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer" unique_id=1142595465]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentUnitIcon" type="TextureRect" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1325740848]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+
+[node name="CurrentUnitName" type="Label" parent="Root/ModParent/VBoxContainer/Panel/MarginContainer/HBoxContainer" unique_id=1890843690]
+layout_mode = 2
+text = "unit_name"
+label_settings = ExtResource("4_t516s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/ModParent/VBoxContainer" unique_id=553823256]
+layout_mode = 2
+script = ExtResource("5_etl4b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer" unique_id=1190426326]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1851956622]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1901569502]
+layout_mode = 2
+text = "ui_current_prestiege_level_title"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="prestiegeLevel" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1278703458]
+layout_mode = 2
+text = "num"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=563086618]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=1793314298]
+layout_mode = 2
+text = "ui_points_remaining_title"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="unalocatedPoints" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2" unique_id=1181528098]
+layout_mode = 2
+text = "num"
+label_settings = SubResource("LabelSettings_4i8ps")
+
+[node name="PrestiegeLevel" type="Control" parent="Root/ModParent/VBoxContainer/VBoxContainer" unique_id=1850911067]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel" unique_id=828012016]
+custom_minimum_size = Vector2(600, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="EXPBar" type="ProgressBar" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect" unique_id=495600493]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = 3.0
+offset_right = -51.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+show_percentage = false
+
+[node name="EXPLabel" type="Label" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/ColorRect/EXPBar" unique_id=1766460325]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/100"
+label_settings = SubResource("LabelSettings_dukkp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel" unique_id=359605793]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = 6.0
+offset_right = 154.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/HBoxContainer" unique_id=459969360]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button2")
+text = "Add 10"
+
+[node name="Button2" type="Button" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/HBoxContainer" unique_id=1341099577]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_right = NodePath("../Button3")
+text = "Add 50
+"
+
+[node name="Button3" type="Button" parent="Root/ModParent/VBoxContainer/VBoxContainer/PrestiegeLevel/HBoxContainer" unique_id=707732165]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Button2")
+text = "Add 100"
+
+[node name="StatBuffs" type="Control" parent="Root/ModParent/VBoxContainer" unique_id=632154981]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/ModParent/VBoxContainer/StatBuffs" unique_id=2135000564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_right = 96
+
+[node name="Panel" type="Panel" parent="Root/ModParent/VBoxContainer/StatBuffs/MarginContainer" unique_id=2021493360]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Root/ModParent/VBoxContainer/StatBuffs/MarginContainer" unique_id=1416524052]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+columns = 2
+script = ExtResource("2_1xjpc")
+
+[node name="block_everything" type="ColorRect" parent="Root/ModParent" unique_id=488505081]
+layout_mode = 2
+color = Color(0.25, 0.25, 0.25, 0.713726)
+
+[node name="PaperParent" type="Panel" parent="Root" unique_id=1589146501 node_paths=PackedStringArray("entryParent")]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -960.0
+offset_right = -677.0001
+offset_bottom = 640.0
+grow_horizontal = 0
+theme_type_variation = &"BinderPanel"
+script = ExtResource("7_pq1bg")
+auto_initialize = true
+entryParent = NodePath("MarginContainer/MainContent/ScrollContainer/MarginContainer/CharacterEntryParent")
+entryPrefab = ExtResource("7_t516s")
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/PaperParent" unique_id=1529117984]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 8
+
+[node name="MainContent" type="VBoxContainer" parent="Root/PaperParent/MarginContainer" unique_id=61527941]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Root/PaperParent/MarginContainer/MainContent" unique_id=1056096259]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/PaperParent/MarginContainer/MainContent/Panel" unique_id=808364407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_units_title"
+label_settings = ExtResource("4_t516s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/PaperParent/MarginContainer/MainContent" unique_id=1185277058]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/PaperParent/MarginContainer/MainContent/ScrollContainer" unique_id=88504864]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+
+[node name="CharacterEntryParent" type="VBoxContainer" parent="Root/PaperParent/MarginContainer/MainContent/ScrollContainer/MarginContainer" unique_id=1538138375]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+script = ExtResource("2_1xjpc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2029519779]
+libraries/ = SubResource("AnimationLibrary_beymq")
+autoplay = &"Show"

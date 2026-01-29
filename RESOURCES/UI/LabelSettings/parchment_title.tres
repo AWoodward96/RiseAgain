@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dosrukx8jhu7l"]
+
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_xsr76"]
+
+[resource]
+font = ExtResource("1_xsr76")
+font_size = 24
+shadow_size = 4
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+shadow_offset = Vector2(1, 2)

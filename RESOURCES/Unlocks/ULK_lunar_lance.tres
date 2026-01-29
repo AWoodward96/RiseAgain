@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://6glix3ewjs3b"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_kb68k"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_ohaue"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_qehy7"]
+[ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="6_jl0ps"]
+
+[resource]
+script = ExtResource("1_ohaue")
+AbilityPath = "res://RESOURCES/Ability/Equippable/lunar_lance.tscn"
+StartsDiscoverable = true
+StartUnlocked = true
+Descriptors = Array[ExtResource("1_kb68k")]([ExtResource("2_qehy7"), ExtResource("6_jl0ps")])

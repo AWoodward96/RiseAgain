@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="CampaignBlock" format=3 uid="uid://dlpsb7mx1m51b"]
+
+[ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_rnm6s"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_ntku5"]
+[ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_rfxen"]
+[ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="3_vfe4g"]
+[ext_resource type="PackedScene" uid="uid://crf3nsxjbjrhb" path="res://RESOURCES/Maps/Tutorial/tutorial_a01_default.tscn" id="4_1w8i6"]
+[ext_resource type="PackedScene" uid="uid://cqy4h7qsy5itx" path="res://RESOURCES/Maps/Tutorial/tutorial_a02_default.tscn" id="5_jnsty"]
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="6_iiod5"]
+[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="7_xpm3n"]
+[ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="8_nqbd1"]
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="9_8kkt1"]
+[ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="10_ofof7"]
+[ext_resource type="Texture2D" uid="uid://bcxc5ddtntqme" path="res://ART/Icons/Items/t1_nectar.png" id="10_xvue0"]
+[ext_resource type="Script" uid="uid://3mypwgvk4yp6" path="res://SCRIPTS/Items/StatConsumableComponent.gd" id="11_3ibi1"]
+[ext_resource type="Script" uid="uid://ctyhw0gbd17qw" path="res://SCRIPTS/Generic/LootTables/SpecificLootTable.gd" id="12_iiod5"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="12_tfhf4"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="13_qsjdv"]
+[ext_resource type="PackedScene" uid="uid://p6uj5vrpd3mi" path="res://RESOURCES/Maps/Tutorial/tutorial_a03_default.tscn" id="13_xpm3n"]
+[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="14_1kvpe"]
+[ext_resource type="PackedScene" uid="uid://dwdq8rmb2bu2f" path="res://RESOURCES/Maps/Tutorial/tutorial_a04_default.tscn" id="14_nqbd1"]
+[ext_resource type="Texture2D" uid="uid://ci1f2neyucige" path="res://ART/Icons/Items/t1_whetstone.png" id="15_6m2xl"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="16_ernwl"]
+
+[sub_resource type="Resource" id="Resource_kkxsi"]
+script = ExtResource("3_vfe4g")
+map = ExtResource("4_1w8i6")
+
+[sub_resource type="Resource" id="Resource_67q65"]
+script = ExtResource("1_rnm6s")
+priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_kkxsi")])
+
+[sub_resource type="Resource" id="Resource_xpm3n"]
+script = ExtResource("8_nqbd1")
+Unit = ExtResource("7_xpm3n")
+metadata/_custom_type_script = "uid://c624kc888mlih"
+
+[sub_resource type="Resource" id="Resource_c0sfq"]
+script = ExtResource("12_tfhf4")
+Template = ExtResource("13_qsjdv")
+Value = 2
+
+[sub_resource type="PackedScene" id="PackedScene_yl5rs"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("nectar_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "HeldItemComponent", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_ids": PackedInt32Array(),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("9_8kkt1"), "t1_nectar", "item_t1_nectar_name", "item_t1_nectar_desc", ExtResource("10_xvue0"), NodePath("HeldItemComponent"), ExtResource("11_3ibi1"), Array[ExtResource("12_tfhf4")]([SubResource("Resource_c0sfq")])],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_nqbd1"]
+script = ExtResource("10_ofof7")
+ItemPrefab = SubResource("PackedScene_yl5rs")
+metadata/_custom_type_script = "uid://4xqdaqcl77e1"
+
+[sub_resource type="Resource" id="Resource_hodaj"]
+script = ExtResource("12_tfhf4")
+Template = ExtResource("16_ernwl")
+Value = 1
+
+[sub_resource type="PackedScene" id="PackedScene_bb5gj"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("whetstone_t1", "Node2D", "script", "internalName", "loc_displayName", "loc_displayDesc", "icon", "statData", "ItemEquipData", "Node2D", "script", "StatsToGrant"),
+"node_count": 2,
+"node_ids": PackedInt32Array(),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 0, 1073741824, 0, 9, 8, -1, 2, 10, 6, 11, 7, 0),
+"variants": [ExtResource("9_8kkt1"), "t1_whetstone", "item_t1_whetstone_name", "item_t1_whetstone_desc", ExtResource("15_6m2xl"), NodePath("ItemEquipData"), ExtResource("11_3ibi1"), Array[ExtResource("12_tfhf4")]([SubResource("Resource_hodaj")])],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_1kvpe"]
+script = ExtResource("10_ofof7")
+ItemPrefab = SubResource("PackedScene_bb5gj")
+metadata/_custom_type_script = "uid://4xqdaqcl77e1"
+
+[sub_resource type="Resource" id="Resource_ofof7"]
+script = ExtResource("12_iiod5")
+Table = Array[ExtResource("6_iiod5")]([SubResource("Resource_xpm3n"), SubResource("Resource_nqbd1"), SubResource("Resource_1kvpe")])
+WeightSum = 3.0
+metadata/_custom_type_script = "uid://ctyhw0gbd17qw"
+
+[sub_resource type="Resource" id="Resource_06ain"]
+script = ExtResource("3_vfe4g")
+map = ExtResource("5_jnsty")
+rewardOverride = SubResource("Resource_ofof7")
+metadata/_custom_type_script = "uid://bhga6uu5rdson"
+
+[sub_resource type="Resource" id="Resource_chk5s"]
+script = ExtResource("1_rnm6s")
+priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_06ain")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_q3vch"]
+script = ExtResource("3_vfe4g")
+map = ExtResource("13_xpm3n")
+rewardOverride = ExtResource("14_1kvpe")
+metadata/_custom_type_script = "uid://bhga6uu5rdson"
+
+[sub_resource type="Resource" id="Resource_kvft6"]
+script = ExtResource("1_rnm6s")
+priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_q3vch")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_wbdsm"]
+script = ExtResource("3_vfe4g")
+map = ExtResource("14_nqbd1")
+metadata/_custom_type_script = "uid://bhga6uu5rdson"
+
+[sub_resource type="Resource" id="Resource_8kkt1"]
+script = ExtResource("1_rnm6s")
+priorityMapOptions = Array[ExtResource("3_vfe4g")]([SubResource("Resource_wbdsm")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[resource]
+script = ExtResource("2_ntku5")
+mapOptions = Array[ExtResource("1_rnm6s")]([SubResource("Resource_67q65"), SubResource("Resource_chk5s"), SubResource("Resource_kvft6"), SubResource("Resource_8kkt1")])

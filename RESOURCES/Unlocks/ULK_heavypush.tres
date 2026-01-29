@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://i4bar163ujfp"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_4ax2f"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_oxkrb"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="2_rcw3m"]
+
+[resource]
+script = ExtResource("1_4ax2f")
+AbilityPath = "res://RESOURCES/Ability/Tactical/heavypush.tscn"
+Descriptors = Array[ExtResource("1_oxkrb")]([ExtResource("2_rcw3m")])

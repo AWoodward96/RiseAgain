@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="MealTemplate" format=3 uid="uid://hsrywh8q4lv"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_gfxt1"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_dos15"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_fuoqk"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_hnsj4"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_dostp"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_jc0g3"]
+
+[sub_resource type="Resource" id="Resource_chi0t"]
+script = ExtResource("1_gfxt1")
+ItemResource = ExtResource("2_fuoqk")
+Amount = 7
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_ltar7"]
+script = ExtResource("3_hnsj4")
+Template = ExtResource("5_dostp")
+Value = 1
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_qqj1f"]
+script = ExtResource("3_hnsj4")
+Template = ExtResource("6_jc0g3")
+Value = 1
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_dos15")
+loc_title = "meal_braisedshoulder_title"
+loc_desc = "meal_braisedshoulder_desc"
+cost = Array[ExtResource("1_gfxt1")]([SubResource("Resource_chi0t")])
+statModifiers = Array[ExtResource("3_hnsj4")]([SubResource("Resource_ltar7"), SubResource("Resource_qqj1f")])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://02uw6kxrx31n"]
+
+[ext_resource type="Script" uid="uid://8pnlkrxqpeow" path="res://SCRIPTS/UI/General/simple_unit_entry.gd" id="1_kyq5j"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_pc3jb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_65s0l"]
+font = ExtResource("2_pc3jb")
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.545098)
+
+[node name="UnitEntry" type="Button" unique_id=241507688 node_paths=PackedStringArray("visualParent", "nameLabel")]
+custom_minimum_size = Vector2(128, 48)
+size_flags_vertical = 4
+focus_mode = 0
+script = ExtResource("1_kyq5j")
+useIcon = false
+useVisualParent = true
+visualParent = NodePath("MarginContainer/HBoxContainer/VisualElementParent")
+nameLabel = NodePath("MarginContainer/HBoxContainer/NameLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=893031123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1606560032]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VisualElementParent" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1347777388]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1454112239]
+layout_mode = 2
+text = "Miranda"
+label_settings = SubResource("LabelSettings_65s0l")
+
+[connection signal="focus_entered" from="." to="." method="OnFocus"]
+[connection signal="focus_exited" from="." to="." method="OnUnfocus"]
+[connection signal="pressed" from="." to="." method="OnButtonPressed"]

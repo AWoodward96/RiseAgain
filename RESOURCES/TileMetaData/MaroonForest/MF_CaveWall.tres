@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TileMetaData" format=3 uid="uid://dias0tebu50cn"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_hxiuk"]
+[ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_jeg0j"]
+
+[resource]
+script = ExtResource("1_jeg0j")
+loc_name = "tile_cavewall_name"
+Health = 0

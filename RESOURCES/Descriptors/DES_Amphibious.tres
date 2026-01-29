@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://bklg4y7fnapff"]
+
+[ext_resource type="Texture2D" uid="uid://das0hu1lrwun8" path="res://ART/Icons/Descriptors/amphibious_icon.png" id="1_6cmy5"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_rx5jb"]
+
+[resource]
+script = ExtResource("2_rx5jb")
+icon = ExtResource("1_6cmy5")
+loc_name = "des_amphibious_name"
+loc_description = "des_amphibious_desc"

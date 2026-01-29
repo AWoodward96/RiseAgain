@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bxhhl5qkaojly"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_k7wt7"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_0usqo"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_3m7m7"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="3_cq6le"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_proj2"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_i35sm"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="5_1nl5q"]
+[ext_resource type="Resource" uid="uid://bcxirawtj8qd5" path="res://RESOURCES/TargetingShapes/generic_single.tres" id="5_bigbg"]
+[ext_resource type="PackedScene" uid="uid://mf4x1agfi458" path="res://RESOURCES/GridEntities/ge_nomorefun.tscn" id="6_gaeeu"]
+[ext_resource type="Script" uid="uid://cnlspk1u6udgh" path="res://SCRIPTS/Ability/PlayAnimationStep.gd" id="6_proj2"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="7_nokfh"]
+[ext_resource type="Texture2D" uid="uid://bq1qg6ahjd440" path="res://ART/Icons/Ability/Standard/nomorefun.png" id="9_1nl5q"]
+[ext_resource type="Script" uid="uid://d2kv0hjonny5c" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_SimpleSingle.gd" id="9_r6auu"]
+[ext_resource type="Resource" uid="uid://i6wgman54uei" path="res://RESOURCES/Ability/TargetingTemplates/nomorefun_targeting.tres" id="10_1nl5q"]
+
+[sub_resource type="Resource" id="Resource_11nsq"]
+script = ExtResource("3_proj2")
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_530t6"]
+script = ExtResource("5_1nl5q")
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_r6auu"]
+script = ExtResource("6_proj2")
+AnimName = "no_more_fun_prep"
+metadata/_custom_type_script = "uid://cnlspk1u6udgh"
+
+[sub_resource type="Resource" id="Resource_87kkl"]
+script = ExtResource("7_nokfh")
+GridEntityPrefab = ExtResource("6_gaeeu")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[sub_resource type="Resource" id="Resource_1nl5q"]
+script = ExtResource("9_r6auu")
+ExecutionAnimString = "no_more_fun"
+metadata/_custom_type_script = "uid://d2kv0hjonny5c"
+
+[node name="nomorefun" type="Node2D" unique_id=999985265 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_k7wt7")
+abilityCooldown = 3
+ability_speed = 2
+executionStack = Array[ExtResource("2_0usqo")]([SubResource("Resource_11nsq"), SubResource("Resource_530t6"), SubResource("Resource_r6auu"), SubResource("Resource_87kkl")])
+animationStyle = SubResource("Resource_1nl5q")
+internalName = "nomorefun"
+loc_displayName = "art_nomorefun_name"
+loc_displayDesc = "art_nomorefun_desc"
+icon = ExtResource("9_1nl5q")
+TargetingTemplate = ExtResource("10_1nl5q")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1552227538]
+script = ExtResource("2_3m7m7")
+AgressiveStat = ExtResource("3_cq6le")
+AgressiveModType = 2
+AgressiveMod = 2.0
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=30621271]
+script = ExtResource("4_i35sm")
+TeamTargeting = 2
+Type = 3
+shapedTiles = ExtResource("5_bigbg")

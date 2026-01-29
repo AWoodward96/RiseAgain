@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bf3484ldvsvyh"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_gybgy"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_djr7b"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_1p6p3"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_d6ieq"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="4_i2krh"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_uw3xn"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="5_umh07"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="5_vylks"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_45i4p"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_kktqm"]
+[ext_resource type="Script" uid="uid://ti5l0tu2c64" path="res://SCRIPTS/Ability/TurnStartListener.gd" id="6_qcb2q"]
+[ext_resource type="Texture2D" uid="uid://btbnlqhy3v007" path="res://ART/Icons/Items/t2_radientchestplate.png" id="7_1p6p3"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_0rk80"]
+[ext_resource type="Resource" uid="uid://ckrx5xllkdcak" path="res://RESOURCES/TargetingShapes/radiantchestplate_shape.tres" id="13_djr7b"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="16_i2krh"]
+[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="17_umh07"]
+
+[sub_resource type="Resource" id="Resource_pgvvs"]
+script = ExtResource("3_1p6p3")
+OnActionOrigin = false
+OnSource = true
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_4bbon"]
+script = ExtResource("4_i2krh")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_8ny3v"]
+script = ExtResource("5_umh07")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_1phwj"]
+script = ExtResource("6_kktqm")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_1p6p3"]
+script = ExtResource("4_uw3xn")
+Template = ExtResource("5_vylks")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_i2krh"]
+script = ExtResource("4_uw3xn")
+Template = ExtResource("6_45i4p")
+Value = 1
+
+[node name="t2_radientchestplate" type="Node2D" unique_id=721903277 node_paths=PackedStringArray("passiveListeners", "TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_gybgy")
+executionStack = Array[ExtResource("2_djr7b")]([SubResource("Resource_pgvvs"), SubResource("Resource_4bbon"), SubResource("Resource_8ny3v"), SubResource("Resource_1phwj")])
+passiveListeners = [NodePath("TurnStartListener")]
+internalName = "t2_radientchestplate"
+loc_displayName = "item_t2_radientchestplate_name"
+loc_displayDesc = "item_t2_radientchestplate_desc"
+icon = ExtResource("7_1p6p3")
+TargetingData = NodePath("SkillTargetingData")
+UsableDamageData = NodePath("DamageData")
+StatData = NodePath("ItemStatComponent")
+
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=1467199634]
+script = ExtResource("3_d6ieq")
+GrantedStats = Array[ExtResource("4_uw3xn")]([SubResource("Resource_1p6p3"), SubResource("Resource_i2krh")])
+
+[node name="TurnStartListener" type="Node2D" parent="." unique_id=54108235]
+script = ExtResource("6_qcb2q")
+metadata/_custom_type_script = "uid://ti5l0tu2c64"
+
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1258728569]
+script = ExtResource("8_0rk80")
+Type = 1
+shapedTiles = ExtResource("13_djr7b")
+metadata/_custom_type_script = "uid://bqu21cvg4s6wk"
+
+[node name="DamageData" type="Node2D" parent="." unique_id=1347851746]
+script = ExtResource("16_i2krh")
+AgressiveStat = ExtResource("17_umh07")
+AgressiveModType = 2
+AgressiveMod = 0.1
+DamageType = 2
+CritModifier = -1.0
+metadata/_custom_type_script = "uid://dgqbu1rqkbira"

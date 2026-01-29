@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cj14t2nuhup7j"]
+[gd_scene format=3 uid="uid://cj14t2nuhup7j"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/ManageItemsPanel.gd" id="1_vg402"]
+[ext_resource type="Script" uid="uid://d2dcw1mqsk33e" path="res://SCRIPTS/UI/General/ManageItemsPanel.gd" id="1_vg402"]
 [ext_resource type="PackedScene" uid="uid://g5tjj4fkvdxp" path="res://RESOURCES/UI/GenericEntrys/unit_button_horiz.tscn" id="2_ndcy3"]
 [ext_resource type="PackedScene" uid="uid://ci2yfcw0fc6pv" path="res://RESOURCES/UI/GenericEntrys/item_display_entry.tscn" id="3_l5it4"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_yfs73"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_yfs73"]
 [ext_resource type="Texture2D" uid="uid://c1w38jjhfpmd6" path="res://ART/Icons/Units/mercenary.png" id="5_hsjp0"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="6_lq7uk"]
 [ext_resource type="PackedScene" uid="uid://ck5ndsyrok8ag" path="res://RESOURCES/UI/GenericEntrys/weapon_panel.tscn" id="7_r1hna"]
@@ -22,7 +22,7 @@ bg_color = Color(0.54, 0.5184, 0.432, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp2hr"]
 bg_color = Color(0.54, 0.5184, 0.432, 1)
 
-[node name="Items" type="Control" node_paths=PackedStringArray("selectedUnitIcon", "unitEntryList", "itemEntryList", "weaponPanel", "weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText", "tradeBtn", "craftBtn", "convoyBtn")]
+[node name="Items" type="Control" unique_id=1892962118 node_paths=PackedStringArray("selectedUnitIcon", "unitEntryList", "itemEntryList", "weaponPanel", "tradeBtn", "craftBtn", "convoyBtn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,19 +35,12 @@ unitEntryList = NodePath("HBoxContainer/UnitsPanel/Margin/UnitsEntryList")
 unitEntryPrefab = ExtResource("2_ndcy3")
 itemEntryList = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/Items/ItemEntryList")
 itemEntryPrefab = ExtResource("3_l5it4")
-weaponPanel = NodePath("")
-weaponParent = NodePath("")
-noWeaponParent = NodePath("")
-weaponIcon = NodePath("")
-weaponNameText = NodePath("")
-weaponDescriptionText = NodePath("")
-statBlockEntry = NodePath("")
-accuracyText = NodePath("")
+weaponPanel = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/WeaponPanel")
 tradeBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/TradeBtn")
 craftBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/CraftBtn")
 convoyBtn = NodePath("HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions/ConvoyBtn")
 
-[node name="bg" type="ColorRect" parent="."]
+[node name="bg" type="ColorRect" parent="." unique_id=1539834695]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1626912355]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,11 +56,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UnitsPanel" type="Control" parent="HBoxContainer"]
+[node name="UnitsPanel" type="Control" parent="HBoxContainer" unique_id=650911668]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
-[node name="unitsbg" type="ColorRect" parent="HBoxContainer/UnitsPanel"]
+[node name="unitsbg" type="ColorRect" parent="HBoxContainer/UnitsPanel" unique_id=915303047]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 1
 anchors_preset = 9
@@ -76,7 +69,7 @@ offset_right = 256.0
 grow_vertical = 2
 color = Color(0.58, 0.58, 0.58, 1)
 
-[node name="Margin" type="MarginContainer" parent="HBoxContainer/UnitsPanel"]
+[node name="Margin" type="MarginContainer" parent="HBoxContainer/UnitsPanel" unique_id=211082519]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,15 +78,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 64
 
-[node name="UnitsEntryList" type="VBoxContainer" parent="HBoxContainer/UnitsPanel/Margin"]
+[node name="UnitsEntryList" type="VBoxContainer" parent="HBoxContainer/UnitsPanel/Margin" unique_id=1035062950]
 layout_mode = 2
 script = ExtResource("4_yfs73")
 
-[node name="ItemsPanel" type="Control" parent="HBoxContainer"]
+[node name="ItemsPanel" type="Control" parent="HBoxContainer" unique_id=1279825890]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ItemMargin" type="MarginContainer" parent="HBoxContainer/ItemsPanel"]
+[node name="ItemMargin" type="MarginContainer" parent="HBoxContainer/ItemsPanel" unique_id=1017379668]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,51 +94,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin" unique_id=800775073]
 layout_mode = 2
 
-[node name="space" type="Control" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+[node name="space" type="Control" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" unique_id=925859043]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" unique_id=896780841]
 layout_mode = 2
 
-[node name="UnitIcon" type="TextureRect" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer"]
+[node name="UnitIcon" type="TextureRect" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer" unique_id=1303843293]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("5_hsjp0")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/HBoxContainer" unique_id=1815237459]
+visible = false
 layout_mode = 2
 text = "ui_equipped_weapon_label"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="WeaponPanel" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" instance=ExtResource("7_r1hna")]
+[node name="WeaponPanel" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" unique_id=264699686 instance=ExtResource("7_r1hna")]
+visible = false
 layout_mode = 2
 
-[node name="ItemsLabel" type="Label" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+[node name="ItemsLabel" type="Label" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" unique_id=2135931428]
 layout_mode = 2
 text = "ui_items_label"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="Items" type="MarginContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+[node name="Items" type="MarginContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" unique_id=534929686]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 
-[node name="ItemEntryList" type="HBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/Items"]
+[node name="ItemEntryList" type="HBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/Items" unique_id=1849310578]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("4_yfs73")
 
-[node name="ButtonOptions" type="HBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer"]
+[node name="ButtonOptions" type="HBoxContainer" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer" unique_id=363438343]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TradeBtn" type="Button" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions"]
+[node name="TradeBtn" type="Button" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions" unique_id=1288562027]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_lq7uk")
@@ -153,7 +148,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_7joeg")
 text = "ui_btn_trade"
 
-[node name="CraftBtn" type="Button" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions"]
+[node name="CraftBtn" type="Button" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions" unique_id=769346744]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_lq7uk")
@@ -161,7 +156,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_xmo8d")
 text = "ui_btn_craft"
 
-[node name="ConvoyBtn" type="Button" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions"]
+[node name="ConvoyBtn" type="Button" parent="HBoxContainer/ItemsPanel/ItemMargin/VBoxContainer/ButtonOptions" unique_id=1049126833]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_lq7uk")

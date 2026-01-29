@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingShapedDirectional" format=3 uid="uid://8uetrp4jtgn4"]
+
+[ext_resource type="Script" uid="uid://ueq48l24frax" path="res://SCRIPTS/Targeting/TargetingShapedDirectional.gd" id="1_1800n"]
+
+[resource]
+script = ExtResource("1_1800n")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/daggerspray_shape.tres"
+TargetRange = Vector2i(1, 3)

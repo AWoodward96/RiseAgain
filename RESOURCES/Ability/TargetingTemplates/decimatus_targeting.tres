@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TargetingGEDirectional" format=3 uid="uid://brix1ib843g00"]
+
+[ext_resource type="Script" uid="uid://c3vat8y54r6dq" path="res://SCRIPTS/Targeting/TargetingGEDirectional.gd" id="1_qnt0x"]
+
+[resource]
+script = ExtResource("1_qnt0x")
+gridEntityPrefab = "res://RESOURCES/GridEntities/ge_decimatus.tscn"
+shapePrefabRef = "res://RESOURCES/TargetingShapes/decimatus_shape.tres"
+TeamTargeting = 2

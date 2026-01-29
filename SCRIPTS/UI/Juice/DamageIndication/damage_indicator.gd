@@ -1,78 +1,170 @@
 extends Node2D
 class_name DamageIndicator
 
-@onready var death_indicator = $DeathIndicator
-@onready var hit_chance = $HitChance
-@onready var crit_chance = $CritChance
-@onready var damage_being_dealt = $DamageBeingDealt
-@onready var hp_listener = $HPListener
 
-var currentHP : int # Units current HP
-var maxHealth : int
+@export var effectEntry : PackedScene
+@export var healthbar : UnitHealthBar
+
+@export var crit_chance_label = Label
+@export var affinityIcon: TextureRect
+@export var positive_affinity: TextureRect
+@export var negative_affinity: TextureRect
+
+@export var death_indicator : Control
+@export var effects_preview : EntryList
+
+
+var ShouldShow : bool :
+	get:
+		return !(normalDamage == 0 && collisionDamage == 0 && healAmount == 0) || normalDamageModified || effects.size() > 0
+
+var currentHP : int :
+	get():
+		if assignedUnit != null:
+			return assignedUnit.currentHealth
+		elif assignedTile != null:
+			return assignedTile.Health
+		else:
+			return 0
+
+var maxHealth : int :
+	get():
+		if assignedUnit != null:
+			return assignedUnit.maxHealth
+		elif assignedTile != null:
+			return assignedTile.MaxHealth
+		else:
+			return 0
+
 var previewedHP # The hp value visible to the player. Gets ticked down over the course of the preview
 var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
-var damageBeingDealt : int
-
 var previewHPTween : Tween
+var submerged : bool
+var assignedUnit : UnitInstance
+var assignedTile : Tile
 
-func PreviewDamage(_unitUsable : UnitUsable, _attackingUnit : UnitInstance, _targetedTileData : TileTargetedData, _defendingUnit : UnitInstance, _currentHealth : int = -1, _maxHealth : int = -1):
-	var damageContext = _unitUsable.UsableDamageData
+var normalDamage : int :
+	set(val):
+		normalDamageModified = true
+		normalDamage = val
+var normalDamageModified : bool = false
+var collisionDamage : int
+var healAmount : int
+var critChance : float
 
-	if _defendingUnit != null:
-		currentHP = _defendingUnit.currentHealth
-		maxHealth = _defendingUnit.maxHealth
+var effects : Array[CombatEffectTemplate]
+var healthBarTweenCallable : Callable
+
+func AssignOwner(_TileOrUnit):
+	HidePreview()
+	healthbar.HealthBarTweenCallback.connect(HealthbarTweenComplete)
+	if _TileOrUnit is UnitInstance:
+		assignedUnit = _TileOrUnit as UnitInstance
+		healthbar.SetUnit(_TileOrUnit)
+		affinityIcon.visible = true
+		affinityIcon.texture = assignedUnit.Template.Affinity.loc_icon
+	elif _TileOrUnit is Tile:
+		assignedTile = _TileOrUnit
+		affinityIcon.visible = false
+		healthbar.SetTile(assignedTile)
+
+func ShowPreview():
+	if !ShouldShow:
+		return
+
+	healthbar.visible = true
+
+	# Abilities can crit too however - so get that in there
+	if crit_chance_label != null:
+		crit_chance_label.text = str(clamp(critChance, 0, 1) * 100) + "%"
+
+	if !submerged:
+		resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)
+
+		death_indicator.visible = resultingHP <= 0
 	else:
-		currentHP = _currentHealth
-		maxHealth = _maxHealth
+		death_indicator.visible = false
 
-	damageBeingDealt = 0
-	if _unitUsable is Ability:
-		var asAbility = _unitUsable as Ability
-		for step in asAbility.executionStack:
-			var asDamageStep = step as DealDamageStep
-			if asDamageStep != null:
-				damageBeingDealt += asDamageStep.GetDamageBeingDealt(_unitUsable, _attackingUnit, _defendingUnit, _targetedTileData)
-	else:
-		damageBeingDealt = -GameManager.GameSettings.DamageCalculation(_attackingUnit, _defendingUnit, damageContext, _targetedTileData)
+	for template in effects:
+		var entry = effects_preview.CreateEntry(effectEntry)
+		entry.texture.texture = template.loc_icon
+		entry.label.text = template.loc_name
 
-	if hit_chance != null:
-		hit_chance.text = str(clamp(GameManager.GameSettings.HitRateCalculation(_attackingUnit, _unitUsable, _defendingUnit, _targetedTileData), 0, 1) * 100) + "%"
+	ShowHealthBar(true, false)
+	healthbar.RefreshIncomingDamageBar()
+	healthbar.ModifyHealthOverTime(normalDamage + collisionDamage + healAmount)
 
-	if crit_chance != null:
-		crit_chance.text = str(clamp(GameManager.GameSettings.CritRateCalculation(_attackingUnit, _unitUsable, _defendingUnit, _targetedTileData), 0, 1) * 100) + "%"
+func ShowAffinityRelations(_affinity : AffinityTemplate):
+	if _affinity == null || assignedUnit == null:
+		positive_affinity.visible = false
+		negative_affinity.visible = false
+		return
 
-	damage_being_dealt.text = str(damageBeingDealt)
-	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	resultingHP = clamp(currentHP + damageBeingDealt, 0, maxHealth)
+	# Chat, I love bitwise ops
+	if _affinity.strongAgainst & assignedUnit.Template.Affinity.affinity:
+		negative_affinity.visible = true
 
-	death_indicator.visible = resultingHP <= 0
-
-	CreateTween()
+	if assignedUnit.Template.Affinity.strongAgainst & _affinity.affinity:
+		positive_affinity.visible = true
 	pass
 
-func PreviewHeal(_unitUsable : UnitUsable, _sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _targetedTileData: TileTargetedData):
-	# Currently I'm assuming you cannot 'Heal' tiles. So this only works with Units
-	var healData = _unitUsable.HealData
+func AddEffect(_effectTemplate : CombatEffectTemplate):
+	effects.append(_effectTemplate)
 
-	currentHP = _affectedUnit.currentHealth
-	maxHealth = _affectedUnit.maxHealth
+func SetSubmerged(_bool : bool):
+	submerged = _bool
+	affinityIcon.visible = !_bool
+
+func ShowHealthBar(_visible : bool, _autohide : bool = true):
+	healthbar.visible = _visible
+	if _visible:
+		healthbar.Refresh(_autohide)
+
+func AutoHide():
+	ShowHealthBar(false)
+
+func ShowCombatResult(_netHealthChange, _complete : Callable):
+	ShowHealthBar(true)
 	death_indicator.visible = false
+	crit_chance_label.visible = false
+	healthBarTweenCallable = _complete
+	healthbar.ModifyHealthOverTime(_netHealthChange)
 
-	var healAmount = GameManager.GameSettings.HealCalculation(healData, _sourceUnit, _targetedTileData.AOEMultiplier)
+func HealthbarTweenComplete():
+	if !healthBarTweenCallable.is_null():
+		healthBarTweenCallable.call()
 
-	hp_listener.text = str("%02d/%02d" % [currentHP, maxHealth])
-	damage_being_dealt.text = str(healAmount)
-	resultingHP = clamp(_affectedUnit.currentHealth + healAmount, 0, _affectedUnit.maxHealth)
-	CreateTween()
+	# this is setting it to null - seeing as it can't be assigned null
+	healthBarTweenCallable = Callable()
 	pass
 
-func CreateTween():
-	previewHPTween = get_tree().create_tween()
-	previewHPTween.tween_method(UpdatePreviewLabel, currentHP, resultingHP, Juice.damagePreviewTickDuration).set_delay(Juice.damagePreviewDelayTime)
+func DeathState():
+	visible = false
 
-func UpdatePreviewLabel(value : int):
-	hp_listener.text = str("%02d/%02d" % [max(value, 0), maxHealth])
+func HideCombatClutter():
+	affinityIcon.visible = false
+	death_indicator.visible = false
+	crit_chance_label.visible = false
+	pass
+
+func ShowCombatClutter():
+	affinityIcon.visible = true
+
+func HidePreview():
+	healthbar.visible = false
+	PreviewCanceled()
 
 func PreviewCanceled():
+	healthbar.visible = false
 	if previewHPTween != null:
 		previewHPTween.stop()
+
+	normalDamage = 0
+	healAmount = 0
+	collisionDamage = 0
+	critChance = 0
+	normalDamageModified = false
+
+	if effects_preview != null:
+		effects_preview.ClearEntries()
+	effects.clear()

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dp0gbxwj2y26b"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_6yhr7"]
+[ext_resource type="Texture2D" uid="uid://uxr60sgilonh" path="res://ART/Icons/Ability/Standard/maul.png" id="2_jsawa"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_laam4"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_p0no4"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_1g1qy"]
+[ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_rqvwo"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_1g1qy"]
+[ext_resource type="Script" uid="uid://be1x2gl2441x5" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_Leap.gd" id="4_p0no4"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="5_8yxgm"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_k7bwb"]
+[ext_resource type="Resource" uid="uid://b5q01s0br532d" path="res://RESOURCES/Ability/TargetingTemplates/maul_targeting.tres" id="8_s37xj"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="9_p0no4"]
+[ext_resource type="Resource" uid="uid://cuwdyvau7cjho" path="res://RESOURCES/TargetingShapes/maul_shape.tres" id="12_p0no4"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="14_2kkgi"]
+
+[sub_resource type="Resource" id="Resource_k7bwb"]
+script = ExtResource("3_1g1qy")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_rqvwo"]
+script = ExtResource("4_p0no4")
+UseFootsteps = false
+metadata/_custom_type_script = "uid://be1x2gl2441x5"
+
+[sub_resource type="Resource" id="Resource_a18b1"]
+script = ExtResource("3_rqvwo")
+MovementAnimationStyle = SubResource("Resource_rqvwo")
+AnimationStyle = 1
+metadata/_custom_type_script = "uid://cm68c4p601pk"
+
+[sub_resource type="Resource" id="Resource_r5wa8"]
+script = ExtResource("4_1g1qy")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_ucxb0"]
+script = ExtResource("5_k7bwb")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="maul" type="Node2D" unique_id=1354074974 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_6yhr7")
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_p0no4")]([SubResource("Resource_k7bwb"), SubResource("Resource_a18b1"), SubResource("Resource_r5wa8"), SubResource("Resource_ucxb0")])
+internalName = "maul"
+loc_displayName = "art_maul_name"
+loc_displayDesc = "art_maul_desc"
+icon = ExtResource("2_jsawa")
+TargetingTemplate = ExtResource("8_s37xj")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=388439727]
+script = ExtResource("2_laam4")
+AgressiveStat = ExtResource("9_p0no4")
+AgressiveModType = 2
+AgressiveMod = 1.5
+DamageToHealthRatio = 0.0
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1100549616]
+script = ExtResource("5_8yxgm")
+TeamTargeting = 2
+TargetRange = Vector2i(2, 3)
+Type = 2
+shapedTiles = ExtResource("12_p0no4")
+stopShapeOnWall = true
+
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=1807473470]
+script = ExtResource("14_2kkgi")
+type = 1
+stoppedByWalls = false
+drawPath = false
+movementAmount = -1
+metadata/_custom_type_script = "uid://dosuyr8paidkx"

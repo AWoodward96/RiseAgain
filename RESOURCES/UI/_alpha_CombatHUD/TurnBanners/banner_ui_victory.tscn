@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx0ahfyy2rnc3"]
+[gd_scene format=3 uid="uid://bx0ahfyy2rnc3"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_e5myi"]
+[ext_resource type="Script" uid="uid://cwehsgb67jbya" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_e5myi"]
 
 [sub_resource type="Gradient" id="Gradient_mn0bn"]
 colors = PackedColorArray(0.605643, 0.683264, 0.944779, 1, 0.526655, 0.802387, 0.655788, 1)
@@ -126,11 +126,11 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbaiq"]
 _data = {
-"RESET": SubResource("Animation_37trb"),
-"Run": SubResource("Animation_knfe8")
+&"RESET": SubResource("Animation_37trb"),
+&"Run": SubResource("Animation_knfe8")
 }
 
-[node name="Victory_Banner" type="Control"]
+[node name="Victory_Banner" type="Control" unique_id=1530652033]
 custom_minimum_size = Vector2(0, -100)
 layout_mode = 3
 anchors_preset = 14
@@ -143,13 +143,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e5myi")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1131576391]
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 100.0
 texture = SubResource("GradientTexture1D_vimf3")
 
-[node name="TurnLabel" type="Label" parent="."]
+[node name="TurnLabel" type="Label" parent="." unique_id=2128911620]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -165,8 +165,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Victory!"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_cbaiq")
-}
-autoplay = "Run"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1175491214]
+libraries/ = SubResource("AnimationLibrary_cbaiq")
+autoplay = &"Run"

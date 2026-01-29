@@ -5,19 +5,20 @@ class_name AIMoveToLocation
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
+	CommonStartTurn(_map, _unit)
 
 	if unit.GridPosition == positionToMoveTo:
-		map.RemoveUnitFromMap(unit)
+		map.RemoveUnitFromMap(unit, false)
 		return
 
-	var workingPath = map.grid.Pathfinding.get_point_path(unit.GridPosition, positionToMoveTo)
+	var workingPath = map.grid.GetTilePath(unit, unit.CurrentTile, map.grid.GetTile(positionToMoveTo), true, false, false)
 	workingPath.remove_at(0) # index 0 is the units current position
 
 	if !TruncatePathBasedOnMovement(workingPath, unit.GetUnitMovement()):
 		unit.QueueEndTurn()
 		return
 
-	unit.MoveCharacterToNode(selectedPath, selectedTile)
+	unit.MoveCharacterToNode(MovementData.Construct(selectedPath, selectedTile))
 	unit.QueueEndTurn()
 
 func RunTurn():

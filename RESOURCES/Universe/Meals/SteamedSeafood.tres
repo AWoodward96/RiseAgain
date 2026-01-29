@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MealTemplate" format=3 uid="uid://b2nccqw85q853"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_4pk8h"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_mb3ms"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_yuojh"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_yuojh"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_mb3ms"]
+
+[sub_resource type="Resource" id="Resource_hgs00"]
+script = ExtResource("1_4pk8h")
+ItemResource = ExtResource("2_yuojh")
+Amount = 5
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_yuojh"]
+script = ExtResource("3_yuojh")
+Template = ExtResource("4_mb3ms")
+Value = 2
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_mb3ms")
+loc_title = "meal_steamedseafood_title"
+loc_desc = "meal_steamedseafood_desc"
+cost = Array[ExtResource("1_4pk8h")]([SubResource("Resource_hgs00")])
+statModifiers = Array[ExtResource("3_yuojh")]([SubResource("Resource_yuojh")])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

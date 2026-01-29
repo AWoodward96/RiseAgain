@@ -1,8 +1,316 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmfxqfg6s24dv"]
+[gd_scene format=3 uid="uid://cmfxqfg6s24dv"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.gd" id="1_o7qx3"]
+[ext_resource type="Script" uid="uid://xk06yi1h6mnk" path="res://RESOURCES/UI/_alpha_FormationUI/_alpha_formation_ui.gd" id="1_o7qx3"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_1bnfi"]
+[ext_resource type="Texture2D" uid="uid://bnglbunojtn3m" path="res://ART/UI/Textures/ui_parchment_wborder.png" id="3_c3xr4"]
 [ext_resource type="PackedScene" uid="uid://cj14t2nuhup7j" path="res://RESOURCES/UI/_alpha_FormationUI/items_ui.tscn" id="3_jma22"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="4_s7a0i"]
+
+[sub_resource type="Animation" id="Animation_xmtsx"]
+resource_name = "Default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FacadeMargin:theme_override_constants/margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FacadeMargin:theme_override_constants/margin_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FacadeMargin:theme_override_constants/margin_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FacadeMargin:theme_override_constants/margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MainMenuPanel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -88)]
+}
+
+[sub_resource type="Animation" id="Animation_nm1oq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FacadeMargin:theme_override_constants/margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FacadeMargin:theme_override_constants/margin_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FacadeMargin:theme_override_constants/margin_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FacadeMargin:theme_override_constants/margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MainMenuPanel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -88)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Vignette:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.478431)]
+}
+
+[sub_resource type="Animation" id="Animation_h4qyl"]
+resource_name = "FormationEdit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FacadeMargin:theme_override_constants/margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-3.33339e-05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [null, -4, -8, -12, -16, -20, -24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FacadeMargin:theme_override_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, -4, -8, -12, -16, -20, -24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FacadeMargin:theme_override_constants/margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, -4, -8, -12, -16, -20, -24]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FacadeMargin:theme_override_constants/margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, -4, -8, -12, -16, -20, -24]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MainMenuPanel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -88), Vector2(0, 80)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Vignette:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.478431), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b204m"]
+resource_name = "ToMenu"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FacadeMargin:theme_override_constants/margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-24, -20, -16, -12, -8, -4, null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FacadeMargin:theme_override_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-24, -20, -16, -12, -8, -4, null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FacadeMargin:theme_override_constants/margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.600033),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-24, -20, -16, -12, -8, -4, null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../FacadeMargin:theme_override_constants/margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.600033),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-24, -20, -16, -12, -8, -4, null]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MainMenuPanel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 80), Vector2(0, -88)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Vignette:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.478431)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pb6f"]
+_data = {
+&"Default": SubResource("Animation_xmtsx"),
+&"RESET": SubResource("Animation_nm1oq"),
+&"ToFormation": SubResource("Animation_h4qyl"),
+&"ToMenu": SubResource("Animation_b204m")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43b4g"]
+texture = ExtResource("3_c3xr4")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+draw_center = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_81x4u"]
 font = ExtResource("2_1bnfi")
@@ -31,49 +339,42 @@ font_size = 32
 font = ExtResource("2_1bnfi")
 font_size = 32
 
-[node name="FormationUI" type="CanvasLayer" node_paths=PackedStringArray("MoveInfoPanelParent", "FormationParent", "MenuParent", "FormationButton", "ItemButton", "mapObjectiveText", "optionalObjectiveLabel", "optionalObjectiveText", "manageItemsPanel")]
+[node name="FormationUI" type="Control" unique_id=1274289129 node_paths=PackedStringArray("MoveInfoPanelParent", "FormationParent", "MenuParent", "FormationButton", "ItemButton", "FacadeAnimator", "mapObjectiveText", "optionalObjectiveLabel", "optionalObjectiveText", "manageItemsPanel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_o7qx3")
 MoveInfoPanelParent = NodePath("Formation/MoveWhere?")
 FormationParent = NodePath("Formation")
-MenuParent = NodePath("Menu")
-FormationButton = NodePath("Menu/VBoxContainer/Formation")
-ItemButton = NodePath("Menu/VBoxContainer/Item")
-mapObjectiveText = NodePath("Menu/WinCon/Margin/VBoxContainer/WinconText")
-optionalObjectiveLabel = NodePath("Menu/WinCon/Margin/VBoxContainer/OpObjectiveLabel")
-optionalObjectiveText = NodePath("Menu/WinCon/Margin/VBoxContainer/OpObjectiveText")
+MenuParent = NodePath("MenuParent")
+FormationButton = NodePath("MenuParent/MainMenuPanel/Margin/VBoxContainer/Hbox/Formation")
+ItemButton = NodePath("MenuParent/MainMenuPanel/Margin/VBoxContainer/Hbox/Item")
+FacadeAnimator = NodePath("MenuParent/FacadeAnimator")
+mapObjectiveText = NodePath("MenuParent/Menu/WinCon/Margin/VBoxContainer/WinconText")
+optionalObjectiveLabel = NodePath("MenuParent/Menu/WinCon/Margin/VBoxContainer/OpObjectiveLabel")
+optionalObjectiveText = NodePath("MenuParent/Menu/WinCon/Margin/VBoxContainer/OpObjectiveText")
 manageItemsPanel = NodePath("Items")
 
-[node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(200, 45)
-offset_left = 760.0
-offset_top = 595.0
-offset_right = 960.0
-offset_bottom = 640.0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 9.0
-offset_right = 151.0
-offset_bottom = 32.0
-text = "Enter to Start"
-
-[node name="Formation" type="MarginContainer" parent="."]
+[node name="Formation" type="MarginContainer" parent="." unique_id=462820809]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Panel" parent="Formation"]
+[node name="Title" type="Panel" parent="Formation" unique_id=771954282]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = ExtResource("4_s7a0i")
+theme_type_variation = &"SubPanel1"
 
-[node name="LOC_SetFormation" type="Label" parent="Formation/Title"]
+[node name="LOC_SetFormation" type="Label" parent="Formation/Title" unique_id=119554838]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -86,15 +387,18 @@ offset_right = 54.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "Set Formation"
 
-[node name="MoveWhere?" type="Panel" parent="Formation"]
-custom_minimum_size = Vector2(150, 45)
+[node name="MoveWhere?" type="Panel" parent="Formation" unique_id=378532437]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme = ExtResource("4_s7a0i")
+theme_type_variation = &"SubPanel2"
 
-[node name="Label" type="Label" parent="Formation/MoveWhere?"]
+[node name="Label" type="Label" parent="Formation/MoveWhere?" unique_id=2024505852]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -106,23 +410,131 @@ offset_bottom = 12.0
 grow_vertical = 2
 text = "Swap With?"
 
-[node name="Menu" type="MarginContainer" parent="."]
-offset_right = 960.0
-offset_bottom = 640.0
+[node name="Vignette" type="ColorRect" parent="." unique_id=318162559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.478431)
 
-[node name="ColorRect" type="ColorRect" parent="Menu"]
+[node name="MenuParent" type="Control" parent="." unique_id=1612485481]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+theme = ExtResource("4_s7a0i")
+
+[node name="FacadeAnimator" type="AnimationPlayer" parent="MenuParent" unique_id=1998714208]
+root_node = NodePath("../Menu")
+libraries/ = SubResource("AnimationLibrary_1pb6f")
+autoplay = &"Default"
+
+[node name="FacadeMargin" type="MarginContainer" parent="MenuParent" unique_id=1936760895]
+visible = false
+layout_mode = 0
+offset_top = -632.0
+offset_right = 960.0
+offset_bottom = 8.0
+
+[node name="PanelBase" type="Panel" parent="MenuParent/FacadeMargin" unique_id=1021218473]
+layout_mode = 2
+theme = ExtResource("4_s7a0i")
+theme_type_variation = &"FormationPanel"
+theme_override_styles/panel = SubResource("StyleBoxTexture_43b4g")
+
+[node name="MainMenuPanel" type="Panel" parent="MenuParent" unique_id=970277051]
+layout_mode = 0
+offset_top = -88.0
+offset_right = 960.0
+offset_bottom = 8.0
+theme = ExtResource("4_s7a0i")
+
+[node name="Title" type="Panel" parent="MenuParent/MainMenuPanel" unique_id=468309575]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -95.0
+offset_right = 128.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_s7a0i")
+theme_type_variation = &"SubPanel2"
+
+[node name="Label" type="Label" parent="MenuParent/MainMenuPanel/Title" unique_id=909279533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "MapTitle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="MenuParent/MainMenuPanel" unique_id=1396341243]
+custom_minimum_size = Vector2(960, 96)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_right = 960.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/MainMenuPanel/Margin" unique_id=159554382]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Hbox" type="HBoxContainer" parent="MenuParent/MainMenuPanel/Margin/VBoxContainer" unique_id=701447993]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="Formation" type="Button" parent="MenuParent/MainMenuPanel/Margin/VBoxContainer/Hbox" unique_id=425641269]
+custom_minimum_size = Vector2(156, 64)
+layout_mode = 2
+text = "Formation"
+
+[node name="Item" type="Button" parent="MenuParent/MainMenuPanel/Margin/VBoxContainer/Hbox" unique_id=1494857077]
+custom_minimum_size = Vector2(156, 64)
+layout_mode = 2
+text = "Items"
+
+[node name="Menu" type="MarginContainer" parent="MenuParent" unique_id=1789490724]
+visible = false
+layout_mode = 0
+offset_top = -632.0
+offset_right = 960.0
+offset_bottom = 8.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="MenuParent/Menu" unique_id=604235478]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 color = Color(0.73, 0.73, 0.73, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Menu"]
+[node name="ColorRect2" type="ColorRect" parent="MenuParent/Menu" unique_id=1305671651]
 custom_minimum_size = Vector2(256, 96)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuParent/Menu" unique_id=468112662]
 custom_minimum_size = Vector2(256, 96)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -130,10 +542,10 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="MapTitle" type="Label" parent="Menu/MarginContainer"]
+[node name="MapTitle" type="Label" parent="MenuParent/Menu/MarginContainer" unique_id=56664218]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-text = "The Crimson Forest"
+text = "ui_battleprep_title"
 label_settings = SubResource("LabelSettings_81x4u")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -141,13 +553,13 @@ autowrap_mode = 2
 text_overrun_behavior = 2
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/Menu" unique_id=1072864391]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 alignment = 1
 
-[node name="Formation" type="Button" parent="Menu/VBoxContainer"]
+[node name="Formation" type="Button" parent="MenuParent/Menu/VBoxContainer" unique_id=2110851024]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1bnfi")
@@ -155,7 +567,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_iy26t")
 text = "Formation"
 
-[node name="Item" type="Button" parent="Menu/VBoxContainer"]
+[node name="Item" type="Button" parent="MenuParent/Menu/VBoxContainer" unique_id=541237912]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1bnfi")
@@ -163,16 +575,17 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_u48vi")
 text = "Items"
 
-[node name="WinCon" type="ColorRect" parent="Menu"]
+[node name="WinCon" type="ColorRect" parent="MenuParent/Menu" unique_id=1679190488]
+visible = false
 custom_minimum_size = Vector2(320, 192)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 color = Color(0.21, 0.21, 0.21, 0.607843)
 
-[node name="Margin" type="MarginContainer" parent="Menu/WinCon"]
+[node name="Margin" type="MarginContainer" parent="MenuParent/Menu/WinCon" unique_id=569339245]
 custom_minimum_size = Vector2(320, 192)
-layout_mode = 2
+layout_mode = 0
 offset_right = 320.0
 offset_bottom = 192.0
 size_flags_horizontal = 8
@@ -181,34 +594,51 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/WinCon/Margin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/Menu/WinCon/Margin" unique_id=1749537595]
 layout_mode = 2
 
-[node name="WinconLabel" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+[node name="WinconLabel" type="Label" parent="MenuParent/Menu/WinCon/Margin/VBoxContainer" unique_id=1832560481]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Win Condition:"
 label_settings = SubResource("LabelSettings_maj0y")
 
-[node name="WinconText" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+[node name="WinconText" type="Label" parent="MenuParent/Menu/WinCon/Margin/VBoxContainer" unique_id=1994046728]
 layout_mode = 2
 text = "wincontext"
 label_settings = SubResource("LabelSettings_i1cf5")
 horizontal_alignment = 2
 
-[node name="OpObjectiveLabel" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+[node name="OpObjectiveLabel" type="Label" parent="MenuParent/Menu/WinCon/Margin/VBoxContainer" unique_id=624730628]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Optional Objective:"
 label_settings = SubResource("LabelSettings_2q6jt")
 
-[node name="OpObjectiveText" type="Label" parent="Menu/WinCon/Margin/VBoxContainer"]
+[node name="OpObjectiveText" type="Label" parent="MenuParent/Menu/WinCon/Margin/VBoxContainer" unique_id=515905035]
 layout_mode = 2
 text = "opwincon"
 label_settings = SubResource("LabelSettings_gh7pe")
 horizontal_alignment = 2
 
-[node name="Items" parent="." instance=ExtResource("3_jma22")]
+[node name="Control" type="Control" parent="MenuParent" unique_id=1972212957]
+anchors_preset = 0
+offset_top = -632.0
+offset_right = 960.0
+offset_bottom = 8.0
 
-[connection signal="pressed" from="Menu/VBoxContainer/Formation" to="." method="OnFormationButton"]
-[connection signal="pressed" from="Menu/VBoxContainer/Item" to="." method="OnItemButton"]
+[node name="Label" type="Label" parent="MenuParent" unique_id=1312581590]
+layout_mode = 0
+offset_left = 848.0
+offset_top = -23.0
+offset_right = 952.0
+text = "Enter to Start"
+
+[node name="Items" parent="." unique_id=954622259 instance=ExtResource("3_jma22")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MenuParent/MainMenuPanel/Margin/VBoxContainer/Hbox/Formation" to="." method="OnFormationButton"]
+[connection signal="pressed" from="MenuParent/MainMenuPanel/Margin/VBoxContainer/Hbox/Item" to="." method="OnItemButton"]
+[connection signal="pressed" from="MenuParent/Menu/VBoxContainer/Formation" to="." method="OnFormationButton"]
+[connection signal="pressed" from="MenuParent/Menu/VBoxContainer/Item" to="." method="OnItemButton"]

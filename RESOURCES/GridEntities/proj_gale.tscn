@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c8j46r3a0jcrr"]
+
+[ext_resource type="Script" uid="uid://dhhobsuord0dy" path="res://SCRIPTS/GridEntities/GEProjectile.gd" id="1_o01th"]
+[ext_resource type="Resource" uid="uid://cq7aefc4mbdim" path="res://RESOURCES/TargetingShapes/gale_shape.tres" id="2_f5ev2"]
+[ext_resource type="Texture2D" uid="uid://dwyldevjvc8hx" path="res://ART/GridEntities/Gale.png" id="2_o07ra"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="3_m02u1"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_yt3ry"]
+
+[node name="Proj_Gale" type="Node2D" unique_id=706656537 node_paths=PackedStringArray("damageData", "visual")]
+scale = Vector2(2, 2)
+script = ExtResource("1_o01th")
+shapedTiles = ExtResource("2_f5ev2")
+damageData = NodePath("DamageData")
+visual = NodePath("Visual")
+moveSpeed = 500.0
+UpdatePerUnitTurn = true
+
+[node name="DamageData" type="Node2D" parent="." unique_id=415227995]
+script = ExtResource("3_m02u1")
+AgressiveStat = ExtResource("4_yt3ry")
+AgressiveModType = 2
+AgressiveMod = 1.0
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1482920244]
+texture = ExtResource("2_o07ra")
+offset = Vector2(48, 12)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://tf84og70mj2y"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_dynwv"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_nkwou"]
+
+[resource]
+script = ExtResource("1_nkwou")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_summonmine.tscn"
+StartsDiscoverable = true
+StartUnlocked = true

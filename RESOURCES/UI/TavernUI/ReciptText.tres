@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://35j7gum5loa3"]
+
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="1_fvs5u"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_fvs5u")
+font_color = Color(0.41, 0.376517, 0.369, 1)

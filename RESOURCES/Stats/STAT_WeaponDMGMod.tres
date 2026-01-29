@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="StatTemplate" format=3 uid="uid://cgs0hjwleufo0"]
+
+[ext_resource type="Script" uid="uid://d0mls8wl053cd" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_q44f8"]
+
+[resource]
+script = ExtResource("2_q44f8")

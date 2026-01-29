@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TargetingGlobalSimple" format=3 uid="uid://2ojaw0txujcm"]
+
+[ext_resource type="Script" uid="uid://doh1pkd4gldyd" path="res://SCRIPTS/Targeting/TargetingGlobalSimple.gd" id="1_07j02"]
+
+[resource]
+script = ExtResource("1_07j02")
+TargetRange = Vector2i(0, 0)

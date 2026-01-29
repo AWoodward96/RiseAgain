@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck5ndsyrok8ag"]
+[gd_scene format=3 uid="uid://ck5ndsyrok8ag"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_FormationUI/WeaponPanelUI.gd" id="1_u8riw"]
+[ext_resource type="Script" uid="uid://uw1nf0glva35" path="res://RESOURCES/UI/_alpha_FormationUI/WeaponPanelUI.gd" id="1_u8riw"]
 [ext_resource type="Texture2D" uid="uid://185dgj2bcc5i" path="res://ART/Icons/Ability/Equippable/iron_bow.png" id="2_wi5d2"]
 [ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="3_8ffdn"]
 [ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="4_onf6y"]
@@ -14,7 +14,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("3_8ffdn")
 font_color = Color(0, 0, 0, 1)
 
-[node name="WeaponPanel" type="HBoxContainer" node_paths=PackedStringArray("weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText")]
+[node name="WeaponPanel" type="HBoxContainer" unique_id=1185347685 node_paths=PackedStringArray("weaponParent", "noWeaponParent", "weaponIcon", "weaponNameText", "weaponDescriptionText", "statBlockEntry", "accuracyText")]
 custom_minimum_size = Vector2(0, 192)
 script = ExtResource("1_u8riw")
 weaponParent = NodePath("Weapon")
@@ -25,13 +25,13 @@ weaponDescriptionText = NodePath("Weapon/VBoxContainer/WeapDesc")
 statBlockEntry = NodePath("Weapon/VBoxContainer2/StatBlockEntry")
 accuracyText = NodePath("Weapon/VBoxContainer2/HBoxContainer/AccuracyNum")
 
-[node name="Weapon" type="Control" parent="."]
+[node name="Weapon" type="Control" parent="." unique_id=1670367582]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Weapon"]
+[node name="TextureRect" type="TextureRect" parent="Weapon" unique_id=90798294]
 custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
+layout_mode = 0
 offset_left = 4.0
 offset_top = 32.0
 offset_right = 132.0
@@ -41,8 +41,8 @@ size_flags_vertical = 4
 texture = ExtResource("2_wi5d2")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Weapon"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Weapon" unique_id=953754300]
+layout_mode = 0
 offset_left = 136.0
 offset_top = 46.0
 offset_right = 392.0
@@ -50,13 +50,13 @@ offset_bottom = 146.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
 
-[node name="WeapName" type="Label" parent="Weapon/VBoxContainer"]
+[node name="WeapName" type="Label" parent="Weapon/VBoxContainer" unique_id=454120743]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "WeaponName"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="WeapDesc" type="Label" parent="Weapon/VBoxContainer"]
+[node name="WeapDesc" type="Label" parent="Weapon/VBoxContainer" unique_id=1897142120]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -64,8 +64,8 @@ text = "WeaponDescription"
 label_settings = SubResource("LabelSettings_qwtwy")
 autowrap_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Weapon"]
-layout_mode = 2
+[node name="VBoxContainer2" type="VBoxContainer" parent="Weapon" unique_id=2132542002]
+layout_mode = 0
 offset_left = 406.0
 offset_top = 58.0
 offset_right = 700.0
@@ -73,29 +73,29 @@ offset_bottom = 134.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Weapon/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Weapon/VBoxContainer2" unique_id=2145269143]
 layout_mode = 2
 
-[node name="AccuracyLabel" type="Label" parent="Weapon/VBoxContainer2/HBoxContainer"]
+[node name="AccuracyLabel" type="Label" parent="Weapon/VBoxContainer2/HBoxContainer" unique_id=64006681]
 layout_mode = 2
 text = "ui_accuracy_label"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="AccuracyNum" type="Label" parent="Weapon/VBoxContainer2/HBoxContainer"]
+[node name="AccuracyNum" type="Label" parent="Weapon/VBoxContainer2/HBoxContainer" unique_id=417908068]
 layout_mode = 2
 text = "{NUM}"
 label_settings = SubResource("LabelSettings_2u5kn")
 
-[node name="StatBlockEntry" parent="Weapon/VBoxContainer2" instance=ExtResource("4_onf6y")]
+[node name="StatBlockEntry" parent="Weapon/VBoxContainer2" unique_id=1052046576 instance=ExtResource("4_onf6y")]
 layout_mode = 2
 
-[node name="NoWeaponParent" type="HBoxContainer" parent="."]
+[node name="NoWeaponParent" type="HBoxContainer" parent="." unique_id=1636202556]
 visible = false
 custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="NoWeaponsText" type="Label" parent="NoWeaponParent"]
+[node name="NoWeaponsText" type="Label" parent="NoWeaponParent" unique_id=533648746]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "ui_no_weapon_long"

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnv8h0l0c4s6d"]
+[gd_scene format=3 uid="uid://cnv8h0l0c4s6d"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_popup.gd" id="1_75kli"]
+[ext_resource type="Script" uid="uid://c1tdvq1h3gl3c" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_popup.gd" id="1_75kli"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="2_g52x4"]
 
 [sub_resource type="Animation" id="Animation_floic"]
@@ -98,27 +98,31 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5d1jg"]
 _data = {
-"RESET": SubResource("Animation_floic"),
-"Run": SubResource("Animation_pkacr")
+&"RESET": SubResource("Animation_floic"),
+&"Run": SubResource("Animation_pkacr")
 }
 
-[node name="DamagePopup" type="Node2D" node_paths=PackedStringArray("damage_val", "heal_val", "armor_val")]
+[node name="DamagePopup" type="Node2D" unique_id=566705009 node_paths=PackedStringArray("damage_val", "heal_val", "armor_val", "no_damage")]
 z_index = 10
 script = ExtResource("1_75kli")
 damage_val = NodePath("DamageVal")
 heal_val = NodePath("HealVal")
 armor_val = NodePath("ArmorVal")
+no_damage = NodePath("No Damage")
 
-[node name="DamageVal" type="Label" parent="."]
+[node name="DamageVal" type="Label" parent="." unique_id=577897938]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = 16.0
 offset_right = 64.0
-offset_bottom = 64.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(32, 32)
 theme_override_colors/font_color = Color(0.780392, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -129,7 +133,7 @@ text = "-8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealVal" type="Label" parent="."]
+[node name="HealVal" type="Label" parent="." unique_id=360800693]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -149,7 +153,7 @@ text = "+8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ArmorVal" type="Label" parent="."]
+[node name="ArmorVal" type="Label" parent="." unique_id=1757956928]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -169,8 +173,27 @@ text = "+8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5d1jg")
-}
-autoplay = "Run"
+[node name="No Damage" type="Label" parent="." unique_id=1581301370]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_g52x4")
+theme_override_font_sizes/font_size = 24
+text = "ui_nodamage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=297740563]
+active = false
+libraries/ = SubResource("AnimationLibrary_5d1jg")
+autoplay = &"Run"

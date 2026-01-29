@@ -1,44 +1,57 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg2bul2ropcg4"]
+[gd_scene format=3 uid="uid://cg2bul2ropcg4"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_yk4c8"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_yk4c8"]
 [ext_resource type="Texture2D" uid="uid://bn36kolmwh5xb" path="res://ART/Icons/Ability/Equippable/torment.png" id="2_61skm"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_y6ksq"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="3_0888o"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_xapn7"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_y6ksq"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_0888o"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_m5vrv"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="4_a7oiq"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_c6u4v"]
-[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_yhpga"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_jg1o0"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_cjfaa"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_c6u4v"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="6_qvqjd"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="7_dtdgd"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_jg1o0"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="8_q23ge"]
+[ext_resource type="Resource" uid="uid://c1futmffqo2lj" path="res://RESOURCES/Ability/TargetingTemplates/torment_targeting.tres" id="9_qvqjd"]
 
-[sub_resource type="Resource" id="Resource_ybk6x"]
+[sub_resource type="Resource" id="Resource_xbfd0"]
+script = ExtResource("3_m5vrv")
+
+[sub_resource type="Resource" id="Resource_8u237"]
+script = ExtResource("4_cjfaa")
+
+[sub_resource type="Resource" id="Resource_qvqjd"]
 script = ExtResource("3_0888o")
 Template = ExtResource("4_a7oiq")
 Value = 2
 
-[node name="torment" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="torment" type="Node2D" unique_id=1143413785 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_yk4c8")
 type = 1
-focusCost = 0.0
-damageGrantsFocus = true
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_xapn7")]([SubResource("Resource_xbfd0"), SubResource("Resource_8u237")])
 internalName = "torment"
 loc_displayName = "weap_torment_name"
 loc_displayDesc = "weap_torment_desc"
 icon = ExtResource("2_61skm")
+descriptors = Array[ExtResource("6_qvqjd")]([ExtResource("7_dtdgd"), ExtResource("8_q23ge")])
+TargetingTemplate = ExtResource("9_qvqjd")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=1128971866]
 script = ExtResource("2_y6ksq")
-BaseAccuracy = 60.0
-GrantedStats = Array[ExtResource("3_0888o")]([SubResource("Resource_ybk6x")])
+GrantedStats = Array[ExtResource("3_0888o")]([SubResource("Resource_qvqjd")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=593144084]
 script = ExtResource("5_c6u4v")
 AgressiveStat = ExtResource("4_a7oiq")
-DefensiveStat = ExtResource("6_yhpga")
+DamageType = 1
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=1127437424]
 script = ExtResource("7_jg1o0")
 TeamTargeting = 2
 TargetRange = Vector2i(2, 3)

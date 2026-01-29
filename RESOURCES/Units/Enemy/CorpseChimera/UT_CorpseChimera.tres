@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=46 format=3 uid="uid://crv54ls8tyldj"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://crv54ls8tyldj"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_6ahb0"]
 [ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="1_enqqm"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_gv3c6"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_gv3c6"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_tog8l"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_ntgrw"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_r8yan"]
@@ -11,18 +11,14 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_bv8mq"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_yygrd"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_1wq3p"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_411ei"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_411ei"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_ktqur"]
 [ext_resource type="PackedScene" uid="uid://ctnbgmoyj5gin" path="res://RESOURCES/Units/Enemy/CorpseChimera/VIS_CorpseChimera.tscn" id="11_pdfes"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2nnof"]
-[ext_resource type="PackedScene" uid="uid://ckws6uec0c8oh" path="res://RESOURCES/Ability/Equippable/dark_pact.tscn" id="14_60la1"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_d5p7c"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_uy1dh"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="17_ggo3x"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_gj4mm"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_hsyev"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_n0kxx"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_a3sbo"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_2nnof"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_dv01u"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_0wn8q"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_0lu4m"]
+[ext_resource type="Resource" uid="uid://d00tdm4jby8ea" path="res://RESOURCES/Unlocks/ULK_dark_pact.tres" id="15_0lu4m"]
 [ext_resource type="Texture2D" uid="uid://cvuvktm7c7amp" path="res://ART/Icons/Units/corpsechimera.png" id="23_nob3t"]
 
 [sub_resource type="Resource" id="Resource_4m1aq"]
@@ -33,22 +29,19 @@ Value = 8.0
 [sub_resource type="Resource" id="Resource_wv3us"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("3_tog8l")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_rnj5o"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("4_ntgrw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_4aku7"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("5_r8yan")
-Value = 3.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_xwjvg"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("6_wqq0f")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hs78b"]
 script = ExtResource("2_gv3c6")
@@ -63,41 +56,20 @@ Value = 6.0
 [sub_resource type="Resource" id="Resource_wf3lf"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("9_yygrd")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_luif0"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("10_ktqur")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_1nliv"]
-script = ExtResource("17_ggo3x")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_bjjjv"]
-script = ExtResource("18_gj4mm")
-
-[sub_resource type="Resource" id="Resource_qqegi"]
-metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/dark_pact.png"
-
-[sub_resource type="Resource" id="Resource_aasmi"]
+[sub_resource type="Resource" id="Resource_j1fvy"]
 script = ExtResource("2_gv3c6")
-Template = ExtResource("5_r8yan")
-Value = 4
+Template = ExtResource("12_dv01u")
+Value = 1.0
 
-[sub_resource type="PackedScene" id="PackedScene_7stjf"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("dark_pact", "Node2D", "script", "type", "focusCost", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "BaseAccuracy", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script", "TeamTargeting", "TargetRange"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 3, 27, 19, 28, 20, 29, 21, 0),
-"variants": [ExtResource("15_d5p7c"), 1, 0.0, Array[ExtResource("16_uy1dh")]([SubResource("Resource_1nliv"), SubResource("Resource_bjjjv")]), true, "dark_pact", "weap_dark_pact_name", "weap_dark_pact_desc", SubResource("Resource_qqegi"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_hsyev"), 60.0, Array[ExtResource("2_gv3c6")]([SubResource("Resource_aasmi")]), ExtResource("21_n0kxx"), ExtResource("5_r8yan"), ExtResource("6_wqq0f"), 0.0, ExtResource("22_a3sbo"), 2, Vector2i(2, 3)],
-"version": 3
-}
+[sub_resource type="Resource" id="Resource_0yip1"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("13_0wn8q")
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_gv3c6")
@@ -134,18 +106,26 @@ script = ExtResource("2_gv3c6")
 Template = ExtResource("9_yygrd")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_wsp8b"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("12_dv01u")
+Value = 10.0
+
+[sub_resource type="Resource" id="Resource_wfeti"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("13_0wn8q")
+Value = 30.0
+
 [resource]
 resource_name = "UT_CorpseChimera"
 script = ExtResource("10_411ei")
 VisualPrefab = ExtResource("11_pdfes")
-BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubResource("Resource_wv3us"), SubResource("Resource_rnj5o"), SubResource("Resource_4aku7"), SubResource("Resource_xwjvg"), SubResource("Resource_hs78b"), SubResource("Resource_gptug"), SubResource("Resource_wf3lf"), SubResource("Resource_luif0")])
-StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_gv3c6")]([SubResource("Resource_4m1aq"), SubResource("Resource_wv3us"), SubResource("Resource_rnj5o"), SubResource("Resource_4aku7"), SubResource("Resource_xwjvg"), SubResource("Resource_hs78b"), SubResource("Resource_gptug"), SubResource("Resource_wf3lf"), SubResource("Resource_luif0"), SubResource("Resource_j1fvy"), SubResource("Resource_0yip1")])
+StatGrowths = Array[ExtResource("2_gv3c6")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wsp8b"), SubResource("Resource_wfeti")])
 Affinity = ExtResource("1_enqqm")
-StartingItems = Array[PackedScene]([SubResource("PackedScene_7stjf")])
-StartingEquippedWeapon = ExtResource("14_60la1")
-Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([])
+StartingEquippedWeapon = ExtResource("15_0lu4m")
 Descriptors = Array[ExtResource("12_2nnof")]([ExtResource("10_1wq3p")])
+FootstepGUID = "{460c67f6-fb5a-4d36-9649-06d2f8c0903c}"
 DebugName = "CorpseChimera"
 loc_DisplayName = "unit_corpsechimera_name"
 loc_Description = "unit_corpsechimera_desc"

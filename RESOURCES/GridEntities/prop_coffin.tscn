@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dsregfebfk5f6"]
+
+[ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_c5w0b"]
+[ext_resource type="Texture2D" uid="uid://d3q4q27243v6t" path="res://ART/Environment/Tutorial/alpha_coffin.png" id="2_6gny5"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_rhfxd"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_ntts7"]
+
+[sub_resource type="Resource" id="Resource_kat3i"]
+script = ExtResource("2_rhfxd")
+
+[sub_resource type="Resource" id="Resource_maqpf"]
+script = ExtResource("2_rhfxd")
+Position = Vector2i(1, 0)
+
+[sub_resource type="Resource" id="Resource_wcb5n"]
+script = ExtResource("3_ntts7")
+TileCoordinates = Array[ExtResource("2_rhfxd")]([SubResource("Resource_kat3i"), SubResource("Resource_maqpf")])
+
+[sub_resource type="Animation" id="Animation_3183d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_nfno8"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kbmv5"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0unp"]
+_data = {
+&"RESET": SubResource("Animation_3183d"),
+&"default": SubResource("Animation_nfno8"),
+&"open": SubResource("Animation_kbmv5")
+}
+
+[node name="GECoffin" type="Node2D" unique_id=389592238 node_paths=PackedStringArray("Animator")]
+scale = Vector2(2, 2)
+script = ExtResource("1_c5w0b")
+shapedTiles = SubResource("Resource_wcb5n")
+Animator = NodePath("AnimationPlayer")
+ui_invisible = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1681155519]
+z_index = -2
+position = Vector2(32, 16)
+texture = ExtResource("2_6gny5")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1461500408]
+libraries/ = SubResource("AnimationLibrary_s0unp")
+autoplay = &"default"

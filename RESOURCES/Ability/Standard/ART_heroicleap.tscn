@@ -1,28 +1,38 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgpijng0n124p"]
+[gd_scene format=3 uid="uid://dgpijng0n124p"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_8kx7m"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_jr4ej"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_a52ru"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_obvef"]
+[ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="3_8kx7m"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_vi17b"]
+[ext_resource type="Script" uid="uid://be1x2gl2441x5" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_Leap.gd" id="4_5rliq"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_isldo"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_kgbqm"]
 [ext_resource type="Resource" uid="uid://w4pf17p2i0wg" path="res://RESOURCES/CombatEffects/CE_Armor_HeroicLeap.tres" id="5_octw8"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_mtb8i"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_ytfja"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="6_mtb8i"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_ytfja"]
 [ext_resource type="Resource" uid="uid://dlev228ekvw8d" path="res://RESOURCES/TargetingShapes/heroicleap_shape.tres" id="7_n5ddh"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="8_42ld6"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="8_42ld6"]
 [ext_resource type="Texture2D" uid="uid://osmj6jxl88kl" path="res://ART/Icons/Ability/Standard/heroicleap.png" id="8_mw0ad"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="9_uyhs5"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="10_6323x"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/AbilityMovementData.gd" id="11_anx3p"]
+[ext_resource type="Resource" uid="uid://bvl0ucsrbtgxt" path="res://RESOURCES/Ability/TargetingTemplates/heroicleap_targeting.tres" id="10_vi17b"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="11_anx3p"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="13_4rprd"]
+
+[sub_resource type="Resource" id="Resource_5rliq"]
+script = ExtResource("3_vi17b")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_ghbu2"]
+script = ExtResource("4_5rliq")
+UseFootsteps = false
+metadata/_custom_type_script = "uid://be1x2gl2441x5"
 
 [sub_resource type="Resource" id="Resource_p650e"]
 script = ExtResource("3_8kx7m")
-WaitForStackFree = true
+MovementAnimationStyle = SubResource("Resource_ghbu2")
+AnimationStyle = 1
 
-[sub_resource type="Resource" id="Resource_aullh"]
-script = ExtResource("3_jr4ej")
-useAttackAction = true
-useDefendAction = true
+[sub_resource type="Resource" id="Resource_khgxx"]
+script = ExtResource("4_kgbqm")
 
 [sub_resource type="Resource" id="Resource_ttix8"]
 script = ExtResource("6_ytfja")
@@ -31,31 +41,31 @@ CombatEffect = ExtResource("5_octw8")
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_isldo")
 
-[node name="ART_HeroicLeap" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
+[node name="ART_HeroicLeap" type="Node2D" unique_id=1393385494 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "MovementData")]
 script = ExtResource("1_a52ru")
-focusCost = 3.0
-executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_p650e"), SubResource("Resource_aullh"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
+abilityCooldown = 3
+ability_speed = 1
+executionStack = Array[ExtResource("2_obvef")]([SubResource("Resource_5rliq"), SubResource("Resource_p650e"), SubResource("Resource_khgxx"), SubResource("Resource_ttix8"), SubResource("Resource_5cjq5")])
 internalName = "heroicleap"
 loc_displayName = "art_heroicleap_name"
 loc_displayDesc = "art_heroicleap_desc"
 icon = ExtResource("8_mw0ad")
+TargetingTemplate = ExtResource("10_vi17b")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 MovementData = NodePath("AbilityMovementData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1526562292]
 script = ExtResource("6_mtb8i")
 TargetRange = Vector2i(1, 4)
 Type = 1
 shapedTiles = ExtResource("7_n5ddh")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=2055508297]
 script = ExtResource("8_42ld6")
-AgressiveStat = ExtResource("9_uyhs5")
-AgressiveModType = 2
-AgressiveMod = 0.6
-DefensiveStat = ExtResource("10_6323x")
+AgressiveStat = ExtResource("13_4rprd")
 
-[node name="AbilityMovementData" type="Node2D" parent="."]
+[node name="AbilityMovementData" type="Node2D" parent="." unique_id=1620004690]
 script = ExtResource("11_anx3p")
 stoppedByWalls = false
+drawPath = false

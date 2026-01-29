@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://7hkdtcp08x61"]
+
+[ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="1_ers36"]
+[ext_resource type="Script" uid="uid://8pnlkrxqpeow" path="res://SCRIPTS/UI/General/simple_unit_entry.gd" id="1_l40nu"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_0j35c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g3mb8"]
+font = ExtResource("2_0j35c")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="SimpleUnitEntry" type="Control" unique_id=1462728758 node_paths=PackedStringArray("icon", "nameLabel")]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 2
+script = ExtResource("1_l40nu")
+icon = NodePath("MarginContainer/HBoxContainer/TextureRect")
+nameLabel = NodePath("MarginContainer/HBoxContainer/Label")
+
+[node name="Selected" type="ColorRect" parent="." unique_id=946739680]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.91, 0.91, 0.3458, 0.894118)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=93410576]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=935901121]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=74165591]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_ers36")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=940889367]
+layout_mode = 2
+text = "{name}"
+label_settings = SubResource("LabelSettings_g3mb8")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

@@ -1,14 +1,22 @@
 extends Node2D
 
+signal selectDownCallback
+enum ControllerScheme { Keyboard, Controller }
+static var CurrentInputSchmeme : ControllerScheme = ControllerScheme.Keyboard
+
 @export var inputHeldThreshold = 0.5
 @export var inputHeldMoveTick = 0.06
 
-signal selectDownCallback
 
 var inputDown : Array[bool] = [false, false, false, false]
 var inputHeld : Array[bool] = [false, false, false, false]
-var inputVertical : bool
-var inputHorizontal: bool
+
+var bumpInputDown : Array[bool] = [false , false] # Left, Right
+var bumpInputHeld : Array[bool] = [false , false] # Left, Right
+
+
+var topdownVertical : float
+var topdownHorizontal: float
 
 var inputAnyDown : bool
 var inputAnyHeld : bool
@@ -32,11 +40,23 @@ func _process(_delta):
 	UpdateSelectAndCancel(_delta)
 	UpdateStart(_delta)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		CurrentInputSchmeme = ControllerScheme.Keyboard
+
+	# For some reason, a Mouse Move event passes the InputEventJoypadButton or InputEventJoypadMotion check
+	# Because of that filter out all mouse input events
+	elif event is InputEventJoypadButton or InputEventJoypadMotion && event is not InputEventMouse:
+		CurrentInputSchmeme = ControllerScheme.Controller
+
+
 func UpdateInputArrays(_delta):
 	inputAnyDown = false
 	inputAnyHeld = false
-	inputDown = [false, false, false, false]
-	inputHeld = [false, false, false, false]
+	inputDown = [false, false, false, false] # Up, Right, Down, Left
+	inputHeld = [false, false, false, false] # Up, Right, Down, Left
+	bumpInputDown = [false , false] # Left, Right
+	bumpInputHeld = [false , false] # Left, Right
 
 	if Input.is_action_pressed("up") : inputHeld[0] = true
 	if Input.is_action_pressed("right") : inputHeld[1] = true
@@ -47,9 +67,22 @@ func UpdateInputArrays(_delta):
 	if Input.is_action_just_pressed("down"): inputDown[2] = true
 	if Input.is_action_just_pressed("left"): inputDown[3] = true
 
-	inputVertical = inputHeld[0] || inputHeld[2]
-	inputHorizontal = inputHeld[1] || inputHeld[3]
+	if Input.is_action_pressed("bump_left") :
+		bumpInputHeld[0] = true
+	if Input.is_action_pressed("bump_right") :
+		bumpInputHeld[1] = true
+	if Input.is_action_just_pressed("bump_left") :
+		bumpInputDown[0] = true
+	if Input.is_action_just_pressed("bump_right") :
+		bumpInputDown[1] = true
+
+	topdownHorizontal =  Input.get_action_strength("right") - Input.get_action_strength("left")
+	topdownVertical = Input.get_action_strength("down") - Input.get_action_strength("up")
+
 	inputAnyDown = inputDown.any(func(v) : return v)
+	inputAnyDown = inputAnyDown || bumpInputDown.any(func(v) : return v)
+
+	# Not including the bumps in this
 	inputAnyHeld = inputHeld.any(func(v) : return v)
 
 	if inputAnyHeld :
@@ -73,3 +106,11 @@ func UpdateStart(_delta):
 
 	infoHeld = Input.is_action_pressed("info")
 	infoDown = Input.is_action_just_pressed("info")
+
+### Sets SelectDown to false so that double inputs are not possible
+func ReleaseSelect():
+	selectDown = false
+
+### Sets cancelDown to false so that double inputs are not possible
+func ReleaseCancel():
+	cancelDown = false

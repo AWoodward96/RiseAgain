@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://ba3vtp6iybgdv"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_1hxfu"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="2_m7y27"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="2_tjm1d"]
+
+[sub_resource type="Resource" id="Resource_uosno"]
+script = ExtResource("2_m7y27")
+Ignite = 1
+Multiplier = 0.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[resource]
+script = ExtResource("2_tjm1d")
+TileCoordinates = Array[ExtResource("1_1hxfu")]([SubResource("Resource_uosno")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"

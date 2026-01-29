@@ -1,54 +1,50 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtc3xv5u5h2cd"]
+[gd_scene format=3 uid="uid://dtc3xv5u5h2cd"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_0llaf"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0llaf"]
 [ext_resource type="Texture2D" uid="uid://bky2a1nautc31" path="res://ART/Icons/Ability/Equippable/zombie_claw.png" id="2_6oonq"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ntjbe"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_r8nyx"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_4tf5f"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_ntjbe"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_r8nyx"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_3qxtp"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_4ycm5"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="4_ddajl"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_s73wt"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="5_bf711"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_0l00g"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_00gcs"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_ddajl"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_s73wt"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_bf711"]
+[ext_resource type="Resource" uid="uid://b4tblhphk648m" path="res://RESOURCES/Ability/TargetingTemplates/zombie_claw_targeting.tres" id="6_p0i1e"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="7_00gcs"]
 
-[sub_resource type="Resource" id="Resource_1qgml"]
-script = ExtResource("3_4tf5f")
-useAttackAction = true
-useDefendAction = true
+[sub_resource type="Resource" id="Resource_tlp3y"]
+script = ExtResource("3_3qxtp")
 
 [sub_resource type="Resource" id="Resource_mqwq8"]
 script = ExtResource("4_s73wt")
 
-[sub_resource type="Resource" id="Resource_ljkeo"]
+[sub_resource type="Resource" id="Resource_p0i1e"]
 script = ExtResource("4_ddajl")
 Template = ExtResource("3_4ycm5")
 Value = 3
 
-[node name="zombie_claw" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+[node name="zombie_claw" type="Node2D" unique_id=1818965494 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_0llaf")
 type = 1
-focusCost = 0.0
-executionStack = Array[ExtResource("2_ntjbe")]([SubResource("Resource_1qgml"), SubResource("Resource_mqwq8")])
-damageGrantsFocus = true
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_ntjbe")]([SubResource("Resource_tlp3y"), SubResource("Resource_mqwq8")])
 internalName = "zombie_claw"
 loc_displayName = "weap_zombie_claw_name"
 loc_displayDesc = "weap_zombie_claw_desc"
 icon = ExtResource("2_6oonq")
+TargetingTemplate = ExtResource("6_p0i1e")
 TargetingData = NodePath("TargetingData")
 UsableDamageData = NodePath("DamageComponent")
 StatData = NodePath("StatComponent")
 
-[node name="StatComponent" type="Node2D" parent="."]
+[node name="StatComponent" type="Node2D" parent="." unique_id=792316822]
 script = ExtResource("2_r8nyx")
-BaseAccuracy = 80.0
-GrantedStats = Array[ExtResource("4_ddajl")]([SubResource("Resource_ljkeo")])
+GrantedStats = Array[ExtResource("4_ddajl")]([SubResource("Resource_p0i1e")])
 
-[node name="DamageComponent" type="Node2D" parent="."]
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1105492453]
 script = ExtResource("5_bf711")
 AgressiveStat = ExtResource("3_4ycm5")
-DefensiveStat = ExtResource("6_0l00g")
 DamageToHealthRatio = 0.0
 
-[node name="TargetingData" type="Node2D" parent="."]
+[node name="TargetingData" type="Node2D" parent="." unique_id=203256046]
 script = ExtResource("7_00gcs")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://dqpj6uyywq7wn"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_6vrhf"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_820hn"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_2yokj"]
+[ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="8_awad0"]
+
+[resource]
+script = ExtResource("1_820hn")
+AbilityPath = "res://RESOURCES/Ability/Equippable/steeldagger.tscn"
+StartsDiscoverable = true
+Descriptors = Array[ExtResource("1_6vrhf")]([ExtResource("2_2yokj"), ExtResource("8_awad0")])

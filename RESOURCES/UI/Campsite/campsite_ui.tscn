@@ -1,96 +1,84 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnsp2jieynl7x"]
+[gd_scene format=3 uid="uid://cnsp2jieynl7x"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
-[ext_resource type="Shader" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
-[ext_resource type="PackedScene" uid="uid://cj14t2nuhup7j" path="res://RESOURCES/UI/_alpha_FormationUI/items_ui.tscn" id="3_hs3ra"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_0nvyf"]
+[ext_resource type="Script" uid="uid://b0td0w4ri6sy8" path="res://SCRIPTS/UI/Campsite/campsite_ui.gd" id="1_d5tvi"]
+[ext_resource type="Shader" uid="uid://chstaroxl1fuw" path="res://ART/Shaders/vignette.gdshader" id="1_dlrih"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bl6de"]
 shader = ExtResource("1_dlrih")
 shader_parameter/outerRadius = 1.962
 shader_parameter/MainAlpha = 0.789
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4tbk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwfut"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0a7"]
-
-[node name="CampsiteUI" type="CanvasLayer" node_paths=PackedStringArray("Vignette", "UIParent", "ViewButton", "InspectButton", "RestButton", "itemsPanel")]
-layer = 3
+[node name="CampsiteUI" type="Control" unique_id=466026091 node_paths=PackedStringArray("Vignette", "ViewButton", "InspectButton", "RestButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0nvyf")
 script = ExtResource("1_d5tvi")
 Vignette = NodePath("Vignette")
-UIParent = NodePath("UI")
-ViewButton = NodePath("UI/VBoxContainer/View")
-InspectButton = NodePath("UI/VBoxContainer/Inspect")
-RestButton = NodePath("UI/VBoxContainer/Rest")
-itemsPanel = NodePath("Items")
+ViewButton = NodePath("UI/MarginContainer/VBoxContainer/View")
+InspectButton = NodePath("UI/MarginContainer/VBoxContainer/Inspect")
+RestButton = NodePath("UI/MarginContainer/VBoxContainer/Rest")
+metadata/_custom_type_script = "uid://csvawibmpoykc"
 
-[node name="Vignette" type="ColorRect" parent="."]
+[node name="Vignette" type="ColorRect" parent="." unique_id=1048748509]
 material = SubResource("ShaderMaterial_bl6de")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
+[node name="UI" type="Panel" parent="." unique_id=1201832478]
+layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -319.0
-offset_right = 196.0
+offset_right = 224.0
 offset_bottom = 319.0
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=56391870]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.486275)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=310593668]
+layout_mode = 2
+size_flags_vertical = 4
 
-[node name="View" type="Button" parent="UI/VBoxContainer"]
+[node name="View" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=750558497]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 focus_next = NodePath("../Inspect")
 focus_previous = NodePath("../Rest")
-theme_override_styles/focus = SubResource("StyleBoxFlat_k4tbk")
 disabled = true
-text = "View Campsite"
+text = "ui_viewcampsite"
 
-[node name="Inspect" type="Button" parent="UI/VBoxContainer"]
+[node name="Inspect" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=704266805]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 focus_next = NodePath("../Rest")
 focus_previous = NodePath("../View")
-theme_override_styles/focus = SubResource("StyleBoxFlat_dwfut")
-text = "Inspect Team"
+text = "ui_inspectteam"
 
-[node name="Rest" type="Button" parent="UI/VBoxContainer"]
+[node name="Rest" type="Button" parent="UI/MarginContainer/VBoxContainer" unique_id=987848248]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 focus_next = NodePath("../View")
 focus_previous = NodePath("../Inspect")
-theme_override_styles/focus = SubResource("StyleBoxFlat_or0a7")
-text = "Rest"
+text = "ui_rest"
 
-[node name="Items" parent="." instance=ExtResource("3_hs3ra")]
-visible = false
-
-[connection signal="pressed" from="UI/VBoxContainer/View" to="." method="btn_View"]
-[connection signal="pressed" from="UI/VBoxContainer/Inspect" to="." method="btn_Inspect"]
-[connection signal="pressed" from="UI/VBoxContainer/Rest" to="." method="btn_Rest"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/View" to="." method="btn_View"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Inspect" to="." method="btn_Inspect"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Rest" to="." method="btn_Rest"]

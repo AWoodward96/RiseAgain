@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b7ci676xl78sm"]
+
+[ext_resource type="Script" uid="uid://cxby0m8r0m8la" path="res://RESOURCES/UI/MapObjectivePanel.gd" id="1_l2pes"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_gf1h0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpd7o"]
+font = ExtResource("2_gf1h0")
+font_color = Color(0.9666667, 1, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Optional1" type="Panel" unique_id=1630114564 node_paths=PackedStringArray("objectiveText", "completedParent")]
+custom_minimum_size = Vector2(0, 48)
+theme_type_variation = &"SubPanel3"
+script = ExtResource("1_l2pes")
+objectiveText = NodePath("MarginContainer/OptionalObjective")
+completedParent = NodePath("MarginContainer/OptionalObjective/OptionalObjectiveComplete")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=440634777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="OptionalObjective" type="Label" parent="MarginContainer" unique_id=1730735056]
+layout_mode = 2
+text = "Slay All Enemies"
+
+[node name="OptionalObjectiveComplete" type="Label" parent="MarginContainer/OptionalObjective" unique_id=1182606451]
+layout_mode = 0
+offset_left = 268.0
+offset_top = -24.0
+offset_right = 340.0
+offset_bottom = -8.0
+rotation = 0.3100336
+text = "ui_complete"
+label_settings = SubResource("LabelSettings_kpd7o")

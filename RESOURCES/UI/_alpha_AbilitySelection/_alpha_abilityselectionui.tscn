@@ -1,52 +1,145 @@
-[gd_scene load_steps=4 format=3 uid="uid://xl37svyevc7s"]
+[gd_scene format=3 uid="uid://xl37svyevc7s"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
-[ext_resource type="Script" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="1_3ktkx"]
+[ext_resource type="Script" uid="uid://bqe5sme8cxec8" path="res://RESOURCES/UI/_alpha_AbilitySelection/_alpha_abilityselectionui.gd" id="1_gmyer"]
+[ext_resource type="Texture2D" uid="uid://c15l7muofk0qs" path="res://ART/UI/Textures/parchment_2.png" id="3_omd1k"]
+[ext_resource type="LabelSettings" uid="uid://pyo20d27qcsx" path="res://RESOURCES/UI/LabelSettings/ability_selection_title.tres" id="3_ql6cx"]
 [ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
+[ext_resource type="PackedScene" uid="uid://0146em1f1pra" path="res://RESOURCES/UI/stat_entry_parchment.tscn" id="3_u3ppk"]
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="6_omd1k"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="7_rxl6x"]
+[ext_resource type="Texture2D" uid="uid://da8e6v5th61vs" path="res://ART/Icons/Units/knight.png" id="8_u3ppk"]
+[ext_resource type="LabelSettings" uid="uid://dosrukx8jhu7l" path="res://RESOURCES/UI/LabelSettings/parchment_title.tres" id="9_u3ppk"]
 
-[node name="SelectAnAbilityUI" type="CanvasLayer" node_paths=PackedStringArray("entryParent")]
-layer = 2
-script = ExtResource("1_gmyer")
-entryParent = NodePath("MarginContainer/MarginContainer/VBoxContainer/AbilityEntryList")
-abilityEntryPrefab = ExtResource("3_rxhv0")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="SelectAnAbilityUI" type="Control" unique_id=1043808054 node_paths=PackedStringArray("entryParent", "unitIcon", "unitName", "unitStatParent")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 96
-theme_override_constants/margin_top = 96
-theme_override_constants/margin_right = 96
-theme_override_constants/margin_bottom = 96
+script = ExtResource("1_gmyer")
+entryParent = NodePath("AbilitySelectionContainer/MarginContainer/VBoxContainer/AbilityEntryList")
+abilityEntryPrefab = ExtResource("3_rxhv0")
+unitIcon = NodePath("UnitsStats/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/UnitIcon")
+unitName = NodePath("UnitsStats/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/UnitName")
+unitStatEntry = ExtResource("3_u3ppk")
+unitStatParent = NodePath("UnitsStats/MarginContainer/VBoxContainer/StatContainer")
+Priority = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="AbilitySelectionContainer" type="MarginContainer" parent="." unique_id=1211105295]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -938.0
+offset_top = -293.0
+offset_right = -284.0
+offset_bottom = 279.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+
+[node name="ColorRect" type="TextureRect" parent="AbilitySelectionContainer" unique_id=1922527147]
+self_modulate = Color(0.4, 0.320267, 0.296, 0.839216)
 layout_mode = 2
-color = Color(0.53, 0.34927, 0.2014, 1)
+tooltip_text = "aaaa"
+texture = ExtResource("3_omd1k")
+expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="AbilitySelectionContainer" unique_id=1284729961]
 layout_mode = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 0
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilitySelectionContainer/MarginContainer" unique_id=2122522948]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Spacer" type="Control" parent="AbilitySelectionContainer/MarginContainer/VBoxContainer" unique_id=378343349]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="AbilitySelectionContainer/MarginContainer/VBoxContainer" unique_id=1625803713]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "ui_select_an_ability"
+label_settings = ExtResource("3_ql6cx")
 
-[node name="AbilityEntryList" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="AbilityEntryList" type="VBoxContainer" parent="AbilitySelectionContainer/MarginContainer/VBoxContainer" unique_id=944862295]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 32
+size_flags_vertical = 6
+theme_override_constants/separation = 8
+script = ExtResource("1_3ktkx")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="AbilitySelectionContainer" unique_id=834482689]
+layout_mode = 2
+texture = ExtResource("6_omd1k")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="UnitsStats" type="Panel" parent="." unique_id=533963080]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 73.0
+offset_right = 954.0
+offset_bottom = 601.0
+theme = ExtResource("7_rxl6x")
+
+[node name="MarginContainer" type="MarginContainer" parent="UnitsStats" unique_id=566326000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnitsStats/MarginContainer" unique_id=1970320665]
+layout_mode = 2
+
+[node name="Header" type="Panel" parent="UnitsStats/MarginContainer/VBoxContainer" unique_id=1297274794]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"SubPanel1"
+
+[node name="MarginContainer" type="MarginContainer" parent="UnitsStats/MarginContainer/VBoxContainer/Header" unique_id=1200244016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UnitsStats/MarginContainer/VBoxContainer/Header/MarginContainer" unique_id=301611104]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="UnitIcon" type="TextureRect" parent="UnitsStats/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer" unique_id=751855765]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("8_u3ppk")
+expand_mode = 1
+
+[node name="UnitName" type="Label" parent="UnitsStats/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer" unique_id=328889692]
+layout_mode = 2
+text = "Knight"
+label_settings = ExtResource("9_u3ppk")
+
+[node name="StatContainer" type="VBoxContainer" parent="UnitsStats/MarginContainer/VBoxContainer" unique_id=1225690619]
+layout_mode = 2
 script = ExtResource("1_3ktkx")

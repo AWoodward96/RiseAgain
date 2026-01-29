@@ -8,21 +8,25 @@ var selectedOption : EnemyAIOption
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
-
+	CommonStartTurn(_map, _unit)
 	options.clear()
+
 	selectedOption = null
+	attacked = false
+
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
-	var item = unit.EquippedWeapon
-	if item == null || !item.IsDamage():
+	var hasWeaponToUse = false
+	var weaponsAvailableForUse : Array[UnitUsable]
+	for a in unit.Abilities:
+		if a.type != Ability.EAbilityType.Tactical && a.IsDamage():
+			if a.remainingCooldown <= 0 || a.abilityCooldown == 0:
+				weaponsAvailableForUse.append(a)
+				hasWeaponToUse = true
+
+	if !hasWeaponToUse:
 		unit.QueueEndTurn()
 		return
-
-	var gridNeedsRefresh = false
-	if unit.Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor):
-		# This unit is flying and sort of follows different rules for navigation
-		_map.grid.RefreshGridForTurn(_map.crrentTurn, true)
-		gridNeedsRefresh = true
 
 	for i in range(0, Flags.size()):
 		var aiflag = Flags[i]
@@ -33,15 +37,31 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		if aiflag.Descriptor != null:
 			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template.Descriptors.find(aiflag.Descriptor) != -1)
 
-		for u in filteredUnitsOnTeam:
-			var newOption = EnemyAIOption.new()
-			newOption.flagIndex = i
-			newOption.totalFlags = Flags.size()
-			newOption.Update(_unit, u, map)
+		filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x : UnitInstance) : return !x.Stealthed)
 
-			if newOption.valid:
-				newOption.UpdateWeight()
-				options.append(newOption)
+		for u : UnitInstance in filteredUnitsOnTeam:
+			if u == null:
+				continue
+
+			# Be nice. If we can't see the player, we can't attack them
+			if u.Shrouded && !u.CurrentTile.Shroud.Exposed[_unit.UnitAllegiance]:
+				continue
+
+			for weapon in weaponsAvailableForUse:
+
+				var newOption : EnemyAIOption
+				if weapon.customAITargetingBehavior != null:
+					newOption = weapon.customAITargetingBehavior.Construct(_unit, u, map, weapon)
+				else:
+					newOption = EnemyAIOption.Construct(_unit, u, map, weapon) as EnemyAIOption
+
+				newOption.flagIndex = i
+				newOption.totalFlags = Flags.size()
+				newOption.Update()
+
+				if newOption.valid:
+					newOption.UpdateWeight()
+					options.append(newOption)
 
 	if options.size() == 0:
 		unit.QueueEndTurn()
@@ -50,14 +70,19 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	options.sort_custom(SortOptions)
 
 	# And what we're doing is.... the first option.
-	# Because no other options are valid
+	# Because we sorted the best option to the top
 	selectedOption = options[0]
 
-	unit.MoveCharacterToNode(selectedOption.path, selectedOption.tileToMoveTo)
-	TryCombat()
+	unit.MoveCharacterToNode(MovementData.Construct(selectedOption.path, selectedOption.tileToMoveTo))
 
-	if gridNeedsRefresh:
-		_map.grid.RefreshGridForTurn(_map.currentTurn)
+	# Moved trycombat to the runturn method
+	#TryCombat()
+
+
+func RunTurn():
+	if unit.IsStackFree && unit.Activated && !attacked:
+		TryCombat()
+	pass
 
 
 func SortOptions(_optA : EnemyAIOption, _optB : EnemyAIOption):
@@ -65,17 +90,23 @@ func SortOptions(_optA : EnemyAIOption, _optB : EnemyAIOption):
 
 
 func TryCombat():
-	if selectedOption.targetUnit == null || !selectedOption.canDealDamage:
+	attacked = true
+
+	# If we can't attack, just end the turn
+	if selectedOption.targetUnit == null || !selectedOption.canAttack:
 		unit.QueueEndTurn()
 		return
 
-	## default to the first item
-	if selectedOption.unitUsable != null && selectedOption.unitUsable.UsableDamageData != null:
-		var log = ActionLog.Construct(map.grid, unit, selectedOption.unitUsable)
+
+	if selectedOption.ability != null && selectedOption.ability.UsableDamageData != null:
+		var log = ActionLog.Construct(map.grid, unit, selectedOption.ability)
 		log.actionOriginTile = selectedOption.tileToAttack
 		log.sourceTile = selectedOption.tileToMoveTo	# Remember, we're pathfinding to this tile so the source has to be from here
-		log.affectedTiles.append(selectedOption.targetUnit.CurrentTile.AsTargetData())
-		log.damageData = selectedOption.unitUsable.UsableDamageData
+		log.affectedTiles.append_array(selectedOption.tilesHitByAttack)
+		log.damageData = selectedOption.ability.UsableDamageData
+		log.actionDirection = selectedOption.direction
+		log.atRange = selectedOption.atRange
+		log.BuildStepResults()
 
 		# The unit still needs to get to their destination first, so queue it up as a sequence
 		unit.QueueDelayedCombatAction(log)

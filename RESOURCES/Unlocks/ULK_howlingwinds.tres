@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://ccaswoe4if2md"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_k6ric"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_y2x0g"]
+
+[resource]
+script = ExtResource("1_y2x0g")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_howlingwinds.tscn"

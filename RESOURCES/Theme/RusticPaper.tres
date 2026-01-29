@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://y2p37fdv061m"]
+
+[ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="1_sol0g"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.24, 0.1896, 0.20136, 1)
+RichTextLabel/colors/font_outline_color = Color(0.24, 0.24, 0.24, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.35, 0.35, 0.35, 0.184314)
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_outline_size = 3
+RichTextLabel/font_sizes/bold_font_size = 24
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_sol0g")
+RichTextLabel/fonts/normal_font = ExtResource("1_sol0g")

@@ -1,32 +1,43 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=10 format=3 uid="uid://dsafb0qrhogjm"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://dsafb0qrhogjm"]
 
-[ext_resource type="PackedScene" uid="uid://bhl2enqfwvt80" path="res://RESOURCES/Ability/Equippable/steel_sword.tscn" id="1_8tbs1"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_8xysg"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="2_ylde8"]
-[ext_resource type="PackedScene" uid="uid://bnphn1vxuyakx" path="res://RESOURCES/Ability/Equippable/steel_bow.tscn" id="3_d5vr4"]
-[ext_resource type="PackedScene" uid="uid://mbareux7y73r" path="res://RESOURCES/Ability/Equippable/magic_bolt.tscn" id="4_fjv86"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="5_viryb"]
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_8xysg"]
+[ext_resource type="Resource" uid="uid://ck2y0oj2cq5d0" path="res://RESOURCES/Unlocks/ULK_steel_sword.tres" id="2_b0jqm"]
+[ext_resource type="Resource" uid="uid://cur7jhu8c2fcg" path="res://RESOURCES/Requirements/LTR_ValidSteelSword.tres" id="3_b0jqm"]
+[ext_resource type="Script" uid="uid://d20vg0fkktd58" path="res://SCRIPTS/Generic/LootTables/WeaponRewardEntry.gd" id="4_348ea"]
+[ext_resource type="Resource" uid="uid://bef4kh2kjen6x" path="res://RESOURCES/Unlocks/ULK_steel_bow.tres" id="5_7fyfk"]
+[ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="5_viryb"]
+[ext_resource type="Resource" uid="uid://cccpmepx44wdf" path="res://RESOURCES/Requirements/LTR_ValidSteelBow.tres" id="6_7fyfk"]
+[ext_resource type="Resource" uid="uid://dn5l4mv003m8i" path="res://RESOURCES/Unlocks/ULK_magic_bolt.tres" id="7_7pf3f"]
+[ext_resource type="Resource" uid="uid://d0ka51mx36ji3" path="res://RESOURCES/Requirements/LTR_ValidMagicBolt.tres" id="8_7pf3f"]
+[ext_resource type="Resource" uid="uid://dqpj6uyywq7wn" path="res://RESOURCES/Unlocks/ULK_steeldagger.tres" id="9_nqfie"]
+[ext_resource type="Resource" uid="uid://2b2wv01n860e" path="res://RESOURCES/Requirements/LTR_ValidSteelDagger.tres" id="10_nqfie"]
 
-[sub_resource type="Resource" id="Resource_2kq84"]
-script = ExtResource("2_ylde8")
-ItemPrefab = ExtResource("1_8tbs1")
-Weight = 1.0
-AccumulatedWeight = 1.0
+[sub_resource type="Resource" id="Resource_7fsbb"]
+script = ExtResource("4_348ea")
+ItemUnlockable = ExtResource("2_b0jqm")
+LootRequirement = ExtResource("3_b0jqm")
+metadata/_custom_type_script = "uid://d20vg0fkktd58"
 
-[sub_resource type="Resource" id="Resource_4tioh"]
-script = ExtResource("2_ylde8")
-ItemPrefab = ExtResource("3_d5vr4")
-Weight = 1.0
-AccumulatedWeight = 2.0
+[sub_resource type="Resource" id="Resource_0db21"]
+script = ExtResource("4_348ea")
+ItemUnlockable = ExtResource("5_7fyfk")
+LootRequirement = ExtResource("6_7fyfk")
+metadata/_custom_type_script = "uid://d20vg0fkktd58"
 
-[sub_resource type="Resource" id="Resource_ikpd5"]
-script = ExtResource("2_ylde8")
-ItemPrefab = ExtResource("4_fjv86")
-Weight = 1.0
-AccumulatedWeight = 3.0
+[sub_resource type="Resource" id="Resource_f7nkr"]
+script = ExtResource("4_348ea")
+ItemUnlockable = ExtResource("7_7pf3f")
+LootRequirement = ExtResource("8_7pf3f")
+metadata/_custom_type_script = "uid://d20vg0fkktd58"
+
+[sub_resource type="Resource" id="Resource_cyd3y"]
+script = ExtResource("4_348ea")
+ItemUnlockable = ExtResource("9_nqfie")
+LootRequirement = ExtResource("10_nqfie")
+metadata/_custom_type_script = "uid://d20vg0fkktd58"
 
 [resource]
 resource_name = "LT_Steel_Weapons"
 script = ExtResource("5_viryb")
-Table = Array[ExtResource("1_8xysg")]([SubResource("Resource_2kq84"), SubResource("Resource_4tioh"), SubResource("Resource_ikpd5")])
-WeightSum = 3.0
+Table = Array[ExtResource("1_8xysg")]([SubResource("Resource_7fsbb"), SubResource("Resource_0db21"), SubResource("Resource_f7nkr"), SubResource("Resource_cyd3y")])
+WeightSum = 4.0

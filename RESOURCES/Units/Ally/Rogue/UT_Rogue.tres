@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=36 format=3 uid="uid://b58tp7xqbg5jr"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://b58tp7xqbg5jr"]
 
 [ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="1_t7bl4"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_jwwlf"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_wfm6a"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_yo3n0"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_yn44r"]
@@ -11,14 +11,18 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_ef8hw"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_h8hmd"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_ydrqc"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_0ywe3"]
-[ext_resource type="PackedScene" uid="uid://crt2hqonneuuw" path="res://RESOURCES/Ability/Equippable/iron_sword.tscn" id="13_36dkf"]
-[ext_resource type="PackedScene" uid="uid://dl6qxjh1aw8tj" path="res://RESOURCES/Ability/Tactical/gauze.tscn" id="14_v6xa5"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_5b53c"]
-[ext_resource type="PackedScene" uid="uid://puxbxe6g34j8" path="res://RESOURCES/Ability/Standard/ART_slipnslash.tscn" id="15_dhaiq"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_0ywe3"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_2d8m2"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_k8vvo"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_phm8c"]
+[ext_resource type="Resource" uid="uid://ulev1ijcfbhu" path="res://RESOURCES/Unlocks/ULK_irondagger.tres" id="14_odgh2"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="15_5b53c"]
+[ext_resource type="Resource" uid="uid://bn2vvdjtrk201" path="res://RESOURCES/Unlocks/ULK_gauze.tres" id="15_hcbn3"]
 [ext_resource type="PackedScene" uid="uid://dkuqjts8ysscx" path="res://RESOURCES/Units/Ally/Rogue/VIS_Rogue.tscn" id="15_wkala"]
-[ext_resource type="PackedScene" uid="uid://bpgrco5853tx" path="res://RESOURCES/Ability/Standard/ART_daggerspray.tscn" id="16_da6hm"]
 [ext_resource type="Texture2D" uid="uid://cyunyo5s6o5oy" path="res://ART/Icons/Units/rogue.png" id="16_gnxnw"]
+[ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="17_2d8m2"]
+[ext_resource type="Resource" uid="uid://cx6d8skfrwms8" path="res://RESOURCES/Descriptors/DES_Bow.tres" id="18_k8vvo"]
+[ext_resource type="Texture2D" uid="uid://dqb3h4qw6mamd" path="res://ART/Icons/Units/rogue_movementpreview.png" id="23_k8vvo"]
 
 [sub_resource type="Resource" id="Resource_oxnwj"]
 script = ExtResource("2_jwwlf")
@@ -33,17 +37,14 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_4y18v"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("5_yn44r")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_oom0n"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("6_o1jfj")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_jtykb"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("7_8v775")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_43k8t"]
 script = ExtResource("2_jwwlf")
@@ -65,6 +66,55 @@ script = ExtResource("2_jwwlf")
 Template = ExtResource("11_ydrqc")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_el350"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("12_2d8m2")
+Value = 2.0
+
+[sub_resource type="Resource" id="Resource_fpc5n"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("13_k8vvo")
+
+[sub_resource type="Resource" id="Resource_k8vvo"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("3_wfm6a")
+Value = 2
+
+[sub_resource type="Resource" id="Resource_8tpyh"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("4_yo3n0")
+Value = 2
+
+[sub_resource type="Resource" id="Resource_q10uh"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("5_yn44r")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_agawq"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("6_o1jfj")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_cs8wg"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("7_8v775")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_6ctjk"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("10_h8hmd")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_1l8yn"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("12_2d8m2")
+Value = 3
+
+[sub_resource type="Resource" id="Resource_u3i2e"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("13_k8vvo")
+Value = 1
+
 [sub_resource type="Resource" id="Resource_188ue"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("3_wfm6a")
@@ -73,7 +123,7 @@ Value = 45.0
 [sub_resource type="Resource" id="Resource_23ok2"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("4_yo3n0")
-Value = 45.0
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_kfcwb"]
 script = ExtResource("2_jwwlf")
@@ -100,20 +150,32 @@ script = ExtResource("2_jwwlf")
 Template = ExtResource("10_h8hmd")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_vki38"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("12_2d8m2")
+Value = 45.0
+
+[sub_resource type="Resource" id="Resource_tu417"]
+script = ExtResource("2_jwwlf")
+Template = ExtResource("13_k8vvo")
+Value = 15.0
+
 [resource]
 resource_name = "UT_Rogue"
 script = ExtResource("15_5b53c")
 VisualPrefab = ExtResource("15_wkala")
-BaseStats = Array[ExtResource("2_jwwlf")]([SubResource("Resource_oxnwj"), SubResource("Resource_io0w6"), SubResource("Resource_4y18v"), SubResource("Resource_oom0n"), SubResource("Resource_jtykb"), SubResource("Resource_43k8t"), SubResource("Resource_kyck7"), SubResource("Resource_grctv"), SubResource("Resource_txne1")])
-StatGrowths = Array[ExtResource("2_jwwlf")]([SubResource("Resource_188ue"), SubResource("Resource_23ok2"), SubResource("Resource_kfcwb"), SubResource("Resource_uuf7t"), SubResource("Resource_f0g1q"), SubResource("Resource_qan0l"), SubResource("Resource_yxw23")])
+BaseStats = Array[ExtResource("2_jwwlf")]([SubResource("Resource_oxnwj"), SubResource("Resource_io0w6"), SubResource("Resource_4y18v"), SubResource("Resource_oom0n"), SubResource("Resource_jtykb"), SubResource("Resource_43k8t"), SubResource("Resource_kyck7"), SubResource("Resource_grctv"), SubResource("Resource_txne1"), SubResource("Resource_el350"), SubResource("Resource_fpc5n")])
+StatGrowths = Array[ExtResource("2_jwwlf")]([SubResource("Resource_188ue"), SubResource("Resource_23ok2"), SubResource("Resource_kfcwb"), SubResource("Resource_uuf7t"), SubResource("Resource_f0g1q"), SubResource("Resource_qan0l"), SubResource("Resource_yxw23"), SubResource("Resource_vki38"), SubResource("Resource_tu417")])
+PrestiegeCaps = Array[ExtResource("2_jwwlf")]([SubResource("Resource_k8vvo"), SubResource("Resource_8tpyh"), SubResource("Resource_q10uh"), SubResource("Resource_agawq"), SubResource("Resource_cs8wg"), SubResource("Resource_6ctjk"), SubResource("Resource_1l8yn"), SubResource("Resource_u3i2e")])
 Affinity = ExtResource("1_t7bl4")
-StartingItems = Array[PackedScene]([])
-StartingEquippedWeapon = ExtResource("13_36dkf")
-StartingTactical = ExtResource("14_v6xa5")
-Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([ExtResource("15_dhaiq"), ExtResource("16_da6hm")])
-Descriptors = Array[ExtResource("12_0ywe3")]([])
+StartingEquippedWeapon = ExtResource("14_odgh2")
+StartingTactical = ExtResource("15_hcbn3")
+Tier0Abilities = Array[String](["uid://blcieae5p0wwq"])
+Tier1Abilities = Array[String](["res://RESOURCES/Ability/Standard/ART_slipnslash.tscn", "res://RESOURCES/Ability/Standard/ART_daggerspray.tscn"])
+WeaponDescriptors = Array[ExtResource("12_0ywe3")]([ExtResource("17_2d8m2"), ExtResource("18_k8vvo")])
+FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "Rogue"
 loc_DisplayName = "unit_rogue_name"
 loc_Description = "unit_rogue_desc"
 icon = ExtResource("16_gnxnw")
+unitMovementPreview = ExtResource("23_k8vvo")

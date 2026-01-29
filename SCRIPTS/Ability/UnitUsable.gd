@@ -4,18 +4,26 @@ class_name UnitUsable
 @export var internalName : String
 @export var loc_displayName : String
 @export var loc_displayDesc : String
+@export var loc_flavorDesc : String
 @export var icon : Texture2D
+@export var descriptors : Array[DescriptorTemplate]
 
+@export var TargetingTemplate : TargetingDataBase
 @export var TargetingData : SkillTargetingData
-@export var UsableDamageData : DamageData
+@export var UsableDamageData : DamageData :
+	get:
+		if UsableDamageData != null && UsableDamageData.UseWeaponDataInstead && ownerUnit != null && ownerUnit.EquippedWeapon != null:
+			return ownerUnit.EquippedWeapon.UsableDamageData
+
+		return UsableDamageData
 @export var StatData : ItemStatComponent
 @export var HealData : HealComponent
 @export var MovementData : AbilityMovementComponent
 @export var EffectData : CombatEffectComponent
 @export var SummonData : SummonUnitComponent
-@export var PushComponentData : PushComponent
+@export var customAITargetingBehavior : Script
 
-
+var componentArray : Array[Node2D]
 var ownerUnit : UnitInstance
 var map : Map
 var playerController : PlayerController
@@ -32,21 +40,10 @@ func SetMap(_map : Map):
 	map = _map
 	playerController = map.playercontroller
 
-func ShowRangePreview(_sorted : bool = true):
-	if map == null:
-		return
-
-	if TargetingData == null:
-		map.grid.ClearActions()
-		return
-
-	var availableTargets = TargetingData.GetTilesInRange(ownerUnit, map.grid, _sorted)
-	for t in availableTargets:
-		t.CanAttack = true
-
-	map.grid.ShowActions()
-
 func GetRange():
+	if TargetingTemplate != null:
+		return TargetingTemplate.TargetRange
+
 	if TargetingData != null:
 		return TargetingData.TargetRange
 	return Vector2i(0, 0)
@@ -60,9 +57,6 @@ func IsWithinRange(_currentPosition : Vector2, _target : Vector2):
 	return dst >= TargetingData.TargetRange.x && dst <= TargetingData.TargetRange.y
 
 func GetAccuracy():
-	if StatData != null:
-		return StatData.BaseAccuracy
-
 	# Not quite sure if this is the right value to default to.
 	# Healing should always be 100% accurate and might not have StatData, so we'll see
 	return 100
@@ -75,6 +69,7 @@ func IsDamage():
 
 
 func GetComponents():
+	componentArray.clear()
 	var children = get_children()
 	for child in children:
 		if TargetingData == null && child is SkillTargetingData:
@@ -98,5 +93,10 @@ func GetComponents():
 		if SummonData == null && child is SummonUnitComponent:
 			SummonData = child as SummonUnitComponent
 
-		if PushComponentData == null && child is PushComponent:
-			PushComponentData = child as PushComponent
+	if TargetingData != null: componentArray.append(TargetingData)
+	if UsableDamageData != null: componentArray.append(UsableDamageData)
+	if StatData != null: componentArray.append(StatData)
+	if HealData != null: componentArray.append(HealData)
+	if MovementData != null: componentArray.append(MovementData)
+	if EffectData != null: componentArray.append(EffectData)
+	if SummonData != null: componentArray.append(SummonData)

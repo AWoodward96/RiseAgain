@@ -1,42 +1,46 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpgrco5853tx"]
+[gd_scene format=3 uid="uid://bpgrco5853tx"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_twrak"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_u3xn0"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_wbddj"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_8p7s7"]
-[ext_resource type="Texture2D" uid="uid://bahn7dncans8s" path="res://ART/Icons/Ability/Standard/doubleshot.png" id="5_brpmk"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="6_7kqmr"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="7_lpdty"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="8_w0vyi"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_qfkqn"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_twrak"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_u3xn0"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_65c8c"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_bc7t5"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_8p7s7"]
+[ext_resource type="Texture2D" uid="uid://c0l0mkghce4r7" path="res://ART/Icons/Ability/Standard/daggerspray.png" id="5_aqj45"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="6_7kqmr"]
+[ext_resource type="Resource" uid="uid://8uetrp4jtgn4" path="res://RESOURCES/Ability/TargetingTemplates/daggerspray_targeting.tres" id="7_65c8c"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="8_aqj45"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="9_qfkqn"]
 [ext_resource type="Resource" uid="uid://b40qcbkv4pluw" path="res://RESOURCES/TargetingShapes/daggerspray_shape.tres" id="10_tucw4"]
 
-[sub_resource type="Resource" id="Resource_nobtd"]
-script = ExtResource("3_wbddj")
-useAttackAction = true
-useDefendAction = true
+[sub_resource type="Resource" id="Resource_1b6yg"]
+script = ExtResource("3_65c8c")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_xsqsi"]
+script = ExtResource("3_bc7t5")
 
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("4_8p7s7")
 
-[node name="ART_daggerspray" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_daggerspray" type="Node2D" unique_id=500353069 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_twrak")
-focusCost = 2.0
-executionStack = Array[ExtResource("2_u3xn0")]([SubResource("Resource_nobtd"), SubResource("Resource_5cjq5")])
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_u3xn0")]([SubResource("Resource_1b6yg"), SubResource("Resource_xsqsi"), SubResource("Resource_5cjq5")])
 internalName = "daggerspray"
 loc_displayName = "art_daggerspray_name"
 loc_displayDesc = "art_daggerspray_desc"
-icon = ExtResource("5_brpmk")
+icon = ExtResource("5_aqj45")
+TargetingTemplate = ExtResource("7_65c8c")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=567456788]
 script = ExtResource("6_7kqmr")
-AgressiveStat = ExtResource("7_lpdty")
-DefensiveStat = ExtResource("8_w0vyi")
+FlatValue = 2.0
+AgressiveStat = ExtResource("8_aqj45")
 DamageToHealthRatio = 0.0
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=2098169614]
 script = ExtResource("9_qfkqn")
 TargetRange = Vector2i(1, 3)
 Type = 2

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bkktm0cwqep5n"]
+
+[ext_resource type="Script" uid="uid://dv7b711vbmotr" path="res://SCRIPTS/UI/Entries/resource_cost_entry.gd" id="1_brwdn"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="2_qyx5j"]
+[ext_resource type="Script" uid="uid://dert4f3wj4vgx" path="res://SCRIPTS/UI/DetailEntry.gd" id="2_t4ybf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t4ybf"]
+resource_local_to_scene = true
+font = ExtResource("2_qyx5j")
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="ResourceCostEntry" type="HBoxContainer" unique_id=722914166 node_paths=PackedStringArray("icon", "label", "detailEntry")]
+script = ExtResource("1_brwdn")
+icon = NodePath("TextureRect")
+label = NodePath("Label")
+detailEntry = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=486363338]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 2
+script = ExtResource("2_t4ybf")
+
+[node name="Label" type="Label" parent="." unique_id=1391748329]
+layout_mode = 2
+text = "cost_value"
+label_settings = SubResource("LabelSettings_t4ybf")
+horizontal_alignment = 2

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c77gxravt3w7h"]
+
+[ext_resource type="Texture2D" uid="uid://dr8fijixwuvi5" path="res://ART/GridEntities/tmp_bomb.png" id="1_7of5h"]
+[ext_resource type="Script" uid="uid://cnusnxccpem10" path="res://SCRIPTS/GridEntities/GEProximityBomb.gd" id="1_uihm1"]
+[ext_resource type="Texture2D" uid="uid://dkqrtalgsk7nm" path="res://ART/Icons/Ability/Standard/summonmine.png" id="3_3pw8o"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="3_r5jt8"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="5_k1khf"]
+
+[node name="ProximityMine" type="Node2D" unique_id=1552265975 node_paths=PackedStringArray("damageData")]
+z_index = -1
+script = ExtResource("1_uihm1")
+interruptionType = 3
+damageData = NodePath("DamageData")
+PreviewSprite = ExtResource("1_7of5h")
+localization_icon = ExtResource("3_3pw8o")
+localization_desc = "ui_mine_effectdesc"
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=789653237]
+scale = Vector2(2, 2)
+texture = ExtResource("1_7of5h")
+offset = Vector2(16, 16)
+
+[node name="DamageData" type="Node2D" parent="." unique_id=1164026794]
+script = ExtResource("3_r5jt8")
+FlatValue = 3.0
+AgressiveStat = ExtResource("5_k1khf")

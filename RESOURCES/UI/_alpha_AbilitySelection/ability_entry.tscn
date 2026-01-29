@@ -1,118 +1,333 @@
-[gd_scene load_steps=6 format=3 uid="uid://co7lel8ngy6or"]
+[gd_scene format=3 uid="uid://co7lel8ngy6or"]
 
-[ext_resource type="Script" path="res://AbilityEntryUI.gd" id="1_opl86"]
+[ext_resource type="Script" uid="uid://dsclb6hje7yvq" path="res://SCRIPTS/UI/General/AbilityEntryUI.gd" id="1_opl86"]
+[ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="2_16e7i"]
 [ext_resource type="Texture2D" uid="uid://kuxf77vdy05p" path="res://ART/Icons/Ability/Standard/drain.png" id="2_bmu0w"]
-[ext_resource type="Texture2D" uid="uid://d0l3ryklg7aoj" path="res://ART/Icons/focus_icon.png" id="3_bwi8i"]
-[ext_resource type="Texture2D" uid="uid://x61rbwe8vybw" path="res://ART/Icons/range_icon.png" id="4_xkn6m"]
-[ext_resource type="Texture2D" uid="uid://bdl6ktf4ibcmo" path="res://ART/UI/arrow_icon.png" id="5_rxj5p"]
+[ext_resource type="LabelSettings" uid="uid://pyo20d27qcsx" path="res://RESOURCES/UI/LabelSettings/ability_selection_title.tres" id="3_2np0u"]
+[ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="5_6wtur"]
+[ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="5_em1u0"]
+[ext_resource type="LabelSettings" uid="uid://dhpn7ahthlvkq" path="res://RESOURCES/UI/LabelSettings/FocusCostLabel.tres" id="5_hl217"]
+[ext_resource type="Texture2D" uid="uid://db37hp17pcctg" path="res://ART/Icons/cooldown_icon.png" id="6_ergra"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="7_em1u0"]
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="7_hl217"]
+[ext_resource type="LabelSettings" uid="uid://bpweev6j422g3" path="res://RESOURCES/UI/LabelSettings/ability_selection_subtitle.tres" id="7_icv2n"]
+[ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="8_16e7i"]
+[ext_resource type="LabelSettings" uid="uid://kv0m2b2ocgp4" path="res://RESOURCES/UI/LabelSettings/ability_selection_data.tres" id="8_em1u0"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_hl217"]
 
-[node name="AbilityEntry" type="PanelContainer" node_paths=PackedStringArray("SelectedParent", "abilityNameText", "abilityDescriptionText", "abilityIcon", "focusCostText", "rangeText")]
+[sub_resource type="Gradient" id="Gradient_em1u0"]
+colors = PackedColorArray(0.1178, 0.1178, 0.31, 1, 0.0608, 0.0608, 0.08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dk8wh"]
+gradient = SubResource("Gradient_em1u0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_16e7i"]
+colors = PackedColorArray(0.31, 0.1178, 0.1178, 1, 0.08, 0.0608, 0.0608, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ergra"]
+gradient = SubResource("Gradient_16e7i")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_icv2n"]
+colors = PackedColorArray(0.1178, 0.31, 0.31, 1, 0.0608, 0.0608, 0.08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_em1u0"]
+gradient = SubResource("Gradient_icv2n")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_ergra"]
+colors = PackedColorArray(0.51328, 0.4672, 0.64, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cye58"]
+gradient = SubResource("Gradient_ergra")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_16e7i"]
+gradient = SubResource("Gradient_icv2n")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_em1u0"]
+font = ExtResource("2_16e7i")
+font_size = 32
+
+[node name="AbilityEntry" type="PanelContainer" unique_id=239758953 node_paths=PackedStringArray("Background", "abilityTypeHeader", "abilityNameText", "abilityDescriptionText", "abilityIcon", "cooldownParent", "cooldownText", "StatsGrantedParent", "usesParent", "usageLeft", "rangeParent", "rangeText", "targetingParent", "targetingTypeText", "speedParent", "speedText", "SelectedParent", "FocusSound", "SelectedSound")]
 auto_translate_mode = 1
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(576, 160)
+offset_right = 770.0
+offset_bottom = 177.0
 focus_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("1_opl86")
-SelectedParent = NodePath("Panel/Select_Icon")
-abilityNameText = NodePath("Panel/VBoxContainer/TitleContainer/AbilityName")
-abilityDescriptionText = NodePath("Panel/VBoxContainer/AbilityDescription")
-abilityIcon = NodePath("Panel/VBoxContainer/TitleContainer/AbilityIcon")
-focusCostText = NodePath("Panel/VBoxContainer/Control/FocusCostParent/FocusCost")
-rangeText = NodePath("Panel/VBoxContainer/Control/RangeParent/HBoxContainer/RangeAmt")
+Background = NodePath("Base/MarginContainer/BG")
+abilityTypeHeader = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/AbilityType")
+abilityNameText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/AbilityName")
+abilityDescriptionText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/AbilityDescription")
+abilityIcon = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/AbilityIcon")
+cooldownParent = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent")
+cooldownText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent/CooldownText")
+StatsGrantedParent = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/Stats_Granted")
+StatsGrantedPrefab = ExtResource("5_em1u0")
+usesParent = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses")
+usageLeft = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses/UsesDesc")
+rangeParent = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range")
+rangeText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range/RangeDesc")
+targetingParent = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting")
+targetingTypeText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting/TargetingDesc")
+speedParent = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed")
+speedText = NodePath("Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed/SpeedDesc")
+AbilityBG = SubResource("GradientTexture2D_dk8wh")
+WeaponBG = SubResource("GradientTexture2D_ergra")
+TacticalBG = SubResource("GradientTexture2D_em1u0")
+PassiveBG = SubResource("GradientTexture2D_cye58")
+SelectedParent = NodePath("Base/Selected")
+FocusSound = NodePath("Focused")
+SelectedSound = NodePath("Selected")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Base" type="MarginContainer" parent="." unique_id=1977005598]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="Selected" type="ColorRect" parent="Base" unique_id=1728313988]
+visible = false
 layout_mode = 2
-offset_right = 256.0
-offset_bottom = 256.0
+color = Color(1, 0.966667, 0, 0.898039)
 
-[node name="TitleContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="MarginContainer" type="MarginContainer" parent="Base" unique_id=104858171]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="BG" type="TextureRect" parent="Base/MarginContainer" unique_id=1751992386]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_16e7i")
+
+[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer" unique_id=1358481442]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Base/MarginContainer/MarginContainer" unique_id=1514896678]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=1550640950]
+layout_mode = 2
+
+[node name="Bg" type="ColorRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer" unique_id=136578898]
+layout_mode = 2
+color = Color(0.22, 0.22, 0.22, 0.517647)
+
+[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer" unique_id=963795694]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TitleContainer" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer" unique_id=1716405493]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="AbilityIcon" type="TextureRect" parent="Panel/VBoxContainer/TitleContainer"]
-custom_minimum_size = Vector2(64, 64)
+[node name="AbilityType" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=1752407867]
+layout_mode = 2
+text = "ABL:"
+label_settings = SubResource("LabelSettings_em1u0")
+
+[node name="AbilityIcon" type="TextureRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=2030722793]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_bmu0w")
 expand_mode = 1
 
-[node name="AbilityName" type="Label" parent="Panel/VBoxContainer/TitleContainer"]
+[node name="AbilityName" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=1685025438]
 layout_mode = 2
 text = "ability_name"
+label_settings = ExtResource("3_2np0u")
 
-[node name="Control" type="Control" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="Control" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=664313597]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="FocusCostParent" type="Control" parent="Panel/VBoxContainer/Control"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -16.0
-offset_right = 100.0
-offset_bottom = 16.0
-grow_vertical = 2
+[node name="CooldownParent" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=252664705]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="FocusIcon" type="TextureRect" parent="Panel/VBoxContainer/Control/FocusCostParent"]
+[node name="CooldownIcon" type="TextureRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent" unique_id=1657476940]
 custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-offset_left = 8.0
-offset_right = 40.0
-offset_bottom = 32.0
-texture = ExtResource("3_bwi8i")
-expand_mode = 1
-
-[node name="FocusCost" type="Label" parent="Panel/VBoxContainer/Control/FocusCostParent"]
-layout_mode = 2
-offset_left = 48.0
-offset_top = 4.0
-offset_right = 95.0
-offset_bottom = 27.0
-text = "{AMT}"
-
-[node name="RangeParent" type="Control" parent="Panel/VBoxContainer/Control"]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -16.0
-offset_bottom = 16.0
+offset_left = -32.0
+offset_top = -16.5
+offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Control/RangeParent"]
-layout_mode = 0
-offset_right = 170.0
-offset_bottom = 32.0
-
-[node name="RangeIcon" type="TextureRect" parent="Panel/VBoxContainer/Control/RangeParent/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("4_xkn6m")
+texture = ExtResource("6_ergra")
 expand_mode = 1
 
-[node name="RangeAmt" type="Label" parent="Panel/VBoxContainer/Control/RangeParent/HBoxContainer"]
-layout_mode = 2
-text = "ui_range_amount"
+[node name="CooldownText" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer/CooldownParent" unique_id=1910601297]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = 2.5
+offset_right = 3.0
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "1"
+label_settings = ExtResource("5_hl217")
+horizontal_alignment = 2
 
-[node name="AbilityDescription" type="RichTextLabel" parent="Panel/VBoxContainer"]
+[node name="Stats_Granted" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/TitleContainer" unique_id=1590039250]
 layout_mode = 2
+script = ExtResource("7_em1u0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/TitleContainer" unique_id=1162187704]
+layout_mode = 2
+texture = ExtResource("5_6wtur")
+patch_margin_left = 4
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Range_Targeting_Speed" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=861441677]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="ColorRect" type="ColorRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed" unique_id=1245411737]
+layout_mode = 2
+color = Color(0.44, 0.44, 0.44, 0.313726)
+
+[node name="MarginContainer" type="MarginContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed" unique_id=294801184]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer" unique_id=78723463]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Targeting" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=307519769]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetingTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting" unique_id=1477079282]
+layout_mode = 2
+text = "ui_targeting_title"
+label_settings = ExtResource("7_icv2n")
+vertical_alignment = 2
+
+[node name="TargetingDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Targeting" unique_id=1744646178]
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 2
+text = "directional"
+label_settings = ExtResource("8_em1u0")
+vertical_alignment = 1
+
+[node name="Range" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=26784155]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RangeTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range" unique_id=175113973]
+layout_mode = 2
+text = "ui_range_title"
+label_settings = ExtResource("7_icv2n")
+
+[node name="RangeDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Range" unique_id=343007620]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "range"
+label_settings = ExtResource("8_em1u0")
+
+[node name="Speed" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=1212511635]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpeedTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed" unique_id=458360543]
+layout_mode = 2
+text = "ui_speed_title"
+label_settings = ExtResource("7_icv2n")
+
+[node name="SpeedDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Speed" unique_id=807619743]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "speed"
+label_settings = ExtResource("8_em1u0")
+
+[node name="Uses" type="HBoxContainer" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer" unique_id=564895381]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UsesTitle" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses" unique_id=1183470671]
+layout_mode = 2
+text = "ui_uses_title"
+label_settings = ExtResource("7_icv2n")
+
+[node name="UsesDesc" type="Label" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed/MarginContainer/HBoxContainer/Uses" unique_id=1708657151]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "2"
+label_settings = ExtResource("8_em1u0")
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer/MarginContainer/VBoxContainer/Range_Targeting_Speed" unique_id=2071200271]
+layout_mode = 2
+texture = ExtResource("8_16e7i")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Seperator" type="Control" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=1525497059]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="AbilityDescription" type="RichTextLabel" parent="Base/MarginContainer/MarginContainer/VBoxContainer" unique_id=488843107]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_hl217")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})"
 fit_content = true
 
-[node name="Select_Icon" type="TextureRect" parent="Panel"]
-visible = false
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/MarginContainer" unique_id=385819095]
 layout_mode = 2
-offset_left = 95.0
-offset_top = 238.0
-offset_right = 159.0
-offset_bottom = 302.0
-texture = ExtResource("5_rxj5p")
+texture = ExtResource("7_hl217")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Focused" type="FmodEventEmitter2D" parent="." unique_id=1333872727]
+event_name = "event:/SFX/UI/UI_Move_Standard"
+event_guid = "{9e237bb9-a830-4ce7-bde8-fdf81456e26c}"
+
+[node name="Selected" type="FmodEventEmitter2D" parent="." unique_id=1849247792]
+event_name = "event:/SFX/UI/UI_Select_Standard"
+event_guid = "{e71c93ce-e47c-49a3-b82a-a4d9210a36b8}"

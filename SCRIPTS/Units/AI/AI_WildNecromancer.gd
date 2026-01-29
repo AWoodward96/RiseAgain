@@ -8,7 +8,6 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		unit = _unit
 		map = _map
 		grid = map.grid
-		pathfinding = grid.Pathfinding
 
 		# Decision Tree 1:
 		# We have enough Focus to cast Raise Dead
@@ -22,7 +21,7 @@ func Decision_RaiseDead():
 	# first find raise dead
 	var raiseDead : Ability
 	for ability in unit.Abilities:
-		if ability.type == Ability.AbilityType.Standard:
+		if ability.type == Ability.EAbilityType.Standard:
 			# This should be it - otherwise we've messed up
 			raiseDead = ability as Ability
 			break
@@ -33,7 +32,6 @@ func Decision_RaiseDead():
 	# If we're here we have enough focus to cast Raise Dead
 	# Now we need to figure out where we're casting it
 	var allTilesInRange = map.grid.GetTilesWithinRange(unit.CurrentTile.Position, raiseDead.GetRange(), false)
-	var selectedTile : Tile
 	for tile in allTilesInRange:
 		# take the first tile that is empty
 		# If range is greater than 1,1 the gettileswithinrange will be sorted from closest to furthest anyway

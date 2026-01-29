@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="StunEffectTemplate" load_steps=3 format=3 uid="uid://b2s1f01511cjj"]
+[gd_resource type="Resource" script_class="StunEffectTemplate" format=3 uid="uid://b2s1f01511cjj"]
 
-[ext_resource type="Script" path="res://SCRIPTS/CombatEffects/StunEffectTemplate.gd" id="1_7547n"]
+[ext_resource type="Script" uid="uid://ds2mttne1u335" path="res://SCRIPTS/CombatEffects/StunEffectTemplate.gd" id="1_7547n"]
 [ext_resource type="Texture2D" uid="uid://df743vavq35y" path="res://ART/Icons/stunned_icion.png" id="1_fqt0v"]
 
 [resource]

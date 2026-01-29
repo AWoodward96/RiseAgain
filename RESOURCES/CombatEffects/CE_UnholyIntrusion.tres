@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StatChangeEffect" format=3 uid="uid://cr516cksscxju"]
+
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_ipcew"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="2_iryat"]
+[ext_resource type="Texture2D" uid="uid://d3jgc60l1d3c0" path="res://ART/Icons/unholy_ground.png" id="3_xjl1i"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="4_trg4i"]
+
+[sub_resource type="Resource" id="Resource_k6dnj"]
+script = ExtResource("1_ipcew")
+Stat = ExtResource("2_iryat")
+FlatValue = -3
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[resource]
+script = ExtResource("4_trg4i")
+StatChanges = Array[ExtResource("1_ipcew")]([SubResource("Resource_k6dnj")])
+show_popup = false
+loc_name = "ce_unholyintruder_name"
+loc_desc = "ce_unholyintruder_desc"
+loc_icon = ExtResource("3_xjl1i")
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"

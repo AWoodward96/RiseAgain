@@ -26,6 +26,6 @@ func Refresh(_weapon : Ability):
 			var statDef = statData.GrantedStats[0]
 			if statDef != null:
 				statBlockEntry.icon.texture = statDef.Template.loc_icon
-				statBlockEntry.statValue.text = str(statDef.Value)
+				statBlockEntry.statValue.text = "%01.0d" % [statDef.Value]
 		else:
 			statBlockEntry.visible = false

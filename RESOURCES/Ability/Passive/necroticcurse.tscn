@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bjkyhhnp44588"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vd6b5"]
+[ext_resource type="Texture2D" uid="uid://dxd72mb5gjmsh" path="res://ART/Icons/Ability/Passive/necroticcurse.png" id="2_vd6b5"]
+[ext_resource type="Script" uid="uid://bwvegwrh1eo7t" path="res://SCRIPTS/Ability/PassiveZombifyOnKill.gd" id="3_66wk3"]
+[ext_resource type="Script" uid="uid://cadxxf235o7so" path="res://SCRIPTS/Generic/UnitPair.gd" id="4_ngpvk"]
+[ext_resource type="Resource" uid="uid://btjy0lp33oaqu" path="res://RESOURCES/Units/Enemy/AdultWolf/UT_AdultWolf.tres" id="5_fxkjc"]
+[ext_resource type="Resource" uid="uid://dt5vofrnbdu6c" path="res://RESOURCES/Units/Enemy/AdultZolf/UT_AdultZolf.tres" id="6_cy5f2"]
+[ext_resource type="Resource" uid="uid://druuu3tv4re06" path="res://RESOURCES/Units/Enemy/AdolescentWolf/UT_AdolescentWolf.tres" id="7_lwt0w"]
+[ext_resource type="Resource" uid="uid://g6emosn4u7nk" path="res://RESOURCES/Units/Enemy/Zolf/UT_Zolf.tres" id="8_dck1e"]
+[ext_resource type="Resource" uid="uid://ba7d8xyuy5mgm" path="res://RESOURCES/Units/Enemy/WolfPup/UT_WolfPup.tres" id="9_0vdtk"]
+[ext_resource type="Resource" uid="uid://qtltk2i8ar11" path="res://RESOURCES/Units/Enemy/WolfMother/UT_WolfMother.tres" id="10_6kcqc"]
+[ext_resource type="Resource" uid="uid://be6wwr3ymjar2" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Common.tres" id="11_c2qeq"]
+[ext_resource type="Script" uid="uid://cp4af6ps3pafs" path="res://SCRIPTS/Units/AI/AggroTypeBase.gd" id="12_jmu1h"]
+
+[sub_resource type="Resource" id="Resource_ais6r"]
+script = ExtResource("4_ngpvk")
+Unit1 = ExtResource("5_fxkjc")
+Unit2 = ExtResource("6_cy5f2")
+
+[sub_resource type="Resource" id="Resource_as0qu"]
+script = ExtResource("4_ngpvk")
+Unit1 = ExtResource("7_lwt0w")
+Unit2 = ExtResource("8_dck1e")
+
+[sub_resource type="Resource" id="Resource_mox3i"]
+script = ExtResource("4_ngpvk")
+Unit1 = ExtResource("9_0vdtk")
+Unit2 = ExtResource("8_dck1e")
+
+[sub_resource type="Resource" id="Resource_ic254"]
+script = ExtResource("4_ngpvk")
+Unit1 = ExtResource("10_6kcqc")
+Unit2 = ExtResource("6_cy5f2")
+
+[sub_resource type="Resource" id="Resource_wnfpv"]
+script = ExtResource("12_jmu1h")
+metadata/_custom_type_script = "uid://cp4af6ps3pafs"
+
+[node name="NecroticCurse" type="Node2D" unique_id=487170033 node_paths=PackedStringArray("passiveListeners")]
+script = ExtResource("1_vd6b5")
+type = 3
+abilityCooldown = 0
+passiveListeners = [NodePath("PassiveUnitDeathListener")]
+internalName = "necroticcurse"
+loc_displayName = "passive_necroticcurse_name"
+loc_displayDesc = "passive_necroticcurse_desc"
+icon = ExtResource("2_vd6b5")
+
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=186965167]
+script = ExtResource("3_66wk3")
+UnitPairs = Array[ExtResource("4_ngpvk")]([SubResource("Resource_ais6r"), SubResource("Resource_as0qu"), SubResource("Resource_mox3i"), SubResource("Resource_ic254")])
+SpawnedUnitAI = ExtResource("11_c2qeq")
+SpawnedUnitAggroBehavior = SubResource("Resource_wnfpv")
+reqKilledByUser = true
+metadata/_custom_type_script = "uid://bwvegwrh1eo7t"

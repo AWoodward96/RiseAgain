@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="CutsceneTemplate" format=3 uid="uid://beibj568earfb"]
+
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_prkya"]
+[ext_resource type="Script" uid="uid://cl5ml7e14etw6" path="res://SCRIPTS/Cutscene/Events/BlockSaveEvent.gd" id="2_h8s1e"]
+[ext_resource type="Script" uid="uid://7au8sue07yi0" path="res://SCRIPTS/Cutscene/Events/SaveCampaignEvent.gd" id="3_ay5tq"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="4_e5pea"]
+[ext_resource type="Script" uid="uid://duv72omd4pxsp" path="res://SCRIPTS/Cutscene/Requirements/FormationStateReq.gd" id="5_61100"]
+[ext_resource type="Script" uid="uid://dpjk17wyac3d7" path="res://SCRIPTS/Cutscene/CutsceneRequirement.gd" id="6_tfu2o"]
+[ext_resource type="Script" uid="uid://8eww3y17ma8r" path="res://SCRIPTS/Cutscene/Events/SmartBlockInputs.gd" id="7_md3il"]
+[ext_resource type="Script" uid="uid://b5qgscwxgnauj" path="res://SCRIPTS/Cutscene/Events/WaitEvent.gd" id="8_4m5qa"]
+[ext_resource type="Script" uid="uid://bj74wl8sujiky" path="res://SCRIPTS/Cutscene/Events/ShowTutorialPromptEvent.gd" id="9_x1hoj"]
+[ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="21_kdxo7"]
+
+[sub_resource type="Resource" id="Resource_p62lg"]
+script = ExtResource("2_h8s1e")
+metadata/_custom_type_script = "uid://cl5ml7e14etw6"
+
+[sub_resource type="Resource" id="Resource_trafc"]
+script = ExtResource("3_ay5tq")
+metadata/_custom_type_script = "uid://7au8sue07yi0"
+
+[sub_resource type="Resource" id="Resource_7wh8y"]
+script = ExtResource("2_h8s1e")
+BlockUniverseSave = true
+BlockCampaignSave = true
+BlockMapSave = true
+metadata/_custom_type_script = "uid://cl5ml7e14etw6"
+
+[sub_resource type="Resource" id="Resource_awhy7"]
+script = ExtResource("5_61100")
+metadata/_custom_type_script = "uid://duv72omd4pxsp"
+
+[sub_resource type="Resource" id="Resource_d38lv"]
+script = ExtResource("6_tfu2o")
+requirements = Array[ExtResource("4_e5pea")]([SubResource("Resource_awhy7")])
+events = Array[ExtResource("1_prkya")]([SubResource("Resource_p62lg"), SubResource("Resource_trafc"), SubResource("Resource_7wh8y")])
+metadata/_custom_type_script = "uid://dpjk17wyac3d7"
+
+[sub_resource type="Resource" id="Resource_4qxqh"]
+script = ExtResource("7_md3il")
+BlockMovementInput = true
+BlockSelectInput = true
+BlockCancelInput = true
+BlockInspectInput = true
+metadata/_custom_type_script = "uid://8eww3y17ma8r"
+
+[sub_resource type="Resource" id="Resource_psvue"]
+script = ExtResource("8_4m5qa")
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_m4njk"]
+resource_name = "This is the last map in the Tutorial. Be careful, the training wheels have been removed, and Enemies deal a lot more damage now!"
+script = ExtResource("9_x1hoj")
+size = Vector2(360, 160)
+anchor = 8
+loc_text = "tut_complete0"
+builtInFreeze = true
+freezeDuration = 3.0
+metadata/_custom_type_script = "uid://bj74wl8sujiky"
+
+[sub_resource type="Resource" id="Resource_jubj7"]
+resource_name = "After you win or lose, you'll have the option of starting a new campaign with any of the Units in the game."
+script = ExtResource("9_x1hoj")
+anchor = 8
+loc_text = "tut_complete1"
+builtInFreeze = true
+freezeDuration = 2.0
+metadata/_custom_type_script = "uid://bj74wl8sujiky"
+
+[sub_resource type="Resource" id="Resource_h1vw4"]
+resource_name = "Good luck!"
+script = ExtResource("9_x1hoj")
+anchor = 8
+loc_text = "tut_complete2"
+builtInFreeze = true
+freezeDuration = 2.0
+metadata/_custom_type_script = "uid://bj74wl8sujiky"
+
+[sub_resource type="Resource" id="Resource_3elxb"]
+script = ExtResource("9_x1hoj")
+show = false
+metadata/_custom_type_script = "uid://bj74wl8sujiky"
+
+[sub_resource type="Resource" id="Resource_j5eug"]
+script = ExtResource("7_md3il")
+metadata/_custom_type_script = "uid://8eww3y17ma8r"
+
+[sub_resource type="Resource" id="Resource_u3cuo"]
+script = ExtResource("5_61100")
+NOT = true
+metadata/_custom_type_script = "uid://duv72omd4pxsp"
+
+[sub_resource type="Resource" id="Resource_ylls4"]
+script = ExtResource("6_tfu2o")
+requirements = Array[ExtResource("4_e5pea")]([SubResource("Resource_u3cuo")])
+events = Array[ExtResource("1_prkya")]([SubResource("Resource_4qxqh"), SubResource("Resource_psvue"), SubResource("Resource_m4njk"), SubResource("Resource_jubj7"), SubResource("Resource_h1vw4"), SubResource("Resource_3elxb"), SubResource("Resource_j5eug")])
+metadata/_custom_type_script = "uid://dpjk17wyac3d7"
+
+[resource]
+script = ExtResource("21_kdxo7")
+events = Array[ExtResource("1_prkya")]([SubResource("Resource_d38lv"), SubResource("Resource_ylls4")])
+metadata/_custom_type_script = "uid://c10jnc1t5gw2i"

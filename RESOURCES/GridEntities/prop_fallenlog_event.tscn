@@ -1,0 +1,276 @@
+[gd_scene format=4 uid="uid://box3su6g0xsd3"]
+
+[ext_resource type="Script" uid="uid://derphi8p4aems" path="res://SCRIPTS/GridEntities/GEProp.gd" id="1_tudn3"]
+[ext_resource type="Texture2D" uid="uid://c8t6102i2v87a" path="res://ART/VFX/cloud_vfx_2.png" id="2_dkvcv"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_lyc2n"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_7mwco"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="3_lyc2n"]
+[ext_resource type="PackedScene" uid="uid://cndmf0hcxrc30" path="res://RESOURCES/VFX/explosion_vfx.tscn" id="6_6o3i8"]
+
+[sub_resource type="Resource" id="Resource_a0pxv"]
+script = ExtResource("2_lyc2n")
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_mm1kg"]
+script = ExtResource("2_lyc2n")
+Position = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_2phmk"]
+script = ExtResource("2_lyc2n")
+Position = Vector2i(2, 0)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_cxcns"]
+script = ExtResource("2_lyc2n")
+Position = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_ch1mh"]
+script = ExtResource("2_lyc2n")
+Position = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_eilox"]
+script = ExtResource("2_lyc2n")
+Position = Vector2i(2, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_vltvb"]
+script = ExtResource("3_7mwco")
+TileCoordinates = Array[ExtResource("2_lyc2n")]([SubResource("Resource_a0pxv"), SubResource("Resource_mm1kg"), SubResource("Resource_2phmk"), SubResource("Resource_cxcns"), SubResource("Resource_ch1mh"), SubResource("Resource_eilox")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[sub_resource type="Animation" id="Animation_fg0s7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parent:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parent/LandingParticle:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("parent/TileMapLayer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f8uco"]
+resource_name = "result_burn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent/TileMapLayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("parent/VFX_Explosion")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Emit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1p8t8"]
+resource_name = "result_move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("parent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.933333, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 0.189465, 1, 1, 1),
+"update": 0,
+"values": [Vector2(96, 64), Vector2(-224, -64), Vector2(-224, -64), Vector2(-224, 40), Vector2(-224, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("parent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 3.14159, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("parent:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.933333, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("parent/LandingParticle:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Woosh")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Land")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8uco"]
+_data = {
+&"RESET": SubResource("Animation_fg0s7"),
+&"result_burn": SubResource("Animation_f8uco"),
+&"result_move": SubResource("Animation_1p8t8")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uvwpj"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="ge_fallenlog_event" type="Node2D" unique_id=460216625 node_paths=PackedStringArray("Animator")]
+script = ExtResource("1_tudn3")
+shapedTiles = SubResource("Resource_vltvb")
+Animator = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1654966987]
+libraries/ = SubResource("AnimationLibrary_f8uco")
+
+[node name="parent" type="Node2D" parent="." unique_id=754599626]
+position = Vector2(96, 64)
+
+[node name="LandingParticle" type="CPUParticles2D" parent="parent" unique_id=627226408]
+material = SubResource("CanvasItemMaterial_uvwpj")
+emitting = false
+amount = 7
+texture = ExtResource("2_dkvcv")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+linear_accel_min = -1000.0
+linear_accel_max = -1000.0
+damping_min = 100.0
+damping_max = 100.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="parent" unique_id=1122436077]
+position = Vector2(-96, -64)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAQAVAAsAAAAAAAEAAQAVAAwAAAABAAAAAQAWAAsAAAABAAEAAQAWAAwAAAACAAAAAQAXAAsAAAACAAEAAQAXAAwAAAA=")
+tile_set = ExtResource("3_lyc2n")
+
+[node name="VFX_Explosion" parent="parent" unique_id=232173267 instance=ExtResource("6_6o3i8")]
+emitOnReady = false
+
+[node name="Woosh" type="FmodEventEmitter2D" parent="." unique_id=2037432815]
+event_name = "event:/SFX/Units/Generic/Jump_Start"
+event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
+
+[node name="Land" type="FmodEventEmitter2D" parent="." unique_id=1108310626]
+event_name = "event:/SFX/Combat_TakeDamage_Kill"
+event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"

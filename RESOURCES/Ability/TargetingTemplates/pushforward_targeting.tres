@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TargetingShapedFree" format=3 uid="uid://lgsn5mm6wips"]
+
+[ext_resource type="Script" uid="uid://b33ndaqe2bkqv" path="res://SCRIPTS/Targeting/TargetingShapedFree.gd" id="1_1uuw3"]
+
+[resource]
+script = ExtResource("1_1uuw3")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/push_forward_shape.tres"
+TargetRange = Vector2i(0, 0)
+TeamTargeting = 0
+CanTargetSelf = true

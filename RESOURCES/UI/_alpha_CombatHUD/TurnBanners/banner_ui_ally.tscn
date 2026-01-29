@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://lg0sibt207p0"]
+[gd_scene format=3 uid="uid://lg0sibt207p0"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_ds63q"]
+[ext_resource type="Script" uid="uid://cwehsgb67jbya" path="res://SCRIPTS/UI/General/AnimationCompleteListener.gd" id="1_ds63q"]
 
 [sub_resource type="Gradient" id="Gradient_mn0bn"]
 colors = PackedColorArray(0.337255, 0.47451, 0.572549, 1, 0.529412, 0.619608, 0.639216, 1)
@@ -126,11 +126,11 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbaiq"]
 _data = {
-"RESET": SubResource("Animation_37trb"),
-"Run": SubResource("Animation_knfe8")
+&"RESET": SubResource("Animation_37trb"),
+&"Run": SubResource("Animation_knfe8")
 }
 
-[node name="TurnUI_Ally" type="Control"]
+[node name="TurnUI_Ally" type="Control" unique_id=1003901766]
 custom_minimum_size = Vector2(0, -100)
 layout_mode = 3
 anchors_preset = 14
@@ -143,13 +143,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ds63q")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=151149938]
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 100.0
 texture = SubResource("GradientTexture1D_vimf3")
 
-[node name="TurnLabel" type="Label" parent="."]
+[node name="TurnLabel" type="Label" parent="." unique_id=1801072072]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -165,8 +165,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Ally Turn"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_cbaiq")
-}
-autoplay = "Run"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=715608208]
+libraries/ = SubResource("AnimationLibrary_cbaiq")
+autoplay = &"Run"

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="CampaignBlock" format=3 uid="uid://c8xsy67xxs2n0"]
+
+[ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_yfph6"]
+[ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_58um0"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="2_h7jj5"]
+[ext_resource type="PackedScene" uid="uid://d23g88rbe10v8" path="res://RESOURCES/Maps/WhiteCoast/white_b01_default.tscn" id="3_0pelg"]
+[ext_resource type="PackedScene" uid="uid://cj87iis4evtes" path="res://RESOURCES/Maps/WhiteCoast/white_vault_event.tscn" id="3_lwwvk"]
+[ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="4_0pelg"]
+[ext_resource type="PackedScene" uid="uid://bepsjfx2xky78" path="res://RESOURCES/Maps/WhiteCoast/white_b02_alt.tscn" id="6_0pelg"]
+
+[sub_resource type="Resource" id="Resource_wlhrd"]
+script = ExtResource("2_58um0")
+map = ExtResource("3_0pelg")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_i8bga"]
+resource_name = "Map B01"
+script = ExtResource("1_yfph6")
+generalMapOptions = Array[ExtResource("2_58um0")]([SubResource("Resource_wlhrd")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_kfwb5"]
+script = ExtResource("2_58um0")
+map = ExtResource("3_lwwvk")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_ig2iw"]
+resource_name = "Event"
+script = ExtResource("1_yfph6")
+generalMapOptions = Array[ExtResource("2_58um0")]([SubResource("Resource_kfwb5")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_qoq62"]
+script = ExtResource("2_58um0")
+map = ExtResource("6_0pelg")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_52wlm"]
+resource_name = "Boss"
+script = ExtResource("1_yfph6")
+generalMapOptions = Array[ExtResource("2_58um0")]([SubResource("Resource_qoq62")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[resource]
+script = ExtResource("2_h7jj5")
+mapOptions = Array[ExtResource("1_yfph6")]([SubResource("Resource_i8bga"), SubResource("Resource_ig2iw"), SubResource("Resource_52wlm")])
+metadata/_custom_type_script = "uid://cum6q7avovv0r"

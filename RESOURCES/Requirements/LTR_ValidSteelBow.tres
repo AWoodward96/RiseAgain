@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="MultiRequirement" format=3 uid="uid://cccpmepx44wdf"]
+
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_j85pq"]
+[ext_resource type="Script" uid="uid://50fucpl3xpxs" path="res://SCRIPTS/Generic/Requirements/ItemNotPresentInCampaignReq.gd" id="2_mr6vm"]
+[ext_resource type="Resource" uid="uid://cx6d8skfrwms8" path="res://RESOURCES/Descriptors/DES_Bow.tres" id="3_j85pq"]
+[ext_resource type="Script" uid="uid://du4qefex3coo4" path="res://SCRIPTS/Generic/Requirements/UnitInPartyCanUseWeaponTypeReq.gd" id="4_vasli"]
+[ext_resource type="Script" uid="uid://cgvauu1tug0qj" path="res://SCRIPTS/Generic/Requirements/MultiRequirement.gd" id="5_oakj5"]
+[ext_resource type="Script" uid="uid://c885804tc7tkx" path="res://SCRIPTS/Generic/Requirements/UnlockableReq.gd" id="5_yj0hs"]
+[ext_resource type="Resource" uid="uid://bef4kh2kjen6x" path="res://RESOURCES/Unlocks/ULK_steel_bow.tres" id="6_3lxjw"]
+
+[sub_resource type="Resource" id="Resource_6r4li"]
+script = ExtResource("2_mr6vm")
+BannedItemsInternalNames = Array[String](["steel_bow"])
+metadata/_custom_type_script = "uid://50fucpl3xpxs"
+
+[sub_resource type="Resource" id="Resource_dxu3j"]
+script = ExtResource("4_vasli")
+WeaponType = ExtResource("3_j85pq")
+metadata/_custom_type_script = "uid://du4qefex3coo4"
+
+[sub_resource type="Resource" id="Resource_hoot1"]
+script = ExtResource("5_yj0hs")
+unlockable = ExtResource("6_3lxjw")
+useMidRunDiscoverable = true
+metadata/_custom_type_script = "uid://c885804tc7tkx"
+
+[resource]
+script = ExtResource("5_oakj5")
+requirements = Array[ExtResource("1_j85pq")]([SubResource("Resource_6r4li"), SubResource("Resource_dxu3j"), SubResource("Resource_hoot1")])
+metadata/_custom_type_script = "uid://cgvauu1tug0qj"

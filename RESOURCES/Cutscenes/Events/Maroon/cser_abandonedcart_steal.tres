@@ -1,0 +1,126 @@
+[gd_resource type="Resource" script_class="EventDecision" format=3 uid="uid://dje71m8spufqm"]
+
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_ja0di"]
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="2_5jbqo"]
+[ext_resource type="Script" uid="uid://b83ex510b0d3c" path="res://SCRIPTS/Cutscene/Events/ShowEventPrompt.gd" id="4_7jm3y"]
+[ext_resource type="Script" uid="uid://cxar0rd55p7bv" path="res://SCRIPTS/Generic/VariableChance.gd" id="4_ja0di"]
+[ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="5_5jbqo"]
+[ext_resource type="Script" uid="uid://cj0o5iaxm2vw7" path="res://SCRIPTS/Cutscene/Events/RollAndPresentLootTableEvent.gd" id="6_limi1"]
+[ext_resource type="Script" uid="uid://bgm7t07rf1pdn" path="res://SCRIPTS/Generic/ChanceModifier.gd" id="7_qonlb"]
+[ext_resource type="Script" uid="uid://mlop65be0i6i" path="res://SCRIPTS/Generic/VariableChanceStack.gd" id="8_7jm3y"]
+[ext_resource type="Script" uid="uid://dcecpidnv62ns" path="res://SCRIPTS/Cutscene/Events/InjureUnitEvent.gd" id="9_5jbqo"]
+[ext_resource type="Script" uid="uid://c5aspb0cfbke2" path="res://SCRIPTS/Cutscene/Events/RandomChanceEvent.gd" id="9_e80lf"]
+[ext_resource type="Script" uid="uid://bsnlo2wjaj6uu" path="res://SCRIPTS/Cutscene/Events/PlayGridEntityAnimationEvent.gd" id="9_limi1"]
+[ext_resource type="Script" uid="uid://5k21572ri75" path="res://SCRIPTS/Generic/CutsceneContextMadLib.gd" id="10_5jbqo"]
+[ext_resource type="Script" uid="uid://d3p0cjllyxbl6" path="res://SCRIPTS/Generic/Requirements/HasCutsceneContextReq.gd" id="10_e80lf"]
+[ext_resource type="Script" uid="uid://cuheo7oad7i72" path="res://SCRIPTS/Cutscene/Events/IfEvent.gd" id="10_qonlb"]
+[ext_resource type="Script" uid="uid://cpajqbxayy16y" path="res://SCRIPTS/Generic/MadLibLoc.gd" id="10_t2nsw"]
+[ext_resource type="Script" uid="uid://dwb8tfveoy3fe" path="res://SCRIPTS/Cutscene/Events/ScreenShakeEvent.gd" id="11_e0vum"]
+[ext_resource type="Script" uid="uid://dihnqdhy7bo6v" path="res://SCRIPTS/Generic/MadLibBase.gd" id="11_s1d26"]
+[ext_resource type="Script" uid="uid://bxh0g23kritn8" path="res://SCRIPTS/Cutscene/Events/EventDecision.gd" id="12_vn5j2"]
+
+[sub_resource type="Resource" id="Resource_qp2j2"]
+script = ExtResource("4_7jm3y")
+loc_text = "event_abandonedcart_d2_result"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_limi1"]
+script = ExtResource("4_7jm3y")
+loc_text = "event_abandonedcart_d2_result2"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_e0vum"]
+script = ExtResource("6_limi1")
+Table = ExtResource("5_5jbqo")
+NumberOfPulls = 1
+metadata/_custom_type_script = "uid://cj0o5iaxm2vw7"
+
+[sub_resource type="Resource" id="Resource_b22g3"]
+resource_name = "Success 65%"
+script = ExtResource("8_7jm3y")
+CutsceneStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_limi1"), SubResource("Resource_e0vum")])
+baseChance = 65
+metadata/_custom_type_script = "uid://mlop65be0i6i"
+
+[sub_resource type="Resource" id="Resource_qonlb"]
+script = ExtResource("9_5jbqo")
+randomUnitInParty = true
+metadata/_custom_type_script = "uid://dcecpidnv62ns"
+
+[sub_resource type="Resource" id="Resource_24a4x"]
+script = ExtResource("9_limi1")
+Position = Vector2i(6, 4)
+AnimString = "result_trap"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_rrrhl"]
+script = ExtResource("11_e0vum")
+metadata/_custom_type_script = "uid://dwb8tfveoy3fe"
+
+[sub_resource type="Resource" id="Resource_7jm3y"]
+script = ExtResource("4_7jm3y")
+loc_text = "event_abandonedcart_d2_result3"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_s1d26"]
+script = ExtResource("10_e80lf")
+ContextVariableName = "UnitInjuredName"
+metadata/_custom_type_script = "uid://d3p0cjllyxbl6"
+
+[sub_resource type="Resource" id="Resource_vn5j2"]
+script = ExtResource("4_7jm3y")
+loc_text = "event_abandonedcart_d2_result3_injured"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_x7esl"]
+script = ExtResource("10_5jbqo")
+CutsceneContextVariable = "UnitInjuredName"
+metadata/_custom_type_script = "uid://5k21572ri75"
+
+[sub_resource type="Resource" id="Resource_3aedh"]
+script = ExtResource("10_t2nsw")
+loc_string = "event_abandonedcart_d2_result3_injured"
+mad_libs = Array[ExtResource("11_s1d26")]([SubResource("Resource_x7esl")])
+metadata/_custom_type_script = "uid://cpajqbxayy16y"
+
+[sub_resource type="Resource" id="Resource_a0pb0"]
+script = ExtResource("4_7jm3y")
+loc_madlib = SubResource("Resource_3aedh")
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_e80lf"]
+script = ExtResource("10_qonlb")
+Conditions = Array[ExtResource("1_ja0di")]([SubResource("Resource_s1d26")])
+True = Array[ExtResource("2_5jbqo")]([SubResource("Resource_a0pb0")])
+False = Array[ExtResource("2_5jbqo")]([SubResource("Resource_vn5j2")])
+metadata/_custom_type_script = "uid://cuheo7oad7i72"
+
+[sub_resource type="Resource" id="Resource_rr2j6"]
+resource_name = "Fail 35%"
+script = ExtResource("8_7jm3y")
+CutsceneStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_qonlb"), SubResource("Resource_24a4x"), SubResource("Resource_rrrhl"), SubResource("Resource_7jm3y"), SubResource("Resource_e80lf")])
+baseChance = 35
+metadata/_custom_type_script = "uid://mlop65be0i6i"
+
+[sub_resource type="Resource" id="Resource_t2nsw"]
+script = ExtResource("9_e80lf")
+DecisionOptions = Array[ExtResource("4_ja0di")]([SubResource("Resource_b22g3"), SubResource("Resource_rr2j6")])
+metadata/_custom_type_script = "uid://c5aspb0cfbke2"
+
+[sub_resource type="Resource" id="Resource_offul"]
+script = ExtResource("10_t2nsw")
+loc_string = "event_abandonedcart_d2_preview1"
+metadata/_custom_type_script = "uid://cpajqbxayy16y"
+
+[sub_resource type="Resource" id="Resource_5mcqi"]
+script = ExtResource("10_t2nsw")
+loc_string = "event_abandonedcart_d2_preview2"
+metadata/_custom_type_script = "uid://cpajqbxayy16y"
+
+[resource]
+resource_name = "Steal!"
+script = ExtResource("12_vn5j2")
+option_loc = "event_abandonedcart_d2"
+resultspreview_loc = Array[ExtResource("10_t2nsw")]([SubResource("Resource_offul"), SubResource("Resource_5mcqi")])
+resultActionStack = Array[ExtResource("2_5jbqo")]([SubResource("Resource_qp2j2"), SubResource("Resource_t2nsw")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"

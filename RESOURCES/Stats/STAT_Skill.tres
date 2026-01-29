@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://ckllupxlc8e6u"]
+[gd_resource type="Resource" script_class="StatTemplate" format=3 uid="uid://ckllupxlc8e6u"]
 
 [ext_resource type="Texture2D" uid="uid://bnloclaa7rw5s" path="res://ART/Icons/Stats/icon_skill.png" id="1_ixkgt"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_eusk3"]
+[ext_resource type="Script" uid="uid://d0mls8wl053cd" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_eusk3"]
 
 [resource]
 script = ExtResource("2_eusk3")
-bst_weight = 1
 loc_displayName = "stat_skill"
 loc_displayName_short = "stat_skill_short"
 loc_description = "stat_skill_desc"

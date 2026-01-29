@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://fjf3yxqim4qx"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_hp72x"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_pllag"]
+
+[resource]
+script = ExtResource("1_hp72x")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_castle.tscn"
+StartsDiscoverable = true
+StartUnlocked = true

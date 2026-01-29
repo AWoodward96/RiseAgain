@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cp2qfjogxikmj"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_5jff6"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="2_5fgog"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_fgpq1"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_5sphn"]
+[ext_resource type="Texture2D" uid="uid://7sltwljxlfn8" path="res://ART/Icons/Items/t2_jadetail.png" id="3_fgpq1"]
+[ext_resource type="Script" uid="uid://0q4rq73mdmc" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="4_f8apg"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="4_hu6w5"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="5_ianq7"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="5_scxev"]
+[ext_resource type="Script" uid="uid://ti5l0tu2c64" path="res://SCRIPTS/Ability/TurnStartListener.gd" id="10_cjipa"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_hf3rn"]
+
+[sub_resource type="Resource" id="Resource_gi3b2"]
+script = ExtResource("4_f8apg")
+UseDamageTakenLastTurn = true
+Turns = 1
+loc_name = "ce_jadeshield"
+loc_desc = "ce_jadeshield_effect"
+loc_icon = ExtResource("3_fgpq1")
+metadata/_custom_type_script = "uid://0q4rq73mdmc"
+
+[sub_resource type="Resource" id="Resource_ydjok"]
+script = ExtResource("5_scxev")
+CombatEffect = SubResource("Resource_gi3b2")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_q5m4q"]
+script = ExtResource("3_5sphn")
+Template = ExtResource("4_hu6w5")
+Value = 4
+
+[sub_resource type="Resource" id="Resource_fgpq1"]
+script = ExtResource("3_5sphn")
+Template = ExtResource("5_ianq7")
+Value = 1
+
+[node name="t2_jadetail" type="Node2D" unique_id=393540569 node_paths=PackedStringArray("passiveListeners", "TargetingData", "StatData")]
+script = ExtResource("1_5jff6")
+executionStack = Array[ExtResource("2_fgpq1")]([SubResource("Resource_ydjok")])
+passiveListeners = [NodePath("TurnStartListener")]
+internalName = "t2_jadetail"
+loc_displayName = "item_t2_jadetail_name"
+loc_displayDesc = "item_t2_jadetail_desc"
+icon = ExtResource("3_fgpq1")
+TargetingData = NodePath("SkillTargetingData")
+StatData = NodePath("ItemStatComponent")
+
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=609262234]
+script = ExtResource("2_5fgog")
+GrantedStats = Array[ExtResource("3_5sphn")]([SubResource("Resource_q5m4q"), SubResource("Resource_fgpq1")])
+
+[node name="TurnStartListener" type="Node2D" parent="." unique_id=660172517]
+script = ExtResource("10_cjipa")
+metadata/_custom_type_script = "uid://ti5l0tu2c64"
+
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=1008148474]
+script = ExtResource("11_hf3rn")
+TeamTargeting = 0
+Type = 3
+CanTargetSelf = true
+metadata/_custom_type_script = "uid://bqu21cvg4s6wk"

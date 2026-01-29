@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://pcxiv8hwxb5y"]
+
+[ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="1_idiuj"]
+
+[resource]
+font = ExtResource("1_idiuj")

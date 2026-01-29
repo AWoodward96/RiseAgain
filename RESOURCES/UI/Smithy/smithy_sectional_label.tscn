@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dtax4w27eh8ft"]
+
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_gvdoj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h34nk"]
+font = ExtResource("1_gvdoj")
+font_size = 24
+
+[node name="SectionalLabel2" type="Label" unique_id=1629523088]
+text = "Level 1:"
+label_settings = SubResource("LabelSettings_h34nk")

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://t6b0eyk1d8yd"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_jgqgc"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="2_t350x"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_3digr"]
+
+[sub_resource type="Resource" id="Resource_jgqgc"]
+script = ExtResource("2_t350x")
+Position = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_t350x"]
+script = ExtResource("2_t350x")
+Position = Vector2i(-1, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_3digr"]
+script = ExtResource("2_t350x")
+Position = Vector2i(1, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_m46w1"]
+script = ExtResource("2_t350x")
+Position = Vector2i(0, 1)
+Multiplier = 2.0
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[resource]
+script = ExtResource("3_3digr")
+TileCoordinates = Array[ExtResource("1_jgqgc")]([SubResource("Resource_jgqgc"), SubResource("Resource_t350x"), SubResource("Resource_3digr"), SubResource("Resource_m46w1")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"

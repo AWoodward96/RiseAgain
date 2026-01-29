@@ -5,21 +5,30 @@ var SourcePosition : Vector2
 var tween : Tween
 
 var TimerLock : bool
-var Result : ActionResult
+var Result : DamageStepResult
 
 func _Enter(_unit : UnitInstance, _map : Map):
 	super(_unit, _map)
 
-	TimerLock = false
-	await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
-
-	var dst = (position - SourcePosition).normalized()
-	dst = dst * (Juice.combatSequenceDefenseOffset * map.TileSize)
-	position += dst
-
+	#TimerLock = false
+#
+	#unit.damage_indicator.HideCombatClutter()
+	#unit.PlayPrepAnimation(SourcePosition - position, 1)
+#
+	#await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
+#
+	#var dst = (position - SourcePosition).normalized()
+	#dst = dst * (Juice.combatSequenceDefenseOffset * map.TileSize)
+	#position += dst
+#
 	TimerLock = true
-
-	_unit.DoCombat(Result)
+#
+	##_unit.DoCombat(Result)
+	#if Result.Crit:
+		#Juice.ScreenShakeCombatCrit()
+	#else:
+		#Juice.ScreenShakeCombatStandard()
+	#Juice.PlayHitRumble()
 
 
 func _Execute(_unit : UnitInstance, delta):
@@ -34,3 +43,10 @@ func ReturnToCenter(_unit, delta):
 		return true
 
 	return false
+
+func _Exit():
+	#if unit != null:
+		#unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+#
+	#unit.damage_indicator.affinityIcon.visible = true
+	pass

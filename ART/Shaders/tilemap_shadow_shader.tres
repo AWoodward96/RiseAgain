@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dkyc3jqefmmlk"]
+
+[ext_resource type="Shader" uid="uid://mcvn1uurqbo" path="res://ART/Shaders/tilemap_shadow_shader.gdshader" id="1_w15wl"]
+
+[sub_resource type="Gradient" id="Gradient_4su0b"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8l201"]
+gradient = SubResource("Gradient_4su0b")
+
+[sub_resource type="Gradient" id="Gradient_7j0rl"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_huihg"]
+gradient = SubResource("Gradient_7j0rl")
+
+[resource]
+shader = ExtResource("1_w15wl")
+shader_parameter/shadowAngle = 45.0
+shader_parameter/wallHeight = 1.0
+shader_parameter/floorStart = Vector2i(5, 2)
+shader_parameter/shadowColor = Color(0, 0, 0, 0.596078)
+shader_parameter/shadowCutoffStart = Vector2i(0, 0)
+shader_parameter/shadowCutoffEnd = Vector2i(0, 0)
+shader_parameter/shadowOffset = Vector2i(0, 0)
+shader_parameter/maskWrap = true
+shader_parameter/maskTop = SubResource("GradientTexture1D_huihg")
+shader_parameter/maskLeft = SubResource("GradientTexture1D_8l201")
+shader_parameter/wallDepth = 1.5
+shader_parameter/sampleMult = 3
+shader_parameter/floorDepthAutoCutoff = true
+shader_parameter/isTileMap = false
+shader_parameter/tileSize = Vector2i(0, 0)

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CampaignBlock" format=3 uid="uid://dfg1bb4ol66cj"]
+
+[ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_xv1xc"]
+[ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_2b55u"]
+[ext_resource type="PackedScene" uid="uid://p8w2ty68g2dl" path="res://RESOURCES/Maps/WhiteCoast/white_a01_default.tscn" id="3_ybqya"]
+[ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="4_7a2qv"]
+[ext_resource type="PackedScene" uid="uid://hingxw3qispc" path="res://RESOURCES/Maps/WhiteCoast/white_iron_outcropping_event.tscn" id="5_h4fl7"]
+[ext_resource type="PackedScene" uid="uid://bul8d2khh2vmc" path="res://RESOURCES/Maps/WhiteCoast/white_a02_default.tscn" id="6_4e38l"]
+[ext_resource type="PackedScene" uid="uid://ewbxkcnt17ju" path="res://RESOURCES/Maps/WhiteCoast/white_campsite_default.tscn" id="7_mj6y6"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="11_48ixg"]
+
+[sub_resource type="Resource" id="Resource_62dvj"]
+script = ExtResource("2_2b55u")
+map = ExtResource("3_ybqya")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_xavni"]
+resource_name = "Map 1"
+script = ExtResource("1_xv1xc")
+generalMapOptions = Array[ExtResource("2_2b55u")]([SubResource("Resource_62dvj")])
+
+[sub_resource type="Resource" id="Resource_4elav"]
+script = ExtResource("2_2b55u")
+map = ExtResource("5_h4fl7")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_54h51"]
+resource_name = "Event 1"
+script = ExtResource("1_xv1xc")
+generalMapOptions = Array[ExtResource("2_2b55u")]([SubResource("Resource_4elav")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_qt07l"]
+script = ExtResource("2_2b55u")
+map = ExtResource("6_4e38l")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_f7ysl"]
+resource_name = "Map 2"
+script = ExtResource("1_xv1xc")
+generalMapOptions = Array[ExtResource("2_2b55u")]([SubResource("Resource_qt07l")])
+
+[sub_resource type="Resource" id="Resource_4dgbo"]
+script = ExtResource("2_2b55u")
+map = ExtResource("7_mj6y6")
+
+[sub_resource type="Resource" id="Resource_fmftn"]
+resource_name = "Campsite"
+script = ExtResource("1_xv1xc")
+generalMapOptions = Array[ExtResource("2_2b55u")]([SubResource("Resource_4dgbo")])
+
+[resource]
+script = ExtResource("11_48ixg")
+mapOptions = Array[ExtResource("1_xv1xc")]([SubResource("Resource_xavni"), SubResource("Resource_54h51"), SubResource("Resource_f7ysl"), SubResource("Resource_fmftn")])
+nextCampaignBlocks = Array[String](["uid://c8xsy67xxs2n0"])

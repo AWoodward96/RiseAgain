@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6e83bb58hsat"]
+[gd_scene format=3 uid="uid://b6e83bb58hsat"]
 
-[ext_resource type="Script" path="res://RESOURCES/UI/Campsite/campsite_rested_ui.gd" id="1_r378u"]
+[ext_resource type="Script" uid="uid://cshxeuqha8lde" path="res://RESOURCES/UI/Campsite/campsite_rested_ui.gd" id="1_r378u"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_tf2qc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu4vn"]
@@ -10,11 +10,11 @@ font_size = 18
 [sub_resource type="LabelSettings" id="LabelSettings_tu5t5"]
 font = ExtResource("1_tf2qc")
 
-[node name="Campsite_Rested_UI" type="CanvasLayer"]
+[node name="Campsite_Rested_UI" type="CanvasLayer" unique_id=1966271786]
 layer = 11
 script = ExtResource("1_r378u")
 
-[node name="First" type="Panel" parent="."]
+[node name="First" type="Panel" parent="." unique_id=824469582]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,7 +29,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="First"]
+[node name="Label" type="Label" parent="First" unique_id=1288735097]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +42,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Second" type="Panel" parent="."]
+[node name="Second" type="Panel" parent="." unique_id=683364424]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -55,7 +55,7 @@ offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Second"]
+[node name="Label" type="Label" parent="Second" unique_id=221729484]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

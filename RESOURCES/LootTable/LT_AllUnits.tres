@@ -1,46 +1,61 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=14 format=3 uid="uid://ckn2gmate3jr1"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://ckn2gmate3jr1"]
 
-[ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="1_4v6xu"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="2_eremd"]
-[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/DarkMage/UT_DarkMage.tres" id="3_vuepv"]
-[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="4_x450q"]
-[ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="5_f3hp4"]
-[ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="6_kcbml"]
-[ext_resource type="Script" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_05tkr"]
+[ext_resource type="Resource" uid="uid://buh5fj1fbm8oa" path="res://RESOURCES/Units/Ally/Archer/UT_Archer.tres" id="2_dmxar"]
+[ext_resource type="Resource" uid="uid://c7dcp5n8jlu4o" path="res://RESOURCES/Requirements/LTR_DuplicateUnitProtection.tres" id="2_dp3md"]
+[ext_resource type="Script" uid="uid://c624kc888mlih" path="res://SCRIPTS/Generic/LootTables/SpecificUnitRewardEntry.gd" id="3_dp3md"]
+[ext_resource type="Resource" uid="uid://c0xfa5tbv14pu" path="res://RESOURCES/Units/Ally/WildMage/UT_WildMage.tres" id="4_ha0yx"]
+[ext_resource type="Resource" uid="uid://ub3y41eeets8" path="res://RESOURCES/Units/Ally/Mercenary/UT_Mercenary.tres" id="5_8ggyv"]
+[ext_resource type="Resource" uid="uid://2pfghhe6mjmc" path="res://RESOURCES/Units/Ally/LightMage/UT_LightMage.tres" id="6_4ww77"]
+[ext_resource type="Resource" uid="uid://dhofh2o4b8tg4" path="res://RESOURCES/Units/Ally/ElementalMage/UT_ElementalMage.tres" id="7_mil6f"]
+[ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="7_n3dlo"]
+[ext_resource type="Resource" uid="uid://b58tp7xqbg5jr" path="res://RESOURCES/Units/Ally/Rogue/UT_Rogue.tres" id="8_l4a38"]
+[ext_resource type="Resource" uid="uid://bjtxp4kdt5wvy" path="res://RESOURCES/Units/Ally/Knight/UT_Knight.tres" id="9_3phjb"]
 
-[sub_resource type="Resource" id="Resource_udyiq"]
-script = ExtResource("2_eremd")
-Unit = ExtResource("1_4v6xu")
-Weight = 1.0
+[sub_resource type="Resource" id="Resource_dp3md"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("2_dmxar")
 AccumulatedWeight = 1.0
+LootRequirement = ExtResource("2_dp3md")
 
-[sub_resource type="Resource" id="Resource_jkr0p"]
-script = ExtResource("2_eremd")
-Unit = ExtResource("3_vuepv")
-Weight = 1.0
+[sub_resource type="Resource" id="Resource_ha0yx"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("4_ha0yx")
 AccumulatedWeight = 2.0
+LootRequirement = ExtResource("2_dp3md")
 
-[sub_resource type="Resource" id="Resource_wr4vw"]
-script = ExtResource("2_eremd")
-Unit = ExtResource("4_x450q")
-Weight = 1.0
+[sub_resource type="Resource" id="Resource_8ggyv"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("5_8ggyv")
 AccumulatedWeight = 3.0
+LootRequirement = ExtResource("2_dp3md")
 
-[sub_resource type="Resource" id="Resource_lld5g"]
-script = ExtResource("2_eremd")
-Unit = ExtResource("5_f3hp4")
-Weight = 1.0
+[sub_resource type="Resource" id="Resource_4ww77"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("6_4ww77")
 AccumulatedWeight = 4.0
+LootRequirement = ExtResource("2_dp3md")
 
-[sub_resource type="Resource" id="Resource_atxpe"]
-script = ExtResource("2_eremd")
-Unit = ExtResource("6_kcbml")
-Weight = 1.0
+[sub_resource type="Resource" id="Resource_mil6f"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("7_mil6f")
 AccumulatedWeight = 5.0
+LootRequirement = ExtResource("2_dp3md")
+
+[sub_resource type="Resource" id="Resource_l4a38"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("8_l4a38")
+AccumulatedWeight = 6.0
+LootRequirement = ExtResource("2_dp3md")
+
+[sub_resource type="Resource" id="Resource_3phjb"]
+script = ExtResource("3_dp3md")
+Unit = ExtResource("9_3phjb")
+AccumulatedWeight = 7.0
+LootRequirement = ExtResource("2_dp3md")
 
 [resource]
 resource_name = "LT_AllUnits"
 script = ExtResource("7_n3dlo")
-Table = Array[ExtResource("1_05tkr")]([SubResource("Resource_udyiq"), SubResource("Resource_jkr0p"), SubResource("Resource_wr4vw"), SubResource("Resource_lld5g"), SubResource("Resource_atxpe")])
-WeightSum = 5.0
+Table = Array[ExtResource("1_05tkr")]([SubResource("Resource_dp3md"), SubResource("Resource_ha0yx"), SubResource("Resource_8ggyv"), SubResource("Resource_4ww77"), SubResource("Resource_mil6f"), SubResource("Resource_l4a38"), SubResource("Resource_3phjb")])
+WeightSum = 7.0

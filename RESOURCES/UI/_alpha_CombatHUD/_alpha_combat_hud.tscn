@@ -1,545 +1,558 @@
-[gd_scene load_steps=28 format=3 uid="uid://cepwbmuwjb32l"]
+[gd_scene format=3 uid="uid://cepwbmuwjb32l"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
+[ext_resource type="Script" uid="uid://y87ywuus8k6s" path="res://SCRIPTS/UI/CombatHUD/CombatHUD.gd" id="1_dux2t"]
 [ext_resource type="PackedScene" uid="uid://lg0sibt207p0" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_ally.tscn" id="2_wonth"]
 [ext_resource type="PackedScene" uid="uid://c8waiobn8d83h" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_enemy.tscn" id="3_7liuy"]
 [ext_resource type="PackedScene" uid="uid://8a67pehymjsr" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_neutral.tscn" id="4_yq0hc"]
 [ext_resource type="PackedScene" uid="uid://bx0ahfyy2rnc3" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_victory.tscn" id="5_k07rk"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/DamagePreviewUI.gd" id="6_rywjh"]
-[ext_resource type="Texture2D" uid="uid://b3po2qnmcbjvw" path="res://ART/Icons/Ability/Equippable/generic_melee.png" id="7_o5pds"]
-[ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="8_r73m2"]
+[ext_resource type="PackedScene" uid="uid://c4bdhbe8or16j" path="res://RESOURCES/UI/_alpha_CombatHUD/TurnBanners/banner_ui_loss.tscn" id="6_7myj1"]
+[ext_resource type="Script" uid="uid://dhuuc7nh8xwyo" path="res://RESOURCES/UI/_alpha_CombatHUD/ObjectivePanel.gd" id="7_cwusy"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="8_rdfo2"]
-[ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="9_140k7"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/CombatHUD/InspectPanel.gd" id="9_tccg0"]
+[ext_resource type="Script" uid="uid://dqa25ta5w1s78" path="res://SCRIPTS/UI/CombatHUD/InspectPanel.gd" id="9_tccg0"]
 [ext_resource type="PackedScene" uid="uid://mrtikl2yemdi" path="res://SCRIPTS/UI/Units/ui_effect_icon.tscn" id="10_4ar5q"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/ContextUI/ContextMenu.gd" id="10_5gr1e"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="10_fkj7h"]
-[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="11_8mf6d"]
+[ext_resource type="Script" uid="uid://7hi1ipg40hwy" path="res://SCRIPTS/UI/ContextUI/ContextMenu.gd" id="10_5gr1e"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="10_fkj7h"]
 [ext_resource type="PackedScene" uid="uid://b7850ynb8vsrl" path="res://RESOURCES/UI/_alpha_CombatHUD/context_button_entry.tscn" id="11_aar1f"]
-[ext_resource type="Script" path="res://RESOURCES/Units/UnitHealthBar.gd" id="12_60paf"]
-[ext_resource type="Texture2D" uid="uid://d0g2rta26msr7" path="res://ART/Icons/Ability/Equippable/magic_bolt.png" id="13_6rrfk"]
+[ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="12_60paf"]
+[ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="13_6r2ue"]
+[ext_resource type="Texture2D" uid="uid://0xabbr3vo1ja" path="res://ART/Icons/hides_vision.png" id="13_m3k6o"]
+[ext_resource type="PackedScene" uid="uid://k6a1bknwdhr" path="res://RESOURCES/UI/_alpha_CombatHUD/grid_entity_info_prefab.tscn" id="15_2krlt"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="15_ynng0"]
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="16_2y1mh"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="17_qifey"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/GridEntryList.gd" id="18_0w6qp"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
+[ext_resource type="Texture2D" uid="uid://dacor14ec8yow" path="res://ART/UI/injured_overlay.png" id="21_m3k6o"]
+[ext_resource type="Texture2D" uid="uid://cqc5de5p7rain" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
+[ext_resource type="Script" uid="uid://bqldm4nmooiyg" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
+[ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="24_6ybxf"]
+[ext_resource type="Texture2D" uid="uid://bc86vvwt0eosa" path="res://ART/UI/Dividers/deviders4.png" id="24_cm1b8"]
+[ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="25_a6jy8"]
+[ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="25_gcwxk"]
+[ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="25_lfimk"]
+[ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="27_gwkwg"]
+[ext_resource type="Texture2D" uid="uid://bbgi0j7f72ml4" path="res://ART/Icons/submerged_icon.png" id="29_dq8tc"]
+[ext_resource type="Script" uid="uid://bk83b4k51ovr0" path="res://SCRIPTS/UI/General/AnchoredUIElement.gd" id="29_g8xya"]
+[ext_resource type="Script" uid="uid://beyu60ng7gcta" path="res://SCRIPTS/UI/General/TutorialPromptPanel.gd" id="31_1fiyo"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_aihfj"]
+[sub_resource type="LabelSettings" id="LabelSettings_r1gep"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dq8tc"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4mcp"]
+font = ExtResource("8_rdfo2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jouhd"]
 bg_color = Color(3.36915e-07, 0.670276, 0.36946, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3k6o"]
+bg_color = Color(0.38, 0.1444, 0.148327, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrmyv"]
-bg_color = Color(0.6497, 0.709775, 0.89, 1)
+bg_color = Color(0.6497, 0.709775, 0.89, 0.4)
+border_color = Color(0.8, 0.8, 0.8, 0.623529)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y7ooe"]
+font = ExtResource("8_rdfo2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgwnx"]
 bg_color = Color(1, 0.872869, 0.485299, 1)
 
-[node name="CombatHUD" type="CanvasLayer" node_paths=PackedStringArray("InspectUI", "InspectEffectsUI", "ContextUI", "DmgPreviewUI", "NoTargets", "OptionalObjectiveParent", "OptionalObjectiveText", "bottom_left_anchor", "bottom_right_anchor")]
+[sub_resource type="LabelSettings" id="LabelSettings_qnurt"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_foman"]
+font = ExtResource("8_rdfo2")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_j302s"]
+font = ExtResource("8_rdfo2")
+
+[sub_resource type="Gradient" id="Gradient_3wvpc"]
+colors = PackedColorArray(0.1692, 0.2444, 0.47, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cd1a5"]
+gradient = SubResource("Gradient_3wvpc")
+width = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c51qu"]
+font = ExtResource("8_rdfo2")
+
+[node name="CombatHUD" type="Control" unique_id=412136889 node_paths=PackedStringArray("InspectUI", "ContextUI", "NoTargets", "TerrainInspectUI", "ObjectivePanelUI", "TutorialPrompt", "center_left_anchor", "top_right_anchor", "BlankAnchor", "PresetAnchoredUIElements", "TurnStartSound")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dux2t")
 AllyTurnBanner = ExtResource("2_wonth")
 EnemyTurnBanner = ExtResource("3_7liuy")
 NeutralTurnBanner = ExtResource("4_yq0hc")
 VictoryBanner = ExtResource("5_k07rk")
-InspectUI = NodePath("BottomLeft/InspectUI")
-InspectEffectsUI = NodePath("BottomLeft/InspectUI/EffectsGrid")
+LossBanner = ExtResource("6_7myj1")
+InspectUI = NodePath("Full_NoMargin/InspectUnitPanel")
 ContextUI = NodePath("ContextMenu")
-DmgPreviewUI = NodePath("TopLeft/DamagePreviewUI")
 NoTargets = NodePath("TopCenter/NoTargets")
-OptionalObjectiveParent = NodePath("OptionalObjective")
-OptionalObjectiveText = NodePath("OptionalObjective/Label")
-bottom_left_anchor = NodePath("BottomLeft")
-bottom_right_anchor = NodePath("BottomRight")
+TerrainInspectUI = NodePath("Full_NoMargin/TerrainInspectPanel")
+ObjectivePanelUI = NodePath("Full_NoMargin/Objective")
+TutorialPrompt = NodePath("Full_NoMargin/TutorialPrompt")
+center_left_anchor = NodePath("CenterLeft")
+top_right_anchor = NodePath("TopRight")
+AvailableUIAnchors = Array[int]([0, 1, 2, 3])
+BlankAnchor = NodePath("Full_NoMargin/PanelBlocker")
+PresetAnchoredUIElements = [NodePath("Full_NoMargin/TerrainInspectPanel"), NodePath("Full_NoMargin/InspectUnitPanel"), NodePath("Full_NoMargin/PanelBlocker"), NodePath("Full_NoMargin/Objective"), NodePath("Full_NoMargin/TutorialPrompt")]
+TurnStartSound = NodePath("TurnStart")
+metadata/_edit_horizontal_guides_ = [-94.0]
 
-[node name="OptionalObjective" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -960.0
-offset_right = -720.0
-offset_bottom = 48.0
-grow_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="OptionalObjective"]
+[node name="Full_NoMargin" type="Control" parent="." unique_id=819854491]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.31, 0.31, 0.31, 0.690196)
 
-[node name="Label" type="Label" parent="OptionalObjective"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Optional Objective:"
-
-[node name="Full" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TopLeft" type="Control" parent="."]
-layout_mode = 3
-anchor_left = 0.074
-anchor_top = 0.1
-anchor_right = 0.074
-anchor_bottom = 0.1
-offset_left = -7.04
-offset_right = -7.04
-
-[node name="DamagePreviewUI" type="Control" parent="TopLeft"]
+[node name="TerrainInspectPanel" type="MarginContainer" parent="Full_NoMargin" unique_id=2001937079 node_paths=PackedStringArray("tile_name", "tile_health_parent", "tile_health", "tile_is_killbox_parent", "tile_is_shroud_parent", "fire_data_parent", "fire_level_label", "fire_damage_label", "grid_entity_parent")]
 visible = false
-anchors_preset = 0
-offset_right = 192.0
-offset_bottom = 256.0
-script = ExtResource("6_rywjh")
-
-[node name="ColorRect" type="ColorRect" parent="TopLeft/DamagePreviewUI"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.597176, 0.597176, 0.597176, 1)
-
-[node name="defender_bg_extra" type="ColorRect" parent="TopLeft/DamagePreviewUI"]
-layout_mode = 2
-offset_left = 128.0
-offset_top = 49.0
-offset_right = 176.0
-offset_bottom = 209.0
-color = Color(0.592157, 0.337255, 0.317647, 1)
-
-[node name="attacker_bg_extra" type="ColorRect" parent="TopLeft/DamagePreviewUI"]
-layout_mode = 2
-offset_left = 10.0
-offset_top = 25.0
-offset_right = 58.0
-offset_bottom = 185.0
-color = Color(0.3186, 0.513103, 0.59, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TopLeft/DamagePreviewUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AttackerWeaponInfo" type="MarginContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 37)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-
-[node name="bg" type="ColorRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo"]
-layout_mode = 2
-color = Color(0.317647, 0.513726, 0.588235, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo"]
-layout_mode = 2
-
-[node name="AttackerAffinityIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("7_o5pds")
-expand_mode = 1
-
-[node name="Attacker_Advantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer/AttackerAffinityIcon"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("8_r73m2")
-expand_mode = 1
-
-[node name="Attacker_Disadvantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer/AttackerAffinityIcon"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("9_140k7")
-expand_mode = 1
-
-[node name="AttackerName" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/AttackerWeaponInfo/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("8_rdfo2")
-text = "Archer Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DamageInfo" type="MarginContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo"]
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="AttackerInfo" type="VBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="AtkHealth" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "###"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="AtkDmg" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "###"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="AtkHit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "###"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="AtkCrit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/AttackerInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="UIInfo" type="VBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer"]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="UIHealth" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
-layout_mode = 2
-text = "Health"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="UIDmg" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
-layout_mode = 2
-text = "Damage"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="UIHit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
-layout_mode = 2
-text = "Hit %"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="UICrit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/UIInfo"]
-layout_mode = 2
-text = "Crit %"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DefenderInfo" type="VBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="DefHealth" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "###"
-vertical_alignment = 1
-
-[node name="DefDmg" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "###"
-vertical_alignment = 1
-
-[node name="DefHit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "###"
-vertical_alignment = 1
-
-[node name="DefCrit" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DamageInfo/HBoxContainer/DefenderInfo"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0"
-vertical_alignment = 1
-
-[node name="DefenderWeaponInfo" type="MarginContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 37)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-
-[node name="bg" type="ColorRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo"]
-layout_mode = 2
-color = Color(0.592196, 0.339118, 0.317143, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo"]
-layout_mode = 2
-
-[node name="DefenderName" type="Label" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("8_rdfo2")
-text = "Archer Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DefenderAffinityIcon" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("7_o5pds")
-expand_mode = 1
-
-[node name="Defender_Advantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer/DefenderAffinityIcon"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("8_r73m2")
-expand_mode = 1
-
-[node name="Defender_Disadvantage" type="TextureRect" parent="TopLeft/DamagePreviewUI/VBoxContainer/DefenderWeaponInfo/HBoxContainer/DefenderAffinityIcon"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("9_140k7")
-expand_mode = 1
-
-[node name="TopRight" type="Control" parent="."]
-layout_mode = 3
-anchor_left = 0.902
-anchor_top = 0.1
-anchor_right = 0.902
-anchor_bottom = 0.1
-offset_left = -159.92
-offset_right = -159.92
-grow_horizontal = 0
-
-[node name="CenterLeft" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BottomRight" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="BottomLeft" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_top = -101.0
+offset_right = 200.0
 grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("23_q4cyj")
+tile_name = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/TerrainName")
+tile_health_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer")
+tile_health = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer/HealthNumber")
+tile_is_killbox_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent")
+tile_is_shroud_parent = NodePath("VBoxContainer/OffsetMargin/Content/VBoxContainer/ShroudParent")
+fire_data_parent = NodePath("VBoxContainer/OnFireInfo")
+fire_level_label = NodePath("VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer/FireLevel")
+fire_damage_label = NodePath("VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer/HealthLostPerTurn")
+grid_entity_parent = NodePath("VBoxContainer")
+grid_entity_prefab = ExtResource("15_2krlt")
+fire_level_loc = "ui_xNUM"
+fire_damage_loc = "ui_firedamage_amt"
+no_name_loc = "ui_notiledata_name"
+PreferredAnchor = Array[int]([2, 3])
+AvailableAnchors = Array[int]([2, 3, 0, 1])
 
-[node name="InspectUI" type="Control" parent="BottomLeft" node_paths=PackedStringArray("icon", "unitHealthBar", "namelabel", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel", "weaponIcon", "weaponName", "weaponEntryParent")]
-anchors_preset = 0
-offset_top = -144.0
-offset_right = 261.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel" unique_id=630003963]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer" unique_id=1909536053]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin" unique_id=546020386]
+layout_mode = 2
+color = Color(0.16, 0.1088, 0.118187, 1)
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin" unique_id=759267404]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content" unique_id=1531514028]
+layout_mode = 2
+
+[node name="TerrainName" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=513816047]
+layout_mode = 2
+text = "Dead Tree"
+label_settings = SubResource("LabelSettings_r1gep")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Divider" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=1653645977]
+layout_mode = 2
+texture = ExtResource("24_cm1b8")
+
+[node name="HealthContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=1695380463]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer" unique_id=1964539034]
+layout_mode = 2
+text = "ui_health"
+label_settings = ExtResource("25_gcwxk")
+
+[node name="HealthNumber" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/HealthContainer" unique_id=662197942]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "{NUM}"
+label_settings = ExtResource("25_gcwxk")
+horizontal_alignment = 2
+
+[node name="KillboxParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=950535518]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/KillboxParent" unique_id=1058832293]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 68.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 36.0
+texture = ExtResource("27_gwkwg")
+expand_mode = 1
+
+[node name="ShroudParent" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer" unique_id=456732731]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="KillboxIcon" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin/Content/VBoxContainer/ShroudParent" unique_id=662308058]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 68.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 36.0
+texture = ExtResource("13_m3k6o")
+expand_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OffsetMargin" unique_id=394902846]
+layout_mode = 2
+texture = ExtResource("23_vm2kk")
+region_rect = Rect2(0, 0, 80, 64)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="OnFireInfo" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer" unique_id=13850157]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo" unique_id=1400496778]
+layout_mode = 2
+color = Color(0.36, 0.1296, 0.16416, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo" unique_id=88885908]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer" unique_id=1308610011]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=672628839]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("13_6r2ue")
+expand_mode = 1
+
+[node name="FireLevel" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=1307562919]
+layout_mode = 2
+text = "x2"
+label_settings = ExtResource("25_gcwxk")
+
+[node name="Space" type="Control" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=161232919]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="HealthLostPerTurn" type="Label" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo/MarginContainer/HBoxContainer" unique_id=839489323]
+layout_mode = 2
+text = "-6 Hp/Turn"
+label_settings = ExtResource("25_gcwxk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TerrainInspectPanel/VBoxContainer/OnFireInfo" unique_id=209430756]
+layout_mode = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="InspectUnitPanel" type="MarginContainer" parent="Full_NoMargin" unique_id=132320427 node_paths=PackedStringArray("DefaultLayoutParent", "SubmergedLayoutParent", "icon", "injuredParent", "unitHealthBar", "namelabel", "affinity_icon", "dmgIcon", "dmgLabel", "defLabel", "spDefLabel", "moveLabel")]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -124.0
+offset_right = 276.0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 script = ExtResource("9_tccg0")
-icon = NodePath("Main/Icon")
-unitHealthBar = NodePath("Main")
-namelabel = NodePath("Main/UnitName")
-dmgIcon = NodePath("Main/ImportantStats/Glance/Atk/AttackIcon")
-dmgLabel = NodePath("Main/ImportantStats/Glance/Atk/AttackNum")
-defLabel = NodePath("Main/ImportantStats/Glance/Def/DefNum")
-spDefLabel = NodePath("Main/ImportantStats/Glance/Def2/SpDefNum")
-moveLabel = NodePath("Main/ImportantStats/Glance/Move/MoveNum")
-weaponIcon = NodePath("Main/Equipped/Weapon")
-weaponName = NodePath("Main/Equipped/WeaponName")
-weaponEntryParent = NodePath("Main/Equipped")
+DefaultLayoutParent = NodePath("OffsetMargin/Content/Main/Default_Layout")
+SubmergedLayoutParent = NodePath("OffsetMargin/Content/Main/Submerged_Layout")
+icon = NodePath("OffsetMargin/Content/Main/Default_Layout/UnitIcon")
+injuredParent = NodePath("OffsetMargin/Content/Injured")
+unitHealthBar = NodePath("OffsetMargin/Content/Main")
+namelabel = NodePath("OffsetMargin/Content/Main/Default_Layout/UnitName")
+affinity_icon = NodePath("OffsetMargin/Content/Main/Default_Layout/Affinity")
+dmgIcon = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk/AttackIcon")
+dmgLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk/AttackNum")
+defLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def/DefNum")
+spDefLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2/SpDefNum")
+moveLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move/MoveNum")
+Priority = 2
+PreferredAnchor = Array[int]([2, 3])
+AvailableAnchors = Array[int]([2, 3, 0, 1])
 
-[node name="Main" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList", "ExperienceBar", "LevelLabel", "EffectsList")]
-anchors_preset = 0
-offset_right = 261.0
-offset_bottom = 144.0
-script = ExtResource("12_60paf")
-HealthBar = NodePath("Health")
-ArmorBar = NodePath("Armor")
-HealthText = NodePath("HealthText")
-FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("11_8mf6d")
-ExperienceBar = NodePath("EXP")
-LevelLabel = NodePath("Level")
-LevelLocalization = "ui_level_num_short"
-EffectsList = NodePath("../EffectsGrid")
-EffectsIconPrefab = ExtResource("10_4ar5q")
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel" unique_id=179020794]
+layout_mode = 2
 
-[node name="BG" type="ColorRect" parent="BottomLeft/InspectUI/Main"]
+[node name="Content" type="VBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin" unique_id=1944066205]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Injured" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=1661285705]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured" unique_id=2141268103]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.447059, 0.447059, 0.447059, 1)
+color = Color(0.2, 0.058, 0.0792999, 1)
 
-[node name="Icon" type="TextureRect" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 70.0
-texture = SubResource("PlaceholderTexture2D_aihfj")
-expand_mode = 1
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured" unique_id=1365274418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
-[node name="Level" type="Label" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(25, 0)
+[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured/MarginContainer" unique_id=897624094]
 layout_mode = 2
-offset_left = 203.0
-offset_right = 255.0
-offset_bottom = 23.0
-text = "{NUM}"
+text = "Injured"
+label_settings = SubResource("LabelSettings_dq8tc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthLabel" type="Label" parent="BottomLeft/InspectUI/Main"]
-visible = false
-layout_mode = 0
-offset_left = 92.0
-offset_top = 38.0
-offset_right = 164.0
-offset_bottom = 61.0
-text = "ui_health"
+[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Injured" unique_id=1108433058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="Health" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(132, 27)
+[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=579326167 node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
+custom_minimum_size = Vector2(260, 108)
 layout_mode = 2
-offset_left = 73.0
-offset_top = 24.0
+script = ExtResource("12_60paf")
+HealthBar = NodePath("Default_Layout/Health")
+ArmorBar = NodePath("Default_Layout/Armor")
+InjuredBar = NodePath("Default_Layout/InjuredBar")
+HealthText = NodePath("Default_Layout/HealthText")
+InjuredParent = NodePath("Default_Layout/UnitIcon/InjuredParent")
+ExperienceBar = NodePath("Default_Layout/EXP")
+LevelLabel = NodePath("Default_Layout/Level")
+LevelLocalization = "ui_level_num_short"
+EffectParent = NodePath("../EffectsParent")
+EffectsList = NodePath("../EffectsParent/MarginContainer/ActiveEffects")
+EffectsIconPrefab = ExtResource("10_4ar5q")
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1728403357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24, 0.1968, 0.20328, 1)
+
+[node name="Default_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1232972010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=852882224]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 58.0
+offset_bottom = 55.0
+texture = ExtResource("25_a6jy8")
+expand_mode = 2
+
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon" unique_id=1049866512]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon" unique_id=2040173651]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("21_m3k6o")
+expand_mode = 2
+
+[node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=2005294352]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 44.0
+offset_right = 22.0
+offset_bottom = 60.0
+pivot_offset = Vector2(22, -2)
+texture = ExtResource("21_tmp02")
+expand_mode = 1
+
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/Affinity" unique_id=2073294745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1792374041]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 2.0
+offset_right = 218.0
+offset_bottom = 25.0
+text = "[UnitName]"
+label_settings = SubResource("LabelSettings_n4mcp")
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1066575000]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 2.0
 offset_right = 253.0
-offset_bottom = 51.0
+offset_bottom = 25.0
+text = "[NUM]"
+label_settings = SubResource("LabelSettings_n4mcp")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=959373327]
+custom_minimum_size = Vector2(132, 16)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 254.0
+offset_bottom = 40.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
 show_percentage = false
 
-[node name="Armor" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(132, 27)
-layout_mode = 2
-offset_left = 73.0
+[node name="InjuredBar" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1654320922]
+custom_minimum_size = Vector2(132, 16)
+layout_mode = 0
+offset_left = 64.0
 offset_top = 24.0
-offset_right = 253.0
-offset_bottom = 51.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
+offset_right = 254.0
+offset_bottom = 40.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_m3k6o")
 max_value = 1.0
-value = 0.6
+value = 0.3
 fill_mode = 1
 show_percentage = false
 
-[node name="HealthText" type="Label" parent="BottomLeft/InspectUI/Main"]
+[node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=2092870718]
+custom_minimum_size = Vector2(132, 16)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 254.0
+offset_bottom = 40.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
+max_value = 1.0
+show_percentage = false
+
+[node name="HealthText" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1689792083]
 custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-offset_left = 144.0
-offset_top = 25.0
-offset_right = 187.0
-offset_bottom = 48.0
+layout_mode = 0
+offset_left = 128.0
+offset_top = 17.0
+offset_right = 171.0
+offset_bottom = 40.0
 text = "25/25"
+label_settings = SubResource("LabelSettings_y7ooe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EXP" type="ProgressBar" parent="BottomLeft/InspectUI/Main"]
-custom_minimum_size = Vector2(132, 10)
-layout_mode = 2
-offset_left = 74.0
-offset_top = 60.0
-offset_right = 253.0
-offset_bottom = 70.0
+[node name="EXP" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1913135301]
+custom_minimum_size = Vector2(132, 1)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 50.0
+offset_right = 254.0
+offset_bottom = 54.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
 step = 1.0
 value = 23.0
 show_percentage = false
 
-[node name="UnitName" type="Label" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 73.0
-offset_right = 228.0
-offset_bottom = 23.0
-text = "[UnitName]"
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=837329458]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 1.0
+offset_right = 80.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_cm1b8")
 
-[node name="FocusContainer" type="MarginContainer" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 51.0
-offset_right = 253.0
-offset_bottom = 64.0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/FocusContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("10_fkj7h")
-
-[node name="Equipped" type="HBoxContainer" parent="BottomLeft/InspectUI/Main"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 74.0
-offset_right = 258.0
-offset_bottom = 106.0
-pivot_offset = Vector2(15, 2)
-script = ExtResource("10_fkj7h")
-
-[node name="Weapon" type="TextureRect" parent="BottomLeft/InspectUI/Main/Equipped"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("13_6rrfk")
-expand_mode = 1
-
-[node name="WeaponName" type="Label" parent="BottomLeft/InspectUI/Main/Equipped"]
-layout_mode = 2
-
-[node name="ImportantStats" type="Control" parent="BottomLeft/InspectUI/Main"]
+[node name="ImportantStats" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1862686199]
 anchors_preset = 0
-offset_left = 6.0
-offset_top = 110.0
-offset_right = 252.0
-offset_bottom = 142.0
+offset_left = 5.0
+offset_top = 71.0
+offset_right = 251.0
+offset_bottom = 103.0
 pivot_offset = Vector2(4, 26)
 
-[node name="GridContainer" type="GridContainer" parent="BottomLeft/InspectUI/Main/ImportantStats"]
+[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=742487543]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -553,86 +566,92 @@ theme_override_constants/h_separation = 24
 columns = 4
 script = ExtResource("10_fkj7h")
 
-[node name="ColorRect" type="ColorRect" parent="BottomLeft/InspectUI/Main/ImportantStats"]
-layout_mode = 2
-offset_right = 252.0
-offset_bottom = 32.0
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=794203268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.25, 0.25, 0.25, 1)
+color = Color(0.32, 0.2784, 0.294347, 1)
 
-[node name="Glance" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats"]
-layout_mode = 2
+[node name="Glance" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=199229497]
+layout_mode = 0
 offset_right = 244.0
 offset_bottom = 32.0
 theme_override_constants/separation = 8
 
-[node name="Atk" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
+[node name="Atk" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=362094263]
 layout_mode = 2
 
-[node name="AttackIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Atk"]
+[node name="AttackIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk" unique_id=514892101]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("15_ynng0")
 expand_mode = 1
 
-[node name="AttackNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Atk"]
+[node name="AttackNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk" unique_id=1076857052]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Def" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
+[node name="Def" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=1406131755]
 layout_mode = 2
 
-[node name="DefIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def"]
+[node name="DefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def" unique_id=1266487991]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("16_2y1mh")
 expand_mode = 1
 
-[node name="DefNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def"]
+[node name="DefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def" unique_id=1385882133]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Def2" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
+[node name="Def2" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=433842600]
 layout_mode = 2
 
-[node name="SpDefIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def2"]
+[node name="SpDefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2" unique_id=1564966014]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("17_qifey")
 expand_mode = 1
 
-[node name="SpDefNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Def2"]
+[node name="SpDefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2" unique_id=1061557367]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Move" type="HBoxContainer" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance"]
+[node name="Move" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=47472796]
 layout_mode = 2
 
-[node name="MoveIcon" type="TextureRect" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Move"]
+[node name="MoveIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move" unique_id=159663581]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("18_pubiv")
 expand_mode = 1
 
-[node name="MoveNum" type="Label" parent="BottomLeft/InspectUI/Main/ImportantStats/Glance/Move"]
+[node name="MoveNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move" unique_id=1102731428]
 layout_mode = 2
 text = "00"
+label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="EffectsGrid" type="Control" parent="BottomLeft/InspectUI" node_paths=PackedStringArray("slots")]
+[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=851103714]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 261.0
-offset_top = -144.0
-offset_right = 362.0
-grow_vertical = 0
-script = ExtResource("18_0w6qp")
-slots = [NodePath("HBoxContainer/Slot1"), NodePath("HBoxContainer/Slot2"), NodePath("HBoxContainer/Slot3")]
-entriesPerSlot = 4
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid"]
+[node name="Submerged_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=366191322]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -640,42 +659,411 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Slot1" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1277190224]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 58.0
+offset_bottom = 55.0
+texture = ExtResource("29_dq8tc")
+expand_mode = 2
+
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon" unique_id=2028092732]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon" unique_id=1052123937]
+visible = false
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("21_m3k6o")
+expand_mode = 2
+
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1364763130]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 19.0
+offset_right = 236.0
+offset_bottom = 42.0
+text = "ui_submerged_unknown"
+label_settings = SubResource("LabelSettings_n4mcp")
+vertical_alignment = 1
+
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1926475335]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 1.0
+offset_right = 80.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_cm1b8")
+
+[node name="SecondPanel" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=515214118]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 71.0
+offset_right = 251.0
+offset_bottom = 103.0
+pivot_offset = Vector2(4, 26)
+
+[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=130238617]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 24
+columns = 4
+script = ExtResource("10_fkj7h")
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=734232898]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32, 0.2784, 0.294347, 1)
+
+[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=1154400805]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ui_something_in_the_water"
+label_settings = SubResource("LabelSettings_foman")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=1442110284]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1268307635]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="EffectsParent" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=202466333]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Slot2" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=1424203992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.168627, 0.172549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=1985870198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ActiveEffects" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent/MarginContainer" unique_id=527792059]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+script = ExtResource("10_fkj7h")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=466536539]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_lfimk")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="PanelBlocker" type="Control" parent="Full_NoMargin" unique_id=195823759]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("29_g8xya")
+Priority = 100
+AvailableAnchors = Array[int]([0, 1, 2, 3])
+
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin" unique_id=182303933 node_paths=PackedStringArray("ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText")]
+visible = false
+layout_mode = 0
+offset_right = 283.0
+offset_bottom = 84.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("7_cwusy")
+ObjectiveText = NodePath("VBoxContainer/Objective/Content/MainObjectiveLabel")
+OptionalObjectiveParent = NodePath("VBoxContainer/OptionalObjective")
+OptionalObjectiveText = NodePath("VBoxContainer/OptionalObjective/Content/OptionalObjectiveLabel")
+PreferredAnchor = Array[int]([0, 1])
+AvailableAnchors = Array[int]([0, 1])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/Objective" unique_id=997822265]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=375599674]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=1952116541]
+layout_mode = 2
+color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=27161384]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="MainObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/Objective/Content" unique_id=1494161381]
+layout_mode = 2
+text = "Route: X Remaining"
+label_settings = SubResource("LabelSettings_j302s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=997505746]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OptionalObjective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=182898072]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=1316717706]
+layout_mode = 2
+color = Color(0.23, 0.23, 0.23, 1)
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=994516167]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="OptionalObjectiveLabel" type="Label" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective/Content" unique_id=1675298125]
+layout_mode = 2
+text = "Opt: Any Neutral Unit left Alive"
+label_settings = SubResource("LabelSettings_j302s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=1303539354]
+layout_mode = 2
+texture = ExtResource("23_vm2kk")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/Objective" unique_id=495431541]
 layout_mode = 2
 
-[node name="Slot3" type="VBoxContainer" parent="BottomLeft/InspectUI/EffectsGrid/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
+[node name="TutorialPrompt" type="MarginContainer" parent="Full_NoMargin" unique_id=595275759 node_paths=PackedStringArray("PromptLabel")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -283.0
+offset_top = -84.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("31_1fiyo")
+PromptLabel = NodePath("VBoxContainer/Objective/Content/Prompt")
+Priority = 10
+PreferredAnchor = Array[int]([3])
+AvailableAnchors = Array[int]([3, 7, 8])
+Disabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full_NoMargin/TutorialPrompt" unique_id=178141377]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Objective" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer" unique_id=317637299]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_top = 0
+
+[node name="TextureRect" type="TextureRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective" unique_id=1470844538]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_cd1a5")
+
+[node name="Content" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective" unique_id=1904666616]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 16
+
+[node name="Prompt" type="Label" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective/Content" unique_id=777203750]
+layout_mode = 2
+text = "Use WASD to move the Reticle."
+label_settings = SubResource("LabelSettings_j302s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/TutorialPrompt/VBoxContainer/Objective" unique_id=1705144845]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/TutorialPrompt" unique_id=591061686]
 layout_mode = 2
 
-[node name="ContextMenu" type="Control" parent="." node_paths=PackedStringArray("entryParent")]
-layout_mode = 3
+[node name="TopLeft" type="Control" parent="." unique_id=876975646]
+layout_mode = 1
+anchor_left = 0.074
+anchor_top = 0.1
+anchor_right = 0.074
+anchor_bottom = 0.1
+offset_left = -7.04
+offset_right = -7.04
+
+[node name="TopRight" type="Control" parent="." unique_id=736816497]
+layout_mode = 1
+anchor_left = 0.902
+anchor_top = 0.1
+anchor_right = 0.902
+anchor_bottom = 0.1
+offset_left = -159.92
+offset_right = -159.92
+grow_horizontal = 0
+
+[node name="CenterLeft" type="Control" parent="." unique_id=663107129]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomRight" type="Control" parent="." unique_id=730048295]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="BottomLeft" type="Control" parent="." unique_id=1790698622]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="ContextMenu" type="Control" parent="." unique_id=355297885 node_paths=PackedStringArray("entryParent", "OnShowSound")]
 anchors_preset = 0
 size_flags_horizontal = 0
 script = ExtResource("10_5gr1e")
 entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
 entryPrefab = ExtResource("11_aar1f")
+OnShowSound = NodePath("OnShow")
 
-[node name="PanelContainer" type="PanelContainer" parent="ContextMenu"]
+[node name="PanelContainer" type="MarginContainer" parent="ContextMenu" unique_id=1730427635]
 layout_mode = 0
-offset_right = 192.0
+offset_right = 224.0
+offset_bottom = 32.0
 
-[node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer"]
+[node name="ColorRect" type="ColorRect" parent="ContextMenu/PanelContainer" unique_id=437632918]
+layout_mode = 2
+color = Color(0.16, 0.1488, 0.1488, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer" unique_id=371150375]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu/PanelContainer/MarginContainer" unique_id=181834366]
 layout_mode = 2
 
-[node name="TopCenter" type="Control" parent="."]
-layout_mode = 3
+[node name="NinePatchRect" type="NinePatchRect" parent="ContextMenu/PanelContainer" unique_id=1807541935]
+layout_mode = 2
+texture = ExtResource("24_6ybxf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="OnShow" type="FmodEventEmitter2D" parent="ContextMenu" unique_id=1916266057]
+event_name = "event:/SFX/UI/UI_Paper_Small"
+event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"
+
+[node name="TopCenter" type="Control" parent="." unique_id=707782370]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -683,22 +1071,22 @@ offset_left = -21.0
 offset_right = -21.0
 grow_horizontal = 2
 
-[node name="NoTargets" type="Control" parent="TopCenter"]
+[node name="NoTargets" type="Control" parent="TopCenter" unique_id=1853854442]
 anchors_preset = 0
 offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="TopCenter/NoTargets"]
+[node name="ColorRect" type="ColorRect" parent="TopCenter/NoTargets" unique_id=1351079248]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.631373, 0.631373, 0.631373, 1)
+color = Color(0.2, 0.13, 0.13, 1)
 
-[node name="Label" type="Label" parent="TopCenter/NoTargets"]
+[node name="Label" type="Label" parent="TopCenter/NoTargets" unique_id=1527889538]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -712,3 +1100,21 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "No Targets Found"
+label_settings = SubResource("LabelSettings_c51qu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TopCenter/NoTargets" unique_id=1643807216]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_vm2kk")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TurnStart" type="FmodEventEmitter2D" parent="." unique_id=2095900370]
+event_name = "event:/SFX/UI/UI_Turn_Start"
+event_guid = "{0c576d34-7726-4c30-a6f7-e3633fee61e2}"

@@ -2,17 +2,31 @@ extends Node2D
 class_name PlayerController
 
 signal OnTileChanged(_tile)
+signal OnTileSelected(_tile)
 
 @export var viewportTilePadding = 2
+@export var floatingElementPadding = 4
 @export var camera : Camera2D
 @export var reticle : Node2D
+@export var tutorialReticle : Node2D
 
-@onready var movement_tracker : Line2D = %MovementTracker
-@onready var movement_preview_sprite: Sprite2D = %MovementPreviewSprite
+@export var reticleMoveSound : FmodEventEmitter2D
+@export var reticleSelectSound : FmodEventEmitter2D
+@export var reticleCancelSound : FmodEventEmitter2D
+@export var toggleThreat : FmodEventEmitter2D
 
+@export var movement_tracker : Line2D #= %MovementTracker
+@export var movement_preview_sprite: Sprite2D #= %MovementPreviewSprite
+@export var grid_entity_preview_sprite: Sprite2D #= %GridEntityPreviewSprite
+@export var shaped_directional_tracker : Line2D
+
+var CameraZoom : float = 1
 var ControllerState : PlayerControllerState
+var ReticleQuintet : Control.LayoutPreset
+var CameraMovementComplete : bool
 
 var BlockMovementInput : bool
+var UnitMovedIntoShroud = false
 var CurrentTile : Tile :
 	get:
 		return currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
@@ -34,41 +48,90 @@ var desiredCameraPosition : Vector2 = Vector2(0,0)
 var lastItemFilter
 var totalMapSize
 
+var envLight : Node2D
+
 # UIs
 var formationUI
 var combatHUD : CombatHUD
 var inspectUI : UnitInspectUI
 
+
+var forcedTileSelection : Tile
+var forcedContextOption : int = -1
+
+## The current strength of the current shake. Fades over time based on currentShadeTimer
+var currentShakeStrength : float
+## The time it takes for the current shake to be over. Does not go down over time.
+var currentShakeDuration : float
+var currentShakeDurationMax : float
+
 func Initialize(_map: Map):
+	shaped_directional_tracker.visible = false
 	currentMap = _map
 	currentGrid = _map.grid
 	tileSize = _map.TileSize
 	tileHalfSize = tileSize / 2
 	UpdateCameraBounds()
 
+	if envLight != null:
+		envLight.queue_free()
+
+	if _map.Biome != null && _map.Biome.ReticleLight != null:
+		envLight = _map.Biome.ReticleLight.instantiate()
+		reticle.add_child(envLight)
+
+
+	# Both of these methods just refresh the objective ui
+	currentMap.OnUnitTurnEnd.connect(UnitTurnEnd)
+	currentMap.OnUnitDied.connect(UnitDied)
+
 func _process(_delta):
 	if CSR.Open:
 		return
+
+	if combatHUD != null:
+		combatHUD.ObjectivePanelUI.Disabled = !ControllerState.ShowObjective()
 
 	# We block out the execution if inspect ui is not equal to null - this is hacky but it works
 	if ControllerState != null && inspectUI == null:
 		ControllerState._Execute(_delta)
 
-	if ControllerState.CanShowThreat():
-		if InputManager.infoDown:
+	if ControllerState != null && ControllerState.CanShowThreat():
+		if InputManager.infoDown && !CutsceneManager.BlockInspectInput:
 			# ShowInspectUI() check is also reffering to the hanging ui element in the combat hud
 			# If this behavior needs to be split - then do that but for now it actually works out fine
 			if CurrentTile.Occupant != null && ControllerState.ShowInspectUI():
-				if inspectUI == null:
-					inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
+				# check shrouded
+				if !CurrentTile.Occupant.ShroudedFromPlayer:
+					# check submerged
+					if !CurrentTile.Occupant.Submerged || (CurrentTile.Occupant.Submerged && CurrentTile.Occupant.UnitAllegiance == GameManager.GameSettings.TeamID.ALLY):
+						if inspectUI == null:
+							inspectUI = UnitInspectUI.Show(CurrentTile.Occupant)
 			else:
 				currentGrid.ShowThreat(!currentGrid.ShowingThreat, currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+				if toggleThreat != null:
+					toggleThreat.play()
 
 	if InputManager.cancelDown && inspectUI != null:
 		inspectUI.queue_free()
 		inspectUI = null
 
+	# Comment back in if you need to test out zooming again.
+	#if Input.is_action_just_pressed("zoom_in"):
+		#CameraZoom += 1
+	#if Input.is_action_just_pressed("zoom_out"):
+		#CameraZoom -= 1
+
+	#CameraZoom = clampf(CameraZoom, 0, 2)
+#
+	#var zoomMax = Vector2(15 * 64, 10 * 64)
+	#var zoomCurrent = Vector2((15 - CameraZoom) * 64, (10 - CameraZoom) * 64)
+	#var zoomFloat = zoomMax / zoomCurrent
+	#camera.zoom	= zoomFloat
+
 	camera.global_position = camera.global_position.lerp(desiredCameraPosition, 1.0 - exp(-_delta * Juice.cameraMoveSpeed))
+	CameraMovementComplete = camera.global_position.distance_to(desiredCameraPosition) < 0.1
+	UpdateScreenShake(_delta)
 
 func ChangeControllerState(a_newState : PlayerControllerState, optionalData):
 	if ControllerState != null:
@@ -95,10 +158,10 @@ func UpdateCameraPosition():
 
 	var cameraPos = desiredCameraPosition
 	var viewportHalf = get_viewport_rect().size / 2
-	viewportHalf -= Vector2(tileSize, tileSize) * viewportTilePadding
+	var viewportHalfMinusPadding = viewportHalf - (Vector2(tileSize, tileSize) * viewportTilePadding)
 
-	var topleft = cameraPos - viewportHalf
-	var bottomright = cameraPos + viewportHalf
+	var topleft = cameraPos - viewportHalfMinusPadding
+	var bottomright = cameraPos + viewportHalfMinusPadding
 	var move = Vector2.ZERO
 	if reticle.global_position.x < topleft.x:
 		move.x += reticle.global_position.x - topleft.x
@@ -119,19 +182,88 @@ func UpdateCameraPosition():
 	desiredCameraPosition.x = clamp(desiredCameraPosition.x, 0 + viewportHalf.x, totalMapSize.x - viewportHalf.x)
 	desiredCameraPosition.y = clamp(desiredCameraPosition.y, 0 + viewportHalf.y, totalMapSize.y - viewportHalf.y)
 
-func IsReticleInLeftHalfOfViewport():
+	#UpdateReticleQuintant()
 
+func UpdateScreenShake(_delta):
+	if currentShakeStrength > 0:
+		currentShakeDuration += _delta
+		currentShakeStrength = lerpf(currentShakeStrength, 0, currentShakeDuration / currentShakeStrength)
+
+		camera.offset = Vector2(randf_range(-currentShakeStrength, currentShakeStrength), randf_range(-currentShakeStrength, currentShakeStrength))
+	else:
+		camera.offset = Vector2i.ZERO
+	pass
+
+func StartScreenShake(_strength : int, _time : float = 1):
+	# don't let weaker strength screen shakes override the current shake
+	if _strength > currentShakeStrength:
+		currentShakeStrength = _strength
+		currentShakeDuration = 0
+		currentShakeDurationMax = _time
+
+func IsReticleInLeftHalfOfViewport():
 	return reticle.global_position.x < desiredCameraPosition.x
 
-func ForceReticlePosition(_gridPosition : Vector2i):
+func UpdateReticleQuintant():
+	if !is_inside_tree():
+		return
 
+	# Basically, if the reticle is in the corners (determined by floatingElementPadding), return which corner it's in
+	# If it's not in a corner, return that it's in the Center somewhere
+	var viewportHalf = get_viewport_rect().size / 2
+	var viewportHalfMinusPadding = viewportHalf - (Vector2(tileSize, tileSize) * floatingElementPadding)
+
+	var topleft = desiredCameraPosition - viewportHalfMinusPadding
+	var bottomright = desiredCameraPosition + viewportHalfMinusPadding
+	bottomright.x = clamp(bottomright.x, 0 + viewportHalfMinusPadding.x, totalMapSize.x - viewportHalfMinusPadding.x)
+	bottomright.y = clamp(bottomright.y, 0 + viewportHalfMinusPadding.y, totalMapSize.y - viewportHalfMinusPadding.y)
+
+
+	if reticle.global_position.x <= topleft.x:
+		# Left side
+		if reticle.global_position.y <= topleft.y:
+			# We're in the top left
+			ReticleQuintet = Control.PRESET_TOP_LEFT
+			return
+
+		if reticle.global_position.y >= bottomright.y:
+			ReticleQuintet = Control.PRESET_BOTTOM_LEFT
+			return
+
+	if reticle.global_position.x >= bottomright.x:
+		if reticle.global_position.y <= topleft.y:
+			# We're in the top left
+			ReticleQuintet = Control.PRESET_TOP_RIGHT
+			return
+
+		if reticle.global_position.y >= bottomright.y:
+			ReticleQuintet = Control.PRESET_BOTTOM_RIGHT
+			return
+
+	ReticleQuintet = Control.PRESET_CENTER
+
+func ForceReticlePosition(_gridPosition : Vector2i):
+	reticle.scale = Vector2(1, 1)
 	reticle.global_position = _gridPosition * tileSize
 	UpdateCameraPosition()
 	OnTileChanged.emit(CurrentTile)
 
-func ForceCameraPosition(_gridPosition : Vector2):
-	camera.global_position = _gridPosition * tileSize
+func FocusReticleOnUnit(_unit : UnitInstance):
+	if _unit == null:
+		reticle.scale = Vector2(1, 1)
+		return
+
+	reticle.scale = Vector2(_unit.Template.GridSize,_unit.Template.GridSize)
+	reticle.global_position = _unit.CurrentTile.Position * tileSize
+	UpdateCameraPosition()
+	OnTileChanged.emit(CurrentTile)
+
+func ForceCameraPosition(_gridPosition : Vector2, _instantaneous : bool = false):
+	CameraMovementComplete = false
+	reticle.global_position = _gridPosition * tileSize
 	desiredCameraPosition = _gridPosition * tileSize
+	if _instantaneous:
+		camera.global_position = _gridPosition * tileSize
 	UpdateCameraPosition()
 
 func ClearSelectionData():
@@ -146,6 +278,10 @@ func EnterFormationState():
 func EnterCampsiteState():
 	var campsiteState = CampsiteControllerState.new()
 	ChangeControllerState(campsiteState, null)
+
+func EnterCutsceneState():
+	var cutsceneState = CutsceneControllerState.new()
+	ChangeControllerState(cutsceneState, null)
 
 func EnterSelectionState():
 	ChangeControllerState(SelectionControllerState.new(), null)
@@ -175,8 +311,8 @@ func EnterItemSelectionState(_filterForInventory):
 func EnterUnitStackClearState(_unitInstance : UnitInstance):
 	ChangeControllerState(UnitStackClearControllerState.new(), _unitInstance)
 
-func EnterVictoryState():
-	ChangeControllerState(VictoryControllerState.new(), null)
+func EnterEndGameState():
+	ChangeControllerState(EndGameControllerState.new(), null)
 
 func EnterActionExecutionState(_log):
 	ChangeControllerState(ActionExecutionState.new(), _log)
@@ -186,9 +322,8 @@ func EnterGlobalContextState():
 
 func CreateCombatHUD():
 	if combatHUD == null:
-		combatHUD = UIManager.CombatHUDUI.instantiate() as CombatHUD
+		combatHUD = UIManager.OpenFullscreenUI(UIManager.CombatHUDUI)
 		combatHUD.Initialize(currentMap, CurrentTile)
-		add_child(combatHUD)
 
 	return combatHUD
 
@@ -200,28 +335,70 @@ func UpdateGlobalContextUI():
 func UpdateContextUI():
 	combatHUD.ContextUI.Clear()
 
-	if CanAttack(selectedUnit):
-		combatHUD.ContextUI.AddButton("Attack", true, OnAttack)
+	var optionCount = 0
+	var forcedOption = -1
+	if CutsceneManager.active_cutscene != null:
+		forcedOption = forcedContextOption
 
-	for ability in selectedUnit.Abilities:
-		if ability.type != Ability.AbilityType.Weapon:
-			var label = tr(ability.loc_displayName)
-			if ability.limitedUsage != -1:
-				label += " - " + str(ability.remainingUsages)
+	var currentTile = selectedUnit.CurrentTile
+	# First do any special actions
+	for ge in currentTile.GridEntities:
+		if ge is GEChest:
+			if !ge.claimed:
+				combatHUD.ContextUI.AddButton(GameManager.LocalizationSettings.openChestAction, true, OnUnlock)
 
-			# Block if focus cost can't be met - or if the ability has a limited usage
-			var canCast = (selectedUnit.currentFocus >= ability.focusCost || CSR.AllAbilitiesCost0)
-			canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
 
-			combatHUD.ContextUI.AddButton(label, canCast, OnAbility.bind(ability))
+	# Then the weapon
+	if !CutsceneManager.BlockWeaponContextMenuOption:
+		if selectedUnit.EquippedWeapon != null:
+			var enabled = forcedOption == -1 || forcedOption == 0
+			combatHUD.ContextUI.AddAbilityButton(selectedUnit.EquippedWeapon, enabled, OnAttack)
+			optionCount += 1
 
-	combatHUD.ContextUI.AddButton("Wait", true, OnWait)
+
+	# Then do the standard abilities
+	if !CutsceneManager.BlockAbilityContextMenuOption:
+		for ability in selectedUnit.Abilities:
+			if ability.type == Ability.EAbilityType.Standard:
+				# Block if focus cost can't be met - or if the ability has a limited usage
+				var canCast = (ability.remainingCooldown <= 0 || CSR.AllAbilitiesCost0)
+				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+				canCast = canCast && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
+				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+				optionCount += 1
+
+	# Then do tacticals
+	if !CutsceneManager.BlockTacticalContextMenuOption:
+		for ability in selectedUnit.Abilities:
+			if ability.type == Ability.EAbilityType.Tactical:
+				## Block if focus cost can't be met - or if the ability has a limited usage
+				var canCast = (ability.remainingCooldown <= 0 || CSR.AllAbilitiesCost0)
+				canCast = canCast && (ability.limitedUsage == -1 || (ability.limitedUsage != -1 && ability.remainingUsages > 0))
+				canCast = canCast && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
+				combatHUD.ContextUI.AddAbilityButton(ability, canCast, OnAbility.bind(ability))
+				optionCount += 1
+
+
+	var canWait = !CutsceneManager.BlockWaitContextMenuOption
+	canWait = canWait && (forcedOption == -1 || (forcedOption != -1 && forcedOption == optionCount))
+	combatHUD.ContextUI.AddButton(GameManager.LocalizationSettings.waitAction, canWait, OnWait)
+	combatHUD.ContextUI.LoopButtons()
 	combatHUD.ContextUI.SelectFirst()
 
 func OnWait():
 	reticle.visible = true
 	ForceReticlePosition(selectedUnit.GridPosition)
 	selectedUnit.EndTurn()
+	ClearSelectionData()
+	EnterSelectionState()
+
+func OnUnlock():
+	# First do any special actions
+	for ge in selectedUnit.CurrentTile.GridEntities:
+		if ge is GEChest:
+			ge.Claim(selectedUnit)
+
+	selectedUnit.QueueEndTurn()
 	ClearSelectionData()
 	EnterSelectionState()
 
@@ -257,9 +434,64 @@ func CanAttack(_unit : UnitInstance):
 
 	return _unit.EquippedWeapon != null
 
+func PreviewGridEntity(_gridEntityPackedScene : PackedScene):
+	var instantiate = _gridEntityPackedScene.instantiate() as GridEntityBase
+	grid_entity_preview_sprite.visible = true
+	grid_entity_preview_sprite.texture = instantiate.PreviewSprite
+	pass
+
+func CancelGridEntityPreview():
+	grid_entity_preview_sprite.visible = false
+
+func RefreshObjectives():
+	if combatHUD != null:
+		combatHUD.UpdateObjectives()
+
+func UnitTurnEnd(_unit : UnitInstance):
+	RefreshObjectives()
+
+func UnitDied(_unit :UnitInstance, _result : DamageStepResult):
+	RefreshObjectives()
+
 func OnAttack():
 	selectedItem = selectedUnit.EquippedWeapon
 	EnterTargetingState(selectedItem)
 
 func OnAbility(_ability : Ability):
 	EnterTargetingState(_ability)
+
+func ShowTutorialReticle(_pos : Vector2i):
+	tutorialReticle.visible = true
+	tutorialReticle.global_position = _pos * currentGrid.CellSize
+	pass
+
+func HideTutorialReticle():
+	tutorialReticle.visible = false
+
+func ShowShapedDirectionalHelper(_startingTile : Tile, _range : Vector2i, _direction : GameSettingsTemplate.Direction):
+	# Don't bother if the range is the exact same
+	if _range.x == _range.y:
+		return
+
+	var directionVector = GameSettingsTemplate.GetVectorFromDirection(_direction)
+	var offset = (_range.x - 1) * directionVector * currentGrid.CellSize # -1 because direction vector is already at length 1
+	shaped_directional_tracker.visible = true
+	var pos =  _startingTile.Position * currentGrid.CellSize
+	match _direction:
+		0:
+			pos += Vector2i(currentGrid.CellSize / 2, currentGrid.CellSize)
+		1:
+			pos += Vector2i(0, currentGrid.CellSize / 2)
+		2:
+			pos += Vector2i(currentGrid.CellSize / 2, 0)
+		3:
+			pos += Vector2i(currentGrid.CellSize, currentGrid.CellSize / 2)
+
+
+	shaped_directional_tracker.position = pos + offset
+	shaped_directional_tracker.clear_points()
+	shaped_directional_tracker.add_point(Vector2.ZERO)
+	shaped_directional_tracker.add_point(directionVector * (_range.y - _range.x + 1) * currentGrid.CellSize)
+
+func ClearShapedDirectionalHelper():
+	shaped_directional_tracker.visible = false

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://qa3w3c552huo"]
+
+[ext_resource type="Texture2D" uid="uid://dn74kuxpl34bt" path="res://ART/UI/tab_icons10.png" id="1_60pve"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_gqheo"]
+
+[resource]
+script = ExtResource("2_gqheo")
+icon = ExtResource("1_60pve")
+loc_name = "des_item"
+metadata/_custom_type_script = "uid://bnehabjcbpysq"

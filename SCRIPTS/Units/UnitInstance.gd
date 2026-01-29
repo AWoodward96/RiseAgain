@@ -3,45 +3,51 @@ class_name UnitInstance
 
 signal OnStatUpdated
 signal OnCombatEffectsUpdated
+signal OnUnitDamaged(_result : DamageStepResult)
 
 @export var visualParent : Node2D
 @export var abilityParent : Node2D
 @export var combatEffectsParent : Node2D
 @export var itemsParent : Node2D
-@export var healthBar : UnitHealthBar
-@export var focusSlotPrefab : PackedScene
-@export var affinityIcon: Sprite2D
+@export var iconAnchors : Node2D
+@export var damage_indicator: DamageIndicator
 
-@onready var health_bar : ProgressBar = %HealthBar
-@onready var hp_val = %"HP Val"
-@onready var health_bar_parent = %HealthBarParent
-@onready var armor_bar: ProgressBar = %ArmorBar
+@export var hasLootIcon : Node2D
+@export var isBossIcon : Node2D
 
-@onready var damage_indicator: DamageIndicator = $DamageIndicator
-@onready var defend_icon: Sprite2D = %DefendIcon
-@onready var focus_bar_parent: EntryList = %FocusBarParent
-@onready var positive_afffinity: Sprite2D = %PositiveAfffinity
-@onready var negative_affinity: Sprite2D = %NegativeAffinity
+@export_category("SFX")
+@export var takeDamageSound : FmodEventEmitter2D
+@export var takeLethalDamageSound : FmodEventEmitter2D
+@export var footstepsSound : FmodEventEmitter2D
+@export var deathSound : FmodEventEmitter2D
+@export var leapSound : FmodEventEmitter2D
+@export var landSound : FmodEventEmitter2D
+
+
 
 var GridPosition : Vector2i
 var CurrentTile : Tile
+var PreviousTraversedTile : Tile
 var Template : UnitTemplate
-var visual : UnitVisual # could be made generic, but probably not for now
+var visual : UnitVisual
 var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 var ItemSlots : Array[Item]
 var Abilities : Array[Ability]
 var CombatEffects : Array[CombatEffectInstance]
 var EquippedWeapon : Ability
-
-var IsDefending : bool = false :
-	set(value):
-		if defend_icon != null:
-			defend_icon.visible = value
-		IsDefending = value
+var Submerged : bool = false
+var IsBoss : bool = false
 
 var MovementIndex : int
 var MovementRoute : PackedVector2Array
 var MovementVelocity : Vector2
+var CanMove : bool						# Or, has this unit (not) moved this turn yet?
+var PendingMovementExpended : int = 0	# The amount of tiles a Unit has moved this turn - not locked in yet - because the player can still cancel out
+var MovementExpended : int = 0			# The amount of tiles a Unit has definitively moved this turn and cant cancel out of
+var PendingMove : bool					# Is a movement currently in process (like the player has selected a tile for this unit to move to and they are actively moving there)
+
+var Injured : bool = false
+var UsingSlowSpeedAbility : bool = false
 
 var ActionStack : Array[UnitActionBase]
 var CurrentAction : UnitActionBase
@@ -49,20 +55,36 @@ var TurnStartTile : Tile # The tile that this Unit Started their turn on
 
 var baseStats = {}			#Stats determined by the template object and out-of-run-progression
 var statModifiers = {}		#Stats determined by in-run progression. These are NOT temporary, and shouldn't be removed
-var temporaryStats = {}		#Stats determined by buffs, debuffs, or other TEMPORARY changes on the battlefield. This gets cleared at the end of a map!
 
 var facingDirection : GameSettingsTemplate.Direction
 
-var DisplayLevel : int :
-	get: return Level + 1
 var Level : int
 var Exp : int
+var ExtraEXPGranted : int = 0
+var IsDying : bool = false
+
+var DamageTakenThisTurn : int
+var DamageTakenLastTurn : int
+
+var AI : AIBehaviorBase # Only used by units initialized via a spawner
+var AggroType : AlwaysAggro # Only used by units initialized via a spawner
+var IsAggrod : bool = false
 
 var map : Map
-var currentHealth
-var currentFocus
+var currentHealth : int
 
 var takeDamageTween : Tween
+
+var unitPersistence : UnitPersistBase
+
+var extraHealthBars : int = 0
+
+var DisplayLevel : int :
+	get: return Level + 1
+
+var trueMaxHealth :
+	get:
+		return GetWorkingStat(GameManager.GameSettings.HealthStat, true) as float
 
 var maxHealth :
 	get:
@@ -76,11 +98,6 @@ var IsStackFree:
 	get:
 		return ActionStack.size() == 0 && CurrentAction == null
 
-
-var AI # Only used by units initialized via a spawner
-var AggroType # Only used by units initialized via a spawner
-var IsAggrod : bool = false
-
 var Activated : bool :
 	set(_value):
 		if visual != null:
@@ -88,29 +105,83 @@ var Activated : bool :
 
 		Activated = _value
 
+var IsFlying : bool :
+	get:
+		return Template.Descriptors.has(GameManager.GameSettings.FlyingDescriptor)
+
+var CanHeal : bool :
+	get:
+		return currentHealth < maxHealth
+
+var Shrouded : bool :
+	get:
+		if CurrentTile != null:
+			return CurrentTile.IsShroud
+		else:
+			return false
+
+var Stealthed : bool :
+	get:
+		return StealthedCount > 0
+
+var Invulnerable : bool :
+	get:
+		for effect in CombatEffects:
+			if effect is InvulnerableEffectInstance && !effect.IsExpired():
+				return true
+		return false
+
+var StealthedCount : int = 0 :
+	set(v):
+		StealthedCount = v
+		if StealthedCount < 0:
+			StealthedCount = 0
+
+var ShroudedFromPlayer : bool :
+	get:
+		if UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+			return false
+
+		if CurrentTile != null && CurrentTile.IsShroud:
+			# This is the only thing that matters. Is it shrouded for the Ally
+			return !CurrentTile.Shroud.Exposed[GameSettingsTemplate.TeamID.ALLY]
+		else:
+			return false
+
 func _ready():
 	ShowHealthBar(false)
-	healthBar.SetUnit(self)
 	HideDamagePreview()
-	defend_icon.visible = false
 
-func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0) :
+	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
+	damage_indicator.AssignOwner(self)
+	iconAnchors.scale = Vector2i(Template.GridSize, Template.GridSize)
+
+	name = "{0}_{1}_{2}".format({"0" : str(UnitAllegiance), "1" : Template.DebugName, "2" : str(randi() % 100000)})
+
+func Initialize(_unitTemplate : UnitTemplate, _levelOverride : int = 0, _healthPerc : float = 1) :
 	Template = _unitTemplate
 
-	if _unitTemplate.Affinity != null:
-		affinityIcon.texture = _unitTemplate.Affinity.loc_icon
-
+	RefreshVisuals()
 
 	if ItemSlots.size() == 0:
 		for s in GameManager.GameSettings.ItemSlotsPerUnit:
 			ItemSlots.append(null)
 
+	unitPersistence = PersistDataManager.universeData.GetUnitPersistence(Template)
 	CreateStartingAbilities()
 	InitializeLevels(_levelOverride)
 	InitializeStats()
 	UpdateDerivedStats()
 	InitializeTier0Abilities()
 
+	currentHealth = roundi(maxHealth * _healthPerc)
+
+func RefreshVisuals():
+	footstepsSound.event_guid = AudioManager.DefaultFootstepGUID
+	if Template.FootstepGUID != "":
+		footstepsSound.event_guid = Template.FootstepGUID
+
+	isBossIcon.visible = IsBoss
 
 func InitializeStats():
 	for stat in Template.BaseStats:
@@ -124,14 +195,15 @@ func InitializeStats():
 	# Remember: Vitality != Health. Health = Vitality * ~1.5, a value which can change for balancing
 	currentHealth = GetWorkingStat(GameManager.GameSettings.HealthStat)
 
-	if GameManager.GameSettings.InitializeUnitsWithMaxFocus:
-		currentFocus = GetWorkingStat(GameManager.GameSettings.MindStat)
-	else:
-		currentFocus = 0
+	IsDying = false
 
 func UpdateDerivedStats():
 	for derivedStatDef in GameManager.GameSettings.DerivedStatDefinitions:
 		baseStats[derivedStatDef.Template] = floori(GetWorkingStat(derivedStatDef.ParentStat) * derivedStatDef.Ratio)
+
+	if currentHealth != null && currentHealth > maxHealth:
+		currentHealth = maxHealth
+
 
 func InitializeLevels(_level : int):
 	if _level == 0:
@@ -153,14 +225,58 @@ func InitializeTier0Abilities():
 	if Template == null:
 		return
 
-	for abilities in Template.Tier0Abilities:
-		AddAbility(abilities)
+	for abilityPath in Template.Tier0Abilities:
+		AddPackedAbility(load(abilityPath))
 
 func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
-	CombatEffects.append(_combatEffectInstance)
-	combatEffectsParent.add_child(_combatEffectInstance)
+	if _combatEffectInstance == null:
+		return
+
+	# If it's not stackable, don't try and stack it
+	if _combatEffectInstance.Template.StackableType != CombatEffectTemplate.EStackableType.None:
+		# but if it isssss, you need to know where you're stacking it
+		var matchingEffectType = null
+		for effect in CombatEffects:
+			var scriptType = _combatEffectInstance.get_script()
+			var effectScriptType = effect.get_script()
+			if scriptType == effectScriptType:
+				matchingEffectType = effect
+				break
+
+		# If we found it, then apply the stack
+		if matchingEffectType != null:
+			matchingEffectType.Stacks += _combatEffectInstance.Stacks
+			match matchingEffectType.Template.StackableType:
+				CombatEffectTemplate.EStackableType.AddTurns:
+					matchingEffectType.TurnsRemaining += _combatEffectInstance.TurnsRemaining
+				CombatEffectTemplate.EStackableType.ResetTurnCount:
+					matchingEffectType.TurnsRemaining = max(matchingEffectType.Template.Turns, _combatEffectInstance.Template.Turns)
+		else:
+			# If there's nothing to stack, ignore the rules, and just add the combat effect like normal
+			CombatEffects.append(_combatEffectInstance)
+			combatEffectsParent.add_child(_combatEffectInstance)
+			_combatEffectInstance.OnEffectApplied()
+
+	else:
+		CombatEffects.append(_combatEffectInstance)
+		combatEffectsParent.add_child(_combatEffectInstance)
+		_combatEffectInstance.OnEffectApplied()
+
 	UpdateCombatEffects()
-	RefreshHealthBarVisuals()
+	UpdateDerivedStats()
+	damage_indicator.healthbar.Refresh()
+
+	if _combatEffectInstance is StealthEffectInstance:
+		StealthedCount += 1
+
+	if _combatEffectInstance is StatChangeEffectInstance:
+		var changes = _combatEffectInstance.GetEffects()
+		for c in changes:
+			if c.Stat == GameManager.GameSettings.MovementStat && c.Value > 0:
+				ReEnableMovement()
+
+	if _combatEffectInstance.Template.show_popup:
+		Juice.CreateEffectPopup(CurrentTile, _combatEffectInstance)
 
 func TriggerTurnStartEffects():
 	for c in CombatEffects:
@@ -175,19 +291,32 @@ func UpdateCombatEffects():
 	var slatedForRemoval : Array[CombatEffectInstance]
 	for c in CombatEffects:
 		if c.IsExpired():
-			slatedForRemoval.append(c)
+			if c.Template.ExpirationType == CombatEffectTemplate.EExpirationType.Normal:
+				slatedForRemoval.append(c)
+			elif c.Template.ExpirationType == CombatEffectTemplate.EExpirationType.RemoveStack:
+				if c.Stacks > 1:
+					c.Stacks -= 1
+					c.TurnsRemaining = c.Template.Turns
+				else:
+					slatedForRemoval.append(c)
 
 	OnCombatEffectsUpdated.emit()
 
 	for remove in slatedForRemoval:
+		if remove is StealthEffectInstance:
+			StealthedCount -= 1
+
+		remove.OnEffectRemoved()
 		CombatEffects.remove_at(CombatEffects.find(remove))
 		combatEffectsParent.remove_child(remove)
 		remove.queue_free()
 
-func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTemplate.TeamID):
+func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTemplate.TeamID, _extraHealthBars : int = 0):
 	GridPosition = _gridLocation
 	map = _map
 	UnitAllegiance = _allegiance
+	IsDying = false
+	extraHealthBars = _extraHealthBars
 
 	facingDirection = GameSettingsTemplate.Direction.Down
 
@@ -207,13 +336,54 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 
 	CreateVisual()
 
-	# has to be after CreateVisual
-	Activated = true
 
 func OnMapComplete():
 	ShowHealthBar(false)
-	IsDefending = false
-	temporaryStats.clear()
+
+func OnTileUpdated(_tile : Tile):
+	if IsDying || Template == null || _tile == null:
+		return
+
+
+	# This could backfire for me. Not sure. Updating current tile halway through the movement might suck?
+	# Verify that this doesn't break everything over the next couple of days to make sure everything is still working
+	# as intended. This change was made to stop pop-outs surrounding interactions with Shroud
+	# Update: Yeah I think it's fine actually. Nothing's breaking.
+	CurrentTile = _tile
+
+	if Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
+		if _tile.OpenWater && !Submerged:
+			SetSubmerged(true)
+		elif Submerged && !_tile.OpenWater:
+			SetSubmerged(false)
+
+	if _tile.IsShroud && _tile.Shroud != null:
+		_tile.Shroud.UnitEntered(_tile, self)
+
+	if PreviousTraversedTile != null && PreviousTraversedTile.Shroud != null && (_tile.Shroud == null || _tile.Shroud != PreviousTraversedTile.Shroud):
+		PreviousTraversedTile.Shroud.UnitExited(self)
+
+	if !ShroudedFromPlayer:
+		map.UpdateObscure(PreviousTraversedTile, CurrentTile)
+
+	PreviousTraversedTile = _tile
+
+
+func SetSubmerged(_val : bool):
+	Submerged = _val
+
+	if damage_indicator != null:
+		damage_indicator.SetSubmerged(_val)
+
+
+	visual.UpdateSubmerged(_val)
+
+
+func UpdateLoot():
+	hasLootIcon.visible = false
+	for loot in ItemSlots:
+		if loot != null:
+			hasLootIcon.visible = true
 
 func SetAI(_ai : AIBehaviorBase, _aggro : AlwaysAggro):
 	AI = _ai
@@ -260,14 +430,23 @@ func AddExperience(_expIncrease : int):
 
 	return levelIncrease
 
-func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
+func PerformLevelUp(_rng : DeterministicRNG, _levelIncrease = 1):
 	print("Level Up!")
 	Level += _levelIncrease
+
+	var meal = PersistDataManager.universeData.bastionData.ActiveMeal
+
 	var levelUpResult = {}
 	for i in _levelIncrease:
 		for growth in Template.StatGrowths:
 			var workingValue = growth.Value
 			var statIncrease = 0
+
+			if meal != null:
+				# check the meal for mods
+				for modifiers : StatDef in meal.statGrowthMods:
+					if modifiers.Template == growth.Template:
+						workingValue += modifiers.Value
 
 			# growths over 100 should be counted as garunteed stat growths
 			while workingValue >= 100:
@@ -275,9 +454,26 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 				workingValue -= 100
 
 			# Roll RNG
-			var result = _rng.randi_range(0,100)
+			var result = _rng.NextInt(0,100)
 			if result <= workingValue:
 				statIncrease += 1
+			else:
+				# loop through the item slots of this unit. If there's any modifiers in there see if they make the difference. If they do, then increment the success count on that item
+				for item in ItemSlots:
+					var found = false
+					if item != null && item.growthModifierData != null:
+						for statdef in item.growthModifierData.GrowthModifiers:
+							if statdef.Template == growth.Template:
+								workingValue = workingValue + statdef.Value
+								if result <= workingValue:
+									found = true
+									statIncrease += 1
+									item.growthModifierData.SuccessCount += 1
+								break
+
+					if found:
+						break
+
 
 			print("StatCheck: ", result, " <= ", workingValue, " resulted in a stat increase: ", statIncrease)
 
@@ -289,39 +485,91 @@ func PerformLevelUp(_rng : RandomNumberGenerator, _levelIncrease = 1):
 
 
 func CreateStartingAbilities():
-	if Template.StartingEquippedWeapon != null:
-		AddAbility(Template.StartingEquippedWeapon)
+	var weapPath : String = ""
+	var tacPath : String = ""
+	if unitPersistence != null:
+		# loads the starting weapons and tacticals based on the persist data
+		if unitPersistence.EquippedStartingWeapon != null: weapPath = unitPersistence.EquippedStartingWeapon.AbilityPath
+		if unitPersistence.EquippedStartingTactical != null: tacPath = unitPersistence.EquippedStartingTactical.AbilityPath
+	else:
+		# load the starting weapons and tacticals based on the template data
+		if Template.StartingEquippedWeapon != null: weapPath = Template.StartingEquippedWeapon.AbilityPath
+		if Template.StartingTactical != null: tacPath = Template.StartingTactical.AbilityPath
 
-	if Template.StartingTactical != null:
-		AddAbility(Template.StartingTactical)
+	if !weapPath.is_empty():
+		AddPackedAbility(load(weapPath))
 
+	if !tacPath.is_empty():
+		AddPackedAbility(load(tacPath))
 
-func AddAbility(_ability : PackedScene):
+func AddAbilityInstance(_abilityInstance : Ability):
+	_abilityInstance.Initialize(self)
+
+	if _abilityInstance.type == Ability.EAbilityType.Weapon:
+		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
+		UnEquipWeapon()
+		EquippedWeapon = _abilityInstance
+	elif _abilityInstance.type == Ability.EAbilityType.Tactical:
+		# Do the same for the tactical, but there's no 'equipped' variable to update
+		UnEquipTactical()
+
+	abilityParent.add_child(_abilityInstance)
+	Abilities.append(_abilityInstance)
+	return _abilityInstance
+
+func AddPackedAbility(_ability : PackedScene):
+	if _ability == null:
+		push_error("Attempting to create a null ability. Unit: " + Template.DebugName)
+		return
+
 	# We don't validate if the ability is on the template at all because maybe there might be an item that grants a
 	# general use ability to any unit
 	var abilityInstance = _ability.instantiate() as Ability
 	if abilityInstance == null:
 		return
 
-	# don't allow for duplicates
-	for abl in Abilities:
-		if abl == _ability:
-			return
+	if abilityInstance is Item:
+		push_error("Attempting to add an item to the ability array. This is not allowed. Item: " + abilityInstance.internalName)
+		return
 
-	abilityInstance.Initialize(self)
+	AddAbilityInstance(abilityInstance)
 
-	if abilityInstance.type == Ability.AbilityType.Weapon:
-		# Loop through the existing abilities - anything that's equippable needs to be deleted for this to be added
-		for abl in Abilities:
-			if abl.type == Ability.AbilityType.Weapon:
-				abilityParent.remove_child(abl)
+func UnEquipWeapon():
+	for i in range(Abilities.size() -1, -1, -1):
+		var abl = Abilities[i]
+		if abl.type == Ability.EAbilityType.Weapon:
+			abilityParent.remove_child(abl)
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
+			else:
 				abl.queue_free()
+			Abilities.remove_at(i)
+	EquippedWeapon = null
 
-		EquippedWeapon = abilityInstance
 
-	abilityParent.add_child(abilityInstance)
-	Abilities.append(abilityInstance)
-	return abilityInstance
+func UnEquipTactical():
+	for i in range(Abilities.size() -1, -1, -1):
+		var abl = Abilities[i]
+		if abl.type == Ability.EAbilityType.Tactical:
+			abilityParent.remove_child(abl)
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.Convoy.AddToConvoy(abl)
+			else:
+				abl.queue_free()
+			Abilities.remove_at(i)
+
+
+func TryEquipItem(_itemPrefabOrInstance):
+	var success = false
+	var counter = 0
+	for slot in ItemSlots:
+		if slot == null:
+			EquipItem(counter, _itemPrefabOrInstance)
+			success = true
+			break
+		counter += 1
+	return success
+
 
 # Equips an item to that slot
 # Returns true or false depending on if the item was properly equipped
@@ -343,6 +591,12 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 		# If it's null then we're unequipping something from this slot
 		pass
 
+	if item != null:
+		item.Initialize(self)
+
+		# Set Map also gets called when a unit gets added to the map. This is just called here just in case a Unit gets an item mid map
+		if map != null: item.SetMap(map)
+
 	if ItemSlots[_slotIndex] == null:
 		if item != null:
 			var parent = item.get_parent()
@@ -351,24 +605,32 @@ func EquipItem(_slotIndex : int, _itemPrefabOrInstance):
 			itemsParent.add_child(item)
 		ItemSlots[_slotIndex] = item
 		UpdateDerivedStats()
+		if UnitAllegiance != GameSettingsTemplate.TeamID.ALLY:
+			UpdateLoot()
+
 		OnStatUpdated.emit()
 		return true
 	else:
 		itemsParent.remove_child(ItemSlots[_slotIndex])
+		if GameManager.CurrentCampaign != null:
+			GameManager.CurrentCampaign.Convoy.AddToConvoy(ItemSlots[_slotIndex])
+
+
+		if item != null:
+			itemsParent.add_child(item)
+
 		ItemSlots[_slotIndex] = item
 		UpdateDerivedStats()
 		OnStatUpdated.emit()
 		return true
 
 
-func MoveCharacterToNode(_route : PackedVector2Array, _tile : Tile, _speedOverride : int = -1) :
-	if _route == null || _route.size() == 0:
+func MoveCharacterToNode(_movementData: MovementData) :
+	if _movementData == null || _movementData.Route == null  || _movementData.Route.size() == 0:
 		return
 
 	var action = UnitMoveAction.new()
-	action.Route = _route
-	action.DestinationTile = _tile
-	action.SpeedOverride = _speedOverride
+	action.movementData = _movementData
 	ActionStack.append(action)
 	if CurrentAction == null:
 		PopAction()
@@ -386,27 +648,57 @@ func PopAction():
 		CurrentAction._Enter(self, map)
 
 func GetUnitMovement():
-	return baseStats[GameManager.GameSettings.MovementStat]
+	for effect in CombatEffects:
+		if effect == null:
+			continue
+
+		if (effect is RootEffectInstance || effect is StunEffectInstance) && !effect.IsExpired():
+			return 0
+
+	return GetWorkingStat(GameManager.GameSettings.MovementStat) - MovementExpended
 
 func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	# Turns on this unit to let them take their turn
 	Activated = true
+	CanMove = true
+	PendingMove = false
+	MovementExpended = 0
+	PendingMovementExpended = 0
 	CurrentAction = null
 	ActionStack.clear()
+
 
 	# If it's your units turn
 	if _currentTurn == UnitAllegiance:
 		# defending doesn't drop off until it's your turn again
-		IsDefending = false
+		for abl in Abilities:
+			abl.OnOwnerUnitTurnStart()
 
 		TriggerTurnStartEffects()
 		UpdateCombatEffects()
+		UsingSlowSpeedAbility = false
 
 	# for 'canceling' movement
 	TurnStartTile = CurrentTile
+	DamageTakenLastTurn = DamageTakenThisTurn
+	DamageTakenThisTurn = 0
+	TryPlayIdleAnimation()
+	if visual != null && !UsingSlowSpeedAbility:
+		visual.ResetAnimation()
 
-func Defend():
-	IsDefending = true
+func LockInMovement(_tile : Tile):
+	if PendingMove:
+		TurnStartTile = _tile
+		CanMove = false
+		# Here's where the amount of tiles moved get's locked in. At this point, this amount of movement has been expended
+		MovementExpended = PendingMovementExpended
+
+func ReEnableMovement():
+	var movement = GetUnitMovement()
+	if movement > 0:
+		TurnStartTile = CurrentTile
+		CanMove = true
+		PendingMove = false
 
 func QueueEndTurn():
 	var endTurn = UnitEndTurnAction.new()
@@ -418,6 +710,13 @@ func QueueExpGain(_expGain : int):
 	var expGain = UnitExpGainAction.new()
 	expGain.ExpGained = _expGain
 	ActionStack.append(expGain)
+	if CurrentAction == null:
+		PopAction()
+
+func QueueAcquireLoot(_item : Item):
+	var lootGain = UnitAcquireLootAction.new()
+	lootGain.loot = _item
+	ActionStack.append(lootGain)
 	if CurrentAction == null:
 		PopAction()
 
@@ -434,6 +733,8 @@ func EndTurn():
 	Activated = false
 	if blockTurnEnd:
 		Activate(map.currentTurn)
+	else:
+		map.OnUnitTurnEnd.emit(self)
 
 func QueueTurnStartDelay():
 	var delay = UnitDelayAction.new()
@@ -441,55 +742,52 @@ func QueueTurnStartDelay():
 	if CurrentAction == null:
 		PopAction()
 
-func DoHeal(_result : ActionResult):
+func DoHeal(_result : HealStepResult):
 	ModifyHealth(_result.HealthDelta, _result)
+	pass
 
-func DoCombat(_result : ActionResult, _instantaneous : bool = false):
+func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 	if _result.Miss:
 		Juice.CreateMissPopup(CurrentTile)
 	else:
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
-func ModifyHealth(_netHealthChange, _context : ActionResult, _instantaneous : bool = false):
-	if _netHealthChange < 0:
+func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantaneous : bool = false):
+	if _netHealthChange <= 0:
 		# If this is a damage based change - armor should reduce the amount of damage taken
 		# Since healthChange would be negative here, healthChange
 		var armor = GetArmorAmount()
-		Juice.CreateDamagePopup(min(_netHealthChange + armor, 0), CurrentTile)
+		var damageTaken = min(_netHealthChange + armor, 0)
+		DamageTakenThisTurn += damageTaken
+
+		# basically, if the unit ONLY gets ignited, it'll show the "ignite" and "no damage" right on top of each other
+		# This if check is to ignore that scenario
+		if !(damageTaken == 0 && _result.Ignite != 0):
+			Juice.CreateDamagePopup(damageTaken, map.grid.GetTileFromGlobalPosition(global_position))
+
+		if -_netHealthChange >= currentHealth:
+			takeLethalDamageSound.play()
+		else:
+			takeDamageSound.play()
+		visual.PlayDamageAnimation()
+
 	else:
-		Juice.CreateHealPopup(_netHealthChange, CurrentTile)
+		Juice.CreateHealPopup(_netHealthChange, map.grid.GetTileFromGlobalPosition(global_position))
 
 	if !_instantaneous:
 		ShowHealthBar(true)
-		healthBar.ModifyHealthOverTime(_netHealthChange)
 
 		# NOTE:
 		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
 		# You'll need to wait for one to be finished before the other one starts
-		if !healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
-			healthBar.HealthBarTweenCallback.connect(OnModifyHealthTweenComplete.bind(_netHealthChange, _context))
+		damage_indicator.ShowCombatResult(_netHealthChange, OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
 
 	else:
-		OnModifyHealthTweenComplete(_netHealthChange, _context)
+		OnModifyHealthTweenComplete(_netHealthChange, _result)
 	pass
 
-func UpdateHealthBarTween(value):
-	hp_val.text = str("%02d/%02d" % [clamp(value, 0, maxHealth), maxHealth])
-	health_bar.value = clampf(value, 0, maxHealth) / maxHealth as float
-	pass
 
-func ModifyFocus(_netFocusChange):
-	currentFocus += _netFocusChange
-	currentFocus = clamp(currentFocus, 0, GetWorkingStat(GameManager.GameSettings.MindStat))
-
-	healthBar.UpdateFocusUI()
-	OnStatUpdated.emit()
-
-func OnModifyHealthTweenComplete(_delta, _context : ActionResult):
-	# you have to disconnect this because the nethealth change is a bound variable
-	if healthBar.HealthBarTweenCallback.is_connected(OnModifyHealthTweenComplete):
-		healthBar.HealthBarTweenCallback.disconnect(OnModifyHealthTweenComplete)
-
+func OnModifyHealthTweenComplete(_delta, _result : DamageStepResult):
 	var remainingDelta = _delta
 	var armor = GetArmorAmount()
 	if _delta < 0 && armor > 0:
@@ -498,13 +796,20 @@ func OnModifyHealthTweenComplete(_delta, _context : ActionResult):
 		remainingDelta -= armorDamage
 
 	currentHealth = clampi(currentHealth + remainingDelta, 0, maxHealth)
-	RefreshHealthBarVisuals()
+
+	if remainingDelta < 0:
+		OnUnitDamaged.emit(_result)
 
 	# For AI enemies, check if this damage would aggro them
 	if _delta < 0 && AggroType is AggroOnDamage:
 		IsAggrod = true
 
-	CheckDeath(_context)
+	if _result != null:
+		if _result.Ignite > 0:
+			Ignite(_result.Ignite, _result.Source, _result.AbilityData)
+
+
+	CheckDeath(_result)
 
 func DealDamageToArmor(_damage : int):
 	# Damage dealt to armor should always be signed - and therefore should always be negative
@@ -521,9 +826,6 @@ func DealDamageToArmor(_damage : int):
 	UpdateCombatEffects()
 	pass
 
-func RefreshHealthBarVisuals():
-	healthBar.Refresh()
-
 func GetArmorAmount():
 	var armor = 0
 	for effects in CombatEffects:
@@ -533,7 +835,7 @@ func GetArmorAmount():
 	return armor
 
 ### The function you want to call when you want to know the Final state that the Unit is working with
-func GetWorkingStat(_statTemplate : StatTemplate):
+func GetWorkingStat(_statTemplate : StatTemplate, _ignoreInjured : bool = false):
 	# start with the base
 	var current = 0
 	if baseStats.has(_statTemplate):
@@ -541,9 +843,6 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 
 	if statModifiers.has(_statTemplate):
 		current += statModifiers[_statTemplate]
-
-	if temporaryStats.has(_statTemplate):
-		current += temporaryStats[_statTemplate]
 
 	if EquippedWeapon != null && EquippedWeapon.StatData != null:
 		for statDef in EquippedWeapon.StatData.GrantedStats:
@@ -556,9 +855,24 @@ func GetWorkingStat(_statTemplate : StatTemplate):
 
 	for effect in CombatEffects:
 		if effect is StatChangeEffectInstance:
-			var statChange = (effect as StatChangeEffectInstance).GetEffect() as StatBuff
-			if statChange != null && statChange.Stat == _statTemplate:
-				current += statChange.Value
+			var statChanges = (effect as StatChangeEffectInstance).GetEffects() as Array[StatBuff]
+			for change in statChanges:
+				if change != null && change.Stat == _statTemplate:
+					current += change.Value
+
+	if unitPersistence != null:
+		current += unitPersistence.GetPrestiegeStatMod(_statTemplate)
+
+	if PersistDataManager.universeData.bastionData.ActiveMeal != null:
+		for mealStats in PersistDataManager.universeData.bastionData.ActiveMeal.statModifiers:
+			if mealStats.Template == _statTemplate:
+				current += mealStats.Value
+
+	if Injured && !_ignoreInjured:
+		if GameManager.GameSettings.InjuredAffectedStats.has(_statTemplate):
+			current = roundi(float(current) - (float(current) * GameManager.GameSettings.InjuredStatsDebuff))
+		elif _statTemplate == GameManager.GameSettings.HealthStat:
+			current = roundi(float(current) - (float(current) * GameManager.GameSettings.InjuredHealthDebuff))
 
 	return current
 
@@ -570,35 +884,114 @@ func ApplyStatModifier(_statDef : StatDef):
 	UpdateDerivedStats()
 	OnStatUpdated.emit()
 
-func CheckDeath(_context : ActionResult):
+func CheckDeath(_context : DamageStepResult):
 	if currentHealth <= 0:
-		map.OnUnitDeath(self, _context)
+		if extraHealthBars > 0:
+			HealthBarBreak()
+		else:
+			map.OnUnitDeath(self, _context)
+
+func HealthBarBreak():
+	extraHealthBars -= 1
+	currentHealth = trueMaxHealth
+	AddCombatEffect(GameManager.GameSettings.BossHealthBarBrokenEffect.CreateInstance(self, self, null, null))
+	map.RemoveEntitiesOwnedByUnit(self)
+
+	pass
+
+func PlayDeathAnimation():
+	IsDying = true
+	damage_indicator.DeathState()
+	if visual != null && visual.AnimationWorkComplete:
+		deathSound.play()
+		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
+		var tween = create_tween()
+		tween.tween_interval(Juice.combatSequenceCooloffTimer)
+		tween.tween_property(visual.visual.material, 'shader_parameter/tint', Color(0.0,0.0,0.0,0.0), 0.5)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_EXPO)
+		tween.tween_interval(1)
+		tween.tween_callback(DeathAnimComplete)
+	else:
+		deathSound.play()
+		var tween = create_tween()
+		tween.tween_interval(Juice.combatSequenceCooloffTimer)
+		tween.tween_property(visual.sprite, 'self_modulate', Color(0,0,0,0), 0.5)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_EXPO)
+		tween.tween_interval(1)
+		tween.tween_callback(DeathAnimComplete)
+
+
+func DeathAnimComplete():
+	if CurrentTile.ObscureParent != null:
+		map.UpdateObscure(CurrentTile, null)
+
+	if UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+		if !Injured:
+			Injured = true
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.UnitInjured(self)
+			else:
+				map.QueueUnitForRemoval(self)
+		else:
+			if GameManager.CurrentCampaign != null:
+				GameManager.CurrentCampaign.RegisterUnitDeath(self)
+			else:
+				map.QueueUnitForRemoval(self)
+
+	else:
+		map.QueueUnitForRemoval(self)
+
+
+func CheckKillbox():
+	if CurrentTile.ActiveKillbox && !IsFlying:
+		if CurrentTile.OpenWater && Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
+			return false
+
+		# The unit's fucking dead - kill them
+		ModifyHealth(-currentHealth - GetArmorAmount(), null, true)
+		return true
+	return false
+
+func Ignite(_fireLevel : int, _source : UnitInstance, _abilityData : Ability):
+	var combatEffect = GameManager.GameSettings.OnFireDebuff.CreateInstance(_source, self, _abilityData, null) as CombatEffectInstance
+	combatEffect.Stacks = _fireLevel
+	AddCombatEffect(combatEffect)
 
 func ShowHealthBar(_visible : bool):
-	health_bar_parent.visible = _visible
-	if _visible:
-		hp_val.text = str(currentHealth)
-		health_bar.value = healthPerc
+	damage_indicator.ShowHealthBar(_visible)
 
-func QueueAttackSequence(_destination : Vector2, _log : ActionLog):
+func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _animationStyle : CombatAnimationStyleTemplate, _useRetaliation : bool = false):
 	var attackAction = UnitAttackAction.new()
 	attackAction.TargetPosition = _destination
+	attackAction.IsRetaliation = _useRetaliation
+	attackAction.AnimationStyle = _animationStyle
+
+	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
+	# This locks in which action is doing what and when
+	attackAction.ActionIndex = _log.actionStackIndex
 	attackAction.Log = _log
+
 	ActionStack.append(attackAction)
 	if CurrentAction == null:
 		PopAction()
 
-func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : ActionResult):
-	var defendAction = UnitDefendAction.new()
-	defendAction.SourcePosition = _damageSourcePosition
-	defendAction.Result = _result
-	ActionStack.append(defendAction)
-	if CurrentAction == null:
-		PopAction()
+func QueueDefenseSequence(_damageSourcePosition : Vector2, _result : DamageStepResult):
+	#var defendAction = UnitDefendAction.new()
+	#defendAction.SourcePosition = _damageSourcePosition
+	#defendAction.Result = _result
+	#ActionStack.append(defendAction)
+	#if CurrentAction == null:
+		#PopAction()
+	pass
 
 func QueueHealAction(_log : ActionLog):
 	var healAction = UnitHealAction.new()
 	healAction.Log = _log
+	# You have to pass the action index when the queue is added because the actionstack index is going to change as the action is executed.
+	# This locks in which action is doing what and when
+	healAction.ActionIndex = _log.actionStackIndex
 	ActionStack.append(healAction)
 	if CurrentAction == null:
 		PopAction()
@@ -611,19 +1004,8 @@ func QueueDelayedCombatAction(_log : ActionLog):
 	if CurrentAction == null:
 		PopAction()
 
-func ShowDamagePreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
-	damage_indicator.visible = true
-	damage_indicator.PreviewDamage(_usable, _source, _targetedTileData, self)
-	pass
-
-func ShowHealPreview(_source : UnitInstance, _usable : UnitUsable, _targetedTileData : TileTargetedData):
-	damage_indicator.visible = true
-	damage_indicator.PreviewHeal(_usable, _source, self, _targetedTileData)
-
 func HideDamagePreview():
-	damage_indicator.visible = false
-	damage_indicator.PreviewCanceled()
-	pass
+	damage_indicator.HidePreview()
 
 func GetEffectiveAttackRange():
 	if EquippedWeapon != null:
@@ -642,25 +1024,8 @@ func HasHealAbility():
 			return true
 	return false
 
-func UpdateFocusUI():
-	focus_bar_parent.ClearEntries()
-	var maxFocus = GetWorkingStat(GameManager.GameSettings.MindStat)
-	for fIndex in maxFocus:
-		var entry = focus_bar_parent.CreateEntry(focusSlotPrefab)
-		entry.Toggle(currentFocus >= (fIndex + 1)) # +1 because it's an index
-
 func ShowAffinityRelation(_affinity : AffinityTemplate):
-	if _affinity == null:
-		positive_afffinity.visible = false
-		negative_affinity.visible = false
-		return
-
-	# Chat, I love bitwise ops
-	if _affinity.strongAgainst & Template.Affinity.affinity:
-		negative_affinity.visible = true
-
-	if Template.Affinity.strongAgainst & _affinity.affinity:
-		positive_afffinity.visible = true
+	damage_indicator.ShowAffinityRelations(_affinity)
 
 # Checks all the item slots and sees if the unit has any item equipped
 func HasAnyItem():
@@ -673,14 +1038,208 @@ func Rest():
 	for ability in Abilities:
 		ability.OnRest()
 
+	Injured = false
 	currentHealth = maxHealth
 
-func ToJSON():
+func PreviewModifiedTile(_tile : Tile):
+	if _tile != null:
+		position = _tile.GlobalPosition
 
-	return {
+func ResetVisualToTile():
+	position = CurrentTile.GlobalPosition
+
+func PlayAnimation(_animString : String, _smoothTransition : bool = false, _animSpeed : float = 1, _fromEnd : bool = false):
+	if visual != null:
+		visual.PlayAnimation(_animString, _smoothTransition, _animSpeed, _fromEnd)
+
+# Should check to see if now's actually when we should return to idle.
+# Is currently just a wrapping method
+func TryPlayIdleAnimation():
+	if visual != null && !UsingSlowSpeedAbility:
+		PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+
+func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
+	if visual != null && visual.AnimationWorkComplete && !UsingSlowSpeedAbility:
+		var round = GameSettingsTemplate.AxisRound(_dst)
+		match round:
+			Vector2.UP:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_UP, false, _animSpeed)
+			Vector2.RIGHT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_RIGHT, false, _animSpeed)
+			Vector2.DOWN:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_DOWN, false, _animSpeed)
+			Vector2.LEFT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_LEFT, false, _animSpeed)
+
+func PlayAttackAnimation(_dst : Vector2, _animSpeed : float = 1):
+	if visual != null && visual.AnimationWorkComplete:
+		var round = GameSettingsTemplate.AxisRound(_dst)
+		match round:
+			Vector2.UP:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_UP, false, _animSpeed)
+			Vector2.RIGHT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_RIGHT, false, _animSpeed)
+			Vector2.DOWN:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_DOWN, false, _animSpeed)
+			Vector2.LEFT:
+				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_LEFT, false, _animSpeed)
+
+func PlayAlertEmote():
+	Juice.CreateAlertEmote(self)
+
+func PlayShockEmote():
+	Juice.CreateShockEmote(self)
+
+func ToJSON():
+	var dict = {
 		"Template" : Template.resource_path,
 		"currentHealth" : currentHealth,
-		"GridPosition_x" : GridPosition.x,
-		"GridPosition_y" : GridPosition.y,
-		"IsAggrod" : IsAggrod
+		"Level" : Level,
+		"Exp" : Exp,
+		"CanMove" : CanMove,
+		"GridPosition" : GridPosition,
+		"IsAggrod" : IsAggrod,
+		"UnitAllegience" : UnitAllegiance,
+		"Activated" : Activated,
+		"ExtraEXPGranted" : ExtraEXPGranted,
+		"Abilities" : PersistDataManager.ArrayToJSON(Abilities),
+		"CombatEffects" : PersistDataManager.ArrayToJSON(CombatEffects),
+		"Injured" : Injured,
+		"Submerged" : Submerged,
+		"IsBoss" : IsBoss,
+		"StealthedCount" : StealthedCount,
+		"extraHealthBars" : extraHealthBars,
+		"UsingSlowSpeedAbility" : UsingSlowSpeedAbility,
+		"MovementExpended" : MovementExpended
 	}
+
+	if UsingSlowSpeedAbility && visual.AnimationWorkComplete:
+		dict["SlowSpeedAnimationString"] = visual.AnimationCTRL.current_animation
+
+	var itemSlotsArray : Array[String]
+	for i in ItemSlots:
+		if i == null:
+			itemSlotsArray.append("NULL")
+		else:
+			itemSlotsArray.append(JSON.stringify(i.ToJSON()))
+	dict["ItemSlots"] = itemSlotsArray
+
+
+	if AI != null:
+		dict["AI"] = AI.resource_path
+		if AggroType != null:
+			# Fuck this needs to be persisted doesn't it
+			dict["AggroType"] = AggroType.resource_path
+
+	# get base stats
+	var baseStatsStorage : Dictionary
+	for b in baseStats:
+		baseStatsStorage[b.resource_path] = baseStats[b]
+	dict["baseStats"] = baseStatsStorage
+
+	var modifierStatStorage : Dictionary
+	for b in statModifiers:
+		modifierStatStorage[b.resource_path] = statModifiers[b]
+	dict["statModifiers"] = modifierStatStorage
+
+	return dict
+
+static func FromJSON(_dict : Dictionary):
+	var unitInstance = GameManager.UnitSettings.UnitInstancePrefab.instantiate() as UnitInstance
+	unitInstance.Template = load(_dict["Template"]) as UnitTemplate
+	unitInstance.Level = _dict["Level"]
+	unitInstance.Exp = _dict["Exp"]
+	unitInstance.UnitAllegiance = _dict["UnitAllegience"]
+	unitInstance.CanMove = _dict["CanMove"]
+	unitInstance.Injured = _dict["Injured"]
+	unitInstance.UsingSlowSpeedAbility = _dict["UsingSlowSpeedAbility"]
+	unitInstance.MovementExpended = _dict["MovementExpended"]
+
+	unitInstance.ExtraEXPGranted = int(_dict["ExtraEXPGranted"])
+
+	if unitInstance.UsingSlowSpeedAbility && _dict.has("SlowSpeedAnimationString"):
+		var updateSlowSpeedAnimation = func(_internalDict : Dictionary):
+			unitInstance.visual.PlayAnimation(_dict["SlowSpeedAnimationString"])
+		updateSlowSpeedAnimation.call_deferred(_dict)
+		pass
+
+	if _dict.has("AI"):
+		var aiBehavior = load(_dict["AI"]) as AIBehaviorBase
+		var aggroType = load(_dict["AggroType"]) as AlwaysAggro
+		var updateAIBehavior = func(_behavior, _aggrotype):
+			unitInstance.SetAI(_behavior, _aggrotype)
+		updateAIBehavior.call_deferred(aiBehavior, aggroType)
+
+
+
+	unitInstance.GridPosition = PersistDataManager.String_To_Vector2i(_dict["GridPosition"])
+	unitInstance.IsAggrod = _dict["IsAggrod"]
+	unitInstance.Submerged = _dict["Submerged"]
+	if _dict.has("StealthedCount"):
+		unitInstance.StealthedCount = _dict["StealthedCount"]
+
+	unitInstance.unitPersistence = PersistDataManager.universeData.GetUnitPersistence(unitInstance.Template)
+	var baseStatsDict = _dict["baseStats"]
+	for stringref in baseStatsDict:
+		var template = load(stringref) as StatTemplate
+		unitInstance.baseStats[template] = baseStatsDict[stringref]
+
+	var statmods = _dict["statModifiers"]
+	for stringref in statmods:
+		var template = load(stringref) as StatTemplate
+		unitInstance.statModifiers[template] = statmods[stringref]
+
+	for element in _dict["Abilities"]:
+		var elementAsDict = JSON.parse_string(element)
+		var prefab = load(elementAsDict["prefab"]) as PackedScene
+		var newInstance = unitInstance.AddPackedAbility(prefab)
+		if newInstance != null:
+			newInstance.FromJSON(elementAsDict)
+
+	for abl in unitInstance.Abilities:
+		if abl.type == Ability.EAbilityType.Weapon:
+			unitInstance.EquippedWeapon = abl
+			break
+
+
+	var cedata = PersistDataManager.JSONToArray(_dict["CombatEffects"], Callable.create(CombatEffectInstance, "FromJSON"))
+	unitInstance.CombatEffects.assign(cedata)
+
+	var elementIndex = 0
+
+	for s in GameManager.GameSettings.ItemSlotsPerUnit:
+		unitInstance.ItemSlots.append(null)
+
+	for itemElement in _dict["ItemSlots"]:
+		if itemElement != "NULL":
+			var elementAsDict = JSON.parse_string(itemElement)
+			var prefab = load(elementAsDict["prefab"]) as PackedScene
+			var newInstance = prefab.instantiate() as Item
+			unitInstance.EquipItem(elementIndex, newInstance)
+			if newInstance != null:
+				newInstance.FromJSON(elementAsDict)
+
+
+		elementIndex += 1
+
+
+	if _dict.has("IsBoss"):
+		unitInstance.IsBoss = _dict["IsBoss"]
+
+	if _dict.has("extraHealthBars"):
+		unitInstance.extraHealthBars = _dict["extraHealthBars"]
+
+
+	unitInstance.UpdateDerivedStats()
+	unitInstance.CreateVisual()
+	# Set these after derived stats, so that health can actually be equal to the correct values
+	unitInstance.currentHealth = _dict["currentHealth"]
+
+	var deferredVisualUpdate = func(_internalDict : Dictionary):
+		unitInstance.Activated = _internalDict["Activated"]
+		unitInstance.visual.UpdateSubmerged(unitInstance.Submerged)
+
+	deferredVisualUpdate.call_deferred(_dict)
+
+	unitInstance.RefreshVisuals()
+	return unitInstance

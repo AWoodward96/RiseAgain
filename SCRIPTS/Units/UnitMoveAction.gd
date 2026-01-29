@@ -1,40 +1,148 @@
 extends UnitActionBase
 class_name UnitMoveAction
 
-var Route : PackedVector2Array
+var Route : Array[Tile]
 var DestinationTile : Tile
 var MovementIndex
-var MovementVelocity
-var SpeedOverride : int = -1
+
+var movementData : MovementData
+var Log : ActionLog
+
+var destination
+var distance
 
 func _Enter(_unit : UnitInstance, _map : Map):
+	super(_unit, _map)
 	MovementIndex = 0
-	MovementVelocity = 0
-	if DestinationTile != null:
-		_map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, false)
-	else:
-		push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
+	Route = movementData.Route
+	DestinationTile = movementData.DestinationTile
+	Log = movementData.Log
 
+
+	var travelVector = Vector2.ZERO
 	if Route.size() > 1:
-		_unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1] - Route[MovementIndex - 2]).normalized())
+		unit.facingDirection = GameSettingsTemplate.GetDirectionFromVector((Route[MovementIndex - 1].GlobalPosition - Route[MovementIndex - 2].GlobalPosition).normalized())
+		travelVector = Route[1].GlobalPosition - Route[0].GlobalPosition
 
+	if movementData.MovementAnimationStyle != null:
+		movementData.MovementAnimationStyle.Prepare(travelVector, unit, movementData)
+
+	pass
 
 func _Execute(_unit : UnitInstance, _delta):
+	if Route.size() == 0:
+		return true
+
 	var speed = GameManager.GameSettings.CharacterTileMovemementSpeed
-	if SpeedOverride != -1:
-		speed = SpeedOverride
+	if movementData.SpeedOverride != -1:
+		speed = movementData.SpeedOverride
 
-	var destination = Route[MovementIndex]
-	var distance = _unit.position.distance_squared_to(destination)
-	MovementVelocity = (destination - _unit.position).normalized() * speed
-	_unit.position += MovementVelocity * _delta
-	var maximumDistanceTraveled = speed * _delta;
+	if MovementIndex < Route.size():
+		destination = Route[MovementIndex].GlobalPosition
+		distance = _unit.position.distance_squared_to(destination)
 
+	if movementData.MovementAnimationStyle != null:
+		movementData.MovementAnimationStyle.Execute(_delta, destination)
+
+	var maximumDistanceTraveled = speed * _delta; # or "Maximum distance we can travel in one frame"
+
+	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
+
+	# passes when we're closer to the destination than the maximum distance we can travel in one frame
 	if distance < (maximumDistanceTraveled * maximumDistanceTraveled) :
-		#AudioFootstep.play()
-		MovementIndex += 1
-		if MovementIndex >= Route.size() :
-			_unit.position = Route[MovementIndex - 1]
+		if MovementIndex < Route.size():
+			var traversalResult = Route[MovementIndex].OnUnitTraversed(_unit)
+			match traversalResult:
+				GameSettingsTemplate.TraversalResult.OK:
+					pass
+				GameSettingsTemplate.TraversalResult.HealthModified:
+					if unit.footstepsSound != null:
+						unit.footstepsSound.stop()
 
-			return true
+					unit.LockInMovement(Route[Route.size() - 1])
+					if unit == null || unit.currentHealth <= 0:
+						# They fucking died lmao
+						if isAlliedTeam:
+							map.playercontroller.EnterSelectionState()
+						return true
+					pass
+				GameSettingsTemplate.TraversalResult.EndMovement:
+					if unit.footstepsSound != null:
+						unit.footstepsSound.stop()
+					# The units movement has been interrupted and we're good
+					map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, movementData.AllowOccupantOverwrite)
+					unit.LockInMovement(unit.CurrentTile)
+					return true
+				GameSettingsTemplate.TraversalResult.EndTurn:
+					if unit.footstepsSound != null:
+						unit.footstepsSound.stop()
+
+					if unit != null && unit.currentHealth > 0 && !unit.IsDying:
+						map.grid.SetUnitGridPosition(unit, Route[MovementIndex].Position, true, movementData.AllowOccupantOverwrite)
+
+					unit.EndTurn()
+
+					if isAlliedTeam:
+						map.playercontroller.EnterSelectionState()
+					return true
+
+			MovementIndex += 1
+
+
+			# Check for bonk on the next position
+			if !movementData.IsPush:
+				if  MovementIndex < Route.size() && !Map.Current.grid.CanUnitFitOnTile(unit, Route[MovementIndex], unit.IsFlying, true, false):
+					if (movementData.MoveFromAbility && MovementIndex == Route.size() - 1) || (!movementData.MoveFromAbility):
+						# Get bonked loser
+						if Route[MovementIndex].Occupant != null:
+							Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
+
+						unit.PlayShockEmote()
+						if movementData.Log != null:
+							var curStep = Log.ability.executionStack[Log.actionStackIndex]
+							if curStep is AbilityMoveStep:
+								curStep.Bonked(Route[MovementIndex], Log)
+								return true
+
+						map.grid.SetUnitGridPosition(_unit, Route[MovementIndex - 1].Position, true, movementData.AllowOccupantOverwrite)
+						unit.LockInMovement(Route[MovementIndex - 1])
+						unit.position = DestinationTile.Position
+						FinishMoving()
+						return true
+
+		if MovementIndex >= Route.size() :
+			if DestinationTile != null:
+				map.grid.SetUnitGridPosition(_unit, DestinationTile.Position, true, movementData.AllowOccupantOverwrite)
+			else:
+				push_error("Destination Tile is null for the move action of ", _unit.Template.DebugName ,". This will cause position desync and you need to fix this.")
+
+			if  movementData.MovementAnimationStyle != null:
+				if movementData.MovementAnimationStyle.AnimationComplete():
+					FinishMoving()
+					return true
+			else:
+				FinishMoving()
+				return true
 	return false
+
+func FinishMoving():
+	if movementData.MovementAnimationStyle != null:
+		movementData.MovementAnimationStyle.Exit()
+
+	var isAlliedTeam = map.currentTurn == GameSettingsTemplate.TeamID.ALLY
+	if unit.footstepsSound != null:
+		unit.footstepsSound.stop()
+
+	unit.TryPlayIdleAnimation()
+	var diedToKillbox = unit.CheckKillbox()
+	if isAlliedTeam && !movementData.CutsceneMove:
+		if diedToKillbox: # If it's true, then this unit's fucking dead lmao
+			map.playercontroller.EnterSelectionState()
+		elif !movementData.MoveFromAbility:
+			map.playercontroller.EnterContextMenuState()
+
+
+func _Exit():
+	if movementData.MovementAnimationStyle != null:
+		movementData.MovementAnimationStyle.Exit()
+	pass

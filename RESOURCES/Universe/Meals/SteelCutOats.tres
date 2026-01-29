@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MealTemplate" format=3 uid="uid://cfpffvod7yru5"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_rnbg8"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_d4j3r"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="2_qto4c"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_d4j3r"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="5_0qonw"]
+
+[sub_resource type="Resource" id="Resource_ifjtj"]
+script = ExtResource("1_rnbg8")
+ItemResource = ExtResource("2_d4j3r")
+Amount = 5
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_5v8vn"]
+script = ExtResource("3_d4j3r")
+Template = ExtResource("5_0qonw")
+Value = 2
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("2_qto4c")
+loc_title = "meal_steelcutoats_title"
+loc_desc = "meal_steelcutoats_desc"
+cost = Array[ExtResource("1_rnbg8")]([SubResource("Resource_ifjtj")])
+statModifiers = Array[ExtResource("3_d4j3r")]([SubResource("Resource_5v8vn")])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

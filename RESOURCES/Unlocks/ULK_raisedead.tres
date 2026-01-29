@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://dfmmiavnnfut1"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_ih6qe"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_tkcto"]
+
+[resource]
+script = ExtResource("1_ih6qe")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_raisedead.tscn"

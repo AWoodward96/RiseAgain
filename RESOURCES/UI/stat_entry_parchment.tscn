@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://0146em1f1pra"]
+
+[ext_resource type="Theme" uid="uid://y2p37fdv061m" path="res://RESOURCES/Theme/RusticPaper.tres" id="1_tf3gf"]
+[ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="2_udta5"]
+[ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="3_l0pd6"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_3tw78"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1drhv"]
+font = ExtResource("4_3tw78")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_tf3gf"]
+font = ExtResource("4_3tw78")
+font_size = 24
+shadow_size = 2
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+
+[node name="StatEntry_Parchment" type="PanelContainer" unique_id=720450723 node_paths=PackedStringArray("icon", "statName", "statValue")]
+theme = ExtResource("1_tf3gf")
+theme_type_variation = &"SubPanel3"
+script = ExtResource("2_udta5")
+icon = NodePath("HBoxContainer/PanelContainer/HBoxContainer/Icon")
+statName = NodePath("HBoxContainer/PanelContainer/HBoxContainer/StatName")
+statValue = NodePath("HBoxContainer/StatVal")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=156487642]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1871870524]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_type_variation = &"SubPanel4"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer" unique_id=271651772]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/HBoxContainer" unique_id=1712659363]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_l0pd6")
+expand_mode = 1
+
+[node name="StatName" type="Label" parent="HBoxContainer/PanelContainer/HBoxContainer" unique_id=952430727]
+layout_mode = 2
+text = "ATK"
+label_settings = SubResource("LabelSettings_1drhv")
+
+[node name="StatVal" type="Label" parent="HBoxContainer" unique_id=141643377]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "StatValue"
+label_settings = SubResource("LabelSettings_tf3gf")
+horizontal_alignment = 2

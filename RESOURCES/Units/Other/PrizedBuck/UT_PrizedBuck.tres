@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=32 format=3 uid="uid://ban0gyynywtal"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://ban0gyynywtal"]
 
-[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_ydurd"]
+[ext_resource type="Resource" uid="uid://cw401rjsoo6be" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="1_ydurd"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="2_pddbs"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="3_8jwmx"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="3_8jwmx"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_cpiyu"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_qw7qt"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_50fwi"]
@@ -11,9 +11,13 @@
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="9_np70f"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_tjfus"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_jaxs6"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_f6kpa"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_f6kpa"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_fk4an"]
 [ext_resource type="PackedScene" uid="uid://d108irg1t3j5n" path="res://RESOURCES/Units/Other/PrizedBuck/VIS_PrizedBuck.tscn" id="12_umh1e"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_ywkkh"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_ywkkh"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_c56dt"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_lfs7p"]
+[ext_resource type="Resource" uid="uid://bun14skcepxgl" path="res://RESOURCES/Resources/ResourceDefs/FoodRewardSmall.tres" id="14_opkoe"]
 [ext_resource type="Texture2D" uid="uid://olxft3bee4j4" path="res://ART/Icons/Units/prizedbuck.png" id="14_vfof4"]
 
 [sub_resource type="Resource" id="Resource_4qoj7"]
@@ -29,17 +33,14 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_5ny3n"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("5_qw7qt")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_k3ahv"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("6_50fwi")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_22t2p"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("7_cs0gm")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_xmhvx"]
 script = ExtResource("3_8jwmx")
@@ -54,12 +55,18 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_21pee"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("10_tjfus")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_6vumn"]
 script = ExtResource("3_8jwmx")
 Template = ExtResource("11_jaxs6")
-Value = 0
+
+[sub_resource type="Resource" id="Resource_jbryl"]
+script = ExtResource("3_8jwmx")
+Template = ExtResource("12_fk4an")
+
+[sub_resource type="Resource" id="Resource_lhvtd"]
+script = ExtResource("3_8jwmx")
+Template = ExtResource("13_c56dt")
 
 [sub_resource type="Resource" id="Resource_kbkqe"]
 script = ExtResource("3_8jwmx")
@@ -96,17 +103,24 @@ script = ExtResource("3_8jwmx")
 Template = ExtResource("10_tjfus")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_trwsa"]
+script = ExtResource("3_8jwmx")
+Template = ExtResource("12_fk4an")
+
+[sub_resource type="Resource" id="Resource_qwndk"]
+script = ExtResource("3_8jwmx")
+Template = ExtResource("13_c56dt")
+Value = 70.0
+
 [resource]
 resource_name = "UT_PrizedBuck"
 script = ExtResource("12_ywkkh")
 VisualPrefab = ExtResource("12_umh1e")
-BaseStats = Array[ExtResource("3_8jwmx")]([SubResource("Resource_4qoj7"), SubResource("Resource_5lj5l"), SubResource("Resource_5ny3n"), SubResource("Resource_k3ahv"), SubResource("Resource_22t2p"), SubResource("Resource_xmhvx"), SubResource("Resource_8bnc5"), SubResource("Resource_21pee"), SubResource("Resource_6vumn")])
-StatGrowths = Array[ExtResource("3_8jwmx")]([SubResource("Resource_kbkqe"), SubResource("Resource_vl7x0"), SubResource("Resource_5xhq3"), SubResource("Resource_t7uy2"), SubResource("Resource_jof6e"), SubResource("Resource_sb22q"), SubResource("Resource_5lics")])
+BaseStats = Array[ExtResource("3_8jwmx")]([SubResource("Resource_4qoj7"), SubResource("Resource_5lj5l"), SubResource("Resource_5ny3n"), SubResource("Resource_k3ahv"), SubResource("Resource_22t2p"), SubResource("Resource_xmhvx"), SubResource("Resource_8bnc5"), SubResource("Resource_21pee"), SubResource("Resource_6vumn"), SubResource("Resource_jbryl"), SubResource("Resource_lhvtd")])
+StatGrowths = Array[ExtResource("3_8jwmx")]([SubResource("Resource_kbkqe"), SubResource("Resource_vl7x0"), SubResource("Resource_5xhq3"), SubResource("Resource_t7uy2"), SubResource("Resource_jof6e"), SubResource("Resource_sb22q"), SubResource("Resource_5lics"), SubResource("Resource_trwsa"), SubResource("Resource_qwndk")])
 Affinity = ExtResource("1_ydurd")
-StartingItems = Array[PackedScene]([])
-Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([])
-Descriptors = Array[ExtResource("12_f6kpa")]([])
+ResourceDrops = Array[ExtResource("13_lfs7p")]([ExtResource("14_opkoe")])
+FootstepGUID = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 DebugName = "PrizedBuck"
 loc_DisplayName = "unit_prizedbuck_name"
 loc_Description = "unit_prizedbuck_desc"

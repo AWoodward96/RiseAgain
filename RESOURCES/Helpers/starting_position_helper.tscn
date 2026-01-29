@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bptpxhjiocgis"]
+[gd_scene format=3 uid="uid://bptpxhjiocgis"]
 
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="1_esap0"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Helpers/StartingPositionHelper.gd" id="2_o1em6"]
+[ext_resource type="Script" uid="uid://ni15uerdd1to" path="res://SCRIPTS/Maps/Helpers/StartingPositionHelper.gd" id="2_o1em6"]
 
-[node name="StartingPositionHelper" type="Sprite2D"]
+[node name="StartingPositionHelper" type="Sprite2D" unique_id=891002777]
 position = Vector2(448, 320)
 texture = ExtResource("1_esap0")
 centered = false

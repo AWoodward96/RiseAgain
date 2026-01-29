@@ -1,31 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://qjl2gotelcsg"]
+[gd_scene format=3 uid="uid://qjl2gotelcsg"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_ksuy1"]
+[ext_resource type="Script" uid="uid://dqq5nx3hqwfu3" path="res://SCRIPTS/UI/General/UnitInfo/StatBlockEntry.gd" id="1_ksuy1"]
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="2_nrftl"]
 
-[node name="StatBlockEntry_Small" type="HBoxContainer" node_paths=PackedStringArray("icon", "statlabel", "statIncreaseLabel")]
+[node name="StatBlockEntry_Small" type="HBoxContainer" unique_id=240139431 node_paths=PackedStringArray("icon", "statIncreaseLabel")]
 offset_right = 32.0
 offset_bottom = 16.0
+size_flags_vertical = 4
 script = ExtResource("1_ksuy1")
 icon = NodePath("TextureRect")
-statlabel = NodePath("Amount")
 statIncreaseLabel = NodePath("Amount/Increase")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=955948634]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("2_nrftl")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Amount" type="Label" parent="."]
+[node name="Amount" type="Label" parent="." unique_id=1828479469]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
 text = "07"
 
-[node name="Increase" type="Label" parent="Amount"]
+[node name="Increase" type="Label" parent="Amount" unique_id=1146872381]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 16.0
 offset_top = -13.0
 offset_right = 26.0

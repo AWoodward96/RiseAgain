@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="MealTemplate" format=3 uid="uid://bl5khuhjuhxgg"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_ok67s"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="2_yh12a"]
+[ext_resource type="Script" uid="uid://bu5ky7pwkxf34" path="res://SCRIPTS/Universe/Tavern/MealTemplate.gd" id="3_xqcn2"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_4dj75"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_wdvvg"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_mta1d"]
+[ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="7_r6tth"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="8_t5osm"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="9_l4ak8"]
+[ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="10_gtfn5"]
+
+[sub_resource type="Resource" id="Resource_l0blg"]
+script = ExtResource("1_ok67s")
+ItemResource = ExtResource("2_yh12a")
+Amount = 10
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_kiu3o"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("5_wdvvg")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_srs7v"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("6_mta1d")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_6ug0s"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("7_r6tth")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_7sgr5"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("8_t5osm")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_1mqk6"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("9_l4ak8")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_tdx2n"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("10_gtfn5")
+Value = 3
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_vfcm1"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("5_wdvvg")
+Value = 2
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_chtvm"]
+script = ExtResource("4_4dj75")
+Template = ExtResource("10_gtfn5")
+Value = 1
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[resource]
+script = ExtResource("3_xqcn2")
+loc_title = "meal_meatplatter_title"
+loc_desc = "meal_meatplatter_desc"
+cost = Array[ExtResource("1_ok67s")]([SubResource("Resource_l0blg")])
+statGrowthMods = Array[ExtResource("4_4dj75")]([SubResource("Resource_kiu3o"), SubResource("Resource_srs7v"), SubResource("Resource_6ug0s"), SubResource("Resource_7sgr5"), SubResource("Resource_1mqk6"), SubResource("Resource_tdx2n")])
+statModifiers = Array[ExtResource("4_4dj75")]([SubResource("Resource_vfcm1"), SubResource("Resource_chtvm")])
+metadata/_custom_type_script = "uid://bu5ky7pwkxf34"

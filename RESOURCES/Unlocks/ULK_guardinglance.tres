@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://bqqcy3c3fgo88"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_r7g7b"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_tsoq0"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_7efdc"]
+[ext_resource type="Resource" uid="uid://ycut18e8qjtl" path="res://RESOURCES/Descriptors/DES_Lance.tres" id="6_n5bsn"]
+
+[resource]
+script = ExtResource("1_tsoq0")
+AbilityPath = "res://RESOURCES/Ability/Equippable/guardinglance.tscn"
+StartsDiscoverable = true
+Descriptors = Array[ExtResource("1_r7g7b")]([ExtResource("2_7efdc"), ExtResource("6_n5bsn")])

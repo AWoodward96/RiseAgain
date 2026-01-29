@@ -1,0 +1,229 @@
+[gd_scene load_steps=14 format=3 uid="uid://cls83uyoykivy"]
+
+[ext_resource type="Script" uid="uid://djvjsoy5dfdeb" path="res://SCRIPTS/Managers/GameManager.gd" id="1_4phlr"]
+[ext_resource type="Resource" uid="uid://bwy7m4cuq5x0f" path="res://RESOURCES/Managers/GameSettings.tres" id="2_e6gc7"]
+[ext_resource type="Resource" uid="uid://b4u6518tnwvj6" path="res://RESOURCES/Managers/UnitSettings.tres" id="3_d1hgw"]
+[ext_resource type="Resource" uid="uid://ctv538x46ffve" path="res://RESOURCES/Managers/LocSettings.tres" id="4_4gcm7"]
+[ext_resource type="Theme" uid="uid://cp4bbeykxl8fe" path="res://RESOURCES/UI/Themes/moonsteel_theme.tres" id="6_acqv3"]
+[ext_resource type="Script" uid="uid://cxl3qcqfcg8wk" path="res://SCRIPTS/UI/GlobalUI.gd" id="6_ctckm"]
+[ext_resource type="PackedScene" uid="uid://po4nfl4dmthc" path="res://RESOURCES/UI/loading_screen.tscn" id="7_5jmon"]
+[ext_resource type="Texture2D" uid="uid://bk60n8pjsbu3g" path="res://ART/Icons/Resources/coins.png" id="7_7tehk"]
+[ext_resource type="Texture2D" uid="uid://dq7qxasdckqsg" path="res://ART/Icons/Resources/food.png" id="8_hwirq"]
+[ext_resource type="Texture2D" uid="uid://b1xh8lviepmfy" path="res://ART/Icons/Resources/wood.png" id="9_ctckm"]
+[ext_resource type="Texture2D" uid="uid://bo43e7a3ccrpx" path="res://ART/Icons/Resources/ore.png" id="10_w0jkb"]
+[ext_resource type="Texture2D" uid="uid://fg04h7ce7dyf" path="res://ART/Icons/Resources/concoction.png" id="11_38e3c"]
+[ext_resource type="Texture2D" uid="uid://if7va0ccagny" path="res://ART/Icons/Resources/gemstone.png" id="13_w0jkb"]
+
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("GlobalUI")]
+script = ExtResource("1_4phlr")
+GameSettings = ExtResource("2_e6gc7")
+UnitSettings = ExtResource("3_d1hgw")
+LocalizationSettings = ExtResource("4_4gcm7")
+GlobalUI = NodePath("GlobalUI")
+LoadingScreenPrefab = ExtResource("7_5jmon")
+
+[node name="GlobalUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("ResourceParent", "ResourceAnimator", "PrimaryCurrenciesParent", "SecondaryCurrenciesParent", "GoldLabel", "FoodLabel", "OreLabel", "WoodLabel", "ConcoctionsLabel", "GemstonesLabel")]
+script = ExtResource("6_ctckm")
+ResourceParent = NodePath("ResourceUI")
+ResourceAnimator = NodePath("ResourceUI/AnimationPlayer")
+PrimaryCurrenciesParent = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel")
+SecondaryCurrenciesParent = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent")
+GoldLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer/GoldLabel")
+FoodLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer/FoodLabel")
+OreLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer/OreLabel")
+WoodLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer/WoodLabel")
+ConcoctionsLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer/ConcoctionLabel")
+GemstonesLabel = NodePath("ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent/GemstoneText")
+
+[node name="ResourceUI" type="Control" parent="GlobalUI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 1.0
+grow_horizontal = 0
+theme = ExtResource("6_acqv3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GlobalUI/ResourceUI"]
+
+[node name="Offset" type="Control" parent="GlobalUI/ResourceUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 32.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="GlobalUI/ResourceUI/Offset"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="MainCurrenciesPanel" type="Panel" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+theme = ExtResource("6_acqv3")
+
+[node name="MainCurrenciesMargin" type="MarginContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GoldContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoldTexture" type="TextureRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("7_7tehk")
+expand_mode = 1
+
+[node name="GoldLabel" type="Label" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/GoldContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="FoodContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="FoodTexture" type="TextureRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("8_hwirq")
+expand_mode = 1
+
+[node name="FoodLabel" type="Label" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/FoodContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="WoodContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="WoodTexture" type="TextureRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("9_ctckm")
+expand_mode = 1
+
+[node name="WoodLabel" type="Label" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/WoodContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="OreContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="OreTexture" type="TextureRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("10_w0jkb")
+expand_mode = 1
+
+[node name="OreLabel" type="Label" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/MainCurrenciesPanel/MainCurrenciesMargin/VBoxContainer/OreContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="SecondaryCurrenciesParent" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="SecondaryCurrencies" type="Panel" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent"]
+custom_minimum_size = Vector2(137, 32)
+layout_mode = 2
+theme = ExtResource("6_acqv3")
+
+[node name="SecondaryCurrenciesMargin" type="MarginContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ConcoctionContainer" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="ConcoctionIcon" type="TextureRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("11_38e3c")
+expand_mode = 1
+
+[node name="ConcoctionLabel" type="Label" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/ConcoctionContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="GemstoneParent" type="HBoxContainer" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="GemstoneIcon" type="TextureRect" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("13_w0jkb")
+expand_mode = 1
+
+[node name="GemstoneText" type="Label" parent="GlobalUI/ResourceUI/Offset/MarginContainer/VBoxContainer/SecondaryCurrenciesParent/SecondaryCurrencies/SecondaryCurrenciesMargin/VBoxContainer/GemstoneParent"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="Burst" type="Control" parent="GlobalUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

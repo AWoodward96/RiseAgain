@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://crgp0s3avbs4i"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_7oiqh"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="2_cnvxg"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_fe102"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_0iv54"]
+[ext_resource type="Script" uid="uid://dwybkjr1cr223" path="res://SCRIPTS/Ability/PassiveUnitDeathListener.gd" id="3_cnvxg"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_dte8y"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="4_v5pb2"]
+[ext_resource type="Script" uid="uid://ct8lhn6f420te" path="res://SCRIPTS/Ability/HealStep.gd" id="5_4ws2j"]
+[ext_resource type="PackedScene" uid="uid://ddcgn74t12axm" path="res://RESOURCES/VFX/healing_cloud_vfx.tscn" id="5_xhm4w"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="6_xhm4w"]
+[ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="6_xodfp"]
+[ext_resource type="Resource" uid="uid://yqpddrucgtar" path="res://RESOURCES/Ability/TargetingTemplates/healingcloud_targeting.tres" id="9_4ws2j"]
+[ext_resource type="Resource" uid="uid://b2528dgdj72fb" path="res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres" id="12_v5pb2"]
+
+[sub_resource type="Resource" id="Resource_xodfp"]
+script = ExtResource("3_0iv54")
+OnActionOrigin = false
+OnSource = true
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_wbtb0"]
+script = ExtResource("6_xodfp")
+VFXPrefab = ExtResource("5_xhm4w")
+metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
+
+[sub_resource type="Resource" id="Resource_6nieg"]
+script = ExtResource("4_v5pb2")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_vs4yg"]
+script = ExtResource("5_4ws2j")
+metadata/_custom_type_script = "uid://ct8lhn6f420te"
+
+[sub_resource type="Resource" id="Resource_m3hti"]
+script = ExtResource("6_xhm4w")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[node name="healingcloud" type="Node2D" unique_id=654116408 node_paths=PackedStringArray("passiveListeners", "TargetingData", "HealData")]
+script = ExtResource("1_7oiqh")
+type = 3
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_fe102")]([SubResource("Resource_xodfp"), SubResource("Resource_wbtb0"), SubResource("Resource_6nieg"), SubResource("Resource_vs4yg"), SubResource("Resource_m3hti")])
+passiveListeners = [NodePath("PassiveUnitDeathListener")]
+internalName = "healingcloud"
+loc_displayName = "passive_healingcloud_name"
+loc_displayDesc = "passive_healingcloud_desc"
+TargetingTemplate = ExtResource("9_4ws2j")
+TargetingData = NodePath("TargetingData")
+HealData = NodePath("HealComponent")
+
+[node name="HealComponent" type="Node2D" parent="." unique_id=1292027391]
+script = ExtResource("2_cnvxg")
+FlatValue = 4.0
+
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=337692005]
+script = ExtResource("3_cnvxg")
+includeSelf = true
+reqOnlyOnSelfDeath = true
+triggerAbilityStack = true
+metadata/_custom_type_script = "uid://dwybkjr1cr223"
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=29141236]
+script = ExtResource("4_dte8y")
+TeamTargeting = 2
+TargetRange = Vector2i(0, 0)
+Type = 1
+CanTargetSelf = true
+shapedTiles = ExtResource("12_v5pb2")

@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="CampaignBlock" format=3 uid="uid://c5614f31tb7m2"]
+
+[ext_resource type="Script" uid="uid://cu36n6t5whrim" path="res://SCRIPTS/Maps/MapBlock.gd" id="1_4a1er"]
+[ext_resource type="Script" uid="uid://cn80mtuvsa1pn" path="res://SCRIPTS/Maps/WeightedMapOption.gd" id="2_v6sny"]
+[ext_resource type="PackedScene" uid="uid://hwqrstkn4a22" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b01_default.tscn" id="3_sbxfi"]
+[ext_resource type="PackedScene" uid="uid://571bc5ftblmp" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b01_alt1.tscn" id="4_w10pj"]
+[ext_resource type="Script" uid="uid://bhga6uu5rdson" path="res://SCRIPTS/Maps/PriorityMapOption.gd" id="5_4kf2b"]
+[ext_resource type="PackedScene" uid="uid://dmn5mbio3opjl" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_a03_default.tscn" id="5_muds1"]
+[ext_resource type="PackedScene" uid="uid://crsfuln75037q" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_b03_default.tscn" id="7_cfyak"]
+[ext_resource type="PackedScene" uid="uid://4rtlps8m0j20" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_fallenlog.tscn" id="7_pa1h8"]
+[ext_resource type="Script" uid="uid://cum6q7avovv0r" path="res://SCRIPTS/Maps/CampaignBlock.gd" id="8_h84r8"]
+
+[sub_resource type="Resource" id="Resource_06hbk"]
+resource_name = "Default"
+script = ExtResource("2_v6sny")
+map = ExtResource("3_sbxfi")
+
+[sub_resource type="Resource" id="Resource_dig7b"]
+resource_name = "Alt - Survive"
+script = ExtResource("2_v6sny")
+map = ExtResource("4_w10pj")
+
+[sub_resource type="Resource" id="Resource_pa1h8"]
+resource_name = "A03 Leftover"
+script = ExtResource("2_v6sny")
+map = ExtResource("5_muds1")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_sd8c1"]
+resource_name = "Map 1"
+script = ExtResource("1_4a1er")
+generalMapOptions = Array[ExtResource("2_v6sny")]([SubResource("Resource_06hbk"), SubResource("Resource_dig7b"), SubResource("Resource_pa1h8")])
+
+[sub_resource type="Resource" id="Resource_kr2jy"]
+resource_name = "Fallen Log"
+script = ExtResource("2_v6sny")
+map = ExtResource("7_pa1h8")
+metadata/_custom_type_script = "uid://cn80mtuvsa1pn"
+
+[sub_resource type="Resource" id="Resource_2n4qx"]
+resource_name = "Event"
+script = ExtResource("1_4a1er")
+generalMapOptions = Array[ExtResource("2_v6sny")]([SubResource("Resource_kr2jy")])
+metadata/_custom_type_script = "uid://cu36n6t5whrim"
+
+[sub_resource type="Resource" id="Resource_ya816"]
+resource_name = "Boss"
+script = ExtResource("2_v6sny")
+map = ExtResource("7_cfyak")
+
+[sub_resource type="Resource" id="Resource_8g5k6"]
+resource_name = "Map 3 Boss"
+script = ExtResource("1_4a1er")
+generalMapOptions = Array[ExtResource("2_v6sny")]([SubResource("Resource_ya816")])
+
+[resource]
+script = ExtResource("8_h84r8")
+mapOptions = Array[ExtResource("1_4a1er")]([SubResource("Resource_sd8c1"), SubResource("Resource_2n4qx"), SubResource("Resource_8g5k6")])

@@ -1,0 +1,215 @@
+[gd_scene load_steps=17 format=3 uid="uid://c7gatmds02pyx"]
+
+[ext_resource type="Script" uid="uid://6pki4qiai66s" path="res://SCRIPTS/Universe/Smithy/SmithyUI.gd" id="1_bvrpq"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_xpus1"]
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="1_y7gum"]
+[ext_resource type="Texture2D" uid="uid://bi730gfh0mf1f" path="res://ART/UI/tab_icons1.png" id="2_bvrpq"]
+[ext_resource type="Texture2D" uid="uid://6xayqgfhtr7b" path="res://ART/UI/tab_icons2.png" id="3_a2542"]
+[ext_resource type="Texture2D" uid="uid://nlyhxijqyii7" path="res://ART/UI/Textures/wood_table_2.png" id="3_lkh4n"]
+[ext_resource type="Texture2D" uid="uid://blnwb3bmlaf7o" path="res://ART/UI/arrows.png" id="4_txfqo"]
+[ext_resource type="Script" uid="uid://cekyjo0casnp4" path="res://SCRIPTS/Universe/Smithy/SmithyEntryTabUI.gd" id="6_bvrpq"]
+[ext_resource type="PackedScene" uid="uid://ds0pcu11x34vs" path="res://RESOURCES/UI/Smithy/smithy_weapon_entry.tscn" id="7_a2542"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="8_a2542"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="9_txfqo"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="10_jmxwo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkh4n"]
+font = ExtResource("1_y7gum")
+font_size = 48
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atcrh"]
+atlas = ExtResource("4_txfqo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufh7f"]
+atlas = ExtResource("4_txfqo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ajjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atcrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufh7f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="SmithyUI" type="Control" node_paths=PackedStringArray("Tabs", "TabBarUI")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xpus1")
+script = ExtResource("1_bvrpq")
+Tabs = [NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel"), NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel")]
+TabBarUI = NodePath("MenuParent/Panel/MarginContainer/VBoxContainer/HBoxContainer/TabBar")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lkh4n")
+stretch_mode = 1
+
+[node name="MenuParent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MenuParent"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 28.0
+offset_right = 915.0
+offset_bottom = 638.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuParent/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="MenuParent/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "loc_smithy_title"
+label_settings = SubResource("LabelSettings_lkh4n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="MenuParent/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+current_tab = 0
+tab_alignment = 1
+max_tab_width = 200
+deselect_enabled = true
+tab_count = 2
+tab_0/title = "Weapons"
+tab_0/icon = ExtResource("2_bvrpq")
+tab_1/title = "Magic"
+tab_1/icon = ExtResource("3_a2542")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuParent/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+position = Vector2(203, 21)
+sprite_frames = SubResource("SpriteFrames_6ajjx")
+autoplay = "default"
+frame_progress = 0.605819
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MenuParent/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+position = Vector2(475, 21)
+sprite_frames = SubResource("SpriteFrames_6ajjx")
+autoplay = "default"
+frame_progress = 0.421914
+flip_h = true
+
+[node name="WeaponsPanel" type="Panel" parent="MenuParent/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("smithyEntryParent")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SubPanel1"
+script = ExtResource("6_bvrpq")
+smithyEntryPrefab = ExtResource("7_a2542")
+smithyEntryParent = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer")
+filterDescriptors = ExtResource("8_a2542")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel/MarginContainer"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/WeaponsPanel/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_constants/separation = 32
+script = ExtResource("9_txfqo")
+
+[node name="MagicPanel" type="Panel" parent="MenuParent/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("smithyEntryParent")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SubPanel1"
+script = ExtResource("6_bvrpq")
+smithyEntryPrefab = ExtResource("7_a2542")
+smithyEntryParent = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer")
+filterDescriptors = ExtResource("10_jmxwo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel/MarginContainer"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuParent/Panel/MarginContainer/VBoxContainer/MagicPanel/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_constants/separation = 32
+script = ExtResource("9_txfqo")

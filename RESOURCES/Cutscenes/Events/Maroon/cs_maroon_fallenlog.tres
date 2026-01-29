@@ -1,0 +1,184 @@
+[gd_resource type="Resource" script_class="CutsceneTemplate" format=3 uid="uid://dua4qmfiwwx5k"]
+
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="1_s24kc"]
+[ext_resource type="Script" uid="uid://c1pptsi31e0yp" path="res://SCRIPTS/Cutscene/Events/ShowLoadingScreenEvent.gd" id="2_68pnt"]
+[ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="2_axqcu"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="3_68pnt"]
+[ext_resource type="Script" uid="uid://dc4u7cqup7fpr" path="res://SCRIPTS/Cutscene/Events/MoveUnitEvent.gd" id="3_eul1b"]
+[ext_resource type="Script" uid="uid://b83ex510b0d3c" path="res://SCRIPTS/Cutscene/Events/ShowEventPrompt.gd" id="3_prwqt"]
+[ext_resource type="Script" uid="uid://bxh0g23kritn8" path="res://SCRIPTS/Cutscene/Events/EventDecision.gd" id="4_ogiij"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="6_223oc"]
+[ext_resource type="Script" uid="uid://dalk3vyucbgsu" path="res://SCRIPTS/Cutscene/Events/ShowEventDecision.gd" id="6_gy3o2"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="7_eul1b"]
+[ext_resource type="Script" uid="uid://c52b2lkessydf" path="res://SCRIPTS/Generic/Requirements/UnitInPartyReq.gd" id="7_jjlug"]
+[ext_resource type="Script" uid="uid://c8dhapjjauqq4" path="res://SCRIPTS/Generic/Requirements/StatCheckReq.gd" id="8_id1rp"]
+[ext_resource type="Script" uid="uid://bsnlo2wjaj6uu" path="res://SCRIPTS/Cutscene/Events/PlayGridEntityAnimationEvent.gd" id="10_qgwut"]
+[ext_resource type="Resource" uid="uid://uq0w3nwxd8a" path="res://RESOURCES/LootTable/LT_Event_FallenLog.tres" id="10_vb3d8"]
+[ext_resource type="Script" uid="uid://b8v8fou10ucrg" path="res://SCRIPTS/CombatEffects/CombatEffectTemplate.gd" id="14_tp3g1"]
+[ext_resource type="Script" uid="uid://7epy8g0ew1cd" path="res://SCRIPTS/Cutscene/Events/SpawnUnitEvent.gd" id="15_qgwut"]
+[ext_resource type="Script" uid="uid://cpajqbxayy16y" path="res://SCRIPTS/Generic/MadLibLoc.gd" id="15_qp2j2"]
+[ext_resource type="Script" uid="uid://cj0o5iaxm2vw7" path="res://SCRIPTS/Cutscene/Events/RollAndPresentLootTableEvent.gd" id="16_7goiu"]
+[ext_resource type="Script" uid="uid://dfq20krg4iajv" path="res://SCRIPTS/Cutscene/Events/MarkEventMapCompleteEvent.gd" id="18_r16d2"]
+
+[sub_resource type="Resource" id="Resource_prwqt"]
+script = ExtResource("2_68pnt")
+WaitForFade = false
+metadata/_custom_type_script = "uid://c1pptsi31e0yp"
+
+[sub_resource type="Resource" id="Resource_tp3g1"]
+script = ExtResource("3_eul1b")
+unitAtPosition = Vector2i(2, 5)
+route = Array[Vector2i]([Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(6, 6)])
+destination = Vector2i(6, 6)
+waitForCompletion = false
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_qgwut"]
+script = ExtResource("3_eul1b")
+unitAtPosition = Vector2i(1, 6)
+route = Array[Vector2i]([Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6), Vector2i(4, 6), Vector2i(5, 6), Vector2i(6, 6), Vector2i(7, 6), Vector2i(8, 6)])
+destination = Vector2i(8, 6)
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_ogiij"]
+script = ExtResource("3_prwqt")
+loc_text = "event_fallenlog_prompt"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_vb3d8"]
+script = ExtResource("7_eul1b")
+Template = ExtResource("6_223oc")
+Value = 5
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_vtfwg"]
+script = ExtResource("8_id1rp")
+StatCheck = SubResource("Resource_vb3d8")
+metadata/_custom_type_script = "uid://c8dhapjjauqq4"
+
+[sub_resource type="Resource" id="Resource_dga0r"]
+script = ExtResource("10_qgwut")
+Position = Vector2i(6, 3)
+AnimString = "result_move"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_m23vm"]
+script = ExtResource("3_prwqt")
+loc_text = "event_fallenlog_d1_result"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_sgqpi"]
+script = ExtResource("16_7goiu")
+Table = ExtResource("10_vb3d8")
+NumberOfPulls = 2
+SaveInContext = true
+metadata/_custom_type_script = "uid://cj0o5iaxm2vw7"
+
+[sub_resource type="Resource" id="Resource_g8itf"]
+script = ExtResource("15_qgwut")
+fromContext = "UnitLootTableReward"
+position = Vector2i(7, 1)
+level = 2
+allegience = 0
+metadata/_custom_type_script = "uid://7epy8g0ew1cd"
+
+[sub_resource type="Resource" id="Resource_7goiu"]
+script = ExtResource("3_eul1b")
+unitAtPosition = Vector2i(7, 1)
+route = Array[Vector2i]([Vector2i(7, 1), Vector2i(7, 2), Vector2i(7, 3)])
+destination = Vector2i(7, 3)
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_el2l1"]
+script = ExtResource("3_prwqt")
+loc_text = "event_fallenlog_d1_result2"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_6rrnd"]
+resource_name = "[ATK 5] Move the Log"
+script = ExtResource("4_ogiij")
+option_loc = "event_fallenlog_d1"
+requirements = Array[ExtResource("3_68pnt")]([SubResource("Resource_vtfwg")])
+resultActionStack = Array[ExtResource("1_s24kc")]([SubResource("Resource_dga0r"), SubResource("Resource_m23vm"), SubResource("Resource_sgqpi"), SubResource("Resource_g8itf"), SubResource("Resource_7goiu"), SubResource("Resource_el2l1")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_223oc"]
+script = ExtResource("7_jjlug")
+UnitTemplateRef = "uid://dhofh2o4b8tg4"
+metadata/_custom_type_script = "uid://c52b2lkessydf"
+
+[sub_resource type="Resource" id="Resource_ijche"]
+script = ExtResource("10_qgwut")
+Position = Vector2i(6, 3)
+AnimString = "result_burn"
+metadata/_custom_type_script = "uid://bsnlo2wjaj6uu"
+
+[sub_resource type="Resource" id="Resource_qp2j2"]
+script = ExtResource("3_prwqt")
+loc_text = "event_fallenlog_d2_result"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_r16d2"]
+script = ExtResource("16_7goiu")
+Table = ExtResource("10_vb3d8")
+NumberOfPulls = 2
+SaveInContext = true
+metadata/_custom_type_script = "uid://cj0o5iaxm2vw7"
+
+[sub_resource type="Resource" id="Resource_0aigc"]
+script = ExtResource("15_qgwut")
+fromContext = "UnitLootTableReward"
+position = Vector2i(7, 1)
+level = 2
+allegience = 0
+healthPerc = 0.66
+metadata/_custom_type_script = "uid://7epy8g0ew1cd"
+
+[sub_resource type="Resource" id="Resource_63370"]
+script = ExtResource("3_eul1b")
+unitAtPosition = Vector2i(7, 1)
+route = Array[Vector2i]([Vector2i(7, 1), Vector2i(7, 2), Vector2i(7, 3), Vector2i(7, 4)])
+destination = Vector2i(7, 4)
+metadata/_custom_type_script = "uid://dc4u7cqup7fpr"
+
+[sub_resource type="Resource" id="Resource_h842n"]
+script = ExtResource("3_prwqt")
+loc_text = "event_fallenlog_d2_result2"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_gy3o2"]
+resource_name = "[FM] Burn Log To Crisp"
+script = ExtResource("4_ogiij")
+option_loc = "event_fallenlog_d2"
+hiddenRequirement = true
+requirements = Array[ExtResource("3_68pnt")]([SubResource("Resource_223oc")])
+resultActionStack = Array[ExtResource("1_s24kc")]([SubResource("Resource_ijche"), SubResource("Resource_qp2j2"), SubResource("Resource_r16d2"), SubResource("Resource_0aigc"), SubResource("Resource_63370"), SubResource("Resource_h842n")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_eul1b"]
+script = ExtResource("3_prwqt")
+loc_text = "event_fallenlog_d3_result"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_t65so"]
+resource_name = "Leave"
+script = ExtResource("4_ogiij")
+option_loc = "event_fallenlog_d3"
+resultActionStack = Array[ExtResource("1_s24kc")]([SubResource("Resource_eul1b")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_jjlug"]
+script = ExtResource("6_gy3o2")
+DecisionOptions = Array[ExtResource("4_ogiij")]([SubResource("Resource_6rrnd"), SubResource("Resource_gy3o2"), SubResource("Resource_t65so")])
+metadata/_custom_type_script = "uid://dalk3vyucbgsu"
+
+[sub_resource type="Resource" id="Resource_3x2f1"]
+script = ExtResource("18_r16d2")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[resource]
+script = ExtResource("2_axqcu")
+events = Array[ExtResource("1_s24kc")]([SubResource("Resource_prwqt"), SubResource("Resource_tp3g1"), SubResource("Resource_qgwut"), SubResource("Resource_ogiij"), SubResource("Resource_jjlug"), SubResource("Resource_3x2f1")])
+repeatable = true
+autoComplete = false
+metadata/_custom_type_script = "uid://c10jnc1t5gw2i"

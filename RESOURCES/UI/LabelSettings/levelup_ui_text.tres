@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bqijakfhechmw"]
+
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_vgfvk"]
+
+[resource]
+font = ExtResource("1_vgfvk")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)

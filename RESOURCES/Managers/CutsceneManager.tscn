@@ -1,0 +1,298 @@
+[gd_scene format=3 uid="uid://bywdpur6phgne"]
+
+[ext_resource type="Script" uid="uid://ctampa6mylqbm" path="res://SCRIPTS/Cutscene/CutsceneManager.gd" id="1_qadun"]
+[ext_resource type="Resource" uid="uid://dwvjo3jy73m3o" path="res://RESOURCES/Cutscenes/Tutorials/cs_tutorial_root.tres" id="2_7gj5c"]
+[ext_resource type="PackedScene" uid="uid://ynwbrekxfe17" path="res://RESOURCES/UI/Cutscene/event_option_entry.tscn" id="3_ki5v6"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="4_ber6s"]
+[ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="5_7gj5c"]
+[ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="5_ki5v6"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="6_ki5v6"]
+
+[sub_resource type="Gradient" id="Gradient_ehkmj"]
+colors = PackedColorArray(0.1692, 0.2444, 0.47, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbmhc"]
+gradient = SubResource("Gradient_ehkmj")
+width = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ber6s"]
+font = ExtResource("5_7gj5c")
+font_size = 12
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_7gj5c"]
+colors = PackedColorArray(0.36, 0.3012, 0.288, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ber6s"]
+gradient = SubResource("Gradient_7gj5c")
+width = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CutsceneManager" type="Node2D" unique_id=647037744 node_paths=PackedStringArray("TutorialPromptParent", "TutorialPanel", "TutorialText", "PressAnyKey", "WaitTimeParent", "WaitTimeBar", "EventParent", "EventText", "EventPromptParent", "EventDecisionParent", "EventOptionParent")]
+process_mode = 3
+script = ExtResource("1_qadun")
+FTUE = ExtResource("2_7gj5c")
+TutorialPromptParent = NodePath("TutorialMain")
+TutorialPanel = NodePath("TutorialMain/Parent/TutorialPrompt")
+TutorialText = NodePath("TutorialMain/Parent/TutorialPrompt/VBoxContainer/Objective/Content/Prompt")
+PressAnyKey = NodePath("TutorialMain/Parent/TutorialPrompt/VBoxContainer/PressAnyKeyParent")
+WaitTimeParent = NodePath("TutorialMain/Parent/TutorialPrompt/VBoxContainer/MarginContainer")
+WaitTimeBar = NodePath("TutorialMain/Parent/TutorialPrompt/VBoxContainer/MarginContainer/ProgressBar")
+EventParent = NodePath("EventMain")
+EventText = NodePath("EventMain/Parent/Prompt/VBoxContainer/MarginParent/Content/VBoxContainer/Prompt")
+EventPromptParent = NodePath("EventMain/Parent/Prompt")
+EventDecisionParent = NodePath("EventMain/Parent/Decision")
+EventOptionParent = NodePath("EventMain/Parent/Decision/VBoxContainer/MarginParent/Content/OptionParent")
+EventOptionPrefab = ExtResource("3_ki5v6")
+
+[node name="TutorialMain" type="CanvasLayer" parent="." unique_id=956842994]
+layer = 50
+
+[node name="Parent" type="Control" parent="TutorialMain" unique_id=85329137]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialPrompt" type="MarginContainer" parent="TutorialMain/Parent" unique_id=1684127911]
+custom_minimum_size = Vector2(280, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialMain/Parent/TutorialPrompt" unique_id=1847717521]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Objective" type="MarginContainer" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer" unique_id=1954228087]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+
+[node name="TextureRect" type="TextureRect" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/Objective" unique_id=1302506604]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_nbmhc")
+
+[node name="Content" type="MarginContainer" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/Objective" unique_id=1592852573]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 16
+
+[node name="Prompt" type="RichTextLabel" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/Objective/Content" unique_id=1069495442]
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_ber6s")
+bbcode_enabled = true
+text = "I need to know if this is going to expand if this really fucking tired jesus"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/Objective/Content" unique_id=1149101618]
+visible = false
+layout_mode = 2
+text = "this is a content test"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/Objective" unique_id=93643669]
+layout_mode = 2
+texture = ExtResource("5_ki5v6")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer" unique_id=549807856]
+visible = false
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/MarginContainer" unique_id=2072855455]
+layout_mode = 2
+max_value = 1.0
+show_percentage = false
+
+[node name="PressAnyKeyParent" type="MarginContainer" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer" unique_id=1211628667]
+visible = false
+layout_mode = 2
+
+[node name="Text" type="Label" parent="TutorialMain/Parent/TutorialPrompt/VBoxContainer/PressAnyKeyParent" unique_id=1402064610]
+layout_mode = 2
+text = "ui_press_any_key"
+label_settings = SubResource("LabelSettings_ber6s")
+horizontal_alignment = 1
+
+[node name="EventMain" type="CanvasLayer" parent="." unique_id=1721652167]
+layer = 50
+
+[node name="Parent" type="Control" parent="EventMain" unique_id=2001739172]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Prompt" type="MarginContainer" parent="EventMain/Parent" unique_id=1299974555]
+custom_minimum_size = Vector2(280, 156)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(133, -55)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EventMain/Parent/Prompt" unique_id=105499629]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginParent" type="MarginContainer" parent="EventMain/Parent/Prompt/VBoxContainer" unique_id=1030814253]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 0
+
+[node name="TextureRect" type="TextureRect" parent="EventMain/Parent/Prompt/VBoxContainer/MarginParent" unique_id=26810974]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_ber6s")
+
+[node name="Content" type="MarginContainer" parent="EventMain/Parent/Prompt/VBoxContainer/MarginParent" unique_id=1009408172]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EventMain/Parent/Prompt/VBoxContainer/MarginParent/Content" unique_id=721373427]
+layout_mode = 2
+
+[node name="Prompt" type="RichTextLabel" parent="EventMain/Parent/Prompt/VBoxContainer/MarginParent/Content/VBoxContainer" unique_id=1462283153]
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_ber6s")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "The"
+fit_content = true
+scroll_active = false
+
+[node name="ToContinue" type="RichTextLabel" parent="EventMain/Parent/Prompt/VBoxContainer/MarginParent/Content/VBoxContainer" unique_id=1316582912]
+custom_minimum_size = Vector2(240, 20)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/normal_font = ExtResource("4_ber6s")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = ". . . [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to continue"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="EventMain/Parent/Prompt/VBoxContainer/MarginParent" unique_id=2002161566]
+layout_mode = 2
+texture = ExtResource("5_ki5v6")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Decision" type="MarginContainer" parent="EventMain/Parent" unique_id=1582933021]
+visible = false
+custom_minimum_size = Vector2(960, 192)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(133, -55)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EventMain/Parent/Decision" unique_id=1561352006]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginParent" type="MarginContainer" parent="EventMain/Parent/Decision/VBoxContainer" unique_id=1353027505]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 0
+
+[node name="TextureRect" type="TextureRect" parent="EventMain/Parent/Decision/VBoxContainer/MarginParent" unique_id=1685205336]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_ber6s")
+
+[node name="Content" type="MarginContainer" parent="EventMain/Parent/Decision/VBoxContainer/MarginParent" unique_id=1438424243]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 16
+
+[node name="OptionParent" type="VBoxContainer" parent="EventMain/Parent/Decision/VBoxContainer/MarginParent/Content" unique_id=568385398]
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("6_ki5v6")
+
+[node name="ToContinue" type="RichTextLabel" parent="EventMain/Parent/Decision/VBoxContainer/MarginParent" unique_id=1246135145]
+custom_minimum_size = Vector2(240, 20)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/normal_font = ExtResource("4_ber6s")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = ". . . [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img] to continue     "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="EventMain/Parent/Decision/VBoxContainer/MarginParent" unique_id=2013879099]
+layout_mode = 2
+texture = ExtResource("5_ki5v6")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32

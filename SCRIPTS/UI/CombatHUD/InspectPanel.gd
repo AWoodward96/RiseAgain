@@ -1,9 +1,16 @@
-extends Control
+extends AnchoredUIElement
 class_name InspectPanel
 
+
+@export var DefaultLayoutParent : Control
+@export var SubmergedLayoutParent : Control
+
+
 @export var icon : TextureRect
+@export var injuredParent : Control
 @export var unitHealthBar : UnitHealthBar
 @export var namelabel : Label
+@export var affinity_icon : TextureRect
 
 @export_category("Stat Stuff")
 
@@ -32,22 +39,34 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 	if _unit == null || _unit.Template == null:
 		return
 
+	if _unit.Submerged && _unit.UnitAllegiance != GameSettingsTemplate.TeamID.ALLY:
+		DefaultLayoutParent.visible = false
+		SubmergedLayoutParent.visible = true
+		return
+
+	DefaultLayoutParent.visible = true
+	SubmergedLayoutParent.visible = false
+
 	var forceUpdate = currentUnit != _unit || _forceUpdate
 
-	if currentUnit != null:
-		currentUnit.OnStatUpdated.disconnect(OnUnitStatUpdated)
-		currentUnit.OnCombatEffectsUpdated.disconnect(OnUnitEffectsUpdated)
+	if forceUpdate:
+		if currentUnit != null:
+			currentUnit.OnStatUpdated.disconnect(OnUnitStatUpdated)
+			currentUnit.OnCombatEffectsUpdated.disconnect(OnUnitEffectsUpdated)
 
-	currentUnit = _unit
+		currentUnit = _unit
 
-	currentUnit.OnStatUpdated.connect(OnUnitStatUpdated)
-	currentUnit.OnCombatEffectsUpdated.connect(OnUnitEffectsUpdated)
+		currentUnit.OnStatUpdated.connect(OnUnitStatUpdated)
+		currentUnit.OnCombatEffectsUpdated.connect(OnUnitEffectsUpdated)
 
 	var template = _unit.Template
 	icon.texture = template.icon
 	namelabel.text = template.loc_DisplayName
 	unitHealthBar.SetUnit(_unit)
 	unitHealthBar.Refresh()
+
+	if injuredParent != null: injuredParent.visible = _unit.Injured
+	if affinity_icon != null: affinity_icon.texture = currentUnit.Template.Affinity.loc_icon
 
 	if forceUpdate:
 		UpdateStatsUI()
@@ -60,6 +79,9 @@ func OnUnitEffectsUpdated():
 	Update(currentUnit, true)
 
 func UpdateWeaponInfo():
+	if weaponEntryParent == null:
+		return
+
 	var equippedItem = currentUnit.EquippedWeapon
 	var hasItem = equippedItem != null
 	weaponIcon.visible = hasItem
@@ -80,24 +102,24 @@ func UpdateStatsUI():
 
 		if attack > spattack:
 			dmgIcon.texture = GameManager.GameSettings.AttackStat.loc_icon
-			dmgLabel.text = str(attack)
+			dmgLabel.text = "%01.0d" % [attack]
 		else:
 			dmgIcon.texture = GameManager.GameSettings.SpAttackStat.loc_icon
-			dmgLabel.text = str(spattack)
+			dmgLabel.text = "%01.0d" % [spattack]
 	else:
 		var agressiveStat = equippedItem.UsableDamageData.AgressiveStat
 		dmgIcon.texture = agressiveStat.loc_icon
-		dmgLabel.text = str(currentUnit.GetWorkingStat(agressiveStat))
+		dmgLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(agressiveStat)]
 
-	defLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.DefenseStat))
-	spDefLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.SpDefenseStat))
-	moveLabel.text = str(currentUnit.GetWorkingStat(GameManager.GameSettings.MovementStat))
+	defLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(GameManager.GameSettings.DefenseStat)]
+	spDefLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(GameManager.GameSettings.SpDefenseStat)]
+	moveLabel.text = "%01.0d" % [currentUnit.GetWorkingStat(GameManager.GameSettings.MovementStat)]
 
 
 func _process(_delta):
 	if ctrl != null:
 		if ctrl.ControllerState.ShowInspectUI():
-			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null:
+			if ctrl.CurrentTile != null && ctrl.CurrentTile.Occupant != null && !ctrl.CurrentTile.Occupant.ShroudedFromPlayer && !Disabled && !GlobalDisable:
 				visible = true
 				Update(ctrl.CurrentTile.Occupant)
 			else:

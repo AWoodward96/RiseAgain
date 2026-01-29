@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bbialq4cw38re"]
+
+[ext_resource type="Script" uid="uid://yl8eux5pa6nf" path="res://SCRIPTS/Managers/Juice.gd" id="1_41id7"]
+[ext_resource type="PackedScene" uid="uid://cnv8h0l0c4s6d" path="res://RESOURCES/Juice/damage_popup.tscn" id="2_g4ic6"]
+[ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="3_c7nvh"]
+[ext_resource type="PackedScene" uid="uid://ckf4unljro6gn" path="res://RESOURCES/Juice/effect_popup.tscn" id="4_6yi6b"]
+[ext_resource type="PackedScene" uid="uid://cr1ttnx8gmdsa" path="res://RESOURCES/Juice/ability_popup.tscn" id="5_5k720"]
+[ext_resource type="PackedScene" uid="uid://6pxp4b6trdhe" path="res://RESOURCES/Juice/crit_popup.tscn" id="5_joqml"]
+[ext_resource type="PackedScene" uid="uid://cfn1u0knhje1k" path="res://RESOURCES/VFX/Emotes/alert_emote.tscn" id="7_xkcy3"]
+[ext_resource type="PackedScene" uid="uid://wb34qc5gf78b" path="res://RESOURCES/VFX/Emotes/shock_emote.tscn" id="8_7fhf3"]
+
+[node name="Juice" type="Node2D" unique_id=1310279607]
+script = ExtResource("1_41id7")
+damagePopup = ExtResource("2_g4ic6")
+damagePreview = ExtResource("3_c7nvh")
+effectPopup = ExtResource("4_6yi6b")
+abilityPopup = ExtResource("5_5k720")
+critPopup = ExtResource("5_joqml")
+AlertEmote = ExtResource("7_xkcy3")
+ShockEmote = ExtResource("8_7fhf3")
+combatSequenceCooloffTimer = 0.6
+combatSequenceDefenseOffset = 0.5
+combatPopupCooldown = 0.2

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://co4b77kf7knq3"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_njwkw"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_qugb2"]
+
+[resource]
+script = ExtResource("1_qugb2")
+AbilityPath = "res://RESOURCES/Ability/Equippable/zombie_claw.tscn"

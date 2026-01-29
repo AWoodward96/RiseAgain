@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TargetingSimple" format=3 uid="uid://130kds0cn74w"]
+
+[ext_resource type="Script" uid="uid://erjip53lacvi" path="res://SCRIPTS/Targeting/TargetingSimple.gd" id="1_g7uor"]
+
+[resource]
+script = ExtResource("1_g7uor")
+TeamTargeting = 0

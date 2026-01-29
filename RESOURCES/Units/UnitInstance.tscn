@@ -1,157 +1,125 @@
-[gd_scene load_steps=15 format=3 uid="uid://ri0c7iffkrao"]
+[gd_scene format=3 uid="uid://ri0c7iffkrao"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
+[ext_resource type="Script" uid="uid://bjgb7ybojs7e" path="res://SCRIPTS/Units/UnitInstance.gd" id="1_8f2nx"]
 [ext_resource type="PackedScene" uid="uid://chgyuivvaogoe" path="res://RESOURCES/Juice/damage_indicator.tscn" id="2_e4h56"]
-[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_ea6il"]
-[ext_resource type="Script" path="res://RESOURCES/Units/UnitHealthBar.gd" id="4_ae3kp"]
-[ext_resource type="PackedScene" uid="uid://b86wbdh3gr6j1" path="res://RESOURCES/UI/Units/focus_slot.tscn" id="4_kfodt"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="4_lg50f"]
-[ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="4_reqvg"]
-[ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="7_vnfmn"]
-[ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="9_v7dhr"]
-[ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="10_pwwos"]
+[ext_resource type="Texture2D" uid="uid://cjuonw20ub5yw" path="res://ART/UI/icon_has_loot.png" id="4_bcnfb"]
+[ext_resource type="Texture2D" uid="uid://dilxnpnqkcann" path="res://ART/UI/icon_is_boss.png" id="5_6l8ji"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6je4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l8ji"]
+atlas = ExtResource("4_bcnfb")
+region = Rect2(5, 0, 5, 6)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrop1"]
-bg_color = Color(0.929412, 0.333333, 0.345098, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.8, 0.8, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsear"]
+atlas = ExtResource("4_bcnfb")
+region = Rect2(5, 0, 5, 7)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5801"]
-bg_color = Color(0.82, 0.82, 0.82, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.8, 0.8, 0)
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmoxs"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_6l8ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsear")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lypks"]
-font = ExtResource("3_ea6il")
-font_size = 18
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmoxs"]
+atlas = ExtResource("5_6l8ji")
+region = Rect2(0, 0, 7, 7)
 
-[node name="UnitInstance" type="Node2D" node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "healthBar", "affinityIcon")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob6s8"]
+atlas = ExtResource("5_6l8ji")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_166fo"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_mmoxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob6s8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="UnitInstance" type="Node2D" unique_id=987706858 node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damage_indicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "leapSound", "landSound")]
+y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
 abilityParent = NodePath("Abilities")
 combatEffectsParent = NodePath("Effects")
 itemsParent = NodePath("Items")
-healthBar = NodePath("HealthBarParent")
-focusSlotPrefab = ExtResource("4_kfodt")
-affinityIcon = NodePath("AffinityIcon")
+iconAnchors = NodePath("IconAnchors")
+damage_indicator = NodePath("DamageIndicator")
+hasLootIcon = NodePath("IconAnchors/HasLoot")
+isBossIcon = NodePath("IconAnchors/Boss")
+takeDamageSound = NodePath("Audio/TakeDamage")
+takeLethalDamageSound = NodePath("Audio/TakeLethalDamage")
+footstepsSound = NodePath("Audio/FootSteps")
+deathSound = NodePath("Audio/Death")
+leapSound = NodePath("Audio/LeapWoosh")
+landSound = NodePath("Audio/Land")
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="Visual" type="Node2D" parent="." unique_id=2046939046]
+y_sort_enabled = true
 
-[node name="Abilities" type="Node2D" parent="."]
+[node name="Abilities" type="Node2D" parent="." unique_id=729322257]
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=903512886]
 
-[node name="Effects" type="Node2D" parent="."]
+[node name="Effects" type="Node2D" parent="." unique_id=991917755]
 
-[node name="DefendIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="Audio" type="Node2D" parent="." unique_id=89174539]
+
+[node name="TakeDamage" type="FmodEventEmitter2D" parent="Audio" unique_id=1589636217]
+event_name = "event:/SFX/Combat_TakeDamage_Standard"
+event_guid = "{0f552edb-29ad-4bdf-bb22-bfdd97ba4b91}"
+
+[node name="TakeLethalDamage" type="FmodEventEmitter2D" parent="Audio" unique_id=1983530337]
+event_name = "event:/SFX/Combat_TakeDamage_Kill"
+event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
+
+[node name="FootSteps" type="FmodEventEmitter2D" parent="Audio" unique_id=779828725]
+event_name = "event:/SFX/Units/Generic/Footsteps_Common"
+event_guid = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
+
+[node name="Death" type="FmodEventEmitter2D" parent="Audio" unique_id=1174782280]
+event_name = "event:/SFX/Combat_Death"
+event_guid = "{e1fc6f52-a891-47fe-ba9c-ac9e8d8a9e5b}"
+
+[node name="LeapWoosh" type="FmodEventEmitter2D" parent="Audio" unique_id=1750867151]
+event_name = "event:/SFX/Units/Generic/Jump_Start"
+event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
+
+[node name="Land" type="FmodEventEmitter2D" parent="Audio" unique_id=149337830]
+event_name = "event:/SFX/Units/Generic/Jump_End"
+event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
+
+[node name="IconAnchors" type="Node2D" parent="." unique_id=1333229779]
+
+[node name="HasLoot" type="AnimatedSprite2D" parent="IconAnchors" unique_id=1243322046]
 visible = false
-modulate = Color(0.298039, 1, 0.254902, 1)
-position = Vector2(53.5, 53.5)
-scale = Vector2(0.0410156, 0.0410156)
-texture = ExtResource("4_reqvg")
-
-[node name="AffinityIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(11, 11)
-scale = Vector2(0.0410156, 0.0410156)
-texture = ExtResource("7_vnfmn")
-
-[node name="PositiveAfffinity" type="Sprite2D" parent="AffinityIcon"]
-unique_name_in_owner = true
-visible = false
+position = Vector2(59, 7)
 scale = Vector2(2, 2)
-texture = ExtResource("9_v7dhr")
+sprite_frames = SubResource("SpriteFrames_mmoxs")
+autoplay = "default"
+frame_progress = 0.326582
 
-[node name="NegativeAffinity" type="Sprite2D" parent="AffinityIcon"]
-unique_name_in_owner = true
+[node name="Boss" type="AnimatedSprite2D" parent="IconAnchors" unique_id=230055080]
 visible = false
-position = Vector2(0, -463.238)
+position = Vector2(59, 21)
 scale = Vector2(2, 2)
-texture = ExtResource("10_pwwos")
+sprite_frames = SubResource("SpriteFrames_166fo")
+autoplay = "default"
+frame_progress = 0.57805
 
-[node name="DamageIndicator" parent="." instance=ExtResource("2_e4h56")]
+[node name="DamageIndicator" parent="." unique_id=1598895247 instance=ExtResource("2_e4h56")]
 
-[node name="HealthBarParent" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ArmorBar", "HealthText", "FocusBarEntryList")]
-unique_name_in_owner = true
-z_index = 1
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 3
-anchors_preset = 0
-offset_top = 70.0
-offset_right = 64.0
-offset_bottom = 86.0
-script = ExtResource("4_ae3kp")
-HealthBar = NodePath("HealthBar")
-ArmorBar = NodePath("ArmorBar")
-HealthText = NodePath("HP Val")
-FocusBarEntryList = NodePath("FocusContainer/FocusBarParent")
-FocusBarPrefab = ExtResource("4_kfodt")
-
-[node name="HealthBar" type="ProgressBar" parent="HealthBarParent"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 16)
-layout_mode = 2
-offset_left = -8.0
-offset_right = 72.0
-offset_bottom = 16.0
-theme_override_styles/background = SubResource("StyleBoxFlat_n6je4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_yrop1")
-max_value = 1.0
-value = 1.0
-show_percentage = false
-
-[node name="ArmorBar" type="ProgressBar" parent="HealthBarParent"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(80, 16)
-layout_mode = 2
-offset_left = -8.0
-offset_right = 72.0
-offset_bottom = 16.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_f5801")
-max_value = 1.0
-value = 0.84
-fill_mode = 1
-show_percentage = false
-
-[node name="HP Val" type="Label" parent="HealthBarParent"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 2
-offset_left = 13.0
-offset_top = -9.0
-offset_right = 54.0
-offset_bottom = 16.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 0
-text = "25/30"
-label_settings = SubResource("LabelSettings_lypks")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FocusContainer" type="MarginContainer" parent="HealthBarParent"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 16.0
-offset_right = 72.0
-offset_bottom = 24.0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_right = 1
-
-[node name="FocusBarParent" type="HBoxContainer" parent="HealthBarParent/FocusContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 1
-script = ExtResource("4_lg50f")
+[editable path="DamageIndicator"]

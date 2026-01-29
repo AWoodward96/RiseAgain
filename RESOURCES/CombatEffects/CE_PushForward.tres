@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="StatChangeEffect" format=3 uid="uid://cuh4yfx0ldaje"]
+
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_k3tfc"]
+[ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="2_rn7n0"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_asbay"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="4_7fma4"]
+[ext_resource type="Texture2D" uid="uid://dokdvgusblre7" path="res://ART/Icons/Ability/Standard/pushforward.png" id="4_sxg75"]
+
+[sub_resource type="Resource" id="Resource_osvxn"]
+script = ExtResource("1_k3tfc")
+Stat = ExtResource("2_rn7n0")
+FlatValue = 1
+
+[sub_resource type="Resource" id="Resource_yb416"]
+script = ExtResource("1_k3tfc")
+Stat = ExtResource("3_asbay")
+FlatValue = 2
+
+[resource]
+script = ExtResource("4_7fma4")
+StatChanges = Array[ExtResource("1_k3tfc")]([SubResource("Resource_osvxn"), SubResource("Resource_yb416")])
+AffectedTargets = 1
+Turns = 1
+loc_name = "ce_pushforward_name"
+loc_desc = "ce_pushforward_desc"
+loc_icon = ExtResource("4_sxg75")

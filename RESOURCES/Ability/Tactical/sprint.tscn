@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c023erpa6mefg"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_4c7fk"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_3tdvl"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_qu8ce"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="3_kuf3u"]
+[ext_resource type="Resource" uid="uid://chs6a6geerc0d" path="res://RESOURCES/CombatEffects/CE_Sprint.tres" id="3_vj2c3"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_j2f4q"]
+[ext_resource type="Texture2D" uid="uid://cospj5rlljpy6" path="res://ART/Icons/Ability/Tactical/sprint.png" id="5_onn86"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="7_ob4fv"]
+[ext_resource type="Resource" uid="uid://b7lvrcfn6f0il" path="res://RESOURCES/Ability/TargetingTemplates/sprint_targeting.tres" id="8_sr648"]
+
+[sub_resource type="Resource" id="Resource_j7n6i"]
+script = ExtResource("7_ob4fv")
+CombatEffect = ExtResource("3_vj2c3")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[node name="sprint" type="Node2D" unique_id=51724476 node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_4c7fk")
+type = 2
+abilityCooldown = 3
+ability_speed = 1
+executionStack = Array[ExtResource("2_3tdvl")]([SubResource("Resource_j7n6i")])
+internalName = "sprint"
+loc_displayName = "tact_sprint_name"
+loc_displayDesc = "tact_sprint_desc"
+icon = ExtResource("5_onn86")
+descriptors = Array[ExtResource("2_qu8ce")]([ExtResource("3_kuf3u")])
+TargetingTemplate = ExtResource("8_sr648")
+TargetingData = NodePath("TargetingData")
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=326193143]
+script = ExtResource("4_j2f4q")
+TeamTargeting = 0
+Type = 3
+CanTargetSelf = true

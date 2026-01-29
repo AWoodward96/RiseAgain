@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://bxaifmwbwgl7i"]
+[gd_resource type="Resource" script_class="StatTemplate" format=3 uid="uid://bxaifmwbwgl7i"]
 
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="1_323tp"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="1_j0drt"]
+[ext_resource type="Script" uid="uid://d0mls8wl053cd" path="res://SCRIPTS/Stats/StatTemplate.gd" id="1_j0drt"]
 
 [resource]
 script = ExtResource("1_j0drt")
-bst_weight = 1
 loc_displayName = "stat_spdefense"
 loc_displayName_short = "stat_spdefense_short"
 loc_description = "stat_spdefense_desc"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://cq7aefc4mbdim"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_0lwnd"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="2_br3et"]
+
+[sub_resource type="Resource" id="Resource_jwp0x"]
+script = ExtResource("1_0lwnd")
+Multiplier = 0.5
+
+[sub_resource type="Resource" id="Resource_8fudj"]
+script = ExtResource("1_0lwnd")
+Position = Vector2i(1, 0)
+Multiplier = 0.5
+
+[sub_resource type="Resource" id="Resource_570ud"]
+script = ExtResource("1_0lwnd")
+Position = Vector2i(2, 0)
+Multiplier = 0.5
+
+[resource]
+script = ExtResource("2_br3et")
+TileCoordinates = Array[ExtResource("1_0lwnd")]([SubResource("Resource_jwp0x"), SubResource("Resource_8fudj"), SubResource("Resource_570ud")])

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://uo8uhay1gotw"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_bv02c"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_ltoxx"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_pghfv"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="5_cxmwp"]
+
+[resource]
+script = ExtResource("1_ltoxx")
+AbilityPath = "res://RESOURCES/Ability/Equippable/taintedtome.tscn"
+StartsDiscoverable = true
+Descriptors = Array[ExtResource("1_bv02c")]([ExtResource("5_cxmwp"), ExtResource("3_pghfv")])

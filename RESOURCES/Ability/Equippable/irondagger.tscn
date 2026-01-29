@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cfk8ky1gh0k2e"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_uln3a"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_cwbef"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_xdoag"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_b0gbb"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_o83m0"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_v8uu2"]
+[ext_resource type="Resource" uid="uid://bn0qy5hobbdvd" path="res://RESOURCES/Descriptors/DES_Dagger.tres" id="4_xdoag"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="5_b0gbb"]
+[ext_resource type="Texture2D" uid="uid://cyh2erayl41uy" path="res://ART/Icons/Ability/Equippable/irondagger.png" id="5_v8uu2"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="7_58cki"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_nx74i"]
+[ext_resource type="Resource" uid="uid://b0w4eln674atq" path="res://RESOURCES/Ability/TargetingTemplates/irondagger_targeting.tres" id="9_b0gbb"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="9_xdoag"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="10_380c1"]
+
+[sub_resource type="Resource" id="Resource_58cki"]
+script = ExtResource("3_b0gbb")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_nx74i"]
+script = ExtResource("4_v8uu2")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_b0gbb"]
+script = ExtResource("9_xdoag")
+Template = ExtResource("8_nx74i")
+Value = 1
+
+[node name="irondagger" type="Node2D" unique_id=885846865 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_uln3a")
+type = 1
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_xdoag")]([SubResource("Resource_58cki"), SubResource("Resource_nx74i")])
+internalName = "irondagger"
+loc_displayName = "weap_irondagger_name"
+loc_displayDesc = "weap_irondagger_desc"
+icon = ExtResource("5_v8uu2")
+descriptors = Array[ExtResource("2_cwbef")]([ExtResource("3_o83m0"), ExtResource("4_xdoag")])
+TargetingTemplate = ExtResource("9_b0gbb")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="." unique_id=529827508]
+script = ExtResource("5_b0gbb")
+GrantedStats = Array[ExtResource("9_xdoag")]([SubResource("Resource_b0gbb")])
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=600897146]
+script = ExtResource("7_58cki")
+AgressiveStat = ExtResource("8_nx74i")
+DamageToHealthRatio = 0.0
+CritModifier = 0.2
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=380630125]
+script = ExtResource("10_380c1")
+TargetRange = Vector2i(1, 2)

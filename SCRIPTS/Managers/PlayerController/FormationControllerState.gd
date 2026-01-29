@@ -6,9 +6,8 @@ var formationUI
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
-	formationUI = UIManager.AlphaFormationUI.instantiate()
+	formationUI = UIManager.OpenFullscreenUI(UIManager.FormationUI)
 	formationUI.Initialize(ctrl, currentMap)
-	ctrl.add_child(formationUI)
 	return formationUI
 
 func _Execute(_delta):
@@ -22,34 +21,41 @@ func _Execute(_delta):
 	# The Formation UI will handle the movement of the units here, so don't worry about any handling of input
 	if InputManager.selectDown:
 		var tile = currentGrid.GetTile(ConvertGlobalPositionToGridPosition())
-		if selectedUnit == null:
+		if ctrl.selectedUnit == null:
 			if tile.Occupant != null && currentMap.startingPositions.has(tile.Position):
 				if tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
-					selectedUnit = tile.Occupant
+					ctrl.selectedUnit = tile.Occupant
+					tile.Occupant.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 					formationUI.ShowSwapWithPanel(true)
 					currentGrid.ClearActions()
 				else:
-					selectedUnit = tile.Occupant
+					ctrl.selectedUnit = tile.Occupant
 					currentGrid.ShowUnitActions(tile.Occupant)
 			else:
 				currentGrid.ClearActions()
 		else:
-			if selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+			if ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
 				if currentMap.startingPositions.has(tile.Position):
 					if tile.Occupant != null && tile.Occupant.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
-						currentGrid.SwapUnitPositions(selectedUnit, tile.Occupant)
+						currentGrid.SwapUnitPositions(ctrl.selectedUnit, tile.Occupant)
 					else:
-						currentGrid.SetUnitGridPosition(selectedUnit, tile.Position, true)
+						currentGrid.SetUnitGridPosition(ctrl.selectedUnit, tile.Position, true)
 
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 			ctrl.ClearSelectionData()
 			formationUI.ShowSwapWithPanel(false)
 
+		ctrl.reticleSelectSound.play()
+
 	if InputManager.cancelDown:
-		if selectedUnit == null:
+		if ctrl.selectedUnit == null:
 			formationUI.SetFormationMode(false)
+		else:
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 
 		ctrl.ClearSelectionData()
 		formationUI.ShowSwapWithPanel(false)
+		ctrl.reticleCancelSound.play()
 
 func ToString():
 	return "FormationControllerState"

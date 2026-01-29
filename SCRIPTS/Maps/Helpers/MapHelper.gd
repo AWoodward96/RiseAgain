@@ -16,4 +16,3 @@ func UpdatePosition():
 		return
 
 	global_position = Position * map.TileSize
-

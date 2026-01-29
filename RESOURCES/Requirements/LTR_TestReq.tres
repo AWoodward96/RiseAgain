@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RequirementBase" format=3 uid="uid://d2whrksoiypte"]
+
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_ahlgf"]
+
+[resource]
+script = ExtResource("1_ahlgf")
+metadata/_custom_type_script = "uid://dy7oii5xmfixk"

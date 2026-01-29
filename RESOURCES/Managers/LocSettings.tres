@@ -1,8 +1,55 @@
-[gd_resource type="Resource" script_class="LocSettings" load_steps=3 format=3 uid="uid://ctv538x46ffve"]
+[gd_resource type="Resource" script_class="LocSettings" format=3 uid="uid://ctv538x46ffve"]
 
+[ext_resource type="Texture2D" uid="uid://cqfmfp2ff63yf" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons2.png" id="1_1tq0s"]
 [ext_resource type="Texture2D" uid="uid://cg7gnaihhqagy" path="res://ART/Icons/Missing/missing_combateffect_icon.png" id="1_5tmtt"]
-[ext_resource type="Script" path="res://SCRIPTS/Managers/LocSettings.gd" id="1_46x2a"]
+[ext_resource type="Script" uid="uid://cd6v7lelrdia0" path="res://SCRIPTS/Managers/LocSettings.gd" id="1_46x2a"]
+[ext_resource type="Texture2D" uid="uid://cvfmneo4r2e7l" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons5.png" id="2_t47jl"]
+[ext_resource type="Texture2D" uid="uid://c4gri6oowd30f" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons6.png" id="4_0od6g"]
+[ext_resource type="Texture2D" uid="uid://ceojctp05adc0" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons4.png" id="5_8a1lq"]
+[ext_resource type="Texture2D" uid="uid://cskh6k6bseo1e" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons3.png" id="6_wiry6"]
+[ext_resource type="Texture2D" uid="uid://dfbeuq1iiknw6" path="res://ART/UI/WeaponInfoIcons/weap_detail_icons1.png" id="7_7o8ui"]
 
 [resource]
 script = ExtResource("1_46x2a")
 Missing_CombatEffectIcon = ExtResource("1_5tmtt")
+HealColor = Color(0.580392, 0.878431, 0.537255, 1)
+DamageColor = Color(0.901961, 0.635294, 0.635294, 1)
+CritColor = Color(0.878431, 0.788235, 0.47451, 1)
+CollisionColor = Color(0.776471, 0.521569, 0.337255, 1)
+RangeAmountTextFormat = "ui_range_amount"
+AbilityTypeWeaponTextShorthand = "ui_weapon_title_shorthand"
+AbilityTypeWeaponColor = Color(0.73, 0.4745, 0.478758, 1)
+AbilityTypeTacticalTextShorthand = "ui_tactical_title_shorthand"
+AbilityTypeTacticalColor = Color(0.478758, 0.73, 0.4745, 1)
+AbilityTypeAbilityTextShorthand = "ui_ability_title_shorthand"
+AbilityTypeAbilityColor = Color(0.47451, 0.568627, 0.729412, 1)
+AbilityTypePassiveTextShorthand = "ui_passive_title_shorthand"
+AbilityTypePassiveColor = Color(0.74, 0.74, 0.74, 1)
+TargetingSimpleText = "ui_targeting_simple"
+TargetingSimpleColor = Color(0.654996, 0.692522, 0.772739, 1)
+TargetingDirectionalText = "ui_targeting_directional"
+TargetingDirectionalColor = Color(0.704675, 0.6035, 0.71, 1)
+TargetingShapedText = "ui_targeting_shaped"
+TargetingShapedColor = Color(0.77, 0.693, 0.6545, 1)
+TargetingSelfText = "ui_targeting_self"
+TargetingSelfColor = Color(0.667975, 0.77, 0.6545, 1)
+TargetingGlobalText = "ui_targeting_global"
+TargetingGlobalColor = Color(0.77, 0.752675, 0.6545, 1)
+AbilitySpeedNormalText = "ui_speed_normal"
+AbilitySpeedNormalColor = Color(0.654996, 0.692522, 0.772739, 1)
+AbilitySpeedFastText = "ui_speed_fast"
+AbilitySpeedFastColor = Color(0.86, 0.86, 0.5074, 1)
+AbilitySpeedSlowText = "ui_speed_slow"
+AbilitySpeedSlowColor = Color(0.3045, 0.5307, 0.87, 1)
+FastSpeedIcon = ExtResource("1_1tq0s")
+FastSpeedDescText = "ui_fastspeed_desc"
+SlowSpeedIcon = ExtResource("7_7o8ui")
+SlowSpeedDescText = "ui_slowspeed_desc"
+ShapedFreeIcon = ExtResource("6_wiry6")
+ShapedFreeDescText = "ui_shapedfree_desc"
+ShapedDirectionalIcon = ExtResource("5_8a1lq")
+ShapedDirectionalDescText = "ui_shapeddirectional_desc"
+GlobalIcon = ExtResource("2_t47jl")
+GlobalDescText = "ui_global_desc"
+SelfOnlyIcon = ExtResource("4_0od6g")
+SelfOnlyDescText = "ui_selfonly_desc"

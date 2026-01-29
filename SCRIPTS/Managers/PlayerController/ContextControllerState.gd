@@ -1,6 +1,7 @@
 extends PlayerControllerState
 class_name ContextControllerState
 
+
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 	reticle.visible = false
@@ -11,18 +12,26 @@ func _Enter(_ctrl : PlayerController, data):
 	currentGrid.ClearActions()
 
 func UpdateInput(_delta):
-	# don't accept inputs here
+	# don't accept inputs heres
 	if InputManager.cancelDown:
+		if CutsceneManager.BlockCancelInput || ctrl.UnitMovedIntoShroud:
+			return
+
 		if ctrl.unitInventoryOpen:
 			return
 
-		selectedUnit.StopCharacterMovement()
+		ctrl.selectedUnit.StopCharacterMovement()
 
 		# Done in this order, so that the Reticle is where the unit was hovering before cancel was called
-		ctrl.ForceReticlePosition(selectedUnit.GridPosition)
-		currentGrid.SetUnitGridPosition(selectedUnit,selectedUnit.TurnStartTile.Position, true)
+		ctrl.ForceReticlePosition(ctrl.selectedUnit.GridPosition)
+		currentGrid.SetUnitGridPosition(ctrl.selectedUnit, ctrl.selectedUnit.TurnStartTile.Position, true)
+		ctrl.selectedUnit.visual.UpdateShrouded()
 
-		ctrl.EnterUnitMovementState()
+		if ctrl.selectedUnit.CanMove:
+			ctrl.EnterUnitMovementState()
+		else:
+			ctrl.EnterSelectionState()
+		ctrl.reticleCancelSound.play()
 	pass
 
 func _Exit():

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MultiRequirement" format=3 uid="uid://c7w27qmhiqg5t"]
+
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_jukf1"]
+[ext_resource type="Script" uid="uid://bgs85bu1mixlb" path="res://SCRIPTS/Generic/Requirements/PartlyLimitReq.gd" id="2_rikud"]
+[ext_resource type="Script" uid="uid://cgvauu1tug0qj" path="res://SCRIPTS/Generic/Requirements/MultiRequirement.gd" id="3_cvus5"]
+
+[sub_resource type="Resource" id="Resource_q7m0n"]
+script = ExtResource("2_rikud")
+metadata/_custom_type_script = "uid://bgs85bu1mixlb"
+
+[resource]
+script = ExtResource("3_cvus5")
+requirements = Array[ExtResource("1_jukf1")]([SubResource("Resource_q7m0n")])
+metadata/_custom_type_script = "uid://cgvauu1tug0qj"

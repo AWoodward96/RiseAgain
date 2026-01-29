@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://dpqb5rpiva2ho"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_ievef"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_sa12q"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_6s55p"]
+[ext_resource type="Resource" uid="uid://bkfhw2nixyffl" path="res://RESOURCES/Descriptors/DES_Animal.tres" id="3_ievef"]
+[ext_resource type="Resource" uid="uid://jwetuomlowq" path="res://RESOURCES/Descriptors/DES_Teeth.tres" id="4_j57de"]
+
+[resource]
+script = ExtResource("1_sa12q")
+AbilityPath = "res://RESOURCES/Ability/Equippable/wolf_tooth.tscn"
+Descriptors = Array[ExtResource("1_ievef")]([ExtResource("2_6s55p"), ExtResource("3_ievef"), ExtResource("4_j57de")])

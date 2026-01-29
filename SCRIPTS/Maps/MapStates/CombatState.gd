@@ -8,6 +8,18 @@ var unitTurnStack : Array[UnitInstance]
 var currentUnitsTurn : UnitInstance
 var turnBannerOpen : bool
 
+var preTurnUpdate : bool :
+	get:
+		return teamTurnUpdate || unitTurnUpdate || nextSpawner != null
+
+var teamTurnUpdate : bool
+var unitTurnUpdate : bool
+var preTurnComplete : bool
+var preTurnAvailableSpawners : Array[SpawnerBase]
+var nextSpawner : SpawnerBase
+
+var turnStartFocusSubject : Tile
+var turnStartFocusDelta : float
 
 var IsAllyTurn : bool :
 	get :
@@ -16,15 +28,52 @@ var IsAllyTurn : bool :
 func Enter(_map : Map, _ctrl : PlayerController):
 	super(_map, _ctrl)
 
-	combatHud = controller.CreateCombatHUD()
-	controller.ClearSelectionData()
+	InitializeFromPersistence(_map, _ctrl)
 
 	StartTurn(GameSettingsTemplate.TeamID.ALLY)
 	ActivateAll()
 
+func InitializeFromPersistence(_map : Map, _ctrl : PlayerController):
+	map = _map
+	controller = _ctrl
+
+	combatHud = controller.CreateCombatHUD()
+	controller.ClearSelectionData()
+
+	if !map.OnUnitTurnEnd.is_connected(OnUnitEndTurn):
+		map.OnUnitTurnEnd.connect(OnUnitEndTurn)
+
+	UpdateCurrentTurnInfo()
+
+
+func Exit():
+	if map.OnUnitTurnEnd.is_connected(OnUnitEndTurn):
+		map.OnUnitTurnEnd.disconnect(OnUnitEndTurn)
+
 func Update(_delta):
 	if turnBannerOpen:
 		return
+
+	if preTurnUpdate:
+		if preTurnAvailableSpawners.size() > 0 || nextSpawner != null:
+			UpdateTurnStartSpawn(_delta)
+			return
+
+		if teamTurnUpdate || unitTurnUpdate:
+			UpdateGridEntities(_delta)
+			return
+
+		return
+	elif !preTurnComplete:
+		# the preturn should be complete now, save the map
+		if map.AutosaveEnabled:
+			PersistDataManager.SaveMap()
+
+		if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
+			map.playercontroller.BlockMovementInput = false
+		preTurnComplete = true
+		map.RemoveExpiredGridEntities()
+
 
 	match map.currentTurn:
 		GameSettingsTemplate.TeamID.ALLY:
@@ -37,7 +86,7 @@ func Update(_delta):
 
 	if IsTurnOver():
 		var nextTurn
-		# TODO: Figure out the best way to determine whose turn it is up next
+
 		match map.currentTurn:
 			GameSettingsTemplate.TeamID.ALLY:
 				if map.teams.has(GameSettingsTemplate.TeamID.NEUTRAL) && map.teams[GameSettingsTemplate.TeamID.NEUTRAL].size() > 0:
@@ -45,7 +94,10 @@ func Update(_delta):
 				else:
 					nextTurn = GameSettingsTemplate.TeamID.ENEMY
 			GameSettingsTemplate.TeamID.ENEMY:
+				# only increment the turn count at the end of the enemy's turn
+				map.turnCount += 1
 				nextTurn = GameSettingsTemplate.TeamID.ALLY
+
 			GameSettingsTemplate.TeamID.NEUTRAL:
 				nextTurn = GameSettingsTemplate.TeamID.ENEMY
 		StartTurn(nextTurn)
@@ -57,21 +109,99 @@ func StartTurn(_turn : GameSettingsTemplate.TeamID):
 	controller.BlockMovementInput = true
 	combatHud.PlayTurnStart(_turn)
 	turnBannerOpen = true
+
+
 	await combatHud.BannerAnimComplete
 	controller.BlockMovementInput = false
 	turnBannerOpen = false
 
-	unitTurnStack = map.GetUnitsOnTeam(_turn)
-	if _turn == GameSettingsTemplate.TeamID.ALLY:
+	UpdateCurrentTurnInfo()
+
+	currentUnitsTurn = null
+	ActivateAll()
+	map.RemoveExpiredGridEntities()
+	map.OnTurnStart.emit(_turn)
+	EnterTeamTurnUpdate()
+	if map.AutosaveEnabled:
+		PersistDataManager.SaveMap()
+
+
+func UpdateCurrentTurnInfo():
+	unitTurnStack = map.GetUnitsOnTeam(map.currentTurn)
+	if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 		controller.EnterSelectionState()
 
-	if _turn != GameSettingsTemplate.TeamID.ALLY:
+	if map.currentTurn != GameSettingsTemplate.TeamID.ALLY:
 		controller.EnterOffTurnState()
 
 	if unitTurnStack.size() > 0:
 		controller.ForceReticlePosition(unitTurnStack[0].CurrentTile.Position)
-	currentUnitsTurn = null
-	ActivateAll()
+
+
+func EnterTeamTurnUpdate():
+	preTurnComplete = false
+	teamTurnUpdate = true
+
+	if map.currentTurn == GameSettingsTemplate.TeamID.ALLY:
+		map.playercontroller.BlockMovementInput = true
+
+	for entities in map.gridEntities:
+		if entities.UpdatePerTeamTurn:
+			entities.Enter()
+
+	preTurnAvailableSpawners.clear()
+	for s in map.spawners:
+		if s is SpawnerTurnBased && s.CanSpawn(map):
+			preTurnAvailableSpawners.append(s)
+
+
+func EnterUnitTurnUpdate():
+	unitTurnUpdate = true
+	for entities in map.gridEntities:
+		if entities.UpdatePerUnitTurn:
+			entities.Enter()
+
+func UpdateTurnStartSpawn(_delta):
+	if nextSpawner == null:
+		if preTurnAvailableSpawners.size() == 0:
+			return
+
+		nextSpawner = preTurnAvailableSpawners.pop_front()
+		controller.ForceCameraPosition(nextSpawner.Position)
+		turnStartFocusDelta = 0
+		return
+
+	elif controller.CameraMovementComplete:
+		# yeah this looks a bit scuffed but what this does is basically add a 1s delay after a unit is spawned
+		# before something else occurs
+		if turnStartFocusDelta == 0:
+			nextSpawner.SpawnEnemy(map, map.mapRNG)
+		turnStartFocusDelta += _delta
+		if turnStartFocusDelta > 1:
+			nextSpawner = null
+
+	pass
+
+
+func UpdateGridEntities(_delta):
+	if teamTurnUpdate:
+		var over = true
+		for entities in map.gridEntities:
+			if entities.UpdatePerTeamTurn:
+				over = entities.UpdateGridEntity_TeamTurn(_delta) && over
+
+		if over:
+			teamTurnUpdate = false
+			UpdateCurrentTurnInfo()
+
+	if unitTurnUpdate:
+		var over = true
+		for entities in map.gridEntities:
+			if entities.UpdatePerUnitTurn:
+				over = entities.UpdateGridEntity_UnitTurn(_delta) &&  over
+
+		if over:
+			unitTurnUpdate = false
 
 func ActivateAll():
 	for team in map.teams:
@@ -98,6 +228,8 @@ func IsTurnOver():
 
 	return turnOver && !(map.playercontroller.ControllerState is ActionExecutionState) # If we're still in action execution then we need to wait for it to resolve
 
+func OnUnitEndTurn(_unitInstance : UnitInstance):
+	EnterUnitTurnUpdate()
 
 func ClearTileSelection():
 	currentlySelectedUnit = null
@@ -122,7 +254,8 @@ func UpdateOffTurn(_delta):
 				return
 
 			if !currentUnitsTurn.IsAggrod:
-				currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
+				if currentUnitsTurn.AggroType != null:
+					currentUnitsTurn.IsAggrod = currentUnitsTurn.AggroType.Check(currentUnitsTurn, map)
 
 			if currentUnitsTurn.IsAggrod:
 				if currentUnitsTurn.AI == null:
@@ -155,3 +288,6 @@ func UpdateNeutralTurn(_delta):
 		return
 
 	UpdateOffTurn(_delta)
+
+func ToJSON():
+	return "CombatState"

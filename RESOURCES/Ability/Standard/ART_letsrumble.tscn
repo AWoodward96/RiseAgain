@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://b7f1m6vpdgchf"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_wj3ie"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_dthvd"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_eleee"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="3_5qj0n"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_qo1sr"]
+[ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="4_k0y5t"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_wselu"]
+[ext_resource type="Resource" uid="uid://dhqdi1ud3mefw" path="res://RESOURCES/TargetingShapes/letsrumble_shape.tres" id="5_ivcpd"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="5_wbubi"]
+[ext_resource type="Resource" uid="uid://b68i1vyfgx87o" path="res://RESOURCES/CombatEffects/CE_LetsRumbleSlow.tres" id="6_eleee"]
+[ext_resource type="Script" uid="uid://d2kv0hjonny5c" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_SimpleSingle.gd" id="6_wbubi"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="9_i5lxd"]
+[ext_resource type="Texture2D" uid="uid://dc8rm432mxvs0" path="res://ART/Icons/Ability/Standard/letsrumble.png" id="9_qo1sr"]
+[ext_resource type="Resource" uid="uid://b6ky0nrq66ldn" path="res://RESOURCES/Ability/TargetingTemplates/letsrumble_targeting.tres" id="10_k0y5t"]
+[ext_resource type="Script" uid="uid://clfh4hciv4fye" path="res://SCRIPTS/Units/AI/LandingLeapAIOption.gd" id="10_qo1sr"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="14_dulje"]
+
+[sub_resource type="Resource" id="Resource_rj2al"]
+script = ExtResource("3_qo1sr")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_33btx"]
+script = ExtResource("4_k0y5t")
+AnimationStyle = 1
+metadata/_custom_type_script = "uid://cm68c4p601pk"
+
+[sub_resource type="Resource" id="Resource_dlldj"]
+script = ExtResource("5_wbubi")
+useGenericAttackStyle = false
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_mrbpi"]
+script = ExtResource("9_i5lxd")
+CombatEffect = ExtResource("6_eleee")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_k0y5t"]
+script = ExtResource("6_wbubi")
+ExecutionAnimString = "lets_rumble"
+HasStandardWindup = false
+metadata/_custom_type_script = "uid://d2kv0hjonny5c"
+
+[node name="letsrumble" type="Node2D" unique_id=1338770477 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_wj3ie")
+abilityCooldown = 2
+ability_speed = 1
+executionStack = Array[ExtResource("2_eleee")]([SubResource("Resource_rj2al"), SubResource("Resource_33btx"), SubResource("Resource_dlldj"), SubResource("Resource_mrbpi")])
+animationStyle = SubResource("Resource_k0y5t")
+internalName = "letsrumble"
+loc_displayName = "art_letsrumble_name"
+loc_displayDesc = "art_letsrumble_desc"
+icon = ExtResource("9_qo1sr")
+TargetingTemplate = ExtResource("10_k0y5t")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+customAITargetingBehavior = ExtResource("10_qo1sr")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1033497854]
+script = ExtResource("2_dthvd")
+AgressiveStat = ExtResource("3_5qj0n")
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1511872460]
+script = ExtResource("4_wselu")
+TeamTargeting = 2
+TargetRange = Vector2i(1, 6)
+Type = 1
+shapedTiles = ExtResource("5_ivcpd")
+
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=1873780632]
+script = ExtResource("14_dulje")
+stoppedByWalls = false
+drawPath = false
+metadata/_custom_type_script = "uid://dosuyr8paidkx"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingShapedDirectional" format=3 uid="uid://cs7btmvlh1cbx"]
+
+[ext_resource type="Script" uid="uid://ueq48l24frax" path="res://SCRIPTS/Targeting/TargetingShapedDirectional.gd" id="1_l7b48"]
+
+[resource]
+script = ExtResource("1_l7b48")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/kick_shape.tres"
+TeamTargeting = 2

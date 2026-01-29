@@ -7,9 +7,13 @@ func _ready():
 	if !Map.Current.OnUnitDied.is_connected(OnUnitDeath):
 		Map.Current.OnUnitDied.connect(OnUnitDeath)
 
-func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionResult):
+func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionStepResult):
 	var map = Map.Current
 	if map == null:
+		return
+
+	# If this unit died to some unknown result - just ignore it
+	if _actionResult == null:
 		return
 
 	# If it wasn't us that dealt the damage - go away
@@ -31,3 +35,8 @@ func OnUnitDeath(_unitInstance : UnitInstance, _actionResult : ActionResult):
 # This passive never expires
 func IsExpired():
 	return false
+
+func ToJSON():
+	var dict = super()
+	dict["type"] = "WildNecroPassiveInstance"
+	return dict

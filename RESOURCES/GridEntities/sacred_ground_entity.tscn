@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bhux4kbgsott1"]
+
+[ext_resource type="Script" uid="uid://dgehid3y061rd" path="res://SCRIPTS/GridEntities/GEStaticAreaOfEffect.gd" id="1_547wj"]
+[ext_resource type="Resource" uid="uid://cm34ayxs4x5gm" path="res://RESOURCES/TargetingShapes/sacred_ground_shape.tres" id="2_mo663"]
+[ext_resource type="Texture2D" uid="uid://c3vyjq1tjdrc1" path="res://ART/GridEntities/radiant_blessing.png" id="3_kpy3g"]
+[ext_resource type="Texture2D" uid="uid://2775q6xpieqp" path="res://ART/Icons/Ability/Standard/summonsacredground.png" id="4_1yoiw"]
+[ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="4_3uwqy"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_ri8mk"]
+
+[node name="SacredGroundEntity" type="Node2D" unique_id=292644518 node_paths=PackedStringArray("heal_data")]
+script = ExtResource("1_547wj")
+shaped_tiles = ExtResource("2_mo663")
+team_targeting = 0
+interruptionType = 1
+heal_data = NodePath("HealComponent")
+UpdatePerTeamTurn = true
+PreviewSprite = ExtResource("3_kpy3g")
+localization_icon = ExtResource("4_1yoiw")
+localization_desc = "ui_sacredgrounds_effectdesc"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=40761500]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("3_kpy3g")
+offset = Vector2(16, 16)
+
+[node name="HealComponent" type="Node2D" parent="." unique_id=1900812118]
+script = ExtResource("4_3uwqy")
+FlatValue = 2
+ScalingStat = ExtResource("5_ri8mk")
+ScalingModType = 2
+ScalingMod = 0.5

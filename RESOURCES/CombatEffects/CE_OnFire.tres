@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OnFireEffectTemplate" format=3 uid="uid://1owdew6un3vm"]
+
+[ext_resource type="Script" uid="uid://cny6x03m1td6y" path="res://SCRIPTS/CombatEffects/OnFireEffectTemplate.gd" id="1_hivo3"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="1_pjo25"]
+[ext_resource type="PackedScene" uid="uid://cs3nqerrxc8yu" path="res://RESOURCES/VFX/actively_burning_vfx.tscn" id="1_rwf1o"]
+[ext_resource type="Texture2D" uid="uid://dwjfosdm2av0o" path="res://ART/UI/fire.png" id="2_myst7"]
+[ext_resource type="PackedScene" uid="uid://cq5kfjjnrcsfm" path="res://RESOURCES/VFX/fire_vfx.tscn" id="2_rwf1o"]
+
+[resource]
+script = ExtResource("1_hivo3")
+VFX = ExtResource("2_rwf1o")
+ActivelyOnFire = ExtResource("1_rwf1o")
+Turns = 1
+StackableType = 2
+ExpirationType = 2
+loc_name = "ce_onfire"
+loc_desc = "ce_onfire_desc"
+loc_icon = ExtResource("2_myst7")
+metadata/_custom_type_script = "uid://cny6x03m1td6y"

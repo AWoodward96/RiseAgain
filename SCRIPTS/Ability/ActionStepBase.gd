@@ -20,3 +20,6 @@ func Enter(_actionLog : ActionLog):
 
 func Execute(_delta):
 	return true
+
+func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]):
+	pass

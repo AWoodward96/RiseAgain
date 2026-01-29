@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ArmorEffect" format=3 uid="uid://dlanlcc14wi8m"]
+
+[ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_7vc6v"]
+[ext_resource type="Texture2D" uid="uid://jjucjm0kw2ay" path="res://ART/Icons/temp_shield.png" id="2_eqw5n"]
+[ext_resource type="Script" uid="uid://0q4rq73mdmc" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="3_viwmy"]
+
+[resource]
+script = ExtResource("3_viwmy")
+UseSourceForStats = true
+RelativeStat = ExtResource("1_7vc6v")
+ModType = 2
+Mod = 0.15
+AffectedTargets = 2
+Turns = 1
+loc_name = "ce_armor"
+loc_desc = "ce_armor_desc"
+loc_icon = ExtResource("2_eqw5n")
+metadata/_custom_type_script = "uid://0q4rq73mdmc"

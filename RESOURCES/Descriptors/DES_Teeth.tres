@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DescriptorTemplate" format=3 uid="uid://jwetuomlowq"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_5g2gn"]
+[ext_resource type="Texture2D" uid="uid://dxner8dwxnf2e" path="res://ART/UI/tab_icons7.png" id="1_v216t"]
+
+[resource]
+script = ExtResource("1_5g2gn")
+icon = ExtResource("1_v216t")
+loc_name = "des_teeth"
+metadata/_custom_type_script = "uid://bnehabjcbpysq"

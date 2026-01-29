@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=46 format=3 uid="uid://7mx1nucm5v"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://7mx1nucm5v"]
 
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_6iv7s"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_ggk7c"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_i4cy5"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_6lvkj"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="1_i4cy5"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_6lvkj"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_tiv5t"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_sod5c"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_hdrp8"]
@@ -14,15 +14,11 @@
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="10_beeyc"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_nkgja"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_x76nx"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_yhm8x"]
-[ext_resource type="PackedScene" uid="uid://dtc3xv5u5h2cd" path="res://RESOURCES/Ability/Equippable/zombie_claw.tscn" id="14_4tmws"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_xril5"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_s8bjq"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="17_4cs2t"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_76ctg"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_yb6o6"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_lkyt1"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_vl8xi"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_nbqgl"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_yhm8x"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_h1xiw"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_y6r4i"]
+[ext_resource type="Resource" uid="uid://co4b77kf7knq3" path="res://RESOURCES/Unlocks/ULK_zombie_claw.tres" id="15_y6r4i"]
 [ext_resource type="Texture2D" uid="uid://dk2n6326lxtfl" path="res://ART/Icons/Units/zombie.png" id="23_6krwh"]
 
 [sub_resource type="Resource" id="Resource_lvc3w"]
@@ -38,12 +34,10 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_caktp"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("4_sod5c")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_my6nw"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("5_hdrp8")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_2p3yp"]
 script = ExtResource("2_6lvkj")
@@ -63,41 +57,20 @@ Value = 3.0
 [sub_resource type="Resource" id="Resource_v4vvr"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("10_beeyc")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_hc7fc"]
 script = ExtResource("2_6lvkj")
 Template = ExtResource("10_nkgja")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_1qgml"]
-script = ExtResource("17_4cs2t")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_mqwq8"]
-script = ExtResource("18_76ctg")
-
-[sub_resource type="Resource" id="Resource_l4c1f"]
-metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/zombie_claw.png"
-
-[sub_resource type="Resource" id="Resource_oxr4r"]
+[sub_resource type="Resource" id="Resource_tv6gv"]
 script = ExtResource("2_6lvkj")
-Template = ExtResource("3_tiv5t")
-Value = 3
+Template = ExtResource("12_nbqgl")
+Value = 1.0
 
-[sub_resource type="PackedScene" id="PackedScene_t4t7a"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("zombie_claw", "Node2D", "script", "type", "focusCost", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "BaseAccuracy", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
-"variants": [ExtResource("15_xril5"), 1, 0.0, Array[ExtResource("16_s8bjq")]([SubResource("Resource_1qgml"), SubResource("Resource_mqwq8")]), true, "zombie_claw", "weap_zombie_claw_name", "weap_zombie_claw_desc", SubResource("Resource_l4c1f"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_yb6o6"), 80.0, Array[ExtResource("2_6lvkj")]([SubResource("Resource_oxr4r")]), ExtResource("21_lkyt1"), ExtResource("3_tiv5t"), ExtResource("4_sod5c"), 0.0, ExtResource("22_vl8xi")],
-"version": 3
-}
+[sub_resource type="Resource" id="Resource_ffqc3"]
+script = ExtResource("2_6lvkj")
+Template = ExtResource("13_h1xiw")
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_6lvkj")
@@ -134,17 +107,25 @@ script = ExtResource("2_6lvkj")
 Template = ExtResource("10_beeyc")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_0bb5d"]
+script = ExtResource("2_6lvkj")
+Template = ExtResource("12_nbqgl")
+Value = 10.0
+
+[sub_resource type="Resource" id="Resource_huu82"]
+script = ExtResource("2_6lvkj")
+Template = ExtResource("13_h1xiw")
+Value = 10.0
+
 [resource]
 script = ExtResource("1_i4cy5")
 VisualPrefab = ExtResource("8_s1fg8")
-BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_lvc3w"), SubResource("Resource_j7psy"), SubResource("Resource_caktp"), SubResource("Resource_my6nw"), SubResource("Resource_2p3yp"), SubResource("Resource_6k7dx"), SubResource("Resource_urk3f"), SubResource("Resource_v4vvr"), SubResource("Resource_hc7fc")])
-StatGrowths = Array[ExtResource("2_6lvkj")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_6lvkj")]([SubResource("Resource_lvc3w"), SubResource("Resource_j7psy"), SubResource("Resource_caktp"), SubResource("Resource_my6nw"), SubResource("Resource_2p3yp"), SubResource("Resource_6k7dx"), SubResource("Resource_urk3f"), SubResource("Resource_v4vvr"), SubResource("Resource_hc7fc"), SubResource("Resource_tv6gv"), SubResource("Resource_ffqc3")])
+StatGrowths = Array[ExtResource("2_6lvkj")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_0bb5d"), SubResource("Resource_huu82")])
 Affinity = ExtResource("1_6iv7s")
-StartingItems = Array[PackedScene]([SubResource("PackedScene_t4t7a")])
-StartingEquippedWeapon = ExtResource("14_4tmws")
-Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([])
+StartingEquippedWeapon = ExtResource("15_y6r4i")
 Descriptors = Array[ExtResource("12_yhm8x")]([ExtResource("10_x76nx")])
+FootstepGUID = "{460c67f6-fb5a-4d36-9649-06d2f8c0903c}"
 DebugName = "Zombie"
 loc_DisplayName = "unit_zombie_name"
 loc_Description = "unit_zombie_desc"

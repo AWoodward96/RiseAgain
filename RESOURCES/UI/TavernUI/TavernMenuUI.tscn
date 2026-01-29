@@ -1,0 +1,606 @@
+[gd_scene format=3 uid="uid://yo6f2pumv2h2"]
+
+[ext_resource type="Script" uid="uid://cspokjnnx62v" path="res://SCRIPTS/Universe/Tavern/TavernMenuUI.gd" id="1_vak6y"]
+[ext_resource type="Texture2D" uid="uid://gue7iah3xywk" path="res://ART/UI/Textures/ui_slipofpaper.png" id="2_5jp7r"]
+[ext_resource type="FontFile" uid="uid://pakt7y5poplj" path="res://ART/Fonts/PixelNewspaperIII.ttf" id="2_e0cwt"]
+[ext_resource type="Texture2D" uid="uid://dmfsqmuq4x3y6" path="res://ART/UI/Textures/wood_table.png" id="2_o8yca"]
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_dacwr"]
+[ext_resource type="LabelSettings" uid="uid://35j7gum5loa3" path="res://RESOURCES/UI/TavernUI/ReciptText.tres" id="3_glwsx"]
+[ext_resource type="Texture2D" uid="uid://dq7qxasdckqsg" path="res://ART/Icons/Resources/food.png" id="4_e0cwt"]
+[ext_resource type="Texture2D" uid="uid://b6avcrlsf0kte" path="res://ART/UI/Textures/ui_tavern_menu.png" id="7_a7h6f"]
+[ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="7_qg81u"]
+[ext_resource type="PackedScene" uid="uid://ba3vlpk5kjlh" path="res://RESOURCES/UI/TavernUI/meal_listing.tscn" id="8_crymp"]
+[ext_resource type="Resource" uid="uid://c1o1sarcb1glm" path="res://RESOURCES/Universe/Meals/Grub.tres" id="9_38q88"]
+[ext_resource type="Resource" uid="uid://cdf87ppjyvi12" path="res://RESOURCES/Universe/Meals/HotMeal.tres" id="10_yd7et"]
+[ext_resource type="Resource" uid="uid://dpe78sitkjo37" path="res://RESOURCES/Universe/Meals/LargeHotMeal.tres" id="11_a7h6f"]
+[ext_resource type="Resource" uid="uid://cm10yc6ku8l88" path="res://RESOURCES/Universe/Meals/HuntersChicken.tres" id="12_o8yca"]
+[ext_resource type="Resource" uid="uid://dkkqp5vkogs0r" path="res://RESOURCES/Universe/Meals/BloodSausage.tres" id="13_o8yca"]
+[ext_resource type="Resource" uid="uid://dcog5hycake36" path="res://RESOURCES/Universe/Meals/MushroomStew.tres" id="13_yx3ed"]
+[ext_resource type="Resource" uid="uid://b2nccqw85q853" path="res://RESOURCES/Universe/Meals/SteamedSeafood.tres" id="14_7l8rq"]
+[ext_resource type="Resource" uid="uid://cxn86rlf7i2ay" path="res://RESOURCES/Universe/Meals/NotImplemented.tres" id="14_yd7et"]
+[ext_resource type="Resource" uid="uid://hsrywh8q4lv" path="res://RESOURCES/Universe/Meals/BraisedShoulder.tres" id="15_2o4v2"]
+[ext_resource type="Resource" uid="uid://dn125nal5w5o7" path="res://RESOURCES/Universe/Meals/ThreeCourseMeal.tres" id="16_kijqs"]
+[ext_resource type="Resource" uid="uid://cfpffvod7yru5" path="res://RESOURCES/Universe/Meals/SteelCutOats.tres" id="16_qck21"]
+[ext_resource type="Resource" uid="uid://bkpeocjrs314w" path="res://RESOURCES/Universe/Meals/SeafoodSpread.tres" id="17_1btrd"]
+[ext_resource type="Resource" uid="uid://bl5khuhjuhxgg" path="res://RESOURCES/Universe/Meals/MeatPlatter.tres" id="18_1btrd"]
+[ext_resource type="Script" uid="uid://c8sx452n00uw4" path="res://SCRIPTS/Universe/Tavern/CurrentActiveFoodPanel.gd" id="22_rg5my"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8yca"]
+texture = ExtResource("7_a7h6f")
+texture_margin_left = 20.0
+texture_margin_top = 24.0
+texture_margin_right = 20.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yx3ed"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2oyqt"]
+font = ExtResource("3_dacwr")
+font_color = Color(0.160784, 0.141176, 0.0941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7h6f"]
+bg_color = Color(0.160784, 0.141176, 0.0941176, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjhp0"]
+font = ExtResource("7_qg81u")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_crymp"]
+font = ExtResource("2_e0cwt")
+font_color = Color(0.160784, 0.141176, 0.0941176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7h6f"]
+font = ExtResource("2_e0cwt")
+font_color = Color(0.321569, 0.282353, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8yca"]
+bg_color = Color(0.803922, 0.729412, 0.580392, 1)
+draw_center = false
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.321569, 0.282353, 0.223529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_38q88"]
+font = ExtResource("3_dacwr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx3ed"]
+draw_center = false
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.321569, 0.282353, 0.223529, 1)
+
+[sub_resource type="Animation" id="Animation_qg81u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReciptOffset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 624)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReciptOffset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dacwr"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReciptOffset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 900)]
+}
+
+[sub_resource type="Animation" id="Animation_crymp"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReciptOffset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 900), Vector2(0, 590), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReciptOffset:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q318w"]
+_data = {
+&"RESET": SubResource("Animation_qg81u"),
+&"default": SubResource("Animation_dacwr"),
+&"show": SubResource("Animation_crymp")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oyqt"]
+texture = ExtResource("2_5jp7r")
+
+[node name="TavernMenuUI" type="Control" unique_id=1392306413 node_paths=PackedStringArray("First", "ReciptAnimator", "TavernLevelLabel", "ReciptPanel")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vak6y")
+First = NodePath("MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Grub")
+ReciptAnimator = NodePath("RecieptAnimator")
+TavernLevelLabel = NodePath("MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/TavernLevel")
+ReciptPanel = NodePath("ReciptOffset/Panel")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1581646782]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o8yca")
+stretch_mode = 1
+
+[node name="MenuOffset" type="Control" parent="." unique_id=1589469302]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SinglePanel" type="Panel" parent="MenuOffset" unique_id=1882116690]
+layout_mode = 0
+offset_left = -216.0
+offset_top = -615.0
+offset_right = 474.0
+offset_bottom = 29.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_o8yca")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuOffset/SinglePanel" unique_id=159530946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+
+[node name="Panel" type="Panel" parent="MenuOffset/SinglePanel/MarginContainer" unique_id=464365037]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yx3ed")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel" unique_id=1377341503]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer" unique_id=202601298]
+layout_mode = 2
+
+[node name="EstablishedContainer" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1644279696]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/EstablishedContainer" unique_id=2009165655]
+layout_mode = 2
+text = "loc_est"
+label_settings = SubResource("LabelSettings_2oyqt")
+
+[node name="Panel" type="Panel" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/EstablishedContainer" unique_id=1738852982]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7h6f")
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/EstablishedContainer/Panel" unique_id=2068039156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "loc_menu_title"
+label_settings = SubResource("LabelSettings_rjhp0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/EstablishedContainer" unique_id=466384023]
+layout_mode = 2
+text = "loc_tavern_est_date"
+label_settings = SubResource("LabelSettings_2oyqt")
+
+[node name="RestrauntName" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=760662856]
+layout_mode = 2
+text = "loc_tavern_restraunt_name"
+label_settings = SubResource("LabelSettings_crymp")
+horizontal_alignment = 1
+
+[node name="TavernLevel" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=732653603]
+layout_mode = 2
+text = "ui_level_num"
+label_settings = SubResource("LabelSettings_a7h6f")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1413783585]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.321569, 0.282353, 0.223529, 1)
+
+[node name="Spacer" type="Control" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1260461292]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=603902368]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=527002509]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_o8yca")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel" unique_id=1762485781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer" unique_id=414846904]
+layout_mode = 2
+
+[node name="LevelText" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1896685218]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelText" unique_id=1600234323]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelText" unique_id=1586843038]
+layout_mode = 2
+text = "ui_level_1"
+label_settings = SubResource("LabelSettings_38q88")
+
+[node name="Grub" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1152775161 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("9_38q88")
+
+[node name="LevelText2" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=2040725696]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelText2" unique_id=1955556236]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelText2" unique_id=629954883]
+layout_mode = 2
+text = "ui_level_2"
+label_settings = SubResource("LabelSettings_38q88")
+
+[node name="HotMeal" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1809700982 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("10_yd7et")
+
+[node name="LargeHotMeal" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=80327203 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("11_a7h6f")
+
+[node name="HuntersChicken" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=675991719 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("12_o8yca")
+
+[node name="MushroomStew" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=300152879 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("13_yx3ed")
+
+[node name="LevelText3" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1769058400]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelText3" unique_id=1185121264]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LevelText3" unique_id=2014418173]
+layout_mode = 2
+text = "ui_level_3"
+label_settings = SubResource("LabelSettings_38q88")
+
+[node name="MealListing5" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=2105575483 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("13_o8yca")
+
+[node name="MealListing6" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=308172347 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("14_7l8rq")
+
+[node name="MealListing7" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1308709843 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("15_2o4v2")
+
+[node name="Panel2" type="Panel" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1089775432]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yx3ed")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2" unique_id=196300729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer" unique_id=1544705639]
+layout_mode = 2
+
+[node name="LevelText" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=200502552]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/LevelText" unique_id=611353507]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/LevelText" unique_id=978348218]
+layout_mode = 2
+text = "ui_level_3"
+label_settings = SubResource("LabelSettings_38q88")
+
+[node name="MealListing" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1083773947 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("16_qck21")
+
+[node name="LevelText4" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=867401609]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/LevelText4" unique_id=794300993]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/LevelText4" unique_id=290111086]
+layout_mode = 2
+text = "ui_level_4"
+label_settings = SubResource("LabelSettings_38q88")
+
+[node name="MealListing2" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=2018358822 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("16_kijqs")
+
+[node name="MealListing3" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1222855109 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("17_1btrd")
+
+[node name="MealListing4" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1843359142 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("18_1btrd")
+
+[node name="MealListing5" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1233946689 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("14_yd7et")
+Disabled = true
+
+[node name="LevelText5" type="HBoxContainer" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=2042004972]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/LevelText5" unique_id=14660283]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/LevelText5" unique_id=1132136620]
+layout_mode = 2
+text = "ui_level_5"
+label_settings = SubResource("LabelSettings_38q88")
+
+[node name="MealListing6" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=914932290 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("14_yd7et")
+Disabled = true
+
+[node name="MealListing7" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=750912931 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("14_yd7et")
+Disabled = true
+
+[node name="MealListing8" parent="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer" unique_id=1366370930 instance=ExtResource("8_crymp")]
+layout_mode = 2
+Template = ExtResource("14_yd7et")
+Disabled = true
+
+[node name="RecieptAnimator" type="AnimationPlayer" parent="." unique_id=1184849663]
+libraries/ = SubResource("AnimationLibrary_q318w")
+autoplay = &"default"
+
+[node name="ReciptOffset" type="Control" parent="." unique_id=515544696]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 16.0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="ReciptOffset" unique_id=712184278 node_paths=PackedStringArray("foodName", "foodDesc", "foodIcon", "foodCost")]
+layout_mode = 0
+offset_left = 26.0
+offset_top = -237.0
+offset_right = 213.5
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2oyqt")
+script = ExtResource("22_rg5my")
+foodName = NodePath("MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer/PurchasedMealTitle")
+foodDesc = NodePath("MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer/PurchasedMealDesc")
+foodIcon = NodePath("MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer2/TextureRect")
+foodCost = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CostParent/FoodCost")
+
+[node name="MarginContainer" type="MarginContainer" parent="ReciptOffset/Panel" unique_id=1856298418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReciptOffset/Panel/MarginContainer" unique_id=23279641]
+layout_mode = 2
+
+[node name="Fluff" type="Label" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=700830960]
+layout_mode = 2
+text = "loc_tavern_recipt_fluff_1"
+label_settings = ExtResource("3_glwsx")
+
+[node name="Divider" type="ColorRect" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=1133458999]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.411765, 0.376471, 0.368627, 1)
+
+[node name="CurrentActiveBuff" type="HBoxContainer" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=287082902]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff" unique_id=84420980]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer2" unique_id=498298986]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff" unique_id=611856543]
+layout_mode = 2
+
+[node name="PurchasedMealTitle" type="Label" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer" unique_id=30141979]
+layout_mode = 2
+text = "1x Hunters Chicken"
+label_settings = ExtResource("3_glwsx")
+
+[node name="Divider3" type="ColorRect" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer" unique_id=1975582961]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.411765, 0.376471, 0.368627, 1)
+
+[node name="PurchasedMealDesc" type="Label" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/CurrentActiveBuff/VBoxContainer" unique_id=1279718980]
+layout_mode = 2
+text = "All Stat Growths +3%"
+label_settings = ExtResource("3_glwsx")
+
+[node name="Divider2" type="ColorRect" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=216336685]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.411765, 0.376471, 0.368627, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=639087546]
+layout_mode = 2
+
+[node name="Fluff2" type="Label" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=292669366]
+layout_mode = 2
+text = "loc_tavern_recipt_total"
+label_settings = ExtResource("3_glwsx")
+
+[node name="CostParent" type="HBoxContainer" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=699018456]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/HBoxContainer/CostParent" unique_id=322212944]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/HBoxContainer/CostParent/VBoxContainer" unique_id=994469363]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("4_e0cwt")
+expand_mode = 1
+
+[node name="FoodCost" type="Label" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer/HBoxContainer/CostParent" unique_id=539162763]
+layout_mode = 2
+text = "x10"
+label_settings = ExtResource("3_glwsx")
+
+[node name="Divider3" type="ColorRect" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=323681541]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.411765, 0.376471, 0.368627, 1)
+
+[node name="Spacer" type="Control" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=1065391515]
+custom_minimum_size = Vector2(0, 28.61)
+layout_mode = 2
+
+[node name="Fluff3" type="Label" parent="ReciptOffset/Panel/MarginContainer/VBoxContainer" unique_id=980532682]
+layout_mode = 2
+text = "loc_tavern_recipt_fluff_2"
+label_settings = ExtResource("3_glwsx")
+
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/Grub" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HotMeal" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/LargeHotMeal" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/HuntersChicken" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/MushroomStew" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/MealListing5" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/MealListing6" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel/MarginContainer/VBoxContainer/MealListing7" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing2" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing3" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing4" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing5" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing6" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing7" to="." method="TryPurchaseMeal"]
+[connection signal="TryPurchase" from="MenuOffset/SinglePanel/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Panel2/MarginContainer/VBoxContainer/MealListing8" to="." method="TryPurchaseMeal"]

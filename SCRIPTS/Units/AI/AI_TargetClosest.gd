@@ -12,14 +12,13 @@ class_name AITargetClosest
 @export var RememberTarget : bool
 
 var targetUnit : UnitInstance
-
 var weapon : UnitUsable
 
 var pathfindingOptions : Array[PathfindingOption]
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
-
+	attacked = false
 	selectedTile = null
 	selectedPath.clear()
 
@@ -99,10 +98,14 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 
 	# STEP FIVE:
 	# MOVE
-	unit.MoveCharacterToNode(selectedPath, selectedTile)
-	TryCombat()
+	unit.MoveCharacterToNode(MovementData.Construct(selectedPath, selectedTile))
+
 	pass
 
+func RunTurn():
+	if unit.IsStackFree && unit.Activated && !attacked:
+		TryCombat()
+	pass
 
 func GetAllValidPaths():
 	pathfindingOptions.clear()
@@ -116,6 +119,8 @@ func GetAllValidPaths():
 		var units = map.GetUnitsOnTeam(targetingFlags.Team)
 		if targetingFlags.Descriptor != null:
 			units = units.filter(func(x) : return x.Template.Descriptors.find(targetingFlags.Descriptor) != -1)
+
+		units = units.filter(func(x : UnitInstance) : return !x.Shrouded && !x.Stealthed)
 
 		allUnitsAbleToBeTargeted.append_array(units)
 
@@ -156,7 +161,7 @@ func GetActionableTiles():
 func FilterTilesByPath(_actionableTiles : Array[Tile]):
 	var lowest = 1000000
 	for tile in _actionableTiles:
-		var path = pathfinding.get_point_path(unit.GridPosition, tile.Position)
+		var path = grid.GetTilePath(unit, unit.CurrentTile, tile, true, false, false)
 		if path.size() < lowest && path.size() != 0: # Check 0 path size, because that indicates that there is no path to that tile
 			selectedTile = tile
 			selectedPath = path
@@ -167,6 +172,7 @@ func GetEquippedItem():
 	weapon = unit.EquippedWeapon
 
 func TryCombat():
+	attacked = true
 	if targetUnit == null:
 		unit.QueueEndTurn()
 		return

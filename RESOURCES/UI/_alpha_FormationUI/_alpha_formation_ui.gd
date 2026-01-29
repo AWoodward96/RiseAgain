@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends FullscreenUI
 
 signal FormationSelected
 
@@ -7,6 +7,8 @@ signal FormationSelected
 @export var MenuParent : Control
 @export var FormationButton : Button
 @export var ItemButton : Button
+@export var BlockInstantStartTimer : float = 1
+@export var FacadeAnimator : AnimationPlayer
 
 @export var mapObjectiveText : Label
 @export var optionalObjectiveLabel : Label
@@ -16,11 +18,13 @@ signal FormationSelected
 
 var ctrl : PlayerController
 var map : Map
+var blockTimer : float = 0
 
 func _ready():
 	MenuParent.visible = true
 	FormationParent.visible = false
 	FormationButton.grab_focus()
+	blockTimer = 0
 
 	manageItemsPanel.OnClose.connect(OnManageItemsClosed)
 
@@ -40,27 +44,37 @@ func Initialize(_ctrl : PlayerController, _map : Map):
 	else:
 		optionalObjectiveLabel.visible = true
 		optionalObjectiveText.visible = true
-		optionalObjectiveText.text = _map.OptionalObjectives[0].loc_objectiveDescription
+		optionalObjectiveText.text = _map.OptionalObjectives[0].UpdateLocalization(_map)
 
 func _process(_delta):
-	if InputManager.startDown:
-		FormationSelected.emit()
-		queue_free()
+	if blockTimer > BlockInstantStartTimer:
+		if InputManager.startDown:
+			if CutsceneManager.BlockEnterAction:
+				return
 
-func SetFormationMode(_enabled : bool):
-	MenuParent.visible = !_enabled
-	FormationParent.visible = _enabled
-	ctrl.BlockMovementInput = !_enabled
-	ctrl.reticle.visible = _enabled
-	if !_enabled:
+			FormationSelected.emit()
+			queue_free()
+	else:
+		blockTimer += _delta
+
+func SetFormationMode(_formationMode : bool):
+	ItemButton.disabled = _formationMode
+	FormationButton.disabled = _formationMode
+	if !_formationMode:
+		FacadeAnimator.play("ToMenu")
 		FormationButton.grab_focus()
+	else:
+		FacadeAnimator.play("ToFormation")
+
+	FormationParent.visible = _formationMode
+	ctrl.BlockMovementInput = !_formationMode
+	ctrl.reticle.visible = _formationMode
 
 func OnFormationButton():
 	SetFormationMode(true)
 
 func OnItemButton():
-	manageItemsPanel.visible = true
-	manageItemsPanel.Initialize(Map.Current, GameManager.CurrentCampaign)
+	UIManager.OpenFullscreenUI(UIManager.TeamManagementFullscreenUI)
 	pass
 
 func ShowSwapWithPanel(_val : bool):
@@ -68,3 +82,7 @@ func ShowSwapWithPanel(_val : bool):
 
 func OnManageItemsClosed():
 	ItemButton.grab_focus()
+
+func ReturnFocus():
+	FormationButton.grab_focus()
+	pass

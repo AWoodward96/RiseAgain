@@ -1,9 +1,13 @@
 extends CanvasLayer
 
-signal OnRosterSelected(_squad : Array[UnitTemplate])
+signal OnRosterSelected(_squad : Array[UnitTemplate], _level : int)
 @export var UnitEntryPrefab : PackedScene
 @export var SquadEntryPrefab : PackedScene
 @export var ReadyButton : Button
+@export var RemainingSlotsText : Label
+@export var LevelOverride : LineEdit
+@export var UnlockAbilities : CheckButton
+@export var DebugOptionsParent : Control
 
 @onready var unitEntryParent = %UnitEntryParent
 @onready var squadEntryParent = %SquadEntryParent
@@ -19,6 +23,8 @@ func Initialize(_maxSquadSize : int):
 func _ready():
 	unitSettings = GameManager.UnitSettings
 	ReadyButton.pressed.connect(OnReadyButton)
+	if GameManager.GameSettings.ShowcaseMode:
+		DebugOptionsParent.visible = false
 	CreateUnitEntries()
 
 func _process(_delta):
@@ -47,6 +53,8 @@ func UpdateSquadList():
 		entry.Initialize(unit)
 		squadEntryParent.add_child(entry)
 
+	RemainingSlotsText.text = "Remaining Slots: " + str(maxSquadSize - workingSquad.size())
+
 # When a unit is selected, if it's already in the party, unselect it. If it isn't, then add it to it then update the squad list
 func OnUnitEntrySelected(_unitTemplate : UnitTemplate):
 	var indexOf = workingSquad.find(_unitTemplate)
@@ -59,5 +67,7 @@ func OnUnitEntrySelected(_unitTemplate : UnitTemplate):
 
 func OnReadyButton():
 	if workingSquad.size() > 0:
-		OnRosterSelected.emit(workingSquad)
+		OnRosterSelected.emit(workingSquad, int(LevelOverride.text))
+		if UnlockAbilities.button_pressed:
+			CSR.UnlockAllAbilities()
 		queue_free()

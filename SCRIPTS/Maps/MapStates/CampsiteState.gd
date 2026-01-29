@@ -20,10 +20,15 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	for startingP in map.StartingPositionsParent.get_children():
 		startingP.hide()
 
+	for teamID in map.teams:
+		for unit : UnitInstance in map.teams[teamID]:
+			unit.Activated = true
+
+
 	await campsite.OnRest
 
 
-	var screen = GameManager.ShowLoadingScreen()
+	var screen = UIManager.ShowLoadingScreen()
 	await screen.ScreenObscured
 
 	var restedUI = UIManager.CampsiteRestedPopupPrefab.instantiate()
@@ -35,8 +40,14 @@ func Enter(_map : Map, _ctrl : PlayerController):
 	for u in units:
 		u.Rest()
 
+	if GameManager.CurrentCampaign != null:
+		GameManager.CurrentCampaign.OnRest()
+
 
 
 	if map.CurrentCampaign != null:
 		map.CurrentCampaign.MapComplete()
 	pass
+
+func ToJSON():
+	return "CampsiteState"

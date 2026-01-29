@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BiomeData" format=3 uid="uid://dm5toftpq6eup"]
+
+[ext_resource type="Script" uid="uid://jtmse3fkm1gn" path="res://SCRIPTS/Maps/BiomeData.gd" id="1_ool4j"]
+
+[resource]
+script = ExtResource("1_ool4j")
+AmbienceID = "{00e98ecf-4c74-4486-8773-1a4b04092164}"
+MusicID = "{7415619a-94b3-4f0e-a3da-32919593b5b1}"
+VictoryStinger = "{97bf097a-1484-450d-bbfc-8d6ca02014dd}"
+LossStinger = "{00cb14b6-6b8b-467e-985d-6c4445550ea0}"
+VictoryDelay = 1.5
+GridColor = Color(0.08, 0.0584, 0.0584, 0.235294)
+UnitSaturation = 0.7
+UnitValue = 0.85
+metadata/_custom_type_script = "uid://jtmse3fkm1gn"

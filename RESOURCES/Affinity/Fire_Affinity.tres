@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="AffinityTemplate" load_steps=3 format=3 uid="uid://ds7hfe87vke12"]
+[gd_resource type="Resource" script_class="AffinityTemplate" format=3 uid="uid://ds7hfe87vke12"]
 
 [ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="1_60uag"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_tc7nm"]
+[ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_tc7nm"]
 
 [resource]
 script = ExtResource("1_tc7nm")
 affinity = 1
-strongAgainst = 4
-opposedWith = null
+strongAgainst = 12
 loc_icon = ExtResource("1_60uag")
 loc_name = "affinity_fire"

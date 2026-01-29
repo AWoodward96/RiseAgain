@@ -1,14 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxolfuwxyja2v"]
+[gd_scene format=3 uid="uid://dxolfuwxyja2v"]
 
-[ext_resource type="Script" path="res://SCRIPTS/UI/ExperienceGainUI/experience_gain_ui.gd" id="1_hieq5"]
+[ext_resource type="Script" uid="uid://dab7y862ea62y" path="res://SCRIPTS/UI/ExperienceGainUI/experience_gain_ui.gd" id="1_hieq5"]
 [ext_resource type="PackedScene" uid="uid://civyu43ep0hvd" path="res://RESOURCES/UI/stat_block_entry.tscn" id="2_1xx7x"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_odcso"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_odcso"]
+[ext_resource type="LabelSettings" uid="uid://bqijakfhechmw" path="res://RESOURCES/UI/LabelSettings/levelup_ui_text.tres" id="3_setno"]
+[ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="5_k37rl"]
 
-[node name="ExperienceGainUI" type="CanvasLayer"]
+[node name="ExperienceGainUI" type="Control" unique_id=1277640918 node_paths=PackedStringArray("ShowStatChangePanelSound", "ExpGainSound", "LevelUpTickSound", "StatTickUpSound")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_hieq5")
+ShowStatChangePanelSound = NodePath("ShowStatChange")
+ExpGainSound = NodePath("ExperienceGainLoop")
+LevelUpTickSound = NodePath("LevelUpTick")
+StatTickUpSound = NodePath("StatUpTick")
 statBlockEntryPrefab = ExtResource("2_1xx7x")
 
-[node name="ExperienceProgressBar" type="ProgressBar" parent="."]
+[node name="ExperienceProgressBar" type="ProgressBar" parent="." unique_id=759269889]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -23,8 +36,8 @@ grow_vertical = 2
 step = 1.0
 value = 100.0
 
-[node name="LevelUpParent" type="Control" parent="."]
-layout_mode = 3
+[node name="LevelUpParent" type="Control" parent="." unique_id=2128054823]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,8 +49,9 @@ offset_right = 130.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="LevelUpParent"]
+[node name="Margin" type="MarginContainer" parent="LevelUpParent" unique_id=444904218]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,31 +59,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelUpParent/PanelContainer"]
+[node name="TextureRect" type="ColorRect" parent="LevelUpParent/Margin" unique_id=1857215162]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+color = Color(0.396078, 0.317647, 0.294118, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpParent/PanelContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelUpParent/Margin" unique_id=1522810390]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpParent/Margin/MarginContainer" unique_id=801320911]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer" unique_id=573013603]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2014811409]
 layout_mode = 2
 text = "Level:"
+label_settings = ExtResource("3_setno")
 
-[node name="CurrentLevelLabel" type="Label" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CurrentLevelLabel" type="Label" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1566018663]
 unique_name_in_owner = true
 layout_mode = 2
 text = "$NUM$"
+label_settings = ExtResource("3_setno")
 
-[node name="StatEntryParent" type="GridContainer" parent="LevelUpParent/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="StatEntryParent" type="GridContainer" parent="LevelUpParent/Margin/MarginContainer/VBoxContainer" unique_id=1550290430]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 3
 script = ExtResource("3_odcso")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LevelUpParent/Margin" unique_id=622071127]
+layout_mode = 2
+texture = ExtResource("5_k37rl")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="ExperienceGainLoop" type="FmodEventEmitter2D" parent="." unique_id=970372102]
+event_name = "event:/SFX/UI/Level_Up/Exp_Gain"
+event_guid = "{729fc7f1-685c-40d3-a040-28da2748b1a7}"
+
+[node name="LevelUpTick" type="FmodEventEmitter2D" parent="." unique_id=1202521920]
+event_name = "event:/SFX/UI/Level_Up/Level_Tick_Up"
+event_guid = "{2b4121f8-d6d4-49e8-9ea9-eaf2d1b90138}"
+
+[node name="StatUpTick" type="FmodEventEmitter2D" parent="." unique_id=293363883]
+event_name = "event:/SFX/UI/Level_Up/Level_Stat_Tick_Up"
+event_guid = "{29fd2247-8538-4053-9e81-c7119817457e}"
+
+[node name="ShowStatChange" type="FmodEventEmitter2D" parent="." unique_id=1585816100]
+event_name = "event:/SFX/UI/UI_Paper_Small"
+event_guid = "{42bff886-8e51-403b-a1a3-2e08fc5790fa}"

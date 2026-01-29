@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://dcxjuftthcd2x"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_jht60"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_w3qaw"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="2_72usi"]
+[ext_resource type="Resource" uid="uid://d2d5roo837klh" path="res://RESOURCES/Descriptors/DES_Blunt.tres" id="9_8nwq4"]
+
+[resource]
+script = ExtResource("1_jht60")
+AbilityPath = "res://RESOURCES/Ability/Equippable/blunt.tscn"
+StartUnlocked = true
+Descriptors = Array[ExtResource("1_w3qaw")]([ExtResource("2_72usi"), ExtResource("9_8nwq4")])

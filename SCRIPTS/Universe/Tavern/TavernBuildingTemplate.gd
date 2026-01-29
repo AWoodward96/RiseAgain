@@ -1,0 +1,2 @@
+extends BastionBuildingTemplate
+class_name TavernBuildingTemplate

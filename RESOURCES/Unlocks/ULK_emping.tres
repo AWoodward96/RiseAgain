@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://otgeq4vg63uk"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_f7330"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="2_1jx18"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="3_1jx18"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="3_jfocy"]
+
+[resource]
+script = ExtResource("3_jfocy")
+AbilityPath = "res://RESOURCES/Ability/Equippable/emping.tscn"
+StartUnlocked = true
+Descriptors = Array[ExtResource("1_f7330")]([ExtResource("2_1jx18"), ExtResource("3_1jx18")])

@@ -1,18 +1,16 @@
-[gd_resource type="Resource" script_class="ObjectiveReward" load_steps=6 format=3 uid="uid://8pqnjdx0myv4"]
+[gd_resource type="Resource" script_class="ObjectiveReward" format=3 uid="uid://8pqnjdx0myv4"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectivesUnitsKilled.gd" id="1_gm2d5"]
+[ext_resource type="Script" uid="uid://bcac5eyemremk" path="res://SCRIPTS/Maps/Objectives/ObjectivesUnitsKilled.gd" id="1_gm2d5"]
 [ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="2_u1u1c"]
 [ext_resource type="Resource" uid="uid://xnen5vhxjagq" path="res://RESOURCES/LootTable/LT_StatUpgrades_T1.tres" id="3_cgnn5"]
-[ext_resource type="Script" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="4_7jsx2"]
+[ext_resource type="Script" uid="uid://dptt57bfpyboi" path="res://SCRIPTS/Maps/Objectives/ObjectiveReward.gd" id="4_7jsx2"]
 
 [sub_resource type="Resource" id="Resource_riyoq"]
 script = ExtResource("1_gm2d5")
 unitTemplate = ExtResource("2_u1u1c")
-number = 1
-loc_description = ""
+loc_description = "opoj_prized_buck"
 
 [resource]
 script = ExtResource("4_7jsx2")
-loc_objectiveDescription = "opoj_prized_buck"
 objective = SubResource("Resource_riyoq")
 rewardTable = ExtResource("3_cgnn5")

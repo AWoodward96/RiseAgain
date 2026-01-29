@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://rynquponaejb"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_1duja"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="2_mbwjx"]
+[ext_resource type="Resource" uid="uid://dljnbuho6etc1" path="res://RESOURCES/Descriptors/DES_Unique_Unequippable.tres" id="3_mbwjx"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="3_yk5ec"]
+
+[resource]
+script = ExtResource("3_yk5ec")
+AbilityPath = "res://RESOURCES/Ability/Tactical/howl.tscn"
+Descriptors = Array[ExtResource("1_1duja")]([ExtResource("2_mbwjx"), ExtResource("3_mbwjx")])

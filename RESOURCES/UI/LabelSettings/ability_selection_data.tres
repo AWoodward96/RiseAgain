@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://kv0m2b2ocgp4"]
+
+[ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_p64jw"]
+
+[resource]
+font = ExtResource("1_p64jw")

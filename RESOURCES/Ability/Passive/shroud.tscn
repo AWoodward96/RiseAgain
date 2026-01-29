@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://blcieae5p0wwq"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_g7asa"]
+[ext_resource type="Script" uid="uid://dwybkjr1cr223" path="res://SCRIPTS/Ability/PassiveUnitDeathListener.gd" id="2_cay78"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_if6t6"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_2cif5"]
+[ext_resource type="PackedScene" uid="uid://isaqeedfdh26" path="res://RESOURCES/VFX/stealth_cloud_vfx.tscn" id="4_2ouy4"]
+[ext_resource type="Script" uid="uid://cmtrc7mpxh4qs" path="res://SCRIPTS/Ability/CreateVFXStep.gd" id="4_ty53f"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="5_w4u6n"]
+[ext_resource type="Resource" uid="uid://d4elmej3fgn3c" path="res://RESOURCES/CombatEffects/CE_Assassin_Shroud.tres" id="6_h2hlq"]
+[ext_resource type="Texture2D" uid="uid://dh11grbdsyrnx" path="res://ART/Icons/Ability/Passive/shroud.png" id="6_w4u6n"]
+
+[sub_resource type="Resource" id="Resource_ty53f"]
+script = ExtResource("3_2cif5")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_2ouy4"]
+script = ExtResource("4_ty53f")
+VFXPrefab = ExtResource("4_2ouy4")
+PositionOnActionOrigin = false
+PositionOnSource = true
+metadata/_custom_type_script = "uid://cmtrc7mpxh4qs"
+
+[sub_resource type="Resource" id="Resource_h2hlq"]
+script = ExtResource("5_w4u6n")
+CombatEffect = ExtResource("6_h2hlq")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[node name="shroud" type="Node2D" unique_id=334329888 node_paths=PackedStringArray("passiveListeners")]
+script = ExtResource("1_g7asa")
+type = 3
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_if6t6")]([SubResource("Resource_ty53f"), SubResource("Resource_2ouy4"), SubResource("Resource_h2hlq")])
+passiveListeners = [NodePath("PassiveUnitDeathListener")]
+internalName = "shroud"
+loc_displayName = "passive_shroud_name"
+loc_displayDesc = "passive_shroud_desc"
+icon = ExtResource("6_w4u6n")
+
+[node name="PassiveUnitDeathListener" type="Node2D" parent="." unique_id=1044966052]
+script = ExtResource("2_cay78")
+reqKilledByUser = true
+reqKilledByWeapon = true
+reqOnAlliedTurn = true
+triggerAbilityStack = true
+metadata/_custom_type_script = "uid://dwybkjr1cr223"

@@ -1,0 +1,257 @@
+[gd_scene format=4 uid="uid://hingxw3qispc"]
+
+[ext_resource type="Script" uid="uid://ko4rm7sjmvel" path="res://SCRIPTS/Maps/Map.gd" id="1_4txbi"]
+[ext_resource type="Resource" uid="uid://b85vbvqpusrko" path="res://RESOURCES/Maps/BiomeData/White_Cliffs_Standard.tres" id="2_7rgrj"]
+[ext_resource type="Script" uid="uid://dff1yhtq4q00j" path="res://SCRIPTS/Cutscene/CutsceneEventBase.gd" id="3_yaxeo"]
+[ext_resource type="Script" uid="uid://b83ex510b0d3c" path="res://SCRIPTS/Cutscene/Events/ShowEventPrompt.gd" id="4_m8sjy"]
+[ext_resource type="Script" uid="uid://efdtcy5i0nqy" path="res://SCRIPTS/Maps/Helpers/DebugSize.gd" id="4_qr20j"]
+[ext_resource type="Script" uid="uid://bxh0g23kritn8" path="res://SCRIPTS/Cutscene/Events/EventDecision.gd" id="5_b8ita"]
+[ext_resource type="TileSet" uid="uid://klf2tpkgl4h3" path="res://ART/Environment/WhiteCoast/whitecoast_tileset.tres" id="5_losab"]
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="6_ammb3"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="6_paqmh"]
+[ext_resource type="Script" uid="uid://cpajqbxayy16y" path="res://SCRIPTS/Generic/MadLibLoc.gd" id="7_ajeer"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="7_hnwu6"]
+[ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="7_yaxeo"]
+[ext_resource type="Resource" uid="uid://bfsilhgf06rms" path="res://RESOURCES/Resources/Ore.tres" id="8_2l77x"]
+[ext_resource type="Script" uid="uid://dalk3vyucbgsu" path="res://SCRIPTS/Cutscene/Events/ShowEventDecision.gd" id="8_hnwu6"]
+[ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_m8sjy"]
+[ext_resource type="Script" uid="uid://c10jnc1t5gw2i" path="res://SCRIPTS/Cutscene/CutsceneTemplate.gd" id="9_2l77x"]
+[ext_resource type="Texture2D" uid="uid://bt47av4ro0pg5" path="res://ART/Environment/MaroonForest/c_0_map_0_leafmap-export.png" id="9_b8ita"]
+[ext_resource type="Script" uid="uid://covm8hlm2glqx" path="res://SCRIPTS/Universe/Resources/PackedResourceDef.gd" id="9_rshw5"]
+[ext_resource type="Script" uid="uid://bf7oawyxfy0lx" path="res://SCRIPTS/Cutscene/Events/GrantResourcesEvent.gd" id="10_3k355"]
+[ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="10_ammb3"]
+[ext_resource type="Script" uid="uid://b5qgscwxgnauj" path="res://SCRIPTS/Cutscene/Events/WaitEvent.gd" id="11_2l77x"]
+[ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="11_ajeer"]
+[ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="12_hnwu6"]
+[ext_resource type="Script" uid="uid://dfq20krg4iajv" path="res://SCRIPTS/Cutscene/Events/MarkEventMapCompleteEvent.gd" id="12_rshw5"]
+[ext_resource type="PackedScene" uid="uid://yyqfnwbgvf4f" path="res://RESOURCES/GridEntities/prop_whitecliffvault.tscn" id="13_2l77x"]
+[ext_resource type="Script" uid="uid://dihnqdhy7bo6v" path="res://SCRIPTS/Generic/MadLibBase.gd" id="13_rshw5"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="15_mu74p"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="16_ule0j"]
+[ext_resource type="Script" uid="uid://c8dhapjjauqq4" path="res://SCRIPTS/Generic/Requirements/StatCheckReq.gd" id="17_en5mb"]
+
+[sub_resource type="Resource" id="Resource_rshw5"]
+script = ExtResource("4_m8sjy")
+loc_text = "event_whitecliffiron_prompt"
+metadata/_custom_type_script = "uid://b83ex510b0d3c"
+
+[sub_resource type="Resource" id="Resource_en5mb"]
+script = ExtResource("7_hnwu6")
+ItemResource = ExtResource("8_2l77x")
+Amount = 30
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_bdrdn"]
+script = ExtResource("9_rshw5")
+cost = Array[ExtResource("7_hnwu6")]([SubResource("Resource_en5mb")])
+metadata/_custom_type_script = "uid://covm8hlm2glqx"
+
+[sub_resource type="Resource" id="Resource_5sqwk"]
+script = ExtResource("10_3k355")
+resources = SubResource("Resource_bdrdn")
+tileCoordinate = Vector2i(11, 2)
+metadata/_custom_type_script = "uid://bf7oawyxfy0lx"
+
+[sub_resource type="Resource" id="Resource_aifys"]
+script = ExtResource("11_2l77x")
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_u40m0"]
+script = ExtResource("12_rshw5")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_6lskw"]
+script = ExtResource("7_ajeer")
+loc_string = "event_whitecliffiron_d1_preview1"
+metadata/_custom_type_script = "uid://cpajqbxayy16y"
+
+[sub_resource type="Resource" id="Resource_3k355"]
+resource_name = "Basic Break"
+script = ExtResource("5_b8ita")
+option_loc = "event_whitecliffiron_d1"
+resultspreview_loc = Array[ExtResource("7_ajeer")]([SubResource("Resource_6lskw")])
+resultActionStack = Array[ExtResource("3_yaxeo")]([SubResource("Resource_5sqwk"), SubResource("Resource_aifys"), SubResource("Resource_u40m0")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_cs6qo"]
+script = ExtResource("16_ule0j")
+Template = ExtResource("15_mu74p")
+Value = 6
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_rf84c"]
+script = ExtResource("17_en5mb")
+StatCheck = SubResource("Resource_cs6qo")
+metadata/_custom_type_script = "uid://c8dhapjjauqq4"
+
+[sub_resource type="Resource" id="Resource_tha8a"]
+script = ExtResource("7_hnwu6")
+ItemResource = ExtResource("8_2l77x")
+Amount = 60
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_15wu0"]
+script = ExtResource("9_rshw5")
+cost = Array[ExtResource("7_hnwu6")]([SubResource("Resource_tha8a")])
+metadata/_custom_type_script = "uid://covm8hlm2glqx"
+
+[sub_resource type="Resource" id="Resource_jb188"]
+script = ExtResource("10_3k355")
+resources = SubResource("Resource_15wu0")
+tileCoordinate = Vector2i(11, 2)
+metadata/_custom_type_script = "uid://bf7oawyxfy0lx"
+
+[sub_resource type="Resource" id="Resource_t4cxg"]
+script = ExtResource("11_2l77x")
+metadata/_custom_type_script = "uid://b5qgscwxgnauj"
+
+[sub_resource type="Resource" id="Resource_7g6hs"]
+script = ExtResource("12_rshw5")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_h7xed"]
+script = ExtResource("7_ajeer")
+loc_string = "event_whitecliffiron_d2_preview1"
+metadata/_custom_type_script = "uid://cpajqbxayy16y"
+
+[sub_resource type="Resource" id="Resource_f30dh"]
+resource_name = "Better Break"
+script = ExtResource("5_b8ita")
+option_loc = "event_whitecliffiron_d2"
+resultspreview_loc = Array[ExtResource("7_ajeer")]([SubResource("Resource_h7xed")])
+requirements = Array[ExtResource("6_ammb3")]([SubResource("Resource_rf84c")])
+resultActionStack = Array[ExtResource("3_yaxeo")]([SubResource("Resource_jb188"), SubResource("Resource_t4cxg"), SubResource("Resource_7g6hs")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_fb0jk"]
+script = ExtResource("12_rshw5")
+metadata/_custom_type_script = "uid://dfq20krg4iajv"
+
+[sub_resource type="Resource" id="Resource_4xiv5"]
+script = ExtResource("5_b8ita")
+option_loc = "event_generic_leave"
+resultActionStack = Array[ExtResource("3_yaxeo")]([SubResource("Resource_fb0jk")])
+metadata/_custom_type_script = "uid://bxh0g23kritn8"
+
+[sub_resource type="Resource" id="Resource_mu74p"]
+script = ExtResource("8_hnwu6")
+DecisionOptions = Array[ExtResource("5_b8ita")]([SubResource("Resource_3k355"), SubResource("Resource_f30dh"), SubResource("Resource_4xiv5")])
+metadata/_custom_type_script = "uid://dalk3vyucbgsu"
+
+[sub_resource type="Resource" id="Resource_ule0j"]
+script = ExtResource("9_2l77x")
+events = Array[ExtResource("3_yaxeo")]([SubResource("Resource_rshw5"), SubResource("Resource_mu74p")])
+repeatable = true
+autoComplete = false
+metadata/_custom_type_script = "uid://c10jnc1t5gw2i"
+
+[node name="white_iron_outcropping" type="Node2D" unique_id=1797146192 node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
+script = ExtResource("1_4txbi")
+mapType = 2
+GridSize = Vector2i(15, 10)
+CameraStart = Vector2(7, 5)
+Biome = ExtResource("2_7rgrj")
+Par = 6
+tilemap_bg = NodePath("BG")
+tilemap_main = NodePath("Main")
+tilemap_threat = NodePath("Threat")
+tilemap_fire = NodePath("Fire")
+tilemap_UI = NodePath("UI")
+PreMapCutscene = SubResource("Resource_ule0j")
+squadParent = NodePath("Squads")
+StartingPositionsParent = NodePath("StartingPositions")
+SpawnersParent = NodePath("Spawners")
+
+[node name="DebugSize" type="Line2D" parent="." unique_id=1476180516 node_paths=PackedStringArray("map")]
+points = PackedVector2Array(0, 0, 960, 0, 960, 640, 0, 640, 0, 0)
+closed = true
+default_color = Color(1, 0, 0, 1)
+script = ExtResource("4_qr20j")
+map = NodePath("..")
+
+[node name="BG" type="TileMapLayer" parent="." unique_id=1000696831]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAPAAAAAQAJAAMAAAAPAAEAAQAKAAQAAAAPAAIAAQAIAAQAAAAPAAMAAQAJAAMAAAAPAAQAAQAKAAQAAAAPAAUAAQAKAAMAAAAPAAYAAQAKAAQAAAAQAAAAAQAJAAQAAAAQAAEAAQAJAAMAAAAQAAIAAQAIAAMAAAAQAAMAAQAIAAQAAAAQAAQAAQAKAAMAAAAQAAUAAQAIAAMAAAAQAAYAAQAJAAQAAAARAAAAAQAJAAQAAAARAAEAAQAIAAMAAAARAAIAAQAJAAQAAAARAAMAAQAJAAMAAAARAAQAAQAJAAQAAAARAAUAAQAJAAMAAAARAAYAAQAIAAQAAAAAAAoAAQAKAAQAAAABAAoAAQAIAAQAAAACAAoAAQAIAAMAAAADAAoAAQAIAAQAAAAEAAoAAQAKAAQAAAAFAAoAAQAKAAQAAAAGAAoAAQAIAAQAAAAHAAoAAQAIAAMAAAAIAAoAAQAJAAQAAAAJAAoAAQAJAAMAAAAKAAoAAQAKAAMAAAALAAoAAQAIAAQAAAAMAAoAAQAKAAMAAAANAAoAAQAKAAQAAAAOAAoAAQAKAAMAAAAPAAgAAQAIAAMAAAAPAAkAAQAJAAMAAAAPAAoAAQAJAAQAAAAQAAgAAQAIAAQAAAAQAAkAAQAKAAMAAAAQAAoAAQAIAAQAAAARAAgAAQAJAAQAAAARAAkAAQAKAAMAAAARAAoAAQAJAAMAAAAAAAsAAQAJAAQAAAABAAsAAQAIAAQAAAACAAsAAQAIAAQAAAADAAsAAQAKAAQAAAAEAAsAAQAJAAMAAAAFAAsAAQAKAAMAAAAGAAsAAQAIAAMAAAAHAAsAAQAKAAQAAAAIAAsAAQAJAAQAAAAJAAsAAQAIAAQAAAAKAAsAAQAJAAQAAAALAAsAAQAJAAMAAAAMAAsAAQAKAAMAAAANAAsAAQAIAAQAAAAOAAsAAQAKAAMAAAAPAAsAAQAJAAQAAAAQAAsAAQAJAAMAAAARAAsAAQAKAAQAAAARAAcAAQAIAAQAAAAQAAcAAQAJAAMAAAAPAAcAAQAJAAMAAAASAAkAAQAIAAQAAAASAAsAAQAKAAMAAAASAAoAAQAKAAMAAAASAAgAAQAIAAMAAAASAAcAAQAIAAMAAAASAAYAAQAKAAMAAAASAAUAAQAIAAQAAAASAAQAAQAJAAQAAAASAAMAAQAJAAMAAAASAAIAAQAKAAMAAAASAAEAAQAKAAMAAAASAAAAAQAKAAMAAAASAP//AQAJAAMAAAARAP//AQAJAAMAAAAQAP//AQAIAAQAAAAPAP//AQAKAAQAAAAOAP//AQAKAAMAAAANAP//AQAKAAMAAAAMAP//AQAKAAQAAAALAP//AQAJAAQAAAAKAP//AQAIAAQAAAAJAP//AQAIAAQAAAAIAP//AQAKAAQAAAAHAP//AQAKAAMAAAAGAP//AQAKAAMAAAAFAP//AQAJAAQAAAAEAP//AQAIAAQAAAADAP//AQAKAAMAAAACAP//AQAJAAMAAAABAP//AQAJAAMAAAAAAP//AQAIAAMAAAD//wsAAQAJAAQAAAD//woAAQAIAAMAAAD//wkAAQAIAAMAAAD//wgAAQAIAAMAAAD//wcAAQAJAAQAAAD//wYAAQAJAAQAAAD//wUAAQAKAAQAAAD//wQAAQAIAAMAAAD//wMAAQAJAAMAAAD//wIAAQAKAAMAAAD//wEAAQAKAAQAAAD//wAAAQAIAAQAAAD/////AQAJAAQAAAAOAAkAAQAJAAQAAAAOAAgAAQAJAAMAAAAOAAcAAQAIAAMAAAAOAAYAAQAJAAMAAAAOAAUAAQAIAAQAAAAOAAQAAQAKAAMAAAAOAAMAAQAIAAQAAAAOAAIAAQAJAAQAAAAOAAEAAQAJAAQAAAAOAAAAAQAKAAMAAAANAAkAAQAKAAMAAAANAAgAAQAKAAQAAAANAAcAAQAIAAMAAAANAAYAAQAKAAQAAAANAAUAAQAIAAQAAAANAAQAAQAKAAQAAAANAAMAAQAIAAQAAAANAAIAAQAKAAMAAAANAAEAAQAIAAQAAAANAAAAAQAKAAQAAAAMAAkAAQAJAAQAAAAMAAgAAQAKAAQAAAAMAAcAAQAJAAMAAAAMAAYAAQAKAAMAAAAMAAUAAQAIAAMAAAAMAAQAAQAKAAMAAAAMAAMAAQAIAAQAAAAMAAIAAQAIAAMAAAAMAAEAAQAKAAQAAAAMAAAAAQAKAAQAAAALAAkAAQAJAAMAAAALAAgAAQAIAAMAAAALAAcAAQAIAAQAAAALAAYAAQAJAAMAAAALAAUAAQAJAAQAAAALAAQAAQAJAAMAAAALAAMAAQAKAAQAAAALAAIAAQAJAAQAAAALAAEAAQAKAAMAAAALAAAAAQAIAAMAAAAKAAkAAQAIAAQAAAAKAAgAAQAIAAMAAAAKAAcAAQAJAAMAAAAKAAYAAQAIAAQAAAAKAAUAAQAIAAQAAAAKAAQAAQAJAAMAAAAKAAMAAQAIAAMAAAAKAAIAAQAJAAQAAAAKAAEAAQAKAAQAAAAKAAAAAQAIAAQAAAAJAAkAAQAIAAMAAAAJAAgAAQAKAAQAAAAJAAcAAQAIAAMAAAAJAAYAAQAJAAMAAAAJAAUAAQAIAAMAAAAJAAQAAQAJAAQAAAAJAAMAAQAIAAMAAAAJAAIAAQAJAAQAAAAJAAEAAQAKAAMAAAAJAAAAAQAIAAQAAAAIAAkAAQAKAAQAAAAIAAgAAQAKAAMAAAAIAAcAAQAKAAQAAAAIAAYAAQAKAAQAAAAIAAUAAQAKAAQAAAAIAAQAAQAJAAQAAAAIAAMAAQAIAAMAAAAIAAIAAQAIAAMAAAAIAAEAAQAIAAQAAAAIAAAAAQAIAAMAAAAHAAkAAQAKAAQAAAAHAAgAAQAKAAQAAAAHAAcAAQAJAAQAAAAHAAYAAQAKAAMAAAAHAAUAAQAKAAMAAAAHAAQAAQAJAAQAAAAHAAMAAQAIAAMAAAAHAAIAAQAJAAMAAAAHAAEAAQAIAAQAAAAHAAAAAQAJAAQAAAAGAAkAAQAIAAQAAAAGAAgAAQAIAAMAAAAGAAcAAQAKAAQAAAAGAAYAAQAKAAQAAAAGAAUAAQAIAAQAAAAGAAQAAQAKAAMAAAAGAAMAAQAKAAMAAAAGAAIAAQAKAAQAAAAGAAEAAQAJAAMAAAAGAAAAAQAKAAQAAAAFAAkAAQAJAAQAAAAFAAgAAQAKAAQAAAAFAAcAAQAKAAMAAAAFAAYAAQAKAAMAAAAFAAUAAQAIAAQAAAAFAAQAAQAIAAMAAAAFAAMAAQAKAAQAAAAFAAIAAQAKAAQAAAAFAAEAAQAJAAMAAAAFAAAAAQAKAAMAAAAEAAkAAQAIAAMAAAAEAAgAAQAIAAMAAAAEAAcAAQAJAAMAAAAEAAYAAQAJAAQAAAAEAAUAAQAKAAQAAAAEAAQAAQAIAAMAAAAEAAMAAQAIAAMAAAAEAAIAAQAKAAQAAAAEAAEAAQAIAAMAAAAEAAAAAQAIAAQAAAADAAkAAQAIAAMAAAADAAgAAQAIAAMAAAADAAcAAQAJAAMAAAADAAYAAQAKAAQAAAADAAUAAQAJAAMAAAADAAQAAQAIAAQAAAADAAMAAQAKAAQAAAADAAIAAQAJAAQAAAADAAEAAQAIAAQAAAADAAAAAQAIAAQAAAACAAkAAQAIAAMAAAACAAgAAQAJAAMAAAACAAcAAQAJAAMAAAACAAYAAQAJAAQAAAACAAUAAQAKAAQAAAACAAQAAQAIAAQAAAACAAMAAQAKAAMAAAACAAIAAQAJAAQAAAACAAEAAQAIAAMAAAACAAAAAQAIAAQAAAABAAkAAQAKAAQAAAABAAgAAQAKAAMAAAABAAcAAQAJAAQAAAABAAYAAQAKAAQAAAABAAUAAQAIAAMAAAABAAQAAQAJAAQAAAABAAMAAQAIAAQAAAABAAIAAQAIAAMAAAABAAEAAQAIAAQAAAABAAAAAQAIAAMAAAAAAAkAAQAJAAQAAAAAAAgAAQAIAAQAAAAAAAcAAQAKAAQAAAAAAAYAAQAIAAMAAAAAAAUAAQAIAAQAAAAAAAQAAQAJAAMAAAAAAAMAAQAKAAQAAAAAAAIAAQAJAAQAAAAAAAEAAQAJAAQAAAAAAAAAAQAKAAMAAAA=")
+tile_set = ExtResource("5_losab")
+
+[node name="Main" type="TileMapLayer" parent="." unique_id=681744777]
+z_index = -5
+use_parent_material = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAMAAsAAQAEAAcAAAANAAsAAQAEAAcAAAAOAAsAAQAEAAcAAAAPAAsAAQAEAAcAAAAQAAsAAQAEAAcAAAARAAsAAQAEAAcAAAARAAoAAQAEAAcAAAAQAAoAAQAEAAcAAAAQAAkAAQAEAAcAAAARAAkAAQAEAAcAAAAAAAgAAQADAAYAAAAAAAkAAQADAAcAAAAAAAoAAQADAAgAAAABAAgAAQAEAAYAAAABAAkAAQAEAAcAAAABAAoAAQAEAAgAAAACAAgAAQAFAAYAAAACAAkAAQAFAAcAAAACAAoAAQAFAAgAAAADAAgAAQADAAYAAAADAAkAAQADAAcAAAADAAoAAQADAAgAAAAEAAkAAQAEAAcAAAAEAAoAAQAEAAgAAAAFAAkAAQAFAAYAAAAFAAoAAQAFAAgAAAAGAAkAAQADAAYAAAAGAAoAAQADAAgAAAAHAAkAAQAEAAYAAAAHAAoAAQAEAAgAAAAIAAkAAQAFAAYAAAAIAAoAAQAFAAgAAAAJAAkAAQADAAYAAAAJAAoAAQADAAgAAAAKAAkAAQAEAAYAAAAKAAoAAQAEAAgAAAALAAkAAQAFAAYAAAALAAoAAQAFAAgAAAAMAAkAAQADAAYAAAAMAAoAAQADAAgAAAANAAoAAQAEAAgAAAAOAAoAAQAFAAgAAAAAAAAAAQADAAcAAAAAAAEAAQADAAcAAAABAAAAAQAEAAcAAAABAAEAAQAEAAcAAAACAAAAAQAFAAcAAAACAAEAAQAFAAcAAAAMAAUAAQADAAgAAAANAAUAAQAEAAgAAAAOAAUAAQAFAAgAAAADAAAAAQADAAcAAAAEAAAAAQAEAAcAAAAFAAAAAQAFAAcAAAADAAEAAQADAAcAAAAEAAEAAQAEAAcAAAAFAAEAAQAFAAcAAAAGAAAAAQADAAcAAAAHAAAAAQAEAAcAAAAIAAAAAQAFAAcAAAAGAAEAAQADAAcAAAAHAAEAAQAEAAcAAAAIAAEAAQAFAAcAAAAJAAAAAQADAAcAAAAKAAAAAQAEAAcAAAALAAAAAQAFAAcAAAAJAAEAAQADAAcAAAAKAAEAAQAEAAcAAAALAAEAAQAFAAcAAAAMAAQAAQADAAcAAAANAAQAAQAEAAcAAAAOAAQAAQAFAAcAAAAMAAMAAQADAAcAAAANAAMAAQAEAAcAAAAOAAMAAQAFAAcAAAAMAAIAAQADAAcAAAANAAIAAQAEAAcAAAAOAAIAAQAFAAcAAAAMAAEAAQADAAcAAAANAAEAAQAEAAcAAAAOAAEAAQAFAAcAAAAMAAAAAQADAAcAAAANAAAAAQAEAAcAAAAOAAAAAQAFAAcAAAAAAAIAAQADAAcAAAAAAAMAAQADAAgAAAABAAIAAQAEAAcAAAABAAMAAQAEAAgAAAACAAIAAQAFAAcAAAACAAMAAQAFAAgAAAADAAIAAQADAAgAAAAEAAIAAQAEAAgAAAAFAAIAAQAFAAgAAAAJAAIAAQADAAcAAAAJAAMAAQADAAgAAAAKAAIAAQAEAAcAAAAKAAMAAQAEAAgAAAALAAIAAQAFAAcAAAALAAMAAQAFAAgAAAAGAAIAAQAEAAgAAAAHAAIAAQAEAAgAAAAIAAIAAQAEAAgAAAAEAAgAAQAEAAYAAAANAAkAAQAEAAYAAAAOAAkAAQAEAAYAAAA=")
+tile_set = ExtResource("5_losab")
+
+[node name="Path" type="TileMapLayer" parent="." unique_id=493365799]
+z_index = -5
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAFAAUAAQAQAAIAAAAGAAUAAQAQAAIAAAAHAAUAAQAQAAIAAAAIAAUAAQAQAAIAAAAAAAQAAQAOAAUAAAAAAAUAAQANAAgAAAABAAQAAQAOAAUAAAABAAUAAQANAAgAAAACAAQAAQAOAAUAAAACAAUAAQANAAgAAAADAAQAAQAOAAUAAAADAAUAAQANAAgAAAAEAAQAAQAOAAUAAAAEAAUAAQAOAAYAAAAKAAQAAQAQAAIAAAAJAAQAAQAQAAIAAAAJAAUAAQAQAAIAAAAKAAUAAQAQAAIAAAALAAQAAQAQAAIAAAALAAUAAQAQAAIAAAAIAAQAAQAQAAIAAAAJAAcAAQAMAAgAAAAIAAYAAQANAAgAAAAJAAYAAQAOAAYAAAAKAAcAAQAOAAgAAAALAAcAAQAOAAgAAAAMAAcAAQAOAAgAAAANAAcAAQAOAAgAAAAOAAcAAQAOAAgAAAAKAAYAAQAQAAIAAAALAAYAAQAQAAIAAAAMAAYAAQAQAAIAAAANAAYAAQAQAAIAAAAOAAYAAQAQAAIAAAAEAAYAAQAMAAgAAAAFAAYAAQANAAgAAAAGAAYAAQANAAgAAAAHAAYAAQANAAgAAAAFAAQAAQANAAUAAAAGAAQAAQANAAUAAAAHAAQAAQAOAAcAAAAIAAMAAQAOAAcAAAAHAAMAAQAMAAUAAAALAAIAAQAFABUAAAAJAAEAAQAGABUAAAAKAAIAAQAGABYAAAAMAAEAAQAGABYAAAAMAAMAAQAFABUAAAANAAQAAQAGABUAAAANAAIAAQAFABUAAAANAAMAAQAFABYAAAAGAAEAAQAGABYAAAABAAEAAQAGABUAAAA=")
+tile_set = ExtResource("5_losab")
+
+[node name="Extra" type="TileMapLayer" parent="." unique_id=1851575878]
+z_index = -4
+scale = Vector2(2, 2)
+tile_set = ExtResource("5_losab")
+
+[node name="Threat" type="TileMapLayer" parent="." unique_id=50771084]
+z_index = -2
+use_parent_material = true
+tile_set = ExtResource("6_paqmh")
+navigation_enabled = false
+
+[node name="Fire" type="TileMapLayer" parent="." unique_id=2034254802]
+z_index = -2
+scale = Vector2(2, 2)
+tile_set = ExtResource("7_yaxeo")
+
+[node name="UI" type="TileMapLayer" parent="." unique_id=1243313728]
+z_index = -3
+use_parent_material = true
+tile_set = ExtResource("6_paqmh")
+
+[node name="C0Map0Leafmap" type="Sprite2D" parent="." unique_id=278882338]
+visible = false
+z_index = 1
+material = ExtResource("8_m8sjy")
+position = Vector2(480, 288)
+scale = Vector2(2, 2)
+texture = ExtResource("9_b8ita")
+
+[node name="StartingPositions" type="Node2D" parent="." unique_id=1140888478]
+unique_name_in_owner = true
+
+[node name="StartingPositionHelper" parent="StartingPositions" unique_id=594628407 node_paths=PackedStringArray("map") instance=ExtResource("10_ammb3")]
+position = Vector2(576, 256)
+Position = Vector2i(9, 4)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper2" parent="StartingPositions" unique_id=1258980187 node_paths=PackedStringArray("map") instance=ExtResource("10_ammb3")]
+position = Vector2(704, 320)
+Position = Vector2i(11, 5)
+map = NodePath("../..")
+
+[node name="StartingPositionHelper3" parent="StartingPositions" unique_id=1112680923 node_paths=PackedStringArray("map") instance=ExtResource("10_ammb3")]
+position = Vector2(448, 256)
+Position = Vector2i(7, 4)
+map = NodePath("../..")
+
+[node name="Spawners" type="Node2D" parent="." unique_id=1603634641]
+unique_name_in_owner = true
+
+[node name="SpawnProp" type="Sprite2D" parent="Spawners" unique_id=512309226]
+position = Vector2(320, 64)
+texture = ExtResource("11_ajeer")
+centered = false
+hframes = 4
+vframes = 4
+frame = 3
+script = ExtResource("12_hnwu6")
+GridEntityPrefab = ExtResource("13_2l77x")
+Position = Vector2i(5, 1)
+Enabled = false
+Allegiance = 1
+
+[node name="Variants" type="Node2D" parent="." unique_id=1735247928]
+
+[node name="Squads" type="Node2D" parent="." unique_id=273241665]

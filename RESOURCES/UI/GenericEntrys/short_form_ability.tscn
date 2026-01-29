@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://df7pqlbgdf8pm"]
+
+[ext_resource type="Script" uid="uid://g2pd3eq7g6nb" path="res://SCRIPTS/UI/TeamManagement/AbilityShortformUI.gd" id="1_k61cu"]
+[ext_resource type="Texture2D" uid="uid://cpcbhorbq3osw" path="res://ART/Icons/Ability/Equippable/steel_sword.png" id="1_m4dei"]
+
+[node name="ShortFormAbility" type="Control" unique_id=1513436011 node_paths=PackedStringArray("icon", "nameLabel", "contentParent", "noneParent")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("1_k61cu")
+icon = NodePath("Content/HBoxContainer/TextureRect")
+nameLabel = NodePath("Content/HBoxContainer/Label")
+contentParent = NodePath("Content")
+noneParent = NodePath("NoneContainer")
+
+[node name="Content" type="MarginContainer" parent="." unique_id=674051114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content" unique_id=1658604572]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/HBoxContainer" unique_id=627165916]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_m4dei")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Content/HBoxContainer" unique_id=146216723]
+layout_mode = 2
+text = "Iron Sword"
+
+[node name="NoneContainer" type="MarginContainer" parent="." unique_id=1538305876]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NoneContainer" unique_id=1665518654]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="NoneContainer/HBoxContainer" unique_id=352904917]
+layout_mode = 2
+text = "ui_none"

@@ -8,47 +8,72 @@ signal AbilityActionComplete
 #	If another Equippable is added to a Unit, their existing Equippable Ability gets deleted
 #	All Equippables should have the Damage Grants Focus bool set to true - but it's available as an option to be false for any edge cases
 # Tactical: A utility focused Ability that every Unit can use
-enum AbilityType { Standard, Weapon, Tactical }
+# Passive, HealdItem, Deathrattle: Too be implemented
+enum EAbilityType { Standard, Weapon, Tactical, Passive, HeldItem, Deathrattle }
+enum EAbilitySpeed { Normal, Fast, Slow }
 
-
-@export var type : AbilityType
-@export var focusCost : int = 1
+@export var type : EAbilityType
+@export var abilityCooldown : int = 1
 @export var limitedUsage : int = -1 # -1 means there is no limited usage
 @export var usageRestoredByCampfire : int = 0
 
+@export var ability_speed : EAbilitySpeed = EAbilitySpeed.Normal
 @export var executionStack : Array[ActionStep]
-@export var autoEndTurn : bool = true
-@export var damageGrantsFocus : bool = false
+@export var passiveListeners : Array[PassiveListenerBase]
 
+@export var animationStyle : CombatAnimationStyleTemplate
+
+var remainingCooldown : int = 0
 var remainingUsages : int = 0
+var kills : int = 0
+var usages : int = 0
 
 func Initialize(_unitOwner : UnitInstance):
 	super(_unitOwner)
 	if limitedUsage != -1:
 		remainingUsages = limitedUsage
 
+	# this is the price I pay for generic components :)
+	for c in componentArray:
+		if "ability" in c:
+			c.ability = self
+	# It would probably be proper to convert all of the components to a base AbilityType - but currently only one component is actually using this
+	# Sooooooooo
+
 func TryExecute(_actionLog : ActionLog, _delta : float):
-	if _actionLog.abilityStackIndex < 0:
+	if _actionLog.actionStackIndex < 0:
 		# Auto-finish any ability with a bad amount of usages left
 		if limitedUsage != -1 && remainingUsages <= 0:
 			AbilityActionComplete.emit()
 			return
 
-		_actionLog.abilityStackIndex = 0
-		executionStack[_actionLog.abilityStackIndex].Enter(_actionLog)
-		_actionLog.source.ModifyFocus(-focusCost)
+		_actionLog.actionStackIndex = 0
+		executionStack[_actionLog.actionStackIndex].Enter(_actionLog)
 		if limitedUsage != -1:
 			remainingUsages -= 1
+		remainingCooldown = abilityCooldown
+		usages += 1
 
-	if _actionLog.abilityStackIndex < executionStack.size():
-		if executionStack[_actionLog.abilityStackIndex].Execute(_delta):
-			_actionLog.abilityStackIndex += 1
-			if _actionLog.abilityStackIndex < executionStack.size():
-				executionStack[_actionLog.abilityStackIndex ].Enter(_actionLog)
+	if _actionLog.actionStackIndex < executionStack.size():
+		if executionStack[_actionLog.actionStackIndex].Execute(_delta):
+			_actionLog.actionStackIndex += 1
+			if _actionLog.actionStackIndex < executionStack.size():
+				executionStack[_actionLog.actionStackIndex ].Enter(_actionLog)
 			else:
-				if autoEndTurn:
+				if ability_speed != EAbilitySpeed.Fast:
 					_actionLog.source.QueueEndTurn()
+
+				if ability_speed == EAbilitySpeed.Slow:
+					ownerUnit.UsingSlowSpeedAbility = true
+
 				AbilityActionComplete.emit()
+
+
+func SetMap(_map : Map):
+	super(_map)
+	for passive in passiveListeners:
+		if passive != null:
+			passive.RegisterListener(self, _map)
 
 
 func OnRest():
@@ -56,5 +81,27 @@ func OnRest():
 		remainingUsages += usageRestoredByCampfire
 		remainingUsages = clampi(remainingUsages, 0, limitedUsage)
 
+	remainingCooldown = 0
+
+func OnOwnerUnitTurnStart():
+	remainingCooldown -= 1
+
 func _to_string():
 	return self.name
+
+func ToJSON():
+	var dict = {
+		"prefab" : self.scene_file_path,
+		"remainingUsages" : remainingUsages,
+		"remainingCooldown" : remainingCooldown,
+		"usages" : usages,
+		"kills" : kills
+	}
+	return dict
+
+
+func FromJSON(_dict : Dictionary):
+	remainingUsages = _dict["remainingUsages"]
+	if _dict.has("remainingCooldown"): remainingCooldown = _dict["remainingCooldown"]
+	if _dict.has("kills"): kills = int(_dict["kills"])
+	if _dict.has("usages"): usages = int(_dict["usages"])

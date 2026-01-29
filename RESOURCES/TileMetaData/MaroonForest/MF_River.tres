@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TileMetaData" format=3 uid="uid://dum5iqty3hq5g"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_ucit3"]
+[ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_vjket"]
+
+[resource]
+script = ExtResource("1_vjket")
+loc_name = "tile_river_name"
+Health = 0
+Killbox = true
+Water = true

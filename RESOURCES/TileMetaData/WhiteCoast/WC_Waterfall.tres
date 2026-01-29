@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TileMetaData" format=3 uid="uid://bb1mwj7pm4i5j"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_aonx8"]
+[ext_resource type="Script" uid="uid://cj8ei3attrikd" path="res://SCRIPTS/Maps/TileMetaData.gd" id="1_i1ihw"]
+
+[resource]
+script = ExtResource("1_i1ihw")
+loc_name = "tile_waterfall_name"
+Killbox = true
+Water = true
+metadata/_custom_type_script = "uid://cj8ei3attrikd"

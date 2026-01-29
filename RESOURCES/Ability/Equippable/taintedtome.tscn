@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cy7k2387t0527"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_kixon"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_5q6et"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_25wgg"]
+[ext_resource type="Resource" uid="uid://cc0upjtg5t3p7" path="res://RESOURCES/Descriptors/DES_Magic.tres" id="3_5ipa6"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_pn0do"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="4_25wgg"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="4_llsyd"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_wmo68"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="5_5q6et"]
+[ext_resource type="Texture2D" uid="uid://dhqg32k1fs32f" path="res://ART/Icons/Ability/Equippable/taintedtome.png" id="5_pn0do"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="6_pn0do"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="7_wmo68"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_3xlkp"]
+[ext_resource type="Resource" uid="uid://cf47q1am6s5vc" path="res://RESOURCES/Ability/TargetingTemplates/taintedtome_targeting.tres" id="9_wmo68"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_xl7uc"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="10_sqjf8"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_icvji"]
+
+[sub_resource type="Resource" id="Resource_3xlkp"]
+script = ExtResource("3_pn0do")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_xl7uc"]
+script = ExtResource("4_wmo68")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_wmo68"]
+script = ExtResource("5_5q6et")
+Template = ExtResource("6_pn0do")
+Value = 8
+
+[sub_resource type="Resource" id="Resource_sqjf8"]
+script = ExtResource("5_5q6et")
+Template = ExtResource("7_wmo68")
+Value = -2
+
+[sub_resource type="Resource" id="Resource_icvji"]
+script = ExtResource("5_5q6et")
+Template = ExtResource("8_3xlkp")
+Value = -2
+
+[node name="taintedtome" type="Node2D" unique_id=217092888 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
+script = ExtResource("1_kixon")
+type = 1
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_5q6et")]([SubResource("Resource_3xlkp"), SubResource("Resource_xl7uc")])
+internalName = "taintedtome"
+loc_displayName = "weap_taintedtome_name"
+loc_displayDesc = "weap_taintedtome_desc"
+icon = ExtResource("5_pn0do")
+descriptors = Array[ExtResource("2_25wgg")]([ExtResource("3_5ipa6"), ExtResource("4_25wgg")])
+TargetingTemplate = ExtResource("9_wmo68")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+StatData = NodePath("StatComponent")
+
+[node name="StatComponent" type="Node2D" parent="." unique_id=736960090]
+script = ExtResource("4_llsyd")
+GrantedStats = Array[ExtResource("5_5q6et")]([SubResource("Resource_wmo68"), SubResource("Resource_sqjf8"), SubResource("Resource_icvji")])
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1079614494]
+script = ExtResource("9_xl7uc")
+AgressiveStat = ExtResource("10_sqjf8")
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1428709532]
+script = ExtResource("11_icvji")
+TargetRange = Vector2i(1, 2)

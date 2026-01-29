@@ -1,9 +1,11 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://db4fud0jf080k"]
+[gd_resource type="LabelSettings" format=3 uid="uid://db4fud0jf080k"]
 
 [ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="1_qiew5"]
 
 [resource]
+line_spacing = 0.0
 font = ExtResource("1_qiew5")
-font_size = 18
+font_size = 12
+font_color = Color(1, 1, 0.388235, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://diegks43t77gp"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_642os"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_hevbh"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_wkpf1"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_6ve2i"]
+[ext_resource type="Resource" uid="uid://uvrphj76fjju" path="res://RESOURCES/TargetingShapes/howlingwinds_shape.tres" id="3_ga0d2"]
+[ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="3_yacot"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="4_erx74"]
+[ext_resource type="Texture2D" uid="uid://beygxl5ituj5r" path="res://ART/Icons/Ability/Standard/howlingwinds.png" id="5_nk1fm"]
+[ext_resource type="Resource" uid="uid://2ojaw0txujcm" path="res://RESOURCES/Ability/TargetingTemplates/howlingwinds_targeting.tres" id="7_4kttm"]
+
+[sub_resource type="Resource" id="Resource_4kttm"]
+script = ExtResource("3_6ve2i")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_kkayp"]
+script = ExtResource("3_yacot")
+
+[sub_resource type="Resource" id="Resource_ajh08"]
+script = ExtResource("4_erx74")
+
+[node name="howlingwinds" type="Node2D" unique_id=132820778 node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_642os")
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_wkpf1")]([SubResource("Resource_4kttm"), SubResource("Resource_kkayp"), SubResource("Resource_ajh08")])
+internalName = "howlingwinds"
+loc_displayName = "art_howlingwinds_name"
+loc_displayDesc = "art_howlingwinds_desc"
+icon = ExtResource("5_nk1fm")
+TargetingTemplate = ExtResource("7_4kttm")
+TargetingData = NodePath("TargetingData")
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1748094869]
+script = ExtResource("2_hevbh")
+TargetRange = Vector2i(0, 0)
+Type = 4
+shapedTiles = ExtResource("3_ga0d2")

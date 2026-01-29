@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://bh3y3rtkai7q4"]
+
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="1_063eq"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_uck46"]
+
+[resource]
+script = ExtResource("1_063eq")
+AbilityPath = "res://RESOURCES/Ability/Equippable/wolfbane.tscn"

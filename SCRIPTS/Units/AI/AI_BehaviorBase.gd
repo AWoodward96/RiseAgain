@@ -5,30 +5,40 @@ var map : Map
 var unit : UnitInstance
 
 var grid : Grid
-var pathfinding  : AStarGrid2D
 
-var selectedPath : PackedVector2Array
+var attacked : bool = false
+var selectedPath : Array[Tile]
 var selectedTile : Tile
 
+
+
+
 func StartTurn(_map : Map, _unit : UnitInstance):
+
+	pass
+
+func CommonStartTurn(_map : Map, _unit : UnitInstance):
+	# Because Behaviors are Resources, and because common Behaviors are shared between units
+	# It's really important to manually set these at the start of each turn, or else you'll get some wonkyness
+
 	unit = _unit
 	map = _map
-	grid = map.grid
-	pathfinding = grid.Pathfinding
+	grid = _map.grid
 
+	attacked = false
 	unit.QueueTurnStartDelay()
-	pass
 
 func RunTurn():
 	pass
-
 
 func TruncatePathBasedOnMovement(_path, _currentMovement):
 	selectedPath = _path
 	selectedPath = selectedPath.slice(0, _currentMovement)
 
 	var indexedSize = selectedPath.size() - 1
-	selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
+	if indexedSize == -1:
+		return true
+	selectedTile = selectedPath[indexedSize]
 
 	if selectedTile.Occupant != null:
 		while selectedTile.Occupant != null:
@@ -40,6 +50,6 @@ func TruncatePathBasedOnMovement(_path, _currentMovement):
 				#unit.QueueEndTurn()
 				return false
 
-			selectedTile = grid.GetTile(selectedPath[indexedSize] / grid.CellSize)
+			selectedTile = selectedPath[indexedSize]
 			selectedPath.remove_at(selectedPath.size() - 1)
 	return true

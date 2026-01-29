@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://i763t3u3306k"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_0wjra"]
+[ext_resource type="Texture2D" uid="uid://v4sbwlg38sm1" path="res://ART/Icons/Items/t1_rosepolish.png" id="2_f21ey"]
+[ext_resource type="Script" uid="uid://bbatkxmu5myen" path="res://SCRIPTS/Items/HeldItemStatGrowthModifier.gd" id="3_0wjra"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_20vul"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_f21ey"]
+
+[sub_resource type="Resource" id="Resource_0wjra"]
+script = ExtResource("4_20vul")
+Template = ExtResource("5_f21ey")
+Value = 25
+
+[node name="rosepolish_t1" type="Node2D" unique_id=2028361626 node_paths=PackedStringArray("growthModifierData")]
+script = ExtResource("1_0wjra")
+growthModifierData = NodePath("HeldItemStatGrowthModifier")
+internalName = "t1_rosepolish"
+loc_displayName = "item_t1_rosepolish_name"
+loc_displayDesc = "item_t1_rosepolish_desc"
+icon = ExtResource("2_f21ey")
+
+[node name="HeldItemStatGrowthModifier" type="Node2D" parent="." unique_id=687974132]
+script = ExtResource("3_0wjra")
+GrowthModifiers = Array[ExtResource("4_20vul")]([SubResource("Resource_0wjra")])

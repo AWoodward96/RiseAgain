@@ -8,48 +8,29 @@ var tempTimer : Timer
 # Data being passed is of type ActionLog and can be an ItemLog or a AbilityLog
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
-
-	# clear all of the actions in the grid now that a target's been selected
-	currentGrid.ClearActions()
-	ctrl.reticle.visible = false
-	ctrl.BlockMovementInput = true
-
 	log = data
 	source = log.source
 
-	# Ability context at this point should have targets
-	if log.affectedTiles.size() == 0:
-		push_error("Controller in CombatControllerState without a target. Going back to SelectionState")
-		ctrl.EnterSelectionState()
-		return
+	# clear all of the actions in the grid now that a target's been selected
+	currentGrid.ClearActions()
+	ctrl.ForceCameraPosition(log.actionOriginTile.Position)
+	ctrl.reticle.visible = false
+	ctrl.BlockMovementInput = true
 
-	log.actionResults.clear()
-	# The target tiles is an array so loop through that and append the units to take damage
-	for tileData in log.affectedTiles:
-		var target = tileData.Tile.Occupant
+	AudioManager.IncrementIntensity()
 
-		if target != null:
-			# If we have a target - don't damage allies, only damage who they are supposed to hit
-			if log.actionType == ActionLog.ActionType.Item && !log.item.TargetingData.OnCorrectTeam(log.source, target):
-				continue
-
-			if log.actionType == ActionLog.ActionType.Ability && !log.ability.TargetingData.OnCorrectTeam(log.source, target):
-				continue
-
-		var actionResult = ActionResult.new()
-		actionResult.Source = log.source
-		actionResult.Target = tileData.Tile.Occupant # COULD BE NULL - wE COULD JUST BE TARGETING THE TILE
-		actionResult.TileTargetData = tileData
-		log.actionResults.append(actionResult)
-
+	if source != null:
+		source.LockInMovement(source.CurrentTile)
 
 	if log.ability != null:
 		log.ability.AbilityActionComplete.connect(PostActionComplete)
-		log.abilityStackIndex = -1
+		log.actionStackIndex = -1
 
 func _Execute(_delta):
 	ctrl.UpdateCameraPosition()
-
+	# Wait until the camera has stopped moving
+	if !ctrl.CameraMovementComplete:
+		return
 
 	if log.ability != null:
 		log.ability.TryExecute(log, _delta)
@@ -80,25 +61,16 @@ func AffectedUnitsClear():
 
 func PostActionComplete():
 	if source != null:
-		source.ShowHealthBar(false)
 		ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
 
-		# This is commented out - The ability handles weather or not the unit ends their turn
-		#log.source.QueueEndTurn()
-
-	for r in log.actionResults:
-		if r.Target != null:
-			r.Target.ShowHealthBar(false)
+		if log.ability.ability_speed == Ability.EAbilitySpeed.Fast && log.ability.ownerUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY:
+			ctrl.EnterContextMenuState()
 
 	if currentMap.currentTurn == GameSettingsTemplate.TeamID.ALLY:
 		ctrl.EnterSelectionState()
 	else:
 		ctrl.EnterOffTurnState()
 
-	if log.actionType == ActionLog.ActionType.Item && log.item != null:
-		log.item.OnCombat()
-
-	#ctrl.OnCombatSequenceComplete.emit()
 
 func ToString():
 	return "ActionExecutionState"

@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name UnitInspectUI
 
+static var Instance : UnitInspectUI
+
 @export var portrait : TextureRect
 @export var nameText : Label
 @export var descriptionText : Label
@@ -13,8 +15,17 @@ class_name UnitInspectUI
 @export var weakAgainstEntryList : EntryList
 
 
-
 var unit : UnitInstance
+
+func _ready() -> void:
+	if Instance != null:
+		queue_free()
+	else:
+		Instance = self
+
+func _exit_tree() -> void:
+	if Instance == self:
+		Instance = null
 
 func Initialize(_unitInstance : UnitInstance):
 	unit = _unitInstance

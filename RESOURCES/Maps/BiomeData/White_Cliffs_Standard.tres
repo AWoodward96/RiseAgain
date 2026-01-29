@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BiomeData" format=3 uid="uid://b85vbvqpusrko"]
+
+[ext_resource type="Script" uid="uid://jtmse3fkm1gn" path="res://SCRIPTS/Maps/BiomeData.gd" id="1_4fkwv"]
+[ext_resource type="PackedScene" uid="uid://dbwdpln02d513" path="res://RESOURCES/Maps/WhiteCoast/EnvironmentalPrefabs/white_directional_lights.tscn" id="1_kbbw4"]
+[ext_resource type="PackedScene" uid="uid://h1amt18knhl" path="res://RESOURCES/Maps/WhiteCoast/EnvironmentalPrefabs/white_unit_light.tscn" id="2_oos7u"]
+
+[resource]
+script = ExtResource("1_4fkwv")
+AmbienceID = "{00e98ecf-4c74-4486-8773-1a4b04092164}"
+MusicID = "{7415619a-94b3-4f0e-a3da-32919593b5b1}"
+VictoryStinger = "{97bf097a-1484-450d-bbfc-8d6ca02014dd}"
+LossStinger = "{00cb14b6-6b8b-467e-985d-6c4445550ea0}"
+GridColor = Color(0.1168, 0.16, 0.15784, 0.301961)
+UnitSaturation = 0.75
+UnitValue = 0.9
+GrayscaleUnitOffset = 0.08
+DirectionalLight = ExtResource("1_kbbw4")
+UnitLight = ExtResource("2_oos7u")
+metadata/_custom_type_script = "uid://jtmse3fkm1gn"

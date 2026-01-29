@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://b45q6xh0ptyf"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_2kup1"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="2_5ytkb"]
+[ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="2_xg5dn"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="3_q0l8g"]
+
+[sub_resource type="Resource" id="Resource_2mjci"]
+script = ExtResource("2_xg5dn")
+carryLimit = 1
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_yeona"]
+script = ExtResource("3_q0l8g")
+pushInfo = SubResource("Resource_2mjci")
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[resource]
+script = ExtResource("2_5ytkb")
+TileCoordinates = Array[ExtResource("1_2kup1")]([SubResource("Resource_yeona")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"

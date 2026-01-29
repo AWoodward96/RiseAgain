@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dqlg25y7u7r0k"]
+
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_i31dr"]
+[ext_resource type="Texture2D" uid="uid://c11myqgp01bab" path="res://ART/VFX/maroon_rocks_large_particles.png" id="2_i31dr"]
+[ext_resource type="Texture2D" uid="uid://bevd2ns2xkad" path="res://ART/VFX/maroon_rocks_small_particles.png" id="3_0o4yt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6teiu"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_8squq"]
+offsets = PackedFloat32Array(0, 0.8062201, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8squq"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ftx0n"]
+offsets = PackedFloat32Array(0, 0.8947368, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="maroon_rocks_destroy_vfx" type="Node2D" unique_id=1171142548 node_paths=PackedStringArray("cpuParticles")]
+script = ExtResource("1_i31dr")
+emitOnReady = true
+cpuParticles = [NodePath("Large"), NodePath("Small")]
+
+[node name="Large" type="CPUParticles2D" parent="." unique_id=731751654]
+material = SubResource("CanvasItemMaterial_6teiu")
+position = Vector2(32, 56)
+scale = Vector2(2, 2)
+emitting = false
+texture = ExtResource("2_i31dr")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+particle_flag_align_y = true
+direction = Vector2(0, -5)
+spread = 92.25
+gravity = Vector2(0, 100)
+initial_velocity_min = 32.0
+initial_velocity_max = 100.0
+radial_accel_min = -64.0
+radial_accel_max = 64.0
+damping_min = 180.0
+damping_max = 200.0
+color_ramp = SubResource("Gradient_8squq")
+anim_offset_max = 1.0
+
+[node name="Small" type="CPUParticles2D" parent="." unique_id=19582143]
+material = SubResource("CanvasItemMaterial_8squq")
+position = Vector2(32, 56)
+scale = Vector2(2, 2)
+emitting = false
+amount = 16
+texture = ExtResource("3_0o4yt")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 8.0
+particle_flag_align_y = true
+direction = Vector2(0, -5)
+spread = 92.25
+gravity = Vector2(0, 100)
+initial_velocity_min = 32.0
+initial_velocity_max = 100.0
+radial_accel_min = -64.0
+radial_accel_max = 64.0
+damping_min = 180.0
+damping_max = 200.0
+color_ramp = SubResource("Gradient_ftx0n")
+anim_offset_max = 1.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1022946784]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

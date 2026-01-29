@@ -1,17 +1,23 @@
 extends PlayerControllerState
 class_name UnitMoveControllerState
 
-var walkedPath : PackedVector2Array
+var walkedPath : Array[Tile]
 var prevTile : Tile
+var movementSelected : bool
+var movementDelta : int = 0
+var startingMovementDelta : int = 0
 
 func _Enter(_ctrl : PlayerController, data):
 	super(_ctrl, data)
 
-	walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)
+	walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 	prevTile = ctrl.CurrentTile
+	startingMovementDelta = ctrl.selectedUnit.MovementExpended
+	ctrl.UnitMovedIntoShroud = false
 	StartMovementTracker()
-	currentGrid.ShowUnitActions(selectedUnit)
+	currentGrid.ShowUnitActions(ctrl.selectedUnit)
 	UpdateTracker()
+	ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
 
 func _Execute(_delta):
 	if UpdateInput(_delta):
@@ -19,40 +25,72 @@ func _Execute(_delta):
 
 	ctrl.UpdateCameraPosition()
 
-	if InputManager.selectDown:
+	if InputManager.selectDown && !CutsceneManager.BlockSelectInput:
+		InputManager.ReleaseSelect()
 		var tile = currentGrid.GetTile(ctrl.ConvertGlobalPositionToGridPosition())
-		if selectedUnit != null && selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == selectedUnit):
-			selectedUnit.MoveCharacterToNode(walkedPath, tile)
+		if ctrl.forcedTileSelection != null && tile != ctrl.forcedTileSelection:
+			return
+
+		movementDelta = max(walkedPath.size() - 1, 0)
+		if ctrl.selectedUnit != null && ctrl.selectedUnit.UnitAllegiance == GameSettingsTemplate.TeamID.ALLY && tile.CanMove && (tile.Occupant == null || tile.Occupant == ctrl.selectedUnit || (tile.Occupant != null && tile.Occupant.ShroudedFromPlayer)):
+			ctrl.selectedUnit.PendingMove = walkedPath.size() > 1	# the path starts with the units current tile - so check above 1
+			ctrl.selectedUnit.PendingMovementExpended = startingMovementDelta + movementDelta
+			ctrl.selectedUnit.MoveCharacterToNode(MovementData.Construct(walkedPath, tile))
 			EndMovementTracker()
-			ctrl.EnterContextMenuState()
+			movementSelected = true
+			ctrl.BlockMovementInput = true
+			ctrl.OnTileSelected.emit(tile)
+			ctrl.reticleSelectSound.play()
+			AudioManager.RaiseIntensity(2)
+
 
 	if InputManager.cancelDown:
-		EndMovementTracker()
-		currentGrid.ClearActions()
-		ctrl.ForceReticlePosition(selectedUnit.GridPosition)
-		selectedUnit = null
-		ctrl.ChangeControllerState(SelectionControllerState.new(), null)
-		walkedPath.clear()
+		if CutsceneManager.BlockCancelInput || ctrl.UnitMovedIntoShroud || !ctrl.selectedUnit.CanMove:
+			return
+
+		if movementSelected:
+			movementSelected = false
+			ctrl.BlockMovementInput = false
+			ctrl.selectedUnit.PendingMove = false
+			ctrl.selectedUnit.PendingMovementExpended = 0
+
+			ctrl.selectedUnit.StopCharacterMovement()
+			currentGrid.SetUnitGridPosition(ctrl.selectedUnit, ctrl.selectedUnit.TurnStartTile.Position, true)
+			ctrl.selectedUnit.visual.UpdateShrouded()
+
+			StartMovementTracker()
+			currentGrid.ShowUnitActions(ctrl.selectedUnit)
+			UpdateTracker()
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED)
+		else:
+			EndMovementTracker()
+			currentGrid.ClearActions()
+			ctrl.ForceReticlePosition(ctrl.selectedUnit.GridPosition)
+			ctrl.selectedUnit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
+			ctrl.selectedUnit = null
+			ctrl.ChangeControllerState(SelectionControllerState.new(), null)
+			walkedPath.clear()
+		ctrl.reticleCancelSound.play()
 
 func UpdateTracker():
 	if currentMap != null && ctrl.movement_tracker.visible && ctrl.CurrentTile != null:
 		if ctrl.CurrentTile.CanMove:
-			var unitMovement = selectedUnit.GetUnitMovement()
+			var unitMovement = ctrl.selectedUnit.GetUnitMovement()
 			if walkedPath.size() - 1 == unitMovement:
-				walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)
+				walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 			else:
-				if walkedPath.size() > 1 && walkedPath[walkedPath.size() - 2] == ctrl.CurrentTile.GlobalPosition:
+				if walkedPath.size() > 1 && walkedPath[walkedPath.size() - 2] == ctrl.CurrentTile:
 					walkedPath.remove_at(walkedPath.size() - 1)
 				else:
-					if movementThisFrame.length() <= 1 && prevTile.CanMove && !walkedPath.has(ctrl.CurrentTile.GlobalPosition):
-						walkedPath.append(ctrl.CurrentTile.GlobalPosition)
+					if movementThisFrame.length() <= 1 && prevTile.CanMove && !walkedPath.has(ctrl.CurrentTile):
+						walkedPath.append(ctrl.CurrentTile)
 					else:
-						walkedPath = currentGrid.Pathfinding.get_point_path(selectedUnit.GridPosition, ctrl.CurrentTile.Position)
+						walkedPath = currentGrid.GetTilePath(ctrl.selectedUnit, ctrl.selectedUnit.CurrentTile, ctrl.CurrentTile)
 
 			ctrl.movement_tracker.clear_points()
 			for p in walkedPath:
 				# Halfsize because otherwise the line's in the top left corner of the tile
-				ctrl.movement_tracker.add_point(p + Vector2(ctrl.tileHalfSize, ctrl.tileHalfSize))
+				ctrl.movement_tracker.add_point(p.GlobalPosition + Vector2(ctrl.tileHalfSize, ctrl.tileHalfSize))
 	prevTile = ctrl.CurrentTile
 
 

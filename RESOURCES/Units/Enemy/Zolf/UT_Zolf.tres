@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="UnitTemplate" load_steps=46 format=3 uid="uid://g6emosn4u7nk"]
+[gd_resource type="Resource" script_class="UnitTemplate" format=3 uid="uid://g6emosn4u7nk"]
 
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="1_k71fh"]
 [ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="1_wgq58"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatDef.gd" id="2_rbfec"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="2_rbfec"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="3_5s41f"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="4_eh3xl"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="5_j4rka"]
@@ -10,19 +10,15 @@
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="7_77j7g"]
 [ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_dvy7d"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="9_3qtqw"]
-[ext_resource type="Script" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_0ljpt"]
+[ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="10_0ljpt"]
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="10_fgbow"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="10_o4ikq"]
 [ext_resource type="PackedScene" uid="uid://s8ig8e0g2cno" path="res://RESOURCES/Units/Enemy/Zolf/VIS_Zolf.tscn" id="11_0q5uh"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_hyt3s"]
-[ext_resource type="PackedScene" uid="uid://cffxim7u21avy" path="res://RESOURCES/Ability/Equippable/wolf_tooth.tscn" id="14_81cse"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="15_3sncu"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="16_gjfvv"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="17_8raui"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="18_p0u41"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="20_0ua3j"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="21_g2g7i"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="22_ext32"]
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_hyt3s"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="12_ksm60"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="13_2w0or"]
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="14_bu1tt"]
+[ext_resource type="Resource" uid="uid://dpqb5rpiva2ho" path="res://RESOURCES/Unlocks/ULK_wolf_tooth.tres" id="15_bu1tt"]
 [ext_resource type="Texture2D" uid="uid://5jbvq4xfelsy" path="res://ART/Icons/Units/zolf.png" id="23_og07h"]
 
 [sub_resource type="Resource" id="Resource_70iv8"]
@@ -33,22 +29,19 @@ Value = 8.0
 [sub_resource type="Resource" id="Resource_smv2l"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("3_5s41f")
-Value = 5.0
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_afprk"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("4_eh3xl")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_556y8"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("5_j4rka")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_wvvge"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("6_fjivr")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_tbo4c"]
 script = ExtResource("2_rbfec")
@@ -63,41 +56,20 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_hemky"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("9_3qtqw")
-Value = 0
 
 [sub_resource type="Resource" id="Resource_b5u4x"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("10_o4ikq")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_qgrug"]
-script = ExtResource("17_8raui")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_6ubox"]
-script = ExtResource("18_p0u41")
-
-[sub_resource type="Resource" id="Resource_i0ceq"]
-metadata/__load_path__ = "res://ART/Icons/Ability/Equippable/wolf_tooth.png"
-
-[sub_resource type="Resource" id="Resource_8j4gf"]
+[sub_resource type="Resource" id="Resource_in0rf"]
 script = ExtResource("2_rbfec")
-Template = ExtResource("3_5s41f")
-Value = 2
+Template = ExtResource("12_ksm60")
+Value = 4.0
 
-[sub_resource type="PackedScene" id="PackedScene_srnl5"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("wolf_tooth", "Node2D", "script", "type", "focusCost", "executionStack", "damageGrantsFocus", "internalName", "loc_displayName", "loc_displayDesc", "icon", "TargetingData", "UsableDamageData", "StatData", "StatComponent", "Node2D", "script", "BaseAccuracy", "GrantedStats", "DamageComponent", "Node2D", "script", "AgressiveStat", "DefensiveStat", "DamageToHealthRatio", "TargetingData", "Node2D", "script"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 1073741835, 9, 1073741836, 10, 1073741837, 11, 0, 1073741824, 0, 15, 14, -1, 3, 16, 12, 17, 13, 18, 14, 0, 1073741825, 0, 20, 19, -1, 4, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1073741826, 0, 26, 25, -1, 1, 27, 19, 0),
-"variants": [ExtResource("15_3sncu"), 1, 0.0, Array[ExtResource("16_gjfvv")]([SubResource("Resource_qgrug"), SubResource("Resource_6ubox")]), true, "wolf_tooth", "weap_wolf_tooth_name", "weap_wolf_tooth_desc", SubResource("Resource_i0ceq"), NodePath("TargetingData"), NodePath("DamageComponent"), NodePath("StatComponent"), ExtResource("20_0ua3j"), 90.0, Array[ExtResource("2_rbfec")]([SubResource("Resource_8j4gf")]), ExtResource("21_g2g7i"), ExtResource("3_5s41f"), ExtResource("4_eh3xl"), 0.0, ExtResource("22_ext32")],
-"version": 3
-}
+[sub_resource type="Resource" id="Resource_01dhn"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("13_2w0or")
 
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("2_rbfec")
@@ -107,7 +79,7 @@ Value = 70.0
 [sub_resource type="Resource" id="Resource_v87sc"]
 script = ExtResource("2_rbfec")
 Template = ExtResource("3_5s41f")
-Value = 40.0
+Value = 30.0
 
 [sub_resource type="Resource" id="Resource_yuwwe"]
 script = ExtResource("2_rbfec")
@@ -134,18 +106,25 @@ script = ExtResource("2_rbfec")
 Template = ExtResource("9_3qtqw")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_wcjrc"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("12_ksm60")
+
+[sub_resource type="Resource" id="Resource_o0giq"]
+script = ExtResource("2_rbfec")
+Template = ExtResource("13_2w0or")
+Value = 10.0
+
 [resource]
 resource_name = "UT_Zolf"
 script = ExtResource("10_0ljpt")
 VisualPrefab = ExtResource("11_0q5uh")
-BaseStats = Array[ExtResource("2_rbfec")]([SubResource("Resource_70iv8"), SubResource("Resource_smv2l"), SubResource("Resource_afprk"), SubResource("Resource_556y8"), SubResource("Resource_wvvge"), SubResource("Resource_tbo4c"), SubResource("Resource_oa5eh"), SubResource("Resource_hemky"), SubResource("Resource_b5u4x")])
-StatGrowths = Array[ExtResource("2_rbfec")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo")])
+BaseStats = Array[ExtResource("2_rbfec")]([SubResource("Resource_70iv8"), SubResource("Resource_smv2l"), SubResource("Resource_afprk"), SubResource("Resource_556y8"), SubResource("Resource_wvvge"), SubResource("Resource_tbo4c"), SubResource("Resource_oa5eh"), SubResource("Resource_hemky"), SubResource("Resource_b5u4x"), SubResource("Resource_in0rf"), SubResource("Resource_01dhn")])
+StatGrowths = Array[ExtResource("2_rbfec")]([SubResource("Resource_priqb"), SubResource("Resource_v87sc"), SubResource("Resource_yuwwe"), SubResource("Resource_8vfo8"), SubResource("Resource_jjuk8"), SubResource("Resource_eeey2"), SubResource("Resource_5dfvo"), SubResource("Resource_wcjrc"), SubResource("Resource_o0giq")])
 Affinity = ExtResource("1_wgq58")
-StartingItems = Array[PackedScene]([SubResource("PackedScene_srnl5")])
-StartingEquippedWeapon = ExtResource("14_81cse")
-Tier0Abilities = Array[PackedScene]([])
-Tier1Abilities = Array[PackedScene]([])
+StartingEquippedWeapon = ExtResource("15_bu1tt")
 Descriptors = Array[ExtResource("12_hyt3s")]([ExtResource("10_fgbow")])
+FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"
 DebugName = "Zolf"
 loc_DisplayName = "unit_zolf_name"
 loc_Description = "unit_zolf_desc"

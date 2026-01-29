@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MultiRequirement" format=3 uid="uid://6tyqyartqjjm"]
+
+[ext_resource type="Script" uid="uid://dy7oii5xmfixk" path="res://SCRIPTS/Generic/Requirements/RequirementBase.gd" id="1_d555j"]
+[ext_resource type="Script" uid="uid://50fucpl3xpxs" path="res://SCRIPTS/Generic/Requirements/ItemNotPresentInCampaignReq.gd" id="2_gbblw"]
+[ext_resource type="Script" uid="uid://cgvauu1tug0qj" path="res://SCRIPTS/Generic/Requirements/MultiRequirement.gd" id="3_hiapc"]
+
+[sub_resource type="Resource" id="Resource_dnjrq"]
+script = ExtResource("2_gbblw")
+BannedItemsInternalNames = Array[String](["t1_rosepolish", "t1_maroontome", "t1_weightedbelt", "t1_lapispadding", "t1_ceruleanplates"])
+metadata/_custom_type_script = "uid://50fucpl3xpxs"
+
+[resource]
+script = ExtResource("3_hiapc")
+requirements = Array[ExtResource("1_d555j")]([SubResource("Resource_dnjrq")])
+metadata/_custom_type_script = "uid://cgvauu1tug0qj"

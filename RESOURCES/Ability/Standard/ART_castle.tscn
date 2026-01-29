@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://owg3aes4dx8x"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_0vxst"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_kn2ih"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_kn2ih"]
+[ext_resource type="Script" uid="uid://dxfbnttfjbwxk" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_Teleport.gd" id="4_0vxst"]
+[ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="4_t53ly"]
+[ext_resource type="Resource" uid="uid://dlanlcc14wi8m" path="res://RESOURCES/CombatEffects/CE_Armor_Castle.tres" id="5_pxpc5"]
+[ext_resource type="Texture2D" uid="uid://dydtjejbmqduh" path="res://ART/Icons/Ability/Standard/castle.png" id="5_t53ly"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="7_4eb40"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="11_tqha5"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="12_imxxk"]
+[ext_resource type="Resource" uid="uid://c5o2go20x3g11" path="res://RESOURCES/Ability/TargetingTemplates/castle_targeting.tres" id="13_8047x"]
+[ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="15_5kp8q"]
+
+[sub_resource type="Resource" id="Resource_8047x"]
+script = ExtResource("3_kn2ih")
+PlayAtUnit = false
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_kn2ih"]
+script = ExtResource("4_0vxst")
+invisibleTime = 0.5
+outAnimationString = "teleport_out"
+UseFootsteps = false
+PreperationAnimString = "teleport_in"
+metadata/_custom_type_script = "uid://dxfbnttfjbwxk"
+
+[sub_resource type="Resource" id="Resource_og4ws"]
+script = ExtResource("4_t53ly")
+MovementAnimationStyle = SubResource("Resource_kn2ih")
+AnimationStyle = 2
+metadata/_custom_type_script = "uid://cm68c4p601pk"
+
+[sub_resource type="Resource" id="Resource_cuqbw"]
+script = ExtResource("7_4eb40")
+CombatEffect = ExtResource("5_pxpc5")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_rqtjn"]
+script = ExtResource("11_tqha5")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="ART_castle" type="Node2D" unique_id=465368080 node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_0vxst")
+abilityCooldown = 0
+ability_speed = 1
+executionStack = Array[ExtResource("2_kn2ih")]([SubResource("Resource_8047x"), SubResource("Resource_og4ws"), SubResource("Resource_cuqbw"), SubResource("Resource_rqtjn")])
+internalName = "castle"
+loc_displayName = "art_castle_name"
+loc_displayDesc = "art_castle_desc"
+icon = ExtResource("5_t53ly")
+TargetingTemplate = ExtResource("13_8047x")
+TargetingData = NodePath("SkillTargetingData")
+
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=888366689]
+script = ExtResource("12_imxxk")
+TeamTargeting = 0
+TargetRange = Vector2i(0, 0)
+Type = 3
+CanTargetSelf = true
+
+[node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=240496876]
+script = ExtResource("15_5kp8q")
+stoppedByWalls = false
+drawPath = false
+metadata/_custom_type_script = "uid://dosuyr8paidkx"

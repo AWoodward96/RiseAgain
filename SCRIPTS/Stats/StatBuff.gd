@@ -10,3 +10,17 @@ class_name StatBuff
 
 func Evaluate(_source : UnitInstance, _target : UnitInstance):
 	pass
+
+
+func ToJSON():
+	var dict = {
+		"Stat" : Stat.resource_path,
+		"Value" : Value
+	}
+	return dict
+
+static func FromJSON(_dict):
+	var buff = StatBuff.new()
+	buff.Stat = load(_dict["Stat"])
+	buff.Value = int(_dict["Value"])
+	return buff

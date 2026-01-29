@@ -6,7 +6,7 @@ class_name SpawnerRandom
 @export var playerRosterDuplicateProtection : bool = false
 @export var UnitLevel : int = 0 # remember, this is indexed
 
-func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
+func SpawnEnemy(_map : Map, _rng : DeterministicRNG):
 	if UnitTemplate == null || !Enabled:
 		return
 
@@ -16,12 +16,12 @@ func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 		var infiniteProtection = 0
 		var currentCampaign = GameManager.CurrentCampaign
 		if currentCampaign == null:
-			var rand = _rng.randi_range(0, UnitOptions.size() - 1)
+			var rand = _rng.NextInt(0, UnitOptions.size() - 1)
 			selectedUnit = UnitOptions[rand]
 		else:
 			var rand : int
 			while infiniteProtection < 100:
-				rand = _rng.randi_range(0, UnitOptions.size() - 1)
+				rand = _rng.NextInt(0, UnitOptions.size() - 1)
 				var valid = true
 				for u in currentCampaign.CurrentRoster:
 					if u.Template == UnitOptions[rand]:
@@ -34,7 +34,7 @@ func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 
 			selectedUnit = UnitOptions[rand]
 	else:
-		var rand = _rng.randi_range(0, UnitOptions.size() - 1)
+		var rand = _rng.NextInt(0, UnitOptions.size() - 1)
 		selectedUnit = UnitOptions[rand]
 
 	var unit = _map.CreateUnit(selectedUnit, UnitLevel)
@@ -43,3 +43,5 @@ func SpawnEnemy(_map : Map, _rng : RandomNumberGenerator):
 
 	if _map.CurrentCampaign != null && Allegiance == GameSettingsTemplate.TeamID.ALLY:
 		_map.CurrentCampaign.CurrentRoster.append(unit)
+
+	unit.IsBoss = Boss

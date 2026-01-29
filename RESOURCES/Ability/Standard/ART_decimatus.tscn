@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cykm3j635sjew"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_w8kak"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_n538a"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_qsvpx"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_12j8a"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="3_l11dk"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="4_1cl03"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_tjtpc"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="5_k606t"]
+[ext_resource type="Resource" uid="uid://ce85sa1lvyveq" path="res://RESOURCES/TargetingShapes/decimatus_shape.tres" id="5_qlfkc"]
+[ext_resource type="Resource" uid="uid://ccitm3a2u5efo" path="res://RESOURCES/CombatEffects/CE_decimatus_root.tres" id="6_k606t"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="6_lldy4"]
+[ext_resource type="PackedScene" uid="uid://bfsgpxbdr67nx" path="res://RESOURCES/GridEntities/ge_decimatus.tscn" id="10_4glab"]
+[ext_resource type="Resource" uid="uid://brix1ib843g00" path="res://RESOURCES/Ability/TargetingTemplates/decimatus_targeting.tres" id="10_et4xw"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="10_lldy4"]
+
+[sub_resource type="Resource" id="Resource_4glab"]
+script = ExtResource("3_12j8a")
+OnActionOrigin = false
+OnSource = true
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_et4xw"]
+script = ExtResource("4_1cl03")
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_xv500"]
+script = ExtResource("5_k606t")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_4b8nu"]
+script = ExtResource("6_lldy4")
+CombatEffect = ExtResource("6_k606t")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_60ob7"]
+script = ExtResource("10_lldy4")
+GridEntityPrefab = ExtResource("10_4glab")
+metadata/_custom_type_script = "uid://chqum0vfdwrt7"
+
+[node name="decimatus" type="Node2D" unique_id=2077781804 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_w8kak")
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_qsvpx")]([SubResource("Resource_4glab"), SubResource("Resource_et4xw"), SubResource("Resource_xv500"), SubResource("Resource_4b8nu"), SubResource("Resource_60ob7")])
+internalName = "decimatus"
+loc_displayName = "art_decimatus_name"
+loc_displayDesc = "art_decimatus_desc"
+TargetingTemplate = ExtResource("10_et4xw")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1480842006]
+script = ExtResource("2_n538a")
+AgressiveStat = ExtResource("3_l11dk")
+AgressiveModType = 2
+AgressiveMod = 2.0
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1167364414]
+script = ExtResource("4_tjtpc")
+TeamTargeting = 2
+Type = 2
+shapedTiles = ExtResource("5_qlfkc")

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bhol0valbc8x7"]
+
+[ext_resource type="Script" uid="uid://c4551srcoa550" path="res://SCRIPTS/GridEntities/GEWalkablePlatform.gd" id="1_eidty"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="2_eypsa"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_nrhsi"]
+[ext_resource type="Texture2D" uid="uid://b7lpsoid8sj6o" path="res://ART/Environment/WhiteCoast/logbridge_1x3.png" id="4_eidty"]
+[ext_resource type="TileSet" uid="uid://klf2tpkgl4h3" path="res://ART/Environment/WhiteCoast/whitecoast_tileset.tres" id="5_eypsa"]
+
+[sub_resource type="Resource" id="Resource_eypsa"]
+script = ExtResource("2_eypsa")
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_nrhsi"]
+script = ExtResource("2_eypsa")
+Position = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_p8jal"]
+script = ExtResource("2_eypsa")
+Position = Vector2i(0, 2)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_vas4b"]
+script = ExtResource("2_eypsa")
+Position = Vector2i(0, 3)
+metadata/_custom_type_script = "uid://ck4tcv2nu2etb"
+
+[sub_resource type="Resource" id="Resource_xb37q"]
+script = ExtResource("3_nrhsi")
+TileCoordinates = Array[ExtResource("2_eypsa")]([SubResource("Resource_eypsa"), SubResource("Resource_nrhsi"), SubResource("Resource_p8jal"), SubResource("Resource_vas4b")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[node name="Bridge" type="Node2D" unique_id=993243776]
+z_index = -5
+script = ExtResource("1_eidty")
+shapedTiles = SubResource("Resource_xb37q")
+ui_invisible = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003797736]
+visible = false
+position = Vector2(32, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("4_eidty")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=235304405]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 7, 0, 16, 0, 0, 0, 0, 0, 1, 0, 1, 0, 7, 0, 17, 0, 0, 0, 0, 0, 2, 0, 1, 0, 7, 0, 18, 0, 0, 0, 0, 0, 3, 0, 1, 0, 7, 0, 19, 0, 0, 0)
+tile_set = ExtResource("5_eypsa")

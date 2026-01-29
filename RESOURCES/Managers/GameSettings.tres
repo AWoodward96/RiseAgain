@@ -1,64 +1,130 @@
-[gd_resource type="Resource" script_class="GameSettingsTemplate" load_steps=26 format=3 uid="uid://bwy7m4cuq5x0f"]
+[gd_resource type="Resource" script_class="GameSettingsTemplate" format=3 uid="uid://bwy7m4cuq5x0f"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
+[ext_resource type="Script" uid="uid://dhcw4lvfo3pcj" path="res://SCRIPTS/Units/Affinity/AffinityTemplate.gd" id="1_70bk6"]
+[ext_resource type="Script" uid="uid://74kw332tunyw" path="res://SCRIPTS/Stats/DerivedStatDef.gd" id="1_d0crg"]
+[ext_resource type="Resource" uid="uid://mrduxitrfb4s" path="res://RESOURCES/Stats/STAT_AbilityDMGMod.tres" id="1_f57kq"]
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_g1xjk"]
-[ext_resource type="PackedScene" uid="uid://cyq5ckgj34tlt" path="res://RESOURCES/Maps/_alpha_Campaign00/campaign_01.tscn" id="1_ir5fq"]
-[ext_resource type="Script" path="res://SCRIPTS/Managers/GameSettings.gd" id="1_wj702"]
-[ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="2_jwfbj"]
+[ext_resource type="Script" uid="uid://m8blsl4h64hb" path="res://SCRIPTS/Managers/GameSettings.gd" id="1_wj702"]
+[ext_resource type="Resource" uid="uid://bj21oy32r8cy6" path="res://RESOURCES/Affinity/Dark_Affinity.tres" id="2_cn2rw"]
+[ext_resource type="Resource" uid="uid://bklg4y7fnapff" path="res://RESOURCES/Descriptors/DES_Amphibious.tres" id="2_g5ylt"]
 [ext_resource type="Resource" uid="uid://bttm2g5ehq3oo" path="res://RESOURCES/Stats/STAT_Vitality.tres" id="3_buqcn"]
-[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="3_u4xj5"]
-[ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="4_3v8xv"]
+[ext_resource type="Resource" uid="uid://cw401rjsoo6be" path="res://RESOURCES/Affinity/Earth_Affinity.tres" id="3_ygbce"]
+[ext_resource type="Resource" uid="uid://ds7hfe87vke12" path="res://RESOURCES/Affinity/Fire_Affinity.tres" id="4_gydru"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="5_pvcaj"]
-[ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Humanity_Affinity.tres" id="5_rwyem"]
+[ext_resource type="Resource" uid="uid://tv148nwskj75" path="res://RESOURCES/Affinity/Grass_Affinity.tres" id="5_tq70j"]
 [ext_resource type="Resource" uid="uid://c6udc3lnsi3i8" path="res://RESOURCES/Stats/STAT_Luck.tres" id="5_ymlgt"]
 [ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="6_3kigw"]
-[ext_resource type="Resource" uid="uid://ddrt0g2j6488t" path="res://RESOURCES/Affinity/Light_Affinity.tres" id="6_6f8bx"]
+[ext_resource type="Resource" uid="uid://ddrt0g2j6488t" path="res://RESOURCES/Affinity/Light_Affinity.tres" id="6_5fwue"]
 [ext_resource type="PackedScene" uid="uid://cjghdlg16u8ih" path="res://RESOURCES/Managers/PlayerController.tscn" id="7_77hq5"]
-[ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="7_i0ewr"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="7_k5egf"]
+[ext_resource type="Script" uid="uid://d0mls8wl053cd" path="res://SCRIPTS/Stats/StatTemplate.gd" id="7_k5egf"]
+[ext_resource type="Resource" uid="uid://cr10hoiuk2qlq" path="res://RESOURCES/Affinity/Maggai_Affinity.tres" id="7_s486h"]
 [ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="7_tql1j"]
-[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="8_bxyws"]
-[ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="8_ioxlf"]
+[ext_resource type="Resource" uid="uid://2ybau1ywkjgs" path="res://RESOURCES/Affinity/Metal_Affinity.tres" id="8_75bht"]
 [ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="8_qhahl"]
+[ext_resource type="Resource" uid="uid://dcucv6vauy0dy" path="res://RESOURCES/Maps/WhiteCoast/white_cliff_campaign.tres" id="8_rsajm"]
+[ext_resource type="Resource" uid="uid://dyikir407kwph" path="res://RESOURCES/Affinity/Water_Affinity.tres" id="9_24hec"]
 [ext_resource type="Resource" uid="uid://bugaw08fdqrks" path="res://RESOURCES/Stats/STAT_Movement.tres" id="9_fg4p8"]
+[ext_resource type="PackedScene" uid="uid://cj0urxfuhjo0c" path="res://RESOURCES/Universe/Bastion.tscn" id="10_q2hqg"]
+[ext_resource type="PackedScene" uid="uid://cyq5ckgj34tlt" path="res://RESOURCES/Maps/campaign_instance.tscn" id="11_1lydm"]
+[ext_resource type="Script" uid="uid://bjwkg4cb6y7vw" path="res://SCRIPTS/Campaign/CampaignTemplate.gd" id="11_nhtav"]
 [ext_resource type="Resource" uid="uid://sg8uxw1yvh53" path="res://RESOURCES/Stats/STAT_Mind.tres" id="11_t1n24"]
+[ext_resource type="Resource" uid="uid://cqjw06nl7jdy4" path="res://RESOURCES/Maps/_alpha_Campaign00/maroon_forest_campaign.tres" id="13_jbp28"]
+[ext_resource type="Script" uid="uid://rx6hw8y5t3o" path="res://SCRIPTS/Maps/Objectives/GameOverObjective.gd" id="13_k6h66"]
+[ext_resource type="Script" uid="uid://lmvlw0wcjlx8" path="res://SCRIPTS/CombatEffects/InvulnerableEffectTemplate.gd" id="14_g7w1a"]
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="15_gyih8"]
+[ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="18_pd04j"]
+[ext_resource type="Resource" uid="uid://glpuxla0d30c" path="res://RESOURCES/LootTable/LT_GlobalLoot_T1.tres" id="18_ygbce"]
+[ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="19_qup0j"]
+[ext_resource type="PackedScene" uid="uid://hosrqyrxnwxc" path="res://RESOURCES/Managers/canvas_modulate.tscn" id="23_14m44"]
+[ext_resource type="PackedScene" uid="uid://crldlj6agxmjg" path="res://RESOURCES/Universe/topdown_player_ctrl.tscn" id="24_jqxsc"]
+[ext_resource type="Script" uid="uid://bqfp2b5gxqbgd" path="res://SCRIPTS/Universe/Resources/ResourceTemplate.gd" id="27_75bht"]
+[ext_resource type="Resource" uid="uid://be1mw07e45ph5" path="res://RESOURCES/Resources/Food.tres" id="27_gydru"]
+[ext_resource type="Resource" uid="uid://bfsilhgf06rms" path="res://RESOURCES/Resources/Ore.tres" id="28_tq70j"]
+[ext_resource type="Resource" uid="uid://c4af23rldh8lh" path="res://RESOURCES/Resources/Gemstones.tres" id="29_s486h"]
+[ext_resource type="Resource" uid="uid://by0w0356xwmnc" path="res://RESOURCES/Resources/Concoctions.tres" id="30_75bht"]
+[ext_resource type="Resource" uid="uid://qa3w3c552huo" path="res://RESOURCES/Descriptors/DES_Item.tres" id="32_o2wc7"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="37_t5v44"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="38_uisfa"]
+[ext_resource type="Resource" uid="uid://cko8hnks4se86" path="res://RESOURCES/Universe/Buildings/Smithy.tres" id="39_24hec"]
+[ext_resource type="Resource" uid="uid://87vbepmdhmjx" path="res://RESOURCES/Universe/Buildings/Tavern.tres" id="39_75bht"]
+[ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="40_bq4ps"]
+[ext_resource type="Resource" uid="uid://1owdew6un3vm" path="res://RESOURCES/CombatEffects/CE_OnFire.tres" id="41_uisfa"]
+[ext_resource type="Resource" uid="uid://brpjjqf0ut8u2" path="res://RESOURCES/Descriptors/DES_Weapon.tres" id="43_o2wc7"]
+[ext_resource type="Resource" uid="uid://cgs0hjwleufo0" path="res://RESOURCES/Stats/STAT_WeaponDMGMod.tres" id="48_g7w1a"]
+
+[sub_resource type="Resource" id="Resource_cg2n8"]
+script = ExtResource("14_g7w1a")
+Turns = 1
+loc_name = "ce_bossbroken"
+loc_desc = "ce_bossbroken_effect"
+metadata/_custom_type_script = "uid://lmvlw0wcjlx8"
+
+[sub_resource type="Resource" id="Resource_l1yyb"]
+script = ExtResource("13_k6h66")
 
 [sub_resource type="Resource" id="Resource_qy6mm"]
 script = ExtResource("1_d0crg")
 ParentStat = ExtResource("3_buqcn")
 Ratio = 1.5
 Template = ExtResource("1_g1xjk")
-Value = 0
 
 [resource]
 script = ExtResource("1_wj702")
-CampaignManifest = Array[PackedScene]([ExtResource("1_ir5fq")])
-NumberOfRewardsInPostMap = 3
+CampaignManifest = Array[ExtResource("11_nhtav")]([ExtResource("8_rsajm"), ExtResource("13_jbp28")])
+CampaignInstancePrefab = ExtResource("11_1lydm")
+DefaultLossState = SubResource("Resource_l1yyb")
+GridModulatePrefab = ExtResource("23_14m44")
+DefaultMapRewardTable = ExtResource("18_ygbce")
+BastionPrefab = ExtResource("10_q2hqg")
+TavernData = ExtResource("39_75bht")
+SmithyData = ExtResource("39_24hec")
+GlobalResources = Array[ExtResource("27_75bht")]([ExtResource("18_pd04j"), ExtResource("19_qup0j"), ExtResource("27_gydru"), ExtResource("28_tq70j"), ExtResource("29_s486h"), ExtResource("30_75bht")])
+GoldResource = ExtResource("18_pd04j")
+WoodResource = ExtResource("19_qup0j")
+FoodResource = ExtResource("27_gydru")
+OreResource = ExtResource("28_tq70j")
+ConcoctionResource = ExtResource("30_75bht")
+GemstoneResource = ExtResource("29_s486h")
 PlayerControllerPrefab = ExtResource("7_77hq5")
+TopdownPlayerControllerPrefab = ExtResource("24_jqxsc")
 DerivedStatDefinitions = Array[ExtResource("1_d0crg")]([SubResource("Resource_qy6mm")])
-UIDisplayedStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("8_bxyws"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
-LevelUpStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("8_qhahl"), ExtResource("8_bxyws"), ExtResource("5_ymlgt")])
-ItemSlotsPerUnit = 3
-UniversalCritChance = 5
-CritMultiplier = 3
+UIDisplayedStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("37_t5v44"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("38_uisfa"), ExtResource("8_qhahl"), ExtResource("5_ymlgt"), ExtResource("9_fg4p8")])
+LevelUpStats = Array[ExtResource("7_k5egf")]([ExtResource("3_buqcn"), ExtResource("5_pvcaj"), ExtResource("37_t5v44"), ExtResource("6_3kigw"), ExtResource("7_tql1j"), ExtResource("38_uisfa"), ExtResource("8_qhahl"), ExtResource("5_ymlgt")])
+WISDEXDefenseModifier = 0.3
+CritMultiplier = 2
 MovementStat = ExtResource("9_fg4p8")
 HealthStat = ExtResource("1_g1xjk")
 AttackStat = ExtResource("5_pvcaj")
+DexterityStat = ExtResource("37_t5v44")
 DefenseStat = ExtResource("6_3kigw")
 SpAttackStat = ExtResource("7_tql1j")
+WisdomStat = ExtResource("38_uisfa")
 SpDefenseStat = ExtResource("8_qhahl")
-SkillStat = ExtResource("8_bxyws")
 LuckStat = ExtResource("5_ymlgt")
 MindStat = ExtResource("11_t1n24")
+WeaponDMGModifierStat = ExtResource("48_g7w1a")
+AbilityDMGModifierStat = ExtResource("1_f57kq")
 FlyingDescriptor = ExtResource("15_gyih8")
-CharacterTileMovemementSpeed = 500.0
-InitializeUnitsWithMaxFocus = false
-AbilitiesCanMiss = true
+AmphibiousDescriptor = ExtResource("2_g5ylt")
+WeaponDescriptor = ExtResource("43_o2wc7")
+TacticalDescriptor = ExtResource("40_bq4ps")
+HeldItemsDescriptor = ExtResource("32_o2wc7")
+CharacterTileMovemementSpeed = 352.0
+AOEExpMultiplier = 0.66
+InjuredHealthDebuff = 0.3
+InjuredAffectedStats = Array[ExtResource("7_k5egf")]([ExtResource("5_pvcaj"), ExtResource("6_3kigw"), ExtResource("5_ymlgt"), ExtResource("7_tql1j"), ExtResource("8_qhahl")])
+OverLeveledEXPDebuff = 10
+Alpha_AlliedUnitColor = Color(0, 0.624744, 0.890521, 1)
+Alpha_EnemyUnitColor = Color(1, 0.290196, 0.211765, 1)
+Alpha_NeutralUnitColor = Color(1.29953e-06, 0.515744, 0.307277, 1)
+Alpha_DeactivatedModulate = Color(1, 1, 1, 0.537255)
+ShroudedTintModulate = Color(0.65, 0.65, 0.65, 1)
+BossHealthBarBrokenEffect = SubResource("Resource_cg2n8")
+AbilitiesCanMiss = false
 FirstAbilityBreakpoint = 2
 SecondAbilityBreakpoint = -1
-StrongAffinityMultiplier = 1.25
-WeakAffinityMultiplier = 0.75
-AffinityAccuracyModifier = 10
-AllAffinities = Array[ExtResource("1_70bk6")]([ExtResource("2_jwfbj"), ExtResource("3_u4xj5"), ExtResource("4_3v8xv"), ExtResource("5_rwyem"), ExtResource("6_6f8bx"), ExtResource("7_i0ewr"), ExtResource("8_ioxlf")])
+OnFireDebuff = ExtResource("41_uisfa")
+StrongAffinityMultiplier = 1.2
+WeakAffinityMultiplier = 0.8
+AllAffinities = Array[ExtResource("1_70bk6")]([ExtResource("2_cn2rw"), ExtResource("3_ygbce"), ExtResource("4_gydru"), ExtResource("5_tq70j"), ExtResource("6_5fwue"), ExtResource("7_s486h"), ExtResource("8_75bht"), ExtResource("9_24hec")])
+ShowcaseMode = true

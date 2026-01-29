@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cufy1338gshuy"]
+
+[ext_resource type="Script" uid="uid://smkx5x440fsp" path="res://SCRIPTS/Units/UnitVisual.gd" id="1_dx4bv"]
+[ext_resource type="Texture2D" uid="uid://dlar8v1wwyxk7" path="res://ART/Icons/Units/merchant.png" id="2_pe3jp"]
+[ext_resource type="AnimationLibrary" uid="uid://1mcui1br08sh" path="res://ART/Animations/Units/UnitAllyLibrary.res" id="3_5im8n"]
+
+[sub_resource type="Animation" id="Animation_t25oj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.290196, 0.211765, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4v8ft"]
+_data = {
+&"RESET": SubResource("Animation_t25oj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7bv"]
+size = Vector2(64, 64)
+
+[node name="visMerchant" type="Node2D" unique_id=1351860209 node_paths=PackedStringArray("AnimationCTRL")]
+script = ExtResource("1_dx4bv")
+AnimationCTRL = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1701804370]
+modulate = Color(1, 0.290196, 0.211765, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_pe3jp")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=293311981]
+libraries/ = SubResource("AnimationLibrary_4v8ft")
+libraries/UnitAllyLibrary = ExtResource("3_5im8n")
+autoplay = &"UnitAllyLibrary/Activated"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=378578668]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=617176706]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_4m7bv")

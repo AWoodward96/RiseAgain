@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dsjmls2c4362e"]
+
+[ext_resource type="Script" uid="uid://7xsjm1ab5g7r" path="res://SCRIPTS/GridEntities/GESlowSpeedAttack.gd" id="1_uhcw7"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_eyes5"]
+[ext_resource type="Script" uid="uid://c8cj2607kxmat" path="res://SCRIPTS/Ability/FocusCameraStep.gd" id="3_op1af"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="4_8xkrf"]
+[ext_resource type="Script" uid="uid://d4hhypdwxek2y" path="res://SCRIPTS/Ability/DelayStep.gd" id="5_nct4d"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="6_vmhrq"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_rmrud"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="8_8xkrf"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="9_nct4d"]
+[ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="10_b5bbe"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="10_vmhrq"]
+[ext_resource type="Texture2D" uid="uid://c8rgr46ijn12k" path="res://ART/Icons/Ability/Standard/bomblauncher.png" id="11_nct4d"]
+[ext_resource type="Shader" uid="uid://cn5td7o70mh5v" path="res://RESOURCES/GridEntities/GridEntityHighlight.gdshader" id="13_nct4d"]
+[ext_resource type="Texture2D" uid="uid://bl4kcxevb7xpv" path="res://ART/GridEntities/launcher_bomb.png" id="13_rmrud"]
+
+[sub_resource type="Resource" id="Resource_o5jkg"]
+script = ExtResource("3_op1af")
+metadata/_custom_type_script = "uid://c8cj2607kxmat"
+
+[sub_resource type="Resource" id="Resource_3seej"]
+script = ExtResource("4_8xkrf")
+PlayAtUnit = false
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_c5tec"]
+script = ExtResource("5_nct4d")
+time = 0.5
+metadata/_custom_type_script = "uid://d4hhypdwxek2y"
+
+[sub_resource type="Resource" id="Resource_utjrs"]
+script = ExtResource("6_vmhrq")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_utcex"]
+script = ExtResource("7_rmrud")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_vrxij"]
+script = ExtResource("9_nct4d")
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_hr2k6"]
+script = ExtResource("9_nct4d")
+Position = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_b5bbe"]
+script = ExtResource("9_nct4d")
+Position = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_q2vq4"]
+script = ExtResource("9_nct4d")
+Position = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_dtmdp"]
+script = ExtResource("9_nct4d")
+Position = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_t83xg"]
+script = ExtResource("10_vmhrq")
+TileCoordinates = Array[ExtResource("8_8xkrf")]([SubResource("Resource_vrxij"), SubResource("Resource_hr2k6"), SubResource("Resource_b5bbe"), SubResource("Resource_q2vq4"), SubResource("Resource_dtmdp")])
+metadata/_custom_type_script = "uid://ofdutqbqnjrf"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xkrf"]
+shader = ExtResource("13_nct4d")
+shader_parameter/enabled = true
+shader_parameter/alpha_only = true
+shader_parameter/width = 1
+shader_parameter/outline_color = Color(1, 0.816667, 0, 1)
+shader_parameter/flickering_speed = 10.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xkrf"]
+atlas = ExtResource("13_rmrud")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nct4d"]
+atlas = ExtResource("13_rmrud")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmhrq"]
+atlas = ExtResource("13_rmrud")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmrud"]
+atlas = ExtResource("13_rmrud")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6dui"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8xkrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nct4d")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vmhrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmrud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="ge_launcherbomb" type="Node2D" unique_id=1001145225 node_paths=PackedStringArray("telegraphTilemap")]
+z_index = -5
+script = ExtResource("1_uhcw7")
+executionStack = Array[ExtResource("2_eyes5")]([SubResource("Resource_o5jkg"), SubResource("Resource_3seej"), SubResource("Resource_c5tec"), SubResource("Resource_utjrs"), SubResource("Resource_utcex")])
+telegraphTilemap = NodePath("TileMapLayer")
+shapedTiles = SubResource("Resource_t83xg")
+UpdatePerTeamTurn = true
+localization_icon = ExtResource("11_nct4d")
+localization_desc = "art_bomblauncher_name"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1019872157]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 255, 255, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+tile_set = ExtResource("10_b5bbe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2054169612]
+z_index = 10
+z_as_relative = false
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_8xkrf")
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_k6dui")
+autoplay = "default"
+frame_progress = 0.520464

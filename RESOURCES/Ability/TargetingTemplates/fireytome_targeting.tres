@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetingShapedFree" format=3 uid="uid://biacapqshx0mg"]
+
+[ext_resource type="Script" uid="uid://b33ndaqe2bkqv" path="res://SCRIPTS/Targeting/TargetingShapedFree.gd" id="1_iwtfm"]
+
+[resource]
+script = ExtResource("1_iwtfm")
+TargetRange = Vector2i(1, 2)
+TeamTargeting = 2

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dmhbg3jolre8u"]
+
+[ext_resource type="Script" uid="uid://dgehid3y061rd" path="res://SCRIPTS/GridEntities/GEStaticAreaOfEffect.gd" id="1_13tne"]
+[ext_resource type="Texture2D" uid="uid://bc20wswxkf5f5" path="res://ART/GridEntities/grasping_roots.png" id="1_gfvns"]
+[ext_resource type="Resource" uid="uid://c587x0joump1o" path="res://RESOURCES/TargetingShapes/grasping_roots_shape.tres" id="2_0d7er"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_heghb"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_jro51"]
+[ext_resource type="Texture2D" uid="uid://djj1idam8mig0" path="res://ART/Icons/Ability/Standard/summonroots.png" id="4_532rp"]
+
+[node name="GraspingRootsEntity" type="Node2D" unique_id=1020151149 node_paths=PackedStringArray("damage_data")]
+script = ExtResource("1_13tne")
+shaped_tiles = ExtResource("2_0d7er")
+damage_interval = 1
+interruptionType = 1
+damage_data = NodePath("DamageData")
+UpdatePerTeamTurn = true
+PreviewSprite = ExtResource("1_gfvns")
+localization_icon = ExtResource("4_532rp")
+localization_desc = "ui_graspingvines_effectdesc"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978477119]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("1_gfvns")
+offset = Vector2(16, 16)
+
+[node name="DamageData" type="Node2D" parent="." unique_id=481996278]
+script = ExtResource("2_heghb")
+FlatValue = 2.0
+AgressiveStat = ExtResource("3_jro51")
+AgressiveModType = 2
+AgressiveMod = 0.5
+DamageCantKill = true

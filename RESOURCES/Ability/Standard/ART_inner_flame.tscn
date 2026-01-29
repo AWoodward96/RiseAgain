@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://kni2112pjkcj"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_blgba"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="2_4t6om"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_w5ywb"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_ajlyq"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_rvcbq"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_bp6qq"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="4_pdly8"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_a1yuy"]
+[ext_resource type="Resource" uid="uid://ba3vtp6iybgdv" path="res://RESOURCES/TargetingShapes/inner_flame_shape.tres" id="5_w5ywb"]
+[ext_resource type="Resource" uid="uid://c68dg8mpnxnp2" path="res://RESOURCES/Ability/TargetingTemplates/inner_flame_targeting.tres" id="6_rvcbq"]
+
+[sub_resource type="Resource" id="Resource_y5gpp"]
+script = ExtResource("3_rvcbq")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_jt8mq"]
+script = ExtResource("4_bp6qq")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_hacui"]
+script = ExtResource("5_a1yuy")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="inner_flame" type="Node2D" unique_id=1298794111 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+script = ExtResource("1_blgba")
+abilityCooldown = 0
+ability_speed = 1
+executionStack = Array[ExtResource("2_w5ywb")]([SubResource("Resource_y5gpp"), SubResource("Resource_jt8mq"), SubResource("Resource_hacui")])
+internalName = "inner_flame"
+loc_displayName = "art_inner_flame_name"
+loc_displayDesc = "art_inner_flame_desc"
+TargetingTemplate = ExtResource("6_rvcbq")
+TargetingData = NodePath("TargetingData")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1508627814]
+script = ExtResource("2_4t6om")
+AgressiveStat = ExtResource("3_ajlyq")
+AgressiveModType = 2
+DamageType = 1
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=1399909647]
+script = ExtResource("4_pdly8")
+TeamTargeting = 0
+Type = 3
+CanTargetSelf = true
+shapedTiles = ExtResource("5_w5ywb")

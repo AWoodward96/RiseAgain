@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://do8khiwrcp3he"]
+
+[ext_resource type="Script" uid="uid://cqoq0w1rdjfqq" path="res://SCRIPTS/Generic/LootTables/LootTableEntry.gd" id="1_36f3x"]
+[ext_resource type="PackedScene" uid="uid://i763t3u3306k" path="res://RESOURCES/Items/t1_rosepolish.tscn" id="2_e62lm"]
+[ext_resource type="Script" uid="uid://4xqdaqcl77e1" path="res://SCRIPTS/Generic/LootTables/ItemRewardEntry.gd" id="3_mcw1a"]
+[ext_resource type="PackedScene" uid="uid://qe114j5trg4f" path="res://RESOURCES/Items/t1_maroontome.tscn" id="4_umpq6"]
+[ext_resource type="PackedScene" uid="uid://cvbkx5bat10bw" path="res://RESOURCES/Items/t1_weightedbelt.tscn" id="5_kbl1q"]
+[ext_resource type="PackedScene" uid="uid://bahkfl6jb6vf3" path="res://RESOURCES/Items/t1_lapispadding.tscn" id="6_c1kgo"]
+[ext_resource type="PackedScene" uid="uid://nh5crhgwrqae" path="res://RESOURCES/Items/t1_ceruleanplates.tscn" id="7_mt2pl"]
+[ext_resource type="Script" uid="uid://dxqwia7ypvmou" path="res://SCRIPTS/Generic/LootTables/LootTable.gd" id="8_0yjr1"]
+
+[sub_resource type="Resource" id="Resource_36f3x"]
+script = ExtResource("3_mcw1a")
+ItemPrefab = ExtResource("2_e62lm")
+AccumulatedWeight = 1.0
+
+[sub_resource type="Resource" id="Resource_e62lm"]
+script = ExtResource("3_mcw1a")
+ItemPrefab = ExtResource("4_umpq6")
+AccumulatedWeight = 2.0
+
+[sub_resource type="Resource" id="Resource_mcw1a"]
+script = ExtResource("3_mcw1a")
+ItemPrefab = ExtResource("5_kbl1q")
+AccumulatedWeight = 3.0
+
+[sub_resource type="Resource" id="Resource_umpq6"]
+script = ExtResource("3_mcw1a")
+ItemPrefab = ExtResource("6_c1kgo")
+AccumulatedWeight = 4.0
+
+[sub_resource type="Resource" id="Resource_kbl1q"]
+script = ExtResource("3_mcw1a")
+ItemPrefab = ExtResource("7_mt2pl")
+AccumulatedWeight = 5.0
+
+[resource]
+resource_name = "LT_GrowthItems_T1"
+script = ExtResource("8_0yjr1")
+Table = Array[ExtResource("1_36f3x")]([SubResource("Resource_36f3x"), SubResource("Resource_e62lm"), SubResource("Resource_mcw1a"), SubResource("Resource_umpq6"), SubResource("Resource_kbl1q")])
+WeightSum = 5.0

@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="StatTemplate" load_steps=3 format=3 uid="uid://sg8uxw1yvh53"]
+[gd_resource type="Resource" script_class="StatTemplate" format=3 uid="uid://sg8uxw1yvh53"]
 
 [ext_resource type="Texture2D" uid="uid://cyqm5xxofa54e" path="res://ART/Icons/Stats/icon_mind.png" id="1_ihfwb"]
-[ext_resource type="Script" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_q1y6r"]
+[ext_resource type="Script" uid="uid://d0mls8wl053cd" path="res://SCRIPTS/Stats/StatTemplate.gd" id="2_q1y6r"]
 
 [resource]
 script = ExtResource("2_q1y6r")
-bst_weight = 1
 loc_displayName = "stat_mind"
 loc_displayName_short = "stat_mind_short"
 loc_description = "stat_mind_desc"

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://i7m2hed1bp2d"]
+
+[ext_resource type="Script" uid="uid://o20btdqgwxaj" path="res://SCRIPTS/Universe/WorldMap/POI.gd" id="1_7687h"]
+[ext_resource type="Texture2D" uid="uid://3nksfmjburie" path="res://ART/UI/Lines/linetex_dotted.png" id="2_b8erh"]
+[ext_resource type="Texture2D" uid="uid://bslf8k0b4x4ov" path="res://ART/UI/WorldMap/Icons_0.png" id="2_c1uc1"]
+[ext_resource type="Texture2D" uid="uid://gi66oped4ovm" path="res://ART/UI/Lines/linetex_full.png" id="2_dkg3c"]
+[ext_resource type="Texture2D" uid="uid://bw0iaqy6j7axy" path="res://ART/UI/Lines/linetex_dotted_tiny.png" id="3_hct3t"]
+
+[node name="MAROON_A1" type="Control" unique_id=802765392 node_paths=PackedStringArray("VisualIcon") groups=["MapPOI"]]
+texture_repeat = 2
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7687h")
+VisualIcon = NodePath("Visual")
+LineDotted = ExtResource("2_b8erh")
+LineTiny = ExtResource("3_hct3t")
+LineFull = ExtResource("2_dkg3c")
+
+[node name="UpLine" type="Line2D" parent="." unique_id=1372380050]
+visible = false
+texture = ExtResource("2_dkg3c")
+texture_mode = 1
+
+[node name="RightLine" type="Line2D" parent="." unique_id=1633632844]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="DownLine" type="Line2D" parent="." unique_id=1819563180]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="LeftLine" type="Line2D" parent="." unique_id=1873934285]
+visible = false
+points = PackedVector2Array(0, 0)
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1092480253]
+scale = Vector2(2, 2)
+texture = ExtResource("2_c1uc1")
+flip_h = true
+hframes = 8
+vframes = 3
+frame = 7

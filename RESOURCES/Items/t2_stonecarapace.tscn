@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bdci2cagpqgn3"]
+
+[ext_resource type="Script" uid="uid://br5mapdcn8t1k" path="res://SCRIPTS/Items/Item.gd" id="1_2ai5r"]
+[ext_resource type="Texture2D" uid="uid://icw5bhvcgk1b" path="res://ART/Icons/Items/t2_stonecarapace.png" id="2_4g3m4"]
+[ext_resource type="Script" uid="uid://b88n6ube4te3j" path="res://SCRIPTS/Items/ItemStatComponent.gd" id="3_4g3m4"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="4_u1js6"]
+[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="5_u1xtr"]
+[ext_resource type="Resource" uid="uid://bxaifmwbwgl7i" path="res://RESOURCES/Stats/STAT_SpDefense.tres" id="6_c58ib"]
+[ext_resource type="Script" uid="uid://xuab03ypkvce" path="res://SCRIPTS/Ability/PassiveOnUnitDamaged.gd" id="7_u1js6"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="8_qhsa7"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="9_vtny4"]
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="10_02oc8"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="11_adqk6"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="12_em0k2"]
+
+[sub_resource type="Resource" id="Resource_02oc8"]
+script = ExtResource("4_u1js6")
+Template = ExtResource("5_u1xtr")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_adqk6"]
+script = ExtResource("4_u1js6")
+Template = ExtResource("6_c58ib")
+Value = 1
+
+[sub_resource type="Resource" id="Resource_87kcn"]
+script = ExtResource("9_vtny4")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_2k0kk"]
+script = ExtResource("10_02oc8")
+Stat = ExtResource("6_c58ib")
+FlatValue = 1
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[sub_resource type="Resource" id="Resource_uvxhs"]
+script = ExtResource("11_adqk6")
+StatChanges = Array[ExtResource("10_02oc8")]([SubResource("Resource_2k0kk")])
+Turns = 1
+show_popup = false
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"
+
+[sub_resource type="Resource" id="Resource_yfw2u"]
+script = ExtResource("12_em0k2")
+CombatEffect = SubResource("Resource_uvxhs")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_qhsa7"]
+script = ExtResource("11_adqk6")
+StatChanges = Array[ExtResource("10_02oc8")]([SubResource("Resource_2k0kk")])
+Turns = 1
+show_popup = false
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"
+
+[sub_resource type="Resource" id="Resource_vtny4"]
+script = ExtResource("12_em0k2")
+CombatEffect = SubResource("Resource_qhsa7")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[node name="t2_stonecarapace" type="Node2D" unique_id=1955254573 node_paths=PackedStringArray("passiveListeners", "StatData")]
+script = ExtResource("1_2ai5r")
+passiveListeners = [NodePath("PhysicalListener"), NodePath("MagicalListener")]
+internalName = "t2_stonecarapace"
+loc_displayName = "item_t2_stonecarapace_name"
+loc_displayDesc = "item_t2_stonecarapace_desc"
+icon = ExtResource("2_4g3m4")
+StatData = NodePath("ItemStatComponent")
+
+[node name="ItemStatComponent" type="Node2D" parent="." unique_id=150811132]
+script = ExtResource("3_4g3m4")
+GrantedStats = Array[ExtResource("4_u1js6")]([SubResource("Resource_02oc8"), SubResource("Resource_adqk6")])
+
+[node name="PhysicalListener" type="Node2D" parent="." unique_id=1142831203]
+script = ExtResource("7_u1js6")
+executionStack = Array[ExtResource("8_qhsa7")]([SubResource("Resource_87kcn"), SubResource("Resource_yfw2u")])
+useDamageTypeReq = true
+metadata/_custom_type_script = "uid://xuab03ypkvce"
+
+[node name="MagicalListener" type="Node2D" parent="." unique_id=253665677]
+script = ExtResource("7_u1js6")
+executionStack = Array[ExtResource("8_qhsa7")]([SubResource("Resource_87kcn"), SubResource("Resource_vtny4")])
+useDamageTypeReq = true
+damageTypeReq = 1
+metadata/_custom_type_script = "uid://xuab03ypkvce"

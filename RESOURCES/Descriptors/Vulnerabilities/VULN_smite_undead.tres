@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DescriptorMultiplier" load_steps=3 format=3 uid="uid://b5xj74xra4bf4"]
+[gd_resource type="Resource" script_class="DescriptorMultiplier" format=3 uid="uid://b5xj74xra4bf4"]
 
 [ext_resource type="Resource" uid="uid://3feglb2uqixw" path="res://RESOURCES/Descriptors/DES_Undead.tres" id="1_pqx4g"]
-[ext_resource type="Script" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="2_67swt"]
+[ext_resource type="Script" uid="uid://cavedmllfv7md" path="res://SCRIPTS/UI/General/DescriptorMultiplier.gd" id="2_67swt"]
 
 [resource]
 script = ExtResource("2_67swt")

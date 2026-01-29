@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PackedResourceDef" format=3 uid="uid://bxbwumosddie4"]
+
+[ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="1_m8wn5"]
+[ext_resource type="Resource" uid="uid://ylhqdmetwb35" path="res://RESOURCES/Resources/PaleWood.tres" id="2_eehkd"]
+[ext_resource type="Resource" uid="uid://ikr4de2net1c" path="res://RESOURCES/Resources/Gold.tres" id="3_4sxpr"]
+[ext_resource type="Resource" uid="uid://c4af23rldh8lh" path="res://RESOURCES/Resources/Gemstones.tres" id="4_1nlys"]
+[ext_resource type="Script" uid="uid://covm8hlm2glqx" path="res://SCRIPTS/Universe/Resources/PackedResourceDef.gd" id="5_mkp1o"]
+
+[sub_resource type="Resource" id="Resource_fti05"]
+script = ExtResource("1_m8wn5")
+ItemResource = ExtResource("2_eehkd")
+Amount = 200
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_1g5oh"]
+script = ExtResource("1_m8wn5")
+ItemResource = ExtResource("3_4sxpr")
+Amount = 500
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[sub_resource type="Resource" id="Resource_oiscd"]
+script = ExtResource("1_m8wn5")
+ItemResource = ExtResource("4_1nlys")
+Amount = 1
+metadata/_custom_type_script = "uid://d2347uif1mrru"
+
+[resource]
+script = ExtResource("5_mkp1o")
+cost = Array[ExtResource("1_m8wn5")]([SubResource("Resource_fti05"), SubResource("Resource_1g5oh"), SubResource("Resource_oiscd")])
+metadata/_custom_type_script = "uid://covm8hlm2glqx"

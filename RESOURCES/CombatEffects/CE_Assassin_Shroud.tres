@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StealthEffectTemplate" format=3 uid="uid://d4elmej3fgn3c"]
+
+[ext_resource type="Script" uid="uid://dpxiork72lktc" path="res://SCRIPTS/CombatEffects/StealthEffectTemplate.gd" id="1_jpid4"]
+[ext_resource type="Texture2D" uid="uid://dh11grbdsyrnx" path="res://ART/Icons/Ability/Passive/shroud.png" id="1_xlcvf"]
+
+[resource]
+script = ExtResource("1_jpid4")
+Turns = 1
+show_popup = false
+loc_name = "ce_stealthed"
+loc_desc = "ce_stealthed_desc"
+loc_icon = ExtResource("1_xlcvf")
+metadata/_custom_type_script = "uid://dpxiork72lktc"

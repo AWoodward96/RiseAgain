@@ -1,0 +1,16 @@
+extends Resource
+class_name TileMetaData
+
+@export var loc_name : String
+@export var Health : int = -1
+@export var Killbox : bool
+@export var Water : bool
+@export var FireSpreadChance : float = 0.5
+@export var Shroud : bool = false
+@export var DestructionRewards : Array[ResourceDef]
+@export var DestructionVFXPrefab : PackedScene
+@export var Obscures : bool = false
+@export var ObscureOffset : Vector2i = Vector2i(0, -1)
+
+func OnUnitTraversed(_unitInstance : UnitInstance):
+	return false

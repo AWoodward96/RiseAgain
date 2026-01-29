@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://caqjnk7qlllww"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_vtmyb"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_js4wy"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="2_nit5m"]
+[ext_resource type="PackedScene" uid="uid://c8j46r3a0jcrr" path="res://RESOURCES/GridEntities/proj_gale.tscn" id="3_axws4"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_x2w3x"]
+[ext_resource type="Script" uid="uid://chqum0vfdwrt7" path="res://SCRIPTS/Ability/CreateGridEntityStep.gd" id="4_kf78k"]
+[ext_resource type="Texture2D" uid="uid://jq6pguj1dv2r" path="res://ART/Icons/Ability/Standard/summongale.png" id="5_8polg"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="6_h7vi5"]
+[ext_resource type="Resource" uid="uid://bbff5gnw0xmh4" path="res://RESOURCES/Ability/TargetingTemplates/summongale_targeting.tres" id="7_34thx"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="7_k6kxa"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="8_3ym3h"]
+
+[sub_resource type="Resource" id="Resource_34thx"]
+script = ExtResource("3_x2w3x")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_enlx2"]
+script = ExtResource("4_kf78k")
+GridEntityPrefab = ExtResource("3_axws4")
+
+[sub_resource type="Resource" id="Resource_yvmxb"]
+script = ExtResource("7_k6kxa")
+
+[sub_resource type="Resource" id="Resource_h6isx"]
+script = ExtResource("8_3ym3h")
+TileCoordinates = Array[ExtResource("6_h7vi5")]([SubResource("Resource_yvmxb")])
+
+[node name="summongale" type="Node2D" unique_id=232739879 node_paths=PackedStringArray("TargetingData")]
+script = ExtResource("1_vtmyb")
+abilityCooldown = 0
+executionStack = Array[ExtResource("2_js4wy")]([SubResource("Resource_34thx"), SubResource("Resource_enlx2")])
+internalName = "summongale"
+loc_displayName = "art_summongale_name"
+loc_displayDesc = "art_summongale_desc"
+icon = ExtResource("5_8polg")
+TargetingTemplate = ExtResource("7_34thx")
+TargetingData = NodePath("TargetingData")
+
+[node name="TargetingData" type="Node2D" parent="." unique_id=2043607161]
+script = ExtResource("2_nit5m")
+TeamTargeting = 0
+Type = 1
+shapedTiles = SubResource("Resource_h6isx")

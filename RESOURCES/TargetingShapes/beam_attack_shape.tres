@@ -1,28 +1,31 @@
-[gd_resource type="Resource" script_class="TargetingShape" load_steps=7 format=3 uid="uid://c5kdn4uveq50d"]
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://c5kdn4uveq50d"]
 
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/Vector2iMult.gd" id="1_7aid2"]
-[ext_resource type="Script" path="res://SCRIPTS/TargetingShape/TargetingShape.gd" id="2_5o1e6"]
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_7aid2"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="2_1oedc"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="2_5o1e6"]
 
-[sub_resource type="Resource" id="Resource_jwp0x"]
-script = ExtResource("1_7aid2")
+[sub_resource type="Resource" id="Resource_tc8gh"]
+script = ExtResource("2_1oedc")
+Ignite = 1
+Multiplier = 0.6
+
+[sub_resource type="Resource" id="Resource_ni7m6"]
+script = ExtResource("2_1oedc")
+Ignite = 1
 Position = Vector2i(0, -1)
 Multiplier = 0.6
 
-[sub_resource type="Resource" id="Resource_8fudj"]
-script = ExtResource("1_7aid2")
+[sub_resource type="Resource" id="Resource_7tywy"]
+script = ExtResource("2_1oedc")
+Ignite = 1
 Position = Vector2i(0, -2)
 Multiplier = 0.6
 
-[sub_resource type="Resource" id="Resource_570ud"]
-script = ExtResource("1_7aid2")
+[sub_resource type="Resource" id="Resource_x0kv8"]
+script = ExtResource("2_1oedc")
+Ignite = 2
 Position = Vector2i(0, -3)
-Multiplier = 1.0
-
-[sub_resource type="Resource" id="Resource_pqik3"]
-script = ExtResource("1_7aid2")
-Position = Vector2i(0, -4)
-Multiplier = 1.2
 
 [resource]
 script = ExtResource("2_5o1e6")
-TileCoordinates = Array[ExtResource("1_7aid2")]([SubResource("Resource_jwp0x"), SubResource("Resource_8fudj"), SubResource("Resource_570ud"), SubResource("Resource_pqik3")])
+TileCoordinates = Array[ExtResource("1_7aid2")]([SubResource("Resource_tc8gh"), SubResource("Resource_ni7m6"), SubResource("Resource_7tywy"), SubResource("Resource_x0kv8")])
