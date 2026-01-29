@@ -22,16 +22,17 @@
 [sub_resource type="Resource" id="Resource_7h4pr"]
 script = ExtResource("2_50beg")
 Template = ExtResource("3_qblo7")
-Value = 14.0
+Value = 28.0
 
 [sub_resource type="Resource" id="Resource_b4xeo"]
 script = ExtResource("2_50beg")
 Template = ExtResource("4_clsg0")
-Value = 4.0
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_i6c8y"]
 script = ExtResource("2_50beg")
 Template = ExtResource("5_ca1g6")
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_50ob8"]
 script = ExtResource("2_50beg")
@@ -40,6 +41,7 @@ Template = ExtResource("6_omxg1")
 [sub_resource type="Resource" id="Resource_hvi8e"]
 script = ExtResource("2_50beg")
 Template = ExtResource("7_flprw")
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_ddjmc"]
 script = ExtResource("2_50beg")
@@ -63,8 +65,41 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_xk7wi"]
 script = ExtResource("2_50beg")
 Template = ExtResource("12_rkpo2")
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_nwxjp"]
+script = ExtResource("2_50beg")
+Template = ExtResource("13_bapfb")
+
+[sub_resource type="Resource" id="Resource_rkpo2"]
+script = ExtResource("2_50beg")
+Template = ExtResource("3_qblo7")
+
+[sub_resource type="Resource" id="Resource_bapfb"]
+script = ExtResource("2_50beg")
+Template = ExtResource("4_clsg0")
+
+[sub_resource type="Resource" id="Resource_pyja1"]
+script = ExtResource("2_50beg")
+Template = ExtResource("5_ca1g6")
+
+[sub_resource type="Resource" id="Resource_ax4tt"]
+script = ExtResource("2_50beg")
+Template = ExtResource("6_omxg1")
+
+[sub_resource type="Resource" id="Resource_v8lea"]
+script = ExtResource("2_50beg")
+Template = ExtResource("7_flprw")
+
+[sub_resource type="Resource" id="Resource_ql8pr"]
+script = ExtResource("2_50beg")
+Template = ExtResource("10_v70dg")
+
+[sub_resource type="Resource" id="Resource_5pa2x"]
+script = ExtResource("2_50beg")
+Template = ExtResource("12_rkpo2")
+
+[sub_resource type="Resource" id="Resource_8xb32"]
 script = ExtResource("2_50beg")
 Template = ExtResource("13_bapfb")
 

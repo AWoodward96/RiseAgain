@@ -121,6 +121,7 @@ func ConstructStatDef(_dataRef, value):
 	var template = ResourceLoader.load(stat_dict[_dataRef])
 	statDef.Template = template
 	statDef.Value = value
+	statDef.resource_local_to_scene = true
 	return statDef
 
 func ModifyDamageDataComponent(_ability : Ability, _data):
@@ -325,7 +326,9 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 			"GEDirectional":
 				component = TargetingGEDirectional.new()
 
-
+	if component == null:
+		push_error("Targeting Component is null for ability: " , _ability.internalName, ". If this is intentional ignore")
+		return
 
 	if !ImportFieldIsNull(_data, "CanTargetSelf") && component.get("CanTargetSelf") != null:
 		component.CanTargetSelf = _data["CanTargetSelf"]

@@ -22,6 +22,7 @@ script = ExtResource("3_mvxs4")
 script = ExtResource("4_mwjko")
 
 [sub_resource type="Resource" id="Resource_8rnpj"]
+resource_local_to_scene = true
 script = ExtResource("5_46lsb")
 Template = ExtResource("4_oahxk")
 Value = 6

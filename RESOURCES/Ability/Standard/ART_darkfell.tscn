@@ -1,57 +1,34 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1y1fm3qowl1q"]
+[gd_scene format=3 uid="uid://b1y1fm3qowl1q"]
 
-[ext_resource type="Script" path="res://SCRIPTS/Ability/Ability.gd" id="1_mrmfq"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_d2ijl"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/DealDamageStep.gd" id="3_f061n"]
-[ext_resource type="Resource" uid="uid://fv3aw7d7xp6f" path="res://RESOURCES/CombatEffects/CE_Debuff_Def_DarkFell.tres" id="4_l8p0f"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="5_8knaj"]
-[ext_resource type="Resource" uid="uid://5s51tjxqcu53" path="res://RESOURCES/CombatEffects/CE_Debuff_SpDef_DarkFell.tres" id="6_ifi81"]
-[ext_resource type="Script" path="res://SCRIPTS/Ability/GainExpStep.gd" id="7_yk6el"]
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_mrmfq"]
+[ext_resource type="Resource" uid="uid://dn0rm4k13mpi3" path="res://RESOURCES/Ability/TargetingTemplates/darkfell_targeting.tres" id="3_yl848"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="7_1ugwo"]
 [ext_resource type="Texture2D" uid="uid://cinqp4oq3vxq4" path="res://ART/Icons/Ability/Standard/darkfell.png" id="8_ql0wb"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_ukfru"]
+[ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="8_ukfru"]
 [ext_resource type="Resource" uid="uid://c2dfr4ubq82wn" path="res://RESOURCES/TargetingShapes/dark_fell_shape.tres" id="9_rqcwj"]
-[ext_resource type="Script" path="res://SCRIPTS/Items/DamageData.gd" id="10_juudg"]
-[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="11_kl032"]
-[ext_resource type="Resource" uid="uid://cu1bqlxnvyi1q" path="res://RESOURCES/Stats/STAT_Defense.tres" id="12_h5vw6"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="10_juudg"]
 
-[sub_resource type="Resource" id="Resource_0hubf"]
-script = ExtResource("3_f061n")
-useAttackAction = true
-useDefendAction = true
-
-[sub_resource type="Resource" id="Resource_muj8o"]
-script = ExtResource("5_8knaj")
-CombatEffect = ExtResource("4_l8p0f")
-
-[sub_resource type="Resource" id="Resource_fau0g"]
-script = ExtResource("5_8knaj")
-CombatEffect = ExtResource("6_ifi81")
-
-[sub_resource type="Resource" id="Resource_0uo1w"]
-script = ExtResource("7_yk6el")
-
-[node name="ART_darkfell" type="Node2D" node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
+[node name="ART_darkfell" type="Node2D" unique_id=583248689 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_mrmfq")
-focusCost = 3.0
-executionStack = Array[ExtResource("2_d2ijl")]([SubResource("Resource_0hubf"), SubResource("Resource_muj8o"), SubResource("Resource_fau0g"), SubResource("Resource_0uo1w")])
+abilityCooldown = 2
+ability_speed = 1
 internalName = "darkfell"
 loc_displayName = "art_darkfell_name"
 loc_displayDesc = "art_darkfell_desc"
 icon = ExtResource("8_ql0wb")
+TargetingTemplate = ExtResource("3_yl848")
 TargetingData = NodePath("SkillTargetingData")
 UsableDamageData = NodePath("DamageData")
 
-[node name="SkillTargetingData" type="Node2D" parent="."]
+[node name="SkillTargetingData" type="Node2D" parent="." unique_id=2091820408]
 script = ExtResource("8_ukfru")
 TargetRange = Vector2i(0, 0)
 Type = 1
 CanTargetSelf = true
 shapedTiles = ExtResource("9_rqcwj")
 
-[node name="DamageData" type="Node2D" parent="."]
+[node name="DamageData" type="Node2D" parent="." unique_id=1137589328]
 script = ExtResource("10_juudg")
-FlatValue = 2.0
-AgressiveStat = ExtResource("11_kl032")
-DefensiveStat = ExtResource("12_h5vw6")
-DamageAffectsUsersHealth = true
-DamageToHealthRatio = -1.0
+FlatValue = 4.0
+AgressiveStat = ExtResource("7_1ugwo")
+DamageToHealthRatio = 0.0

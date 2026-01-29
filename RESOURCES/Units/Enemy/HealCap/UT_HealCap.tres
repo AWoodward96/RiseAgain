@@ -21,25 +21,27 @@
 [sub_resource type="Resource" id="Resource_m1uct"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("3_gi3ry")
-Value = 3.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_ua50t"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("4_ewst1")
-Value = 1.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_rwfmq"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("5_t6x3g")
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_27fya"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("6_3g7ki")
-Value = 3.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_qyajh"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("7_gfxnt")
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_k3o6q"]
 script = ExtResource("2_y3xvp")
@@ -58,8 +60,41 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_gfxnt"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("11_t6x3g")
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_ysayb"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("12_3g7ki")
+
+[sub_resource type="Resource" id="Resource_t6x3g"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("3_gi3ry")
+
+[sub_resource type="Resource" id="Resource_3g7ki"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("4_ewst1")
+
+[sub_resource type="Resource" id="Resource_pv884"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("5_t6x3g")
+
+[sub_resource type="Resource" id="Resource_jbv3c"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("6_3g7ki")
+
+[sub_resource type="Resource" id="Resource_fvbtl"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("7_gfxnt")
+
+[sub_resource type="Resource" id="Resource_tdgcv"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("9_bxnph")
+
+[sub_resource type="Resource" id="Resource_4sr0s"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("11_t6x3g")
+
+[sub_resource type="Resource" id="Resource_0uwhg"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("12_3g7ki")
 

@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="7_00i5r"]
 [ext_resource type="TileSet" uid="uid://5adtesnqpsrs" path="res://ART/Environment/MaroonForest/maroon_forest_tileset.tres" id="7_bpe2w"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="8_blcgq"]
+[ext_resource type="Script" uid="uid://bn2m6sphvd7ry" path="res://SCRIPTS/Maps/ObscurableTilemapLayer.gd" id="8_gg12l"]
 [ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="9_p77na"]
 [ext_resource type="Texture2D" uid="uid://dxmn2r6hffmgf" path="res://ART/Environment/MaroonForest/maroon_b01_alt02_leafmap.png" id="10_bsxas"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="11_56ycv"]
@@ -92,6 +93,7 @@ tile_set = ExtResource("7_bpe2w")
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAACAAsAAQALAAAAAQACAAoAAQAIAAAAAQACAAkAAQAMAAAAAAACAAgAAQAGAAAAAQABAAsAAQAGAAAAAQABAAoAAQAIAAAAAQABAAkAAQAGAAAAAQABAAgAAQAMAAAAAQAAAAsAAQAMAAAAAAAAAAoAAQAMAAAAAAAAAAkAAQAGAAAAAQAAAAgAAQAMAAAAAQADAAsAAQAGAAAAAQADAAoAAQAIAAAAAQADAAkAAQAMAAAAAQAFAAsAAQAIAAAAAQAFAAoAAQALAAAAAQAEAAsAAQAMAAAAAAAEAAoAAQAMAAAAAAAQAAsAAQAMAAAAAQAPAAsAAQAMAAAAAQAOAAsAAQAMAAAAAAANAAsAAQAMAAAAAQAMAAsAAQAGAAAAAQALAAsAAQAGAAAAAQAKAAsAAQAMAAAAAAAQAAoAAQAIAAAAAQAPAAoAAQAMAAAAAQAOAAoAAQALAAAAAQANAAoAAQAMAAAAAQAMAAoAAQAMAAAAAQALAAoAAQAGAAAAAQAQAAkAAQAMAAAAAAAPAAkAAQAGAAAAAQAOAAkAAQALAAAAAQAQAAgAAQAGAAAAAQANAAgAAQATAAQAAAAOAAIAAQATAAQAAAAMAAIAAQATAAMAAAADAAYAAQATAAMAAAACAAIAAQATAAMAAAACAAMAAQATAAQAAAAFAAIAAQATAAQAAAA=")
 tile_set = ExtResource("7_bpe2w")
+script = ExtResource("8_gg12l")
 
 [node name="Fire" type="TileMapLayer" parent="." unique_id=1356041063]
 z_index = -2

@@ -77,13 +77,7 @@ func Init(_width : int, _height : int, _map : Map, _cell_size : int):
 					if destructable_data.get_collision_polygons_count(0) > 0:
 						GridArr[index].IsWall = true
 
-					GridArr[index].Godot_DestructableData = destructable_data
 					GridArr[index].DestructableData = destructable_data.get_custom_data("MetaData") as TileMetaData
-					if destructable_data.material != null:
-						var clone = destructable_data.material.duplicate()
-						clone.resource_local_to_scene = true
-						destructable_data.material = clone
-
 
 			GridArr[index].InitMetaData()
 

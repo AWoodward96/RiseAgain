@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="4_j5ahy"]
 [ext_resource type="TileSet" uid="uid://5adtesnqpsrs" path="res://ART/Environment/MaroonForest/maroon_forest_tileset.tres" id="5_25tdu"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="5_mby31"]
+[ext_resource type="Script" uid="uid://bn2m6sphvd7ry" path="res://SCRIPTS/Maps/ObscurableTilemapLayer.gd" id="6_25tdu"]
 [ext_resource type="Texture2D" uid="uid://38vjobqlehna" path="res://ART/Grid/s_ui.png" id="6_cu7r5"]
 [ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="6_ldxuy"]
 [ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_dklm8"]
@@ -106,6 +107,7 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAADAAwAAQAGAAAAAAADAAsAAQAIAAAAAAADAAoAAQAJAAAAAAADAAkAAQAIAAAAAAACAAwAAQAHAAAAAAACAAsAAQAJAAAAAAACAAoAAQAJAAAAAAACAAkAAQAJAAAAAAABAAwAAQAJAAAAAAABAAsAAQAJAAAAAAABAAoAAQAGAAAAAAABAAkAAQAIAAAAAAABAA0AAQALAAAAAAAAAA0AAQAJAAAAAAAAAAwAAQALAAAAAAAAAAsAAQALAAAAAAAAAAoAAQAIAAAAAAAFAA0AAQAJAAAAAAAFAAwAAQAIAAAAAAAEAA0AAQAJAAAAAAAEAAwAAQAJAAAAAAADAA0AAQAIAAAAAAACAA0AAQAIAAAAAAABAAgAAQAJAAAAAAAQAA0AAQAJAAAAAAAPAA0AAQALAAAAAAAOAA0AAQAGAAAAAAANAA0AAQAJAAAAAAAMAA0AAQAJAAAAAAALAA0AAQAJAAAAAAAKAA0AAQALAAAAAAAQAAwAAQALAAAAAAAPAAwAAQAGAAAAAAAOAAwAAQAGAAAAAAANAAwAAQALAAAAAAAMAAwAAQALAAAAAAAQAAsAAQALAAAAAAAPAAsAAQAHAAAAAAAOAAsAAQAJAAAAAAANAAsAAQALAAAAAAAQAAoAAQAJAAAAAAAQAAkAAQAJAAAAAAAQAAgAAQAJAAAAAAAPAAoAAQAJAAAAAAAPAAkAAQAJAAAAAAAPAAgAAQAJAAAAAAAOAAoAAQAIAAAAAAAOAAkAAQAIAAAAAAAPAAcAAQAJAAAAAAAFAAoAAQATAAQAAAAGAAgAAQATAAQAAAAKAAgAAQATAAQAAAALAAoAAQATAAQAAAAKAAkAAQATAAMAAAAJAAgAAQATAAMAAAAHAAgAAQATAAMAAAAGAAkAAQATAAMAAAA=")
 tile_set = ExtResource("5_25tdu")
+script = ExtResource("6_25tdu")
 
 [node name="Fire" type="TileMapLayer" parent="." unique_id=1763680233]
 z_index = -2

@@ -23,27 +23,27 @@
 [sub_resource type="Resource" id="Resource_mgsdi"]
 script = ExtResource("2_bnito")
 Template = ExtResource("3_i5xwm")
-Value = 25.0
+Value = 50.0
 
 [sub_resource type="Resource" id="Resource_5iok2"]
 script = ExtResource("2_bnito")
 Template = ExtResource("4_87imx")
-Value = 4.0
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_ff1x7"]
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
-Value = 1.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_5dcfk"]
 script = ExtResource("2_bnito")
 Template = ExtResource("6_km4nm")
-Value = 6.0
+Value = 12.0
 
 [sub_resource type="Resource" id="Resource_woabl"]
 script = ExtResource("2_bnito")
 Template = ExtResource("7_dwwwo")
-Value = 3.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_4jpo4"]
 script = ExtResource("2_bnito")
@@ -68,9 +68,41 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_jhkwx"]
 script = ExtResource("2_bnito")
 Template = ExtResource("12_o1jjg")
-Value = 4.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_o6r5l"]
+script = ExtResource("2_bnito")
+Template = ExtResource("13_ql63x")
+
+[sub_resource type="Resource" id="Resource_o1jjg"]
+script = ExtResource("2_bnito")
+Template = ExtResource("3_i5xwm")
+
+[sub_resource type="Resource" id="Resource_ql63x"]
+script = ExtResource("2_bnito")
+Template = ExtResource("4_87imx")
+
+[sub_resource type="Resource" id="Resource_yue05"]
+script = ExtResource("2_bnito")
+Template = ExtResource("5_n1su1")
+
+[sub_resource type="Resource" id="Resource_nmej7"]
+script = ExtResource("2_bnito")
+Template = ExtResource("6_km4nm")
+
+[sub_resource type="Resource" id="Resource_ih1ad"]
+script = ExtResource("2_bnito")
+Template = ExtResource("7_dwwwo")
+
+[sub_resource type="Resource" id="Resource_d7ucy"]
+script = ExtResource("2_bnito")
+Template = ExtResource("10_cd505")
+
+[sub_resource type="Resource" id="Resource_e5ips"]
+script = ExtResource("2_bnito")
+Template = ExtResource("12_o1jjg")
+
+[sub_resource type="Resource" id="Resource_w62fr"]
 script = ExtResource("2_bnito")
 Template = ExtResource("13_ql63x")
 

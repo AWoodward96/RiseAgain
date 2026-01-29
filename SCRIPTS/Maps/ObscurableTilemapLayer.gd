@@ -4,8 +4,6 @@ class_name ObscurableTilemapLayer
 @export var transparencyLimit : float = 0.35
 @export var transparencyStep : float = 0.1
 
-var currentMap : Map
-
 # Dict of Vector2i to internal Tile class
 var stack_enter : Dictionary
 var stack_exit : Dictionary

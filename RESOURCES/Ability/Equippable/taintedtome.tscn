@@ -27,16 +27,19 @@ script = ExtResource("4_wmo68")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
 [sub_resource type="Resource" id="Resource_wmo68"]
+resource_local_to_scene = true
 script = ExtResource("5_5q6et")
 Template = ExtResource("6_pn0do")
 Value = 8
 
 [sub_resource type="Resource" id="Resource_sqjf8"]
+resource_local_to_scene = true
 script = ExtResource("5_5q6et")
 Template = ExtResource("7_wmo68")
 Value = -2
 
 [sub_resource type="Resource" id="Resource_icvji"]
+resource_local_to_scene = true
 script = ExtResource("5_5q6et")
 Template = ExtResource("8_3xlkp")
 Value = -2

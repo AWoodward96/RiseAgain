@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_olhjq"]
 [ext_resource type="TileSet" uid="uid://5adtesnqpsrs" path="res://ART/Environment/MaroonForest/maroon_forest_tileset.tres" id="7_b4dvp"]
 [ext_resource type="TileSet" uid="uid://c2ke44okmibun" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset.tres" id="7_xmhas"]
+[ext_resource type="Script" uid="uid://bn2m6sphvd7ry" path="res://SCRIPTS/Maps/ObscurableTilemapLayer.gd" id="8_0yorr"]
 [ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_wa7fq"]
 [ext_resource type="Texture2D" uid="uid://cudvgus0ja3x6" path="res://ART/Environment/MaroonForest/maroon_a02_alt1_leafmap.png" id="9_kdqrw"]
 [ext_resource type="PackedScene" uid="uid://bptpxhjiocgis" path="res://RESOURCES/Helpers/starting_position_helper.tscn" id="10_qqi5i"]
@@ -26,8 +27,9 @@
 [ext_resource type="Resource" uid="uid://ban0gyynywtal" path="res://RESOURCES/Units/Other/PrizedBuck/UT_PrizedBuck.tres" id="19_i6jsy"]
 [ext_resource type="Script" uid="uid://cgbbqe0tsncp" path="res://SCRIPTS/Units/AI/AI_MoveToLocation.gd" id="20_gy7yh"]
 
-[sub_resource type="Resource" id="Resource_1u085"]
-script = ExtResource("15_8t8ce")
+[sub_resource type="Resource" id="Resource_0yorr"]
+script = ExtResource("18_mrsgm")
+metadata/_custom_type_script = "uid://di1yqkv0ulmb4"
 
 [sub_resource type="Resource" id="Resource_jto7i"]
 script = ExtResource("15_8t8ce")
@@ -117,8 +119,9 @@ tile_set = ExtResource("7_b4dvp")
 [node name="Destructables" type="TileMapLayer" parent="." unique_id=720189884]
 use_parent_material = true
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAJAAAAAQAMAAAAAQAGAAAAAQAIAAAAAQAFAAAAAQAMAAAAAAAEAAAAAQAIAAAAAQADAAAAAQAMAAAAAAACAAAAAQALAAAAAQABAAAAAQAIAAAAAQAAAAAAAQALAAAAAQAGAAEAAQAMAAAAAQAFAAEAAQAMAAAAAAAEAAEAAQAGAAAAAQABAAEAAQAIAAAAAQAAAAEAAQAGAAAAAQAPAAEAAQALAAAAAQAPAAAAAQAGAAAAAQAOAAEAAQAGAAAAAQAOAAAAAQAGAAAAAQAPAAkAAQAHAAAAAAAOAAkAAQAMAAAAAQANAAkAAQAMAAAAAQALAAkAAQAHAAAAAAAKAAkAAQANAAAAAAAJAAkAAQALAAAAAQAIAAkAAQAMAAAAAQAHAAkAAQAIAAAAAQABAAkAAQAMAAAAAAAAAAkAAQALAAAAAQAHAAEAAQAGAAAAAQAIAAEAAQAMAAAAAAAIAAAAAQAIAAAAAQAHAAAAAQAMAAAAAAAIAAgAAQAMAAAAAQAIAAcAAQAIAAAAAQACAAkAAQAIAAAAAQADAAkAAQAMAAAAAAAEAAkAAQAIAAAAAQAFAAkAAQAMAAAAAAAGAAkAAQAGAAAAAQAPAAIAAQAYAAIAAAAPAAMAAQAYAAIAAAAOAAIAAQAYAAIAAAACAAEAAQAXAAIAAAADAAEAAQAXAAIAAAAMAAkAAQANAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAAAAQAMAAAAAQAGAAAAAQAIAAAAAQAFAAAAAQAMAAAAAAAEAAAAAQAIAAAAAQADAAAAAQAMAAAAAAACAAAAAQALAAAAAQABAAAAAQAIAAAAAQAAAAAAAQALAAAAAQAGAAEAAQAMAAAAAQAFAAEAAQAMAAAAAAAEAAEAAQAGAAAAAQABAAEAAQAIAAAAAQAAAAEAAQAGAAAAAQAPAAEAAQALAAAAAQAPAAAAAQAGAAAAAQAOAAEAAQAGAAAAAQAOAAAAAQAGAAAAAQAPAAkAAQAHAAAAAAAOAAkAAQAMAAAAAQANAAkAAQAMAAAAAQALAAkAAQAHAAAAAAAKAAkAAQANAAAAAAAJAAkAAQALAAAAAQAIAAkAAQAMAAAAAQAHAAkAAQAIAAAAAQABAAkAAQAMAAAAAAAAAAkAAQALAAAAAQAHAAEAAQAGAAAAAQAIAAEAAQAMAAAAAAAIAAAAAQAIAAAAAQAHAAAAAQAMAAAAAAAIAAgAAQAMAAAAAQAIAAcAAQAIAAAAAQACAAkAAQAIAAAAAQADAAkAAQAMAAAAAAAEAAkAAQAIAAAAAQAFAAkAAQAMAAAAAAAGAAkAAQAGAAAAAQAMAAkAAQANAAAAAAA=")
 tile_set = ExtResource("7_b4dvp")
+script = ExtResource("8_0yorr")
 
 [node name="Fire" type="TileMapLayer" parent="." unique_id=386045196]
 z_index = -2
@@ -202,7 +205,7 @@ UnitToSpawn = ExtResource("13_lyrvg")
 UnitLevel = 2
 Position = Vector2i(15, 3)
 AIBehavior = ExtResource("14_ypai4")
-AggroBehavior = SubResource("Resource_1u085")
+AggroBehavior = SubResource("Resource_0yorr")
 
 [node name="Spawn_Wolf Pup2" type="Sprite2D" parent="Spawners" unique_id=65637970]
 position = Vector2(768, 64)

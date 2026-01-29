@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="8_rbqf4"]
 [ext_resource type="Resource" uid="uid://t5u2trhh6jbl" path="res://RESOURCES/Ability/TargetingTemplates/lunar_lance_targeting.tres" id="9_gw24i"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="9_i857f"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="11_1suvu"]
 [ext_resource type="Script" uid="uid://bqu21cvg4s6wk" path="res://SCRIPTS/Items/SkillTargetingComponent.gd" id="11_h3pcw"]
 [ext_resource type="Resource" uid="uid://dx1alowpf74li" path="res://RESOURCES/TargetingShapes/lunar_lance_shape.tres" id="12_56t7s"]
 
@@ -20,6 +21,12 @@ script = ExtResource("3_qjoex")
 
 [sub_resource type="Resource" id="Resource_njyb8"]
 script = ExtResource("4_2xqle")
+
+[sub_resource type="Resource" id="Resource_hgs6n"]
+resource_local_to_scene = true
+script = ExtResource("11_1suvu")
+Template = ExtResource("8_rbqf4")
+Value = 4
 
 [node name="lunar_lance" type="Node2D" unique_id=453309214 node_paths=PackedStringArray("TargetingData", "UsableDamageData", "StatData")]
 script = ExtResource("1_5xil8")
@@ -38,6 +45,7 @@ StatData = NodePath("StatComponent")
 
 [node name="StatComponent" type="Node2D" parent="." unique_id=1366464627]
 script = ExtResource("6_30bv3")
+GrantedStats = Array[ExtResource("11_1suvu")]([SubResource("Resource_hgs6n")])
 
 [node name="DamageComponent" type="Node2D" parent="." unique_id=1212424455]
 script = ExtResource("9_i857f")

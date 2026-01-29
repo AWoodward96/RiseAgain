@@ -24,6 +24,7 @@ script = ExtResource("4_v8uu2")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
 [sub_resource type="Resource" id="Resource_b0gbb"]
+resource_local_to_scene = true
 script = ExtResource("9_xdoag")
 Template = ExtResource("8_nx74i")
 Value = 1

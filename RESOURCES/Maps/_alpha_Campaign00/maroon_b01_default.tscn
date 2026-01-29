@@ -12,6 +12,7 @@
 [ext_resource type="TileSet" uid="uid://cw2y83vld1yn4" path="res://ART/Environment/_alpha_set0/terrain_basic_tileset_32.tres" id="6_fydmq"]
 [ext_resource type="Script" uid="uid://cm1mt3kma32tb" path="res://SCRIPTS/Maps/Spawners/SpawnerBasic.gd" id="7_t6ox0"]
 [ext_resource type="TileSet" uid="uid://5adtesnqpsrs" path="res://ART/Environment/MaroonForest/maroon_forest_tileset.tres" id="8_2aps5"]
+[ext_resource type="Script" uid="uid://bn2m6sphvd7ry" path="res://SCRIPTS/Maps/ObscurableTilemapLayer.gd" id="8_ltbma"]
 [ext_resource type="Material" uid="uid://c38a7aumxtgqw" path="res://ART/Shaders/tree_sway_mat.tres" id="8_pk3dc"]
 [ext_resource type="Texture2D" uid="uid://engowdml6dwa" path="res://ART/Environment/MaroonForest/maroon_b01_default_leafmap.png" id="9_ikose"]
 [ext_resource type="Resource" uid="uid://dcia5mwta8mpi" path="res://RESOURCES/Maps/_alpha_Campaign00/AI/AI_Canine_Target_Zolf.tres" id="9_jd0qd"]
@@ -106,6 +107,7 @@ tile_set = ExtResource("8_2aps5")
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAALAAsAAQALAAAAAQALAAoAAQANAAAAAAAKAAsAAQAIAAAAAQAKAAoAAQAMAAAAAQAJAAsAAQAGAAAAAQAJAAoAAQAGAAAAAQAIAAsAAQALAAAAAQAIAAoAAQAMAAAAAAAHAAsAAQAIAAAAAQAHAAoAAQALAAAAAQAGAAsAAQAIAAAAAQAGAAoAAQAHAAAAAAAFAAsAAQAMAAAAAQAFAAoAAQALAAAAAAAEAAsAAQAMAAAAAQAEAAoAAQANAAAAAAADAAsAAQAMAAAAAQADAAoAAQAGAAAAAQACAAsAAQAMAAAAAAACAAoAAQAGAAAAAQABAAsAAQAGAAAAAQABAAoAAQANAAAAAAAAAAsAAQALAAAAAQAAAAoAAQAGAAAAAQAMAAsAAQAUAAUAAAAKAAkAAQAMAAAAAQAJAAkAAQALAAAAAQAIAAkAAQAIAAAAAQAKAAgAAQALAAAAAQAKAAcAAQAMAAAAAAAJAAgAAQAMAAAAAQAJAAcAAQALAAAAAQAPAAgAAQAMAAAAAAAOAAgAAQAMAAAAAQAPAAsAAQAIAAAAAQAPAAoAAQALAAAAAQAPAAkAAQAGAAAAAQAEAAMAAQATAAQAAAALAAIAAQATAAMAAAANAAUAAQATAAMAAAAEAAYAAQATAAcAAQAJAAYAAQATAAcAAQA=")
 tile_set = ExtResource("8_2aps5")
+script = ExtResource("8_ltbma")
 
 [node name="Fire" type="TileMapLayer" parent="." unique_id=1754851629]
 z_index = -2

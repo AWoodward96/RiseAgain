@@ -298,7 +298,7 @@ polygon = PackedVector2Array(16, -11, 12, -11, 12, -12, 11, -12, 11, -13, 10, -1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hy2gy"]
 shader = ExtResource("7_sv86j")
-shader_parameter/amplitude_x = 6.5197700016561555e-09
+shader_parameter/amplitude_x = 6.519770001656155e-09
 shader_parameter/amplitude_y = 0.01000000699477002
 shader_parameter/frequency = 9.500000004436516e-07
 shader_parameter/speed = 1.0000002849999996
@@ -319,7 +319,7 @@ polygon = PackedVector2Array(16, -16, -10, -16, -10, 16, 9, 16, 9, 2, 10, 2, 10,
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htvem"]
 shader = ExtResource("7_sv86j")
-shader_parameter/amplitude_x = 6.5197700016561555e-09
+shader_parameter/amplitude_x = 6.519770001656155e-09
 shader_parameter/amplitude_y = 0.01000000699477002
 shader_parameter/frequency = 9.500000004436516e-07
 shader_parameter/speed = 1.0000002849999996

@@ -22,27 +22,27 @@
 [sub_resource type="Resource" id="Resource_0hxi7"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
-Value = 10.0
+Value = 20.0
 
 [sub_resource type="Resource" id="Resource_kf6tu"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("4_jeiil")
-Value = 4.0
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_2xa3j"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("5_h0e5d")
-Value = 1.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_p8mo6"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("6_ttcan")
-Value = 1.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_e2cik"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("7_gd2bv")
-Value = 1.0
+Value = 2.0
 
 [sub_resource type="Resource" id="Resource_k7r3a"]
 script = ExtResource("2_ieqod")
@@ -61,7 +61,7 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_iseox"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("11_p8mo6")
-Value = 4.0
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_23l18"]
 script = ExtResource("2_ieqod")

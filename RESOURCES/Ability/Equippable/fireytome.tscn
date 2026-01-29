@@ -25,11 +25,13 @@ script = ExtResource("4_pthjs")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
 [sub_resource type="Resource" id="Resource_tf3ew"]
+resource_local_to_scene = true
 script = ExtResource("5_17fsu")
 Template = ExtResource("6_pthjs")
 Value = 2
 
 [sub_resource type="Resource" id="Resource_8xti5"]
+resource_local_to_scene = true
 script = ExtResource("5_17fsu")
 Template = ExtResource("11_17fsu")
 Value = 1
