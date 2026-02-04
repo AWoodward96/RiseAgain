@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_ahkqk")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/heroicleap_shape.tres"
+BaseAccuracy = 90.0
 TargetRange = Vector2i(1, 4)

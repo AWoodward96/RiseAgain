@@ -27,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_oxnwj"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("3_wfm6a")
-Value = 12.0
+Value = 9.0
 
 [sub_resource type="Resource" id="Resource_io0w6"]
 script = ExtResource("2_jwwlf")
@@ -56,7 +56,7 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_kyck7"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("9_ef8hw")
-Value = 2.0
+Value = 4.0
 
 [sub_resource type="Resource" id="Resource_grctv"]
 script = ExtResource("2_jwwlf")
@@ -71,48 +71,56 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_el350"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("12_2d8m2")
-Value = 4.0
+Value = 7.0
 
 [sub_resource type="Resource" id="Resource_fpc5n"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("13_k8vvo")
 
 [sub_resource type="Resource" id="Resource_k8vvo"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("3_wfm6a")
 Value = 2
 
 [sub_resource type="Resource" id="Resource_8tpyh"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("4_yo3n0")
 Value = 2
 
 [sub_resource type="Resource" id="Resource_q10uh"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("5_yn44r")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_agawq"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("6_o1jfj")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_cs8wg"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("7_8v775")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_6ctjk"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("10_h8hmd")
 Value = 4
 
 [sub_resource type="Resource" id="Resource_1l8yn"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("12_2d8m2")
 Value = 3
 
 [sub_resource type="Resource" id="Resource_u3i2e"]
+resource_local_to_scene = true
 script = ExtResource("2_jwwlf")
 Template = ExtResource("13_k8vvo")
 Value = 1
@@ -145,7 +153,7 @@ Value = 20.0
 [sub_resource type="Resource" id="Resource_qan0l"]
 script = ExtResource("2_jwwlf")
 Template = ExtResource("9_ef8hw")
-Value = 55.0
+Value = 38.0
 
 [sub_resource type="Resource" id="Resource_yxw23"]
 script = ExtResource("2_jwwlf")

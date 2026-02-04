@@ -18,12 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://gjhjsx5ie5ib" path="res://ART/Icons/Units/maws.png" id="12_ybl6f"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_8cu53"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_gmg4r"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="13_vsp00"]
 [ext_resource type="Resource" uid="uid://d0pc0qqhit6v0" path="res://RESOURCES/Unlocks/ULK_iron_teeth.tres" id="14_gmg4r"]
 
 [sub_resource type="Resource" id="Resource_y8dmy"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("3_pvb8s")
-Value = 6.0
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_rjmvu"]
 script = ExtResource("2_8dov0")
@@ -66,6 +67,51 @@ Value = 2.0
 script = ExtResource("2_8dov0")
 Template = ExtResource("12_vsp00")
 
+[sub_resource type="Resource" id="Resource_8cu53"]
+script = ExtResource("2_8dov0")
+Template = ExtResource("13_vsp00")
+Value = 8.0
+
+[sub_resource type="Resource" id="Resource_vsp00"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("3_pvb8s")
+
+[sub_resource type="Resource" id="Resource_nix8i"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("4_ipmbt")
+
+[sub_resource type="Resource" id="Resource_aro6r"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("5_gmg4r")
+
+[sub_resource type="Resource" id="Resource_4hns1"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("6_2jou7")
+
+[sub_resource type="Resource" id="Resource_gl40h"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("7_0tn6n")
+
+[sub_resource type="Resource" id="Resource_4yrih"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("9_xfc65")
+
+[sub_resource type="Resource" id="Resource_8atxj"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("11_0tn6n")
+
+[sub_resource type="Resource" id="Resource_2uqlo"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("12_vsp00")
+
 [sub_resource type="Resource" id="Resource_7p4q4"]
 script = ExtResource("2_8dov0")
 Template = ExtResource("3_pvb8s")
@@ -104,12 +150,18 @@ script = ExtResource("2_8dov0")
 Template = ExtResource("12_vsp00")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_4bfy3"]
+resource_local_to_scene = true
+script = ExtResource("2_8dov0")
+Template = ExtResource("13_vsp00")
+Value = 20.0
+
 [resource]
 resource_name = "UT_Maws"
 script = ExtResource("13_8cu53")
 VisualPrefab = ExtResource("12_8dov0")
-BaseStats = Array[ExtResource("2_8dov0")]([SubResource("Resource_y8dmy"), SubResource("Resource_rjmvu"), SubResource("Resource_shavg"), SubResource("Resource_qdbt3"), SubResource("Resource_uuntv"), SubResource("Resource_w8i8v"), SubResource("Resource_l55jw"), SubResource("Resource_q4gto"), SubResource("Resource_xfc65"), SubResource("Resource_k2agg")])
-StatGrowths = Array[ExtResource("2_8dov0")]([SubResource("Resource_7p4q4"), SubResource("Resource_bc3ky"), SubResource("Resource_wa1o6"), SubResource("Resource_xlaf5"), SubResource("Resource_l6fcc"), SubResource("Resource_13jhf"), SubResource("Resource_m8u7j"), SubResource("Resource_ybl6f")])
+BaseStats = Array[ExtResource("2_8dov0")]([SubResource("Resource_y8dmy"), SubResource("Resource_rjmvu"), SubResource("Resource_shavg"), SubResource("Resource_qdbt3"), SubResource("Resource_uuntv"), SubResource("Resource_w8i8v"), SubResource("Resource_l55jw"), SubResource("Resource_q4gto"), SubResource("Resource_xfc65"), SubResource("Resource_k2agg"), SubResource("Resource_8cu53")])
+StatGrowths = Array[ExtResource("2_8dov0")]([SubResource("Resource_7p4q4"), SubResource("Resource_bc3ky"), SubResource("Resource_wa1o6"), SubResource("Resource_xlaf5"), SubResource("Resource_l6fcc"), SubResource("Resource_13jhf"), SubResource("Resource_m8u7j"), SubResource("Resource_ybl6f"), SubResource("Resource_4bfy3")])
 Affinity = ExtResource("1_bq2u5")
 StartingEquippedWeapon = ExtResource("14_gmg4r")
 Descriptors = Array[ExtResource("11_m8u7j")]([ExtResource("12_ipmbt")])

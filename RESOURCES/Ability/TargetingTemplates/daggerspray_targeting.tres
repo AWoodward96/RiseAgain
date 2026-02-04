@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_1800n")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/daggerspray_shape.tres"
+BaseAccuracy = 75.0
 TargetRange = Vector2i(1, 3)

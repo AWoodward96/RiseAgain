@@ -16,17 +16,18 @@
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_5vblj"]
 [ext_resource type="Texture2D" uid="uid://dyxi3ljbh2hnr" path="res://ART/Icons/Units/kraul.png" id="12_7tp3k"]
 [ext_resource type="PackedScene" uid="uid://burjhghcutqt3" path="res://RESOURCES/Units/Enemy/Kraul/VIS_Kraul.tscn" id="12_cpwsp"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="13_4i7q3"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_vpkiq"]
 
 [sub_resource type="Resource" id="Resource_mnerb"]
 script = ExtResource("2_cpwsp")
 Template = ExtResource("3_5vblj")
-Value = 24.0
+Value = 18.0
 
 [sub_resource type="Resource" id="Resource_cncgh"]
 script = ExtResource("2_cpwsp")
 Template = ExtResource("4_rp5r5")
-Value = 12.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_ybj8m"]
 script = ExtResource("2_cpwsp")
@@ -68,35 +69,48 @@ script = ExtResource("2_cpwsp")
 Template = ExtResource("12_4i7q3")
 Value = 1.0
 
-[sub_resource type="Resource" id="Resource_kpxsb"]
+[sub_resource type="Resource" id="Resource_g8lhr"]
+script = ExtResource("2_cpwsp")
+Template = ExtResource("13_4i7q3")
+Value = 8.0
+
+[sub_resource type="Resource" id="Resource_4i7q3"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("3_5vblj")
 
-[sub_resource type="Resource" id="Resource_4i7q3"]
+[sub_resource type="Resource" id="Resource_7tp3k"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("4_rp5r5")
 
-[sub_resource type="Resource" id="Resource_g8lhr"]
+[sub_resource type="Resource" id="Resource_vpkiq"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("5_kpxsb")
 
-[sub_resource type="Resource" id="Resource_7tp3k"]
+[sub_resource type="Resource" id="Resource_05oah"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("6_4i7q3")
 
-[sub_resource type="Resource" id="Resource_vpkiq"]
+[sub_resource type="Resource" id="Resource_837wf"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("7_8cpcd")
 
-[sub_resource type="Resource" id="Resource_05oah"]
+[sub_resource type="Resource" id="Resource_j2pbe"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("9_uvyoa")
 
-[sub_resource type="Resource" id="Resource_837wf"]
+[sub_resource type="Resource" id="Resource_pwbbv"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("11_kpxsb")
 
-[sub_resource type="Resource" id="Resource_j2pbe"]
+[sub_resource type="Resource" id="Resource_7t7ls"]
+resource_local_to_scene = true
 script = ExtResource("2_cpwsp")
 Template = ExtResource("12_4i7q3")
 
@@ -139,12 +153,18 @@ script = ExtResource("2_cpwsp")
 Template = ExtResource("12_4i7q3")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_e8hu3"]
+resource_local_to_scene = true
+script = ExtResource("2_cpwsp")
+Template = ExtResource("13_4i7q3")
+Value = 30.0
+
 [resource]
 resource_name = "UT_Kraul"
 script = ExtResource("13_vpkiq")
 VisualPrefab = ExtResource("12_cpwsp")
-BaseStats = Array[ExtResource("2_cpwsp")]([SubResource("Resource_mnerb"), SubResource("Resource_cncgh"), SubResource("Resource_ybj8m"), SubResource("Resource_o6c7b"), SubResource("Resource_saq6j"), SubResource("Resource_c0w1m"), SubResource("Resource_16pkb"), SubResource("Resource_5505d"), SubResource("Resource_8cpcd"), SubResource("Resource_di8xs")])
-StatGrowths = Array[ExtResource("2_cpwsp")]([SubResource("Resource_en8u8"), SubResource("Resource_8o7ln"), SubResource("Resource_15pll"), SubResource("Resource_hij44"), SubResource("Resource_sp7nq"), SubResource("Resource_agovv"), SubResource("Resource_uvyoa"), SubResource("Resource_gxxs5")])
+BaseStats = Array[ExtResource("2_cpwsp")]([SubResource("Resource_mnerb"), SubResource("Resource_cncgh"), SubResource("Resource_ybj8m"), SubResource("Resource_o6c7b"), SubResource("Resource_saq6j"), SubResource("Resource_c0w1m"), SubResource("Resource_16pkb"), SubResource("Resource_5505d"), SubResource("Resource_8cpcd"), SubResource("Resource_di8xs"), SubResource("Resource_g8lhr")])
+StatGrowths = Array[ExtResource("2_cpwsp")]([SubResource("Resource_en8u8"), SubResource("Resource_8o7ln"), SubResource("Resource_15pll"), SubResource("Resource_hij44"), SubResource("Resource_sp7nq"), SubResource("Resource_agovv"), SubResource("Resource_uvyoa"), SubResource("Resource_gxxs5"), SubResource("Resource_e8hu3")])
 Affinity = ExtResource("1_6eonn")
 DebugName = "Kraul"
 loc_DisplayName = "unit_kraul_name"

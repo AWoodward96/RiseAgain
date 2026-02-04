@@ -749,6 +749,7 @@ func DoHeal(_result : HealStepResult):
 func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 	if _result.Miss:
 		Juice.CreateMissPopup(CurrentTile)
+		visual.PlayMissAnimation()
 	else:
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 

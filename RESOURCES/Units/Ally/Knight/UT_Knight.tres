@@ -27,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_geyf3"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("3_mywxh")
-Value = 16.0
+Value = 12.0
 
 [sub_resource type="Resource" id="Resource_nnsad"]
 script = ExtResource("2_pgscv")
@@ -56,7 +56,7 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_avcmd"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("9_x6nrg")
-Value = 1.0
+Value = 3.0
 
 [sub_resource type="Resource" id="Resource_me2js"]
 script = ExtResource("2_pgscv")
@@ -76,44 +76,52 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_j23g5"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("13_6h1w4")
-Value = 2.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_6h1w4"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("3_mywxh")
 Value = 3
 
 [sub_resource type="Resource" id="Resource_m8r80"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("4_eic0y")
 Value = 3
 
 [sub_resource type="Resource" id="Resource_t8j0w"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("5_4jjhj")
 Value = 2
 
 [sub_resource type="Resource" id="Resource_v2fhp"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("6_6itg3")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_55r7i"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("7_w6q17")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_u0hbq"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("10_ddobi")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_g8s3k"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("12_6i5t4")
 Value = 2
 
 [sub_resource type="Resource" id="Resource_juknm"]
+resource_local_to_scene = true
 script = ExtResource("2_pgscv")
 Template = ExtResource("13_6h1w4")
 Value = 2
@@ -146,7 +154,7 @@ Value = 30.0
 [sub_resource type="Resource" id="Resource_o4cw6"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("9_x6nrg")
-Value = 40.0
+Value = 24.0
 
 [sub_resource type="Resource" id="Resource_uxlcr"]
 script = ExtResource("2_pgscv")
@@ -161,7 +169,7 @@ Value = 20.0
 [sub_resource type="Resource" id="Resource_s5xx6"]
 script = ExtResource("2_pgscv")
 Template = ExtResource("13_6h1w4")
-Value = 35.0
+Value = 50.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83xpp"]
 atlas = ExtResource("23_6h1w4")

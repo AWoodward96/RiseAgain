@@ -25,7 +25,7 @@
 [sub_resource type="Resource" id="Resource_sb7fm"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("1_f24q4")
-Value = 12.0
+Value = 9.0
 
 [sub_resource type="Resource" id="Resource_bi4rj"]
 script = ExtResource("2_dbc0j")
@@ -75,42 +75,50 @@ Value = 1.0
 [sub_resource type="Resource" id="Resource_g7qvw"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("13_6e1ou")
-Value = 2.0
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_ggk84"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("1_f24q4")
 Value = 4
 
 [sub_resource type="Resource" id="Resource_6e1ou"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("3_grtee")
 
 [sub_resource type="Resource" id="Resource_31irx"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("4_urf7l")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_7eact"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("5_thm0u")
 Value = 3
 
 [sub_resource type="Resource" id="Resource_whw5x"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("6_5xmr1")
 Value = 1
 
 [sub_resource type="Resource" id="Resource_yexbw"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("10_te031")
 Value = 3
 
 [sub_resource type="Resource" id="Resource_gwgpw"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("12_ggk84")
 
 [sub_resource type="Resource" id="Resource_uwiqj"]
+resource_local_to_scene = true
 script = ExtResource("2_dbc0j")
 Template = ExtResource("13_6e1ou")
 Value = 3
@@ -143,7 +151,7 @@ Value = 25.0
 [sub_resource type="Resource" id="Resource_eeey2"]
 script = ExtResource("2_dbc0j")
 Template = ExtResource("9_0k8gf")
-Value = 40.0
+Value = 36.0
 
 [sub_resource type="Resource" id="Resource_5dfvo"]
 script = ExtResource("2_dbc0j")

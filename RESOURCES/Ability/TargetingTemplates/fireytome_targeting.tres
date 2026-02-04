@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_iwtfm")
+BaseAccuracy = 75.0
 TargetRange = Vector2i(1, 2)
 TeamTargeting = 2

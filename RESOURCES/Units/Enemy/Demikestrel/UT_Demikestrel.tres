@@ -23,7 +23,7 @@
 [sub_resource type="Resource" id="Resource_mgsdi"]
 script = ExtResource("2_bnito")
 Template = ExtResource("3_i5xwm")
-Value = 50.0
+Value = 37.0
 
 [sub_resource type="Resource" id="Resource_5iok2"]
 script = ExtResource("2_bnito")
@@ -53,7 +53,7 @@ Value = 8.0
 [sub_resource type="Resource" id="Resource_y4d5p"]
 script = ExtResource("2_bnito")
 Template = ExtResource("9_0sn5d")
-Value = 10.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_nwvi7"]
 script = ExtResource("2_bnito")
@@ -75,34 +75,42 @@ script = ExtResource("2_bnito")
 Template = ExtResource("13_ql63x")
 
 [sub_resource type="Resource" id="Resource_o1jjg"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("3_i5xwm")
 
 [sub_resource type="Resource" id="Resource_ql63x"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("4_87imx")
 
 [sub_resource type="Resource" id="Resource_yue05"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("5_n1su1")
 
 [sub_resource type="Resource" id="Resource_nmej7"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("6_km4nm")
 
 [sub_resource type="Resource" id="Resource_ih1ad"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("7_dwwwo")
 
 [sub_resource type="Resource" id="Resource_d7ucy"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("10_cd505")
 
 [sub_resource type="Resource" id="Resource_e5ips"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("12_o1jjg")
 
 [sub_resource type="Resource" id="Resource_w62fr"]
+resource_local_to_scene = true
 script = ExtResource("2_bnito")
 Template = ExtResource("13_ql63x")
 
@@ -134,7 +142,7 @@ Value = 10.0
 [sub_resource type="Resource" id="Resource_rwauj"]
 script = ExtResource("2_bnito")
 Template = ExtResource("9_0sn5d")
-Value = 10.0
+Value = 40.0
 
 [sub_resource type="Resource" id="Resource_tsios"]
 script = ExtResource("2_bnito")

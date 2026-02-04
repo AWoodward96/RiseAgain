@@ -6,3 +6,4 @@
 script = ExtResource("1_7kbxq")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/slipnslash_shape.tres"
 stopShapeOnWall = true
+BaseAccuracy = 75.0

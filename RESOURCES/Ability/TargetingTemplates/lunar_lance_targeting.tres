@@ -6,3 +6,4 @@
 script = ExtResource("1_ujt53")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/lunar_lance_shape.tres"
 stopShapeOnWall = true
+BaseAccuracy = 85.0

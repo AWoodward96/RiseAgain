@@ -16,12 +16,13 @@
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="12_4mxi4"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_mef65"]
 [ext_resource type="PackedScene" uid="uid://cufy1338gshuy" path="res://RESOURCES/Units/Other/Merchant/VIS_Merchant.tscn" id="12_ruh1m"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="13_4mxi4"]
 [ext_resource type="Texture2D" uid="uid://dlar8v1wwyxk7" path="res://ART/Icons/Units/merchant.png" id="13_hfrcm"]
 
 [sub_resource type="Resource" id="Resource_yf4qt"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("3_hfrcm")
-Value = 10.0
+Value = 8.0
 
 [sub_resource type="Resource" id="Resource_38tme"]
 script = ExtResource("2_ruh1m")
@@ -60,12 +61,57 @@ Value = 2.0
 [sub_resource type="Resource" id="Resource_byd46"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("11_q0f5r")
-Value = 8.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_ri8r6"]
 script = ExtResource("2_ruh1m")
 Template = ExtResource("12_4mxi4")
 Value = 4.0
+
+[sub_resource type="Resource" id="Resource_mef65"]
+script = ExtResource("2_ruh1m")
+Template = ExtResource("13_4mxi4")
+Value = 1.0
+
+[sub_resource type="Resource" id="Resource_4mxi4"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("3_hfrcm")
+
+[sub_resource type="Resource" id="Resource_xjxf4"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("4_2utqv")
+
+[sub_resource type="Resource" id="Resource_thale"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("5_mtcv2")
+
+[sub_resource type="Resource" id="Resource_du8vd"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("6_q0f5r")
+
+[sub_resource type="Resource" id="Resource_i5b0s"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("7_4mxi4")
+
+[sub_resource type="Resource" id="Resource_la2xw"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("9_ri8r6")
+
+[sub_resource type="Resource" id="Resource_wnfhn"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("11_q0f5r")
+
+[sub_resource type="Resource" id="Resource_7bm1a"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("12_4mxi4")
 
 [sub_resource type="Resource" id="Resource_1ondd"]
 script = ExtResource("2_ruh1m")
@@ -106,12 +152,18 @@ script = ExtResource("2_ruh1m")
 Template = ExtResource("12_4mxi4")
 Value = 40.0
 
+[sub_resource type="Resource" id="Resource_8r523"]
+resource_local_to_scene = true
+script = ExtResource("2_ruh1m")
+Template = ExtResource("13_4mxi4")
+Value = 10.0
+
 [resource]
 resource_name = "UT_Merchant"
 script = ExtResource("12_mef65")
 VisualPrefab = ExtResource("12_ruh1m")
-BaseStats = Array[ExtResource("2_ruh1m")]([SubResource("Resource_yf4qt"), SubResource("Resource_38tme"), SubResource("Resource_61wed"), SubResource("Resource_am1pm"), SubResource("Resource_kdunh"), SubResource("Resource_0uer2"), SubResource("Resource_oarue"), SubResource("Resource_svil8"), SubResource("Resource_byd46"), SubResource("Resource_ri8r6")])
-StatGrowths = Array[ExtResource("2_ruh1m")]([SubResource("Resource_1ondd"), SubResource("Resource_l63yt"), SubResource("Resource_tm4r2"), SubResource("Resource_cdsbo"), SubResource("Resource_rl6a8"), SubResource("Resource_624ns"), SubResource("Resource_uvumg"), SubResource("Resource_vvbq6")])
+BaseStats = Array[ExtResource("2_ruh1m")]([SubResource("Resource_yf4qt"), SubResource("Resource_38tme"), SubResource("Resource_61wed"), SubResource("Resource_am1pm"), SubResource("Resource_kdunh"), SubResource("Resource_0uer2"), SubResource("Resource_oarue"), SubResource("Resource_svil8"), SubResource("Resource_byd46"), SubResource("Resource_ri8r6"), SubResource("Resource_mef65")])
+StatGrowths = Array[ExtResource("2_ruh1m")]([SubResource("Resource_1ondd"), SubResource("Resource_l63yt"), SubResource("Resource_tm4r2"), SubResource("Resource_cdsbo"), SubResource("Resource_rl6a8"), SubResource("Resource_624ns"), SubResource("Resource_uvumg"), SubResource("Resource_vvbq6"), SubResource("Resource_8r523")])
 Affinity = ExtResource("1_3anym")
 DebugName = "Merchant"
 loc_DisplayName = "unit_merchant_name"

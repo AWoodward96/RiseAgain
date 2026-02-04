@@ -73,6 +73,7 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 			log += str("\n[color=orange]Failed to find Affinity: [/color]", _data["affinity"], " - [color=orange]Did you spell it right?[/color]")
 
 	ModifyUnitStat(_unitTemplate, stat_dict["Vitality"], _data["Vitality"])
+	ModifyUnitStat(_unitTemplate, stat_dict["Skill"], _data["Skill"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Attack"], _data["Attack"])
 	ModifyUnitStat(_unitTemplate, stat_dict["Defense"], _data["Defense"])
 	ModifyUnitStat(_unitTemplate, stat_dict["SpAttack"], _data["SpAttack"])
@@ -83,6 +84,7 @@ func ModifyUnitTemplate(_unitTemplate : UnitTemplate, _path : String, _data):
 	ModifyUnitStat(_unitTemplate, stat_dict["Wisdom"], _data["Wisdom"])
 
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Vitality"], _data["gVitality"])
+	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Skill"], _data["gSkill"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Attack"], _data["gAttack"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["Defense"], _data["gDefense"])
 	ModifyUnitStatGrowths(_unitTemplate, stat_dict["SpAttack"], _data["gSpAttack"])
@@ -169,6 +171,7 @@ func ModifyUnitStatGrowths(_unitTemplate : UnitTemplate, _statPath : String, _va
 			var statDef = StatDef.new()
 			statDef.Template = statTemplate
 			statDef.Value = _value
+			statDef.resource_local_to_scene = true
 			_unitTemplate.StatGrowths.append(statDef)
 
 func ModifyUnitPrestiegeCaps(_unitTemplate : UnitTemplate, _savePath : String, _statPath : String, _value):
@@ -177,6 +180,7 @@ func ModifyUnitPrestiegeCaps(_unitTemplate : UnitTemplate, _savePath : String, _
 	if statTemplate != null:
 		newDef.Value = _value
 		newDef.Template = statTemplate
+		newDef.resource_local_to_scene = true
 		_unitTemplate.PrestiegeCaps.append(newDef)
 
 

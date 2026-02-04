@@ -27,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_drfyp"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("2_n5q5a")
-Value = 12.0
+Value = 9.0
 
 [sub_resource type="Resource" id="Resource_676dy"]
 script = ExtResource("3_pgxgp")
@@ -56,7 +56,7 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_gs6il"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("9_ls0fi")
-Value = 3.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_8msav"]
 script = ExtResource("3_pgxgp")
@@ -73,6 +73,46 @@ Template = ExtResource("12_n6gr5")
 Value = 6.0
 
 [sub_resource type="Resource" id="Resource_wpxot"]
+script = ExtResource("3_pgxgp")
+Template = ExtResource("13_1qlfw")
+
+[sub_resource type="Resource" id="Resource_1qlfw"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("2_n5q5a")
+
+[sub_resource type="Resource" id="Resource_csh4u"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("4_uhkmf")
+
+[sub_resource type="Resource" id="Resource_02dn3"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("5_7sjbl")
+
+[sub_resource type="Resource" id="Resource_11n1w"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("6_vk4tj")
+
+[sub_resource type="Resource" id="Resource_hnts0"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("7_3d0wk")
+
+[sub_resource type="Resource" id="Resource_xa3tn"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("10_vyxpi")
+
+[sub_resource type="Resource" id="Resource_y1k0h"]
+resource_local_to_scene = true
+script = ExtResource("3_pgxgp")
+Template = ExtResource("12_n6gr5")
+
+[sub_resource type="Resource" id="Resource_rw1wt"]
+resource_local_to_scene = true
 script = ExtResource("3_pgxgp")
 Template = ExtResource("13_1qlfw")
 

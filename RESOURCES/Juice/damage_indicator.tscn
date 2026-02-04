@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://chgyuivvaogoe"]
 
-[ext_resource type="Texture2D" uid="uid://bcnkes7qb06cl" path="res://ART/UI/willkillicon.png" id="1_efn74"]
 [ext_resource type="Script" uid="uid://c87sjcse7aq1e" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_indicator.gd" id="1_xo2sr"]
 [ext_resource type="PackedScene" uid="uid://d1laxqelcbhi8" path="res://RESOURCES/UI/GenericEntrys/effect_entry.tscn" id="2_gie3m"]
 [ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="3_ne7nt"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="8_13h2x"]
 [ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="9_q4e24"]
 [ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="10_461c3"]
+[ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="10_rtglw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13h2x"]
 
@@ -71,20 +71,15 @@ font_size = 12
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_2st6q"]
-font = ExtResource("3_ne7nt")
-font_size = 12
-shadow_color = Color(0, 0, 0, 1)
-
-[node name="DamageIndicator" type="Node2D" unique_id=2065648661 node_paths=PackedStringArray("healthbar", "crit_chance_label", "affinityIcon", "positive_affinity", "negative_affinity", "death_indicator", "effects_preview") groups=["DamageIndicators"]]
+[node name="DamageIndicator" type="Node2D" unique_id=2065648661 node_paths=PackedStringArray("healthbar", "hit_chance_label", "crit_chance_label", "affinityIcon", "positive_affinity", "negative_affinity", "effects_preview") groups=["DamageIndicators"]]
 script = ExtResource("1_xo2sr")
 effectEntry = ExtResource("2_gie3m")
 healthbar = NodePath("VBoxContainer/HealthBarParent")
+hit_chance_label = NodePath("VBoxContainer/HealthBarParent/HitChance")
 crit_chance_label = NodePath("VBoxContainer/HealthBarParent/CritChance")
 affinityIcon = NodePath("VBoxContainer/AffinityIcon")
 positive_affinity = NodePath("VBoxContainer/AffinityIcon/PositiveAffinity")
 negative_affinity = NodePath("VBoxContainer/AffinityIcon/NegativeAffinity")
-death_indicator = NodePath("VBoxContainer/HealthBarParent/DeathIndicator")
 effects_preview = NodePath("VBoxContainer/EffectsPreview")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1738444503]
@@ -145,21 +140,12 @@ ExtraHealthBarParent = NodePath("Offset/HBoxContainer/ExtraHealthBarParent")
 ExtraHealthBarLabel = NodePath("Offset/HBoxContainer/ExtraHealthBarParent/ExtraHealthBarLabel")
 HideTimer = NodePath("AutoHide")
 
-[node name="DeathIndicator" type="TextureRect" parent="VBoxContainer/HealthBarParent" unique_id=95425159]
-modulate = Color(1, 0, 0, 0.364706)
-layout_mode = 0
-offset_top = -60.0
-offset_right = 64.0
-offset_bottom = 4.0
-texture = ExtResource("1_efn74")
-expand_mode = 1
-
 [node name="CritChance" type="Label" parent="VBoxContainer/HealthBarParent" unique_id=1647063969]
 self_modulate = Color(1, 0.96, 0.4, 1)
 layout_mode = 0
-offset_left = 25.0
+offset_left = 22.0
 offset_top = -20.0
-offset_right = 64.0
+offset_right = 61.0
 offset_bottom = 3.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_ne7nt")
@@ -167,6 +153,20 @@ theme_override_font_sizes/font_size = 6
 text = "10%"
 label_settings = ExtResource("5_pc21c")
 horizontal_alignment = 2
+
+[node name="HitChance" type="Label" parent="VBoxContainer/HealthBarParent" unique_id=1580941098]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -18.0
+offset_right = 61.0
+offset_bottom = 5.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ne7nt")
+theme_override_font_sizes/font_size = 6
+text = "10%"
+label_settings = ExtResource("10_rtglw")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Offset" type="Control" parent="VBoxContainer/HealthBarParent" unique_id=359292157]
 custom_minimum_size = Vector2(64, 8)
@@ -274,33 +274,5 @@ vertical_alignment = 1
 [node name="AutoHide" type="Timer" parent="VBoxContainer/HealthBarParent" unique_id=542488714]
 wait_time = 2.0
 one_shot = true
-
-[node name="DamageBeingDealt" type="RichTextLabel" parent="." unique_id=556683613]
-visible = false
-custom_minimum_size = Vector2(48, 32)
-offset_top = 37.0
-offset_right = 64.0
-offset_bottom = 69.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_fonts/normal_font = ExtResource("3_ne7nt")
-theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "[center][color=#e6a2a2]-10[/color][/center]"
-fit_content = true
-scroll_active = false
-vertical_alignment = 1
-
-[node name="HPListener" type="Label" parent="." unique_id=798487210]
-visible = false
-offset_top = 23.0
-offset_right = 64.0
-offset_bottom = 44.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 6
-text = "01/23"
-label_settings = SubResource("LabelSettings_2st6q")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="timeout" from="VBoxContainer/HealthBarParent/AutoHide" to="." method="AutoHide"]

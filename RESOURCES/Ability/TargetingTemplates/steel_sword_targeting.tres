@@ -4,3 +4,4 @@
 
 [resource]
 script = ExtResource("1_4wmk0")
+BaseAccuracy = 80.0

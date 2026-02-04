@@ -5,7 +5,9 @@ class_name DamageIndicator
 @export var effectEntry : PackedScene
 @export var healthbar : UnitHealthBar
 
-@export var crit_chance_label = Label
+@export var preview_bg : ColorRect
+@export var hit_chance_label : Label
+@export var crit_chance_label : Label
 @export var affinityIcon: TextureRect
 @export var positive_affinity: TextureRect
 @export var negative_affinity: TextureRect
@@ -36,9 +38,6 @@ var maxHealth : int :
 		else:
 			return 0
 
-var previewedHP # The hp value visible to the player. Gets ticked down over the course of the preview
-var resultingHP # The hp value that this unit will have if the ability hits. PreviewedHP ticks down to this value
-var previewHPTween : Tween
 var submerged : bool
 var assignedUnit : UnitInstance
 var assignedTile : Tile
@@ -50,6 +49,7 @@ var normalDamage : int :
 var normalDamageModified : bool = false
 var collisionDamage : int
 var healAmount : int
+var hitChance : float
 var critChance : float
 
 var effects : Array[CombatEffectTemplate]
@@ -76,19 +76,29 @@ func ShowPreview():
 
 	# Abilities can crit too however - so get that in there
 	if crit_chance_label != null:
-		crit_chance_label.text = str(clamp(critChance, 0, 1) * 100) + "%"
+		crit_chance_label.visible = true
+		crit_chance_label.text = str("%01.0d" % (clamp(critChance, 0, 1) * 100)) + "%"
+
+	if hit_chance_label != null:
+		hit_chance_label.visible = true
+		hit_chance_label.text = str("%01.0d" % (clamp(hitChance, 0, 1) * 100)) + "%"
 
 	if !submerged:
-		resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)
+		var resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)
 
-		death_indicator.visible = resultingHP <= 0
+		if death_indicator != null:
+			death_indicator.visible = resultingHP <= 0
 	else:
-		death_indicator.visible = false
+		if death_indicator != null:
+			death_indicator.visible = false
 
 	for template in effects:
 		var entry = effects_preview.CreateEntry(effectEntry)
 		entry.texture.texture = template.loc_icon
 		entry.label.text = template.loc_name
+
+	if preview_bg != null:
+		preview_bg.visible = true
 
 	ShowHealthBar(true, false)
 	healthbar.RefreshIncomingDamageBar()
@@ -125,8 +135,12 @@ func AutoHide():
 
 func ShowCombatResult(_netHealthChange, _complete : Callable):
 	ShowHealthBar(true)
-	death_indicator.visible = false
-	crit_chance_label.visible = false
+
+	if death_indicator != null: death_indicator.visible = false
+	if crit_chance_label != null: crit_chance_label.visible = false
+	if hit_chance_label != null: hit_chance_label.visible = false
+	if preview_bg != null: preview_bg.visible = false
+
 	healthBarTweenCallable = _complete
 	healthbar.ModifyHealthOverTime(_netHealthChange)
 
@@ -143,7 +157,8 @@ func DeathState():
 
 func HideCombatClutter():
 	affinityIcon.visible = false
-	death_indicator.visible = false
+	if death_indicator != null:
+		death_indicator.visible = false
 	crit_chance_label.visible = false
 	pass
 
@@ -156,14 +171,19 @@ func HidePreview():
 
 func PreviewCanceled():
 	healthbar.visible = false
-	if previewHPTween != null:
-		previewHPTween.stop()
+
+	healthbar.CancelPreview()
 
 	normalDamage = 0
 	healAmount = 0
 	collisionDamage = 0
 	critChance = 0
 	normalDamageModified = false
+
+	if death_indicator != null: death_indicator.visible = false
+	if crit_chance_label != null: crit_chance_label.visible = false
+	if hit_chance_label != null: hit_chance_label.visible = false
+	if preview_bg != null: preview_bg.visible = false
 
 	if effects_preview != null:
 		effects_preview.ClearEntries()

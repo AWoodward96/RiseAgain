@@ -108,10 +108,6 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("4_a7udy")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pw1ye"]
-atlas = ExtResource("4_a7udy")
-region = Rect2(320, 128, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcj1r"]
 atlas = ExtResource("4_a7udy")
 region = Rect2(384, 128, 64, 64)
@@ -339,12 +335,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pw1ye")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_bcj1r")
 }],
-"loop": false,
+"loop": true,
 "name": &"take_damage",
 "speed": 6.0
 }, {
@@ -797,7 +790,8 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_nyw57"]
-length = 0.33333334
+length = 0.16666667
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -805,10 +799,10 @@ tracks/0/path = NodePath("Visual:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -977,7 +971,7 @@ material = SubResource("ShaderMaterial_8fgcp")
 position = Vector2(32, 24)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lh3qm")
-animation = &"teleport_in"
+animation = &"take_damage"
 autoplay = "idle"
 offset = Vector2(-5, -5)
 

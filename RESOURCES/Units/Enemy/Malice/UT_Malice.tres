@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="10_10fo0"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="11_7xilb"]
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="12_0nav4"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="12_qv12s"]
 [ext_resource type="Resource" uid="uid://cxpcx3rapq312" path="res://RESOURCES/Descriptors/DES_Flying.tres" id="13_ibvjv"]
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="13_j2i3y"]
 [ext_resource type="Texture2D" uid="uid://l35xu354vsc6" path="res://ART/Icons/Units/malice.png" id="14_27e47"]
@@ -21,7 +22,7 @@
 [sub_resource type="Resource" id="Resource_wumrg"]
 script = ExtResource("2_tiuk0")
 Template = ExtResource("3_ibvjv")
-Value = 20.0
+Value = 15.0
 
 [sub_resource type="Resource" id="Resource_kedjs"]
 script = ExtResource("2_tiuk0")
@@ -62,35 +63,48 @@ script = ExtResource("2_tiuk0")
 Template = ExtResource("11_7xilb")
 Value = 3.0
 
-[sub_resource type="Resource" id="Resource_ibvjv"]
+[sub_resource type="Resource" id="Resource_mxbb2"]
+script = ExtResource("2_tiuk0")
+Template = ExtResource("12_qv12s")
+Value = 10.0
+
+[sub_resource type="Resource" id="Resource_qv12s"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("3_ibvjv")
 
-[sub_resource type="Resource" id="Resource_qv12s"]
+[sub_resource type="Resource" id="Resource_gtfrp"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("4_qv12s")
 
-[sub_resource type="Resource" id="Resource_mxbb2"]
+[sub_resource type="Resource" id="Resource_p7ony"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("5_mxbb2")
 
-[sub_resource type="Resource" id="Resource_gtfrp"]
+[sub_resource type="Resource" id="Resource_hp4jh"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("6_gtfrp")
 
-[sub_resource type="Resource" id="Resource_p7ony"]
+[sub_resource type="Resource" id="Resource_unsrb"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("7_p7ony")
 
-[sub_resource type="Resource" id="Resource_hp4jh"]
+[sub_resource type="Resource" id="Resource_10fo0"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("9_unsrb")
 
-[sub_resource type="Resource" id="Resource_unsrb"]
+[sub_resource type="Resource" id="Resource_7xilb"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("10_10fo0")
 
-[sub_resource type="Resource" id="Resource_10fo0"]
+[sub_resource type="Resource" id="Resource_0nav4"]
+resource_local_to_scene = true
 script = ExtResource("2_tiuk0")
 Template = ExtResource("11_7xilb")
 
@@ -134,13 +148,19 @@ script = ExtResource("2_tiuk0")
 Template = ExtResource("11_7xilb")
 Value = 30.0
 
+[sub_resource type="Resource" id="Resource_27e47"]
+resource_local_to_scene = true
+script = ExtResource("2_tiuk0")
+Template = ExtResource("12_qv12s")
+Value = 40.0
+
 [resource]
 resource_name = "UT_Malice"
 script = ExtResource("15_dtlep")
 VisualPrefab = ExtResource("14_tiuk0")
-BaseStats = Array[ExtResource("2_tiuk0")]([SubResource("Resource_wumrg"), SubResource("Resource_kedjs"), SubResource("Resource_6n3gk"), SubResource("Resource_8vhh4"), SubResource("Resource_iobil"), SubResource("Resource_8txa4"), SubResource("Resource_rywe8"), SubResource("Resource_fhbjn"), SubResource("Resource_so65t")])
-StatGrowths = Array[ExtResource("2_tiuk0")]([SubResource("Resource_sqq1n"), SubResource("Resource_8mvgb"), SubResource("Resource_1vtc6"), SubResource("Resource_64jxk"), SubResource("Resource_hkamm"), SubResource("Resource_us0ms"), SubResource("Resource_uvfd6"), SubResource("Resource_7ihwd")])
-PrestiegeCaps = Array[ExtResource("2_tiuk0")]([SubResource("Resource_ibvjv"), SubResource("Resource_qv12s"), SubResource("Resource_mxbb2"), SubResource("Resource_gtfrp"), SubResource("Resource_p7ony"), SubResource("Resource_hp4jh"), SubResource("Resource_unsrb"), SubResource("Resource_10fo0")])
+BaseStats = Array[ExtResource("2_tiuk0")]([SubResource("Resource_wumrg"), SubResource("Resource_kedjs"), SubResource("Resource_6n3gk"), SubResource("Resource_8vhh4"), SubResource("Resource_iobil"), SubResource("Resource_8txa4"), SubResource("Resource_rywe8"), SubResource("Resource_fhbjn"), SubResource("Resource_so65t"), SubResource("Resource_mxbb2")])
+StatGrowths = Array[ExtResource("2_tiuk0")]([SubResource("Resource_sqq1n"), SubResource("Resource_8mvgb"), SubResource("Resource_1vtc6"), SubResource("Resource_64jxk"), SubResource("Resource_hkamm"), SubResource("Resource_us0ms"), SubResource("Resource_uvfd6"), SubResource("Resource_7ihwd"), SubResource("Resource_27e47")])
+PrestiegeCaps = Array[ExtResource("2_tiuk0")]([SubResource("Resource_qv12s"), SubResource("Resource_gtfrp"), SubResource("Resource_p7ony"), SubResource("Resource_hp4jh"), SubResource("Resource_unsrb"), SubResource("Resource_10fo0"), SubResource("Resource_7xilb"), SubResource("Resource_0nav4")])
 Affinity = ExtResource("1_vxjtr")
 Tier0Abilities = Array[String](["uid://dnciao5hfmnai", "uid://cykm3j635sjew"])
 Descriptors = Array[ExtResource("12_0nav4")]([ExtResource("13_ibvjv")])

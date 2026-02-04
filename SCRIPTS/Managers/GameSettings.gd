@@ -60,7 +60,7 @@ enum TraversalResult { OK = 0, HealthModified = 1, EndMovement = 2, EndTurn = 3 
 @export var WisdomStat : StatTemplate
 @export var SpDefenseStat : StatTemplate
 @export var LuckStat : StatTemplate
-@export var MindStat : StatTemplate
+@export var SkillStat : StatTemplate
 @export var WeaponDMGModifierStat : StatTemplate
 @export var AbilityDMGModifierStat : StatTemplate
 
@@ -365,6 +365,45 @@ func CalculatePar(_map : Map):
 	var parMultiplier = GoldPercLostPerTurn * parDifference
 	return reward * (1 - parMultiplier)
 
+func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, _defender : UnitInstance, _tileData : TileTargetedData):
+	if CSR.NeverHit:
+		return 0
+
+	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
+
+
+func HitChance(_attacker : UnitInstance, _defender : UnitInstance, _weapon : UnitUsable):
+	if _attacker == null:
+		push_error("Attacker is null when HitChance is called. How can there be a hit chance if no one is attacking? Please investigate")
+		return 0
+
+	if _defender == null:
+		# If the defender doesn't exist - then don't even do this dance - just say you have 100% chance to hit
+		return 1
+
+	var weaponAccuracy = 0
+	if _weapon != null:
+		weaponAccuracy = _weapon.GetAccuracy()
+
+	var affinityModifier = 0
+	if _defender != null && _defender.Template != null:
+		affinityModifier = _attacker.Template.Affinity.GetAffinityAccuracyModifier(_defender.Template.Affinity)
+
+	# Equation is:
+	# WeaponAcc + (Skill * 2) + (Luck) + AffinityModifier
+	return (weaponAccuracy + (_attacker.GetWorkingStat(SkillStat) * 2.0) + (_attacker.GetWorkingStat(LuckStat)) + affinityModifier) / 100.0
+
+func AvoidChance(_attacker : UnitInstance, _defender : UnitInstance):
+	if _defender == null:
+		return 0
+
+	var affinityModifier = 0
+	if _defender != null && _defender.Template != null:
+		affinityModifier = _defender.Template.Affinity.GetAffinityAccuracyModifier(_attacker.Template.Affinity)
+
+	# Equation is:
+	# (Skill * 2) + (Luck)
+	return ((_defender.GetWorkingStat(SkillStat) * 2) + _defender.GetWorkingStat(LuckStat) + affinityModifier) / 100.0
 
 static func GetOriginPositionFromDirection(_unitSize : int, _position : Vector2i, _direction : Direction):
 	match (_direction):

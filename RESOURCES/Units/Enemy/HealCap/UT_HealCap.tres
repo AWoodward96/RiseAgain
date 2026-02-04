@@ -16,12 +16,13 @@
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_gi3ry"]
 [ext_resource type="Texture2D" uid="uid://cq12pc2hgi2h6" path="res://ART/Icons/Units/healcap.png" id="12_jbv3c"]
 [ext_resource type="PackedScene" uid="uid://djcp40pujey18" path="res://RESOURCES/Units/Enemy/HealCap/VIS_HealCap.tscn" id="12_y3xvp"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="13_3g7ki"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="13_fvbtl"]
 
 [sub_resource type="Resource" id="Resource_m1uct"]
 script = ExtResource("2_y3xvp")
 Template = ExtResource("3_gi3ry")
-Value = 6.0
+Value = 5.0
 
 [sub_resource type="Resource" id="Resource_ua50t"]
 script = ExtResource("2_y3xvp")
@@ -66,35 +67,48 @@ Value = 1.0
 script = ExtResource("2_y3xvp")
 Template = ExtResource("12_3g7ki")
 
-[sub_resource type="Resource" id="Resource_t6x3g"]
+[sub_resource type="Resource" id="Resource_pv884"]
+script = ExtResource("2_y3xvp")
+Template = ExtResource("13_3g7ki")
+Value = 2.0
+
+[sub_resource type="Resource" id="Resource_3g7ki"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("3_gi3ry")
 
-[sub_resource type="Resource" id="Resource_3g7ki"]
+[sub_resource type="Resource" id="Resource_jbv3c"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("4_ewst1")
 
-[sub_resource type="Resource" id="Resource_pv884"]
+[sub_resource type="Resource" id="Resource_fvbtl"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("5_t6x3g")
 
-[sub_resource type="Resource" id="Resource_jbv3c"]
+[sub_resource type="Resource" id="Resource_tdgcv"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("6_3g7ki")
 
-[sub_resource type="Resource" id="Resource_fvbtl"]
+[sub_resource type="Resource" id="Resource_4sr0s"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("7_gfxnt")
 
-[sub_resource type="Resource" id="Resource_tdgcv"]
+[sub_resource type="Resource" id="Resource_0uwhg"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("9_bxnph")
 
-[sub_resource type="Resource" id="Resource_4sr0s"]
+[sub_resource type="Resource" id="Resource_2myo3"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("11_t6x3g")
 
-[sub_resource type="Resource" id="Resource_0uwhg"]
+[sub_resource type="Resource" id="Resource_7h4qu"]
+resource_local_to_scene = true
 script = ExtResource("2_y3xvp")
 Template = ExtResource("12_3g7ki")
 
@@ -134,12 +148,18 @@ script = ExtResource("2_y3xvp")
 Template = ExtResource("12_3g7ki")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_bh4sh"]
+resource_local_to_scene = true
+script = ExtResource("2_y3xvp")
+Template = ExtResource("13_3g7ki")
+Value = 20.0
+
 [resource]
 resource_name = "UT_HealCap"
 script = ExtResource("13_fvbtl")
 VisualPrefab = ExtResource("12_y3xvp")
-BaseStats = Array[ExtResource("2_y3xvp")]([SubResource("Resource_m1uct"), SubResource("Resource_ua50t"), SubResource("Resource_rwfmq"), SubResource("Resource_27fya"), SubResource("Resource_qyajh"), SubResource("Resource_k3o6q"), SubResource("Resource_7ncay"), SubResource("Resource_jf1gk"), SubResource("Resource_gfxnt"), SubResource("Resource_ysayb")])
-StatGrowths = Array[ExtResource("2_y3xvp")]([SubResource("Resource_fegky"), SubResource("Resource_0v4vg"), SubResource("Resource_xiax8"), SubResource("Resource_ncrfs"), SubResource("Resource_irvnf"), SubResource("Resource_lv3ly"), SubResource("Resource_bxnph"), SubResource("Resource_hfe2a")])
+BaseStats = Array[ExtResource("2_y3xvp")]([SubResource("Resource_m1uct"), SubResource("Resource_ua50t"), SubResource("Resource_rwfmq"), SubResource("Resource_27fya"), SubResource("Resource_qyajh"), SubResource("Resource_k3o6q"), SubResource("Resource_7ncay"), SubResource("Resource_jf1gk"), SubResource("Resource_gfxnt"), SubResource("Resource_ysayb"), SubResource("Resource_pv884")])
+StatGrowths = Array[ExtResource("2_y3xvp")]([SubResource("Resource_fegky"), SubResource("Resource_0v4vg"), SubResource("Resource_xiax8"), SubResource("Resource_ncrfs"), SubResource("Resource_irvnf"), SubResource("Resource_lv3ly"), SubResource("Resource_bxnph"), SubResource("Resource_hfe2a"), SubResource("Resource_bh4sh")])
 Affinity = ExtResource("1_4fvcs")
 Tier0Abilities = Array[String](["uid://crgp0s3avbs4i"])
 DebugName = "HealCap"

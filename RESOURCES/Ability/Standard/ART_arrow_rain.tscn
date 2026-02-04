@@ -60,6 +60,7 @@ AgressiveStat = ExtResource("10_0gchn")
 AgressiveModType = 2
 AgressiveMod = 2.0
 DamageToHealthRatio = 0.0
+UseWeaponDataInstead = true
 
 [node name="TargetingData" type="Node2D" parent="." unique_id=1270728411]
 script = ExtResource("5_erduy")

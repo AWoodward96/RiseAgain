@@ -4,3 +4,4 @@
 
 [resource]
 script = ExtResource("1_6ypru")
+BaseAccuracy = 90.0

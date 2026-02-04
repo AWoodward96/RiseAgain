@@ -412,7 +412,6 @@ func RemoveGridEntity(_gridEntity : GridEntityBase):
 
 # This can be called outside of unit death for units that are escaping
 func RemoveUnitFromMap(_unitInstance : UnitInstance, is_death : bool = true):
-
 	await _unitInstance.IsStackFree
 
 	# Some units are bigger than one tile big - we need to clear those tiles

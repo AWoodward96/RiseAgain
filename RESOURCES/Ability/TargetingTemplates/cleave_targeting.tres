@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_hjfjs")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/cleave_shape.tres"
+BaseAccuracy = 80.0
 TargetRange = Vector2i(0, 0)

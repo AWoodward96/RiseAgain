@@ -64,6 +64,7 @@ func PlayVFX(_packedVFX: PackedScene):
 	if source != null && _packedVFX != null:
 		var vfx = _packedVFX.instantiate()
 		vfx.position = source.position
+		Map.Current.add_child(vfx)
 
 	pass
 

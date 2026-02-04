@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_lbqrr")
+BaseAccuracy = 85.0
 TargetRange = Vector2i(1, 2)

@@ -24,7 +24,7 @@
 [sub_resource type="Resource" id="Resource_4m1aq"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("1_6ahb0")
-Value = 16.0
+Value = 12.0
 
 [sub_resource type="Resource" id="Resource_wv3us"]
 script = ExtResource("2_gv3c6")
@@ -53,7 +53,7 @@ Value = 5.0
 [sub_resource type="Resource" id="Resource_gptug"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("8_bv8mq")
-Value = 6.0
+Value = 1.0
 
 [sub_resource type="Resource" id="Resource_wf3lf"]
 script = ExtResource("2_gv3c6")
@@ -70,6 +70,46 @@ Template = ExtResource("12_dv01u")
 Value = 2.0
 
 [sub_resource type="Resource" id="Resource_0yip1"]
+script = ExtResource("2_gv3c6")
+Template = ExtResource("13_0wn8q")
+
+[sub_resource type="Resource" id="Resource_dv01u"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("1_6ahb0")
+
+[sub_resource type="Resource" id="Resource_0wn8q"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("3_tog8l")
+
+[sub_resource type="Resource" id="Resource_q7tsj"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("4_ntgrw")
+
+[sub_resource type="Resource" id="Resource_xby78"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("5_r8yan")
+
+[sub_resource type="Resource" id="Resource_pp7pm"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("6_wqq0f")
+
+[sub_resource type="Resource" id="Resource_wjtr3"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("9_yygrd")
+
+[sub_resource type="Resource" id="Resource_wgg7q"]
+resource_local_to_scene = true
+script = ExtResource("2_gv3c6")
+Template = ExtResource("12_dv01u")
+
+[sub_resource type="Resource" id="Resource_lhtw6"]
+resource_local_to_scene = true
 script = ExtResource("2_gv3c6")
 Template = ExtResource("13_0wn8q")
 
@@ -101,7 +141,7 @@ Value = 30.0
 [sub_resource type="Resource" id="Resource_eeey2"]
 script = ExtResource("2_gv3c6")
 Template = ExtResource("8_bv8mq")
-Value = 30.0
+Value = 10.0
 
 [sub_resource type="Resource" id="Resource_5dfvo"]
 script = ExtResource("2_gv3c6")

@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_khmed"]
 [ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="12_unic2"]
 [ext_resource type="Resource" uid="uid://lladuxhndxxy" path="res://RESOURCES/Unlocks/ULK_iron_sword.tres" id="13_khmed"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="13_unic2"]
 [ext_resource type="Texture2D" uid="uid://33n4h41ygmmo" path="res://ART/Icons/Units/bandit.png" id="14_287ng"]
 [ext_resource type="Resource" uid="uid://bn2vvdjtrk201" path="res://RESOURCES/Unlocks/ULK_gauze.tres" id="14_dfkva"]
 [ext_resource type="PackedScene" uid="uid://c2bevb3ougoov" path="res://RESOURCES/Units/Enemy/Bandit/VIS_Bandit.tscn" id="14_n6pw7"]
@@ -23,7 +24,7 @@
 [sub_resource type="Resource" id="Resource_qjxq0"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("3_khmed")
-Value = 12.0
+Value = 9.0
 
 [sub_resource type="Resource" id="Resource_ysu3v"]
 script = ExtResource("2_n6pw7")
@@ -62,12 +63,57 @@ Value = 4.0
 [sub_resource type="Resource" id="Resource_04vgc"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("11_qc7vr")
-Value = 8.0
+Value = 6.0
 
 [sub_resource type="Resource" id="Resource_obn8g"]
 script = ExtResource("2_n6pw7")
 Template = ExtResource("12_unic2")
 Value = 1.0
+
+[sub_resource type="Resource" id="Resource_rmmrt"]
+script = ExtResource("2_n6pw7")
+Template = ExtResource("13_unic2")
+Value = 5.0
+
+[sub_resource type="Resource" id="Resource_unic2"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("3_khmed")
+
+[sub_resource type="Resource" id="Resource_003m6"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("4_dfkva")
+
+[sub_resource type="Resource" id="Resource_ua4jb"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("5_qc7vr")
+
+[sub_resource type="Resource" id="Resource_287ng"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("6_unic2")
+
+[sub_resource type="Resource" id="Resource_pfypu"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("7_04vgc")
+
+[sub_resource type="Resource" id="Resource_xfky4"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("9_3rqm2")
+
+[sub_resource type="Resource" id="Resource_mc710"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("11_qc7vr")
+
+[sub_resource type="Resource" id="Resource_eaqod"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("12_unic2")
 
 [sub_resource type="Resource" id="Resource_5p2uh"]
 script = ExtResource("2_n6pw7")
@@ -108,12 +154,18 @@ script = ExtResource("2_n6pw7")
 Template = ExtResource("12_unic2")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_clr3k"]
+resource_local_to_scene = true
+script = ExtResource("2_n6pw7")
+Template = ExtResource("13_unic2")
+Value = 30.0
+
 [resource]
 resource_name = "UT_Bandit"
 script = ExtResource("15_pfypu")
 VisualPrefab = ExtResource("14_n6pw7")
-BaseStats = Array[ExtResource("2_n6pw7")]([SubResource("Resource_qjxq0"), SubResource("Resource_ysu3v"), SubResource("Resource_75yd8"), SubResource("Resource_1421u"), SubResource("Resource_g0s0p"), SubResource("Resource_ocxy5"), SubResource("Resource_ep7qx"), SubResource("Resource_knmom"), SubResource("Resource_04vgc"), SubResource("Resource_obn8g")])
-StatGrowths = Array[ExtResource("2_n6pw7")]([SubResource("Resource_5p2uh"), SubResource("Resource_pqt02"), SubResource("Resource_okgba"), SubResource("Resource_v71qk"), SubResource("Resource_wpq6y"), SubResource("Resource_hn8ig"), SubResource("Resource_3rqm2"), SubResource("Resource_tdkho")])
+BaseStats = Array[ExtResource("2_n6pw7")]([SubResource("Resource_qjxq0"), SubResource("Resource_ysu3v"), SubResource("Resource_75yd8"), SubResource("Resource_1421u"), SubResource("Resource_g0s0p"), SubResource("Resource_ocxy5"), SubResource("Resource_ep7qx"), SubResource("Resource_knmom"), SubResource("Resource_04vgc"), SubResource("Resource_obn8g"), SubResource("Resource_rmmrt")])
+StatGrowths = Array[ExtResource("2_n6pw7")]([SubResource("Resource_5p2uh"), SubResource("Resource_pqt02"), SubResource("Resource_okgba"), SubResource("Resource_v71qk"), SubResource("Resource_wpq6y"), SubResource("Resource_hn8ig"), SubResource("Resource_3rqm2"), SubResource("Resource_tdkho"), SubResource("Resource_clr3k")])
 Affinity = ExtResource("1_gop6x")
 StartingEquippedWeapon = ExtResource("13_khmed")
 StartingTactical = ExtResource("14_dfkva")

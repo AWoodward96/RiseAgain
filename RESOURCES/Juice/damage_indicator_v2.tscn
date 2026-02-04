@@ -1,0 +1,286 @@
+[gd_scene format=3 uid="uid://y10rua7b77je"]
+
+[ext_resource type="Script" uid="uid://c87sjcse7aq1e" path="res://SCRIPTS/UI/Juice/DamageIndication/damage_indicator.gd" id="1_xn4y3"]
+[ext_resource type="PackedScene" uid="uid://d1laxqelcbhi8" path="res://RESOURCES/UI/GenericEntrys/effect_entry.tscn" id="2_he6jb"]
+[ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="3_hci7n"]
+[ext_resource type="Texture2D" uid="uid://c226tw8lttshg" path="res://ART/Icons/Affinity/fire_affinity_icon.png" id="4_lthpg"]
+[ext_resource type="Texture2D" uid="uid://dhykeilpdios3" path="res://ART/Icons/Stats/green_up_arrow.png" id="5_lkaxn"]
+[ext_resource type="Texture2D" uid="uid://b7efconyufomi" path="res://ART/Icons/Stats/red_down_arrow.png" id="6_6ood5"]
+[ext_resource type="Script" uid="uid://chsd8cfid3ll1" path="res://RESOURCES/Units/UnitHealthBar.gd" id="7_0qjph"]
+[ext_resource type="FontFile" uid="uid://3nylx15tuvb5" path="res://ART/Fonts/absolute-minimum.ttf" id="8_45cks"]
+[ext_resource type="LabelSettings" uid="uid://16psntbgd1gu" path="res://RESOURCES/UI/LabelSettings/minimal_mini.tres" id="9_6chyw"]
+[ext_resource type="LabelSettings" uid="uid://db4fud0jf080k" path="res://RESOURCES/UI/LabelSettings/minimal_small.tres" id="10_t5jip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jng4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13h2x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4e24"]
+bg_color = Color(0.1, 0.036000002, 0.03706665, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue3rd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtglw"]
+bg_color = Color(0.50740004, 0.8364933, 0.86, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_461c3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh1wc"]
+bg_color = Color(0.929412, 0.333333, 0.345098, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmujm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftrpb"]
+bg_color = Color(0.38, 0.1444, 0.148327, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmgol"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sheas"]
+bg_color = Color(0.82, 0.82, 0.82, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dexgy"]
+font = ExtResource("8_45cks")
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DamageIndicator" type="Node2D" unique_id=2065648661 node_paths=PackedStringArray("healthbar", "preview_bg", "hit_chance_label", "crit_chance_label", "affinityIcon", "positive_affinity", "negative_affinity", "effects_preview") groups=["DamageIndicators"]]
+script = ExtResource("1_xn4y3")
+effectEntry = ExtResource("2_he6jb")
+healthbar = NodePath("PanelContainer/HealthBarParent")
+preview_bg = NodePath("PanelContainer/PreviewBg")
+hit_chance_label = NodePath("PanelContainer/HealthBarParent/HitChance")
+crit_chance_label = NodePath("PanelContainer/HealthBarParent/CritChance")
+affinityIcon = NodePath("PanelContainer/AffinityIcon")
+positive_affinity = NodePath("PanelContainer/AffinityIcon/PositiveAffinity")
+negative_affinity = NodePath("PanelContainer/AffinityIcon/NegativeAffinity")
+effects_preview = NodePath("PanelContainer/HBoxContainer/EffectsPreview")
+
+[node name="PanelContainer" type="Control" parent="." unique_id=625733326]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="PreviewBg" type="ColorRect" parent="PanelContainer" unique_id=1118149340]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28, 0.28, 0.28, 0.5137255)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=562418073]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="EffectsPreview" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=2042473683]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_hci7n")
+
+[node name="AffinityIcon" type="TextureRect" parent="PanelContainer" unique_id=2066492743]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_top = 36.0
+offset_right = 16.0
+offset_bottom = 52.0
+size_flags_horizontal = 0
+texture = ExtResource("4_lthpg")
+expand_mode = 1
+
+[node name="PositiveAffinity" type="TextureRect" parent="PanelContainer/AffinityIcon" unique_id=1438822057]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_right = 21.0
+offset_bottom = 16.0
+texture = ExtResource("5_lkaxn")
+expand_mode = 1
+
+[node name="NegativeAffinity" type="TextureRect" parent="PanelContainer/AffinityIcon" unique_id=1497849221]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_right = 21.0
+offset_bottom = 16.0
+texture = ExtResource("6_6ood5")
+expand_mode = 1
+
+[node name="HealthBarParent" type="Control" parent="PanelContainer" unique_id=1283975384 node_paths=PackedStringArray("HealthBar", "IncomingDamageBar", "ArmorBar", "InjuredBar", "HealthText", "ExtraHealthBarParent", "ExtraHealthBarLabel", "HideTimer")]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 0
+offset_top = 52.0
+offset_right = 64.0
+offset_bottom = 68.0
+script = ExtResource("7_0qjph")
+HealthBar = NodePath("Offset/HBoxContainer/HealthbarControls/HealthBar")
+IncomingDamageBar = NodePath("Offset/HBoxContainer/HealthbarControls/IncomingDamageBar")
+ArmorBar = NodePath("Offset/HBoxContainer/HealthbarControls/ArmorBar")
+InjuredBar = NodePath("Offset/HBoxContainer/HealthbarControls/InjuryBar")
+HealthText = NodePath("Offset/HP Val")
+ExtraHealthBarParent = NodePath("Offset/HBoxContainer/ExtraHealthBarParent")
+ExtraHealthBarLabel = NodePath("Offset/HBoxContainer/ExtraHealthBarParent/ExtraHealthBarLabel")
+HideTimer = NodePath("AutoHide")
+
+[node name="CritChance" type="Label" parent="PanelContainer/HealthBarParent" unique_id=1647063969]
+self_modulate = Color(1, 0.96, 0.4, 1)
+layout_mode = 0
+offset_left = 25.0
+offset_top = -21.0
+offset_right = 64.0
+offset_bottom = 3.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_45cks")
+theme_override_font_sizes/font_size = 6
+text = "10%"
+label_settings = ExtResource("9_6chyw")
+horizontal_alignment = 2
+
+[node name="HitChance" type="Label" parent="PanelContainer/HealthBarParent" unique_id=1580941098]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -18.0
+offset_right = 64.0
+offset_bottom = 5.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_45cks")
+theme_override_font_sizes/font_size = 6
+text = "10%"
+label_settings = ExtResource("10_t5jip")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Offset" type="Control" parent="PanelContainer/HealthBarParent" unique_id=359292157]
+custom_minimum_size = Vector2(64, 8)
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HealthBarParent/Offset" unique_id=1590193184]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HealthbarControls" type="PanelContainer" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer" unique_id=1955304536]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jng4h")
+
+[node name="HealthBarBase" type="ProgressBar" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/HealthbarControls" unique_id=912468136]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_13h2x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q4e24")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="IncomingDamageBar" type="ProgressBar" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/HealthbarControls" unique_id=1049099875]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ue3rd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rtglw")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/HealthbarControls" unique_id=1800320160]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_461c3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nh1wc")
+max_value = 1.0
+value = 0.65
+show_percentage = false
+
+[node name="InjuryBar" type="ProgressBar" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/HealthbarControls" unique_id=910782118]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qmujm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ftrpb")
+max_value = 1.0
+value = 0.3
+fill_mode = 1
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/HealthbarControls" unique_id=446665288]
+visible = false
+modulate = Color(1, 1, 1, 0.631373)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wmgol")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sheas")
+max_value = 1.0
+value = 0.2
+show_percentage = false
+
+[node name="ExtraHealthBarParent" type="Control" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer" unique_id=618398863]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/ExtraHealthBarParent" unique_id=419796497]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0.6, 0.6, 1)
+
+[node name="ExtraHealthBarLabel" type="Label" parent="PanelContainer/HealthBarParent/Offset/HBoxContainer/ExtraHealthBarParent" unique_id=1865029113]
+modulate = Color(0.92941177, 0.33333334, 0.34509805, 1)
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 0
+offset_top = -1.0
+offset_right = 12.0
+offset_bottom = 5.0
+text = "x2"
+label_settings = ExtResource("9_6chyw")
+horizontal_alignment = 2
+
+[node name="HP Val" type="Label" parent="PanelContainer/HealthBarParent/Offset" unique_id=1424842077]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 0
+offset_left = 13.0
+offset_right = 54.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 0
+text = "25/30"
+label_settings = SubResource("LabelSettings_dexgy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AutoHide" type="Timer" parent="PanelContainer/HealthBarParent" unique_id=542488714]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="PanelContainer/HealthBarParent/AutoHide" to="." method="AutoHide"]

@@ -57,6 +57,9 @@ func IsWithinRange(_currentPosition : Vector2, _target : Vector2):
 	return dst >= TargetingData.TargetRange.x && dst <= TargetingData.TargetRange.y
 
 func GetAccuracy():
+	if TargetingTemplate != null:
+		return TargetingTemplate.BaseAccuracy
+
 	# Not quite sure if this is the right value to default to.
 	# Healing should always be 100% accurate and might not have StatData, so we'll see
 	return 100

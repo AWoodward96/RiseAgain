@@ -6,6 +6,7 @@
 script = ExtResource("1_kbh7j")
 gridEntityPrefab = "res://RESOURCES/GridEntities/ge_arrow_rain.tscn"
 shapePrefabRef = "res://RESOURCES/TargetingShapes/generic_3x3_square_shape.tres"
+BaseAccuracy = 75.0
 TargetRange = Vector2i(1, 6)
 TeamTargeting = 2
 CanTargetSelf = true

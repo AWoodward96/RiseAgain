@@ -7,4 +7,5 @@ script = ExtResource("1_a5twr")
 gridEntityPrefab = "res://RESOURCES/GridEntities/ge_heatbreak.tscn"
 shapePrefabRef = "res://RESOURCES/TargetingShapes/generic_single.tres"
 canRotate = true
+BaseAccuracy = 75.0
 TeamTargeting = 2

@@ -172,7 +172,12 @@ func PlayDamageAnimation(_autoReturnToIdle = true):
 		if AnimationCTRL.current_animation == UnitSettingsTemplate.ANIM_TAKE_DAMAGE && _autoReturnToIdle && !MyUnit.UsingSlowSpeedAbility:
 			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 1, false)
 
+func PlayMissAnimation(_autoReturnToIdle = true):
+	if AnimationWorkComplete:
+		await get_tree().create_timer(2).timeout
 
+		if _autoReturnToIdle && !MyUnit.UsingSlowSpeedAbility:
+			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 1, false)
 
 func SetSpeedScale(_speed : float = 1):
 	AnimationCTRL.speed_scale = _speed

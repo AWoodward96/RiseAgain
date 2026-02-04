@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bvmyvexdai51s"]
+
+[ext_resource type="Script" uid="uid://daumqqu44rlny" path="res://SCRIPTS/Generic/VFXHelper.gd" id="1_31hc0"]
+[ext_resource type="Texture2D" uid="uid://bi50iq57b5tfw" path="res://ART/VFX/cloud_vfx.png" id="2_bt3py"]
+[ext_resource type="Texture2D" uid="uid://c0r1trcwvb8w6" path="res://ART/VFX/Small_Particle_Shapes.png" id="2_bwduf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bt3py"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_k7ds7"]
+colors = PackedColorArray(0.3019608, 0, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_vtlmh"]
+offsets = PackedFloat32Array(0.17155756, 1)
+colors = PackedColorArray(0.4117647, 0, 1, 1, 1, 0, 1, 1)
+
+[node name="Lunar_TeleportOut" type="Node2D" unique_id=707226740 node_paths=PackedStringArray("cpuParticles")]
+script = ExtResource("1_31hc0")
+emitOnReady = true
+cpuParticles = [NodePath("Orbiting"), NodePath("GravityCollapse"), NodePath("GravityCollapseFaster")]
+
+[node name="Orbiting" type="CPUParticles2D" parent="." unique_id=667364470]
+position = Vector2(32, 32)
+emitting = false
+amount = 24
+one_shot = true
+emission_shape = 2
+emission_sphere_radius = 32.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+
+[node name="GravityCollapse" type="CPUParticles2D" parent="." unique_id=1901519656]
+material = SubResource("CanvasItemMaterial_bt3py")
+position = Vector2(32, 32)
+emitting = false
+amount = 32
+texture = ExtResource("2_bt3py")
+one_shot = true
+explosiveness = 0.59
+emission_shape = 6
+emission_ring_inner_radius = 32.0
+emission_ring_radius = 32.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+radial_accel_min = -128.0
+radial_accel_max = -96.0
+color_ramp = SubResource("Gradient_k7ds7")
+color_initial_ramp = SubResource("Gradient_vtlmh")
+anim_offset_max = 1.0
+
+[node name="GravityCollapseFaster" type="CPUParticles2D" parent="." unique_id=1514584120]
+material = SubResource("CanvasItemMaterial_bt3py")
+position = Vector2(32, 32)
+emitting = false
+amount = 16
+texture = ExtResource("2_bwduf")
+one_shot = true
+emission_shape = 6
+emission_ring_inner_radius = 48.0
+emission_ring_radius = 48.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+radial_accel_min = -256.0
+radial_accel_max = -256.0
+anim_offset_max = 1.0
+
+[node name="Timer" type="Timer" parent="." unique_id=455805456]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

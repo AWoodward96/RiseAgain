@@ -34,7 +34,6 @@ CanTargetSelf = true
 
 [node name="HealComponent" type="Node2D" parent="." unique_id=319542489]
 script = ExtResource("3_yfhna")
-FlatValue = 2.0
 ScalingStat = ExtResource("4_epwwx")
 ScalingModType = 2
 ScalingMod = 1.25

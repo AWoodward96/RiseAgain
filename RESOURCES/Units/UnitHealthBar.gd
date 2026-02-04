@@ -132,8 +132,7 @@ func UpdateArmorBarTween(value):
 		HealthText.text = tr(LocSettings.Health_Submerged)
 		ArmorBar.value = 0
 	else:
-		HealthText.text = str("%01.0d/%01.0d" % [clamp(CurrentHealth, 0, MaxHealth), MaxHealth])
-		HealthText.text += str(" + %01.0d" % value)
+		HealthText.text = str("%01.0d/%01.0d" % [clamp(CurrentHealth + value, 0, MaxHealth + value), MaxHealth])
 		HealthBar.value = clampf(CurrentHealth, 0, MaxHealth) / MaxHealth as float
 		ArmorBar.value = clampf(value, 0, StartingArmor) / MaxHealth as float
 	pass
@@ -157,6 +156,9 @@ func Refresh(_autohide : bool = true):
 	if Unit == null && AssignedTile == null:
 		return
 
+	if HideTimer != null:
+		HideTimer.stop()
+
 	var armor = 0
 	if Unit != null:
 		StartingArmor = Unit.GetArmorAmount()
@@ -165,10 +167,20 @@ func Refresh(_autohide : bool = true):
 
 	ArmorBar.visible = armor > 0
 
+
+	if armor > 0:
+		ArmorBar.visible = Unit != null
+		if Unit != null:
+			if Unit.Submerged:
+				ArmorBar.value = 0
+			else:
+				ArmorBar.value = armor as float / Unit.trueMaxHealth
+
+
 	if HealthText != null:
 		if Unit != null:
 			if !Unit.Submerged:
-				HealthText.text = "%01.0d/%01.0d" % [CurrentHealth, MaxHealth]
+				HealthText.text = "%01.0d/%01.0d" % [CurrentHealth + armor, MaxHealth]
 			else:
 				HealthText.text = tr(LocSettings.Health_Submerged)
 
@@ -192,15 +204,6 @@ func Refresh(_autohide : bool = true):
 		if Unit != null:
 			var lvlStr = tr(LevelLocalization)
 			LevelLabel.text = lvlStr.format({"NUM" : Unit.DisplayLevel })
-
-	if armor > 0:
-		ArmorBar.visible = Unit != null
-		if Unit != null:
-			if Unit.Submerged:
-				ArmorBar.value = 0
-			else:
-				ArmorBar.value = armor as float / Unit.trueMaxHealth
-				HealthText.text += str(" + %01.0d" % armor)
 
 	if ExpLabel != null:
 		ExpLabel.visible = Unit != null
@@ -250,3 +253,8 @@ func RefreshCombatEffects():
 
 		if entry.icon != null: entry.icon.texture = icon
 		if entry.label != null: entry.label.text = labeltext
+
+func CancelPreview():
+	if UpdateBarTween != null:
+		UpdateBarTween.stop()
+		UpdateBarTween = null

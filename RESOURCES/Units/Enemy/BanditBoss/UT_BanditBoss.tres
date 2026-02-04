@@ -16,13 +16,14 @@
 [ext_resource type="Script" uid="uid://d2347uif1mrru" path="res://SCRIPTS/Universe/Resources/ResourceDef.gd" id="12_h0e5d"]
 [ext_resource type="PackedScene" uid="uid://doxn71htn5rvr" path="res://RESOURCES/Units/Enemy/BanditBoss/VIS_BanditBoss.tscn" id="12_ieqod"]
 [ext_resource type="Script" uid="uid://co0vaop8x58fb" path="res://SCRIPTS/Units/UnitTemplate.gd" id="12_vf3cb"]
+[ext_resource type="Resource" uid="uid://ckllupxlc8e6u" path="res://RESOURCES/Stats/STAT_Skill.tres" id="13_18ss8"]
 [ext_resource type="Texture2D" uid="uid://cjrp3ll0fhp7" path="res://ART/Icons/Units/banditboss.png" id="14_jeiil"]
 [ext_resource type="Resource" uid="uid://dcxjuftthcd2x" path="res://RESOURCES/Unlocks/ULK_blunt.tres" id="15_e2cik"]
 
 [sub_resource type="Resource" id="Resource_0hxi7"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
-Value = 20.0
+Value = 15.0
 
 [sub_resource type="Resource" id="Resource_kf6tu"]
 script = ExtResource("2_ieqod")
@@ -68,6 +69,51 @@ script = ExtResource("2_ieqod")
 Template = ExtResource("12_e2cik")
 Value = 2.0
 
+[sub_resource type="Resource" id="Resource_p1yub"]
+script = ExtResource("2_ieqod")
+Template = ExtResource("13_18ss8")
+Value = 6.0
+
+[sub_resource type="Resource" id="Resource_18ss8"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("3_ro8a3")
+
+[sub_resource type="Resource" id="Resource_f24kq"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("4_jeiil")
+
+[sub_resource type="Resource" id="Resource_1j13p"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("5_h0e5d")
+
+[sub_resource type="Resource" id="Resource_vf3cb"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("6_ttcan")
+
+[sub_resource type="Resource" id="Resource_0ix5v"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("7_gd2bv")
+
+[sub_resource type="Resource" id="Resource_ag8ow"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("9_p1yub")
+
+[sub_resource type="Resource" id="Resource_elyko"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("11_p8mo6")
+
+[sub_resource type="Resource" id="Resource_xyqsl"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("12_e2cik")
+
 [sub_resource type="Resource" id="Resource_bgdu5"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")
@@ -107,12 +153,18 @@ script = ExtResource("2_ieqod")
 Template = ExtResource("12_e2cik")
 Value = 10.0
 
+[sub_resource type="Resource" id="Resource_xblke"]
+resource_local_to_scene = true
+script = ExtResource("2_ieqod")
+Template = ExtResource("13_18ss8")
+Value = 40.0
+
 [resource]
 resource_name = "UT_BanditBoss"
 script = ExtResource("12_vf3cb")
 VisualPrefab = ExtResource("12_ieqod")
-BaseStats = Array[ExtResource("2_ieqod")]([SubResource("Resource_0hxi7"), SubResource("Resource_kf6tu"), SubResource("Resource_2xa3j"), SubResource("Resource_p8mo6"), SubResource("Resource_e2cik"), SubResource("Resource_k7r3a"), SubResource("Resource_pv12v"), SubResource("Resource_lowip"), SubResource("Resource_iseox"), SubResource("Resource_23l18")])
-StatGrowths = Array[ExtResource("2_ieqod")]([SubResource("Resource_bgdu5"), SubResource("Resource_huiq2"), SubResource("Resource_umk3d"), SubResource("Resource_85sgu"), SubResource("Resource_g3q6i"), SubResource("Resource_5aln8"), SubResource("Resource_fprfd"), SubResource("Resource_b8oh7")])
+BaseStats = Array[ExtResource("2_ieqod")]([SubResource("Resource_0hxi7"), SubResource("Resource_kf6tu"), SubResource("Resource_2xa3j"), SubResource("Resource_p8mo6"), SubResource("Resource_e2cik"), SubResource("Resource_k7r3a"), SubResource("Resource_pv12v"), SubResource("Resource_lowip"), SubResource("Resource_iseox"), SubResource("Resource_23l18"), SubResource("Resource_p1yub")])
+StatGrowths = Array[ExtResource("2_ieqod")]([SubResource("Resource_bgdu5"), SubResource("Resource_huiq2"), SubResource("Resource_umk3d"), SubResource("Resource_85sgu"), SubResource("Resource_g3q6i"), SubResource("Resource_5aln8"), SubResource("Resource_fprfd"), SubResource("Resource_b8oh7"), SubResource("Resource_xblke")])
 Affinity = ExtResource("1_vy8pt")
 StartingEquippedWeapon = ExtResource("15_e2cik")
 Tier0Abilities = Array[String](["uid://vlpjvct6tdeb", "uid://bxhhl5qkaojly", "uid://c6xs7nrvsx6f1", "uid://b7f1m6vpdgchf"])

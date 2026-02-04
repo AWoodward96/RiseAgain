@@ -338,6 +338,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 	if !ImportFieldIsNull(_data, "MaxRange"): range.y = _data["MaxRange"]
 	component.TargetRange = range
 
+	if !ImportFieldIsNull(_data, "BaseAccuracy"): component.BaseAccuracy = _data["BaseAccuracy"]
+
 	if !ImportFieldIsNull(_data, "TeamTargeting"):
 		match _data["TeamTargeting"]:
 			"Enemy":

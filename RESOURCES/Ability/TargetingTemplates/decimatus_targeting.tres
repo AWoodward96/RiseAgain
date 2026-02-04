@@ -6,4 +6,5 @@
 script = ExtResource("1_qnt0x")
 gridEntityPrefab = "res://RESOURCES/GridEntities/ge_decimatus.tscn"
 shapePrefabRef = "res://RESOURCES/TargetingShapes/decimatus_shape.tres"
+BaseAccuracy = 110.0
 TeamTargeting = 2

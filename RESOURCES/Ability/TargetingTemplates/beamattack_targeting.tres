@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_wdj4g")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/beam_attack_shape.tres"
+BaseAccuracy = 80.0

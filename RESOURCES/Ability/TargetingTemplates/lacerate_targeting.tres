@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_enp4y")
+BaseAccuracy = 110.0
 TeamTargeting = 2
