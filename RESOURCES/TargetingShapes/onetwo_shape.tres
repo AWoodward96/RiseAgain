@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TargetingShape" format=3 uid="uid://cgx3iet6b8eul"]
+
+[ext_resource type="Script" uid="uid://ck4tcv2nu2etb" path="res://SCRIPTS/Targeting/Shapes/Vector2iMult.gd" id="1_m43ck"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="2_3jsur"]
+[ext_resource type="Script" uid="uid://ofdutqbqnjrf" path="res://SCRIPTS/Targeting/Shapes/TargetingShape.gd" id="3_yqy5u"]
+
+[sub_resource type="Resource" id="Resource_yvmxb"]
+script = ExtResource("2_3jsur")
+
+[resource]
+script = ExtResource("3_yqy5u")
+TileCoordinates = Array[ExtResource("1_m43ck")]([SubResource("Resource_yvmxb")])

@@ -46,3 +46,4 @@ AgressiveStat = ExtResource("10_4fguk")
 AgressiveModType = 2
 AgressiveMod = 1.5
 DamageToHealthRatio = 0.0
+UseWeaponDataInstead = true

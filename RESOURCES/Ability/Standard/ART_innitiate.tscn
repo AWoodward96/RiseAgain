@@ -44,6 +44,7 @@ UsableDamageData = NodePath("DamageComponent")
 [node name="DamageComponent" type="Node2D" parent="." unique_id=399950937]
 script = ExtResource("2_xseor")
 AgressiveStat = ExtResource("3_ifr6g")
+UseWeaponDataInstead = true
 
 [node name="TargetingData" type="Node2D" parent="." unique_id=1423354462]
 script = ExtResource("4_5wmo1")

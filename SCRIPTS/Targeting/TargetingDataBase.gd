@@ -25,7 +25,7 @@ var log : ActionLog
 var ctrl : PlayerController
 var currentGrid : Grid
 var currentMap : Map
-var direction : GameSettingsTemplate.Direction = GameSettingsTemplate.Direction.Up
+var direction : GameSettingsTemplate.Direction = GameSettingsTemplate.Direction.Up # Used mostly for shaped free rotations
 
 ## Called when targeting begins
 func BeginTargeting(_log : ActionLog, _ctrl : PlayerController):
@@ -183,16 +183,29 @@ func OnCorrectTeam(_teamTargeting : ETargetingTeamFlag, _thisUnit : UnitInstance
 	if _teamTargeting == ETargetingTeamFlag.Empty:
 		return _otherUnit == null
 
+	if _otherUnit == null:
+		return false
+
 	return (_otherUnit.UnitAllegiance == _thisUnit.UnitAllegiance && _teamTargeting == ETargetingTeamFlag.AllyTeam) || (_otherUnit.UnitAllegiance != _thisUnit.UnitAllegiance && _teamTargeting == ETargetingTeamFlag.EnemyTeam) || _teamTargeting == ETargetingTeamFlag.All
 
 func ShowAffinityRelations(_affinityTemplate : AffinityTemplate):
 	if _affinityTemplate == null:
 		source.ShowAffinityRelation(null)
 
-	var enemyUnits = currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY)
-	for units in enemyUnits:
-		units.ShowAffinityRelation(_affinityTemplate)
+	var unitsOnTeamTargeting : Array[UnitInstance] = []
+	match TeamTargeting:
+		ETargetingTeamFlag.AllyTeam:
+			unitsOnTeamTargeting.append_array(currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY))
+			unitsOnTeamTargeting.append_array(currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.NEUTRAL))
+		ETargetingTeamFlag.EnemyTeam:
+			unitsOnTeamTargeting.append_array(currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+		ETargetingTeamFlag.All:
+			unitsOnTeamTargeting.append_array(currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ENEMY))
+			unitsOnTeamTargeting.append_array(currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.NEUTRAL))
+			unitsOnTeamTargeting.append_array(currentMap.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY))
 
+	for units in unitsOnTeamTargeting:
+		units.ShowAffinityRelation(_affinityTemplate)
 
 ## Called when targeting ends
 func EndTargeting():

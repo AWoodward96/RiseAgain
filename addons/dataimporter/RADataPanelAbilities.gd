@@ -313,6 +313,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 				component = ResourceLoader.load(targetingPath) as TargetingGEDirectional
 			"TeleportAdjacent":
 				component = ResourceLoader.load(targetingPath) as TargetingTeleportAdjacent
+			"RaycastDirectional":
+				component = ResourceLoader.load(targetingPath) as TargetingRaycastDirectional
 	else:
 		match _data["TargetType"]:
 			"Simple":
@@ -331,6 +333,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 				component = TargetingGEDirectional.new()
 			"TeleportAdjacent":
 				component = TargetingTeleportAdjacent.new()
+			"RaycastDirectional":
+				component = TargetingRaycastDirectional.new()
 
 	if component == null:
 		push_error("Targeting Component is null for ability: " , _ability.internalName, ". If this is intentional ignore")

@@ -9,6 +9,7 @@ func BeginTargeting(_log : ActionLog, _ctrl : PlayerController):
 	super(_log, _ctrl)
 	# we do it like this, because technically for a shaped free targeting, allegiance does not come into play
 	# until it comes to dealing damage
+	_ctrl.ForceReticlePosition(source.GridPosition)
 	log.availableTiles = currentGrid.GetCharacterAttackOptions(source, [source.CurrentTile], TargetRange)
 	log.availableTiles.push_front(source.CurrentTile)
 	log.affectedTiles.append_array(GetAffectedTiles(source, source.CurrentTile))

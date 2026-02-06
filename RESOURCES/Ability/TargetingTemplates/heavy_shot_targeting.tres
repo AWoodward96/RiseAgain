@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TargetingRaycastDirectional" format=3 uid="uid://c7pma25ix03tf"]
+
+[ext_resource type="Script" uid="uid://vayufmcgflnw" path="res://SCRIPTS/Targeting/TargetingRaycastDirectional.gd" id="1_vvnqu"]
+
+[resource]
+script = ExtResource("1_vvnqu")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/heavyshot_shape.tres"
+TrueHit = true
+TargetRange = Vector2i(1, 3)
