@@ -461,8 +461,8 @@ art_cleave_name,Great Cleave
 art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}.
 art_darkfell_name,Soul Cleave
 art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
-art_doubleshot_name,Repeater
-art_doubleshot_desc,Take a quick shot at an enemy dealing damage based on your Weapon.
+art_doubleshot_name,Bombard
+art_doubleshot_desc,Take two quick shots at an enemy dealing damage based on your Weapon.
 art_drain_name,Life Drain
 art_drain_desc,"Drain a Target Unit of their life force, dealing damage equal to this Units {DMG_AGGRESSIVESTAT}, and healing for {DMG_DRAINPERC}% the damage dealt"
 art_fireball_name,Fireball
@@ -651,7 +651,7 @@ item_t2_stonecarapace_name,Stone-Shell Figurine
 item_t2_stonecarapace_desc,After taking physical damage increase defense. After taking magic damage increase spdefense by 1. Resets at start of your turn.
 tact_sprint_name,Sprint
 tact_sprint_desc,Gain 3 Movement this turn.
-art_polinate_name,Pollinate
+art_polinate_name,Ginger Chew
 art_polinate_desc,"Heal an ally based on {HEAL_STAT}. At the start of the next 2 turns, heal them again."
 art_clobber_name,Clobber
 art_clobber_desc,Clobber the enemy with the currently equipped Weapon three times.
@@ -661,3 +661,12 @@ unit_baggirl_name,Bag Girl
 unit_baggirl_desc,A courior and connesuer of plants and ingredients. Buffs allies and uses her many bags as blunt weapons.
 ui_flamewall_effectdesc,Fire!!
 ui_healthunknown,??/??
+art_bark_name,Bark
+art_bark_desc,"Let out a horrible cry in a direction, lowering the Enemies Aggressive Stats for 2 turns."
+art_bite_name,Bite
+art_bite_desc,Take a bite out of an enemy and heal based on the damage dealt. Scales with {DMG_AGGRESSIVESTAT}.
+art_break_name,Break
+art_break_desc,"Break off a part of your body, dealing 10 Damage to yourself, and bludgeon an enemy with it for 20 True Damage."
+art_heavy_shot_name,Heavy Shot
+art_heavy_shot_desc,Take aim and fire a heavy round into a target at a direction. Units hit are pushed backwards one Tile. Deals damage based on your weapon.
+ui_truehit,TRU

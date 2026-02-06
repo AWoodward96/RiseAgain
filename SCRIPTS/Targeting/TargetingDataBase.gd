@@ -13,6 +13,7 @@ enum ETargetingTeamFlag {
 	Empty }
 
 @export var BaseAccuracy : float = 100
+@export var TrueHit : bool = false
 @export var TargetRange : Vector2i = Vector2i(1, 1)
 @export var TeamTargeting : ETargetingTeamFlag = ETargetingTeamFlag.EnemyTeam
 @export var CanTargetSelf : bool = false

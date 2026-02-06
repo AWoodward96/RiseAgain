@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cwl3gpxdre6gk" path="res://RESOURCES/GridEntities/prop_chest.tscn" id="17_jydnc"]
 [ext_resource type="Script" uid="uid://sedbuykb0j1j" path="res://SCRIPTS/Maps/Spawners/SpawnerGridEntity.gd" id="19_bve7k"]
 [ext_resource type="Resource" uid="uid://dudha4cqqspqf" path="res://RESOURCES/Units/Enemy/Maws/UT_Maws.tres" id="20_lsk74"]
-[ext_resource type="Resource" uid="uid://dn1c0oywd1bik" path="res://RESOURCES/Units/Enemy/Roc/UT_Roc.tres" id="20_yulnj"]
 [ext_resource type="PackedScene" uid="uid://1f8h3j214nus" path="res://RESOURCES/Units/Ally/Knight/VIS_Knight.tscn" id="23_b5w76"]
 
 [sub_resource type="Resource" id="Resource_3va2l"]
@@ -64,7 +63,6 @@ script = ExtResource("14_3fyh8")
 
 [node name="Dev_Map" type="Node2D" unique_id=55505139 node_paths=PackedStringArray("tilemap_bg", "tilemap_main", "tilemap_destructable", "tilemap_threat", "tilemap_fire", "tilemap_UI", "squadParent", "StartingPositionsParent", "SpawnersParent")]
 y_sort_enabled = true
-position = Vector2(1, 0)
 script = ExtResource("1_yneqe")
 GridSize = Vector2i(15, 10)
 CameraStart = Vector2(13, 3)
@@ -142,22 +140,22 @@ tile_set = ExtResource("4_lvx7e")
 unique_name_in_owner = true
 
 [node name="StartingPositionHelper" parent="StartingPositions" unique_id=30480004 node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(255, 64)
+position = Vector2(256, 64)
 Position = Vector2i(4, 1)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper2" parent="StartingPositions" unique_id=1865638145 node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(511, 192)
+position = Vector2(512, 192)
 Position = Vector2i(8, 3)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper3" parent="StartingPositions" unique_id=428421006 node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(383, 256)
+position = Vector2(384, 256)
 Position = Vector2i(6, 4)
 map = NodePath("../..")
 
 [node name="StartingPositionHelper4" parent="StartingPositions" unique_id=519236336 node_paths=PackedStringArray("map") instance=ExtResource("5_5aprs")]
-position = Vector2(383, 320)
+position = Vector2(384, 320)
 Position = Vector2i(6, 5)
 map = NodePath("../..")
 
@@ -214,7 +212,7 @@ AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
 [node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners" unique_id=1691297985]
-position = Vector2(192, 256)
+position = Vector2(192, 384)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
@@ -223,7 +221,7 @@ frame = 2
 script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_jydnc")
 DeltaLevel = 6
-Position = Vector2i(3, 4)
+Position = Vector2i(3, 6)
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
@@ -275,18 +273,18 @@ GivenItems = Array[String](["uid://cp2qfjogxikmj", "uid://cp2qfjogxikmj"])
 AIBehavior = SubResource("Resource_hyg5s")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="Spawn_Roc" type="Sprite2D" parent="Spawners" unique_id=638210385]
-position = Vector2(448, 256)
+[node name="Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners" unique_id=638210385]
+position = Vector2(448, 128)
 texture = ExtResource("6_gfyht")
 centered = false
 hframes = 4
 vframes = 4
 frame = 2
 script = ExtResource("7_vt2ms")
-UnitToSpawn = ExtResource("20_yulnj")
+UnitToSpawn = ExtResource("14_ox76s")
 UnitLevel = 2
 DeltaLevel = 0
-Position = Vector2i(7, 4)
+Position = Vector2i(7, 2)
 GivenItems = Array[String](["uid://cp2qfjogxikmj", "uid://cp2qfjogxikmj"])
 Allegiance = 1
 AIBehavior = ExtResource("12_msltj")

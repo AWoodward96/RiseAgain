@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://8dsdjwa7r5ny"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_60jja"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_2fl5h"]
+[ext_resource type="Texture2D" uid="uid://vpywpoojjdo0" path="res://ART/Icons/Ability/Standard/bite.png" id="2_eyq4v"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_tdo4u"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_6sr2r"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="4_bx1qr"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="5_2fl5h"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="5_6muwp"]
+[ext_resource type="Resource" uid="uid://yg6srinb6c3g" path="res://RESOURCES/Ability/TargetingTemplates/bite_targeting.tres" id="7_2fl5h"]
+
+[sub_resource type="Resource" id="Resource_l0you"]
+script = ExtResource("3_tdo4u")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_t0lts"]
+script = ExtResource("4_6sr2r")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_unpki"]
+script = ExtResource("5_6muwp")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="bite" type="Node2D" unique_id=85249911 node_paths=PackedStringArray("UsableDamageData")]
+script = ExtResource("1_60jja")
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_2fl5h")]([SubResource("Resource_l0you"), SubResource("Resource_t0lts"), SubResource("Resource_unpki")])
+internalName = "bite"
+loc_displayName = "art_bite_name"
+loc_displayDesc = "art_bite_desc"
+icon = ExtResource("2_eyq4v")
+TargetingTemplate = ExtResource("7_2fl5h")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1993153416]
+script = ExtResource("4_bx1qr")
+AgressiveStat = ExtResource("5_2fl5h")
+DamageAffectsUsersHealth = true
+DamageToHealthRatio = -1.0

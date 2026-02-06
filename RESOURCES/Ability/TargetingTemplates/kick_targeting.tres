@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_l7b48")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/kick_shape.tres"
+TrueHit = true
 TeamTargeting = 2

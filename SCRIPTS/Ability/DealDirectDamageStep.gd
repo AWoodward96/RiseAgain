@@ -43,7 +43,16 @@ func GetResult(_actionLog : ActionLog, _specificTile : TileTargetedData):
 	result.TileTargetData = _specificTile
 	result.Source = _actionLog.source
 	result.Target = _specificTile.Tile.Occupant
-	result.HealthDelta = DamageAmount
+
+	match Targeting:
+		CombatEffectTemplate.EEffectTargetType.Source:
+			result.SourceHealthDelta = DamageAmount
+		CombatEffectTemplate.EEffectTargetType.Targets:
+			result.HealthDelta = DamageAmount
+		CombatEffectTemplate.EEffectTargetType.Both:
+			result.SourceHealthDelta = DamageAmount
+			result.HealthDelta = DamageAmount
+
 	result.CalculateEXPGain()
 	return result
 

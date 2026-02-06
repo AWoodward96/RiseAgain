@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="2_1015j"]
 [ext_resource type="Script" uid="uid://my6pk2oy4yv6" path="res://SCRIPTS/Items/HealComponent.gd" id="2_oqof6"]
 [ext_resource type="Resource" uid="uid://dlknnid1g0u1k" path="res://RESOURCES/Descriptors/DES_Tactical.tres" id="3_wjcyv"]
+[ext_resource type="Resource" uid="uid://2yb0c81kq72a" path="res://RESOURCES/Ability/TargetingTemplates/regenerativetincture_targeting.tres" id="4_wjcyv"]
 
 [node name="regenerativetincture" type="Node2D" unique_id=672416959 node_paths=PackedStringArray("HealData")]
 script = ExtResource("1_fovcp")
@@ -15,6 +16,7 @@ internalName = "regenerativetincture"
 loc_displayName = "tact_regenerativetincture_name"
 loc_displayDesc = "tact_regenerativetincture_desc"
 descriptors = Array[ExtResource("2_1015j")]([ExtResource("3_wjcyv")])
+TargetingTemplate = ExtResource("4_wjcyv")
 HealData = NodePath("HealComponent")
 
 [node name="HealComponent" type="Node2D" parent="." unique_id=924024049]

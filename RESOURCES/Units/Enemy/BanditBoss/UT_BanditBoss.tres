@@ -74,46 +74,6 @@ script = ExtResource("2_ieqod")
 Template = ExtResource("13_18ss8")
 Value = 6.0
 
-[sub_resource type="Resource" id="Resource_18ss8"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("3_ro8a3")
-
-[sub_resource type="Resource" id="Resource_f24kq"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("4_jeiil")
-
-[sub_resource type="Resource" id="Resource_1j13p"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("5_h0e5d")
-
-[sub_resource type="Resource" id="Resource_vf3cb"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("6_ttcan")
-
-[sub_resource type="Resource" id="Resource_0ix5v"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("7_gd2bv")
-
-[sub_resource type="Resource" id="Resource_ag8ow"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("9_p1yub")
-
-[sub_resource type="Resource" id="Resource_elyko"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("11_p8mo6")
-
-[sub_resource type="Resource" id="Resource_xyqsl"]
-resource_local_to_scene = true
-script = ExtResource("2_ieqod")
-Template = ExtResource("12_e2cik")
-
 [sub_resource type="Resource" id="Resource_bgdu5"]
 script = ExtResource("2_ieqod")
 Template = ExtResource("3_ro8a3")

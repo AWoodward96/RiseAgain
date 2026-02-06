@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dyji2cmh33um2"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_4a1oo"]
+[ext_resource type="Texture2D" uid="uid://cgsok42jvoubl" path="res://ART/Icons/Ability/Standard/bark.png" id="2_m0mun"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_yp73y"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_j8dag"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="4_0356r"]
+[ext_resource type="Resource" uid="uid://duaa7me7ich0v" path="res://RESOURCES/CombatEffects/CE_Debuff_Bark.tres" id="4_j8dag"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_0356r"]
+[ext_resource type="Resource" uid="uid://c5hynuea41dna" path="res://RESOURCES/Ability/TargetingTemplates/bark_targeting.tres" id="8_0356r"]
+
+[sub_resource type="Resource" id="Resource_f1ry8"]
+script = ExtResource("3_j8dag")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_lltw5"]
+script = ExtResource("4_0356r")
+CombatEffect = ExtResource("4_j8dag")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_ools0"]
+script = ExtResource("6_0356r")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="bark" type="Node2D" unique_id=461841730]
+script = ExtResource("1_4a1oo")
+abilityCooldown = 3
+ability_speed = 1
+executionStack = Array[ExtResource("2_yp73y")]([SubResource("Resource_f1ry8"), SubResource("Resource_lltw5"), SubResource("Resource_ools0")])
+internalName = "bark"
+loc_displayName = "art_bark_name"
+loc_displayDesc = "art_bark_desc"
+icon = ExtResource("2_m0mun")
+TargetingTemplate = ExtResource("8_0356r")

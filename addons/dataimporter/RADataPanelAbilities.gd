@@ -12,6 +12,9 @@ func import_data_from_json(_data):
 		ModifyAbility(item, filePath, line)
 
 	for path in modifiedStack:
+		if path.contains("TargetingTemplates"):
+			continue
+
 		log += str("\n[color=pink]Ability at path: [/color]", path, " - [color=pink] is no longer in the spreadsheets. You should delete it![/color]")
 
 	errorPanel.text = log
@@ -23,7 +26,6 @@ func import_data_from_json(_data):
 	d.popup_centered()
 
 func try_load_ability(_path, line):
-	print("Attempting to load path:" , _path)
 	if ResourceLoader.exists(_path):
 		var ability : PackedScene = PackedScene.new()
 		ability = ResourceLoader.load(_path)
@@ -309,6 +311,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 				component = ResourceLoader.load(targetingPath) as TargetingGEFree
 			"GEDirectional":
 				component = ResourceLoader.load(targetingPath) as TargetingGEDirectional
+			"TeleportAdjacent":
+				component = ResourceLoader.load(targetingPath) as TargetingTeleportAdjacent
 	else:
 		match _data["TargetType"]:
 			"Simple":
@@ -325,6 +329,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 				component = TargetingGEFree.new()
 			"GEDirectional":
 				component = TargetingGEDirectional.new()
+			"TeleportAdjacent":
+				component = TargetingTeleportAdjacent.new()
 
 	if component == null:
 		push_error("Targeting Component is null for ability: " , _ability.internalName, ". If this is intentional ignore")
@@ -339,6 +345,7 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 	component.TargetRange = range
 
 	if !ImportFieldIsNull(_data, "BaseAccuracy"): component.BaseAccuracy = _data["BaseAccuracy"]
+	if !ImportFieldIsNull(_data, "TrueHit"): component.TrueHit = _data["TrueHit"]
 
 	if !ImportFieldIsNull(_data, "TeamTargeting"):
 		match _data["TeamTargeting"]:

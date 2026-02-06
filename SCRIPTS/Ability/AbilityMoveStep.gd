@@ -31,7 +31,7 @@ func Bonked(_invalidatedTile : Tile, _actionLog : ActionLog):
 		return
 
 	if _invalidatedTile.Occupant != null && _invalidatedTile.Occupant.Shrouded:
-		_invalidatedTile.Occupant.visual.PlayAlertedFromShroudAnimation()
+		_invalidatedTile.Occupant.Visual.PlayAlertedFromShroudAnimation()
 
 	var bestTile = _actionLog.grid.FindNearbyValidTile(_invalidatedTile, _actionLog.actionOriginTile)
 

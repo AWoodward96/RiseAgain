@@ -12,7 +12,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 
 	#TimerLock = false
 #
-	#unit.damage_indicator.HideCombatClutter()
+	#unit.damageIndicator.HideCombatClutter()
 	#unit.PlayPrepAnimation(SourcePosition - position, 1)
 #
 	#await _unit.get_tree().create_timer(Juice.combatSequenceWarmupTimer).timeout
@@ -48,5 +48,5 @@ func _Exit():
 	#if unit != null:
 		#unit.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 #
-	#unit.damage_indicator.affinityIcon.visible = true
+	#unit.damageIndicator.affinityIcon.visible = true
 	pass

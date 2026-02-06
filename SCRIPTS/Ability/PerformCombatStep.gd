@@ -168,6 +168,7 @@ func ConstructResult(_ability : Ability, _tile : TileTargetedData, _sourceTile :
 	result.Target = _target
 	result.SourceTile = _sourceTile
 	result.AffectedTiles = _affectedTiles
+	result.TrueHit = _ability.TargetingTemplate.TrueHit
 
 	result.PreCalculate()
 

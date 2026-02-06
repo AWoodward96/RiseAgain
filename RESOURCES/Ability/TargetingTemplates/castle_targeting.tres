@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_sb68g")
+TrueHit = true
 TargetRange = Vector2i(1, 4)
 TeamTargeting = 0
 CanTargetTerrain = false

@@ -4,7 +4,7 @@ extends TargetingDataBase
 class_name TargetingShapedBase
 
 @export_category("Shaped Data")
-@export_file("*.res") var shapePrefabRef : String
+@export_file("*.tres") var shapePrefabRef : String
 @export var canRotate : bool = false
 
 # This should only be used in shaped directional, but thanks to inherritence it's gotta be here

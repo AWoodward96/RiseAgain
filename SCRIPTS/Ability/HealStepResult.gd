@@ -11,7 +11,7 @@ func PreviewResult(_map : Map):
 	PreCalculate()
 
 	if Target != null:
-		var indicator = Target.damage_indicator
+		var indicator = Target.damageIndicator
 		if HealthDelta > 0:
 			indicator.healAmount += HealthDelta
 

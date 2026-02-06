@@ -103,7 +103,7 @@ func Decision_UseBombs():
 			newOption.UpdateWeight()
 			bombOptions.append(newOption)
 
-	unit.visual.PlayAnimation("pull_bomb", false)
+	unit.Visual.PlayAnimation("pull_bomb", false)
 
 	bombOptions.sort_custom(SortOptions)
 

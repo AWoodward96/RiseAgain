@@ -10,41 +10,41 @@ signal OnSelected(_element : UnitEntryUI, _unitTemplate : UnitTemplate)
 @export var visualParent : Control
 @export var nameLabel : Label
 
-var template : UnitTemplate
-var createdVisual : UnitVisual
+var Template : UnitTemplate
+var CreatedVisual : UnitVisual
 
 
 func Initialize(_unitTemplate : UnitTemplate):
-	template = _unitTemplate
-	if template == null:
+	Template = _unitTemplate
+	if Template == null:
 		queue_free()
 		return
 
 	if useIcon:
-		icon.texture = template.icon
+		icon.texture = Template.icon
 
 	if useVisualParent:
 		# hate this, but we're gonna merge 2d with control elements
-		createdVisual = _unitTemplate.VisualPrefab.instantiate() as UnitVisual
-		visualParent.add_child(createdVisual)
-		createdVisual.position = Vector2.ZERO
-		createdVisual.RefreshAllegience(GameSettingsTemplate.TeamID.ALLY)
+		CreatedVisual = _unitTemplate.VisualPrefab.instantiate() as UnitVisual
+		visualParent.add_child(CreatedVisual)
+		CreatedVisual.position = Vector2.ZERO
+		CreatedVisual.RefreshAllegience(GameSettingsTemplate.TeamID.ALLY)
 
 	nameLabel.text = _unitTemplate.loc_DisplayName
 
 func PlayAnimation(_animationString : String):
-	if createdVisual != null:
-		createdVisual.PlayAnimation(_animationString, true)
+	if CreatedVisual != null:
+		CreatedVisual.PlayAnimation(_animationString, true)
 
 func OnFocus():
-	if useVisualParent && createdVisual != null:
-		createdVisual.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED, false)
+	if useVisualParent && CreatedVisual != null:
+		CreatedVisual.PlayAnimation(UnitSettingsTemplate.ANIM_SELECTED, false)
 	pass
 
 func OnUnfocus():
-	if useVisualParent && createdVisual != null:
-		createdVisual.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false)
+	if useVisualParent && CreatedVisual != null:
+		CreatedVisual.PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false)
 	pass
 
 func OnButtonPressed():
-	OnSelected.emit(self, template)
+	OnSelected.emit(self, Template)

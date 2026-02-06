@@ -56,7 +56,7 @@ func _Execute(_delta):
 
 			ctrl.selectedUnit.StopCharacterMovement()
 			currentGrid.SetUnitGridPosition(ctrl.selectedUnit, ctrl.selectedUnit.TurnStartTile.Position, true)
-			ctrl.selectedUnit.visual.UpdateShrouded()
+			ctrl.selectedUnit.Visual.UpdateShrouded()
 
 			StartMovementTracker()
 			currentGrid.ShowUnitActions(ctrl.selectedUnit)

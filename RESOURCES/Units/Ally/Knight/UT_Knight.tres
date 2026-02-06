@@ -173,7 +173,7 @@ Value = 50.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83xpp"]
 atlas = ExtResource("23_6h1w4")
-region = Rect2(13, 10, 49, 48)
+region = Rect2(13, 14, 49, 55)
 
 [resource]
 resource_name = "UT_Knight"

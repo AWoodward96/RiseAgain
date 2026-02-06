@@ -369,6 +369,9 @@ func HitRateCalculation(_attacker : UnitInstance, _attackerWeapon : UnitUsable, 
 	if CSR.NeverHit:
 		return 0
 
+	if _attackerWeapon.TargetingTemplate != null && _attackerWeapon	.TargetingTemplate.TrueHit:
+		return 1
+
 	return HitChance(_attacker, _defender, _attackerWeapon) - AvoidChance(_attacker, _defender) + _tileData.AccuracyModifier
 
 

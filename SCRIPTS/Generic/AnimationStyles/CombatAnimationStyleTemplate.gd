@@ -24,8 +24,8 @@ func Enter():
 	PerformDamageCallback.emit()
 
 func PlayPrepAnimations():
-	if source.damage_indicator != null:
-		source.damage_indicator.HideCombatClutter()
+	if source.damageIndicator != null:
+		source.damageIndicator.HideCombatClutter()
 	source.PlayPrepAnimation(initialDirection)
 
 	var targets = unitTargets
@@ -37,8 +37,8 @@ func PlayPrepAnimations():
 
 	for target in targets:
 		target.PlayPrepAnimation(initialDirection * Vector2(-1, -1)) # Invert it so that you're looking at your target
-		if target.damage_indicator != null:
-			target.damage_indicator.HideCombatClutter()
+		if target.damageIndicator != null:
+			target.damageIndicator.HideCombatClutter()
 
 
 func PlayJuice():
@@ -78,7 +78,7 @@ func PlayVFX_OnAffectedTiles(_packedVFX: PackedScene):
 
 func Exit():
 	super()
-	source.damage_indicator.ShowCombatClutter()
+	source.damageIndicator.ShowCombatClutter()
 	for target in unitTargets:
 		if !target.IsDying:
-			target.damage_indicator.ShowCombatClutter()
+			target.damageIndicator.ShowCombatClutter()

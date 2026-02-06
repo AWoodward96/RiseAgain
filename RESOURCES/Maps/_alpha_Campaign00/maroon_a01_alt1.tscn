@@ -71,7 +71,7 @@ tile_set = ExtResource("5_ojxgr")
 
 [node name="Main" type="TileMapLayer" parent="." unique_id=89954928]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAEAAYAAQATAAgAAAAFAAYAAQATAAkAAAAGAAcAAQATAAkAAAAHAAcAAQATAAgAAAAIAAcAAQATAAkAAAAGAAMAAQATAAkAAAALAAYAAQATAAgAAAA=")
+tile_map_data = PackedByteArray("AAAEAAYAAQATAAgAAAAFAAYAAQATAAkAAAAGAAcAAQATAAkAAAAGAAMAAQATAAkAAAALAAYAAQATAAgAAAAHAAcAAQATAAgAAAAIAAcAAQATAAkAAAA=")
 tile_set = ExtResource("5_ojxgr")
 
 [node name="Destructable" type="TileMapLayer" parent="." unique_id=591108251]

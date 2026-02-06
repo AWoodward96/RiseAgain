@@ -36,10 +36,10 @@ func Execute(_delta, _destination : Vector2):
 		else:
 			source.PlayAnimation(UnitSettingsTemplate.ANIM_JUMP_FRONT_DOWN)
 
-	if source.visual.AnimationWorkComplete:
-		source.visual.visual.flip_h = travelVector.x < 0
+	if source.Visual.AnimationWorkComplete:
+		source.Visual.visual.flip_h = travelVector.x < 0
 	return true
 
 func Exit():
-	if source != null && source.visual.AnimationWorkComplete:
-		source.visual.visual.flip_h = false
+	if source != null && source.Visual.AnimationWorkComplete:
+		source.Visual.visual.flip_h = false

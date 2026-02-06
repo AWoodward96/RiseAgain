@@ -10,7 +10,7 @@ signal OnUnitDamaged(_result : DamageStepResult)
 @export var combatEffectsParent : Node2D
 @export var itemsParent : Node2D
 @export var iconAnchors : Node2D
-@export var damage_indicator: DamageIndicator
+@export var damageIndicator: DamageIndicator
 
 @export var hasLootIcon : Node2D
 @export var isBossIcon : Node2D
@@ -29,7 +29,7 @@ var GridPosition : Vector2i
 var CurrentTile : Tile
 var PreviousTraversedTile : Tile
 var Template : UnitTemplate
-var visual : UnitVisual
+var Visual : UnitVisual
 var UnitAllegiance : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.ALLY
 var ItemSlots : Array[Item]
 var Abilities : Array[Ability]
@@ -100,8 +100,8 @@ var IsStackFree:
 
 var Activated : bool :
 	set(_value):
-		if visual != null:
-			visual.SetActivated(_value)
+		if Visual != null:
+			Visual.SetActivated(_value)
 
 		Activated = _value
 
@@ -152,8 +152,8 @@ func _ready():
 	ShowHealthBar(false)
 	HideDamagePreview()
 
-	damage_indicator.scale = Vector2i(Template.GridSize, Template.GridSize)
-	damage_indicator.AssignOwner(self)
+	damageIndicator.scale = Vector2i(Template.GridSize, Template.GridSize)
+	damageIndicator.AssignOwner(self)
 	iconAnchors.scale = Vector2i(Template.GridSize, Template.GridSize)
 
 	name = "{0}_{1}_{2}".format({"0" : str(UnitAllegiance), "1" : Template.DebugName, "2" : str(randi() % 100000)})
@@ -264,7 +264,7 @@ func AddCombatEffect(_combatEffectInstance : CombatEffectInstance):
 
 	UpdateCombatEffects()
 	UpdateDerivedStats()
-	damage_indicator.healthbar.Refresh()
+	damageIndicator.healthbar.Refresh()
 
 	if _combatEffectInstance is StealthEffectInstance:
 		StealthedCount += 1
@@ -340,15 +340,17 @@ func AddToMap(_map : Map, _gridLocation : Vector2i, _allegiance: GameSettingsTem
 func OnMapComplete():
 	ShowHealthBar(false)
 
+	# Clear out all combat effects bc they shouldn't persist between maps
+	for e in CombatEffects:
+		e.queue_free()
+	CombatEffects.clear()
+
+
 func OnTileUpdated(_tile : Tile):
 	if IsDying || Template == null || _tile == null:
 		return
 
 
-	# This could backfire for me. Not sure. Updating current tile halway through the movement might suck?
-	# Verify that this doesn't break everything over the next couple of days to make sure everything is still working
-	# as intended. This change was made to stop pop-outs surrounding interactions with Shroud
-	# Update: Yeah I think it's fine actually. Nothing's breaking.
 	CurrentTile = _tile
 
 	if Template.Descriptors.has(GameManager.GameSettings.AmphibiousDescriptor):
@@ -372,11 +374,11 @@ func OnTileUpdated(_tile : Tile):
 func SetSubmerged(_val : bool):
 	Submerged = _val
 
-	if damage_indicator != null:
-		damage_indicator.SetSubmerged(_val)
+	if damageIndicator != null:
+		damageIndicator.SetSubmerged(_val)
 
 
-	visual.UpdateSubmerged(_val)
+	Visual.UpdateSubmerged(_val)
 
 
 func UpdateLoot():
@@ -403,9 +405,9 @@ func CreateVisual():
 			parent.remove_child(n)
 		n.queue_free()
 
-	visual = Template.VisualPrefab.instantiate() as UnitVisual
-	visualParent.add_child(visual)
-	visual.Initialize(self)
+	Visual = Template.VisualPrefab.instantiate() as UnitVisual
+	visualParent.add_child(Visual)
+	Visual.Initialize(self)
 
 
 func _physics_process(delta):
@@ -683,8 +685,8 @@ func Activate(_currentTurn : GameSettingsTemplate.TeamID):
 	DamageTakenLastTurn = DamageTakenThisTurn
 	DamageTakenThisTurn = 0
 	TryPlayIdleAnimation()
-	if visual != null && !UsingSlowSpeedAbility:
-		visual.ResetAnimation()
+	if Visual != null && !UsingSlowSpeedAbility:
+		Visual.ResetAnimation()
 
 func LockInMovement(_tile : Tile):
 	if PendingMove:
@@ -749,7 +751,7 @@ func DoHeal(_result : HealStepResult):
 func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 	if _result.Miss:
 		Juice.CreateMissPopup(CurrentTile)
-		visual.PlayMissAnimation()
+		Visual.PlayMissAnimation()
 	else:
 		ModifyHealth(_result.HealthDelta, _result, _instantaneous)
 
@@ -770,7 +772,7 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 			takeLethalDamageSound.play()
 		else:
 			takeDamageSound.play()
-		visual.PlayDamageAnimation()
+		Visual.PlayDamageAnimation()
 
 	else:
 		Juice.CreateHealPopup(_netHealthChange, map.grid.GetTileFromGlobalPosition(global_position))
@@ -781,7 +783,7 @@ func ModifyHealth(_netHealthChange : int, _result : DamageStepResult, _instantan
 		# NOTE:
 		# If you have two back to back health bar changes - only the first one is going to go through to OnModifyHealthTweenComplete
 		# You'll need to wait for one to be finished before the other one starts
-		damage_indicator.ShowCombatResult(_netHealthChange, OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
+		damageIndicator.ShowCombatResult(_netHealthChange, OnModifyHealthTweenComplete.bind(_netHealthChange, _result))
 
 	else:
 		OnModifyHealthTweenComplete(_netHealthChange, _result)
@@ -902,13 +904,13 @@ func HealthBarBreak():
 
 func PlayDeathAnimation():
 	IsDying = true
-	damage_indicator.DeathState()
-	if visual != null && visual.AnimationWorkComplete:
+	damageIndicator.DeathState()
+	if Visual != null && Visual.AnimationWorkComplete:
 		deathSound.play()
 		PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE)
 		var tween = create_tween()
 		tween.tween_interval(Juice.combatSequenceCooloffTimer)
-		tween.tween_property(visual.visual.material, 'shader_parameter/tint', Color(0.0,0.0,0.0,0.0), 0.5)
+		tween.tween_property(Visual.visual.material, 'shader_parameter/tint', Color(0.0,0.0,0.0,0.0), 0.5)
 		tween.set_ease(Tween.EASE_OUT)
 		tween.set_trans(Tween.TRANS_EXPO)
 		tween.tween_interval(1)
@@ -917,7 +919,7 @@ func PlayDeathAnimation():
 		deathSound.play()
 		var tween = create_tween()
 		tween.tween_interval(Juice.combatSequenceCooloffTimer)
-		tween.tween_property(visual.sprite, 'self_modulate', Color(0,0,0,0), 0.5)
+		tween.tween_property(Visual.sprite, 'self_modulate', Color(0,0,0,0), 0.5)
 		tween.set_ease(Tween.EASE_OUT)
 		tween.set_trans(Tween.TRANS_EXPO)
 		tween.tween_interval(1)
@@ -961,7 +963,7 @@ func Ignite(_fireLevel : int, _source : UnitInstance, _abilityData : Ability):
 	AddCombatEffect(combatEffect)
 
 func ShowHealthBar(_visible : bool):
-	damage_indicator.ShowHealthBar(_visible)
+	damageIndicator.ShowHealthBar(_visible)
 
 func QueueAttackSequence(_destination : Vector2, _log : ActionLog, _animationStyle : CombatAnimationStyleTemplate, _useRetaliation : bool = false):
 	var attackAction = UnitAttackAction.new()
@@ -1006,7 +1008,7 @@ func QueueDelayedCombatAction(_log : ActionLog):
 		PopAction()
 
 func HideDamagePreview():
-	damage_indicator.HidePreview()
+	damageIndicator.HidePreview()
 
 func GetEffectiveAttackRange():
 	if EquippedWeapon != null:
@@ -1026,7 +1028,7 @@ func HasHealAbility():
 	return false
 
 func ShowAffinityRelation(_affinity : AffinityTemplate):
-	damage_indicator.ShowAffinityRelations(_affinity)
+	damageIndicator.ShowAffinityRelations(_affinity)
 
 # Checks all the item slots and sees if the unit has any item equipped
 func HasAnyItem():
@@ -1050,40 +1052,40 @@ func ResetVisualToTile():
 	position = CurrentTile.GlobalPosition
 
 func PlayAnimation(_animString : String, _smoothTransition : bool = false, _animSpeed : float = 1, _fromEnd : bool = false):
-	if visual != null:
-		visual.PlayAnimation(_animString, _smoothTransition, _animSpeed, _fromEnd)
+	if Visual != null:
+		Visual.PlayAnimation(_animString, _smoothTransition, _animSpeed, _fromEnd)
 
 # Should check to see if now's actually when we should return to idle.
 # Is currently just a wrapping method
 func TryPlayIdleAnimation():
-	if visual != null && !UsingSlowSpeedAbility:
+	if Visual != null && !UsingSlowSpeedAbility:
 		PlayAnimation(UnitSettingsTemplate.ANIM_IDLE)
 
 func PlayPrepAnimation(_dst : Vector2, _animSpeed : float = 1):
-	if visual != null && visual.AnimationWorkComplete && !UsingSlowSpeedAbility:
+	if Visual != null && Visual.AnimationWorkComplete && !UsingSlowSpeedAbility:
 		var round = GameSettingsTemplate.AxisRound(_dst)
 		match round:
 			Vector2.UP:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_UP, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_UP, false, _animSpeed)
 			Vector2.RIGHT:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_RIGHT, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_RIGHT, false, _animSpeed)
 			Vector2.DOWN:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_DOWN, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_DOWN, false, _animSpeed)
 			Vector2.LEFT:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_LEFT, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_PREP_LEFT, false, _animSpeed)
 
 func PlayAttackAnimation(_dst : Vector2, _animSpeed : float = 1):
-	if visual != null && visual.AnimationWorkComplete:
+	if Visual != null && Visual.AnimationWorkComplete:
 		var round = GameSettingsTemplate.AxisRound(_dst)
 		match round:
 			Vector2.UP:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_UP, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_UP, false, _animSpeed)
 			Vector2.RIGHT:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_RIGHT, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_RIGHT, false, _animSpeed)
 			Vector2.DOWN:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_DOWN, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_DOWN, false, _animSpeed)
 			Vector2.LEFT:
-				visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_LEFT, false, _animSpeed)
+				Visual.PlayAnimation(UnitSettingsTemplate.ANIM_ATTACK_LEFT, false, _animSpeed)
 
 func PlayAlertEmote():
 	Juice.CreateAlertEmote(self)
@@ -1114,8 +1116,8 @@ func ToJSON():
 		"MovementExpended" : MovementExpended
 	}
 
-	if UsingSlowSpeedAbility && visual.AnimationWorkComplete:
-		dict["SlowSpeedAnimationString"] = visual.AnimationCTRL.current_animation
+	if UsingSlowSpeedAbility && Visual.AnimationWorkComplete:
+		dict["SlowSpeedAnimationString"] = Visual.AnimationCTRL.current_animation
 
 	var itemSlotsArray : Array[String]
 	for i in ItemSlots:

@@ -20,9 +20,9 @@ func Initialize(_unitTemplate : UnitTemplate):
 	if persistData == null || (persistData != null && !persistData.Unlocked):
 		# Shade the entire sprite black to show that we haven't unlocked this unit yet
 		# We also should probably, like, rename the entry so that it says unknown but I'll get to that in a sec
-		if createdVisual != null && !showcaseMode:
-			createdVisual.visual.material.set_shader_parameter("use_color_override", true)
-			createdVisual.visual.material.set_shader_parameter("color_override", Color.BLACK)
+		if CreatedVisual != null && !showcaseMode:
+			CreatedVisual.visual.material.set_shader_parameter("use_color_override", true)
+			CreatedVisual.visual.material.set_shader_parameter("color_override", Color.BLACK)
 
 		var format = {
 			"STATUS" = tr(LocSettings.Status_Unknown),
@@ -39,8 +39,8 @@ func Initialize(_unitTemplate : UnitTemplate):
 
 		# if we're not in showcase mode, set the visual to greyscale to indicate usage
 		if !showcaseMode:
-			if !inCampsite && !inTavern && createdVisual != null:
-				createdVisual.SetActivated(false)
+			if !inCampsite && !inTavern && CreatedVisual != null:
+				CreatedVisual.SetActivated(false)
 
 		var format = {}
 		if inTavern:

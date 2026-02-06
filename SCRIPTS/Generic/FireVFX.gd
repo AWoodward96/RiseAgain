@@ -18,7 +18,7 @@ func AttachToUnit(_unitInstance : UnitInstance):
 	if myFireDebuff == null:
 		queue_free()
 	else:
-		myUnit.visual.add_child(self)
+		myUnit.Visual.add_child(self)
 		myUnit.OnCombatEffectsUpdated.connect(Refresh)
 		Refresh()
 

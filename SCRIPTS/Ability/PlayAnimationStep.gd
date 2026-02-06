@@ -27,19 +27,19 @@ func Enter(_actionLog : ActionLog):
 
 	log.source.PlayAnimation(AnimName + suffix, false, Speed, Backwards)
 	if WaitForAnimFinished:
-		if !log.source.visual.AnimationCTRL.has_animation(AnimName + suffix):
+		if !log.source.Visual.AnimationCTRL.has_animation(AnimName + suffix):
 			animComplete = true
 			return true
 
 		animComplete = false
-		log.source.visual.AnimationCTRL.animation_finished.connect(AnimFinishedCallback)
+		log.source.Visual.AnimationCTRL.animation_finished.connect(AnimFinishedCallback)
 	return true
 
 func Execute(_delta):
 	if WaitForAnimFinished:
 		if animComplete:
-			if log.source.visual.AnimationCTRL.animation_finished.is_connected(AnimFinishedCallback):
-				log.source.visual.AnimationCTRL.animation_finished.disconnect(AnimFinishedCallback)
+			if log.source.Visual.AnimationCTRL.animation_finished.is_connected(AnimFinishedCallback):
+				log.source.Visual.AnimationCTRL.animation_finished.disconnect(AnimFinishedCallback)
 			return true
 		return false
 

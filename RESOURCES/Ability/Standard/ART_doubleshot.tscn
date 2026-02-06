@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="3_bjvjc"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="3_ru3jp"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="5_fbic6"]
+[ext_resource type="Script" uid="uid://barfg6ccbfuwo" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_GenericAttack.gd" id="6_0btt6"]
 [ext_resource type="Texture2D" uid="uid://bahn7dncans8s" path="res://ART/Icons/Ability/Standard/doubleshot.png" id="6_5arvb"]
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="6_e48nk"]
 [ext_resource type="Resource" uid="uid://xnuwxpkpqc5n" path="res://RESOURCES/Ability/TargetingTemplates/doubleshot_targeting.tres" id="7_5arvb"]
@@ -19,13 +20,24 @@ metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
 script = ExtResource("3_bjvjc")
 metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
 
+[sub_resource type="Resource" id="Resource_tbn0q"]
+script = ExtResource("3_bjvjc")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
 [sub_resource type="Resource" id="Resource_5cjq5"]
 script = ExtResource("3_ru3jp")
 
+[sub_resource type="Resource" id="Resource_iqreu"]
+script = ExtResource("6_0btt6")
+HasStandardWindup = false
+HasStandardCooloff = false
+metadata/_custom_type_script = "uid://barfg6ccbfuwo"
+
 [node name="ART_DoubleShot" type="Node2D" unique_id=1806348706 node_paths=PackedStringArray("TargetingData", "UsableDamageData")]
 script = ExtResource("1_5p40p")
-ability_speed = 1
-executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_ab2ka"), SubResource("Resource_5arvb"), SubResource("Resource_5cjq5")])
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_avuim")]([SubResource("Resource_ab2ka"), SubResource("Resource_5arvb"), SubResource("Resource_tbn0q"), SubResource("Resource_5cjq5")])
+animationStyle = SubResource("Resource_iqreu")
 internalName = "doubleshot"
 loc_displayName = "art_doubleshot_name"
 loc_displayDesc = "art_doubleshot_desc"

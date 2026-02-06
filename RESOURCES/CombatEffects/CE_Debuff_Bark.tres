@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="StatChangeEffect" format=3 uid="uid://duaa7me7ich0v"]
+
+[ext_resource type="Script" uid="uid://bbr1ttgvdmxq2" path="res://SCRIPTS/CombatEffects/StatChangeEffectTemplate.gd" id="1_2epno"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="2_fgx53"]
+[ext_resource type="Resource" uid="uid://v308g3xph4e" path="res://RESOURCES/Stats/STAT_SpAttack.tres" id="3_gy8s2"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="4_k756c"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="5_dqjpo"]
+[ext_resource type="Script" uid="uid://bk6cr5s2uypt4" path="res://SCRIPTS/CombatEffects/StatChangeEffect.gd" id="6_1k7yg"]
+
+[sub_resource type="Resource" id="Resource_yddp5"]
+script = ExtResource("1_2epno")
+Stat = ExtResource("2_fgx53")
+FlatValue = -3
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[sub_resource type="Resource" id="Resource_d4b3c"]
+script = ExtResource("1_2epno")
+Stat = ExtResource("3_gy8s2")
+FlatValue = -3
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[sub_resource type="Resource" id="Resource_31yxl"]
+script = ExtResource("1_2epno")
+Stat = ExtResource("4_k756c")
+FlatValue = -3
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[sub_resource type="Resource" id="Resource_gvqyl"]
+script = ExtResource("1_2epno")
+Stat = ExtResource("5_dqjpo")
+FlatValue = -3
+metadata/_custom_type_script = "uid://bbr1ttgvdmxq2"
+
+[resource]
+script = ExtResource("6_1k7yg")
+StatChanges = Array[ExtResource("1_2epno")]([SubResource("Resource_yddp5"), SubResource("Resource_d4b3c"), SubResource("Resource_31yxl"), SubResource("Resource_gvqyl")])
+AffectedTargets = 1
+Turns = 2
+metadata/_custom_type_script = "uid://bk6cr5s2uypt4"

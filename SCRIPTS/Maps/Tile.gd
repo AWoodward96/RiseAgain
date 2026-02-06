@@ -115,6 +115,7 @@ func PreviewDamage(_normalDamage : int, _collisionDamage : int, _heal : int):
 	damageIndicator.normalDamage += _normalDamage
 	damageIndicator.collisionDamage += _collisionDamage
 	damageIndicator.healAmount += _heal
+	damageIndicator.trueHit = true
 	return true
 
 func CancelPreview():

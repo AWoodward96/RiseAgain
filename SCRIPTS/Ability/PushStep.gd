@@ -44,7 +44,7 @@ func Enter(_actionLog : ActionLog):
 
 		if res.willCollide:
 			if tileData.pushCollision.Occupant != null:
-				tileData.pushCollision.Occupant.QueueDefenseSequence(_actionLog.actionOriginTile.GlobalPosition, res)
+				tileData.pushCollision.Occupant.ModifyHealth(res.HealthDelta, res)
 			else:
 				_actionLog.grid.ModifyTileHealth(res.HealthDelta, res.TileTargetData.pushCollision, true)
 		pass

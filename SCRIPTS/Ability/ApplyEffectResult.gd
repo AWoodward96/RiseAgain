@@ -6,5 +6,5 @@ var affectedIndicators : Array[DamageIndicator]
 
 func PreviewResult(_map : Map):
 	if Target != null:
-		Target.damage_indicator.AddEffect(Template)
+		Target.damageIndicator.AddEffect(Template)
 	pass

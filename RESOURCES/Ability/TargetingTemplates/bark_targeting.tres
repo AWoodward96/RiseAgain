@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TargetingShapedDirectional" format=3 uid="uid://c5hynuea41dna"]
+
+[ext_resource type="Script" uid="uid://ueq48l24frax" path="res://SCRIPTS/Targeting/TargetingShapedDirectional.gd" id="1_nl7wn"]
+
+[resource]
+script = ExtResource("1_nl7wn")
+shapePrefabRef = "res://RESOURCES/TargetingShapes/bark_shape.tres"

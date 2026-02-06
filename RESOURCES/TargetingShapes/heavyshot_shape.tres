@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="TargetingShapeRange" format=3 uid="uid://bf0ch7v2x386k"]
+
+[ext_resource type="Script" uid="uid://d1xg8qidld8r6" path="res://SCRIPTS/Targeting/Shapes/ThresholdTargetingShape.gd" id="1_sx5in"]
+[ext_resource type="Script" uid="uid://c54w6gm64x8wu" path="res://SCRIPTS/Targeting/Shapes/Vector2iMultComplex.gd" id="2_rcgog"]
+[ext_resource type="Script" uid="uid://biofxjvj46cir" path="res://SCRIPTS/Targeting/Shapes/TargetingShapeRange.gd" id="3_aisun"]
+[ext_resource type="Script" uid="uid://o5cxbirse3is" path="res://SCRIPTS/Items/PushData.gd" id="3_rcgog"]
+
+[sub_resource type="Resource" id="Resource_4ay05"]
+script = ExtResource("3_rcgog")
+carryLimit = 1
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_k5ghg"]
+script = ExtResource("2_rcgog")
+CritModifier = 1.0
+pushInfo = SubResource("Resource_4ay05")
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_blv31"]
+script = ExtResource("1_sx5in")
+Threshold = 2
+TileCoordinates = Array[ExtResource("2_rcgog")]([SubResource("Resource_k5ghg")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
+
+[sub_resource type="Resource" id="Resource_rcgog"]
+script = ExtResource("3_rcgog")
+carryLimit = 1
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_670te"]
+script = ExtResource("2_rcgog")
+CritModifier = 1.0
+pushInfo = SubResource("Resource_rcgog")
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_48ko7"]
+script = ExtResource("1_sx5in")
+Threshold = 3
+TileCoordinates = Array[ExtResource("2_rcgog")]([SubResource("Resource_670te")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
+
+[sub_resource type="Resource" id="Resource_aisun"]
+script = ExtResource("3_rcgog")
+carryLimit = 1
+metadata/_custom_type_script = "uid://o5cxbirse3is"
+
+[sub_resource type="Resource" id="Resource_m65ei"]
+script = ExtResource("2_rcgog")
+CritModifier = 1.0
+pushInfo = SubResource("Resource_aisun")
+metadata/_custom_type_script = "uid://c54w6gm64x8wu"
+
+[sub_resource type="Resource" id="Resource_0cfpk"]
+script = ExtResource("1_sx5in")
+Threshold = 4
+TileCoordinates = Array[ExtResource("2_rcgog")]([SubResource("Resource_m65ei")])
+metadata/_custom_type_script = "uid://d1xg8qidld8r6"
+
+[resource]
+script = ExtResource("3_aisun")
+rangedShape = Array[ExtResource("1_sx5in")]([SubResource("Resource_blv31"), SubResource("Resource_48ko7"), SubResource("Resource_0cfpk")])

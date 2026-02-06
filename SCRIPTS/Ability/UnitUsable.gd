@@ -68,7 +68,7 @@ func IsHeal():
 	return HealData != null && UsableDamageData == null && TargetingData != null
 
 func IsDamage():
-	return UsableDamageData != null && TargetingData != null
+	return UsableDamageData != null
 
 
 func GetComponents():

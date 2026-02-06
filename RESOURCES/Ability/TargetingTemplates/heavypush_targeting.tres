@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_ahrpf")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/heavy_push_shape.tres"
+TrueHit = true
 TeamTargeting = 2

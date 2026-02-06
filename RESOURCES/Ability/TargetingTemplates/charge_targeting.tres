@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_i8qui")
 shapePrefabRef = "res://RESOURCES/TargetingShapes/charge_shape.tres"
+TrueHit = true
 TeamTargeting = 2

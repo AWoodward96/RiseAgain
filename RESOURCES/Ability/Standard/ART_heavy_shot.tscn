@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://deemrihx3smk2"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_v5d84"]
+[ext_resource type="Texture2D" uid="uid://3em7u6bulube" path="res://ART/Icons/Ability/Standard/heavy_shot.png" id="2_4fxdx"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_gmjkj"]
+[ext_resource type="Script" uid="uid://ueq48l24frax" path="res://SCRIPTS/Targeting/TargetingShapedDirectional.gd" id="3_4fxdx"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_n7i1r"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="3_xrxf0"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="4_b1otk"]
+[ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_g0m8d"]
+[ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="5_h8l5r"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_02wu0"]
+
+[sub_resource type="Resource" id="Resource_oj3ox"]
+script = ExtResource("3_n7i1r")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_ohct5"]
+script = ExtResource("4_b1otk")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_be1ct"]
+script = ExtResource("5_h8l5r")
+metadata/_custom_type_script = "uid://45lb6jb6lb6n"
+
+[sub_resource type="Resource" id="Resource_dy5rx"]
+script = ExtResource("6_02wu0")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_xrxf0"]
+script = ExtResource("3_4fxdx")
+shapePrefabRef = "uid://bf0ch7v2x386k"
+TrueHit = true
+TargetRange = Vector2i(2, 4)
+CanTargetTerrain = false
+metadata/_custom_type_script = "uid://ueq48l24frax"
+
+[node name="heavy_shot" type="Node2D" unique_id=2024952938 node_paths=PackedStringArray("UsableDamageData")]
+script = ExtResource("1_v5d84")
+abilityCooldown = 4
+executionStack = Array[ExtResource("2_gmjkj")]([SubResource("Resource_oj3ox"), SubResource("Resource_ohct5"), SubResource("Resource_be1ct"), SubResource("Resource_dy5rx")])
+internalName = "heavy_shot"
+loc_displayName = "art_heavy_shot_name"
+loc_displayDesc = "art_heavy_shot_desc"
+icon = ExtResource("2_4fxdx")
+TargetingTemplate = SubResource("Resource_xrxf0")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1619902185]
+script = ExtResource("3_xrxf0")
+AgressiveStat = ExtResource("4_g0m8d")

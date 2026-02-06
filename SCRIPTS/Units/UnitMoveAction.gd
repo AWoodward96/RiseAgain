@@ -95,7 +95,7 @@ func _Execute(_unit : UnitInstance, _delta):
 					if (movementData.MoveFromAbility && MovementIndex == Route.size() - 1) || (!movementData.MoveFromAbility):
 						# Get bonked loser
 						if Route[MovementIndex].Occupant != null:
-							Route[MovementIndex].Occupant.visual.PlayAlertedFromShroudAnimation()
+							Route[MovementIndex].Occupant.Visual.PlayAlertedFromShroudAnimation()
 
 						unit.PlayShockEmote()
 						if movementData.Log != null:

@@ -7,6 +7,7 @@ var CritRate : float		# The % the roll needs to be under in order for it to be a
 var HitRate : float			# The % the average needs to be under in order for it to be a hit
 var MissVals : Vector2		# The log of which numbers we rolled
 var MissAverage : float		# The average of missVals
+var TrueHit : bool = false
 
 var AffectedTiles : Array[TileTargetedData]
 var RetaliationResult : DamageStepResult
@@ -123,12 +124,12 @@ func PreviewResult(_map : Map):
 	if SourceHealthDelta != 0 && Source != null:
 		# Then the source will have their hp modified - so add that to their preview
 		if SourceHealthDelta < 0:
-			Source.damage_indicator.normalDamage += SourceHealthDelta
+			Source.damageIndicator.normalDamage += SourceHealthDelta
 		elif SourceHealthDelta > 0:
-			Source.damage_indicator.healAmount += SourceHealthDelta
+			Source.damageIndicator.healAmount += SourceHealthDelta
 
 	if Target != null:
-		var indicator = Target.damage_indicator
+		var indicator = Target.damageIndicator
 
 		if HealthDelta <= 0: # The = to here is to trigger the indicator for if your attack deals 0 damage
 			indicator.normalDamage += HealthDelta
@@ -137,6 +138,7 @@ func PreviewResult(_map : Map):
 
 		indicator.critChance = CritRate
 		indicator.hitChance = HitRate
+		indicator.trueHit = TrueHit
 
 		Target.ShowAffinityRelation(Source.Template.Affinity)
 	elif TileTargetData.Tile.Health != -1:

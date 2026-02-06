@@ -6,6 +6,7 @@ signal AnimationDealDamageCallback
 @export var AnimationCTRL : AnimationPlayer
 @export var AnimationWorkComplete : bool = false
 @export var SubmergedParent : Node2D
+
 var sprite : Sprite2D
 var visual : AnimatedSprite2D
 var MyUnit : UnitInstance
@@ -127,7 +128,7 @@ func RefreshFlying():
 func UpdateShrouded():
 	visible = !MyUnit.ShroudedFromPlayer
 
-	MyUnit.damage_indicator.visible = !MyUnit.ShroudedFromPlayer
+	MyUnit.damageIndicator.visible = !MyUnit.ShroudedFromPlayer
 
 	if AnimationWorkComplete:
 		if MyUnit.Shrouded:

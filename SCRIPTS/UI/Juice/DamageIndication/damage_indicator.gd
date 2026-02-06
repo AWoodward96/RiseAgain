@@ -51,6 +51,7 @@ var collisionDamage : int
 var healAmount : int
 var hitChance : float
 var critChance : float
+var trueHit : bool = false
 
 var effects : Array[CombatEffectTemplate]
 var healthBarTweenCallable : Callable
@@ -81,7 +82,10 @@ func ShowPreview():
 
 	if hit_chance_label != null:
 		hit_chance_label.visible = true
-		hit_chance_label.text = str("%01.0d" % (clamp(hitChance, 0, 1) * 100)) + "%"
+		if trueHit:
+			hit_chance_label.text = tr(LocSettings.True_Hit)
+		else:
+			hit_chance_label.text = str("%01.0d" % (clamp(hitChance, 0, 1) * 100)) + "%"
 
 	if !submerged:
 		var resultingHP = clamp(currentHP + normalDamage + collisionDamage + healAmount, 0, maxHealth)

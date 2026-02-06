@@ -11,6 +11,7 @@ static var Current_Max = "ui_current_max"
 static var UI_Yes = "ui_yes"
 static var UI_No = "ui_no"
 static var Health_Submerged = "ui_healthunknown"
+static var True_Hit = "ui_truehit"
 
 static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 static var Status_Unknown = "ui_status_unknown"

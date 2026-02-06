@@ -22,7 +22,7 @@ func Prepare(_direction : Vector2, _source : UnitInstance, _data):
 	if PreperationAnimString != "":
 		inAnimationComplete = false
 		source.PlayAnimation(PreperationAnimString)
-		source.visual.AnimationCTRL.animation_finished.connect(InAnimationCompleteCallback)
+		source.Visual.AnimationCTRL.animation_finished.connect(InAnimationCompleteCallback)
 	else:
 		inAnimationComplete = true
 	PlayVFX(Prep_VFX)
@@ -38,7 +38,7 @@ func Execute(_delta, _destination : Vector2):
 				outPlayed = true
 				if outAnimationString != "":
 					source.PlayAnimation(outAnimationString)
-					source.visual.AnimationCTRL.animation_finished.connect(OutAnimationCompleteCallback)
+					source.Visual.AnimationCTRL.animation_finished.connect(OutAnimationCompleteCallback)
 				else:
 					outAnimationComplete = true
 
@@ -49,12 +49,12 @@ func Execute(_delta, _destination : Vector2):
 
 
 func InAnimationCompleteCallback(_anim_name : String):
-	source.visual.AnimationCTRL.animation_finished.disconnect(InAnimationCompleteCallback)
+	source.Visual.AnimationCTRL.animation_finished.disconnect(InAnimationCompleteCallback)
 	inAnimationComplete = true
 	pass
 
 func OutAnimationCompleteCallback(_anim_name : String):
-	source.visual.AnimationCTRL.animation_finished.disconnect(OutAnimationCompleteCallback)
+	source.Visual.AnimationCTRL.animation_finished.disconnect(OutAnimationCompleteCallback)
 	outAnimationComplete = true
 	pass
 

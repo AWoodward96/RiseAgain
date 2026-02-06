@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityUnlockable" format=3 uid="uid://bn0jmgtj4o7d5"]
+
+[ext_resource type="Script" uid="uid://bnehabjcbpysq" path="res://SCRIPTS/UI/General/DescriptorTemplate.gd" id="1_7j6ww"]
+[ext_resource type="Script" uid="uid://boe8pcvr7gp8k" path="res://SCRIPTS/Maps/AbilityUnlockable.gd" id="2_3f6wi"]
+
+[resource]
+script = ExtResource("2_3f6wi")
+AbilityPath = "res://RESOURCES/Ability/Standard/ART_heavy_shot.tscn"
+StartUnlocked = true

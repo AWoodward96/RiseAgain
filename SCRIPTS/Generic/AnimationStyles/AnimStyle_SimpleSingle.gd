@@ -45,8 +45,8 @@ func Enter():
 	if ExecutionAnimString != "":
 		animationComplete = false
 		source.PlayAnimation(ExecutionAnimString + animationSuffix)
-		source.visual.AnimationDealDamageCallback.connect(DamageCallback)
-		source.visual.AnimationCTRL.animation_finished.connect(AnimationCompleteCallback)
+		source.Visual.AnimationDealDamageCallback.connect(DamageCallback)
+		source.Visual.AnimationCTRL.animation_finished.connect(AnimationCompleteCallback)
 	else:
 		animationComplete = true
 
@@ -64,13 +64,13 @@ func Execute(_delta, _direction : Vector2):
 	return animationComplete
 
 func DamageCallback():
-	source.visual.AnimationDealDamageCallback.disconnect(DamageCallback)
+	source.Visual.AnimationDealDamageCallback.disconnect(DamageCallback)
 	PlayVFX_OnSource(Damage_VFX_OnSource)
 	PlayVFX_OnAffectedTiles(Damage_VFX_OnAffectedTiles)
 	PerformDamageCallback.emit()
 	pass
 
 func AnimationCompleteCallback(_anim_name : String):
-	source.visual.AnimationCTRL.animation_finished.disconnect(AnimationCompleteCallback)
+	source.Visual.AnimationCTRL.animation_finished.disconnect(AnimationCompleteCallback)
 	animationComplete = true
 	pass

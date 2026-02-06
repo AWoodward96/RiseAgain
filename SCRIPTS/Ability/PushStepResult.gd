@@ -31,9 +31,11 @@ func PreviewResult(_map : Map):
 		if unit == Source:
 			# Prioritize death to killbox over other damage
 			if stack.ResultingTile != null && stack.ResultingTile.ActiveKillbox && !unit.IsFlying:
-				unit.damage_indicator.collisionDamage += -unit.currentHealth
+				unit.damageIndicator.collisionDamage += -unit.currentHealth
+				unit.damageIndicator.trueHit = true
 			elif willCollide && canDamageUser:
-				unit.damage_indicator.collisionDamage += HealthDelta
+				unit.damageIndicator.collisionDamage += HealthDelta
+				unit.damageIndicator.trueHit = true
 
 			# show where a unit might be after an action is performed
 			ctrl.movement_tracker.visible = true
@@ -57,15 +59,18 @@ func PreviewResult(_map : Map):
 			unit.PreviewModifiedTile(stack.ResultingTile)
 
 			if stack.ResultingTile != null && stack.ResultingTile.ActiveKillbox && !unit.IsFlying:
-				unit.damage_indicator.collisionDamage += -unit.currentHealth
+				unit.damageIndicator.collisionDamage += -unit.currentHealth
+				unit.damageIndicator.trueHit = true
 			elif willCollide:
-				unit.damage_indicator.collisionDamage += HealthDelta
+				unit.damageIndicator.collisionDamage += HealthDelta
+				unit.damageIndicator.trueHit = true
 
 	if willCollide:
 		# The thing we're colliding with also takes damage
 		var occupant = TileTargetData.pushCollision.Occupant
 		if occupant != null:
-			occupant.damage_indicator.collisionDamage += HealthDelta
+			occupant.damageIndicator.collisionDamage += HealthDelta
+			occupant.damageIndicator.trueHit = true
 		else:
 			TileTargetData.pushCollision.PreviewDamage(0, HealthDelta, 0)
 	pass

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dqy2wg6wijn2e"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_t1xwd"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_m7qn5"]
+[ext_resource type="Texture2D" uid="uid://up7ejif1gxs4" path="res://ART/Icons/Ability/Standard/break.png" id="2_xno8j"]
+[ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_8cy2t"]
+[ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="4_5xhmb"]
+[ext_resource type="Script" uid="uid://deve3yl1a5xqj" path="res://SCRIPTS/Ability/DealDirectDamageStep.gd" id="4_if4rd"]
+[ext_resource type="Resource" uid="uid://d1v3am2xl1277" path="res://RESOURCES/Stats/STAT_Dexterity.tres" id="5_m7qn5"]
+[ext_resource type="Script" uid="uid://b2dlmu7ymiuei" path="res://SCRIPTS/Ability/PerformCombatStep.gd" id="5_xdv8b"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_8cy2t"]
+[ext_resource type="Resource" uid="uid://bkxpq0bov0jws" path="res://RESOURCES/Ability/TargetingTemplates/break_targeting.tres" id="8_8cy2t"]
+
+[sub_resource type="Resource" id="Resource_bwet8"]
+script = ExtResource("3_8cy2t")
+metadata/_custom_type_script = "uid://dq6tw80ls7h1i"
+
+[sub_resource type="Resource" id="Resource_nxx3e"]
+script = ExtResource("5_xdv8b")
+metadata/_custom_type_script = "uid://b2dlmu7ymiuei"
+
+[sub_resource type="Resource" id="Resource_tkr5s"]
+script = ExtResource("4_if4rd")
+DamageAmount = -10
+Targeting = 0
+metadata/_custom_type_script = "uid://deve3yl1a5xqj"
+
+[sub_resource type="Resource" id="Resource_if4rd"]
+script = ExtResource("6_8cy2t")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[node name="break" type="Node2D" unique_id=497006156 node_paths=PackedStringArray("UsableDamageData")]
+script = ExtResource("1_t1xwd")
+abilityCooldown = 3
+executionStack = Array[ExtResource("2_m7qn5")]([SubResource("Resource_bwet8"), SubResource("Resource_nxx3e"), SubResource("Resource_tkr5s"), SubResource("Resource_if4rd")])
+internalName = "break"
+loc_displayName = "art_break_name"
+loc_displayDesc = "art_break_desc"
+icon = ExtResource("2_xno8j")
+TargetingTemplate = ExtResource("8_8cy2t")
+UsableDamageData = NodePath("DamageComponent")
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=709014457]
+script = ExtResource("4_5xhmb")
+FlatValue = 20.0
+AgressiveStat = ExtResource("5_m7qn5")
+AgressiveModType = 2
+DamageType = 2

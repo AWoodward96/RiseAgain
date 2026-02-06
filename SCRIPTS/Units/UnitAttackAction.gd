@@ -17,7 +17,7 @@ func _Enter(_unit : UnitInstance, _map : Map):
 	TimerLock = false
 	damageDealt = false
 	retaliationQueued = false
-	unit.damage_indicator.HideCombatClutter()
+	unit.damageIndicator.HideCombatClutter()
 
 	if AnimationStyle != null:
 		AnimationStyle.isRetaliation = IsRetaliation

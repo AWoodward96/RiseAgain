@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_g7uor")
+TrueHit = true
 TeamTargeting = 0

@@ -76,46 +76,6 @@ Value = 6.0
 script = ExtResource("3_pgxgp")
 Template = ExtResource("13_1qlfw")
 
-[sub_resource type="Resource" id="Resource_1qlfw"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("2_n5q5a")
-
-[sub_resource type="Resource" id="Resource_csh4u"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("4_uhkmf")
-
-[sub_resource type="Resource" id="Resource_02dn3"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("5_7sjbl")
-
-[sub_resource type="Resource" id="Resource_11n1w"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("6_vk4tj")
-
-[sub_resource type="Resource" id="Resource_hnts0"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("7_3d0wk")
-
-[sub_resource type="Resource" id="Resource_xa3tn"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("10_vyxpi")
-
-[sub_resource type="Resource" id="Resource_y1k0h"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("12_n6gr5")
-
-[sub_resource type="Resource" id="Resource_rw1wt"]
-resource_local_to_scene = true
-script = ExtResource("3_pgxgp")
-Template = ExtResource("13_1qlfw")
-
 [sub_resource type="Resource" id="Resource_priqb"]
 script = ExtResource("3_pgxgp")
 Template = ExtResource("2_n5q5a")
@@ -174,6 +134,7 @@ Affinity = ExtResource("1_bqdbj")
 StartingEquippedWeapon = ExtResource("15_nthln")
 StartingTactical = ExtResource("18_csh4u")
 Tier0Abilities = Array[String](["uid://dp0gbxwj2y26b"])
+Tier1Abilities = Array[String](["uid://8dsdjwa7r5ny", "uid://dyji2cmh33um2"])
 Descriptors = Array[ExtResource("12_644si")]([ExtResource("10_fydjx")])
 WeaponDescriptors = Array[ExtResource("12_644si")]([ExtResource("17_6m4d0")])
 FootstepGUID = "{b1a21203-a959-4014-93ed-a42d2a23c0f6}"

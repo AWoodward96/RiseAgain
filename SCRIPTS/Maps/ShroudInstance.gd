@@ -21,7 +21,7 @@ func UnitEntered(_tile : Tile, _unit : UnitInstance):
 
 	for tile in Tiles:
 		if tile.Occupant != null:
-			tile.Occupant.visual.UpdateShrouded()
+			tile.Occupant.Visual.UpdateShrouded()
 			if Exposed.has(GameSettingsTemplate.TeamID.ALLY) && Exposed[GameSettingsTemplate.TeamID.ALLY]:
 				CurrentMap.UpdateObscure(null, tile.Occupant.CurrentTile)
 
@@ -45,14 +45,14 @@ func UnitExited(_unit : UnitInstance):
 
 	for tile in Tiles:
 		if tile.Occupant != null:
-			tile.Occupant.visual.UpdateShrouded()
+			tile.Occupant.Visual.UpdateShrouded()
 
 			if Exposed.has(GameSettingsTemplate.TeamID.ALLY) && !Exposed[GameSettingsTemplate.TeamID.ALLY]:
 				CurrentMap.UpdateObscure(tile.Occupant.CurrentTile, null)
 
 
 	# Because this is slow, it's best to handle the units own visual in the individual actions they do
-	_unit.visual.UpdateShrouded()
+	_unit.Visual.UpdateShrouded()
 	pass
 
 
