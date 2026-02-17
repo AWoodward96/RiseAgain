@@ -14,6 +14,7 @@ func BeginTargeting(_log : ActionLog, _ctrl : PlayerController):
 	log.availableTiles.push_front(source.CurrentTile)
 	log.affectedTiles.append_array(GetAffectedTiles(source, source.CurrentTile))
 	log.actionOriginTile = source.CurrentTile
+	ctrl.combatHUD.UpdateTargetingInstructions(true, GetTargetingString(), {})
 	ShowPreview()
 
 func HandleInput(_delta):
@@ -77,3 +78,6 @@ func ShowAvailableTilesOnGrid():
 			else:
 				target.Tile.CanBuff = true
 	currentGrid.ShowActions()
+
+func GetTargetingString():
+	return "ui_targeting_simple"

@@ -2,6 +2,7 @@ extends Resource
 class_name LocSettings
 
 # This class is for hard coded localization.
+const CONTROLLER_LOC_SUFFIX = "_controller"
 
 static var Level_Num_Short = "ui_level_num_short"
 static var Level_Num = "ui_level_num"
@@ -12,6 +13,9 @@ static var UI_Yes = "ui_yes"
 static var UI_No = "ui_no"
 static var Health_Submerged = "ui_healthunknown"
 static var True_Hit = "ui_truehit"
+
+static var Targeting_NoTargets = "ui_targeting_notargets"
+static var Targeting_SelectNumTargets = "ui_targeting_selectnumtargets"
 
 static var Optional_Objective_Block = "Optional Objective: \n{TEXT}"
 static var Status_Unknown = "ui_status_unknown"
@@ -172,3 +176,6 @@ func FormatAbilityDescription(_ability : Ability):
 					count += 1
 
 	return dict
+
+func DoesTranslationExist(_trstring : String):
+	return tr(_trstring) != ""

@@ -32,6 +32,10 @@ func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]
 		sourceResult.Target = _actionLog.source
 		sourceResult.Source = _actionLog.source
 
+		# Just for the UI
+		if _actionLog.ability.TargetingTemplate != null && _actionLog.ability.TargetingTemplate.TrueHit:
+			sourceResult.TrueHit = true
+
 		var sourceIndex = _affectedTiles.find_custom(func(x : TileTargetedData) : return x.Tile == _actionLog.source.CurrentTile)
 		if sourceIndex != -1:
 			sourceResult.TileTargetData = _affectedTiles[sourceIndex]
@@ -52,6 +56,10 @@ func GetResults(_actionLog : ActionLog, _affectedTiles : Array[TileTargetedData]
 			targetsResults.Target = specificTile.Tile.Occupant
 			targetsResults.Source = _actionLog.source
 			targetsResults.TileTargetData = specificTile
+
+			# Just for the UI
+			if _actionLog.ability.TargetingTemplate != null && _actionLog.ability.TargetingTemplate.TrueHit:
+				targetsResults.TrueHit = true
 
 			results.append(targetsResults)
 

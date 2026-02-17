@@ -315,6 +315,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 				component = ResourceLoader.load(targetingPath) as TargetingTeleportAdjacent
 			"RaycastDirectional":
 				component = ResourceLoader.load(targetingPath) as TargetingRaycastDirectional
+			"MultiStatScalingSimple":
+				component = ResourceLoader.load(targetingPath) as TargetingStatScalingSimple
 	else:
 		match _data["TargetType"]:
 			"Simple":
@@ -335,6 +337,8 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 				component = TargetingTeleportAdjacent.new()
 			"RaycastDirectional":
 				component = TargetingRaycastDirectional.new()
+			"MultiStatScalingSimple":
+				component = TargetingStatScalingSimple.new()
 
 	if component == null:
 		push_error("Targeting Component is null for ability: " , _ability.internalName, ". If this is intentional ignore")
@@ -342,6 +346,11 @@ func ModifyTargetingComponent(_ability : Ability, _data):
 
 	if !ImportFieldIsNull(_data, "CanTargetSelf") && component.get("CanTargetSelf") != null:
 		component.CanTargetSelf = _data["CanTargetSelf"]
+
+
+	if !ImportFieldIsNull(_data, "CanTargetTerrain") && component.get("CanTargetTerrain") != null:
+		component.CanTargetTerrain = _data["CanTargetTerrain"]
+
 
 	var range : Vector2i
 	if !ImportFieldIsNull(_data, "MinRange"): range.x = _data["MinRange"]

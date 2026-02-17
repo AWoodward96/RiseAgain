@@ -5,6 +5,7 @@ class_name AISmartTarget
 
 var options : Array[EnemyAIOption]
 var selectedOption : EnemyAIOption
+var weaponsAvailableForUse : Array[UnitUsable]
 
 func StartTurn(_map : Map, _unit : UnitInstance):
 	super(_map, _unit)
@@ -17,7 +18,7 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# STEP ZERO:
 	# Check if this enemy even has an ability to use. If they don't, then there's nothing to do
 	var hasWeaponToUse = false
-	var weaponsAvailableForUse : Array[UnitUsable]
+	weaponsAvailableForUse.clear()
 	for a in unit.Abilities:
 		if a.type != Ability.EAbilityType.Tactical && a.IsDamage():
 			if a.remainingCooldown <= 0 || a.abilityCooldown == 0:
@@ -28,40 +29,22 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 		unit.QueueEndTurn()
 		return
 
-	for i in range(0, Flags.size()):
-		var aiflag = Flags[i]
-		var filteredUnitsOnTeam = map.GetUnitsOnTeam(aiflag.Team)
-		if aiflag.SpecificUnit != null:
-			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template == aiflag.SpecificUnit)
+	if tauntedBy == null:
+		for i in range(0, Flags.size()):
+			var aiflag = Flags[i]
+			var filteredUnitsOnTeam = map.GetUnitsOnTeam(aiflag.Team)
+			if aiflag.SpecificUnit != null:
+				filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template == aiflag.SpecificUnit)
 
-		if aiflag.Descriptor != null:
-			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template.Descriptors.find(aiflag.Descriptor) != -1)
+			if aiflag.Descriptor != null:
+				filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x) : return x.Template.Descriptors.find(aiflag.Descriptor) != -1)
 
-		filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x : UnitInstance) : return !x.Stealthed)
+			filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x : UnitInstance) : return !x.Stealthed)
 
-		for u : UnitInstance in filteredUnitsOnTeam:
-			if u == null:
-				continue
-
-			# Be nice. If we can't see the player, we can't attack them
-			if u.Shrouded && !u.CurrentTile.Shroud.Exposed[_unit.UnitAllegiance]:
-				continue
-
-			for weapon in weaponsAvailableForUse:
-
-				var newOption : EnemyAIOption
-				if weapon.customAITargetingBehavior != null:
-					newOption = weapon.customAITargetingBehavior.Construct(_unit, u, map, weapon)
-				else:
-					newOption = EnemyAIOption.Construct(_unit, u, map, weapon) as EnemyAIOption
-
-				newOption.flagIndex = i
-				newOption.totalFlags = Flags.size()
-				newOption.Update()
-
-				if newOption.valid:
-					newOption.UpdateWeight()
-					options.append(newOption)
+			for u : UnitInstance in filteredUnitsOnTeam:
+				CreateOptionForEachWeapon(u)
+	else:
+		CreateOptionForEachWeapon(tauntedBy)
 
 	if options.size() == 0:
 		unit.QueueEndTurn()
@@ -78,6 +61,28 @@ func StartTurn(_map : Map, _unit : UnitInstance):
 	# Moved trycombat to the runturn method
 	#TryCombat()
 
+func CreateOptionForEachWeapon(_targetUnit : UnitInstance, _flagIndex = 0):
+	if _targetUnit == null:
+		return
+
+	# Be nice. If we can't see the player, we can't attack them
+	if _targetUnit.Shrouded && !_targetUnit.CurrentTile.Shroud.Exposed[unit.UnitAllegiance]:
+		return
+
+	for weapon in weaponsAvailableForUse:
+		var newOption : EnemyAIOption
+		if weapon.customAITargetingBehavior != null:
+			newOption = weapon.customAITargetingBehavior.Construct(unit, _targetUnit, map, weapon)
+		else:
+			newOption = EnemyAIOption.Construct(unit, _targetUnit, map, weapon) as EnemyAIOption
+
+		newOption.flagIndex = _flagIndex
+		newOption.totalFlags = Flags.size()
+		newOption.Update()
+
+		if newOption.valid:
+			newOption.UpdateWeight()
+			options.append(newOption)
 
 func RunTurn():
 	if unit.IsStackFree && unit.Activated && !attacked:

@@ -11,7 +11,8 @@ signal BannerAnimComplete
 @export var InspectUI : InspectPanel
 @export var InspectEffectsUI : GridEntryList
 @export var ContextUI : ContextMenu
-@export var NoTargets : Control
+@export var TargetingHelperParent : Control
+@export var TargetingHelperText : RichTextLabel
 @export var TerrainInspectUI : TerrainInspectPanel
 @export var ObjectivePanelUI : ObjectivePanel
 @export var TutorialPrompt : TutorialPromptPanel
@@ -36,7 +37,7 @@ var currentAnchoredUIElements : Array[AnchoredUIElement]
 
 func _ready():
 	ContextUI.visible = false
-	NoTargets.visible = false
+	TargetingHelperParent.visible = false
 	currentAnchoredUIElements.clear()
 	for preset in PresetAnchoredUIElements:
 		currentAnchoredUIElements.append(preset)
@@ -115,7 +116,18 @@ func OnAnyActionSelected():
 	HideContext()
 
 func ShowNoTargets(_show : bool):
-	NoTargets.visible = _show
+	UpdateTargetingInstructions(_show, LocSettings.Targeting_NoTargets, {})
+
+func UpdateTargetingInstructions(_show : bool, _loc : String, _madlibs : Dictionary):
+	if InputManager.CurrentInputSchmeme == InputManager.ControllerScheme.Controller:
+		if GameManager.LocalizationSettings.DoesTranslationExist(_loc + LocSettings.CONTROLLER_LOC_SUFFIX):
+			_loc = _loc + LocSettings.CONTROLLER_LOC_SUFFIX
+
+	TargetingHelperText.text = tr(_loc).format(_madlibs)
+
+	# This HAS to be called last. Otherwise the sizing gets messed up.
+	TargetingHelperParent.visible = _show
+
 
 func ShowTutorialPrompt(_text : String, _anchor : Control.LayoutPreset):
 	TutorialPrompt.Disabled = false

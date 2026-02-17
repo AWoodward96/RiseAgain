@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_hidyl")
 Turns = 1
+DeprecationTime = 1
 loc_name = "ce_energized_name"
 loc_desc = "ce_energized_desc"

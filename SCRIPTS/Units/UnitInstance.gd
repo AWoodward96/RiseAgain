@@ -284,7 +284,7 @@ func TriggerTurnStartEffects():
 			continue
 
 		c.OnTurnStart()
-		if c.TurnsRemaining != -1:
+		if c.Template.DeprecationTime == CombatEffectTemplate.EDeprecationTime.TurnStart && c.TurnsRemaining != -1:
 			c.TurnsRemaining -= 1
 
 func UpdateCombatEffects():
@@ -725,10 +725,12 @@ func QueueAcquireLoot(_item : Item):
 func EndTurn():
 	var blockTurnEnd = false
 	for e in CombatEffects:
-		if e is EnergizedEffectInstance:
+		if e.Template.DeprecationTime == CombatEffectTemplate.EDeprecationTime.TurnEnd:
 			e.TurnsRemaining -= 1
-			blockTurnEnd = true
-			Juice.CreateEffectPopup(CurrentTile, e)
+
+			if e is EnergizedEffectInstance:
+				blockTurnEnd = true
+				Juice.CreateEffectPopup(CurrentTile, e)
 			break
 
 	ShowHealthBar(false)

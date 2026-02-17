@@ -22,131 +22,17 @@ func _Enter(_ctrl : PlayerController, _ability):
 	if currentAbility.TargetingTemplate != null:
 		targetingTemplate = currentAbility.TargetingTemplate
 		targetingTemplate.BeginTargeting(log, ctrl)
-	# --- all below
-	#else:
-		#if currentAbility != null:
-			#match targetingData.Type:
-				#SkillTargetingData.TargetingType.SelfOnly:
-					#log.availableTiles = targetingData.GetTilesInRange(source, currentGrid)
-					#log.actionOriginTile = source.CurrentTile
-					#log.affectedTiles.append(log.actionOriginTile.AsTargetData())
-#
-				#SkillTargetingData.TargetingType.Simple:
-					#log.availableTiles = targetingData.GetTilesInRange(source, currentGrid)
-#
-					#var filteredList = []
-					#for t in log.availableTiles:
-						#if (t.Occupant != null && !t.Occupant.ShroudedFromPlayer) || t.Occupant == null:
-							#filteredList.append(t)
-#
-					#filteredList.sort_custom(func(a : Tile, b : Tile):
-						#if a == null && b != null:
-							#return true
-						#if b == null && a != null:
-							#return false
-#
-						#if a.Occupant == null && b.Occupant == null:
-							#return true
-#
-						#if a.Occupant != null && b.Occupant == null:
-							#return true
-#
-						#if b.Occupant != null && a.Occupant == null:
-							#return false
-#
-						#return a.Occupant.currentHealth < b.Occupant.currentHealth)
-#
-					#if filteredList.size() > 0:
-						#log.actionOriginTile = filteredList[0]
-						#log.affectedTiles.append(log.actionOriginTile.AsTargetData())
-#
-				#SkillTargetingData.TargetingType.ShapedFree:
-					## we do it like this, because technically for a shaped free targeting, allegiance does not come into play
-					## until it comes to dealing damage
-					#log.availableTiles = currentGrid.GetCharacterAttackOptions(source, [source.CurrentTile], targetingData.TargetRange)
-					#log.availableTiles.push_front(source.CurrentTile)
-					#log.affectedTiles.append_array(targetingData.GetAdditionalTileTargets(source, currentGrid, log.availableTiles[0]))
-				#SkillTargetingData.TargetingType.ShapedDirectional:
-					#var range = log.ability.GetRange()
-					#shapedDirectionalRange = range.x
-					## Shaped directional just uses the dict from the targeting data as the available tiles
-					#log.actionDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
-					#log.availableTiles = currentGrid.GetAdjacentTiles(source.CurrentTile)
-					#log.affectedTiles = targetingData.GetDirectionalAttack(source, log.ability, source.CurrentTile, shapedDirectionalRange, currentGrid, log.actionDirection)
-					#log.atRange = shapedDirectionalRange
-#
-					## try and get the proper targeted tile based on the facing direction
-					#var adj = currentGrid.GetTile(log.source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(log.actionDirection)))
-					#ctrl.ShowShapedDirectionalHelper(adj, range, log.actionDirection)
-					#var tile = currentGrid.GetTile(log.source.CurrentTile.Position + (GameSettingsTemplate.GetVectorFromDirection(log.actionDirection) * shapedDirectionalRange))
-					#if tile != null:
-						#log.actionOriginTile = tile
-				#SkillTargetingData.TargetingType.Global:
-					## This attack hits everyone on a specific team
-					#log.actionDirection = GameSettingsTemplate.GetValidDirectional(source.CurrentTile, currentGrid, log.source.facingDirection)
-					#var tile = currentGrid.GetTile(log.source.CurrentTile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
-					#if tile != null:
-						#log.actionOriginTile = currentGrid.GetTile(tile.Position + GameSettingsTemplate.GetVectorFromDirection(log.actionDirection))
-#
-					#log.affectedTiles = targetingData.GetGlobalAttack(source, currentMap, log.actionDirection)
-					#for t in log.affectedTiles:
-						#log.availableTiles.append(t.Tile)
-					#pass
-#
-			#if log.affectedTiles.size() == 0:
-				#ctrl.combatHUD.ShowNoTargets(true)
-				##push_error("TargetingControllerState: No available tiles for selected action. Is your targeting script set up properly?")
-				#return
-#
-			#if log.actionOriginTile == null:
-				#log.actionOriginTile = log.availableTiles[0]
-#
-			#if log.actionOriginTile.Occupant != null:
-				#ctrl.FocusReticleOnUnit(log.actionOriginTile.Occupant)
-			#else:
-				#ctrl.ForceReticlePosition(log.actionOriginTile.Position)
-			#ShowAvailableTilesOnGrid()
-			#ShowAffinityRelations(source.Template.Affinity)
-			#ShowPreview()
 
 func UpdateInput(_delta):
 	if targetingTemplate != null:
 		targetingTemplate.HandleInput(_delta)
-	# -- this section
-	#else:
-#
-		#if targetingData == null:
-			#return
-#
-		#match targetingData.Type:
-			#SkillTargetingData.TargetingType.Simple:
-				### Simple is simple. The Initial Targets section of the struct should have all the units already
-				#StandardTargetingInput(_delta)
-				#pass
-			#SkillTargetingData.TargetingType.ShapedFree:
-				## If it's shaped free, then we don't actually need to select a tile with a target on it
-				#ShapedFreeTargetingInput(_delta)
-				#pass
-			#SkillTargetingData.TargetingType.ShapedDirectional, SkillTargetingData.TargetingType.Global:
-				## Note that global also uses the shaped directional targeting input, so that it contains a direction
-				#ShapedDirectionalTargetingInput(_delta)
-				#pass
-	# -- end
 
-	if InputManager.selectDown && !targetSelected:
+
+	if (InputManager.selectDown || InputManager.startDown) && !targetSelected:
 		if targetingTemplate != null:
 			if targetingTemplate.OnTileSelected():
 				TileSelected()
-		#else:
-			## If there's a currently enforced tile - block it
-			#if ctrl.forcedTileSelection != null && CutsceneManager.active_cutscene != null && log.actionOriginTile != ctrl.forcedTileSelection:
-				#return
-#
-			#if CutsceneManager.BlockSelectInput:
-				#return
-#
-			#if log.availableTiles.size() != 0:
-				#TileSelected()
+
 
 	if InputManager.cancelDown:
 		if CutsceneManager.BlockCancelInput:
@@ -160,6 +46,7 @@ func UpdateInput(_delta):
 
 func TileSelected():
 	if log.actionOriginTile == null:
+		push_error("Targeting failed to define an ActionOriginTile")
 		return
 
 	targetSelected = true

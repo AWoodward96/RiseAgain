@@ -9,4 +9,9 @@ func BeginTargeting(_log : ActionLog, _ctrl : PlayerController):
 	log.availableTiles = [source.CurrentTile]
 	log.actionOriginTile = source.CurrentTile
 	log.affectedTiles.append(log.actionOriginTile.AsTargetData())
+	ctrl.ForceReticlePosition(log.source.CurrentTile.Position)
+	ctrl.combatHUD.UpdateTargetingInstructions(true, GetTargetingString(), {})
 	ShowPreview()
+
+func GetTargetingString():
+	return "ui_targeting_confirmselection"

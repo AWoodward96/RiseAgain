@@ -45,7 +45,7 @@ func GetRoute_TargetTile(_unit : UnitInstance, _origin : Tile, _destination : Ti
 	var ar : Array[Tile] = []
 	if (_destination.Occupant == null ||
 		(_destination.Occupant != null && _destination.Occupant.ShroudedFromPlayer) ||
-		(_destination.Occupant == _unit)) && !_destination.IsWall:
+		(_destination.Occupant == _unit)) && !_destination.IsWall && _destination.Position.y != 0:
 		destinationTile = _destination
 		ar.append(_origin)
 		ar.append(_destination)
@@ -60,14 +60,13 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 		directionVector = GameSettingsTemplate.GetInverseVectorFromDirection(_direction)
 
 
-
 	var workingTile = _origin
 	route.append(_origin)
 	if drawPath:
 		for i in movementAmount:
 			var tile = _grid.GetTile(workingTile.Position + directionVector)
 			if tile != null:
-				if stoppedByWalls && tile.IsWall:
+				if stoppedByWalls && (tile.IsWall || tile.Position.y == 0):
 					destinationTile = workingTile
 					break
 
@@ -76,7 +75,7 @@ func GetRoute_DirectionalRelative(_grid : Grid, _unit : UnitInstance, _origin : 
 	else:
 		workingTile = _grid.GetTile(_origin.Position + directionVector * _atRange)
 		var tmp = _grid.GetTile(workingTile.Position + (directionVector * movementAmount))
-		if tmp.IsWall && !_unit.IsFlying:
+		if tmp.Position.y == 0 || (tmp.IsWall && !_unit.IsFlying):
 			# units can't get stuck in walls plz
 			return []
 

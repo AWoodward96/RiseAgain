@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://ducb1h7rsn0ik" path="res://RESOURCES/Stats/STAT_Attack.tres" id="4_g0m8d"]
 [ext_resource type="Script" uid="uid://45lb6jb6lb6n" path="res://SCRIPTS/Ability/PushStep.gd" id="5_h8l5r"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_02wu0"]
-[ext_resource type="Script" uid="uid://vayufmcgflnw" path="res://SCRIPTS/Targeting/TargetingRaycastDirectional.gd" id="8_gmjkj"]
+[ext_resource type="Resource" uid="uid://c7pma25ix03tf" path="res://RESOURCES/Ability/TargetingTemplates/heavy_shot_targeting.tres" id="8_gmjkj"]
 
 [sub_resource type="Resource" id="Resource_oj3ox"]
 script = ExtResource("3_n7i1r")
@@ -27,12 +27,6 @@ metadata/_custom_type_script = "uid://45lb6jb6lb6n"
 script = ExtResource("6_02wu0")
 metadata/_custom_type_script = "uid://bhmprn01s6vhi"
 
-[sub_resource type="Resource" id="Resource_gmjkj"]
-script = ExtResource("8_gmjkj")
-shapePrefabRef = "res://RESOURCES/TargetingShapes/heavyshot_shape.tres"
-TrueHit = true
-TargetRange = Vector2i(1, 3)
-
 [node name="heavy_shot" type="Node2D" unique_id=2024952938 node_paths=PackedStringArray("UsableDamageData")]
 script = ExtResource("1_v5d84")
 abilityCooldown = 3
@@ -41,7 +35,7 @@ internalName = "heavy_shot"
 loc_displayName = "art_heavy_shot_name"
 loc_displayDesc = "art_heavy_shot_desc"
 icon = ExtResource("2_4fxdx")
-TargetingTemplate = SubResource("Resource_gmjkj")
+TargetingTemplate = ExtResource("8_gmjkj")
 UsableDamageData = NodePath("DamageComponent")
 
 [node name="DamageComponent" type="Node2D" parent="." unique_id=1619902185]

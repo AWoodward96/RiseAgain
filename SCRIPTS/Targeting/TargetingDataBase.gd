@@ -55,6 +55,47 @@ func GetAffectedTiles(_unitInstance : UnitInstance, _targetedTile : Tile, _atRan
 		tile.Ignite = ability.UsableDamageData.Ignite
 	return [tile]
 
+
+func GetStandardTargetingFromAvailableTiles():
+	var filteredList : Array[Tile] = []
+	var unitsFound = []
+	for t in log.availableTiles:
+		var added = false
+		if t.Occupant == null && t.MaxHealth > 0 && t.Health > 0 && CanTargetTerrain:
+			filteredList.append(t)
+			added = true
+
+		var target = t.Occupant
+		if target != null && \
+			OnCorrectTeam(TeamTargeting, source, t.Occupant) && \
+			# Because some units are bigger than 1x1 and we don't want to count them twice
+			!unitsFound.has(target) && \
+			!target.ShroudedFromPlayer:
+				unitsFound.append(target)
+				if !added:
+					filteredList.append(t)
+
+	filteredList.sort_custom(SortStandardTargetingOptions)
+	return filteredList
+
+
+func SortStandardTargetingOptions(a : Tile, b : Tile):
+	if a == null && b != null:
+		return true
+	if b == null && a != null:
+		return false
+
+	if a.Occupant == null && b.Occupant == null:
+		return true
+
+	if a.Occupant != null && b.Occupant == null:
+		return true
+
+	if b.Occupant != null && a.Occupant == null:
+		return false
+
+	return a.Occupant.currentHealth < b.Occupant.currentHealth
+
 ## Filters out targets based on settings
 func FilterAffectedTiles(_options : Array[TileTargetedData]):
 	return _options.filter(
@@ -146,6 +187,7 @@ func ShowPreview():
 				continue
 
 			previewAsDamageIndicator.ShowPreview()
+
 	pass
 
 func ShowAvailableTilesOnGrid():
@@ -211,4 +253,9 @@ func ShowAffinityRelations(_affinityTemplate : AffinityTemplate):
 func EndTargeting():
 	ClearPreview()
 	ShowAffinityRelations(null)
+	if ctrl != null:
+		ctrl.combatHUD.UpdateTargetingInstructions(false, "", {})
 	pass
+
+func GetTargetingString():
+	return ""

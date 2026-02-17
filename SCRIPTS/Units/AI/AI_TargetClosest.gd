@@ -111,25 +111,28 @@ func GetAllValidPaths():
 	pathfindingOptions.clear()
 
 	var allUnitsAbleToBeTargeted : Array[UnitInstance]
-
 	# This parallel index is used to track FlagIndex in the PathfindingOption
 	var parallelIndex : Array[int]
 	var index = 0
-	for targetingFlags in Flags:
-		var units = map.GetUnitsOnTeam(targetingFlags.Team)
-		if targetingFlags.Descriptor != null:
-			units = units.filter(func(x) : return x.Template.Descriptors.find(targetingFlags.Descriptor) != -1)
+	if tauntedBy != null:
+		allUnitsAbleToBeTargeted.append(tauntedBy)
+		parallelIndex.append(index)
+	else:
+		for targetingFlags in Flags:
+			var units = map.GetUnitsOnTeam(targetingFlags.Team)
+			if targetingFlags.Descriptor != null:
+				units = units.filter(func(x) : return x.Template.Descriptors.find(targetingFlags.Descriptor) != -1)
 
-		units = units.filter(func(x : UnitInstance) : return !x.Shrouded && !x.Stealthed)
+			units = units.filter(func(x : UnitInstance) : return !x.Shrouded && !x.Stealthed)
 
-		allUnitsAbleToBeTargeted.append_array(units)
+			allUnitsAbleToBeTargeted.append_array(units)
 
-		var ar : Array[int]
-		ar.resize(units.size())
-		ar.fill(index)
-		parallelIndex.append_array(ar)
+			var ar : Array[int]
+			ar.resize(units.size())
+			ar.fill(index)
+			parallelIndex.append_array(ar)
 
-		index += 1
+			index += 1
 
 	for i in range(0, allUnitsAbleToBeTargeted.size()):
 		var potentialUnit = allUnitsAbleToBeTargeted[i]

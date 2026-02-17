@@ -18,6 +18,7 @@ static func Create(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _te
 func IsExpired():
 	if TurnsRemaining == 0:
 		return true
+	return false
 
 func OnEffectApplied():
 	pass
@@ -108,6 +109,8 @@ static func FromJSON(_dict : Dictionary):
 			combatEffectBase = TurnStartHealEffectInstance.new()
 		"SnapBlossomEffectInstance":
 			combatEffectBase = SnapBlossomEffectInstance.new()
+		"TauntEffectInstance":
+			combatEffectBase = TauntEffectInstance.new()
 
 	# Call Deferred is actually goated
 	# The Grid isn't gonna be fully initialized yet, so we defer this call so that the Occupants are set

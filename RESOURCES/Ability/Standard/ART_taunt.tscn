@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cnhff64ex02rb"]
+
+[ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_24hhx"]
+[ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_bd01x"]
+[ext_resource type="Texture2D" uid="uid://dlryeep8kqoo3" path="res://ART/Icons/Ability/Standard/taunt.png" id="2_lfhpy"]
+[ext_resource type="Script" uid="uid://vv5ho31qatuc" path="res://SCRIPTS/CombatEffects/TauntEffectTemplate.gd" id="4_85ebw"]
+[ext_resource type="Script" uid="uid://dfh2kplsxfjh8" path="res://SCRIPTS/Ability/ApplyEffectStep.gd" id="5_i5rvd"]
+[ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_85ebw"]
+[ext_resource type="Script" uid="uid://dp714j0ufhbjo" path="res://SCRIPTS/Stats/StatDef.gd" id="7_7m8yt"]
+[ext_resource type="Resource" uid="uid://vlkqip7ksgab" path="res://RESOURCES/Stats/STAT_Wisdom.tres" id="8_y32lq"]
+[ext_resource type="Script" uid="uid://dxrx73p8hggc8" path="res://SCRIPTS/Targeting/TargetingStatScalingSimple.gd" id="9_mdxvh"]
+
+[sub_resource type="Resource" id="Resource_7m8yt"]
+script = ExtResource("4_85ebw")
+AffectedTargets = 1
+Turns = 1
+DeprecationTime = 1
+loc_name = "art_taunt_name"
+loc_icon = ExtResource("2_lfhpy")
+metadata/_custom_type_script = "uid://vv5ho31qatuc"
+
+[sub_resource type="Resource" id="Resource_y32lq"]
+script = ExtResource("5_i5rvd")
+CombatEffect = SubResource("Resource_7m8yt")
+metadata/_custom_type_script = "uid://dfh2kplsxfjh8"
+
+[sub_resource type="Resource" id="Resource_i5rvd"]
+script = ExtResource("6_85ebw")
+metadata/_custom_type_script = "uid://bhmprn01s6vhi"
+
+[sub_resource type="Resource" id="Resource_mdxvh"]
+script = ExtResource("7_7m8yt")
+Template = ExtResource("8_y32lq")
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_y4la3"]
+script = ExtResource("7_7m8yt")
+Template = ExtResource("8_y32lq")
+Value = 8
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_3rsec"]
+script = ExtResource("7_7m8yt")
+Template = ExtResource("8_y32lq")
+Value = 11
+metadata/_custom_type_script = "uid://dp714j0ufhbjo"
+
+[sub_resource type="Resource" id="Resource_xyk1d"]
+script = ExtResource("9_mdxvh")
+StatScalingDefs = Array[ExtResource("7_7m8yt")]([SubResource("Resource_mdxvh"), SubResource("Resource_y4la3"), SubResource("Resource_3rsec")])
+NumberOfTargets = Array[int]([1, 2, 3])
+TrueHit = true
+TargetRange = Vector2i(1, 4)
+CanTargetTerrain = false
+metadata/_custom_type_script = "uid://dxrx73p8hggc8"
+
+[node name="taunt" type="Node2D" unique_id=1469164427]
+script = ExtResource("1_24hhx")
+abilityCooldown = 2
+executionStack = Array[ExtResource("2_bd01x")]([SubResource("Resource_y32lq"), SubResource("Resource_i5rvd")])
+internalName = "taunt"
+loc_displayName = "art_taunt_name"
+loc_displayDesc = "art_taunt_desc"
+icon = ExtResource("2_lfhpy")
+TargetingTemplate = SubResource("Resource_xyk1d")

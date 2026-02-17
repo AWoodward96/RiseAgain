@@ -10,11 +10,10 @@ var attacked : bool = false
 var selectedPath : Array[Tile]
 var selectedTile : Tile
 
-
+var tauntedBy : UnitInstance
 
 
 func StartTurn(_map : Map, _unit : UnitInstance):
-
 	pass
 
 func CommonStartTurn(_map : Map, _unit : UnitInstance):
@@ -27,9 +26,19 @@ func CommonStartTurn(_map : Map, _unit : UnitInstance):
 
 	attacked = false
 	unit.QueueTurnStartDelay()
+	TauntCheck(unit)
 
 func RunTurn():
 	pass
+
+func TauntCheck(_affectedUnit : UnitInstance):
+	tauntedBy = null
+	for ce in _affectedUnit.CombatEffects:
+		# We don't check is-expired here because on turn start it'll be at 0.
+		if ce is TauntEffectInstance:
+			tauntedBy = ce.SourceUnit
+			return
+
 
 func TruncatePathBasedOnMovement(_path, _currentMovement):
 	selectedPath = _path

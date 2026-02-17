@@ -53,7 +53,7 @@ func GetTargetedTilesFromDirection(_sourceUnit : UnitInstance, _ability : Abilit
 				tileData.Ignite = _ability.UsableDamageData.Ignite
 			tileData.HitsEnvironment = shapedTile.get("HitsEnvironment") if shapedTile.get("HitsEnvironment") != null else true
 
-			if tile.IsWall && _stopShapeOnWall:
+			if (tile.IsWall || tile.Position.y == 0) && _stopShapeOnWall:
 				return retArray
 
 			if specificDataAsComplex != null:

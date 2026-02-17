@@ -12,6 +12,10 @@ var selectedTarget : GEChest
 func StartTurn(_map : Map, _unit : UnitInstance):
 	CommonStartTurn(_map, _unit)
 
+	if tauntedBy != null:
+		super(_map, _unit)
+		return
+
 	# Check if there are any tiles left to loot.
 	# if there aren't, try to escape
 	var foundTileToLoot = false

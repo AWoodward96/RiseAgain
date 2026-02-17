@@ -9,6 +9,8 @@ enum EStackableType { None = 1,				# This Effect will not stack, and will have a
 enum EExpirationType { Normal = 1,			# This Effect gets removed when its turn Count reaches 0
 					RemoveStack = 2 }		# This Effect removes one stack when its turn Count reaches 0
 
+enum EDeprecationTime { TurnStart, TurnEnd }
+
 
 
 @export_group("Effect Data")
@@ -17,6 +19,7 @@ enum EExpirationType { Normal = 1,			# This Effect gets removed when its turn Co
 @export var ImmunityDescriptor : DescriptorTemplate
 @export var StackableType : EStackableType = EStackableType.None
 @export var ExpirationType : EExpirationType = EExpirationType.Normal
+@export var DeprecationTime : EDeprecationTime = EDeprecationTime.TurnStart
 
 @export_group("Localization")
 @export var show_popup : bool = true

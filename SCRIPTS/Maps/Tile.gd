@@ -149,6 +149,10 @@ func RefreshActiveKillbox():
 
 
 func Traversable(_unit : UnitInstance, _isFlying : bool):
+	# don't let any unit stand at the top of the screen
+	if Position.y < 1:
+		return false
+
 	if !_isFlying:
 		if IsWall:
 			return false

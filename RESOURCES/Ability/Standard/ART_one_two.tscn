@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ntgxp2m4veik" path="res://SCRIPTS/Ability/Ability.gd" id="1_y5gwj"]
 [ext_resource type="Script" uid="uid://bl5lpykho0qsl" path="res://SCRIPTS/Ability/ActionStepBase.gd" id="2_bylag"]
 [ext_resource type="Texture2D" uid="uid://dvmgcb0rv1f0e" path="res://ART/Icons/Ability/Standard/one_two.png" id="2_ouxt7"]
-[ext_resource type="Script" uid="uid://vayufmcgflnw" path="res://SCRIPTS/Targeting/TargetingRaycastDirectional.gd" id="3_2xobo"]
 [ext_resource type="Script" uid="uid://dq6tw80ls7h1i" path="res://SCRIPTS/Ability/PlayAbilityPopupStep.gd" id="3_ljsm1"]
 [ext_resource type="Script" uid="uid://dgqbu1rqkbira" path="res://SCRIPTS/Items/DamageData.gd" id="4_1upkh"]
 [ext_resource type="Script" uid="uid://cm68c4p601pk" path="res://SCRIPTS/Ability/AbilityMoveStep.gd" id="4_q17at"]
@@ -12,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dosuyr8paidkx" path="res://SCRIPTS/Ability/AbilityMovementComponent.gd" id="6_ouxt7"]
 [ext_resource type="Script" uid="uid://bhmprn01s6vhi" path="res://SCRIPTS/Ability/GainExpStep.gd" id="6_ouxy5"]
 [ext_resource type="Script" uid="uid://barfg6ccbfuwo" path="res://SCRIPTS/Generic/AnimationStyles/AnimStyle_GenericAttack.gd" id="7_d2lw4"]
+[ext_resource type="Resource" uid="uid://ia75w8cqxwti" path="res://RESOURCES/Ability/TargetingTemplates/one_two_targeting.tres" id="9_bylag"]
 
 [sub_resource type="Resource" id="Resource_67a88"]
 script = ExtResource("3_ljsm1")
@@ -39,11 +39,6 @@ HasStandardWindup = false
 HasStandardCooloff = false
 metadata/_custom_type_script = "uid://barfg6ccbfuwo"
 
-[sub_resource type="Resource" id="Resource_qyn88"]
-script = ExtResource("3_2xobo")
-shapePrefabRef = "res://RESOURCES/TargetingShapes/onetwo_shape.tres"
-TargetRange = Vector2i(1, 3)
-
 [node name="one_two" type="Node2D" unique_id=1114493088 node_paths=PackedStringArray("UsableDamageData")]
 script = ExtResource("1_y5gwj")
 abilityCooldown = 3
@@ -53,13 +48,13 @@ internalName = "one_two"
 loc_displayName = "art_one_two_name"
 loc_displayDesc = "art_one_two_desc"
 icon = ExtResource("2_ouxt7")
-TargetingTemplate = SubResource("Resource_qyn88")
+TargetingTemplate = ExtResource("9_bylag")
 UsableDamageData = NodePath("DamageComponent")
 
 [node name="DamageComponent" type="Node2D" parent="." unique_id=1427790988]
 script = ExtResource("4_1upkh")
 AgressiveStat = ExtResource("5_seb7m")
-DamageToHealthRatio = 0.0
+DamageToHealthRatio = ""
 
 [node name="AbilityMovementComponent" type="Node2D" parent="." unique_id=4567745]
 script = ExtResource("6_ouxt7")

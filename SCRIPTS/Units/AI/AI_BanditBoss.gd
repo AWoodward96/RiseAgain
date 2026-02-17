@@ -64,7 +64,12 @@ func GetReferences():
 
 
 func Decision_UseLeap():
-	var filteredUnitsOnTeam = map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
+	var filteredUnitsOnTeam : Array[UnitInstance] = []
+	if tauntedBy != null:
+		filteredUnitsOnTeam.append(tauntedBy)
+	else:
+		filteredUnitsOnTeam.append_array(map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY))
+
 	filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x : UnitInstance) : return !x.Stealthed)
 
 	for u in filteredUnitsOnTeam:
@@ -91,8 +96,11 @@ func Decision_UseLeap():
 
 func Decision_UseBombs():
 	BombsOnCooldown = true
-	var filteredUnitsOnTeam = map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY)
-	filteredUnitsOnTeam = filteredUnitsOnTeam.filter(func(x : UnitInstance) : return !x.Stealthed)
+	var filteredUnitsOnTeam : Array[UnitInstance] = []
+	if tauntedBy != null:
+		filteredUnitsOnTeam.append(tauntedBy)
+	else:
+		filteredUnitsOnTeam.append_array(map.GetUnitsOnTeam(GameSettingsTemplate.TeamID.ALLY))
 
 	for u in filteredUnitsOnTeam:
 		var newOption = EnemyAIOption.Construct(unit, u, map, throwBombAbility) as EnemyAIOption

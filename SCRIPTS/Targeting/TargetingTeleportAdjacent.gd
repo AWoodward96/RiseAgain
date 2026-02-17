@@ -38,6 +38,7 @@ func EnterTargetTeleport():
 		ShowAvailableTilesOnGrid()
 		ctrl.combatHUD.ShowNoTargets(true)
 	else:
+		ctrl.combatHUD.UpdateTargetingInstructions(true, GetTargetingString(), {})
 		ShowPreview()
 
 func EnterTargetAction():
@@ -57,6 +58,7 @@ func EnterTargetAction():
 		ShowAvailableTilesOnGrid()
 		ctrl.combatHUD.ShowNoTargets(true)
 	else:
+		ctrl.combatHUD.UpdateTargetingInstructions(true, GetTargetingString(), {})
 		ShowPreview()
 
 	pass
@@ -72,8 +74,12 @@ func GetTilesInRange(_unit : UnitInstance, _grid : Grid):
 
 			var adjacentTiles = currentGrid.GetAdjacentTiles(t)
 			for a in adjacentTiles:
-				if options.has(a) || a.Occupant != null || a.ActiveKillbox:
+				if options.has(a) || a.Occupant != null || a.ActiveKillbox || a.IsWall:
 					continue
+
+				if !currentGrid.PositionIsInGridBounds(a.Position) || !currentGrid.CanUnitFitOnTile(source, a, source.IsFlying, true, false):
+					continue
+
 				options.append(a)
 
 	return options
@@ -93,6 +99,9 @@ func HandleInput(_delta):
 	if !InputManager.inputAnyDown:
 		return
 
+	if InputManager.startDown:
+		return
+
 	var targetingAvailableTiles : Array[Tile]
 	if State == ETargetingTeleportAdjacentState.TargetTeleport:
 		targetingAvailableTiles = TeleportAvailables
@@ -105,7 +114,7 @@ func HandleInput(_delta):
 		ctrl.combatHUD.ShowNoTargets(true)
 		return
 
-	ctrl.combatHUD.ShowNoTargets(false)
+	ctrl.combatHUD.UpdateTargetingInstructions(true, GetTargetingString(), {})
 	var curIndex = targetingAvailableTiles.find(log.actionOriginTile, 0)
 	if InputManager.inputAnyDown:
 		var currentTile = targetingAvailableTiles[curIndex]
@@ -154,3 +163,32 @@ func OnCancel():
 		EnterTargetTeleport()
 		return false
 	return true
+
+func GetTargetingString():
+	if State == ETargetingTeleportAdjacentState.TargetTeleport:
+		return "ui_targeting_teleportadjacent"
+
+	# check for heal or for shielding
+	var abilityExecution = log.ability.executionStack
+	var damagingAbility : bool = false
+	var shieldingAbility : bool = false
+	var healingAbility : bool = false
+	for a in abilityExecution:
+		if a is ApplyEffectStep:
+			var asEffect = a as ApplyEffectStep
+			if asEffect.CombatEffect is ArmorEffect:
+				shieldingAbility = true
+
+		if a is PerformCombatStep:
+			damagingAbility = true
+
+		if a is HealStep:
+			healingAbility = true
+
+	if shieldingAbility && !damagingAbility:
+		return "ui_targeting_shield"
+
+	if healingAbility && !damagingAbility:
+		return "ui_targeting_heal"
+
+	return "ui_targeting_simple"

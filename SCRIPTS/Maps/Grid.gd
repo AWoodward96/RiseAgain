@@ -290,6 +290,9 @@ func GetCharacterMovementOptions(_unit : UnitInstance, _markTiles : bool = true)
 			if tile == null:
 				continue
 
+			if tile.Position.y == 0:
+				continue
+
 			if visited.has(tile):
 				continue
 
@@ -423,7 +426,8 @@ func GetTileFromGlobalPosition(_position : Vector2):
 	return GetTile(Vector2i(xInt, yInt))
 
 func PositionIsInGridBounds(_pos : Vector2i):
-	return _pos.y >= 0 && _pos.x >= 0 && _pos.x < Width && _pos.y < Height
+	# We pos.y >= 1 because we don't want anyone standing at the top of the screen
+	return _pos.y >= 1 && _pos.x >= 0 && _pos.x < Width && _pos.y < Height
 
 func GetAdjacentTiles(_tile : Tile):
 	var arr : Array[Tile]

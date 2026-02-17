@@ -151,10 +151,10 @@ func _process(delta: float) -> void:
 
 func ShowGlobalTutorialPrompt(_text : String, _anchor : Control.LayoutPreset, _promptSize : Vector2, _pressAnyKey : bool):
 	TutorialPromptParent.visible = true
-	TutorialPanel.visible = true
 	TutorialText.text = _text
 	TutorialPanel.set_anchors_and_offsets_preset(_anchor, Control.PRESET_MODE_MINSIZE)
 	TutorialPanel.size = _promptSize
+	TutorialPanel.visible = true
 	pass
 
 func ShowEventPrompt(_textTranslated : String, _instantaneousText : bool):

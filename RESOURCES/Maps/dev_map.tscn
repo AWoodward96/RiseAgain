@@ -211,7 +211,7 @@ Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="Spawn_WolfPup" type="Sprite2D" parent="Spawners" unique_id=1691297985]
+[node name="DISABLED_Spawn_WolfPup2" type="Sprite2D" parent="Spawners" unique_id=1691297985]
 position = Vector2(192, 384)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -222,6 +222,7 @@ script = ExtResource("7_vt2ms")
 UnitToSpawn = ExtResource("12_jydnc")
 DeltaLevel = 6
 Position = Vector2i(3, 6)
+Enabled = false
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
@@ -241,7 +242,7 @@ GivenItems = Array[String](["uid://cp2qfjogxikmj", "uid://cp2qfjogxikmj"])
 AIBehavior = ExtResource("12_msltj")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners" unique_id=1033853639]
+[node name="DISABLED_Spawn_AdolescentWolf2" type="Sprite2D" parent="Spawners" unique_id=1033853639]
 position = Vector2(384, 384)
 texture = ExtResource("6_gfyht")
 centered = false
@@ -253,11 +254,12 @@ UnitToSpawn = ExtResource("14_ox76s")
 UnitLevel = 2
 DeltaLevel = 0
 Position = Vector2i(6, 6)
+Enabled = false
 GivenItems = Array[String](["uid://cp2qfjogxikmj", "uid://cp2qfjogxikmj"])
 AIBehavior = SubResource("Resource_b5w76")
 AggroBehavior = SubResource("Resource_lsk74")
 
-[node name="Spawn_AdolescentWolf4" type="Sprite2D" parent="Spawners" unique_id=2061803146]
+[node name="Spawn_AdolescentWolf3" type="Sprite2D" parent="Spawners" unique_id=2061803146]
 position = Vector2(64, 256)
 texture = ExtResource("6_gfyht")
 centered = false

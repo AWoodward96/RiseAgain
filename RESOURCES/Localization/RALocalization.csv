@@ -458,7 +458,7 @@ affinity_fire,Fire
 art_beamattack_name,Beam Attack!
 art_beamattack_desc,Fire a beam of lightning dealing Magic Damage to Enemies in a 4 Tile long line. Enemies at the furthest point take more damage than closer enemies.
 art_cleave_name,Great Cleave
-art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage equal to their {DMG_AGGRESSIVESTAT}.
+art_cleave_desc,This Unit takes a huge swing at a large area in front of them dealing damage based on their Weapon.
 art_darkfell_name,Soul Cleave
 art_darkfell_desc,Deal Physical Damage to nearby Enemies based on {DMG_AGGRESSIVESTAT}. Reduce their Defense and Special Defense by {EFFECT_0_FLAT} + ({EFFECT_0_DERIVEDSTAT} * {EFFECT_0_PERC})
 art_doubleshot_name,Bombard
@@ -666,7 +666,26 @@ art_bark_desc,"Let out a horrible cry in a direction, lowering the Enemies Aggre
 art_bite_name,Bite
 art_bite_desc,Take a bite out of an enemy and heal based on the damage dealt. Scales with {DMG_AGGRESSIVESTAT}.
 art_break_name,Break
-art_break_desc,"Break off a part of your body, dealing 10 Damage to yourself, and bludgeon an enemy with it for 20 True Damage."
+art_break_desc,"Break off a part of your body, dealing 10 Damage to yourself, and bludgeon an Enemy with it for 20 True Damage."
 art_heavy_shot_name,Heavy Shot
 art_heavy_shot_desc,Take aim and fire a heavy round into a target at a direction. Units hit are pushed backwards one Tile. Deals damage based on your weapon.
 ui_truehit,TRU
+art_one_two_name,The Ol' One Two
+art_one_two_desc,Dash up close to an Enemy based on a direction and punch them twice. Scales off of {DMG_AGGRESSIVESTAT}
+art_innitiate_name,Innitiate
+art_innitiate_desc,Dash forward and deal damage in an AOE based on your Weapon.
+art_taunt_name,Taunt
+art_taunt_desc,"Taunt [b]1/2/3[/b] Enemies depending on WIS [b]0/8/11[/b]. Taunted Enemies are forced to target this Unit on their next turn, if able."
+ui_targeting_notargets,No Targets Found
+ui_targeting_notargets_controller,No Targets Found
+ui_targeting_selectnumtargets,Select up to {NUM}  Targets. \nPress [img=48x24]res://ART/UI/Inline/keyboard_start_button.png[/img] to confirm selection.
+ui_targeting_selectnumtargets_controller,Select {NUM} Targets. \nPress [img=24x24]res://ART/UI/Inline/controller_start_button.png[/img] to confirm selection.
+ui_targeting_confirmselection,Press [img=48x24]res://ART/UI/Inline/keyboard_start_button.png[/img] to confirm selection.
+ui_targeting_confirmselection_controller,Press [img=48x24]res://ART/UI/Inline/controller_start_button.png[/img] to confirm selection.
+ui_targeting_simple,Select a Target with [img=24x24]res://ART/UI/Inline/keyboard_up_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_down_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img] and  [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img].
+ui_targeting_simple_controller,Select a Target with [img=24x24]res://ART/UI/Inline/controller_movement_button.png[/img] and  [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img].
+ui_targeting_shapeddirectional,Choose a Direction with [img=24x24]res://ART/UI/Inline/keyboard_up_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_left_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_down_button.png[/img][img=24x24]res://ART/UI/Inline/keyboard_right_button.png[/img] and  [img=48x16]res://ART/UI/Inline/keyboard_select_button.png[/img].
+ui_targeting_shapeddirectional_controller,Choose a Direction with [img=24x24]res://ART/UI/Inline/controller_movement_button.png[/img] and  [img=24x24]res://ART/UI/Inline/controller_select_button.png[/img].
+ui_targeting_teleportadjacent,Pick a Tile to Teleport to.
+ui_targeting_heal,Pick a Target to Heal.
+ui_targeting_shield,Pick a Target to Shield.

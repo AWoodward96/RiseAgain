@@ -23,5 +23,6 @@ func ShowAvailableTilesOnGrid():
 
 
 func EndTargeting():
+	super()
 	if createdEntity != null:
 		createdEntity.queue_free()

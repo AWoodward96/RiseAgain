@@ -80,17 +80,21 @@ crit_chance_label = NodePath("VBoxContainer/HealthBarParent/CritChance")
 affinityIcon = NodePath("VBoxContainer/AffinityIcon")
 positive_affinity = NodePath("VBoxContainer/AffinityIcon/PositiveAffinity")
 negative_affinity = NodePath("VBoxContainer/AffinityIcon/NegativeAffinity")
-effects_preview = NodePath("VBoxContainer/EffectsPreview")
+effects_preview = NodePath("VBoxContainer/HBoxContainer/EffectsPreview")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1738444503]
 z_index = 5
 offset_right = 64.0
 offset_bottom = 64.0
 
-[node name="EffectsPreview" type="VBoxContainer" parent="VBoxContainer" unique_id=2042473683]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=422025068]
+layout_mode = 2
+alignment = 1
+
+[node name="EffectsPreview" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=630654320]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-alignment = 2
+alignment = 1
 script = ExtResource("5_jf3iu")
 
 [node name="spacer" type="Control" parent="VBoxContainer" unique_id=1928537744]

@@ -240,6 +240,9 @@ func RefreshCombatEffects():
 
 	EffectsList.ClearEntries()
 	for effect in Unit.CombatEffects:
+		if effect.IsExpired():
+			continue
+
 		var effectTemplate = effect.Template
 		var entry = EffectsList.CreateEntry(EffectsIconPrefab) as EffectEntry
 

@@ -26,6 +26,7 @@ func BeginTargeting(_log : ActionLog, _ctrl : PlayerController):
 		log.actionOriginTile = tile
 
 	ctrl.ForceReticlePosition(log.actionOriginTile.Position)
+	ctrl.combatHUD.UpdateTargetingInstructions(true, GetTargetingString(), {})
 	ShowPreview()
 
 func HandleInput(_delta):
@@ -82,3 +83,6 @@ func ShowAvailableTilesOnGrid():
 		else:
 			targetData.Tile.CanBuff = true
 	currentGrid.ShowActions()
+
+func GetTargetingString():
+	return "ui_targeting_shapeddirectional"

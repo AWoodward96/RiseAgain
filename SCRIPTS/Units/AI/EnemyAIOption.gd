@@ -206,8 +206,8 @@ func SetValidAttack(_tileToMoveTo : Tile, _tileToAttack : Tile):
 	tileToAttack = _tileToAttack
 	var targetUnitRange = Vector2i.ONE
 
-	if ability != null:
-		targetUnitRange = ability.GetRange()
+	if targetUnit.EquippedWeapon != null:
+		targetUnitRange = targetUnit.EquippedWeapon.GetRange()
 
 	if ability.type == Ability.EAbilityType.Weapon:
 		if manhattanDistance >= targetUnitRange.x && manhattanDistance <= targetUnitRange.y:
