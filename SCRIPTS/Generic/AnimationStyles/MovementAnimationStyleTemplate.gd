@@ -23,7 +23,10 @@ func Prepare(_direction : Vector2, _source : UnitInstance, _data):
 
 
 	if UseFootsteps:
-		source.footstepsSound.play()
+		if source.Submerged:
+			source.SwimSound.play()
+		else:
+			source.footstepsSound.play()
 
 	UpdateAnimationDirectionSuffix()
 
@@ -71,6 +74,7 @@ func PlayVFX(_packedVFX: PackedScene):
 func Exit():
 	if source != null:
 		source.footstepsSound.stop()
+		source.SwimSound.stop()
 
 ### A check to see if we can finish the movement animation. Not important for the default animation,
 ### but for teleporting and other more complex moves, it's pretty important

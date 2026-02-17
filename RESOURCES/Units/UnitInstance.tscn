@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="UnitInstance" type="Node2D" unique_id=987706858 node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damageIndicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "leapSound", "landSound")]
+[node name="UnitInstance" type="Node2D" unique_id=987706858 node_paths=PackedStringArray("visualParent", "abilityParent", "combatEffectsParent", "itemsParent", "iconAnchors", "damageIndicator", "hasLootIcon", "isBossIcon", "takeDamageSound", "takeLethalDamageSound", "footstepsSound", "deathSound", "leapSound", "landSound", "MissSound", "SwimSound")]
 y_sort_enabled = true
 script = ExtResource("1_8f2nx")
 visualParent = NodePath("Visual")
@@ -66,6 +66,8 @@ footstepsSound = NodePath("Audio/FootSteps")
 deathSound = NodePath("Audio/Death")
 leapSound = NodePath("Audio/LeapWoosh")
 landSound = NodePath("Audio/Land")
+MissSound = NodePath("Audio/Miss")
+SwimSound = NodePath("Audio/Swim")
 
 [node name="Visual" type="Node2D" parent="." unique_id=2046939046]
 y_sort_enabled = true
@@ -90,6 +92,10 @@ event_guid = "{8f73ad02-8a60-4356-bb04-cc1400fdf1bb}"
 event_name = "event:/SFX/Units/Generic/Footsteps_Common"
 event_guid = "{87c6b264-ad68-4fed-8489-93148bf15f02}"
 
+[node name="Swim" type="FmodEventEmitter2D" parent="Audio" unique_id=1313169233]
+event_name = "event:/SFX/Units/Generic/Footsteps_Swim"
+event_guid = "{8c27e675-aaed-43fa-9455-4d6f88e425e9}"
+
 [node name="Death" type="FmodEventEmitter2D" parent="Audio" unique_id=1174782280]
 event_name = "event:/SFX/Combat_Death"
 event_guid = "{e1fc6f52-a891-47fe-ba9c-ac9e8d8a9e5b}"
@@ -101,6 +107,10 @@ event_guid = "{2d1ae4a0-b159-4419-b42b-8d41fcac042b}"
 [node name="Land" type="FmodEventEmitter2D" parent="Audio" unique_id=149337830]
 event_name = "event:/SFX/Units/Generic/Jump_End"
 event_guid = "{b207a159-5e16-47a7-8cef-b5aaac74e6b8}"
+
+[node name="Miss" type="FmodEventEmitter2D" parent="Audio" unique_id=1306827795]
+event_name = "event:/SFX/Combat_Miss"
+event_guid = "{d317aeaa-1bbc-4484-95cf-702e8272feaa}"
 
 [node name="IconAnchors" type="Node2D" parent="." unique_id=1333229779]
 

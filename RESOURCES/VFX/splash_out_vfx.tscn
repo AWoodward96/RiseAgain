@@ -24,12 +24,13 @@ colors = PackedColorArray(0.328, 0.3485, 0.41, 1, 0.65999997, 0.745, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_2vk63"]
 offsets = PackedFloat32Array(0.81632656, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 1, 1, 0.8235294, 0, 0, 0, 0)
 
-[node name="VFX_SplashOut" type="Node2D" unique_id=1854414291 node_paths=PackedStringArray("cpuParticles")]
+[node name="VFX_SplashOut" type="Node2D" unique_id=1854414291 node_paths=PackedStringArray("cpuParticles", "sounds")]
 script = ExtResource("1_l6ts4")
 emitOnReady = true
 cpuParticles = [NodePath("Splish"), NodePath("Splash"), NodePath("Pillar"), NodePath("Splash2")]
+sounds = [NodePath("Splash_Out")]
 
 [node name="Splish" type="CPUParticles2D" parent="." unique_id=1781347500]
 material = SubResource("CanvasItemMaterial_2vk63")
@@ -109,11 +110,17 @@ spread = 7.12
 gravity = Vector2(0, 400)
 initial_velocity_min = 132.2
 initial_velocity_max = 200.0
+color = Color(1, 1, 1, 0.9137255)
 color_ramp = SubResource("Gradient_2vk63")
 
 [node name="Timer" type="Timer" parent="." unique_id=707004102]
 wait_time = 1.2
 one_shot = true
 autostart = true
+
+[node name="Splash_Out" type="FmodEventEmitter2D" parent="." unique_id=1815048235]
+event_name = "event:/SFX/Units/Generic/Splash_Out"
+event_guid = "{29bc1491-867b-4720-ac86-56ee7154ca01}"
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

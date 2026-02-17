@@ -17,11 +17,13 @@ signal OnUnitDamaged(_result : DamageStepResult)
 
 @export_category("SFX")
 @export var takeDamageSound : FmodEventEmitter2D
+@export var MissSound : FmodEventEmitter2D
 @export var takeLethalDamageSound : FmodEventEmitter2D
 @export var footstepsSound : FmodEventEmitter2D
 @export var deathSound : FmodEventEmitter2D
 @export var leapSound : FmodEventEmitter2D
 @export var landSound : FmodEventEmitter2D
+@export var SwimSound : FmodEventEmitter2D
 
 
 
@@ -752,6 +754,7 @@ func DoHeal(_result : HealStepResult):
 
 func DoCombat(_result : DamageStepResult, _instantaneous : bool = false):
 	if _result.Miss:
+		MissSound.play()
 		Juice.CreateMissPopup(CurrentTile)
 		Visual.PlayMissAnimation()
 	else:
