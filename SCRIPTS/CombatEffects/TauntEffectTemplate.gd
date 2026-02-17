@@ -12,8 +12,6 @@ func CreateInstance(_sourceUnit : UnitInstance, _affectedUnit : UnitInstance, _a
 	tauntEffect.Template = self
 	tauntEffect.SourceUnit = _sourceUnit
 	tauntEffect.AffectedUnit = _affectedUnit
-
-
 	tauntEffect.TurnsRemaining = Turns
 
 	return tauntEffect

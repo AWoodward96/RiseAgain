@@ -39,6 +39,11 @@ extends Node2D
 @export var damagePreviewDelayTime = 0.5
 @export var damagePreviewTickDuration = 0.5
 
+
+@export_category("Common VFX")
+@export var SplashVFX : PackedScene
+
+
 func CreateHealPopup(_healVal, _tile : Tile):
 	var popup = damagePopup.instantiate()
 	popup.SetHealValue(_healVal)

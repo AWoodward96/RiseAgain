@@ -6,10 +6,13 @@ signal AnimationDealDamageCallback
 @export var AnimationCTRL : AnimationPlayer
 @export var AnimationWorkComplete : bool = false
 @export var SubmergedParent : Node2D
+@export var SubmergedAnimationCTRL : AnimationPlayer
 
 var sprite : Sprite2D
 var visual : AnimatedSprite2D
-var MyUnit : UnitInstance
+var submergedVisual : AnimatedSprite2D
+var myUnit : UnitInstance
+var submerged : bool = false
 
 var greyscale_base : float = 0
 var take_damage_step : int = 0
@@ -23,7 +26,7 @@ func _ready():
 		greyscale_base = visual.material.get_shader_parameter("grey_scale_offset")
 
 func Initialize(_unit : UnitInstance) :
-	MyUnit = _unit
+	myUnit = _unit
 	GetVisuals()
 	RefreshAllegience()
 	RefreshFlying()
@@ -31,36 +34,42 @@ func Initialize(_unit : UnitInstance) :
 func GetVisuals():
 	visual = get_node_or_null("Visual")
 	sprite = get_node_or_null("Sprite2D")
+	submergedVisual = get_node_or_null("SubmergedParent/SubmergedVisual")
 
 	if visual != null:
 		visual.y_sort_enabled = true
 	if sprite != null:
 		sprite.y_sort_enabled = true
+	if submergedVisual != null:
+		submergedVisual.y_sort_enabled = true
 	y_sort_enabled = true
 
 func RefreshAllegience(_override : GameSettingsTemplate.TeamID = GameSettingsTemplate.TeamID.INVALID):
 	var allegience = _override
-	if allegience == GameSettingsTemplate.TeamID.INVALID && MyUnit != null:
-		allegience = MyUnit.UnitAllegiance
+	if allegience == GameSettingsTemplate.TeamID.INVALID && myUnit != null:
+		allegience = myUnit.UnitAllegiance
 
-	if visual != null:
-		if AnimationWorkComplete:
-			match allegience:
-				GameSettingsTemplate.TeamID.ALLY:
-					visual.material.set_shader_parameter("palette_index", 1)
-				GameSettingsTemplate.TeamID.ENEMY:
-					visual.material.set_shader_parameter("palette_index", 2)
-				GameSettingsTemplate.TeamID.NEUTRAL:
-					visual.material.set_shader_parameter("palette_index", 3)
+	if AnimationWorkComplete && visual != null:
+		var index : int = 0
+		match allegience:
+			GameSettingsTemplate.TeamID.ALLY:
+				index = 1
+			GameSettingsTemplate.TeamID.ENEMY:
+				index = 2
+			GameSettingsTemplate.TeamID.NEUTRAL:
+				index = 3
 
-		else:
-			match allegience:
-				GameSettingsTemplate.TeamID.ALLY:
-					sprite.modulate = GameManager.GameSettings.Alpha_AlliedUnitColor
-				GameSettingsTemplate.TeamID.ENEMY:
-					sprite.modulate = GameManager.GameSettings.Alpha_EnemyUnitColor
-				GameSettingsTemplate.TeamID.NEUTRAL:
-					sprite.modulate = GameManager.GameSettings.Alpha_NeutralUnitColor
+		visual.material.set_shader_parameter("palette_index", index)
+		if submergedVisual != null:
+			submergedVisual.material.set_shader_parameter("palette_index", index)
+	else:
+		match allegience:
+			GameSettingsTemplate.TeamID.ALLY:
+				sprite.modulate = GameManager.GameSettings.Alpha_AlliedUnitColor
+			GameSettingsTemplate.TeamID.ENEMY:
+				sprite.modulate = GameManager.GameSettings.Alpha_EnemyUnitColor
+			GameSettingsTemplate.TeamID.NEUTRAL:
+				sprite.modulate = GameManager.GameSettings.Alpha_NeutralUnitColor
 	UpdateHueSaturationValue()
 
 func UpdateHueSaturationValue():
@@ -71,6 +80,12 @@ func UpdateHueSaturationValue():
 				visual.material.set_shader_parameter("saturation", Map.Current.Biome.UnitSaturation)
 				visual.material.set_shader_parameter("value", Map.Current.Biome.UnitValue)
 				visual.material.set_shader_parameter("grey_scale_offset", greyscale_base + Map.Current.Biome.GrayscaleUnitOffset)
+				if submergedVisual != null:
+					submergedVisual.material.set_shader_parameter("hue", Map.Current.Biome.UnitHue)
+					submergedVisual.material.set_shader_parameter("saturation", Map.Current.Biome.UnitSaturation)
+					submergedVisual.material.set_shader_parameter("value", Map.Current.Biome.UnitValue)
+					submergedVisual.material.set_shader_parameter("grey_scale_offset", greyscale_base + Map.Current.Biome.GrayscaleUnitOffset)
+
 			else:
 				visual.material.set_shader_parameter("hue", 1)
 				visual.material.set_shader_parameter("saturation", 1)
@@ -88,20 +103,24 @@ func UpdateHueSaturationValue():
 func SetActivated(_activated : bool):
 	if AnimationWorkComplete:
 		visual.material.set_shader_parameter("grey_scale", !_activated)
+		if submergedVisual != null:
+			submergedVisual.material.set_shader_parameter("grey_scale", !_activated)
 	else:
 		if _activated:
 			sprite.self_modulate = Color.WHITE
-			MyUnit.TryPlayIdleAnimation()
+			myUnit.TryPlayIdleAnimation()
 		else:
 			sprite.self_modulate = GameManager.GameSettings.Alpha_DeactivatedModulate
 
 
 func PlayAnimation(_animString : String, _uniformTransition : bool, _animSpeed : float = 1, _fromEnd : bool = false):
 	if AnimationWorkComplete:
-		if AnimationCTRL.has_animation(_animString):
+		if submerged && SubmergedAnimationCTRL != null:
+			SubmergedAnimationCTRL.play(_animString, -1, _animSpeed, _fromEnd)
+		elif AnimationCTRL.has_animation(_animString):
 			AnimationCTRL.play(_animString, -1, _animSpeed, _fromEnd)
 		else:
-			push_error("Unit ", MyUnit.Template.DebugName, " does not have an animation for: ", _animString)
+			push_error("Unit ", myUnit.Template.DebugName, " does not have an animation for: ", _animString)
 		visual.speed_scale = _animSpeed
 
 
@@ -109,29 +128,39 @@ func ResetAnimation():
 	AnimationCTRL.seek(0, true)
 
 func UpdateSubmerged(_submerged : bool):
+	if !_submerged && submerged:
+		if Map.Current != null:
+			var vfx = Juice.SplashVFX.instantiate()
+			vfx.global_position = global_position
+			Map.Current.add_child(vfx)
+
+
+	submerged = _submerged
 	if AnimationWorkComplete:
 		if SubmergedParent != null:
-			SubmergedParent.visible = _submerged
+			SubmergedParent.visible = submerged
 
 		if visual != null:
-			visual.visible = !_submerged
+			visual.visible = !submerged
 	else:
 		if SubmergedParent != null:
-			SubmergedParent.visible = _submerged
+			SubmergedParent.visible = submerged
+
+
 
 func RefreshFlying():
 	if AnimationWorkComplete:
-		visual.z_index = 1 if MyUnit.IsFlying else 0
+		visual.z_index = 1 if myUnit.IsFlying else 0
 	else:
-		sprite.z_index = 1 if MyUnit.IsFlying else 0
+		sprite.z_index = 1 if myUnit.IsFlying else 0
 
 func UpdateShrouded():
-	visible = !MyUnit.ShroudedFromPlayer
+	visible = !myUnit.ShroudedFromPlayer
 
-	MyUnit.damageIndicator.visible = !MyUnit.ShroudedFromPlayer
+	myUnit.damageIndicator.visible = !myUnit.ShroudedFromPlayer
 
 	if AnimationWorkComplete:
-		if MyUnit.Shrouded:
+		if myUnit.Shrouded:
 			visual.material.set_shader_parameter("tint", GameManager.GameSettings.ShroudedTintModulate)
 		else:
 			visual.material.set_shader_parameter("tint", Color.WHITE)
@@ -140,7 +169,7 @@ func UpdateShrouded():
 func PlayAlertedFromShroudAnimation():
 	visible = true
 
-	MyUnit.PlayAlertEmote()
+	myUnit.PlayAlertEmote()
 	await get_tree().create_timer(1).timeout
 	UpdateShrouded()
 
@@ -149,35 +178,39 @@ func AnimationDealDamage():
 
 func PlayDamageAnimation(_autoReturnToIdle = true):
 	if AnimationWorkComplete:
-		if MyUnit.ShroudedFromPlayer:
+		var visualToEdit = visual
+		if submerged && submergedVisual != null:
+			visualToEdit = submergedVisual
+
+		if myUnit.ShroudedFromPlayer:
 			PlayAlertedFromShroudAnimation()
 
-		if !MyUnit.UsingSlowSpeedAbility:
+		if !myUnit.UsingSlowSpeedAbility:
 			PlayAnimation(UnitSettingsTemplate.ANIM_TAKE_DAMAGE, false, 1, false)
 
-		visual.material.set_shader_parameter("use_color_override", true)
-		visual.material.set_shader_parameter("color_override", Color.RED)
+		visualToEdit.material.set_shader_parameter("use_color_override", true)
+		visualToEdit.material.set_shader_parameter("color_override", Color.RED)
 
 		await get_tree().create_timer(0.05).timeout
 
-		visual.material.set_shader_parameter("use_color_override", true)
-		visual.material.set_shader_parameter("color_override", Color.WHITE)
+		visualToEdit.material.set_shader_parameter("use_color_override", true)
+		visualToEdit.material.set_shader_parameter("color_override", Color.WHITE)
 
 		await get_tree().create_timer(0.05).timeout
 
-		visual.material.set_shader_parameter("use_color_override", false)
+		visualToEdit.material.set_shader_parameter("use_color_override", false)
 
 
 		await get_tree().create_timer(2).timeout
 
-		if AnimationCTRL.current_animation == UnitSettingsTemplate.ANIM_TAKE_DAMAGE && _autoReturnToIdle && !MyUnit.UsingSlowSpeedAbility:
+		if AnimationCTRL.current_animation == UnitSettingsTemplate.ANIM_TAKE_DAMAGE && _autoReturnToIdle && !myUnit.UsingSlowSpeedAbility:
 			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 1, false)
 
 func PlayMissAnimation(_autoReturnToIdle = true):
 	if AnimationWorkComplete:
 		await get_tree().create_timer(2).timeout
 
-		if _autoReturnToIdle && !MyUnit.UsingSlowSpeedAbility:
+		if _autoReturnToIdle && !myUnit.UsingSlowSpeedAbility:
 			PlayAnimation(UnitSettingsTemplate.ANIM_IDLE, false, 1, false)
 
 func SetSpeedScale(_speed : float = 1):
@@ -187,7 +220,7 @@ func SetSpeedScale(_speed : float = 1):
 
 func GetAnimString(_suffix : String):
 	var animStr = ""
-	match(MyUnit.UnitAllegiance):
+	match(myUnit.UnitAllegiance):
 		GameSettingsTemplate.TeamID.ALLY:
 			animStr = "Ally"
 		GameSettingsTemplate.TeamID.ENEMY:

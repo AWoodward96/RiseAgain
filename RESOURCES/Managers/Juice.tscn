@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6pxp4b6trdhe" path="res://RESOURCES/Juice/crit_popup.tscn" id="5_joqml"]
 [ext_resource type="PackedScene" uid="uid://cfn1u0knhje1k" path="res://RESOURCES/VFX/Emotes/alert_emote.tscn" id="7_xkcy3"]
 [ext_resource type="PackedScene" uid="uid://wb34qc5gf78b" path="res://RESOURCES/VFX/Emotes/shock_emote.tscn" id="8_7fhf3"]
+[ext_resource type="PackedScene" uid="uid://bk4o1g1nebgds" path="res://RESOURCES/VFX/splash_out_vfx.tscn" id="9_tlc63"]
 
 [node name="Juice" type="Node2D" unique_id=1310279607]
 script = ExtResource("1_41id7")
@@ -21,3 +22,4 @@ ShockEmote = ExtResource("8_7fhf3")
 combatSequenceCooloffTimer = 0.6
 combatSequenceDefenseOffset = 0.5
 combatPopupCooldown = 0.2
+SplashVFX = ExtResource("9_tlc63")
