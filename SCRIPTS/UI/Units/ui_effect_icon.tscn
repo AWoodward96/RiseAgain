@@ -1,9 +1,28 @@
 [gd_scene format=3 uid="uid://mrtikl2yemdi"]
 
 [ext_resource type="Script" uid="uid://blpixonl06w50" path="res://SCRIPTS/UI/Units/ui_effect_icon.gd" id="1_owyau"]
+[ext_resource type="Texture2D" uid="uid://cb2qfjn5ivqc" path="res://ART/UI/Frames/combat_effect_frame.png" id="2_c1pkl"]
+[ext_resource type="Texture2D" uid="uid://bbxc6jcw3fvx0" path="res://ART/Icons/CombatEffects/CE_Armor.png" id="3_uj2a0"]
 
-[node name="UIEffectIcon" type="TextureRect" unique_id=612459771 node_paths=PackedStringArray("icon")]
-custom_minimum_size = Vector2(16, 16)
-expand_mode = 1
+[node name="UIEffectIcon" type="Control" unique_id=794694318 node_paths=PackedStringArray("icon")]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 18.0
+offset_bottom = 18.0
 script = ExtResource("1_owyau")
-icon = NodePath(".")
+icon = NodePath("Icon")
+
+[node name="Frame" type="TextureRect" parent="." unique_id=1280514441]
+layout_mode = 0
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource("2_c1pkl")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=869031321]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+texture = ExtResource("3_uj2a0")

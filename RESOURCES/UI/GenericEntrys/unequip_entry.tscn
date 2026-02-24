@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://n5iabomo0vk6"]
 
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_i1bmp"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="1_i1bmp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds2to"]
 border_width_left = 2

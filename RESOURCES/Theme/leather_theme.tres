@@ -1,0 +1,185 @@
+[gd_resource type="Theme" format=3 uid="uid://orrc8n2qnkd0"]
+
+[ext_resource type="FontFile" uid="uid://yaha5cj52yo5" path="res://ART/Fonts/PixNull.ttf" id="1_w1km5"]
+[ext_resource type="Texture2D" uid="uid://d0fp1rxs42ic4" path="res://ART/UI/Panels/panel_leather_simple_2.png" id="2_rci6d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rci6d"]
+bg_color = Color(0.321569, 0.282353, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1km5"]
+bg_color = Color(0.82, 0.7628733, 0.6396, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.9367, 0.8835, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ny8av"]
+bg_color = Color(0.619608, 0.576471, 0.486275, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls502"]
+bg_color = Color(0.333333, 0.309804, 0.27451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45284"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.466667, 0.431373, 0.368627, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vly83"]
+bg_color = Color(0.333333, 0.309804, 0.27451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.160784, 0.141176, 0.0941176, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugkwv"]
+load_path = "res://.godot/imported/panel_leather_fancy_0.png-52afb70513f80425da6a8833aad12f34.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w1km5"]
+texture = SubResource("CompressedTexture2D_ugkwv")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 40.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ls502"]
+load_path = "res://.godot/imported/panel_leather_fancy_0.png-52afb70513f80425da6a8833aad12f34.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vly83"]
+texture = SubResource("CompressedTexture2D_ls502")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 40.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_45284"]
+load_path = "res://.godot/imported/panel_leather_simple_1.png-be5a643bdb7c7513656dc4c35c6b0cfb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7e553"]
+texture = SubResource("CompressedTexture2D_45284")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rci6d"]
+load_path = "res://.godot/imported/panel_leather_simple_1.png-be5a643bdb7c7513656dc4c35c6b0cfb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ny8av"]
+texture = SubResource("CompressedTexture2D_rci6d")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w1km5"]
+load_path = "res://.godot/imported/panel_leather_simple_0.png-c106479f6e48685768b6aa3c49ffb433.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rci6d"]
+texture = SubResource("CompressedTexture2D_w1km5")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ny8av"]
+load_path = "res://.godot/imported/panel_leather_flat_1.png-6682d802da802e3cf278584ad66bf4ff.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_45284"]
+texture = SubResource("CompressedTexture2D_ny8av")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ls502"]
+texture = ExtResource("2_rci6d")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_w1km5")
+Button/styles/disabled = SubResource("StyleBoxFlat_rci6d")
+Button/styles/focus = SubResource("StyleBoxFlat_w1km5")
+Button/styles/hover = SubResource("StyleBoxFlat_ny8av")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_ls502")
+Button/styles/normal = SubResource("StyleBoxFlat_45284")
+Button/styles/pressed = SubResource("StyleBoxFlat_vly83")
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_w1km5")
+Panel/styles/panel = SubResource("StyleBoxTexture_w1km5")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_vly83")
+PanelContainer_Simple/base_type = &"PanelContainer"
+PanelContainer_Simple/styles/panel = SubResource("StyleBoxTexture_7e553")
+Panel_Simple/base_type = &"Panel"
+Panel_Simple/styles/panel = SubResource("StyleBoxTexture_ny8av")
+Panel_Simple_Bordered/base_type = &"Panel"
+Panel_Simple_Bordered/styles/panel = SubResource("StyleBoxTexture_rci6d")
+Panel_Simple_Borderless/base_type = &"Panel"
+Panel_Simple_Borderless/styles/panel = SubResource("StyleBoxTexture_45284")
+Panel_Simple__1/base_type = &"Panel"
+Panel_Simple__1/styles/panel = SubResource("StyleBoxTexture_ls502")

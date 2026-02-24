@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TauntEffectTemplate" format=3 uid="uid://c465uoqi1aamc"]
+
+[ext_resource type="Texture2D" uid="uid://c551hsmn3w8eg" path="res://ART/Icons/CombatEffects/CE_Taunt_8px.png" id="1_3fimy"]
+[ext_resource type="Texture2D" uid="uid://cscuk28uwdmuc" path="res://ART/Icons/CombatEffects/CE_Taunt.png" id="1_ny0dq"]
+[ext_resource type="Script" uid="uid://vv5ho31qatuc" path="res://SCRIPTS/CombatEffects/TauntEffectTemplate.gd" id="2_ny0dq"]
+
+[resource]
+script = ExtResource("2_ny0dq")
+AffectedTargets = 1
+Turns = 1
+DeprecationTime = 1
+loc_name = "art_taunt_name"
+loc_icon_16px = ExtResource("1_ny0dq")
+loc_icon_8px = ExtResource("1_3fimy")
+metadata/_custom_type_script = "uid://vv5ho31qatuc"

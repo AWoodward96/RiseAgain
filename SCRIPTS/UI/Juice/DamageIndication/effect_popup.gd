@@ -11,6 +11,4 @@ func SetEffect(_effectInstance : CombatEffectInstance):
 	if text != null: text.text = template.loc_name
 	if sprite != null:
 		var icon = GameManager.LocalizationSettings.Missing_CombatEffectIcon
-		if template.loc_icon != null:
-			icon = template.loc_icon
-		sprite.texture = icon
+		sprite.texture = template.GetLocIcon(sprite.texture)

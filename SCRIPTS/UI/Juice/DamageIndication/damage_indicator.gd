@@ -98,7 +98,7 @@ func ShowPreview():
 
 	for template in effects:
 		var entry = effects_preview.CreateEntry(effectEntry)
-		entry.texture.texture = template.loc_icon
+		entry.texture.texture = template.GetLocIcon(entry.texture)
 		entry.label.text = template.loc_name
 
 	if preview_bg != null:

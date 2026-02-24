@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://4ci5d5nuum3x" path="res://SCRIPTS/Universe/BarracksUI.gd" id="15_gvr6f"]
 [ext_resource type="PackedScene" uid="uid://cflal3jirl4pa" path="res://RESOURCES/UI/Barracks/stat_block_entry_barracks.tscn" id="16_b04xw"]
 [ext_resource type="Texture2D" uid="uid://dk2hsagjjygnv" path="res://ART/Environment/Bastion/TempHouse_Ext.png" id="18_wk2vp"]
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="19_uqvao"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="19_uqvao"]
 [ext_resource type="Script" uid="uid://cr5yb8hf5hgk2" path="res://SCRIPTS/Universe/TopdownTeleporter.gd" id="20_dw0t6"]
 [ext_resource type="Script" uid="uid://c38l3ao173fky" path="res://SCRIPTS/Universe/FullscreenTopdownInteractable.gd" id="21_uqvao"]
 [ext_resource type="PackedScene" uid="uid://yo6f2pumv2h2" path="res://RESOURCES/UI/TavernUI/TavernMenuUI.tscn" id="22_dw0t6"]

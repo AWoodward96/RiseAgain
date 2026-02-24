@@ -62,6 +62,7 @@ func Update(_unit : UnitInstance, _forceUpdate : bool = false):
 	var template = _unit.Template
 	icon.texture = template.icon
 	namelabel.text = template.loc_DisplayName
+
 	unitHealthBar.SetUnit(_unit)
 	unitHealthBar.Refresh()
 

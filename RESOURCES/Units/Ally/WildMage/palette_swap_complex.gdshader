@@ -38,8 +38,8 @@ vec3 hsv2rgb(vec3 c) {
 
 
 void fragment() {
-
 	vec4 color = texture(TEXTURE, UV);
+	
 	if (!use_color_override)
 	{
 		float increment = 1.0 / palette_count;
@@ -47,8 +47,6 @@ void fragment() {
 		vec4 new_color = texture(palette, vec2(color.r, y));
 
 		new_color.a *= color.a;
-		// I don't know why we'd use this step method, so I've commented it out, but the OG shader did use it over the above line
-		//new_color.a *= step(STEP_UNIT, color.a);
 
 		if (grey_scale)
 		{

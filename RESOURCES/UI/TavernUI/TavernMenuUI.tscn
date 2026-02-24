@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="3_dacwr"]
 [ext_resource type="LabelSettings" uid="uid://35j7gum5loa3" path="res://RESOURCES/UI/TavernUI/ReciptText.tres" id="3_glwsx"]
 [ext_resource type="Texture2D" uid="uid://dq7qxasdckqsg" path="res://ART/Icons/Resources/food.png" id="4_e0cwt"]
-[ext_resource type="Texture2D" uid="uid://b6avcrlsf0kte" path="res://ART/UI/Textures/ui_tavern_menu.png" id="7_a7h6f"]
+[ext_resource type="Texture2D" uid="uid://b6avcrlsf0kte" path="res://ART/UI/Panels/ui_tavern_menu.png" id="7_a7h6f"]
 [ext_resource type="FontFile" uid="uid://kwbjkmctnocu" path="res://ART/Fonts/ThickPixels.ttf" id="7_qg81u"]
 [ext_resource type="PackedScene" uid="uid://ba3vlpk5kjlh" path="res://RESOURCES/UI/TavernUI/meal_listing.tscn" id="8_crymp"]
 [ext_resource type="Resource" uid="uid://c1o1sarcb1glm" path="res://RESOURCES/Universe/Meals/Grub.tres" id="9_38q88"]

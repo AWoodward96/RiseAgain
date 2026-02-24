@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://co7lel8ngy6or" path="res://RESOURCES/UI/_alpha_AbilitySelection/ability_entry.tscn" id="3_rxhv0"]
 [ext_resource type="PackedScene" uid="uid://0146em1f1pra" path="res://RESOURCES/UI/stat_entry_parchment.tscn" id="3_u3ppk"]
 [ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="6_omd1k"]
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="7_rxl6x"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="7_rxl6x"]
 [ext_resource type="Texture2D" uid="uid://da8e6v5th61vs" path="res://ART/Icons/Units/knight.png" id="8_u3ppk"]
 [ext_resource type="LabelSettings" uid="uid://dosrukx8jhu7l" path="res://RESOURCES/UI/LabelSettings/parchment_title.tres" id="9_u3ppk"]
 

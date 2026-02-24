@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6avcrlsf0kte"
-path="res://.godot/imported/ui_tavern_menu.png-8d01091e89268dd45376c476e043b757.ctex"
+uid="uid://btr8f02djgc03"
+path="res://.godot/imported/panel_leather_simple_0.png-c106479f6e48685768b6aa3c49ffb433.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ART/UI/Textures/ui_tavern_menu.png"
-dest_files=["res://.godot/imported/ui_tavern_menu.png-8d01091e89268dd45376c476e043b757.ctex"]
+source_file="res://ART/UI/Panels/panel_leather_simple_0.png"
+dest_files=["res://.godot/imported/panel_leather_simple_0.png-c106479f6e48685768b6aa3c49ffb433.ctex"]
 
 [params]
 

@@ -20,13 +20,16 @@
 [ext_resource type="Texture2D" uid="uid://dc6eiuh2gyi8c" path="res://ART/Icons/Stats/icon_attack.png" id="15_ynng0"]
 [ext_resource type="Texture2D" uid="uid://dyfm87rtn5uj3" path="res://ART/Icons/Stats/icon_defense.png" id="16_2y1mh"]
 [ext_resource type="Texture2D" uid="uid://d261vu8tvss47" path="res://ART/Icons/Stats/icon_spdefense.png" id="17_qifey"]
+[ext_resource type="Theme" uid="uid://orrc8n2qnkd0" path="res://RESOURCES/Theme/leather_theme.tres" id="18_ea2al"]
 [ext_resource type="Texture2D" uid="uid://bxy8jlhxrvtba" path="res://ART/Icons/Stats/icon_movement.png" id="18_pubiv"]
+[ext_resource type="Texture2D" uid="uid://cxj6kaa2lynxa" path="res://ART/UI/Panels/panel_leather_simple_1.png" id="21_ea2al"]
 [ext_resource type="Texture2D" uid="uid://dacor14ec8yow" path="res://ART/UI/injured_overlay.png" id="21_m3k6o"]
 [ext_resource type="Texture2D" uid="uid://cqc5de5p7rain" path="res://ART/Icons/Affinity/dark_affinity_icon.png" id="21_tmp02"]
 [ext_resource type="Script" uid="uid://bqldm4nmooiyg" path="res://SCRIPTS/UI/InspectUI/TerrainInspectPanel.gd" id="23_q4cyj"]
 [ext_resource type="Texture2D" uid="uid://budxhlq1silxc" path="res://ART/UI/ScalableScreens/Scalable_3.png" id="23_vm2kk"]
 [ext_resource type="Texture2D" uid="uid://3yurom5dskob" path="res://ART/UI/ScalableScreens/Scalable_1.png" id="24_6ybxf"]
 [ext_resource type="Texture2D" uid="uid://bc86vvwt0eosa" path="res://ART/UI/Dividers/deviders4.png" id="24_cm1b8"]
+[ext_resource type="Texture2D" uid="uid://dksy8uhb033ho" path="res://ART/UI/Dividers/default_divider.png" id="25_3wvpc"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="25_a6jy8"]
 [ext_resource type="LabelSettings" uid="uid://d1jpi2iq3ue40" path="res://RESOURCES/UI/LabelSettings/minimal_10px_white.tres" id="25_gcwxk"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="25_lfimk"]
@@ -34,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bbgi0j7f72ml4" path="res://ART/Icons/submerged_icon.png" id="29_dq8tc"]
 [ext_resource type="Script" uid="uid://bk83b4k51ovr0" path="res://SCRIPTS/UI/General/AnchoredUIElement.gd" id="29_g8xya"]
 [ext_resource type="Script" uid="uid://beyu60ng7gcta" path="res://SCRIPTS/UI/General/TutorialPromptPanel.gd" id="31_1fiyo"]
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="35_7qyhs"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="35_7qyhs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1gep"]
 font = ExtResource("8_rdfo2")
@@ -63,6 +66,28 @@ bg_color = Color(1, 0.872869, 0.485299, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qnurt"]
 font = ExtResource("8_rdfo2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dq8tc"]
+texture = ExtResource("21_ea2al")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ea2al"]
+texture = ExtResource("21_ea2al")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_foman"]
 font = ExtResource("8_rdfo2")
@@ -295,18 +320,18 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("9_tccg0")
-DefaultLayoutParent = NodePath("OffsetMargin/Content/Main/Default_Layout")
-SubmergedLayoutParent = NodePath("OffsetMargin/Content/Main/Submerged_Layout")
-icon = NodePath("OffsetMargin/Content/Main/Default_Layout/UnitIcon")
+DefaultLayoutParent = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout")
+SubmergedLayoutParent = NodePath("OffsetMargin/Content/Main/MarginContainer/Submerged_Layout")
+icon = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/IconPanel/UnitIcon")
 injuredParent = NodePath("OffsetMargin/Content/Injured")
 unitHealthBar = NodePath("OffsetMargin/Content/Main")
-namelabel = NodePath("OffsetMargin/Content/Main/Default_Layout/UnitName")
-affinity_icon = NodePath("OffsetMargin/Content/Main/Default_Layout/Affinity")
-dmgIcon = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk/AttackIcon")
-dmgLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk/AttackNum")
-defLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def/DefNum")
-spDefLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2/SpDefNum")
-moveLabel = NodePath("OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move/MoveNum")
+namelabel = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/UnitName")
+affinity_icon = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/Affinity")
+dmgIcon = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Atk/AttackIcon")
+dmgLabel = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Atk/AttackNum")
+defLabel = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Def/DefNum")
+spDefLabel = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Def2/SpDefNum")
+moveLabel = NodePath("OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Move/MoveNum")
 Priority = 2
 PreferredAnchor = Array[int]([2, 3])
 AvailableAnchors = Array[int]([2, 3, 0, 1])
@@ -363,68 +388,65 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Main" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=579326167 node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
-custom_minimum_size = Vector2(260, 108)
+[node name="Main" type="Panel" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=317666159 node_paths=PackedStringArray("HealthBar", "ArmorBar", "InjuredBar", "HealthText", "InjuredParent", "ExperienceBar", "LevelLabel", "EffectParent", "EffectsList")]
+custom_minimum_size = Vector2(304, 144)
 layout_mode = 2
+theme = ExtResource("18_ea2al")
 script = ExtResource("12_60paf")
-HealthBar = NodePath("Default_Layout/Health")
-ArmorBar = NodePath("Default_Layout/Armor")
-InjuredBar = NodePath("Default_Layout/InjuredBar")
-HealthText = NodePath("Default_Layout/HealthText")
-InjuredParent = NodePath("Default_Layout/UnitIcon/InjuredParent")
-ExperienceBar = NodePath("Default_Layout/EXP")
-LevelLabel = NodePath("Default_Layout/Level")
+HealthBar = NodePath("MarginContainer/Default_Layout/Health")
+ArmorBar = NodePath("MarginContainer/Default_Layout/Armor")
+InjuredBar = NodePath("MarginContainer/Default_Layout/InjuredBar")
+HealthText = NodePath("MarginContainer/Default_Layout/HealthText")
+InjuredParent = NodePath("MarginContainer/Default_Layout/IconPanel/InjuredParent")
+ExperienceBar = NodePath("MarginContainer/Default_Layout/EXP")
+LevelLabel = NodePath("MarginContainer/Default_Layout/Level")
 LevelLocalization = "ui_level_num_short"
 EffectParent = NodePath("../EffectsParent")
 EffectsList = NodePath("../EffectsParent/MarginContainer/ActiveEffects")
 EffectsIconPrefab = ExtResource("10_4ar5q")
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1728403357]
+[node name="MarginContainer" type="MarginContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=881383464]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.24, 0.1968, 0.20328, 1)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="Default_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1232972010]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Default_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer" unique_id=1232972010]
+layout_mode = 2
 
-[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=852882224]
+[node name="IconPanel" type="Panel" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=1028493288]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
 offset_right = 58.0
 offset_bottom = 55.0
+theme_type_variation = &"Panel_Simple"
+
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/IconPanel" unique_id=429502354]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("25_a6jy8")
-expand_mode = 2
+expand_mode = 1
 
-[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon" unique_id=1049866512]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 49.0
-offset_bottom = 49.0
-texture = ExtResource("25_lfimk")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/UnitIcon" unique_id=2040173651]
+[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/IconPanel" unique_id=2040173651]
+visible = false
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
 texture = ExtResource("21_m3k6o")
 expand_mode = 2
 
-[node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=2005294352]
+[node name="Affinity" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=2005294352]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 44.0
@@ -434,7 +456,7 @@ pivot_offset = Vector2(22, -2)
 texture = ExtResource("21_tmp02")
 expand_mode = 1
 
-[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/Affinity" unique_id=2073294745]
+[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/Affinity" unique_id=2073294745]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -447,7 +469,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1792374041]
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=1792374041]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 2.0
@@ -457,34 +479,34 @@ text = "[UnitName]"
 label_settings = SubResource("LabelSettings_n4mcp")
 vertical_alignment = 1
 
-[node name="Level" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1066575000]
+[node name="Level" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=1066575000]
 layout_mode = 0
-offset_left = 206.0
+offset_left = 226.0
 offset_top = 2.0
-offset_right = 253.0
+offset_right = 273.0
 offset_bottom = 25.0
 text = "[NUM]"
 label_settings = SubResource("LabelSettings_n4mcp")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=959373327]
+[node name="Health" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=959373327]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 0
 offset_left = 64.0
 offset_top = 24.0
-offset_right = 254.0
+offset_right = 272.0
 offset_bottom = 40.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_jouhd")
 max_value = 1.0
 show_percentage = false
 
-[node name="InjuredBar" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1654320922]
+[node name="InjuredBar" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=1654320922]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 0
 offset_left = 64.0
 offset_top = 24.0
-offset_right = 254.0
+offset_right = 272.0
 offset_bottom = 40.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_m3k6o")
 max_value = 1.0
@@ -492,65 +514,66 @@ value = 0.3
 fill_mode = 1
 show_percentage = false
 
-[node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=2092870718]
+[node name="Armor" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=2092870718]
 custom_minimum_size = Vector2(132, 16)
 layout_mode = 0
 offset_left = 64.0
 offset_top = 24.0
-offset_right = 254.0
+offset_right = 272.0
 offset_bottom = 40.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_yrmyv")
 max_value = 1.0
 show_percentage = false
 
-[node name="HealthText" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1689792083]
+[node name="HealthText" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=1689792083]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 0
-offset_left = 128.0
+offset_left = 143.0
 offset_top = 17.0
-offset_right = 171.0
+offset_right = 186.0
 offset_bottom = 40.0
 text = "25/25"
 label_settings = SubResource("LabelSettings_y7ooe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EXP" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1913135301]
+[node name="EXP" type="ProgressBar" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=1913135301]
 custom_minimum_size = Vector2(132, 1)
 layout_mode = 0
 offset_left = 64.0
 offset_top = 50.0
-offset_right = 254.0
+offset_right = 272.0
 offset_bottom = 54.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_hgwnx")
 step = 1.0
 value = 23.0
 show_percentage = false
 
-[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=837329458]
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=837329458]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 1.0
-offset_right = 80.0
-offset_bottom = 21.0
+offset_left = -74.0
+offset_top = -5.0
+offset_right = 102.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("24_cm1b8")
+texture = ExtResource("25_3wvpc")
 
-[node name="ImportantStats" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout" unique_id=1862686199]
-anchors_preset = 0
-offset_left = 5.0
+[node name="ImportantStats" type="Panel" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout" unique_id=20937506]
+layout_mode = 0
+offset_left = 7.0
 offset_top = 71.0
-offset_right = 251.0
-offset_bottom = 103.0
+offset_right = 271.0
+offset_bottom = 111.0
 pivot_offset = Vector2(4, 26)
+theme_type_variation = &"Panel_Simple_Bordered"
 
-[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=742487543]
+[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats" unique_id=742487543]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -564,78 +587,76 @@ theme_override_constants/h_separation = 24
 columns = 4
 script = ExtResource("10_fkj7h")
 
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=794203268]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.32, 0.2784, 0.294347, 1)
-
-[node name="Glance" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=199229497]
+[node name="Glance" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats" unique_id=199229497]
 layout_mode = 0
-offset_right = 244.0
-offset_bottom = 32.0
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 36.0
 theme_override_constants/separation = 8
 
-[node name="Atk" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=362094263]
+[node name="Atk" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance" unique_id=362094263]
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 
-[node name="AttackIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk" unique_id=514892101]
+[node name="AttackIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Atk" unique_id=514892101]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("15_ynng0")
 expand_mode = 1
 
-[node name="AttackNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Atk" unique_id=1076857052]
+[node name="AttackNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Atk" unique_id=1076857052]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Def" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=1406131755]
+[node name="Def" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance" unique_id=1406131755]
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 
-[node name="DefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def" unique_id=1266487991]
+[node name="DefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Def" unique_id=1266487991]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("16_2y1mh")
 expand_mode = 1
 
-[node name="DefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def" unique_id=1385882133]
+[node name="DefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Def" unique_id=1385882133]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Def2" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=433842600]
+[node name="Def2" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance" unique_id=433842600]
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 
-[node name="SpDefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2" unique_id=1564966014]
+[node name="SpDefIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Def2" unique_id=1564966014]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("17_qifey")
 expand_mode = 1
 
-[node name="SpDefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Def2" unique_id=1061557367]
+[node name="SpDefNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Def2" unique_id=1061557367]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="Move" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance" unique_id=47472796]
+[node name="Move" type="HBoxContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance" unique_id=47472796]
+custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 
-[node name="MoveIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move" unique_id=159663581]
+[node name="MoveIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Move" unique_id=159663581]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("18_pubiv")
 expand_mode = 1
 
-[node name="MoveNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats/Glance/Move" unique_id=1102731428]
+[node name="MoveNum" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats/Glance/Move" unique_id=1102731428]
 layout_mode = 2
 text = "00"
 label_settings = SubResource("LabelSettings_qnurt")
 
-[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Default_Layout/ImportantStats" unique_id=851103714]
+[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Default_Layout/ImportantStats" unique_id=851103714]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -648,45 +669,29 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Submerged_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=366191322]
+[node name="Submerged_Layout" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer" unique_id=366191322]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
-[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1277190224]
+[node name="IconPanel" type="Panel" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Submerged_Layout" unique_id=564617515]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
 offset_right = 58.0
 offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dq8tc")
+
+[node name="UnitIcon" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Submerged_Layout/IconPanel" unique_id=934216944]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("29_dq8tc")
-expand_mode = 2
+expand_mode = 1
 
-[node name="UnitIconFrame" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon" unique_id=2028092732]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 49.0
-offset_bottom = 49.0
-texture = ExtResource("25_lfimk")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="InjuredParent" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/UnitIcon" unique_id=1052123937]
-visible = false
-layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
-texture = ExtResource("21_m3k6o")
-expand_mode = 2
-
-[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1364763130]
+[node name="UnitName" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Submerged_Layout" unique_id=1364763130]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 19.0
@@ -696,53 +701,31 @@ text = "ui_submerged_unknown"
 label_settings = SubResource("LabelSettings_n4mcp")
 vertical_alignment = 1
 
-[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=1926475335]
+[node name="Divider2" type="TextureRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Submerged_Layout" unique_id=1926475335]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 1.0
-offset_right = 80.0
-offset_bottom = 21.0
+offset_left = -74.0
+offset_top = -5.0
+offset_right = 102.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("24_cm1b8")
+texture = ExtResource("25_3wvpc")
 
-[node name="SecondPanel" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout" unique_id=515214118]
-anchors_preset = 0
+[node name="SecondPanel" type="Panel" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Submerged_Layout" unique_id=675974957]
+layout_mode = 0
 offset_left = 5.0
-offset_top = 71.0
-offset_right = 251.0
-offset_bottom = 103.0
+offset_top = 69.0
+offset_right = 273.0
+offset_bottom = 111.0
 pivot_offset = Vector2(4, 26)
+theme_override_styles/panel = SubResource("StyleBoxTexture_ea2al")
 
-[node name="GridContainer" type="GridContainer" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=130238617]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 24
-columns = 4
-script = ExtResource("10_fkj7h")
-
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=734232898]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.32, 0.2784, 0.294347, 1)
-
-[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=1154400805]
+[node name="Label" type="Label" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/MarginContainer/Submerged_Layout/SecondPanel" unique_id=1154400805]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -756,37 +739,14 @@ label_settings = SubResource("LabelSettings_foman")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnitIconFrame2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main/Submerged_Layout/SecondPanel" unique_id=1442110284]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("25_lfimk")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/Main" unique_id=1268307635]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("24_6ybxf")
-patch_margin_left = 24
-patch_margin_top = 24
-patch_margin_right = 24
-patch_margin_bottom = 24
-
-[node name="EffectsParent" type="Control" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=202466333]
-custom_minimum_size = Vector2(0, 20)
+[node name="EffectsParent" type="Panel" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content" unique_id=1617584873]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+theme = ExtResource("18_ea2al")
+theme_type_variation = &"Panel_Simple_Borderless"
 
 [node name="ColorRect" type="ColorRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=1424203992]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -812,19 +772,6 @@ custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 script = ExtResource("10_fkj7h")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="Full_NoMargin/InspectUnitPanel/OffsetMargin/Content/EffectsParent" unique_id=466536539]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("25_lfimk")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
 [node name="PanelBlocker" type="Control" parent="Full_NoMargin" unique_id=195823759]
 anchors_preset = 0
 offset_right = 40.0
@@ -834,10 +781,10 @@ Priority = 100
 AvailableAnchors = Array[int]([0, 1, 2, 3])
 
 [node name="Objective" type="MarginContainer" parent="Full_NoMargin" unique_id=182303933 node_paths=PackedStringArray("ObjectiveText", "OptionalObjectiveParent", "OptionalObjectiveText")]
-visible = false
 layout_mode = 0
 offset_right = 283.0
 offset_bottom = 84.0
+theme = ExtResource("18_ea2al")
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -854,13 +801,10 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="Objective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=375599674]
+[node name="Objective" type="PanelContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=1564302041]
 layout_mode = 2
 size_flags_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=1952116541]
-layout_mode = 2
-color = Color(0.31, 0.31, 0.31, 1)
+theme_type_variation = &"PanelContainer_Simple"
 
 [node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=27161384]
 layout_mode = 2
@@ -874,21 +818,10 @@ layout_mode = 2
 text = "Route: X Remaining"
 label_settings = SubResource("LabelSettings_j302s")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/Objective" unique_id=997505746]
-layout_mode = 2
-texture = ExtResource("24_6ybxf")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="OptionalObjective" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=182898072]
+[node name="OptionalObjective" type="PanelContainer" parent="Full_NoMargin/Objective/VBoxContainer" unique_id=1865724810]
 layout_mode = 2
 size_flags_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=1316717706]
-layout_mode = 2
-color = Color(0.23, 0.23, 0.23, 1)
+theme_type_variation = &"PanelContainer_Simple"
 
 [node name="Content" type="MarginContainer" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=994516167]
 layout_mode = 2
@@ -901,14 +834,6 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 text = "Opt: Any Neutral Unit left Alive"
 label_settings = SubResource("LabelSettings_j302s")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Full_NoMargin/Objective/VBoxContainer/OptionalObjective" unique_id=1303539354]
-layout_mode = 2
-texture = ExtResource("23_vm2kk")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
 
 [node name="OffsetMargin" type="MarginContainer" parent="Full_NoMargin/Objective" unique_id=495431541]
 layout_mode = 2
@@ -1029,17 +954,23 @@ entryParent = NodePath("PanelContainer/MarginContainer/VBoxContainer")
 entryPrefab = ExtResource("11_aar1f")
 OnShowSound = NodePath("OnShow")
 
-[node name="PanelContainer" type="MarginContainer" parent="ContextMenu" unique_id=1730427635]
+[node name="PanelContainer" type="Panel" parent="ContextMenu" unique_id=529782829]
 layout_mode = 0
 offset_right = 224.0
 offset_bottom = 32.0
+theme = ExtResource("18_ea2al")
 
 [node name="ColorRect" type="ColorRect" parent="ContextMenu/PanelContainer" unique_id=437632918]
-layout_mode = 2
+visible = false
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 32.0
 color = Color(0.16, 0.1488, 0.1488, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ContextMenu/PanelContainer" unique_id=371150375]
-layout_mode = 2
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 32.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -1049,7 +980,10 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ContextMenu/PanelContainer" unique_id=1807541935]
-layout_mode = 2
+visible = false
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 32.0
 texture = ExtResource("24_6ybxf")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -1077,11 +1011,10 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -96.5
 offset_right = 96.5
-offset_bottom = 48.0
+offset_bottom = 37.445
 grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="TopCenter/TargetingHelp" unique_id=318164172]
-layout_mode = 2
+theme = ExtResource("18_ea2al")
+theme_type_variation = &"PanelContainer_Simple"
 
 [node name="MarginContainer" type="MarginContainer" parent="TopCenter/TargetingHelp" unique_id=564551185]
 layout_mode = 2

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b7850ynb8vsrl"]
 
+[ext_resource type="Theme" uid="uid://orrc8n2qnkd0" path="res://RESOURCES/Theme/leather_theme.tres" id="1_xqubp"]
 [ext_resource type="Script" uid="uid://cvuvblt057f7i" path="res://SCRIPTS/UI/ContextUI/ContextButtonEntry.gd" id="2_0colu"]
 [ext_resource type="Texture2D" uid="uid://db37hp17pcctg" path="res://ART/Icons/cooldown_icon.png" id="2_4cgg7"]
 [ext_resource type="LabelSettings" uid="uid://dhpn7ahthlvkq" path="res://RESOURCES/UI/LabelSettings/FocusCostLabel.tres" id="3_4cgg7"]
@@ -7,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://k17o7horickd" path="res://ART/UI/ScalableScreens/Scalable_2.png" id="3_yvwub"]
 [ext_resource type="Texture2D" uid="uid://g0wv2ofym0em" path="res://ART/Icons/fast_speed.png" id="4_3hivy"]
 [ext_resource type="Texture2D" uid="uid://7ysd5s2kywvy" path="res://ART/UI/ScalableScreens/Scalable_4.png" id="4_5k861"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtu0g"]
+bg_color = Color(0, 0, 0, 0.27058825)
 
 [sub_resource type="LabelSettings" id="LabelSettings_glskh"]
 font = ExtResource("3_tvrtu")
@@ -18,10 +22,13 @@ font = ExtResource("3_tvrtu")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ContextButtonEntry" type="MarginContainer" unique_id=769369456 node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "cooldown_parent", "cooldown_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
+[node name="ContextButtonEntry" type="Panel" unique_id=1115085454 node_paths=PackedStringArray("action_label", "bg_color_fill", "disabled_parent", "focus_parent", "fast_speed_parent", "cooldown_parent", "cooldown_label", "usage_parent", "usage_label", "OnFocus", "OnSelect", "OnSelectDeny")]
 custom_minimum_size = Vector2(0, 32)
+offset_right = 220.45
+offset_bottom = 40.0
 focus_mode = 2
-mouse_filter = 0
+theme = ExtResource("1_xqubp")
+theme_type_variation = &"Panel_Simple_Bordered"
 script = ExtResource("2_0colu")
 action_label = NodePath("StandardButton/HBoxContainer/Label/ActionText")
 bg_color_fill = NodePath("ColorRect")
@@ -41,16 +48,20 @@ OnSelect = NodePath("OnSelect")
 OnSelectDeny = NodePath("OnSelectDeny")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=928439028]
-layout_mode = 2
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 40.0
 color = Color(0.183, 0.22395, 0.3, 1)
 
 [node name="Button" type="Button" parent="." unique_id=671802051]
 visible = false
-layout_mode = 2
+layout_mode = 0
 
 [node name="StandardButton" type="MarginContainer" parent="." unique_id=1203747444]
 custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 40.0
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -88,6 +99,7 @@ vertical_alignment = 2
 [node name="Label" type="Panel" parent="StandardButton/HBoxContainer" unique_id=1834680445]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rtu0g")
 
 [node name="ActionText" type="Label" parent="StandardButton/HBoxContainer/Label" unique_id=637676130]
 layout_mode = 1
@@ -121,6 +133,8 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+theme_type_variation = &"Panel_Simple_Borderless"
+theme_override_styles/panel = SubResource("StyleBoxFlat_rtu0g")
 
 [node name="UsesRemaining" type="Label" parent="StandardButton/HBoxContainer/Uses" unique_id=1222224813]
 layout_mode = 1
@@ -136,7 +150,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=670645657]
-layout_mode = 2
+visible = false
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 40.0
 texture = ExtResource("4_5k861")
 patch_margin_left = 2
 patch_margin_top = 2
@@ -145,12 +162,12 @@ patch_margin_bottom = 2
 
 [node name="Disabled" type="ColorRect" parent="." unique_id=507141961]
 visible = false
-layout_mode = 2
+layout_mode = 0
 color = Color(0.0592, 0.056, 0.08, 0.537255)
 
 [node name="FocusParent" type="Control" parent="." unique_id=460898047]
 visible = false
-layout_mode = 2
+anchors_preset = 0
 
 [node name="Focused" type="ColorRect" parent="FocusParent" unique_id=1012999229]
 layout_mode = 1

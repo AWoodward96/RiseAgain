@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="ArmorEffect" format=3 uid="uid://dlanlcc14wi8m"]
 
 [ext_resource type="Resource" uid="uid://dislbvxswtkbd" path="res://RESOURCES/Stats/STAT_Health.tres" id="1_7vc6v"]
-[ext_resource type="Texture2D" uid="uid://jjucjm0kw2ay" path="res://ART/Icons/temp_shield.png" id="2_eqw5n"]
+[ext_resource type="Texture2D" uid="uid://bbxc6jcw3fvx0" path="res://ART/Icons/CombatEffects/CE_Armor.png" id="2_7vc6v"]
+[ext_resource type="Texture2D" uid="uid://cdb775eovox7h" path="res://ART/Icons/CombatEffects/CE_Armor_8px.png" id="3_eqw5n"]
 [ext_resource type="Script" uid="uid://0q4rq73mdmc" path="res://SCRIPTS/CombatEffects/ArmorEffect.gd" id="3_viwmy"]
 
 [resource]
@@ -14,5 +15,6 @@ AffectedTargets = 2
 Turns = 1
 loc_name = "ce_armor"
 loc_desc = "ce_armor_desc"
-loc_icon = ExtResource("2_eqw5n")
+loc_icon_16px = ExtResource("2_7vc6v")
+loc_icon_8px = ExtResource("3_eqw5n")
 metadata/_custom_type_script = "uid://0q4rq73mdmc"

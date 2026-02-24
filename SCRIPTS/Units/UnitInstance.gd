@@ -1245,7 +1245,7 @@ static func FromJSON(_dict : Dictionary):
 
 	var deferredVisualUpdate = func(_internalDict : Dictionary):
 		unitInstance.Activated = _internalDict["Activated"]
-		unitInstance.visual.UpdateSubmerged(unitInstance.Submerged)
+		unitInstance.Visual.UpdateSubmerged(unitInstance.Submerged)
 
 	deferredVisualUpdate.call_deferred(_dict)
 

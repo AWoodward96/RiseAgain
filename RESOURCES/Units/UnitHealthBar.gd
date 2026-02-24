@@ -246,10 +246,8 @@ func RefreshCombatEffects():
 		var effectTemplate = effect.Template
 		var entry = EffectsList.CreateEntry(EffectsIconPrefab) as EffectEntry
 
-		var icon = GameManager.LocalizationSettings.Missing_CombatEffectIcon
+		var icon = effectTemplate.GetLocIcon(entry.icon)
 		var labeltext = GameManager.LocalizationSettings.Missing_CombatEffectName
-		if effectTemplate != null && effectTemplate.loc_icon != null:
-				icon = effectTemplate.loc_icon
 
 		if effectTemplate != null && effectTemplate.loc_name != "":
 			labeltext = tr(effectTemplate.loc_name)

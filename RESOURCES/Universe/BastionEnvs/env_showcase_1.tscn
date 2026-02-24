@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c2q0t0564uh88" path="res://RESOURCES/UI/Gate/gate_ui.tscn" id="11_8811i"]
 [ext_resource type="Texture2D" uid="uid://bahlc3ubkqv0o" path="res://ART/Environment/start_a_new_run_sign.png" id="13_7xqgj"]
 [ext_resource type="Texture2D" uid="uid://dk2hsagjjygnv" path="res://ART/Environment/Bastion/TempHouse_Ext.png" id="14_l7yt4"]
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="15_wkkfh"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="15_wkkfh"]
 [ext_resource type="PackedScene" uid="uid://cw7awguux054e" path="res://RESOURCES/UI/TeamManagementUI/team_management_ui.tscn" id="16_8811i"]
 [ext_resource type="Script" uid="uid://cr5yb8hf5hgk2" path="res://SCRIPTS/Universe/TopdownTeleporter.gd" id="16_huvla"]
 [ext_resource type="Texture2D" uid="uid://n77go2o4wbjc" path="res://ART/Environment/manage_units_sign.png" id="17_76ar4"]

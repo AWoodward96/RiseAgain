@@ -16,12 +16,13 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=101656882]
 z_index = 1
-custom_minimum_size = Vector2(12, 12)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("2_364o0")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=1358145255]
+visible = false
 z_index = 1
 layout_mode = 2
 text = "Def Down"

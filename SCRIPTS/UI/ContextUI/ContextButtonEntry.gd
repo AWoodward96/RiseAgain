@@ -31,7 +31,6 @@ func Initialize(_locTitle : String, _enabled : bool, _callback : Callable):
 	action_label.text = _locTitle
 	callback = _callback
 	enabled = _enabled
-	disabled_parent.visible = !_enabled
 	bg_color_fill.color = default_color
 
 	# default to false on these
@@ -64,7 +63,6 @@ func AddCooldown(_cooldown : int, _remainingCooldown : int):
 		cooldown_label.text = str(_cooldown)
 
 
-
 func AddUsage(_usagesRemaining : int):
 	usage_parent.visible = true
 	usage_label.text = str(_usagesRemaining)
@@ -80,13 +78,3 @@ func _process(_delta: float) -> void:
 		else:
 			if OnSelectDeny != null:
 				OnSelectDeny.play()
-
-func OnFocusEnter():
-	focus_parent.visible = true
-	focused = true
-	if OnFocus != null:
-		OnFocus.play()
-
-func OnFocusExit():
-	focus_parent.visible = false
-	focused = false

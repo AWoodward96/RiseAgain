@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cw7awguux054e"]
 
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_ongyo"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="1_ongyo"]
 [ext_resource type="Texture2D" uid="uid://b0dknid5k8d30" path="res://ART/Icons/Units/archer.png" id="2_j2esb"]
 [ext_resource type="Script" uid="uid://61aohaj7ekfm" path="res://SCRIPTS/UI/TeamManagement/TeamManagementFullscreenUI.gd" id="2_r1n1n"]
 [ext_resource type="Texture2D" uid="uid://c4byh05bdbx66" path="res://ART/UI/Textures/ui_parchment_panels8.png" id="3_r1n1n"]

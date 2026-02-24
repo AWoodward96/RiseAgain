@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4ci5d5nuum3x" path="res://SCRIPTS/Universe/BarracksUI.gd" id="1_1xjpc"]
 [ext_resource type="FontFile" uid="uid://dbk37dbkpdegv" path="res://ART/Fonts/ClassicShit.ttf" id="1_ing8u"]
-[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/UI/Themes/parchment_theme.tres" id="1_j8ucu"]
+[ext_resource type="Theme" uid="uid://dr64xsx6yrch2" path="res://RESOURCES/Theme/parchment_theme.tres" id="1_j8ucu"]
 [ext_resource type="Script" uid="uid://dqdpueov6o4eq" path="res://SCRIPTS/UI/General/EntryList.gd" id="2_1xjpc"]
 [ext_resource type="PackedScene" uid="uid://cflal3jirl4pa" path="res://RESOURCES/UI/Barracks/stat_block_entry_barracks.tscn" id="2_nu6vk"]
 [ext_resource type="LabelSettings" uid="uid://dosrukx8jhu7l" path="res://RESOURCES/UI/LabelSettings/parchment_title.tres" id="4_t516s"]
